@@ -1,0 +1,19 @@
+.mod_socialwidget {
+	.link {
+		&.var_facebook {
+			@include icon("facebook");
+		}
+		&.var_googleplus {
+			@include icon("gplus");
+		}
+		&.var_twitter {
+			@include icon("twitter");
+		}
+		&.var_pinterest {
+			@include icon("pinterest");
+		}
+		&.var_mail {
+			@include icon("email");
+		}
+	}
+}

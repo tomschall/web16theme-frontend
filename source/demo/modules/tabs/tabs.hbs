@@ -1,0 +1,24 @@
+<div class="mod_tabs {{variation}}" data-init="tabs" role="tablist">
+	{{#each tabs}}
+		<input type="radio" name="{{../idName}}" class="tab_trigger" id="{{../idName}}{{@index}}"{{#if checked}} checked{{/if}} aria-controls="panel{{@index}}" role="tab" />
+	{{/each}}
+
+	<div class="labels" aria-hidden="true">
+		{{#each tabs}}
+			<label for="{{../idName}}{{@index}}" id="tabLabel{{@index}}">{{title}}</label>
+		{{/each}}
+	</div>
+
+	<div class="panels">
+		{{#each tabs}}
+			<div class="tab_content" id="panel{{@index}}" aria-labelledby="tabLabel{{@index}}" role="tabpanel">
+				{{#if partial}}
+					{{dynamicPartial "{{partial}}" partialData replacementContext=this}}
+				{{else}}
+					{{!-- handlebars-layouts registers a "content" helper which takes precendence, therefore we need the "this" keyword here. --}}
+					{{this.content}}
+				{{/if}}
+			</div>
+		{{/each}}
+	</div>
+</div>

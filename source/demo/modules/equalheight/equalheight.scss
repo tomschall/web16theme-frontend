@@ -1,0 +1,35 @@
+.mod_equalheight {
+	/**
+	 * Structure
+	 */
+	display: flex;
+	flex-wrap: wrap;
+
+	[data-equalheight=item] {
+		box-sizing: border-box;
+		max-width: 250px
+	}
+
+	.no-flexbox & {
+		@include clearfix;
+		[data-equalheight=item] {
+			float: left;
+		}
+	}
+
+
+
+	/**
+	 * Styling
+	 */
+	@include resetList;
+	background-color: rgba(0, 0, 0, 0.1);
+	max-width: 80em;
+	padding: 0.5em;
+
+	[data-equalheight=item] {
+		background-color: rgba(128, 128, 0, 0.3);
+		margin: 0.5em;
+		padding: 1em;
+	}
+}

@@ -1,0 +1,123 @@
+.mod_tabs {
+	/*
+	 * Configuration
+	 */
+	$numTabs: 10;
+	$bgcolorActive: rgba(0,255,0,0.2);
+	$bgcolorFocus: rgba(128,0,255,0.2);
+	$bgcolorHover: rgba(0,128,255,0.2);
+	$transitionDuration: 0.5s;
+	$transitionTiming: cubic-bezier(.42,.44,.08,1.49); //or linear, or ease-in-out, or ease-in, or ease-out, or ease;
+
+
+	/*
+	 * Functionality
+	 */
+	.tab_trigger {
+		@include visuallyhidden;
+	}
+	.tab_content {
+		display: none;
+	}
+
+	$i: $numTabs;
+	@while $i > 0 {
+		.tab_trigger:nth-child(#{$i}):checked ~ .panels > .tab_content:nth-child(#{$i}) {
+			display: block;
+		}
+		.tab_trigger:nth-child(#{$i}):checked ~ .labels > label:nth-child(#{$i}) {
+			background-color: $bgcolorActive;
+		}
+		.tab_trigger:nth-child(#{$i}):focus ~ .labels > label:nth-child(#{$i}) {
+			background-color: $bgcolorFocus;
+		}
+		.tab_trigger:nth-child(#{$i}):hover ~ .labels > label:nth-child(#{$i}) {
+			background-color: $bgcolorHover;
+		}
+		$i: $i - 1;
+	}
+
+
+	/*
+	 * Variations
+	 */
+	&.var_centered {
+		.labels {
+			text-align: center;
+		}
+	}
+	&.var_expanded {
+		.labels {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-content: space-around; // How get distributted differenty lines of tabs
+		}
+		.labels label {
+			/* width: 100%; */
+			text-align: center;
+			flex-grow: 1;
+		}
+	}
+	&.var_animated {
+		/*
+		 * It is not possible to make a transition out from the tab to be hidden
+		 * because then the contents of the 2 tabs are shown at the same time
+		 * and they show 1 above the other, because we want to avoid position: absolute;
+		 * which would force us to recalculate the height with JS :(, something to be avoided
+		 */
+		.panels {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: no-wrap;
+		}
+		.tab_content {
+			display: block;
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 0s $transitionTiming $transitionDuration,
+				/*padding 0s $transitionTiming $transitionDuration,*/
+				opacity $transitionDuration $transitionTiming,
+				/*flex $transitionDuration $transitionTiming*/;
+			flex-basis: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		$i: $numTabs;
+		@while $i > 0 {
+			.tab_trigger:nth-child(#{$i}):checked ~ .panels > .tab_content:nth-child(#{$i}) {
+				display: block;
+				visibility: visible;
+				opacity: 1;
+				transition-delay: 0s;
+				flex-basis: 100%;
+				padding: 1em;
+			}
+			$i: $i - 1;
+		}
+	}
+
+
+	/*
+	 * Styling
+	 */
+	background-color: rgba(0,0,0,0.1);
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1em;
+	max-width: 800px;
+	.labels > label {
+		background-color: rgba(0,0,0,0.1);
+		display: inline-block;
+		padding: 0.5em 1em;
+		margin-bottom: 0.5em;
+	}
+	.tab_content {
+		background-color: rgba(0,0,0,0.1);
+		padding: 1em;
+		box-sizing: border-box;
+	}
+
+}
+
