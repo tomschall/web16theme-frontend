@@ -14,7 +14,7 @@ The drawback of a CSS only implementation is the maximum number of allowed tabs 
 
 The module expects at least 2 objects as data:
 
-- **idName**: _String_. This should be a unique ID in the whole page, and it is used to generate IDs and bind together inputs, labels and panels. 
+- **idName**: _String_. This should be a unique ID in the whole page, and it is used to generate IDs and bind together inputs, labels and panels.
 - **tabs**: _Array_. This Array will include 1 or more _Objects_, one for each panel of the tabs module, Each object contains: a **title**, a **checked** status, and a content (either **content** or **partial** and **partialData**) options:
 	- **title**: _String_: This is the text that will be displayed in the tab of the panel.
 	- **checked**: _Boolean_: This attribute sets one of the tabs as active and it is the one that will be displayed on page load. If there's no tab with a checked attribute given, the first tab is the checked one.
@@ -28,11 +28,10 @@ There's another optional object that the template can accept:
 	- **var_centered**: Displays the tabs centered in the available width of the module.
 	- **var_expanded**: Displays the tabs using the whole available width of the module. This one has precedence over _var_centered_.
 	- **var_var_animated**: Adds CSS-based fade-out/fade-in transition effect when selecting a new tab. This one can be applied together with the previous classes.
-	
+
 Example of data that can be passed to the tabs template:
 
 ```js
-var tab4 = requireNew('./tabs_panels_content_example/tab4.data.js');
 var data = {
 	idName: 'recipies',
 	variation: 'var_centered var_animated',
@@ -46,10 +45,6 @@ var data = {
 		}, {
 			title: 'The best tab 3',
 			content: 'At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
-		}, {
-			title: 'A last tab 4',
-			partial: 'demo/modules/tabs/tabs_panels_content_example/tab4',
-			partialData: tab4
 		}
 	]
 };

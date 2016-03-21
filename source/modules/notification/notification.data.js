@@ -2,12 +2,13 @@
 
 var _ = require('lodash'),
 	requireNew = require('require-new'),
-	dataHelper = require('../../../../helpers/data.js'),
-	defaultData = requireNew('../../../data/default.data.js');
+	dataHelper = require('../../../helpers/data.js'),
+	defaultData = requireNew('../../data/default.data.js');
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Demo: Notification',
+			title: 'Notification',
+			description: 'A very nice Notification module',
 			jira: 'ESTATICO-137',
 			code: dataHelper.getTemplateCode('notification.hbs'),
 			documentation: dataHelper.getDocumentation('notification.md')

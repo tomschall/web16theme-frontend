@@ -78,7 +78,8 @@ gulp.task(taskName, function(cb) {
 
 					relPathPrefix = relPathPrefix
 						.replace(new RegExp('\\' + path.sep, 'g'), '/') // Normalize path separator
-						.replace(/\.\.$/, ''); // Remove trailing ..
+						.replace(/\.\.$/, '') // Remove trailing ..
+						.replace(/\.\./g, '\\.\\.'); // dots as 'dot' char not any char
 
 					// Ignore files without a QUnit script reference
 					if (content.search(taskConfig.srcQUnit) === -1) {

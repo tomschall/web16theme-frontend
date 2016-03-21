@@ -2,12 +2,13 @@
 
 var _ = require('lodash'),
 	requireNew = require('require-new'),
-	dataHelper = require('../../../../helpers/data.js'),
-	defaultData = requireNew('../../../data/default.data.js');
+	dataHelper = require('../../../helpers/data.js'),
+	defaultData = requireNew('../../data/default.data.js');
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Demo: Cookie confirmation',
+			title: 'Cookie confirmation',
+			description: 'A very nice Cookie confirmation module',
 			jira: 'ESTATICO-182',
 			code: dataHelper.getTemplateCode('cookieconfirmation.hbs'),
 			documentation: dataHelper.getDocumentation('cookieconfirmation.md')

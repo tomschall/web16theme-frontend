@@ -43,6 +43,13 @@ handlebars.registerHelper('times', function(n, block) {
 	return output;
 });
 
+// indent each new line of {{value}} with {{indentation}} number of spaces
+handlebars.registerHelper('indent', function(value, indentation) {
+	return new handlebars.SafeString(
+		value.replace(/(\r\n|\n|\r)/gm, '\r\n' + new Array(indentation + 1).join(' '))
+	);
+});
+
 // Include partial with dynamic name
 // Based on http://stackoverflow.com/a/21411521
 // @param {String} name - Partial path, can contain placeholder as "{{key}}"

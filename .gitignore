@@ -1,5 +1,6 @@
 node_modules
 build
+package
 source/assets/.tmp
 .sass-cache
 .cache

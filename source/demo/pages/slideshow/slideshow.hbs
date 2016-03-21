@@ -15,12 +15,12 @@
 			estatico.helpers.extend(estatico.options, {
 				slideshow: {
 					animationDuration: 200,
-					url: '/mocks/demo/modules/slideshow/slideshow.json?delay=500'
+					url: '/mocks/modules/slideshow/slideshow.json?delay=500'
 				}
 			});
 		</script>
 
-		{{> "demo/modules/skiplinks/skiplinks" modules.skiplinks}}
+		{{> "modules/skiplinks/skiplinks" modules.skiplinks}}
 	{{/content}}
 
 	{{#content "content"}}
@@ -30,6 +30,6 @@
 
 		<hr>
 
-		{{> "demo/modules/slideshow/slideshow" modules.slideshow}}
+		{{> "modules/slideshow/slideshow" modules.slideshow}}
 	{{/content}}
 {{/extend}}

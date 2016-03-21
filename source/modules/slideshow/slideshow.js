@@ -22,7 +22,7 @@
 			},
 			initialItem: 0,
 			animationDuration: 300,
-			url: '/mocks/demo/modules/slideshow/slideshow.json?delay=5000'
+			url: '/mocks/modules/slideshow/slideshow.json?delay=5000'
 		},
 		data = {
 			i18n: {
@@ -59,11 +59,11 @@
 	 * @public
 	 */
 	Module.prototype.init = function() {
-		var navTemplate = Handlebars.partials['demo/modules/slideshow/_slideshow_nav'],
+		var navTemplate = Handlebars.partials['modules/slideshow/_slideshow_nav'],
 			request;
 
 		this.currentItem = -1;
-		this.slideTemplate = Handlebars.partials['demo/modules/slideshow/_slideshow_slide'];
+		this.slideTemplate = Handlebars.partials['modules/slideshow/_slideshow_slide'];
 
 		this.$wrapper = this.$element.find(this.options.domSelectors.slides);
 		this.$slides = this.$element.find(this.options.domSelectors.slide);

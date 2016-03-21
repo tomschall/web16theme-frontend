@@ -11,6 +11,7 @@ var taskName = 'clean',
 	taskConfig = {
 		src: [
 			'./build',
+			'./package',
 			'./source/assets/.tmp'
 		]
 	};

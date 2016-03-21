@@ -2,12 +2,13 @@
 
 var _ = require('lodash'),
 	requireNew = require('require-new'),
-	dataHelper = require('../../../../helpers/data.js'),
-	defaultData = requireNew('../../../data/default.data.js');
+	dataHelper = require('../../../helpers/data.js'),
+	defaultData = requireNew('../../data/default.data.js');
 
 var data = _.merge(defaultData, {
 	meta: {
-		title: 'Demo: Equalheight',
+		title: 'Equalheight',
+		description: 'A very nice Equalheight module',
 		jira: 'ESTATICO-37',
 		feature: 'Equal height fallback, flexbox-like',
 		code: dataHelper.getTemplateCode('equalheight.hbs'),

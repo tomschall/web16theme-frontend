@@ -2,12 +2,12 @@
 
 var _ = require('lodash'),
 	requireNew = require('require-new'),
-	dataHelper = require('../../../../helpers/data.js'),
-	defaultData = requireNew('../../../data/default.data.js');
+	dataHelper = require('../../../helpers/data.js'),
+	defaultData = requireNew('../../data/default.data.js');
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Demo: Socialwidget',
+			title: 'Socialwidget',
 			jira: 'ESTATICO-124',
 			code: dataHelper.getTemplateCode('socialwidget.hbs'),
 			documentation: dataHelper.getDocumentation('socialwidget.md')

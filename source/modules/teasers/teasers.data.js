@@ -2,13 +2,13 @@
 
 var _ = require('lodash'),
 	requireNew = require('require-new'),
-	dataHelper = require('../../../../helpers/data.js'),
-	defaultData = requireNew('../../../data/default.data.js'),
+	dataHelper = require('../../../helpers/data.js'),
+	defaultData = requireNew('../../data/default.data.js'),
 	teaserData = requireNew('../teaser/teaser.data.js');
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Demo: Teasers',
+			title: 'Teasers',
 			jira: null,
 			feature: 'Feature X',
 			code: dataHelper.getTemplateCode('teasers.hbs')
