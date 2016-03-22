@@ -5,9 +5,7 @@
  * @desc Copy build data into organized, predefined structure.
  */
 
-var gulp = require('gulp'),
-	merge = require('merge-stream'),
-	tap = require('gulp-tap');
+var gulp = require('gulp');
 
 var taskName = 'deploy:package',
 	taskConfig = {
@@ -20,6 +18,9 @@ var taskName = 'deploy:package',
 	};
 
 gulp.task(taskName, function() {
+	var merge = require('merge-stream'),
+		tap = require('gulp-tap');
+
 	var theme = gulp.src(taskConfig.srcTheme)
 			.pipe(gulp.dest(taskConfig.destTheme)),
 
