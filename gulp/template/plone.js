@@ -8,7 +8,7 @@
 var gulp = require('gulp'),
 	_ = require('lodash'),
 	path = require('path'),
-	handlebarsHelper = require('../../helpers/handlebars.js');
+	changeCase = require('change-case');
 
 var taskName = 'template:plone',
 	taskConfig = {
@@ -18,9 +18,11 @@ var taskName = 'template:plone',
 		dest: './build/templates/'
 	},
 	transform = function(data, filePath) {
+		var moduleName = changeCase.pascalCase(data.meta.title);
+
 		data = _.merge(data, {
-			modulname: data.meta.title.replace(/ /g, ''),
-			lcmodulname: data.meta.title.toLowerCase().replace(/ /g, ''),
+			modulname: moduleName,
+			lcmodulname: changeCase.lowerCase(moduleName),
 			moduldesc: data.meta.description,
 			moduletemplate: path.basename(filePath, '.data.js'),
 			mockdata: JSON.stringify(_.pickBy(data, function(value, key) {

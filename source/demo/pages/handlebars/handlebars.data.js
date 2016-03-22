@@ -22,7 +22,6 @@ var data = _.merge(defaultData, {
 		subString: 'hello',
 		testString2: 'hello world',
 		modules: {
-			skiplinks: requireNew('../../../modules/skiplinks/skiplinks.data.js'),
 			slideshow: requireNew('../../../modules/slideshow/slideshow.data.js')
 		}
 	});

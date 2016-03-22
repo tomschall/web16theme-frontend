@@ -15,7 +15,6 @@ var data = _.merge(defaultData, {
 		title: 'Unit test',
 		text: 'This page demonstrates the customized initialization of a module and allows to run its JavaScript unit tests.',
 		modules: {
-			skiplinks: requireNew('../../../modules/skiplinks/skiplinks.data.js'),
 			slideshow: requireNew('../../../modules/slideshow/slideshow.data.js')
 		}
 	});

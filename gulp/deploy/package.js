@@ -2,31 +2,42 @@
 
 /**
  * @function `gulp deploy:package`
- * @desc Copy specific media files to build directory.
+ * @desc Copy build data into organized, predefined structure.
  */
 
-var gulp = require('gulp');
-var merge = require('merge-stream');
+var gulp = require('gulp'),
+	merge = require('merge-stream'),
+	tap = require('gulp-tap');
 
 var taskName = 'deploy:package',
 	taskConfig = {
-		themeSrc: './build/**/*.*',
-		themeDest: './package/theme/',
-		widgetsSrc: './source/modules/**/*.hbs',
-		widgetsDest: './package/widgets/',
-		tilesSrc: './build/templates/**/*.*',
-		tilesDest: './package/'
+		srcTheme: './build/**/*.*',
+		destTheme: './package/theme/',
+		srcWidgets: './source/modules/**/*.hbs',
+		destWidgets: './package/widgets/',
+		srcTiles: './build/templates/**/*.*',
+		destTiles: './package/'
 	};
 
 gulp.task(taskName, function() {
-	var theme = gulp.src(taskConfig.themeSrc)
-			.pipe(gulp.dest(taskConfig.themeDest)),
+	var theme = gulp.src(taskConfig.srcTheme)
+			.pipe(gulp.dest(taskConfig.destTheme)),
 
-		widgets = gulp.src(taskConfig.widgetsSrc)
-			.pipe(gulp.dest(taskConfig.widgetsDest)),
+		widgets = gulp.src(taskConfig.srcWidgets)
 
-		tiles = gulp.src(taskConfig.tilesSrc)
-			.pipe(gulp.dest(taskConfig.tilesDest));
+			// Should go to some build step - here's just for POC
+			.pipe(tap(function(file) {
+				var content = file.contents.toString();
+
+				content = content.replace(/modules\//g, 'widgets\/');
+
+				file.contents = new Buffer(content);
+			}))
+
+			.pipe(gulp.dest(taskConfig.destWidgets)),
+
+		tiles = gulp.src(taskConfig.srcTiles)
+			.pipe(gulp.dest(taskConfig.destTiles));
 
 	return merge(theme, widgets, tiles);
 });
