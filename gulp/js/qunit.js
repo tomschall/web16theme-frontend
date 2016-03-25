@@ -32,6 +32,14 @@ var taskName = 'js:qunit',
 			'source/modules/**/*.test.js',
 			'source/demo/modules/**/*.test.js'
 		]
+	},
+	matchOperatorsRe = /[|\\{}()[\]^$+*?.]/g,
+	escapeRegEx = function(str) {
+		if (typeof str !== 'string') {
+			throw new TypeError('Expected a string');
+		}
+
+		return str.replace(matchOperatorsRe, '\\$&');
 	};
 
 gulp.task(taskName, function(cb) {
@@ -78,8 +86,9 @@ gulp.task(taskName, function(cb) {
 
 					relPathPrefix = relPathPrefix
 						.replace(new RegExp('\\' + path.sep, 'g'), '/') // Normalize path separator
-						.replace(/\.\.$/, '') // Remove trailing ..
-						.replace(/\.\./g, '\\.\\.'); // dots as 'dot' char not any char
+						.replace(/\.\.$/, ''); // Remove trailing ..
+
+					relPathPrefix = escapeRegEx(relPathPrefix);
 
 					// Ignore files without a QUnit script reference
 					if (content.search(taskConfig.srcQUnit) === -1) {
