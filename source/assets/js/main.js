@@ -8,11 +8,7 @@
  * @requires helpers/events.js
  * @requires helpers/mediaqueries.js
  *
- * @requires ../../demo/modules/skiplinks/skiplinks.js
- * @requires ../../demo/modules/slideshow/slideshow.js
- * @requires ../../demo/modules/notification/notification.js
- * @requires ../../demo/modules/cookieconfirmation/cookieconfirmation.js
- * @requires ../../demo/modules/equalheight/equalheight.js
+ * @requires ../../modules/slideshow/slideshow.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js

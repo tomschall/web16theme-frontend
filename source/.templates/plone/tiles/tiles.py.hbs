@@ -1,0 +1,15 @@
+{{#each modules}}
+class I{{modulname}}Tile(model.Schema):
+    """ Schema for {{modulname}} tile """
+
+class {{modulename}}Tile(HandlebarTile):
+    """ Implementation of {{modulname}} tile """
+
+    def get_tile_data(self):
+        """ Get CMS data and put it in a JSON format for Estatico components
+        :return: dictonary (does not need to be JSON structure! The conversion is handled by the templating engine)
+        """
+
+        return {{{indent mockdata 8}}}
+
+{{/each}}

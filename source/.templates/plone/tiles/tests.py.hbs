@@ -1,0 +1,12 @@
+{{#each modules}}
+class Test{{modulname}}Tile(unittest.TestCase):
+
+    layer = FHNW_WEB16WIDGETS_INTEGRATION_TESTING
+
+    def setUp(self):
+        self.tile = {{modulname}}Tile(self.layer['portal'], self.layer['request'])
+
+    def test_get_tile_data(self):
+        self.tile.get_tile_data()
+
+{{/each}}

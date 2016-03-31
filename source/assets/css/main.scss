@@ -21,17 +21,8 @@
 @import "layout";
 
 // Modules
-@import "../../demo/modules/media/media";
-@import "../../demo/modules/teaser/teaser";
-@import "../../demo/modules/teasers/teasers";
-@import "../../demo/modules/skiplinks/skiplinks";
-@import "../../demo/modules/slideshow/slideshow";
-@import "../../demo/modules/imageversions/imageversions";
-@import "../../demo/modules/tabs/tabs";
-@import "../../demo/modules/notification/notification";
-@import "../../demo/modules/socialwidget/socialwidget";
-@import "../../demo/modules/cookieconfirmation/cookieconfirmation";
-@import "../../demo/modules/equalheight/equalheight";
+@import "../../modules/teaser/teaser";
+@import "../../modules/slideshow/slideshow";
 //*autoinsertmodule*
 
 @media print {

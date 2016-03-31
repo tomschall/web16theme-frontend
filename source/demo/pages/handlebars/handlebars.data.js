@@ -11,7 +11,7 @@ var data = _.merge(defaultData, {
 		title: 'Handlebars helpers',
 		text: 'This page demonstrates the use of a some handlebars helpers (see helpers/handlebars.js).',
 		warning: 'WARNING: Use them with caution, they currently won\'t work on the client-side when precompiling templates.',
-		partial: 'demo/modules/slideshow/slideshow',
+		partial: 'modules/slideshow/slideshow',
 		partialPlaceholder: 'slideshow',
 		partials: [
 			{
@@ -22,8 +22,7 @@ var data = _.merge(defaultData, {
 		subString: 'hello',
 		testString2: 'hello world',
 		modules: {
-			skiplinks: requireNew('../../modules/skiplinks/skiplinks.data.js'),
-			slideshow: requireNew('../../modules/slideshow/slideshow.data.js')
+			slideshow: requireNew('../../../modules/slideshow/slideshow.data.js')
 		}
 	});
 
