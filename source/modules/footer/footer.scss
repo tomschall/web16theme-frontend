@@ -1,9 +1,10 @@
 $footerWidth: 1200px;
 
 .mod_footer {
+	@include clearfix;
 	color: $colorDarkGrey;
 	background-color: $colorLightGray;
-	padding: pxToEm(20);
+	padding: pxToEm(20) pxToEm(10);
 	max-width: $footerWidth;
 	margin: pxToEm(20) auto 0;
 }
@@ -19,11 +20,20 @@ $footerWidth: 1200px;
 		text-decoration: none;
 		color: $colorDarkGrey;
 		margin-left: pxToEm(15);
-		padding-bottom: pxToEm(20);
 	}
 
 	a:hover {
 		border-bottom: 2px solid $colorYellow;
+	}
+}
+
+@include mq($from: medium) {
+	.mod_footer {
+		padding: pxToEm(20);
+	}
+
+	.mod_footer__links a {
+		padding-bottom: pxToEm(20);
 	}
 }
 

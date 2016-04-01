@@ -22,20 +22,34 @@ h3 {
 
 .layout_wrapper {
 	margin: 0 auto;
-	width: pxToEm($sizeWidthContent);
+	max-width: pxToEm($sizeWidthContent);
+	padding: 0 $sizeGutters;
 }
 
 .layout_columns {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 
 	.no-flexbox.no-flexboxlegacy.no-flexboxtweener & {
 		@include clearfix;
+
+		.col-1-3 {
+			width: 100%;
+		}
 	}
 
 	.col-1-3 {
-		width: 30%;
 		padding: 0 $sizeGutters;
+	}
+
+	@include mq($from: medium) {
+		flex-direction: row;
+
+		.no-flexbox.no-flexboxlegacy.no-flexboxtweener & {
+			.col-1-3 {
+				width: 30%;
+			}
+		}
 	}
 }
 
