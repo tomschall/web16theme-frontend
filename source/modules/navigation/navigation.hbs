@@ -2,43 +2,13 @@
 	<img class="mod_navigation__logo" src="/assets/media/img/fhnw_e_logo_small.jpg" alt="FHNW Logo">
 
 	<ul class="mod_navigation__primary">
-		<li>
-			<a href="#">Studies</a>
-			<ul>
-				<li><a href="#">Some section </a></li>
-				<li><a href="#">Another one</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href="#">Research</a>
-			<ul>
-				<li>
-					<a href="#">Pokemon</a>
-					<ul>
-						<li><a href="#">Pichu</a></li>
-						<li><a href="#">Pikachu</a></li>
-						<li><a href="#">Raichu</a></li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<a href="#">Media</a>
-			<ul>
-				<li><a href="#">Section again</a></li>
-				<li><a href="#">Some other stuff</a></li>
-				<li><a href="#">Totodile</a></li>
-			</ul>
-		</li>
-		<li><a href="#">Contact</a></li>
-		<li>
-			<a href="#">Other</a>
-			<ul>
-				<li><a href="#">Blue/Red</a></li>
-				<li><a href="#">Yellow</a></li>
-				<li><a href="#">Gold/Silver</a></li>
-				<li><a href="#">Sapphire/Ruby</a></li>
-			</ul>
-		</li>
+		{{#each navItems}}
+			<li>
+				<a href="{{link}}">{{title}}</a>
+				{{#if subItems}}
+					{{> 'modules/navigation/_subitems' this}}
+				{{/if}}
+			</li>
+		{{/each}}
 	</ul>
 </nav>
