@@ -1,0 +1,32 @@
+$headerWidth: 1200px;
+
+.mod_navigation {
+	@include clearfix;
+	max-width: $headerWidth;
+	margin: pxToEm(20) auto pxToEm(25);
+	padding: 0 pxToEm(20) pxToEm(10);
+	border-bottom: 2px solid $colorLightGray;
+
+	li {
+		display: inline-block;
+		padding: pxToEm(10);
+	}
+
+	li a {
+		color: $colorText;
+		font-weight: 600;
+		text-decoration: none;
+		font-size: pxToEm(16);
+		padding-bottom: pxToRem(25);
+	}
+
+	li a:hover {
+		border-bottom: 2px solid $colorYellow;
+	}
+
+}
+
+.mod_navigation__logo {
+	float: right;
+	margin-top: pxToEm(-10);
+}

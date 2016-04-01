@@ -10,6 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="/assets/css/main{{#unless env.dev}}.min{{/unless}}.css">
+	<link rel="icon" href="/assets/media/icons/favicon.ico" type="image/x-icon">
 
 	{{#if env.dev}}
 		<link rel="stylesheet" href="/assets/css/dev.css">
@@ -23,12 +24,15 @@
 </head>
 <body>
 	{{#block "header"}}
+		{{> "modules/navigation/navigation" modules.navigation}}
 	{{/block}}
 
 	<div class="layout_wrapper" id="main">
 		{{#block "content"}}
 		{{/block}}
 	</div>
+
+	{{> "modules/footer/footer"}}
 
 	<script src="/assets/js/main{{#unless env.dev}}.min{{/unless}}.js"></script>
 

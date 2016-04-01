@@ -2,7 +2,7 @@
 
 var util = require('gulp-util'),
 	data = {
-		project: 'Estático',
+		project: 'FHNW Relaunch',
 		env: util.env
 	};
 

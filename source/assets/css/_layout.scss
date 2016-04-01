@@ -1,17 +1,23 @@
 html {
 	background: $colorBg;
-	color: $colorText;
+	color: $colorDarkGrey;
 	font-family: $fontFamilyBase;
 	font-size: $sizeFontBase / 16px * 100%;
 	line-height: $sizeLineHeightBase;
 }
 
-nav {
+nav,
+footer {
 
 	ul,
 	ol {
 		@include resetList;
 	}
+}
+
+h2,
+h3 {
+	color: $colorText;
 }
 
 .layout_wrapper {
@@ -21,9 +27,15 @@ nav {
 
 .layout_columns {
 	display: flex;
+	flex-direction: row;
 
 	.no-flexbox.no-flexboxlegacy.no-flexboxtweener & {
 		@include clearfix;
+	}
+
+	.col-1-3 {
+		width: 30%;
+		padding: 0 $sizeGutters;
 	}
 }
 
