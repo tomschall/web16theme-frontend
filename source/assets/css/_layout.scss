@@ -36,6 +36,10 @@ h3 {
 		.layout_col_13 {
 			width: 100%;
 		}
+
+		.layout_col_23 {
+			width: 100%;
+		}
 	}
 
 	.layout_col_13 {
@@ -45,10 +49,13 @@ h3 {
 	@include mq($from: medium) {
 		flex-direction: row;
 
-		.no-flexbox.no-flexboxlegacy.no-flexboxtweener & {
-			.layout_col_13 {
-				width: 30%;
-			}
+
+		.layout_col_13 {
+			width: 30%;
+		}
+
+		.layout_col_23 {
+			width: 70%;
 		}
 	}
 }

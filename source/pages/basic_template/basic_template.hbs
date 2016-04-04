@@ -4,20 +4,11 @@
 		<h2>{{title}}</h2>
 
 		<div class="layout_columns">
-			<div class="layout_col_13">
-				<h3> {{sectionTitle}} </h3>
-				<p> {{text}} </p>
-				<p> {{text}} </p>
+			<div class="layout_col_23">
+				{{> "modules/slideshow/slideshow" modules.slideshow}}
 			</div>
 			<div class="layout_col_13">
-				<h3> {{sectionTitle}} </h3>
-				<p> {{text}} </p>
-				<p> {{text}} </p>
-			</div>
-			<div class="layout_col_13">
-				<h3> {{sectionTitle}} </h3>
-				<p> {{text}} </p>
-				<p> {{text}} </p>
+				{{> "modules/teaser/teaser" modules.teaser}}
 			</div>
 		</div>
 

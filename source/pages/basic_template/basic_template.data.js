@@ -9,10 +9,10 @@ var data = _.merge(defaultData, {
 			title: 'Basic template'
 		},
 		title: 'University of Applied Sciences and Arts Northwestern Switzerland FHNW',
-		sectionTitle: 'Section header',
-		text: 'Bulbasaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ivysaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Venusaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charmander Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charmeleon Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 		modules: {
-			navigation: requireNew('../../modules/navigation/navigation.data.js')
+			navigation: requireNew('../../modules/navigation/navigation.data.js'),
+			slideshow: requireNew('../../modules/slideshow/slideshow.data.js'),
+			teaser: requireNew('../../modules/teaser/teaser.data.js')
 		}
 	});
 
