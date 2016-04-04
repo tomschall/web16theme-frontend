@@ -1,0 +1,16 @@
+{{#extend "layouts/layout"}}
+
+	{{#content "content"}}
+		<h2>{{title}}</h2>
+
+		<div class="layout_columns">
+			<div class="layout_col_23">
+				{{> "modules/slideshow/slideshow" modules.slideshow}}
+			</div>
+			<div class="layout_col_13">
+				{{> "modules/teaser/teaser" modules.teaser}}
+			</div>
+		</div>
+
+	{{/content}}
+{{/extend}}

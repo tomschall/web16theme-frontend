@@ -1,0 +1,10 @@
+<ul>
+	{{#each subItems}}
+		<li>
+			<a href="{{link}}">{{title}}</a>
+			{{#if subItems}}
+				{{> 'modules/navigation/_subitems' this}}
+			{{/if}}
+		</li>
+	{{/each}}
+</ul>

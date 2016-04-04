@@ -27,15 +27,11 @@ var data = _.merge(defaultData, {
 
 data.pages = _.sortBy(data.pages, function(item) {
 	return item.meta.title;
-}).concat(_.sortBy(data.demoPages, function(item) {
-	return item.meta.title;
-}));
+});
 
 data.modules = _.sortBy(data.modules, function(item) {
 	return item.meta.title;
-}).concat(_.sortBy(data.demoModules, function(item) {
-	return item.meta.title;
-}));
+});
 
 data.styleguide = _.sortBy(data.styleguide, function(item) {
 	return item.meta.title;

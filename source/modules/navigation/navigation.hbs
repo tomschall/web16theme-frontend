@@ -1,0 +1,14 @@
+<nav class="mod_navigation" data-init="navigation">
+	{{> 'modules/logo/logo'}}
+
+	<ul class="mod_navigation__primary">
+		{{#each navItems}}
+			<li>
+				<a href="{{link}}">{{title}}</a>
+				{{#if subItems}}
+					{{> 'modules/navigation/_subitems' this}}
+				{{/if}}
+			</li>
+		{{/each}}
+	</ul>
+</nav>
