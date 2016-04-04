@@ -14,7 +14,6 @@ gulp.task(taskName, function(cb) {
 	var helpers = require('require-dir')('../../helpers'),
 		runSequence = require('run-sequence'),
 		runTasks = [
-			'build',
 			'template:plone',
 			'deploy:package',
 			function(err) {
