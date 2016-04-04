@@ -36,6 +36,7 @@ gulp.task(taskName, function(cb) {
 			'media:imageversions'
 		],
 		'js:qunit',
+		'deploy',
 		function(err) {
 			if (err) {
 				helpers.errors(err);
