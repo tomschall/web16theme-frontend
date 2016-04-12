@@ -7,13 +7,13 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Footer',
+			title: 'Header',
 			description: '',
-			code: dataHelper.getTemplateCode('footer.hbs'),
-			documentation: dataHelper.getDocumentation('footer.md')
+			code: dataHelper.getTemplateCode('header.hbs'),
+			documentation: dataHelper.getDocumentation('header.md')
 		},
 		modules: {
-			navigationMeta: requireNew('../navigation_meta/navigation_meta.data.js')
+			navigation: requireNew('../navigation/navigation.data.js')
 		}
 	});
 

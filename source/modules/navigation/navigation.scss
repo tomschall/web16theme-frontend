@@ -1,21 +1,5 @@
-$headerWidth: 1200px;
-
 .mod_navigation {
-	@include clearfix;
-	max-width: $headerWidth;
-	margin: pxToEm(20) auto 0;
-	padding: 0 pxToEm(10);
-	border-bottom: 2px solid $colorLightGray;
 	text-align: center;
-}
-
-.mod_navigation__primary {
-	position: relative;
-}
-
-.mod_navigation__primary > li {
-	display: inline-block;
-	padding: pxToEm(10);
 
 	a {
 		color: $colorText;
@@ -24,66 +8,70 @@ $headerWidth: 1200px;
 		font-size: pxToEm(16);
 	}
 
-	&:hover > ul {
-		display: block;
-	}
-}
+	&__level_0 {
+		position: relative;
 
-.mod_navigation__primary ul {
-	display: none;
-	position: absolute;
-	background-color: $colorLightGray;
-	margin-top: pxToEm(10);
-	text-align: left;
-
-	li {
-		display: block;
-		min-width: pxToEm(120);
-		padding: 0 pxToEm(10);
-	}
-
-	li:hover ul {
-		display: block;
-	}
-
-	a {
-		color: $colorDarkGrey;
-		font-size: pxToEm(14);
-		font-weight: 500;
-		line-height: pxToEm(28);
-	}
-
-	a:hover {
-		color: $colorText;
-	}
-
-}
-
-.mod_navigation__primary ul ul {
-	display: none;
-	top: 0;
-	left: 100%;
-	margin-top: 0;
-}
-
-
-@include mq($from: medium) {
-	.mod_navigation {
-		padding: 0 pxToEm(20);
-		text-align: left;
-
-		li {
-			padding-bottom: pxToRem(25);
+		& > li {
+			display: inline-block;
+			padding: pxToEm(10);
 		}
 	}
 
-	.mod_navigation__primary ul {
-		margin-top: pxToEm(25);
-		margin-left: pxToEm(-10);
+	&__level_1 {
+		margin-top: pxToEm(10);
+		text-align: left;
+
+		li {
+			display: block;
+			min-width: pxToEm(120);
+			padding: 0 pxToEm(10);
+		}
+
+		a {
+			color: $colorDarkGrey;
+			font-size: pxToEm(14);
+			font-weight: 500;
+			line-height: pxToEm(28);
+
+			a:hover,
+			a:focus {
+				color: $colorText;
+			}
+		}
 	}
 
-	.mod_navigation__logo {
-		float: right;
-		margin-top: pxToEm(-10);
+	&__level_2 {
+		top: 0;
+		left: 100%;
+		margin-top: 0;
+	}
+
+	ul ul {
+		background-color: $colorLightGray;
+		display: none;
+		position: absolute;
+	}
+
+	li {
+
+		&:hover > ul {
+			display: block;
+		}
+	}
+
+	@include mq($from: medium) {
+		text-align: left;
+
+		&__level_0 {
+
+			& > li {
+				padding-bottom: pxToRem(25);
+			}
+		}
+
+		&__level_1 {
+			margin-top: pxToEm(25);
+			margin-left: pxToEm(-10);
+		}
 	}
 }

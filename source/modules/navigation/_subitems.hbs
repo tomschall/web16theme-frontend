@@ -1,9 +1,9 @@
-<ul>
-	{{#each subItems}}
+<ul class="mod_navigation__level_{{level}}">
+	{{#each items}}
 		<li>
 			<a href="{{link}}">{{title}}</a>
-			{{#if subItems}}
-				{{> 'modules/navigation/_subitems' this}}
+			{{#if list}}
+				{{> "modules/navigation/_subitems" list}}
 			{{/if}}
 		</li>
 	{{/each}}

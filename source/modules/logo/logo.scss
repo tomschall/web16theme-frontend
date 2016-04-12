@@ -1,3 +1,7 @@
 .mod_logo {
 
+	@include mq($from: medium) {
+		float: right;
+		margin-top: pxToEm(-10);
+	}
 }

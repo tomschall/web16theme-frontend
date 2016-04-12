@@ -1,0 +1,9 @@
+$sizeHeaderWidth: 1200px;
+
+.mod_header {
+	@include clearfix;
+	max-width: $sizeHeaderWidth;
+	margin: pxToEm(20) auto 0;
+	padding: 0 pxToEm(10);
+	border-bottom: 2px solid $colorLightGray;
+}

@@ -10,9 +10,10 @@ var data = _.merge(defaultData, {
 		},
 		title: 'University of Applied Sciences and Arts Northwestern Switzerland FHNW',
 		modules: {
-			navigation: requireNew('../../modules/navigation/navigation.data.js'),
+			header: requireNew('../../modules/header/header.data.js'),
 			slideshow: requireNew('../../modules/slideshow/slideshow.data.js'),
-			teaser: requireNew('../../modules/teaser/teaser.data.js')
+			teaser: requireNew('../../modules/teaser/teaser.data.js'),
+			footer: requireNew('../../modules/footer/footer.data.js')
 		}
 	});
 
