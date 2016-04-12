@@ -1,11 +1,11 @@
-$footerWidth: 1200px;
+$sizeFooterWidth: 1200px;
 
 .mod_footer {
 	@include clearfix;
 	color: $colorDarkGrey;
 	background-color: $colorLightGray;
 	padding: pxToEm(20) pxToEm(10);
-	max-width: $footerWidth;
+	max-width: $sizeFooterWidth;
 	margin: pxToEm(20) auto 0;
 
 	@include mq($from: medium) {
