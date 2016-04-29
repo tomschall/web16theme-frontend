@@ -14,7 +14,7 @@ var data = _.merge(defaultData, {
 		},
 		navItems: [
 			{
-				title: 'Studies',
+				title: 'Studium',
 				link: '#',
 				subItems: [
 					{
@@ -28,7 +28,7 @@ var data = _.merge(defaultData, {
 				]
 			},
 			{
-				title: 'Research',
+				title: 'Weiterbildung',
 				link: '#',
 				subItems: [
 					{
@@ -52,7 +52,7 @@ var data = _.merge(defaultData, {
 				]
 			},
 			{
-				title: 'Media',
+				title: 'Forschung & Praxis',
 				link: '#',
 				subItems: [
 					{
@@ -70,30 +70,8 @@ var data = _.merge(defaultData, {
 				]
 			},
 			{
-				title: 'Contact',
+				title: 'Die FHNW',
 				link: '#'
-			},
-			{
-				title: 'Other',
-				link: '#',
-				subItems: [
-					{
-						title: 'Blue/Red',
-						link: '#'
-					},
-					{
-						title: 'Yellow',
-						link: '#'
-					},
-					{
-						title: 'Gold/Silver',
-						link: '#'
-					},
-					{
-						title: 'Sapphire/Ruby',
-						link: '#'
-					}
-				]
 			}
 		]
 	});
