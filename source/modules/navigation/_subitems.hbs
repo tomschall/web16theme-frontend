@@ -2,9 +2,10 @@
 	{{#each items}}
 		<li>
 			<a href="{{link}}">{{title}}</a>
-			{{#if list}}
-				{{> "modules/navigation/_subitems" list}}
-			{{/if}}
+      {{#if list}}
+        {{> "modules/navigation/_subitems" list}}
+      {{/if}}
 		</li>
+
 	{{/each}}
 </ul>

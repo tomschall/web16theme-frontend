@@ -1,1 +1,5 @@
-
+@media screen and (max-width: $sizeBreakpointSmall) {
+  .mod_navigation {
+    display: none;
+  }
+}

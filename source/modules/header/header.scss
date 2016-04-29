@@ -5,4 +5,8 @@ $sizeHeaderWidth: 686px;
 	max-width: $sizeHeaderWidth;
 
   background-color: $colorYellow;
+
+  @include mq($to: small) {
+    max-width: 100%;
+  }
 }

@@ -4,9 +4,6 @@ $sizeFooterWidth: 1200px;
 	@include clearfix;
 	color: $colorDarkGrey;
 	background-color: $colorLightGray;
-	padding: pxToEm(20) pxToEm(10);
-	max-width: $sizeFooterWidth;
-	margin: pxToEm(20) auto 0;
 
 	@include mq($from: medium) {
 		padding: pxToEm(20);

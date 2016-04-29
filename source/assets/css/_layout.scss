@@ -27,9 +27,19 @@ h3 {
 
   //only test purposes
   background-color: green;
+
+  @include mq($to: small) {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
 }
 
 .layout_wrapper {
   flex-grow: 1;
   -webkit-flex-grow: 1;
+
+  @include mq($to: small) {
+    flex-grow: 0;
+    -webkit-flex-grow: 0;
+  }
 }
