@@ -1,39 +1,14 @@
-$footerWidth: 1200px;
+$sizeFooterWidth: 1200px;
 
 .mod_footer {
 	@include clearfix;
 	color: $colorDarkGrey;
 	background-color: $colorLightGray;
 	padding: pxToEm(20) pxToEm(10);
-	max-width: $footerWidth;
+	max-width: $sizeFooterWidth;
 	margin: pxToEm(20) auto 0;
-}
 
-.mod_footer__links {
-	float: right;
-}
-
-.mod_footer__links li {
-	display: inline-block;
-
-	a {
-		text-decoration: none;
-		color: $colorDarkGrey;
-		margin-left: pxToEm(15);
-	}
-
-	a:hover {
-		border-bottom: 2px solid $colorYellow;
-	}
-}
-
-@include mq($from: medium) {
-	.mod_footer {
+	@include mq($from: medium) {
 		padding: pxToEm(20);
 	}
-
-	.mod_footer__links a {
-		padding-bottom: pxToEm(20);
-	}
 }
-

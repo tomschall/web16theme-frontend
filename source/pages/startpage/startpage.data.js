@@ -6,13 +6,11 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Basic template'
+			title: 'Startpage'
 		},
 		title: 'University of Applied Sciences and Arts Northwestern Switzerland FHNW',
 		modules: {
-			navigation: requireNew('../../modules/navigation/navigation.data.js'),
-			slideshow: requireNew('../../modules/slideshow/slideshow.data.js'),
-			teaser: requireNew('../../modules/teaser/teaser.data.js')
+			navigation: requireNew('../../modules/navigation/navigation.data.js')
 		}
 	});
 

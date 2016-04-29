@@ -12,68 +12,83 @@ var data = _.merge(defaultData, {
 			code: dataHelper.getTemplateCode('navigation.hbs'),
 			documentation: dataHelper.getDocumentation('navigation.md')
 		},
-		navItems: [
-			{
-				title: 'Studium',
-				link: '#',
-				subItems: [
-					{
-						title: 'Some section',
-						link: '#'
-					},
-					{
-						title: 'Another one',
-						link: '#'
-					}
-				]
-			},
-			{
-				title: 'Weiterbildung',
-				link: '#',
-				subItems: [
-					{
-						title: 'Pokemon',
-						link: '#',
-						subItems: [
+		list: {
+			level: 0,
+			items: [
+				{
+					title: 'Studium',
+					link: '#',
+					list: {
+						level: 1,
+						items: [
 							{
-								title: 'Pichu',
+								title: 'Some section',
 								link: '#'
 							},
 							{
-								title: 'Pikachu',
-								link: '#'
-							},
-							{
-								title: 'Raichu',
+								title: 'Another one',
 								link: '#'
 							}
 						]
 					}
-				]
-			},
-			{
-				title: 'Forschung & Praxis',
-				link: '#',
-				subItems: [
-					{
-						title: 'Section again',
-						link: '#'
-					},
-					{
-						title: 'Some other stuff',
-						link: '#'
-					},
-					{
-						title: 'Another one',
-						link: '#'
+				},
+				{
+					title: 'Weiterbildung',
+					link: '#',
+					list: {
+						level: 1,
+						items: [
+							{
+								title: 'Pokemon',
+								link: '#',
+								list: {
+									level: 2,
+									items: [
+										{
+											title: 'Pichu',
+											link: '#'
+										},
+										{
+											title: 'Pikachu',
+											link: '#'
+										},
+										{
+											title: 'Raichu',
+											link: '#'
+										}
+									]
+								}
+							}
+						]
 					}
-				]
-			},
-			{
-				title: 'Die FHNW',
-				link: '#'
-			}
-		]
+				},
+				{
+					title: 'Forschung & Praxis',
+					link: '#',
+					list: {
+						level: 1,
+						items: [
+							{
+								title: 'Section again',
+								link: '#'
+							},
+							{
+								title: 'Some other stuff',
+								link: '#'
+							},
+							{
+								title: 'Another one',
+								link: '#'
+							}
+						]
+					}
+				},
+				{
+					title: 'Die FHNW',
+					link: '#'
+				}
+			]
+		}
 	});
 
 module.exports = data;

@@ -1,0 +1,8 @@
+$sizeHeaderWidth: 686px;
+
+.mod_header {
+	@include clearfix;
+	max-width: $sizeHeaderWidth;
+
+  background-color: $colorYellow;
+}

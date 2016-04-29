@@ -23,16 +23,18 @@
 	{{/if}}
 </head>
 <body>
-	{{#block "header"}}
-		{{> "modules/navigation/navigation" modules.navigation}}
-	{{/block}}
+<div class="page_wrapper">
+  {{> "modules/header/header" modules.header}}
 
-	<div class="layout_wrapper" id="main">
-		{{#block "content"}}
-		{{/block}}
-	</div>
+  <div class="layout_wrapper" id="main">
+    {{#block "content"}}
+    {{/block}}
 
-	{{> "modules/footer/footer"}}
+    {{> "modules/footer/footer" modules.footer}}
+  </div>
+</div>
+
+
 
 	<script src="/assets/js/main{{#unless env.dev}}.min{{/unless}}.js"></script>
 

@@ -20,59 +20,16 @@ h3 {
 	color: $colorText;
 }
 
+.page_wrapper {
+  display: -webkit-flex;
+  display: flex;
+  min-height: 100vh;
+
+  //only test purposes
+  background-color: green;
+}
+
 .layout_wrapper {
-	margin: 0 auto;
-	max-width: pxToEm($sizeWidthContent);
-	padding: 0 $sizeGutters;
-}
-
-.layout_columns {
-	display: flex;
-	flex-direction: column;
-
-	.no-flexbox.no-flexboxlegacy.no-flexboxtweener & {
-		@include clearfix;
-
-		.layout_col_13 {
-			width: 100%;
-		}
-
-		.layout_col_23 {
-			width: 100%;
-		}
-	}
-
-	.layout_col_13 {
-		padding: 0 $sizeGutters;
-	}
-
-	@include mq($from: medium) {
-		flex-direction: row;
-
-
-		.layout_col_13 {
-			width: 30%;
-		}
-
-		.layout_col_23 {
-			width: 70%;
-		}
-	}
-}
-
-.layout_main {
-	width: 75%;
-
-	.no-flexbox.no-flexboxlegacy.no-flexboxtweener & {
-		float: left;
-	}
-}
-
-.layout_sidebar {
-	flex: 1;
-
-	.no-flexbox.no-flexboxlegacy.no-flexboxtweener & {
-		float: right;
-		width: 25%;
-	}
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
 }
