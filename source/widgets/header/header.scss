@@ -1,6 +1,6 @@
 $sizeHeaderWidth: 343px;
 
-.mod_header {
+.widg_header {
 	@include clearfix;
 	width: pxToEm($sizeHeaderWidth);
 

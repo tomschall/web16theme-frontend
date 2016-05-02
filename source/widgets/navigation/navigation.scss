@@ -1,5 +1,5 @@
-@media screen and (max-width: $sizeBreakpointSmall) {
-  .mod_navigation {
+.widg_navigation {
+  @include mq($to: small) {
     display: none;
   }
 }

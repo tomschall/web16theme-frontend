@@ -12,7 +12,7 @@ var data = _.merge(defaultData, {
 			code: dataHelper.getTemplateCode('header.hbs'),
 			documentation: dataHelper.getDocumentation('header.md')
 		},
-		modules: {
+		widgets: {
 			navigation: requireNew('../navigation/navigation.data.js')
 		}
 	});
