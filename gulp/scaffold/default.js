@@ -15,8 +15,8 @@ var taskName = 'scaffold',
 		types: {
 			module: {
 				name: 'Module',
-				src: './source/modules/.scaffold',
-				dest: './source/modules/',
+				src: './source/widgets/.scaffold',
+				dest: './source/widgets/',
 				hasAssets: true
 			},
 			page: {
@@ -27,7 +27,7 @@ var taskName = 'scaffold',
 			},
 			demoModule: {
 				name: 'Demo Module',
-				src: './source/modules/.scaffold',
+				src: './source/widgets/.scaffold',
 				dest: './source/demo/modules/',
 				hasAssets: true
 			},

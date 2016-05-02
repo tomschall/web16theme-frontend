@@ -20,7 +20,7 @@ var _ = require('lodash'),
 var data = _.merge(defaultData, {
 		pages: dataHelper.getDataGlob('./source/pages/**/*.data.js', transform),
 		demoPages: dataHelper.getDataGlob('./source/demo/pages/**/*.data.js', transform),
-		modules: dataHelper.getDataGlob('./source/modules/**/*.data.js', transform),
+		modules: dataHelper.getDataGlob('./source/widgets/**/*.data.js', transform),
 		demoModules: dataHelper.getDataGlob('./source/demo/modules/**/*.data.js', transform),
 		styleguide: dataHelper.getDataGlob('./source/preview/styleguide/*.data.js', transform)
 	});

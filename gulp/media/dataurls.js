@@ -11,7 +11,7 @@ var taskName = 'media:dataurls',
 	taskConfig = {
 		src: [
 			'./source/assets/media/icons/*.svg',
-			'./source/modules/**/icons/*.svg',
+			'./source/widgets/**/icons/*.svg',
 			'./source/demo/modules/**/icons/*.svg'
 		],
 		dest: './build/assets/media/icons/',
@@ -21,7 +21,7 @@ var taskName = 'media:dataurls',
 		relIcons: '../media/icons/',
 		watch: [
 			'source/assets/media/icons/*.svg',
-			'source/modules/**/icons/*.svg',
+			'source/widgets/**/icons/*.svg',
 			'source/demo/modules/**/icons/*.svg'
 		]
 	};

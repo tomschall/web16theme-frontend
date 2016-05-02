@@ -13,14 +13,14 @@ var taskName = 'html',
 			'./source/*.hbs',
 			'./source/pages/**/*.hbs',
 			'./source/demo/pages/**/*.hbs',
-			'./source/modules/**/!(_)*.hbs',
+			'./source/widgets/**/!(_)*.hbs',
 			'./source/demo/modules/**/!(_)*.hbs',
 			'./source/preview/styleguide/*.hbs'
 		],
 		srcModulePreview: './source/preview/layouts/module.hbs',
 		partials: [
 			'source/layouts/*.hbs',
-			'source/modules/**/*.hbs',
+			'source/widgets/**/*.hbs',
 			'source/demo/modules/**/*.hbs',
 			'source/preview/**/*.hbs'
 		],
@@ -30,16 +30,16 @@ var taskName = 'html',
 			'source/layouts/*.hbs',
 			'source/pages/**/*.hbs',
 			'source/demo/pages/**/*.hbs',
-			'source/modules/**/*.hbs',
+			'source/widgets/**/*.hbs',
 			'source/demo/modules/**/*.hbs',
 			'source/preview/**/*.hbs',
 			'source/data/**/*.data.js',
 			'source/pages/**/*.data.js',
 			'source/demo/pages/**/*.data.js',
-			'source/modules/**/*.data.js',
+			'source/widgets/**/*.data.js',
 			'source/demo/modules/**/*.data.js',
 			'source/preview/**/*.data.js',
-			'source/modules/**/*.md',
+			'source/widgets/**/*.md',
 			'source/demo/modules/**/*.md',
 			'source/assets/css/data/colors.html'
 		]
@@ -87,7 +87,7 @@ gulp.task(taskName, function(cb) {
 				mergedData;
 
 			// Precompile module demo and variants
-			if (file.path.indexOf(path.sep + 'modules' + path.sep) !== -1) {
+			if (file.path.indexOf(path.sep + 'widgets' + path.sep) !== -1) {
 				moduleTemplate = file.contents.toString();
 				modulePreviewTemplate = modulePreviewTemplate || fs.readFileSync(taskConfig.srcModulePreview, 'utf8');
 

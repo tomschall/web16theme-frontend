@@ -10,12 +10,12 @@ var gulp = require('gulp');
 var taskName = 'js:mocks',
 	taskConfig = {
 		src: [
-			'./source/modules/**/*.mock.js',
+			'./source/widgets/**/*.mock.js',
 			'./source/demo/modules/**/*.mock.js'
 		],
 		dest: './build/mocks/',
 		watch: [
-			'source/modules/**/*.mock.js',
+			'source/widgets/**/*.mock.js',
 			'source/demo/modules/**/*.mock.js'
 		]
 	};

@@ -11,7 +11,7 @@ var taskName = 'media:iconfont',
 	taskConfig = {
 		src: [
 			'./source/assets/media/icons/*.svg',
-			'./source/modules/**/icons/*.svg',
+			'./source/widgets/**/icons/*.svg',
 			'./source/demo/modules/**/icons/*.svg'
 		],
 		dest: './build/assets/fonts/icons/',
@@ -20,7 +20,7 @@ var taskName = 'media:iconfont',
 		relFont: '../fonts/icons/',
 		watch: [
 			'source/assets/media/icons/*.svg',
-			'source/modules/**/icons/*.svg',
+			'source/widgets/**/icons/*.svg',
 			'source/demo/modules/**/icons/*.svg'
 		]
 	};

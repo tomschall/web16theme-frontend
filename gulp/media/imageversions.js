@@ -13,12 +13,12 @@ var taskName = 'media:imageversions',
 		// paths to configs
 		src: [
 			'./source/assets/media/',
-			'./source/modules/**/media/',
+			'./source/widgets/**/media/',
 			'./source/demo/modules/**/media/'
 		],
 		watch: [
 			'source/assets/media/',
-			'source/modules/**/media/',
+			'source/widgets/**/media/',
 			'source/demo/modules/**/media/'
 		],
 		fileExtensionPattern: '*.{jpg, png}',

@@ -12,7 +12,7 @@ var taskName = 'html:migrate',
 		src: [
 			'./source/data/**/*.json',
 			'./source/pages/**/*.json',
-			'./source/modules/**/*.json',
+			'./source/widgets/**/*.json',
 			'./source/preview/styleguide/**/*.json'
 		],
 		dest: './source/'

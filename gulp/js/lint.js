@@ -16,7 +16,7 @@ var taskName = 'js:lint',
 			// './test/**/*.js',
 			// '!./test/**/expected/**/*.js',
 			'./source/assets/js/**/*.js',
-			'./source/modules/**/*.js',
+			'./source/widgets/**/*.js',
 			'./source/pages/**/*.js',
 			'./source/demo/modules/**/*.js',
 			'./source/demo/pages/**/*.js'

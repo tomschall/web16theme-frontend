@@ -11,7 +11,7 @@ var taskName = 'js:qunit',
 	taskConfig = {
 		srcTests: [
 			'./node_modules/qunitjs/qunit/*',
-			'./source/modules/**/*.test.js',
+			'./source/widgets/**/*.test.js',
 			'./source/demo/modules/**/*.test.js'
 		],
 		srcBase: './source/',
@@ -19,7 +19,7 @@ var taskName = 'js:qunit',
 		srcTemplates: [
 			'./build/pages/**/*.html',
 			'./build/demo/pages/**/*.html',
-			'./build/modules/**/*.html',
+			'./build/widgets/**/*.html',
 			'./build/demo/modules/**/*.html'
 		],
 		srcTemplatesBase: './build/',
@@ -29,7 +29,7 @@ var taskName = 'js:qunit',
 			'./node_modules/phantomjs-polyfill/bind-polyfill.js'
 		],
 		watch: [
-			'source/modules/**/*.test.js',
+			'source/widgets/**/*.test.js',
 			'source/demo/modules/**/*.test.js'
 		]
 	},

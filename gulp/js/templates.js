@@ -10,12 +10,12 @@ var gulp = require('gulp');
 var taskName = 'js:templates',
 	taskConfig = {
 		src: [
-			'./source/modules/**/_*.js.hbs',
+			'./source/widgets/**/_*.js.hbs',
 			'./source/demo/modules/**/_*.js.hbs'
 		],
 		dest: './source/assets/.tmp/',
 		watch: [
-			'source/modules/**/_*.js.hbs',
+			'source/widgets/**/_*.js.hbs',
 			'source/demo/modules/**/_*.js.hbs'
 		]
 	};

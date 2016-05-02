@@ -21,11 +21,11 @@ var taskName = 'js',
 			watch: [
 				'source/assets/js/**/*.js',
 				'source/assets/.tmp/**/*.js',
-				'source/modules/**/*.js',
+				'source/widgets/**/*.js',
 				'source/demo/modules/**/*.js',
-				'!source/modules/**/*.data.js',
+				'!source/widgets/**/*.data.js',
 				'!source/demo/modules/**/*.data.js',
-				'!source/modules/**/*.mock.js',
+				'!source/widgets/**/*.mock.js',
 				'!source/demo/modules/**/*.mock.js'
 			]
 		},

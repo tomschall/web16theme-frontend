@@ -11,7 +11,7 @@ var taskName = 'media:pngsprite',
 	taskConfig = {
 		src: [
 			'./source/assets/media/pngsprite/*.png',
-			'./source/modules/**/pngsprite/*.png',
+			'./source/widgets/**/pngsprite/*.png',
 			'./source/demo/modules/**/pngsprite/*.png'
 		],
 		dest: './build/assets/media/',
@@ -20,7 +20,7 @@ var taskName = 'media:pngsprite',
 		relImg: '../media/sprite.png',
 		watch: [
 			'source/assets/media/pngsprite/*.png',
-			'source/modules/**/pngsprite/*.png',
+			'source/widgets/**/pngsprite/*.png',
 			'source/demo/modules/**/pngsprite/*.png'
 		]
 	};

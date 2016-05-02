@@ -11,9 +11,9 @@ var taskName = 'js:modernizr',
 	taskConfig = {
 		src: [
 			'./source/assets/css/**/*.scss',
-			'./source/modules/**/*.scss',
+			'./source/widgets/**/*.scss',
 			'./source/assets/js/**/*.js',
-			'./source/modules/**/*.js',
+			'./source/widgets/**/*.js',
 			'./source/demo/modules/**/*.js'
 		],
 		file: 'modernizr.js',

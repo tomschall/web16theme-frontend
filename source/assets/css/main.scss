@@ -21,14 +21,14 @@
 @import "layout";
 
 // Modules
-@import "../../modules/teaser/teaser";
-@import "../../modules/slideshow/slideshow";
-@import "../../modules/navigation/navigation";
-@import "../../modules/logo/logo";
-@import "../../modules/header/header";
-@import "../../modules/navigation_meta/navigation_meta";
-@import "../../modules/footer/footer";
-@import "../../modules/breadcrumb/breadcrumb";
+@import "../../widgets/teaser/teaser";
+@import "../../widgets/slideshow/slideshow";
+@import "../../widgets/navigation/navigation";
+@import "../../widgets/logo/logo";
+@import "../../widgets/header/header";
+@import "../../widgets/navigation_meta/navigation_meta";
+@import "../../widgets/footer/footer";
+@import "../../widgets/breadcrumb/breadcrumb";
 //*autoinsertmodule*
 
 @media print {

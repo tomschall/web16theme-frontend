@@ -19,13 +19,13 @@ var taskName = 'css',
 		srcBase: './source/',
 		include: [
 			'./source/assets/css/',
-			'./source/modules/'
+			'./source/widgets/'
 		],
 		dest: './build/',
 		watch: [
 			'source/assets/css/**/*.scss',
 			'source/assets/.tmp/**/*.scss',
-			'source/modules/**/*.scss',
+			'source/widgets/**/*.scss',
 			'source/demo/modules/**/*.scss',
 			'source/preview/assets/css/**/*.scss'
 		],

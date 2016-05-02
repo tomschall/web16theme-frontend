@@ -8,7 +8,7 @@
  * @requires helpers/events.js
  * @requires helpers/mediaqueries.js
  *
- * @requires ../../modules/slideshow/slideshow.js
+ * @requires ../../widgets/slideshow/slideshow.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js

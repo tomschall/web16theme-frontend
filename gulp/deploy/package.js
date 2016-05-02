@@ -11,7 +11,7 @@ var taskName = 'deploy:package',
 	taskConfig = {
 		srcTheme: './build/**/*.*',
 		destTheme: './package/theme/',
-		srcWidgets: './source/modules/**/*.hbs',
+		srcWidgets: './source/widgets/**/*.hbs',
 		destWidgets: './package/widgets/',
 		srcTiles: './build/templates/**/*.*',
 		destTiles: './package/'

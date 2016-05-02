@@ -10,7 +10,7 @@ var data = _.merge(defaultData, {
 		meta: {
 			title: 'Icons (font variant)',
 		},
-		icons: _.map(glob.sync('./source/{,demo/}{assets/media/,modules/**/}icons/*'), function(file) {
+		icons: _.map(glob.sync('./source/{,demo/}{assets/media/,widgets/**/}icons/*'), function(file) {
 			return path.basename(file).replace(path.extname(file), '');
 		}),
 		sizes: [16, 32, 48, 72],

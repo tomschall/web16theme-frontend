@@ -44,7 +44,7 @@ gulp.task(taskName, function(cb) {
 		.pipe(tap(function(file) {
 			var dataHelper = require('../../helpers/data.js'),
 				data = {
-					modules: dataHelper.getDataGlob('./source/modules/**/*.data.js', transform)
+					modules: dataHelper.getDataGlob('./source/widgets/**/*.data.js', transform)
 				};
 
 			// Save data by file name
