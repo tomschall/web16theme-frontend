@@ -38,8 +38,14 @@ h3 {
   flex-grow: 1;
   -webkit-flex-grow: 1;
 
-  @include mq($to: small) {
-    flex-grow: 0;
-    -webkit-flex-grow: 0;
-  }
+  display: flex;
+  display: -webkit-flex;
+
+  flex-direction: column;
+  -webkit-flex-direction: column;
+}
+
+.layout_content {
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
 }

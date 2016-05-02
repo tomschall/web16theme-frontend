@@ -1,12 +1,12 @@
-$sizeHeaderWidth: 686px;
+$sizeHeaderWidth: 343px;
 
 .mod_header {
 	@include clearfix;
-	max-width: $sizeHeaderWidth;
+	width: pxToEm($sizeHeaderWidth);
 
   background-color: $colorYellow;
 
   @include mq($to: small) {
-    max-width: 100%;
+    width: 100%;
   }
 }

@@ -1,0 +1,8 @@
+.mod_breadcrumb__item,
+.mod_breadcrumb__seperator{
+  display: inline-block;
+}
+
+.mod_breadcrumb__seperator:last-child {
+  display: none;
+}
