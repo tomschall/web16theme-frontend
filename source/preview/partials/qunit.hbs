@@ -12,17 +12,17 @@
 
 		<script>
 			;(function($) {
-				'use strict';
+				"use strict";
 
-				var $container = $('#qunit'),
-					$button = $('<button>Run QUnit tests</button>'),
+				var $container = $("#qunit"),
+					$button = $("<button>Run QUnit tests</button>"),
 					startTests = function() {
 						$container.show();
 
-						$('<link/>', {
-							rel: 'stylesheet',
-							href: '/test/node_modules/qunitjs/qunit/qunit.css'
-						}).appendTo('head');
+						$("<link/>", {
+							rel: "stylesheet",
+							href: "/test/node_modules/qunitjs/qunit/qunit.css"
+						}).appendTo("head");
 
 						$button.remove();
 
@@ -34,7 +34,7 @@
 
 					$button
 						.insertAfter($container)
-						.on('click', function() {
+						.on("click", function() {
 							startTests();
 						});
 				} else {
