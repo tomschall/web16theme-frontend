@@ -2,7 +2,7 @@
 	'use strict';
 
 	var name = 'slideshow',
-		$node = $('.mod_' + name).eq(0),
+		$node = $('.widg_' + name).eq(0),
 		instance;
 
 	// Setup QUnit module
