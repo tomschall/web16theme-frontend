@@ -9,6 +9,8 @@
  * @requires helpers/mediaqueries.js
  *
  * @requires ../../widgets/slideshow/slideshow.js
+ * @requires ../../widgets/share/share.js
+ * @requires ../../widgets/pagesearch/pagesearch.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js
