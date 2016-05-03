@@ -6,7 +6,23 @@ $sizeHeaderWidth: 343px;
 
   background-color: $colorYellow;
 
-  @include mq($to: small) {
+
+  @include mq($to: medium) {
     width: 100%;
   }
+}
+
+.widg_header__inner {
+	height: 100vh;
+	padding: pxToEm(44px); //@TODO Only temp value
+	width: pxToEm($sizeHeaderWidth);
+
+	position: fixed;
+
+	@include mq($to: medium) {
+		position: static;
+		height: auto;
+		width: 100%;
+		padding: 0;
+	}
 }

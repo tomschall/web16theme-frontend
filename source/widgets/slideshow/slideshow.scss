@@ -1,40 +1,45 @@
 .widg_slideshow {
+	height: 100vh;
+	position: relative;
+
+	@include mq($to: medium) {
+		height: calc(100vh - 56px);
+	}
+
+	.slides {
+		height: 100%;
+	}
 
 	.slide {
-		height: 0;
+		height: 100%;
 		overflow: hidden;
-		padding-bottom: 33.3333333%;
 		position: relative;
 
 		img {
+			transform: translate(-50%, -50%);
 			display: block;
-			height: auto;
-			left: 0;
+			min-height: 100%;
+			left: 50%;
 			position: absolute;
-			top: 0;
-			width: 100%;
+			top: 50%;
+			min-width: 100%;
+			bottom: 0;
 		}
 	}
 
 	.nav {
 		@include clearfix;
-		margin-top: 1em;
+		top: 150px;
+		right: 20px;
+		position: absolute;
 	}
 
 	.prev,
 	.next {
-		background-color: $colorSoulSide; // for anything smaller than a tablet
 		border: none;
 		float: left;
-
-		@include mq($from: small, $to: medium) { // for tablets
-			background-color: $colorBondiBlue;
-			color: $colorAlpineAlabaster;
-		}
-
-		@include mq($from: medium) { // for anything bigger than a tablet
-			background-color: $colorGraspingGrass;
-		}
+		color: $colorBlack;
+		background-color: $colorYellow;
 	}
 	.next {
 		float: right;

@@ -1,5 +1,41 @@
 .widg_navigation {
-  @include mq($to: small) {
+
+  @include mq($to: medium) {
     display: none;
   }
+
+	ul {
+		li {
+			a {
+				display: block;
+				width: 100%;
+				font-family: $fontSerif;
+
+				font-size: 1.4rem;
+				padding: 8px 0;
+				border-top: 1px solid $colorBlack;
+			}
+
+			&:first-of-type a{
+				border-top: none;
+			}
+		}
+	}
+}
+
+.widg_navigation__logo {
+	max-width: 100%;
+	margin-bottom: 36px; //@TODO: Only temp value
+
+	@include mq($to: medium) {
+		margin-bottom: 0;
+		height: 51px;
+		width: auto;
+	}
+}
+
+.widg_navigation__level_1,
+.widg_navigation__level_2,
+.widg_navigation__level_3 {
+	display: none;
 }

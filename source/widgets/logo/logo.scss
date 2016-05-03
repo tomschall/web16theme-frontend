@@ -1,7 +1,4 @@
 .widg_logo {
+	width: 100%;
 
-	@include mq($from: medium) {
-		float: right;
-		margin-top: pxToEm(-10);
-	}
 }

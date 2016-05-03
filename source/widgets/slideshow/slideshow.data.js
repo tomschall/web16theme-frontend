@@ -14,18 +14,12 @@ var data = _.merge(defaultData, {
 			documentation: dataHelper.getDocumentation('slideshow.md'),
 			testScripts: [
 				dataHelper.getTestScriptPath('slideshow.test.js')
-			],
-			mocks: [
-				{
-					description: null,
-					data: dataHelper.getDataMock('slideshow.mock.js')
-				}
 			]
 		},
-		slides: _.map(['600/201', '600/202', '600/203'], function(size, index) {
+		slides: _.map(['1024x768', '1024x768', '1024x768'], function(size, index) {
 			return {
-				src: 'http://www.fillmurray.com/' + size,
-				alt: 'Bill Murray ' + (index + 1)
+				src: 'http://www.placehold.it/' + size,
+				alt: 'Placeholder ' + (index + 1)
 			};
 		}),
 

@@ -21,31 +21,22 @@ h3 {
 }
 
 .page_wrapper {
-  display: -webkit-flex;
   display: flex;
   min-height: 100vh;
 
-  //only test purposes
-  background-color: green;
-
-  @include mq($to: small) {
-    -webkit-flex-direction: column;
+  @include mq($to: medium) {
     flex-direction: column;
   }
 }
 
 .layout_wrapper {
   flex-grow: 1;
-  -webkit-flex-grow: 1;
 
   display: flex;
-  display: -webkit-flex;
 
   flex-direction: column;
-  -webkit-flex-direction: column;
 }
 
 .layout_content {
   flex-grow: 1;
-  -webkit-flex-grow: 1;
 }

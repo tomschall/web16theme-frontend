@@ -21,8 +21,7 @@
 				isActivated: 'is_activated'
 			},
 			initialItem: 0,
-			animationDuration: 300,
-			url: '/mocks/widgets/slideshow/slideshow.json?delay=5000'
+			animationDuration: 300
 		},
 		data = {
 			i18n: {

@@ -6,14 +6,15 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 	meta: {
-		title: 'Basic Page Example'
+		title: 'Startpage Prototype'
 	},
 	title: 'University of Applied Sciences and Arts Northwestern Switzerland FHNW',
 	modules: {
 		header: requireNew('../../widgets/header/header.data.js'),
 		navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 		footer: requireNew('../../widgets/footer/footer.data.js'),
-		breadcrumb: requireNew('../../widgets/breadcrumb/breadcrumb.data.js')
+		breadcrumb: requireNew('../../widgets/breadcrumb/breadcrumb.data.js'),
+		slideshow: requireNew('../../widgets/slideshow/slideshow.data.js')
 	}
 });
 
