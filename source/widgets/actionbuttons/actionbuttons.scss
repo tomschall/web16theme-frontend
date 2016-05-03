@@ -1,3 +1,20 @@
 .widg_actionbuttons {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: pxToEm(200);
 
+	.page_wrapper__startpage & {
+		width: pxToEm(100);
+	}
+}
+
+.widg_actionbutton__item {
+	width: pxToEm(100);
+	height: pxToEm(100);
+	float: left;
+
+	background-color: $colorBg;
+	line-height: pxToEm(100); //@TODO temp
+	text-align: center;
 }
