@@ -1,58 +1,24 @@
-<!doctype html>
-<!--[if IE 7]>         <html lang="en" class="no-js ie7 lte-ie9 lte-ie8 lte-ie7"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="no-js ie8 lte-ie9 lte-ie8">         <![endif]-->
-<!--[if IE 9]>         <html lang="en" class="no-js ie9 lte-ie9">                 <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="en" class="no-js">                         <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{#if title}}{{title}} – {{/if}}{{project}}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{{#extend "layouts/layout" wrapperClass="page_wrapper__startpage"}}
 
-  <link rel="stylesheet" href="/assets/css/main{{#unless env.dev}}.min{{/unless}}.css">
-  <link rel="icon" href="/assets/media/icons/favicon.ico" type="image/x-icon">
+	{{#content "page_wrapper"}}
 
-	{{#if env.dev}}
-    <link rel="stylesheet" href="/assets/css/dev.css">
-	{{/if}}
+		{{> "widgets/header/header" modules.header}}
 
-  <script src="/assets/js/head{{#unless env.dev}}.min{{/unless}}.js"></script>
+    <div class="layout_wrapper" id="main">
+      <div class="hero">
+				{{> "widgets/slideshow/slideshow" modules.slideshow}}
+      </div>
+      <div class="layout_content">
+				{{#block "content"}}
+				{{/block}}
+      </div>
 
-	{{#if env.dev}}
-    <script src="/assets/js/dev.js"></script>
-	{{/if}}
-</head>
-<body>
 
-<div class="page_wrapper page_wrapper__startpage">
-
-	{{> "widgets/header/header" modules.header}}
-
-  <div class="layout_wrapper" id="main">
-    <div class="hero">
-			{{> "widgets/slideshow/slideshow" modules.slideshow}}
-    </div>
-    <div class="layout_content">
-			{{#block "content"}}
-			{{/block}}
+			{{> "widgets/footer/footer" modules.footer}}
     </div>
 
+		{{> "widgets/actionbuttons/actionbuttons" }}
 
-		{{> "widgets/footer/footer" modules.footer}}
-  </div>
+	{{/content}}
 
-	{{> "widgets/actionbuttons/actionbuttons" }}
-</div>
-
-
-
-
-<script src="/assets/js/main{{#unless env.dev}}.min{{/unless}}.js"></script>
-
-{{#block "scripts"}}
-	{{#if meta.testScripts}}
-		{{> "preview/partials/qunit"}}
-	{{/if}}
-{{/block}}
-</body>
-</html>
+{{/extend}}

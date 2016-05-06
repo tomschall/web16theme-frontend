@@ -21,10 +21,13 @@
 	{{#if env.dev}}
 		<script src="/assets/js/dev.js"></script>
 	{{/if}}
+
+  <script type="text/javascript" src="//fast.fonts.net/jsapi/bc81933a-a353-421f-9055-6274c625f4a9.js"></script>
 </head>
 <body>
 
-<div class="page_wrapper">
+<div class="page_wrapper {{wrapperClass}}">
+	{{#block "page_wrapper"}}
 
   {{> "widgets/header/header" modules.header}}
 
@@ -42,6 +45,8 @@
   </div>
 
 	{{> "widgets/actionbuttons/actionbuttons" }}
+
+	{{/block}}
 </div>
 
 
