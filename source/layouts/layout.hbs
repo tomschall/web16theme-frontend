@@ -22,7 +22,7 @@
 		<script src="/assets/js/dev.js"></script>
 	{{/if}}
 
-  <script type="text/javascript" src="//fast.fonts.net/jsapi/bc81933a-a353-421f-9055-6274c625f4a9.js"></script>
+  <script type="text/javascript" src="http://fast.fonts.net/jsapi/bc81933a-a353-421f-9055-6274c625f4a9.js"></script>
 </head>
 <body>
 
@@ -33,7 +33,8 @@
 
   <div class="layout_wrapper" id="main">
 		<div class="hero">
-			{{> "widgets/slideshow/slideshow" modules.slideshow}}
+			{{#block "hero"}}
+			{{/block}}
 		</div>
     <div class="layout_content">
       {{#block "content"}}

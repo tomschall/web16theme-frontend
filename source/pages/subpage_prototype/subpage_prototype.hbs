@@ -1,8 +1,9 @@
 {{#extend "layouts/layout"}}
-
-
-    {{#content "content"}}
-      <h1>CONTENT</h1>
-    {{/content}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" modules.hero imageName="cas_example.png"}}
+	{{/content}}
+	{{#content "content"}}
+    <h1>CONTENT</h1>
+	{{/content}}
 
 {{/extend}}

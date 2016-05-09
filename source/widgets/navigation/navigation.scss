@@ -1,4 +1,7 @@
 .widg_navigation {
+	margin-top: $basicPush * 8 + 7;
+	margin-left: -1 * $defaultPadding;
+	margin-right: -1 * $defaultPadding;
 
   @include mq($to: medium) {
     display: none;
@@ -9,31 +12,15 @@
 			a {
 				display: block;
 				width: 100%;
-				font-family: $fontSerif;
+				font-family: $fontSerifRoman;
 
-				font-size: 1.4rem;
-				padding: 8px 0;
-				border-top: 1px solid $colorBlack;
-			}
-
-			&:first-of-type a{
-				border-top: none;
+				font-size: 1.5rem;
+				line-height: 3.3em;
+				padding: 0 $defaultPadding - 3 0 $defaultPadding;
 			}
 		}
 	}
 }
-
-.widg_navigation__logo {
-	max-width: 100%;
-	margin-bottom: 36px; //@TODO: Only temp value
-
-	@include mq($to: medium) {
-		margin-bottom: 0;
-		height: 51px;
-		width: auto;
-	}
-}
-
 .widg_navigation__level_1,
 .widg_navigation__level_2,
 .widg_navigation__level_3 {

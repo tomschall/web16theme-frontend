@@ -20,3 +20,6 @@
 @function toPx($val) {
 	@return ($val + 0px);
 }
+@function zindex($layer) {
+	@return map-get($zIndex, $layer);
+}

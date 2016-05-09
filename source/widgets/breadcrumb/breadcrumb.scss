@@ -1,8 +1,39 @@
+.widg_breadcrumb {
+	height: 100px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	background-color: $colorBg;
+	padding-left: $paddingBehindYellowBar;
+}
 .widg_breadcrumb__item,
 .widg_breadcrumb__seperator{
   display: inline-block;
 }
 
-.widg_breadcrumb__seperator:last-child {
-  display: none;
+.widg_breadcrumb__item a {
+	display: block;
+	line-height: $basicElementSize;
+	font-size: 1.25rem;
+	margin-right: 55px;
+	position: relative;
+
+	&:after {
+		position: absolute;
+		width: 9px;
+
+		display: block;
+		content: " ";
+
+		background-image: url("/assets/media/icons/dropdown-arrow.svg");
+		background-size: 9px 6px;
+		background-position: center right;
+		background-repeat: no-repeat;
+
+		top: 0;
+		bottom: 0;
+		left: 100%;
+		padding-left: 5px;
+	}
 }

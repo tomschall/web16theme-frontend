@@ -27,7 +27,53 @@ $colorActive: #a4c400;
 $colorLightGray: #F1F1EE;
 $colorDarkGrey: #999999;
 $colorYellow: #FDE70E;
-$colorBlack: #1A1919;
+$colorBlack: #000000;
 
-$fontSerif: 'Georgia', serif;
-$fontGrotesk: 'Helvetica','Arial',sans-serif;
+/**
+ * Fonts
+ */
+
+$fontSerifRoman: 'Egyptienne F LT W01_55 Roman';
+$fontSerifItalic: 'Egyptienne F LT W01_56 Italic';
+$fontSerifBold: 'Egyptienne F LT W01_65 Bold';
+$fontSerifBlack: 'Egyptienne F LT W01_75 Black';
+$fontSansSerifLight: 'Univers LT W01_45 Light1475944';
+$fontSansSerifRoman: 'Univers LT W01_55 Roman1475956';
+$fontSansSerifBold: 'Univers LT W01_65 Bold1475968';
+$fontSansSerifBlack: 'Univers LT W01_75 Black1475980';
+$fontSansSerifExtraBlack: 'Univers LT W01_85 Extra Black';
+$fontSansSerifLightCondensed: 'Univers LT W01_47 Light1475998';
+$fontSansSerifCondensed: 'Univers LT W01_57 Condensed';
+$fontSansSerifBoldCondensed: 'Univers LT W01_67 Bold_1476016';
+
+/**
+  * Yellow Bar Width
+  */
+$widthYellowBar: 230px;
+$widthYellowBarWide: 300px;
+$widthYellowBarSuperWide: 400px;
+
+/**
+  * Grid Variables
+  */
+
+$defaultPadding: 32px;
+$basicPush: 10px;
+$defaultPagePadding: 100px;
+$basicElementSize: $basicPush * 10;
+
+$paddingBehindYellowBar: $widthYellowBar + $defaultPagePadding;
+
+
+
+/**
+  * Z-index map
+  */
+/**
+ * z-index
+ */
+$zIndex: (
+	  bg: 0,
+		content: 10,
+		header: 100
+);

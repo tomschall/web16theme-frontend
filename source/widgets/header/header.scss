@@ -1,28 +1,16 @@
-$sizeHeaderWidth: 343px;
 
 .widg_header {
 	@include clearfix;
-	width: pxToEm($sizeHeaderWidth);
+	width: pxToEm($widthYellowBar);
+	position: fixed;
+	height: 100vh;
 
   background-color: $colorYellow;
+	padding: $defaultPadding;
 
+	z-index: zindex('header');
 
   @include mq($to: medium) {
     width: 100%;
   }
-}
-
-.widg_header__inner {
-	height: 100vh;
-	padding: pxToEm(44px); //@TODO Only temp value
-	width: pxToEm($sizeHeaderWidth);
-
-	position: fixed;
-
-	@include mq($to: medium) {
-		position: static;
-		height: auto;
-		width: 100%;
-		padding: 0;
-	}
 }

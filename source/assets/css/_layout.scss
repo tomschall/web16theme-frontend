@@ -1,7 +1,7 @@
 html {
 	background: $colorBg;
 	color: $colorDarkGrey;
-	font-family: $fontFamilyBase;
+	font-family: $fontSansSerifRoman;
 	font-size: $sizeFontBase / 16px * 100%;
 	line-height: $sizeLineHeightBase;
 }
@@ -35,8 +35,10 @@ h3 {
   display: flex;
 
   flex-direction: column;
+
 }
 
 .layout_content {
   flex-grow: 1;
+	padding: inherit $defaultPagePadding inherit $paddingBehindYellowBar;
 }
