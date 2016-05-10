@@ -1,9 +1,26 @@
-{{#extend "layouts/layout"}}
+{{#extend "layouts/layout" wrapperClass=""}}
 	{{#content "hero"}}
 		{{> "widgets/hero/hero" modules.hero imageName="cas_example.png"}}
 	{{/content}}
 	{{#content "content"}}
-    <h1>CONTENT</h1>
+		<div class="grid__spanner">
+      <h1>
+        CAS E-Commerce und Online Marketing
+      </h1>
+			<p class="text__lead">
+        Im Zertifikatslehrgang E-Commerce und Online-Marketing setzen Sie sich fundiert und zielorientiert mit den Möglichkeiten des Internets für die Kundengewinnung und Kundenbindung auseinander. Sie lernen, wie Sie mit innovativen Web-Lösungen und professionellem Online-Marketing die Bekanntheit eines Unternehmens erhöhen und neue Kundengruppen und Märkte erschliessen können. Strategien, Konzepte und der Online-Marketing-Mix werden anhand eines Projektes 1:1 umgesetzt.
+			</p>
+		</div>
+		{{> "widgets/contentnav/contentnav" modules.contentNav}}
+		<div class="grid__example">
+			<div></div>
+		</div>
+    <div class="grid__example example_2">
+      <div></div>
+    </div>
+    <div class="grid__example example_3">
+      <div></div>
+    </div>
 	{{/content}}
 
 {{/extend}}

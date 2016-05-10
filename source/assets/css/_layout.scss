@@ -6,6 +6,10 @@ html {
 	line-height: $sizeLineHeightBase;
 }
 
+body {
+	color: $colorBlack;
+}
+
 nav,
 footer {
 
@@ -40,5 +44,9 @@ h3 {
 
 .layout_content {
   flex-grow: 1;
-	padding: inherit $defaultPagePadding inherit $paddingBehindYellowBar;
+	width: 100%;
+
+	margin-top: $basicPush * 10 - 44px;
+
+	@include content-wrapper($gutterWidth);
 }

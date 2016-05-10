@@ -23,3 +23,6 @@
 @function zindex($layer) {
 	@return map-get($zIndex, $layer);
 }
+@function basicUnitHeight($size) {
+	@return map-get($basicUnitHeights, $size);
+}

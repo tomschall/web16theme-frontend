@@ -123,3 +123,111 @@
 		@content;
 	}
 }
+
+@mixin content-wrapper-small-devices($gutterSize: 0) {
+	@include mq($from: $sizeBreakpointSmall, $to: $sizeBreakpointMedium) {
+		padding: 0 ($pagePaddingTablet - $gutterSize);
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
+		padding: 0 ($pagePaddingPhone - $gutterSize);
+	}
+}
+
+@mixin yellow-bar-padding() {
+	padding-left: $paddingBehindYellowBar;
+
+	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+		.header__extended & {
+			padding-left: $paddingBehindYellowBarWide
+		}
+
+		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointLarge) {
+			padding-left: $paddingBehindYellowBarWideNarrow;
+		}
+	}
+
+	@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
+		padding-left: $paddingBehindYellowBarNarrow;
+	}
+
+	@include mq($from: $sizeBreakpointWide) {
+		padding-left: $paddingBehindYellowBarSuperWide;
+	}
+
+	@include content-wrapper-small-devices();
+}
+
+@mixin content-wrapper($gutterSize: 0, $hasGrid: true) {
+	@if $hasGrid {
+		@include container();
+	}
+	
+	padding: 0 ($pagePadding - $gutterSize ) 0 ($paddingBehindYellowBar - $gutterSize);
+
+	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+		.header__extended & {
+			padding: 0 ($pagePadding - $gutterSize) 0 ($paddingBehindYellowBarWide - $gutterSize);
+		}
+
+		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointLarge) {
+			padding: 0 ($pagePaddingSmall - $gutterSize) 0 ($paddingBehindYellowBarWideNarrow - $gutterSize);
+		}
+	}
+
+	@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
+		padding: 0 ($pagePaddingSmall - $gutterSize) 0 ($paddingBehindYellowBarNarrow - $gutterSize);
+	}
+
+	@include mq($from: $sizeBreakpointWide) {
+		padding: 0 ($pagePaddingWide - $gutterSize) 0 ($paddingBehindYellowBarSuperWide - $gutterSize);
+	}
+
+	@include content-wrapper-small-devices($gutterSize);
+}
+
+@mixin basic-unit-height($attr) {
+	#{$attr}: basicUnitHeight(normal);
+
+	@include mq($to: $sizeBreakpointMedium) {
+		#{$attr}: basicUnitHeight(medium);
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
+		#{$attr}: basicUnitHeight(small);
+	}
+}
+
+@mixin bleed-full($gutterSize: 0) {
+	margin-left: -1 * $paddingBehindYellowBar + $gutterSize;
+	margin-right: -1 * $pagePadding + $gutterSize;
+
+	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+		.header__extended & {
+			margin-left: -1 * $paddingBehindYellowBarWide + $gutterSize;
+		}
+
+		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointLarge) {
+			margin-left: -1 * $paddingBehindYellowBarWideNarrow + $gutterSize;
+			margin-right: -1 * $pagePaddingSmall;
+		}
+	}
+
+	@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
+		margin-left: -1 * $paddingBehindYellowBarNarrow + $gutterSize;
+		margin-right: -1 * $pagePaddingSmall;
+	}
+
+	@include mq($from: $sizeBreakpointWide) {
+		margin-left: -1 * $paddingBehindYellowBarSuperWide + $gutterSize;
+		margin-right: -1 * $pagePaddingWide;
+	}
+
+	@include mq($from: $sizeBreakpointSmall, $to: $sizeBreakpointMedium) {
+		margin: 0 -1 * $pagePaddingTablet + $gutterSize;
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
+		margin: 0 -1 * $pagePaddingPhone + $gutterSize;
+	}
+}

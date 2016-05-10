@@ -8,12 +8,12 @@ $sizeLineHeightBase: 1.5;
 
 $sizeWidthContent: 960px;
 
-$sizeBreakpointSmall: 661px;
-$sizeBreakpointMedium: 1025px;
-$sizeBreakpointLarge: 1281px;
+$sizeBreakpointSmall: 767px;
+$sizeBreakpointMedium: 1023px;
+$sizeBreakpointLarge: 1679px;
+$sizeBreakpointWide: 2559;
+$sizeBreakpointBetweener: 1344px;
 
-
-$sizeGutters: 15px;
 
 /**
  * Custom colors
@@ -56,15 +56,31 @@ $widthYellowBarSuperWide: 400px;
 /**
   * Grid Variables
   */
+$gutter: 32px;
+$gutterWidth: $gutter / 2;
 
-$defaultPadding: 32px;
 $basicPush: 10px;
-$defaultPagePadding: 100px;
-$basicElementSize: $basicPush * 10;
+$pagePaddingPhone: 20px;
+$pagePaddingTablet: 40px;
+$pagePaddingSmall: 50px;
+$pagePadding: 100px;
+$pagePaddingWide: 150px;
 
-$paddingBehindYellowBar: $widthYellowBar + $defaultPagePadding;
+$paddingBehindYellowBar: $widthYellowBar + $pagePadding;
+$paddingBehindYellowBarWideNarrow: $widthYellowBarWide + $pagePaddingSmall;
+$paddingBehindYellowBarWide: $widthYellowBarWide + $pagePadding;
+$paddingBehindYellowBarNarrow: $widthYellowBar + $pagePaddingSmall;
+$paddingBehindYellowBarSuperWide : $widthYellowBarSuperWide + $pagePaddingWide;
 
 
+/**
+  * Header
+  */
+
+$headerHeightTop: 70px;
+$basicUnitHeight: 100px;
+$basicUnitHeightSmall: 50px;
+$basicUnitHeightMedium: 70px;
 
 /**
   * Z-index map
@@ -76,4 +92,13 @@ $zIndex: (
 	  bg: 0,
 		content: 10,
 		header: 100
+);
+
+/**
+  * Basic Unit height map
+  */
+$basicUnitHeights: (
+		small: 50px,
+		medium: 70px,
+		normal: 100px
 );

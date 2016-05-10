@@ -1,3 +1,6 @@
+@import "../../../node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "../../../node_modules/susy/sass/susy";
+
 @import "../.tmp/colors";
 @import "globals/variables";
 @import "globals/functions";
@@ -5,10 +8,12 @@
 @import "globals/mediaqueries";
 @import "globals/links";
 @import "globals/containers";
-
+@import "globals/grids";
 
 // Reset / normalize styles
 @import "../../../node_modules/normalize.css/normalize";
+
+
 
 // Icons (as font or dataurl), PNG sprites
 @import "../.tmp/iconfont";
@@ -35,7 +40,14 @@
 @import "../../widgets/actionbuttons/actionbuttons";
 @import "../../widgets/pagesearch/pagesearch";
 @import "../../widgets/hero/hero";
+@import "../../widgets/contentnav/contentnav";
 //*autoinsertmodule*
+
+/**
+  * Import Content Styles which can't be assigned to a widget
+  */
+@import "content/_headers.scss";
+@import "content/_text.scss";
 
 @media print {
 	@import "print";

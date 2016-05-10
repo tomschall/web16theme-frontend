@@ -1,0 +1,30 @@
+h1, h2, h3, h4, h5 {
+	margin: 0;
+}
+h1 {
+	font-family: $fontSerifRoman;
+	font-size: 6.25rem;
+	margin-bottom: $basicPush * 4;
+	line-height: 1.3;
+
+	&:after {
+		background-color: $colorBlack;
+		content: " ";
+		height: 1px;
+		width: 119px;
+		display: block;
+		margin-top: $basicPush * 5 - 31px;
+	}
+
+	@include mq($to: $sizeBreakpointMedium) {
+		font-size: 4.5rem;
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
+		font-size: 2rem;
+
+		&:after {
+			width: 80px;
+		}
+	}
+}

@@ -1,11 +1,18 @@
 .widg_breadcrumb {
-	height: 100px;
 	position: absolute;
 	bottom: 0;
 	left: 0;
 
 	background-color: $colorBg;
-	padding-left: $paddingBehindYellowBar;
+	margin-left: -1 * $gutterWidth;
+	padding-right: $gutterWidth;
+
+	@include yellow-bar-padding();
+	@include basic-unit-height(height);
+
+	@include mq($to: $sizeBreakpointMedium) {
+		position: static;
+	}
 }
 .widg_breadcrumb__item,
 .widg_breadcrumb__seperator{
@@ -14,16 +21,23 @@
 
 .widg_breadcrumb__item a {
 	display: block;
-	line-height: $basicElementSize;
 	font-size: 1.25rem;
-	margin-right: 55px;
 	position: relative;
+	padding: 0 ($gutterWidth + 14) 0 $gutterWidth;
+
+	@include basic-unit-height(line-height);
+
+	&:hover {
+		background-color: $colorLightGray;
+	}
 
 	&:after {
 		position: absolute;
 		width: 9px;
+		height: 6px;
+		margin-left: 5px;
 
-		display: block;
+		display: inline;
 		content: " ";
 
 		background-image: url("/assets/media/icons/dropdown-arrow.svg");
@@ -31,9 +45,7 @@
 		background-position: center right;
 		background-repeat: no-repeat;
 
-		top: 0;
-		bottom: 0;
-		left: 100%;
-		padding-left: 5px;
+		top: 50%;
+		transform: translateY(-45%);
 	}
 }

@@ -17,6 +17,7 @@
     "node": ">= 0.10"
   },
   "devDependencies": {
+    "bourbon": "^4.2.7",
     "callsite": "1.0.0",
     "change-case": "2.3.0",
     "cheerio": "0.20.0",
@@ -88,6 +89,7 @@
     "run-sequence": "1.1.0",
     "serve-static": "1.9.2",
     "should": "6.0.1",
+    "susy": "^2.2.12",
     "through2": "2.0.0",
     "vinyl-buffer": "1.0.0",
     "vinyl-paths": "1.0.0"

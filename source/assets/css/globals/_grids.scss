@@ -1,0 +1,35 @@
+$susy: (
+	gutter-position: inside-static,
+	container: 100%,
+	columns: 12,
+	column-width: 69px,
+	gutters: 32px/69px,
+	debug: (
+		image: show
+	)
+);
+
+.grid__example {
+	@include span(4);
+
+	div {
+		height: 112px;
+		background-color: #00A000;
+	}
+
+	&.example_2 div {
+		background-color: #00b0e8;
+	}
+
+	&.example_3 div {
+		background-color: #7b59c0;
+	}
+}
+
+/**
+  * Grid Helper Classes
+  */
+.grid__spanner {
+	@include span(12);
+	float: none;
+}

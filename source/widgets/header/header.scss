@@ -1,16 +1,37 @@
 
 .widg_header {
 	@include clearfix;
-	width: pxToEm($widthYellowBar);
+	width: $widthYellowBar;
 	position: fixed;
 	height: 100vh;
 
-  background-color: $colorYellow;
-	padding: $defaultPadding;
+	background-color: $colorYellow;
+	padding: $gutter;
 
 	z-index: zindex('header');
 
+	//Extended Header (Wide) only exists between betweener and wide
+	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+		.header__extended & {
+			width: $widthYellowBarWide;
+		}
+	}
+
+	/**
+	  * Smaller then 1024 leads to the top bar
+	  */
   @include mq($to: medium) {
     width: 100%;
+		height: $headerHeightTop;
+		position: static;
+
   }
+
+	/**
+	  * Supersized YellowBar
+	  */
+	@include mq($from: $sizeBreakpointWide) {
+		width: $widthYellowBarSuperWide;
+	}
+
 }

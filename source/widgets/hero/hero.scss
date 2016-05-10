@@ -2,8 +2,23 @@
 	min-height: 100px;
 
 	position: relative;
+
+	@include mq($to: $sizeBreakpointMedium) {
+		min-height: 0;
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.widg_hero__wrapper {
+	order: 1;
+	line-height: 1em;
 }
 
 .widg_hero__img {
 	width: 100%;
+	height: auto;
 }

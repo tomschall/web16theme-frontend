@@ -2,19 +2,23 @@
 	position: fixed;
 	top: 0;
 	right: 0;
-	width: pxToEm(200);
+	width: 2 * $basicUnitHeight;
 
 	.page_wrapper__startpage & {
-		width: pxToEm(100);
+		@include basic-unit-height(width);
+	}
+
+	@include mq($to: $sizeBreakpointMedium) {
+		display: none;
 	}
 }
 
 .widg_actionbutton__item {
-	width: pxToEm(100);
-	height: pxToEm(100);
+	@include basic-unit-height(height);
+	@include basic-unit-height(width);
+
 	float: left;
 
 	background-color: $colorBg;
-	line-height: pxToEm(100); //@TODO temp
 	text-align: center;
 }
