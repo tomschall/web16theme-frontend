@@ -1,7 +1,7 @@
 .widg_contentnav {
 	@include basic-unit-height(height);
-	@include bleed-full(0);
-	@include content-wrapper($hasGrid: false);
+	@include bleed-full($gutterWidth);
+	@include content-wrapper($hasGrid: false, $gutterSize: $gutterWidth);
 
 	box-shadow: 0 4px 4px 0 rgba($colorBlack, 0.14);
 }
