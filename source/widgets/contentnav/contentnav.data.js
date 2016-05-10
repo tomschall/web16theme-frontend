@@ -11,7 +11,34 @@ var data = _.merge(defaultData, {
 			description: '',
 			code: dataHelper.getTemplateCode('contentnav.hbs'),
 			documentation: dataHelper.getDocumentation('contentnav.md')
-		}
+		},
+		items: [
+			{
+				title: 'Lern- und Ausbildungsziele',
+				link: '#1',
+				bubble: false
+			},
+			{
+				title: 'Zielpublikum',
+				link: '#2',
+				bubble: false
+			},
+			{
+				title: 'Struktur und Methodik',
+				link: '#3',
+				bubble: false
+			},
+			{
+				title: 'Inhaltsbeschreibung',
+				link: '#4',
+				bubble: false
+			},
+			{
+				title: 'Durchführungen',
+				link: '#5',
+				bubble: 2
+			}
+		]
 	});
 
 module.exports = data;

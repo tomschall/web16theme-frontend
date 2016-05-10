@@ -1,7 +1,40 @@
 .widg_contentnav {
 	@include basic-unit-height(height);
-	@include bleed-full($gutterWidth);
+	@include bleed-full(0);
 	@include content-wrapper($hasGrid: false);
 
 	box-shadow: 0 4px 4px 0 rgba($colorBlack, 0.14);
+}
+
+.widg_contentnav__nav {
+	height: 100%;
+	position: relative;
+
+	overflow: hidden;
+
+	ul {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+
+		display: flex;
+	}
+}
+
+.widg_contentnav__item {
+	display: inline-block;
+
+	@include basic-unit-height(height);
+
+	a {
+		display: block;
+		font-size: 1.25rem;
+		height: 100%;
+		padding: 0 $gutterWidth;
+		white-space: nowrap;
+
+		@include basic-unit-height(max-height);
+		@include basic-unit-height(line-height);
+	}
 }

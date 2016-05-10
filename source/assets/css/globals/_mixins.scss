@@ -162,7 +162,7 @@
 	@if $hasGrid {
 		@include container();
 	}
-	
+
 	padding: 0 ($pagePadding - $gutterSize ) 0 ($paddingBehindYellowBar - $gutterSize);
 
 	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
