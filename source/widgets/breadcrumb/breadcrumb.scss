@@ -1,51 +1,58 @@
 .widg_breadcrumb {
-	position: absolute;
-	bottom: 0;
-	left: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 
-	background-color: $colorBg;
-	margin-left: -1 * $gutterWidth;
-	padding-right: $gutterWidth;
+  background-color: $colorBg;
+  margin-left: -1 * $gutterWidth;
+  padding-right: $gutterWidth;
 
-	@include yellow-bar-padding();
-	@include basic-unit-height(height);
+  @include yellow-bar-padding();
+  @include basic-unit-height(height);
 
-	@include mq($to: $sizeBreakpointMedium) {
-		position: static;
-	}
+  @include mq($to: $sizeBreakpointMedium) {
+    position: static;
+  }
+
+  ul {
+	display: flex;
+	overflow-x: scroll;
+  }
 }
+
 .widg_breadcrumb__item,
-.widg_breadcrumb__seperator{
+.widg_breadcrumb__seperator {
   display: inline-block;
 }
 
 .widg_breadcrumb__item a {
-	display: block;
-	font-size: 1.25rem;
-	position: relative;
-	padding: 0 ($gutterWidth + 14) 0 $gutterWidth;
+  display: block;
+  font-size: 1.25rem;
+  position: relative;
+  padding: 0 ($gutterWidth + 14) 0 $gutterWidth;
+  white-space: nowrap;
 
-	@include basic-unit-height(line-height);
+  @include basic-unit-height(line-height);
 
-	&:hover {
-		background-color: $colorLightGray;
-	}
+  &:hover {
+    background-color: $colorLightGray;
+  }
 
-	&:after {
-		position: absolute;
-		width: 9px;
-		height: 6px;
-		margin-left: 5px;
+  &:after {
+    position: absolute;
+    width: 9px;
+    height: 6px;
+    margin-left: 5px;
 
-		display: inline;
-		content: " ";
+    display: inline;
+    content: " ";
 
-		background-image: url("/assets/media/icons/dropdown-arrow.svg");
-		background-size: 9px 6px;
-		background-position: center right;
-		background-repeat: no-repeat;
+    background-image: url("/assets/media/icons/dropdown-arrow.svg");
+    background-size: 9px 6px;
+    background-position: center right;
+    background-repeat: no-repeat;
 
-		top: 50%;
-		transform: translateY(-45%);
-	}
+    top: 50%;
+    transform: translateY(-45%);
+  }
 }

@@ -4,4 +4,18 @@
 
 	background-image: url('/assets/media/img/fhnw_logo_w-o_claim_de.svg');
 	background-size: 100% 100%;
+
+    @include mq($to: $sizeBreakpointMedium) {
+      height: 40px;
+      width: 174px;
+      float: right;
+
+      background-image: url('/assets/media/img/fhnw_logo_w_claim_de.svg');
+    }
+
+    @include mq($to: $sizeBreakpointSmall) {
+      width: 66px;
+
+      background-image: url('/assets/media/img/fhnw_logo_w-o_claim_de.svg');
+    }
 }
