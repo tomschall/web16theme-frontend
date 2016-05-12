@@ -1,0 +1,67 @@
+.widg_menubuttons {
+  @include mq($from: $sizeBreakpointMedium) {
+	display: none;
+  }
+
+  position: absolute;
+
+  left: -4 * $basicPush;
+  top: -15px;
+  bottom: -15px;
+
+  height: 70px;
+
+
+  a{
+	display: block;
+	height: 70px;
+	float: left;
+	line-height: 75px;
+	padding: 0 4 * $basicPush;
+
+	@include mq($to: $sizeBreakpointSmall) {
+	  padding: 0 2 * $basicPush;
+	}
+  }
+
+  @include mq($to: $sizeBreakpointSmall) {
+	left: -2 * $basicPush;
+  }
+}
+
+.widg_menubuttons__label {
+  font-family: $fontSerifBold;
+  font-size: 1.25rem;
+  margin-right: 6px;
+
+}
+
+.widg_menubuttons__icon {
+  display: inline-block;
+  background-size: 100% 100%;
+  margin-right: 6px;
+}
+
+.widg_menubuttons__menu {
+	.widg_menubuttons__icon {
+	  width: 18px;
+	  height: 15px;
+
+	  background-image: url('/assets/media/icons/mobile-menu.svg');
+
+
+	  transform: translateY(3px);
+	}
+}
+
+.widg_menubuttons__search {
+  .widg_menubuttons__icon {
+	width: 18px;
+	height: 18px;
+
+	background-image: url('/assets/media/icons/search.svg');
+
+	transform: translateY(4px);
+  }
+}
+

@@ -17,6 +17,8 @@
     }
   }
 
+  .widg_header__inner { position: relative; }
+
   /**
     * Smaller then 1024 leads to the top bar
     */
@@ -25,6 +27,10 @@
     height: $headerHeightTop;
     position: static;
     padding: 15px $basicPush * 4;
+
+	@include mq($to: small) {
+	  padding: 15px $basicPush * 2;
+	}
   }
 
   /**

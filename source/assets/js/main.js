@@ -12,6 +12,7 @@
  * @requires ../../widgets/share/share.js
  * @requires ../../widgets/pagesearch/pagesearch.js
  * @requires ../../widgets/contentnav/contentnav.js
+ * @requires ../../widgets/menubuttons/menubuttons.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js
