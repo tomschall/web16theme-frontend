@@ -46,8 +46,9 @@
 /**
   * Import Content Styles which can't be assigned to a widget
   */
-@import "content/_headers.scss";
-@import "content/_text.scss";
+@import "content/headers";
+@import "content/text";
+@import "content/content";
 
 @media print {
 	@import "print";

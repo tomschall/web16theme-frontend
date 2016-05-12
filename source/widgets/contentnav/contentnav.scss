@@ -1,40 +1,71 @@
 .widg_contentnav {
-	@include basic-unit-height(height);
-	@include bleed-full($gutterWidth);
-	@include content-wrapper($hasGrid: false, $gutterSize: $gutterWidth);
+  @include basic-unit-height(height);
+  @include bleed-full($gutterWidth);
+  @include content-wrapper($hasGrid: false, $gutterSize: $gutterWidth);
 
-	box-shadow: 0 4px 4px 0 rgba($colorBlack, 0.14);
+  box-shadow: 0 4px 4px 0 rgba($colorBlack, 0.14);
+  position: relative;
+  z-index: zindex(contentnav);
 }
 
 .widg_contentnav__nav {
-	height: 100%;
-	position: relative;
+  height: 100%;
+  position: relative;
 
-	overflow: hidden;
+  overflow-x: scroll;
 
-	ul {
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
+  ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
 
-		display: flex;
-	}
+    display: flex;
+  }
 }
 
 .widg_contentnav__item {
-	display: inline-block;
+  display: inline-block;
 
-	@include basic-unit-height(height);
+  @include basic-unit-height(height);
 
-	a {
-		display: block;
-		font-size: 1.25rem;
-		height: 100%;
-		padding: 0 $gutterWidth;
-		white-space: nowrap;
 
-		@include basic-unit-height(max-height);
-		@include basic-unit-height(line-height);
-	}
+  a {
+    display: block;
+    font-size: 1.25rem;
+    height: 100%;
+    padding: 0 $gutterWidth;
+    white-space: nowrap;
+    position: relative;
+
+    @include basic-unit-height(max-height);
+    @include basic-unit-height(line-height);
+
+    &.has-bubble {
+      padding-right: 54px;
+    }
+
+    &:hover {
+      background-color: $colorLightGray;
+    }
+
+    .widg_contentnav__bubble {
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      width: 27px;
+      height: 27px;
+      line-height: 27px;
+
+      color: $colorBg;
+      border-radius: 50%;
+      background-color: $colorBlack;
+      transform: translateY(-13.5px);
+      text-align: center;
+    }
+  }
+
+
+
 }
+

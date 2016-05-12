@@ -3,10 +3,12 @@
 		<ul>
 			{{#each items}}
 				<li class="widg_contentnav__item">
-					<a href="{{url}}">{{title}}</a>
-					{{#if bubble}}
-            <!--<span class="widg_contentnav__bubble"></span>-->
-					{{/if}}
+					<a class="{{#if bubble}}has-bubble{{/if}}" href="{{url}}">{{title}}
+            {{#if bubble}}
+              <span class="widg_contentnav__bubble">{{bubble}}</span>
+            {{/if}}
+          </a>
+
 				</li>
 			{{/each}}
 		</ul>

@@ -209,18 +209,18 @@
 
 		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointLarge) {
 			margin-left: -1 * $paddingBehindYellowBarWideNarrow + $gutterSize;
-			margin-right: -1 * $pagePaddingSmall;
+			margin-right: -1 * $pagePaddingSmall  + $gutterSize;
 		}
 	}
 
 	@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
 		margin-left: -1 * $paddingBehindYellowBarNarrow + $gutterSize;
-		margin-right: -1 * $pagePaddingSmall;
+		margin-right: -1 * $pagePaddingSmall  + $gutterSize;
 	}
 
 	@include mq($from: $sizeBreakpointWide) {
 		margin-left: -1 * $paddingBehindYellowBarSuperWide + $gutterSize;
-		margin-right: -1 * $pagePaddingWide;
+		margin-right: -1 * $pagePaddingWide  + $gutterSize;
 	}
 
 	@include mq($from: $sizeBreakpointSmall, $to: $sizeBreakpointMedium) {
