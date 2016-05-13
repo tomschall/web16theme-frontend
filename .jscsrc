@@ -12,7 +12,6 @@
 	"disallowKeywordsOnNewLine": ["else", "catch"], // Disallows placing keywords on a new line.
 	"disallowKeywords": null, // Disallows usage of specified keywords.
 	"disallowMixedSpacesAndTabs": true, // Requires lines to not contain both spaces and tabs consecutively, or spaces after tabs only for alignment if "smart"
-	"disallowMultipleLineBreaks": true, // Disallows multiple blank lines in a row.
 	"disallowMultipleLineStrings": null, // Disallows strings that span multiple lines without using concatenation.
 	"disallowMultipleSpaces": true, // Disallows multiple indentation characters (tabs or spaces) between identifiers, keywords, and any other token
 	"disallowMultipleVarDecl": null, // Disallows multiple var declaration (except for-loop).
