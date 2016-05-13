@@ -53,31 +53,52 @@
 	 * @public
 	 */
 	Module.prototype.init = function() {
-		console.log('module header initialized');
 
-
+		this.addEventListener();
 
 		if (estatico.mq.query({from: 'medium'})) {
 			this.addScrollMagic();
 		}
 	};
 
+	Module.prototype.addEventListener = function() {
+		var _this = this;
+
+
+		this.$element.on('click' + '.' + this.uuid, function() {
+			if ($(this).hasClass('widg_header___shrinked')) {
+				_this.$element.addClass('widg_header___expanded');
+			}
+		});
+	};
+
+	/**
+	 * Adds the scroll magic functionality
+	 */
 	Module.prototype.addScrollMagic = function() {
-		var scrollMagicController = new ScrollMagic.Controller(),
-				scrollMagicScene = new ScrollMagic.Scene({
+		var _this = this,
+				headerScene = new ScrollMagic.Scene({
 					triggerElement: '#main',
 					offset: 200,
 					triggerHook: 0
 				})
-						.addIndicators()
-						.setClassToggle('#header', 'widg_header___shrinked');
+						.addIndicators();
 
-		scrollMagicScene.addTo(scrollMagicController);
+		headerScene.on('enter leave', function() {
+			_this.toggleShrinked();
+		});
+
+		headerScene.addTo(magicController);
 	};
 
+	/**
+	 * shrink or not to shrink. toggles the shrink class for widg_header
+	 */
 	Module.prototype.toggleShrinked = function() {
-		if (this.$element.hasClass('widg_header__expanded')) {
-			this.$element.toggleClass('widg_header__:shrinked');
+		this.$element.toggleClass('widg_header___shrinked');
+
+		if (this.$element.hasClass('widg_header___shrinked')) {
+			this.$element.removeClass('widg_header___expanded');
 		}
 	};
 

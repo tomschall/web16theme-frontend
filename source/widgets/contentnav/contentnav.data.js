@@ -15,27 +15,27 @@ var data = _.merge(defaultData, {
 		items: [
 			{
 				title: 'Lern- und Ausbildungsziele',
-				link: '#1',
+				link: '#learn',
 				bubble: false
 			},
 			{
 				title: 'Zielpublikum',
-				link: '#2',
+				link: '#focus-group',
 				bubble: false
 			},
 			{
 				title: 'Struktur und Methodik',
-				link: '#3',
+				link: '#structure',
 				bubble: false
 			},
 			{
 				title: 'Inhaltsbeschreibung',
-				link: '#4',
+				link: '#content',
 				bubble: false
 			},
 			{
 				title: 'Durchführungen',
-				link: '#5',
+				link: '#dates',
 				bubble: 2
 			}
 		]

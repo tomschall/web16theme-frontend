@@ -6,7 +6,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 	meta: {
-		title: 'Subpage Prototype'
+		title: 'Proof of Concept - CAS E-Commerce und Online Marketing'
 	},
 	title: 'University of Applied Sciences and Arts Northwestern Switzerland FHNW',
 	modules: {

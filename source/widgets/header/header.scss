@@ -44,7 +44,7 @@
 }
 
 .widg_header___shrinked {
-	@include basic-unit-height(height);
+	@include basic-unit-height(max-height);
 
 	overflow: hidden;
 	padding-top: 25px;
@@ -60,6 +60,14 @@
 	}
 }
 
+.widg_header___expanded {
+	max-height: 100vh;
+
+	&:hover {
+		background-color: $colorYellow;
+	}
+}
+
 .widg_header__expander {
 	width: 14px;
 	height: 10px;
@@ -70,5 +78,9 @@
 	position: absolute;
 
 	top: 50%;
-	right: $basicPush * 3;
+	right: 0;
+
+	.widg_header___expanded & {
+		display: none;
+	}
 }
