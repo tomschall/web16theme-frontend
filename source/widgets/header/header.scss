@@ -3,7 +3,8 @@
   @include clearfix;
   width: $widthYellowBar;
   position: fixed;
-  height: 100vh;
+  max-height: 100vh;
+	height: 100vh;
 
   background-color: $colorYellow;
   padding: $gutter;
@@ -40,4 +41,34 @@
     width: $widthYellowBarSuperWide;
   }
 
+}
+
+.widg_header___shrinked {
+	@include basic-unit-height(height);
+
+	overflow: hidden;
+	padding-top: 25px;
+
+	.widg_header__expander {
+		display: block;
+	}
+
+	cursor: pointer;
+
+	&:hover {
+		background-color: $colorDarkerYellow;
+	}
+}
+
+.widg_header__expander {
+	width: 14px;
+	height: 10px;
+
+	@include bg-icon('dropdown-arrow.svg');
+
+	display: none;
+	position: absolute;
+
+	top: 50%;
+	right: $basicPush * 3;
 }

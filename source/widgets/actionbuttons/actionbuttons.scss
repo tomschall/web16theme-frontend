@@ -3,6 +3,7 @@
 	top: 0;
 	right: 0;
 	width: 2 * $basicUnitHeight;
+	z-index: zindex(actionbuttons);
 
 	.page_wrapper__startpage & {
 		@include basic-unit-height(width);
@@ -21,4 +22,9 @@
 
 	background-color: $colorBg;
 	text-align: center;
+
+	&:hover {
+		cursor: pointer;
+		background-color: $colorLightGray;
+	}
 }

@@ -231,3 +231,9 @@
 		margin: 0 -1 * $pagePaddingPhone + $gutterSize;
 	}
 }
+
+@mixin bg-icon($iconName) {
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-image: url('/assets/media/icons/#{$iconName}');
+}

@@ -96,6 +96,7 @@
 		"Modernizr": false,
 		"Handlebars": false,
 		"open": true,
-		"Promise": false
+		"Promise": false,
+	  	"ScrollMagic": true
 	}
 }

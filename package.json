@@ -87,6 +87,8 @@
     "require-dir": "0.3.0",
     "require-new": "1.0.2",
     "run-sequence": "1.1.0",
+    "scrollmagic": "^2.0.5",
+    "scrolltofixed": "^1.0.6",
     "serve-static": "1.9.2",
     "should": "6.0.1",
     "susy": "^2.2.12",

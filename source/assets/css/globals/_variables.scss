@@ -28,6 +28,7 @@ $colorLightGray: #F1F1EE;
 $colorDarkGrey: #999999;
 $colorYellow: #FDE70E;
 $colorBlack: #000000;
+$colorDarkerYellow: #fbd100;
 
 /**
  * Fonts
@@ -92,6 +93,7 @@ $zIndex: (
 	  bg: 0,
 		content: 10,
 		contentnav: 100,
+		actionbuttons: 800,
 		header: 1000
 );
 

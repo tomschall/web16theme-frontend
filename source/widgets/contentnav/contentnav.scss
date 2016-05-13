@@ -6,6 +6,8 @@
   box-shadow: 0 4px 4px 0 rgba($colorBlack, 0.14);
   position: relative;
   z-index: zindex(contentnav);
+
+	background-color: $colorBg;
 }
 
 .widg_contentnav__nav {

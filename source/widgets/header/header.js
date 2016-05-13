@@ -1,5 +1,5 @@
 /*!
- * content_nav
+ * Header
  *
  * @author Unic AG
  * @copyright Unic AG
@@ -10,21 +10,21 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var name = 'contentnav',
-		events = {
-			// eventname: 'eventname.estatico.' + name
-		},
-		defaults = {
-			domSelectors: {
-				// item: '[data-' + name + '="item"]'
+	var name = 'header',
+			events = {
+				// eventname: 'eventname.estatico.' + name
 			},
-			stateClasses: {
-				// isActive: 'is_active'
-			}
-		},
-		data = {
-			// items: ["Item 1", "Item 2"]
-		};
+			defaults = {
+				domSelectors: {
+					// item: '[data-' + name + '="item"]'
+				},
+				stateClasses: {
+					// isActive: 'is_active'
+				}
+			},
+			data = {
+				// items: ["Item 1", "Item 2"]
+			};
 
 	/**
 	 * Create an instance of the module
@@ -53,9 +53,32 @@
 	 * @public
 	 */
 	Module.prototype.init = function() {
-		this.$element.scrollToFixed({
-			zIndex: 100
-		});
+		console.log('module header initialized');
+
+
+
+		if (estatico.mq.query({from: 'medium'})) {
+			this.addScrollMagic();
+		}
+	};
+
+	Module.prototype.addScrollMagic = function() {
+		var scrollMagicController = new ScrollMagic.Controller(),
+				scrollMagicScene = new ScrollMagic.Scene({
+					triggerElement: '#main',
+					offset: 200,
+					triggerHook: 0
+				})
+						.addIndicators()
+						.setClassToggle('#header', 'widg_header___shrinked');
+
+		scrollMagicScene.addTo(scrollMagicController);
+	};
+
+	Module.prototype.toggleShrinked = function() {
+		if (this.$element.hasClass('widg_header__expanded')) {
+			this.$element.toggleClass('widg_header__:shrinked');
+		}
 	};
 
 	/**
