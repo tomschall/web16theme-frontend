@@ -16,11 +16,13 @@
 		},
 		defaults = {
 			domSelectors: {
-				// item: '[data-' + name + '="item"]'
+				item: '[data-' + name + '="item"]'
 			},
 			stateClasses: {
-				// isActive: 'is_active'
-			}
+				isActive: 'is_active'
+			},
+			magicOffset: 25,
+			magicHookPosition: 0.52
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -56,6 +58,79 @@
 		this.$element.scrollToFixed({
 			zIndex: 100
 		});
+
+		this.initData();
+
+		this.initScrollMagic();
+	};
+
+	/**
+	 * Inits the data for the contentnav (gets the items and the divs belonging to them)
+	 */
+	Module.prototype.initData = function() {
+		var itemArray = [];
+
+
+		$(this.options.domSelectors.item).each(function() {
+			var itemObject = {};
+
+
+			itemObject.domElement = this;
+			itemObject.target = $(this).find('a').attr('href').substr(1);
+			itemObject.targetElement = $('[data-contentnav-target="' + itemObject.target + '"]').first();
+
+			itemArray.push(itemObject);
+		});
+
+		this.data.items = itemArray;
+	};
+
+	/**
+	 * Inits the scroll Magic scenes for all elements
+	 */
+	Module.prototype.initScrollMagic = function() {
+		var itemScene = null,
+				_this = this;
+
+
+		this.data.items.forEach(function(item) {
+			itemScene = new ScrollMagic.Scene({
+				triggerElement: '[data-contentnav-target = "' + item.targetElement.data('contentnav-target') + '"]',
+				offset: _this.options.magicOffset,
+				triggerHook: _this.options.magicHookPosition
+			}).addIndicators();
+
+			itemScene.on('enter leave', function() {
+				_this.setActive($(item.domElement));
+			});
+
+			itemScene.addTo(magicController);
+
+		});
+
+		var resetScene = new ScrollMagic.Scene({
+			triggerElement: '.widg_contentnav',
+			offset: 100,
+			triggerHook: _this.options.magicHookPosition
+		});
+
+		resetScene.on('enter leave', function() {
+			_this.setActive();
+		}).addIndicators();
+
+		resetScene.addTo(magicController);
+	};
+
+	/**
+	 * sets an active content nav
+	 */
+	Module.prototype.setActive = function($itemToSetActive) {
+		console.log('itemtoSetActive', $itemToSetActive);
+		$(this.options.domSelectors.item).removeClass(this.options.stateClasses.isActive);
+
+		if (typeof $itemToSetActive !== typeof undefined) {
+			$itemToSetActive.addClass(this.options.stateClasses.isActive);
+		}
 	};
 
 	/**
