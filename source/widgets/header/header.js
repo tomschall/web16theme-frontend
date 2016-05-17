@@ -20,7 +20,8 @@
 				},
 				stateClasses: {
 					// isActive: 'is_active'
-				}
+				},
+				scrollMagicScene: null
 			},
 			data = {
 				// items: ["Item 1", "Item 2"]
@@ -57,7 +58,7 @@
 		this.addEventListener();
 
 		if (estatico.mq.query({from: 'medium'})) {
-			this.addScrollMagic();
+			this.addInitialScrollMagic();
 		}
 	};
 
@@ -68,6 +69,9 @@
 		this.$element.on('click' + '.' + this.uuid, function() {
 			if ($(this).hasClass('widg_header___shrinked')) {
 				_this.$element.addClass('widg_header___expanded');
+				_this.$element.removeClass('widg_header___shrinked');
+
+				_this.addDynamicScrollMagic();
 			}
 		});
 	};
@@ -75,11 +79,11 @@
 	/**
 	 * Adds the scroll magic functionality
 	 */
-	Module.prototype.addScrollMagic = function() {
+	Module.prototype.addInitialScrollMagic = function() {
 		var _this = this,
 				headerScene = new ScrollMagic.Scene({
 					triggerElement: '#main',
-					offset: 200,
+					offset: 1,
 					triggerHook: 0
 				})
 						.addIndicators();
@@ -88,7 +92,30 @@
 			_this.toggleShrinked();
 		});
 
-		headerScene.addTo(magicController);
+		this.options.scrollMagicScene = headerScene;
+
+		this.options.scrollMagicScene.addTo(magicController);
+	};
+
+	/**
+	 * Adds a dynamic scroll magic based on position of header
+	 */
+	Module.prototype.addDynamicScrollMagic = function() {
+		var _this = this,
+				dynamicHeaderScene = new ScrollMagic.Scene({
+					triggerElement: '#main',
+					offset: $(window).scrollTop() + 200,
+					triggerHook: 0
+				}).addIndicators();
+
+		dynamicHeaderScene.on('enter leave', function() {
+			_this.toggleShrinked();
+		});
+
+		this.options.scrollMagicScene = dynamicHeaderScene;
+
+		this.options.scrollMagicScene.addTo(magicController);
+
 	};
 
 	/**
@@ -100,6 +127,9 @@
 		if (this.$element.hasClass('widg_header___shrinked')) {
 			this.$element.removeClass('widg_header___expanded');
 		}
+
+		this.options.scrollMagicScene.destroy(false);
+		this.options.scrollMagicScene = null;
 	};
 
 	/**

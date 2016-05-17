@@ -1,13 +1,19 @@
 
 .widg_header {
   @include clearfix;
+	@include transition(all $transitionLength $transitionEase);
+
   width: $widthYellowBar;
   position: fixed;
   max-height: 100vh;
 	height: 100vh;
 
+	display: flex;
+	flex-direction: column;
+
   background-color: $colorYellow;
   padding: $gutter;
+	padding-top: 25px;
 
   z-index: zindex('header');
 
@@ -18,7 +24,10 @@
     }
   }
 
-  .widg_header__inner { position: relative; }
+  .widg_header__inner-top {
+		position: relative;
+		flex-grow: 1;
+	}
 
   /**
     * Smaller then 1024 leads to the top bar
@@ -47,7 +56,6 @@
 	@include basic-unit-height(max-height);
 
 	overflow: hidden;
-	padding-top: 25px;
 
 	.widg_header__expander {
 		display: block;
@@ -82,5 +90,16 @@
 
 	.widg_header___expanded & {
 		display: none;
+	}
+}
+
+.widg_header__hide-on-shrinked {
+	opacity: 1;
+
+	@include transition(opacity $transitionLength $transitionEase);
+	@include transition-delay($transitionLength);
+
+	.widg_header___shrinked & {
+		opacity: 0;
 	}
 }

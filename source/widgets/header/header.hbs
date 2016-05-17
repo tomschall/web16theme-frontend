@@ -1,7 +1,10 @@
 <header class="widg_header" data-init="header">
-	<div class="widg_header__inner">
+	<div class="widg_header__inner-top">
 		{{> "widgets/menubuttons/menubuttons" }}
 		{{> "widgets/logo/logo"}}
 		{{> "widgets/navigation/navigation" widgets.navigation}}
+	</div>
+	<div class="widg_header__inner-foot">
+		{{> "widgets/headerfoot/headerfoot" widget.headerFoot}}
 	</div>
 </header>

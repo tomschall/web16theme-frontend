@@ -7,15 +7,21 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Header',
+			title: 'Lang Switcher',
 			description: '',
-			code: dataHelper.getTemplateCode('header.hbs'),
-			documentation: dataHelper.getDocumentation('header.md')
+			code: dataHelper.getTemplateCode('langswitcher.hbs'),
+			documentation: dataHelper.getDocumentation('langswitcher.md')
 		},
-		widgets: {
-			navigation: requireNew('../navigation/navigation.data.js'),
-			headerFoot: requireNew('../headerfoot/headerfoot.data.js')
-		}
+		languages:[
+			{
+				lang: 'de',
+				url: '#'
+			},
+			{
+				lang: 'en',
+				url: '#'
+			}
+		]
 	});
 
 module.exports = data;

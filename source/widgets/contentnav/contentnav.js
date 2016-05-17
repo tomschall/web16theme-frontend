@@ -22,7 +22,7 @@
 				isActive: 'is_active'
 			},
 			magicOffset: 25,
-			magicHookPosition: 0.52
+			magicHookPosition: 0.6
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -125,7 +125,6 @@
 	 * sets an active content nav
 	 */
 	Module.prototype.setActive = function($itemToSetActive) {
-		console.log('itemtoSetActive', $itemToSetActive);
 		$(this.options.domSelectors.item).removeClass(this.options.stateClasses.isActive);
 
 		if (typeof $itemToSetActive !== typeof undefined) {
