@@ -62,6 +62,24 @@
 		this.initData();
 
 		this.initScrollMagic();
+
+		this.addEventListener();
+	};
+
+	/**
+	 * Adds the event listeners
+	 */
+	Module.prototype.addEventListener = function() {
+		$(this.options.domSelectors.item).find('a').click(function(e) {
+			e.preventDefault();
+
+			var target = $(this).attr('href').substr(1),
+					targetOffset = $('[data-contentnav-target="' + target + '"]').first().offset().top;
+
+			$('html, body').animate({
+				scrollTop: targetOffset - 250
+			}, 'slow');
+		});
 	};
 
 	/**
@@ -90,10 +108,14 @@
 	 */
 	Module.prototype.initScrollMagic = function() {
 		var itemScene = null,
+				itemSceneFromBottom = null,
 				_this = this;
 
 
 		this.data.items.forEach(function(item) {
+			var $triggerElement = $('[data-contentnav-target = "' + item.targetElement.data('contentnav-target') + '"]'),
+					triggerElementHeight = $triggerElement.height();
+
 			itemScene = new ScrollMagic.Scene({
 				triggerElement: '[data-contentnav-target = "' + item.targetElement.data('contentnav-target') + '"]',
 				offset: _this.options.magicOffset,
@@ -105,6 +127,18 @@
 			});
 
 			itemScene.addTo(magicController);
+
+			itemSceneFromBottom = new ScrollMagic.Scene({
+				triggerElement: '[data-contentnav-target = "' + item.targetElement.data('contentnav-target') + '"]',
+				offset: triggerElementHeight,
+				triggerHook: _this.options.magicHookPosition
+			}).addIndicators();
+
+			itemSceneFromBottom.on('enter leave', function() {
+				_this.setActive($(item.domElement));
+			});
+
+			itemSceneFromBottom.addTo(magicController);
 
 		});
 
