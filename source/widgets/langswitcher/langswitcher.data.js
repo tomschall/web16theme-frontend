@@ -15,11 +15,13 @@ var data = _.merge(defaultData, {
 		languages:[
 			{
 				lang: 'de',
-				url: '#'
+				url: '#',
+				active: 'is_active'
 			},
 			{
 				lang: 'en',
-				url: '#'
+				url: '#',
+				active: ''
 			}
 		]
 	});

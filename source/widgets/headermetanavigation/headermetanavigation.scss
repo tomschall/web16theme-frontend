@@ -1,3 +1,16 @@
-.mod_headermetanavigation {
+.widg_headermetanavigation {
+ ul {
+	 list-style: none;
+	 margin: 0;
+	 padding: 0;
+ }
+}
+
+.widg_headermetanavigation__item {
+	a{
+		display: block;
+		font-size: 1.08333rem;
+		line-height: 1.9em;
+	}
 
 }

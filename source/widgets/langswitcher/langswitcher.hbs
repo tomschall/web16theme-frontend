@@ -1,3 +1,5 @@
-<div class="mod_langswitcher" data-init="langswitcher">
-	Lang Switcher
+<div class="widg_langswitcher" data-init="langswitcher">
+	{{#each languages}}
+		<a class="widg_langswitcher__lang {{active}}" href="{{url}}">{{lang}}</a>
+	{{/each}}
 </div>

@@ -1,3 +1,43 @@
-.mod_somelinks {
+.widg_somelinks {
+	margin-top: $basicPush * 4 - 3;
 
+	a {
+		width: 35px;
+		height: 35px;
+		display: block;
+		float: left;
+
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+
+		margin-right: $basicPush;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&[data-somelink-target="xing"] {
+			background-image: url('/assets/media/icons/xing.svg');
+
+			&:hover {
+				background-image: url('/assets/media/icons/xing_hov.svg');
+			}
+		}
+
+		&[data-somelink-target="tw"] {
+			background-image: url('/assets/media/icons/twitter.svg');
+
+			&:hover {
+				background-image: url('/assets/media/icons/twitter_hov.svg');
+			}
+		}
+
+		&[data-somelink-target="fb"] {
+			background-image: url('/assets/media/icons/facebook.svg');
+
+			&:hover {
+				background-image: url('/assets/media/icons/facebook_hov.svg');
+			}
+		}
+	}
 }

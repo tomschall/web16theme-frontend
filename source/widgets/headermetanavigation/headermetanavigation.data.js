@@ -11,7 +11,21 @@ var data = _.merge(defaultData, {
 			description: '',
 			code: dataHelper.getTemplateCode('headermetanavigation.hbs'),
 			documentation: dataHelper.getDocumentation('headermetanavigation.md')
-		}
+		},
+		items: [
+			{
+				title: 'Kontakt',
+				url: '#'
+			},
+			{
+				title: 'Offene Stellen',
+				url: '#'
+			},
+			{
+				title: 'Medien',
+				url: '#'
+			}
+		]
 	});
 
 module.exports = data;

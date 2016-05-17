@@ -1,3 +1,9 @@
-<div class="mod_headermetanavigation" data-init="headermetanavigation">
-	Header Metanavigation
+<div class="widg_headermetanavigation" data-init="headermetanavigation">
+	<ul>
+		{{#each items}}
+      <li class="widg_headermetanavigation__item">
+				<a href="{{url}}">{{title}}</a>
+			</li>
+		{{/each}}
+	</ul>
 </div>

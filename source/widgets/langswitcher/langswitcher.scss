@@ -1,3 +1,20 @@
-.mod_langswitcher {
+.widg_langswitcher {
+	border-bottom: 1px solid $colorBlack;
+	margin-bottom: $basicPush * 2 - 2;
 
+	@include clearfix;
+}
+
+.widg_langswitcher__lang {
+	line-height: 2.4em;
+	text-transform: uppercase;
+	font-size: 1.08333rem;
+	display: block;
+
+	float: left;
+	margin-right: $basicPush;
+
+	&.is_active {
+		font-family: $fontSansSerifBold;
+	}
 }
