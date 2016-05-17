@@ -15,13 +15,16 @@ var data = _.merge(defaultData, {
 		items: [
 			{
 				'url': '#',
-				'title': 'Online-Marketing'
+				'title': '',
+				'extraClasses': 'is_home'
 			}, {
 				'url': '#',
-				'title': 'Wirtschaft'
+				'title': 'Weiterbildung',
+				'extraClasses': ''
 			}, {
 				'url': '#',
-				'title': 'CAS Zertifikatslehrgänge'
+				'title': 'Wirtschaft',
+				'extraClasses': ''
 			}
 		]
 	});

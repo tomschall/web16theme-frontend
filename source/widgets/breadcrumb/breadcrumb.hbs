@@ -1,9 +1,10 @@
 <nav class="widg_breadcrumb">
   <ul>
   {{#each items}}
-    <li class="widg_breadcrumb__item">
+    <li class="widg_breadcrumb__item {{extraClasses}}">
       <a href="{{url}}">{{title}}</a>
     </li>
+		<li class="widg_breadcrumb__seperator"></li>
   {{/each}}
   </ul>
 </nav>

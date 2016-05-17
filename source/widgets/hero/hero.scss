@@ -16,6 +16,8 @@
 .widg_hero__wrapper {
 	order: 1;
 	line-height: 1em;
+	max-height: 50vh;
+	overflow: hidden;
 }
 
 .widg_hero__img {
