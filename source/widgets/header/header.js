@@ -74,6 +74,14 @@
 				_this.addDynamicScrollMagic();
 			}
 		});
+
+		$(window).on('scroll.' + this.uuid, function() {
+			if($(window).scrollTop() === 0) {
+				if($(_this.$element.hasClass('widg_header___shrinked'))){
+					_this.toggleShrinked();
+				}
+			}
+		});
 	};
 
 	/**
@@ -83,7 +91,7 @@
 		var _this = this,
 				headerScene = new ScrollMagic.Scene({
 					triggerElement: '#main',
-					offset: 1,
+					offset: 5,
 					triggerHook: 0
 				});
 
