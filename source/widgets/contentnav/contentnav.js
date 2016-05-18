@@ -120,7 +120,7 @@
 				triggerElement: '[data-contentnav-target = "' + item.targetElement.data('contentnav-target') + '"]',
 				offset: _this.options.magicOffset,
 				triggerHook: _this.options.magicHookPosition
-			}).addIndicators();
+			});
 
 			itemScene.on('enter leave', function() {
 				_this.setActive($(item.domElement));
@@ -132,7 +132,7 @@
 				triggerElement: '[data-contentnav-target = "' + item.targetElement.data('contentnav-target') + '"]',
 				offset: triggerElementHeight,
 				triggerHook: _this.options.magicHookPosition
-			}).addIndicators();
+			});
 
 			itemSceneFromBottom.on('enter leave', function() {
 				_this.setActive($(item.domElement));
@@ -150,7 +150,7 @@
 
 		resetScene.on('enter leave', function() {
 			_this.setActive();
-		}).addIndicators();
+		});
 
 		resetScene.addTo(magicController);
 	};

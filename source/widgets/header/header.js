@@ -85,8 +85,7 @@
 					triggerElement: '#main',
 					offset: 1,
 					triggerHook: 0
-				})
-						.addIndicators();
+				});
 
 		headerScene.on('enter leave', function() {
 			_this.toggleShrinked();
@@ -106,7 +105,7 @@
 					triggerElement: '#main',
 					offset: $(window).scrollTop() + 200,
 					triggerHook: 0
-				}).addIndicators();
+				});
 
 		dynamicHeaderScene.on('enter leave', function() {
 			_this.toggleShrinked();

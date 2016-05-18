@@ -24,10 +24,4 @@
  * @requires helpers/init.js
  */
 
-/*ignore jslint start*/
-/*jshint ignore:start*/
-
-var magicController = new ScrollMagic.Controller();
-
-/*jshint ignore:end*/
-/*ignore jslint start*/
+var magicController = new ScrollMagic.Controller(); // jshint ignore:line
