@@ -12,7 +12,7 @@ var data = _.merge(defaultData, {
 			code: dataHelper.getTemplateCode('langswitcher.hbs'),
 			documentation: dataHelper.getDocumentation('langswitcher.md')
 		},
-		languages:[
+		languages: [
 			{
 				lang: 'de',
 				url: '#',
