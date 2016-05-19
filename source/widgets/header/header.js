@@ -63,41 +63,45 @@
 	};
 
 	Module.prototype.addEventListener = function() {
-		var _this = this;
-
 		this.$element.on('click' + '.' + this.uuid, function() {
-			if ($(this).hasClass('widg_header___shrinked') && window.estatico.mq.query({from: 'medium'})) {
-				_this.$element.addClass('widg_header___expanded');
-				_this.$element.removeClass('widg_header___shrinked');
 
-				_this.addDynamicScrollMagic();
+			if (this.$element.hasClass('widg_header___shrinked') && window.estatico.mq.query({from: 'medium'})) {
+				console.log(this);
+
+				this.$element.addClass('widg_header___expanded');
+				this.$element.removeClass('widg_header___shrinked');
+
+				this.addDynamicScrollMagic();
 			}
-		});
+		}.bind(this));
 
 		$(window).on('scroll.' + this.uuid, function() {
 			if ($(window).scrollTop() === 0 && window.estatico.mq.query({from: 'medium'})) {
-				if ($(_this.$element.hasClass('widg_header___shrinked'))) {
-					_this.toggleShrinked();
-					_this.addDynamicScrollMagic();
+				if (this.$element.hasClass('widg_header___shrinked')) {
+					this.toggleShrinked();
+					this.addDynamicScrollMagic();
 				}
 			}
-		});
+		}.bind(this));
+	};
+
+	Module.prototype.scroll = function() {
+
 	};
 
 	/**
 	 * Adds the scroll magic functionality
 	 */
 	Module.prototype.addInitialScrollMagic = function() {
-		var _this = this,
-				headerScene = new ScrollMagic.Scene({
+		var headerScene = new ScrollMagic.Scene({
 					triggerElement: '#main',
 					offset: 5,
 					triggerHook: 0
 				});
 
 		headerScene.on('enter leave', function() {
-			_this.toggleShrinked();
-		});
+			this.toggleShrinked();
+		}.bind(this));
 
 		this.options.scrollMagicScene = headerScene;
 
@@ -108,19 +112,15 @@
 	 * Adds a dynamic scroll magic based on position of header
 	 */
 	Module.prototype.addDynamicScrollMagic = function() {
-
-		console.log('magicController', window.estatico.magicController);
-
-		var _this = this,
-				dynamicHeaderScene = new ScrollMagic.Scene({
+		var dynamicHeaderScene = new ScrollMagic.Scene({
 					triggerElement: '#main',
 					offset: $(window).scrollTop() + 200,
 					triggerHook: 0
 				});
 
 		dynamicHeaderScene.on('enter leave', function() {
-			_this.toggleShrinked();
-		});
+			this.toggleShrinked();
+		}.bind(this));
 
 		this.options.scrollMagicScene = dynamicHeaderScene;
 

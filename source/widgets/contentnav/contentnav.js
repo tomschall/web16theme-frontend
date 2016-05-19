@@ -107,47 +107,51 @@
 	Module.prototype.initScrollMagic = function() {
 		var itemScene = null,
 				itemSceneFromBottom = null,
-				_this = this;
+				resetScene = null,
+				$triggerElement = null,
+				triggerElementHeight = 0,
+				offset = this.options.magicOffset,
+				triggerHook = this.options.magicHookPosition;
 
 		this.data.items.forEach(function(item) {
-			var $triggerElement = $('[data-contentnav-target = "' + item.targetElement.data('contentnav-target') + '"]'),
-					triggerElementHeight = $triggerElement.height();
+			$triggerElement = $('[data-contentnav-target = "' + item.targetElement.data('contentnav-target') + '"]');
+			triggerElementHeight = $triggerElement.height();
 
 			itemScene = new ScrollMagic.Scene({
 				triggerElement: '[data-contentnav-target = "' + item.targetElement.data('contentnav-target') + '"]',
-				offset: _this.options.magicOffset,
-				triggerHook: _this.options.magicHookPosition
+				offset: offset,
+				triggerHook: triggerHook
 			});
 
 			itemScene.on('enter leave', function() {
-				_this.setActive($(item.domElement));
-			});
+				this.setActive($(item.domElement));
+			}.bind(this));
 
 			itemScene.addTo(window.estatico.magicController);
 
 			itemSceneFromBottom = new ScrollMagic.Scene({
 				triggerElement: '[data-contentnav-target = "' + item.targetElement.data('contentnav-target') + '"]',
 				offset: triggerElementHeight,
-				triggerHook: _this.options.magicHookPosition
+				triggerHook: triggerHook
 			});
 
 			itemSceneFromBottom.on('enter leave', function() {
-				_this.setActive($(item.domElement));
-			});
+				this.setActive($(item.domElement));
+			}.bind(this));
 
 			itemSceneFromBottom.addTo(window.estatico.magicController);
 
-		});
+		}.bind(this));
 
-		var resetScene = new ScrollMagic.Scene({
+		resetScene = new ScrollMagic.Scene({
 			triggerElement: '.widg_contentnav',
 			offset: 100,
-			triggerHook: _this.options.magicHookPosition
+			triggerHook: triggerHook
 		});
 
 		resetScene.on('enter leave', function() {
-			_this.setActive();
-		});
+			this.setActive();
+		}.bind(this));
 
 		resetScene.addTo(window.estatico.magicController);
 	};
