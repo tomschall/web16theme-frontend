@@ -6,6 +6,7 @@
   box-shadow: 0 4px 4px 0 rgba($colorBlack, 0.14);
   position: relative;
   z-index: zindex(contentnav);
+  overflow: hidden;
 
 	background-color: $colorBg;
 

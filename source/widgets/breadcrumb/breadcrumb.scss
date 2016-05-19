@@ -5,6 +5,7 @@
 
   background-color: $colorBg;
   margin-left: -1 * $gutterWidth;
+  overflow: hidden;
 
   @include yellowBarDiffer();
   @include basicUnitHeight(height);
