@@ -21,8 +21,8 @@
 			stateClasses: {
 				isActive: 'is_active'
 			},
-			magicOffset: 25,
-			magicHookPosition: 0.6
+			magicOffset: -20,
+			magicHookPosition: 0.3
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -77,7 +77,7 @@
 					targetOffset = $('[data-contentnav-target="' + target + '"]').first().offset().top;
 
 			$('html, body').animate({
-				scrollTop: targetOffset - 250
+				scrollTop: targetOffset - 150
 			}, 'slow');
 		});
 	};

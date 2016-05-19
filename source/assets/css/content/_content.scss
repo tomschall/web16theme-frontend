@@ -43,7 +43,7 @@
 }
 
 .content__text-element {
-  margin-top: $basicPush * 9 - 2;
+  margin-top: $basicPush * 5;
 
   @include mq($to: $sizeBreakpointMedium) {
     margin-top: $basicPush * 4 + 4;

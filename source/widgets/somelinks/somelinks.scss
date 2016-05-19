@@ -18,14 +18,26 @@
 
 	&[data-somelink-target="xing"] {
 	  @include iconDataurl('xing');
+
+	  &:hover {
+		@include iconDataurl('xing_hov');
+	  }
 	}
 
 	&[data-somelink-target="tw"] {
 	  @include iconDataurl('twitter');
+
+	  &:hover {
+		@include iconDataurl('twitter_hov');
+	  }
 	}
 
 	&[data-somelink-target="fb"] {
 	  @include iconDataurl('facebook');
+
+	  &:hover {
+		@include iconDataurl('facebook_hov');
+	  }
 	}
   }
 }
