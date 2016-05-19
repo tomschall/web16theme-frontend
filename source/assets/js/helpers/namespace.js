@@ -9,6 +9,9 @@
 		// Module options
 		options: {},
 
+		// Scroll Magic Controller
+		magicController: new ScrollMagic.Controller(),
+
 		// Helper methods
 		helpers: {
 			// Deep extend (before $.extend is available)

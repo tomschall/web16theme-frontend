@@ -23,5 +23,3 @@
  *
  * @requires helpers/init.js
  */
-
-var magicController = new ScrollMagic.Controller(); // jshint ignore:line

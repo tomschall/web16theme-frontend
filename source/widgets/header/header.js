@@ -102,7 +102,7 @@
 
 		this.options.scrollMagicScene = headerScene;
 
-		this.options.scrollMagicScene.addTo(magicController);
+		this.options.scrollMagicScene.addTo(window.estatico.magicController);
 	};
 
 	/**
@@ -122,7 +122,7 @@
 
 		this.options.scrollMagicScene = dynamicHeaderScene;
 
-		this.options.scrollMagicScene.addTo(magicController);
+		this.options.scrollMagicScene.addTo(window.estatico.magicController);
 
 	};
 

@@ -126,7 +126,7 @@
 				_this.setActive($(item.domElement));
 			});
 
-			itemScene.addTo(magicController);
+			itemScene.addTo(window.estatico.magicController);
 
 			itemSceneFromBottom = new ScrollMagic.Scene({
 				triggerElement: '[data-contentnav-target = "' + item.targetElement.data('contentnav-target') + '"]',
@@ -138,7 +138,7 @@
 				_this.setActive($(item.domElement));
 			});
 
-			itemSceneFromBottom.addTo(magicController);
+			itemSceneFromBottom.addTo(window.estatico.magicController);
 
 		});
 
@@ -152,7 +152,7 @@
 			_this.setActive();
 		});
 
-		resetScene.addTo(magicController);
+		resetScene.addTo(window.estatico.magicController);
 	};
 
 	/**
