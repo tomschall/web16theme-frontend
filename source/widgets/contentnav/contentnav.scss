@@ -75,7 +75,7 @@
   }
 
 	//The Active State
-	&.active {
+	&.is_active {
 		position: relative;
 
 		&:before {
