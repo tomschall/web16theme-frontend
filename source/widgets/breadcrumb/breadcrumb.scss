@@ -81,13 +81,17 @@
   width: 28px;
   position: relative;
 
-  @include iconDataurl('breadcrumb_sep');
-
   &:before {
 	@include centerDataurlIcon();
 
-	width: 6px;
-	height: 12px;
+	content: " ";
+	display: block;
+
+	// @TODO: Icon Data Url doesn't work
+	background-image: url('/assets/media/icons/breadcrumb.svg');
+
+	width: 7px;
+	height: 11px;
   }
 
   &:last-of-type {
