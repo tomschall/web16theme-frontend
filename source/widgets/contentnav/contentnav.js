@@ -88,10 +88,8 @@
 	Module.prototype.initData = function() {
 		var itemArray = [];
 
-
 		$(this.options.domSelectors.item).each(function() {
 			var itemObject = {};
-
 
 			itemObject.domElement = this;
 			itemObject.target = $(this).find('a').attr('href').substr(1);
@@ -110,7 +108,6 @@
 		var itemScene = null,
 				itemSceneFromBottom = null,
 				_this = this;
-
 
 		this.data.items.forEach(function(item) {
 			var $triggerElement = $('[data-contentnav-target = "' + item.targetElement.data('contentnav-target') + '"]'),

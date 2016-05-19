@@ -1,3 +1,8 @@
+/*
+ * @requires ../../../../node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js
+ *
+ */
+
 ;(function(undefined) {
 	'use strict';
 

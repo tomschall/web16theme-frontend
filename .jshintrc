@@ -97,7 +97,6 @@
 		"Handlebars": false,
 		"open": true,
 		"Promise": false,
-	  	"ScrollMagic": true,
-	  	"magicController": true
+	  	"ScrollMagic": true
 	}
 }

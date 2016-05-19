@@ -3,11 +3,7 @@
  * @requires ../.tmp/lodash.js
  * @requires ../../../node_modules/handlebars/dist/handlebars.js
  * @requires ../../../node_modules/scrolltofixed/jquery-scrolltofixed.js
- * @requires ../../../node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js
  * @requires ../.tmp/templates.js
- *
- * @TODO: Remove bevore going onto production
- * @requires ../../../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js
 
  * @requires helpers/module.js
  * @requires helpers/events.js

@@ -65,7 +65,6 @@
 	Module.prototype.addEventListener = function() {
 		var _this = this;
 
-
 		this.$element.on('click' + '.' + this.uuid, function() {
 			if ($(this).hasClass('widg_header___shrinked') && window.estatico.mq.query({from: 'medium'})) {
 				_this.$element.addClass('widg_header___expanded');
@@ -102,13 +101,16 @@
 
 		this.options.scrollMagicScene = headerScene;
 
-		this.options.scrollMagicScene.addTo(window.estatico.magicController);
+		window.estatico.magicController.addScene(headerScene);
 	};
 
 	/**
 	 * Adds a dynamic scroll magic based on position of header
 	 */
 	Module.prototype.addDynamicScrollMagic = function() {
+
+		console.log('magicController', window.estatico.magicController);
+
 		var _this = this,
 				dynamicHeaderScene = new ScrollMagic.Scene({
 					triggerElement: '#main',
