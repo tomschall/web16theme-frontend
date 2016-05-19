@@ -67,7 +67,7 @@
 
 
 		this.$element.on('click' + '.' + this.uuid, function() {
-			if ($(this).hasClass('widg_header___shrinked')) {
+			if ($(this).hasClass('widg_header___shrinked') && window.estatico.mq.query({from: 'medium'})) {
 				_this.$element.addClass('widg_header___expanded');
 				_this.$element.removeClass('widg_header___shrinked');
 
@@ -79,6 +79,7 @@
 			if ($(window).scrollTop() === 0) {
 				if ($(_this.$element.hasClass('widg_header___shrinked'))) {
 					_this.toggleShrinked();
+					_this.addDynamicScrollMagic();
 				}
 			}
 		});
@@ -135,8 +136,10 @@
 			this.$element.removeClass('widg_header___expanded');
 		}
 
-		this.options.scrollMagicScene.destroy(false);
-		this.options.scrollMagicScene = null;
+		if (this.options.scrollMagicScene) {
+			this.options.scrollMagicScene.destroy(false);
+			this.options.scrollMagicScene = null;
+		}
 	};
 
 	/**

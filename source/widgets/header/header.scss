@@ -1,42 +1,42 @@
 
 .widg_header {
   @include clearfix;
-	@include transition(all $transitionLength $transitionEase);
+  @include transition(all $transitionLength $transitionEase);
 
   width: $widthYellowBar;
   position: fixed;
   max-height: 100vh;
-	height: 100vh;
+  height: 100vh;
 
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
   background-color: $colorYellow;
   padding: $gutter;
-	padding-top: 25px;
+  padding-top: 25px;
 
   z-index: zindex('header');
 
   //Extended Header (Wide) only exists between betweener and wide
   @include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
-    .header__extended & {
-      width: $widthYellowBarWide;
-    }
+	.header__extended & {
+	  width: $widthYellowBarWide;
+	}
   }
 
   .widg_header__inner-top {
-		position: relative;
-		flex-grow: 1;
-	}
+	position: relative;
+	flex-grow: 1;
+  }
 
   /**
     * Smaller then 1024 leads to the top bar
     */
   @include mq($to: medium) {
-    width: 100%;
-    height: $headerHeightTop;
-    position: static;
-    padding: 15px $basicPush * 4;
+	width: 100%;
+	height: $headerHeightTop;
+	position: static;
+	padding: 15px $basicPush * 4;
 
 	@include mq($to: small) {
 	  padding: 15px $basicPush * 2;
@@ -47,59 +47,68 @@
     * Supersized YellowBar
     */
   @include mq($from: $sizeBreakpointWide) {
-    width: $widthYellowBarSuperWide;
+	width: $widthYellowBarSuperWide;
   }
 
 }
 
 .widg_header___shrinked {
-	@include basic-unit-height(max-height);
+  @include basic-unit-height(max-height);
 
-	overflow: hidden;
+  overflow: hidden;
 
+  @include mq($from: $sizeBreakpointMedium) {
 	.widg_header__expander {
-		display: block;
+	  display: block;
 	}
 
 	cursor: pointer;
 
 	&:hover {
-		background-color: $colorDarkerYellow;
+	  background-color: $colorDarkerYellow;
 	}
+  }
 }
 
-.widg_header___expanded {
+@include mq($from: $sizeBreakpointMedium) {
+  .widg_header___expanded {
 	max-height: 100vh;
 
 	&:hover {
-		background-color: $colorYellow;
+	  background-color: $colorYellow;
 	}
+  }
 }
 
 .widg_header__expander {
-	width: 14px;
-	height: 10px;
+  width: 14px;
+  height: 10px;
 
-	@include bg-icon('dropdown-arrow.svg');
+  @include bg-icon('dropdown-arrow.svg');
 
+  display: none;
+  position: absolute;
+  top: 25px;
+  right: 0;
+
+  .widg_header___expanded & {
 	display: none;
-	position: absolute;
-
-	top: 50%;
-	right: 0;
-
-	.widg_header___expanded & {
-		display: none;
-	}
+  }
 }
 
 .widg_header__hide-on-shrinked {
-	opacity: 1;
+  opacity: 1;
 
-	@include transition(opacity $transitionLength $transitionEase);
-	@include transition-delay($transitionLength);
+  @include transition(opacity $transitionLength $transitionEase);
+  @include transition-delay($transitionLength);
 
-	.widg_header___shrinked & {
-		opacity: 0;
-	}
+  .widg_header___shrinked & {
+	opacity: 0;
+  }
+}
+
+.widg_header__inner-foot {
+  @include mq($to: $sizeBreakpointMedium) {
+	display: none;
+  }
 }
