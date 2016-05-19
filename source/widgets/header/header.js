@@ -76,7 +76,7 @@
 		});
 
 		$(window).on('scroll.' + this.uuid, function() {
-			if ($(window).scrollTop() === 0) {
+			if ($(window).scrollTop() === 0 && window.estatico.mq.query({from: 'medium'})) {
 				if ($(_this.$element.hasClass('widg_header___shrinked'))) {
 					_this.toggleShrinked();
 					_this.addDynamicScrollMagic();
