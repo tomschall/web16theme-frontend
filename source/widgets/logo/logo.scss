@@ -1,5 +1,17 @@
 .widg_logo {
-	width: 100%;
-	height: 50px;
-	position: relative;
+  width: 100%;
+  height: 50px;
+  position: relative;
+
+  @include mq($to: $sizeBreakpointMedium) {
+	width: 85px;
+	float: right;
+
+	img {
+	  height: 49px;
+	  width: auto;
+
+	  margin-top: -4px;
+	}
+  }
 }

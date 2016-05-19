@@ -48,5 +48,5 @@ h3 {
 
 	margin-top: $basicPush * 10 - 44px;
 
-	@include content-wrapper($gutterWidth);
+	@include contentWrapper($gutterWidth);
 }

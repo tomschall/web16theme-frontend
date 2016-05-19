@@ -53,7 +53,7 @@
 }
 
 .widg_header___shrinked {
-  @include basic-unit-height(max-height);
+  @include basicUnitHeight(max-height);
 
   overflow: hidden;
 
@@ -84,12 +84,19 @@
   width: 14px;
   height: 10px;
 
-  @include bg-icon('dropdown-arrow.svg');
+  @include iconDataurl('dropdown-arrow');
 
   display: none;
   position: absolute;
   top: 25px;
   right: 0;
+
+  &:before {
+	@include centerDataurlIcon();
+
+	width: 14px;
+	height: 10px;
+  }
 
   .widg_header___expanded & {
 	display: none;

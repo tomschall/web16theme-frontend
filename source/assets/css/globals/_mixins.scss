@@ -124,7 +124,7 @@
 	}
 }
 
-@mixin content-wrapper-small-devices($gutterSize: 0) {
+@mixin contentWrapperForSmallDevices($gutterSize: 0) {
 	@include mq($from: $sizeBreakpointSmall, $to: $sizeBreakpointMedium) {
 		padding: 0 ($pagePaddingTablet - $gutterSize);
 	}
@@ -134,7 +134,7 @@
 	}
 }
 
-@mixin yellow-bar-padding() {
+@mixin yellowBarDiffer() {
 	padding-left: $paddingBehindYellowBar;
 
 	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
@@ -155,10 +155,10 @@
 		padding-left: $paddingBehindYellowBarSuperWide;
 	}
 
-	@include content-wrapper-small-devices();
+	@include contentWrapperForSmallDevices();
 }
 
-@mixin content-wrapper($gutterSize: 0, $hasGrid: true) {
+@mixin contentWrapper($gutterSize: 0, $hasGrid: true) {
 	@if $hasGrid {
 		@include container();
 	}
@@ -183,10 +183,10 @@
 		padding: 0 ($pagePaddingWide - $gutterSize) 0 ($paddingBehindYellowBarSuperWide - $gutterSize);
 	}
 
-	@include content-wrapper-small-devices($gutterSize);
+	@include contentWrapperForSmallDevices($gutterSize);
 }
 
-@mixin basic-unit-height($attr) {
+@mixin basicUnitHeight($attr) {
 	#{$attr}: basicUnitHeight(normal);
 
 	@include mq($to: $sizeBreakpointMedium) {
@@ -198,7 +198,7 @@
 	}
 }
 
-@mixin bleed-full($gutterSize: 0) {
+@mixin bleedFull($gutterSize: 0) {
 	margin-left: -1 * $paddingBehindYellowBar + $gutterSize;
 	margin-right: -1 * $pagePadding + $gutterSize;
 
@@ -232,8 +232,11 @@
 	}
 }
 
-@mixin bg-icon($iconName) {
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-image: url('/assets/media/icons/#{$iconName}');
+@mixin centerDataurlIcon() {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%,-50%);
 }

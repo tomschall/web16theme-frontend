@@ -1,89 +1,95 @@
 .widg_breadcrumb {
-	position: absolute;
-	bottom: 0;
-	left: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 
-	background-color: $colorBg;
-	margin-left: -1 * $gutterWidth;
+  background-color: $colorBg;
+  margin-left: -1 * $gutterWidth;
 
+  @include yellowBarDiffer();
+  @include basicUnitHeight(height);
 
-	@include yellow-bar-padding();
-	@include basic-unit-height(height);
+  @include mq($to: $sizeBreakpointMedium) {
+	position: static;
+  }
 
-	@include mq($to: $sizeBreakpointMedium) {
-		position: static;
-	}
-
-	ul {
-		display: flex;
-		overflow-x: scroll;
-	}
+  ul {
+	display: flex;
+	overflow-x: scroll;
+  }
 }
 
 .widg_breadcrumb__item,
 .widg_breadcrumb__seperator {
-	display: inline-block;
+  display: inline-block;
 }
 
 .widg_breadcrumb__item {
-	a {
-		display: block;
-		font-size: 1.25rem;
-		position: relative;
-		padding: 0 ($gutterWidth) 0 $gutterWidth;
-		white-space: nowrap;
+  a {
+	display: block;
+	font-size: 1.25rem;
+	position: relative;
+	padding: 0 ($gutterWidth) 0 $gutterWidth;
+	white-space: nowrap;
 
-		@include basic-unit-height(line-height);
+	@include basicUnitHeight(line-height);
 
-		&:hover {
-			background-color: $colorLightGray;
-		}
-
-
-		/**
-      * Auskommentiert, falls funktionaler Breadcrumb doch wieder kommt
-      */
-		/*&:after {
-      position: absolute;
-      width: 9px;
-      height: 6px;
-      margin-left: 5px;
-
-      display: inline;
-      content: " ";
-
-      background-image: url("/assets/media/icons/dropdown-arrow.svg");
-      background-size: 9px 6px;
-      background-position: center right;
-      background-repeat: no-repeat;
-
-      top: 50%;
-      transform: translateY(-45%);
-    }*/
+	&:hover {
+	  background-color: $colorLightGray;
 	}
 
-	&.is_home a {
-		box-sizing: content-box;
-		width: 10px;
+	/**
+  * Auskommentiert, falls funktionaler Breadcrumb doch wieder kommt
+  */
+	/*&:after {
+  position: absolute;
+  width: 9px;
+  height: 6px;
+  margin-left: 5px;
 
-		background-image: url('/assets/media/icons/home.svg');
-		background-size: auto 12px;
-		background-repeat: no-repeat;
-		background-position: center center;
+  display: inline;
+  content: " ";
 
-		@include basic-unit-height(height);
+  background-image: url("/assets/media/icons/dropdown-arrow.svg");
+  background-size: 9px 6px;
+  background-position: center right;
+  background-repeat: no-repeat;
+
+  top: 50%;
+  transform: translateY(-45%);
+}*/
+  }
+
+  &.is_home a {
+	box-sizing: content-box;
+	width: 10px;
+
+	@include iconDataurl('home');
+	@include basicUnitHeight(height);
+
+	&:before {
+	  @include centerDataurlIcon();
+
+	  width: 12px;
+	  height: 14px;
 	}
+  }
 }
 
 .widg_breadcrumb__seperator {
-	width: 28px;
+  width: 28px;
+  position: relative;
 
-	background-image: url('/assets/media/icons/breadcrumb_sep.svg');
-	background-size: 6px 12px;
-	background-position: center center;
-	background-repeat: no-repeat;
+  @include iconDataurl('breadcrumb_sep');
 
-	&:last-of-type {
-		display: none;
-	}
+  &:before {
+	@include centerDataurlIcon();
+
+	width: 6px;
+	height: 12px;
+  }
+
+  &:last-of-type {
+	display: none;
+  }
 }

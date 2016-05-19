@@ -1,7 +1,7 @@
 .widg_contentnav {
-  @include basic-unit-height(height);
-  @include bleed-full($gutterWidth);
-  @include content-wrapper($hasGrid: false, $gutterSize: $gutterWidth);
+  @include basicUnitHeight(height);
+  @include bleedFull($gutterWidth);
+  @include contentWrapper($hasGrid: false, $gutterSize: $gutterWidth);
 
   box-shadow: 0 4px 4px 0 rgba($colorBlack, 0.14);
   position: relative;
@@ -33,7 +33,7 @@
 .widg_contentnav__item {
   display: inline-block;
 
-  @include basic-unit-height(height);
+  @include basicUnitHeight(height);
 
 
   a {
@@ -44,8 +44,8 @@
     white-space: nowrap;
     position: relative;
 
-    @include basic-unit-height(max-height);
-    @include basic-unit-height(line-height);
+    @include basicUnitHeight(max-height);
+    @include basicUnitHeight(line-height);
 
     &.has-bubble {
       padding-right: 54px;

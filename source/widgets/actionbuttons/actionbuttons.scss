@@ -6,7 +6,7 @@
   z-index: zindex(actionbuttons);
 
   .page_wrapper__startpage & {
-	@include basic-unit-height(width);
+	@include basicUnitHeight(width);
   }
 
   @include mq($to: $sizeBreakpointMedium) {
@@ -15,8 +15,10 @@
 }
 
 .widg_actionbutton__item {
-  @include basic-unit-height(height);
-  @include basic-unit-height(width);
+  @include basicUnitHeight(height);
+  @include basicUnitHeight(width);
+
+  position: relative;
 
   float: left;
 
@@ -29,4 +31,13 @@
   }
 
   text-indent: -10000px;
+
+  &:before {
+
+	position: absolute;
+	content: " ";
+
+	top: 50%;
+	left: 50%;
+  }
 }
