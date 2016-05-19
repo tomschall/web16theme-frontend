@@ -66,8 +66,6 @@
 		this.$element.on('click' + '.' + this.uuid, function() {
 
 			if (this.$element.hasClass('widg_header___shrinked') && window.estatico.mq.query({from: 'medium'})) {
-				console.log(this);
-
 				this.$element.addClass('widg_header___expanded');
 				this.$element.removeClass('widg_header___shrinked');
 
