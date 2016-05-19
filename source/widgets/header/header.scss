@@ -52,7 +52,7 @@
 
 }
 
-.widg_header___shrinked {
+.is_shrinked {
   @include basicUnitHeight(max-height);
 
   overflow: hidden;
@@ -64,17 +64,19 @@
 
 	cursor: pointer;
 
-	&:hover {
+	&:hover,
+	&:focus {
 	  background-color: $colorDarkerYellow;
 	}
   }
 }
 
 @include mq($from: $sizeBreakpointMedium) {
-  .widg_header___expanded {
+  .is_expanded {
 	max-height: 100vh;
 
-	&:hover {
+	&:hover,
+	&:focus {
 	  background-color: $colorYellow;
 	}
   }
@@ -98,7 +100,7 @@
 	height: 10px;
   }
 
-  .widg_header___expanded & {
+  .is_expanded & {
 	display: none;
   }
 }
@@ -109,7 +111,7 @@
   @include transition(opacity $transitionLength $transitionEase);
   @include transition-delay($transitionLength);
 
-  .widg_header___shrinked & {
+  .is_shrinked & {
 	opacity: 0;
   }
 }

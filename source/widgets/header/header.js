@@ -65,9 +65,9 @@
 	Module.prototype.addEventListener = function() {
 		this.$element.on('click' + '.' + this.uuid, function() {
 
-			if (this.$element.hasClass('widg_header___shrinked') && window.estatico.mq.query({from: 'medium'})) {
-				this.$element.addClass('widg_header___expanded');
-				this.$element.removeClass('widg_header___shrinked');
+			if (this.$element.hasClass('is_shrinked') && window.estatico.mq.query({from: 'medium'})) {
+				this.$element.addClass('is_expanded');
+				this.$element.removeClass('is_shrinked');
 
 				this.addDynamicScrollMagic();
 			}
@@ -75,7 +75,7 @@
 
 		$(window).on('scroll.' + this.uuid, function() {
 			if ($(window).scrollTop() === 0 && window.estatico.mq.query({from: 'medium'})) {
-				if (this.$element.hasClass('widg_header___shrinked')) {
+				if (this.$element.hasClass('is_shrinked')) {
 					this.toggleShrinked();
 					this.addDynamicScrollMagic();
 				}
@@ -130,10 +130,10 @@
 	 * shrink or not to shrink. toggles the shrink class for widg_header
 	 */
 	Module.prototype.toggleShrinked = function() {
-		this.$element.toggleClass('widg_header___shrinked');
+		this.$element.toggleClass('is_shrinked');
 
-		if (this.$element.hasClass('widg_header___shrinked')) {
-			this.$element.removeClass('widg_header___expanded');
+		if (this.$element.hasClass('is_shrinked')) {
+			this.$element.removeClass('is_expanded');
 		}
 
 		if (this.options.scrollMagicScene) {

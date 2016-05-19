@@ -34,7 +34,8 @@
 
 	@include basicUnitHeight(line-height);
 
-	&:hover {
+	&:hover,
+	&:focus {
 	  background-color: $colorLightGray;
 	}
 

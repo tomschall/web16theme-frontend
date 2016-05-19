@@ -261,7 +261,8 @@ $sg_defaultTransition: $sg_defaultTransitionProperty $sg_defaultTransitionDurati
 		text-decoration: none;
 		line-height: 1.3;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			color: $sg_colorBlack;
 			text-decoration: none;
 		}
@@ -368,7 +369,8 @@ $sg_defaultTransition: $sg_defaultTransitionProperty $sg_defaultTransitionDurati
 	text-align: center;
 	box-sizing: border-box;
 
-	&:hover {
+	&:hover,
+	&:focus {
 
 		.sg_color_preview {
 			transform: scale(1.25);
