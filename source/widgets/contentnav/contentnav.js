@@ -4,7 +4,7 @@
  * @author Unic AG
  * @copyright Unic AG
  *
- * //@requires ../../../node_modules/some/dependency.js
+ * //@requires ../../../node_Widgets/some/dependency.js
  */
 
 ;(function($, undefined) {
@@ -29,12 +29,12 @@
 		};
 
 	/**
-	 * Create an instance of the module
+	 * Create an instance of the Widget
 	 * @constructor
-	 * @param {object} element - The DOM element to bind the module
+	 * @param {object} element - The DOM element to bind the Widget
 	 * @param {object} options - Options overwriting the defaults
 	 */
-	function Module(element, options) {
+	function Widget(element, options) {
 		this._helper = estatico.helpers.SuperClass;
 
 		this._helper({
@@ -47,14 +47,14 @@
 		});
 	}
 
-	Module.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Module.prototype);
+	Widget.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Widget.prototype);
 
 	/**
-	 * Initialize module, bind events.
+	 * Initialize Widget, bind events.
 	 * @method
 	 * @public
 	 */
-	Module.prototype.init = function() {
+	Widget.prototype.init = function() {
 		this.$element.scrollToFixed({
 			zIndex: 100
 		});
@@ -69,7 +69,7 @@
 	/**
 	 * Adds the event listeners
 	 */
-	Module.prototype.addEventListener = function() {
+	Widget.prototype.addEventListener = function() {
 		$(this.options.domSelectors.item).find('a').click(function(e) {
 			e.preventDefault();
 
@@ -85,7 +85,7 @@
 	/**
 	 * Inits the data for the contentnav (gets the items and the divs belonging to them)
 	 */
-	Module.prototype.initData = function() {
+	Widget.prototype.initData = function() {
 		var itemArray = [];
 
 		$(this.options.domSelectors.item).each(function() {
@@ -104,7 +104,7 @@
 	/**
 	 * Inits the scroll Magic scenes for all elements
 	 */
-	Module.prototype.initScrollMagic = function() {
+	Widget.prototype.initScrollMagic = function() {
 		var itemScene = null,
 				itemSceneFromBottom = null,
 				resetScene = null,
@@ -159,7 +159,7 @@
 	/**
 	 * sets an active content nav
 	 */
-	Module.prototype.setActive = function($itemToSetActive) {
+	Widget.prototype.setActive = function($itemToSetActive) {
 		$(this.options.domSelectors.item).removeClass(this.options.stateClasses.isActive);
 
 		if (typeof $itemToSetActive !== typeof undefined) {
@@ -172,7 +172,7 @@
 	 * @method
 	 * @public
 	 */
-	Module.prototype.destroy = function() {
+	Widget.prototype.destroy = function() {
 		// Unbind events, remove data
 		estatico.helpers.SuperClass.prototype.destroy.apply(this);
 
@@ -181,7 +181,7 @@
 	};
 
 	// Make the plugin available through jQuery (and the global project namespace)
-	estatico.helpers.SuperClass.register(Module, name, {
+	estatico.helpers.SuperClass.register(Widget, name, {
 		initEvents: ['ready', 'ajaxload'],
 		events: events
 	});

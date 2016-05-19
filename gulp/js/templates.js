@@ -11,12 +11,12 @@ var taskName = 'js:templates',
 	taskConfig = {
 		src: [
 			'./source/widgets/**/_*.js.hbs',
-			'./source/demo/modules/**/_*.js.hbs'
+			'./source/demo/widgets/**/_*.js.hbs'
 		],
 		dest: './source/assets/.tmp/',
 		watch: [
 			'source/widgets/**/_*.js.hbs',
-			'source/demo/modules/**/_*.js.hbs'
+			'source/demo/widgets/**/_*.js.hbs'
 		]
 	};
 

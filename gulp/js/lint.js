@@ -18,7 +18,7 @@ var taskName = 'js:lint',
 			'./source/assets/js/**/*.js',
 			'./source/widgets/**/*.js',
 			'./source/pages/**/*.js',
-			'./source/demo/modules/**/*.js',
+			'./source/demo/widgets/**/*.js',
 			'./source/demo/pages/**/*.js'
 		]
 	};

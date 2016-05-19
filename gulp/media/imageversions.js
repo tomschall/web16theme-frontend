@@ -2,7 +2,7 @@
 
 /**
  * @function `gulp media:imageversions`
- * @desc Creates versions of images, based on configuration, located in imageversions.js file in the same folder as original image. See /source/demo/modules/imageversions module for more details and further documentation.
+ * @desc Creates versions of images, based on configuration, located in imageversions.js file in the same folder as original image. See /source/demo/widgets/imageversions widget for more details and further documentation.
  * Depends on GraphicsMagick being installed.
  */
 
@@ -14,12 +14,12 @@ var taskName = 'media:imageversions',
 		src: [
 			'./source/assets/media/',
 			'./source/widgets/**/media/',
-			'./source/demo/modules/**/media/'
+			'./source/demo/widgets/**/media/'
 		],
 		watch: [
 			'source/assets/media/',
 			'source/widgets/**/media/',
-			'source/demo/modules/**/media/'
+			'source/demo/widgets/**/media/'
 		],
 		fileExtensionPattern: '*.{jpg, png}',
 		configFileName: 'imageversions.config.js',

@@ -22,11 +22,11 @@ var taskName = 'js',
 				'source/assets/js/**/*.js',
 				'source/assets/.tmp/**/*.js',
 				'source/widgets/**/*.js',
-				'source/demo/modules/**/*.js',
+				'source/demo/widgets/**/*.js',
 				'!source/widgets/**/*.data.js',
-				'!source/demo/modules/**/*.data.js',
+				'!source/demo/widgets/**/*.data.js',
 				'!source/widgets/**/*.mock.js',
-				'!source/demo/modules/**/*.mock.js'
+				'!source/demo/widgets/**/*.mock.js'
 			]
 		},
 		task = function(config, cb) {

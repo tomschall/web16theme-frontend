@@ -1,5 +1,5 @@
 /*!
- * Slideshow module
+ * Slideshow Widget
  */
 
 ;(function($, undefined) {
@@ -32,12 +32,12 @@
 		log = estatico.helpers.log(name);
 
 	/**
-	 * Create an instance of the module
-	 * @param {object} element - DOM element to init the module on
+	 * Create an instance of the Widget
+	 * @param {object} element - DOM element to init the Widget on
 	 * @param {object} options - Options overwriting the defaults
 	 * @constructor
 	 */
-	function Module(element, options) {
+	function Widget(element, options) {
 		this._helper = estatico.helpers.SuperClass;
 
 		this._helper({
@@ -50,14 +50,14 @@
 		});
 	}
 
-	Module.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Module.prototype);
+	Widget.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Widget.prototype);
 
 	/**
-	 * Initialize module, bind events
+	 * Initialize Widget, bind events
 	 * @method
 	 * @public
 	 */
-	Module.prototype.init = function() {
+	Widget.prototype.init = function() {
 		var navTemplate = Handlebars.partials['widgets/slideshow/_slideshow_nav'],
 			request;
 
@@ -125,7 +125,7 @@
 	 * @public
 	 * @param {Number} index - The index of the slide to show as integer.
 	 */
-	Module.prototype.show = function(index) {
+	Widget.prototype.show = function(index) {
 		if (index === this.currentItem) {
 			return;
 		}
@@ -149,7 +149,7 @@
 	 * @method
 	 * @public
 	 */
-	Module.prototype.prev = function() {
+	Widget.prototype.prev = function() {
 		this.show(this.currentItem - 1);
 	};
 
@@ -158,7 +158,7 @@
 	 * @method
 	 * @public
 	 */
-	Module.prototype.next = function() {
+	Widget.prototype.next = function() {
 		this.show(this.currentItem + 1);
 	};
 
@@ -167,7 +167,7 @@
 	 * @method
 	 * @public
 	 */
-	Module.prototype.add = function(data) {
+	Widget.prototype.add = function(data) {
 		var slide = this.slideTemplate(data),
 			$slide = $(slide);
 
@@ -181,7 +181,7 @@
 	 * @method
 	 * @public
 	 */
-	Module.prototype.resize = function() {
+	Widget.prototype.resize = function() {
 		if (estatico.mq.query({ from: 'small' })) {
 			log('Viewport: Above small breakpoint');
 		} else {
@@ -194,7 +194,7 @@
 	 * @method
 	 * @public
 	 */
-	Module.prototype.destroy = function() {
+	Widget.prototype.destroy = function() {
 		// Unbind events, remove data
 		estatico.helpers.SuperClass.prototype.destroy.apply(this);
 
@@ -206,7 +206,7 @@
 	};
 
 	// Make the plugin available through jQuery (and the global project namespace)
-	estatico.helpers.SuperClass.register(Module, name, {
+	estatico.helpers.SuperClass.register(Widget, name, {
 		initEvents: ['ready', 'ajaxload'],
 		events: events
 	});

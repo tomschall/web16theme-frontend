@@ -2,10 +2,10 @@
 
 /**
  * @function `gulp scaffold:copy`
- * @desc Copy module or page
+ * @desc Copy widget or page
  *
- * * Prompts for type and name of module to be copied as well as the new name.
- * * Non-interactive mode: `gulp scaffold:copy --interactive=false --type={Module|Page|Demo Module|Demo Page} --newType={Module|Page|Demo Module|Demo Page} --name=helloworld --newName=helloworld2`
+ * * Prompts for type and name of widget to be copied as well as the new name.
+ * * Non-interactive mode: `gulp scaffold:copy --interactive=false --type={widget|Page|Demo widget|Demo Page} --newType={widget|Page|Demo widget|Demo Page} --name=helloworld --newName=helloworld2`
  */
 
 var gulp = require('gulp'),

@@ -22,9 +22,9 @@ gulp.task(taskName, function(cb) {
 		file = require('gulp-file'),
 		util = require('util');
 
-	var modules = ['debounce', 'uniqueId'],
+	var widgets = ['debounce', 'uniqueId'],
 		args = [
-			'include=' + modules.join(','),
+			'include=' + widgets.join(','),
 			'-d'
 		];
 

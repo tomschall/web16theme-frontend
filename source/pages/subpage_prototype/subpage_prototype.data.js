@@ -9,7 +9,7 @@ var data = _.merge(defaultData, {
 		title: 'Proof of Concept - CAS E-Commerce und Online Marketing'
 	},
 	title: 'University of Applied Sciences and Arts Northwestern Switzerland FHNW',
-	modules: {
+	widgets: {
 		header: requireNew('../../widgets/header/header.data.js'),
 		navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 		footer: requireNew('../../widgets/footer/footer.data.js'),

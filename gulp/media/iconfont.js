@@ -12,7 +12,7 @@ var taskName = 'media:iconfont',
 		src: [
 			'./source/assets/media/icons/*.svg',
 			'./source/widgets/**/icons/*.svg',
-			'./source/demo/modules/**/icons/*.svg'
+			'./source/demo/widgets/**/icons/*.svg'
 		],
 		dest: './build/assets/fonts/icons/',
 		srcStyles: './source/assets/css/templates/_iconfont.scss',
@@ -21,7 +21,7 @@ var taskName = 'media:iconfont',
 		watch: [
 			'source/assets/media/icons/*.svg',
 			'source/widgets/**/icons/*.svg',
-			'source/demo/modules/**/icons/*.svg'
+			'source/demo/widgets/**/icons/*.svg'
 		]
 	};
 

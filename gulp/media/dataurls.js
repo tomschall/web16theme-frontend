@@ -12,7 +12,7 @@ var taskName = 'media:dataurls',
 		src: [
 			'./source/assets/media/icons/*.svg',
 			'./source/widgets/**/icons/*.svg',
-			'./source/demo/modules/**/icons/*.svg'
+			'./source/demo/widgets/**/icons/*.svg'
 		],
 		dest: './build/assets/media/icons/',
 		srcStyles: './source/assets/css/templates/_dataurls.scss',
@@ -22,7 +22,7 @@ var taskName = 'media:dataurls',
 		watch: [
 			'source/assets/media/icons/*.svg',
 			'source/widgets/**/icons/*.svg',
-			'source/demo/modules/**/icons/*.svg'
+			'source/demo/widgets/**/icons/*.svg'
 		]
 	};
 

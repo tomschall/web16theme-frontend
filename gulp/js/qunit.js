@@ -12,7 +12,7 @@ var taskName = 'js:qunit',
 		srcTests: [
 			'./node_modules/qunitjs/qunit/*',
 			'./source/widgets/**/*.test.js',
-			'./source/demo/modules/**/*.test.js'
+			'./source/demo/widgets/**/*.test.js'
 		],
 		srcBase: './source/',
 		destTests: './build/test/',
@@ -20,7 +20,7 @@ var taskName = 'js:qunit',
 			'./build/pages/**/*.html',
 			'./build/demo/pages/**/*.html',
 			'./build/widgets/**/*.html',
-			'./build/demo/modules/**/*.html'
+			'./build/demo/widgets/**/*.html'
 		],
 		srcTemplatesBase: './build/',
 		srcQUnit: './node_modules/qunitjs/qunit/qunit.js',
@@ -30,7 +30,7 @@ var taskName = 'js:qunit',
 		],
 		watch: [
 			'source/widgets/**/*.test.js',
-			'source/demo/modules/**/*.test.js'
+			'source/demo/widgets/**/*.test.js'
 		]
 	},
 	matchOperatorsRe = /[|\\{}()[\]^$+*?.]/g,

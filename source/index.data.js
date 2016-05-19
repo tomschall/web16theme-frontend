@@ -20,7 +20,7 @@ var _ = require('lodash'),
 var data = _.merge(defaultData, {
 		pages: dataHelper.getDataGlob('./source/pages/**/*.data.js', transform),
 		demoPages: dataHelper.getDataGlob('./source/demo/pages/**/*.data.js', transform),
-		modules: dataHelper.getDataGlob('./source/widgets/**/*.data.js', transform),
+		widgets: dataHelper.getDataGlob('./source/widgets/**/*.data.js', transform),
 		demoModules: dataHelper.getDataGlob('./source/demo/modules/**/*.data.js', transform),
 		styleguide: dataHelper.getDataGlob('./source/preview/styleguide/*.data.js', transform)
 	});
@@ -29,7 +29,7 @@ data.pages = _.sortBy(data.pages, function(item) {
 	return item.meta.title;
 });
 
-data.modules = _.sortBy(data.modules, function(item) {
+data.widgets = _.sortBy(data.widgets, function(item) {
 	return item.meta.title;
 });
 

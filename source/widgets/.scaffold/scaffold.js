@@ -27,12 +27,12 @@
 		};
 
 	/**
-	 * Create an instance of the module
+	 * Create an instance of the widget
 	 * @constructor
-	 * @param {object} element - The DOM element to bind the module
+	 * @param {object} element - The DOM element to bind the widget
 	 * @param {object} options - Options overwriting the defaults
 	 */
-	function Module(element, options) {
+	function Widget(element, options) {
 		this._helper = estatico.helpers.SuperClass;
 
 		this._helper({
@@ -45,15 +45,15 @@
 		});
 	}
 
-	Module.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Module.prototype);
+	Widget.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Widget.prototype);
 
 	/**
-	 * Initialize module, bind events.
+	 * Initialize Widget, bind events.
 	 * @method
 	 * @public
 	 */
-	Module.prototype.init = function() {
-		// console.log('Module "{{name}}" initialized');
+	Widget.prototype.init = function() {
+		// console.log('Widget "{{name}}" initialized');
 	};
 
 	/**
@@ -61,7 +61,7 @@
 	 * @method
 	 * @public
 	 */
-	Module.prototype.destroy = function() {
+	Widget.prototype.destroy = function() {
 		// Unbind events, remove data
 		estatico.helpers.SuperClass.prototype.destroy.apply(this);
 
@@ -70,7 +70,7 @@
 	};
 
 	// Make the plugin available through jQuery (and the global project namespace)
-	estatico.helpers.SuperClass.register(Module, name, {
+	estatico.helpers.SuperClass.register(Widget, name, {
 		initEvents: ['ready', 'ajaxload'],
 		events: events
 	});

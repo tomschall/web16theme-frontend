@@ -18,11 +18,11 @@ var taskName = 'template:plone',
 		dest: './build/templates/'
 	},
 	transform = function(data, filePath) {
-		var moduleName = changeCase.pascalCase(data.meta.title);
+		var widgetName = changeCase.pascalCase(data.meta.title);
 
 		data = _.merge(data, {
-			modulname: moduleName,
-			lcmodulname: changeCase.lowerCase(moduleName),
+			modulname: widgetName,
+			lcmodulname: changeCase.lowerCase(widgetName),
 			moduldesc: data.meta.description,
 			moduletemplate: path.basename(filePath, '.data.js'),
 			mockdata: JSON.stringify(_.pickBy(data, function(value, key) {
@@ -44,7 +44,7 @@ gulp.task(taskName, function(cb) {
 		.pipe(tap(function(file) {
 			var dataHelper = require('../../helpers/data.js'),
 				data = {
-					modules: dataHelper.getDataGlob('./source/widgets/**/*.data.js', transform)
+					widgets: dataHelper.getDataGlob('./source/widgets/**/*.data.js', transform)
 				};
 
 			// Save data by file name

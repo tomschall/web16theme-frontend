@@ -1,5 +1,5 @@
 /**
- * Init registered modules on specified events
+ * Init widgets modules on specified events
  *
  * @license APLv2
  */

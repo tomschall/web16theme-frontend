@@ -4,7 +4,7 @@
  * @author Unic AG
  * @copyright Unic AG
  *
- * //@requires ../../../node_modules/some/dependency.js
+ * //@requires ../../../node_Widgets/some/dependency.js
  */
 
 ;(function($, undefined) {
@@ -27,12 +27,12 @@
 		};
 
 	/**
-	 * Create an instance of the module
+	 * Create an instance of the Widget
 	 * @constructor
-	 * @param {object} element - The DOM element to bind the module
+	 * @param {object} element - The DOM element to bind the Widget
 	 * @param {object} options - Options overwriting the defaults
 	 */
-	function Module(element, options) {
+	function Widget(element, options) {
 		this._helper = estatico.helpers.SuperClass;
 
 		this._helper({
@@ -45,15 +45,15 @@
 		});
 	}
 
-	Module.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Module.prototype);
+	Widget.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Widget.prototype);
 
 	/**
-	 * Initialize module, bind events.
+	 * Initialize Widget, bind events.
 	 * @method
 	 * @public
 	 */
-	Module.prototype.init = function() {
-		// console.log('Module "share" initialized');
+	Widget.prototype.init = function() {
+		// console.log('Widget "share" initialized');
 	};
 
 	/**
@@ -61,7 +61,7 @@
 	 * @method
 	 * @public
 	 */
-	Module.prototype.destroy = function() {
+	Widget.prototype.destroy = function() {
 		// Unbind events, remove data
 		estatico.helpers.SuperClass.prototype.destroy.apply(this);
 
@@ -70,7 +70,7 @@
 	};
 
 	// Make the plugin available through jQuery (and the global project namespace)
-	estatico.helpers.SuperClass.register(Module, name, {
+	estatico.helpers.SuperClass.register(Widget, name, {
 		initEvents: ['ready', 'ajaxload'],
 		events: events
 	});

@@ -26,7 +26,7 @@ var taskName = 'css',
 			'source/assets/css/**/*.scss',
 			'source/assets/.tmp/**/*.scss',
 			'source/widgets/**/*.scss',
-			'source/demo/modules/**/*.scss',
+			'source/demo/widgets/**/*.scss',
 			'source/preview/assets/css/**/*.scss'
 		],
 		plugins: {

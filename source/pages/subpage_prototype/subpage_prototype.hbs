@@ -1,6 +1,6 @@
 {{#extend "layouts/layout" wrapperClass=""}}
   {{#content "hero"}}
-    {{> "widgets/hero/hero" modules.hero imageName="cas_example.png"}}
+    {{> "widgets/hero/hero" widgets.hero imageName="cas_example.png"}}
   {{/content}}
   {{#content "content"}}
     <div class="grid__spanner">
@@ -15,7 +15,7 @@
         anhand eines Projektes 1:1 umgesetzt.
       </p>
     </div>
-    {{> "widgets/contentnav/contentnav" modules.contentNav}}
+    {{> "widgets/contentnav/contentnav" widgets.contentNav}}
     <div class="content__sub">
       <div class="content__sidebar">SIDEBAR</div>
       <div class="content__text">

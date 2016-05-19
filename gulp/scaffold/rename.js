@@ -2,10 +2,10 @@
 
 /**
  * @function `gulp scaffold:rename`
- * @desc Rename module or page
+ * @desc Rename widget or page
  *
- * * Prompts for type and name of module to be copied as well as the new name.
- * * Non-interactive mode: `gulp scaffold:rename --interactive=false --type={Module|Page|Demo Module|Demo Page} --name=helloworld --newName=helloworld2`
+ * * Prompts for type and name of widget to be copied as well as the new name.
+ * * Non-interactive mode: `gulp scaffold:rename --interactive=false --type={widget|Page|Demo widget|Demo Page} --name=helloworld --newName=helloworld2`
  */
 
 var gulp = require('gulp'),

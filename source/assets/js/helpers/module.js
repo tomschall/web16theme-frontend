@@ -1,5 +1,5 @@
 /**
- * Helper class to register modules as jQuery plugins and do some other magic
+ * Helper class to register widgets as jQuery plugins and do some other magic
  *
  * @license APLv2
  */
@@ -13,9 +13,9 @@
 	/**
 	 * Helper class
 	 * @param {object} config
-	 * @param {string} config.name - Module name (used as namespace for all kinds of things)
+	 * @param {string} config.name - Widget name (used as namespace for all kinds of things)
 	 * @param {object} config.defaults - Default options
-	 * @param {object} config.element - DOM element to init the module on
+	 * @param {object} config.element - DOM element to init the widget on
 	 * @param {object} config.options - Custom options
 	 * @param {object} config.data - Custom data
 	 */
@@ -44,7 +44,7 @@
 		this.uuid = _.uniqueId(this.name);
 
 		// Save instance
-		estatico.modules[this.name].instances[this.uuid] = this;
+		estatico.widgets[this.name].instances[this.uuid] = this;
 
 		// Have fun
 		this.init();
@@ -53,7 +53,7 @@
 	/**
 	 * Init method
 	 *
-	 * Should likely be overwritten in module (otherwise nothing will happen on init)
+	 * Should likely be overwritten in widget (otherwise nothing will happen on init)
 	 */
 	SuperClass.prototype.init = function() {
 
@@ -62,7 +62,7 @@
 	/**
 	 * Destroy method
 	 *
-	 * Should be overwritten in module if there are additional DOM elements, DOM data, event listeners to remove
+	 * Should be overwritten in widget if there are additional DOM elements, DOM data, event listeners to remove
 	 *
 	 * Use cases:
 	 * - Unbind (namespaced) event listeners
@@ -78,19 +78,19 @@
 		// Delete references to instance
 		this.$element.removeData(this.name + '-instance');
 
-		delete estatico.modules[this.name].instances[this.uuid];
+		delete estatico.widgets[this.name].instances[this.uuid];
 	};
 
 	/**
-	 * Register the module as jQuery plugin, auto-init at specified events
+	 * Register the widget as jQuery plugin, auto-init at specified events
 	 *
 	 * Allows to call all public methods (not starting with underscore).
-	 * E.g. $(element).moduleName('methodName', arg1, arg2)
+	 * E.g. $(element).widgetName('methodName', arg1, arg2)
 	 *
 	 * @param {function} Class - Constructor
-	 * @param {string} name - Module name (used as namespace for all kind of things)
+	 * @param {string} name - Widget name (used as namespace for all kind of things)
 	 * @param {object} config
-	 * @param {array} config.initEvents - List of events to initialize the module on
+	 * @param {array} config.initEvents - List of events to initialize the widget on
 	 */
 	SuperClass.register = function(Class, name, config) {
 		// Register jQuery plugin
@@ -124,7 +124,7 @@
 
 					// No module instance found, throw error
 					if (!(instance instanceof Class)) {
-						throw 'Instance of "' + name + '" module not found';
+						throw 'Instance of "' + name + '" widget not found';
 					}
 
 					// Method not found, throw error
@@ -168,7 +168,7 @@
 		}
 
 		// Save to global namespace
-		estatico.modules[name] = {
+		estatico.widgets[name] = {
 			instances: {},
 			events: config.events,
 			Class: Class
@@ -177,7 +177,7 @@
 
 	// Save to global namespace
 	$.extend(true, estatico, {
-		modules: {},
+		widgets: {},
 		helpers: {
 			SuperClass: SuperClass
 		}

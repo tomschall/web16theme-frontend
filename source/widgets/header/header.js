@@ -4,7 +4,7 @@
  * @author Unic AG
  * @copyright Unic AG
  *
- * //@requires ../../../node_modules/some/dependency.js
+ * //@requires ../../../node_Widgets/some/dependency.js
  */
 
 ;(function($, undefined) {
@@ -28,12 +28,12 @@
 			};
 
 	/**
-	 * Create an instance of the module
+	 * Create an instance of the Widget
 	 * @constructor
-	 * @param {object} element - The DOM element to bind the module
+	 * @param {object} element - The DOM element to bind the Widget
 	 * @param {object} options - Options overwriting the defaults
 	 */
-	function Module(element, options) {
+	function Widget(element, options) {
 		this._helper = estatico.helpers.SuperClass;
 
 		this._helper({
@@ -46,14 +46,14 @@
 		});
 	}
 
-	Module.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Module.prototype);
+	Widget.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Widget.prototype);
 
 	/**
-	 * Initialize module, bind events.
+	 * Initialize Widget, bind events.
 	 * @method
 	 * @public
 	 */
-	Module.prototype.init = function() {
+	Widget.prototype.init = function() {
 
 		this.addEventListener();
 
@@ -62,7 +62,7 @@
 		}
 	};
 
-	Module.prototype.addEventListener = function() {
+	Widget.prototype.addEventListener = function() {
 		this.$element.on('click' + '.' + this.uuid, function() {
 
 			if (this.$element.hasClass('is_shrinked') && window.estatico.mq.query({from: 'medium'})) {
@@ -83,14 +83,14 @@
 		}.bind(this));
 	};
 
-	Module.prototype.scroll = function() {
+	Widget.prototype.scroll = function() {
 
 	};
 
 	/**
 	 * Adds the scroll magic functionality
 	 */
-	Module.prototype.addInitialScrollMagic = function() {
+	Widget.prototype.addInitialScrollMagic = function() {
 		var headerScene = new ScrollMagic.Scene({
 					triggerElement: '#main',
 					offset: 5,
@@ -109,7 +109,7 @@
 	/**
 	 * Adds a dynamic scroll magic based on position of header
 	 */
-	Module.prototype.addDynamicScrollMagic = function() {
+	Widget.prototype.addDynamicScrollMagic = function() {
 		var dynamicHeaderScene = new ScrollMagic.Scene({
 					triggerElement: '#main',
 					offset: $(window).scrollTop() + 200,
@@ -129,7 +129,7 @@
 	/**
 	 * shrink or not to shrink. toggles the shrink class for widg_header
 	 */
-	Module.prototype.toggleShrinked = function() {
+	Widget.prototype.toggleShrinked = function() {
 		this.$element.toggleClass('is_shrinked');
 
 		if (this.$element.hasClass('is_shrinked')) {
@@ -147,7 +147,7 @@
 	 * @method
 	 * @public
 	 */
-	Module.prototype.destroy = function() {
+	Widget.prototype.destroy = function() {
 		// Unbind events, remove data
 		estatico.helpers.SuperClass.prototype.destroy.apply(this);
 
@@ -156,7 +156,7 @@
 	};
 
 	// Make the plugin available through jQuery (and the global project namespace)
-	estatico.helpers.SuperClass.register(Module, name, {
+	estatico.helpers.SuperClass.register(Widget, name, {
 		initEvents: ['ready', 'ajaxload'],
 		events: events
 	});

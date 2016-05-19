@@ -2,10 +2,10 @@
 
 /**
  * @function `gulp scaffold:delete`
- * @desc Remove module or page and delete references in `main.scss` and `main.js`.
+ * @desc Remove widget or page and delete references in `main.scss` and `main.js`.
  *
  * * Prompts for type and name of element to be deleted.
- * * Non-interactive mode: `gulp scaffold:delete --interactive=false --type={Module|Page|Demo Module|Demo Page} --name=bla`
+ * * Non-interactive mode: `gulp scaffold:delete --interactive=false --type={widget|Page|Demo widget|Demo Page} --name=bla`
  */
 
 var gulp = require('gulp'),
@@ -15,7 +15,7 @@ var taskName = 'scaffold:delete',
 	taskConfig = {
 		// Extends the default task's config
 		types: {
-			demoModule: {
+			demowidget: {
 				allowRecursiveDelete: true
 			},
 			demoPage: {
@@ -91,7 +91,7 @@ var taskName = 'scaffold:delete',
 				deregisterStyles = gulp.src(config.registerStyles.src)
 					.pipe(tap(function(file) {
 						srcs.forEach(function(src) {
-							file.contents = helpers.scaffold.removeModule(file, src, config.registerStyles);
+							file.contents = helpers.scaffold.removeWidget(file, src, config.registerStyles);
 						});
 					}))
 					.pipe(gulp.dest(path.dirname(config.registerStyles.src)))
@@ -104,7 +104,7 @@ var taskName = 'scaffold:delete',
 				deregisterScript = gulp.src(config.registerScript.src)
 					.pipe(tap(function(file) {
 						srcs.forEach(function(src) {
-							file.contents = helpers.scaffold.removeModule(file, src, config.registerScript);
+							file.contents = helpers.scaffold.removeWidget(file, src, config.registerScript);
 						});
 					}))
 					.pipe(gulp.dest(path.dirname(config.registerScript.src)))

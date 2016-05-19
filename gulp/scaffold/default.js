@@ -2,10 +2,10 @@
 
 /**
  * @function `gulp scaffold`
- * @desc Scaffold new module or page, add references to module to `main.scss` and `main.js` unless specified otherwise.
+ * @desc Scaffold new widget or page, add references to widget to `main.scss` and `main.js` unless specified otherwise.
  *
  * * Prompts for type and details of new element.
- * * Non-interactive mode: `gulp scaffold --interactive=false --type={Module|Page|Demo Module|Demo Page} --name="Hello World" --createScript={true|false} --createStyles={true|false}`
+ * * Non-interactive mode: `gulp scaffold --interactive=false --type={widget|Page|Demo widget|Demo Page} --name="Hello World" --createScript={true|false} --createStyles={true|false}`
  */
 
 var gulp = require('gulp');
@@ -13,8 +13,8 @@ var gulp = require('gulp');
 var taskName = 'scaffold',
 	taskConfig = {
 		types: {
-			module: {
-				name: 'Module',
+			widget: {
+				name: 'widget',
 				src: './source/widgets/.scaffold',
 				dest: './source/widgets/',
 				hasAssets: true
@@ -25,10 +25,10 @@ var taskName = 'scaffold',
 				dest: './source/pages/',
 				allowUnderscores: true
 			},
-			demoModule: {
-				name: 'Demo Module',
+			demowidget: {
+				name: 'Demo widget',
 				src: './source/widgets/.scaffold',
-				dest: './source/demo/modules/',
+				dest: './source/demo/widgets/',
 				hasAssets: true
 			},
 			demoPage: {
@@ -40,13 +40,13 @@ var taskName = 'scaffold',
 		},
 		registerStyles: {
 			src: './source/assets/css/main.scss',
-			insertionPoint: '//*autoinsertmodule*',
+			insertionPoint: '//*autoinsertwidget*',
 			insertionPrefix: '@import "',
 			insertionSuffix: '";\n'
 		},
 		registerScript: {
 			src: './source/assets/js/main.js',
-			insertionPoint: ' * //*autoinsertmodule*',
+			insertionPoint: ' * //*autoinsertwidget*',
 			insertionPrefix: ' * @requires ',
 			insertionSuffix: '.js\n'
 		},
@@ -194,7 +194,7 @@ var taskName = 'scaffold',
 				if (config.scaffold.createStyles && stylesFound) {
 					registerStyles = gulp.src(config.registerStyles.src)
 						.pipe(tap(function(file) {
-							file.contents = helpers.scaffold.addModule(file, destAssets, config.registerStyles);
+							file.contents = helpers.scaffold.addWidget(file, destAssets, config.registerStyles);
 						}))
 						.pipe(gulp.dest(path.dirname(config.registerStyles.src)))
 						.pipe(livereload());
@@ -206,7 +206,7 @@ var taskName = 'scaffold',
 				if (config.scaffold.createScript && scriptFound) {
 					registerScript = gulp.src(config.registerScript.src)
 						.pipe(tap(function(file) {
-							file.contents = helpers.scaffold.addModule(file, destAssets, config.registerScript);
+							file.contents = helpers.scaffold.addWidget(file, destAssets, config.registerScript);
 						}))
 						.pipe(gulp.dest(path.dirname(config.registerScript.src)))
 						.pipe(livereload());

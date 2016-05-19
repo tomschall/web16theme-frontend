@@ -12,7 +12,7 @@ var taskName = 'media:pngsprite',
 		src: [
 			'./source/assets/media/pngsprite/*.png',
 			'./source/widgets/**/pngsprite/*.png',
-			'./source/demo/modules/**/pngsprite/*.png'
+			'./source/demo/widgets/**/pngsprite/*.png'
 		],
 		dest: './build/assets/media/',
 		srcStyles: './source/assets/css/templates/_pngsprite.scss',
@@ -21,7 +21,7 @@ var taskName = 'media:pngsprite',
 		watch: [
 			'source/assets/media/pngsprite/*.png',
 			'source/widgets/**/pngsprite/*.png',
-			'source/demo/modules/**/pngsprite/*.png'
+			'source/demo/widgets/**/pngsprite/*.png'
 		]
 	};
 

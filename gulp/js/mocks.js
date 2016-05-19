@@ -11,12 +11,12 @@ var taskName = 'js:mocks',
 	taskConfig = {
 		src: [
 			'./source/widgets/**/*.mock.js',
-			'./source/demo/modules/**/*.mock.js'
+			'./source/demo/widgets/**/*.mock.js'
 		],
 		dest: './build/mocks/',
 		watch: [
 			'source/widgets/**/*.mock.js',
-			'source/demo/modules/**/*.mock.js'
+			'source/demo/widgets/**/*.mock.js'
 		]
 	};
 

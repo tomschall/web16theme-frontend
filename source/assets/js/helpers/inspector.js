@@ -1,7 +1,7 @@
 /**
- * Module inspector, outlines Estatico modules
+ * Widget inspector, outlines Estatico Widgets
  *
- * Start inspection with ctrl+m (same to switch off module inspection)
+ * Start inspection with ctrl+m (same to switch off widget inspection)
  */
 
 ;(function(undefined) {
@@ -25,9 +25,9 @@
 
 				// Run the current mode
 				if (this.mode === 1) {
-					this.showModules();
+					this.showWidgets();
 				} else {
-					this.hideModules();
+					this.hideWidgets();
 				}
 			} else {
 				this.logger('Element.classList not supported in this browser');
@@ -35,15 +35,15 @@
 		},
 
 		// Add class to all modules
-		showModules: function() {
+		showWidgets: function() {
 			[].forEach.call(document.querySelectorAll('[class]'), function(node) {
 				var log = '',
-					module = '',
+					widget = '',
 					variations = [];
 
 				node.classList.forEach(function(className) {
 					if (className.substring(0, 4) === 'mod_') {
-						module = className.substring(4).replace(/_/g, ' ');
+						widget = className.substring(4).replace(/_/g, ' ');
 					}
 
 					if (className.substring(0, 4) === 'var_') {
@@ -51,8 +51,8 @@
 					}
 				});
 
-				if (module !== '') {
-					log = module;
+				if (widget !== '') {
+					log = widget;
 				}
 
 				if (variations.length > 0) {
@@ -74,7 +74,7 @@
 		},
 
 		// Remove class from modules
-		hideModules: function() {
+		hideWidgets: function() {
 			[].forEach.call(document.querySelectorAll('[class]'), function(node) {
 				node.classList.remove(this.className);
 				node.classList.remove(this.classNameVariant);

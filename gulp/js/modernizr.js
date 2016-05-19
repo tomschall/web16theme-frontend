@@ -14,7 +14,7 @@ var taskName = 'js:modernizr',
 			'./source/widgets/**/*.scss',
 			'./source/assets/js/**/*.js',
 			'./source/widgets/**/*.js',
-			'./source/demo/modules/**/*.js'
+			'./source/demo/widgets/**/*.js'
 		],
 		file: 'modernizr.js',
 		dest: './source/assets/.tmp/'
