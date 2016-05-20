@@ -1,8 +1,80 @@
 .widg_teaser {
-	padding: 0.2em 1em;
+  @include span(4 of 12);
 
-	&.var_inverted {
-		background: black;
-		color: white;
-	}
+  position: relative;
+  display: table-cell;
+  vertical-align: top;
+
+  &.widg_teaser__startpage {
+	min-height: $basicPush * 18;
+	padding: $basicPush * 4 $basicPush * 3;
+	padding-bottom: 0;
+	background-color: $colorBg;
+
+	margin: 0 $gutterWidth;
+  }
+
+  a{
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+  }
+
+  div {
+	padding-bottom: $basicPush * 6;
+  }
+}
+
+.widg_teaser__title {
+  font-family: $fontSerifRoman;
+  font-size: 1.5rem;
+}
+
+.widg_teaser__category {
+  color: $colorTextGrey;
+  font-family: $fontSansSerifRoman;
+  text-transform: uppercase;
+
+  display: block;
+  line-height:1.8;
+  margin-bottom: 5px;
+}
+
+.widg_teaser__head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  display: inline-block;
+
+  transform: translate(-50%, -50%);
+
+  background-color: $colorBlack;
+  font-family: $fontSansSerifBoldCondensed;
+  color: $colorBg;
+
+  font-size: 1.083333rem;
+  line-height: 2.3;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  padding: 0 $basicPush * 2;
+}
+
+.widg_teaser__arrow {
+  @include resetButton();
+
+  height: 13px;
+  bottom: $basicPush * 4;
+  left: $basicPush * 3;
+  right: $basicPush * 3;
+
+  position: absolute;
+  display: inline-block;
+
+  width: 50%;
+
+  @include iconDataurl('arrow');
 }

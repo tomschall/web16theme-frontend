@@ -1,3 +1,18 @@
 <div class="widg_carousel" data-init="carousel">
-	Carousel
+	{{#each slides}}
+    <div class="widg_carousel__slide" data-carousel="slide" data-carousel-cat="{{ category }}"
+         data-carousel-title="{{ title }}" data-carousel-link="{{ link }}">
+      <img src="/widgets/carousel/media/{{ image }}" alt="{{ title }}"/>
+    </div>
+	{{/each}}
+
+
 </div>
+
+<div class="widg_carousel__text">
+  <div></div>
+</div>
+<div class="widg_carousel__teasers">
+	{{> "widgets/teaser/teaser" widgets.teaser}}
+</div>
+

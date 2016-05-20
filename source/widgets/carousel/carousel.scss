@@ -1,3 +1,68 @@
 .widg_carousel {
+  min-height: 100vh;
 
+  @include mq($to: $sizeBreakpointMedium) {
+	min-height: calc(100vh - 70px);
+  }
+
+  button {
+	position: absolute;
+  }
+}
+
+.widg_carousel__slide {
+  line-height: 0;
+  min-height: 100vh;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  @include mq($to: $sizeBreakpointMedium) {
+	min-height: calc(100vh - 70px);
+  }
+
+  img {
+	transform: translate(-50%, -50%);
+
+	min-height: 100vh;
+	position: absolute;
+
+	left: 50%;
+	top: 50%;
+  }
+}
+
+.widg_carousel__content {
+  position: absolute;
+
+  top: 100px;
+  left: 100px;
+  right: 100px;
+  bottom: 100px;
+
+  @include gridWrapper($gutterWidth);
+}
+
+.widg_carousel__text {
+  width: 50%;
+  position: absolute;
+
+  @include basicUnitHeight(top);
+  @include basicUnitHeight(right);
+
+  padding: $basicPush * 4 $basicPush * 5;
+  background-color: $colorBg;
+  min-height: $basicPush * 35;
+
+}
+
+.widg_carousel__teasers {
+  position: absolute;
+
+  @include basicUnitHeight(bottom);
+  @include basicUnitHeight(left);
+  @include basicUnitHeight(right);
+
+  align-items: stretch;
+  display: flex;
 }

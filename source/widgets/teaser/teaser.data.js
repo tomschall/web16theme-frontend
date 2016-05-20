@@ -7,27 +7,23 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Teaser with module variants',
+			title: 'Teaser',
 			code: dataHelper.getTemplateCode('teaser.hbs')
 		},
-		title: 'Teaser title',
-		text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-		variants: [
+		teasers: [
 			{
-				meta: {
-					title: 'No text',
-					desc: 'Used when there are no words.'
-				},
-				title: 'Teaser title'
+				title: 'Ringvorlesung 2016 «Diversity»',
+				category: 'Aktuell',
+				head: 'Lorem',
+				link: '#',
+				variant: 'widg_teaser__startpage'
 			},
 			{
-				meta: {
-					title: 'Inverted',
-					desc: 'Used at night. Set `variant` to `var_inverted`.'
-				},
-				title: 'Teaser title',
-				text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-				variant: 'var_inverted'
+				title: 'Aller Anfang ist schwer: So gelingt der Einstieg ins Studium',
+				category: 'Lorem Ipsum',
+				head: 'Story',
+				link: '#',
+				variant: 'widg_teaser__startpage'
 			}
 		]
 	});

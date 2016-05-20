@@ -24,6 +24,11 @@ h3 {
   color: $colorText;
 }
 
+.hero {
+  position: relative;
+
+}
+
 .page_wrapper {
   display: flex;
   min-height: 100vh;
@@ -39,6 +44,18 @@ h3 {
   display: flex;
 
   flex-direction: column;
+
+  .page_wrapper__startpage & {
+	display: block;
+
+	@include mq($from: $sizeBreakpointMedium) {
+	  width: calc(100% - 300px);
+	}
+
+	@include mq($from: $sizeBreakpointWide) {
+	  width: calc(100% - 400px);
+	}
+  }
 
 }
 

@@ -1,11 +1,12 @@
 $sizeFooterWidth: 1200px;
 
 .widg_footer {
-	@include clearfix;
-	color: $colorDarkGrey;
-	background-color: $colorLightGray;
+  @include clearfix;
+  color: $colorDarkGrey;
+  background-color: $colorLightGray;
+  min-height: 200px;
 
-	@include mq($from: medium) {
-		padding: pxToEm(20);
-	}
+  @include mq($from: medium) {
+	padding: pxToEm(20);
+  }
 }

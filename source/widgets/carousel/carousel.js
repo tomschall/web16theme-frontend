@@ -53,7 +53,7 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		// console.log('Widget "carousel" initialized');
+		this.$element.slick();
 	};
 
 	/**

@@ -186,6 +186,13 @@
 	@include contentWrapperForSmallDevices($gutterSize);
 }
 
+@mixin gridWrapper($gutterSize: 0) {
+  @include container();
+
+  margin-left: -1 * $gutterSize;
+  margin-right: -1 * $gutterSize;
+}
+
 @mixin basicUnitHeight($attr) {
 	#{$attr}: basicUnitHeight(normal);
 
@@ -239,4 +246,14 @@
   left: 50%;
 
   transform: translate(-50%,-50%);
+}
+
+@mixin resetButton() {
+  -webkit-appearance: none;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+
+  text-align: left;
 }

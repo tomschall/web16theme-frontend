@@ -1,7 +1,17 @@
-<div class="widg_teaser{{#if variant}} {{variant}}{{/if}}">
-	<h3 class="title">{{title}}</h3>
-
-	{{#if text}}
-		<p>{{text}}</p>
-	{{/if}}
-</div>
+{{#each teasers}}
+  <div class="widg_teaser{{#if variant}} {{variant}}{{/if}}">
+    <div>
+			<span class="widg_teaser__head">
+				{{head}}
+			</span>
+			<span class="widg_teaser__category">
+				{{category}}
+			</span>
+			<span class="widg_teaser__title">
+				{{title}}
+			</span>
+    </div>
+		<a href="{{link}}"></a>
+		<button class="widg_teaser__arrow"></button>
+  </div>
+{{/each}}

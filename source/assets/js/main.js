@@ -16,6 +16,7 @@
  * @requires ../../widgets/contentnav/contentnav.js
  * @requires ../../widgets/menubuttons/menubuttons.js
  * @requires ../../widgets/header/header.js
+ * @requires ../../widgets/carousel/carousel.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js
