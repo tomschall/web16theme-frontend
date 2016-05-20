@@ -130,7 +130,7 @@
   .page_wrapper__startpage & {
 	position: relative;
 
-	@include mq($from: $sizeBreakpointMedium) {
+	@include mq($from: $sizeBreakpointLarge) {
 	  min-width: 300px;
 	}
 

@@ -17,6 +17,11 @@
 		defaults = {
 			domSelectors: {
 				// item: '[data-' + name + '="item"]'
+				title: '[data-' + name + '="title"]',
+				category: '[data-' + name + '="category"]',
+				link: '[data-' + name + '="link"]',
+				button: '[data-' + name + '="button"]',
+				slider: '[data-' + name + '="slider"]'
 			},
 			stateClasses: {
 				// isActive: 'is_active'
@@ -53,7 +58,40 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		this.$element.slick();
+		this.addEventListener();
+
+		this.$element.find(this.options.domSelectors.slider).slick({
+			appendArrows: '.widg_carousel__text',
+			prevArrow: '<button data-carousel="button" class="widg_carousel__prev">Vorherige</button>',
+			nextArrow: '<button data-carousel="button" class="widg_carousel__next">Nächste</button>'
+		});
+	};
+
+	/**
+	 * Add the event listeners
+	 *
+	 */
+	Widget.prototype.addEventListener = function() {
+		var $currentSlide = null;
+
+		this.$element.find(this.options.domSelectors.slider).on('init', function(event, slick) {
+			$currentSlide = slick.$slides[slick.currentSlide];
+
+			this.setMetaInfo($($currentSlide));
+		}.bind(this));
+	};
+
+	/**
+	 * Sets the meta info (category, title, link)
+	 */
+	Widget.prototype.setMetaInfo = function($slide) {
+		var category = $slide.data(name + '-cat'),
+				title = $slide.data(name + '-title'),
+				link = $slide.data(name + 'link');
+
+		$(this.options.domSelectors.title).text(title);
+		$(this.options.domSelectors.category).text(category);
+		$(this.options.domSelectors.link).text(link);
 	};
 
 	/**

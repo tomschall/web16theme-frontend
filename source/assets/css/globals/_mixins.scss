@@ -256,4 +256,8 @@
   padding: 0;
 
   text-align: left;
+
+  &:focus {
+	outline: none;
+  }
 }

@@ -1,12 +1,14 @@
 .widg_carousel {
-  min-height: 100vh;
 
-  @include mq($to: $sizeBreakpointMedium) {
-	min-height: calc(100vh - 70px);
-  }
+  overflow: hidden;
 
-  button {
-	position: absolute;
+  &.widg_carousel__slider {
+	overflow: hidden;
+	min-height: 100vh;
+	@include mq($to: $sizeBreakpointMedium) {
+	  min-height: calc(100vh - 70px);
+	}
+
   }
 }
 
@@ -17,6 +19,10 @@
   position: relative;
   overflow: hidden;
 
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
   @include mq($to: $sizeBreakpointMedium) {
 	min-height: calc(100vh - 70px);
   }
@@ -24,8 +30,10 @@
   img {
 	transform: translate(-50%, -50%);
 
-	min-height: 100vh;
 	position: absolute;
+
+	min-height: 100%;
+	min-width: 100%;
 
 	left: 50%;
 	top: 50%;
@@ -44,16 +52,62 @@
 }
 
 .widg_carousel__text {
-  width: 50%;
+  width: calc(50% - 100px);
   position: absolute;
 
   @include basicUnitHeight(top);
   @include basicUnitHeight(right);
 
   padding: $basicPush * 4 $basicPush * 5;
+  padding-bottom: 0;
   background-color: $colorBg;
   min-height: $basicPush * 35;
 
+  [data-carousel="button"] {
+	position: absolute;
+	top: 100%;
+	right: 0;
+
+	text-indent: -10000px;
+
+	@include resetButton();
+
+	@include basicUnitHeight(width);
+	@include basicUnitHeight(height);
+
+	background-color: $colorBlack;
+	opacity: 0.7;
+
+	@include iconDataurl('arrow-white');
+
+	&:before {
+	  @include centerDataurlIcon();
+	}
+
+	&.widg_carousel__prev {
+	  @include basicUnitHeight(right);
+
+	  transform: rotate(180deg);
+
+	  text-indent: 100000px;
+	}
+  }
+}
+
+.widg_carousel__category {
+  text-transform: uppercase;
+  color: $colorTextGrey;
+  display: block;
+  line-height: 1.8;
+  letter-spacing: 2.9px;
+}
+
+.widg_carousel__title {
+  font-size: 4.33333rem;
+  font-family: $fontSerifRoman;
+  display: block;
+  padding-bottom: $basicPush * 7;
+  line-height: 1.2;
 }
 
 .widg_carousel__teasers {
@@ -66,3 +120,15 @@
   align-items: stretch;
   display: flex;
 }
+
+.widg_carousel__arrow {
+  @include resetButton();
+  @include iconDataurl('arrow');
+
+  position: absolute;
+  bottom: $basicPush * 4.2;
+  left: $basicPush * 5;
+  right: $basicPush * 5;
+}
+
+

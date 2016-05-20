@@ -91,19 +91,22 @@
 	 * Adds the scroll magic functionality
 	 */
 	Widget.prototype.addInitialScrollMagic = function() {
-		var headerScene = new ScrollMagic.Scene({
-					triggerElement: '#main',
-					offset: 5,
-					triggerHook: 0
-				});
+		if (!$('.page_wrapper').hasClass('page_wrapper__startpage')) {
+			var headerScene = new ScrollMagic.Scene({
+				triggerElement: '#main',
+				offset: 5,
+				triggerHook: 0
+			});
 
-		headerScene.on('enter leave', function() {
-			this.toggleShrinked();
-		}.bind(this));
+			headerScene.on('enter leave', function() {
+				this.toggleShrinked();
+			}.bind(this));
 
-		this.options.scrollMagicScene = headerScene;
+			this.options.scrollMagicScene = headerScene;
 
-		window.estatico.magicController.addScene(headerScene);
+			window.estatico.magicController.addScene(headerScene);
+		}
+
 	};
 
 	/**
