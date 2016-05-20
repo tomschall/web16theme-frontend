@@ -1,27 +1,27 @@
 html {
-	background: $colorBg;
-	color: $colorDarkGrey;
-	font-family: $fontSansSerifRoman;
-	font-size: $sizeFontBase / 16px * 100%;
-	line-height: $sizeLineHeightBase;
+  background: $colorBg;
+  color: $colorDarkGrey;
+  font-family: $fontSansSerifRoman;
+  font-size: $sizeFontBase / 16px * 100%;
+  line-height: $sizeLineHeightBase;
 }
 
 body {
-	color: $colorBlack;
+  color: $colorBlack;
 }
 
 nav,
 footer {
 
-	ul,
-	ol {
-		@include resetList;
-	}
+  ul,
+  ol {
+	@include resetList;
+  }
 }
 
 h2,
 h3 {
-	color: $colorText;
+  color: $colorText;
 }
 
 .page_wrapper {
@@ -29,7 +29,7 @@ h3 {
   min-height: 100vh;
 
   @include mq($to: medium) {
-    flex-direction: column;
+	flex-direction: column;
   }
 }
 
@@ -44,9 +44,14 @@ h3 {
 
 .layout_content {
   flex-grow: 1;
-	width: 100%;
+  width: 100%;
 
-	margin-top: $basicPush * 10 - 44px;
+  margin-top: $basicPush * 10 - 44px;
 
-	@include contentWrapper($gutterWidth);
+  @include contentWrapper($gutterWidth);
+
+  .page_wrapper__startpage & {
+	display: none;
+  }
+
 }

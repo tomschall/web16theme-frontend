@@ -14,7 +14,7 @@ var data = _.merge(defaultData, {
 		navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 		footer: requireNew('../../widgets/footer/footer.data.js'),
 		breadcrumb: requireNew('../../widgets/breadcrumb/breadcrumb.data.js'),
-		slideshow: requireNew('../../widgets/slideshow/slideshow.data.js')
+		carousel: requireNew('../../widgets/carousel/carousel.data.js')
 	}
 });
 

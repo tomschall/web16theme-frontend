@@ -194,7 +194,7 @@ var taskName = 'scaffold',
 				if (config.scaffold.createStyles && stylesFound) {
 					registerStyles = gulp.src(config.registerStyles.src)
 						.pipe(tap(function(file) {
-							file.contents = helpers.scaffold.addWidget(file, destAssets, config.registerStyles);
+							file.contents = helpers.scaffold.addModule(file, destAssets, config.registerStyles);
 						}))
 						.pipe(gulp.dest(path.dirname(config.registerStyles.src)))
 						.pipe(livereload());
@@ -206,7 +206,7 @@ var taskName = 'scaffold',
 				if (config.scaffold.createScript && scriptFound) {
 					registerScript = gulp.src(config.registerScript.src)
 						.pipe(tap(function(file) {
-							file.contents = helpers.scaffold.addWidget(file, destAssets, config.registerScript);
+							file.contents = helpers.scaffold.addModule(file, destAssets, config.registerScript);
 						}))
 						.pipe(gulp.dest(path.dirname(config.registerScript.src)))
 						.pipe(livereload());
