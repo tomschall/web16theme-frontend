@@ -6,8 +6,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 	meta: {
-		title: 'Startpage Prototype',
-		hideFromListing: true
+		title: 'Startpage Prototype'
 	},
 	title: 'University of Applied Sciences and Arts Northwestern Switzerland FHNW',
 	widgets: {
