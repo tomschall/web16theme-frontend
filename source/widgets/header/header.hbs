@@ -6,6 +6,10 @@
 		{{> "widgets/navigation/navigation" widgets.navigation}}
 	</div>
 	<div class="widg_header__inner-foot">
-		{{> "widgets/headerfoot/headerfoot" widgets.headerFoot}}
+    <div class="widg_headerfoot widg_header__hide-on-shrinked">
+			{{> "widgets/langswitcher/langswitcher" widgets.languageSwitcher }}
+			{{> "widgets/headermetanavigation/headermetanavigation" widgets.headerMetaNavigation }}
+			{{> "widgets/somelinks/somelinks" widgets.soMeLinks }}
+    </div>
 	</div>
 </header>
