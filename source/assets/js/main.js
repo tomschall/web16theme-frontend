@@ -3,6 +3,7 @@
  * @requires ../.tmp/lodash.js
  * @requires ../../../node_modules/handlebars/dist/handlebars.js
  * @requires ../../../node_modules/scrolltofixed/jquery-scrolltofixed.js
+ * @requires ../../../node_modules/slick-carousel/slick/slick.js
  * @requires ../.tmp/templates.js
 
  * @requires helpers/module.js
