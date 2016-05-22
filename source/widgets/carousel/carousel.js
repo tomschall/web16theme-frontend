@@ -102,9 +102,6 @@
 			$currentSlide = slick.$slides[currentSlide];
 			$nextSlide = slick.$slides[nextSlide];
 
-			$($currentSlide).removeClass(this.options.stateClasses.slideIsComing);
-			$($nextSlide).addClass(this.options.stateClasses.slideIsComing);
-
 			this.stopProgressbar();
 		}.bind(this));
 	};
