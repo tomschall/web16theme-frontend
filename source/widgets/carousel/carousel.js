@@ -21,11 +21,14 @@
 				category: '[data-' + name + '="category"]',
 				link: '[data-' + name + '="link"]',
 				button: '[data-' + name + '="button"]',
-				slider: '[data-' + name + '="slider"]'
+				slider: '[data-' + name + '="slider"]',
+				progressbar: '[data-' + name + '="progressbar"]'
 			},
 			stateClasses: {
-				// isActive: 'is_active'
-			}
+				progressIsRunningUp: 'is_running-up',
+				slideIsComing: 'is_coming'
+			},
+			autoplayDuration: 5000
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -60,10 +63,16 @@
 	Widget.prototype.init = function() {
 		this.addEventListener();
 
+		var durationTime = this.options.autoplayDuration;
+
 		this.$element.find(this.options.domSelectors.slider).slick({
 			appendArrows: '.widg_carousel__text',
 			prevArrow: '<button data-carousel="button" class="widg_carousel__prev">Vorherige</button>',
-			nextArrow: '<button data-carousel="button" class="widg_carousel__next">Nächste</button>'
+			nextArrow: '<button data-carousel="button" class="widg_carousel__next">Nächste</button>',
+			autoplay: true,
+			autoplaySpeed: durationTime,
+			useTransform: false,
+			cssEase: 'linear'
 		});
 	};
 
@@ -72,12 +81,31 @@
 	 *
 	 */
 	Widget.prototype.addEventListener = function() {
-		var $currentSlide = null;
+		var $currentSlide = null,
+				$nextSlide = null;
 
 		this.$element.find(this.options.domSelectors.slider).on('init', function(event, slick) {
 			$currentSlide = slick.$slides[slick.currentSlide];
 
+			this.startProgress();
 			this.setMetaInfo($($currentSlide));
+		}.bind(this));
+
+		this.$element.find(this.options.domSelectors.slider).on('afterChange', function(event, slick, currentSlide) {
+			$currentSlide = slick.$slides[currentSlide];
+
+			this.startProgress();
+			this.setMetaInfo($($currentSlide));
+		}.bind(this));
+
+		this.$element.find(this.options.domSelectors.slider).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+			$currentSlide = slick.$slides[currentSlide];
+			$nextSlide = slick.$slides[nextSlide];
+
+			$($currentSlide).removeClass(this.options.stateClasses.slideIsComing);
+			$($nextSlide).addClass(this.options.stateClasses.slideIsComing);
+
+			this.stopProgressbar();
 		}.bind(this));
 	};
 
@@ -92,6 +120,17 @@
 		$(this.options.domSelectors.title).text(title);
 		$(this.options.domSelectors.category).text(category);
 		$(this.options.domSelectors.link).text(link);
+	};
+
+	/**
+	 * start progressbar for the carousel
+	 */
+	Widget.prototype.startProgress = function() {
+		$(this.options.domSelectors.progressbar).addClass(this.options.stateClasses.progressIsRunningUp);
+	};
+
+	Widget.prototype.stopProgressbar = function() {
+		$(this.options.domSelectors.progressbar).removeClass(this.options.stateClasses.progressIsRunningUp);
 	};
 
 	/**

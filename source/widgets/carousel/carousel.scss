@@ -1,5 +1,4 @@
 .widg_carousel {
-
   overflow: hidden;
 
   &.widg_carousel__slider {
@@ -29,6 +28,7 @@
 
   img {
 	transform: translate(-50%, -50%);
+	transition: transform $carouselTransitionSpeed linear;
 
 	position: absolute;
 
@@ -37,6 +37,13 @@
 
 	left: 50%;
 	top: 50%;
+
+
+  }
+
+  &.is_coming img,
+  &.slick-current img {
+	transform: translate(-50%, -50%);
   }
 }
 
@@ -63,6 +70,8 @@
   background-color: $colorBg;
   min-height: $basicPush * 35;
 
+  z-index: zindex('carouselMeta');
+
   [data-carousel="button"] {
 	position: absolute;
 	top: 100%;
@@ -75,10 +84,13 @@
 	@include basicUnitHeight(width);
 	@include basicUnitHeight(height);
 
-	background-color: $colorBlack;
-	opacity: 0.7;
+	background-color: rgba($colorBlack, 0.7);
 
 	@include iconDataurl('arrow-white');
+
+	&:hover{
+	  background-color: rgba($colorBlack, 1);
+	}
 
 	&:before {
 	  @include centerDataurlIcon();
@@ -91,6 +103,15 @@
 
 	  text-indent: 100000px;
 	}
+  }
+
+  a {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
   }
 }
 
@@ -131,4 +152,47 @@
   right: $basicPush * 5;
 }
 
+.widg_carousel__progress {
+  position: absolute;
+  display: block;
+  height: 5px;
 
+  top: calc(100% + 100px);
+  right: 0;
+
+  width: 2 * basicUnitHeight(normal);
+
+  @include mq($to: $sizeBreakpointMedium) {
+	width: 2 * basicUnitHeight(medium);
+
+	top: calc(100% + 70px);
+  }
+
+  @include mq($to: $sizeBreakpointSmall) {
+	width: 2 * basicUnitHeight(small);
+
+	top: calc(100% + 50px);
+  }
+
+  div {
+	height: 5px;
+	max-width: 0;
+	background-color: $colorYellow;
+
+	&.is_running-up {
+	  transition: max-width $carouselAutoplayLengthWithoutTransition $transitionEase;
+
+	  max-width: 100%;
+	}
+  }
+}
+
+// Custom Slide Animation
+.widg_carousel__slide {
+  transition: transform $carouselTransitionSpeed $transitionEase;
+  transform: translateX(0);
+
+  img {
+
+  }
+}

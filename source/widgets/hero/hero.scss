@@ -24,3 +24,17 @@
 	width: 100%;
 	height: auto;
 }
+
+.hero {
+  .page_wrapper__startpage & {
+	margin-left: 230px;
+
+	@include mq($from: $sizeBreakpointLarge) {
+	  margin-left: 300px;
+	}
+
+	@include mq($from: $sizeBreakpointWide) {
+	  margin-left: 400px;
+	}
+  }
+}

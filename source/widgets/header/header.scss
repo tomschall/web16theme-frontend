@@ -128,8 +128,6 @@
 
 .widg_header {
   .page_wrapper__startpage & {
-	position: relative;
-
 	@include mq($from: $sizeBreakpointLarge) {
 	  min-width: 300px;
 	}

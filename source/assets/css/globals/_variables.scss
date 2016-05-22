@@ -14,7 +14,6 @@ $sizeBreakpointLarge: 1679px;
 $sizeBreakpointWide: 2559;
 $sizeBreakpointBetweener: 1344px;
 
-
 /**
  * Custom colors
  */
@@ -22,7 +21,6 @@ $sizeBreakpointBetweener: 1344px;
 $colorText: #000000;
 $colorBg: #ffffff;
 $colorActive: #a4c400;
-
 
 $colorLightGray: #F1F1EE;
 $colorDarkGrey: #999999;
@@ -72,8 +70,7 @@ $paddingBehindYellowBar: $widthYellowBar + $pagePadding;
 $paddingBehindYellowBarWideNarrow: $widthYellowBarWide + $pagePaddingSmall;
 $paddingBehindYellowBarWide: $widthYellowBarWide + $pagePadding;
 $paddingBehindYellowBarNarrow: $widthYellowBar + $pagePaddingSmall;
-$paddingBehindYellowBarSuperWide : $widthYellowBarSuperWide + $pagePaddingWide;
-
+$paddingBehindYellowBarSuperWide: $widthYellowBarSuperWide + $pagePaddingWide;
 
 /**
   * Header
@@ -84,12 +81,14 @@ $basicUnitHeight: 100px;
 $basicUnitHeightSmall: 50px;
 $basicUnitHeightMedium: 70px;
 
-
 /**
   * Transitions
   */
 $transitionLength: 0.5s;
 $transitionEase: ease-in-out;
+$carouselAutoplayLength: 5s;
+$carouselTransitionSpeed: 0.3s;
+$carouselAutoplayLengthWithoutTransition: $carouselAutoplayLength - $carouselTransitionSpeed;
 
 /**
   * Z-index map
@@ -98,8 +97,9 @@ $transitionEase: ease-in-out;
  * z-index
  */
 $zIndex: (
-	  bg: 0,
+		bg: 0,
 		content: 10,
+		carouselMeta: 20,
 		contentnav: 100,
 		actionbuttons: 800,
 		header: 1000
