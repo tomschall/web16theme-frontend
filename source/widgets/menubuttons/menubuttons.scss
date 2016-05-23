@@ -1,56 +1,56 @@
 .widg_menubuttons {
-  @include mq($from: $sizeBreakpointMedium) {
-	display: none;
-  }
+	@include mq($from: $sizeBreakpointMedium) {
+		display: none;
+	}
 
-  position: absolute;
+	position: absolute;
 
-  left: -4 * $basicPush;
-  top: -15px;
-  bottom: -15px;
+	left: -4 * $basicPush;
+	top: -15px;
+	bottom: -15px;
 
-  height: 70px;
-
-  a {
-	display: block;
 	height: 70px;
-	float: left;
-	line-height: 75px;
-	padding: 0 4 * $basicPush;
+
+	a {
+		display: block;
+		height: 70px;
+		float: left;
+		line-height: 75px;
+		padding: 0 4 * $basicPush;
+
+		@include mq($to: $sizeBreakpointSmall) {
+			padding: 0 1.7 * $basicPush;
+		}
+	}
 
 	@include mq($to: $sizeBreakpointSmall) {
-	  padding: 0 2 * $basicPush;
+		left: -2 * $basicPush;
 	}
-  }
+	a {
+		font-family: $fontSerifBold;
+		font-size: 1.25rem;
+		margin-right: 6px;
 
-  @include mq($to: $sizeBreakpointSmall) {
-	left: -2 * $basicPush;
-  }
-  a {
-	font-family: $fontSerifBold;
-	font-size: 1.25rem;
-	margin-right: 6px;
-
-  }
+	}
 }
 
 .widg_menubuttons__menu {
-  @include iconDataurl('mobile-menu');
+	@include iconDataurl('mobile-menu');
 
-  &:before {
-	height: 12px;
+	&:before {
+		height: 12px;
 
-	transform: translateY(1px);
-  }
+		transform: translateY(1px);
+	}
 }
 
 .widg_menubuttons__search {
-  @include iconDataurl('search');
+	@include iconDataurl('search');
 
-  &:before {
-	height: 16px;
+	&:before {
+		height: 16px;
 
-	transform: translateY(2px);
-  }
+		transform: translateY(2px);
+	}
 }
 

@@ -10,6 +10,10 @@
 		min-height: 100vh;
 
 		@include mq($to: $sizeBreakpointMedium) {
+			min-height: calc(100vh - 70px);
+		}
+
+		@include mq($to: $sizeBreakpointSmall) {
 			min-height: calc(60vh - 70px);
 		}
 
@@ -18,47 +22,34 @@
 
 .widg_carousel__slide {
 	line-height: 0;
-	min-height: 100vh;
+	height: 100vh;
 	max-width: 100%;
 	position: relative;
+
 	overflow: hidden;
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	// Important has to be set, due to overriding slick
+	opacity: 1 !important;
+
+	&.is_important {
+		z-index: 1002 !important;
+	}
 
 	@include mq($to: $sizeBreakpointMedium) {
-		min-height: calc(60vh - 70px);
+		max-height: calc(100vh - 70px);
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
+		max-height: calc(60vh - 70px);
 	}
 
 	img {
-		transform: translate(-50%, -50%);
 		transition: transform $carouselTransitionSpeed linear;
 
-		position: absolute;
-
-		min-height: 100%;
-		min-width: 100%;
-
-		left: 50%;
-		top: 50%;
-
-		max-width: 150%;
-		max-height: 150%;
-
+		object-fit: cover;
 	}
 }
 
-.widg_carousel__content {
-	position: absolute;
-
-	top: 100px;
-	left: 100px;
-	right: 100px;
-	bottom: 100px;
-
-	@include gridWrapper($gutterWidth);
-}
 
 .widg_carousel__text {
 	width: calc(50% - 100px);
@@ -75,6 +66,14 @@
 	z-index: zindex('carouselMeta');
 
 	@include mq($to: $sizeBreakpointMedium) {
+		top: auto;
+		bottom: $basicPush * 10;
+		right: $basicPush * 4;
+
+		width: 50%;
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
 		top: auto;
 		bottom: 0;
 		left: 0;
@@ -110,6 +109,10 @@
 	line-height: 1.2;
 
 	@include mq($to: $sizeBreakpointMedium) {
+		font-size: 2.75rem;
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
 		font-size: 2rem;
 		padding-bottom: $basicPush * 3;
 	}
@@ -156,7 +159,7 @@
 
 	@include iconDataurl('arrow-white');
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: $sizeBreakpointSmall) {
 		top: 0;
 
 		transform: translateY(-100%);
@@ -180,7 +183,7 @@
 		text-indent: 100000px;
 
 		@include mq($to: $sizeBreakpointMedium) {
-			margin-top: -1 * basicUnitHeight(medium);
+			margin-right: 0;
 		}
 
 		@include mq($to: $sizeBreakpointSmall) {
@@ -202,13 +205,13 @@
 	@include mq($to: $sizeBreakpointMedium) {
 		width: 2 * basicUnitHeight(medium);
 
-		top: 0;
-
+		top: calc(100% + 70px);
 	}
 
 	@include mq($to: $sizeBreakpointSmall) {
 		width: 2 * basicUnitHeight(small);
 
+		top: 0;
 	}
 
 	div {

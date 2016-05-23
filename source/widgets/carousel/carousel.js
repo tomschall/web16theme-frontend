@@ -26,9 +26,13 @@
 			},
 			stateClasses: {
 				progressIsRunningUp: 'is_running-up',
-				slideIsComing: 'is_coming'
+				slideIsComing: 'is_coming',
+				slideIsImportant: 'is_important'
 			},
-			autoplayDuration: 5000
+			autoplayDuration: 5000,
+			currentSlideDirection: 'left',
+			transitionSpeed: 300,
+			defaultSlideZIndex: 1000
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -63,16 +67,24 @@
 	Widget.prototype.init = function() {
 		this.addEventListener();
 
-		var durationTime = this.options.autoplayDuration;
+		$('.widg_carousel__slide img').imageScale({
+			rescaleOnResize: true,
+			scale: 'fill'
+		});
+
+		var durationTime = this.options.autoplayDuration,
+				speed = this.options.transitionSpeed;
 
 		this.$element.find(this.options.domSelectors.slider).slick({
 			appendArrows: '.widg_carousel__text',
 			prevArrow: '<button data-carousel="button" class="widg_carousel__prev">Vorherige</button>',
 			nextArrow: '<button data-carousel="button" class="widg_carousel__next">Nächste</button>',
-			autoplay: true,
+			autoplay: false,
 			autoplaySpeed: durationTime,
-			useTransform: false,
-			cssEase: 'linear'
+			fade: true,
+			speed: speed,
+			zIndex: 1000,
+			useCSS: false
 		});
 	};
 
@@ -81,28 +93,35 @@
 	 *
 	 */
 	Widget.prototype.addEventListener = function() {
-		var $currentSlide = null,
-				$nextSlide = null;
+		var $currentSlide = null;
 
 		this.$element.find(this.options.domSelectors.slider).on('init', function(event, slick) {
 			$currentSlide = slick.$slides[slick.currentSlide];
 
-			this.startProgress();
+			this.startProgressBar();
 			this.setMetaInfo($($currentSlide));
 		}.bind(this));
 
 		this.$element.find(this.options.domSelectors.slider).on('afterChange', function(event, slick, currentSlide) {
 			$currentSlide = slick.$slides[currentSlide];
 
-			this.startProgress();
+			this.startProgressBar();
 			this.setMetaInfo($($currentSlide));
+
+			this.options.currentSlideDirection = 'left';
 		}.bind(this));
 
 		this.$element.find(this.options.domSelectors.slider).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-			$currentSlide = slick.$slides[currentSlide];
-			$nextSlide = slick.$slides[nextSlide];
+			this.doCustomTransition(slick, currentSlide, nextSlide);
+			this.resetProgressBar();
+		}.bind(this));
 
-			this.stopProgressbar();
+		this.$element.find(this.options.domSelectors.slider).on('swipe', function(event, slick, direction) {
+			this.options.currentSlideDirection = direction;
+		}.bind(this));
+
+		this.$element.find('.widg_carousel__prev').on('click', function() {
+			this.options.currentSlideDirection = 'right';
 		}.bind(this));
 	};
 
@@ -122,12 +141,37 @@
 	/**
 	 * start progressbar for the carousel
 	 */
-	Widget.prototype.startProgress = function() {
+	Widget.prototype.startProgressBar = function() {
 		$(this.options.domSelectors.progressbar).addClass(this.options.stateClasses.progressIsRunningUp);
 	};
 
-	Widget.prototype.stopProgressbar = function() {
+	/**
+	 * Resets the progressbar
+	 */
+	Widget.prototype.resetProgressBar = function() {
 		$(this.options.domSelectors.progressbar).removeClass(this.options.stateClasses.progressIsRunningUp);
+	};
+
+	Widget.prototype.doCustomTransition = function(slick, currentSlide, nextSlide) {
+		var $currentSlide = $(slick.$slides[currentSlide]),
+				$nextSlide = $(slick.$slides[nextSlide]),
+				slickWidth = slick.listWidth,
+				pullLength = 0,
+				oldpullLength = '';
+
+		$nextSlide.css('visibility', 'visible');
+
+		oldpullLength = $currentSlide.css('left');
+		pullLength = parseInt($currentSlide.css('left')) - slickWidth;
+
+		$currentSlide.addClass(this.options.stateClasses.slideIsImportant).animate({
+			'left': pullLength
+		}, this.options.transitionSpeed, function() {
+			$(this).removeClass('is_important');
+			$(this).css('visibility', 'hidden');
+			$(this).css('left', oldpullLength);
+		});
+
 	};
 
 	/**
