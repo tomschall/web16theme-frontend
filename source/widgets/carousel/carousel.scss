@@ -1,73 +1,146 @@
 .widg_carousel {
-  overflow: hidden;
-
-  &.widg_carousel__slider {
 	overflow: hidden;
-	min-height: 100vh;
+
 	@include mq($to: $sizeBreakpointMedium) {
-	  min-height: calc(100vh - 70px);
+		min-height: calc(100vh - 70px);
 	}
 
-  }
+	&.widg_carousel__slider {
+		overflow: hidden;
+		min-height: 100vh;
+
+		@include mq($to: $sizeBreakpointMedium) {
+			min-height: calc(60vh - 70px);
+		}
+
+	}
 }
 
 .widg_carousel__slide {
-  line-height: 0;
-  min-height: 100vh;
-  max-width: 100%;
-  position: relative;
-  overflow: hidden;
+	line-height: 0;
+	min-height: 100vh;
+	max-width: 100%;
+	position: relative;
+	overflow: hidden;
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-  @include mq($to: $sizeBreakpointMedium) {
-	min-height: calc(100vh - 70px);
-  }
+	@include mq($to: $sizeBreakpointMedium) {
+		min-height: calc(60vh - 70px);
+	}
 
-  img {
-	transform: translate(-50%, -50%);
-	transition: transform $carouselTransitionSpeed linear;
+	img {
+		transform: translate(-50%, -50%);
+		transition: transform $carouselTransitionSpeed linear;
 
-	position: absolute;
+		position: absolute;
 
-	min-height: 100%;
-	min-width: 100%;
+		min-height: 100%;
+		min-width: 100%;
 
-	left: 50%;
-	top: 50%;
+		left: 50%;
+		top: 50%;
 
+		max-width: 150%;
+		max-height: 150%;
 
-  }
+	}
 }
 
 .widg_carousel__content {
-  position: absolute;
+	position: absolute;
 
-  top: 100px;
-  left: 100px;
-  right: 100px;
-  bottom: 100px;
+	top: 100px;
+	left: 100px;
+	right: 100px;
+	bottom: 100px;
 
-  @include gridWrapper($gutterWidth);
+	@include gridWrapper($gutterWidth);
 }
 
 .widg_carousel__text {
-  width: calc(50% - 100px);
-  position: absolute;
+	width: calc(50% - 100px);
+	position: absolute;
 
-  @include basicUnitHeight(top);
-  @include basicUnitHeight(right);
+	@include basicUnitHeight(top);
+	@include basicUnitHeight(right);
 
-  padding: $basicPush * 4 $basicPush * 5;
-  padding-bottom: 0;
-  background-color: $colorBg;
-  min-height: $basicPush * 35;
+	padding: $basicPush * 4 $basicPush * 5;
+	padding-bottom: 0;
+	background-color: $colorBg;
+	min-height: $basicPush * 7;
 
-  z-index: zindex('carouselMeta');
+	z-index: zindex('carouselMeta');
 
-  [data-carousel="button"] {
+	@include mq($to: $sizeBreakpointMedium) {
+		top: auto;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+
+		min-height: 40vh;
+	}
+
+	a {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+.widg_carousel__category {
+	text-transform: uppercase;
+	color: $colorTextGrey;
+	display: block;
+	line-height: 1.8;
+	letter-spacing: 2.9px;
+}
+
+.widg_carousel__title {
+	font-size: 4.33333rem;
+	font-family: $fontSerifRoman;
+	display: block;
+	padding-bottom: $basicPush * 7;
+	line-height: 1.2;
+
+	@include mq($to: $sizeBreakpointMedium) {
+		font-size: 2rem;
+		padding-bottom: $basicPush * 3;
+	}
+}
+
+.widg_carousel__teasers {
+	position: absolute;
+
+	@include basicUnitHeight(bottom);
+	@include basicUnitHeight(left);
+	@include basicUnitHeight(right);
+
+	align-items: stretch;
+	display: flex;
+
+	@include mq($to: $sizeBreakpointMedium) {
+		display: none;
+	}
+}
+
+.widg_carousel__arrow {
+	@include resetButton();
+	@include iconDataurl('arrow');
+
+	position: absolute;
+	bottom: $basicPush * 4.2;
+	left: $basicPush * 5;
+	right: $basicPush * 5;
+}
+
+[data-carousel="button"] {
 	position: absolute;
 	top: 100%;
 	right: 0;
@@ -83,115 +156,80 @@
 
 	@include iconDataurl('arrow-white');
 
-	&:hover{
-	  background-color: rgba($colorBlack, 1);
+	@include mq($to: $sizeBreakpointMedium) {
+		top: 0;
+
+		transform: translateY(-100%);
+	}
+
+
+
+	&:hover {
+		background-color: rgba($colorBlack, 1);
 	}
 
 	&:before {
-	  @include centerDataurlIcon();
+		@include centerDataurlIcon();
 	}
 
 	&.widg_carousel__prev {
-	  @include basicUnitHeight(right);
+		@include basicUnitHeight(right);
 
-	  transform: rotate(180deg);
+		transform: rotate(180deg);
 
-	  text-indent: 100000px;
+		text-indent: 100000px;
+
+		@include mq($to: $sizeBreakpointMedium) {
+			margin-top: -1 * basicUnitHeight(medium);
+		}
+
+		@include mq($to: $sizeBreakpointSmall) {
+			margin-top: -1 * basicUnitHeight(small);
+		}
 	}
-  }
-
-  a {
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-  }
-}
-
-.widg_carousel__category {
-  text-transform: uppercase;
-  color: $colorTextGrey;
-  display: block;
-  line-height: 1.8;
-  letter-spacing: 2.9px;
-}
-
-.widg_carousel__title {
-  font-size: 4.33333rem;
-  font-family: $fontSerifRoman;
-  display: block;
-  padding-bottom: $basicPush * 7;
-  line-height: 1.2;
-}
-
-.widg_carousel__teasers {
-  position: absolute;
-
-  @include basicUnitHeight(bottom);
-  @include basicUnitHeight(left);
-  @include basicUnitHeight(right);
-
-  align-items: stretch;
-  display: flex;
-
-	@include mq($to: $sizeBreakpointMedium) {
-		display: none;
-	}
-}
-
-.widg_carousel__arrow {
-  @include resetButton();
-  @include iconDataurl('arrow');
-
-  position: absolute;
-  bottom: $basicPush * 4.2;
-  left: $basicPush * 5;
-  right: $basicPush * 5;
 }
 
 .widg_carousel__progress {
-  position: absolute;
-  display: block;
-  height: 5px;
-
-  top: calc(100% + 100px);
-  right: 0;
-
-  width: 2 * basicUnitHeight(normal);
-
-  @include mq($to: $sizeBreakpointMedium) {
-	width: 2 * basicUnitHeight(medium);
-
-	top: calc(100% + 70px);
-  }
-
-  @include mq($to: $sizeBreakpointSmall) {
-	width: 2 * basicUnitHeight(small);
-
-	top: calc(100% + 50px);
-  }
-
-  div {
+	position: absolute;
+	display: block;
 	height: 5px;
-	max-width: 0;
-	background-color: $colorYellow;
 
-	&.is_running-up {
-	  transition: max-width $carouselAutoplayLengthWithoutTransition $transitionEase;
+	top: calc(100% + 100px);
+	right: 0;
 
-	  max-width: 100%;
+	width: 2 * basicUnitHeight(normal);
+
+	@include mq($to: $sizeBreakpointMedium) {
+		width: 2 * basicUnitHeight(medium);
+
+		top: 0;
+
 	}
-  }
+
+	@include mq($to: $sizeBreakpointSmall) {
+		width: 2 * basicUnitHeight(small);
+
+	}
+
+	div {
+		height: 5px;
+		max-width: 0;
+		background-color: $colorYellow;
+
+		&.is_running-up {
+			transition: max-width $carouselAutoplayLengthWithoutTransition $transitionEase;
+
+			max-width: 100%;
+		}
+	}
 }
 
 // Custom Slide Animation
 .widg_carousel__slide {
-  transition: transform $carouselTransitionSpeed $transitionEase;
-  transform: translateX(0);
+	transition: transform $carouselTransitionSpeed $transitionEase;
+	transform: translateX(0);
 
-  img {
+	img {
 
-  }
+	}
 }

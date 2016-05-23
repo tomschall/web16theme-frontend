@@ -26,15 +26,17 @@
 }
 
 .hero {
-  .page_wrapper__startpage & {
-	margin-left: 230px;
+	.page_wrapper__startpage & {
+		@include mq($from: $sizeBreakpointMedium) {
+			margin-left: 230px;
+		}
 
-	@include mq($from: $sizeBreakpointLarge) {
-	  margin-left: 300px;
-	}
+		@include mq($from: $sizeBreakpointLarge) {
+			margin-left: 300px;
+		}
 
-	@include mq($from: $sizeBreakpointWide) {
-	  margin-left: 400px;
+		@include mq($from: $sizeBreakpointWide) {
+			margin-left: 400px;
+		}
 	}
-  }
 }
