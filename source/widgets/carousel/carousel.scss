@@ -135,6 +135,10 @@
 
   align-items: stretch;
   display: flex;
+
+	@include mq($to: $sizeBreakpointMedium) {
+		display: none;
+	}
 }
 
 .widg_carousel__arrow {

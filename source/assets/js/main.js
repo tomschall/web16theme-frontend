@@ -10,7 +10,6 @@
  * @requires helpers/events.js
  * @requires helpers/mediaqueries.js
  *
- * @requires ../../widgets/slideshow/slideshow.js
  * @requires ../../widgets/share/share.js
  * @requires ../../widgets/pagesearch/pagesearch.js
  * @requires ../../widgets/contentnav/contentnav.js
