@@ -22,17 +22,19 @@
 				link: '[data-' + name + '="link"]',
 				button: '[data-' + name + '="button"]',
 				slider: '[data-' + name + '="slider"]',
-				progressbar: '[data-' + name + '="progressbar"]'
+				progressbar: '[data-' + name + '="progressbar"]',
+				images: '[data-' + name + '="slide-img"]'
 			},
 			stateClasses: {
 				progressIsRunningUp: 'is_running-up',
 				slideIsComing: 'is_coming',
 				slideIsImportant: 'is_important',
-				slideIs2ndImportant: 'is_second-important'
+				slideIs2ndImportant: 'is_second-important',
+				slideIsZoomed: 'is_zoomed'
 			},
 			autoplayDuration: 10000,
 			transitionSpeed: 3000,
-			defaultSlideZIndex: 1000
+			initTransitionSpeed: 1000
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -67,9 +69,8 @@
 	Widget.prototype.init = function() {
 		this.addEventListener();
 
-		$('.widg_carousel__slide img').imageScale({
-			rescaleOnResize: true,
-			scale: 'fill'
+		$(this.options.domSelectors.images).imageScale({
+			rescaleOnResize: true
 		});
 
 		var durationTime = this.options.autoplayDuration,
@@ -79,11 +80,10 @@
 			appendArrows: '.widg_carousel__text',
 			prevArrow: '<button data-carousel="button" class="widg_carousel__prev">Vorherige</button>',
 			nextArrow: '<button data-carousel="button" class="widg_carousel__next">Nächste</button>',
-			autoplay: false,
+			autoplay: true,
 			autoplaySpeed: durationTime,
 			fade: true,
 			speed: speed,
-			zIndex: 1000,
 			useCSS: false
 		});
 	};
@@ -95,25 +95,46 @@
 	Widget.prototype.addEventListener = function() {
 		var $currentSlide = null;
 
-		this.$element.find(this.options.domSelectors.slider).on('init', function(event, slick) {
+		this.$element.find(this.options.domSelectors.slider).on('init.' + this.uuid, function(event, slick) {
 			$currentSlide = slick.$slides[slick.currentSlide];
+
+			this.$element.find(this.options.domSelectors.slider).animate({
+				opacity: '1'
+			}, this.options.initTransitionSpeed);
+
+			this.$element.find(this.options.domSelectors.images).addClass(this.options.stateClasses.slideIsZoomed);
 
 			this.startProgressBar();
 			this.setMetaInfo($($currentSlide));
 		}.bind(this));
 
-		this.$element.find(this.options.domSelectors.slider).on('afterChange', function(event, slick, currentSlide) {
+		this.$element.find(this.options.domSelectors.slider).on('afterChange.' + this.uuid, function(event, slick, currentSlide) {
 			$currentSlide = slick.$slides[currentSlide];
 
 			this.startProgressBar();
 			this.setMetaInfo($($currentSlide));
 		}.bind(this));
 
-		this.$element.find(this.options.domSelectors.slider).on('beforeChange', function(event, slick, currentSlide, nextSlide, target) {
+		this.$element.find(this.options.domSelectors.slider).on('beforeChange.' + this.uuid, function(event, slick, currentSlide, nextSlide, target) {
+			if (target !== 'no target') {
+				this.$element.find(this.options.domSelectors.slider).slick('slickPause');
+				this.hideProgressBar();
+			}
+
 			this.doCustomTransition(slick, currentSlide, nextSlide, target);
 			this.resetProgressBar();
 		}.bind(this));
 
+		$(window).on('keydown.' + this.uuid, function(event) {
+			switch (event.keyCode) {
+				case 37:
+					this.$element.find(this.options.domSelectors.slider).slick('slickPrev');
+					break;
+				case 39:
+					this.$element.find(this.options.domSelectors.slider).slick('slickNext');
+					break;
+			}
+		}.bind(this));
 	};
 
 	/**
@@ -141,6 +162,10 @@
 	 */
 	Widget.prototype.resetProgressBar = function() {
 		$(this.options.domSelectors.progressbar).removeClass(this.options.stateClasses.progressIsRunningUp);
+	};
+
+	Widget.prototype.hideProgressBar = function() {
+		$(this.options.domSelectors.progressbar).slideUp(this.options.transitionSpeed / 3);
 	};
 
 	Widget.prototype.doCustomTransition = function(slick, currentSlide, nextSlide, slideTarget) {

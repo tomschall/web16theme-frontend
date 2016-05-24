@@ -5,9 +5,10 @@
 		min-height: calc(100vh - 70px);
 	}
 
-	&.widg_carousel__slider {
+	.widg_carousel__slider {
 		overflow: hidden;
 		min-height: 100vh;
+		opacity: 0;
 
 		@include mq($to: $sizeBreakpointMedium) {
 			min-height: calc(100vh - 70px);
@@ -26,6 +27,11 @@
 	max-width: 100%;
 
 	overflow: hidden;
+	position: relative;
+
+	img {
+		transform: scale(1.0);
+	}
 
 	// Important has to be set, due to overriding slick
 	opacity: 1 !important;
@@ -46,10 +52,10 @@
 		max-height: calc(60vh - 70px);
 	}
 
-	img {
-		transition: transform $carouselTransitionSpeed linear;
+	.is_zoomed {
+		transform: scale(1.1);
+		transition: transform $carouselInitTransitionSpeed * 2 $transitionEase;
 
-		object-fit: cover;
 	}
 }
 
@@ -131,9 +137,7 @@
 	align-items: stretch;
 	display: flex;
 
-	@include mq($to: $sizeBreakpointMedium) {
-		display: none;
-	}
+	display: none;
 }
 
 .widg_carousel__arrow {

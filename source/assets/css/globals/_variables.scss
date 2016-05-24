@@ -88,6 +88,7 @@ $transitionLength: 0.5s;
 $transitionEase: ease-in-out;
 $carouselAutoplayLength: 10s;
 $carouselTransitionSpeed: 3s;
+$carouselInitTransitionSpeed: 1s;
 $carouselAutoplayLengthWithoutTransition: $carouselAutoplayLength - $carouselTransitionSpeed;
 
 /**
