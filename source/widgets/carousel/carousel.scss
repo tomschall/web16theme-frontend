@@ -70,9 +70,13 @@
 	padding: $basicPush * 4 $basicPush * 5;
 	padding-bottom: 0;
 	background-color: $colorBg;
-	min-height: $basicPush * 7;
+	min-height: $basicPush * 32;
 
 	z-index: zindex('carouselMeta');
+
+	@include mq($to: $sizeBreakpointLarge) {
+		min-height: $basicPush * 26;
+	}
 
 	@include mq($to: $sizeBreakpointMedium) {
 		top: auto;
@@ -117,7 +121,9 @@
 	padding-bottom: $basicPush * 7;
 	line-height: 1.2;
 
-	@include mq($to: $sizeBreakpointMedium) {
+
+
+	@include mq($to: $sizeBreakpointLarge) {
 		font-size: 2.75rem;
 	}
 
@@ -141,7 +147,6 @@
 }
 
 .widg_carousel__arrow {
-	@include resetButton();
 	@include iconDataurl('arrow');
 
 	position: absolute;
@@ -156,8 +161,6 @@
 	right: 0;
 
 	text-indent: -10000px;
-
-	@include resetButton();
 
 	@include basicUnitHeight(width);
 	@include basicUnitHeight(height);
@@ -185,9 +188,7 @@
 	&.widg_carousel__prev {
 		@include basicUnitHeight(right);
 
-		transform: rotate(180deg);
-
-		text-indent: 100000px;
+		text-indent: -100000px;
 
 		@include mq($to: $sizeBreakpointMedium) {
 			margin-right: 0;
@@ -195,6 +196,10 @@
 
 		@include mq($to: $sizeBreakpointSmall) {
 			margin-top: -1 * basicUnitHeight(small);
+		}
+
+		&:before {
+			transform: translate(-50%, -50%) rotate(180deg);
 		}
 	}
 }
@@ -209,10 +214,10 @@
 
 	width: 2 * basicUnitHeight(normal);
 
-	@include mq($to: $sizeBreakpointMedium) {
-		width: 2 * basicUnitHeight(medium);
+	@include mq($to: $sizeBreakpointLarge) {
+		width: 2 * basicUnitHeight(small);
 
-		top: calc(100% + 70px);
+		top: calc(100% + 60px);
 	}
 
 	@include mq($to: $sizeBreakpointSmall) {

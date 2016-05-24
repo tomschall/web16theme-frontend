@@ -65,8 +65,6 @@
 }
 
 .widg_teaser__arrow {
-  @include resetButton();
-
   height: 13px;
   bottom: $basicPush * 4;
   left: $basicPush * 3;

@@ -9,7 +9,8 @@
 @import "globals/mediaqueries";
 @import "globals/links";
 @import "globals/containers";
-@import "globals/grids";
+@import "content/grids";
+@import "globals/buttons";
 
 // Reset / normalize styles
 @import "../../../node_modules/normalize.css/normalize";

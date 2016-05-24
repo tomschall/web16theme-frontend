@@ -1,4 +1,8 @@
 a {
 	color: $colorBlack;
 	text-decoration: none;
+
+	&:focus {
+		outline: 0;
+	}
 }

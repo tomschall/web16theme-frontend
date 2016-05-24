@@ -1,0 +1,14 @@
+button,
+a.button {
+	-webkit-appearance: none;
+	border: 0;
+	border-radius: 0;
+	background-color: transparent;
+	padding: 0;
+
+	text-align: left;
+
+	&:focus {
+		outline: 0;
+	}
+}
