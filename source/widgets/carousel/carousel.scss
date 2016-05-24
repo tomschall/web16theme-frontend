@@ -60,7 +60,7 @@
 }
 
 
-.widg_carousel__text {
+.widg_carousel__info-box {
 	width: calc(50% - 100px);
 	position: absolute;
 
@@ -228,14 +228,8 @@
 
 	div {
 		height: 5px;
-		max-width: 0;
+		width: 0;
 		background-color: $colorYellow;
-
-		&.is_running-up {
-			transition: max-width $carouselAutoplayLengthWithoutTransition $transitionEase;
-
-			max-width: 100%;
-		}
 	}
 }
 

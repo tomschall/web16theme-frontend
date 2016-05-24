@@ -26,14 +26,13 @@
 				images: '[data-' + name + '="slide-img"]'
 			},
 			stateClasses: {
-				progressIsRunningUp: 'is_running-up',
 				slideIsComing: 'is_coming',
 				slideIsImportant: 'is_important',
 				slideIs2ndImportant: 'is_second-important',
 				slideIsZoomed: 'is_zoomed'
 			},
-			autoplayDuration: 10000,
-			transitionSpeed: 3000,
+			autoplayDuration: 7500,
+			transitionSpeed: 1000,
 			initTransitionSpeed: 1000
 		},
 		data = {
@@ -77,7 +76,7 @@
 				speed = this.options.transitionSpeed;
 
 		this.$element.find(this.options.domSelectors.slider).slick({
-			appendArrows: '.widg_carousel__text',
+			appendArrows: '.widg_carousel__info-box',
 			prevArrow: '<button data-carousel="button" class="widg_carousel__prev">Vorherige</button>',
 			nextArrow: '<button data-carousel="button" class="widg_carousel__next">Nächste</button>',
 			autoplay: true,
@@ -154,14 +153,21 @@
 	 * start progressbar for the carousel
 	 */
 	Widget.prototype.startProgressBar = function() {
-		$(this.options.domSelectors.progressbar).addClass(this.options.stateClasses.progressIsRunningUp);
+		$(this.options.domSelectors.progressbar).animate({
+			'width': '100%'
+		}, {
+			duration: this.options.autoplayDuration,
+			easing: 'linear'
+		});
 	};
 
 	/**
 	 * Resets the progressbar
 	 */
 	Widget.prototype.resetProgressBar = function() {
-		$(this.options.domSelectors.progressbar).removeClass(this.options.stateClasses.progressIsRunningUp);
+		$(this.options.domSelectors.progressbar).css({
+			'width': '0'
+		});
 	};
 
 	Widget.prototype.hideProgressBar = function() {
