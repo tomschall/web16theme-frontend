@@ -33,7 +33,8 @@
 			},
 			autoplayDuration: 7500,
 			transitionSpeed: 1000,
-			initTransitionSpeed: 1000
+			initTransitionSpeed: 1000,
+			isAutoplay: true
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -134,6 +135,19 @@
 					break;
 			}
 		}.bind(this));
+
+		this.$element.on('mouseover.' + this.uuid, function() {
+			console.log('hover', this.options.isAutoplay);
+			if (this.options.isAutoplay) {
+				$(this.options.domSelectors.progressbar).pause();
+			}
+		}.bind(this));
+
+		this.$element.on('mouseout.' + this.uuid, function() {
+			if (this.options.isAutoplay) {
+				$(this.options.domSelectors.progressbar).resume();
+			}
+		}.bind(this));
 	};
 
 	/**
@@ -171,7 +185,9 @@
 	};
 
 	Widget.prototype.hideProgressBar = function() {
-		$(this.options.domSelectors.progressbar).slideUp(this.options.transitionSpeed / 3);
+		this.options.isAutoplay = false;
+
+		$(this.options.domSelectors.progressbar).clearQueue().slideUp(this.options.transitionSpeed / 3);
 	};
 
 	Widget.prototype.doCustomTransition = function(slick, currentSlide, nextSlide, slideTarget) {
