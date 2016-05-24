@@ -27,11 +27,11 @@
 			stateClasses: {
 				progressIsRunningUp: 'is_running-up',
 				slideIsComing: 'is_coming',
-				slideIsImportant: 'is_important'
+				slideIsImportant: 'is_important',
+				slideIs2ndImportant: 'is_second-important'
 			},
-			autoplayDuration: 5000,
-			currentSlideDirection: 'left',
-			transitionSpeed: 300,
+			autoplayDuration: 10000,
+			transitionSpeed: 3000,
 			defaultSlideZIndex: 1000
 		},
 		data = {
@@ -107,22 +107,13 @@
 
 			this.startProgressBar();
 			this.setMetaInfo($($currentSlide));
-
-			this.options.currentSlideDirection = 'left';
 		}.bind(this));
 
-		this.$element.find(this.options.domSelectors.slider).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-			this.doCustomTransition(slick, currentSlide, nextSlide);
+		this.$element.find(this.options.domSelectors.slider).on('beforeChange', function(event, slick, currentSlide, nextSlide, target) {
+			this.doCustomTransition(slick, currentSlide, nextSlide, target);
 			this.resetProgressBar();
 		}.bind(this));
 
-		this.$element.find(this.options.domSelectors.slider).on('swipe', function(event, slick, direction) {
-			this.options.currentSlideDirection = direction;
-		}.bind(this));
-
-		this.$element.find('.widg_carousel__prev').on('click', function() {
-			this.options.currentSlideDirection = 'right';
-		}.bind(this));
 	};
 
 	/**
@@ -152,26 +143,51 @@
 		$(this.options.domSelectors.progressbar).removeClass(this.options.stateClasses.progressIsRunningUp);
 	};
 
-	Widget.prototype.doCustomTransition = function(slick, currentSlide, nextSlide) {
+	Widget.prototype.doCustomTransition = function(slick, currentSlide, nextSlide, slideTarget) {
 		var $currentSlide = $(slick.$slides[currentSlide]),
 				$nextSlide = $(slick.$slides[nextSlide]),
 				slickWidth = slick.listWidth,
-				pullLength = 0,
-				oldpullLength = '';
+				animatedLeftValue = 0,
+				slickLeftValue = '',
+				$currentSlideImg = $currentSlide.find('img'),
+				$nextSlideImg = $nextSlide.find('img'),
+				directionModifier = 1; // 1 for next, -1 for previous
 
-		$nextSlide.css('visibility', 'visible');
+		if (slideTarget === 'previous' || slideTarget === 'right') {
+			directionModifier = -1;
+		}
 
-		oldpullLength = $currentSlide.css('left');
-		pullLength = parseInt($currentSlide.css('left')) - slickWidth;
+		$nextSlide.css('visibility', 'visible').addClass(this.options.stateClasses.slideIs2ndImportant);
 
+		$nextSlideImg.css({
+			left: directionModifier * slickWidth / 10
+		});
+
+		slickLeftValue = $currentSlide.css('left');
+		animatedLeftValue = parseInt($currentSlide.css('left')) - slickWidth;
+
+		if (directionModifier === -1) {
+			animatedLeftValue = parseInt($currentSlide.css('left')) + slickWidth;
+		}
+
+		$currentSlide.removeClass(this.options.stateClasses.slideIs2ndImportant);
 		$currentSlide.addClass(this.options.stateClasses.slideIsImportant).animate({
-			'left': pullLength
+			'left': animatedLeftValue
 		}, this.options.transitionSpeed, function() {
 			$(this).removeClass('is_important');
 			$(this).css('visibility', 'hidden');
-			$(this).css('left', oldpullLength);
+			$(this).css('left', slickLeftValue);
 		});
 
+		$currentSlideImg.animate({
+			'left': directionModifier * slickWidth
+		}, this.options.transitionSpeed, function() {
+			$(this).css('left', '0px');
+		});
+
+		$nextSlideImg.animate({
+			'left': 0
+		}, this.options.transitionSpeed);
 	};
 
 	/**

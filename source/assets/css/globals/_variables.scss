@@ -86,8 +86,8 @@ $basicUnitHeightMedium: 70px;
   */
 $transitionLength: 0.5s;
 $transitionEase: ease-in-out;
-$carouselAutoplayLength: 5s;
-$carouselTransitionSpeed: 0.3s;
+$carouselAutoplayLength: 10s;
+$carouselTransitionSpeed: 3s;
 $carouselAutoplayLengthWithoutTransition: $carouselAutoplayLength - $carouselTransitionSpeed;
 
 /**
