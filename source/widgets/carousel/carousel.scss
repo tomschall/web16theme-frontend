@@ -73,6 +73,15 @@
 	min-height: $basicPush * 32;
 
 	z-index: zindex('carouselMeta');
+	transition: all 0.3s;
+
+	&:hover {
+		background-color: $colorLightGray;
+
+		.widg_carousel__arrow {
+			animation: arrowAnimationBig 1s 1;
+		}
+	}
 
 	@include mq($to: $sizeBreakpointLarge) {
 		min-height: $basicPush * 26;
