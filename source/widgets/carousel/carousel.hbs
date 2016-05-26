@@ -1,27 +1,29 @@
 <div class="widg_carousel" data-init="carousel">
-	<div class="widg_carousel__slider" data-carousel="slider">
+  <div class="widg_carousel__slider" data-carousel="slider">
 		{{#each slides}}
       <div class="widg_carousel__slide" data-carousel="slide" data-carousel-cat="{{ category }}"
            data-carousel-title="{{ title }}" data-carousel-link="{{ link }}">
         <img src="/widgets/carousel/media/{{ image }}" alt="{{ title }}" data-carousel="slide-img"/>
       </div>
 		{{/each}}
-	</div>
+  </div>
 </div>
 
 <div class="widg_carousel__info-box" data-carousel="info-box">
-  <span class="widg_carousel__category" data-carousel="category">
+  <a href="#" data-carousel="link">
+		<span class="widg_carousel__category" data-carousel="category">
 		Test
-	</span>
-	<span class="widg_carousel__title" data-carousel="title">
-		TITLE TITLE TITLE
-	</span>
-	<a href="#" data-carousel="link">
-	</a>
-	<button class="widg_carousel__arrow"></button>
-	<div class="widg_carousel__progress">
-		<div data-carousel="progressbar"></div>
-	</div>
+		</span>
+		<span class="widg_carousel__title" data-carousel="title">
+			TITLE TITLE TITLE
+		</span>
+
+		<button class="widg_carousel__arrow"></button>
+
+    <div class="widg_carousel__progress">
+      <div data-carousel="progressbar"></div>
+    </div>
+  </a>
 </div>
 <div class="widg_carousel__teasers">
 	{{> "widgets/teaser/teaser" widgets.teaser}}

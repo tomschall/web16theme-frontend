@@ -3,6 +3,8 @@
   @include clearfix;
   @include transition(all $transitionLength $transitionEase);
 
+  transform: translate3D(0,0,0);
+
   width: $widthYellowBar;
   position: fixed;
   max-height: 100vh;
@@ -110,6 +112,8 @@
 
   @include transition(opacity $transitionLength $transitionEase);
   @include transition-delay($transitionLength);
+
+  transform: translate3D(0,0,0);
 
   .is_shrinked & {
 	opacity: 0;

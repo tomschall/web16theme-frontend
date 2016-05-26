@@ -85,7 +85,8 @@
 			autoplaySpeed: durationTime,
 			fade: true,
 			speed: speed,
-			useCSS: false
+			useCSS: false,
+			pauseOnHover: false
 		});
 	};
 
@@ -134,18 +135,6 @@
 				case 39:
 					this.$element.find(this.options.domSelectors.slider).slick('slickNext');
 					break;
-			}
-		}.bind(this));
-
-		this.$element.on('mouseover.' + this.uuid, function() {
-			if (this.options.isAutoplay) {
-				$(this.options.domSelectors.progressbar).pause();
-			}
-		}.bind(this));
-
-		this.$element.on('mouseout.' + this.uuid, function() {
-			if (this.options.isAutoplay) {
-				$(this.options.domSelectors.progressbar).resume();
 			}
 		}.bind(this));
 	};
@@ -242,7 +231,7 @@
 		}, this.options.transitionSpeed / 2);
 
 		$currentSlideImg.animate({
-			'left': directionModifier * slickWidth
+			'left': directionModifier * (slickWidth * 0.7)
 		}, this.options.transitionSpeed, function() {
 			$(this).css('left', '0px');
 		});
