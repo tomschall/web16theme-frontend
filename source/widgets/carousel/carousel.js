@@ -138,7 +138,6 @@
 		}.bind(this));
 
 		this.$element.on('mouseover.' + this.uuid, function() {
-			console.log('hover', this.options.isAutoplay);
 			if (this.options.isAutoplay) {
 				$(this.options.domSelectors.progressbar).pause();
 			}
