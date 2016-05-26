@@ -14,20 +14,25 @@
 			oldAnimate = $.fn.animate,
 			anims = {};
 
-	function now() { return new Date().getTime(); }
+	function now() {
+		return new Date().getTime();
+	}
 
 	$.fn.animate = function(prop, speed, easing, callback) {
 		var optall = $.speed(speed, easing, callback);
+
 		optall.complete = optall.old; // unwrap callback
 		return this.each(function() {
 			// check pauseId
-			if (! this[pauseId]) {
+			if (!this[pauseId]) {
 				this[pauseId] = uuid++;
 			}
 
 			// start animation
 			var opt = $.extend({}, optall);
+
 			oldAnimate.apply($(this), [prop, $.extend({}, opt)]);
+
 			// store data
 			anims[this[pauseId]] = {
 				run: true,
@@ -42,12 +47,13 @@
 	$.fn.pause = function() {
 		return this.each(function() {
 			// check pauseId
-			if (! this[pauseId]) {
+			if (!this[pauseId]) {
 				this[pauseId] = uuid++;
 			}
 
 			// fetch data
 			var data = anims[this[pauseId]];
+
 			if (data && data.run) {
 				data.done += now() - data.start;
 				if (data.done > data.opt.duration) {
@@ -65,13 +71,14 @@
 	$.fn.resume = function() {
 		return this.each(function() {
 			// check pauseId
-			if (! this[pauseId]) {
+			if (!this[pauseId]) {
 				this[pauseId] = uuid++;
 			}
 
 			// fetch data
 			var data = anims[this[pauseId]];
-			if (data && ! data.run) {
+
+			if (data && !data.run) {
 				// resume animation
 				data.opt.duration -= data.done;
 				data.done = 0;
@@ -82,3 +89,4 @@
 		});
 	};
 })();
+
