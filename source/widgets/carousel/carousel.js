@@ -23,7 +23,8 @@
 				button: '[data-' + name + '="button"]',
 				slider: '[data-' + name + '="slider"]',
 				progressbar: '[data-' + name + '="progressbar"]',
-				images: '[data-' + name + '="slide-img"]'
+				images: '[data-' + name + '="slide-img"]',
+				infoBox: '[data-' + name + '="info-box"]'
 			},
 			stateClasses: {
 				slideIsComing: 'is_coming',
@@ -158,9 +159,19 @@
 				title = $slide.data(name + '-title'),
 				link = $slide.data(name + 'link');
 
-		$(this.options.domSelectors.title).text(title);
-		$(this.options.domSelectors.category).text(category);
-		$(this.options.domSelectors.link).text(link);
+		$(this.options.domSelectors.title).text(title).animate({
+			'opacity': 1
+		}, this.options.transitionSpeed / 2);
+		$(this.options.domSelectors.category).text(category).animate({
+			'opacity': 1
+		}, this.options.transitionSpeed / 2);
+		$(this.options.domSelectors.link).text(link).animate({
+			'opacity': 1
+		}, this.options.transitionSpeed / 2);
+
+		$('.widg_carousel__arrow').animate({
+			opacity: 1
+		}, this.options.transitionSpeed / 2);
 	};
 
 	/**
@@ -198,7 +209,8 @@
 				slickLeftValue = '',
 				$currentSlideImg = $currentSlide.find('img'),
 				$nextSlideImg = $nextSlide.find('img'),
-				directionModifier = 1; // 1 for next, -1 for previous
+				directionModifier = 1, // 1 for next, -1 for previous
+				$infoBox = $(this.options.domSelectors.infoBox);
 
 		if (slideTarget === 'previous' || slideTarget === 'right') {
 			directionModifier = -1;
@@ -225,6 +237,10 @@
 			$(this).css('visibility', 'hidden');
 			$(this).css('left', slickLeftValue);
 		});
+
+		$infoBox.find('.widg_carousel__arrow, .widg_carousel__category, .widg_carousel__title').animate({
+			'opacity': 0
+		}, this.options.transitionSpeed / 2);
 
 		$currentSlideImg.animate({
 			'left': directionModifier * slickWidth
