@@ -196,6 +196,9 @@
 @mixin basicUnitHeight($attr) {
 	#{$attr}: basicUnitHeight(normal);
 
+  	@include mq($from: $sizeBreakpointWide) {
+	  	#{$attr}: basicUnitHeight(xxl);
+	}
 
 	@include mq($to: $sizeBreakpointLarge) {
 		#{$attr}: basicUnitHeight(small);

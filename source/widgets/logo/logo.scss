@@ -1,7 +1,16 @@
 .widg_logo {
-  width: 100%;
+  width: 62%;
   height: 50px;
   position: relative;
+  overflow: hidden;
+
+  .page_wrapper__startpage & {
+	width: 100%;
+
+	img {
+	  max-width: 100%;
+	}
+  }
 
   @include mq($to: $sizeBreakpointMedium) {
 	width: 85px;

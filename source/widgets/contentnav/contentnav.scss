@@ -13,6 +13,10 @@
 	&.widg_contentnav___fixed {
 		position: fixed;
 	}
+
+  @include mq($from: $sizeBreakpointMedium) {
+	min-height: basicUnitHeight(normal);
+  }
 }
 
 .widg_contentnav__nav {
@@ -37,6 +41,9 @@
 
   @include basicUnitHeight(height);
 
+  @include mq($from: $sizeBreakpointMedium) {
+	min-height: basicUnitHeight(normal);
+  }
 
   a {
     display: block;
@@ -48,6 +55,11 @@
 
     @include basicUnitHeight(max-height);
     @include basicUnitHeight(line-height);
+
+	@include mq($from: $sizeBreakpointMedium) {
+	  max-height: basicUnitHeight(normal);
+	  line-height: basicUnitHeight(normal);
+	}
 
     &.has-bubble {
       padding-right: 54px;

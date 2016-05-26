@@ -21,7 +21,9 @@
 				stateClasses: {
 					// isActive: 'is_active'
 				},
-				scrollMagicScene: null
+				scrollMagicScene: null,
+				scrollMagicScene2: null,
+				isCollapsible: false
 			},
 			data = {
 				// items: ["Item 1", "Item 2"]
@@ -58,14 +60,24 @@
 		this.addEventListener();
 
 		if (estatico.mq.query({from: 'medium'})) {
-			this.addInitialScrollMagic();
+
+			console.log(this.$element.data('header-collapsible'));
+
+			if (this.$element.data('header-collapsible')) {
+				this.addInitialScrollMagic();
+
+				this.options.isCollapsible = true;
+			}
 		}
 	};
 
 	Widget.prototype.addEventListener = function() {
 		this.$element.on('click' + '.' + this.uuid, function() {
 
+			console.log(window.estatico.mq.query({from: 'medium'}));
+
 			if (this.$element.hasClass('is_shrinked') && window.estatico.mq.query({from: 'medium'})) {
+
 				this.$element.addClass('is_expanded');
 				this.$element.removeClass('is_shrinked');
 
@@ -117,16 +129,26 @@
 					triggerElement: '#main',
 					offset: $(window).scrollTop() + 200,
 					triggerHook: 0
+				}),
+				dynamicHeaderScene2 = new ScrollMagic.Scene({
+					triggerElement: '#main',
+					offset: $(window).scrollTop() - 200,
+					triggerHook: 0
 				});
 
 		dynamicHeaderScene.on('enter leave', function() {
 			this.toggleShrinked();
 		}.bind(this));
 
+		dynamicHeaderScene2.on('leave', function() {
+			this.toggleShrinked();
+		}.bind(this));
+
 		this.options.scrollMagicScene = dynamicHeaderScene;
+		this.options.scrollMagicScene2 = dynamicHeaderScene2;
 
 		this.options.scrollMagicScene.addTo(window.estatico.magicController);
-
+		this.options.scrollMagicScene2.addTo(window.estatico.magicController);
 	};
 
 	/**
@@ -142,6 +164,11 @@
 		if (this.options.scrollMagicScene) {
 			this.options.scrollMagicScene.destroy(false);
 			this.options.scrollMagicScene = null;
+		}
+
+		if (this.options.scrollMagicScene2) {
+			this.options.scrollMagicScene2.destroy(false);
+			this.options.scrollMagicScene2 = null;
 		}
 	};
 
