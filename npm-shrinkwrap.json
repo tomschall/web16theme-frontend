@@ -26676,6 +26676,11 @@
       "from": "highlight.js@8.5.0",
       "resolved": "https://registry.npmjs.org/highlight.js/-/highlight.js-8.5.0.tgz"
     },
+    "image-scale": {
+      "version": "2.1.0",
+      "from": "image-scale@2.1.0",
+      "resolved": "https://registry.npmjs.org/image-scale/-/image-scale-2.1.0.tgz"
+    },
     "inquirer": {
       "version": "0.12.0",
       "from": "inquirer@0.12.0",
