@@ -85,7 +85,7 @@
 		"case",
 		"default"*/
 	], // Requires curly braces after statements.
-	// "requireDollarBeforejQueryAssignment": false, // Require a $ before variable names that are jquery assignments.
+	"requireDollarBeforejQueryAssignment": true, // Require a $ before variable names that are jquery assignments.
 	"requireDotNotation": true, // Requires member expressions to use dot notation when possible
 	"requireFunctionDeclarations": null, // Requires function declarations by disallowing assignment of functions expressions to variables. Function expressions are allowed in all other contexts, including when passed as function arguments or immediately invoked.
 	"requireKeywordsOnNewLine": null, // Requires placing keywords on a new line.
