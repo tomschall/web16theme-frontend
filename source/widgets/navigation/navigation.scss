@@ -11,6 +11,10 @@
 		display: none;
 	}
 
+	&.widg_header__hide-on-shrinked {
+		transform: none;
+	}
+
 	ul {
 		li {
 			a {
@@ -26,8 +30,98 @@
 	}
 }
 
-.widg_navigation__level_1,
-.widg_navigation__level_2,
-.widg_navigation__level_3 {
+/**
+Navigation Level: 0 (global minimum for all)
+**/
+.widg_navigation__list {
 	display: none;
+
+	&[data-navigation-level="0"] {
+		display: block;
+	}
+
+	a{
+		transition: all $transitionLength $transitionEase;
+		cursor: pointer;
+		position: relative;
+
+		&:hover {
+			background-color: $colorYellowHover;
+		}
+
+		&.is_expandable {
+			@include iconDataurl($name: 'breadcrumb', $after: true);
+
+			&:hover:after {
+				opacity: 1;
+				right: $basicPush * 2;
+			}
+
+			&:after {
+				transition: all $transitionLength $transitionEase;
+
+				background-image: url('/assets/media/icons/breadcrumb.svg');
+				width: 8px;
+				height: 16px;
+
+				right: $basicPush * 3;
+				top: 50%;
+
+				opacity: 0;
+
+				transform: translateY(-50%);
+
+				content: " ";
+				position: absolute;
+			}
+		}
+	}
+}
+
+
+
+.widg_navigation__sub-wrapper{
+	opacity: 0;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	width: $widthYellowBar;
+
+	@include mq($from: $sizeBreakpointMedium) {
+		height: 100vh;
+	}
+
+	//Extended Header (Wide) only exists between betweener and wide
+	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+		.header__wide & {
+			width: $widthYellowBarWide;
+		}
+	}
+
+	/**
+    * Supersized YellowBar
+    */
+	@include mq($from: $sizeBreakpointWide) {
+		width: $widthYellowBarSuperWide;
+	}
+
+	&[data-navigation-level="1"] {
+		z-index: zindex(headerSecondLayer);
+
+		background-color: $colorBg;
+	}
+
+	&[data-navigation-level="2"] {
+		z-index: zindex(headerThirdLayer);
+
+		background-color: $colorBgNav2;
+	}
+
+	&[data-navigation-level="3"] {
+		z-index: zindex(headerFourthLayer);
+
+		background-color: $colorBgNav3;
+	}
 }

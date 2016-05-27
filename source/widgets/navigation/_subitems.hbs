@@ -1,11 +1,20 @@
-<ul class="widg_navigation__level_{{level}}">
-	{{#each items}}
-		<li>
-			<a href="{{link}}">{{title}}</a>
-      {{#if list}}
-        {{> "widgets/navigation/_subitems" list}}
-      {{/if}}
-		</li>
+<div class="widg_navigation__list" data-navigation-level="{{ level }}">
+	{{#if title}}
+    <h3 class="widg_navigation__subtitle">{{ title }}</h3>
+	{{/if}}
 
-	{{/each}}
-</ul>
+  <ul>
+		{{#each items}}
+      <li>
+				{{#if list}}
+          <a class="is_expandable" data-navigation="expandable">{{title}}</a>
+
+					{{> "widgets/navigation/_subitems" list title=title }}
+				{{else}}
+          <a href="{{link}}">{{title}}</a>
+				{{/if}}
+      </li>
+
+		{{/each}}
+  </ul>
+</div>

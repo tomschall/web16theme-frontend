@@ -21,13 +21,12 @@
 
 	//Extended Header (Wide) only exists between betweener and wide
 	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
-		.header__extended & {
+		.header__wide & {
 			width: $widthYellowBarWide;
 		}
 	}
 
 	.widg_header__inner-top {
-		position: relative;
 		flex-grow: 1;
 	}
 

@@ -5,6 +5,14 @@
 	width: 2 * $basicUnitHeight;
 	z-index: zindex(actionbuttons);
 
+	@include mq($to: $sizeBreakpointLarge) {
+		width: 2 * basicUnitHeight(small);
+	}
+
+	@include mq($from: $sizeBreakpointWide) {
+		width: 2 * basicUnitHeight(xxl);
+	}
+
 	.header__wide & {
 		@include basicUnitHeight(width);
 	}

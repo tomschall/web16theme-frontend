@@ -17,6 +17,7 @@
  * @requires ../../widgets/menubuttons/menubuttons.js
  * @requires ../../widgets/header/header.js
  * @requires ../../widgets/carousel/carousel.js
+ * @requires ../../widgets/navigation/navigation.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js
