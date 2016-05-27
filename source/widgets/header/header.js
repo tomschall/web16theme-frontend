@@ -103,7 +103,7 @@
 	 * Adds the scroll magic functionality
 	 */
 	Widget.prototype.addInitialScrollMagic = function() {
-		if (!$('.page_wrapper').hasClass('page_wrapper__startpage')) {
+		if (!$('.page_wrapper').hasClass('header__wide')) {
 			var headerScene = new ScrollMagic.Scene({
 				triggerElement: '#main',
 				offset: 5,

@@ -26,7 +26,7 @@
 }
 
 .hero {
-	.page_wrapper__startpage & {
+	.header__wide & {
 		@include mq($from: $sizeBreakpointMedium) {
 			margin-left: 230px;
 		}

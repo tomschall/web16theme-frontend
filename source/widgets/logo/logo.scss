@@ -1,26 +1,26 @@
 .widg_logo {
-  width: 62%;
-  height: 50px;
-  position: relative;
-  overflow: hidden;
+	width: 62%;
+	height: 50px;
+	position: relative;
+	overflow: hidden;
 
-  .page_wrapper__startpage & {
-	width: 100%;
+	.header__wide & {
+		width: 100%;
 
-	img {
-	  max-width: 100%;
+		img {
+			max-width: 100%;
+		}
 	}
-  }
 
-  @include mq($to: $sizeBreakpointMedium) {
-	width: 85px;
-	float: right;
+	@include mq($to: $sizeBreakpointMedium) {
+		width: 85px;
+		float: right;
 
-	img {
-	  height: 49px;
-	  width: auto;
+		img {
+			height: 49px;
+			width: auto;
 
-	  margin-top: -4px;
+			margin-top: -4px;
+		}
 	}
-  }
 }

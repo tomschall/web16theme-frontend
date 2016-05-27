@@ -1,131 +1,131 @@
 
 .widg_header {
-  @include clearfix;
-  @include transition(all $transitionLength $transitionEase);
+	@include clearfix;
+	@include transition(all $transitionLength $transitionEase);
 
-  transform: translate3D(0,0,0);
+	transform: translate3D(0, 0, 0);
 
-  width: $widthYellowBar;
-  position: fixed;
-  max-height: 100vh;
-  height: 100vh;
+	width: $widthYellowBar;
+	position: fixed;
+	max-height: 100vh;
+	height: 100vh;
 
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  background-color: $colorYellow;
-  padding: $gutter;
-  padding-top: 25px;
+	background-color: $colorYellow;
+	padding: $gutter;
+	padding-top: 25px;
 
-  z-index: zindex('header');
+	z-index: zindex('header');
 
-  //Extended Header (Wide) only exists between betweener and wide
-  @include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
-	.header__extended & {
-	  width: $widthYellowBarWide;
+	//Extended Header (Wide) only exists between betweener and wide
+	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+		.header__extended & {
+			width: $widthYellowBarWide;
+		}
 	}
-  }
 
-  .widg_header__inner-top {
-	position: relative;
-	flex-grow: 1;
-  }
+	.widg_header__inner-top {
+		position: relative;
+		flex-grow: 1;
+	}
 
-  /**
+	/**
     * Smaller then 1024 leads to the top bar
     */
-  @include mq($to: medium) {
-	width: 100%;
-	height: $headerHeightTop;
-	position: static;
-	padding: 15px $basicPush * 4;
+	@include mq($to: medium) {
+		width: 100%;
+		height: $headerHeightTop;
+		position: static;
+		padding: 15px $basicPush * 4;
 
-	@include mq($to: small) {
-	  padding: 15px $basicPush * 2;
+		@include mq($to: small) {
+			padding: 15px $basicPush * 2;
+		}
 	}
-  }
 
-  /**
+	/**
     * Supersized YellowBar
     */
-  @include mq($from: $sizeBreakpointWide) {
-	width: $widthYellowBarSuperWide;
-  }
+	@include mq($from: $sizeBreakpointWide) {
+		width: $widthYellowBarSuperWide;
+	}
 
 }
 
 .is_shrinked {
-  @include basicUnitHeight(max-height);
+	@include basicUnitHeight(max-height);
 
-  overflow: hidden;
+	overflow: hidden;
 
-  @include mq($from: $sizeBreakpointMedium) {
-	max-height: basicUnitHeight(normal);
+	@include mq($from: $sizeBreakpointMedium) {
+		max-height: basicUnitHeight(normal);
 
-	.widg_header__expander {
-	  display: block;
+		.widg_header__expander {
+			display: block;
+		}
+
+		cursor: pointer;
+
+		&:hover,
+		&:focus {
+			background-color: $colorDarkerYellow;
+		}
 	}
-
-	cursor: pointer;
-
-	&:hover,
-	&:focus {
-	  background-color: $colorDarkerYellow;
-	}
-  }
 }
 
 @include mq($from: $sizeBreakpointMedium) {
-  .is_expanded {
-	max-height: 100vh;
+	.is_expanded {
+		max-height: 100vh;
 
-	&:hover,
-	&:focus {
-	  background-color: $colorYellow;
+		&:hover,
+		&:focus {
+			background-color: $colorYellow;
+		}
 	}
-  }
 }
 
 .widg_header__expander {
-  width: 14px;
-  height: 10px;
-
-  @include iconDataurl('dropdown-arrow');
-
-  display: none;
-  position: absolute;
-  top: 25px;
-  right: 0;
-
-  &:before {
-	@include centerDataurlIcon();
-
 	width: 14px;
 	height: 10px;
-  }
 
-  .is_expanded & {
+	@include iconDataurl('dropdown-arrow');
+
 	display: none;
-  }
+	position: absolute;
+	top: 25px;
+	right: 0;
+
+	&:before {
+		@include centerDataurlIcon();
+
+		width: 14px;
+		height: 10px;
+	}
+
+	.is_expanded & {
+		display: none;
+	}
 }
 
 .widg_header__hide-on-shrinked {
-  opacity: 1;
+	opacity: 1;
 
-  @include transition(opacity $transitionLength $transitionEase);
-  @include transition-delay($transitionLength);
+	@include transition(opacity $transitionLength $transitionEase);
+	@include transition-delay($transitionLength);
 
-  transform: translate3D(0,0,0);
+	transform: translate3D(0, 0, 0);
 
-  .is_shrinked & {
-	opacity: 0;
-  }
+	.is_shrinked & {
+		opacity: 0;
+	}
 }
 
 .widg_header__inner-foot {
-  @include mq($to: $sizeBreakpointMedium) {
-	display: none;
-  }
+	@include mq($to: $sizeBreakpointMedium) {
+		display: none;
+	}
 }
 
 /**
@@ -133,13 +133,13 @@
  */
 
 .widg_header {
-  .page_wrapper__startpage & {
-	@include mq($from: $sizeBreakpointLarge) {
-	  min-width: 300px;
-	}
+	.header__wide & {
+		@include mq($from: $sizeBreakpointLarge) {
+			min-width: 300px;
+		}
 
-	@include mq($from: $sizeBreakpointWide) {
-	  min-width: 400px;
+		@include mq($from: $sizeBreakpointWide) {
+			min-width: 400px;
+		}
 	}
-  }
 }

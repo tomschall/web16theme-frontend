@@ -1,45 +1,45 @@
 .widg_actionbuttons {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 2 * $basicUnitHeight;
-  z-index: zindex(actionbuttons);
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 2 * $basicUnitHeight;
+	z-index: zindex(actionbuttons);
 
-  .page_wrapper__startpage & {
-	@include basicUnitHeight(width);
-  }
+	.header__wide & {
+		@include basicUnitHeight(width);
+	}
 
-  @include mq($to: $sizeBreakpointMedium) {
-	display: none;
-  }
+	@include mq($to: $sizeBreakpointMedium) {
+		display: none;
+	}
 }
 
 .widg_actionbutton__item {
-  @include basicUnitHeight(height);
-  @include basicUnitHeight(width);
+	@include basicUnitHeight(height);
+	@include basicUnitHeight(width);
 
-  position: relative;
-  border: 0;
+	position: relative;
+	border: 0;
 
-  float: left;
+	float: left;
 
-  background-color: $colorBg;
-  text-align: center;
+	background-color: $colorBg;
+	text-align: center;
 
-  &:hover,
-  &:focus {
-	cursor: pointer;
-	background-color: $colorLightGray;
-  }
+	&:hover,
+	&:focus {
+		cursor: pointer;
+		background-color: $colorLightGray;
+	}
 
-  text-indent: -10000px;
+	text-indent: -10000px;
 
-  &:before {
+	&:before {
 
-	position: absolute;
-	content: " ";
+		position: absolute;
+		content: " ";
 
-	top: 50%;
-	left: 50%;
-  }
+		top: 50%;
+		left: 50%;
+	}
 }

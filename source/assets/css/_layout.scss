@@ -1,74 +1,74 @@
 html {
-  background: $colorBg;
-  color: $colorDarkGrey;
-  font-family: $fontSansSerifRoman;
-  font-size: $sizeFontBase / 16px * 100%;
-  line-height: $sizeLineHeightBase;
+	background: $colorBg;
+	color: $colorDarkGrey;
+	font-family: $fontSansSerifRoman;
+	font-size: $sizeFontBase / 16px * 100%;
+	line-height: $sizeLineHeightBase;
 }
 
 body {
-  color: $colorBlack;
+	color: $colorBlack;
 }
 
 nav,
 footer {
 
-  ul,
-  ol {
-	@include resetList;
-  }
+	ul,
+	ol {
+		@include resetList;
+	}
 }
 
 h2,
 h3 {
-  color: $colorText;
+	color: $colorText;
 }
 
 .hero {
-  position: relative;
+	position: relative;
 
 }
 
 .page_wrapper {
-  display: flex;
-  min-height: 100vh;
+	display: flex;
+	min-height: 100vh;
 
-  @include mq($to: medium) {
-	flex-direction: column;
-  }
+	@include mq($to: medium) {
+		flex-direction: column;
+	}
 }
 
 .layout_wrapper {
-  flex-grow: 1;
+	flex-grow: 1;
 
-  display: flex;
+	display: flex;
 
-  flex-direction: column;
+	flex-direction: column;
 
-  .page_wrapper__startpage & {
-	display: block;
+	.header__wide & {
+		display: block;
 
-	@include mq($from: $sizeBreakpointMedium) {
-	  width: calc(100% - 300px);
+		@include mq($from: $sizeBreakpointMedium) {
+			width: calc(100% - 300px);
+		}
+
+		@include mq($from: $sizeBreakpointWide) {
+			width: calc(100% - 400px);
+		}
 	}
-
-	@include mq($from: $sizeBreakpointWide) {
-	  width: calc(100% - 400px);
-	}
-  }
 
 }
 
 .layout_content {
-  flex-grow: 1;
-  width: 100%;
+	flex-grow: 1;
+	width: 100%;
 
-  margin-top: $basicPush * 10 - 44px;
+	margin-top: $basicPush * 10 - 44px;
 
-  @include contentWrapper($gutterWidth);
+	@include contentWrapper($gutterWidth);
 
-  .page_wrapper__startpage & {
-	display: none;
-  }
+	.header__wide & {
+		display: none;
+	}
 
 }
