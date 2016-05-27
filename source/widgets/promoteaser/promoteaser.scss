@@ -1,0 +1,62 @@
+.widg_promoteaser {
+	width: 100%;
+	padding-top: 100%;
+	position: relative;
+	border-radius: 50%;
+	background-color: $colorBg;
+	margin-top: $basicPush * 5;
+
+	.widg_promoteaser__inner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		padding: 0 $basicPush;
+
+		transform: translate(-50%, -50%);
+	}
+
+	&:hover {
+		cursor: pointer;
+
+		.widg_promoteaser__button:before {
+			animation: arrowAnimationWithCenterIcon $animationDuration;
+		}
+	}
+
+	@include mq($to: $sizeBreakpointMedium){
+		display: none;
+	}
+}
+
+.widg_promoteaser__img {
+	width: 100%;
+	margin-bottom: $basicPush * 0.5;
+	text-align: center;
+
+	img {
+		max-width: 70%;
+	}
+}
+
+.widg_promoteaser__text {
+	font-size: 1.1rem;
+	font-family: $fontSansSerifRoman;
+	line-height:1.3;
+	text-align: center;
+
+	b{
+		font-family: $fontSansSerifBold;
+	}
+}
+
+.widg_promoteaser__button {
+	@include iconDataurl('arrow');
+
+	position: relative;
+	width: 100%;
+
+	&:before {
+		@include centerDataurlIcon();
+	}
+}

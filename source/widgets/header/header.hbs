@@ -1,9 +1,12 @@
-<header class="widg_header" data-init="header" data-header-collapsible="true">
+<header class="widg_header" data-init="header" data-header-collapsible="{{ isCollapsible }}">
   <div class="widg_header__inner-top">
     <div class="widg_header__expander"></div>
 		{{> "widgets/menubuttons/menubuttons" }}
 		{{> "widgets/logo/logo"}}
 		{{> "widgets/navigation/navigation" widgets.navigation}}
+		{{#if hasPromoTeaser}}
+			{{> "widgets/promoteaser/promoteaser" }}
+		{{/if}}
 	</div>
 	<div class="widg_header__inner-foot">
     <div class="widg_headerfoot widg_header__hide-on-shrinked">

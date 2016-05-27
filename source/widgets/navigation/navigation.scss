@@ -1,29 +1,33 @@
 .widg_navigation {
-  margin-top: $basicPush * 8 + 7;
-  margin-left: -1 * $gutter;
-  margin-right: -1 * $gutter;
+	margin-top: $basicPush * 8 + 7;
+	margin-left: -1 * $gutter;
+	margin-right: -1 * $gutter;
 
-  @include mq($to: $sizeBreakpointMedium) {
-	display: none;
-  }
-
-  ul {
-	li {
-	  a {
-		display: block;
-		width: 100%;
-		font-family: $fontSerifRoman;
-
-		font-size: 1.5rem;
-		line-height: 3.3em;
-		padding: 0 $gutter - 3 0 $gutter;
-	  }
+	@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
+		margin-top: $basicPush * 4 + 7;
 	}
-  }
+
+	@include mq($to: $sizeBreakpointMedium) {
+		display: none;
+	}
+
+	ul {
+		li {
+			a {
+				display: block;
+				width: 100%;
+				font-family: $fontSerifRoman;
+
+				font-size: 1.5rem;
+				line-height: 3.3em;
+				padding: 0 $gutter - 3 0 $gutter;
+			}
+		}
+	}
 }
 
 .widg_navigation__level_1,
 .widg_navigation__level_2,
 .widg_navigation__level_3 {
-  display: none;
+	display: none;
 }

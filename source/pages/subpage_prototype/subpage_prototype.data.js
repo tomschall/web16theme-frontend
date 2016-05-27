@@ -10,12 +10,17 @@ var data = _.merge(defaultData, {
 	},
 	title: 'University of Applied Sciences and Arts Northwestern Switzerland FHNW',
 	widgets: {
-		header: requireNew('../../widgets/header/header.data.js'),
+		header: _.assign({
+			hasPromoTeaser: false,
+			isCollapsible: true
+		}, requireNew('../../widgets/header/header.data.js')),
 		navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 		footer: requireNew('../../widgets/footer/footer.data.js'),
 		hero: requireNew('../../widgets/hero/hero.data.js'),
 		contentNav: requireNew('../../widgets/contentnav/contentnav.data.js')
-	}
+	},
+	hasPromoteaser: false,
+	wrapperClass: ''
 });
 
 module.exports = data;

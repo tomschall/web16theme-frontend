@@ -2,6 +2,10 @@ p {
 	font-size: 1.5rem;
 	font-family: $fontSerifRoman;
     line-height: 2;
+
+	b {
+		font: $fontSerifBold;
+	}
 }
 
 .text__lead {

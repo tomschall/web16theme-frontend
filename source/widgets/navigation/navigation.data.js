@@ -17,75 +17,176 @@ var data = _.merge(defaultData, {
 			items: [
 				{
 					title: 'Studium',
-					link: '#',
-					list: {
-						level: 1,
-						items: [
-							{
-								title: 'Some section',
-								link: '#'
-							},
-							{
-								title: 'Another one',
-								link: '#'
-							}
-						]
-					}
+					link: '#'
 				},
 				{
 					title: 'Weiterbildung',
-					link: '#',
+					link: '#'
+				},
+				{
+					title: 'Forschung & Praxis',
+					link: '#'
+				},
+				{
+					title: 'Die FHNW',
+					link: '',
 					list: {
 						level: 1,
 						items: [
 							{
-								title: 'Pokemon',
+								title: 'Übersicht',
+								link: '#'
+							},
+							{
+								title: 'Portrait',
+								link: '#'
+							},
+							{
+								title: 'Hochschulen',
 								link: '#',
 								list: {
 									level: 2,
 									items: [
 										{
-											title: 'Pichu',
+											title: 'Hochschule für Angewandte Psychologie',
 											link: '#'
 										},
 										{
-											title: 'Pikachu',
+											title: 'Hochschule für Architektur, Bau und Geomatik',
+											link: '#',
+											list: {
+												level: 3,
+												items: [
+													{
+														title: 'Übersicht',
+														link: '#'
+													},
+													{
+														title: 'Institut für Architektur',
+														link: '#'
+													},
+													{
+														title: 'Institut für Bauingenieurwesen',
+														link: '#'
+													},
+													{
+														title: 'Institut für Vermessung und Geoinformation',
+														link: '#'
+													},
+													{
+														title: 'Institut für Energie am Bau',
+														link: '#'
+													}
+												]
+											}
+										},
+										{
+											title: 'Hochschule für Gestaltung und Kunst',
 											link: '#'
 										},
 										{
-											title: 'Raichu',
+											title: 'Hochschule für Life Sciences',
+											link: '#',
+											list: {
+												level: 3,
+												items: [
+													{
+														title: 'Übersicht',
+														link: '#'
+													},
+													{
+														title: 'Lorem ipsum dolor',
+														link: '#'
+													},
+													{
+														title: 'Vanitas Carpe',
+														link: '#'
+													},
+													{
+														title: 'Institut für Medizinal- und Analysetechnologie',
+														link: '#'
+													},
+													{
+														title: 'Institut für Chemie und Bioanalytik',
+														link: '#'
+													},
+													{
+														title: 'Institut für Pharma Technology',
+														link: '#'
+													},
+													{
+														title: 'Institut für Ecopreneurship',
+														link: '#'
+													}
+												]
+											}
+										},
+										{
+											title: 'Musikhochschulen',
+											link: '#'
+										},
+										{
+											title: 'Pädagogische Hochschule',
+											link: '#'
+										},
+										{
+											title: 'Hochschule für Soziale Arbeit',
+											link: '#'
+										},
+										{
+											title: 'Hochschule für Technik',
+											link: '#'
+										},
+										{
+											title: 'Hochschule für Wirtschaft',
 											link: '#'
 										}
 									]
 								}
-							}
-						]
-					}
-				},
-				{
-					title: 'Forschung & Praxis',
-					link: '#',
-					list: {
-						level: 1,
-						items: [
+							},
 							{
-								title: 'Section again',
+								title: 'Organisation',
 								link: '#'
 							},
 							{
-								title: 'Some other stuff',
+								title: 'Alumni',
 								link: '#'
 							},
 							{
-								title: 'Another one',
+								title: 'Stiftung',
+								link: '#'
+							},
+							{
+								title: 'Publikation',
+								link: '#',
+								list: {
+									level: 2,
+									items: [
+										{
+											title: 'Übersicht',
+											link: '#'
+										},
+										{
+											title: 'Studentische Arbeiten',
+											link: '#'
+										},
+										{
+											title: 'Projekte',
+											link: '#'
+										}
+									]
+								}
+							},
+							{
+								title: 'Rechtliche Dokumente',
+								link: '#'
+							},
+							{
+								title: 'Kontakt',
 								link: '#'
 							}
 						]
 					}
-				},
-				{
-					title: 'Die FHNW',
-					link: '#'
 				}
 			]
 		}

@@ -1,5 +1,8 @@
-{{#extend "layouts/startlayout"}}
+{{#extend "layouts/layout"}}
 
+	{{#content "hero"}}
+		{{> "widgets/carousel/carousel" widgets.carousel}}
+	{{/content}}
 
     {{#content "content"}}
     {{/content}}
