@@ -1,4 +1,4 @@
-<div class="widg_navigation__list" data-navigation-level="{{ level }}">
+<div class="widg_navigation__list" data-navigation-level="{{ level }}" data-navigation="list">
 	{{#if title}}
     <h3 class="widg_navigation__subtitle">{{ title }}</h3>
 	{{/if}}
@@ -7,7 +7,7 @@
 		{{#each items}}
       <li>
 				{{#if list}}
-          <a class="is_expandable" data-navigation="expandable">{{title}}</a>
+          <a class="is_expandable" data-navigation-is-expandable="true" data-navigation="item">{{title}}</a>
 
 					{{> "widgets/navigation/_subitems" list title=title }}
 				{{else}}

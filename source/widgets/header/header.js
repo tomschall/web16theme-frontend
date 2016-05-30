@@ -60,9 +60,6 @@
 		this.addEventListener();
 
 		if (estatico.mq.query({from: 'medium'})) {
-
-			console.log(this.$element.data('header-collapsible'));
-
 			if (this.$element.data('header-collapsible')) {
 				this.addInitialScrollMagic();
 
@@ -73,8 +70,6 @@
 
 	Widget.prototype.addEventListener = function() {
 		this.$element.on('click' + '.' + this.uuid, function() {
-
-			console.log(window.estatico.mq.query({from: 'medium'}));
 
 			if (this.$element.hasClass('is_shrinked') && window.estatico.mq.query({from: 'medium'})) {
 

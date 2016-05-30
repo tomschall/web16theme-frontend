@@ -15,19 +15,6 @@
 		transform: none;
 	}
 
-	ul {
-		li {
-			a {
-				display: block;
-				width: 100%;
-				font-family: $fontSerifRoman;
-
-				font-size: 1.5rem;
-				line-height: 3.3em;
-				padding: 0 $gutter - 3 0 $gutter;
-			}
-		}
-	}
 }
 
 /**
@@ -40,16 +27,50 @@ Navigation Level: 0 (global minimum for all)
 		display: block;
 	}
 
+	ul {
+		@include resetList();
+	}
+
 	a{
 		transition: all $transitionLength $transitionEase;
 		cursor: pointer;
 		position: relative;
 
-		&:hover {
+		display: block;
+		width: 100%;
+		font-family: $fontSerifRoman;
+
+		font-size: 1.5rem;
+		padding: 17px $gutter - 3 16px $gutter;
+
+
+		&:before {
+			transition: all $transitionLength $transitionEase;
+
+			display: block;
+			content: " ";
+			position: absolute;
+
+			top: 0;
+			bottom: 0;
+			left: -5 * $activeBarWidth;
+
+			width: $activeBarWidth;
+
+			background-color: $colorBlack;
+		}
+
+		&:hover:not(.is_active) {
 			background-color: $colorYellowHover;
 		}
 
-		&.is_expandable {
+		&.is_active {
+			&:before {
+				left: 0;
+			}
+		}
+
+		&.is_expandable:not(.is_active) {
 			@include iconDataurl($name: 'breadcrumb', $after: true);
 
 			&:hover:after {
@@ -79,8 +100,37 @@ Navigation Level: 0 (global minimum for all)
 }
 
 
+.widg_navigation__list[data-navigation-level="1"] {
+	a {
+		&:hover:not(.is_expandable),
+		&:hover.is_expandable:not(.is_active){
+			background-color: $colorHoverNav1;
+		}
+	}
+}
+
+.widg_navigation__list[data-navigation-level="2"] {
+	a {
+		&:hover:not(.is_expandable),
+		&:hover.is_expandable:not(.is_active){
+			background-color: $colorHoverNav2;
+		}
+	}
+}
+
+.widg_navigation__list[data-navigation-level="3"] {
+	a {
+		&:hover:not(.is_expandable),
+		&:hover.is_expandable:not(.is_active){
+			background-color: $colorHoverNav3;
+		}
+	}
+}
+
 
 .widg_navigation__sub-wrapper{
+	transition: all $transitionLength $transitionEase;
+
 	opacity: 0;
 
 	position: fixed;
@@ -88,6 +138,15 @@ Navigation Level: 0 (global minimum for all)
 	left: 0;
 
 	width: $widthYellowBar;
+
+	> .widg_navigation__list {
+		display: block;
+		margin-top: $basicPush * 16.2;
+
+		a:before {
+			background: $colorNavActiveBar;
+		}
+	}
 
 	@include mq($from: $sizeBreakpointMedium) {
 		height: 100vh;
@@ -124,4 +183,19 @@ Navigation Level: 0 (global minimum for all)
 
 		background-color: $colorBgNav3;
 	}
+}
+
+.widg_navigation__subtitle {
+	font-size: 1rem;
+	font-family: $fontSansSerifRoman;
+	letter-spacing: 2.9px;
+	text-transform: uppercase;
+	line-height: 1.8;
+
+	position: absolute;
+	top: $basicPush * 3.4;
+
+	padding: 0 $basicPush * 3.2;
+
+	color: $colorTextGrey;
 }

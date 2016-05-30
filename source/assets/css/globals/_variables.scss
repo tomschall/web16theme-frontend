@@ -38,9 +38,12 @@ $colorNavActiveBar: #ebd12d;
 $colorBgNav2: $colorHoverNav1;
 $colorHoverNav2: #ededeb;
 $colorBgNav3: $colorHoverNav2;
-$colorHoverNav3: rgba(237,237,235,0.5);
+$colorHoverNav3: #e4e4e1;
 
-
+/**
+Navigation vars
+*/
+$activeBarWidth: 5px;
 
 /**
  * Fonts
@@ -127,7 +130,7 @@ $zIndex: (
 		header: 2000,
 		headerSecondLayer: 1900,
 		headerThirdLayer: 1800,
-		headerForuthLayer: 1700
+		headerFourthLayer: 1700
 );
 
 /**

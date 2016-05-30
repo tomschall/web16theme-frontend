@@ -16,11 +16,13 @@
 			},
 			defaults = {
 				domSelectors: {
-					expandable: '[data-navigation="expandable"]',
-					subWrappers: '[data-navigation="sub-wrapper"]'
+					expandable: '[data-navigation-is-expandable="true"]',
+					subWrappers: '[data-navigation="sub-wrapper"]',
+					list: '[data-navigation="list"]',
+					navItem: '[data-navigation="item"]'
 				},
 				stateClasses: {
-					// isActive: 'is_active'
+					isActive: 'is_active'
 				},
 				maxAdditionalNavLevel: 3
 			},
@@ -56,8 +58,13 @@
 	 */
 	Widget.prototype.init = function() {
 		this.initWrappers();
+
+		this.addEventListener();
 	};
 
+	/**
+	 * Initializing the wrappers for the subwrappers
+	 */
 	Widget.prototype.initWrappers = function() {
 		var $wrapperDom = '';
 
@@ -68,6 +75,60 @@
 
 			$('.page_wrapper').append($wrapperDom);
 		}
+	};
+
+	/**
+	 * Adds the navigation event listeners
+	 */
+	Widget.prototype.addEventListener = function() {
+		$(this.options.domSelectors.expandable).on('click.' + this.uuid, function(event) {
+			var $eventTarget = $(event.currentTarget),
+					$subList = $eventTarget.next(this.options.domSelectors.list),
+					targetLevel = $eventTarget.closest(this.options.domSelectors.list).data('navigation-level');
+
+			if (!$eventTarget.hasClass(this.options.stateClasses.isActive)) {
+				this.setNavActive($eventTarget, targetLevel);
+				this.fillNavWrapper($subList);
+				this.showNavigation($subList.data('navigation-level'));
+			}
+		}.bind(this));
+	};
+
+	/**
+	 * sets the clicked nav item active, and removes all active states on the same level
+	 * @param $navItem
+	 * @param targetLevel
+   */
+	Widget.prototype.setNavActive = function($navItem, targetLevel) {
+		var $currentList = $(this.options.domSelectors.list + '[data-navigation-level="' + targetLevel + '"]');
+
+		$currentList.find('.' + this.options.stateClasses.isActive).removeClass(this.options.stateClasses.isActive);
+
+		$navItem.addClass(this.options.stateClasses.isActive);
+	};
+
+	/**
+	 * Fills the nav wrapper
+	 * @param $subList the list which has to be copied to the wrapper, which can be positioned
+   */
+	Widget.prototype.fillNavWrapper = function($subList) {
+		var subListLevel = parseInt($subList.data('navigation-level')),
+				$targetWrapper = this.data.wrappers[subListLevel];
+
+		$targetWrapper.find(this.options.domSelectors.list).remove();
+
+		$subList.clone(true).appendTo($targetWrapper);
+	};
+
+	Widget.prototype.showNavigation = function(targetLevel) {
+		var $targetWrapper = this.data.wrappers[targetLevel],
+				headerWidth = $('.widg_header').outerWidth(),
+				pullLeft = headerWidth * targetLevel;
+
+		$targetWrapper.css({
+			left: pullLeft,
+			opacity: 1
+		});
 	};
 
 	/**
