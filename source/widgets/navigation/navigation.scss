@@ -195,10 +195,6 @@ Navigation Level: 0 (global minimum for all)
 
 		left: 180px;
 
-		@include mq($from: $sizeBreakpointLarge, $to: $sizeBreakpointWide) {
-			left: 250px;
-		}
-
 		@include mq($from: $sizeBreakpointWide) {
 			left: 350px;
 		}
@@ -215,10 +211,6 @@ Navigation Level: 0 (global minimum for all)
 
 		left: 410px;
 
-		@include mq($from: $sizeBreakpointLarge, $to: $sizeBreakpointWide) {
-			left: 550px;
-		}
-
 		@include mq($from: $sizeBreakpointWide) {
 			left: 750px;
 		}
@@ -234,10 +226,6 @@ Navigation Level: 0 (global minimum for all)
 		background-color: $colorBgNav3;
 
 		left: 640px;
-
-		@include mq($from: $sizeBreakpointLarge, $to: $sizeBreakpointWide) {
-			left: 850px;
-		}
 
 		@include mq($from: $sizeBreakpointWide) {
 			left: 1150px;

@@ -1,245 +1,250 @@
 .widg_carousel {
-  overflow: hidden;
-
-  @include mq($to: $sizeBreakpointMedium) {
-	min-height: calc(100vh - 70px);
-  }
-
-  .widg_carousel__slider {
 	overflow: hidden;
-	min-height: 100vh;
-	opacity: 0;
 
 	@include mq($to: $sizeBreakpointMedium) {
-	  min-height: calc(100vh - 70px);
+		min-height: calc(100vh - 70px);
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
-	  min-height: calc(60vh - 70px);
-	}
+	.widg_carousel__slider {
+		overflow: hidden;
+		min-height: 100vh;
+		opacity: 0;
 
-  }
+		@include mq($to: $sizeBreakpointMedium) {
+			min-height: calc(100vh - 70px);
+		}
+
+		@include mq($to: $sizeBreakpointSmall) {
+			min-height: calc(60vh - 70px);
+		}
+
+	}
 }
 
 .widg_carousel__slide {
-  line-height: 0;
-  height: 100vh;
-  max-width: 100%;
+	line-height: 0;
+	height: 100vh;
+	max-width: 100%;
 
-  overflow: hidden;
-  position: relative;
+	overflow: hidden;
+	position: relative;
 
-  transform: translate3D(0,0,0);
+	transform: translate3D(0, 0, 0);
 
-  img {
-	transform: scale(1.0) translate3D(0,0,0);
-  }
+	img {
+		transform: scale(1.0) translate3D(0, 0, 0);
+	}
 
-  // Important has to be set, due to overriding slick
-  opacity: 1 !important;
+	// Important has to be set, due to overriding slick
+	opacity: 1 !important;
 
-  &.is_important {
-	z-index: 1002 !important;
-  }
+	&.is_important {
+		z-index: 1002 !important;
+	}
 
-  &.is_second-important {
-	z-index: 1001 !important;
-  }
+	&.is_second-important {
+		z-index: 1001 !important;
+	}
 
-  @include mq($to: $sizeBreakpointMedium) {
-	max-height: calc(100vh - 70px);
-  }
+	@include mq($to: $sizeBreakpointMedium) {
+		max-height: calc(100vh - 70px);
+	}
 
-  @include mq($to: $sizeBreakpointSmall) {
-	max-height: calc(60vh - 70px);
-  }
+	@include mq($to: $sizeBreakpointSmall) {
+		max-height: calc(60vh - 70px);
+	}
 
-  .is_zoomed {
-	transform: scale(1.1) translate3D(0,0,0);
-	transition: transform $carouselInitTransitionSpeed * 2 $transitionEase;
+	.is_zoomed {
+		transform: scale(1.1) translate3D(0, 0, 0);
+		transition: transform $carouselInitTransitionSpeed * 2 $transitionEase;
 
-  }
+	}
 }
 
 .widg_carousel__info-box {
-  width: calc(50% - 100px);
-  position: absolute;
-
-  @include basicUnitHeight(top);
-  @include basicUnitHeight(right);
-
-  min-height: $basicPush * 32;
-
-  z-index: zindex('carouselMeta');
-  transition: all 0.3s;
-  transform: translate3D(0,0,0);
-
-  @include mq($to: $sizeBreakpointLarge) {
-	min-height: $basicPush * 26;
-  }
-
-  @include mq($to: $sizeBreakpointMedium) {
-	top: auto;
-	bottom: $basicPush * 10;
-	right: $basicPush * 4;
-
-	width: 50%;
-  }
-
-  @include mq($to: $sizeBreakpointSmall) {
-	top: auto;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	width: 100%;
-
-	min-height: 40vh;
-  }
-
-  a {
-	display: block;
+	width: calc(50% - 100px);
 	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
 
-	padding: $basicPush * 4 $basicPush * 5;
-	padding-bottom: 0;
-	background-color: $colorBg;
+	@include basicUnitHeight(top);
+	@include basicUnitHeight(right);
 
-	&:hover {
-	  background-color: $colorLightGray;
+	min-height: $basicPush * 32;
 
-	  .widg_carousel__arrow {
-		animation: arrowAnimationBig $animationDuration 1;
-	  }
+	z-index: zindex('carouselMeta');
+	transition: all 0.3s;
+	transform: translate3D(0, 0, 0);
+
+	@include mq($to: $sizeBreakpointLarge) {
+		min-height: $basicPush * 26;
 	}
-  }
+
+	@include mq($to: $sizeBreakpointMedium) {
+		top: auto;
+		bottom: $basicPush * 10;
+		right: $basicPush * 4;
+
+		width: 50%;
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
+		top: auto;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+
+		min-height: 40vh;
+	}
+
+	a {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		padding: $basicPush * 4 $basicPush * 5;
+		padding-bottom: 0;
+		background-color: $colorBg;
+
+		&:hover {
+			background-color: $colorLightGray;
+
+			.widg_carousel__arrow {
+				animation: arrowAnimationBig $animationDuration 1;
+			}
+		}
+	}
 }
 
 .widg_carousel__category {
-  text-transform: uppercase;
-  color: $colorTextGrey;
-  display: block;
-  line-height: 1.8;
-  letter-spacing: 2.9px;
+	text-transform: uppercase;
+	color: $colorTextGrey;
+	display: block;
+	line-height: 1.8;
+	letter-spacing: 2.9px;
 }
 
 .widg_carousel__title {
-  font-size: 4.33333rem;
-  font-family: $fontSerifRoman;
-  display: block;
-  padding-bottom: $basicPush * 7;
-  line-height: 1.2;
+	font-size: 4.33333rem;
+	font-family: $fontSerifRoman;
+	display: block;
+	padding-bottom: $basicPush * 7;
+	line-height: 1.2;
 
-  @include mq($to: $sizeBreakpointLarge) {
-	font-size: 2.75rem;
-  }
+	@include mq($to: $sizeBreakpointLarge) {
+		font-size: 2.75rem;
+	}
 
-  @include mq($to: $sizeBreakpointSmall) {
-	font-size: 2rem;
-	padding-bottom: $basicPush * 3;
-  }
+	@include mq($to: $sizeBreakpointSmall) {
+		font-size: 2rem;
+		padding-bottom: $basicPush * 3;
+	}
 }
 
 .widg_carousel__teasers {
-  position: absolute;
+	position: absolute;
 
-  @include basicUnitHeight(bottom);
-  @include basicUnitHeight(left);
-  @include basicUnitHeight(right);
+	@include basicUnitHeight(bottom);
+	@include basicUnitHeight(left);
+	@include basicUnitHeight(right);
 
-  align-items: stretch;
-  display: flex;
+	align-items: stretch;
+	display: flex;
 
-  display: none;
+	display: none;
 }
 
 .widg_carousel__arrow {
-  @include iconDataurl('arrow');
+	@include iconDataurl('arrow');
 
-  position: absolute;
-  bottom: $basicPush * 4.2;
-  left: $basicPush * 5;
-  right: $basicPush * 5;
+	position: absolute;
+	bottom: $basicPush * 4.2;
+	left: $basicPush * 5;
+	right: $basicPush * 5;
 }
 
 [data-carousel="button"] {
-  position: absolute;
-  top: 100%;
-  right: 0;
+	position: absolute;
+	top: 100%;
+	right: 0;
 
-  text-indent: -10000px;
+	text-indent: -10000px;
 
-  @include basicUnitHeight(width);
-  @include basicUnitHeight(height);
+	@include basicUnitHeight(width);
+	@include basicUnitHeight(height);
 
-  background-color: rgba($colorBlack, 0.7);
+	background-color: rgba($colorBlack, 0.7);
 
-  @include iconDataurl('arrow-white');
+	@include iconDataurl('arrow-white');
 
-  @include mq($to: $sizeBreakpointSmall) {
-	top: 0;
+	@include mq($to: $sizeBreakpointSmall) {
+		top: 0;
 
-	transform: translateY(-100%);
-  }
-
-  &:hover:before {
-	animation: arrowAnimationWithCenterIcon $animationDuration 1;
-
-  }
-
-  &:before {
-	@include centerDataurlIcon();
-
-  }
-
-  &.widg_carousel__prev {
-	@include basicUnitHeight(right);
-
-	text-indent: -100000px;
-
-	@include mq($to: $sizeBreakpointMedium) {
-	  margin-right: 0;
+		transform: translateY(-100%);
 	}
 
-	&:hover:before {
-	  animation: arrowAnimationWithCenterIconFlipped $animationDuration 1;
-	  animation-direction: reverse;
+	transition: background-color $transitionLength $transitionEase;
+
+	&:hover {
+		background-color: rgba($colorBlack, 1);
+
+		&:before {
+			animation: arrowAnimationWithCenterIcon $animationDuration 1;
+		}
 	}
 
 	&:before {
-	  transform: translate(-50%, -50%) rotate(180deg);
+		@include centerDataurlIcon();
+
 	}
-  }
+
+	&.widg_carousel__prev {
+		@include basicUnitHeight(right);
+
+		text-indent: -100000px;
+
+		@include mq($to: $sizeBreakpointMedium) {
+			margin-right: 0;
+		}
+
+		&:hover:before {
+			animation: arrowAnimationWithCenterIconFlipped $animationDuration 1;
+			animation-direction: reverse;
+		}
+
+		&:before {
+			transform: translate(-50%, -50%) rotate(180deg);
+		}
+	}
 }
 
 .widg_carousel__progress {
-  position: absolute;
-  display: block;
-  height: 5px;
-
-  top: calc(100% + 100px);
-  right: 0;
-
-  width: 2 * basicUnitHeight(normal);
-
-  @include mq($to: $sizeBreakpointLarge) {
-	width: 2 * basicUnitHeight(small);
-
-	top: calc(100% + 60px);
-  }
-
-  @include mq($to: $sizeBreakpointSmall) {
-	width: 2 * basicUnitHeight(small);
-
-	top: 0;
-  }
-
-  div {
+	position: absolute;
+	display: block;
 	height: 5px;
-	width: 0;
-	background-color: $colorYellow;
-  }
+
+	top: calc(100% + 100px);
+	right: 0;
+
+	width: 2 * basicUnitHeight(normal);
+
+	@include mq($to: $sizeBreakpointLarge) {
+		width: 2 * basicUnitHeight(small);
+
+		top: calc(100% + 60px);
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
+		width: 2 * basicUnitHeight(small);
+
+		top: 0;
+	}
+
+	div {
+		height: 5px;
+		width: 0;
+		background-color: $colorYellow;
+	}
 }

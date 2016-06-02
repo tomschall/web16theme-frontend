@@ -167,6 +167,10 @@
 		$('.layout_wrapper').one('click.' + this.uuid, function() {
 			this.closeNavigation();
 		}.bind(this));
+
+		$(document).one('shrink.estatico.header', function() {
+			this.closeNavigation();
+		}.bind(this));
 	};
 
 	/**

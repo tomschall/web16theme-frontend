@@ -93,8 +93,10 @@
 
 	display: none;
 	position: absolute;
-	top: 25px;
-	right: 0;
+	top: 50%;
+	right: 25px;
+
+	transform: translateY(-50%);
 
 	&:before {
 		@include centerDataurlIcon();

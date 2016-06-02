@@ -166,7 +166,7 @@
 			this.options.scrollMagicScene2 = null;
 		}
 
-		$(document).trigger(this.events.shrink);
+		$(document).trigger(events.shrink);
 	};
 
 	/**
