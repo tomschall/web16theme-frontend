@@ -22,9 +22,11 @@
 					navItem: '[data-navigation="item"]'
 				},
 				stateClasses: {
-					isActive: 'is_active'
+					isActive: 'is_active',
+					isOpen: 'is_open'
 				},
-				maxAdditionalNavLevel: 3
+				maxAdditionalNavLevel: 3,
+				openNavClass: 'open-nav'
 			},
 			data = {
 				wrappers: []
@@ -88,6 +90,7 @@
 
 			if (!$eventTarget.hasClass(this.options.stateClasses.isActive)) {
 				this.setNavActive($eventTarget, targetLevel);
+
 				this.fillNavWrapper($subList);
 				this.showNavigation($subList.data('navigation-level'));
 			}
@@ -120,15 +123,54 @@
 		$subList.clone(true).appendTo($targetWrapper);
 	};
 
+	/**
+	 * Shows the subnavigation (the specified, not anyone)
+	 * @param targetLevel
+   */
 	Widget.prototype.showNavigation = function(targetLevel) {
 		var $targetWrapper = this.data.wrappers[targetLevel],
 				headerWidth = $('.widg_header').outerWidth(),
 				pullLeft = headerWidth * targetLevel;
 
+		if (!$('html').hasClass(this.options.openNavClass)) {
+			$('html').addClass(this.options.openNavClass);
+		}
+
 		$targetWrapper.css({
 			left: pullLeft,
-			opacity: 1
+			opacity: 1,
+			zIndex: 1800 - parseInt(targetLevel)
 		});
+
+		this.addOpenNavigationEventListeners();
+	};
+
+	/**
+	 * Adds the event listeners when the navigation is open
+	 */
+	Widget.prototype.addOpenNavigationEventListeners = function() {
+		$(window).one('keydown.' + this.uuid, function(event) {
+			if (event.keyCode === 27) {
+				this.closeNavigation();
+			}
+		}.bind(this));
+
+		$('.layout_wrapper').one('click.' + this.uuid, function() {
+			this.closeNavigation();
+		}.bind(this));
+	};
+
+	/**
+	 * Closes the navigation
+	 */
+	Widget.prototype.closeNavigation = function() {
+		var $wrappers = $(this.options.domSelectors.subWrappers),
+				$expandableNavItems = $(this.options.domSelectors.expandable);
+
+		$('html').removeClass(this.options.openNavClass);
+
+		$expandableNavItems.removeClass(this.options.stateClasses.isActive);
+		$wrappers.removeAttr('style');
 	};
 
 	/**

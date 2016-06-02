@@ -32,7 +32,6 @@ Navigation Level: 0 (global minimum for all)
 	}
 
 	a{
-		transition: all $transitionLength $transitionEase;
 		cursor: pointer;
 		position: relative;
 
@@ -45,8 +44,6 @@ Navigation Level: 0 (global minimum for all)
 
 
 		&:before {
-			transition: all $transitionLength $transitionEase;
-
 			display: block;
 			content: " ";
 			position: absolute;
@@ -58,6 +55,7 @@ Navigation Level: 0 (global minimum for all)
 			width: $activeBarWidth;
 
 			background-color: $colorBlack;
+			visibility: hidden;
 		}
 
 		&:hover:not(.is_active) {
@@ -65,12 +63,16 @@ Navigation Level: 0 (global minimum for all)
 		}
 
 		&.is_active {
+
+			background-color: $colorYellowHover;
+
 			&:before {
 				left: 0;
+				visibility: visible;
 			}
 		}
 
-		&.is_expandable:not(.is_active) {
+		&.is_expandable {
 			@include iconDataurl($name: 'breadcrumb', $after: true);
 
 			&:hover:after {
@@ -96,23 +98,40 @@ Navigation Level: 0 (global minimum for all)
 				position: absolute;
 			}
 		}
+
+		&.is_expandable.is_active {
+			&:after {
+				opacity: 1;
+				right: $basicPush * 2;
+			}
+		}
 	}
 }
 
+.widg_navigation__list[data-navigation-level="0"] {
+	a {
+		&.is_active:before {
+			left: -10px;
+		}
+	}
+}
 
 .widg_navigation__list[data-navigation-level="1"] {
 	a {
 		&:hover:not(.is_expandable),
-		&:hover.is_expandable:not(.is_active){
+		&:hover.is_expandable:not(.is_active),
+		&.is_active {
 			background-color: $colorHoverNav1;
 		}
+
 	}
 }
 
 .widg_navigation__list[data-navigation-level="2"] {
 	a {
 		&:hover:not(.is_expandable),
-		&:hover.is_expandable:not(.is_active){
+		&:hover.is_expandable:not(.is_active),
+		&.is_active{
 			background-color: $colorHoverNav2;
 		}
 	}
@@ -121,7 +140,8 @@ Navigation Level: 0 (global minimum for all)
 .widg_navigation__list[data-navigation-level="3"] {
 	a {
 		&:hover:not(.is_expandable),
-		&:hover.is_expandable:not(.is_active){
+		&:hover.is_expandable:not(.is_active),
+		&.is_active{
 			background-color: $colorHoverNav3;
 		}
 	}
@@ -129,13 +149,14 @@ Navigation Level: 0 (global minimum for all)
 
 
 .widg_navigation__sub-wrapper{
-	transition: all $transitionLength $transitionEase;
+	transition: all $transitionLength / 2 $transitionEase;
 
 	opacity: 0;
+	z-index: -500;
 
 	position: fixed;
 	top: 0;
-	left: 0;
+
 
 	width: $widthYellowBar;
 
@@ -167,21 +188,63 @@ Navigation Level: 0 (global minimum for all)
 	}
 
 	&[data-navigation-level="1"] {
-		z-index: zindex(headerSecondLayer);
-
 		background-color: $colorBg;
+
+		left: 180px;
+
+		@include mq($from: $sizeBreakpointLarge, $to: $sizeBreakpointWide) {
+			left: 250px;
+		}
+
+		@include mq($from: $sizeBreakpointWide) {
+			left: 350px;
+		}
+
+		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+			.header__wide & {
+				left: 250px;
+			}
+		}
 	}
 
 	&[data-navigation-level="2"] {
-		z-index: zindex(headerThirdLayer);
-
 		background-color: $colorBgNav2;
+
+		left: 410px;
+
+		@include mq($from: $sizeBreakpointLarge, $to: $sizeBreakpointWide) {
+			left: 550px;
+		}
+
+		@include mq($from: $sizeBreakpointWide) {
+			left: 750px;
+		}
+
+		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+			.header__wide & {
+				left: 550px;
+			}
+		}
 	}
 
 	&[data-navigation-level="3"] {
-		z-index: zindex(headerFourthLayer);
-
 		background-color: $colorBgNav3;
+
+		left: 640px;
+
+		@include mq($from: $sizeBreakpointLarge, $to: $sizeBreakpointWide) {
+			left: 850px;
+		}
+
+		@include mq($from: $sizeBreakpointWide) {
+			left: 1150px;
+		}
+
+		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+			.header__wide & {
+				left: 850px;
+			}
+		}
 	}
 }
 
