@@ -23,7 +23,8 @@
 				},
 				stateClasses: {
 					isActive: 'is_active',
-					isOpen: 'is_open'
+					isOpen: 'is_open',
+					hasShadow: 'has_shadow'
 				},
 				maxAdditionalNavLevel: 3,
 				openNavClass: 'open-nav'
@@ -93,6 +94,10 @@
 
 				this.fillNavWrapper($subList);
 				this.showNavigation($subList.data('navigation-level'));
+			} else {
+				if (parseInt(targetLevel) === 0) {
+					this.closeNavigation();
+				}
 			}
 		}.bind(this));
 	};
@@ -136,11 +141,15 @@
 			$('html').addClass(this.options.openNavClass);
 		}
 
+		$(this.options.domSelectors.subWrappers).removeClass(this.options.stateClasses.hasShadow);
+
 		$targetWrapper.css({
 			left: pullLeft,
 			opacity: 1,
 			zIndex: 1800 - parseInt(targetLevel)
 		});
+
+		$targetWrapper.addClass(this.options.stateClasses.hasShadow);
 
 		this.addOpenNavigationEventListeners();
 	};
@@ -149,7 +158,7 @@
 	 * Adds the event listeners when the navigation is open
 	 */
 	Widget.prototype.addOpenNavigationEventListeners = function() {
-		$(window).one('keydown.' + this.uuid, function(event) {
+		$(document).one('keydown.' + this.uuid, function(event) {
 			if (event.keyCode === 27) {
 				this.closeNavigation();
 			}

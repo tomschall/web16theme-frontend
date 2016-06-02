@@ -157,8 +157,11 @@ Navigation Level: 0 (global minimum for all)
 	position: fixed;
 	top: 0;
 
-
 	width: $widthYellowBar;
+
+	&.has_shadow {
+		box-shadow: 3px 0 29px 0 rgba($colorBlack, 0.15);
+	}
 
 	> .widg_navigation__list {
 		display: block;

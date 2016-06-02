@@ -12,7 +12,7 @@
 
 	var name = 'header',
 			events = {
-				// eventname: 'eventname.estatico.' + name
+				shrink: 'shrink.estatico.' + name
 			},
 			defaults = {
 				domSelectors: {
@@ -165,6 +165,8 @@
 			this.options.scrollMagicScene2.destroy(false);
 			this.options.scrollMagicScene2 = null;
 		}
+
+		$(document).trigger(this.events.shrink);
 	};
 
 	/**
