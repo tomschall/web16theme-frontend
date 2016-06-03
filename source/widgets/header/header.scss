@@ -27,16 +27,23 @@
 	}
 
 	.widg_header__inner-top {
-		flex-grow: 1;
-
 		@include mq($to: $sizeBreakpointMedium) {
 			position: absolute;
 			top: 0;
 			left: 0;
 			right: 0;
-			bottom: 0;
+
+			height: $headerHeightTop;
 
 			width: 100%;
+		}
+	}
+
+	.widg_header__nav {
+		flex-grow: 1;
+
+		@include mq($to: $sizeBreakpointMedium) {
+			flex-grow: 0;
 		}
 	}
 
@@ -45,12 +52,19 @@
     */
 	@include mq($to: medium) {
 		width: 100%;
-		height: $headerHeightTop;
+		min-height: $headerHeightTop;
+
 		position: static;
 		padding: 15px $basicPush * 4;
 
+		display: block;
+
 		@include mq($to: small) {
 			padding: 15px $basicPush * 2;
+		}
+
+		&.is_nav-open {
+			position: fixed;
 		}
 	}
 
@@ -136,6 +150,10 @@
 .widg_header__inner-foot {
 	@include mq($to: $sizeBreakpointMedium) {
 		display: none;
+
+		.is_nav-open & {
+			display: block;
+		}
 	}
 }
 

@@ -16,10 +16,11 @@
 		},
 		defaults = {
 			domSelectors: {
-				// item: '[data-' + name + '="item"]'
+				menubutton: '[data-' + name + '="menu"]',
+				searchbutton: '[data-' + name + '="search"]'
 			},
 			stateClasses: {
-				// isActive: 'is_active'
+				isNavOpen: 'is_nav-open'
 			}
 		},
 		data = {
@@ -53,7 +54,20 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		// console.log('Widget "menubuttons" initialized');
+		this.addEventListeners();
+	};
+
+	/**
+	 * Adding all the event listeners for the menubuttons
+	 */
+	Widget.prototype.addEventListeners = function() {
+		$(this.options.domSelectors.menubutton).on('click.' + this.uuid, function() {
+			this.openUpNav();
+		}.bind(this));
+	};
+
+	Widget.prototype.openUpNav = function() {
+		$('.widg_header').addClass(this.options.stateClasses.isNavOpen);
 	};
 
 	/**

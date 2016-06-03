@@ -9,6 +9,7 @@
 	top: 50%;
 
 	height: 70px;
+	width: 100%;
 
 	a {
 		display: block;
@@ -19,6 +20,12 @@
 
 		@include mq($to: $sizeBreakpointSmall) {
 			padding: 0 1.7 * $basicPush;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: $colorYellowHover;
+			cursor: pointer;
 		}
 	}
 

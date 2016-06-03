@@ -9,6 +9,13 @@
 
 	@include mq($to: $sizeBreakpointMedium) {
 		display: none;
+
+		.is_nav-open & {
+			display: block;
+
+			margin-left: -1 * $basicPush * 4;
+			margin-right: -1 * $basicPush * 4;
+		}
 	}
 
 	&.widg_header__hide-on-shrinked {
@@ -41,6 +48,10 @@ Navigation Level: 0 (global minimum for all)
 
 		font-size: 1.5rem;
 		padding: 17px $gutter - 3 16px $gutter;
+
+		@include mq($to: $sizeBreakpointMedium) {
+			padding: 17px $basicPush * 4 16px $basicPush * 4;
+		}
 
 
 		&:before {
