@@ -1,43 +1,47 @@
 .widg_somelinks {
-  margin-top: $basicPush * 4 - 3;
+	margin-top: $basicPush * 4 - 3;
 
-  a {
-	width: 35px;
-	height: 35px;
-	display: block;
-	float: left;
+	a {
+		width: 35px;
+		height: 35px;
+		display: block;
+		float: left;
 
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
 
-	margin-right: $basicPush;
+		margin-right: $basicPush;
 
-	&:last-child {
-	  margin-right: 0;
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&[data-somelink-target="xing"] {
+			@include iconDataurl('xing');
+
+			&:hover {
+				@include iconDataurl('xing_hov');
+			}
+		}
+
+		&[data-somelink-target="tw"] {
+			@include iconDataurl('twitter');
+
+			&:hover {
+				@include iconDataurl('twitter_hov');
+			}
+		}
+
+		&[data-somelink-target="fb"] {
+			@include iconDataurl('facebook');
+
+			&:hover {
+				@include iconDataurl('facebook_hov');
+			}
+		}
 	}
 
-	&[data-somelink-target="xing"] {
-	  @include iconDataurl('xing');
-
-	  &:hover {
-		@include iconDataurl('xing_hov');
-	  }
+	@include mq($to: $sizeBreakpointSmall) {
+		margin-top: $basicPush * 2 - 3;
 	}
-
-	&[data-somelink-target="tw"] {
-	  @include iconDataurl('twitter');
-
-	  &:hover {
-		@include iconDataurl('twitter_hov');
-	  }
-	}
-
-	&[data-somelink-target="fb"] {
-	  @include iconDataurl('facebook');
-
-	  &:hover {
-		@include iconDataurl('facebook_hov');
-	  }
-	}
-  }
 }

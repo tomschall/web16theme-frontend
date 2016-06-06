@@ -19,15 +19,18 @@
 					expandable: '[data-navigation-is-expandable="true"]',
 					subWrappers: '[data-navigation="sub-wrapper"]',
 					list: '[data-navigation="list"]',
-					navItem: '[data-navigation="item"]'
+					navItem: '[data-navigation="item"]',
+					back: '[data-navigation="back"]'
 				},
 				stateClasses: {
 					isActive: 'is_active',
 					isOpen: 'is_open',
-					hasShadow: 'has_shadow'
+					hasShadow: 'has_shadow',
+					isVisible: 'is_visible'
 				},
 				maxAdditionalNavLevel: 3,
-				openNavClass: 'open-nav'
+				openNavClass: 'open-nav',
+				currentLevel: 0
 			},
 			data = {
 				wrappers: []
@@ -76,7 +79,9 @@
 
 			this.data.wrappers[i] = $wrapperDom;
 
-			$('.page_wrapper').append($wrapperDom);
+			if (window.estatico.mq.query({from: 'medium'})) {
+				$('.page_wrapper').append($wrapperDom);
+			}
 		}
 	};
 
@@ -87,18 +92,23 @@
 		$(this.options.domSelectors.expandable).on('click.' + this.uuid, function(event) {
 			var $eventTarget = $(event.currentTarget),
 					$subList = $eventTarget.next(this.options.domSelectors.list),
-					targetLevel = $eventTarget.closest(this.options.domSelectors.list).data('navigation-level');
+					currentLevel = $eventTarget.closest(this.options.domSelectors.list).data('navigation-level');
 
 			if (!$eventTarget.hasClass(this.options.stateClasses.isActive)) {
-				this.setNavActive($eventTarget, targetLevel);
+				this.setNavActive($eventTarget, currentLevel);
 
 				this.fillNavWrapper($subList);
+
 				this.showNavigation($subList.data('navigation-level'));
 			} else {
-				if (parseInt(targetLevel) === 0) {
+				if (parseInt(currentLevel) === 0) {
 					this.closeNavigation();
 				}
 			}
+		}.bind(this));
+
+		$(this.options.domSelectors.back).on('click.' + this.uuid, function() {
+			this.goBack();
 		}.bind(this));
 	};
 
@@ -125,7 +135,11 @@
 
 		$targetWrapper.find(this.options.domSelectors.list).remove();
 
-		$subList.clone(true).appendTo($targetWrapper);
+		if (window.estatico.mq.query({from: 'medium'})) {
+			$subList.clone(true).appendTo($targetWrapper);
+		} else {
+			$subList.clone(true).appendTo(this.$element).addClass(this.options.stateClasses.isVisible);
+		}
 	};
 
 	/**
@@ -135,27 +149,36 @@
 	Widget.prototype.showNavigation = function(targetLevel) {
 		var $targetWrapper = this.data.wrappers[targetLevel],
 				headerWidth = $('.widg_header').outerWidth(),
-				pullLeft = headerWidth * targetLevel;
+				pullLeft = headerWidth * targetLevel,
+				mobilePullLeft = -1 * targetLevel * 100;
 
-		if (!$('html').hasClass(this.options.openNavClass)) {
-			$('html').addClass(this.options.openNavClass);
+		this.options.currentLevel = targetLevel;
+
+		if (window.estatico.mq.query({from: 'medium'})) {
+			if (!$('html').hasClass(this.options.openNavClass)) {
+				$('html').addClass(this.options.openNavClass);
+			}
+
+			$(this.options.domSelectors.subWrappers).removeClass(this.options.stateClasses.hasShadow);
+
+			$targetWrapper.css({
+				left: pullLeft,
+				opacity: 1,
+				zIndex: 1800 - parseInt(targetLevel)
+			});
+
+			$targetWrapper.addClass(this.options.stateClasses.hasShadow);
+
+			this.addOpenNavigationEventListeners();
+		} else {
+			$(this.options.domSelectors.list).css({
+				'margin-left': mobilePullLeft + 'vw'
+			});
 		}
-
-		$(this.options.domSelectors.subWrappers).removeClass(this.options.stateClasses.hasShadow);
-
-		$targetWrapper.css({
-			left: pullLeft,
-			opacity: 1,
-			zIndex: 1800 - parseInt(targetLevel)
-		});
-
-		$targetWrapper.addClass(this.options.stateClasses.hasShadow);
-
-		this.addOpenNavigationEventListeners();
 	};
 
 	/**
-	 * Adds the event listeners when the navigation is open
+	 * Adds the event listeners when the navigation is open (only desktop)
 	 */
 	Widget.prototype.addOpenNavigationEventListeners = function() {
 		$(document).one('keydown.' + this.uuid, function(event) {
@@ -184,6 +207,21 @@
 
 		$expandableNavItems.removeClass(this.options.stateClasses.isActive);
 		$wrappers.removeAttr('style');
+
+		this.options.currentLevel = 0;
+	};
+
+	Widget.prototype.goBack = function() {
+		var targetLevel = this.options.currentLevel - 1,
+				pullLeft = targetLevel * -1 * 100;
+
+		$(this.options.domSelectors.list).css({
+			'margin-left': pullLeft + 'vw'
+		});
+
+		$('[data-navigation-level="' + targetLevel + '"]').find('.' + this.options.stateClasses.isActive).removeClass(this.options.stateClasses.isActive);
+
+		this.options.currentLevel = targetLevel;
 	};
 
 	/**

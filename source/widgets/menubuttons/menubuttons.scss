@@ -23,7 +23,8 @@
 		}
 
 		&:hover,
-		&:focus {
+		&:focus,
+		&.is_active {
 			background-color: $colorYellowHover;
 			cursor: pointer;
 		}
@@ -47,6 +48,17 @@
 		height: 12px;
 
 		transform: translateY(1px);
+	}
+
+	&.is_active {
+		@include iconDataurl('close');
+
+		&:before {
+			height: 16px;
+
+			transform: translateY(3px);
+			width: 25px;
+		}
 	}
 }
 

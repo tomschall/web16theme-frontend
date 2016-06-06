@@ -4,14 +4,17 @@
 	{{/if}}
 
   <ul>
+			<li>
+				<a class="widg_navigation__item widg_navigation__back" data-navigation="back">Zurück</a>
+			</li>
 		{{#each items}}
       <li>
 				{{#if list}}
-          <a class="is_expandable" data-navigation-is-expandable="true" data-navigation="item">{{title}}</a>
+          <a class="widg_navigation__item is_expandable" data-navigation-is-expandable="true" data-navigation="item">{{title}}</a>
 
 					{{> "widgets/navigation/_subitems" list title=title }}
 				{{else}}
-          <a href="{{link}}">{{title}}</a>
+          <a class="widg_navigation__item" href="{{link}}">{{title}}</a>
 				{{/if}}
       </li>
 

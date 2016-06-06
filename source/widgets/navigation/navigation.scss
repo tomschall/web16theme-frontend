@@ -3,29 +3,33 @@
 	margin-left: -1 * $gutter;
 	margin-right: -1 * $gutter;
 
+	/**
+	Hide on shrinked fixed header
+	**/
+	&.widg_header__hide-on-shrinked {
+		transform: none;
+	}
+
 	@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
 		margin-top: $basicPush * 4 + 7;
 	}
 
 	@include mq($to: $sizeBreakpointMedium) {
 		display: none;
+		margin-top: 0;
 
 		.is_nav-open & {
 			display: block;
 
-			margin-left: -1 * $basicPush * 4;
-			margin-right: -1 * $basicPush * 4;
+			margin-left: 0;
+			margin-right: 0;
 		}
 	}
-
-	&.widg_header__hide-on-shrinked {
-		transform: none;
-	}
-
 }
 
 /**
-Navigation Level: 0 (global minimum for all)
+Navigation Level: 0 (global minimum for all),
+styling of all links and lists
 **/
 .widg_navigation__list {
 	display: none;
@@ -38,89 +42,138 @@ Navigation Level: 0 (global minimum for all)
 		@include resetList();
 	}
 
-	a{
-		cursor: pointer;
-		position: relative;
 
+}
+
+.widg_navigation__item{
+	cursor: pointer;
+	position: relative;
+
+	display: block;
+	width: 100%;
+	font-family: $fontSerifRoman;
+
+	font-size: 1.5rem;
+	padding: 17px $gutter - 3 16px $gutter;
+
+
+	&.widg_navigation__back {
+		display: none;
+	}
+
+	&:before {
 		display: block;
-		width: 100%;
-		font-family: $fontSerifRoman;
+		content: " ";
+		position: absolute;
 
-		font-size: 1.5rem;
-		padding: 17px $gutter - 3 16px $gutter;
+		top: 0;
+		bottom: 0;
+		left: -5 * $activeBarWidth;
 
-		@include mq($to: $sizeBreakpointMedium) {
-			padding: 17px $basicPush * 4 16px $basicPush * 4;
-		}
+		width: $activeBarWidth;
 
+		background-color: $colorBlack;
+		visibility: hidden;
+	}
+
+	&:hover:not(.is_active) {
+		background-color: $colorYellowHover;
+	}
+
+	&.is_active {
+
+		background-color: $colorYellowHover;
 
 		&:before {
-			display: block;
-			content: " ";
-			position: absolute;
+			left: 0;
+			visibility: visible;
+		}
+	}
 
-			top: 0;
-			bottom: 0;
-			left: -5 * $activeBarWidth;
+	&.is_expandable {
+		@include iconDataurl($name: 'breadcrumb', $after: true);
 
-			width: $activeBarWidth;
-
-			background-color: $colorBlack;
-			visibility: hidden;
+		&:hover:after {
+			opacity: 1;
+			right: $basicPush * 2;
 		}
 
-		&:hover:not(.is_active) {
-			background-color: $colorYellowHover;
+		&:after {
+			transition: all $transitionLength $transitionEase;
+
+			background-image: url('/assets/media/icons/breadcrumb.svg');
+			width: 8px;
+			height: 16px;
+
+			right: $basicPush * 3;
+			top: 50%;
+
+			opacity: 0;
+
+			transform: translateY(-50%);
+
+			content: " ";
+			position: absolute;
 		}
 
 		&.is_active {
-
-			background-color: $colorYellowHover;
-
-			&:before {
-				left: 0;
-				visibility: visible;
-			}
-		}
-
-		&.is_expandable {
-			@include iconDataurl($name: 'breadcrumb', $after: true);
-
-			&:hover:after {
+			&:after {
 				opacity: 1;
 				right: $basicPush * 2;
 			}
-
-			&:after {
-				transition: all $transitionLength $transitionEase;
-
-				background-image: url('/assets/media/icons/breadcrumb.svg');
-				width: 8px;
-				height: 16px;
-
-				right: $basicPush * 3;
-				top: 50%;
-
-				opacity: 0;
-
-				transform: translateY(-50%);
-
-				content: " ";
-				position: absolute;
-			}
 		}
 
-		&.is_expandable.is_active {
-			&:after {
+		@include mq($to: $sizeBreakpointMedium) {
+			&:after,
+			&:hover:after,
+			&.is_active:after {
 				opacity: 1;
 				right: $basicPush * 2;
 			}
 		}
 	}
+
+	@include mq($to: $sizeBreakpointMedium) {
+		padding: 17px $basicPush * 2 16px $basicPush * 2;
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
+		padding-top: 15px;
+		padding-bottom: 14px;
+
+		font-size: 1.3rem;
+	}
+
 }
 
+/**
+The back arrow only visible on mobile navigation
+**/
+.widg_navigation__back {
+	@include iconDataurl('arrow');
+
+	text-indent: -100000px;
+
+	&:before {
+		position: absolute;
+		top: 50%;
+		left: $basicPush * 2;
+		visibility: visible;
+
+		background-color: transparent;
+
+		transform: translateY(-50%) rotate(180deg);
+
+		width: 34px;
+		height: 13px;
+	}
+}
+
+/**
+ The Stylings for the the navigation lists, depending on their level
+**/
 .widg_navigation__list[data-navigation-level="0"] {
-	a {
+	.widg_navigation__item {
 		&.is_active:before {
 			left: -10px;
 		}
@@ -128,7 +181,7 @@ Navigation Level: 0 (global minimum for all)
 }
 
 .widg_navigation__list[data-navigation-level="1"] {
-	a {
+	.widg_navigation__item {
 		&:hover:not(.is_expandable),
 		&:hover.is_expandable:not(.is_active),
 		&.is_active {
@@ -139,7 +192,7 @@ Navigation Level: 0 (global minimum for all)
 }
 
 .widg_navigation__list[data-navigation-level="2"] {
-	a {
+	.widg_navigation__item {
 		&:hover:not(.is_expandable),
 		&:hover.is_expandable:not(.is_active),
 		&.is_active{
@@ -149,7 +202,7 @@ Navigation Level: 0 (global minimum for all)
 }
 
 .widg_navigation__list[data-navigation-level="3"] {
-	a {
+	.widg_navigation__item {
 		&:hover:not(.is_expandable),
 		&:hover.is_expandable:not(.is_active),
 		&.is_active{
@@ -158,6 +211,9 @@ Navigation Level: 0 (global minimum for all)
 	}
 }
 
+/**
+The Subwrappers only desktop
+**/
 
 .widg_navigation__sub-wrapper{
 	transition: all $transitionLength / 2 $transitionEase;
@@ -202,8 +258,6 @@ Navigation Level: 0 (global minimum for all)
 	}
 
 	&[data-navigation-level="1"] {
-		background-color: $colorBg;
-
 		left: 180px;
 
 		@include mq($from: $sizeBreakpointWide) {
@@ -218,8 +272,6 @@ Navigation Level: 0 (global minimum for all)
 	}
 
 	&[data-navigation-level="2"] {
-		background-color: $colorBgNav2;
-
 		left: 410px;
 
 		@include mq($from: $sizeBreakpointWide) {
@@ -234,8 +286,6 @@ Navigation Level: 0 (global minimum for all)
 	}
 
 	&[data-navigation-level="3"] {
-		background-color: $colorBgNav3;
-
 		left: 640px;
 
 		@include mq($from: $sizeBreakpointWide) {
@@ -250,6 +300,10 @@ Navigation Level: 0 (global minimum for all)
 	}
 }
 
+/**
+Subtitle for every additional layer (only desktop)
+**/
+
 .widg_navigation__subtitle {
 	font-size: 1rem;
 	font-family: $fontSansSerifRoman;
@@ -263,4 +317,76 @@ Navigation Level: 0 (global minimum for all)
 	padding: 0 $basicPush * 3.2;
 
 	color: $colorTextGrey;
+
+	@include mq($to: $sizeBreakpointMedium) {
+		display: none;
+	}
+}
+
+/**
+Background-Colors for the additional navigation layers
+**/
+
+[data-navigation-level="1"] {
+	background-color: $colorBg;
+
+}
+
+[data-navigation-level="2"] {
+	background-color: $colorBgNav2;
+}
+
+[data-navigation-level="3"] {
+	background-color: $colorBgNav3;
+}
+
+/**
+Mobile Styles
+for better overview they are seperated here
+**/
+
+@include mq($to: $sizeBreakpointMedium) {
+	.widg_navigation {
+		position: relative;
+	}
+
+	.widg_navigation__list {
+
+		position: absolute;
+		top: 0;
+		padding-top: $basicPush * 4;
+		left: -2 * $basicPush;
+		z-index: zindex('mobileNavigation');
+
+		width: 100vw;
+
+		&.is_visible {
+			display: block;
+		}
+
+		&[data-navigation-level="1"],
+		&[data-navigation-level="2"],
+		&[data-navigation-level="3"]{
+			left: calc(100vw - 20px);
+			// @TODO: if header top height changes, this has to be reflected here too
+			height: calc(100vh - 70px);
+
+			.widg_navigation__back {
+				display: block;
+			}
+		}
+
+		&[data-navigation-level="2"] {
+			left: calc(200vw - 20px);
+		}
+
+
+		&[data-navigation-level="3"] {
+			left: calc(300vw - 20px);
+		}
+
+		@include mq($to: $sizeBreakpointSmall) {
+			padding-top: $basicPush * 2;
+		}
+	}
 }

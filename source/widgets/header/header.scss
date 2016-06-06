@@ -19,12 +19,6 @@
 
 	z-index: zindex('header');
 
-	//Extended Header (Wide) only exists between betweener and wide
-	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
-		.header__wide & {
-			width: $widthYellowBarWide;
-		}
-	}
 
 	.widg_header__inner-top {
 		@include mq($to: $sizeBreakpointMedium) {
@@ -36,6 +30,10 @@
 			height: $headerHeightTop;
 
 			width: 100%;
+
+			box-shadow: 0 2px 10px 0 rgba($colorBlack, 0.15);
+
+			z-index: zindex('mobileHeaderTop');
 		}
 	}
 
@@ -43,7 +41,8 @@
 		flex-grow: 1;
 
 		@include mq($to: $sizeBreakpointMedium) {
-			flex-grow: 0;
+			transform: translateY(-15px);
+			margin-top: $headerHeightTop;
 		}
 	}
 
@@ -53,11 +52,11 @@
 	@include mq($to: medium) {
 		width: 100%;
 		min-height: $headerHeightTop;
+		max-height: $headerHeightTop;
 
 		position: static;
 		padding: 15px $basicPush * 4;
 
-		display: block;
 
 		@include mq($to: small) {
 			padding: 15px $basicPush * 2;
@@ -65,8 +64,17 @@
 
 		&.is_nav-open {
 			position: fixed;
+			max-height: none;
 		}
 	}
+
+	//Extended Header (Wide) only exists between betweener and wide
+	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+		.header__wide & {
+			width: $widthYellowBarWide;
+		}
+	}
+
 
 	/**
     * Supersized YellowBar
@@ -150,6 +158,7 @@
 .widg_header__inner-foot {
 	@include mq($to: $sizeBreakpointMedium) {
 		display: none;
+		z-index: -1;
 
 		.is_nav-open & {
 			display: block;

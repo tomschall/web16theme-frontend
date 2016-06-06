@@ -20,8 +20,10 @@
 				searchbutton: '[data-' + name + '="search"]'
 			},
 			stateClasses: {
-				isNavOpen: 'is_nav-open'
-			}
+				isNavOpen: 'is_nav-open',
+				isActive: 'is_active'
+			},
+			fullHeader: false
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -62,12 +64,35 @@
 	 */
 	Widget.prototype.addEventListeners = function() {
 		$(this.options.domSelectors.menubutton).on('click.' + this.uuid, function() {
-			this.openUpNav();
+			if (this.options.fullHeader) {
+				$(this.options.domSelectors.menubutton).removeClass(this.options.stateClasses.isActive);
+
+				this.closeFullHeader();
+			} else {
+				$(this.options.domSelectors.menubutton).addClass(this.options.stateClasses.isActive);
+
+				this.showFullHeader();
+			}
+
 		}.bind(this));
 	};
 
-	Widget.prototype.openUpNav = function() {
+	/**
+	 * Shows the full header
+	 */
+	Widget.prototype.showFullHeader = function() {
 		$('.widg_header').addClass(this.options.stateClasses.isNavOpen);
+
+		this.options.fullHeader = true;
+	};
+
+	/**
+	 * Close the full header
+	 */
+	Widget.prototype.closeFullHeader = function() {
+		$('.widg_header').removeClass(this.options.stateClasses.isNavOpen);
+
+		this.options.fullHeader = false;
 	};
 
 	/**
