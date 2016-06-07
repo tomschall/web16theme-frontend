@@ -1,9 +1,14 @@
 button,
-a.button {
+a.button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
 	display: inline-block;
 	text-align: center;
 
-	width: $buttonDesktopWidth;
+	border: 0;
+
+	min-width: $buttonDesktopWidth;
 
 	@include defaultButtonHeight();
 
@@ -14,6 +19,7 @@ a.button {
 	background-color: $colorBlack;
 	color: $colorBg;
 	font-size: 1.0833333rem;
+	padding: 0 $basicPush;
 
 	&:hover,
 	&:active {
@@ -22,12 +28,13 @@ a.button {
 	}
 
 	@include mq($to: $sizeBreakpointMedium) {
-		width: $buttonMobileWidth;
+		min-width: $buttonMobileWidth;
 	}
 }
 
 .button__secondary,
-a.button__secondary {
+a.button__secondary,
+input[type="reset"] {
 	@extend .button;
 
 	color: $colorBlack;

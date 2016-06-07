@@ -45,7 +45,7 @@ styling of all links and lists
 
 }
 
-.widg_navigation__item{
+.widg_navigation__list ul li a {
 	cursor: pointer;
 	position: relative;
 
@@ -172,7 +172,7 @@ The back arrow only visible on mobile navigation
  The Stylings for the the navigation lists, depending on their level
 **/
 .widg_navigation__list[data-navigation-level="0"] {
-	.widg_navigation__item {
+	ul li a {
 		&.is_active:before {
 			left: -10px;
 		}
@@ -180,7 +180,7 @@ The back arrow only visible on mobile navigation
 }
 
 .widg_navigation__list[data-navigation-level="1"] {
-	.widg_navigation__item {
+	ul li a {
 		&:hover:not(.is_expandable),
 		&:hover.is_expandable:not(.is_active),
 		&.is_active {
@@ -191,7 +191,7 @@ The back arrow only visible on mobile navigation
 }
 
 .widg_navigation__list[data-navigation-level="2"] {
-	.widg_navigation__item {
+	ul li a {
 		&:hover:not(.is_expandable),
 		&:hover.is_expandable:not(.is_active),
 		&.is_active{
@@ -201,7 +201,7 @@ The back arrow only visible on mobile navigation
 }
 
 .widg_navigation__list[data-navigation-level="3"] {
-	.widg_navigation__item {
+	ul li a {
 		&:hover:not(.is_expandable),
 		&:hover.is_expandable:not(.is_active),
 		&.is_active{
