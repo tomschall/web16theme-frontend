@@ -247,3 +247,13 @@
 
   transform: translate(-50%,-50%);
 }
+
+@mixin defaultButtonHeight() {
+	height: buttonHeight(desktop);
+	line-height: buttonHeight(desktop);
+
+	@include mq($to: $sizeBreakpointMedium) {
+		height: buttonHeight(mobile);
+		line-height: buttonHeight(mobile);
+	}
+}

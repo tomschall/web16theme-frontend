@@ -26,3 +26,6 @@
 @function basicUnitHeight($size) {
 	@return map-get($basicUnitHeights, $size);
 }
+@function buttonHeight($device) {
+	@return map-get($elementHeight, $device);
+}

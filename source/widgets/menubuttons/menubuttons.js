@@ -12,7 +12,7 @@
 
 	var name = 'menubuttons',
 		events = {
-			// eventname: 'eventname.estatico.' + name
+			closeMobileHeader: 'closeMobileHeader.estatico.' + name
 		},
 		defaults = {
 			domSelectors: {
@@ -93,6 +93,8 @@
 		$('.widg_header').removeClass(this.options.stateClasses.isNavOpen);
 
 		this.options.fullHeader = false;
+
+		$(document).trigger(events.closeMobileHeader);
 	};
 
 	/**

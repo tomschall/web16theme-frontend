@@ -163,6 +163,16 @@
 	bottom: $basicPush * 4.2;
 	left: $basicPush * 5;
 	right: $basicPush * 5;
+
+	width: auto;
+	height: 30px;
+
+	background-color: transparent;
+
+	&:hover,
+	&:active {
+		background-color: transparent;
+	}
 }
 
 [data-carousel="button"] {

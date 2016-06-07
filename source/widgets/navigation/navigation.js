@@ -110,6 +110,10 @@
 		$(this.options.domSelectors.back).on('click.' + this.uuid, function() {
 			this.goBack();
 		}.bind(this));
+
+		$(document).on('closeMobileHeader.estatico.menubuttons.' + this.uuid, function() {
+			this.resetMobileNavigation();
+		}.bind(this));
 	};
 
 	/**
@@ -222,6 +226,16 @@
 		$('[data-navigation-level="' + targetLevel + '"]').find('.' + this.options.stateClasses.isActive).removeClass(this.options.stateClasses.isActive);
 
 		this.options.currentLevel = targetLevel;
+	};
+
+	Widget.prototype.resetMobileNavigation = function() {
+		$(this.options.domSelectors.list).css({
+			'margin-left': 0
+		});
+
+		$(this.options.domSelectors.list).find('.' + this.options.stateClasses.isActive).removeClass(this.options.stateClasses.isActive);
+
+		this.options.currentLevel = 0;
 	};
 
 	/**

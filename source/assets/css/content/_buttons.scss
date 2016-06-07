@@ -1,0 +1,43 @@
+button,
+a.button {
+	display: inline-block;
+	text-align: center;
+
+	width: $buttonDesktopWidth;
+
+	@include defaultButtonHeight();
+
+	font-family: $fontSansSerifRoman;
+	text-transform: uppercase;
+	letter-spacing: 3.5px;
+
+	background-color: $colorBlack;
+	color: $colorBg;
+	font-size: 1.0833333rem;
+
+	&:hover,
+	&:active {
+		color: $colorBlack;
+		background-color: $colorYellow;
+	}
+
+	@include mq($to: $sizeBreakpointMedium) {
+		width: $buttonMobileWidth;
+	}
+}
+
+.button__secondary,
+a.button__secondary {
+	@extend .button;
+
+	color: $colorBlack;
+	background-color: $colorBg;
+
+	border: 1px solid $colorButtonGrey;
+
+	&:hover,
+	&:active {
+		border-color: $colorBlack;
+		background-color: $colorBg;
+	}
+}

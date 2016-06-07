@@ -55,6 +55,13 @@
 
 	position: relative;
 	width: 100%;
+	background-color: transparent;
+	height: 14px;
+
+	&:hover,
+	&:active {
+		background-color: transparent;
+	}
 
 	&:before {
 		@include centerDataurlIcon();
