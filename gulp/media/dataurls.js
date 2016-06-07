@@ -124,7 +124,14 @@ gulp.task(taskName, function(cb) {
 		}))
 
 		// Optimize SVGs
-		.pipe(imagemin())
+		.pipe(imagemin({
+			svgoPlugins: [{
+				convertPathData: {
+					// Disabled due to http://codepen.io/backflip/pen/GqgxzO
+					makeArcs: false
+				}
+			}]
+		}))
 		.pipe(size({
 			title: 'media:icons (SVG files)'
 		}))
