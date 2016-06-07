@@ -22,9 +22,24 @@ input[type="reset"] {
 	padding: 0 $basicPush;
 
 	&:hover,
-	&:active {
+	&:active,
+	&:focus {
 		color: $colorBlack;
 		background-color: $colorYellow;
+	}
+
+	&:disabled,
+	&[disabled="disabled"] {
+
+		opacity: 0.5;
+		color: $colorBg;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: $colorBlack;
+			color: $colorBg;
+		}
 	}
 
 	@include mq($to: $sizeBreakpointMedium) {
@@ -43,8 +58,24 @@ input[type="reset"] {
 	border: 1px solid $colorButtonGrey;
 
 	&:hover,
-	&:active {
+	&:active,
+	&:focus {
 		border-color: $colorBlack;
 		background-color: $colorBg;
+	}
+
+	&:disabled,
+	&[disabled="disabled"] {
+
+		opacity: 0.5;
+		color: $colorBlack;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: $colorBg;
+			color: $colorBlack;
+			border-color: $colorButtonGrey;
+		}
 	}
 }

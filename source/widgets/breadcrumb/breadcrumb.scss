@@ -24,12 +24,12 @@
   }
 }
 
-.widg_breadcrumb__item,
+.widg_breadcrumb ul li,
 .widg_breadcrumb__seperator {
   display: inline-block;
 }
 
-.widg_breadcrumb__item {
+.widg_breadcrumb ul li {
   a {
 	display: block;
 	font-size: 1.25rem;
@@ -82,6 +82,11 @@
   }
 }
 
+/**
+  * Will be obsolete and moved to the single element
+  *
+  * @TODO: Remove and move to the single item
+  */
 .widg_breadcrumb__seperator {
   width: 28px;
   position: relative;
