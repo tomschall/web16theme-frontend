@@ -1,0 +1,73 @@
+.label {
+	display: inline-block;
+	position: relative;
+
+	font-family: $fontSansSerifRoman;
+	font-size: 1.25rem;
+
+	padding-left: $basicPush + $radioCheckboxDimension;
+
+	margin-bottom: $basicPush;
+
+	&:before {
+		display: block;
+		content: " ";
+		position: absolute;
+		left: 0;
+		top: 50%;
+
+		transform: translateY(-50%);
+
+		width: $radioCheckboxDimension;
+		height: $radioCheckboxDimension;
+
+		box-shadow: inset 0 0 4px 0 rgba($colorBlack, 0.8);
+		border: 1px solid $colorBlack;
+	}
+}
+
+.label__radio {
+	&:before,
+	&:after {
+		border-radius: 50%;
+	}
+}
+
+.input__radio,
+.input__checkbox {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.input__radio:checked + .label__radio,
+.input__checkbox:checked + .label__checkbox {
+	&:after {
+		display: block;
+		content: " ";
+		position: absolute;
+		left: 6.5px;
+		top: 50%;
+
+		transform: translateY(-50%);
+
+		width: $radioCheckboxDimensionInner;
+		height: $radioCheckboxDimensionInner;
+
+		background-color: $colorBlack;
+	}
+}
+
+.input__checkbox:checked + .label__checkbox {
+	@include iconDataurl($name: 'checkmark', $after: true);
+	 &:after {
+		 background-color: transparent;
+
+		 height: $radioCheckboxDimensionInner;
+		 left: 5px;
+	 }
+}
