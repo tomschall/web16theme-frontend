@@ -1,14 +1,14 @@
-{{#each modules}}
+{{#each widgets}}
 <plone:tile
-        name="fhnw.web16.tiles.{{lcmodulname}}"
-        title="{{modulname}} Widget"
-        description="{{moduldesc}}"
+        name="fhnw.web16.tiles.{{nameLower}}"
+        title="{{name}} Widget"
+        description="{{description}}"
         add_permission="cmf.ModifyPortalContent"
-        class=".browser.tile.{{modulname}}Tile"
+        class=".browser.tile.{{name}}Tile"
         for="*"
         permission="zope.Public"
-        template="widgets/{{lcmodulname}}/{{moduletemplate}}.hbs"
-        schema=".browser.tile.I{{modulname}}Tile"
+        template="widgets/{{nameLower}}/{{template}}.hbs"
+        schema=".browser.tile.I{{name}}Tile"
         />
 
 {{/each}}
