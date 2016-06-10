@@ -103,6 +103,8 @@
 			} else {
 				if (parseInt(currentLevel) === 0) {
 					this.closeNavigation();
+				} else {
+					this.closeNavigationLevel(currentLevel + 1);
 				}
 			}
 		}.bind(this));
@@ -215,6 +217,20 @@
 		this.options.currentLevel = 0;
 	};
 
+	/**
+	 * Closes the navigation level
+	 */
+	Widget.prototype.closeNavigationLevel = function(levelToClose) {
+		var $activeLevelWrapper = $('[data-navigation-level="' + levelToClose + '"]'),
+				$levelWrapperToClose = $('[data-navigation-level="' + (levelToClose - 1) +  '"]');
+
+		$activeLevelWrapper.removeAttr('style');
+		$levelWrapperToClose.find(this.options.domSelectors.expandable).removeClass(this.options.stateClasses.isActive);
+	};
+
+	/**
+	 * Go Back one step (mobile only function)
+	 */
 	Widget.prototype.goBack = function() {
 		var targetLevel = this.options.currentLevel - 1,
 				pullLeft = targetLevel * -1 * 100;
@@ -228,6 +244,9 @@
 		this.options.currentLevel = targetLevel;
 	};
 
+	/**
+	 * Resets the mobile Navigation
+	 */
 	Widget.prototype.resetMobileNavigation = function() {
 		$(this.options.domSelectors.list).css({
 			'margin-left': 0

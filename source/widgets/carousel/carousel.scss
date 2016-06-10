@@ -208,10 +208,11 @@
 		transform: translateY(-100%);
 	}
 
-	transition: background-color $transitionLength $transitionEase;
+	&:active {
+		background-color: rgba($colorBlack, 0.7);
+	}
 
 	&:hover,
-	&:active,
 	&:focus {
 		background-color: rgba($colorBlack, 1);
 
