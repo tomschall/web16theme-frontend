@@ -125,10 +125,14 @@ input {
 		display: block;
 		width: 100%;
 
+		padding-top: 18px;
+
 		position: absolute;
 		top: 0;
 		left: 0;
 		bottom: 0;
+
+		font-size: 1.25rem;
 	}
 
 	input,
@@ -136,8 +140,10 @@ input {
 		padding-left: 18px;
 	}
 
-	input:focus + label {
+	input:focus + label,
+	input.is_filled + label {
 		font-size: 0.91666667rem;
 		top: 13px;
 	}
+
 }
