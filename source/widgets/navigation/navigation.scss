@@ -61,7 +61,7 @@ styling of all links and lists
 		display: none;
 	}
 
-	&:before {
+	&:not(.widg_navigation__back):before {
 		display: block;
 		content: " ";
 		position: absolute;
@@ -133,12 +133,11 @@ styling of all links and lists
 	}
 
 	@include mq($to: $sizeBreakpointMedium) {
-		padding: 17px $basicPush * 2 16px $basicPush * 2;
+		padding: 17px $basicPush * 4 16px $basicPush * 4;
 	}
 
 	@include mq($to: $sizeBreakpointSmall) {
-		padding-top: 15px;
-		padding-bottom: 14px;
+		padding: 15px $basicPush * 2 14px $basicPush * 2;
 
 		font-size: 1.3rem;
 	}
@@ -156,7 +155,7 @@ The back arrow only visible on mobile navigation
 	&:before {
 		position: absolute;
 		top: 50%;
-		left: $basicPush * 2;
+		left: $basicPush * 4;
 		visibility: visible;
 
 		background-color: transparent;
@@ -165,6 +164,10 @@ The back arrow only visible on mobile navigation
 
 		width: 34px;
 		height: 13px;
+
+		@include mq($to: $sizeBreakpointSmall) {
+			left: $basicPush * 2;
+		}
 	}
 }
 
@@ -351,10 +354,12 @@ for better overview they are seperated here
 
 	.widg_navigation__list {
 
+		transition: all $transitionLength $transitionEase;
+
 		position: absolute;
 		top: 0;
 		padding-top: $basicPush * 4;
-		left: -2 * $basicPush;
+		left: -4 * $basicPush;
 		z-index: zindex('mobileNavigation');
 
 		width: 100vw;
@@ -366,26 +371,39 @@ for better overview they are seperated here
 		&[data-navigation-level="1"],
 		&[data-navigation-level="2"],
 		&[data-navigation-level="3"]{
-			left: calc(100vw - 20px);
+			left: calc(100vw - 40px);
 			// @TODO: if header top height changes, this has to be reflected here too
 			height: calc(100vh - 70px);
 
 			.widg_navigation__back {
 				display: block;
 			}
+
+			@include mq($to: $sizeBreakpointSmall) {
+				left: calc(100vw - 20px);
+			}
 		}
 
 		&[data-navigation-level="2"] {
-			left: calc(200vw - 20px);
+			left: calc(200vw - 40px);
+
+			@include mq($to: $sizeBreakpointSmall) {
+				left: calc(200vw - 20px);
+			}
 		}
 
 
 		&[data-navigation-level="3"] {
-			left: calc(300vw - 20px);
+			left: calc(300vw - 40px);
+
+			@include mq($to: $sizeBreakpointSmall) {
+				left: calc(300vw - 20px);
+			}
 		}
 
 		@include mq($to: $sizeBreakpointSmall) {
 			padding-top: $basicPush * 2;
+			left: -2 * $basicPush;
 		}
 	}
 }
