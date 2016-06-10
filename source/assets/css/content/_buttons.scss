@@ -10,7 +10,7 @@ input[type="reset"] {
 
 	min-width: $buttonDesktopWidth;
 
-	@include defaultButtonHeight();
+	@include defaultElementHeight();
 
 	font-family: $fontSansSerifRoman;
 	text-transform: uppercase;
@@ -55,7 +55,7 @@ input[type="reset"] {
 	color: $colorBlack;
 	background-color: $colorBg;
 
-	border: 1px solid $colorButtonGrey;
+	border: 1px solid $colorBorderGrey;
 
 	&:hover,
 	&:active,
@@ -75,7 +75,7 @@ input[type="reset"] {
 		&:focus {
 			background-color: $colorBg;
 			color: $colorBlack;
-			border-color: $colorButtonGrey;
+			border-color: $colorBorderGrey;
 		}
 	}
 }

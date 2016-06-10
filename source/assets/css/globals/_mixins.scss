@@ -248,12 +248,22 @@
   transform: translate(-50%,-50%);
 }
 
-@mixin defaultButtonHeight() {
+@mixin defaultElementHeight() {
 	height: buttonHeight(desktop);
 	line-height: buttonHeight(desktop);
 
 	@include mq($to: $sizeBreakpointMedium) {
 		height: buttonHeight(mobile);
 		line-height: buttonHeight(mobile);
+	}
+}
+
+@mixin noStyledButton() {
+	background-color: transparent;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: transparent;
 	}
 }

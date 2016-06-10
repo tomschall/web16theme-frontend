@@ -29,7 +29,7 @@ $colorYellow: #FDE70E;
 $colorYellowHover: #efd720;
 $colorBlack: #000000;
 $colorDarkerYellow: #fbd100;
-$colorButtonGrey: #767573;
+$colorBorderGrey: #767573;
 
 /**
 	Navigation colors
@@ -121,8 +121,9 @@ $animationDuration: 0.5s;
   */
 $buttonDesktopWidth: 220px;
 $buttonMobileWidth: 173px;
-$radioCheckboxDimension: 20px;
+$radioCheckboxDimension: 21px;
 $radioCheckboxDimensionInner: 11px;
+$minInputWidth: 240px;
 
 $elementHeight: (
 	desktop: 60px,

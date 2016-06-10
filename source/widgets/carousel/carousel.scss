@@ -65,6 +65,7 @@
 	width: calc(50% - 100px);
 	position: absolute;
 
+	@include clearfix();
 	@include basicUnitHeight(top);
 	@include basicUnitHeight(right);
 
@@ -98,11 +99,19 @@
 
 	a {
 		display: block;
-		position: absolute;
 		top: 0;
 		left: 0;
 		right: 0;
-		bottom: 0;
+
+		min-height: $basicPush * 32;
+
+		@include mq($to: $sizeBreakpointLarge) {
+			min-height: $basicPush * 26;
+		}
+
+		@include mq($to: $sizeBreakpointSmall) {
+			min-height: 40vh;
+		}
 
 		padding: $basicPush * 4 $basicPush * 5;
 		padding-bottom: 0;
@@ -158,6 +167,7 @@
 
 .widg_carousel__arrow {
 	@include iconDataurl('arrow');
+	@include noStyledButton();
 
 	position: absolute;
 	bottom: $basicPush * 4.2;
@@ -200,7 +210,9 @@
 
 	transition: background-color $transitionLength $transitionEase;
 
-	&:hover {
+	&:hover,
+	&:active,
+	&:focus {
 		background-color: rgba($colorBlack, 1);
 
 		&:before {

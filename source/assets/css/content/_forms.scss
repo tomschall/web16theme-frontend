@@ -1,11 +1,18 @@
+/**
+  * Labels which are not in inputfield
+  */
 .label {
 	display: inline-block;
+}
+
+.label__checkbox,
+.label__radio {
+	padding-left: $basicPush + $radioCheckboxDimension;
+
 	position: relative;
 
 	font-family: $fontSansSerifRoman;
 	font-size: 1.25rem;
-
-	padding-left: $basicPush + $radioCheckboxDimension;
 
 	margin-bottom: $basicPush;
 
@@ -22,7 +29,11 @@
 		height: $radioCheckboxDimension;
 
 		box-shadow: inset 0 0 4px 0 rgba($colorBlack, 0.8);
-		border: 1px solid $colorBlack;
+		border: 1px solid $colorBorderGrey;
+	}
+
+	&:hover:before {
+		border-color: $colorBlack;
 	}
 }
 
@@ -32,6 +43,22 @@
 		border-radius: 50%;
 	}
 }
+
+/**
+  * Input
+  */
+input {
+	border: 0;
+	background: transparent;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+/**
+  * Checkboxes and radios
+  */
 
 .input__radio,
 .input__checkbox {
@@ -70,4 +97,47 @@
 		 height: $radioCheckboxDimensionInner;
 		 left: 5px;
 	 }
+}
+
+/**
+  * Textfields
+  */
+.input__text {
+	position: relative;
+
+	@include defaultElementHeight();
+
+	line-height: 1;
+	border: 1px solid $colorBorderGrey;
+	box-shadow: inset 0 0 7px 0 rgba($colorBlack, 0.5);
+
+	label {
+		font-size: 1.25rem;
+		color: $colorBorderGrey;
+		position: absolute;
+
+		top: 21px;
+
+		transition: all $transitionLength $transitionEase;
+	}
+
+	input {
+		display: block;
+		width: 100%;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+	}
+
+	input,
+	label {
+		padding-left: 18px;
+	}
+
+	input:focus + label {
+		font-size: 0.91666667rem;
+		top: 13px;
+	}
 }
