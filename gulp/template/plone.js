@@ -18,14 +18,14 @@ var taskName = 'template:plone',
 		dest: './build/templates/'
 	},
 	transform = function(data, filePath) {
-		var widgetName = changeCase.pascalCase(data.meta.title);
+		var name = changeCase.pascalCase(data.meta.title);
 
 		data = _.merge(data, {
-			modulname: widgetName,
-			lcmodulname: changeCase.lowerCase(widgetName),
-			moduldesc: data.meta.description,
-			moduletemplate: path.basename(filePath, '.data.js'),
-			mockdata: JSON.stringify(_.pickBy(data, function(value, key) {
+			name: name,
+			nameLower: changeCase.lowerCase(name),
+			description: data.meta.description,
+			template: path.basename(filePath, '.data.js'),
+			mockData: JSON.stringify(_.pickBy(data, function(value, key) {
 				return ['meta', 'project', 'env'].indexOf(key) === -1;
 			}), null, 4)
 		});

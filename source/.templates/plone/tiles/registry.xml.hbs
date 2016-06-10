@@ -4,17 +4,17 @@
 		<value_type type="plone.registry.field.TextLine" />
 	</field>
 	<value purge="false">
-{{#each modules}}
-		<element>fhnw.web16.tiles.{{lcmodulname}}</element>
+{{#each widgets}}
+		<element>fhnw.web16.tiles.{{nameLower}}</element>
 {{/each}}
 	</value>
 </record>
 
-{{#each modules}}
-<records prefix="plone.app.mosaic.app_tiles.fhnw_web16_tiles_{{lcmodulname}}"
+{{#each widgets}}
+<records prefix="plone.app.mosaic.app_tiles.fhnw_web16_tiles_{{nameLower}}"
 				 interface="plone.app.mosaic.interfaces.ITile">
-	<value key="name">fhnw.web16.tiles.{{lcmodulname}}</value>
-	<value key="label">{{modulname}} Widget</value>
+	<value key="name">fhnw.web16.tiles.{{nameLower}}</value>
+	<value key="label">{{name}} Widget</value>
 	<value key="category">fhnw</value>
 	<value key="tile_type">app</value>
 	<value key="default_value"></value>
