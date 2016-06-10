@@ -128,7 +128,7 @@ gulp.task(taskName, function(cb) {
 		}).on('error', helpers.errors))
 
 		// Relativify absolute paths
-		.pipe(tap(function(file) {
+		/*.pipe(tap(function(file) {
 			var content = file.contents.toString(),
 				relPathPrefix = path.join(path.relative(file.path, './source'));
 
@@ -139,7 +139,7 @@ gulp.task(taskName, function(cb) {
 			content = content.replace(/('|")\//g, '$1' + relPathPrefix);
 
 			file.contents = new Buffer(content);
-		}))
+		}))*/
 
 		// .pipe(prettify({
 		// 	indent_with_tabs: true,
