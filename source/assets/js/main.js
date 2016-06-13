@@ -5,6 +5,7 @@
  * @requires ../../../node_modules/scrolltofixed/jquery-scrolltofixed.js
  * @requires ../../../node_modules/slick-carousel/slick/slick.js
  * @requires ../../../node_modules/image-scale/image-scale.js
+
  * @requires ../.tmp/templates.js
 
  * @requires helpers/module.js

@@ -1,5 +1,6 @@
 /**
- * Add global event listeners which check if and input in an text input container is filled and adds a class
+ * Add global event listeners which check if and input in an text input container is filled and adds a class,
+ * replaces the ugly selects
  *
  * @license APLv2
  */
@@ -14,6 +15,10 @@
 			} else {
 				$(this).removeClass('is_filled');
 			}
+		});
+
+		$('.custom-select').select2({
+			minimumResultsForSearch: Infinity
 		});
 	});
 })(jQuery);

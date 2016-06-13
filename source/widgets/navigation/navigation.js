@@ -222,7 +222,7 @@
 	 */
 	Widget.prototype.closeNavigationLevel = function(levelToClose) {
 		var $activeLevelWrapper = $('[data-navigation-level="' + levelToClose + '"]'),
-				$levelWrapperToClose = $('[data-navigation-level="' + (levelToClose - 1) +  '"]');
+				$levelWrapperToClose = $('[data-navigation-level="' + (levelToClose - 1) + '"]');
 
 		$activeLevelWrapper.removeAttr('style');
 		$levelWrapperToClose.find(this.options.domSelectors.expandable).removeClass(this.options.stateClasses.isActive);

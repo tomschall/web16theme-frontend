@@ -108,8 +108,7 @@ input {
 	@include defaultElementHeight();
 
 	line-height: 1;
-	border: 1px solid $colorBorderGrey;
-	box-shadow: inset 0 0 7px 0 rgba($colorBlack, 0.5);
+	margin-bottom: $basicPush;
 
 	label {
 		font-size: 1.25rem;
@@ -133,6 +132,12 @@ input {
 		bottom: 0;
 
 		font-size: 1.25rem;
+		border: 1px solid $colorBorderGrey;
+		box-shadow: inset 0 0 7px 0 rgba($colorBlack, 0.5);
+
+		&:focus {
+			border-color: $colorBlack;
+		}
 	}
 
 	input,
@@ -145,5 +150,90 @@ input {
 		font-size: 0.91666667rem;
 		top: 13px;
 	}
-
 }
+
+/**
+  * Selectbox
+  */
+.select2-container {
+	width: 100% !important;
+
+	.select2-selection--single,
+	.select2-selection {
+		@include defaultElementHeight();
+
+		border-radius: 0;
+		border: 1px solid $colorBorderGrey;
+
+		&:focus,
+		.select2-container--open & {
+			outline: none;
+			border: 1px solid $colorBlack;
+		}
+
+		.select2-selection__rendered {
+			@include defaultElementHeight();
+
+			color: $colorBlack;
+			font-size: 1.25rem;
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		.select2-selection__arrow {
+			height: auto;
+			width: 12px;
+
+			top: 0;
+			bottom: 0;
+			right: 7px;
+
+			@include iconDataurl('dropdown-arrow');
+
+			&:before {
+				@include centerDataurlIcon();
+
+				width: 12px;
+				height: 7px;
+			}
+
+			b { display: none; }
+		}
+
+		.select2-selection__placeholder {
+			color: $colorBlack;
+		}
+	}
+
+	.select2-results__option--highlighted[aria-selected] {
+		background-color: $colorLightGray;
+		color: inherit;
+	}
+
+	.select2-results__option[aria-selected=true] {
+		background-color: transparent;
+
+		&:hover {
+			background-color: $colorLightGray;
+		}
+	}
+}
+
+.select2-container--below.select2-container--open .select2-selection--single {
+	border-bottom-width: 0;
+}
+
+.select2-dropdown {
+	border-radius: 0;
+	border-color: $colorBlack;
+	border-top-width: 0;
+}
+
+.select2-results__option {
+	font-size: 1.25rem;
+	padding-top: 14px;
+	padding-bottom: 14px;
+}
+
