@@ -12,11 +12,10 @@
     "bows": "1.4.8",
     "image-scale": "2.1.0",
     "jquery": "2.1.3",
-    "jquery.selectBox": "git://github.com/marcj/jquery-selectBox.git",
     "normalize.css": "3.0.3",
     "scrollmagic": "2.0.5",
     "scrolltofixed": "1.0.6",
-    "select2": "^4.0.3",
+    "select2": "4.0.3",
     "skip-link-focus": "0.1.0",
     "slick-carousel": "git://github.com/zeixcom/slick",
     "susy": "2.2.12"

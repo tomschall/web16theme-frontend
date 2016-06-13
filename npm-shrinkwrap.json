@@ -29510,6 +29510,11 @@
       "from": "scrolltofixed@1.0.6",
       "resolved": "https://registry.npmjs.org/scrolltofixed/-/scrolltofixed-1.0.6.tgz"
     },
+    "select2": {
+      "version": "4.0.3",
+      "from": "select2@4.0.3",
+      "resolved": "https://registry.npmjs.org/select2/-/select2-4.0.3.tgz"
+    },
     "serve-static": {
       "version": "1.9.2",
       "from": "serve-static@1.9.2",
