@@ -48,9 +48,9 @@
     <section class="sg_inner_wrapper">
       <h2 class="sg_h2">Example form</h2>
       <div class="sg_demo">
-        <form class="form">
+        <form class="form" data-validate="true">
           <fieldset>
-            <select class="custom-select custom-select___short" data-placeholder="Anrede">
+            <select class="custom-select custom-select___short" data-placeholder="Anrede" data-rule-selectRequired="true" data-msg-selectRequired="Eine Anrede muss ausgewählt werden">
               <option></option>
               <option value="mr">Herr</option>
               <option value="mrs">Frau</option>
@@ -58,42 +58,43 @@
           </fieldset>
           <fieldset>
             <div class="input__text">
-              <input type="text" id="surname" name="surname"/>
+              <input type="text" id="surname" name="surname" data-rule-required="true" data-msg-required="Feld muss angegeben werden"/>
               <label class="label" for="surname">Name</label>
             </div>
 					</fieldset>
           <fieldset>
             <div class="input__text">
-              <input type="text" id="prename" name="prename"/>
+              <input type="text" id="prename" name="prename" data-rule-required="true" data-msg-required="Feld muss angegeben werden"/>
               <label class="label" for="prename">Vorname</label>
             </div>
           </fieldset>
           <fieldset>
             <div class="input__text input__text___large">
-              <input type="text" id="street" name="street"/>
+              <input type="text" id="street" name="street" data-rule-required="true" data-msg-required="Feld muss angegeben werden"/>
               <label class="label" for="street">Strasse</label>
             </div>
             <div class="input__text  input__text___xs">
-              <input type="text" id="house_number" name="house_number"/>
+              <input type="text" id="house_number" name="house_number" data-rule-required="true" data-msg-required="Feld muss angegeben werden"/>
               <label class="label" for="house_number">Nr.</label>
             </div>
           </fieldset>
           <fieldset>
             <div class="input__text input__text___small">
-              <input type="number" id="zip" name="zip"/>
+              <input type="number" id="zip" name="zip" data-rule-required="true" data-msg-required="Feld muss angegeben werden" data-rule-number="true" data-msg-number="Die PLZ muss eine Zahl sein"/>
               <label class="label" for="zip">PLZ</label>
             </div>
             <div class="input__text  input__text___medium">
-              <input type="text" id="citx" name="citx"/>
-              <label class="label" for="citx">Ort</label>
+              <input type="text" id="city" name="city" data-rule-required="true" data-msg-required="Feld muss angegeben werden"/>
+              <label class="label" for="city">Ort</label>
             </div>
           </fieldset>
           <fieldset>
             <div class="input__text">
-              <input type="text" id="email" name="email"/>
+              <input type="email" id="email" name="email" data-rule-required="true" data-msg-required="Feld muss angegeben werden" data-rule-email="true" data-msg-email="Ungültiges E-Mail Format"/>
               <label class="label" for="email">Email</label>
             </div>
           </fieldset>
+					<button type="submit">Online Anmelden</button>
         </form>
       </div>
     </section>

@@ -20,5 +20,26 @@
 		$('.custom-select').select2({
 			minimumResultsForSearch: Infinity
 		});
+
+		$('form[data-validate="true"]').validate({
+			onfocusout: function(element) {
+				$(element).valid();
+			},
+
+			errorPlacement: function(error, element) {
+				if ($(element).is('select')) {
+					error.insertAfter($(element).next('.select2'));
+				} else {
+					error.appendTo($(element).closest('div'));
+				}
+			}
+		});
+
+		/**
+		 * Adding additional validator methods
+		 */
+		$.validator.addMethod('selectRequired', function(value) {
+			return value !== '';
+		});
 	});
 })(jQuery);

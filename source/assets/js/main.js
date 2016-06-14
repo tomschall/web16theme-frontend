@@ -5,12 +5,16 @@
  * @requires ../../../node_modules/scrolltofixed/jquery-scrolltofixed.js
  * @requires ../../../node_modules/slick-carousel/slick/slick.js
  * @requires ../../../node_modules/image-scale/image-scale.js
+ * @requires ../../../node_modules/select2/dist/js/select2.js
+ * @requires ../../../node_modules/jquery-validation/dist/jquery.validate.js
+ *
 
  * @requires ../.tmp/templates.js
 
  * @requires helpers/module.js
  * @requires helpers/events.js
  * @requires helpers/mediaqueries.js
+ * @requires helpers/formElementHelper.js
  *
  * @requires ../../widgets/share/share.js
  * @requires ../../widgets/pagesearch/pagesearch.js
