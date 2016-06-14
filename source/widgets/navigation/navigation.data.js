@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Navigation',
+			title: 'Navigation | WI_007',
 			description: '',
 			code: dataHelper.getTemplateCode('navigation.hbs'),
 			documentation: dataHelper.getDocumentation('navigation.md')

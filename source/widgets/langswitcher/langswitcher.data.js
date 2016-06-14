@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Lang Switcher',
+			title: 'Sprach-Umschalter | WI_004',
 			description: '',
 			code: dataHelper.getTemplateCode('langswitcher.hbs'),
 			documentation: dataHelper.getDocumentation('langswitcher.md')
