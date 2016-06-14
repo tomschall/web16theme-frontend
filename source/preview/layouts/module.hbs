@@ -86,19 +86,9 @@
 			<pre class="sg_code hljs">{{{meta.code}}}</pre>
 		</section>
 
-		{{#if meta.documentation}}
-			<section class="sg_inner_wrapper">
-				<h2 class="sg_h2">Documentation</h2>
-
-				<div class="sg_documentation">
-					{{{meta.documentation}}}
-				</div>
-			</section>
-		{{/if}}
-
 		{{#if meta.mocks}}
 			<section class="sg_inner_wrapper">
-				<h2 class="sg_h2">Data mocking</h2>
+				<h2 class="sg_h2">Data</h2>
 
 				{{#each meta.mocks}}
 					{{#if description}}
@@ -107,6 +97,16 @@
 
 					<pre class="sg_code hljs">{{{data}}}</pre>
 				{{/each}}
+			</section>
+		{{/if}}
+
+		{{#if meta.documentation}}
+			<section class="sg_inner_wrapper">
+				<h2 class="sg_h2">Documentation</h2>
+
+				<div class="sg_documentation">
+					{{{meta.documentation}}}
+				</div>
 			</section>
 		{{/if}}
 

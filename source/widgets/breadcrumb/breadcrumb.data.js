@@ -5,13 +5,7 @@ var _ = require('lodash'),
 	dataHelper = require('../../../helpers/data.js'),
 	defaultData = requireNew('../../data/default.data.js');
 
-var data = _.merge(defaultData, {
-		meta: {
-			title: 'Breadcrumb | WI_008',
-			description: '',
-			code: dataHelper.getTemplateCode('breadcrumb.hbs'),
-			documentation: dataHelper.getDocumentation('breadcrumb.md')
-		},
+var templateData = {
 		items: [
 			{
 				'url': '#',
@@ -27,6 +21,20 @@ var data = _.merge(defaultData, {
 				'extraClasses': ''
 			}
 		]
-	});
+	},
+	data = _.merge(defaultData, {
+		meta: {
+			title: 'Breadcrumb | WI_008',
+			description: '',
+			code: dataHelper.getTemplateCode('breadcrumb.hbs'),
+			documentation: dataHelper.getDocumentation('breadcrumb.md'),
+			mocks: [
+				{
+					description: null,
+					data: dataHelper.getFormattedJSON(templateData)
+				}
+			]
+		}
+	}, templateData);
 
 module.exports = data;

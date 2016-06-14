@@ -79,15 +79,19 @@ module.exports = {
 		return Highlight.highlight('html', content).value;
 	},
 
+	getFormattedJSON: function(data) {
+		var content = JSON.stringify(data, null, '\t');
+
+		return Highlight.highlight('json', content).value;
+	},
+
 	getDataMock: function(filePath) {
 		var stack = callsite(),
 			requester = stack[1].getFileName(),
 			requirePath = path.resolve(path.dirname(requester), filePath),
 			content = requireNew(requirePath);
 
-		content = JSON.stringify(content, null, '\t');
-
-		return Highlight.highlight('json', content).value;
+		return this.getFormattedJSON(content);
 	},
 
 	getDocumentation: function(filePath) {
