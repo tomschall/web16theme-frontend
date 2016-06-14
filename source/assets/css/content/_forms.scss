@@ -106,9 +106,10 @@ input {
 	position: relative;
 
 	@include defaultElementHeight();
+	float: left;
+	width: 100%;
 
 	line-height: 1;
-	margin-bottom: $basicPush;
 
 	label {
 		font-size: 1.25rem;
@@ -118,6 +119,10 @@ input {
 		top: 21px;
 
 		transition: all $transitionLength $transitionEase;
+
+		@include mq($to: $sizeBreakpointMedium) {
+			top: 0;
+		}
 	}
 
 	input {
@@ -149,7 +154,30 @@ input {
 	input.is_filled + label {
 		font-size: 0.91666667rem;
 		top: 13px;
+
+		@include mq($to: $sizeBreakpointMedium) {
+			top: -6px;
+		}
 	}
+}
+
+/**
+  * Different sizes for the text input
+  */
+.input__text___xs {
+	width: 26.5%;
+}
+
+.input__text___small {
+	width: 30.25%;
+}
+
+.input__text___medium {
+	width: 66.25%;
+}
+
+.input__text___large {
+	width: 70%;
 }
 
 /**
@@ -221,6 +249,10 @@ input {
 	}
 }
 
+.custom-select___short + .select2-container {
+	width: 32.5% !important;
+}
+
 .select2-container--below.select2-container--open .select2-selection--single {
 	border-bottom-width: 0;
 }
@@ -237,3 +269,17 @@ input {
 	padding-bottom: 14px;
 }
 
+/**
+  * Forms
+  */
+.form {
+	fieldset {
+		border: none;
+		padding: 0;
+		margin-bottom: $basicPush;
+
+		div.input__text:first-child:not(last-child) {
+			margin-right: 3.5%;
+		}
+	}
+}
