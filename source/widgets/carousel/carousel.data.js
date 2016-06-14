@@ -10,7 +10,13 @@ var data = _.merge(defaultData, {
 		title: 'Carousel | WI_010',
 		description: '',
 		code: dataHelper.getTemplateCode('carousel.hbs'),
-		documentation: dataHelper.getDocumentation('carousel.md')
+		documentation: dataHelper.getDocumentation('carousel.md'),
+		mocks: [
+			{
+				description: null,
+				data: dataHelper.getDataMock('carousel.mock.js')
+			}
+		]
 	},
 	slides: [
 		{
