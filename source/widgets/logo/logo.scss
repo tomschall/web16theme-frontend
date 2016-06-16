@@ -7,6 +7,10 @@
 	.header__wide & {
 		width: 100%;
 
+		img {
+			max-width: 100%;
+		}
+
 		@include mq($to: $sizeBreakpointMedium) {
 			width: 50%;
 		}

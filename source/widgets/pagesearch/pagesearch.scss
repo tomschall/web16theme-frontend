@@ -1,11 +1,38 @@
 .widg_pagesearch {
 
 }
-
 .widg_pagesearch__btn {
   @include iconDataurl('search');
 
   &:before {
 	@include centerDataurlIcon();
   }
+}
+
+/**
+  * The Styles for the bar
+  */
+.widg_pagesearch-bar {
+	position: fixed;
+	height: 100vh;
+	top: 0;
+	right: -1 * $sizeSearchBar;
+	bottom: 0;
+	opacity: 0;
+
+	width: $sizeSearchBar;
+	background-color: $colorBg;
+
+	box-shadow: 3px 0 29px 0 rgba($colorBlack, 0.15);
+
+	&.is_open {
+		right: 0;
+		opacity: 1;
+	}
+}
+
+.widg_pagesearch-bar__search {
+	@include basicUnitHeight(height);
+
+	box-shadow: inset 0 -3px 3px 0 rgba($colorBlack, 0.04);
 }

@@ -16,11 +16,13 @@
 		},
 		defaults = {
 			domSelectors: {
-				// item: '[data-' + name + '="item"]'
+				btn: '[data-' + name + '="btn"]',
+				bar: '[data-' + name + '="bar"]'
 			},
 			stateClasses: {
-				// isActive: 'is_active'
-			}
+				isOpen: 'is_open'
+			},
+			pagesearchIsOpen: false
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -53,7 +55,38 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		// console.log('Widget "pagesearch" initialized');
+		this.addEventHandlers();
+	};
+
+	/**
+	 * adding the vent handlers
+	 */
+	Widget.prototype.addEventHandlers = function() {
+		$(this.options.domSelectors.btn).on('click.' + this.uuid, function() {
+			if (this.options.pagesearchIsOpen) {
+				this.closeSearchBar();
+			} else {
+				this.openSearchBar();
+			}
+		}.bind(this));
+	};
+
+	/**
+	 * Opens the search bar
+	 */
+	Widget.prototype.openSearchBar = function() {
+		$(this.options.domSelectors.bar).addClass(this.options.stateClasses.isOpen);
+
+		this.options.pagesearchIsOpen = true;
+	};
+
+	/**
+	 * Close the search bar
+	 */
+	Widget.prototype.closeSearchBar = function() {
+		$(this.options.domSelectors.bar).removeClass(this.opions.stateClasses.isOpen);
+
+		this.options.pagesearchIsOpen = false;
 	};
 
 	/**
