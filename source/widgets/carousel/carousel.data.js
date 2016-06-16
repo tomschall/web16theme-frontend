@@ -5,19 +5,7 @@ var _ = require('lodash'),
 	dataHelper = require('../../../helpers/data.js'),
 	defaultData = requireNew('../../data/default.data.js');
 
-var data = _.merge(defaultData, {
-	meta: {
-		title: 'Carousel | WI_010',
-		description: '',
-		code: dataHelper.getTemplateCode('carousel.hbs'),
-		documentation: dataHelper.getDocumentation('carousel.md'),
-		mocks: [
-			{
-				description: null,
-				data: dataHelper.getDataMock('carousel.mock.js')
-			}
-		]
-	},
+var templateData = {
 	slides: [
 		{
 			title: 'Campus in Muttenz öffnet im Jahre 2018 die Tore',
@@ -37,10 +25,24 @@ var data = _.merge(defaultData, {
 			link: '#',
 			image: 'bg_home_01.jpg'
 		}
-	],
+	]
+},
+data = _.merge(defaultData, {
+	meta: {
+		title: 'Carousel | WI_010',
+		description: '',
+		code: dataHelper.getTemplateCode('carousel.hbs'),
+		documentation: dataHelper.getDocumentation('carousel.md'),
+		mocks: [
+			{
+				description: null,
+				data: dataHelper.getFormattedJSON(templateData)
+			}
+		]
+	},
 	widgets: {
 		teaser: requireNew('../teaser/teaser.data.js')
 	}
-});
+}, templateData);
 
 module.exports = data;

@@ -22,6 +22,10 @@
 	display: flex;
 	overflow-x: scroll;
   }
+
+	.sg_demo & {
+		position: static;
+	}
 }
 
 .widg_breadcrumb ul li,
