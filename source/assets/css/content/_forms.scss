@@ -90,7 +90,7 @@ input[type=number] {
 		display: block;
 		content: " ";
 		position: absolute;
-		left: 6.5px;
+		left: 5.5px;
 		top: 50%;
 
 		transform: translateY(-50%);
@@ -110,6 +110,13 @@ input[type=number] {
 		 height: $radioCheckboxDimensionInner;
 		 left: 5px;
 	 }
+}
+
+.input__radio.error + .label__radio,
+.input__checkbox.error + .label__checkbox {
+	&:before {
+		border: 2px solid $colorErrorRed;
+	}
 }
 
 /**

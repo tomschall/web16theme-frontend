@@ -26,8 +26,8 @@
 			<div class="sg_demo">
 				<form>
 					<fieldset>
-						<div><input class="input__radio" type="radio" name="rad" id="rad"><label for="rad" class="label__radio label">Radio input</label> </div>
-						<div><input class="input__checkbox" type="checkbox" name="check" id="check"><label for="check" class="label__checkbox label">Checkbox input</label> </div>
+						<div><input class="input__radio" type="radio" name="rad" id="rad" value="accepted"><label for="rad" class="label__radio label">Radio input</label> </div>
+						<div><input class="input__checkbox" type="checkbox" name="check" id="check" value="yes"><label for="check" class="label__checkbox label">Checkbox input</label> </div>
             <div class="input__text">
 							<input type="text" id="text"/>
 							<label class="label" for="text">Text-Inputfeld</label>
@@ -94,7 +94,15 @@
               <label class="label" for="email">Email</label>
             </div>
           </fieldset>
-					<button type="submit">Online Anmelden</button>
+          <fieldset>
+						<input class="input__radio" type="radio" name="radio" id="rad1" data-rule-required="true" data-msg-required="error message radio button" value="accepted" />
+						<label for="rad1" class="label__radio label">Radio input</label>
+					</fieldset>
+          <fieldset>
+						<input class="input__checkbox" type="checkbox" name="agree" id="check1" data-rule-required="true" data-msg-required="true" value="yes" />
+						<label for="check1" class="label__checkbox label">Checkbox input</label>
+					</fieldset>
+          <button type="submit">Online Anmelden</button>
         </form>
       </div>
     </section>

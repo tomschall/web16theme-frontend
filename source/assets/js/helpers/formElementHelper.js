@@ -26,9 +26,13 @@
 				$(element).valid();
 			},
 
+			ignore: [],
 			errorPlacement: function(error, element) {
+
 				if ($(element).is('select')) {
-					error.insertAfter($(element).next('.select2'));
+					return true;
+				} else if ($(element).is('input[type="radio"]') || $(element).is('input[type="check"]') || $(element).is('input[type="checkbox"]')) {
+					return true;
 				} else {
 					error.appendTo($(element).closest('div'));
 				}
