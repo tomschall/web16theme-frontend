@@ -17,7 +17,8 @@
 		defaults = {
 			domSelectors: {
 				btn: '[data-' + name + '="btn"]',
-				bar: '[data-' + name + '="bar"]'
+				bar: '[data-' + name + '="bar"]',
+				close: '[data-' + name + '="close"]'
 			},
 			stateClasses: {
 				isOpen: 'is_open'
@@ -69,6 +70,10 @@
 				this.openSearchBar();
 			}
 		}.bind(this));
+
+		$(this.options.domSelectors.close).on('click.' + this.uuid, function() {
+			this.closeSearchBar();
+		}.bind(this));
 	};
 
 	/**
@@ -78,13 +83,23 @@
 		$(this.options.domSelectors.bar).addClass(this.options.stateClasses.isOpen);
 
 		this.options.pagesearchIsOpen = true;
+
+		$(window).one('keydown.' + this.uuid, function() {
+			if (event.keyCode === 27) {
+				this.closeSearchBar();
+			}
+		}.bind(this));
+
+		$('.layout_wrapper').one('click.' + this.uuid, function() {
+			this.closeSearchBar();
+		}.bind(this));
 	};
 
 	/**
 	 * Close the search bar
 	 */
 	Widget.prototype.closeSearchBar = function() {
-		$(this.options.domSelectors.bar).removeClass(this.opions.stateClasses.isOpen);
+		$(this.options.domSelectors.bar).removeClass(this.options.stateClasses.isOpen);
 
 		this.options.pagesearchIsOpen = false;
 	};
