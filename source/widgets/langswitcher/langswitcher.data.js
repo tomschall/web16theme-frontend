@@ -32,6 +32,6 @@ var templateData = {
 					}
 				]
 			}
-		});
+		}, templateData);
 
 module.exports = data;
