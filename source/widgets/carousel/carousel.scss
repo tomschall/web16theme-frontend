@@ -256,6 +256,12 @@
 
 	width: 2 * basicUnitHeight(normal);
 
+	div {
+		height: 5px;
+		width: 0;
+		background-color: $colorYellow;
+	}
+
 	@include mq($to: $sizeBreakpointLarge) {
 		width: 2 * basicUnitHeight(small);
 
@@ -268,9 +274,9 @@
 		top: 0;
 	}
 
-	div {
-		height: 5px;
-		width: 0;
-		background-color: $colorYellow;
+	@include mq($from: $sizeBreakpointLarge) {
+		width: 2 * basicUnitHeight(xxl);
+
+		top: calc(100% + 150px);
 	}
 }

@@ -19,7 +19,7 @@
 					expandable: '[data-navigation-is-expandable="true"]',
 					subWrappers: '[data-navigation="sub-wrapper"]',
 					list: '[data-navigation="list"]',
-					navItem: '[data-navigation="item"]',
+					navItem: '[data-navigation="entry"]',
 					back: '[data-navigation="back"]'
 				},
 				stateClasses: {
