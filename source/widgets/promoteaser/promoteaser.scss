@@ -27,6 +27,10 @@
 	@include mq($to: $sizeBreakpointMedium){
 		display: none;
 	}
+
+	@media screen and ( max-height: $sizeHeightBreakpoint ){
+		display: none;
+	}
 }
 
 .widg_promoteaser__img {
