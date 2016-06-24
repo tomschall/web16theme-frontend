@@ -55,18 +55,18 @@ $activeBarWidth: 5px;
  * Fonts
  */
 
-$fontSerifRoman: 'Egyptienne F LT W01_55 Roman';
-$fontSerifItalic: 'Egyptienne F LT W01_56 Italic';
-$fontSerifBold: 'Egyptienne F LT W01_65 Bold';
-$fontSerifBlack: 'Egyptienne F LT W01_75 Black';
-$fontSansSerifLight: 'Univers LT W01_45 Light1475944';
-$fontSansSerifRoman: 'Univers LT W01_55 Roman1475956';
-$fontSansSerifBold: 'Univers LT W01_65 Bold1475968';
-$fontSansSerifBlack: 'Univers LT W01_75 Black1475980';
-$fontSansSerifExtraBlack: 'Univers LT W01_85 Extra Black';
-$fontSansSerifLightCondensed: 'Univers LT W01_47 Light1475998';
-$fontSansSerifCondensed: 'Univers LT W01_57 Condensed';
-$fontSansSerifBoldCondensed: 'Univers LT W01_67 Bold_1476016';
+$fontSerifRoman: 'Raleway', serif;
+$fontSerifItalic: $fontSerifRoman;
+$fontSerifBold: 'Raleway', serif;
+$fontSerifBlack: $fontSerifBold;
+$fontSansSerifLight: 'Raleway', sans-serif;
+$fontSansSerifRoman: $fontSansSerifLight;
+$fontSansSerifBold: 'Raleway', sans-serif;
+$fontSansSerifBlack: $fontSansSerifBold;
+$fontSansSerifExtraBlack: $fontSansSerifBold;
+$fontSansSerifLightCondensed: $fontSansSerifLight;
+$fontSansSerifCondensed: $fontSansSerifLight;
+$fontSansSerifBoldCondensed: $fontSansSerifBold;
 
 /**
   * Yellow Bar Width

@@ -61,27 +61,11 @@ styling of all links and lists
 		display: none;
 	}
 
-	&:not(.widg_navigation__back):before {
-		display: block;
-		content: " ";
-		position: absolute;
-
-		top: 0;
-		bottom: 0;
-		left: -5 * $activeBarWidth;
-
-		width: $activeBarWidth;
-
-		background-color: $colorBlack;
-		visibility: hidden;
-	}
-
 	&:hover:not(.is_active) {
 		background-color: $colorYellowHover;
 	}
 
 	&.is_active {
-
 		background-color: $colorYellowHover;
 
 		&:before {
@@ -91,21 +75,23 @@ styling of all links and lists
 	}
 
 	&.is_expandable {
-		@include iconDataurl($name: 'breadcrumb', $after: true);
+		@include iconDataurl($name: 'triangle-arrow_right', $after: true);
 
+		//Hover for the triangle (arrow)
 		&:hover:after {
 			opacity: 1;
 			right: $basicPush * 2;
 		}
 
+		//The arrow of the expandable nav items
 		&:after {
 			transition: all $transitionLength $transitionEase;
 
-			width: 8px;
-			height: 16px;
-
 			right: $basicPush * 3;
 			top: 50%;
+
+			height: 10px;
+			width: 10px;
 
 			opacity: 0;
 
@@ -122,6 +108,7 @@ styling of all links and lists
 			}
 		}
 
+		//Smaller the right margin on touch screens
 		@include mq($to: $sizeBreakpointMedium) {
 			&:after,
 			&:hover:after,
@@ -182,36 +169,24 @@ The back arrow only visible on mobile navigation
 	}
 }
 
-.widg_navigation__list[data-navigation-level="1"] {
+.widg_navigation__list[data-navigation-level="1"],
+.widg_navigation__list[data-navigation-level="2"],
+.widg_navigation__list[data-navigation-level="3"]{
 	ul li a {
-		&:hover:not(.is_expandable),
-		&:hover.is_expandable:not(.is_active),
-		&.is_active {
+
+		margin-bottom: 2px;
+
+		&:hover {
 			background-color: $colorHoverNav1;
 		}
 
-	}
-}
-
-.widg_navigation__list[data-navigation-level="2"] {
-	ul li a {
-		&:hover:not(.is_expandable),
-		&:hover.is_expandable:not(.is_active),
-		&.is_active{
-			background-color: $colorHoverNav2;
+		&.is_active,
+		&.is_active:hover {
+			background-color: $colorYellowHover;
 		}
 	}
 }
 
-.widg_navigation__list[data-navigation-level="3"] {
-	ul li a {
-		&:hover:not(.is_expandable),
-		&:hover.is_expandable:not(.is_active),
-		&.is_active{
-			background-color: $colorHoverNav3;
-		}
-	}
-}
 
 /**
 The Subwrappers only desktop
@@ -329,17 +304,10 @@ Subtitle for every additional layer (only desktop)
 Background-Colors for the additional navigation layers
 **/
 
-[data-navigation-level="1"] {
-	background-color: $colorBg;
-
-}
-
-[data-navigation-level="2"] {
-	background-color: $colorBgNav2;
-}
-
+[data-navigation-level="1"],
+[data-navigation-level="2"],
 [data-navigation-level="3"] {
-	background-color: $colorBgNav3;
+	background-color: $colorBg;
 }
 
 /**

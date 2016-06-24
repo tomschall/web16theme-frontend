@@ -1,27 +1,27 @@
 .widg_breadcrumb {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 
-  background-color: $colorBg;
-  margin-left: -1 * $gutterWidth;
-  overflow: hidden;
+	background-color: $colorBg;
+	margin-left: -1 * $gutterWidth;
+	overflow: hidden;
 
-  @include yellowBarDiffer();
-  @include basicUnitHeight(height);
+	@include yellowBarDiffer();
+	@include basicUnitHeight(height);
 
-  @include mq($to: $sizeBreakpointMedium) {
-	position: static;
-  }
+	@include mq($to: $sizeBreakpointMedium) {
+		position: static;
+	}
 
-  @include mq($from: $sizeBreakpointMedium) {
-	padding-right: $gutterWidth * 2;
-  }
+	@include mq($from: $sizeBreakpointMedium) {
+		padding-right: $gutterWidth * 2;
+	}
 
-  ul {
-	display: flex;
-	overflow-x: scroll;
-  }
+	ul {
+		display: flex;
+		overflow-x: scroll;
+	}
 
 	.sg_demo & {
 		position: static;
@@ -30,60 +30,69 @@
 
 .widg_breadcrumb ul li,
 .widg_breadcrumb__seperator {
-  display: inline-block;
+	display: inline-block;
 }
 
 .widg_breadcrumb ul li {
-  a {
-	display: block;
-	font-size: 1.25rem;
-	position: relative;
-	padding: 0 ($gutterWidth) 0 $gutterWidth;
-	white-space: nowrap;
 
-	@include basicUnitHeight(line-height);
+	margin-right: $basicPush * 3;
 
-	&:hover,
-	&:focus {
-	  background-color: $colorLightGray;
+	a {
+		display: block;
+		font-size: 1.25rem;
+		position: relative;
+		padding: 0 ($gutterWidth) 0 $gutterWidth;
+		white-space: nowrap;
+
+		@include basicUnitHeight(line-height);
+
+		@include iconDataurl('triangle-arrow_right', $after: true);
+
+		&:hover,
+		&:focus {
+			background-color: $colorLightGray;
+		}
+
+		&:after {
+			position: absolute;
+
+			content: " ";
+			display: block;
+
+			width: 7px;
+			height: 11px;
+
+			top: 50%;
+			transform: translate(50%, -50%);
+
+			right: -1 * $basicPush * 1.5;
+
+		}
 	}
 
-	/**
-  * Auskommentiert, falls funktionaler Breadcrumb doch wieder kommt
-  */
-	/*&:after {
-  position: absolute;
-  width: 9px;
-  height: 6px;
-  margin-left: 5px;
+	&:last-child {
 
-  display: inline;
-  content: " ";
+		margin-right: 0;
 
-  background-image: url("/assets/media/icons/dropdown-arrow.svg");
-  background-size: 9px 6px;
-  background-position: center right;
-  background-repeat: no-repeat;
-
-  top: 50%;
-  transform: translateY(-45%);
-}*/
-  }
-
-  &.is_home a {
-	box-sizing: content-box;
-	width: 10px;
-
-	@include iconDataurl('home');
-	@include basicUnitHeight(height);
-
-	&:before {
-	  @include centerDataurlIcon();
-
-	  width: 15px;
-	  height: 14px;
+		a:after {
+			display: none;
+		}
 	}
-  }
+
+	&.is_home a {
+		box-sizing: content-box;
+		width: 10px;
+
+		@include iconDataurl('home');
+		@include basicUnitHeight(height);
+
+		&:before {
+			@include centerDataurlIcon();
+
+			width: 15px;
+			height: 14px;
+		}
+	}
 }
 
 /**
@@ -92,22 +101,5 @@
   * @TODO: Remove and move to the single item
   */
 .widg_breadcrumb__seperator {
-  width: 28px;
-  position: relative;
 
-	@include iconDataurl('breadcrumb-arrow');
-
-  &:before {
-	@include centerDataurlIcon();
-
-	content: " ";
-	display: block;
-
-	width: 7px;
-	height: 11px;
-  }
-
-  &:last-of-type {
-	display: none;
-  }
 }

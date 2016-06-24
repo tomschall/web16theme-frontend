@@ -55,7 +55,7 @@
 }
 
 .widg_promoteaser__button {
-	@include iconDataurl('arrow');
+	@include iconDataurl('pfeil-black');
 	@include noStyledButton();
 
 	position: relative;

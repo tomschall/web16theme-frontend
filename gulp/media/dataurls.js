@@ -130,7 +130,10 @@ gulp.task(taskName, function(cb) {
 					// Disabled due to http://codepen.io/backflip/pen/GqgxzO
 					makeArcs: false
 				}
-			}]
+			},
+				{
+					removeUselessStrokeAndFill: false
+				}]
 		}))
 		.pipe(size({
 			title: 'media:icons (SVG files)'

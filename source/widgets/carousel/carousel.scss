@@ -166,7 +166,7 @@
 }
 
 .widg_carousel__arrow {
-	@include iconDataurl('arrow');
+	@include iconDataurl('pfeil-black');
 	@include noStyledButton();
 
 	position: absolute;
@@ -200,7 +200,7 @@
 
 	background-color: rgba($colorBlack, 0.7);
 
-	@include iconDataurl('arrow-white');
+	@include iconDataurl('pfeil-weiss');
 
 	@include mq($to: $sizeBreakpointSmall) {
 		top: 0;
@@ -274,7 +274,7 @@
 		top: 0;
 	}
 
-	@include mq($from: $sizeBreakpointLarge) {
+	@include mq($from: $sizeBreakpointWide) {
 		width: 2 * basicUnitHeight(xxl);
 
 		top: calc(100% + 150px);
