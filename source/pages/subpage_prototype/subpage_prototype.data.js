@@ -6,7 +6,8 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 	meta: {
-		title: 'Proof of Concept - CAS E-Commerce und Online Marketing'
+		title: 'Proof of Concept - CAS E-Commerce und Online Marketing',
+		hideFromListing: true
 	},
 	title: 'University of Applied Sciences and Arts Northwestern Switzerland FHNW',
 	widgets: {
