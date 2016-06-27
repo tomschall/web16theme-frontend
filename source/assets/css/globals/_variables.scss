@@ -24,27 +24,25 @@ $sizeSearchBar: 600px;
 
 $colorText: #000000;
 $colorBg: #ffffff;
-
+$colorBlack: #000000;
 $colorLightGray: #F1F1EE;
 $colorDarkGrey: #999999;
-$colorTextGrey: #767676;
-$colorYellow: #FDE70E;
-$colorYellowHover: #f5dd19;
-$colorBlack: #000000;
-$colorDarkerYellow: #fbd100;
 $colorBorderGrey: #767573;
+$colorTextGrey: #767676;
+$colorGreyHover: #deded9;
+
+$colorYellow: #FDE70E;
+$colorYellowNavHover: #f5dd19;
+$colorYellowBarHover: #fbd100;
+$colorSubNavActive: #fef387;
+
 $colorErrorRed: #df305b;
 
 /**
 	Navigation colors
 	*/
-$colorHoverNav1: #f7f7f5;
-$colorNavActiveBar: #ebd12d;
-$colorYellowActive: #fef387;
-$colorBgNav2: $colorHoverNav1;
-$colorHoverNav2: #ededeb;
-$colorBgNav3: $colorHoverNav2;
-$colorHoverNav3: #e4e4e1;
+$colorSubNavHover: #f7f7f5;
+
 
 /**
 Navigation vars
@@ -94,6 +92,8 @@ $paddingBehindYellowBarWide: $widthYellowBarWide + $pagePadding;
 $paddingBehindYellowBarNarrow: $widthYellowBar + $pagePaddingSmall;
 $paddingBehindYellowBarSuperWide: $widthYellowBarSuperWide + $pagePaddingWide;
 
+$contentMarginTop: $basicPush * 5.6;
+
 /**
   * Header
   */
@@ -134,6 +134,8 @@ $elementHeight: (
 	desktop: 60px,
 	mobile: 50px
 );
+
+$smallElementHeight: 50px;
 
 /**
   * Z-index map

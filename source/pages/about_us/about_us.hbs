@@ -4,10 +4,11 @@
 	{{/content}}
 	{{#content "content"}}
 		<div class="page_content">
-			<h1>Über uns</h1>
+			<h1>{{title}}</h1>
       <p class="text__lead">
-        Vielfältig, praxisnah und marktorientiert. Die Fachhochschule Nordwestschweiz FHNW hat sich als eine der führenden und innovationsstärksten Fachhochschulen der Schweiz etabliert.
-      </p>
+      	{{leadText}}
+			</p>
 		</div>
+		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
 	{{/content}}
 {{/extend}}

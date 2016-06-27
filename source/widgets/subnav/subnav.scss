@@ -1,0 +1,107 @@
+.widg_subnav {
+	@include span(3);
+	position: relative;
+
+	transform: translateY(-1 * $contentMarginTop - $smallElementHeight);
+
+	&.widg_subnav___no-hero {
+		transform: none;
+
+		.widg_subnav__title {
+			position: static;
+			width: 100%;
+			transform: none;
+		}
+	}
+}
+
+.widg_subnav__title {
+	padding: 29px 22px;
+
+	background-color: rgba($colorBlack, 0.8);
+	position: absolute;
+	transform: translateY(-100%);
+	width: calc(100% - 32px);
+
+	h2 {
+		color: $colorBg;
+		line-height: 1;
+
+		padding-bottom: $basicPush * 1.4;
+		position: relative;
+
+		&:after {
+			position: absolute;
+
+			height: 1px;
+			background-color: $colorBg;
+			left: 0;
+			bottom: 0;
+
+			width: 50px;
+			display: block;
+			content: " ";
+		}
+	}
+}
+
+.widg_subnav__list ul {
+	@include resetList();
+
+	width: 100%;
+
+	li {
+		position: relative;
+		height: $smallElementHeight;
+		display: block;
+
+		a {
+			position: absolute;
+			top: 0;  left: 0;  right: 0;  bottom: 0;
+
+			font-weight: 600;
+			font-size: 1.25rem;
+
+			background-color: $colorLightGray;
+			border-bottom: 2px solid $colorBg;
+			padding: 14px 52px 14px 14px;
+
+			@include iconDataurl($name: 'pfeil-black', $after: true);
+
+			&:hover {
+				background-color: $colorGreyHover;
+				cursor: pointer;
+			}
+
+			&:after {
+				content: " ";
+				display: block;
+				position: absolute;
+
+				right: 14px;
+				top: 50%;
+				transform: translateY(-50%);
+
+				width: 27px;
+				height: 9px;
+			}
+		}
+	}
+}
+
+/**
+  * Demo Styles
+  */
+
+.sg_demo .widg_subnav {
+	position: static;
+	transform: none;
+
+	max-width: 300px;
+
+	.widg_subnav__title {
+		position: static;
+		width: 100%;
+		transform: none;
+	}
+}

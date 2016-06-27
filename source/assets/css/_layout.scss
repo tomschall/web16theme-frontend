@@ -64,7 +64,7 @@ h3 {
 	flex-grow: 1;
 	width: 100%;
 	position: relative;
-	margin-top: $basicPush * 10 - 44px;
+	margin-top: $contentMarginTop;
 
 	@include contentWrapper($gutterWidth);
 

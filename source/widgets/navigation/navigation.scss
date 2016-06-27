@@ -62,11 +62,11 @@ styling of all links and lists
 	}
 
 	&:hover:not(.is_active) {
-		background-color: $colorYellowHover;
+		background-color: $colorYellowNavHover;
 	}
 
 	&.is_active {
-		background-color: $colorYellowHover;
+		background-color: $colorYellowNavHover;
 
 		&:before {
 			left: 0;
@@ -177,12 +177,12 @@ The back arrow only visible on mobile navigation
 		margin-bottom: 2px;
 
 		&:hover {
-			background-color: $colorHoverNav1;
+			background-color: $colorSubNavHover;
 		}
 
 		&.is_active,
 		&.is_active:hover {
-			background-color: $colorYellowActive;
+			background-color: $colorSubNavActive;
 		}
 	}
 }
@@ -210,10 +210,6 @@ The Subwrappers only desktop
 	> .widg_navigation__list {
 		display: block;
 		margin-top: $basicPush * 16.2;
-
-		a:before {
-			background: $colorNavActiveBar;
-		}
 	}
 
 	@include mq($from: $sizeBreakpointMedium) {

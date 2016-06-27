@@ -1,0 +1,14 @@
+<div class="widg_subnav {{#if heroImage}}{{else}}widg_subnav___no-hero{{/if}}" data-init="subnav">
+	<div class="widg_subnav__title">
+		<h2>{{title}}</h2>
+	</div>
+	<div class="widg_subnav__list">
+    <ul>
+			{{#each entries}}
+        <li>
+          <a>{{title}}</a>
+        </li>
+			{{/each}}
+    </ul>
+	</div>
+</div>

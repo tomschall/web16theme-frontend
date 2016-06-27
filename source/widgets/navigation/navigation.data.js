@@ -8,7 +8,7 @@ var _ = require('lodash'),
 var templateData = {
 			list: {
 				level: 0,
-				items: [
+				entries: [
 					{
 						title: 'Studium',
 						link: '#'
@@ -26,7 +26,7 @@ var templateData = {
 						link: '',
 						list: {
 							level: 1,
-							items: [
+							entries: [
 								{
 									title: 'Übersicht',
 									link: '#'
@@ -40,7 +40,7 @@ var templateData = {
 									link: '#',
 									list: {
 										level: 2,
-										items: [
+										entries: [
 											{
 												title: 'Hochschule für Angewandte Psychologie',
 												link: '#'
@@ -50,7 +50,7 @@ var templateData = {
 												link: '#',
 												list: {
 													level: 3,
-													items: [
+													entries: [
 														{
 															title: 'Übersicht',
 															link: '#'
@@ -83,7 +83,7 @@ var templateData = {
 												link: '#',
 												list: {
 													level: 3,
-													items: [
+													entries: [
 														{
 															title: 'Übersicht',
 															link: '#'
@@ -155,7 +155,7 @@ var templateData = {
 									link: '#',
 									list: {
 										level: 2,
-										items: [
+										entries: [
 											{
 												title: 'Übersicht',
 												link: '#'

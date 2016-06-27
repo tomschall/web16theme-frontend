@@ -9,7 +9,7 @@ var data = _.merge(defaultData, {
 			title: 'Über uns'
 		},
 		title: 'Über uns',
-		text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+		leadText: 'Vielfältig, praxisnah und marktorientiert. Die Fachhochschule Nordwestschweiz FHNW hat sich als eine der führenden und innovationsstärksten Fachhochschulen der Schweiz etabliert.',
 		widgets: {
 			header: _.assign({
 				hasPromoTeaser: false,
@@ -32,7 +32,8 @@ var data = _.merge(defaultData, {
 						}
 					]
 				}
-			}, requireNew('../../widgets/hero/hero.data.js'))
+			}, requireNew('../../widgets/hero/hero.data.js')),
+			subnav: requireNew('../../widgets/subnav/subnav.data.js')
 		}
 	});
 
