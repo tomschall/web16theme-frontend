@@ -63,7 +63,7 @@ h3 {
 .layout_content {
 	flex-grow: 1;
 	width: 100%;
-
+	position: relative;
 	margin-top: $basicPush * 10 - 44px;
 
 	@include contentWrapper($gutterWidth);
@@ -71,5 +71,8 @@ h3 {
 	.header__wide & {
 		display: none;
 	}
+}
 
+.page_content {
+	@include span(9);
 }

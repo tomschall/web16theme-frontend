@@ -6,21 +6,6 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
-		items: [
-			{
-				'url': '#',
-				'title': '',
-				'extraClasses': 'is_home'
-			}, {
-				'url': '#',
-				'title': 'Weiterbildung',
-				'extraClasses': ''
-			}, {
-				'url': '#',
-				'title': 'Wirtschaft',
-				'extraClasses': ''
-			}
-		]
 	},
 	data = _.merge(defaultData, {
 		meta: {

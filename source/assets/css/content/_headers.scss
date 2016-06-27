@@ -4,14 +4,15 @@ h1, h2, h3, h4, h5 {
 }
 h1 {
 	font-family: $fontSerifRoman;
-	font-size: 6.25rem;
-	margin-bottom: $basicPush * 4;
+	font-size: 3.75rem;
+	margin-bottom: $basicPush * 2.6;
 	line-height: 1.3;
+	font-weight: 600;
 
 	&:after {
-		background-color: $colorBlack;
+		background-color: $colorYellow;
 		content: " ";
-		height: 1px;
+		height: 4px;
 		width: 119px;
 		display: block;
 		margin-top: $basicPush * 5 - 31px;

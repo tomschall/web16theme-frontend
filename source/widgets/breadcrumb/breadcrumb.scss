@@ -4,11 +4,13 @@
 	left: 0;
 
 	background-color: $colorBg;
-	margin-left: -1 * $gutterWidth;
 	overflow: hidden;
 
-	@include yellowBarDiffer();
-	@include basicUnitHeight(height);
+	@include contentWrapper($hasGrid: false, $gutterSize: $gutterWidth);
+
+	height: 50px;
+
+	@include basicUnitHeight(right);
 
 	@include mq($to: $sizeBreakpointMedium) {
 		position: static;
@@ -35,18 +37,19 @@
 
 .widg_breadcrumb ul li {
 
-	margin-right: $basicPush * 3;
+	margin-right: $basicPush * 1.3;
 
 	a {
 		display: block;
 		font-size: 1.25rem;
 		position: relative;
-		padding: 0 ($gutterWidth) 0 $gutterWidth;
+		padding: 0 ($gutterWidth / 2) 0 $gutterWidth / 2;
 		white-space: nowrap;
+		color: $colorBorderGrey;
 
-		@include basicUnitHeight(line-height);
+		line-height: 50px;
 
-		@include iconDataurl('triangle-arrow_right', $after: true);
+		@include iconDataurl('triangle-arrow_right_grey', $after: true);
 
 		&:hover,
 		&:focus {
@@ -59,15 +62,19 @@
 			content: " ";
 			display: block;
 
-			width: 7px;
-			height: 11px;
+			width: 6px;
+			height: 7px;
 
 			top: 50%;
 			transform: translate(50%, -50%);
 
-			right: -1 * $basicPush * 1.5;
+			right: -1 * $basicPush * 0.75;
 
 		}
+	}
+
+	&:first-child {
+		margin-left: $gutterWidth / 1.4;
 	}
 
 	&:last-child {
@@ -84,7 +91,8 @@
 		width: 10px;
 
 		@include iconDataurl('home');
-		@include basicUnitHeight(height);
+
+		height: 50px;
 
 		&:before {
 			@include centerDataurlIcon();
