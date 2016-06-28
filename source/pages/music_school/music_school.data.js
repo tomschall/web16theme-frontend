@@ -29,14 +29,36 @@ var data = _.merge(defaultData, {
 						'url': '#',
 						'title': 'Die FHNW',
 						'extraClasses': ''
+					}, {
+						'url': '#',
+						'title': 'Hochschulen',
+						'extraClasses': ''
 					}
 				]
 			}
 		}, requireNew('../../widgets/hero/hero.data.js')),
 		subnav: _.assign(requireNew('../../widgets/subnav/subnav.data.js'), {
 			title: 'Musikhochschulen FHNW',
-			logo: null,
-			subtitle: null
+			logo: 'music_school_logo.png',
+			subtitle: 'Hochschule für Musik',
+			entries: [
+				{
+					title: 'Leitung',
+					link: '#'
+				},
+				{
+					title: 'Kammermusik & Ensembles',
+					link: '#'
+				},
+				{
+					title: 'Konzerte & Events',
+					link: '#'
+				},
+				{
+					title: 'Preise & Auszeichnungen',
+					link: '#'
+				}
+			]
 		})
 	}
 });

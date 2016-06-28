@@ -16,8 +16,12 @@
 .widg_hero__wrapper {
 	order: 1;
 	line-height: 1em;
-	max-height: 50vh;
+
 	overflow: hidden;
+
+	@include mq($to: $sizeBreakpointMedium) {
+		max-height: 50vh;
+	}
 }
 
 .widg_hero__img {

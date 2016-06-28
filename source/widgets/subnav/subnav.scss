@@ -15,13 +15,34 @@
 	}
 }
 
+/**
+  * The title box
+  */
 .widg_subnav__title {
-	padding: 29px 22px;
 
 	background-color: rgba($colorBlack, 0.8);
 	position: absolute;
 	transform: translateY(-100%);
 	width: calc(100% - 32px);
+}
+
+.widg_subnav__main-link {
+	padding: 29px 22px;
+	position: relative;
+
+	&:hover {
+		background-color: rgba($colorBlack, 0.8);
+	}
+
+	a {
+		display: block;
+		position: absolute;
+		top: 0; left: 0; right: 0; bottom: 0;
+	}
+
+	.has-subtitle & {
+		padding-bottom: 0;
+	}
 
 	h2 {
 		color: $colorBg;
@@ -45,6 +66,28 @@
 	}
 }
 
+.widg_subnav__logo {
+	max-height: 100px;
+	max-width: 100px;
+	margin-bottom: $basicPush * 2;
+}
+
+.widg_subnav__subtitle {
+
+	padding: 10px 22px 20px 22px;
+
+	span {
+		color: $colorBg;
+		font-size: 1.25rem;
+
+		display: block;
+	}
+}
+
+/**
+  * The link list
+  */
+
 .widg_subnav__list ul {
 	@include resetList();
 
@@ -52,19 +95,18 @@
 
 	li {
 		position: relative;
-		height: $smallElementHeight;
+		min-height: $smallElementHeight;
 		display: block;
 
 		a {
-			position: absolute;
-			top: 0;  left: 0;  right: 0;  bottom: 0;
+			display: block;
 
 			font-weight: 600;
 			font-size: 1.25rem;
 
 			background-color: $colorLightGray;
 			border-bottom: 2px solid $colorBg;
-			padding: 14px 52px 14px 14px;
+			padding: 13px 52px 13px 14px;
 
 			@include iconDataurl($name: 'pfeil-black', $after: true);
 
@@ -84,6 +126,22 @@
 
 				width: 27px;
 				height: 9px;
+			}
+
+			&.is_back {
+				background-color: $colorSubNavActive;
+				padding: 14px 14px 14px 52px;
+
+				&:hover {
+					background-color: $colorYellow;
+				}
+
+				&:after {
+					right: auto;
+					left: 14px;
+
+					transform: translateY(-50%) rotate(180deg);
+				}
 			}
 		}
 	}

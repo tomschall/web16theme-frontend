@@ -1,14 +1,28 @@
 <div class="widg_subnav {{#if heroImage}}{{else}}widg_subnav___no-hero{{/if}}" data-init="subnav">
-	<div class="widg_subnav__title">
-		<h2>{{title}}</h2>
-	</div>
-	<div class="widg_subnav__list">
+	{{#if title}}
+    <div class="widg_subnav__title {{#if subtitle}}has-subtitle{{/if}}">
+      <div class="widg_subnav__main-link">
+
+				{{#if logo}}
+          <img class="widg_subnav__logo" src="/assets/media/img/{{logo}}" alt="Logo {{title}}"/>
+				{{/if}}
+        <h2>{{title}}</h2>
+				<a href="{{titleLink}}"></a>
+      </div>
+			{{#if subtitle}}
+        <div class="widg_subnav__subtitle">
+          <span>{{subtitle}}</span>
+        </div>
+			{{/if}}
+    </div>
+	{{/if}}
+  <div class="widg_subnav__list">
     <ul>
 			{{#each entries}}
         <li>
-          <a>{{title}}</a>
+          <a class="{{#if isBack}}is_back{{/if}}">{{title}}</a>
         </li>
 			{{/each}}
     </ul>
-	</div>
+  </div>
 </div>
