@@ -12,22 +12,25 @@ var data = _.merge(defaultData, {
 			code: dataHelper.getTemplateCode('navigation_meta.hbs'),
 			documentation: dataHelper.getDocumentation('navigation_meta.md')
 		},
-		items: [
+		entries: [
 			{
 				url: '#',
-				title: 'Accessibility'
+				title: 'Cookie Policy'
 			}, {
 				url: '#',
-				title: 'Legal notice'
+				title: 'Rechtliches'
 			}, {
 				url: '#',
-				title: 'Disclaimer'
-			}, {
-				url: '#',
-				title: 'Intranet'
+				title: 'Impressum'
 			}, {
 				url: '#',
 				title: 'Sitemap'
+			}, {
+				url: '#',
+				title: 'Barrierefreiheit'
+			}, {
+				url: '#',
+				title: 'Login Intranet'
 			}
 		]
 	});

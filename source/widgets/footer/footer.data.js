@@ -13,7 +13,8 @@ var data = _.merge(defaultData, {
 			documentation: dataHelper.getDocumentation('footer.md')
 		},
 		widgets: {
-			navigationMeta: requireNew('../navigation_meta/navigation_meta.data.js')
+			navigationMeta: requireNew('../navigation_meta/navigation_meta.data.js'),
+			footerNavigation: requireNew('../footernavigation/footernavigation.data.js')
 		}
 	});
 

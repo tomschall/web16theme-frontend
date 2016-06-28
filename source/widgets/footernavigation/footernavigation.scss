@@ -1,0 +1,36 @@
+.widg_footernavigation {
+	@include contentWrapper($gutterWidth);
+
+	padding-top: $basicPush * 6 !important;
+	padding-bottom: $basicPush * 4.5 !important;
+}
+
+.widg_footernavigation__column {
+	@include span(2);
+
+	color: $colorBg;
+
+	ul li a {
+		color: $colorBg;
+		padding: 5px 0;
+
+		display: block;
+		font-size: 1.25rem;
+		line-height: 1.7;
+		opacity: 0.8;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	h4 {
+		font-weight: 700;
+		font-size: 1.25rem;
+		line-height: 1.7;
+		padding-bottom: $basicPush * 1.4;
+
+		border-bottom: 1px solid $colorBg;
+		margin-bottom: $basicPush;
+	}
+}

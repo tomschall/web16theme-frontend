@@ -1,26 +1,45 @@
 .widg_navigation_meta {
-	float: right;
+	@include defaultElementHeight();
+	@include contentWrapper();
 
-	li {
-		display: inline-block;
-	}
+	div {
+		@include span(2);
 
-	a {
-		text-decoration: none;
-		color: $colorDarkGrey;
-		margin-left: pxToEm(15);
+		font-weight: 700;
+		font-size: 1.25rem;
+		padding-left: $basicPush * 5.5;
 
-		&:hover,
-		&:focus {
-			border-bottom: 2px solid $colorYellow;
+		position: relative;
+
+		@include iconDataurl('fhnw_claim_only');
+
+		&:before {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 0;
 		}
 	}
 
-	@include mq($from: medium) {
+	ul {
+		@include span(10);
 
-		a {
-			padding-bottom: pxToEm(20);
+		li {
+			display: inline-block;
+
+			a{
+				display: block;
+
+				@include defaultElementHeight();
+				padding: 0 $gutterWidth/2;
+				font-size: 1.25rem;
+
+				color: $colorTextGrey;
+
+				&:hover {
+					color: $colorBlack;
+				}
+			}
 		}
 	}
-
 }
