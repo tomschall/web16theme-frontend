@@ -20,7 +20,7 @@ var templateData = {
 		},
 		{
 			title: 'Alumni',
-			link: '#'
+			link: '../alumni/alumni.html'
 		},
 		{
 			title: 'Diversity und Gleichstellung',

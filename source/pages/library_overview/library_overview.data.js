@@ -22,11 +22,11 @@ var data = _.merge(defaultData, {
 				breadcrumbItems: {
 					items: [
 						{
-							'url': '#',
+							'url': '../startpage_prototype/startpage_prototype.html',
 							'title': '',
 							'extraClasses': 'is_home'
 						}, {
-							'url': '#',
+							'url': '../about_us/about_us.html',
 							'title': 'Die FHNW',
 							'extraClasses': ''
 						}
@@ -52,7 +52,7 @@ var data = _.merge(defaultData, {
 					},
 					{
 						title: 'Zur FHNW',
-						link: '#',
+						link: '../about_us/about_us.html',
 						isBack: true
 					}
 				]

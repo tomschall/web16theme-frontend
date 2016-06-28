@@ -22,15 +22,15 @@ var data = _.merge(defaultData, {
 				breadcrumbItems: {
 					items: [
 						{
-							'url': '#',
+							'url': '../startpage_prototype/startpage_prototype.html',
 							'title': '',
 							'extraClasses': 'is_home'
 						}, {
-							'url': '#',
+							'url': '../about_us/about_us.html',
 							'title': 'Die FHNW',
 							'extraClasses': ''
 						}, {
-							'url': '#',
+							'url': '../universities_overview/universities_overview.html',
 							'title': 'Hochschulen',
 							'extraClasses': ''
 						}
@@ -62,7 +62,7 @@ var data = _.merge(defaultData, {
 					},
 					{
 						title: 'Zu allen Hochschulen',
-						link: '#',
+						link: '../universities_overview/universities_overview.html',
 						isBack: true
 					}
 				]

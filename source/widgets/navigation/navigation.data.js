@@ -29,7 +29,7 @@ var templateData = {
 							entries: [
 								{
 									title: 'Übersicht',
-									link: '#'
+									link: '../about_us/about_us.html'
 								},
 								{
 									title: 'Portrait',
@@ -43,7 +43,7 @@ var templateData = {
 										entries: [
 											{
 												title: 'Hochschule für Angewandte Psychologie',
-												link: '#'
+												link: '../university_for_applied_psychology/university_for_applied/psychology.html'
 											},
 											{
 												title: 'Hochschule für Architektur, Bau und Geomatik',
@@ -117,7 +117,7 @@ var templateData = {
 											},
 											{
 												title: 'Musikhochschulen',
-												link: '#'
+												link: '../music_school/music_school.html'
 											},
 											{
 												title: 'Pädagogische Hochschule',

@@ -42,6 +42,11 @@
 .widg_breadcrumb ul li {
 
 	margin-right: $basicPush * 1.3;
+	padding: 0;
+
+	&:before {
+		display: none;
+	}
 
 	a {
 		display: block;
@@ -50,6 +55,7 @@
 		padding: 0 ($gutterWidth / 2) 0 $gutterWidth / 2;
 		white-space: nowrap;
 		color: $colorBorderGrey;
+		cursor: pointer;
 
 		line-height: 50px;
 

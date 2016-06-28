@@ -22,15 +22,15 @@ var data = _.merge(defaultData, {
 				breadcrumbItems: {
 					items: [
 						{
-							'url': '#',
+							'url': '../startpage_prototype/startpage_prototype.html',
 							'title': '',
 							'extraClasses': 'is_home'
 						}, {
-							'url': '#',
+							'url': '../about_us/about_us.html',
 							'title': 'Die FHNW',
 							'extraClasses': ''
 						}, {
-							'url': '#',
+							'url': '../library_overview/library_overview.html',
 							'title': 'Bibliotheken der FHNW',
 							'extraClasses': ''
 						}
@@ -45,7 +45,7 @@ var data = _.merge(defaultData, {
 				entries: [
 					{
 						title: 'Zu Bibliotheken',
-						link: '#',
+						link: '../library_overview/library_overview.html',
 						isBack: true
 					}
 				]

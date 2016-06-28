@@ -21,7 +21,7 @@ var data = _.merge(defaultData, {
 				breadcrumbItems: {
 					items: [
 						{
-							'url': '#',
+							'url': '../startpage_prototype/startpage_prototype.html',
 							'title': '',
 							'extraClasses': 'is_home'
 						}, {
@@ -29,11 +29,11 @@ var data = _.merge(defaultData, {
 							'title': 'Die FHNW',
 							'extraClasses': ''
 						}, {
-							'url': '#',
+							'url': '../universities_overview/universities_overview.html',
 							'title': 'Hochschulen',
 							'extraClasses': ''
 						}, {
-							'url': '#',
+							'url': '../university_for_applied_psychology/university_for_applied_psychology.html',
 							'title': 'Hochschule für Angewandte Psychologie',
 							'extraClasses': ''
 						}, {
@@ -51,7 +51,7 @@ var data = _.merge(defaultData, {
 				entries: [
 					{
 						title: 'Zum Institut',
-						link: '#',
+						link: '../miks/miks.html',
 						isBack: true
 					}
 				]

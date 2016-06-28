@@ -29,10 +29,10 @@ var templateData = {
 			title: 'Direkteinstieg',
 			subentries: [
 				{
-					link: '#',
+					link: '/pages/locations/locations.html',
 					title: 'Standorte'
 				}, {
-					link: '#',
+					link: '/pages/library_overview/library_overview.html',
 					title: 'Bibliotheken'
 				}, {
 					link: '#',

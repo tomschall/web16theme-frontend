@@ -22,7 +22,7 @@ var data = _.merge(defaultData, {
 				breadcrumbItems: {
 					items: [
 						{
-							'url': '#',
+							'url': '../startpage_prototype/startpage_prototype.html',
 							'title': '',
 							'extraClasses': 'is_home'
 						}, {
@@ -56,7 +56,7 @@ var data = _.merge(defaultData, {
 					},
 					{
 						title: 'Zu allen Standorten',
-						link: '#',
+						link: '../locations/locations.html',
 						isBack: true
 					}
 				]

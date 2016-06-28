@@ -48,6 +48,10 @@
 		color: $colorBg;
 		line-height: 1;
 
+		font-size: 1.5rem;
+
+		font-weight: 300;
+
 		padding-bottom: $basicPush * 1.4;
 		position: relative;
 
@@ -97,6 +101,11 @@
 		position: relative;
 		min-height: $smallElementHeight;
 		display: block;
+		padding: 0;
+
+		&:before {
+			display: none;
+		}
 
 		a {
 			display: block;

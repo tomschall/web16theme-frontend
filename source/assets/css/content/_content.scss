@@ -31,21 +31,28 @@
   }
 }
 
-.content__text {
-  @include span(8);
-  order: 1;
 
-  @include mq($to: $sizeBreakpointMedium) {
-    @include span(12);
-
-    order: 2;
-  }
+.content__element {
+	margin-bottom: $basicPush * 6;
 }
 
-.content__text-element {
-  margin-top: $basicPush * 5;
+.page_content ul {
+	padding-left: 0;
+	list-style-type: none;
 
-  @include mq($to: $sizeBreakpointMedium) {
-    margin-top: $basicPush * 4 + 4;
-  }
+	li {
+		font-size: 1.5rem;
+		line-height: 1.7;
+		padding: 6px 0 6px 1em;
+		position: relative;
+
+		&:before {
+			display: block;
+			position: absolute;
+
+			content: "\2022";
+			color: $colorBlack;
+			left: 0;
+		}
+	}
 }
