@@ -50,7 +50,7 @@ var data = _.merge(defaultData, {
 					}
 				]
 			})
-	}
+		}
 	});
 
 module.exports = data;

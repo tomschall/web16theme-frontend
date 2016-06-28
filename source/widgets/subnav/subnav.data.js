@@ -39,21 +39,20 @@ var templateData = {
 			link: '#'
 		}
 	]
-};
-
-var data = _.merge(defaultData, {
-		meta: {
-			title: 'Subnavigation',
-			description: '',
-			code: dataHelper.getTemplateCode('subnav.hbs'),
-			documentation: dataHelper.getDocumentation('subnav.md'),
-			mocks: [
-				{
-					description: null,
-					data: dataHelper.getFormattedJSON(templateData)
-				}
-			]
-		}
-	}, templateData);
+},
+		data = _.merge(defaultData, {
+			meta: {
+				title: 'Subnavigation',
+				description: '',
+				code: dataHelper.getTemplateCode('subnav.hbs'),
+				documentation: dataHelper.getDocumentation('subnav.md'),
+				mocks: [
+					{
+						description: null,
+						data: dataHelper.getFormattedJSON(templateData)
+					}
+				]
+			}
+		}, templateData);
 
 module.exports = data;

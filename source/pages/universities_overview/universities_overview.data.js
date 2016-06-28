@@ -9,7 +9,7 @@ var data = _.merge(defaultData, {
 			title: 'Die neun Hochschulen der FHNW'
 		},
 		title: 'Die neun Hochschulen der FHNW',
-		leadText: 'Die Fachhochschule Nordwestschweiz FHNW umfasst neun Hochschulen, die auf die Hauptstandorte Aarau, Basel, Brugg/Windisch, Muttenz und Olten konzentriert sind.',
+		leadText: 'Die Fachhochschule Nordwestschweiz FHNW umfasst neun Hochschulen, die auf die Hauptstandorte Aarau, Basel, Brugg/Windisch, Muttenz und Olten konzentriert sind.',
 		widgets: {
 			header: _.assign({
 				hasPromoTeaser: false,

@@ -80,21 +80,20 @@ var templateData = {
 			]
 		}
 	]
-};
-
-var data = _.merge(defaultData, {
-		meta: {
-			title: 'Footer Navigation',
-			description: '',
-			code: dataHelper.getTemplateCode('footernavigation.hbs'),
-			documentation: dataHelper.getDocumentation('footernavigation.md'),
-			mocks: [
-				{
-					description: null,
-					data: dataHelper.getFormattedJSON(templateData)
-				}
-			]
-		}
-	}, templateData);
+},
+		data = _.merge(defaultData, {
+			meta: {
+				title: 'Footer Navigation',
+				description: '',
+				code: dataHelper.getTemplateCode('footernavigation.hbs'),
+				documentation: dataHelper.getDocumentation('footernavigation.md'),
+				mocks: [
+					{
+						description: null,
+						data: dataHelper.getFormattedJSON(templateData)
+					}
+				]
+			}
+		}, templateData);
 
 module.exports = data;

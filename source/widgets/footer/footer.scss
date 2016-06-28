@@ -4,8 +4,8 @@
 
 .widg_inner-footer {
 	background-color: $colorBlack;
+	position: relative;
 }
-
 
 .widg_footer__adress-claim {
 	@include contentWrapper($hasGrid: false);
@@ -14,4 +14,19 @@
 	opacity: 0.8;
 	font-size: 1.08333333rem;
 	padding-bottom: $basicPush * 1.5 !important;
+}
+
+.widg_footer__efqm {
+
+	position: absolute;
+	right: $basicPush * 10;
+	bottom: $basicPush * 3.6;
+	top: auto;
+
+
+	a {
+		display: block;
+
+		@include iconDataurl('efqm_logo_neg');
+	}
 }
