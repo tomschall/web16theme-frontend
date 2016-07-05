@@ -58,6 +58,8 @@
 		cursor: pointer;
 
 		line-height: 50px;
+		text-decoration: none;
+		opacity: 1;
 
 		@include iconDataurl('triangle-arrow_right_grey', $after: true);
 

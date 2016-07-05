@@ -34,6 +34,10 @@
 
 .content__element {
 	margin-bottom: $basicPush * 6;
+
+	h3 {
+		margin-bottom: $basicPush;
+	}
 }
 
 .page_content ul {

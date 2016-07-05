@@ -1,0 +1,53 @@
+.widg_extendedlinks {
+	margin-top: $basicPush * 3;
+
+	p {
+		font-size: 1.25rem;
+		line-height: 1.7;
+		font-weight: 300;
+
+		margin: $basicPush * 1.6 0 $basicPush * 2.6 0;
+	}
+
+	h4 {
+		margin-top: $basicPush * 2.6;
+	}
+}
+
+.widg_extendedlinks__entry {
+	@include clearfix();
+
+	a {
+		@include clearfix();
+
+		@include iconDataurl('pfeil-black', $after: true);
+
+		padding: 0 $basicPush * 12 0 $gutterWidth;
+		border-bottom: 1px solid $colorBlack;
+		display: block;
+		height: 100%;
+		width: 100%;
+		position: relative;
+		text-decoration: none;
+		opacity: 1;
+
+		&:hover {
+			background-color: $colorLightGray;
+		}
+
+		&:after {
+			right: $basicPush * 1.5;
+			position: absolute;
+			display: block;
+			content: " ";
+			top: 50%;
+			font-size: 1rem;
+
+			transform: translateY(-50%);
+		}
+	}
+
+	&:last-of-type a {
+		border-bottom: none;
+	}
+}

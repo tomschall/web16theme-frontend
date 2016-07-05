@@ -48,7 +48,8 @@ var data = _.merge(defaultData, {
 						isBack: true
 					}
 				]
-			})
+			}),
+			extendedlinks: requireNew('../../widgets/extendedlinks/extendedlinks.data.js')
 		}
 	});
 

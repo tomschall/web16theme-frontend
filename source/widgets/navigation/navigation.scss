@@ -56,6 +56,9 @@ styling of all links and lists
 	font-size: 1.5rem;
 	padding: 12px $gutter - 3 11px $gutter;
 
+	text-decoration: none;
+	opacity: 1;
+
 
 	&.widg_navigation__back {
 		display: none;

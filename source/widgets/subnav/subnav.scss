@@ -2,6 +2,7 @@
 	@include span(3);
 	position: relative;
 
+
 	transform: translateY(-1 * $contentMarginTop - $smallElementHeight);
 
 	&.widg_subnav___no-hero {
@@ -12,6 +13,13 @@
 			width: 100%;
 			transform: none;
 		}
+	}
+
+	.full-width-page & {
+		position: absolute;
+
+		width: 18%;
+		right: $basicPush * 8.4;
 	}
 }
 
@@ -38,6 +46,7 @@
 		display: block;
 		position: absolute;
 		top: 0; left: 0; right: 0; bottom: 0;
+		text-decoration: none;
 	}
 
 	.has-subtitle & {
@@ -116,6 +125,8 @@
 			background-color: $colorLightGray;
 			border-bottom: 2px solid $colorBg;
 			padding: 13px 52px 13px 14px;
+			text-decoration: none;
+			opacity: 1;
 
 			@include iconDataurl($name: 'pfeil-black', $after: true);
 

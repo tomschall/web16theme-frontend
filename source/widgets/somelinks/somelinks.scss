@@ -6,11 +6,13 @@
 		height: 35px;
 		display: block;
 		float: left;
+		font-size: 1rem;
 
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 
 		margin-right: $basicPush;
+		opacity: 1;
 
 		&:last-child {
 			margin-right: 0;

@@ -14,7 +14,10 @@
 	float: left;
 	margin-right: $basicPush;
 
+	text-decoration: none;
+	opacity: 1;
+
 	&.is_active {
-		font-family: $fontSansSerifBold;
+		font-weight: 700;
 	}
 }

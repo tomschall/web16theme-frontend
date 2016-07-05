@@ -75,4 +75,8 @@ h3 {
 
 .page_content {
 	@include span(9);
+
+	.full-width-page & {
+		@include span(12);
+	}
 }
