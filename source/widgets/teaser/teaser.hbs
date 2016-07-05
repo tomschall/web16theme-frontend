@@ -7,6 +7,9 @@
 			{{#if date}}
 				<span class="widg_teaser__date">{{date}}</span>
 			{{/if}}
+			{{#if projectTime}}
+				<span class="widg_teaser__project-time">{{../../langStrings.projectTime}}: {{projectTime}}</span>
+			{{/if}}
       <h4>{{title}}</h4>
 			{{#if text}}
         <p>{{text}}</p>

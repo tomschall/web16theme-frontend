@@ -41,7 +41,8 @@ var templateData = {
 		}
 	],
 	langStrings: {
-		toLinkTarget: 'zu'
+		toLinkTarget: 'zu',
+		projectTime: 'Projektdauer'
 	}
 },
 data = _.merge(defaultData, {

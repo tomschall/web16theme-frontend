@@ -68,6 +68,31 @@ var data = _.merge(defaultData, {
 						isBack: true
 					}
 				]
+			}),
+			projectTeasers: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
+				teasers: [
+					{
+						title: 'Mensch-Maschine-Interaktion im Betrieb SBB:',
+						projectTime: '31.12.2018',
+						variant: 'wide___third',
+						text: 'Automatisierung in den Betriebszentralen der Zukunft',
+						link: '#'
+					},
+					{
+						title: 'Indirekte Steuerung und Selbstgefährdung',
+						projectTime: '31.12.2018',
+						variant: 'wide___third',
+						text: 'Neue Herausforderungen für das betriebliche Gesundheitsmanagement: Umgang mit indirekter Steuerung und Selbstgefährdung in Betrieben',
+						link: '#'
+					},
+					{
+						title: 'Entrepreneur-Check',
+						projectTime: '31.12.2018',
+						variant: 'wide___third',
+						text: 'Persönlichkeit & Gesundheit von Unternehmerinnen und Unternehmern',
+						link: '#'
+					}
+				]
 			})
 		}
 	});
