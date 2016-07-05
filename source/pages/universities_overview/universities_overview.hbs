@@ -1,4 +1,4 @@
-{{#extend "layouts/layout"}}
+{{#extend "layouts/layout" pageTypeClass="full-width-page"}}
 	{{#content "hero"}}
 		{{> "widgets/hero/hero" widgets.hero}}
 	{{/content}}
@@ -8,6 +8,9 @@
       <p class="text__lead">
 				{{leadText}}
       </p>
+			<div class="content__element has_grid">
+				{{> "widgets/teaser/teaser" widgets.teaser}}
+			</div>
     </div>
 	{{/content}}
 {{/extend}}

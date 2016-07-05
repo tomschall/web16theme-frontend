@@ -47,7 +47,23 @@
 		}
 	}
 
+	&.has_date a {
+		padding-left: $basicPush * 12.8;
+	}
+
 	&:last-of-type a {
 		border-bottom: none;
 	}
+}
+
+.widg_extendedlinks__date {
+	position: absolute;
+	left: $basicPush * 2.2;
+	top: $basicPush * 3;
+
+	line-height: 1;
+	font-size: 1.666667rem;
+	color: $colorBorderGrey;
+
+	font-weight: 600;
 }

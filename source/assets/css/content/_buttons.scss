@@ -20,6 +20,8 @@ input[type="reset"] {
 	color: $colorBg;
 	font-size: 1.0833333rem;
 	padding: 0 $basicPush;
+	text-decoration: none;
+	opacity: 1;
 
 	&:hover,
 	&:active,

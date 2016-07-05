@@ -8,20 +8,41 @@ var _ = require('lodash'),
 var templateData = {
 	teasers: [
 		{
-			title: 'Ringvorlesung 2016 «Diversity»',
-			category: 'Aktuell',
-			head: 'Lorem',
+			title: 'Campus Dreispitz (Basel)',
 			link: '#',
-			variant: 'widg_teaser__startpage'
+			img: {
+				src: 'campus_dreispitz.png',
+				alt: 'Campus Dreispitz'
+			}
 		},
 		{
-			title: 'Aller Anfang ist schwer: So gelingt der Einstieg ins Studium',
-			category: 'Lorem Ipsum',
-			head: 'Story',
+			title: 'Campus Brugg-Windisch',
 			link: '#',
-			variant: 'widg_teaser__startpage'
+			img: {
+				src: 'campus_brugg.png',
+				alt: 'Campus Brugg-Windisch'
+			}
+		},
+		{
+			title: 'Campus Muttenz',
+			link: '#',
+			img: {
+				src: 'campus_muttenz.png',
+				alt: 'Campus Muttenz'
+			}
+		},
+		{
+			title: 'Campus Olten',
+			link: '#',
+			img: {
+				src: 'campus_olten.png',
+				alt: 'Campus Olten'
+			}
 		}
-	]
+	],
+	langStrings: {
+		toLinkTarget: 'zu'
+	}
 },
 data = _.merge(defaultData, {
 		meta: {

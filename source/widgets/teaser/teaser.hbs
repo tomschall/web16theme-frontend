@@ -1,17 +1,15 @@
-{{#each teasers}}
-  <div class="widg_teaser{{#if variant}} {{variant}}{{/if}}">
-    <div>
-			<span class="widg_teaser__head">
-				{{head}}
-			</span>
-			<span class="widg_teaser__category">
-				{{category}}
-			</span>
-			<span class="widg_teaser__title">
-				{{title}}
-			</span>
+<div class="widg_teaser__wrapper">
+	{{#each teasers}}
+    <div class="widg_teaser{{#if variant}} {{variant}}{{/if}}">
+			{{#if img}}
+        <div class="widg_teaser__img"><img src="/widgets/teaser/media/{{img.src}}"/></div>
+			{{/if}}
+      <h4>{{title}}</h4>
+			{{#if text}}
+        <p>{{text}}</p>
+			{{/if}}
+      <a class="widg_teaser__link" href={{link}}>{{../langStrings.toLinkTarget}} {{title}}</a>
+      <span class="widg_teaser__arrow"></span>
     </div>
-		<a href="{{link}}"></a>
-		<button class="widg_teaser__arrow"></button>
-  </div>
-{{/each}}
+	{{/each}}
+</div>

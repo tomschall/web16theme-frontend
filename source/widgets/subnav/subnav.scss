@@ -2,7 +2,6 @@
 	@include span(3);
 	position: relative;
 
-
 	transform: translateY(-1 * $contentMarginTop - $smallElementHeight);
 
 	&.widg_subnav___no-hero {
@@ -19,7 +18,15 @@
 		position: absolute;
 
 		width: 18%;
-		right: $basicPush * 8.4;
+		right: basicUnitHeight(normal) - $gutterWidth;
+
+		@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
+			right: basicUnitHeight(small) - $gutterWidth;
+		}
+
+		@include mq($from: $sizeBreakpointWide) {
+			right: basicUnitHeight(xxl) - $gutterWidth;
+		}
 	}
 }
 

@@ -38,7 +38,29 @@ var data = _.merge(defaultData, {
 			logo: null,
 			subtitle: null,
 			entries: null
-		})
+		}),
+		teaserLocations: requireNew('../../widgets/teaser/teaser.data.js'),
+		teaserAdditionalLocations: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
+			teasers: [
+				{
+					title: 'Standort Liestal',
+					link: '#',
+					img: {
+						src: 'standort_liestal.png',
+						alt: 'Standort Liestal'
+					}
+				},
+				{
+					title: 'Standort Solothurn',
+					link: '#',
+					img: {
+						src: 'standort_solothurn.png',
+						alt: 'Standort Solothurn'
+					}
+				}
+			]
+		}),
+		extendedlinks: requireNew('../../widgets/extendedlinks/extendedlinks.data.js')
 	}
 });
 

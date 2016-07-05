@@ -35,8 +35,24 @@
 .content__element {
 	margin-bottom: $basicPush * 6;
 
+	h2,
 	h3 {
 		margin-bottom: $basicPush;
+	}
+
+	&.has_grid {
+		@include gridWrapper($gutterWidth);
+
+		h2,
+		h3 {
+			padding-left: $gutterWidth;
+			padding-right: $gutterWidth;
+		}
+	}
+
+	&.span-9 {
+		max-width: 75%;
+
 	}
 }
 

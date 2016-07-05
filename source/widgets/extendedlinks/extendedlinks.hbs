@@ -1,7 +1,11 @@
 <div class="widg_extendedlinks" data-init="extendedlinks">
 	{{#each links}}
-		<div class="widg_extendedlinks__entry">
+		<div class="widg_extendedlinks__entry {{#if date}}has_date{{/if}}">
 			<a href={{url}}>
+				{{#if date}}
+          <span class="widg_extendedlinks__date">{{date}}</span>
+
+				{{/if}}
         <h4>{{title}}</h4>
         <p>{{description}}</p>
 			</a>

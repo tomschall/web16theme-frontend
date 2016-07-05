@@ -8,6 +8,19 @@
       <p class="text__lead">
 				{{leadText}}
       </p>
+			<div class="content__element has_grid">
+				{{> "widgets/teaser/teaser" widgets.teaserLocations}}
+			</div>
+
+			<div class="content__element has_grid">
+				<h2>Weitere Standorte</h2>
+				{{> "widgets/teaser/teaser" widgets.teaserAdditionalLocations}}
+			</div>
+
+			<div class="content__element span-9">
+				<h2>Weiterführende Informationen</h2>
+				{{> "widgets/extendedlinks/extendedlinks" widgets.extendedlinks}}
+			</div>
     </div>
 		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
 	{{/content}}

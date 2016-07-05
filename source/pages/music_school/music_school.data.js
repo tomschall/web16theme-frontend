@@ -59,6 +59,28 @@ var data = _.merge(defaultData, {
 					link: '#'
 				}
 			]
+		}),
+		extendedlinks: _.assign(requireNew('../../widgets/extendedlinks/extendedlinks.data.js'), {
+			links: [
+				{
+					title: 'Kulturpreis der Bürgi-Willert-Stiftung Bern',
+					description: 'Der Kulturpreis der Bürgi-Willert-Stiftung wird seit 2016 an Kulturschaffende zwischen 40 und 65 Jahren verliehen, welche das Berner Kulturleben bereichern. Bänz Oester, Kontrabassist der Jazzabteilung der Hochschule für Musik gewinnt den diesjährigen…',
+					url: '#',
+					date: '23.07.16'
+				},
+				{
+					title: 'György Kurtàg - Konzerte und Gespräche zum 90. Geburtstag',
+					description: 'Der ungarische Komponist, Pianist und Musikpädagoge György Kurtág (*1926 Lugoj) gehört zu den grossen europäischen Musikern unserer Zeit. Anlässlich seines 90. Geburtstags bietet die Hochschule für Musik die Möglichkeit, seine musikalische …',
+					url: '#',
+					date: '12.07.16'
+				},
+				{
+					title: 'Neuer Leiter für die Schola Cantorum Basiliensis',
+					description: 'Die Fachhochschule Nordwestschweiz hat Thomas Drescher zum neuen Leiter der Schola Cantorum Basiliensis gewählt. Thomas Drescher steht der weltweit einmaligen Institution für Alte Musik bereits heute interimistisch vor und wird sein neues Amt …',
+					url: '#',
+					date: '08.04.16'
+				}
+			]
 		})
 	}
 });

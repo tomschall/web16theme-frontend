@@ -226,6 +226,12 @@
 
 		$activeLevelWrapper.removeAttr('style');
 		$levelWrapperToClose.find(this.options.domSelectors.expandable).removeClass(this.options.stateClasses.isActive);
+
+		$('[data-navigation-level]').each(function() {
+			if (parseInt($(this).data('navigation-level')) > levelToClose) {
+				$(this).removeAttr('style');
+			}
+		});
 	};
 
 	/**

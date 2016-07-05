@@ -8,6 +8,13 @@
       <p class="text__lead">
 				{{leadText}}
       </p>
+			<div class="content__element">
+				<h2>Aktuelle News</h2>
+				{{> "widgets/extendedlinks/extendedlinks" widgets.extendedlinks}}
+				<a class="button">
+					Alle News
+				</a>
+			</div>
     </div>
 		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
 	{{/content}}

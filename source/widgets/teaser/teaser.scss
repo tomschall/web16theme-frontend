@@ -1,79 +1,58 @@
 .widg_teaser {
-  @include span(4 of 12);
+  @include span(3);
+	position: relative;
+	padding-top: $basicPush * 1.7;
+	padding-bottom: $basicPush * 3.4;
+	margin-bottom: $basicPush * 4;
 
-  position: relative;
-  display: table-cell;
-  vertical-align: top;
+	&:hover {
+		background-color: $colorLightGray;
 
-  &.widg_teaser__startpage {
-	min-height: $basicPush * 18;
-	padding: $basicPush * 4 $basicPush * 3;
-	padding-bottom: 0;
-	background-color: $colorBg;
+		.widg_teaser__img {
+			img {
+				transform: scale(1.1);
+			}
+		}
+	}
 
-	margin: 0 $gutterWidth;
-  }
+	p {
+		font-size: 1.25rem;
+		opacity: 0.7;
+	}
+}
 
-  a{
+.widg_teaser__img {
+	margin-bottom: $basicPush * 2;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: auto;
+
+		transform: scale(1.2);
+
+		transition: all $transitionLength $transitionEase;
+	}
+}
+
+.widg_teaser__link {
 	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-  }
+	top: 0; left: 0; right: 0; bottom: 0;
 
-  div {
-	padding-bottom: $basicPush * 6;
-  }
-}
+	text-indent: -100000px;
 
-.widg_teaser__title {
-  font-family: $fontSerifRoman;
-  font-size: 1.5rem;
-}
 
-.widg_teaser__category {
-  color: $colorTextGrey;
-  font-family: $fontSansSerifRoman;
-  text-transform: uppercase;
-
-  display: block;
-  line-height:1.8;
-  margin-bottom: 5px;
-  letter-spacing: 2.9px;
-}
-
-.widg_teaser__head {
-  position: absolute;
-  top: 0;
-  left: 50%;
-
-  display: inline-block;
-
-  transform: translate(-50%, -50%);
-
-  background-color: $colorBlack;
-  font-family: $fontSansSerifBoldCondensed;
-  color: $colorBg;
-
-  font-size: 1.083333rem;
-  line-height: 2.3;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-
-  padding: 0 $basicPush * 2;
 }
 
 .widg_teaser__arrow {
-  height: 13px;
-  bottom: $basicPush * 4;
-  left: $basicPush * 3;
-  right: $basicPush * 3;
+	@include iconDataurl('pfeil-black');
 
-  position: absolute;
-  display: inline-block;
+	display: block;
+	position: absolute;
+	bottom: $basicPush * 1.8;
+}
 
-  width: 50%;
-
-  @include iconDataurl('arrow');
+.widg_teaser__wrapper {
+	display: flex;
+	flex-wrap: wrap;
 }
