@@ -81,6 +81,40 @@ var data = _.merge(defaultData, {
 					date: '08.04.16'
 				}
 			]
+		}),
+		eventTeasers: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
+			teasers: [
+				{
+					title: 'Viktor Gàl, Saxophone Klasse Marcus Weiss',
+					date: 'Donnerstag 23. Juni 2016, 15h',
+					link: '#',
+					variant: 'wide___third',
+					img: {
+						src: 'music_school_event_1.png',
+						alt: 'Event 1'
+					}
+				},
+				{
+					title: 'Schlusskonzerte 2016 Hochschule für Musik',
+					date: '17.-29. Juni 2016, 15h',
+					link: '#',
+					variant: 'wide___third',
+					img: {
+						src: 'music_school_event_2.png',
+						alt: 'Event 2'
+					}
+				},
+				{
+					title: 'Milena Martinez Alicino, Klavier Klasse Tobias Schabenberger',
+					date: 'Dienstag 14. Juni, 15h',
+					link: '#',
+					variant: 'wide___third',
+					img: {
+						src: 'music_school_event_3.png',
+						alt: 'Event 3'
+					}
+				}
+			]
 		})
 	}
 });

@@ -8,6 +8,13 @@
       <p class="text__lead">
 				{{leadText}}
       </p>
+      <div class="content__element has_grid">
+        <h2>Veranstaltungen</h2>
+				{{> "widgets/teaser/teaser" widgets.eventTeasers}}
+        <a class="button button__secondary">
+          Alle Events
+        </a>
+      </div>
 			<div class="content__element">
 				<h2>Aktuelle News</h2>
 				{{> "widgets/extendedlinks/extendedlinks" widgets.extendedlinks}}
