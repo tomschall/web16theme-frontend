@@ -55,7 +55,8 @@ var data = _.merge(defaultData, {
 						isBack: true
 					}
 				]
-			})
+			}),
+			contact: requireNew('../../widgets/contact/contact.data.js')
 		}
 	});
 

@@ -66,6 +66,87 @@ var data = _.merge(defaultData, {
 						isBack: true
 					}
 				]
+			}),
+			eventTeasers: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
+				teasers: [
+					{
+						title: 'Info-Veranstaltung Master of Science Angewandte Psychologie',
+						date: '04.05.2016',
+						link: '#',
+						variant: 'wide___third',
+						img: {
+							src: 'apevent1.png',
+							alt: 'Event für Angewandte Psychologie 1'
+						}
+					},{
+						title: 'Info-Veranstaltung Bachelor Angewandte Psychologie',
+						date: '04.05.2016',
+						link: '#',
+						variant: 'wide___third',
+						img: {
+							src: 'apevent2.png',
+							alt: 'Event für Angewandte Psychologie 2'
+						}
+					}, {
+						title: 'Forum Wirtschaftspsychologie',
+						date: '04.05.2016',
+						link: '#',
+						variant: 'wide___third',
+						img: {
+							src: 'apevent3.png',
+							alt: 'Event für Angewandte Psychologie 3'
+						}
+					}
+				]
+			}),
+			instituteTeasers: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
+				teasers: [
+					{
+						title: 'Institut Mensch in komplexen Systemen (MikS)',
+						link: '/pages/miks/miks.html',
+						variant: 'wide___third',
+						img: {
+							src: 'miks_teaser.png',
+							alt: 'MikS'
+						}
+					}, {
+						title: 'Institut für Kooperationsforschung und -entwicklung (ifk)',
+						link: '#',
+						variant: 'wide___third',
+						img: {
+							src: 'ifk_teaser.png',
+							alt: 'ifk'
+						}
+					}
+				]
+			}),
+			extendedLinks: _.assign(requireNew('../../widgets/extendedlinks/extendedlinks.data.js'), {
+				links: [
+					{
+						title: '10 Diplome überreicht',
+						description: 'Zehn Absolventinnen des modularen Weiterbildungsprogramms MAS (Master of Advanced Studies) Angewandte Psychologie für die Arbeitswelt nahmen am 28. April 2016 im Rahmen einer Zertifizierungsfeier an der FHNW in Olten ihre Diplome entgegen.',
+						url: '#',
+						date: '23.07.2016'
+					},
+					{
+						title: 'Psychologiestudium - und dann?',
+						description: 'Wo finden Absolvierende der Hochschule für Angewandte Psychologie FHNW nach dem Studium eine Stelle? Wie lange dauert die Jobsuche und wie hoch ist das Einkommen? Eine Studie des Zentrums für Ausbildung der Hochschule liefert Antworten.',
+						url: '#',
+						date: '12.07.2016'
+					},
+					{
+						title: 'Psychologiestudium - und dann?',
+						description: 'Wo finden Absolvierende der Hochschule für Angewandte Psychologie FHNW nach dem Studium eine Stelle? Wie lange dauert die Jobsuche und wie hoch ist das Einkommen? Eine Studie des Zentrums für Ausbildung der Hochschule liefert Antworten.',
+						url: '#',
+						date: '08.04.2016'
+					},
+					{
+						title: '10 Diplome überreicht',
+						description: 'Zehn Absolventinnen des modularen Weiterbildungsprogramms MAS (Master of Advanced Studies) Angewandte Psychologie für die Arbeitswelt nahmen am 28. April 2016 im Rahmen einer Zertifizierungsfeier an der FHNW in Olten ihre Diplome entgegen.',
+						url: '#',
+						date: '14.01.2016'
+					}
+				]
 			})
 		}
 	});

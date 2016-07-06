@@ -8,6 +8,28 @@
       <p class="text__lead">
 				{{leadText}}
       </p>
+			<div class="content__element">
+				<h3>Im Zentrum der Hochschulaktivitäten stehen</h3>
+				<p>Die Hochschule für Angewandte Psychologie FHNW wurde 2006 gegründet und hat sich seitdem zu einem führenden Kompetenzzentrum für arbeits-, organisations- und wirtschaftspsychologische Lehre, Forschung und Weiterbildung in der Schweiz und im deutschsprachigen Raum entwickelt.</p>
+				<ul>
+					<li>die praxisorientierte und forschungsbasierte Ausbildung für Studierende in Angewandter Psychologie,</li>
+					<li>eine anwendungsorientierte, interdisziplinär ausgerichtete Forschung</li>
+					<li>und ein praxisnahes und wissenschaftlich fundiertes Weiterbildungsangebot.</li>
+				</ul>
+			</div>
+			<div class="content__element has_grid">
+				<h2>Veranstaltungen</h2>
+				{{> "widgets/teaser/teaser" widgets.eventTeasers}}
+			</div>
+			<div class="content__element">
+				<h2>Aktuelle News</h2>
+				{{> "widgets/extendedlinks/extendedlinks" widgets.extendedLinks}}
+				<a class="button" href="#">Alle News</a>
+			</div>
+			<div class="content__element has_grid">
+				<h2>Institute an der Hochschule für Angewandte Psychologie</h2>
+				{{> "widgets/teaser/teaser" widgets.instituteTeasers}}
+			</div>
     </div>
 		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
 	{{/content}}
