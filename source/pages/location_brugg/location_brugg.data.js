@@ -60,7 +60,8 @@ var data = _.merge(defaultData, {
 						isBack: true
 					}
 				]
-			})
+			}),
+			accordeon: requireNew('../../widgets/accordeon/accordeon.data.js')
 		}
 	});
 

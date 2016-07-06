@@ -1,0 +1,29 @@
+.widg_accordeon__entry {
+  border-bottom: 1px solid $colorBlack;
+
+  &:last-of-type {
+	border-bottom: none;
+  }
+
+  a {
+	min-height: buttonHeight(desktop);
+	display: block;
+
+	padding: $gutterWidth $gutterWidth * .75;
+	position: relative;
+
+	opacity: 1;
+	text-decoration: none;
+	font-weight: 700;
+
+	&:hover {
+	  background-color: $colorLightGray;
+	}
+
+	@include mq($to: $sizeBreakpointMedium) {
+	  min-height: buttonHeight(mobile);
+	  padding-top: $gutterWidth/2;
+	  padding-bottom: $gutterWidth/2;
+	}
+  }
+}

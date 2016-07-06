@@ -8,6 +8,15 @@
       <p class="text__lead">
 				{{leadText}}
       </p>
+
+			<div class="content__element">
+				<p>Der Campus Brugg-Windisch umfasst die Pädagogische Hochschule FHNW, die Hochschule für Technik FHNW, die Hochschule für Wirtschaft FHNW, die Campusbibliothek sowie das Direktionspräsidium und die Services FHNW. Das sind 14 Bachelor- und Masterstudiengänge, 3000 Studierende, 1000 Mitarbeitende und 62’414 Quadratmeter mit sieben Gebäuden für Lehre, Forschung und Entwicklung, Dienstleistungen und Verwaltung.</p>
+			</div>
+
+			<div class="content__element">
+				<h2>Services</h2>
+				{{> "widgets/accordeon/accordeon" widgets.accordeon}}
+			</div>
     </div>
 		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
 	{{/content}}
