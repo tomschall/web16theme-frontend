@@ -1,0 +1,10 @@
+<div class="widg_tabnavigation" data-init="tabnavigation">
+  <div class="widg_tabnavigation__nav"></div>
+  <div class="widg_tabnavigation__content">
+		{{#each entries}}
+			{{#if_eq type 'contact'}}
+				{{> "widgets/contact/contact" templateData}}
+			{{/if_eq}}
+		{{/each}}
+  </div>
+</div>

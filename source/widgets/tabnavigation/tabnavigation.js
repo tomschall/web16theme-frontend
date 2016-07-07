@@ -1,5 +1,5 @@
 /*!
- * Accordeon
+ * Tab-Navigation
  *
  * @author Unic AG
  * @copyright Unic AG
@@ -10,18 +10,16 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var name = 'accordeon',
+	var name = 'tabnavigation',
 		events = {
 			// eventname: 'eventname.estatico.' + name
 		},
 		defaults = {
 			domSelectors: {
-				entry: '[data-accordeon="entry"]',
-				button: '[data-accordeon="button"]',
-				content: '[data-accordeon="content"]'
+				// item: '[data-' + name + '="item"]'
 			},
 			stateClasses: {
-				isOpen: 'is_open'
+				// isActive: 'is_active'
 			}
 		},
 		data = {
@@ -55,40 +53,7 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		this.addEventHandlers();
-	};
-
-	/**
-	 * Adding the event handlers
-	 * @method
-	 * @public
-	 */
-	Widget.prototype.addEventHandlers = function() {
-		$(this.options.domSelectors.button).click(function(event) {
-			event.preventDefault();
-
-			if ($(event.currentTarget.closest(this.options.domSelectors.entry)).hasClass(this.options.stateClasses.isOpen)) {
-				this.closeOpenEntries();
-			} else {
-				this.addActiveClass($(event.currentTarget));
-			}
-		}.bind(this));
-	};
-
-	/**
-	 * Adds the active classes for button
-	 * @param $button
-   */
-	Widget.prototype.addActiveClass = function($button) {
-		this.closeOpenEntries();
-
-		$button.closest(this.options.domSelectors.entry).addClass(this.options.stateClasses.isOpen);
-		$button.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).attr('aria-hidden', 'false');
-	};
-
-	Widget.prototype.closeOpenEntries = function() {
-		$(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).removeClass(this.options.stateClasses.isOpen);
-		$(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).find(this.options.domSelectors.content).attr('aria-hidden', 'true');
+		// console.log('Widget "tabnavigation" initialized');
 	};
 
 	/**

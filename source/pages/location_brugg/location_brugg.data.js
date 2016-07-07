@@ -61,7 +61,51 @@ var data = _.merge(defaultData, {
 					}
 				]
 			}),
-			accordeon: requireNew('../../widgets/accordeon/accordeon.data.js')
+			accordeon: requireNew('../../widgets/accordeon/accordeon.data.js'),
+			teaser: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
+				teasers: [
+					{
+						title: 'Pädagogische Hochschule',
+						link: '#',
+						category: 'Hochschule',
+						variant: 'wide___third',
+						img: {
+							src: 'university_teacher.png',
+							alt: 'Pädagogische Hochschule'
+						}
+					},
+					{
+						title: 'Hochschule für Technik',
+						link: '#',
+						category: 'Hochschule',
+						variant: 'wide___third',
+						img: {
+							src: 'university_technic.png',
+							alt: 'Hochschule für Technik'
+						}
+					},
+					{
+						title: 'Hochschule für Wirtschaft',
+						link: '#',
+						category: 'Hochschule',
+						variant: 'wide___third',
+						img: {
+							src: 'university_economy.png',
+							alt: 'Hochschule für Wirtschaft'
+						}
+					},
+					{
+						title: 'Campusbibliothek Brugg-Windisch',
+						link: '/pages/library_brugg/library_brugg.html',
+						category: 'Bibliothek',
+						variant: 'wide___third',
+						img: {
+							src: 'library_brugg.png',
+							alt: 'Campusbibliothek Brugg-Windisch'
+						}
+					}
+				]
+			})
 		}
 	});
 

@@ -147,7 +147,8 @@ var data = _.merge(defaultData, {
 						date: '14.01.2016'
 					}
 				]
-			})
+			}),
+			tabnavigation: requireNew('../../widgets/tabnavigation/tabnavigation.data.js')
 		}
 	});
 

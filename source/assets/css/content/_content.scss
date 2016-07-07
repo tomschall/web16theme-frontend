@@ -52,7 +52,7 @@
 
 .content__table {
   th, td {
-	padding: $gutterWidth 0;
+	padding: $gutterWidth $gutterWidth $gutterWidth 0;
 	vertical-align: top;
 	text-align: left;
 
