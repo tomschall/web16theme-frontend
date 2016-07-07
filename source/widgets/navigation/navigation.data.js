@@ -188,7 +188,7 @@ var templateData = {
 
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Navigation | WI_007',
+				title: 'Top-Navigation | WI_007',
 				description: '',
 				code: dataHelper.getTemplateCode('navigation.hbs'),
 				documentation: dataHelper.getDocumentation('navigation.md'),

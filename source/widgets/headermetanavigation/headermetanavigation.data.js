@@ -23,7 +23,7 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Header Metanavigation',
+				title: 'Support-Navigation | WI_006',
 				description: '',
 				code: dataHelper.getTemplateCode('headermetanavigation.hbs'),
 				documentation: dataHelper.getDocumentation('headermetanavigation.md'),

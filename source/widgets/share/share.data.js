@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'share',
+			title: 'Tell-a-friend / Share this Site | WI_021',
 			description: '',
 			code: dataHelper.getTemplateCode('share.hbs'),
 			documentation: dataHelper.getDocumentation('share.md')

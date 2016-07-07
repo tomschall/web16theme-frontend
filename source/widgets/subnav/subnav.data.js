@@ -42,7 +42,7 @@ var templateData = {
 },
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Subnavigation',
+				title: 'Unternavigation losgelöst | WI_039',
 				description: '',
 				code: dataHelper.getTemplateCode('subnav.hbs'),
 				documentation: dataHelper.getDocumentation('subnav.md'),

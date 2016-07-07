@@ -47,7 +47,7 @@ var templateData = {
 },
 data = _.merge(defaultData, {
 		meta: {
-			title: 'Teaser',
+			title: 'Teaser (halb, voll, 1/3, 1/4) | WI_028',
 			code: dataHelper.getTemplateCode('teaser.hbs')
 		},
 		mocks: [

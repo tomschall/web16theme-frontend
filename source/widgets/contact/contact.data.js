@@ -22,7 +22,7 @@ var templateData = {
 
 data = _.merge(defaultData, {
 		meta: {
-			title: 'Contact',
+			title: 'Kontaktprofil | WI_009',
 			description: '',
 			code: dataHelper.getTemplateCode('contact.hbs'),
 			documentation: dataHelper.getDocumentation('contact.md'),

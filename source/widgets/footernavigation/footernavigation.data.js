@@ -83,7 +83,7 @@ var templateData = {
 },
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Footer Navigation',
+				title: 'Footer Navigation | WI_040',
 				description: '',
 				code: dataHelper.getTemplateCode('footernavigation.hbs'),
 				documentation: dataHelper.getDocumentation('footernavigation.md'),

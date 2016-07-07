@@ -20,7 +20,7 @@ var templateData = {
 },
 	data = _.merge(defaultData, {
 		meta: {
-			title: 'Extended Links',
+			title: 'Link-Liste | WI_017',
 			description: '',
 			code: dataHelper.getTemplateCode('extendedlinks.hbs'),
 			documentation: dataHelper.getDocumentation('extendedlinks.md'),

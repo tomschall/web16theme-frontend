@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'page_search',
+			title: 'Globales Suchfeld | WI_005',
 			description: '',
 			code: dataHelper.getTemplateCode('pagesearch.hbs'),
 			documentation: dataHelper.getDocumentation('pagesearch.md')

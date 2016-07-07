@@ -9,7 +9,7 @@ var templateData = {
 	},
 	data = _.merge(defaultData, {
 		meta: {
-			title: 'Breadcrumb | WI_008',
+			title: 'Breadcrumb-Navigation | WI_008',
 			description: '',
 			code: dataHelper.getTemplateCode('breadcrumb.hbs'),
 			documentation: dataHelper.getDocumentation('breadcrumb.md'),

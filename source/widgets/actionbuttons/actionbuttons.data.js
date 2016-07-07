@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'actionbuttons',
+			title: 'Actionbuttons | WI_046',
 			description: '',
 			code: dataHelper.getTemplateCode('actionbuttons.hbs'),
 			documentation: dataHelper.getDocumentation('actionbuttons.md')

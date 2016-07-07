@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Menu Buttons',
+			title: 'Mobile Header-Buttons | WI_045',
 			description: '',
 			code: dataHelper.getTemplateCode('menubuttons.hbs'),
 			documentation: dataHelper.getDocumentation('menubuttons.md')
