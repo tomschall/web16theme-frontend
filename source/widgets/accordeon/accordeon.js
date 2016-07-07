@@ -16,10 +16,11 @@
 		},
 		defaults = {
 			domSelectors: {
-				// item: '[data-' + name + '="item"]'
+				entry: '[data-accordeon="entry"]',
+				button: '[data-accordeon="button"]'
 			},
 			stateClasses: {
-				// isActive: 'is_active'
+				isOpen: 'is_open'
 			}
 		},
 		data = {
@@ -53,7 +54,38 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		// console.log('Widget "accordeon" initialized');
+		this.addEventHandlers();
+	};
+
+	/**
+	 * Adding the event handlers
+	 * @method
+	 * @public
+	 */
+	Widget.prototype.addEventHandlers = function() {
+		$(this.options.domSelectors.button).click(function(event) {
+			event.preventDefault();
+
+			if ($(event.currentTarget.closest(this.options.domSelectors.entry)).hasClass(this.options.stateClasses.isOpen)) {
+				this.closeOpenEntries();
+			} else {
+				this.addActiveClass($(event.currentTarget));
+			}
+		}.bind(this));
+	};
+
+	/**
+	 * Adds the active classes for button
+	 * @param $button
+   */
+	Widget.prototype.addActiveClass = function($button) {
+		this.closeOpenEntries();
+
+		$button.closest(this.options.domSelectors.entry).addClass(this.options.stateClasses.isOpen);
+	};
+
+	Widget.prototype.closeOpenEntries = function() {
+		$(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).removeClass(this.options.stateClasses.isOpen);
 	};
 
 	/**

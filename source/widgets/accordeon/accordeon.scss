@@ -1,29 +1,62 @@
 .widg_accordeon__entry {
-  border-bottom: 1px solid $colorBlack;
+	border-bottom: 1px solid $colorBlack;
+	overflow: hidden;
 
-  &:last-of-type {
-	border-bottom: none;
-  }
-
-  a {
-	min-height: buttonHeight(desktop);
-	display: block;
-
-	padding: $gutterWidth $gutterWidth * .75;
-	position: relative;
-
-	opacity: 1;
-	text-decoration: none;
-	font-weight: 700;
-
-	&:hover {
-	  background-color: $colorLightGray;
+	&:last-of-type {
+		border-bottom: none;
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
-	  min-height: buttonHeight(mobile);
-	  padding-top: $gutterWidth/2;
-	  padding-bottom: $gutterWidth/2;
+	&.is_open a:after {
+		transform: translateY(-50%) rotate(90deg);
 	}
-  }
+
+	a {
+		min-height: buttonHeight(desktop);
+		display: block;
+
+		padding: $gutterWidth $gutterWidth * .75;
+		position: relative;
+
+		opacity: 1;
+		text-decoration: none;
+		font-weight: 700;
+
+		@include iconDataurl('close', $after: true);
+
+		&:hover {
+			background-color: $colorLightGray;
+		}
+
+		&:after {
+			position: absolute;
+			content: " ";
+			display: block;
+
+			top: 50%;
+			transform: translateY(-50%) rotate(45deg);
+
+			width: 13px;
+			height: 13px;
+
+			right: $gutterWidth;
+
+		}
+
+		@include mq($to: $sizeBreakpointMedium) {
+			min-height: buttonHeight(mobile);
+			padding-top: $gutterWidth/2;
+			padding-bottom: $gutterWidth/2;
+		}
+	}
+}
+
+.widg_accordeon__content {
+	max-height: 0;
+	overflow: hidden;
+
+
+	.is_open & {
+		max-height: 2500000px;
+		padding: 0 $gutterWidth * .75 $gutterWidth $gutterWidth * .75;
+	}
 }

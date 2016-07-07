@@ -24,6 +24,7 @@
  * @requires ../../widgets/header/header.js
  * @requires ../../widgets/carousel/carousel.js
  * @requires ../../widgets/navigation/navigation.js
+ * @requires ../../widgets/accordeon/accordeon.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js

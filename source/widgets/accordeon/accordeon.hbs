@@ -1,11 +1,11 @@
 <div class="widg_accordeon" data-init="accordeon">
 	{{#each entries}}
-		<div class="widg_accordeon__entry">
-			<a href="#">
+		<div class="widg_accordeon__entry" data-accordeon="entry">
+			<a href="#" data-accordeon="button">
 				{{title}}
 			</a>
 			<div class="widg_accordeon__content">
-				{{content}}
+				<p>{{accordeonContent}}</p>
 			</div>
 		</div>
 	{{/each}}
