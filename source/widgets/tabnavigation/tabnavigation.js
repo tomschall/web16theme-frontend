@@ -16,10 +16,12 @@
 		},
 		defaults = {
 			domSelectors: {
-				// item: '[data-' + name + '="item"]'
+				entry: '[data-tabnavigation="entry"]',
+				nav: '[data-tabnavigation="nav"]',
+				navEntry: '[data-tabnavigation="nav-entry"]'
 			},
 			stateClasses: {
-				// isActive: 'is_active'
+				isActive: 'is_active'
 			}
 		},
 		data = {
@@ -53,7 +55,52 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		// console.log('Widget "tabnavigation" initialized');
+		this.addNavigation();
+
+		this.addEventHandlers();
+	};
+
+	/**
+	 * Generate the navigation
+	 */
+	Widget.prototype.addNavigation = function() {
+		var navigations = [],
+				tempObject = {};
+
+		$(this.options.domSelectors.entry).each(function() {
+			tempObject = {};
+
+			tempObject.name = $(this).data('name');
+			tempObject.title = $(this).data('title');
+
+			navigations.push(tempObject);
+		});
+
+		navigations.forEach(function(navigation) {
+			$(this.options.domSelectors.nav).find('ul').append('<li><a href="#" data-tabnavigation="nav-entry" data-target="' + navigation.name + '">' + navigation.title + '</a></li>');
+		}.bind(this));
+
+		$(this.options.domSelectors.navEntry).first().addClass(this.options.stateClasses.isActive);
+		$(this.options.domSelectors.entry).first().addClass(this.options.stateClasses.isActive);
+	};
+
+	/**
+	 * Adding the necessary event listeners
+	 */
+	Widget.prototype.addEventHandlers = function() {
+		$(this.options.domSelectors.navEntry).click(function(event) {
+			event.preventDefault();
+
+			$(this.options.domSelectors.navEntry).removeClass(this.options.stateClasses.isActive);
+			$(event.currentTarget).addClass(this.options.stateClasses.isActive);
+
+			this.setActiveContent($(event.currentTarget).data('target'));
+		}.bind(this));
+	};
+
+	Widget.prototype.setActiveContent = function(target) {
+		$(this.options.domSelectors.entry).removeClass(this.options.stateClasses.isActive);
+		$('[data-name="' + target + '"]').addClass(this.options.stateClasses.isActive);
 	};
 
 	/**

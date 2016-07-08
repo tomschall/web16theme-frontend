@@ -1,3 +1,52 @@
 .widg_tabnavigation {
-	background-color: $colorLightGray;
+
+}
+
+.widg_tabnavigation__nav {
+  @include clearfix();
+  @include contentWrapper(0, false);
+
+  ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+
+	  float: left;
+
+	  a{
+		text-decoration: none;
+		opacity: 1;
+		color: $colorBorderGrey;
+
+		font-weight: 700;
+		padding: $gutterWidth $gutterWidth * 2;
+		display: block;
+
+		&.is_active {
+		  background-color: $colorLightGray;
+		  color: $colorBlack;
+		}
+	  }
+	}
+  }
+}
+
+.widg_tabnavigation__content {
+  @include contentWrapper(0, false);
+  @include clearfix();
+
+  background-color: $colorLightGray;
+
+  padding-top: $basicPush * 5;
+  padding-bottom: $basicPush * 6;
+}
+
+.widg_tabnavigation__entry {
+  display: none;
+
+  &.is_active {
+	display: block;
+  }
 }
