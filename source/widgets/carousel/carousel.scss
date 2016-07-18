@@ -104,6 +104,7 @@
 		right: 0;
 
 		min-height: $basicPush * 32;
+		text-decoration: none;
 
 		@include mq($to: $sizeBreakpointLarge) {
 			min-height: $basicPush * 26;
