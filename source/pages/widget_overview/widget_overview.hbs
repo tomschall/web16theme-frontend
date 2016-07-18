@@ -1,0 +1,47 @@
+{{#extend "layouts/layout" pageTypeClass="default-page"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content">
+      <h1>{{title}}</h1>
+      <div class="content__element has_grid">
+        <h2>Teaser wide</h2>
+				{{> "widgets/teaser/teaser" widgets.instituteTeasers}}
+      </div>
+      <div class="content__element has_grid">
+				<h2>Teaser schmal</h2>
+				{{> "widgets/teaser/teaser" widgets.teaser}}
+      </div>
+      <div class="content__element has_grid">
+        <h2>Teaser mit Datum</h2>
+				{{> "widgets/teaser/teaser" widgets.eventTeasers}}
+      </div>
+      <div class="content__element has_grid">
+        <h2>Projekt-Teaser</h2>
+				{{> "widgets/teaser/teaser" widgets.projectTeasers}}
+      </div>
+      <div class="content__element">
+        <h2>Extended Links</h2>
+				{{> "widgets/extendedlinks/extendedlinks" widgets.extendedlinks}}
+      </div>
+      <div class="content__element">
+        <h2>Extended Links mit Datum (z.B. für News)</h2>
+				{{> "widgets/extendedlinks/extendedlinks" widgets.extendedLinksWithDate}}
+      </div>
+      <div class="content__element">
+        <h2>Kontaktperson / Ansprechsperson</h2>
+				{{> "widgets/contact/contact" widgets.contact}}
+      </div>
+      <div class="content__element">
+        <h2>Akkordeon</h2>
+				{{> "widgets/accordeon/accordeon" widgets.accordeon}}
+      </div>
+    </div>
+		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+	{{/content}}
+
+	{{#content "metainfo"}}
+		{{> "widgets/tabnavigation/tabnavigation" widgets.tabnavigation}}
+	{{/content}}
+{{/extend}}
