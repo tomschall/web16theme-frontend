@@ -1,12 +1,13 @@
 /**
   * Labels which are not in inputfield
   */
-.label {
+.formQuestion {
 	display: inline-block;
 }
 
-.label__checkbox,
-.label__radio {
+.ArchetypesBooleanWidget label,
+.ArchetypesMultiSelectWidget label
+{
 	padding-left: $basicPush + $radioCheckboxDimension;
 
 	position: relative;
@@ -37,7 +38,8 @@
 	}
 }
 
-.label__radio {
+.ArchetypesBooleanWidget label,
+.ArchetypesMultiSelectWidget label {
 	&:before,
 	&:after {
 		border-radius: 50%;
@@ -73,8 +75,8 @@ input[type=number] {
   * Checkboxes and radios
   */
 
-.input__radio,
-.input__checkbox {
+input[type="radio"],
+input[type="checkbox"] {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
@@ -83,46 +85,49 @@ input[type=number] {
 	width: 0;
 	height: 0;
 }
+.ArchetypesBooleanWidget,
+.ArchetypesMultiSelectWidget {
+	input[type="radio"]:checked + label,
+	input[type="checkbox"]:checked + label {
+		&:after {
+			display: block;
+			content: " ";
+			position: absolute;
+			left: 5.5px;
+			top: 50%;
 
-.input__radio:checked + .label__radio,
-.input__checkbox:checked + .label__checkbox {
-	&:after {
-		display: block;
-		content: " ";
-		position: absolute;
-		left: 5.5px;
-		top: 50%;
+			transform: translateY(-50%);
 
-		transform: translateY(-50%);
+			width: $radioCheckboxDimensionInner;
+			height: $radioCheckboxDimensionInner;
 
-		width: $radioCheckboxDimensionInner;
-		height: $radioCheckboxDimensionInner;
+			background-color: $colorBlack;
+		}
+	}
 
-		background-color: $colorBlack;
+	input[type="checkbox"]:checked + label {
+		@include iconDataurl($name: 'checkmark', $after: true);
+		&:after {
+			background-color: transparent;
+
+			height: $radioCheckboxDimensionInner;
+			left: 5px;
+		}
+	}
+
+	input[type="radio"].error:checked + label,
+	input[type="checkbox"].error:checked + label {
+		&:before {
+			border: 2px solid $colorErrorRed;
+		}
 	}
 }
 
-.input__checkbox:checked + .label__checkbox {
-	@include iconDataurl($name: 'checkmark', $after: true);
-	 &:after {
-		 background-color: transparent;
-
-		 height: $radioCheckboxDimensionInner;
-		 left: 5px;
-	 }
-}
-
-.input__radio.error + .label__radio,
-.input__checkbox.error + .label__checkbox {
-	&:before {
-		border: 2px solid $colorErrorRed;
-	}
-}
 
 /**
   * Textfields
   */
-.input__text {
+.ArchetypesStringWidget {
 	position: relative;
 
 	@include defaultElementHeight();
@@ -131,7 +136,8 @@ input[type=number] {
 
 	line-height: 1;
 
-	label {
+	label,
+	.fieldErrorBox {
 		font-size: 1.25rem;
 		color: $colorBorderGrey;
 		position: absolute;
@@ -180,7 +186,7 @@ input[type=number] {
 
 	input:focus + label,
 	input.is_filled + label,
-	label.error {
+	.fieldErrorBox {
 		font-size: 0.91666667rem;
 		top: 13px;
 
@@ -189,31 +195,33 @@ input[type=number] {
 		}
 	}
 
-	label.error {
+	.fieldErrorBox {
 		right: $basicPush * 1.1;
 		color: $colorErrorRed;
 		font-family: $fontSansSerifBold;
 	}
-}
 
-/**
+	/**
   * Different sizes for the text input
   */
-.input__text___xs {
-	width: 26.5%;
+	&.xs {
+		width: 26.5%;
+	}
+
+	&.small {
+		width: 30.25%;
+	}
+
+	&.medium {
+		width: 66.25%;
+	}
+
+	&.large {
+		width: 70%;
+	}
 }
 
-.input__text___small {
-	width: 30.25%;
-}
 
-.input__text___medium {
-	width: 66.25%;
-}
-
-.input__text___large {
-	width: 70%;
-}
 
 /**
   * Selectbox
@@ -325,7 +333,7 @@ input[type=number] {
 		padding: 0;
 		margin-bottom: $basicPush;
 
-		div.input__text:first-child:not(last-child) {
+		div.ArchetypesStringWidget:first-child:not(last-child) {
 			margin-right: 3.5%;
 		}
 	}

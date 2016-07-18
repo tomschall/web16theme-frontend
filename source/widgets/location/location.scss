@@ -13,6 +13,10 @@
 .widg_location__info {
   @include push(0.2);
   @include span(4);
+
+	.button {
+		margin-top: $basicPush * 3;
+	}
 }
 
 .widg_location__address {

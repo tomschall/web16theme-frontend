@@ -29,7 +29,7 @@ var templateData = {
 },
 data = _.merge(defaultData, {
 	meta: {
-		title: 'Carousel | WI_010',
+		title: 'Startseite Carousel mit Text | WI_041',
 		description: '',
 		code: dataHelper.getTemplateCode('carousel.hbs'),
 		documentation: dataHelper.getDocumentation('carousel.md'),

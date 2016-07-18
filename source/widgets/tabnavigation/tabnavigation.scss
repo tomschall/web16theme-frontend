@@ -39,8 +39,8 @@
 
   background-color: $colorLightGray;
 
-  padding-top: $basicPush * 5;
-  padding-bottom: $basicPush * 6;
+  padding-top: $basicPush * 5 !important;
+  padding-bottom: $basicPush * 6 !important;
 }
 
 .widg_tabnavigation__entry {

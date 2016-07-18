@@ -34,7 +34,9 @@
 				} else if ($(element).is('input[type="radio"]') || $(element).is('input[type="check"]') || $(element).is('input[type="checkbox"]')) {
 					return true;
 				} else {
-					error.appendTo($(element).closest('div'));
+					console.log($(element));
+					console.log($(element).siblings('.fieldErrorBox'));
+					$(element).siblings('.fieldErrorBox').text(error.text());
 				}
 			}
 		});

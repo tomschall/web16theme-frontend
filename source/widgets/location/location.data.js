@@ -7,7 +7,11 @@ var _ = require('lodash'),
 
 var templateData = {
 	address: 'Fachhochschule Nordwestschweiz FHNW<br />Campus Brugg-Windisch<br />Bahnhofstrasse 6<br />5210 Windisch<br />T +41 56 202 77 00',
-	email: 'empfang.windisch@fhnw.ch'
+	email: 'empfang.windisch@fhnw.ch',
+	buttonTarget: '#',
+	langStrings: {
+		toTheLocation: 'Zum Standort'
+	}
 },
 data = _.merge(defaultData, {
 		meta: {
