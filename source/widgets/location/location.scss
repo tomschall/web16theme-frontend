@@ -1,0 +1,24 @@
+.widg_location {
+  @include gridWrapper($gutterWidth);
+}
+
+.widg_location__map {
+  @include span(4);
+
+  img {
+	width: 100%;
+  }
+}
+
+.widg_location__info {
+  @include push(0.2);
+  @include span(4);
+}
+
+.widg_location__address {
+  display: block;
+
+  font-size: 1.5rem;
+  margin-bottom: $basicPush * 1.5;
+
+}

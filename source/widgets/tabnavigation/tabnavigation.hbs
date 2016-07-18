@@ -1,10 +1,17 @@
 <div class="widg_tabnavigation" data-init="tabnavigation">
-  <div class="widg_tabnavigation__nav"></div>
+  <div class="widg_tabnavigation__nav" data-tabnavigation="nav">
+		<ul></ul>
+	</div>
   <div class="widg_tabnavigation__content">
 		{{#each entries}}
-			{{#if_eq type 'contact'}}
-				{{> "widgets/contact/contact" templateData}}
-			{{/if_eq}}
+			<div class="widg_tabnavigation__entry" data-tabnavigation="entry" data-name="{{name}}" data-title="{{title}}">
+				{{#if_eq type 'contact'}}
+					{{> "widgets/contact/contact" templateData}}
+				{{/if_eq}}
+				{{#if_eq type 'location'}}
+					{{> "widgets/location/location" templateData}}
+				{{/if_eq}}
+			</div>
 		{{/each}}
   </div>
 </div>

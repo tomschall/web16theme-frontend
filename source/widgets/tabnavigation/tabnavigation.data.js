@@ -8,8 +8,15 @@ var _ = require('lodash'),
 var templateData = {
 	entries: [
 		{
-			type: 'contact',
+			type: 'location',
 			title: 'Kontakt',
+			name: 'location',
+			templateData: _.assign(requireNew('../../widgets/location/location.data.js'), {})
+		},
+		{
+			type: 'contact',
+			title: 'Leitung',
+			name: 'contact',
 			templateData: _.assign(requireNew('../../widgets/contact/contact.data.js'), {})
 		}
 	]
