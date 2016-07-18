@@ -26,6 +26,7 @@
  * @requires ../../widgets/navigation/navigation.js
  * @requires ../../widgets/accordeon/accordeon.js
  * @requires ../../widgets/tabnavigation/tabnavigation.js
+ * @requires ../../widgets/footernavigation/footernavigation.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js

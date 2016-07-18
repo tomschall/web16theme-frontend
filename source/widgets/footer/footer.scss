@@ -23,10 +23,22 @@
 	bottom: $basicPush * 3.6;
 	top: auto;
 
+	@include mq($to: $sizeBreakpointMedium) {
+		right: $gutterWidth;
+		bottom: $basicPush * 2.9;
+	}
 
 	a {
 		display: block;
 
 		@include iconDataurl('efqm_logo_neg');
+
+		@include mq($to: $sizeBreakpointMedium) {
+			&:before {
+				height: 50px;
+				width: 84px;
+
+			}
+		}
 	}
 }

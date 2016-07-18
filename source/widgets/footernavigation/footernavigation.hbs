@@ -1,7 +1,7 @@
 <div class="widg_footernavigation" data-init="footernavigation">
 	{{#each entries}}
-		<div class="widg_footernavigation__column">
-			<h4>{{title}}</h4>
+		<div class="widg_footernavigation__column" data-footernavigation="column">
+			<h4 data-footernavigation="columnTitle">{{title}}</h4>
 			{{#if subentries}}
 				<ul>
 					{{#each subentries}}

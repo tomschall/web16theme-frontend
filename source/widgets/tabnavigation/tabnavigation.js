@@ -80,8 +80,10 @@
 			$(this.options.domSelectors.nav).find('ul').append('<li><a href="#" data-tabnavigation="nav-entry" data-target="' + navigation.name + '">' + navigation.title + '</a></li>');
 		}.bind(this));
 
-		$(this.options.domSelectors.navEntry).first().addClass(this.options.stateClasses.isActive);
-		$(this.options.domSelectors.entry).first().addClass(this.options.stateClasses.isActive);
+		if (window.estatico.mq.query({from: 'medium'})) {
+			$(this.options.domSelectors.navEntry).first().addClass(this.options.stateClasses.isActive);
+			$(this.options.domSelectors.entry).first().addClass(this.options.stateClasses.isActive);
+		}
 	};
 
 	/**
@@ -91,16 +93,28 @@
 		$(this.options.domSelectors.navEntry).click(function(event) {
 			event.preventDefault();
 
-			$(this.options.domSelectors.navEntry).removeClass(this.options.stateClasses.isActive);
-			$(event.currentTarget).addClass(this.options.stateClasses.isActive);
+			if ($(event.currentTarget).hasClass(this.options.stateClasses.isActive) && window.estatico.mq.query({to: 'medium'})) {
+				$('li ' + this.options.domSelectors.entry).remove();
 
-			this.setActiveContent($(event.currentTarget).data('target'));
+				$(this.options.domSelectors.navEntry).removeClass(this.options.stateClasses.isActive);
+			} else {
+				this.setActiveContent($(event.currentTarget));
+				$(this.options.domSelectors.navEntry).removeClass(this.options.stateClasses.isActive);
+				$(event.currentTarget).addClass(this.options.stateClasses.isActive);
+			}
 		}.bind(this));
 	};
 
 	Widget.prototype.setActiveContent = function(target) {
+		var $targetEntry = $('[data-name="' + target.data('target') + '"]');
+
 		$(this.options.domSelectors.entry).removeClass(this.options.stateClasses.isActive);
-		$('[data-name="' + target + '"]').addClass(this.options.stateClasses.isActive);
+		$targetEntry.addClass(this.options.stateClasses.isActive);
+
+		if (window.estatico.mq.query({to: 'medium'})) {
+			$('li ' + this.options.domSelectors.entry).remove();
+			$targetEntry.clone(true).appendTo(target.closest('li'));
+		}
 	};
 
 	/**

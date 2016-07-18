@@ -3,50 +3,104 @@
 }
 
 .widg_tabnavigation__nav {
-  @include clearfix();
-  @include contentWrapper(0, false);
+	@include clearfix();
+	@include contentWrapper(0, false);
 
-  ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+	@include mq($to: $sizeBreakpointMedium) {
+		background-color: $colorLightGray;
 
-	li {
+		@include contentWrapper($gutterWidth, false);
 
-	  float: left;
-
-	  a{
-		text-decoration: none;
-		opacity: 1;
-		color: $colorBorderGrey;
-
-		font-weight: 700;
-		padding: $gutterWidth $gutterWidth * 2;
-		display: block;
-
-		&.is_active {
-		  background-color: $colorLightGray;
-		  color: $colorBlack;
-		}
-	  }
+		padding-top: $basicPush * 2.7 !important;
+		padding-bottom: $basicPush * 2.7 !important;
 	}
-  }
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding-left: $gutterWidth;
+		padding-right: $gutterWidth;
+
+		li {
+
+			float: left;
+
+			@include mq($to: $sizeBreakpointMedium) {
+				float: none;
+
+				border-bottom: 1px solid $colorBlack;
+
+
+				&:last-of-type {
+					border: none;
+				}
+
+				.widg_tabnavigation__entry {
+					padding: $basicPush * 2 0;
+				}
+			}
+
+			> a {
+				text-decoration: none;
+				opacity: 1;
+				color: $colorBorderGrey;
+
+				font-weight: 700;
+				padding: $gutterWidth;
+				display: block;
+
+				@include mq($to: $sizeBreakpointMedium) {
+					padding: $gutterWidth / 1.5 $gutterWidth / 2;
+					color: $colorBlack;
+					position: relative;
+					font-weight: 300;
+
+					@include iconDataurl($name: 'close', $after: true);
+
+					&:after {
+						position: absolute;
+						right: $basicPush * 1.9;
+						transform: rotate(45deg) translateY(-70%);
+						height: 14px;
+						width: 14px;
+						top: 50%;
+					}
+				}
+
+				&.is_active {
+					background-color: $colorLightGray;
+					color: $colorBlack;
+
+					@include mq($to: $sizeBreakpointMedium) {
+						&:after {
+							transform: rotate(0deg) translateY(-50%);
+							right: $basicPush;
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 .widg_tabnavigation__content {
-  @include contentWrapper(0, false);
-  @include clearfix();
+	@include contentWrapper(0, false);
+	@include clearfix();
 
-  background-color: $colorLightGray;
+	background-color: $colorLightGray;
 
-  padding-top: $basicPush * 5 !important;
-  padding-bottom: $basicPush * 6 !important;
+	padding-top: $basicPush * 5 !important;
+	padding-bottom: $basicPush * 6 !important;
+
+	@include mq($to: $sizeBreakpointMedium) {
+		display: none;
+	}
 }
 
 .widg_tabnavigation__entry {
-  display: none;
+	display: none;
 
-  &.is_active {
-	display: block;
-  }
+	&.is_active {
+		display: block;
+	}
 }

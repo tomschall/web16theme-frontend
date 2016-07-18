@@ -3,12 +3,39 @@
 
 	padding-top: $basicPush * 6 !important;
 	padding-bottom: $basicPush * 4.5 !important;
+
+	@include mq($to: $sizeBreakpointMedium) {
+		padding-top: $basicPush * 3 !important;
+		padding-bottom: $basicPush * 2.25 !important;
+	}
 }
 
 .widg_footernavigation__column {
 	@include span(2);
 
 	color: $colorBg;
+
+	@include mq($to: $sizeBreakpointMedium) {
+		@include span(12);
+	}
+
+	ul {
+		@include mq($to: $sizeBreakpointMedium) {
+			display: none;
+		}
+	}
+
+	&.is_open {
+		@include mq($to: $sizeBreakpointMedium) {
+			ul {
+				display: block;
+			}
+
+			h4:after {
+				transform: translateY(-50%) rotate(0deg);
+			}
+		}
+	}
 
 	ul li a {
 		color: $colorBg;
@@ -23,6 +50,8 @@
 		&:hover {
 			opacity: 1;
 		}
+
+
 	}
 
 	h4 {
@@ -32,6 +61,31 @@
 		padding-bottom: $basicPush * 1.4;
 
 		border-bottom: 1px solid $colorBg;
-		margin-bottom: $basicPush;
+
+		@include mq($to: $sizeBreakpointMedium) {
+			padding-top: $basicPush * 1.4;
+			position: relative;
+			cursor: pointer;
+
+			@include iconDataurl($name: 'close_white', $after: true);
+
+			&:after {
+				width: 12px;
+				height: 12px;
+
+				position: absolute;
+				right: $basicPush;
+				top: 50%;
+
+				transform: translateY(-50%) rotate(45deg);
+			}
+
+		}
+	}
+
+	&:last-of-type {
+		h4 {
+			border: none;
+		}
 	}
 }

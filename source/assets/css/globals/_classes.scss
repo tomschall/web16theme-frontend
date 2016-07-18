@@ -9,3 +9,15 @@
 .clearfix {
 	@include clearfix;
 }
+
+.mobile_only {
+	@include mq($from: $sizeBreakpointMedium) {
+		display: none !important;
+	}
+}
+
+.desktop_only {
+	@include mq($to: $sizeBreakpointMedium) {
+		display: none !important;
+	}
+}

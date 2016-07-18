@@ -19,13 +19,32 @@
 			transform: translateY(-50%);
 			left: 0;
 		}
+
+		@include mq($to: $sizeBreakpointMedium) {
+			@include span(12);
+
+			padding-left: $basicPush * 5.5;
+		}
 	}
 
 	ul {
 		@include span(10);
 
+		@include mq($to: $sizeBreakpointMedium) {
+			@include span(12);
+			padding: 0 0 $basicPush * 1.5 0;
+		}
+
 		li {
 			display: inline-block;
+
+			@include mq($to: $sizeBreakpointMedium) {
+				line-height: 1;
+				height: auto;
+
+				display: block;
+				float: left;
+			}
 
 			a{
 				display: block;
@@ -39,6 +58,15 @@
 
 				&:hover {
 					color: $colorBlack;
+				}
+
+				@include mq($to: $sizeBreakpointMedium) {
+					height: auto;
+					line-height: 1;
+					padding: 6px 0;
+					font-size: 1.083333rem;
+
+					margin-right: $basicPush;
 				}
 			}
 		}
