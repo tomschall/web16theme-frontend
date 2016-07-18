@@ -15,7 +15,7 @@ var templateData = {
 },
 data = _.merge(defaultData, {
 		meta: {
-			title: 'Location',
+			title: 'Standort | WI_035',
 			description: '',
 			code: dataHelper.getTemplateCode('location.hbs'),
 			documentation: dataHelper.getDocumentation('location.md'),

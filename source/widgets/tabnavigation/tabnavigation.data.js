@@ -24,7 +24,7 @@ var templateData = {
 
 data = _.merge(defaultData, {
 		meta: {
-			title: 'Tab-Navigation',
+			title: 'Tabulatoren | WI_011',
 			description: '',
 			code: dataHelper.getTemplateCode('tabnavigation.hbs'),
 			documentation: dataHelper.getDocumentation('tabnavigation.md'),
