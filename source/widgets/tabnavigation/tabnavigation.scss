@@ -6,7 +6,7 @@
 	@include clearfix();
 	@include contentWrapper(0, false);
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: $sizeBreakpointSmall) {
 		background-color: $colorLightGray;
 
 		@include contentWrapper($gutterWidth, false);
@@ -18,14 +18,14 @@
 	ul {
 		list-style: none;
 		margin: 0;
-		padding-left: $gutterWidth;
-		padding-right: $gutterWidth;
+		padding-left: 0;
+		padding-right: 0;
 
 		li {
 
 			float: left;
 
-			@include mq($to: $sizeBreakpointMedium) {
+			@include mq($to: $sizeBreakpointSmall) {
 				float: none;
 
 				border-bottom: 1px solid $colorBlack;
@@ -49,7 +49,7 @@
 				padding: $gutterWidth;
 				display: block;
 
-				@include mq($to: $sizeBreakpointMedium) {
+				@include mq($to: $sizeBreakpointSmall) {
 					padding: $gutterWidth / 1.5 $gutterWidth / 2;
 					color: $colorBlack;
 					position: relative;
@@ -71,7 +71,7 @@
 					background-color: $colorLightGray;
 					color: $colorBlack;
 
-					@include mq($to: $sizeBreakpointMedium) {
+					@include mq($to: $sizeBreakpointSmall) {
 						&:after {
 							transform: rotate(0deg) translateY(-50%);
 							right: $basicPush;
@@ -92,7 +92,7 @@
 	padding-top: $basicPush * 5 !important;
 	padding-bottom: $basicPush * 6 !important;
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: $sizeBreakpointSmall) {
 		display: none;
 	}
 }

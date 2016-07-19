@@ -6,19 +6,7 @@
 	background-color: $colorBg;
 	overflow: hidden;
 
-	@include contentWrapper($hasGrid: false, $gutterSize: $gutterWidth);
-
 	height: 50px;
-
-	@include basicUnitHeight(right);
-
-	@include mq($to: $sizeBreakpointMedium) {
-		position: static;
-	}
-
-	@include mq($from: $sizeBreakpointMedium) {
-		padding-right: $gutterWidth * 2;
-	}
 
 	ul {
 		display: flex;
@@ -31,6 +19,17 @@
 
 	.no-image & {
 		bottom: auto;
+	}
+
+	@include contentWrapper($hasGrid: false, $gutterSize: $gutterWidth);
+	@include basicUnitHeight(right);
+
+	@include mq($to: $sizeBreakpointMedium) {
+		position: static;
+	}
+
+	@include mq($from: $sizeBreakpointMedium) {
+		padding-right: $gutterWidth * 2;
 	}
 }
 
@@ -65,7 +64,7 @@
 
 		&:hover,
 		&:focus {
-			background-color: $colorLightGray;
+			color: $colorBlack;
 		}
 
 		&:after {
@@ -101,16 +100,24 @@
 	&.is_home a {
 		box-sizing: content-box;
 		width: 10px;
+		height: 50px;
 
 		@include iconDataurl('home');
-
-		height: 50px;
 
 		&:before {
 			@include centerDataurlIcon();
 
 			width: 15px;
 			height: 14px;
+		}
+
+		&:hover {
+			@include iconDataurl('home_black');
+
+			&:before {
+				width: 15px;
+				height: 14px;
+			}
 		}
 	}
 }

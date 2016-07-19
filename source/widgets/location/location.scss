@@ -3,7 +3,7 @@
 }
 
 .widg_location__map {
-  @include span(4);
+  @include span(6);
 
   img {
 	width: 100%;
@@ -12,7 +12,7 @@
 
 .widg_location__info {
   @include push(0.2);
-  @include span(4);
+  @include span(5.8);
 
 	.button {
 		margin-top: $basicPush * 3;

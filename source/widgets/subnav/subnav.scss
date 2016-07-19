@@ -56,6 +56,10 @@
 	position: absolute;
 	transform: translateY(-100%);
 	width: calc(100% - 32px);
+
+	@include mq($to: $sizeBreakpointSubnav) {
+		display: none;
+	}
 }
 
 .widg_subnav__main-link {

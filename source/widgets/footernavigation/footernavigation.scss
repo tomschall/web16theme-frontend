@@ -2,9 +2,9 @@
 	@include contentWrapper($gutterWidth);
 
 	padding-top: $basicPush * 6 !important;
-	padding-bottom: $basicPush * 4.5 !important;
+	padding-bottom: $basicPush * 2.5 !important;
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: $sizeBreakpointSmall) {
 		padding-top: $basicPush * 3 !important;
 		padding-bottom: $basicPush * 2.25 !important;
 	}
@@ -15,18 +15,24 @@
 
 	color: $colorBg;
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: $sizeBreakpointMedium, $from: $sizeBreakpointSmall) {
+		@include span(6);
+
+		margin-bottom: $basicPush * 2;
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
 		@include span(12);
 	}
 
 	ul {
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: $sizeBreakpointSmall) {
 			display: none;
 		}
 	}
 
 	&.is_open {
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: $sizeBreakpointSmall) {
 			ul {
 				display: block;
 			}
@@ -62,7 +68,7 @@
 
 		border-bottom: 1px solid $colorBg;
 
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: $sizeBreakpointSmall) {
 			padding-top: $basicPush * 1.4;
 			position: relative;
 			cursor: pointer;
@@ -80,12 +86,11 @@
 				transform: translateY(-50%) rotate(45deg);
 			}
 
-		}
-	}
-
-	&:last-of-type {
-		h4 {
-			border: none;
+			&:last-of-type {
+				h4 {
+					border: none;
+				}
+			}
 		}
 	}
 }
