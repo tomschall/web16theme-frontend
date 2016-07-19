@@ -71,12 +71,20 @@ h3 {
 	.header__wide & {
 		display: none;
 	}
+
+	@include mq($to: $sizeBreakpointMedium) {
+		padding: 0;
+	}
 }
 
 .page_content {
 	@include span(9);
 
 	.full-width-page & {
+		@include span(12);
+	}
+
+	@include mq($to: $sizeBreakpointSubnav) {
 		@include span(12);
 	}
 }

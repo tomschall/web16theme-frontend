@@ -23,6 +23,14 @@
 	&.wide___third {
 		@include span(4);
 	}
+
+	@include mq($to: $sizeBreakpointSmall) {
+		@include span(12);
+
+		&.wide___third {
+			@include span(12);
+		}
+	}
 }
 
 .widg_teaser__img {

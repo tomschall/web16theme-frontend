@@ -183,6 +183,9 @@ var templateData = {
 						}
 					}
 				]
+			},
+			langStrings: {
+				back: 'Zurück'
 			}
 		},
 

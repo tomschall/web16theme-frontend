@@ -155,7 +155,7 @@
 	Widget.prototype.showNavigation = function(targetLevel) {
 		var $targetWrapper = this.data.wrappers[targetLevel],
 				headerWidth = $('.widg_header').outerWidth(),
-				pullLeft = headerWidth * targetLevel,
+				pullLeft = headerWidth * targetLevel - (targetLevel * 1),
 				mobilePullLeft = -1 * targetLevel * 100;
 
 		this.options.currentLevel = targetLevel;

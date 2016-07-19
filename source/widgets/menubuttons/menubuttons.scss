@@ -17,6 +17,7 @@
 		float: left;
 		line-height: 70px;
 		padding: 0 4 * $basicPush;
+		text-decoration: none;
 
 		@include mq($to: $sizeBreakpointSmall) {
 			padding: 0 1.7 * $basicPush;

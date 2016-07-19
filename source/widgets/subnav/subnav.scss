@@ -27,6 +27,23 @@
 		@include mq($from: $sizeBreakpointWide) {
 			right: basicUnitHeight(xxl) - $gutterWidth;
 		}
+
+		@include mq($to: $sizeBreakpointSubnav) {
+			position: static;
+			width: 100%;
+			right: auto;
+
+			margin-top: $basicPush * 3;
+		}
+	}
+
+	@include mq($to: $sizeBreakpointSubnav) {
+		@include span(12);
+		position: static;
+
+		transform: translateY(0);
+
+		margin-bottom: $basicPush * 3;
 	}
 }
 
