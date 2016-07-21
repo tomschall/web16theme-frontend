@@ -1,5 +1,5 @@
 .widg_navigation {
-	margin-top: $basicPush * 8 + 7;
+	margin-top: $basicPush * 4 + 7;
 	margin-left: -1 * $gutter;
 	margin-right: -1 * $gutter;
 
@@ -8,10 +8,6 @@
 	**/
 	&.widg_header__hide-on-shrinked {
 		transform: none;
-	}
-
-	@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
-		margin-top: $basicPush * 4 + 7;
 	}
 
 	@include mq($to: $sizeBreakpointMedium) {
