@@ -12,7 +12,9 @@
 
 	var name = 'menubuttons',
 		events = {
-			closeMobileHeader: 'closeMobileHeader.estatico.' + name
+			closeMobileHeader: 'closeMobileHeader.estatico.' + name,
+			openSearch: 'openSearch.estatico.' + name,
+			closeSearch: 'closeSearch.estatico.' + name
 		},
 		defaults = {
 			domSelectors: {
@@ -23,7 +25,8 @@
 				isNavOpen: 'is_nav-open',
 				isActive: 'is_active'
 			},
-			fullHeader: false
+			fullHeader: false,
+			searchIsOpen: false
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -74,6 +77,26 @@
 				this.showFullHeader();
 			}
 
+		}.bind(this));
+
+		$(this.options.domSelectors.searchbutton).on('click.' + this.uuid, function() {
+
+			if (this.options.searchIsOpen) {
+				this.options.searchIsOpen = false;
+
+				$(this.options.domSelectors.searchbutton).removeClass(this.options.stateClasses.isActive);
+
+				$(window).trigger(events.closeSearch);
+			} else {
+				this.options.searchIsOpen = true;
+				$(this.options.domSelectors.searchbutton).addClass(this.options.stateClasses.isActive);
+
+				$(window).trigger(events.openSearch);
+			}
+		}.bind(this));
+
+		$(window).on('close.estatico.pagesearch.' + this.uuid, function() {
+			this.options.searchIsOpen = false;
 		}.bind(this));
 	};
 

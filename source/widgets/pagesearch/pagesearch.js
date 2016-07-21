@@ -12,13 +12,15 @@
 
 	var name = 'pagesearch',
 		events = {
-			// eventname: 'eventname.estatico.' + name
+			open: 'open.estatico.' + name,
+			close: 'close.estatico.' + name
 		},
 		defaults = {
 			domSelectors: {
 				btn: '[data-' + name + '="btn"]',
 				bar: '[data-' + name + '="bar"]',
-				close: '[data-' + name + '="close"]'
+				close: '[data-' + name + '="close"]',
+				input: '[data-' + name + '="input"]'
 			},
 			stateClasses: {
 				isOpen: 'is_open'
@@ -74,15 +76,31 @@
 		$(this.options.domSelectors.close).on('click.' + this.uuid, function() {
 			this.closeSearchBar();
 		}.bind(this));
+
+		$(window).on('open.estatico.navigation.' + this.uuid, function() {
+			this.closeSearchBar();
+		}.bind(this));
+
+		$(window).on('openSearch.estatico.menubuttons.' + this.uuid, function() {
+			this.openSearchBar();
+		}.bind(this));
+
+		$(window).on('closeSearch.estatico.menubuttons.' + this.uuid, function() {
+			this.closeSearchBar();
+		}.bind(this));
 	};
 
 	/**
 	 * Opens the search bar
 	 */
 	Widget.prototype.openSearchBar = function() {
+		console.log('open search bar', this);
+
 		$(this.options.domSelectors.bar).addClass(this.options.stateClasses.isOpen);
 
 		this.options.pagesearchIsOpen = true;
+
+		$(this.options.domSelectors.input).focus();
 
 		$(window).one('keydown.' + this.uuid, function() {
 			if (event.keyCode === 27) {
@@ -93,6 +111,8 @@
 		$('.layout_wrapper').one('click.' + this.uuid, function() {
 			this.closeSearchBar();
 		}.bind(this));
+
+		$(window).trigger(events.open);
 	};
 
 	/**
@@ -102,6 +122,8 @@
 		$(this.options.domSelectors.bar).removeClass(this.options.stateClasses.isOpen);
 
 		this.options.pagesearchIsOpen = false;
+
+		$(window).trigger(events.close);
 	};
 
 	/**

@@ -16,9 +16,10 @@
 	position: fixed;
 	height: 100vh;
 	top: 0;
-	right: -1 * $sizeSearchBar;
+	right: -0.5 * $sizeSearchBar;
 	bottom: 0;
 	opacity: 0;
+	visibility: hidden;
 
 	width: $sizeSearchBar;
 	background-color: $colorBg;
@@ -26,10 +27,23 @@
 	box-shadow: 3px 0 29px 0 rgba($colorBlack, 0.15);
 
 	transition: all $transitionLength $transitionEase;
+	z-index: -1;
 
 	&.is_open {
 		right: 0;
+		visibility: visible;
+
 		opacity: 1;
+
+		z-index: zindex(search);
+	}
+
+	@include mq($to: $sizeBreakpointMedium) {
+		width: 100vw;
+
+		top: $headerHeightTop;
+		height: calc(100vh - 70px);
+
 	}
 }
 
@@ -51,17 +65,28 @@
 
 .widg_pagesearch-bar__close {
 	@include iconDataurl('close');
-	transform: translateY(-50%);
+	@include basicUnitHeight(height);
+	@include basicUnitHeight(line-height);
+	@include basicUnitHeight(width);
 
 	position: absolute;
-	right: 21px;
-	top: 50%;
 	line-height: 0;
 	cursor: pointer;
+
+	right: 0;
+
+	&:hover {
+		background-color: $colorLightGray;
+	}
 
 	&:before {
 		width: 16px;
 		height: 16px;
 
+		position: absolute;
+		top: 50%;
+		right: 50%;
+
+		transform: translate(50%, -50%);
 	}
 }

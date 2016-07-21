@@ -12,7 +12,7 @@
 
 	var name = 'navigation',
 			events = {
-				// eventname: 'eventname.estatico.' + name
+				open: 'open.estatico.' + name
 			},
 			defaults = {
 				domSelectors: {
@@ -116,6 +116,10 @@
 		$(document).on('closeMobileHeader.estatico.menubuttons.' + this.uuid, function() {
 			this.resetMobileNavigation();
 		}.bind(this));
+
+		$(window).on('open.estatico.pagesearch.' + this.uuid, function() {
+			this.closeNavigation();
+		}.bind(this));
 	};
 
 	/**
@@ -181,6 +185,8 @@
 				'margin-left': mobilePullLeft + 'vw'
 			});
 		}
+
+		$(window).trigger(events.open);
 	};
 
 	/**
