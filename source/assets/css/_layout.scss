@@ -35,7 +35,7 @@ h3 {
 	min-height: 100vh;
 
 	@include mq($to: medium) {
-		flex-direction: column;
+		display: block;
 	}
 }
 
@@ -58,6 +58,9 @@ h3 {
 		}
 	}
 
+	@include mq($to: $sizeBreakpointMedium) {
+		display: block;
+	}
 }
 
 .layout_content {

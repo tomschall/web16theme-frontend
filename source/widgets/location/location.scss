@@ -6,8 +6,12 @@
   @include span(6);
 
   img {
-	width: 100%;
+		width: 100%;
   }
+
+	@include mq($to: $sizeBreakpointSmall) {
+		@include span(12);
+	}
 }
 
 .widg_location__info {
@@ -16,6 +20,11 @@
 
 	.button {
 		margin-top: $basicPush * 3;
+	}
+
+	@include mq($to: $sizeBreakpointSmall) {
+		@include span(12);
+		@include push(0);
 	}
 }
 

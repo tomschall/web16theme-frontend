@@ -13,6 +13,7 @@
 	var name = 'menubuttons',
 		events = {
 			closeMobileHeader: 'closeMobileHeader.estatico.' + name,
+			openMobileHeader: 'openMobileHeader.estatico.' + name,
 			openSearch: 'openSearch.estatico.' + name,
 			closeSearch: 'closeSearch.estatico.' + name
 		},
@@ -23,7 +24,8 @@
 			},
 			stateClasses: {
 				isNavOpen: 'is_nav-open',
-				isActive: 'is_active'
+				isActive: 'is_active',
+				isSearchOpen: 'is_search-open'
 			},
 			fullHeader: false,
 			searchIsOpen: false
@@ -69,34 +71,27 @@
 		$(this.options.domSelectors.menubutton).on('click.' + this.uuid, function() {
 			if (this.options.fullHeader) {
 				$(this.options.domSelectors.menubutton).removeClass(this.options.stateClasses.isActive);
-
 				this.closeFullHeader();
 			} else {
 				$(this.options.domSelectors.menubutton).addClass(this.options.stateClasses.isActive);
-
 				this.showFullHeader();
 			}
-
 		}.bind(this));
 
 		$(this.options.domSelectors.searchbutton).on('click.' + this.uuid, function() {
-
 			if (this.options.searchIsOpen) {
-				this.options.searchIsOpen = false;
-
-				$(this.options.domSelectors.searchbutton).removeClass(this.options.stateClasses.isActive);
-
-				$(window).trigger(events.closeSearch);
+				this.closeMobileSearch();
 			} else {
-				this.options.searchIsOpen = true;
-				$(this.options.domSelectors.searchbutton).addClass(this.options.stateClasses.isActive);
-
-				$(window).trigger(events.openSearch);
+				this.openMobileSearch();
 			}
 		}.bind(this));
 
 		$(window).on('close.estatico.pagesearch.' + this.uuid, function() {
 			this.options.searchIsOpen = false;
+
+			$(this.options.domSelectors.searchbutton).removeClass(this.options.stateClasses.isActive);
+
+			this.removePreventScroll();
 		}.bind(this));
 	};
 
@@ -107,6 +102,11 @@
 		$('.widg_header').addClass(this.options.stateClasses.isNavOpen);
 
 		this.options.fullHeader = true;
+
+		$(window).trigger(events.closeSearch);
+		$(this.options.domSelectors.searchbutton).removeClass(this.options.stateClasses.isActive);
+
+		this.addPreventScroll();
 	};
 
 	/**
@@ -118,6 +118,51 @@
 		this.options.fullHeader = false;
 
 		$(document).trigger(events.closeMobileHeader);
+
+		this.removePreventScroll();
+	};
+
+	/**
+	 * Function to trigger the search opening
+	 */
+	Widget.prototype.openMobileSearch = function() {
+		this.options.searchIsOpen = true;
+
+		$(this.options.domSelectors.searchbutton).addClass(this.options.stateClasses.isActive);
+		$('.widg_header').addClass(this.options.stateClasses.openSearch);
+
+		$(window).trigger(events.openSearch);
+
+		this.closeFullHeader();
+		$(this.options.domSelectors.menubutton).removeClass(this.options.stateClasses.isActive);
+
+		this.addPreventScroll();
+	};
+
+	Widget.prototype.closeMobileSearch = function() {
+		this.options.searchIsOpen = false;
+
+		$(this.options.domSelectors.searchbutton).removeClass(this.options.stateClasses.isActive);
+		$('.widg_header').removeClass(this.options.stateClasses.openSearch);
+
+		$(window).trigger(events.closeSearch);
+		this.removePreventScroll();
+
+		this.removePreventScroll();
+	};
+
+	/**
+	 * Adds a class to the body, to prevent scrolling on the body
+	 */
+	Widget.prototype.addPreventScroll = function() {
+		$('body').addClass('prevent-scroll');
+	};
+
+	/**
+	 * Removing the prevent scroll class from the body
+	 */
+	Widget.prototype.removePreventScroll = function() {
+		$('body').removeClass('prevent-scroll');
 	};
 
 	/**

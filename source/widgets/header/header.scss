@@ -62,7 +62,8 @@
 			padding: 15px $basicPush * 2;
 		}
 
-		&.is_nav-open {
+		&.is_nav-open,
+		&.is_search-open {
 			position: fixed;
 			max-height: none;
 		}
