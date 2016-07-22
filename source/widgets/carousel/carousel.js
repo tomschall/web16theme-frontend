@@ -231,7 +231,7 @@
 		}, this.options.transitionSpeed / 2);
 
 		$currentSlideImg.animate({
-			'left': directionModifier * (slickWidth * 0.7)
+			'left': directionModifier * (slickWidth * 0.9)
 		}, this.options.transitionSpeed, function() {
 			$(this).css('left', '0px');
 		});

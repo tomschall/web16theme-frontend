@@ -11,5 +11,9 @@ p {
 .text__lead {
   font-size: 2rem;
 	line-height: 1.5;
-	margin-bottom: $basicPush * 6.6;
+	margin-bottom: $basicPush * 3.3;
+}
+
+.text__lead + .has_grid {
+	margin-top: $basicPush * 6.6;
 }

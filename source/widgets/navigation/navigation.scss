@@ -84,9 +84,9 @@ styling of all links and lists
 
 		//The arrow of the expandable nav items
 		&:after {
-			transition: all $transitionLength $transitionEase;
+			transition: all $transitionLength / 2 $transitionEase;
 
-			right: $basicPush * 3;
+			right: $basicPush * 2.5;
 			top: 50%;
 
 			height: 10px;

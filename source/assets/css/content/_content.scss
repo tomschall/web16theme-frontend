@@ -41,6 +41,9 @@
 	}
 
 }
+.page_content {
+	@include clearfix();
+}
 
 .page_content ul {
 	padding-left: 0;
