@@ -11,6 +11,10 @@
 
 	h4 {
 		margin-top: $basicPush * 2.6;
+
+		@include mq($to: $sizeBreakpointSmall) {
+			margin-top: $basicPush;
+		}
 	}
 
 	margin-bottom: $basicPush * 4;
@@ -46,11 +50,24 @@
 			font-size: 1rem;
 
 			transform: translateY(-50%);
+
+			@include mq($to: $sizeBreakpointSmall) {
+				position: static;
+				margin-bottom: $basicPush * 1.5;
+			}
+		}
+
+		@include mq($to: $sizeBreakpointSmall) {
+			padding: 0 $gutterWidth;
 		}
 	}
 
 	&.has_date a {
 		padding-left: $basicPush * 12.8;
+
+		@include mq($to: $sizeBreakpointSmall) {
+			padding-left: $gutterWidth;
+		}
 	}
 
 	&:last-of-type a {
@@ -68,4 +85,9 @@
 	color: $colorBorderGrey;
 
 	font-weight: 600;
+
+	@include mq($to: $sizeBreakpointSmall) {
+		position: static;
+		font-size: 1.25rem;
+	}
 }

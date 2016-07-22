@@ -206,7 +206,7 @@ The Subwrappers only desktop
 
 	> .widg_navigation__list {
 		display: block;
-		margin-top: $basicPush * 16.2;
+		margin-top: $basicPush * 12.4;
 	}
 
 	@include mq($from: $sizeBreakpointMedium) {

@@ -1,6 +1,6 @@
 <div class="widg_teaser__wrapper">
 	{{#each teasers}}
-    <div class="widg_teaser{{#if variant}} {{variant}}{{/if}}">
+    <div class="widg_teaser{{#if variant}} {{variant}}{{/if}} {{#if img}}{{else}}no-image{{/if}}">
 			{{#if img}}
         <div class="widg_teaser__img"><img src="/widgets/teaser/media/{{img.src}}"/></div>
 			{{/if}}
