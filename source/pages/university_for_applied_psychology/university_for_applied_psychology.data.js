@@ -18,7 +18,7 @@ var data = _.merge(defaultData, {
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),
 			hero: _.assign({
-				heroImage: 'applied_psychology.png',
+				heroImage: '/assets/media/img/applied_psychology.png',
 				breadcrumbItems: {
 					items: [
 						{
@@ -75,7 +75,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						variant: 'wide___third',
 						img: {
-							src: 'apevent1.png',
+							src: '/assets/media/img/apevent1.png',
 							alt: 'Event für Angewandte Psychologie 1'
 						}
 					},{
@@ -84,7 +84,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						variant: 'wide___third',
 						img: {
-							src: 'apevent2.png',
+							src: '/assets/media/img/apevent2.png',
 							alt: 'Event für Angewandte Psychologie 2'
 						}
 					}, {
@@ -93,7 +93,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						variant: 'wide___third',
 						img: {
-							src: 'apevent3.png',
+							src: '/assets/media/img/apevent3.png',
 							alt: 'Event für Angewandte Psychologie 3'
 						}
 					}
@@ -106,7 +106,7 @@ var data = _.merge(defaultData, {
 						link: '/pages/miks/miks.html',
 						variant: 'wide___third',
 						img: {
-							src: 'miks_teaser.png',
+							src: '/assets/media/img/miks_teaser.png',
 							alt: 'MikS'
 						}
 					}, {
@@ -114,7 +114,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						variant: 'wide___third',
 						img: {
-							src: 'ifk_teaser.png',
+							src: '/assets/media/img/ifk_teaser.png',
 							alt: 'ifk'
 						}
 					}

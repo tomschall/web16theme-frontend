@@ -18,7 +18,7 @@ var data = _.merge(defaultData, {
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),
 			hero: _.assign({
-				heroImage: 'locations.png',
+				heroImage: '/assets/media/img/locations.png',
 				breadcrumbItems: {
 					items: [
 						{
@@ -40,7 +40,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						text: 'Die Hochschule für Angewandte Psychologie FHNW ist ein Kompetenzzentrum für Fragen der Arbeits-und Wirtschaftspsychologie.',
 						img: {
-							src: 'university_applied_psychology.png',
+							src: '/assets/media/img/university_applied_psychology.png',
 							alt: 'Hochschule für Angewandte Psychologie'
 						}
 					}, {
@@ -48,7 +48,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						text: 'Die Hochschule für Architektur, Bau und Geomatik befindet sich am Sitz Muttenz der Fachhochschule Nordwestschweiz FHNW.',
 						img: {
-							src: 'university_architecture.png',
+							src: '/assets/media/img/university_architecture.png',
 							alt: 'Hochschule für Architektur, Bau und Geomatik FHNW'
 						}
 					}, {
@@ -56,7 +56,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						text: 'Die HGK FHNW ist ein Ort des Dialoges. Zwischen Studierenden und Lehrenden, Disziplinen und Kulturen, Wissenschaft und Öffentlichkeit.',
 						img: {
-							src: 'university_design_and_art.png',
+							src: '/assets/media/img/university_design_and_art.png',
 							alt: 'Hochschule für Gesaltung und Kunst FHNW'
 						}
 					}, {
@@ -64,7 +64,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						text: 'Bei uns werden Fachleute im Schnittpunkt von Natur, Technik, Medizin und Umwelt, inmitten Europas grösster Life Science Region, ausgebildet. ',
 						img: {
-							src: 'university_life_sciences.png',
+							src: '/assets/media/img/university_life_sciences.png',
 							alt: 'Hochschule für Life Sciences FHNW'
 						}
 					}, {
@@ -72,7 +72,7 @@ var data = _.merge(defaultData, {
 						link: '../../pages/music_school/music_school.html',
 						text: 'Die Hochschule für Musik und die Schola Cantorum Basiliensis bilden die Musikhochschulen der Fachhochschule Nordwestschweiz.',
 						img: {
-							src: 'university_music.png',
+							src: '/assets/media/img/university_music.png',
 							alt: 'Musikhochschulen FHNW'
 						}
 					}, {
@@ -80,7 +80,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						text: 'Die Studiengänge der Pädagogischen Hochschule FHNW decken die gesamte Lehrerbildung ab, von der Vorschulstufe bis zur Gymnasialstufe sowie der Erwachsenen- und Weiterbildung.',
 						img: {
-							src: 'university_teacher.png',
+							src: '/assets/media/img/university_teacher.png',
 							alt: 'Pädagogische Hochschule FHNW'
 						}
 					}, {
@@ -88,7 +88,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						text: 'Die Hochschule für Soziale Arbeit FHNW ist führend in ihrem Angebot für Studierende, Kundinnen und Kunden und Praxisorganisationen.',
 						img: {
-							src: 'university_social_work.png',
+							src: '/assets/media/img/university_social_work.png',
 							alt: 'Hochschule für Soziale Arbeit FHNW'
 						}
 					}, {
@@ -96,7 +96,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						text: 'Die Hochschule für Technik FHNW mit ihren 14 Instituten ist ein wichtiger Partner in angewandter Forschung und Entwicklung für Industrie und Wirtschaft.',
 						img: {
-							src: 'university_technic.png',
+							src: '/assets/media/img/university_technic.png',
 							alt: 'Hochschule für Technik FHNW'
 						}
 					}, {
@@ -104,7 +104,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						text: 'Die Hochschule für Wirtschaft FHNW deckt das gesamte Spektrum von Themen in Betriebswirtschaft und Wirtschafts-informatik ab.',
 						img: {
-							src: 'university_economy.png',
+							src: '/assets/media/img/university_economy.png',
 							alt: 'Hochschule für Wirtschaft FHNW'
 						}
 					}

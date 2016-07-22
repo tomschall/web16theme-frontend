@@ -18,7 +18,7 @@ var data = _.merge(defaultData, {
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),
 			hero: _.assign({
-				heroImage: 'applied_psychology.png',
+				heroImage: '/assets/media/img/applied_psychology.png',
 				breadcrumbItems: {
 					items: [
 						{
@@ -75,7 +75,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						variant: 'wide___third',
 						img: {
-							src: 'apevent1.png',
+							src: '/assets/media/img/apevent1.png',
 							alt: 'Event für Angewandte Psychologie 1'
 						}
 					},{
@@ -84,7 +84,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						variant: 'wide___third',
 						img: {
-							src: 'apevent2.png',
+							src: '/assets/media/img/apevent2.png',
 							alt: 'Event für Angewandte Psychologie 2'
 						}
 					}, {
@@ -93,7 +93,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						variant: 'wide___third',
 						img: {
-							src: 'apevent3.png',
+							src: '/assets/media/img/apevent3.png',
 							alt: 'Event für Angewandte Psychologie 3'
 						}
 					}
@@ -106,7 +106,7 @@ var data = _.merge(defaultData, {
 						link: '/pages/miks/miks.html',
 						variant: 'wide___third',
 						img: {
-							src: 'miks_teaser.png',
+							src: '/assets/media/img/miks_teaser.png',
 							alt: 'MikS'
 						}
 					}, {
@@ -114,7 +114,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						variant: 'wide___third',
 						img: {
-							src: 'ifk_teaser.png',
+							src: '/assets/media/img/ifk_teaser.png',
 							alt: 'ifk'
 						}
 					}
@@ -156,7 +156,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						text: 'Die Hochschule für Angewandte Psychologie FHNW ist ein Kompetenzzentrum für Fragen der Arbeits-und Wirtschaftspsychologie.',
 						img: {
-							src: 'university_applied_psychology.png',
+							src: '/assets/media/img/university_applied_psychology.png',
 							alt: 'Hochschule für Angewandte Psychologie'
 						}
 					}, {
@@ -164,7 +164,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						text: 'Die Hochschule für Architektur, Bau und Geomatik befindet sich am Sitz Muttenz der Fachhochschule Nordwestschweiz FHNW.',
 						img: {
-							src: 'university_architecture.png',
+							src: '/assets/media/img/university_architecture.png',
 							alt: 'Hochschule für Architektur, Bau und Geomatik FHNW'
 						}
 					}, {
@@ -172,7 +172,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						text: 'Die HGK FHNW ist ein Ort des Dialoges. Zwischen Studierenden und Lehrenden, Disziplinen und Kulturen, Wissenschaft und Öffentlichkeit.',
 						img: {
-							src: 'university_design_and_art.png',
+							src: '/assets/media/img/university_design_and_art.png',
 							alt: 'Hochschule für Gesaltung und Kunst FHNW'
 						}
 					}, {
@@ -180,7 +180,7 @@ var data = _.merge(defaultData, {
 						link: '#',
 						text: 'Bei uns werden Fachleute im Schnittpunkt von Natur, Technik, Medizin und Umwelt, inmitten Europas grösster Life Science Region, ausgebildet. ',
 						img: {
-							src: 'university_life_sciences.png',
+							src: '/assets/media/img/university_life_sciences.png',
 							alt: 'Hochschule für Life Sciences FHNW'
 						}
 					}

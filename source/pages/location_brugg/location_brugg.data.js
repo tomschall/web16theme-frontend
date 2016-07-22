@@ -18,7 +18,7 @@ var data = _.merge(defaultData, {
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),
 			hero: _.assign({
-				heroImage: 'building_brugg.png',
+				heroImage: '/assets/media/img/building_brugg.png',
 				breadcrumbItems: {
 					items: [
 						{
@@ -70,7 +70,7 @@ var data = _.merge(defaultData, {
 						category: 'Hochschule',
 						variant: 'wide___third',
 						img: {
-							src: 'university_teacher.png',
+							src: '/assets/media/img/university_teacher.png',
 							alt: 'Pädagogische Hochschule'
 						}
 					},
@@ -80,7 +80,7 @@ var data = _.merge(defaultData, {
 						category: 'Hochschule',
 						variant: 'wide___third',
 						img: {
-							src: 'university_technic.png',
+							src: '/assets/media/img/university_technic.png',
 							alt: 'Hochschule für Technik'
 						}
 					},
@@ -90,7 +90,7 @@ var data = _.merge(defaultData, {
 						category: 'Hochschule',
 						variant: 'wide___third',
 						img: {
-							src: 'university_economy.png',
+							src: '/assets/media/img/university_economy.png',
 							alt: 'Hochschule für Wirtschaft'
 						}
 					},
@@ -100,7 +100,7 @@ var data = _.merge(defaultData, {
 						category: 'Bibliothek',
 						variant: 'wide___third',
 						img: {
-							src: 'library_brugg.png',
+							src: '/assets/media/img/library_brugg.png',
 							alt: 'Campusbibliothek Brugg-Windisch'
 						}
 					}

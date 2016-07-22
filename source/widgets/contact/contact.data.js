@@ -11,7 +11,7 @@ var templateData = {
 	phone: '+41 62 957 24 26',
 	email: 'adrian.schwaninger@fhnw.ch',
 	img: {
-		src: 'schwaninger.png',
+		src: '/assets/media/img/schwaninger.png',
 		alt: 'Prof. Dr. Adrian Schwaninger'
 	},
 	langStrings: {

@@ -46,7 +46,7 @@ var data = _.merge(defaultData, {
 					title: 'Standort Liestal',
 					link: '#',
 					img: {
-						src: 'standort_liestal.png',
+						src: '/assets/media/img/standort_liestal.png',
 						alt: 'Standort Liestal'
 					}
 				},
@@ -54,7 +54,7 @@ var data = _.merge(defaultData, {
 					title: 'Standort Solothurn',
 					link: '#',
 					img: {
-						src: 'standort_solothurn.png',
+						src: '/assets/media/img/standort_solothurn.png',
 						alt: 'Standort Solothurn'
 					}
 				}

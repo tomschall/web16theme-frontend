@@ -2,7 +2,7 @@
 	{{#each teasers}}
     <div class="widg_teaser{{#if variant}} {{variant}}{{/if}} {{#if img}}{{else}}no-image{{/if}}">
 			{{#if img}}
-        <div class="widg_teaser__img"><img src="/widgets/teaser/media/{{img.src}}"/></div>
+        <div class="widg_teaser__img"><img src="{{img.src}}"/></div>
 			{{/if}}
 			{{#if date}}
 				<span class="widg_teaser__date">{{date}}</span>

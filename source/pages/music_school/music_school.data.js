@@ -18,7 +18,7 @@ var data = _.merge(defaultData, {
 		navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 		footer: requireNew('../../widgets/footer/footer.data.js'),
 		hero: _.assign({
-			heroImage: 'piano.png',
+			heroImage: '/assets/media/img/piano.png',
 			breadcrumbItems: {
 				items: [
 					{
@@ -90,7 +90,7 @@ var data = _.merge(defaultData, {
 					link: '#',
 					variant: 'wide___third',
 					img: {
-						src: 'music_school_event_1.png',
+						src: '/assets/media/img/music_school_event_1.png',
 						alt: 'Event 1'
 					}
 				},
@@ -100,7 +100,7 @@ var data = _.merge(defaultData, {
 					link: '#',
 					variant: 'wide___third',
 					img: {
-						src: 'music_school_event_2.png',
+						src: '/assets/media/img/music_school_event_2.png',
 						alt: 'Event 2'
 					}
 				},
@@ -110,7 +110,7 @@ var data = _.merge(defaultData, {
 					link: '#',
 					variant: 'wide___third',
 					img: {
-						src: 'music_school_event_3.png',
+						src: '/assets/media/img/music_school_event_3.png',
 						alt: 'Event 3'
 					}
 				}
