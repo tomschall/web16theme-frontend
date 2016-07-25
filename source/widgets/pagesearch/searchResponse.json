@@ -1,24 +1,3 @@
-## Description
-
-
-
-## Integration
-
-Copy HTML.
-
-###Ajax-Call
-
-```json
-{
-	"searchTerm": 'CAS Online-M'
-}
-```
-
-###Ajax-Response
-
-Anhand des Pitch-Screens für die globale Suche (nicht final!)
-
-```json
 {
   "response":[
 	{
@@ -60,4 +39,3 @@ Anhand des Pitch-Screens für die globale Suche (nicht final!)
 	}
   ]
 }
-```
