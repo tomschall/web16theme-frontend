@@ -96,6 +96,8 @@
 
 		$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button>' + this.data.extendString + '</button></li>');
 
+		$(this.options.domSelectors.extender).focus();
+
 		this.addExtenderEvent();
 	};
 
