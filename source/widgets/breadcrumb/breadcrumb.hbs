@@ -1,9 +1,10 @@
-<nav class="widg_breadcrumb">
+<nav class="widg_breadcrumb" data-init="breadcrumb">
   <ul>
-  {{#each items}}
-    <li class="{{extraClasses}}">
-      <a href="{{url}}">{{title}}</a>
-    </li>
-  {{/each}}
+		{{#each items}}
+      <li class="{{extraClasses}}">
+        <a href="{{url}}">{{title}}</a>
+      </li>
+		{{/each}}
   </ul>
+  <span data-breadcrumb="extendstring" style="display: none" aria-hidden="true">{{langStrings.extend}}</span>
 </nav>

@@ -27,6 +27,7 @@
  * @requires ../../widgets/accordeon/accordeon.js
  * @requires ../../widgets/tabnavigation/tabnavigation.js
  * @requires ../../widgets/footernavigation/footernavigation.js
+ * @requires ../../widgets/breadcrumb/breadcrumb.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js

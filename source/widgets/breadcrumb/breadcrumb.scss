@@ -47,7 +47,8 @@
 		display: none;
 	}
 
-	a {
+	a,
+	button {
 		display: block;
 		font-size: 1.25rem;
 		position: relative;
@@ -120,13 +121,47 @@
 			}
 		}
 	}
+
+	&.is_hidden {
+		display: none;
+	}
 }
 
-/**
-  * Will be obsolete and moved to the single element
-  *
-  * @TODO: Remove and move to the single item
-  */
-.widg_breadcrumb__seperator {
+.widg_breadcrumb__extender button {
+	text-indent: -100000px;
+	height: 50px;
+	min-width: 0;
+	background-color: transparent;
 
+	@include iconDataurl($name: 'breadcrumb-expand');
+
+	margin: 0 4px;
+
+	position: relative;
+
+	&:hover,
+	&:focus {
+		background-color: transparent;
+
+		&:before {
+			opacity: 1;
+		}
+	}
+
+	&:before {
+		transform: translate(-50%, -50%);
+
+		top: 50%;
+		left: 50%;
+		position: absolute;
+		display: block;
+
+		width: 16px;
+		height: 16px;
+		opacity: 0.5375;
+	}
+
+	&:after {
+		right: -11.5px !important;
+	}
 }

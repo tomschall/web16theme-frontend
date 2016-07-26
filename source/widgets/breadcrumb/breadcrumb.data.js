@@ -6,6 +6,9 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
+		langStrings: {
+			extend: 'Breadcrumb erweitern'
+		}
 	},
 	data = _.merge(defaultData, {
 		meta: {

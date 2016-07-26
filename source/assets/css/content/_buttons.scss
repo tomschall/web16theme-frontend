@@ -34,7 +34,7 @@ input[type="reset"] {
 	&:disabled,
 	&[disabled="disabled"] {
 
-		opacity: 0.5;
+		opacity: 0.4;
 		color: $colorBg;
 
 		&:hover,
@@ -64,7 +64,7 @@ input[type="reset"] {
 	&:active,
 	&:focus {
 		border-color: $colorBlack;
-		background-color: $colorBg;
+		background-color: $colorLightGray;
 	}
 
 	&:disabled,
