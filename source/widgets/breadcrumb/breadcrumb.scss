@@ -6,11 +6,11 @@
 	background-color: $colorBg;
 	overflow: hidden;
 
-	height: 50px;
+	min-height: 50px;
 
 	ul {
-		display: flex;
-		overflow-x: scroll;
+		display: block;
+
 	}
 
 	.sg_demo & {
@@ -35,7 +35,8 @@
 
 .widg_breadcrumb ul li,
 .widg_breadcrumb__seperator {
-	display: inline-block;
+	display: block;
+	float: left;
 }
 
 .widg_breadcrumb ul li {

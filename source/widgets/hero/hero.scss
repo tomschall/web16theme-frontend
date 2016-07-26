@@ -13,6 +13,9 @@
 	}
 
 	&.no-image {
+		img {
+			display: none;
+		}
 		@include mq($from: $sizeBreakpointSubnav) {
 			.widg_hero__wrapper {
 				min-height: 0;
