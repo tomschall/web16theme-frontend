@@ -6,11 +6,11 @@
 		border-bottom: none;
 	}
 
-	a {
+	 > a {
 		min-height: buttonHeight(desktop);
 		display: block;
 
-		padding: $gutterWidth $gutterWidth * .75;
+		padding: ($gutterWidth - 4) $gutterWidth * .75;
 		position: relative;
 
 		opacity: 1;
@@ -47,7 +47,7 @@
 		}
 	}
 
-	&.is_open a {
+	&.is_open > a {
 		background-color: $colorYellowAccordeonActive;
 
 		&:after {
@@ -64,9 +64,43 @@
 	max-height: 0;
 	overflow: hidden;
 
-
 	.is_open & {
 		max-height: 2500000px;
 		padding: 0 $gutterWidth * .75 $gutterWidth $gutterWidth * .75;
+	}
+
+	dt,
+	dd {
+		font-size: 1.25rem;
+		margin-left: 0;
+	}
+
+	dt {
+		font-weight: 700;
+		margin-bottom: $basicPush * 0.5;
+	}
+
+	dd {
+		margin-bottom: $basicPush * 1.4;
+	}
+}
+
+/**
+  * Styles for the accordeon in the sidebar (smaller)
+  */
+.product_sidebar {
+	.widg_accordeon {
+		margin-top: $basicPush * 4;
+		overflow-y: scroll;
+
+		max-height: calc(100vh - 105px);
+	}
+	.widg_accordeon__entry {
+		> a {
+			min-height: buttonHeight(mobile);
+			padding: ($gutterWidth - 5px) ($gutterWidth - 1px);
+
+			font-size: (15rem / 12);
+		}
 	}
 }

@@ -70,7 +70,7 @@
 	"requireAlignedObjectValues": null, // Requires proper alignment in object literals.
 	"requireAnonymousFunctions": null, // Requires that a function expression be anonymous.
 	"requireBlocksOnNewline": true, // Requires blocks to begin and end with a newline
-	"requireCamelCaseOrUpperCaseIdentifiers": true, // Requires identifiers to be camelCased or UPPERCASE_WITH_UNDERSCORES
+	"requireCamelCaseOrUpperCaseIdentifiers": false, // Requires identifiers to be camelCased or UPPERCASE_WITH_UNDERSCORES
 	"requireCapitalizedComments": null, // Requires the first alphabetical character of a comment to be uppercase, unless it is part of a multi-line textblock.
 	"requireCapitalizedConstructors": true, // Requires constructors to be capitalized (except for this)
 	"requireCommaBeforeLineBreak": true, // Requires commas as last token on a line in lists.

@@ -1,11 +1,16 @@
-<div class="widg_accordeon" data-init="accordeon">
+<div class="widg_accordeon" data-init="accordeon" {{#if multiple}}data-multiple="true"{{/if}}>
 	{{#each entries}}
 		<div class="widg_accordeon__entry" data-accordeon="entry">
 			<a href="#" data-accordeon="button">
 				{{title}}
 			</a>
 			<div class="widg_accordeon__content" aria-hidden="true" data-accordeon="content">
-				<p>{{accordeonContent}}</p>
+				{{#if contactData}}
+					{{> "widgets/contact/contact" contactData}}
+				{{else}}
+					{{{accordeonContent}}}
+				{{/if}}
+
 			</div>
 		</div>
 	{{/each}}

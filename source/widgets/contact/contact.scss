@@ -11,7 +11,7 @@
   margin-right: $basicPush * 3.9;
 
   img {
-	width: 100%;
+		width: 100%;
   }
 }
 
@@ -32,4 +32,30 @@
 .widg_contact__label {
   margin-bottom: $basicPush / 3;
   font-weight: 700;
+}
+
+.product_sidebar {
+	.widg_contact {
+		margin-top: $basicPush / 2;
+
+		&:first-of-type {
+			margin-top: $basicPush * 4;
+		}
+	}
+
+	.widg_contact__portrait {
+		float: none;
+		width: 100%;
+		margin-right: 0;
+		max-width: 100%;
+	}
+
+	.widg_contact__info {
+		margin-top: $basicPush;
+
+		span,
+		a {
+			font-size: 1.25rem;
+		}
+	}
 }

@@ -22,7 +22,9 @@
 			},
 			stateClasses: {
 				isOpen: 'is_open'
-			}
+			},
+			allowsMultiple: false,
+			isInSidebar: false
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -56,6 +58,14 @@
 	 */
 	Widget.prototype.init = function() {
 		this.addEventHandlers();
+
+		if (this.$element.data('multiple')) {
+			this.options.allowsMultiple = true;
+		}
+
+		if (this.$element.closest('.product_sidebar').length >= 1) {
+			this.options.isInSidebar = true;
+		}
 	};
 
 	/**
@@ -64,11 +74,15 @@
 	 * @public
 	 */
 	Widget.prototype.addEventHandlers = function() {
-		$(this.options.domSelectors.button).click(function(event) {
+		this.$element.find(this.options.domSelectors.button).click(function(event) {
 			event.preventDefault();
 
 			if ($(event.currentTarget.closest(this.options.domSelectors.entry)).hasClass(this.options.stateClasses.isOpen)) {
-				this.closeOpenEntries();
+				if (!this.options.allowsMultiple) {
+					this.closeOpenEntries();
+				} else {
+					this.closeThisEntry($(event.currentTarget));
+				}
 			} else {
 				this.addActiveClass($(event.currentTarget));
 			}
@@ -80,15 +94,30 @@
 	 * @param $button
    */
 	Widget.prototype.addActiveClass = function($button) {
-		this.closeOpenEntries();
+		if (!this.options.allowsMultiple) {
+			this.closeOpenEntries();
+		}
 
 		$button.closest(this.options.domSelectors.entry).addClass(this.options.stateClasses.isOpen);
 		$button.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).attr('aria-hidden', 'false');
+
+		$(document.body).trigger('sticky_kit:recalc');
 	};
 
+	/**
+	 * Closes all open entries
+	 */
 	Widget.prototype.closeOpenEntries = function() {
-		$(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).removeClass(this.options.stateClasses.isOpen);
-		$(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).find(this.options.domSelectors.content).attr('aria-hidden', 'true');
+		this.$element.find(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).removeClass(this.options.stateClasses.isOpen);
+		this.$element.find(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).find(this.options.domSelectors.content).attr('aria-hidden', 'true');
+	};
+
+	/**
+	 * Closes this specific entry
+	 */
+	Widget.prototype.closeThisEntry = function($target) {
+		$target.closest(this.options.domSelectors.entry).removeClass(this.options.stateClasses.isOpen);
+		$target.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).attr('aria-hidden', 'true');
 	};
 
 	/**

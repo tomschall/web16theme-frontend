@@ -1,13 +1,16 @@
-<div class="widg_contact" data-init="contact">
-	<div class="widg_contact__portrait">
-		<img src="{{img.src}}" alt={{img.alt}}/>
-	</div>
-	<div class="widg_contact__info">
-		<span class="widg_contact__label">{{fullname}}</span>
-		<span class="widg_contact__text">{{jobDescription}}</span>
-		<span class="widg_contact__label">{{langStrings.telephone}}:</span>
-		<span class="widg_contact__text">{{phone}}</span>
-		<span class="widg_contact__label">{{langStrings.email}}:</span>
-		<span class="widg_contact__text"><a href="mailto:{{email}}">{{email}}</a></span>
-	</div>
-</div>
+{{#each persons}}
+  <div class="widg_contact" data-init="contact">
+    <div class="widg_contact__portrait">
+      <img src="{{img.src}}" alt={{img.alt}}/>
+    </div>
+    <div class="widg_contact__info">
+
+      <span class="widg_contact__label">{{fullname}}</span>
+      <span class="widg_contact__text">{{jobDescription}}</span>
+      <span class="widg_contact__label">{{../langStrings.telephone}}:</span>
+      <span class="widg_contact__text">{{phone}}</span>
+      <span class="widg_contact__label">{{../langStrings.email}}:</span>
+      <span class="widg_contact__text"><a href="mailto:{{email}}">{{email}}</a></span>
+    </div>
+  </div>
+{{/each}}

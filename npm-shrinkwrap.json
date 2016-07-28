@@ -29510,11 +29510,6 @@
       "from": "scrollmagic@2.0.5",
       "resolved": "https://registry.npmjs.org/scrollmagic/-/scrollmagic-2.0.5.tgz"
     },
-    "scrolltofixed": {
-      "version": "1.0.6",
-      "from": "scrolltofixed@1.0.6",
-      "resolved": "https://registry.npmjs.org/scrolltofixed/-/scrolltofixed-1.0.6.tgz"
-    },
     "select2": {
       "version": "4.0.3",
       "from": "select2@4.0.3",
@@ -29639,6 +29634,11 @@
       "version": "1.6.0",
       "from": "git://github.com/zeixcom/slick.git",
       "resolved": "git://github.com/zeixcom/slick.git#96c0859c950268336cc4e77832deb878844b511f"
+    },
+    "sticky-kit": {
+      "version": "1.1.3",
+      "from": "sticky-kit@1.1.3",
+      "resolved": "https://registry.npmjs.org/sticky-kit/-/sticky-kit.1.1.3.tgz"
     },
     "susy": {
       "version": "2.2.12",

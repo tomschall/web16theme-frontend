@@ -1,7 +1,4 @@
 .widg_subnav {
-	@include span(3);
-	position: relative;
-
 	transform: translateY(-1 * $contentMarginTop - $smallElementHeight);
 
 	&.widg_subnav___no-hero {
@@ -14,36 +11,25 @@
 		}
 	}
 
-	.full-width-page & {
-		position: absolute;
+	position: absolute;
 
-		width: 18%;
-		right: basicUnitHeight(normal) - $gutterWidth;
+	width: 18%;
+	right: basicUnitHeight(normal);
 
-		@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
-			right: basicUnitHeight(small) - $gutterWidth;
-		}
+	@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
+		right: basicUnitHeight(small);
+	}
 
-		@include mq($from: $sizeBreakpointWide) {
-			right: basicUnitHeight(xxl) - $gutterWidth;
-		}
-
-		@include mq($to: $sizeBreakpointSubnav) {
-			position: static;
-			width: 100%;
-			right: auto;
-
-			margin-top: $basicPush * 3;
-		}
+	@include mq($from: $sizeBreakpointWide) {
+		right: basicUnitHeight(xxl);
 	}
 
 	@include mq($to: $sizeBreakpointSubnav) {
-		@include span(12);
 		position: static;
 
-		transform: translateY(0);
+		@include span(12);
 
-		margin-bottom: $basicPush * 3;
+		margin-top: $basicPush * 2;
 	}
 }
 
@@ -55,12 +41,12 @@
 	background-color: rgba($colorBlack, 0.8);
 	position: absolute;
 	transform: translateY(-100%);
-	width: calc(100% - 32px);
 
 	@include mq($to: $sizeBreakpointSubnav) {
 		display: none;
 	}
 }
+
 
 .widg_subnav__main-link {
 	padding: 29px 22px;
@@ -138,6 +124,8 @@
 		position: relative;
 		min-height: $smallElementHeight;
 		display: block;
+		float: left;
+		width: 100%;
 		padding: 0;
 
 		&:before {
@@ -146,13 +134,15 @@
 
 		a {
 			display: block;
+			float: left;
+			width: 100%;
 
 			font-weight: 600;
 			font-size: 1.25rem;
 
 			background-color: $colorLightGray;
 			border-bottom: 2px solid $colorBg;
-			padding: 13px 52px 13px 14px;
+			padding: 14px 52px 14px 14px;
 			text-decoration: none;
 			opacity: 1;
 

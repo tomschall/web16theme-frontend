@@ -69,6 +69,8 @@ h3 {
 	position: relative;
 	margin-top: $contentMarginTop;
 
+	@include clearfix();
+
 	@include contentWrapper($gutterWidth);
 
 	.header__wide & {
@@ -90,4 +92,14 @@ h3 {
 	@include mq($to: $sizeBreakpointSubnav) {
 		@include span(12);
 	}
+}
+
+.product_sidebar {
+	@include span(3);
+
+	@include mq($to: $sizeBreakpointSubnav) {
+		display: none;
+	}
+
+	max-height: 100vh;
 }
