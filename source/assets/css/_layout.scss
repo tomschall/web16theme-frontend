@@ -83,7 +83,7 @@ h3 {
 }
 
 .page_content {
-	@include span(9);
+	@include span(8.7);
 
 	.full-width-page & {
 		@include span(12);
@@ -96,10 +96,9 @@ h3 {
 
 .product_sidebar {
 	@include span(3);
+	@include push(0.3);
 
 	@include mq($to: $sizeBreakpointSubnav) {
 		display: none;
 	}
-
-	max-height: 100vh;
 }
