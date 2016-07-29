@@ -1,3 +1,10 @@
 body.prevent-scroll {
 	overflow: hidden;
 }
+
+.accessibility-hidden {
+	visibility: hidden;
+	width: 0;
+
+	display: inline-block;
+}

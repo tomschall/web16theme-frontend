@@ -260,6 +260,19 @@
 
 @mixin noStyledButton() {
 	background-color: transparent;
+	font-size: 1rem;
+	text-align: left;
+	font-weight: 300;
+	color: $colorBlack;
+
+	letter-spacing: 1px;
+	text-transform: none;
+	padding: 0;
+	height: auto;
+
+	width: auto;
+	min-height: 0;
+	min-width: 0;
 
 	&:hover,
 	&:focus,

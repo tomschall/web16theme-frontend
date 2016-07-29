@@ -27,6 +27,7 @@
  * @requires ../../widgets/tabnavigation/tabnavigation.js
  * @requires ../../widgets/footernavigation/footernavigation.js
  * @requires ../../widgets/breadcrumb/breadcrumb.js
+ * @requires ../../widgets/productbar/productbar.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js

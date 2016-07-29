@@ -6,8 +6,9 @@
 }
 
 .ArchetypesBooleanWidget label,
-.ArchetypesMultiSelectWidget label
-{
+.ArchetypesMultiSelectWidget label,
+input[type="radio"] + label,
+input[type="checkbox"] label {
 	padding-left: $basicPush + $radioCheckboxDimension;
 
 	position: relative;
@@ -24,6 +25,8 @@
 		left: 0;
 		top: 50%;
 
+		background-color: $colorBg;
+
 		transform: translateY(-50%);
 
 		width: $radioCheckboxDimension;
@@ -39,7 +42,9 @@
 }
 
 .ArchetypesBooleanWidget label,
-.ArchetypesMultiSelectWidget label {
+.ArchetypesMultiSelectWidget label,
+input[type="radio"] + label,
+input[type="checkbox"] label {
 	&:before,
 	&:after {
 		border-radius: 50%;
@@ -68,7 +73,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 input[type=number] {
-	-moz-appearance:textfield;
+	-moz-appearance: textfield;
 }
 
 /**
@@ -84,45 +89,44 @@ input[type="checkbox"] {
 	opacity: 0;
 	width: 0;
 	height: 0;
+
+	visibility: hidden;
 }
-.ArchetypesBooleanWidget,
-.ArchetypesMultiSelectWidget {
-	input[type="radio"]:checked + label,
-	input[type="checkbox"]:checked + label {
-		&:after {
-			display: block;
-			content: " ";
-			position: absolute;
-			left: 5.5px;
-			top: 50%;
 
-			transform: translateY(-50%);
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label {
+	&:after {
+		display: block;
+		content: " ";
+		position: absolute;
+		left: $radioCheckboxDimensionInner;
+		top: 50%;
 
-			width: $radioCheckboxDimensionInner;
-			height: $radioCheckboxDimensionInner;
+		transform: translateY(-50%) translateX(-45%);
 
-			background-color: $colorBlack;
-		}
-	}
+		width: $radioCheckboxDimensionInner;
+		height: $radioCheckboxDimensionInner;
 
-	input[type="checkbox"]:checked + label {
-		@include iconDataurl($name: 'checkmark', $after: true);
-		&:after {
-			background-color: transparent;
-
-			height: $radioCheckboxDimensionInner;
-			left: 5px;
-		}
-	}
-
-	input[type="radio"].error:checked + label,
-	input[type="checkbox"].error:checked + label {
-		&:before {
-			border: 2px solid $colorErrorRed;
-		}
+		background-color: $colorBlack;
 	}
 }
 
+input[type="checkbox"]:checked + label {
+	@include iconDataurl($name: 'checkmark', $after: true);
+	&:after {
+		background-color: transparent;
+
+		height: $radioCheckboxDimensionInner;
+		left: $radioCheckboxDimensionInner;
+	}
+}
+
+input[type="radio"].error:checked + label,
+input[type="checkbox"].error:checked + label {
+	&:before {
+		border: 2px solid $colorErrorRed;
+	}
+}
 
 /**
   * Textfields
@@ -221,8 +225,6 @@ input[type="checkbox"] {
 	}
 }
 
-
-
 /**
   * Selectbox
   */
@@ -276,7 +278,9 @@ input[type="checkbox"] {
 				height: 7px;
 			}
 
-			b { display: none; }
+			b {
+				display: none;
+			}
 		}
 
 		.select2-selection__placeholder {
@@ -308,7 +312,7 @@ input[type="checkbox"] {
 }
 
 .select2-container--below.select2-container--open .select2-selection,
-.custom-select.error + .select2-container--below.select2-container--open .select2-selection{
+.custom-select.error + .select2-container--below.select2-container--open .select2-selection {
 	border-bottom-width: 0;
 }
 

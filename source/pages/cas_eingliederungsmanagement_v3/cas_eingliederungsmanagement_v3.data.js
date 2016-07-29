@@ -6,7 +6,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'CAS Eingliederungsmanagement'
+			title: 'CAS Eingliederungsmanagement v3'
 		},
 		title: 'CAS Eingliederungsmanagement',
 		text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
@@ -108,46 +108,28 @@ var data = _.merge(defaultData, {
 					}
 				]
 			}),
-			sidebarAccordeon: _.assign(requireNew('../../widgets/accordeon/accordeon.data.js'), {
-				multiple: true,
-				entries: [
+			sidebarContact: _.assign(requireNew('../../widgets/contact/contact.data.js'), {
+				persons: [
 					{
-						title: 'Eckdaten',
-						accordeonContent: '<dl><dt>Abschluss:</dt><dd>CAS Eingliederungsmanagement MAS XYZ (University of Shanghai)</dd><dt>ECTS Punkte:</dt><dd>15 Credits</dd><dt>Zeitraum & Dauer:</dt><dd>1.4.2016 - 24.12.2016, 2 Semester</dd><dt>Unterrichtssprache:</dt><dd>Deutsch</dd></dl>',
-						inititalOpen: true
+						fullname: 'Prof. Dr. Hans Muster',
+						jobDescription: 'Institutsleitung',
+						phone: '+41 62 957 24 26',
+						email: 'hans.muster@fhnw.ch',
+						img: {
+							src: '/assets/media/img/hans_muster.png',
+							alt: 'Prof. Dr. Hans Muster'
+						}
 					},
 					{
-						title: 'Downloads',
-						accordeonContent: '<p>to be defined</p>'
-					},
-					{
-						title: 'Ansprechpersonen',
-						contactData: _.assign(requireNew('../../widgets/contact/contact.data.js'), {
-							persons: [
-								{
-									fullname: 'Prof. Dr. Hans Muster',
-									jobDescription: 'Institutsleitung',
-									phone: '+41 62 957 24 26',
-									email: 'hans.muster@fhnw.ch',
-									img: {
-										src: '/assets/media/img/hans_muster.png',
-										alt: 'Prof. Dr. Hans Muster'
-									}
-								},
-								{
-									fullname: 'Esther Muster',
-									jobDescription: 'Kursleitung',
-									phone: '+41 62 957 24 26',
-									email: 'esther.muster@fhnw.ch',
-									img: {
-										src: '/assets/media/img/esther_muster.png',
-										alt: 'Esther Muster'
-									}
-								}
-							]
-						})
+						fullname: 'Esther Muster',
+						jobDescription: 'Kursleitung',
+						phone: '+41 62 957 24 26',
+						email: 'esther.muster@fhnw.ch',
+						img: {
+							src: '/assets/media/img/esther_muster.png',
+							alt: 'Esther Muster'
+						}
 					}
-
 				]
 			}),
 			nextCoursesAccordeon: _.assign(requireNew('../../widgets/accordeon/accordeon.data.js'), {
@@ -262,7 +244,8 @@ var data = _.merge(defaultData, {
 						]
 					}
 				]
-			})
+			}),
+			productBar: _.assign(requireNew('../../widgets/productbar/productbar.data.js'))
 		}
 	});
 

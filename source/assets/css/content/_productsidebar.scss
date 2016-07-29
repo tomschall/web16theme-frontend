@@ -1,4 +1,4 @@
-.product_sidebar {
+.product_sidebar, .product_sidebar_v3 {
 
 	padding-right: $gutterWidth * 2;
 
@@ -8,5 +8,53 @@
 		display: inline-block;
 
 		margin-bottom: $basicPush * 1.4;
+	}
+}
+
+.product_sidebar_v3 {
+	a.button,
+	a.button__secondary {
+		margin-bottom: 0;
+	}
+
+	h3 {
+		margin-top: 0;
+		font-size: 1.5rem;
+		line-height: 1.3;
+		margin-bottom: $basicPush;
+	}
+
+	padding: 0 $gutterWidth 0 0;
+}
+
+.product_sidebar__box {
+	background-color: $colorLightGray;
+	padding: $basicPush * 3 $basicPush * 2.5;
+	margin-bottom: $basicPush * 4.5;
+
+	h3 {
+		margin-bottom: $basicPush * 1.9;
+	}
+
+	dt,
+	dd {
+		width: 100%;
+		padding: 0;
+		margin: 0;
+
+		font-size: 1.25rem;
+	}
+
+	dt {
+		font-weight: 700;
+		margin-bottom: $basicPush * 0.5;
+	}
+
+	dd {
+		margin-bottom: $basicPush * 1.5;
+	}
+
+	a.button {
+		margin-top: $basicPush;
 	}
 }

@@ -1,3 +1,18 @@
+.widg_accordeon {
+	fieldset {
+		border: none;
+		border-bottom: 1px solid $colorBlack;
+
+		&:last-of-type {
+			border-bottom: none;
+		}
+
+		button {
+
+		}
+	}
+}
+
 .widg_accordeon__entry {
 	border-bottom: 1px solid $colorBlack;
 	overflow: hidden;
@@ -6,7 +21,10 @@
 		border-bottom: none;
 	}
 
-	 > a {
+
+	> a,
+	> div > label[data-accordeon="button"] {
+
 		min-height: buttonHeight(desktop);
 		display: block;
 
@@ -17,13 +35,23 @@
 		text-decoration: none;
 		font-weight: 700;
 
-		line-height: 2;
-
-		@include iconDataurl('close', $after: true);
+		margin: 0;
 
 		&:hover {
 			background-color: $colorLightGray;
 		}
+
+		@include mq($to: $sizeBreakpointMedium) {
+			min-height: buttonHeight(mobile);
+			padding-top: $gutterWidth/2;
+			padding-bottom: $gutterWidth/2;
+		}
+	}
+
+	> a {
+		@include iconDataurl('close', $after: true);
+
+		line-height: 2;
 
 		&:after {
 			position: absolute;
@@ -39,24 +67,68 @@
 			right: $gutterWidth;
 
 		}
+	}
 
-		@include mq($to: $sizeBreakpointMedium) {
-			min-height: buttonHeight(mobile);
-			padding-top: $gutterWidth/2;
-			padding-bottom: $gutterWidth/2;
+	> div > label[data-accordeon="button"] {
+		padding-left: $basicPush * 3.1 + 18;
+		padding-right: $gutterWidth + 6;
+
+		font-size: 1.5rem;
+		line-height: 1.8;
+		font-weight: 400;
+
+		.button__date,
+		.button__availability,
+		.button__location {
+			width: 20%;
+			display: block;
+			float: left;
+		}
+
+		.button__availability {
+			text-align: right;
+		}
+
+		&:before,
+		&:after {
+			margin-left: $gutterWidth + 6;
+		}
+
+		.button__date {
+			font-weight: 700;
+			width: 60%;
+
+			text-align: left;
 		}
 	}
 
-	&.is_open > a {
+	&.is_open > a,
+	&.is_open > div > label[data-accordeon="button"] {
 		background-color: $colorYellowAccordeonActive;
-
-		&:after {
-			transform: translateY(-50%) rotate(90deg);
-		}
 
 		&:hover {
 			background-color: $colorYellowNavHover;
 		}
+	}
+
+	&.is_open > a {
+		&:after {
+			transform: translateY(-50%) rotate(90deg);
+		}
+	}
+}
+
+div.widg_accordeon__button {
+	min-height: buttonHeight(desktop);
+
+	line-height: 0;
+
+	> input[type="radio"] {
+		display: block;
+	}
+
+	@include mq($to: $sizeBreakpointMedium) {
+		min-height: buttonHeight(mobile);
 	}
 }
 
@@ -86,8 +158,8 @@
 }
 
 /**
-  * Styles for the accordeon in the sidebar (smaller)
-  */
+* Styles for the accordeon in the sidebar (smaller)
+*/
 .product_sidebar {
 	.widg_accordeon {
 		margin-top: $basicPush * 4;

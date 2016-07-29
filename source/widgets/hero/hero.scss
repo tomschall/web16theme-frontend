@@ -31,10 +31,10 @@
 	overflow: hidden;
 
 	@include mq($from: $sizeBreakpointSubnav) {
-		min-height: 289px;
+		min-height: 400px;
 	}
 
-	max-height: 60vh;
+	max-height: 50vh;
 }
 
 .widg_hero__img {

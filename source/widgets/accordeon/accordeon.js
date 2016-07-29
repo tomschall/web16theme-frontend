@@ -74,8 +74,12 @@
 	 * @public
 	 */
 	Widget.prototype.addEventHandlers = function() {
-		this.$element.find(this.options.domSelectors.button).click(function(event) {
-			event.preventDefault();
+		this.$element.find('a' + this.options.domSelectors.button).on('click', function() {
+			return false;
+		});
+
+		this.$element.find(this.options.domSelectors.button).on('click.' + this.uuid, function(event) {
+			console.log('was soll der shit');
 
 			if ($(event.currentTarget.closest(this.options.domSelectors.entry)).hasClass(this.options.stateClasses.isOpen)) {
 				if (!this.options.allowsMultiple) {
@@ -101,7 +105,9 @@
 		$button.closest(this.options.domSelectors.entry).addClass(this.options.stateClasses.isOpen);
 		$button.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).attr('aria-hidden', 'false');
 
-		$(document.body).trigger('sticky_kit:recalc');
+		if (this.options.isInSidebar) {
+			$(document.body).trigger('sticky_kit:recalc');
+		}
 	};
 
 	/**

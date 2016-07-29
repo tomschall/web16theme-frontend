@@ -94,7 +94,8 @@ h3 {
 	}
 }
 
-.product_sidebar {
+.product_sidebar,
+.product_sidebar_v3 {
 	@include span(3);
 	@include push(0.3);
 

@@ -34,13 +34,10 @@
   font-weight: 700;
 }
 
-.product_sidebar {
+.product_sidebar,
+.product_sidebar_v3 {
 	.widg_contact {
-		margin-top: $basicPush / 2;
-
-		&:first-of-type {
-			margin-top: $basicPush * 4;
-		}
+		margin-top: $basicPush / 1.5;
 	}
 
 	.widg_contact__portrait {

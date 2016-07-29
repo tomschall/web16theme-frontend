@@ -71,10 +71,44 @@
 			</div>
     </div>
 		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
-		<div class="product_sidebar">
-			<a class="button" href="#">Zur Anmeldung</a>
-			<a class="button__secondary" href="#">Infoveranstaltungen</a>
-			{{> "widgets/accordeon/accordeon" widgets.sidebarAccordeon}}
+		<div class="product_sidebar_v3">
+			<div class="product_sidebar__box">
+				<h3>Eckdaten:</h3>
+				<dl>
+					<dt>
+						Abschluss:
+					</dt>
+          <dd>
+            CAS Eingliederungsmanagement MAS XYZ (University Shanghai)
+          </dd>
+          <dt>
+            ECTS Punkte:
+          </dt>
+          <dd>
+            15 Credits
+          </dd>
+          <dt>
+            Zeitraum & Dauer:
+          </dt>
+          <dd>
+            1.4.2016 - 24.12.2016, 2 Semester
+          </dd>
+          <dt>
+            Unterrichtssprache:
+          </dt>
+          <dd>
+            Deutsch
+          </dd>
+				</dl>
+				<a class="button">Zur Anmeldung</a>
+			</div>
+			<div>
+				<h3>Ansprechpersonen:</h3>
+				{{> "widgets/contact/contact" widgets.sidebarContact}}
+			</div>
 		</div>
+	{{/content}}
+	{{#content "productbar"}}
+		{{> "widgets/productbar/productbar" widgets.productBar}}
 	{{/content}}
 {{/extend}}

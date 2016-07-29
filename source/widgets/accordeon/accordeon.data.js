@@ -25,7 +25,10 @@ var templateData = {
 		}
 	],
 	langStrings: {
-		moreInformation: 'mehr Informationen'
+		moreInformation: 'mehr Informationen',
+		eventStart: 'Durchführungsbeginn',
+		eventLocation: 'Veranstaltungsort',
+		availableSeats: 'Freie Plätze'
 	}
 },
 	data = _.merge(defaultData, {
