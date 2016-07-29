@@ -113,16 +113,7 @@ var data = _.merge(defaultData, {
 				entries: [
 					{
 						title: 'Eckdaten',
-						accordeonContent: '<dl>' +
-						'<dt>Abschluss:</dt>' +
-						'<dd>CAS Eingliederungsmanagement MAS XYZ (University of Shanghai)</dd>' +
-						'<dt>ECTS Punkte:</dt>' +
-						'<dd>15 Credits</dd>' +
-						'<dt>Zeitraum & Dauer:</dt>' +
-						'<dd>1.4.2016 - 24.12.2016, 2 Semester</dd>' +
-						'<dt>Unterrichtssprache:</dt>' +
-						'<dd>Deutsch</dd>' +
-						'</dl>',
+						accordeonContent: '<dl><dt>Abschluss:</dt><dd>CAS Eingliederungsmanagement MAS XYZ (University of Shanghai)</dd><dt>ECTS Punkte:</dt><dd>15 Credits</dd><dt>Zeitraum & Dauer:</dt><dd>1.4.2016 - 24.12.2016, 2 Semester</dd><dt>Unterrichtssprache:</dt></dl>',
 						inititalOpen: true
 					},
 					{
