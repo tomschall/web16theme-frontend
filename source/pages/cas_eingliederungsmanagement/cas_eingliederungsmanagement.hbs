@@ -61,19 +61,19 @@
 				<h2>Organisatorisches</h2>
 				{{> "widgets/accordeon/accordeon" widgets.organisationAccordeon}}
 			</div>
-			<div class="content__element">
+			<div class="content__element" id="targetInfoEvents">
 				<h2>Informationsveranstaltungen</h2>
 				{{> "widgets/teaser/teaser" widgets.eventTeasers}}
 			</div>
-			<div class="content__element">
+			<div class="content__element" id="targetOnlineApplication">
 				<h2>Nächste Durchführungen</h2>
 				{{> "widgets/accordeon/accordeon" widgets.nextCoursesAccordeon }}
 			</div>
     </div>
 		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
 		<div class="product_sidebar">
-			<a class="button" href="#">Zur Anmeldung</a>
-			<a class="button__secondary" href="#">Infoveranstaltungen</a>
+			<a class="button anchor-link" href="#targetInfoEvents">Zur Anmeldung</a>
+			<a class="button__secondary anchor-link" href="#targetOnlineApplication">Infoveranstaltungen</a>
 			{{> "widgets/accordeon/accordeon" widgets.sidebarAccordeon}}
 		</div>
 	{{/content}}

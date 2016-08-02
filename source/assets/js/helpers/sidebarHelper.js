@@ -13,7 +13,7 @@
 		offset_top: 10
 	});
 
-	$('.product_sidebar_v3 a.anchor-link').on('click.' + 'sidebarHelper', function(event) {
+	$('.product_sidebar_v3 a.anchor-link, .product_sidebar a.anchor-link').on('click.' + 'sidebarHelper', function(event) {
 		event.preventDefault();
 
 		var _scrollTop = $($(event.target).attr('href')).offset().top;

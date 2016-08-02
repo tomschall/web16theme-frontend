@@ -123,6 +123,7 @@
 	 * Closes this specific entry
 	 */
 	Widget.prototype.closeThisEntry = function($target) {
+		$target.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).slideUp(500);
 		$target.closest(this.options.domSelectors.entry).removeClass(this.options.stateClasses.isOpen);
 		$target.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).attr('aria-hidden', 'true');
 	};
