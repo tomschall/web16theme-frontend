@@ -25,7 +25,8 @@
 			stateClasses: {
 				isOpen: 'is_open'
 			},
-			pagesearchIsOpen: false
+			pagesearchIsOpen: false,
+			ajaxSearchUrl: '/mocks/widgets/pagesearch/pagesearch.json'
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -88,6 +89,10 @@
 		$(window).on('closeSearch.estatico.menubuttons.' + this.uuid, function() {
 			this.closeSearchBar();
 		}.bind(this));
+
+		$(this.options.domSelectors.input).on('keyup.' + this.uuid, function(event) {
+			this.sendAjax($(event.currentTarget).val());
+		}.bind(this));
 	};
 
 	/**
@@ -124,6 +129,23 @@
 		this.options.pagesearchIsOpen = false;
 
 		$(window).trigger(events.close);
+	};
+
+	/**
+	 * Sends the ajax request
+	 */
+	Widget.prototype.sendAjax = function(_query) {
+		if (_query.length > 3) {
+			$.ajax({
+				data: {
+					q: _query
+				},
+				method: 'GET',
+				url: this.options.ajaxSearchUrl
+			});
+		}
+
+		return false;
 	};
 
 	/**
