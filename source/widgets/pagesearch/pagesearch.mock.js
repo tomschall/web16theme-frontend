@@ -3,7 +3,7 @@
 var _ = require('lodash');
 
 var data = {
-	'response':[
+	'response': [
 		{
 			'category': 'topResults',
 			'entries': [
