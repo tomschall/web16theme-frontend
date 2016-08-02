@@ -133,12 +133,12 @@ div.widg_accordeon__button {
 }
 
 .widg_accordeon__content {
-	max-height: 0;
-	overflow: hidden;
+	display: none;
+	padding: 0 $gutterWidth * .75 $gutterWidth $gutterWidth * .75;
 
 	.is_open & {
-		max-height: 2500000px;
-		padding: 0 $gutterWidth * .75 $gutterWidth $gutterWidth * .75;
+		display: none;
+
 	}
 
 	dt,

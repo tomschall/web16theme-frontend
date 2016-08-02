@@ -55,6 +55,8 @@
 	 */
 	Widget.prototype.init = function() {
 		this.addInitialScrollMagic();
+
+		this.addEventListeners();
 	};
 
 	/**
@@ -75,6 +77,22 @@
 		this.options.scrollMagicScene = scene;
 
 		window.estatico.magicController.addScene(scene);
+	};
+
+	/**
+	 * Adding the event listeners
+	 */
+	Widget.prototype.addEventListeners = function() {
+		this.$element.find('a').on('click.' + this.uuid, function(event) {
+			// Only temporary solution
+			event.preventDefault();
+
+			var _scrollTop = $($(event.target).attr('href')).offset().top;
+
+			$('html, body').animate({
+				scrollTop: _scrollTop - 150
+			}, 750);
+		}.bind(this));
 	};
 
 	/**

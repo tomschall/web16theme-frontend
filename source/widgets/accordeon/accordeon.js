@@ -79,8 +79,6 @@
 		});
 
 		this.$element.find(this.options.domSelectors.button).on('click.' + this.uuid, function(event) {
-			console.log('was soll der shit');
-
 			if ($(event.currentTarget.closest(this.options.domSelectors.entry)).hasClass(this.options.stateClasses.isOpen)) {
 				if (!this.options.allowsMultiple) {
 					this.closeOpenEntries();
@@ -104,6 +102,7 @@
 
 		$button.closest(this.options.domSelectors.entry).addClass(this.options.stateClasses.isOpen);
 		$button.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).attr('aria-hidden', 'false');
+		$button.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).slideDown(500);
 
 		if (this.options.isInSidebar) {
 			$(document.body).trigger('sticky_kit:recalc');
@@ -114,8 +113,10 @@
 	 * Closes all open entries
 	 */
 	Widget.prototype.closeOpenEntries = function() {
+		this.$element.find(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).find(this.options.domSelectors.content).slideUp(500);
 		this.$element.find(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).removeClass(this.options.stateClasses.isOpen);
 		this.$element.find(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).find(this.options.domSelectors.content).attr('aria-hidden', 'true');
+
 	};
 
 	/**
