@@ -12,7 +12,7 @@ var data = _.merge(defaultData, {
 			code: dataHelper.getTemplateCode('contentnav.hbs'),
 			documentation: dataHelper.getDocumentation('contentnav.md')
 		},
-		items: [
+		entries: [
 			{
 				title: 'Lern- und Ausbildungsziele',
 				link: '#learn',

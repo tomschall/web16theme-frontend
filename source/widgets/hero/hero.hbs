@@ -1,5 +1,7 @@
 <div class="widg_hero {{#if heroImage}}{{else}}no-image{{/if}}" data-init="hero">
-	<div class="widg_hero__wrapper"><img src="{{heroImage}}" class="widg_hero__img" alt="Beispielbild"/></div>
+	{{#if heroImage}}
+	<div class="widg_hero__wrapper"><img src="{{heroImage}}" class="widg_hero__img" alt="{{heroAlt}}"/></div>
+	{{/if}}
 
-	{{> "widgets/breadcrumb/breadcrumb" widgets.breadcrumb items=breadcrumbItems.items}}
+	{{> "widgets/breadcrumb/breadcrumb" widgets.breadcrumb entries=breadcrumb.entries}}
 </div>

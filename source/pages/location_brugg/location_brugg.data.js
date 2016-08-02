@@ -19,8 +19,9 @@ var data = _.merge(defaultData, {
 			footer: requireNew('../../widgets/footer/footer.data.js'),
 			hero: _.assign({
 				heroImage: '/assets/media/img/building_brugg.png',
-				breadcrumbItems: {
-					items: [
+				heroAlt: 'Gebäude Brugg-Windisch',
+				breadcrumb: {
+					entries: [
 						{
 							'url': '../startpage_prototype/startpage_prototype.html',
 							'title': '',

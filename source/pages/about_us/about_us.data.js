@@ -19,8 +19,9 @@ var data = _.merge(defaultData, {
 			footer: requireNew('../../widgets/footer/footer.data.js'),
 			hero: _.assign({
 				heroImage: '/assets/media/img/about_us_hero.png',
-				breadcrumbItems: {
-					items: [
+				heroAlt: 'über uns symbolbild',
+				breadcrumb: {
+					entries: [
 						{
 							'url': '../startpage_prototype/startpage_prototype.html',
 							'title': '',

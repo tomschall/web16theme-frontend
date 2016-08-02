@@ -19,8 +19,9 @@ var data = _.merge(defaultData, {
 			footer: requireNew('../../widgets/footer/footer.data.js'),
 			hero: _.assign({
 				heroImage: '/assets/media/img/applied_psychology.png',
-				breadcrumbItems: {
-					items: [
+				heroAlt: 'Symbolbild',
+				breadrumb: {
+					entries: [
 						{
 							'url': '../startpage_prototype/startpage_prototype.html',
 							'title': '',

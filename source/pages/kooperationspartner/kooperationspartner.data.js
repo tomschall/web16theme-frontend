@@ -18,8 +18,8 @@ var data = _.merge(defaultData, {
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),
 			hero: _.assign({
-				breadcrumbItems: {
-					items: [
+				breadcrumb: {
+					entries: [
 						{
 							'url': '../startpage_prototype/startpage_prototype.html',
 							'title': '',

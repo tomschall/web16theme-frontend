@@ -29,7 +29,9 @@
 
 		@include span(12);
 
-		margin-top: $basicPush * 2;
+		margin-top: $basicPush * -1;
+		margin-bottom: $basicPush * 2;
+		transform: none;
 	}
 }
 

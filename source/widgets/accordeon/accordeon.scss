@@ -138,22 +138,34 @@ div.widg_accordeon__button {
 
 	.is_open & {
 		display: none;
+	}
 
+	dl {
+		@include clearfix();
 	}
 
 	dt,
 	dd {
-		font-size: 1.25rem;
+		font-size: 1.5rem;
 		margin-left: 0;
+		width: 50%;
+
+		float: left;
+
+		border-bottom: 1px solid $colorBlack;
+		padding: 14px 0;
+
+		&:last-of-type {
+			border-bottom: none;
+		}
 	}
 
 	dt {
 		font-weight: 700;
-		margin-bottom: $basicPush * 0.5;
 	}
 
 	dd {
-		margin-bottom: $basicPush * 1.4;
+		text-align: right;
 	}
 }
 
@@ -175,4 +187,27 @@ div.widg_accordeon__button {
 			font-size: (15rem / 12);
 		}
 	}
+
+	.widg_accordeon__content {
+		dt,
+		dd {
+			font-size: 1.25rem;
+			margin-left: 0;
+			width: 100%;
+			float: none;
+
+			border: none;
+			padding: 0;
+		}
+
+		dt {
+			font-weight: 700;
+			margin-bottom: $basicPush * 0.5;
+		}
+
+		dd {
+			margin-bottom: $basicPush * 1.4;
+		}
+	}
+
 }

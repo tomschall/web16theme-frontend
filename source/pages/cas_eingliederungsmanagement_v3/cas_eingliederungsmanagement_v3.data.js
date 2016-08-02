@@ -19,8 +19,9 @@ var data = _.merge(defaultData, {
 			footer: requireNew('../../widgets/footer/footer.data.js'),
 			hero: _.assign({
 				heroImage: '/assets/media/img/cas_eingl_mgmt_hero.png',
-				breadcrumbItems: {
-					items: [
+				heroAlt: 'Symbolbild',
+				breadcrumb: {
+					entries: [
 						{
 							'url': '../startpage_prototype/startpage_prototype.html',
 							'title': '',
@@ -169,7 +170,9 @@ var data = _.merge(defaultData, {
 								label: 'Nummer',
 								text: 'X0.12345'
 							}
-						]
+						],
+						additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
+						btnLink: '#'
 					},
 					{
 						uid: '2',
@@ -205,7 +208,9 @@ var data = _.merge(defaultData, {
 								label: 'Nummer',
 								text: 'X0.12345'
 							}
-						]
+						],
+						additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
+						btnLink: '#'
 					},
 					{
 						uid: '3',
@@ -241,7 +246,9 @@ var data = _.merge(defaultData, {
 								label: 'Nummer',
 								text: 'X0.12345'
 							}
-						]
+						],
+						additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
+						btnLink: '#'
 					}
 				]
 			}),

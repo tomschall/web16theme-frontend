@@ -28,7 +28,8 @@ var templateData = {
 		moreInformation: 'mehr Informationen',
 		eventStart: 'Durchführungsbeginn',
 		eventLocation: 'Veranstaltungsort',
-		availableSeats: 'Freie Plätze'
+		availableSeats: 'Freie Plätze',
+		applyOnline: 'Online Anmelden'
 	}
 },
 	data = _.merge(defaultData, {
