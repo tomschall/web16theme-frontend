@@ -1,0 +1,28 @@
+.widg_toplink {
+	@include iconDataurl('top-link');
+
+	position: fixed;
+	bottom: 40px;
+	right: 40px;
+
+	display: none;
+
+	z-index: zindex(topLink);
+	opacity: 0.5;
+
+	&:before {
+		background-size: 100% 100%;
+
+		width: 51px;
+		height: 51px;
+	}
+
+	&:hover {
+		cursor: pointer;
+		opacity: 1;
+	}
+
+	&.is_visible {
+		display: block;
+	}
+}
