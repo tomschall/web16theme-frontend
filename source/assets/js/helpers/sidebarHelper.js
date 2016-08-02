@@ -12,5 +12,15 @@
 	$('.product_sidebar').stick_in_parent({
 		offset_top: 10
 	});
+
+	$('.product_sidebar_v3 a.anchor-link').on('click.' + 'sidebarHelper', function(event) {
+		event.preventDefault();
+
+		var _scrollTop = $($(event.target).attr('href')).offset().top;
+
+		$('html, body').animate({
+			scrollTop: _scrollTop - 150
+		}, 750);
+	});
 	/*jshint ignore:end*/
 })(jQuery);
