@@ -162,6 +162,13 @@
 				pullLeft = headerWidth * targetLevel - (targetLevel * 1),
 				mobilePullLeft = -1 * targetLevel * 100;
 
+		console.log('headerWidth', headerWidth);
+		console.log('targetLevel', targetLevel);
+
+		if (headerWidth < 300 && targetLevel >= 2) {
+			pullLeft = pullLeft + (40 * (targetLevel - 1));
+		}
+
 		this.options.currentLevel = targetLevel;
 
 		if (window.estatico.mq.query({from: 'medium'})) {

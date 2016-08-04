@@ -171,8 +171,6 @@ The back arrow only visible on mobile navigation
 .widg_navigation__list[data-navigation-level="3"]{
 	ul li a {
 
-		margin-bottom: 2px;
-
 		&:hover {
 			background-color: $colorSubNavHover;
 		}
@@ -205,13 +203,13 @@ The Subwrappers only desktop
 	position: fixed;
 	top: 0;
 
-	width: $widthYellowBar;
+	width: $widthYellowBar + 40;
 
 	box-shadow: 3px 0 29px 0 rgba($colorBlack, 0.10);
 
 	> .widg_navigation__list {
 		display: block;
-		margin-top: $basicPush * 12.4;
+		margin-top: $basicPush * 12.2;
 	}
 
 	@include mq($from: $sizeBreakpointMedium) {
