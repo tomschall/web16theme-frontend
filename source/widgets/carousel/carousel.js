@@ -24,7 +24,8 @@
 				slider: '[data-' + name + '="slider"]',
 				progressbar: '[data-' + name + '="progressbar"]',
 				images: '[data-' + name + '="slide-img"]',
-				infoBox: '[data-' + name + '="info-box"]'
+				infoBox: '[data-' + name + '="info-box"]',
+				video: '[data-' + name + '="slide-video"]'
 			},
 			stateClasses: {
 				slideIsComing: 'is_coming',
@@ -38,7 +39,7 @@
 			isAutoplay: true
 		},
 		data = {
-			// items: ["Item 1", "Item 2"]
+			videos: null
 		};
 
 	/**
@@ -88,6 +89,9 @@
 			useCSS: false,
 			pauseOnHover: false
 		});
+
+		this.initVideoProperties();
+		this.resizeVideo();
 	};
 
 	/**
@@ -183,20 +187,30 @@
 		});
 	};
 
+	/**
+	 * Hides the progressbar
+	 */
 	Widget.prototype.hideProgressBar = function() {
 		this.options.isAutoplay = false;
 
 		$(this.options.domSelectors.progressbar).clearQueue().slideUp(this.options.transitionSpeed / 3);
 	};
 
+	/**
+	 * Animates the custom transition
+	 * @param slick
+	 * @param currentSlide the current visible slide
+	 * @param nextSlide the slide which should be shown negt
+	 * @param slideTarget next or previous slide?
+   */
 	Widget.prototype.doCustomTransition = function(slick, currentSlide, nextSlide, slideTarget) {
 		var $currentSlide = $(slick.$slides[currentSlide]),
 				$nextSlide = $(slick.$slides[nextSlide]),
 				slickWidth = slick.listWidth,
 				animatedLeftValue = 0,
 				slickLeftValue = '',
-				$currentSlideImg = $currentSlide.find('img'),
-				$nextSlideImg = $nextSlide.find('img'),
+				$currentSlideMedia = $currentSlide.find('img, video'),
+				$nextSlideMedia = $nextSlide.find('img, video'),
 				directionModifier = 1, // 1 for next, -1 for previous
 				$infoBox = $(this.options.domSelectors.infoBox);
 
@@ -206,7 +220,7 @@
 
 		$nextSlide.css('visibility', 'visible').addClass(this.options.stateClasses.slideIs2ndImportant);
 
-		$nextSlideImg.css({
+		$nextSlideMedia.css({
 			left: directionModifier * slickWidth / 10
 		});
 
@@ -230,15 +244,76 @@
 			'opacity': 0
 		}, this.options.transitionSpeed / 2);
 
-		$currentSlideImg.animate({
+		$currentSlideMedia.animate({
 			'left': directionModifier * (slickWidth * 0.9)
 		}, this.options.transitionSpeed, function() {
 			$(this).css('left', '0px');
 		});
 
-		$nextSlideImg.animate({
+		$nextSlideMedia.animate({
 			'left': 0
 		}, this.options.transitionSpeed);
+
+		// check if video can be played
+		if ($nextSlideMedia.is('video')) {
+			$nextSlideMedia[0].play();
+		}
+	};
+
+	/**
+	 * Initializes the video properties
+	 */
+	Widget.prototype.initVideoProperties = function() {
+		// Initializes the data videos
+		this.data.videos = this.$element.find(this.options.domSelectors.video).toArray();
+
+		$.each(this.data.videos, function(name, video) {
+			video.loop = true;
+		});
+	};
+
+	/**
+	 * Resizes the video properly
+	 */
+	Widget.prototype.resizeVideo = function() {
+		var $videos = this.data.videos,
+				videoWidth = 0,
+				videoHeight = 0,
+				ratio = 0,
+				carouselWidth = this.$element.width(),
+				carouselHeight = this.$element.height(),
+				carouselRatio = carouselWidth / carouselHeight,
+				transformValue = 0;
+
+		$.each($videos, function(name, value) {
+			$(value).removeAttr('style');
+
+			videoWidth = $(value).width();
+			videoHeight = $(value).height();
+			ratio = videoWidth / videoHeight;
+
+			if (ratio >= carouselRatio) {
+				$(value).height(carouselHeight);
+
+				transformValue = -1 * (($(value).width() - carouselWidth) / 2);
+
+				$(value).css({
+					transform: 'translateX(' + transformValue + 'px)'
+				});
+			} else {
+				$(value).width(carouselWidth);
+
+				transformValue = -1 * (($(value).height() - carouselHeight) / 2);
+
+				$(value).css({
+					transform: 'translateY(' + transformValue + 'px)'
+				});
+			}
+		});
+
+		$(window).one('resize.' + this.uuid, function() {
+			this.resizeVideo();
+		}.bind(this));
 	};
 
 	/**

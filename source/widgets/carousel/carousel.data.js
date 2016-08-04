@@ -24,6 +24,12 @@ var templateData = {
 			category: 'Infoabend',
 			link: '#',
 			image: '/assets/media/img/bg_home_01.jpg'
+		},
+		{
+			title: 'Video',
+			category: 'Test',
+			link: '#',
+			video: '/assets/media/video/video_test.mp4'
 		}
 	]
 },

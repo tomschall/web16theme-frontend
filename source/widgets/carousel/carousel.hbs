@@ -3,8 +3,14 @@
 		{{#each slides}}
       <div class="widg_carousel__slide" data-carousel="slide" data-carousel-cat="{{ category }}"
            data-carousel-title="{{ title }}" data-carousel-link="{{ link }}">
-        <img src="{{ image }}" alt="{{ title }}" data-carousel="slide-img"/>
-      </div>
+				{{#if image}}
+          <img src="{{ image }}" alt="{{ title }}" data-carousel="slide-img"/>
+				{{/if}}
+				{{#if video}}
+          <video data-carousel="slide-video">
+            <source src="{{video}}" type="video/mp4">
+          </video>
+				{{/if}}      </div>
 		{{/each}}
   </div>
 </div>
