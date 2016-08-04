@@ -4,7 +4,7 @@
 	left: 0;
 	right: 0;
 
-	@include basicUnitHeight(height);
+	height: basicUnitHeight(normal);
 	@include contentWrapper(0);
 
 	transition: top $transitionLength $transitionEase;
@@ -13,7 +13,7 @@
 
 	background-color: $colorBg;
 	box-shadow: 0 2px 4px 0 rgba($colorBlack, 0.12);
-	padding-top: 26px;
+	padding-top: 26px !important;
 
 	z-index: zindex(productBar);
 

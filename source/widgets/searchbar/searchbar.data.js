@@ -9,8 +9,8 @@ var data = _.merge(defaultData, {
 		meta: {
 			title: 'Globales Suchfeld | WI_005',
 			description: '',
-			code: dataHelper.getTemplateCode('pagesearch.hbs'),
-			documentation: dataHelper.getDocumentation('pagesearch.md')
+			code: dataHelper.getTemplateCode('searchbar.hbs'),
+			documentation: dataHelper.getDocumentation('searchbar.md')
 		}
 	});
 

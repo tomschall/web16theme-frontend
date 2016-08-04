@@ -86,7 +86,7 @@
 			}
 		}.bind(this));
 
-		$(window).on('close.estatico.pagesearch.' + this.uuid, function() {
+		$(window).on('close.estatico.searchbar.' + this.uuid, function() {
 			this.options.searchIsOpen = false;
 
 			$(this.options.domSelectors.searchbutton).removeClass(this.options.stateClasses.isActive);

@@ -117,7 +117,7 @@
 			this.resetMobileNavigation();
 		}.bind(this));
 
-		$(window).on('open.estatico.pagesearch.' + this.uuid, function() {
+		$(window).on('open.estatico.searchbar.' + this.uuid, function() {
 			this.closeNavigation();
 		}.bind(this));
 	};

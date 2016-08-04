@@ -10,7 +10,7 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var name = 'pagesearch',
+	var name = 'searchbar',
 		events = {
 			open: 'open.estatico.' + name,
 			close: 'close.estatico.' + name
@@ -25,8 +25,8 @@
 			stateClasses: {
 				isOpen: 'is_open'
 			},
-			pagesearchIsOpen: false,
-			ajaxSearchUrl: '/mocks/widgets/pagesearch/pagesearch.json'
+			searchBarIsOpen: false,
+			ajaxSearchUrl: '/mocks/widgets/searchbar/searchbar.json'
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -67,7 +67,7 @@
 	 */
 	Widget.prototype.addEventHandlers = function() {
 		$(this.options.domSelectors.btn).on('click.' + this.uuid, function() {
-			if (this.options.pagesearchIsOpen) {
+			if (this.options.searchBarIsOpen) {
 				this.closeSearchBar();
 			} else {
 				this.openSearchBar();
@@ -99,13 +99,9 @@
 	 * Opens the search bar
 	 */
 	Widget.prototype.openSearchBar = function() {
-		console.log('open search bar', this);
-
 		$(this.options.domSelectors.bar).addClass(this.options.stateClasses.isOpen);
 
-		this.options.pagesearchIsOpen = true;
-
-		$(this.options.domSelectors.input).focus();
+		this.options.searchBarIsOpen = true;
 
 		$(window).one('keydown.' + this.uuid, function() {
 			if (event.keyCode === 27) {
@@ -117,6 +113,8 @@
 			this.closeSearchBar();
 		}.bind(this));
 
+		$(this.options.domSelectors.input).focus();
+
 		$(window).trigger(events.open);
 	};
 
@@ -126,7 +124,7 @@
 	Widget.prototype.closeSearchBar = function() {
 		$(this.options.domSelectors.bar).removeClass(this.options.stateClasses.isOpen);
 
-		this.options.pagesearchIsOpen = false;
+		this.options.searchBarIsOpen = false;
 
 		$(window).trigger(events.close);
 	};

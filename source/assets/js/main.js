@@ -18,7 +18,7 @@
  * @requires helpers/sidebarHelper.js
  *
  * @requires ../../widgets/share/share.js
- * @requires ../../widgets/pagesearch/pagesearch.js
+ * @requires ../../widgets/searchbar/searchbar.js
  * @requires ../../widgets/menubuttons/menubuttons.js
  * @requires ../../widgets/header/header.js
  * @requires ../../widgets/carousel/carousel.js
