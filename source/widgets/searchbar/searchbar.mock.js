@@ -3,39 +3,101 @@
 var data = {
 	'response': [
 		{
-			'category': 'topResults',
+			'categoryTitle': 'Weiterbildung',
+			'categoryLink': '#',
 			'entries': [
 				{
-					'title': 'CASE',
-					'text': 'Lorem ipsum, dolores sit amet',
-					'target': 'fhnw.ch/CASE'
+					'type': 'normal',
+					'title': 'MAS Sozialmanagement',
+					'link': '#'
 				},
 				{
-					'title': 'Marketing',
-					'text': 'Lorem ipsum, dolores sit amet',
-					'target': 'fhnw.ch/Marketing'
+					'type': 'normal',
+					'title': 'DAS Eingliederungsmanagement',
+					'link': '#'
+				},
+				{
+					'type': 'normal',
+					'title': 'CAS Forschung in den Sozialwissenschaften',
+					'link': '#'
 				}
 			]
 		},
 		{
-			'category': 'certificateCourses',
+			'categoryTitle': 'Studium',
+			'categoryLink': '#',
 			'entries': [
 				{
-					'title': 'CAS Online-Marketing & E-Commerce',
-					'target': 'link zum ziel'
+					'type': 'normal',
+					'title': 'Master of Arts in Sozialer Arbeit',
+					'link': '#'
 				},
 				{
-					'title': 'CAS Akustik 2010',
-					'target': 'link zum lehrgang'
+					'type': 'normal',
+					'title': 'Bachelor of Arts in Sozialer Arbeit',
+					'link': '#'
 				}
 			]
 		},
 		{
-			'category': 'courses',
+			'categoryTitle': 'Veranstaltungen',
+			'categoryLink': '#',
 			'entries': [
 				{
-					'title': 'Internet und Netzwerke',
-					'target': 'link zum kurs'
+					'type': 'event',
+					'title': 'Veranstaltung MAS Psychosoziale Beratung',
+					'eventDetail': '09.08.2016, 16:00, Olten',
+					'link': '#'
+				},
+				{
+					'type': 'event',
+					'title': 'Info-Veranstaltung in Olten: Bachelor-Studium in Sozialer Arbeit',
+					'eventDetail': '17.08.2016, 17:15, Olten',
+					'link': '#'
+				},
+				{
+					'type': 'event',
+					'title': 'Diagnostik in der Sozialen Arbeit',
+					'eventDetail': '17.-18.10.2016',
+					'link': '#'
+				}
+			]
+		},
+		{
+			'categoryTitle': 'Organisation',
+			'categoryLink': '#',
+			'entries': [
+				{
+					'type': 'normal',
+					'title': 'Hochschule für Soziale Arbeit',
+					'link': '#'
+				},
+				{
+					'type': 'normal',
+					'title': 'Fachbereich Soziale Arbeit',
+					'link': '#'
+				},
+				{
+					'type': 'normal',
+					'title': 'Institut Beratung, Coaching und Sozialmanagement',
+					'link': '#'
+				}
+			]
+		},
+		{
+			'categoryTitle': 'Dokumente',
+			'entries': [
+				{
+					'type': 'doc',
+					'title': 'Sozialmanagement und Soziale Arbeit',
+					'fileType': 'PDF',
+					'link': '#'
+				},
+				{
+					'type': 'doc',
+					'title': 'Faltprospekt Master in Sozialer Arbeit',
+					'fileType': 'PDF',
+					'link': '#'
 				}
 			]
 		}
