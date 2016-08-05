@@ -17,3 +17,8 @@ p {
 .text__lead + .has_grid {
 	margin-top: $basicPush * 6.6;
 }
+
+span.bold,
+b {
+	font-weight: 700;
+}

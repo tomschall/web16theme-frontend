@@ -91,7 +91,9 @@
 		}.bind(this));
 
 		$(this.options.domSelectors.input).on('keyup.' + this.uuid, function(event) {
-			this.sendAjax($(event.currentTarget).val());
+			if ($(event.currentTarget).val().length > 3) {
+				console.log($(event.target).val());
+			}
 		}.bind(this));
 	};
 
@@ -100,9 +102,20 @@
 	 */
 	Widget.prototype.openSearchBar = function() {
 		$(this.options.domSelectors.bar).addClass(this.options.stateClasses.isOpen);
-
 		this.options.searchBarIsOpen = true;
 
+		$(window).trigger(events.open);
+
+		/**
+		 * Have to set the timeout
+		 */
+		setTimeout(function() {
+			$(this.options.domSelectors.input).focus();
+		}.bind(this), 100);
+
+		/**
+		 * Additional single time events
+		 */
 		$(window).one('keydown.' + this.uuid, function() {
 			if (event.keyCode === 27) {
 				this.closeSearchBar();
@@ -112,10 +125,6 @@
 		$('.layout_wrapper').one('click.' + this.uuid, function() {
 			this.closeSearchBar();
 		}.bind(this));
-
-		$(this.options.domSelectors.input).focus();
-
-		$(window).trigger(events.open);
 	};
 
 	/**
@@ -127,23 +136,6 @@
 		this.options.searchBarIsOpen = false;
 
 		$(window).trigger(events.close);
-	};
-
-	/**
-	 * Sends the ajax request
-	 */
-	Widget.prototype.sendAjax = function(_query) {
-		if (_query.length > 3) {
-			$.ajax({
-				data: {
-					q: _query
-				},
-				method: 'GET',
-				url: this.options.ajaxSearchUrl
-			});
-		}
-
-		return false;
 	};
 
 	/**
