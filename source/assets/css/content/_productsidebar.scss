@@ -1,6 +1,15 @@
 .product_sidebar, .product_sidebar_v3 {
 
-	padding-right: $gutterWidth * 2;
+	padding-right: $gutterWidth;
+	padding-left: $gutterWidth / 2;
+
+	&.product_sidebar_v3 {
+		padding-left: $gutterWidth * 0.75;
+	}
+
+	&.is_stuck {
+		transform: translateX(-1 * ($gutterWidth * 0.6 ));
+	}
 
 	a.button,
 	a.button__secondary {

@@ -55,8 +55,6 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		console.log('breadcrumb initialized');
-
 		this.getListElements();
 		this.getLangString();
 

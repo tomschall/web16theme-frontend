@@ -26,7 +26,8 @@
 				isOpen: 'is_open'
 			},
 			searchBarIsOpen: false,
-			ajaxSearchUrl: '/mocks/widgets/searchbar/searchbar.json'
+			currentSearchValue: null,
+			searchIsFilled: false
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -91,10 +92,27 @@
 		}.bind(this));
 
 		$(this.options.domSelectors.input).on('keyup.' + this.uuid, function(event) {
-			if ($(event.currentTarget).val().length > 3) {
-				console.log($(event.target).val());
+			var value = $(event.currentTarget).val();
+
+			if (value.length >= 3 && value !== this.options.currentSearchValue) {
+				this.sendXHRObject($(event.currentTarget).val());
 			}
+
+			this.options.currentSearchValue = value;
+
 		}.bind(this));
+	};
+
+	/**
+	 * Sends the xhr object to search module in global namespace
+	 * @param _inputValue the input value
+   */
+	Widget.prototype.sendXHRObject = function(_inputValue) {
+		var xhrObject = {
+			q: _inputValue
+		};
+
+		window.estatico.search.search(xhrObject, true);
 	};
 
 	/**
@@ -106,13 +124,35 @@
 
 		$(window).trigger(events.open);
 
+		$('body').addClass('prevent-scroll');
+
 		/**
-		 * Have to set the timeout
+		 * Have to set the timeout so focus can be set
 		 */
 		setTimeout(function() {
 			$(this.options.domSelectors.input).focus();
 		}.bind(this), 100);
 
+		this.addSingleEventListeners();
+	};
+
+	/**
+	 * Close the search bar
+	 */
+	Widget.prototype.closeSearchBar = function() {
+		$(this.options.domSelectors.bar).removeClass(this.options.stateClasses.isOpen);
+
+		this.options.searchBarIsOpen = false;
+
+		$(window).trigger(events.close);
+
+		$('body').removeClass('prevent-scroll');
+	};
+
+	/**
+	 * Adding the single event listeners (one)
+	 */
+	Widget.prototype.addSingleEventListeners = function() {
 		/**
 		 * Additional single time events
 		 */
@@ -125,17 +165,6 @@
 		$('.layout_wrapper').one('click.' + this.uuid, function() {
 			this.closeSearchBar();
 		}.bind(this));
-	};
-
-	/**
-	 * Close the search bar
-	 */
-	Widget.prototype.closeSearchBar = function() {
-		$(this.options.domSelectors.bar).removeClass(this.options.stateClasses.isOpen);
-
-		this.options.searchBarIsOpen = false;
-
-		$(window).trigger(events.close);
 	};
 
 	/**
