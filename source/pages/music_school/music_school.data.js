@@ -40,24 +40,24 @@ var data = _.merge(defaultData, {
 		}, requireNew('../../widgets/hero/hero.data.js')),
 		subnav: _.assign(requireNew('../../widgets/subnav/subnav.data.js'), {
 			title: 'Musikhochschulen FHNW',
-			logo: 'music_school_logo.png',
+			logo: '/assets/media/img/music_school_logo.png',
 			subtitle: 'Hochschule für Musik',
 			entries: [
 				{
 					title: 'Leitung',
-					link: '#'
+					url: '#'
 				},
 				{
 					title: 'Kammermusik & Ensembles',
-					link: '#'
+					url: '#'
 				},
 				{
 					title: 'Konzerte & Events',
-					link: '#'
+					url: '#'
 				},
 				{
 					title: 'Preise & Auszeichnungen',
-					link: '#'
+					url: '#'
 				}
 			]
 		}),
@@ -88,7 +88,7 @@ var data = _.merge(defaultData, {
 				{
 					title: 'Viktor Gàl, Saxophone Klasse Marcus Weiss',
 					date: 'Donnerstag 23. Juni 2016, 15h',
-					link: '#',
+					url: '#',
 					variant: 'wide___third',
 					img: {
 						src: '/assets/media/img/music_school_event_1.png',
@@ -98,7 +98,7 @@ var data = _.merge(defaultData, {
 				{
 					title: 'Schlusskonzerte 2016 Hochschule für Musik',
 					date: '17.-29. Juni 2016, 15h',
-					link: '#',
+					url: '#',
 					variant: 'wide___third',
 					img: {
 						src: '/assets/media/img/music_school_event_2.png',
@@ -108,7 +108,7 @@ var data = _.merge(defaultData, {
 				{
 					title: 'Milena Martinez Alicino, Klavier Klasse Tobias Schabenberger',
 					date: 'Dienstag 14. Juni, 15h',
-					link: '#',
+					url: '#',
 					variant: 'wide___third',
 					img: {
 						src: '/assets/media/img/music_school_event_3.png',

@@ -41,23 +41,23 @@ var data = _.merge(defaultData, {
 			subnav: _.assign(requireNew('../../widgets/subnav/subnav.data.js'), {
 				title: 'Standorte',
 				subtitle: 'Standort Brugg-Windisch',
-				titleLink: '#',
+				titleUrl: '#',
 				entries: [
 					{
 						title: 'Sonderöffnungszeiten',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Gastronomie',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Weitere Angebote rund um den Standort',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Zu allen Standorten',
-						link: '../locations/locations.html',
+						url: '../locations/locations.html',
 						isBack: true
 					}
 				]
@@ -67,7 +67,7 @@ var data = _.merge(defaultData, {
 				teasers: [
 					{
 						title: 'Pädagogische Hochschule',
-						link: '#',
+						url: '#',
 						category: 'Hochschule',
 						variant: 'wide___third',
 						img: {
@@ -77,7 +77,7 @@ var data = _.merge(defaultData, {
 					},
 					{
 						title: 'Hochschule für Technik',
-						link: '#',
+						url: '#',
 						category: 'Hochschule',
 						variant: 'wide___third',
 						img: {
@@ -87,7 +87,7 @@ var data = _.merge(defaultData, {
 					},
 					{
 						title: 'Hochschule für Wirtschaft',
-						link: '#',
+						url: '#',
 						category: 'Hochschule',
 						variant: 'wide___third',
 						img: {
@@ -97,7 +97,7 @@ var data = _.merge(defaultData, {
 					},
 					{
 						title: 'Campusbibliothek Brugg-Windisch',
-						link: '/pages/library_brugg/library_brugg.html',
+						url: '/pages/library_brugg/library_brugg.html',
 						category: 'Bibliothek',
 						variant: 'wide___third',
 						img: {

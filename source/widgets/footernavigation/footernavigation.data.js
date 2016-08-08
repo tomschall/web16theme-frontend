@@ -11,16 +11,16 @@ var templateData = {
 			title: 'Angebot',
 			subentries: [
 				{
-					link: '#',
+					url: '#',
 					title: 'Studieren'
 				}, {
-					link: '#',
+					url: '#',
 					title: 'Weiterbilden'
 				}, {
-					link: '#',
+					url: '#',
 					title: 'Forschung & Praxis'
 				}, {
-					link: '#',
+					url: '#',
 					title: 'Angebote von A-Z'
 				}
 			]
@@ -29,19 +29,19 @@ var templateData = {
 			title: 'Direkteinstieg',
 			subentries: [
 				{
-					link: '/pages/locations/locations.html',
+					url: '/pages/locations/locations.html',
 					title: 'Standorte'
 				}, {
-					link: '/pages/library_overview/library_overview.html',
+					url: '/pages/library_overview/library_overview.html',
 					title: 'Bibliotheken'
 				}, {
-					link: '#',
+					url: '#',
 					title: 'Raumvermietung'
 				}, {
-					link: '#',
+					url: '#',
 					title: 'Barrierefreiheit'
 				}, {
-					link: '#',
+					url: '#',
 					title: 'Kinderbetreuung'
 				}
 			]
@@ -50,19 +50,19 @@ var templateData = {
 			title: 'Die FHNW',
 			subentries: [
 				{
-					link: '#',
+					url: '#',
 					title: 'Leitung'
 				}, {
-					link: '#',
+					url: '#',
 					title: 'Organisation'
 				}, {
-					link: '#',
+					url: '#',
 					title: 'Unsere Hochschulen'
 				}, {
-					link: '#',
+					url: '#',
 					title: 'Jobs & Karriere'
 				}, {
-					link: '#',
+					url: '#',
 					title: 'Corporate IT'
 				}
 			]
@@ -71,10 +71,10 @@ var templateData = {
 			title: 'Kontakt',
 			subentries: [
 				{
-					link: '#',
+					url: '#',
 					title: 'Medien und Öffentlichkeit'
 				}, {
-					link: '#',
+					url: '#',
 					title: 'Kontaktformular'
 				}
 			]

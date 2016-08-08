@@ -12,31 +12,31 @@ var templateData = {
 	entries: [
 		{
 			title: 'Organisation',
-			link: '#'
+			url: '#'
 		},
 		{
 			title: 'Beschwerdekommission',
-			link: '#'
+			url: '#'
 		},
 		{
 			title: 'Alumni',
-			link: '../alumni/alumni.html'
+			url: '../alumni/alumni.html'
 		},
 		{
 			title: 'Diversity und Gleichstellung',
-			link: '#'
+			url: '#'
 		},
 		{
 			title: 'Jahresbericht',
-			link: '#'
+			url: '#'
 		},
 		{
 			title: 'Offene Stellen',
-			link: '#'
+			url: '#'
 		},
 		{
 			title: 'Medien und Öffentlichkeit',
-			link: '#'
+			url: '#'
 		}
 	]
 },

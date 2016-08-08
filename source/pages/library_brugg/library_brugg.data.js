@@ -41,23 +41,23 @@ var data = _.merge(defaultData, {
 			subnav: _.assign(requireNew('../../widgets/subnav/subnav.data.js'), {
 				title: 'Bibliotheken der FHNW',
 				subtitle: 'Campusbibliothek Brugg-Windisch',
-				titleLink: '#',
+				titleurl: '#',
 				entries: [
 					{
 						title: 'Infrastruktur',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Organisation',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Medienangebot',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Zu allen Bibliotheken',
-						link: '../library_overview/library_overview.html',
+						url: '../library_overview/library_overview.html',
 						isBack: true
 					}
 				]

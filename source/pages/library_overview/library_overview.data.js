@@ -37,23 +37,23 @@ var data = _.merge(defaultData, {
 			subnav: _.assign(requireNew('../../widgets/subnav/subnav.data.js'), {
 				title: 'Bibliotheken der FHNW',
 				subtitle: null,
-				titleLink: '#',
+				titleurl: '#',
 				entries: [
 					{
 						title: 'Recherche und Ausleihe',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Anmeldung und Benutzerkonto',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Gebühren',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Zur FHNW',
-						link: '../about_us/about_us.html',
+						url: '../about_us/about_us.html',
 						isBack: true
 					}
 				]

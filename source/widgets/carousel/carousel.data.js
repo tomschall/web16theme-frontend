@@ -10,25 +10,25 @@ var templateData = {
 		{
 			title: 'Campus in Muttenz öffnet im Jahre 2018 die Tore',
 			category: 'Neuer Standort',
-			link: '#',
+			url: '#',
 			image: '/assets/media/img/bg_home_02.jpg'
 		},
 		{
 			title: 'FHNW bei Studierenden weiterhin beliebt',
 			category: 'Neuer Jahresbericht',
-			link: '#',
+			url: '#',
 			image: '/assets/media/img/bg_home_03.jpg'
 		},
 		{
 			title: 'Kommunikation und Online-Marketing',
 			category: 'Infoabend',
-			link: '#',
+			url: '#',
 			image: '/assets/media/img/bg_home_01.jpg'
 		},
 		{
 			title: 'Video',
 			category: 'Test',
-			link: '#',
+			url: '#',
 			video: '/assets/media/video/video_test.mp4'
 		}
 	]

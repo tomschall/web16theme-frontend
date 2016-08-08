@@ -9,7 +9,7 @@ var templateData = {
 	teasers: [
 		{
 			title: 'Campus Dreispitz (Basel)',
-			link: '#',
+			url: '#',
 			img: {
 				src: '/assets/media/img/campus_dreispitz.png',
 				alt: 'Campus Dreispitz'
@@ -17,7 +17,7 @@ var templateData = {
 		},
 		{
 			title: 'Campus Brugg-Windisch',
-			link: '#',
+			url: '#',
 			img: {
 				src: '/assets/media/img/campus_brugg.png',
 				alt: 'Campus Brugg-Windisch'
@@ -25,7 +25,7 @@ var templateData = {
 		},
 		{
 			title: 'Campus Muttenz',
-			link: '#',
+			url: '#',
 			img: {
 				src: '/assets/media/img/campus_muttenz.png',
 				alt: 'Campus Muttenz'
@@ -33,7 +33,7 @@ var templateData = {
 		},
 		{
 			title: 'Campus Olten',
-			link: '#',
+			url: '#',
 			img: {
 				src: '/assets/media/img/campus_olten.png',
 				alt: 'Campus Olten'

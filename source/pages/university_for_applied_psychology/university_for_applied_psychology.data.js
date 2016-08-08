@@ -43,27 +43,27 @@ var data = _.merge(defaultData, {
 				entries: [
 					{
 						title: 'Leitung',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Unsere Intitute',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Gremien',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Alumni',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Usability-Labor',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Zu allen Hochschulen',
-						link: '../universities_overview/universities_overview.html',
+						url: '../universities_overview/universities_overview.html',
 						isBack: true
 					}
 				]
@@ -73,7 +73,7 @@ var data = _.merge(defaultData, {
 					{
 						title: 'Info-Veranstaltung Master of Science Angewandte Psychologie',
 						date: '04.05.2016',
-						link: '#',
+						url: '#',
 						variant: 'wide___third',
 						img: {
 							src: '/assets/media/img/apevent1.png',
@@ -82,7 +82,7 @@ var data = _.merge(defaultData, {
 					},{
 						title: 'Info-Veranstaltung Bachelor Angewandte Psychologie',
 						date: '04.05.2016',
-						link: '#',
+						url: '#',
 						variant: 'wide___third',
 						img: {
 							src: '/assets/media/img/apevent2.png',
@@ -91,7 +91,7 @@ var data = _.merge(defaultData, {
 					}, {
 						title: 'Forum Wirtschaftspsychologie',
 						date: '04.05.2016',
-						link: '#',
+						url: '#',
 						variant: 'wide___third',
 						img: {
 							src: '/assets/media/img/apevent3.png',
@@ -104,7 +104,7 @@ var data = _.merge(defaultData, {
 				teasers: [
 					{
 						title: 'Institut Mensch in komplexen Systemen (MikS)',
-						link: '/pages/miks/miks.html',
+						url: '/pages/miks/miks.html',
 						variant: 'wide___third',
 						img: {
 							src: '/assets/media/img/miks_teaser.png',
@@ -112,7 +112,7 @@ var data = _.merge(defaultData, {
 						}
 					}, {
 						title: 'Institut für Kooperationsforschung und -entwicklung (ifk)',
-						link: '#',
+						url: '#',
 						variant: 'wide___third',
 						img: {
 							src: '/assets/media/img/ifk_teaser.png',

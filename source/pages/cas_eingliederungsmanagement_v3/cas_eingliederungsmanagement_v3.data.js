@@ -45,11 +45,11 @@ var data = _.merge(defaultData, {
 			subnav: _.assign(requireNew('../../widgets/subnav/subnav.data.js'), {
 				title: 'Weiterbildung Soziale Arbeit',
 				subtitle: 'Certificate of Advanced Studies Eingliederungsmanagement «Fallberatung»',
-				titleLink: '#',
+				titleUrl: '#',
 				entries: [
 					{
 						title: 'Fachbereich Soziale Arbeit',
-						link: '#',
+						url: '#',
 						isBack: true
 					}
 				]
@@ -105,7 +105,7 @@ var data = _.merge(defaultData, {
 						category: 'Hochschule für Soziale Arbeit',
 						variant: 'wide___third',
 						text: '27.06.2016 um 18:15 Uhr, Windisch',
-						link: '#'
+						url: '#'
 					}
 				]
 			}),
@@ -172,7 +172,7 @@ var data = _.merge(defaultData, {
 							}
 						],
 						additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-						btnLink: '#'
+						btnUrl: '#'
 					},
 					{
 						uid: '2',
@@ -210,7 +210,7 @@ var data = _.merge(defaultData, {
 							}
 						],
 						additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-						btnLink: '#'
+						btnUrl: '#'
 					},
 					{
 						uid: '3',
@@ -248,7 +248,7 @@ var data = _.merge(defaultData, {
 							}
 						],
 						additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-						btnLink: '#'
+						btnUrl: '#'
 					}
 				]
 			}),

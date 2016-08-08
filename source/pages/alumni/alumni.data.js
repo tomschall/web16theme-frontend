@@ -44,7 +44,7 @@ var data = _.merge(defaultData, {
 				entries: [
 					{
 						title: 'Zur FHNW',
-						link: '../about_us/about_us.html',
+						url: '../about_us/about_us.html',
 						isBack: true
 					}
 				]

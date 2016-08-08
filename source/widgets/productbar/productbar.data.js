@@ -8,8 +8,8 @@ var _ = require('lodash'),
 var templateData = {
 	courseType: 'CAS',
 	courseTitle: 'Eingliederungsmanagement',
-	infoEventsLink: '#infoEvents',
-	onlineApplicationLink: '#targetOnlineApplication',
+	infoEventsTarget: '#infoEvents',
+	onlineApplicationTarget: '#targetOnlineApplication',
 	langStrings: {
 		infoEvents: 'Infoveranstaltungen',
 		toApplication: 'Zur Anmeldung'

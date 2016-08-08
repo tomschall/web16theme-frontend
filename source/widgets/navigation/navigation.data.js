@@ -11,173 +11,173 @@ var templateData = {
 				entries: [
 					{
 						title: 'Studium',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Weiterbildung',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Forschung & Praxis',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Die FHNW',
-						link: '',
+						url: '',
 						list: {
 							level: 1,
 							entries: [
 								{
 									title: 'Übersicht',
-									link: '../about_us/about_us.html'
+									url: '../about_us/about_us.html'
 								},
 								{
 									title: 'Portrait',
-									link: '#'
+									url: '#'
 								},
 								{
 									title: 'Hochschulen',
-									link: '#',
+									url: '#',
 									list: {
 										level: 2,
 										entries: [
 											{
 												title: 'Hochschule für Angewandte Psychologie',
-												link: '../university_for_applied_psychology/university_for_applied/psychology.html'
+												url: '../university_for_applied_psychology/university_for_applied/psychology.html'
 											},
 											{
 												title: 'Hochschule für Architektur, Bau und Geomatik',
-												link: '#',
+												url: '#',
 												list: {
 													level: 3,
 													entries: [
 														{
 															title: 'Übersicht',
-															link: '#'
+															url: '#'
 														},
 														{
 															title: 'Institut für Architektur',
-															link: '#'
+															url: '#'
 														},
 														{
 															title: 'Institut für Bauingenieurwesen',
-															link: '#'
+															url: '#'
 														},
 														{
 															title: 'Institut für Vermessung und Geoinformation',
-															link: '#'
+															url: '#'
 														},
 														{
 															title: 'Institut für Energie am Bau',
-															link: '#'
+															url: '#'
 														}
 													]
 												}
 											},
 											{
 												title: 'Hochschule für Gestaltung und Kunst',
-												link: '#'
+												url: '#'
 											},
 											{
 												title: 'Hochschule für Life Sciences',
-												link: '#',
+												url: '#',
 												list: {
 													level: 3,
 													entries: [
 														{
 															title: 'Übersicht',
-															link: '#'
+															url: '#'
 														},
 														{
 															title: 'Lorem ipsum dolor',
-															link: '#'
+															url: '#'
 														},
 														{
 															title: 'Vanitas Carpe',
-															link: '#'
+															url: '#'
 														},
 														{
 															title: 'Institut für Medizinal- und Analysetechnologie',
-															link: '#'
+															url: '#'
 														},
 														{
 															title: 'Institut für Chemie und Bioanalytik',
-															link: '#'
+															url: '#'
 														},
 														{
 															title: 'Institut für Pharma Technology',
-															link: '#'
+															url: '#'
 														},
 														{
 															title: 'Institut für Ecopreneurship',
-															link: '#'
+															url: '#'
 														}
 													]
 												}
 											},
 											{
 												title: 'Musikhochschulen',
-												link: '../music_school/music_school.html'
+												url: '../music_school/music_school.html'
 											},
 											{
 												title: 'Pädagogische Hochschule',
-												link: '#'
+												url: '#'
 											},
 											{
 												title: 'Hochschule für Soziale Arbeit',
-												link: '#'
+												url: '#'
 											},
 											{
 												title: 'Hochschule für Technik',
-												link: '#'
+												url: '#'
 											},
 											{
 												title: 'Hochschule für Wirtschaft',
-												link: '#'
+												url: '#'
 											}
 										]
 									}
 								},
 								{
 									title: 'Organisation',
-									link: '#'
+									url: '#'
 								},
 								{
 									title: 'Alumni',
-									link: '#'
+									url: '#'
 								},
 								{
 									title: 'Stiftung',
-									link: '#'
+									url: '#'
 								},
 								{
 									title: 'Publikation',
-									link: '#',
+									url: '#',
 									list: {
 										level: 2,
 										entries: [
 											{
 												title: 'Übersicht',
-												link: '#'
+												url: '#'
 											},
 											{
 												title: 'Studentische Arbeiten',
-												link: '#'
+												url: '#'
 											},
 											{
 												title: 'Projekte',
-												link: '#'
+												url: '#'
 											}
 										]
 									}
 								},
 								{
 									title: 'Rechtliche Dokumente',
-									link: '#'
+									url: '#'
 								},
 								{
 									title: 'Kontakt',
-									link: '#'
+									url: '#'
 								}
 							]
 						}

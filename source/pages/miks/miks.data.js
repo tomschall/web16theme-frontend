@@ -45,27 +45,27 @@ var data = _.merge(defaultData, {
 			subnav: _.assign(requireNew('../../widgets/subnav/subnav.data.js'), {
 				title: 'Hochschule für Angewandte Psychologie',
 				subtitle: 'Institut Mensch in komplexen Systemen (MikS)',
-				titleLink: '#',
+				titleUrl: '#',
 				entries: [
 					{
 						title: 'Organisation',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Kooperationspartner',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Kernkompetenzen',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Dienstleitungs- und Beratungsangebot',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Zur Hochschule',
-						link: '../university_for_applied_psychology/university_for_applied_psychology.html',
+						url: '../university_for_applied_psychology/university_for_applied_psychology.html',
 						isBack: true
 					}
 				]
@@ -77,21 +77,21 @@ var data = _.merge(defaultData, {
 						projectTime: '31.12.2018',
 						variant: 'wide___third',
 						text: 'Automatisierung in den Betriebszentralen der Zukunft',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Indirekte Steuerung und Selbstgefährdung',
 						projectTime: '31.12.2018',
 						variant: 'wide___third',
 						text: 'Neue Herausforderungen für das betriebliche Gesundheitsmanagement: Umgang mit indirekter Steuerung und Selbstgefährdung in Betrieben',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Entrepreneur-Check',
 						projectTime: '31.12.2018',
 						variant: 'wide___third',
 						text: 'Persönlichkeit & Gesundheit von Unternehmerinnen und Unternehmern',
-						link: '#'
+						url: '#'
 					}
 				]
 			})

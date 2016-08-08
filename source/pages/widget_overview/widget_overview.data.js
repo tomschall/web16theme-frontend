@@ -43,27 +43,27 @@ var data = _.merge(defaultData, {
 				entries: [
 					{
 						title: 'Leitung',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Unsere Intitute',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Gremien',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Alumni',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Usability-Labor',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Zu allen Hochschulen',
-						link: '../universities_overview/universities_overview.html',
+						url: '../universities_overview/universities_overview.html',
 						isBack: true
 					}
 				]
@@ -73,7 +73,7 @@ var data = _.merge(defaultData, {
 					{
 						title: 'Info-Veranstaltung Master of Science Angewandte Psychologie',
 						date: '04.05.2016',
-						link: '#',
+						url: '#',
 						variant: 'wide___third',
 						img: {
 							src: '/assets/media/img/apevent1.png',
@@ -82,7 +82,7 @@ var data = _.merge(defaultData, {
 					},{
 						title: 'Info-Veranstaltung Bachelor Angewandte Psychologie',
 						date: '04.05.2016',
-						link: '#',
+						url: '#',
 						variant: 'wide___third',
 						img: {
 							src: '/assets/media/img/apevent2.png',
@@ -91,7 +91,7 @@ var data = _.merge(defaultData, {
 					}, {
 						title: 'Forum Wirtschaftspsychologie',
 						date: '04.05.2016',
-						link: '#',
+						url: '#',
 						variant: 'wide___third',
 						img: {
 							src: '/assets/media/img/apevent3.png',
@@ -104,7 +104,7 @@ var data = _.merge(defaultData, {
 				teasers: [
 					{
 						title: 'Institut Mensch in komplexen Systemen (MikS)',
-						link: '/pages/miks/miks.html',
+						url: '/pages/miks/miks.html',
 						variant: 'wide___third',
 						img: {
 							src: '/assets/media/img/miks_teaser.png',
@@ -112,7 +112,7 @@ var data = _.merge(defaultData, {
 						}
 					}, {
 						title: 'Institut für Kooperationsforschung und -entwicklung (ifk)',
-						link: '#',
+						url: '#',
 						variant: 'wide___third',
 						img: {
 							src: '/assets/media/img/ifk_teaser.png',
@@ -154,7 +154,7 @@ var data = _.merge(defaultData, {
 				teasers: [
 					{
 						title: 'Hochschule für Angewandte Psychologie',
-						link: '#',
+						url: '#',
 						text: 'Die Hochschule für Angewandte Psychologie FHNW ist ein Kompetenzzentrum für Fragen der Arbeits-und Wirtschaftspsychologie.',
 						img: {
 							src: '/assets/media/img/university_applied_psychology.png',
@@ -162,7 +162,7 @@ var data = _.merge(defaultData, {
 						}
 					}, {
 						title: 'Hochschule für Architektur, Bau und Geomatik FHNW',
-						link: '#',
+						url: '#',
 						text: 'Die Hochschule für Architektur, Bau und Geomatik befindet sich am Sitz Muttenz der Fachhochschule Nordwestschweiz FHNW.',
 						img: {
 							src: '/assets/media/img/university_architecture.png',
@@ -170,7 +170,7 @@ var data = _.merge(defaultData, {
 						}
 					}, {
 						title: 'Hochschule für Gestaltung und Kunst FHNW',
-						link: '#',
+						url: '#',
 						text: 'Die HGK FHNW ist ein Ort des Dialoges. Zwischen Studierenden und Lehrenden, Disziplinen und Kulturen, Wissenschaft und Öffentlichkeit.',
 						img: {
 							src: '/assets/media/img/university_design_and_art.png',
@@ -178,7 +178,7 @@ var data = _.merge(defaultData, {
 						}
 					}, {
 						title: 'Hochschule für Life Sciences FHNW',
-						link: '#',
+						url: '#',
 						text: 'Bei uns werden Fachleute im Schnittpunkt von Natur, Technik, Medizin und Umwelt, inmitten Europas grösster Life Science Region, ausgebildet. ',
 						img: {
 							src: '/assets/media/img/university_life_sciences.png',
@@ -194,21 +194,21 @@ var data = _.merge(defaultData, {
 						projectTime: '31.12.2018',
 						variant: 'wide___third',
 						text: 'Automatisierung in den Betriebszentralen der Zukunft',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Indirekte Steuerung und Selbstgefährdung',
 						projectTime: '31.12.2018',
 						variant: 'wide___third',
 						text: 'Neue Herausforderungen für das betriebliche Gesundheitsmanagement: Umgang mit indirekter Steuerung und Selbstgefährdung in Betrieben',
-						link: '#'
+						url: '#'
 					},
 					{
 						title: 'Entrepreneur-Check',
 						projectTime: '31.12.2018',
 						variant: 'wide___third',
 						text: 'Persönlichkeit & Gesundheit von Unternehmerinnen und Unternehmern',
-						link: '#'
+						url: '#'
 					}
 				]
 			}),

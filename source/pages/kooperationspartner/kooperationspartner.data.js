@@ -47,11 +47,11 @@ var data = _.merge(defaultData, {
 			subnav: _.assign(requireNew('../../widgets/subnav/subnav.data.js'), {
 				title: 'Hochschule für Angewandte Psychologie',
 				subtitle: 'Institut Mensch in komplexen Systemen (MikS)',
-				titleLink: '#',
+				titleUrl: '#',
 				entries: [
 					{
 						title: 'Zum Institut',
-						link: '../miks/miks.html',
+						url: '../miks/miks.html',
 						isBack: true
 					}
 				]

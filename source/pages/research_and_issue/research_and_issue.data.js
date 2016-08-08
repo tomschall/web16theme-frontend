@@ -42,11 +42,11 @@ var data = _.merge(defaultData, {
 				title: 'Bibliotheken der FHNW',
 				subtitle: null,
 				logo: null,
-				titleLink: '#',
+				titleUrl: '#',
 				entries: [
 					{
 						title: 'Zu Bibliotheken',
-						link: '../library_overview/library_overview.html',
+						url: '../library_overview/library_overview.html',
 						isBack: true
 					}
 				]
