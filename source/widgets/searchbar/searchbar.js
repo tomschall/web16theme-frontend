@@ -20,18 +20,31 @@
 				btn: '[data-' + name + '="btn"]',
 				bar: '[data-' + name + '="bar"]',
 				close: '[data-' + name + '="close"]',
-				input: '[data-' + name + '="input"]'
+				input: '[data-' + name + '="input"]',
+				intro: '[data-' + name + '="intro"]',
+				loader: '[data-' + name + '="loader"]',
+				content: '[data-' + name + '="content"]'
 			},
 			stateClasses: {
-				isOpen: 'is_open'
+				isOpen: 'is_open',
+				showLoader: 'show-loader',
+				showIntro: 'show-intro',
+				showResults: 'show-results'
 			},
-			searchBarIsOpen: false,
-			currentSearchValue: null,
-			searchIsFilled: false
+			listItemSpanClasses: {
+				title: 'title'
+			},
+			resultsShown: false,
+			searchEvents: {
+				dataLoaded: 'dataLoaded.estatico.search'
+			}
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
-		};
+		},
+		resultsShown = false,
+		currentSearchValue = null,
+		searchBarIsOpen = false;
 
 	/**
 	 * Create an instance of the Widget
@@ -68,7 +81,7 @@
 	 */
 	Widget.prototype.addEventHandlers = function() {
 		$(this.options.domSelectors.btn).on('click.' + this.uuid, function() {
-			if (this.options.searchBarIsOpen) {
+			if (searchBarIsOpen) {
 				this.closeSearchBar();
 			} else {
 				this.openSearchBar();
@@ -94,11 +107,15 @@
 		$(this.options.domSelectors.input).on('keyup.' + this.uuid, function(event) {
 			var value = $(event.currentTarget).val();
 
-			if (value.length >= 3 && value !== this.options.currentSearchValue) {
+			if (value.length >= 3 && value !== currentSearchValue) {
 				this.sendXHRObject($(event.currentTarget).val());
+			} else if (value.length === 0) {
+				this.changeSearchbarStatus(this.options.stateClasses.showIntro);
+
+				this.removeSearchResults();
 			}
 
-			this.options.currentSearchValue = value;
+			currentSearchValue = value;
 
 		}.bind(this));
 	};
@@ -113,6 +130,12 @@
 		};
 
 		window.estatico.search.search(xhrObject, true);
+
+		this.changeSearchbarStatus(this.options.stateClasses.showLoader);
+
+		$(window).one(this.options.searchEvents.dataLoaded, function(event, data) {
+			this.showResults(data);
+		}.bind(this));
 	};
 
 	/**
@@ -120,7 +143,7 @@
 	 */
 	Widget.prototype.openSearchBar = function() {
 		$(this.options.domSelectors.bar).addClass(this.options.stateClasses.isOpen);
-		this.options.searchBarIsOpen = true;
+		searchBarIsOpen = true;
 
 		$(window).trigger(events.open);
 
@@ -142,7 +165,7 @@
 	Widget.prototype.closeSearchBar = function() {
 		$(this.options.domSelectors.bar).removeClass(this.options.stateClasses.isOpen);
 
-		this.options.searchBarIsOpen = false;
+		searchBarIsOpen = false;
 
 		$(window).trigger(events.close);
 
@@ -165,6 +188,75 @@
 		$('.layout_wrapper').one('click.' + this.uuid, function() {
 			this.closeSearchBar();
 		}.bind(this));
+	};
+
+	/**
+	 * Show results
+	 * @param html the generated html
+   */
+	Widget.prototype.showResults = function(html) {
+		if (resultsShown) {
+			$(this.options.domSelectors.content).find('.search__results').remove();
+		}
+
+		$(this.options.domSelectors.content).find('.mCSB_container').append(html);
+
+		this.changeSearchbarStatus(this.options.stateClasses.showResults);
+
+		this.markSearchQuery();
+
+		$(this.options.domSelectors.content).css({
+			'height': $(this.options.domSelectors.content).height()
+		});
+
+		resultsShown = true;
+	};
+
+	/**
+	 * Change searchbar status
+	 */
+	Widget.prototype.changeSearchbarStatus = function(newState) {
+		$(this.options.domSelectors.bar).attr('class', function(index, css) {
+			return css.replace(/(^|\s)show-\S+/g, '');
+		});
+
+		$(this.options.domSelectors.bar).addClass(newState);
+
+	};
+
+	/**
+	 * Marks the search query
+	 */
+	Widget.prototype.markSearchQuery = function() {
+		var $searchbarContent = $(this.options.domSelectors.content),
+				$searchResultLists = $searchbarContent.find('li'),
+				$elementTitle = null,
+				titleSt = '',
+				queryStartPosition = 0,
+				queryEndPosition = 0,
+				markedTitle = null;
+
+		$searchResultLists.each(function(index, element) {
+			$elementTitle = $(element).find('a .' + this.options.listItemSpanClasses.title);
+			titleSt = $elementTitle.html();
+
+			queryStartPosition = titleSt.toLowerCase().search(currentSearchValue.toLowerCase());
+
+			if (queryStartPosition !== -1) {
+				queryEndPosition = queryStartPosition + currentSearchValue.length;
+
+				markedTitle = titleSt.substr(0, queryStartPosition) + '<span class="bold">' + titleSt.substr(queryStartPosition, currentSearchValue.length) + '</span>' + titleSt.substr(queryEndPosition);
+
+				$elementTitle.html(markedTitle);
+			}
+		}.bind(this));
+	};
+
+	/**
+	 * Remove search results
+	 */
+	Widget.prototype.removeSearchResults = function() {
+		$(this.options.domSelectors.content).find('.search__results').remove();
 	};
 
 	/**

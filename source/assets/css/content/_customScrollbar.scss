@@ -1,0 +1,24 @@
+// Remove that ugly margin right
+.mCSB_inside > .mCSB_container {
+	margin-right: 0;
+}
+
+.mCS-fhnw {
+	&.mCSB_scrollTools {
+		width: 6px;
+		opacity: 1;
+
+		.mCSB_dragger .mCSB_dragger_bar {
+			border-radius: 0;
+			width: 5px;
+			margin-right: 1px;
+			opacity: 1;
+
+			background-color: $customScrollbarColor;
+		}
+
+		.mCSB_draggerRail {
+			display: none;
+		}
+	}
+}

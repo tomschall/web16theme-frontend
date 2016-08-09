@@ -64,6 +64,32 @@
 	//The fhnw logo on the bottom
 }
 
+.widg_searchbar-bar__content {
+	min-height: calc(100vh - 100px);
+	max-height: calc(100vh - 100px);
+
+	position: relative;
+	overflow-y: auto;
+
+	padding-bottom: $searchbarBlackBarHeight;
+
+	@include mq($from: $sizeBreakpointWide) {
+		min-height: calc(100vh - 150px);
+		max-height: calc(100vh - 150px);
+	}
+
+	@include mq($to: $sizeBreakpointLarge) {
+		min-height: calc(100vh - 60px);
+		max-height: calc(100vh - 60px);
+
+	}
+
+	@include mq($to: $sizeBreakpointMedium) {
+		min-height: calc(100vh - 130px);
+		max-height: calc(100vh - 130px);
+	}
+}
+
 .widg_searchbar-bar__search {
 	@include basicUnitHeight(height);
 
@@ -115,6 +141,7 @@
 
 .widg_searchbar-bar__intro {
 	padding: $basicPush * 4 $basicPush * 3;
+	display: none;
 
 	p {
 		line-height: 1.5;
@@ -151,5 +178,57 @@
 			background-color: $colorLightGray;
 		}
 
+	}
+
+	.show-intro & {
+		display: block;
+	}
+}
+
+.widg_searchbar-bar__loader {
+	display: none;
+
+	.show-loader & {
+		display: block;
+	}
+}
+
+.widg_searchbar__black-bar {
+	display: none;
+	position: absolute;
+	bottom: 0;
+
+	width: 100%;
+	background-color: $colorBlack;
+
+	opacity: 1;
+	color: $colorBg;
+	text-decoration: none;
+
+	font-size: 1.25rem;
+
+	height: $searchbarBlackBarHeight;
+	line-height: $searchbarBlackBarHeight;
+	padding: 0 $searchbarPadding;
+
+	box-shadow: 13px 0 29px 0 rgba($colorBlack, 0.15);
+
+	@include iconDataurl('pfeil-weiss_short', $after: true);
+
+	&:after {
+		width: 17px;
+		height: $searchbarBlackBarHeight;
+
+		margin-right: 8px;
+
+		float: right;
+		display: block;
+
+		background-position: center center;
+	}
+
+	// When bar is set on show results show the black button
+	.show-results & {
+		display: block;
 	}
 }

@@ -26865,6 +26865,11 @@
       "from": "jquery@2.1.3",
       "resolved": "https://registry.npmjs.org/jquery/-/jquery-2.1.3.tgz"
     },
+    "jquery-mousewheel": {
+      "version": "3.1.13",
+      "from": "jquery-mousewheel@3.1.13",
+      "resolved": "https://registry.npmjs.org/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz"
+    },
     "jquery-validation": {
       "version": "1.15.0",
       "from": "jquery-validation@1.15.0",
@@ -27382,10 +27387,20 @@
         }
       }
     },
+    "malihu-custom-scrollbar-plugin": {
+      "version": "3.1.5",
+      "from": "malihu-custom-scrollbar-plugin@3.1.5",
+      "resolved": "https://registry.npmjs.org/malihu-custom-scrollbar-plugin/-/malihu-custom-scrollbar-plugin-3.1.5.tgz"
+    },
     "marked": {
       "version": "0.3.3",
       "from": "marked@0.3.3",
       "resolved": "https://registry.npmjs.org/marked/-/marked-0.3.3.tgz"
+    },
+    "material-spinner": {
+      "version": "0.0.9",
+      "from": "material-spinner@0.0.9",
+      "resolved": "https://registry.npmjs.org/material-spinner/-/material-spinner-0.0.9.tgz"
     },
     "merge-stream": {
       "version": "0.1.7",

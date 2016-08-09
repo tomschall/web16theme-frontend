@@ -43,6 +43,7 @@
 	background-color: rgba($colorBlack, 0.8);
 	position: absolute;
 	transform: translateY(-100%);
+	width: 100%;
 
 	@include mq($to: $sizeBreakpointSubnav) {
 		display: none;

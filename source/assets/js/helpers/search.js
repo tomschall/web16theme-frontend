@@ -9,11 +9,14 @@
 
 	var searchbarURL = '/mocks/widgets/searchbar/searchbar.json',
 			searchpageURL = '',
+			events = {
+				dataLoaded: 'dataLoaded.estatico.search'
+			},
 
 			listEntryTemplates = {
 				normal: '<li class="search__result-normal"><a href="{{link}}"><span class="title">{{title}}</span></a></li>',
 				event: '<li class="search__result-event"><a href="{{link}}"><span class="title">{{title}}</span><span class="event-info">{{eventDetail}}</span></a></li>',
-				doc: '<li class="search__result-doc"><a href="{{link}}"><span class="title">{{title}}<span class="visible-phone">({{fileType}})</span></span><span class="file-type"></span></a></li>'
+				doc: '<li class="search__result-doc"><a href="{{link}}"><span class="title">{{title}} <span class="visible-in-bar">({{fileType}})</span></span></a></li>'
 			};
 
 	function generateSearchListItem(listEntry) {
@@ -42,7 +45,8 @@
 				$searchCategory = null,
 				$categoryList = null,
 				$categoryTitle = null,
-				$tempListDOM = null;
+				$tempListDOM = null,
+				$responseHTML = $('<div class="search__results"></div>');
 
 		responseData.forEach(function(entry) {
 			$searchCategory = $('<div class="search__cat"></div>');
@@ -57,10 +61,14 @@
 			entry.entries.forEach(function(listEntry) {
 				$tempListDOM = generateSearchListItem(listEntry);
 
-				console.log('tempListDOM', $tempListDOM);
+				$categoryList.append($tempListDOM);
 			});
 
+			$searchCategory.append($categoryTitle).append($categoryList);
+			$responseHTML.append($searchCategory);
 		});
+
+		$(window).trigger(events.dataLoaded, $responseHTML);
 	}
 
 	function search(query, isSearchbar) {

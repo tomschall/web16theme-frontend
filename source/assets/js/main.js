@@ -8,6 +8,9 @@
  * @requires ../../../node_modules/jquery-validation/dist/jquery.validate.js
  * @requires ../../../node_modules/jquery-validation/dist/additional-methods.js
  * @requires ../../../node_modules/sticky-kit/dist/sticky-kit.js
+ * @requires ../../../node_modules/jquery-mousewheel/jquery.mousewheel.js
+ * @requires ../../../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js
+ * @requires ../../../node_modules/material-spinner/dist/js/material.spinner.js
 
  * @requires ../.tmp/templates.js
 
@@ -17,6 +20,7 @@
  * @requires helpers/formElementHelper.js
  * @requires helpers/sidebarHelper.js
  * @requires helpers/search.js
+ * @requires helpers/initVendorPlugins.js
  *
  * @requires ../../widgets/share/share.js
  * @requires ../../widgets/searchbar/searchbar.js
