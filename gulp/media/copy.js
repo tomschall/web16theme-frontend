@@ -15,7 +15,8 @@ var taskName = 'media:copy',
 			'./source/tmp/media/**/*',
 			'./source/preview/assets/media/**/*',
 			'./source/widgets/**/media/*',
-			'./source/demo/widgets/**/media/*'
+			'./source/demo/widgets/**/media/*',
+			'./source/assets/hbs/**/**/*'
 		],
 		dest: './build/',
 		watch: [
@@ -24,7 +25,8 @@ var taskName = 'media:copy',
 			'source/tmp/media/**/*',
 			'source/preview/assets/media/**/*',
 			'source/widgets/**/media/*',
-			'source/demo/widgets/**/media/*'
+			'source/demo/widgets/**/media/*',
+			'source/assets/hbs/**/**/*'
 		]
 	};
 

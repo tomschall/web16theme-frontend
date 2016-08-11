@@ -1,0 +1,17 @@
+.widg_searchpage {
+	min-height: 200px;
+
+	.fhnw-spinner {
+		display: none;
+	}
+
+	&.show_loading {
+		.fhnw-spinner {
+			display: block;
+		}
+
+		.search__results {
+			display: none;
+		}
+	}
+}

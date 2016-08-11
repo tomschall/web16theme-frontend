@@ -8,15 +8,15 @@
 	'use strict';
 
 	var searchbarURL = '/mocks/widgets/searchbar/searchbar.json',
-			searchpageURL = '',
+			searchpageURL = '/mocks/widgets/searchpage/searchpage.json',
 			events = {
 				dataLoaded: 'dataLoaded.estatico.search'
 			},
 
 			listEntryTemplates = {
-				normal: '<li class="search__result-normal"><a href="{{link}}"><span class="title">{{title}}</span></a></li>',
+				normal: '<li class="search__result-normal"><a href="{{link}}"><span class="title">{{title}}</span>{{#each additionalInformation}} <span class="{{type}} visible-in-page">{{text}}</span>{{/each}} </a></li>',
 				event: '<li class="search__result-event"><a href="{{link}}"><span class="title">{{title}}</span><span class="event-info">{{eventDetail}}</span></a></li>',
-				doc: '<li class="search__result-doc"><a href="{{link}}"><span class="title">{{title}} <span class="visible-in-bar">({{fileType}})</span></span></a></li>'
+				doc: '<li class="search__result-doc"><a href="{{link}}"><span class="title">{{title}}<span class="visible-in-bar">({{fileType}})</span></span><span class="file-type">{{fileType}}</span></a></li>'
 			};
 
 	function generateSearchListItem(listEntry) {
@@ -40,6 +40,10 @@
 		return generatedHTML;
 	}
 
+	/**
+	 * Handles the returned data and puts it in the html Templates
+	 * @param data
+   */
 	function handleReturnData(data) {
 		var responseData = data.response,
 				$searchCategory = null,
@@ -71,6 +75,11 @@
 		$(window).trigger(events.dataLoaded, $responseHTML);
 	}
 
+	/**
+	 * Execs the search
+	 * @param query the single word search query
+	 * @param isSearchbar if the search is triggered in the searchbar (different ajax target)
+   */
 	function search(query, isSearchbar) {
 		if (typeof isSearchbar === typeof undefined) {
 			isSearchbar = false;
@@ -94,10 +103,30 @@
 		}
 	}
 
+	function transformToAssocArray(searchprmtrs) {
+		var params = {},
+				pmarr = searchprmtrs.split('&');
+
+		for (var i = 0; i < pmarr.length; i++) {
+			var tmparr = pmarr[i].split('=');
+
+			params[tmparr[0]] = tmparr[1];
+		}
+
+		return params;
+	}
+
+	function getSearchParameters() {
+		var searchprmtrs = window.location.search.substr(1);
+
+		return searchprmtrs !== null && searchprmtrs !== '' ? transformToAssocArray(searchprmtrs) : {};
+	}
+
 	// Save to global namespace
 	$.extend(true, estatico, {
 		search: {
-			search: search
+			search: search,
+			getSearchParameters: getSearchParameters
 		}
 	});
 })(jQuery);

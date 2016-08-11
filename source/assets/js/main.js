@@ -34,6 +34,7 @@
  * @requires ../../widgets/breadcrumb/breadcrumb.js
  * @requires ../../widgets/productbar/productbar.js
  * @requires ../../widgets/toplink/toplink.js
+ * @requires ../../widgets/searchpage/searchpage.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js

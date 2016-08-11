@@ -8,8 +8,16 @@
 ;(function($, undefined) {
 	'use strict';
 
+
+
 	$(document).ready(function() {
-		$('div.input__text').find('input').on('change.fillInput', function() {
+
+		var $textInputFields = $('.ArchetypesStringWidget, .search__string').find('input');
+
+		/**
+		 * Event when text input fields are changed
+		 */
+		$textInputFields.on('change.fillInput', function() {
 			if ($(this).val() !== '') {
 				$(this).addClass('is_filled');
 			} else {
@@ -19,6 +27,10 @@
 
 		$('.custom-select').select2({
 			minimumResultsForSearch: Infinity
+		});
+
+		$('.reset-field').on('click.formElementHelper', function() {
+			$(this).prevAll('input').val('').trigger('change.fillInput');
 		});
 
 		$('form[data-validate="true"]').validate({

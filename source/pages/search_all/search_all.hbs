@@ -1,0 +1,22 @@
+{{#extend "layouts/layout" pageTypeClass="search-page"}}
+	{{#content "content"}}
+		<h1 id="search-title" data-searchpage="title">Alle Suchergebnisse</h1>
+
+		<div class="search__wrapper">
+			<div class="search__form-wrapper search__form-all">
+				<div class="search__string-holder">
+          <div class="search__string">
+            <input type="text" value="" id="search-string" name="search-string" data-searchpage="query"/>
+            <label for="search-string">Suchbegriff</label>
+						<span class="reset-field" aria-hidden="true">Feld zurücksetzen</span>
+          </div>
+				</div>
+				<div class="search__button">
+          <button class="button search__button" data-searchpage="btn">Suchen</button>
+				</div>
+			</div>
+			{{> "widgets/searchpage/searchpage" widgets.searchpage }}
+		</div>
+
+	{{/content}}
+{{/extend}}

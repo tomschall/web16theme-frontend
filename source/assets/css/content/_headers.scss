@@ -29,6 +29,14 @@ h1 {
 			width: 80px;
 		}
 	}
+
+	&#search-title {
+		padding-left: $gutterWidth;
+		padding-right: $gutterWidth;
+		&:after {
+			display: none;
+		}
+	}
 }
 
 h2 {

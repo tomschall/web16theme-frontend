@@ -11,6 +11,14 @@
 	color: $colorBorderGrey;
 	background-color: $colorLightGray;
 	padding: 10px $searchbarPadding 9px $searchbarPadding;
+
+	// When on Searchpage
+	.widg_searchpage & {
+		@include contentWrapper(0, false);
+
+		padding-top: 10px;
+		padding-bottom: 9px;
+	}
 }
 
 a.search__cat-title {
@@ -37,23 +45,50 @@ a.search__cat-title {
 		width: 17px;
 		height: 9px;
 	}
+
+	.widg_searchpage & {
+		@include iconDataurl('pfeil-black', $after: true);
+	}
 }
 
 .search__cat {
 
 	margin: $basicPush * 1.5 0 $basicPush * 2.7 0;
 
+	/**
+	  * On Searchpage first item shouldn't have a margin-top
+	  */
+	.widg_searchpage & {
+		&:first-of-type {
+			margin-top: 0;
+		}
+	}
+
 	ul {
 		list-style: none;
 		margin: 3px 0;
 		padding: 0;
+
+		.widg_searchpage & {
+			@include contentWrapper(0, false);
+		}
 	}
+}
+
+.search__cat-title-label {
+	float: right;
+	display: inline-block;
+	text-align: right;
+
+	margin-right: -1.5 * $basicPush;
 }
 
 [class^="search__result-"] {
 	padding: 0 $searchbarPadding;
 
 	a {
+		@include clearfix();
+
 		display: block;
 		opacity: 1;
 
@@ -66,7 +101,6 @@ a.search__cat-title {
 
 		@include iconDataurl('pfeil-black_short', $after: true);
 		position: relative;
-
 
 		&:after {
 			position: absolute;
@@ -94,6 +128,7 @@ a.search__cat-title {
 			color: $colorBorderGrey;
 		}
 	}
+
 
 	&:last-of-type a {
 		border-bottom: none;
@@ -124,6 +159,63 @@ a.search__cat-title {
 }
 
 /**
+  * Results on the searchpage
+  */
+.widg_searchpage [class^="search__result-"] {
+	padding: 0;
+
+	a {
+		padding: 25px 4px 24px 4px;
+		@include clearfix;
+
+		@include iconDataurl('pfeil-black', $after: true);
+
+		&:after {
+			display: none;
+
+			width: 27px;
+			height: 9px;
+		}
+		&:hover:after {
+			display: block;
+		}
+	}
+
+	span {
+		display: inline-block;
+		float: none !important;
+
+		&.title {
+			@include span(8);
+
+		}
+
+		&.study_type,
+		&.event-info,
+		&.file-type {
+			@include span(3);
+			text-align: right;
+
+			font-size: 1.166667rem;
+		}
+	}
+}
+
+.widg_searchpage .search__result-event {
+	a {
+		@include iconDataurl('event');
+
+		// basic padding left event icon width margin between text and event icon
+		padding-left: 4px + 22px + 12px;
+
+		&:before {
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+}
+
+/**
   * Helper classes for search
   */
 .visible-in-bar {
@@ -131,5 +223,78 @@ a.search__cat-title {
 
 	.widg_searchbar-bar & {
 		display: inline;
+	}
+}
+
+.visible-in-page {
+	display: none;
+
+	.widg_searchpage & {
+		display: inline-block;
+	}
+}
+
+/**
+  * Styles for the searchpages / formfields and wrapper
+  */
+.search__wrapper {
+	@include bleedFull($gutterWidth);
+}
+
+.search__form-wrapper {
+	@include contentWrapper($gutterWidth, true);
+
+	box-shadow: 0 3px 14px 0 rgba($colorBlack, 0.07);
+	padding-bottom: $basicPush * 4.5;
+
+	position: relative;
+	z-index: 2;
+
+	/**
+	  * Styles for the searchform of all results (no special subcategory)
+	  */
+	&.search__form-all {
+		.search__string-holder {
+			@include span(9);
+		}
+
+		.search__button {
+			@include span(3);
+
+			button,
+			.button {
+				width: 100%;
+			}
+		}
+	}
+}
+
+/**
+  * Special styling for search fields
+  */
+.search__string {
+	.reset-field {
+		display: none;
+	}
+	input.is_filled + label + .reset-field {
+		display: block;
+		text-indent: -10000px;
+
+		opacity: 0.5;
+
+		@include iconDataurl('breadcrumb-expand', $after: true);
+
+		&:after {
+			position: absolute;
+			top: 50%;
+			right: 19px;
+
+			transform: translateY(-50%) rotate(45deg);
+		}
+
+		&:hover {
+			opacity: 1;
+			cursor: pointer;
+		}
 	}
 }

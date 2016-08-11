@@ -34,7 +34,6 @@
 			listItemSpanClasses: {
 				title: 'title'
 			},
-			resultsShown: false,
 			searchEvents: {
 				dataLoaded: 'dataLoaded.estatico.search'
 			}
