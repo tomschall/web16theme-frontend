@@ -20,7 +20,7 @@ var data = _.merge(defaultData, {
 			hero: _.assign({
 				heroImage: '/assets/media/img/applied_psychology.png',
 				heroAlt: 'Symbolbild',
-				breadrumb: {
+				breadcrumb: {
 					entries: [
 						{
 							'url': '../startpage_prototype/startpage_prototype.html',
