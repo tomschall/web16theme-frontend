@@ -263,3 +263,89 @@ a.search__cat-title {
 		}
 	}
 }
+
+.search__form-wrapper {
+	> div {
+		@include clearfix;
+	}
+}
+.search__second-row {
+	max-height: 0;
+	overflow: hidden;
+	margin-top: 0;
+
+	transition: margin-left .5s, max-height .5s .5s, margin-top .5s .5s;
+
+	margin-left: -100vw;
+
+	&.is_visible {
+		max-height: 70px;
+		margin-top: $gutterWidth * 2;
+		margin-left: 0;
+
+		transition: max-height .5s, margin-top .5s, margin-left .5s .5s ;
+	}
+}
+
+/**
+  * Everything for the third row
+  */
+
+.search__third-row {
+	margin-top: $basicPush * 2.5;
+}
+
+.search__extra-holder {
+	@include span(6);
+
+	&:last-of-type {
+		text-align: right;
+	}
+
+	button {
+		@include noStyledButton;
+		letter-spacing: normal;
+
+		font-size: 1.25rem;
+		color: $colorTextGrey;
+		font-weight: 600;
+
+		text-decoration: underline;
+		margin-right: $basicPush * 3.9;
+		position: relative;
+
+		padding-left: $buttonIconSize * 1.5;
+		line-height: 2;
+
+		&:hover {
+			color: $colorBlack;
+
+			&:before {
+				opacity: 1;
+			}
+		}
+
+		&:before {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 0;
+			opacity: 0.5;
+
+			width: $buttonIconSize;
+			height: $buttonIconSize;
+		}
+
+		&.search__expander {
+			@include iconDataurl('breadcrumb-expand');
+
+			&.is_active {
+				@include iconDataurl('breadcrumb-hide');
+			}
+		}
+
+		&.search__reset {
+			margin-right: 0;
+		}
+	}
+}

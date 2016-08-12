@@ -16,6 +16,14 @@
 	}
 }
 
+.search__results.search__table {
+	@include contentWrapper(0, false);
+
+	table {
+		width: 100%;
+	}
+}
+
 /**
   * Styles for the searchpages / formfields and wrapper
   */
@@ -52,5 +60,30 @@
 				width: 100%;
 			}
 		}
+	}
+}
+
+/**
+  * Styles for the searchtable
+  */
+.search__table {
+	margin-bottom: $basicPush * 3;
+	margin-top: $basicPush * 1;
+
+	td,
+	th {
+		padding: 25px 10px;
+		font-size: 1.25rem;
+
+		border-bottom: 1px solid $colorBlack;
+
+		&:first-child {
+			font-weight: 600;
+		}
+	}
+
+	th {
+		text-align: left;
+		border-bottom: 2px solid $colorBlack;
 	}
 }

@@ -19,12 +19,17 @@
 				queryInput: '[data-' + name + '="query"]',
 				btn: '[data-' + name + '="btn"]',
 				title: '[data-' + name + '="title"]',
-				formWrapper: '[data-' + name + '="formWrapper"]'
+				formWrapper: '[data-' + name + '="formWrapper"]',
+				expanderBtn: '[data-' + name + '="extendBtn"]',
+				resetBtn: '[data-' + name + '="reset"]',
+				expandedFilters: '[data-' + name + '="expandedFilters"]'
 			},
 			stateClasses: {
 				isFilled: 'is_filled',
 				showLoading: 'show_loading',
-				showResults: 'show_results'
+				showResults: 'show_results',
+				isVisible: 'is_visible',
+				isActive: 'is_active'
 			},
 			listItemSpanClasses: {
 				title: 'title'
@@ -38,7 +43,9 @@
 		},
 		searchParam = {},
 		resultsShown = false,
-		searchType = '';
+		searchType = '',
+		expandedFilters = false,
+		isCategorySearch = false;
 
 	/**
 	 * Create an instance of the widget
@@ -73,6 +80,12 @@
 
 		if (searchType === 'all') {
 			this.initFormAndTitle();
+		} else {
+			isCategorySearch = true;
+
+			searchParam.category = searchType;
+
+			this.fillForm();
 		}
 
 		if (typeof searchParam.q !== typeof undefined) {
@@ -93,6 +106,14 @@
 		$(this.options.domSelectors.queryInput).on('change.' + this.uuid, function(event) {
 			searchParam.q = $(event.target).val();
 		});
+
+		$(this.options.domSelectors.expanderBtn).on('click.' + this.uuid, function(event) {
+			expandedFilters = !expandedFilters;
+
+			$(this.options.domSelectors.expandedFilters).toggleClass(this.options.stateClasses.isVisible);
+
+			$(event.currentTarget).toggleClass(this.options.stateClasses.isActive);
+		}.bind(this));
 	};
 
 	/**
@@ -111,12 +132,20 @@
 		$(this.options.domSelectors.title).text(this.$element.data('lang-title') + ' «' + searchParam.q + '»');
 	};
 
+	Widget.prototype.fillForm = function() {
+		for (var key in searchParam) {
+			if (searchParam.hasOwnProperty(key)) {
+				$('[data-searchparam="' + key + '"]').val(searchParam[key]).trigger('change');
+			}
+		}
+	};
+
 	/**
 	 * Sends the complete xhr request to search
 	 * @param _inputValue
    */
 	Widget.prototype.sendXHRObject = function() {
-		window.estatico.search.search(searchParam, false);
+		window.estatico.search.search(searchParam, false, isCategorySearch);
 
 		this.changeStatus(this.options.stateClasses.showLoading);
 

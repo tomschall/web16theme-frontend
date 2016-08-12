@@ -69,10 +69,12 @@
 			var $select = $(event.target),
 					$select2 = $select.nextAll('.select2-container');
 
-			if ($select.val() === null) {
+			if ($select.val() === null || $select.val() === '') {
 				$select2.removeClass('has-selection');
+				$select2.nextAll('.custom-select___remover').hide();
 			} else {
 				$select2.addClass('has-selection');
+				$select2.nextAll('.custom-select___remover').show();
 
 				checkSelection($select2);
 			}
@@ -87,6 +89,10 @@
 					}
 				});
 			}, 200);
+		});
+
+		$('.custom-select___remover').on('click.formElementHelper', function() {
+			$(this).prevAll('select').val('').trigger('change');
 		});
 	}
 

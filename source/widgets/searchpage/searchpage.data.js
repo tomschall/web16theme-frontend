@@ -8,7 +8,9 @@ var _ = require('lodash'),
 var templateData = {
 			langStrings: {
 				allResults: 'Alle Suchergebnisse für',
-				all: 'Alle'
+				all: 'Alle',
+				advancedStudiesFoundPlural: 'Weiterbildungsangebote gefunden',
+				advancedStudiesFoundSingular: 'Weiterbildungsangebot gefunden'
 			}
 		},
 		data = _.merge(defaultData, {

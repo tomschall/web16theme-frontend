@@ -28,8 +28,8 @@ $colorBg: #ffffff;
 $colorBlack: #000000;
 $colorLightGray: #F1F1EE;
 $colorDarkGrey: #999999;
-$colorBorderGrey: #767573;
 $colorTextGrey: #767676;
+$colorBorderGrey: $colorTextGrey;
 $colorGreyHover: #deded9;
 $colorSearchBarInputFocus: #f7f7f5;
 $customScrollbarColor: #bebdb9;
@@ -135,6 +135,8 @@ $radioCheckboxDimensionInner: 11px;
 $minInputWidth: 240px;
 $searchbarBlackBarHeight: 70px;
 $searchbarPadding: 30px;
+
+$buttonIconSize: 16px;
 
 $elementHeight: (
 	desktop: 60px,

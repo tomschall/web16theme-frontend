@@ -1,6 +1,9 @@
 /**
   * Selectbox
   */
+select {
+	width: 100%;
+}
 
 .select2__wrapper,
 .ArchetypesSelectionWidget {
@@ -25,7 +28,7 @@
 
 .search__holder.select2__wrapper {
 	.formQuestion {
-		left: $gutterWidth / 2 + 19px;
+		left: $gutterWidth + 18px;
 	}
 }
 
@@ -53,6 +56,9 @@
 
 			color: $colorBlack;
 			font-size: 1.25rem;
+
+			padding-left: 16px;
+			padding-top: 9px;
 
 			&:focus {
 				outline: none;
@@ -104,8 +110,8 @@
 		}
 
 		.select2-selection__rendered {
-			padding-left: 10px;
 			padding-right: 30px;
+			padding-top: 0;
 		}
 
 		.select2-selection__choice {
@@ -217,6 +223,39 @@
 			left: 22px;
 
 		}
+	}
+}
+
+/**
+  * Special styles for the incredible long dropdown (topic) jet's it is special
+  */
+.custom-select___long + span.select2-container {
+	&.has-selection {
+		.select2-selection__arrow {
+			display: none;
+		}
+	}
+}
+
+.custom-select___remover {
+	display: none;
+
+	@include iconDataurl('breadcrumb-expand');
+
+	position: absolute;
+
+	right: 23px;
+	top: 50%;
+	transform: translateY(-50%) rotate(45deg);
+
+	width: 16px;
+	height: 16px;
+
+	opacity: 0.5;
+
+	&:hover {
+		opacity: 1.0;
+		cursor: pointer;
 	}
 }
 

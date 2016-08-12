@@ -9,6 +9,7 @@
 
 	var searchbarURL = '/mocks/widgets/searchbar/searchbar.json',
 			searchpageURL = '/mocks/widgets/searchpage/searchpage.json',
+			searchpageCategoryURL = '/mocks/widgets/searchpage/searchpage.category.json',
 			events = {
 				dataLoaded: 'dataLoaded.estatico.search'
 			},
@@ -17,7 +18,8 @@
 				normal: '<li class="search__result-normal"><a href="{{link}}"><span class="title">{{title}}</span>{{#each additionalInformation}} <span class="{{type}} visible-in-page">{{text}}</span>{{/each}} </a></li>',
 				event: '<li class="search__result-event"><a href="{{link}}"><span class="title">{{title}}</span><span class="event-info">{{eventDetail}}</span></a></li>',
 				doc: '<li class="search__result-doc"><a href="{{link}}"><span class="title">{{title}}<span class="visible-in-bar">({{fileType}})</span></span><span class="file-type">{{fileType}}</span></a></li>'
-			};
+			},
+			activeCategorySearch = false;
 
 	function generateSearchListItem(listEntry) {
 		var template = null,
@@ -41,6 +43,40 @@
 	}
 
 	/**
+	 * Generates the result table for the category search
+	 * @param data
+   */
+	function generateResultTable(data) {
+		var results = data.response.results,
+				headers = data.response.headers,
+				$responseHTML = $('<table></table>'),
+				$headersRow = $('<tr></tr>'),
+				$tempRow = $('<tr></tr>');
+
+		headers.forEach(function(header) {
+			if (header === 'URL') {
+				$headersRow.append('<th class="url">' + header + '</th>');
+			} else {
+				$headersRow.append('<th>' + header + '</th>');
+			}
+		});
+
+		$responseHTML.append($headersRow);
+
+		results.forEach(function(row) {
+			$tempRow = $('<tr></tr>');
+
+			row.forEach(function(cell) {
+				$tempRow.append('<td data-searchpage="' + cell.type + '">' + cell.text + '</td>');
+			});
+
+			$responseHTML.append($tempRow);
+		});
+
+		return $responseHTML;
+	}
+
+	/**
 	 * Handles the returned data and puts it in the html Templates
 	 * @param data
    */
@@ -52,25 +88,29 @@
 				$tempListDOM = null,
 				$responseHTML = $('<div class="search__results"></div>');
 
-		responseData.forEach(function(entry) {
-			$searchCategory = $('<div class="search__cat"></div>');
-			$categoryList = $('<ul></ul>');
+		if (activeCategorySearch) {
+			$responseHTML.addClass('search__table').append(generateResultTable(data));
+		} else {
+			responseData.forEach(function(entry) {
+				$searchCategory = $('<div class="search__cat"></div>');
+				$categoryList = $('<ul></ul>');
 
-			if (entry.categoryLink) {
-				$categoryTitle = $('<a class="search__cat-title" href="' + entry.categoryLink + '">' + entry.categoryTitle + '</a>');
-			} else {
-				$categoryTitle = $('<span class="search__cat-title">' + entry.categoryTitle + '</span>');
-			}
+				if (entry.categoryLink) {
+					$categoryTitle = $('<a class="search__cat-title" href="' + entry.categoryLink + '">' + entry.categoryTitle + '</a>');
+				} else {
+					$categoryTitle = $('<span class="search__cat-title">' + entry.categoryTitle + '</span>');
+				}
 
-			entry.entries.forEach(function(listEntry) {
-				$tempListDOM = generateSearchListItem(listEntry);
+				entry.entries.forEach(function(listEntry) {
+					$tempListDOM = generateSearchListItem(listEntry);
 
-				$categoryList.append($tempListDOM);
+					$categoryList.append($tempListDOM);
+				});
+
+				$searchCategory.append($categoryTitle).append($categoryList);
+				$responseHTML.append($searchCategory);
 			});
-
-			$searchCategory.append($categoryTitle).append($categoryList);
-			$responseHTML.append($searchCategory);
-		});
+		}
 
 		$(window).trigger(events.dataLoaded, $responseHTML);
 	}
@@ -79,16 +119,25 @@
 	 * Execs the search
 	 * @param query the single word search query
 	 * @param isSearchbar if the search is triggered in the searchbar (different ajax target)
+	 * @param isCategorySearch if the search should be a category search (different ajax target and different templates)
    */
-	function search(query, isSearchbar) {
+	function search(query, isSearchbar, isCategorySearch) {
 		if (typeof isSearchbar === typeof undefined) {
 			isSearchbar = false;
 		}
+
+		if (typeof isCategorySearch === typeof undefined) {
+			isCategorySearch = false;
+		}
+
+		activeCategorySearch = isCategorySearch;
 
 		var targetUrl = searchpageURL;
 
 		if (isSearchbar) {
 			targetUrl = searchbarURL;
+		} else if (isCategorySearch) {
+			targetUrl = searchpageCategoryURL;
 		}
 
 		if (query) {
