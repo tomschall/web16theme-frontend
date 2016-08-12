@@ -2,11 +2,11 @@
 	{{#content "content"}}
 		<h1 id="search-title" data-searchpage="title">Alle Suchergebnisse</h1>
 
-		<div class="search__wrapper">
+		<div class="search__wrapper" data-searchpage="formWrapper" data-searchpage-type="all">
 			<div class="search__form-wrapper search__form-all">
 				<div class="search__string-holder">
           <div class="search__string">
-            <input type="text" value="" id="search-string" name="search-string" data-searchpage="query"/>
+            <input type="text" value="" id="search-string" name="search-string" data-searchpage="query" data-searchparam="q"/>
             <label for="search-string">Suchbegriff</label>
 						<span class="reset-field" aria-hidden="true">Feld zurücksetzen</span>
           </div>

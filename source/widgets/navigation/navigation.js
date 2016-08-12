@@ -28,7 +28,7 @@
 					hasShadow: 'has_shadow',
 					isVisible: 'is_visible'
 				},
-				maxAdditionalNavLevel: 3,
+				maxAdditionalNavLevel: 5,
 				openNavClass: 'open-nav',
 				currentLevel: 0
 			},

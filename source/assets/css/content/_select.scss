@@ -1,0 +1,250 @@
+/**
+  * Selectbox
+  */
+
+.select2__wrapper,
+.ArchetypesSelectionWidget {
+	position: relative;
+
+	.formQuestion {
+		position: absolute;
+		top: 50%;
+		left: 19px;
+		transform: translateY(-50%);
+
+		font-size: 1.25rem;
+	}
+
+	.select2-container.has-selection + .formQuestion {
+		font-size: 1rem;
+		transform: translateY(0);
+		top: 10px;
+		color: $colorBorderGrey;
+	}
+}
+
+.search__holder.select2__wrapper {
+	.formQuestion {
+		left: $gutterWidth / 2 + 19px;
+	}
+}
+
+.select2-container {
+	width: 100% !important;
+
+	.select2-selection--single,
+	.select2-selection--multiple,
+	.select2-selection {
+		@include defaultElementHeight();
+
+		border-radius: 0;
+		border: 1px solid $colorBorderGrey;
+
+		&:focus,
+		.select2-container--open & {
+			outline: none;
+			border: 1px solid $colorBlack;
+		}
+
+		.select2-selection__rendered {
+			@include defaultElementHeight();
+
+			line-height: 57px;
+
+			color: $colorBlack;
+			font-size: 1.25rem;
+
+			&:focus {
+				outline: none;
+			}
+
+			@include mq($to: $sizeBreakpointMedium) {
+				line-height: 47px;
+			}
+		}
+
+		.select2-selection__arrow {
+			height: auto;
+			width: 12px;
+
+			top: 0;
+			bottom: 0;
+			right: 7px;
+
+			@include iconDataurl('dropdown-arrow');
+
+			&:before {
+				@include centerDataurlIcon();
+
+				width: 12px;
+				height: 7px;
+			}
+
+			b {
+				display: none;
+			}
+		}
+
+		.select2-selection__placeholder {
+			color: $colorBlack;
+		}
+	}
+
+	.select2-selection--multiple {
+		position: relative;
+
+		@include iconDataurl('dropdown-arrow', $after: true);
+
+		&:after {
+			position: absolute;
+
+			right: 10px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.select2-selection__rendered {
+			padding-left: 10px;
+			padding-right: 30px;
+		}
+
+		.select2-selection__choice {
+			padding: 0;
+			display: block;
+
+
+			background-color: transparent;
+			border: none;
+			border-radius: 0;
+			margin-top: 10px;
+			float: left;
+
+			&:after {
+				content: ",";
+			}
+
+			&.showEtc {
+				&:after {
+					content: "...";
+				}
+			}
+
+			&.hideComma {
+				&:after {
+					content: "";
+				}
+			}
+
+			.select2-selection__choice__remove {
+				display: none;
+			}
+		}
+	}
+
+}
+
+.select2-container--below.select2-container--open .select2-selection,
+.custom-select.error + .select2-container--below.select2-container--open .select2-selection {
+	border-bottom-color: transparent;
+}
+
+
+
+.select2-results__option {
+	font-size: 1.25rem;
+	padding: 14px 10px;
+	margin-bottom: 2px;
+}
+
+/**
+	  * Highlighted fields
+	  */
+.select2-container .select2-results__option[aria-selected=true],
+.select2-container .select2-results__option--highlighted[aria-selected] {
+	background-color: $colorLightGray;
+	color: inherit;
+}
+
+.select2-container .select2-results__option[aria-selected="true"] {
+	&.select2-results__option--highlighted[aria-selected] {
+		background-color: $colorLightGray;
+		color: inherit;
+	}
+}
+
+/**
+  * Select 2 Result when parent is multiple
+  */
+
+.select2-container [aria-multiselectable="true"] .select2-results__option {
+	position: relative;
+	padding-left: 10px + $radioCheckboxDimension + 10px;
+
+	&:before {
+		width: $radioCheckboxDimension;
+		height: $radioCheckboxDimension;
+
+		left: 10px;
+
+		top: 50%;
+		transform: translateY(-50%);
+
+		position: absolute;
+
+		display: block;
+		content: " ";
+
+		background: $colorBg;
+		border: 1px solid $colorBlack;
+	}
+
+	&[aria-selected="true"],
+	&[aria-selected="true"]:hover,
+	&[aria-selected="true"].select2-results__option--highlighted[aria-selected]{
+		background-color: $colorYellowAccordeonActive;
+
+		@include iconDataurl('checkmark', $after: true);
+
+		&:after {
+			height: $radioCheckboxDimensionInner;
+			width: 14px;
+
+			position: absolute;
+
+			top: 50%;
+			transform: translateY(-50%) translateX(-50%);
+
+			left: 22px;
+
+		}
+	}
+}
+
+/**
+  * General styles for the dropdown
+  */
+.select2-dropdown {
+	border-radius: 0;
+	border-color: $colorBlack;
+	border-top-width: 0;
+
+	transform: translateY(-1px);
+}
+
+/**
+  * Hide unnecessary search field
+  */
+.select2-search__field {
+	display: none;
+}
+
+/**
+  * Special classes for forms
+  */
+.custom-select___short + .select2-container {
+	width: 32.5% !important;
+}
+
+.custom-select.error + .select2-container .select2-selection {
+	border: 2px solid $colorErrorRed;
+}

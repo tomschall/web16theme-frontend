@@ -1,5 +1,5 @@
 /**
-  * Labels which are not in inputfield
+  * Labels which are not in ifield
   */
 .formQuestion {
 	display: inline-block;
@@ -116,6 +116,7 @@ input[type="checkbox"]:checked + label {
 		background-color: transparent;
 
 		height: $radioCheckboxDimensionInner;
+		width: 14px;
 		left: $radioCheckboxDimensionInner;
 	}
 }
@@ -224,108 +225,7 @@ input[type="checkbox"].error:checked + label {
 	}
 }
 
-/**
-  * Selectbox
-  */
-.select2-container {
-	width: 100% !important;
 
-	.select2-selection--single,
-	.select2-selection {
-		@include defaultElementHeight();
-
-		border-radius: 0;
-		border: 1px solid $colorBorderGrey;
-
-		&:focus,
-		.select2-container--open & {
-			outline: none;
-			border: 1px solid $colorBlack;
-		}
-
-		.select2-selection__rendered {
-			@include defaultElementHeight();
-
-			line-height: 57px;
-
-			color: $colorBlack;
-			font-size: 1.25rem;
-
-			&:focus {
-				outline: none;
-			}
-
-			@include mq($to: $sizeBreakpointMedium) {
-				line-height: 47px;
-			}
-		}
-
-		.select2-selection__arrow {
-			height: auto;
-			width: 12px;
-
-			top: 0;
-			bottom: 0;
-			right: 7px;
-
-			@include iconDataurl('dropdown-arrow');
-
-			&:before {
-				@include centerDataurlIcon();
-
-				width: 12px;
-				height: 7px;
-			}
-
-			b {
-				display: none;
-			}
-		}
-
-		.select2-selection__placeholder {
-			color: $colorBlack;
-		}
-	}
-
-	.select2-results__option--highlighted[aria-selected] {
-		background-color: $colorLightGray;
-		color: inherit;
-	}
-
-	.select2-results__option[aria-selected=true] {
-		background-color: transparent;
-
-		&:hover {
-			background-color: $colorLightGray;
-		}
-	}
-}
-
-.custom-select___short + .select2-container {
-	width: 32.5% !important;
-}
-
-.custom-select.error + .select2-container .select2-selection {
-	border: 2px solid $colorErrorRed;
-
-}
-
-.select2-container--below.select2-container--open .select2-selection,
-.custom-select.error + .select2-container--below.select2-container--open .select2-selection {
-	border-bottom-width: 0;
-}
-
-.select2-dropdown {
-	border-radius: 0;
-	border-color: $colorBlack;
-	border-top-width: 0;
-}
-
-.select2-results__option {
-	font-size: 1.25rem;
-	padding-top: 14px;
-	padding-bottom: 14px;
-}
 
 /**
   * Forms

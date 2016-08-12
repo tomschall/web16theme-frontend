@@ -18,7 +18,8 @@
 			domSelectors: {
 				queryInput: '[data-' + name + '="query"]',
 				btn: '[data-' + name + '="btn"]',
-				title: '[data-' + name + '="title"]'
+				title: '[data-' + name + '="title"]',
+				formWrapper: '[data-' + name + '="formWrapper"]'
 			},
 			stateClasses: {
 				isFilled: 'is_filled',
@@ -36,7 +37,8 @@
 			// items: ["Item 1", "Item 2"]
 		},
 		searchParam = {},
-		resultsShown = false;
+		resultsShown = false,
+		searchType = '';
 
 	/**
 	 * Create an instance of the widget
@@ -65,9 +67,17 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
+		searchType = $(this.options.domSelectors.formWrapper).data('searchpage-type');
+
 		this.initSearchParam();
-		this.initFormAndTitle();
-		this.sendXHRObject();
+
+		if (searchType === 'all') {
+			this.initFormAndTitle();
+		}
+
+		if (typeof searchParam.q !== typeof undefined) {
+			this.sendXHRObject();
+		}
 
 		this.eventListeners();
 	};

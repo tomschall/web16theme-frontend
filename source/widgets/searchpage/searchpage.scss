@@ -15,3 +15,42 @@
 		}
 	}
 }
+
+/**
+  * Styles for the searchpages / formfields and wrapper
+  */
+.search__wrapper {
+	@include bleedFull($gutterWidth);
+}
+
+.search__form-wrapper {
+	@include contentWrapper($gutterWidth, true);
+
+	box-shadow: 0 3px 14px 0 rgba($colorBlack, 0.07);
+	padding-bottom: $basicPush * 4.5;
+
+	position: relative;
+	z-index: 2;
+
+	.search__holder {
+		@include span(3);
+	}
+
+	/**
+	  * Styles for the searchform of all results (no special subcategory)
+	  */
+	&.search__form-all {
+		.search__string-holder {
+			@include span(9);
+		}
+
+		.search__button {
+			@include span(3);
+
+			button,
+			.button {
+				width: 100%;
+			}
+		}
+	}
+}

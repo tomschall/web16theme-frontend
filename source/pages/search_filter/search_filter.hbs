@@ -1,0 +1,33 @@
+{{#extend "layouts/layout" pageTypeClass="search-page"}}
+	{{#content "content"}}
+    <h1 id="search-title" data-searchpage="title">Weiterbildungsangebot der FHNW</h1>
+
+    <div class="search__wrapper" data-searchpage-type="advanced_studies" data-searchpage="formWrapper">
+      <div class="search__form-wrapper">
+				<div class="search__holder select2__wrapper">
+					<select id="faculty" name="faculty" data-searchparam="faculty" class="custom-select" multiple="multiple">
+						<option value="is">International Studies</option>
+						<option value="it">Informatik</option>
+						<option value="ls">Life Sciences</option>
+						<option value="mc">Musik</option>
+						<option value="ph">Pädagogik</option>
+						<option value="ps">Psychologie</option>
+						<option value="sw">Soziale Arbeit</option>
+						<option value="tn">Technik</option>
+					</select>
+          <label class="formQuestion" for="faculty">Fachbereich</label>
+				</div>
+        <div class="search__holder select2__wrapper">
+          <select id="study_type" name="study_type" data-searchparam="study_type" class="custom-select" multiple="multiple">
+            <option value="mas">MAS</option>
+            <option value="cas">CAS</option>
+            <option value="das">DAS</option>
+          </select>
+          <label class="formQuestion" for="study_type">Typ</label>
+        </div>
+      </div>
+			{{> "widgets/searchpage/searchpage" widgets.searchpage }}
+    </div>
+
+	{{/content}}
+{{/extend}}
