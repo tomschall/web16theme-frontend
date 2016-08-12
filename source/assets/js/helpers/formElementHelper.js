@@ -8,8 +8,6 @@
 ;(function($, undefined) {
 	'use strict';
 
-
-
 	$(document).ready(function() {
 
 		var $textInputFields = $('.ArchetypesStringWidget, .search__string').find('input');
