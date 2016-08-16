@@ -10,7 +10,8 @@ var templateData = {
 				allResults: 'Alle Suchergebnisse für',
 				all: 'Alle',
 				advancedStudiesFoundPlural: 'Weiterbildungsangebote gefunden',
-				advancedStudiesFoundSingular: 'Weiterbildungsangebot gefunden'
+				advancedStudiesFoundSingular: 'Weiterbildungsangebot gefunden',
+				more: 'Mehr Informationen'
 			}
 		},
 		data = _.merge(defaultData, {

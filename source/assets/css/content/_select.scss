@@ -147,6 +147,15 @@ select {
 		}
 	}
 
+	//Adding the disabled style
+	.select2-results__option[aria-disabled="true"] {
+		color: $colorBlack;
+		opacity: 0.5;
+	}
+
+	.has_groups .select2-results__option[aria-disabled="true"] {
+		display: none;
+	}
 }
 
 .select2-container--below.select2-container--open .select2-selection,
@@ -286,4 +295,32 @@ select {
 
 .custom-select.error + .select2-container .select2-selection {
 	border: 2px solid $colorErrorRed;
+}
+
+/**
+  * Optgroup styling
+  */
+
+.select2-container--default .select2-results__group {
+	background-color: $colorLightGray;
+	font-size: 1.08333333rem;
+
+	color: $colorTextGrey;
+	padding-left: 12px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+}
+
+.select2-container--default #select2-topic-results .select2-results__option {
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+	&.is_sticky {
+		position: fixed;
+	}
+}
+
+.select2-search--dropdown {
+	display: none;
 }

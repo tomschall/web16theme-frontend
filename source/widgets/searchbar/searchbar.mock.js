@@ -5,6 +5,7 @@ var data = {
 		{
 			'categoryTitle': 'Weiterbildung',
 			'categoryLink': '#',
+			'categoryLinkText': 'Alle anzeigen (12)',
 			'entries': [
 				{
 					'type': 'normal',
@@ -25,7 +26,6 @@ var data = {
 		},
 		{
 			'categoryTitle': 'Studium',
-			'categoryLink': '#',
 			'entries': [
 				{
 					'type': 'normal',
@@ -42,6 +42,7 @@ var data = {
 		{
 			'categoryTitle': 'Veranstaltungen',
 			'categoryLink': '#',
+			'categoryLinkText': 'Alle anzeigen (12)',
 			'entries': [
 				{
 					'type': 'event',
@@ -66,6 +67,7 @@ var data = {
 		{
 			'categoryTitle': 'Organisation',
 			'categoryLink': '#',
+			'categoryLinkText': 'Alle anzeigen (12)',
 			'entries': [
 				{
 					'type': 'normal',
@@ -86,6 +88,7 @@ var data = {
 		},
 		{
 			'categoryTitle': 'Dokumente',
+			'categoryLinkText': 'Alle anzeigen (12)',
 			'entries': [
 				{
 					'type': 'doc',

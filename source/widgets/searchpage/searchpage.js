@@ -12,7 +12,6 @@
 
 	var name = 'searchpage',
 		events = {
-			// eventname: 'eventname.estatico.' + name
 		},
 		defaults = {
 			domSelectors: {
@@ -22,30 +21,38 @@
 				formWrapper: '[data-' + name + '="formWrapper"]',
 				expanderBtn: '[data-' + name + '="extendBtn"]',
 				resetBtn: '[data-' + name + '="reset"]',
-				expandedFilters: '[data-' + name + '="expandedFilters"]'
+				expandedFilters: '[data-' + name + '="expandedFilters"]',
+				tdURL: '[data-' + name + '="url"]',
+				countNumber: '[data-' + name + '="countNumber"]',
+				moreResultsBtn: '[data-' + name + '="moreResultsBtn"]',
+				moreResultsBtnWrapper: '[data-' + name + '="moreResultsBtnWrapper"]'
 			},
 			stateClasses: {
 				isFilled: 'is_filled',
 				showLoading: 'show_loading',
 				showResults: 'show_results',
 				isVisible: 'is_visible',
-				isActive: 'is_active'
+				isActive: 'is_active',
+				elementHidden: 'element-hidden'
 			},
 			listItemSpanClasses: {
 				title: 'title'
 			},
 			searchEvents: {
-				dataLoaded: 'dataLoaded.estatico.search'
+				dataLoaded: 'dataLoaded.estatico.search',
+				updateFilterLoaded: 'updateFilterLoaded.estatico.search'
 			}
 		},
 		data = {
-			// items: ["Item 1", "Item 2"]
+			$formElements: null
 		},
 		searchParam = {},
 		resultsShown = false,
 		searchType = '',
 		expandedFilters = false,
-		isCategorySearch = false;
+		isCategorySearch = false,
+		loadMoreMode = false,
+		currentLimitOffset = 0;
 
 	/**
 	 * Create an instance of the widget
@@ -76,10 +83,12 @@
 	Widget.prototype.init = function() {
 		searchType = $(this.options.domSelectors.formWrapper).data('searchpage-type');
 
+		this.initFormFunctionality();
+
 		this.initSearchParam();
 
 		if (searchType === 'all') {
-			this.initFormAndTitle();
+			this.fillFormAndTitle();
 		} else {
 			isCategorySearch = true;
 
@@ -89,7 +98,7 @@
 		}
 
 		if (typeof searchParam.q !== typeof undefined) {
-			this.sendXHRObject();
+			this.sendSearchQuery();
 		}
 
 		this.eventListeners();
@@ -99,20 +108,48 @@
 	 * Adds the event listeners
 	 */
 	Widget.prototype.eventListeners = function() {
+		/**
+		 * When clicking on search query
+		 */
 		$(this.options.domSelectors.btn).on('click.' + this.uuid, function() {
-			this.sendXHRObject();
+			this.sendSearchQuery();
 		}.bind(this));
 
+		/**
+		 * When something on queryInput Changed // to be redundant
+		 */
 		$(this.options.domSelectors.queryInput).on('change.' + this.uuid, function(event) {
 			searchParam.q = $(event.target).val();
 		});
 
+		/**
+		 * Expander btn to show more filters
+		 */
 		$(this.options.domSelectors.expanderBtn).on('click.' + this.uuid, function(event) {
 			expandedFilters = !expandedFilters;
 
 			$(this.options.domSelectors.expandedFilters).toggleClass(this.options.stateClasses.isVisible);
 
 			$(event.currentTarget).toggleClass(this.options.stateClasses.isActive);
+		}.bind(this));
+
+		/**
+		 * Load more results to the table when limited results
+		 */
+		$(this.options.domSelectors.moreResultsBtn).on('click.' + this.uuid, function() {
+			loadMoreMode = true;
+
+			this.sendSearchQuery();
+		}.bind(this));
+	};
+
+	Widget.prototype.initFormFunctionality = function() {
+		var $formElements = $('.search__form-wrapper input:not(".select2-search__field"), .search__form-wrapper select');
+
+		data.$formElements = $formElements;
+
+		$formElements.on('change.' + this.uuid, function() {
+			this.sendSearchQuery();
 		}.bind(this));
 	};
 
@@ -126,12 +163,15 @@
 	/**
 	 * Initializes the form and the title
 	 */
-	Widget.prototype.initFormAndTitle = function() {
+	Widget.prototype.fillFormAndTitle = function() {
 		$(this.options.domSelectors.queryInput).addClass(this.options.stateClasses.isFilled).val(searchParam.q);
 
 		$(this.options.domSelectors.title).text(this.$element.data('lang-title') + ' «' + searchParam.q + '»');
 	};
 
+	/**
+	 * Fills the form with the get parameters
+	 */
 	Widget.prototype.fillForm = function() {
 		for (var key in searchParam) {
 			if (searchParam.hasOwnProperty(key)) {
@@ -141,36 +181,137 @@
 	};
 
 	/**
+	 * Grab parameters from form fields
+	 */
+	Widget.prototype.grabParameters = function() {
+		data.$formElements.map(function(index, element) {
+			searchParam[$(element).data('searchparam')] = $(element).val();
+		});
+	};
+
+	/**
+	 * Function to avoid making a request when nothing is actually selected
+	 */
+	Widget.prototype.checkParameters = function() {
+		var properParamCounter = 0,
+				arrayWithNoneParams = ['category','offset'];
+
+		for (var key in searchParam) {
+			if ($.inArray(key, arrayWithNoneParams) === -1) {
+				var value = searchParam[key];
+
+				if (value !== '' && value !== null) {
+					properParamCounter++;
+				}
+			}
+		}
+
+		return properParamCounter > 0;
+	};
+
+	/**
 	 * Sends the complete xhr request to search
 	 * @param _inputValue
    */
-	Widget.prototype.sendXHRObject = function() {
-		window.estatico.search.search(searchParam, false, isCategorySearch);
+	Widget.prototype.sendSearchQuery = function() {
+		this.grabParameters();
 
-		this.changeStatus(this.options.stateClasses.showLoading);
+		if (loadMoreMode) {
+			searchParam.offset = currentLimitOffset;
+		}
 
-		$(window).one(this.options.searchEvents.dataLoaded, function(event, data) {
-			this.showResults(data);
-		}.bind(this));
+		if (isCategorySearch) {
+			window.estatico.search.updateFilter(searchParam);
+
+			$(window).one(this.options.searchEvents.updateFilterLoaded, function(event, data) {
+				this.updateFilters(data.response);
+			}.bind(this));
+		}
+
+		if (this.checkParameters()) {
+			window.estatico.search.search(searchParam, false, isCategorySearch);
+
+			this.changeStatus(this.options.stateClasses.showLoading);
+
+			$(window).one(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults) {
+				this.showResults(data, foundEntries, limitedToResults);
+			}.bind(this));
+		}
 	};
 
 	/**
 	 * Show results
 	 * @param html the generated html
+	 * @param foundEntries the integer with the number of found entries
+	 * @param limitedToResults the number of to which the entries are limited
 	 */
-	Widget.prototype.showResults = function(html) {
-		if (resultsShown) {
+	Widget.prototype.showResults = function(html, foundEntries, limitedToResults) {
+		var $resultsTd = $('.search__results td');
+
+		if (resultsShown && !loadMoreMode) {
 			this.$element.find('.search__results').remove();
 		}
 
-		this.$element.append(html);
+		if (loadMoreMode) {
+			html = this.generateAdditionalTableHTML(html);
 
+			this.$element.find('.search__results').append(html);
+
+			// Reset the load more mode to false
+			loadMoreMode = false;
+		} else {
+			$(this.options.domSelectors.moreResultsBtnWrapper).before(html);
+		}
+
+		this.replaceLinkPlaceholder();
 		this.markSearchQuery();
 		this.addCatTitleLabel();
 
 		this.changeStatus(this.options.stateClasses.showResults);
 
 		resultsShown = true;
+
+		/**
+		 * When there is a count number holder in the document
+		 */
+		if ($(this.options.domSelectors.countNumber).length === 1) {
+			$(this.options.domSelectors.countNumber).html(foundEntries);
+			$(this.options.domSelectors.countNumber).closest('div').removeClass(this.options.stateClasses.elementHidden);
+		}
+
+		/**
+		 * When the results which where returned are limited
+		 */
+		if (typeof limitedToResults !== typeof undefined) {
+			$(this.options.domSelectors.moreResultsBtnWrapper).removeClass(this.options.stateClasses.elementHidden);
+
+			currentLimitOffset = limitedToResults;
+		} else {
+			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
+
+			currentLimitOffset = 0;
+		}
+
+		$resultsTd.unbind('click.' + this.uuid);
+
+		/**
+		 * Adding the event to add link functionality to search results
+		 */
+		$resultsTd.on('click.' + this.uuid, function(event) {
+			var $row = $(event.currentTarget).closest('tr'),
+					url = $row.find('a').attr('href');
+
+			window.location = location.origin + '/' + url;
+		}.bind(this));
+	};
+
+	/**
+	 * Takes only the rows without headers from the generated html
+	 * @param html
+	 * @returns {*}
+   */
+	Widget.prototype.generateAdditionalTableHTML = function(html) {
+		return html.find('tr').not(':eq(0)');
 	};
 
 	/**
@@ -201,16 +342,27 @@
 			$elementTitle = $(element).find('a .' + this.options.listItemSpanClasses.title);
 			titleSt = $elementTitle.html();
 
-			queryStartPosition = titleSt.toLowerCase().search(searchParam.q.toLowerCase());
+			if ($elementTitle.hasClass('title')) {
+				queryStartPosition = titleSt.toLowerCase().search(searchParam.q.toLowerCase());
 
-			if (queryStartPosition !== -1) {
-				queryEndPosition = queryStartPosition + searchParam.q.length;
+				if (queryStartPosition !== -1) {
+					queryEndPosition = queryStartPosition + searchParam.q.length;
 
-				markedTitle = titleSt.substr(0, queryStartPosition) + '<span class="bold">' + titleSt.substr(queryStartPosition, searchParam.q.length) + '</span>' + titleSt.substr(queryEndPosition);
+					markedTitle = titleSt.substr(0, queryStartPosition) + '<span class="bold">' + titleSt.substr(queryStartPosition, searchParam.q.length) + '</span>' + titleSt.substr(queryEndPosition);
 
-				$elementTitle.html(markedTitle);
+					$elementTitle.html(markedTitle);
+				}
 			}
 		}.bind(this));
+	};
+
+	Widget.prototype.replaceLinkPlaceholder = function() {
+		var linkString = this.$element.data('lang-link'),
+				$linksInCell = $(this.options.domSelectors.tdURL + ' a');
+
+		$linksInCell.each(function(index, element) {
+			$(element).html(linkString);
+		});
 	};
 
 	/**
@@ -222,6 +374,23 @@
 		$catTitles.each(function(index, element) {
 			$(element).append('<span class="search__cat-title-label">' + this.$element.data('lang-all') + '</span>');
 		}.bind(this));
+	};
+
+	Widget.prototype.updateFilters = function(response) {
+		response.forEach(function(field) {
+			var $field = $('[data-searchparam="' + field.field + '"]'),
+					$options = $field.find('option');
+
+			$options.map(function(index, option) {
+				if ($.inArray($(option).attr('value'), field.disable) !== -1) {
+					$(option).attr('disabled', 'disabled');
+				}
+			}.bind(this));
+
+			$field.select2('destroy');
+		}.bind(this));
+
+		window.estatico.formElementHelper.initSelect2();
 	};
 
 	/**

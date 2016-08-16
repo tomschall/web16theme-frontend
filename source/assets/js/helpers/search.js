@@ -10,14 +10,17 @@
 	var searchbarURL = '/mocks/widgets/searchbar/searchbar.json',
 			searchpageURL = '/mocks/widgets/searchpage/searchpage.json',
 			searchpageCategoryURL = '/mocks/widgets/searchpage/searchpage.category.json',
+			updateFilterURL = '/mocks/widgets/searchpage/searchpage.updateFilter.json',
 			events = {
-				dataLoaded: 'dataLoaded.estatico.search'
+				dataLoaded: 'dataLoaded.estatico.search',
+				updateFilterLoaded: 'updateFilterLoaded.estatico.search'
 			},
 
 			listEntryTemplates = {
 				normal: '<li class="search__result-normal"><a href="{{link}}"><span class="title">{{title}}</span>{{#each additionalInformation}} <span class="{{type}} visible-in-page">{{text}}</span>{{/each}} </a></li>',
 				event: '<li class="search__result-event"><a href="{{link}}"><span class="title">{{title}}</span><span class="event-info">{{eventDetail}}</span></a></li>',
-				doc: '<li class="search__result-doc"><a href="{{link}}"><span class="title">{{title}}<span class="visible-in-bar">({{fileType}})</span></span><span class="file-type">{{fileType}}</span></a></li>'
+				doc: '<li class="search__result-doc"><a href="{{link}}"><span class="title">{{title}}<span class="visible-in-bar">({{fileType}})</span></span><span class="file-type visible-in-page">{{fileType}}</span></a></li>',
+				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryLink}}">{{categoryLinkText}}</a></li>'
 			},
 			activeCategorySearch = false;
 
@@ -67,7 +70,11 @@
 			$tempRow = $('<tr></tr>');
 
 			row.forEach(function(cell) {
-				$tempRow.append('<td data-searchpage="' + cell.type + '">' + cell.text + '</td>');
+				if (cell.type === 'url') {
+					$tempRow.append('<td data-searchpage="' + cell.type + '"><a href="' + cell.text + '"></a></td>');
+				} else {
+					$tempRow.append('<td data-searchpage="' + cell.type + '">' + cell.text + '</td>');
+				}
 			});
 
 			$responseHTML.append($tempRow);
@@ -94,12 +101,7 @@
 			responseData.forEach(function(entry) {
 				$searchCategory = $('<div class="search__cat"></div>');
 				$categoryList = $('<ul></ul>');
-
-				if (entry.categoryLink) {
-					$categoryTitle = $('<a class="search__cat-title" href="' + entry.categoryLink + '">' + entry.categoryTitle + '</a>');
-				} else {
-					$categoryTitle = $('<span class="search__cat-title">' + entry.categoryTitle + '</span>');
-				}
+				$categoryTitle = $('<span class="search__cat-title">' + entry.categoryTitle + '</span>');
 
 				entry.entries.forEach(function(listEntry) {
 					$tempListDOM = generateSearchListItem(listEntry);
@@ -107,12 +109,19 @@
 					$categoryList.append($tempListDOM);
 				});
 
+				if (entry.categoryLink) {
+					var template = Handlebars.compile(listEntryTemplates.showAll);
+
+					$categoryList.append(template(entry));
+				}
+
 				$searchCategory.append($categoryTitle).append($categoryList);
+
 				$responseHTML.append($searchCategory);
 			});
 		}
 
-		$(window).trigger(events.dataLoaded, $responseHTML);
+		$(window).trigger(events.dataLoaded, [$responseHTML, responseData.foundNumber, responseData.limitedResults]);
 	}
 
 	/**
@@ -152,6 +161,35 @@
 		}
 	}
 
+	/**
+	 * Handles the update filter data (basically just triggers a new event)
+	 */
+	function handleUpdateFilterData(data) {
+		$(window).trigger(events.updateFilterLoaded, data);
+	}
+
+	/**
+	 * Sending the ajax request for update the filter
+ 	 * @param query
+	 */
+	function updateFilter(query) {
+		if (query) {
+			$.ajax({
+				data: query,
+				dataType: 'json',
+				success: handleUpdateFilterData,
+				url: updateFilterURL
+			});
+		} else {
+			console.error('no update filter query defined');
+		}
+	}
+
+	/**
+	 * Transforms the search parameters from the url to an associative array
+	 * @param searchprmtrs
+	 * @returns {{}}
+   */
 	function transformToAssocArray(searchprmtrs) {
 		var params = {},
 				pmarr = searchprmtrs.split('&');
@@ -165,6 +203,10 @@
 		return params;
 	}
 
+	/**
+	 * Gets the searchparameters from the windows bar and sends back an assoc array
+	 * @returns {{}}
+   */
 	function getSearchParameters() {
 		var searchprmtrs = window.location.search.substr(1);
 
@@ -175,7 +217,8 @@
 	$.extend(true, estatico, {
 		search: {
 			search: search,
-			getSearchParameters: getSearchParameters
+			getSearchParameters: getSearchParameters,
+			updateFilter: updateFilter
 		}
 	});
 })(jQuery);

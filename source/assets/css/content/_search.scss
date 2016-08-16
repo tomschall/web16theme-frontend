@@ -10,14 +10,19 @@
 
 	color: $colorBorderGrey;
 	background-color: $colorLightGray;
-	padding: 10px $searchbarPadding 9px $searchbarPadding;
+	padding: 10px 14px 9px 14px;
+
+	border-bottom: 1px solid $colorGreyHover;
 
 	// When on Searchpage
 	.widg_searchpage & {
-		@include contentWrapper(0, false);
-
 		padding-top: 10px;
 		padding-bottom: 9px;
+
+		border-bottom: none;
+
+		padding-left: $gutterWidth;
+		padding-right: $gutterWidth;
 	}
 }
 
@@ -52,7 +57,6 @@ a.search__cat-title {
 }
 
 .search__cat {
-
 	margin: $basicPush * 1.5 0 $basicPush * 2.7 0;
 
 	/**
@@ -68,10 +72,6 @@ a.search__cat-title {
 		list-style: none;
 		margin: 3px 0;
 		padding: 0;
-
-		.widg_searchpage & {
-			@include contentWrapper(0, false);
-		}
 	}
 }
 
@@ -84,7 +84,7 @@ a.search__cat-title {
 }
 
 [class^="search__result-"] {
-	padding: 0 $searchbarPadding;
+	padding: 0;
 
 	a {
 		@include clearfix();
@@ -92,12 +92,12 @@ a.search__cat-title {
 		display: block;
 		opacity: 1;
 
-		padding: 12px 4px;
+		padding: 12px 13px;
 
 		font-size: 1.1666667rem;
 		text-decoration: none;
 
-		border-bottom: 1px solid $colorBlack;
+		border-bottom: 1px solid $colorGreyHover;
 
 		@include iconDataurl('pfeil-black_short', $after: true);
 		position: relative;
@@ -129,9 +129,22 @@ a.search__cat-title {
 		}
 	}
 
-
 	&:last-of-type a {
 		border-bottom: none;
+	}
+
+	&.search__result-doc {
+		a {
+			@include iconDataurl('download-arrow', $after: true);
+
+			&:after {
+				display: none;
+			}
+
+			&:hover:after {
+				display: block;
+			}
+		}
 	}
 
 	span.bold {
@@ -158,6 +171,14 @@ a.search__cat-title {
 	}
 }
 
+
+
+.search__result-show-all a {
+	font-weight: 600;
+
+	padding: 25px $gutterWidth 24px $gutterWidth !important;
+}
+
 /**
   * Results on the searchpage
   */
@@ -165,7 +186,7 @@ a.search__cat-title {
 	padding: 0;
 
 	a {
-		padding: 25px 4px 24px 4px;
+		padding: 25px 0 24px 0;
 		@include clearfix;
 
 		@include iconDataurl('pfeil-black', $after: true);
@@ -178,6 +199,20 @@ a.search__cat-title {
 		}
 		&:hover:after {
 			display: block;
+		}
+
+	}
+
+	&.search__result-doc {
+		a {
+			@include iconDataurl('download-arrow', $after: true);
+
+			&:after {
+				display: none;
+			}
+			&:hover:after {
+				display: block;
+			}
 		}
 	}
 
@@ -300,6 +335,9 @@ a.search__cat-title {
 
 	&:last-of-type {
 		text-align: right;
+
+		font-size: 1.25rem;
+		line-height: 2;
 	}
 
 	button {
@@ -346,6 +384,8 @@ a.search__cat-title {
 
 		&.search__reset {
 			margin-right: 0;
+
+			@include iconDataurl('reset');
 		}
 	}
 }

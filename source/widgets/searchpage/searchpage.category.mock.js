@@ -2,6 +2,8 @@
 
 var data = {
 	'response': {
+		'foundNumber': 203,
+		'limitedResults': 50,
 		'headers': [
 			'Titel',
 			'Typ',

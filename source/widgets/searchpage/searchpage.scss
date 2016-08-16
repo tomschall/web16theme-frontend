@@ -1,5 +1,7 @@
 .widg_searchpage {
-	min-height: 200px;
+	@include contentWrapper(0, false);
+
+	min-height: 100px;
 
 	.fhnw-spinner {
 		display: none;
@@ -14,13 +16,33 @@
 			display: none;
 		}
 	}
+
+	.search__results {
+		margin-top: $basicPush * 3;
+	}
 }
 
-.search__results.search__table {
-	@include contentWrapper(0, false);
 
+.search__results.search__table {
 	table {
 		width: 100%;
+	}
+
+	th.url {
+		font-size: 0;
+		color: transparent;
+	}
+
+	td[data-searchpage="url"] {
+		width: 1%;
+	}
+
+	a {
+		font-size: 0.1rem;
+		color: transparent;
+		width: 0;
+		height: 0;
+		display: inline-block;
 	}
 }
 
@@ -75,15 +97,54 @@
 		padding: 25px 10px;
 		font-size: 1.25rem;
 
-		border-bottom: 1px solid $colorBlack;
+		border-bottom: 1px solid $colorGreyHover;
 
 		&:first-child {
 			font-weight: 600;
 		}
 	}
 
+	tr:hover {
+		td {
+			background-color: $colorLightGray;
+			cursor: pointer;
+		}
+	}
+
 	th {
 		text-align: left;
-		border-bottom: 2px solid $colorBlack;
+		border-bottom: 2px solid $colorGreyHover;
 	}
+}
+
+
+/**
+  * The more results button
+  */
+
+.widg_searchpage__more-btn {
+	@include noStyledButton;
+
+	font-size: 1.5rem;
+	font-weight: 600;
+
+	width: 100%;
+	text-align: center;
+
+	transform: translateY(-30px);
+	color: $colorTextGrey;
+	cursor: pointer;
+
+	@include basicUnitHeight(line-height);
+	@include basicUnitHeight(height);
+
+	.show_loading & {
+		display: none;
+	}
+
+	&:hover {
+		color: $colorBlack;
+		background-color: $colorLightGray;
+	}
+
 }

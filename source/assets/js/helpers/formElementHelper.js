@@ -57,13 +57,46 @@
 		});
 	}
 
-	/**
-	 * Initializes the select2 dropdowns
-	 */
-	function initSelect2() {
-		var $selectFields = $('.custom-select');
+	function initOptgroups($field) {
+		var $options = $field.find('option'),
+				currentChar = '',
+				counter = 0;
 
-		$selectFields.select2();
+		if ($field.find('optgroup').length > 1) {
+			$field.find('optgroup').remove();
+		}
+
+		$options.map(function(index, element) {
+			if ($(element).attr('disabled') !== 'disabled' && $(element).attr('value') !== '') {
+				var firstChar = $(element).text().slice(0, 1).toLowerCase();
+
+				// New Char, have to close optgroup, except if counter is on 0
+				if (firstChar !== currentChar) {
+					var optgroupString = '';
+
+					if (counter > 0) {
+						optgroupString = optgroupString + '</optgroup>';
+					}
+
+					optgroupString = optgroupString + '<optgroup label="' + firstChar.toUpperCase() + '">';
+
+					$(element).before(optgroupString);
+				}
+
+				currentChar = firstChar;
+			}
+
+			if (counter === ($options.length - 1)) {
+				$(element).before('</optgroup>');
+			}
+
+			counter++;
+
+		});
+	}
+
+	function addSelect2Events() {
+		var $selectFields = $('.custom-select');
 
 		$selectFields.on('change.formElementHelper', function(event) {
 			var $select = $(event.target),
@@ -81,19 +114,62 @@
 		});
 
 		$selectFields.on('select2:open.formElementHelper', function() {
+			// Options are not initialized immediately, so we wait 100 millisec
 			setTimeout(function() {
-				$('.select2-results__options').mCustomScrollbar({
+				var $select2ResultsOptions = $('.select2-results__options');
+
+				$select2ResultsOptions.mCustomScrollbar({
 					theme: 'fhnw',
 					advanced: {
 						updateOnContentResize: true
 					}
 				});
-			}, 200);
+
+				if ($select2ResultsOptions.find('[role="group"]').length > 0) {
+					$select2ResultsOptions.addClass('has_groups');
+				}
+			}, 1);
+		});
+
+		$selectFields.on('select2:closing.formElementHelper', function() {
+			$('.select2-results__options').mCustomScrollbar('destroy');
 		});
 
 		$('.custom-select___remover').on('click.formElementHelper', function() {
 			$(this).prevAll('select').val('').trigger('change');
 		});
+	}
+
+	/**
+	 * Initializes the select2 dropdowns
+	 */
+	function initSelect2() {
+		var $selectFields = $('.custom-select');
+
+		$selectFields.map(function(index, select) {
+			if ($(select).hasClass('has_optgroup')) {
+				initOptgroups($(select));
+			}
+		});
+
+		$selectFields.select2();
+
+		$selectFields.map(function(index, select) {
+			var $select = $(select),
+					$select2 = $(select).nextAll('.select2-container');
+
+			if ($select.val() === null || $select.val() === '') {
+				$select2.removeClass('has-selection');
+				$select2.nextAll('.custom-select___remover').hide();
+			} else {
+				$select2.addClass('has-selection');
+				$select2.nextAll('.custom-select___remover').show();
+
+				checkSelection($select2);
+			}
+		});
+
+		addSelect2Events();
 	}
 
 	/**
@@ -132,5 +208,15 @@
 		initSelect2();
 
 		extendValidator();
+	});
+
+	/**
+	 * Save to global Namespace
+	 */
+	$.extend(true, estatico, {
+		formElementHelper: {
+			initSelect2: initSelect2,
+			addSelect2Events: addSelect2Events
+		}
 	});
 })(jQuery);
