@@ -22,12 +22,19 @@
 	}
 
 	@include mq($to: $sizeBreakpointSmall) {
-		@include span(12);
+	  float: none;
+	  width: calc(100% - 32px);
+
+	  border-bottom: 1px solid $colorBg;
+	  padding: 0;
+	  margin: 0 20px;
 	}
 
 	ul {
 		@include mq($to: $sizeBreakpointSmall) {
 			display: none;
+
+		  	padding-bottom: $basicPush * 1.75;
 		}
 	}
 
@@ -55,6 +62,10 @@
 
 		&:hover {
 			opacity: 1;
+
+		  	@include mq($to: small) {
+			  opacity: 0.8;
+			}
 		}
 
 
@@ -74,6 +85,7 @@
 			cursor: pointer;
 
 			@include iconDataurl($name: 'close_white', $after: true);
+		  	border-bottom: none;
 
 			&:after {
 				width: 12px;

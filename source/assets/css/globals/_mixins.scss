@@ -205,6 +205,19 @@
 	}
 }
 
+@mixin clickAreaSize($attr) {
+  #{$attr}: clickAreaSizes(normal);
+
+  @include mq($from: $sizeBreakpointWide) {
+	#{$attr}: clickAreaSizes(xxl);
+  }
+
+  @include mq($to: $sizeBreakpointSubnav) {
+	#{$attr}: clickAreaSizes(small);
+  }
+}
+
+
 @mixin bleedFull($gutterSize: 0) {
 	margin-left: -1 * $paddingBehindYellowBar + $gutterSize;
 	margin-right: -1 * $pagePadding + $gutterSize;

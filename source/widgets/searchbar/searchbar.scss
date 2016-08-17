@@ -1,6 +1,7 @@
 .widg_searchbar {
 
 }
+
 .widg_searchbar__btn {
   @include iconDataurl('search');
 
@@ -13,226 +14,239 @@
   * The Styles for the bar
   */
 .widg_searchbar-bar {
-	position: fixed;
-	height: 100vh;
-	top: 0;
-	right: -0.5 * $sizeSearchBar;
-	bottom: 0;
-	opacity: 0;
-	visibility: hidden;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  right: -0.5 * $sizeSearchBar;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
 
-	width: $sizeSearchBar;
-	background-color: $colorBg;
+  width: $sizeSearchBar;
+  background-color: $colorBg;
 
-	box-shadow: 3px 0 29px 0 rgba($colorBlack, 0.15);
+  box-shadow: 3px 0 29px 0 rgba($colorBlack, 0.15);
 
-	transition: all $transitionLength / 2 $transitionEase;
-	z-index: -1;
+  transition: all $transitionLength / 2 $transitionEase;
+  z-index: -1;
 
-	&.is_open {
-		right: 0;
-		visibility: visible;
+  &.is_open {
+	right: 0;
+	visibility: visible;
 
-		opacity: 1;
+	opacity: 1;
 
-		z-index: zindex(search);
+	z-index: zindex(search);
+  }
+
+  @include mq($to: $sizeBreakpointMedium) {
+	width: 100vw;
+
+	top: $headerHeightTop;
+	height: calc(100vh - 70px);
+
+	transition: none;
+	box-shadow: none;
+  }
+
+  &.show-intro {
+	@include iconDataurl('fhnw_claim_only');
+
+	&:before {
+	  position: absolute;
+	  bottom: $basicPush * 3;
+	  left: 50%;
+
+	  transform: translateX(-50%);
+	  opacity: 0.2;
+
+	  width: 100px;
+	  height: 60px;
 	}
+  }
+  //The fhnw logo on the bottom
 
-	@include mq($to: $sizeBreakpointMedium) {
-		width: 100vw;
+  .search__results {
+	padding: 0 32px 0 28px;
 
-		top: $headerHeightTop;
-		height: calc(100vh - 70px);
-
+	@include mq($to: $sizeBreakpointSmall) {
+	  padding: 0 24px 0 20px;
 	}
-
-	&.show-intro {
-		@include iconDataurl('fhnw_claim_only');
-
-		&:before {
-			position: absolute;
-			bottom: $basicPush * 3;
-			left: 50%;
-
-			transform: translateX(-50%);
-			opacity: 0.2;
-
-			width: 100px;
-			height: 60px;
-		}
-	}
-	//The fhnw logo on the bottom
-
-	.search__results {
-		padding: 0 32px 0 28px;
-	}
+  }
 }
 
 .widg_searchbar-bar__content {
-	min-height: calc(100vh - 100px);
-	max-height: calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
+  max-height: calc(100vh - 100px);
 
-	position: relative;
-	overflow-y: auto;
+  position: relative;
+  overflow-y: auto;
 
-	padding-bottom: $searchbarBlackBarHeight;
+  padding-bottom: $searchbarBlackBarHeight;
 
-	@include mq($from: $sizeBreakpointWide) {
-		min-height: calc(100vh - 150px);
-		max-height: calc(100vh - 150px);
-	}
+  @include mq($from: $sizeBreakpointWide) {
+	min-height: calc(100vh - 150px);
+	max-height: calc(100vh - 150px);
+  }
 
-	@include mq($to: $sizeBreakpointLarge) {
-		min-height: calc(100vh - 60px);
-		max-height: calc(100vh - 60px);
+  @include mq($to: $sizeBreakpointLarge) {
+	min-height: calc(100vh - 60px);
+	max-height: calc(100vh - 60px);
 
-	}
+  }
 
-	@include mq($to: $sizeBreakpointMedium) {
-		min-height: calc(100vh - 130px);
-		max-height: calc(100vh - 130px);
-	}
+  @include mq($to: $sizeBreakpointMedium) {
+	min-height: calc(100vh - 130px);
+	max-height: calc(100vh - 130px);
+  }
 }
 
 .widg_searchbar-bar__search {
+  @include basicUnitHeight(height);
+
+  position: relative;
+
+  input {
 	@include basicUnitHeight(height);
+	@include basicUnitHeight(line-height);
 
-	position: relative;
+	box-shadow: inset 0 -3px 3px 0 rgba($colorBlack, 0.04);
 
-	input {
-		@include basicUnitHeight(height);
-		@include basicUnitHeight(line-height);
+	width: 100%;
+	font-size: 1.5rem;
+	padding-left: $basicPush * 2.4;
 
-		box-shadow: inset 0 -3px 3px 0 rgba($colorBlack, 0.04);
+	background-color: $colorSearchBarInputFocus;
 
-		width:100%;
-		font-size: 1.5rem;
-		padding-left: $basicPush * 2.4;
-
-		&:focus {
-			background-color: $colorSearchBarInputFocus;
-		}
+	@include mq($to: $sizeBreakpointSmall) {
+	  padding-left: $basicPush * 2;
 	}
+  }
 }
 
 .widg_searchbar-bar__close {
-	@include iconDataurl('close');
-	@include basicUnitHeight(height);
-	@include basicUnitHeight(line-height);
-	@include basicUnitHeight(width);
+  @include iconDataurl('close');
+  @include basicUnitHeight(height);
+  @include basicUnitHeight(line-height);
+  @include basicUnitHeight(width);
+
+  position: absolute;
+  line-height: 0;
+  cursor: pointer;
+
+  right: 0;
+
+  &:hover {
+	background-color: $colorLightGray;
+  }
+
+  &:before {
+	width: 16px;
+	height: 16px;
 
 	position: absolute;
-	line-height: 0;
-	cursor: pointer;
+	top: 50%;
+	right: 50%;
 
-	right: 0;
-
-	&:hover {
-		background-color: $colorLightGray;
-	}
-
-	&:before {
-		width: 16px;
-		height: 16px;
-
-		position: absolute;
-		top: 50%;
-		right: 50%;
-
-		transform: translate(50%, -50%);
-	}
+	transform: translate(50%, -50%);
+  }
 }
 
 .widg_searchbar-bar__intro {
-	padding: $basicPush * 4 $basicPush * 3;
-	display: none;
+  padding: $basicPush * 2 $basicPush * 3;
+  display: none;
 
-	p {
-		line-height: 1.5;
-		font-size: 1.25rem;
+  @include mq($to: $sizeBreakpointSmall) {
+	padding: $basicPush * 2;
+  }
+
+  p {
+	line-height: 1.5;
+	font-size: 1.25rem;
+	margin-bottom: $basicPush * 2.4;
+  }
+
+  > a {
+	display: block;
+	font-size: 1.25rem;
+
+	opacity: 1;
+	text-decoration: none;
+	padding: 10.5px 17px;
+	border: 1px solid $colorBlack;
+
+	position: relative;
+
+	margin-bottom: $basicPush * 1.5;
+
+	@include iconDataurl($name: 'pfeil-black_short', $after: true);
+
+	&:after {
+	  position: absolute;
+	  right: 14px;
+	  top: 50%;
+
+	  transform: translateY(-50%);
+
+	  width: 17px;
+	  height: 9px;
 	}
 
-	> a {
-		display: block;
-		font-size: 1.25rem;
-
-		opacity: 1;
-		text-decoration: none;
-		padding: 10.5px 17px;
-		border: 1px solid $colorBlack;
-
-		position: relative;
-
-		margin-bottom: $basicPush * 1.5;
-
-		@include iconDataurl($name: 'pfeil-black_short', $after: true);
-
-		&:after {
-			position: absolute;
-			right: 14px;
-			top: 50%;
-
-			transform: translateY(-50%);
-
-			width: 17px;
-			height: 9px;
-		}
-
-		&:hover {
-			background-color: $colorLightGray;
-		}
-
+	&:hover {
+	  background-color: $colorLightGray;
 	}
 
-	.show-intro & {
-		display: block;
-	}
+  }
+
+  .show-intro & {
+	display: block;
+  }
 }
 
 .widg_searchbar-bar__loader {
-	display: none;
+  display: none;
 
-	.show-loader & {
-		display: block;
-	}
+  .show-loader & {
+	display: block;
+  }
 }
 
 .widg_searchbar__black-bar {
-	display: none;
-	position: absolute;
-	bottom: 0;
+  display: none;
+  position: absolute;
+  bottom: 0;
 
-	width: 100%;
-	background-color: $colorBlack;
+  width: 100%;
+  background-color: $colorBlack;
 
-	opacity: 1;
-	color: $colorBg;
-	text-decoration: none;
+  opacity: 1;
+  color: $colorBg;
+  text-decoration: none;
 
-	font-size: 1.25rem;
+  font-size: 1.25rem;
 
+  height: $searchbarBlackBarHeight;
+  line-height: $searchbarBlackBarHeight;
+  padding: 0 $searchbarPadding;
+
+  box-shadow: 13px 0 29px 0 rgba($colorBlack, 0.15);
+
+  @include iconDataurl('pfeil-weiss_short', $after: true);
+
+  &:after {
+	width: 17px;
 	height: $searchbarBlackBarHeight;
-	line-height: $searchbarBlackBarHeight;
-	padding: 0 $searchbarPadding;
 
-	box-shadow: 13px 0 29px 0 rgba($colorBlack, 0.15);
+	margin-right: 8px;
 
-	@include iconDataurl('pfeil-weiss_short', $after: true);
+	float: right;
+	display: block;
 
-	&:after {
-		width: 17px;
-		height: $searchbarBlackBarHeight;
+	background-position: center center;
+  }
 
-		margin-right: 8px;
-
-		float: right;
-		display: block;
-
-		background-position: center center;
-	}
-
-	// When bar is set on show results show the black button
-	.show-results & {
-		display: block;
-	}
+  // When bar is set on show results show the black button
+  .show-results & {
+	display: block;
+  }
 }

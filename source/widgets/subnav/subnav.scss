@@ -149,7 +149,7 @@
 			text-decoration: none;
 			opacity: 1;
 
-			@include iconDataurl($name: 'pfeil-black', $after: true);
+			@include iconDataurl($name: 'pfeil-black_short', $after: true);
 
 			&:hover {
 				background-color: $colorGreyHover;
@@ -165,7 +165,7 @@
 				top: 50%;
 				transform: translateY(-50%);
 
-				width: 27px;
+				width: 17px;
 				height: 9px;
 			}
 

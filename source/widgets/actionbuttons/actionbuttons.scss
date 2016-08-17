@@ -6,15 +6,15 @@
 	z-index: zindex(actionbuttons);
 
 	@include mq($to: $sizeBreakpointLarge) {
-		width: 2 * basicUnitHeight(small);
+		width: 2 * clickAreaSizes(small);
 	}
 
 	@include mq($from: $sizeBreakpointWide) {
-		width: 2 * basicUnitHeight(xxl);
+		width: 2 * clickAreaSizes(xxl);
 	}
 
 	.header__wide & {
-		@include basicUnitHeight(width);
+		@include clickAreaSize(width);
 	}
 
 	@include mq($to: $sizeBreakpointMedium) {
@@ -23,8 +23,8 @@
 }
 
 .widg_actionbutton__item {
-	@include basicUnitHeight(height);
-	@include basicUnitHeight(width);
+	@include clickAreaSize(height);
+	@include clickAreaSize(width);
 
 	position: relative;
 	border: 0;

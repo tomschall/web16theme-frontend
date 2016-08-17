@@ -1,24 +1,38 @@
 p {
-	font-size: 1.5rem;
-	font-family: $fontSerifRoman;
-	line-height: 1.7;
+  font-size: 1.5rem;
+  font-family: $fontSerifRoman;
+  line-height: 1.7;
+  margin-top: 12px;
+  margin-bottom: 12px;
 
-	b {
-		font-weight: 700;
-	}
+  @include mq($to: $sizeBreakpointSmall) {
+	font-size: 1.25rem;
+	line-height: 23px;
+  }
+
+  b {
+    font-weight: 700;
+  }
 }
 
 .text__lead {
-  font-size: 2rem;
-	line-height: 1.5;
-	margin-bottom: $basicPush * 3.3;
+  font-size: 1.8333rem;
+  line-height: 1.545454;
+  margin-bottom: $basicPush * 2.3;
+  margin-top: 0;
+
+  @include mq($to: $sizeBreakpointSmall) {
+	font-size: 1.5rem;
+	line-height: 1.5555555;
+	margin-bottom: 0;
+  }
 }
 
 .text__lead + .has_grid {
-	margin-top: $basicPush * 6.6;
+  margin-top: $basicPush * 6.6;
 }
 
 span.bold,
 b {
-	font-weight: 700;
+  font-weight: 700;
 }

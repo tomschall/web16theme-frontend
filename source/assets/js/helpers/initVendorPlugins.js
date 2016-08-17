@@ -15,6 +15,10 @@
 			strokeWidth: 6,
 			color: '#999999'
 		});
+
+		$('.widg_hero__img, .widg_teaser__img img').imageScale({
+			rescaleOnResize: true
+		});
 	});
 
 	$(window).load(function() {

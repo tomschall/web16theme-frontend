@@ -133,16 +133,16 @@
 	color: $colorTextGrey;
 	display: block;
 	line-height: 1.8;
-	letter-spacing: 2.9px;
+	letter-spacing: 1px;
 	font-size: 1rem;
 	font-weight: 600;
 }
 
 .widg_carousel__title {
-	font-size: 4.33333rem;
+	font-size: 4rem;
 	font-family: $fontSerifRoman;
 	display: block;
-	padding-bottom: $basicPush * 7;
+	padding-bottom: $basicPush * 10.3;
 	line-height: 1.2;
 
 	@include mq($to: $sizeBreakpointLarge) {
@@ -173,7 +173,7 @@
 	@include noStyledButton();
 
 	position: absolute;
-	bottom: $basicPush * 4.2;
+	bottom: $basicPush * 3.1;
 	left: $basicPush * 5;
 	right: $basicPush * 5;
 

@@ -1,325 +1,335 @@
 .search__cat-title {
-	display: block;
-	font-size: 0.916667rem;
+  display: block;
+  font-size: 0.916667rem;
 
-	text-transform: uppercase;
-	text-decoration: none;
+  text-transform: uppercase;
+  text-decoration: none;
 
-	font-weight: 800;
-	opacity: 1;
+  font-weight: 800;
+  opacity: 1;
 
-	color: $colorBorderGrey;
-	background-color: $colorLightGray;
-	padding: 10px 14px 9px 14px;
+  letter-spacing: 1.5px;
 
-	border-bottom: 1px solid $colorGreyHover;
+  color: $colorBorderGrey;
+  padding: 10px 14px 9px 14px;
+  padding-left: 0;
 
-	// When on Searchpage
-	.widg_searchpage & {
-		padding-top: 10px;
-		padding-bottom: 9px;
+  border-bottom: 1px solid $colorGreyHover;
 
-		border-bottom: none;
+  // When on Searchpage
+  .widg_searchpage & {
+	padding-top: 10px;
+	padding-bottom: 9px;
 
-		padding-left: $gutterWidth;
-		padding-right: $gutterWidth;
-	}
+	border-bottom: none;
+
+	padding-left: $gutterWidth;
+	padding-right: $gutterWidth;
+  }
 }
 
 a.search__cat-title {
-	@include iconDataurl('pfeil-black_short', $after: true);
+  @include iconDataurl('pfeil-black_short', $after: true);
 
-	position: relative;
+  position: relative;
 
-	&:hover {
-		background-color: $colorGreyHover;
+  &:after {
+	opacity: 0.5;
+	position: absolute;
 
-		&:after {
-			opacity: 1;
-		}
-	}
+	top: 50%;
+	transform: translateY(-50%);
+	right: $searchbarPadding + 8px;
 
-	&:after {
-		opacity: 0.5;
-		position: absolute;
+	width: 17px;
+	height: 9px;
+  }
 
-		top: 50%;
-		transform: translateY(-50%);
-		right: $searchbarPadding + 8px;
-
-		width: 17px;
-		height: 9px;
-	}
-
-	.widg_searchpage & {
-		@include iconDataurl('pfeil-black', $after: true);
-	}
+  .widg_searchpage & {
+	@include iconDataurl('pfeil-black', $after: true);
+  }
 }
 
 .search__cat {
-	margin: $basicPush * 1.5 0 $basicPush * 2.7 0;
+  margin: $basicPush * 1.5 0 $basicPush * 2.7 0;
 
-	/**
-	  * On Searchpage first item shouldn't have a margin-top
-	  */
-	.widg_searchpage & {
-		&:first-of-type {
-			margin-top: 0;
-		}
+  /**
+    * On Searchpage first item shouldn't have a margin-top
+    */
+  .widg_searchpage & {
+	&:first-of-type {
+	  margin-top: 0;
 	}
+  }
 
-	ul {
-		list-style: none;
-		margin: 3px 0;
-		padding: 0;
-	}
+  ul {
+	list-style: none;
+	margin: 3px 0;
+	padding: 0;
+  }
 }
 
 .search__cat-title-label {
-	float: right;
-	display: inline-block;
-	text-align: right;
+  float: right;
+  display: inline-block;
+  text-align: right;
 
-	margin-right: -1.5 * $basicPush;
+  margin-right: -1.5 * $basicPush;
 }
 
 [class^="search__result-"] {
-	padding: 0;
+  padding: 0;
 
+  a {
+	@include clearfix();
+
+	display: block;
+	opacity: 1;
+
+	padding: 12px 13px;
+
+	font-size: 1.1666667rem;
+	text-decoration: none;
+
+	border-bottom: 1px solid $colorGreyHover;
+
+	@include iconDataurl('pfeil-black_short', $after: true);
+	position: relative;
+
+	span,
+	span:before {
+	  transition: transform $transitionLength / 3 $transitionEase;
+	  display: inline-block;
+	}
+
+	&:after {
+	  position: absolute;
+
+	  opacity: 0;
+
+	  width: 17px;
+	  height: 9px;
+
+	  right: 16px;
+	  top: 50%;
+	  transform: translateY(-50%);
+
+	  transition: all $transitionLength / 3 $transitionEase;
+	}
+
+	&:hover {
+	  background-color: $colorLightGray;
+
+	  span,
+	  span:before {
+		transform: translateX(5px);
+	  }
+
+	  &:after {
+		opacity: 1.0;
+		right: 11px;
+	  }
+	}
+
+	.event-info {
+	  font-size: 1rem;
+	  color: $colorBorderGrey;
+	}
+  }
+
+  &:last-of-type a {
+	border-bottom: none;
+  }
+
+  &.search__result-doc {
 	a {
-		@include clearfix();
+	  @include iconDataurl('download-arrow', $after: true);
 
+	  &:after {
+		display: none;
+	  }
+
+	  &:hover:after {
 		display: block;
-		opacity: 1;
-
-		padding: 12px 13px;
-
-		font-size: 1.1666667rem;
-		text-decoration: none;
-
-		border-bottom: 1px solid $colorGreyHover;
-
-		@include iconDataurl('pfeil-black_short', $after: true);
-		position: relative;
-
-		&:after {
-			position: absolute;
-
-			display: none;
-
-			width: 17px;
-			height: 9px;
-
-			right: 8px;
-			top: 50%;
-			transform: translateY(-50%);
-		}
-
-		&:hover {
-			background-color: $colorLightGray;
-
-			&:after {
-				display: block;
-			}
-		}
-
-		.event-info {
-			font-size: 1rem;
-			color: $colorBorderGrey;
-		}
+	  }
 	}
+  }
 
-	&:last-of-type a {
-		border-bottom: none;
-	}
-
-	&.search__result-doc {
-		a {
-			@include iconDataurl('download-arrow', $after: true);
-
-			&:after {
-				display: none;
-			}
-
-			&:hover:after {
-				display: block;
-			}
-		}
-	}
-
-	span.bold {
-		font-weight: 700;
-	}
+  span.bold {
+	font-weight: 700;
+  }
 }
 
 .search__result-event a {
-	@include iconDataurl('event');
+  @include iconDataurl('event');
 
-	// basic padding left event icon width margin between text and event icon
-	padding-left: 4px + 22px + 12px;
+  // basic padding left event icon width margin between text and event icon
+  padding-left: 50px;
 
-	&:before {
-		position: absolute;
-		left: 4px;
+  &:before {
+	position: absolute;
+	left: 14px;
 
-		width: 22px;
-		height: 22px;
-	}
+	width: 22px;
+	height: 22px;
 
-	.title {
-		display: block;
-	}
+	transform: translateY(3px);
+  }
+
+  .title {
+	display: block;
+  }
 }
 
-
-
 .search__result-show-all a {
-	font-weight: 600;
+  font-weight: 600;
 
-	padding: 25px $gutterWidth 24px $gutterWidth !important;
+  padding: 12px 13px !important;
+
 }
 
 /**
   * Results on the searchpage
   */
 .widg_searchpage [class^="search__result-"] {
-	padding: 0;
+  padding: 0;
 
+  a {
+	padding: 25px 0 24px 0;
+	@include clearfix;
+
+	@include iconDataurl('pfeil-black', $after: true);
+
+	&:after {
+	  display: none;
+
+	  width: 27px;
+	  height: 9px;
+	}
+	&:hover:after {
+	  display: block;
+	}
+
+  }
+
+  &.search__result-doc {
 	a {
-		padding: 25px 0 24px 0;
-		@include clearfix;
+	  @include iconDataurl('download-arrow', $after: true);
 
-		@include iconDataurl('pfeil-black', $after: true);
+	  &:after {
+		display: none;
+	  }
+	  &:hover:after {
+		display: block;
+	  }
+	}
+  }
 
-		&:after {
-			display: none;
+  span {
+	display: inline-block;
+	float: none !important;
 
-			width: 27px;
-			height: 9px;
-		}
-		&:hover:after {
-			display: block;
-		}
+	&.title {
+	  @include span(8);
 
 	}
 
-	&.search__result-doc {
-		a {
-			@include iconDataurl('download-arrow', $after: true);
+	&.study_type,
+	&.event-info,
+	&.file-type {
+	  @include span(3);
+	  text-align: right;
 
-			&:after {
-				display: none;
-			}
-			&:hover:after {
-				display: block;
-			}
-		}
+	  font-size: 1.166667rem;
 	}
-
-	span {
-		display: inline-block;
-		float: none !important;
-
-		&.title {
-			@include span(8);
-
-		}
-
-		&.study_type,
-		&.event-info,
-		&.file-type {
-			@include span(3);
-			text-align: right;
-
-			font-size: 1.166667rem;
-		}
-	}
+  }
 }
 
 .widg_searchpage .search__result-event {
-	a {
-		@include iconDataurl('event');
+  a {
+	@include iconDataurl('event');
 
-		// basic padding left event icon width margin between text and event icon
-		padding-left: 4px + 22px + 12px;
+	// basic padding left event icon width margin between text and event icon
+	padding-left: 4px + 22px + 12px;
 
-		&:before {
-			top: 50%;
-			transform: translateY(-50%);
-		}
+	&:before {
+	  top: 50%;
+	  transform: translateY(-50%);
 	}
+  }
 }
 
 /**
   * Helper classes for search
   */
 .visible-in-bar {
-	display: none;
+  display: none;
 
-	.widg_searchbar-bar & {
-		display: inline;
-	}
+  .widg_searchbar-bar & {
+	display: inline;
+  }
 }
 
 .visible-in-page {
-	display: none;
+  display: none;
 
-	.widg_searchpage & {
-		display: inline-block;
-	}
+  .widg_searchpage & {
+	display: inline-block;
+  }
 }
 
 /**
   * Special styling for search fields
   */
 .search__string {
-	.reset-field {
-		display: none;
+  .reset-field {
+	display: none;
+  }
+  input.is_filled + label + .reset-field {
+	display: block;
+	text-indent: -10000px;
+
+	opacity: 0.5;
+
+	@include iconDataurl('breadcrumb-expand', $after: true);
+
+	&:after {
+	  position: absolute;
+	  top: 50%;
+	  right: 19px;
+
+	  transform: translateY(-50%) rotate(45deg);
 	}
-	input.is_filled + label + .reset-field {
-		display: block;
-		text-indent: -10000px;
 
-		opacity: 0.5;
-
-		@include iconDataurl('breadcrumb-expand', $after: true);
-
-		&:after {
-			position: absolute;
-			top: 50%;
-			right: 19px;
-
-			transform: translateY(-50%) rotate(45deg);
-		}
-
-		&:hover {
-			opacity: 1;
-			cursor: pointer;
-		}
+	&:hover {
+	  opacity: 1;
+	  cursor: pointer;
 	}
+  }
 }
 
 .search__form-wrapper {
-	> div {
-		@include clearfix;
-	}
+  > div {
+	@include clearfix;
+  }
 }
+
 .search__second-row {
-	max-height: 0;
-	overflow: hidden;
-	margin-top: 0;
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
 
-	transition: margin-left .5s, max-height .5s .5s, margin-top .5s .5s;
+  transition: margin-left .5s, max-height .5s .5s, margin-top .5s .5s;
 
-	margin-left: -100vw;
+  margin-left: -100vw;
 
-	&.is_visible {
-		max-height: 70px;
-		margin-top: $gutterWidth * 2;
-		margin-left: 0;
+  &.is_visible {
+	max-height: 70px;
+	margin-top: $gutterWidth * 2;
+	margin-left: 0;
 
-		transition: max-height .5s, margin-top .5s, margin-left .5s .5s ;
-	}
+	transition: max-height .5s, margin-top .5s, margin-left .5s .5s;
+  }
 }
 
 /**
@@ -327,65 +337,65 @@ a.search__cat-title {
   */
 
 .search__third-row {
-	margin-top: $basicPush * 2.5;
+  margin-top: $basicPush * 2.5;
 }
 
 .search__extra-holder {
-	@include span(6);
+  @include span(6);
 
-	&:last-of-type {
-		text-align: right;
+  &:last-of-type {
+	text-align: right;
 
-		font-size: 1.25rem;
-		line-height: 2;
+	font-size: 1.25rem;
+	line-height: 2;
+  }
+
+  button {
+	@include noStyledButton;
+	letter-spacing: normal;
+
+	font-size: 1.25rem;
+	color: $colorTextGrey;
+	font-weight: 600;
+
+	text-decoration: underline;
+	margin-right: $basicPush * 3.9;
+	position: relative;
+
+	padding-left: $buttonIconSize * 1.5;
+	line-height: 2;
+
+	&:hover {
+	  color: $colorBlack;
+
+	  &:before {
+		opacity: 1;
+	  }
 	}
 
-	button {
-		@include noStyledButton;
-		letter-spacing: normal;
+	&:before {
+	  position: absolute;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  left: 0;
+	  opacity: 0.5;
 
-		font-size: 1.25rem;
-		color: $colorTextGrey;
-		font-weight: 600;
-
-		text-decoration: underline;
-		margin-right: $basicPush * 3.9;
-		position: relative;
-
-		padding-left: $buttonIconSize * 1.5;
-		line-height: 2;
-
-		&:hover {
-			color: $colorBlack;
-
-			&:before {
-				opacity: 1;
-			}
-		}
-
-		&:before {
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			left: 0;
-			opacity: 0.5;
-
-			width: $buttonIconSize;
-			height: $buttonIconSize;
-		}
-
-		&.search__expander {
-			@include iconDataurl('breadcrumb-expand');
-
-			&.is_active {
-				@include iconDataurl('breadcrumb-hide');
-			}
-		}
-
-		&.search__reset {
-			margin-right: 0;
-
-			@include iconDataurl('reset');
-		}
+	  width: $buttonIconSize;
+	  height: $buttonIconSize;
 	}
+
+	&.search__expander {
+	  @include iconDataurl('breadcrumb-expand');
+
+	  &.is_active {
+		@include iconDataurl('breadcrumb-hide');
+	  }
+	}
+
+	&.search__reset {
+	  margin-right: 0;
+
+	  @include iconDataurl('reset');
+	}
+  }
 }

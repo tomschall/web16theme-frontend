@@ -1,53 +1,59 @@
 .widg_logo {
-	width: 62%;
-	height: 50px;
-	position: relative;
-	overflow: hidden;
+  width: 62%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
 
-	a {
-		opacity: 1;
-	}
+  a {
+	opacity: 1;
+  }
 
-	.header__wide & {
-		width: 100%;
+  .header__wide & {
+	width: 100%;
 
-		img {
-			max-width: 100%;
-		}
-
-		@include mq($to: $sizeBreakpointMedium) {
-			width: 50%;
-		}
-
-		@include mq($to: $sizeBreakpointSmall) {
-			width: 84px;
-		}
+	img {
+	  max-width: 100%;
 	}
 
 	@include mq($to: $sizeBreakpointMedium) {
-		width: 50%;
-		right: $basicPush * 4;
-		position: absolute;
-
-		top: 50%;
-		transform: translateY(-50%);
-
-		img {
-			position: absolute;
-			top: 50%;
-			transform: translateY(-45%);
-			right: 0;
-		}
+	  width: 50%;
 	}
 
 	@include mq($to: $sizeBreakpointSmall) {
-		width: 84px;
-
-		right: $basicPush * 2;
-
-		img {
-			left: 0;
-			right: auto;
-		}
+	  width: 84px;
 	}
+  }
+
+  @include mq($to: $sizeBreakpointMedium) {
+	width: 50%;
+
+	top: 50%;
+	transform: translateY(-50%);
+
+	margin-left: $basicPush * 4;
+
+	img {
+	  position: absolute;
+	  top: 50%;
+	  transform: translateY(-49%);
+	  left: 0;
+
+	  height: 40px;
+	}
+  }
+
+  @include mq($to: $sizeBreakpointSmall) {
+	height: 60px;
+	width: 75px;
+
+	margin-left: $basicPush * 2;
+
+	img {
+	  left: 0;
+	  right: auto;
+
+	  height: 40px;
+	  width: auto;
+	}
+  }
 }

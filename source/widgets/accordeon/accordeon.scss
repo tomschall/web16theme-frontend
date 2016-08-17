@@ -14,7 +14,7 @@
 }
 
 .widg_accordeon__entry {
-	border-bottom: 1px solid $colorBlack;
+	border-bottom: 1px solid $colorGreyHover;
 	overflow: hidden;
 
 	&:last-of-type {
@@ -28,7 +28,7 @@
 		min-height: buttonHeight(desktop);
 		display: block;
 
-		padding: ($gutterWidth - 4) $gutterWidth * .75;
+		padding: ($gutterWidth - 4) $gutterWidth + 2;
 		position: relative;
 
 		opacity: 1;
@@ -49,7 +49,7 @@
 	}
 
 	> a {
-		@include iconDataurl('close', $after: true);
+		@include iconDataurl('accordeon_close', $after: true);
 
 		line-height: 2;
 
@@ -107,7 +107,7 @@
 		background-color: $colorYellowAccordeonActive;
 
 		&:hover {
-			background-color: $colorYellowNavHover;
+			background-color: $colorYellowAccordeonActive;
 		}
 	}
 
@@ -134,7 +134,7 @@ div.widg_accordeon__button {
 
 .widg_accordeon__content {
 	display: none;
-	padding: 0 $gutterWidth * .75 $gutterWidth $gutterWidth * .75;
+	padding: 0 $gutterWidth + 2 $gutterWidth $gutterWidth + 2;
 
 	.is_open & {
 		display: none;
@@ -167,6 +167,13 @@ div.widg_accordeon__button {
 	dd {
 		text-align: right;
 	}
+
+    > h3,
+    > p,
+    > div,
+    > dl {
+      padding-top: 10px;
+    }
 }
 
 /**

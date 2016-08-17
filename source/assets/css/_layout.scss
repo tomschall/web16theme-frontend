@@ -80,6 +80,10 @@ h3 {
 	@include mq($to: $sizeBreakpointMedium) {
 		padding: 0;
 	}
+
+  	@include mq($to: $sizeBreakpointSmall) {
+	  	margin-top: 0;
+	}
 }
 
 .page_content {
@@ -91,6 +95,11 @@ h3 {
 
 	@include mq($to: $sizeBreakpointSubnav) {
 		@include span(12);
+	}
+
+  	@include mq($from: $sizeBreakpointSmall, $to: $sizeBreakpointMedium) {
+	  padding-left: $basicPush * 4;
+	  padding-right: $basicPush * 4;
 	}
 }
 

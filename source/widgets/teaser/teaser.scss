@@ -5,6 +5,9 @@
 	padding-bottom: $basicPush * 5;
 	margin-bottom: $basicPush * 4;
 
+  	@include mq($to: $sizeBreakpointSmall) {
+	  padding-bottom: $basicPush * 1.5;
+	}
 
 	&:hover {
 		background-color: $colorLightGray;
@@ -47,16 +50,18 @@
 
 	@include mq($to: $sizeBreakpointSmall) {
 		margin-bottom: 0;
-		border-bottom: 1px solid $colorBlack;
+		border-bottom: 1px solid $colorGreyHover;
 
 		@include span(12);
 
 		padding-left: 100px;
+	  	padding-right: $gutterWidth * 2;
 
 		&.wide___third {
 			@include span(12);
 
 			padding-left: 100px;
+		  	padding-right: $gutterWidth * 2;
 		}
 
 		&.no-image,
@@ -66,6 +71,14 @@
 
 		&:last-of-type {
 			border-bottom: 0;
+		}
+	}
+
+  	@include mq($to: 374px) {
+	  	padding-left: 80px;
+
+	  	&.wide___third {
+		  padding-left: 80px;
 		}
 	}
 }
@@ -87,10 +100,16 @@
 		float: left;
 		margin-left: -90px;
 
-		img {
-			width: 85px;
-			height: auto;
-		}
+		width: 70px;
+	  	height: 70px;
+	  	margin-bottom: 0;
+	}
+
+  	@include mq($to: 374px) {
+	  width: 50px;
+	  height: 50px;
+
+	  margin-left: -70px;
 	}
 }
 
@@ -109,6 +128,16 @@
 	display: block;
 	position: absolute;
 	bottom: $basicPush * 1.8;
+
+  @include mq($to: $sizeBreakpointSmall) {
+	@include iconDataurl('pfeil-black_short');
+
+	top: 50%;
+	right: 8px;
+
+	transform: translateY(-34%);
+  }
+
 }
 
 
@@ -121,6 +150,8 @@
 
 	@include mq($to: $sizeBreakpointSmall) {
 		padding-bottom: 0;
+	  font-size: 1.08333333rem;
+	  margin-bottom: 3px;
 	}
 }
 
@@ -145,5 +176,7 @@
 
 	@include mq($to: $sizeBreakpointSmall) {
 		padding: 0 $gutterWidth;
+	  display: block;
+	  flex-wrap: nowrap;
 	}
 }

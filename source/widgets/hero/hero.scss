@@ -1,15 +1,10 @@
 .widg_hero {
-	min-height: 100px;
+	min-height: 90px;
 
 	position: relative;
 
 	@include mq($to: $sizeBreakpointMedium) {
 		min-height: 0;
-	}
-
-	@include mq($to: $sizeBreakpointSmall) {
-		display: flex;
-		flex-direction: column;
 	}
 
 	&.no-image {
@@ -35,6 +30,10 @@
 	}
 
 	max-height: 50vh;
+
+  	@include mq($to: $sizeBreakpointSubnav) {
+	  min-height: 250px;
+	}
 }
 
 .widg_hero__img {

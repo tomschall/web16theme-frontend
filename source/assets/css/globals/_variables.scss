@@ -28,8 +28,8 @@ $colorBg: #ffffff;
 $colorBlack: #000000;
 $colorLightGray: #F1F1EE;
 $colorDarkGrey: #999999;
-$colorTextGrey: #767676;
-$colorBorderGrey: $colorTextGrey;
+$colorTextGrey: #767573;
+$colorBorderGrey: #767573;
 $colorGreyHover: #deded9;
 $colorSearchBarInputFocus: #f7f7f5;
 $customScrollbarColor: #bebdb9;
@@ -96,7 +96,7 @@ $paddingBehindYellowBarWide: $widthYellowBarWide + $pagePadding;
 $paddingBehindYellowBarNarrow: $widthYellowBar + $pagePaddingSmall;
 $paddingBehindYellowBarSuperWide: $widthYellowBarSuperWide + $pagePaddingWide;
 
-$contentMarginTop: $basicPush * 5.6;
+$contentMarginTop: $basicPush * 4;
 
 /**
   * Header
@@ -173,7 +173,13 @@ $zIndex: (
   * Basic Unit height map
   */
 $basicUnitHeights: (
-		small: 60px,
+		small: 50px,
 		normal: 100px,
 		xxl: 150px
+);
+
+$clickAreaSizes: (
+		small: 70px,
+		normal: 100px,
+		xxl: 120px
 );

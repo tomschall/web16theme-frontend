@@ -7,13 +7,19 @@
 		font-weight: 300;
 
 		margin: $basicPush * 1.6 0 $basicPush * 2.6 0;
+
+	  	@include mq($to: small) {
+		  font-size: 1.083333rem;
+		  margin-top: 9px;
+		}
 	}
 
 	h4 {
 		margin-top: $basicPush * 2.6;
 
 		@include mq($to: $sizeBreakpointSmall) {
-			margin-top: $basicPush;
+			margin-top: 3px;
+		  	font-size: 1.25rem;
 		}
 	}
 
@@ -29,7 +35,7 @@
 		@include iconDataurl('pfeil-black', $after: true);
 
 		padding: 0 $basicPush * 12 0 $gutterWidth;
-		border-bottom: 1px solid $colorBlack;
+		border-bottom: 1px solid $colorGreyHover;
 		display: block;
 		height: 100%;
 		width: 100%;
@@ -53,25 +59,39 @@
 
 			@include mq($to: $sizeBreakpointSmall) {
 				position: static;
-				margin-bottom: $basicPush * 1.5;
+			  	margin-bottom: $basicPush;
 			}
 		}
 
 		@include mq($to: $sizeBreakpointSmall) {
-			padding: 0 $gutterWidth;
+		  	padding-left: 10px;
+		  	padding-right: 0;
+
+		  	@include iconDataurl('pfeil-black_short', $after: true);
 		}
 	}
 
 	&.has_date a {
-		padding-left: $basicPush * 12.8;
+		padding-left: $basicPush * 15;
 
 		@include mq($to: $sizeBreakpointSmall) {
-			padding-left: $gutterWidth;
+		  padding-left: 10px;
+		  padding-right: 0;
+
+		  @include iconDataurl('pfeil-black_short', $after: true);
 		}
 	}
 
 	&:last-of-type a {
 		border-bottom: none;
+	}
+
+  	@include mq($to: small) {
+	  padding-top: 12px;
+
+	  &:first-of-type {
+		padding-top: 0;
+	  }
 	}
 }
 
@@ -88,6 +108,6 @@
 
 	@include mq($to: $sizeBreakpointSmall) {
 		position: static;
-		font-size: 1.25rem;
+		font-size: 1.08333rem;
 	}
 }
