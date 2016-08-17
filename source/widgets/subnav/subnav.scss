@@ -44,6 +44,7 @@
 	position: absolute;
 	transform: translateY(-100%);
 	width: 100%;
+  	line-height: 24px;
 
 	@include mq($to: $sizeBreakpointSubnav) {
 		display: none;
@@ -72,7 +73,7 @@
 
 	h2 {
 		color: $colorBg;
-		line-height: 1;
+		line-height: 24px;
 
 		font-size: 1.5rem;
 

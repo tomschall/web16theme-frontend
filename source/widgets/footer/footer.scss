@@ -5,6 +5,7 @@
 .widg_inner-footer {
 	background-color: $colorBlack;
 	position: relative;
+  	padding-bottom: $basicPush;
 }
 
 .widg_footer__adress-claim {
@@ -14,6 +15,7 @@
 	opacity: 0.8;
 	font-size: 1.08333333rem;
 	padding-bottom: $basicPush * 1.5 !important;
+  	margin-top: $basicPush * 2;
 }
 
 .widg_footer__efqm {
@@ -23,9 +25,13 @@
 	bottom: $basicPush * 3.6;
 	top: auto;
 
-	@include mq($to: $sizeBreakpointMedium) {
-		right: $gutterWidth;
+	@include mq($to: $sizeBreakpointSubnav) {
+		right: $basicPush * 4;
 		bottom: $basicPush * 2.9;
+	}
+
+  	@include mq($to: small) {
+	  	right: $basicPush * 2;
 	}
 
 	a {
@@ -33,10 +39,10 @@
 
 		@include iconDataurl('efqm_logo_neg');
 
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: $sizeBreakpointSubnav) {
 			&:before {
-				height: 50px;
-				width: 84px;
+				height: 60px;
+				width: 100px;
 
 			}
 		}

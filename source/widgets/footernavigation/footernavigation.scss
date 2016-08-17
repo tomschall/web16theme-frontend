@@ -15,7 +15,7 @@
 
 	color: $colorBg;
 
-	@include mq($to: $sizeBreakpointMedium, $from: $sizeBreakpointSmall) {
+	@include mq($to: $sizeBreakpointSubnav, $from: $sizeBreakpointSmall) {
 		@include span(6);
 
 		margin-bottom: $basicPush * 2;
@@ -25,15 +25,17 @@
 	  float: none;
 	  width: calc(100% - 32px);
 
-	  border-bottom: 1px solid $colorBg;
+	  border-bottom: 1px solid rgba($colorBg, 0.5);
 	  padding: 0;
 	  margin: 0 20px;
 	}
 
 	ul {
+	  	margin-top: $basicPush * 1.4;
 		@include mq($to: $sizeBreakpointSmall) {
 			display: none;
 
+		  	margin-top: 0;
 		  	padding-bottom: $basicPush * 1.75;
 		}
 	}
@@ -77,7 +79,7 @@
 		line-height: 1.7;
 		padding-bottom: $basicPush * 1.4;
 
-		border-bottom: 1px solid $colorBg;
+		border-bottom: 1px solid rgba($colorBg, 0.5);
 
 		@include mq($to: $sizeBreakpointSmall) {
 			padding-top: $basicPush * 1.4;

@@ -161,6 +161,10 @@
 	  display: block;
 	}
   }
+
+  @include mq($to: small) {
+	padding-bottom: $basicPush * 3;
+  }
 }
 
 /**

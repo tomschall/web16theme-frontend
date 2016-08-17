@@ -43,8 +43,29 @@
 		text-decoration: none;
 		opacity: 1;
 
+	  	@include mq($from: medium) {
+		  span,
+		  h4,
+		  p,
+		  &:after {
+			transition: transform $transitionLength / 3 $transitionEase;
+		  }
+		}
+
 		&:hover {
 			background-color: $colorLightGray;
+
+		  	@include mq($from: medium) {
+			  span,
+			  h4,
+			  p {
+				transform: translateX(5px);
+			  }
+
+			  &:after {
+				transform: translateX(5px) translateY(-50%);
+			  }
+			}
 		}
 
 		&:after {

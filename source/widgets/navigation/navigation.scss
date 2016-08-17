@@ -346,6 +346,8 @@ for better overview they are seperated here
 			// @TODO: if header top height changes, this has to be reflected here too
 			height: calc(100vh - 70px);
 
+		  	transform: translate3D(0,0,0);
+
 			.widg_navigation__back {
 				display: block;
 			}

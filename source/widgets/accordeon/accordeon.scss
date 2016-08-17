@@ -58,6 +58,8 @@
 			content: " ";
 			display: block;
 
+		  	transition: transform $transitionLength / 2 $transitionEase;
+
 			top: 50%;
 			transform: translateY(-50%) rotate(45deg);
 
