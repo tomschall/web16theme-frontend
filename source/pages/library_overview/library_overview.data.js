@@ -57,7 +57,8 @@ var data = _.merge(defaultData, {
 						isBack: true
 					}
 				]
-			})
+			}),
+			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
 		}
 	});
 

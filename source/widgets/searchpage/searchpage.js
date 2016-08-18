@@ -116,13 +116,6 @@
 		}.bind(this));
 
 		/**
-		 * When something on queryInput Changed // to be redundant
-		 */
-		$(this.options.domSelectors.queryInput).on('change.' + this.uuid, function(event) {
-			searchParam.q = $(event.target).val();
-		});
-
-		/**
 		 * Expander btn to show more filters
 		 */
 		$(this.options.domSelectors.expanderBtn).on('click.' + this.uuid, function(event) {
@@ -157,6 +150,10 @@
 
 		$formElements.on('change.' + this.uuid, function() {
 			this.sendSearchQuery();
+
+			if (searchType === 'all') {
+				this.updateTitle();
+			}
 		}.bind(this));
 	};
 
@@ -173,7 +170,15 @@
 	Widget.prototype.fillFormAndTitle = function() {
 		$(this.options.domSelectors.queryInput).addClass(this.options.stateClasses.isFilled).val(searchParam.q);
 
+		this.updateTitle();
+	};
+
+	/**
+	 * Updates the title
+	 */
+	Widget.prototype.updateTitle = function() {
 		$(this.options.domSelectors.title).text(this.$element.data('lang-title') + ' «' + searchParam.q + '»');
+
 	};
 
 	/**
@@ -216,6 +221,9 @@
 		return properParamCounter > 0;
 	};
 
+	/**
+	 * Resetting all form fields
+	 */
 	Widget.prototype.resetFields = function() {
 		data.$formElements.map(function(index, element) {
 			$(element).val('');
@@ -312,6 +320,10 @@
 
 			currentLimitOffset = 0;
 		}
+
+		this.$element.find('.fhnw-spinner').css({
+			'min-height': $('.search__results').height()
+		});
 
 		$resultsTd.unbind('click.' + this.uuid);
 

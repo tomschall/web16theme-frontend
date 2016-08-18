@@ -94,7 +94,8 @@ var data = _.merge(defaultData, {
 						url: '#'
 					}
 				]
-			})
+			}),
+			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
 		}
 	});
 

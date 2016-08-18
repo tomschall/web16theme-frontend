@@ -19,7 +19,7 @@
 					// item: '[data-' + name + '="item"]'
 				},
 				stateClasses: {
-					// isActive: 'is_active'
+					isNavOpen: 'is_nav-open'
 				},
 				scrollMagicScene: null,
 				scrollMagicScene2: null,
@@ -88,10 +88,16 @@
 				}
 			}
 		}.bind(this));
-	};
 
-	Widget.prototype.scroll = function() {
+		$(window).on('open.estatico.navigation.' + this.uuid, function() {
+			this.$element.addClass(this.options.stateClasses.isNavOpen);
+		}.bind(this));
 
+		$(window).on('close.estatico.navigation.' + this.uuid, function() {
+			this.$element.removeClass(this.options.stateClasses.isNavOpen);
+
+			window.estatico.modal.hideModal();
+		}.bind(this));
 	};
 
 	/**

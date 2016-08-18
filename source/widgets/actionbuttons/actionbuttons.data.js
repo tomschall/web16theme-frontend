@@ -11,6 +11,9 @@ var data = _.merge(defaultData, {
 			description: '',
 			code: dataHelper.getTemplateCode('actionbuttons.hbs'),
 			documentation: dataHelper.getDocumentation('actionbuttons.md')
+		},
+		widgets: {
+			searchbar: requireNew('../searchbar/searchbar.data.js')
 		}
 	});
 

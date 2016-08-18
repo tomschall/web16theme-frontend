@@ -43,7 +43,8 @@
 		},
 		resultsShown = false,
 		currentSearchValue = null,
-		searchBarIsOpen = false;
+		searchBarIsOpen = false,
+		searchPageUrl = 'test';
 
 	/**
 	 * Create an instance of the Widget
@@ -146,7 +147,8 @@
 
 		$(window).trigger(events.open);
 
-		$('body').addClass('prevent-scroll');
+		window.estatico.modal.addPreventScroll();
+		window.estatico.modal.showModal();
 
 		/**
 		 * Have to set the timeout so focus can be set
@@ -173,7 +175,8 @@
 		$(window).trigger(events.close);
 
 		if (removePreventScroll) {
-			$('body').removeClass('prevent-scroll');
+			window.estatico.modal.hideModal();
+			window.estatico.modal.removePreventScroll();
 		}
 	};
 
@@ -204,11 +207,12 @@
 			$(this.options.domSelectors.content).find('.search__results').remove();
 		}
 
-		$(this.options.domSelectors.content).find('.mCSB_container').append(html);
+		$(this.options.domSelectors.content).find('.mCSB_container').prepend(html);
 
 		this.changeSearchbarStatus(this.options.stateClasses.showResults);
 
 		this.markSearchQuery();
+		this.appendGoToPageBtn();
 
 		$(this.options.domSelectors.content).css({
 			'height': $(this.options.domSelectors.content).height()
@@ -229,6 +233,14 @@
 
 	};
 
+	Widget.prototype.appendGoToPageBtn = function() {
+		var completePageUrl = searchPageUrl + '?q=' + currentSearchValue,
+				showAllResultsString = $(this.options.domSelectors.bar).data('lang-all-results'),
+				$btn = $('<a class="widg_searchbar__go-to-page" href="' + completePageUrl + '">' + showAllResultsString + '</a>');
+
+		$('.search__results').append($btn);
+	};
+
 	/**
 	 * Marks the search query
 	 */
@@ -243,16 +255,19 @@
 
 		$searchResultLists.each(function(index, element) {
 			$elementTitle = $(element).find('a .' + this.options.listItemSpanClasses.title);
-			titleSt = $elementTitle.html();
 
-			queryStartPosition = titleSt.toLowerCase().search(currentSearchValue.toLowerCase());
+			if ($elementTitle.length > 0) {
+				titleSt = $elementTitle.html();
 
-			if (queryStartPosition !== -1) {
-				queryEndPosition = queryStartPosition + currentSearchValue.length;
+				queryStartPosition = titleSt.toLowerCase().search(currentSearchValue.toLowerCase());
 
-				markedTitle = titleSt.substr(0, queryStartPosition) + '<span class="bold">' + titleSt.substr(queryStartPosition, currentSearchValue.length) + '</span>' + titleSt.substr(queryEndPosition);
+				if (queryStartPosition !== -1) {
+					queryEndPosition = queryStartPosition + currentSearchValue.length;
 
-				$elementTitle.html(markedTitle);
+					markedTitle = titleSt.substr(0, queryStartPosition) + '<span class="bold">' + titleSt.substr(queryStartPosition, currentSearchValue.length) + '</span>' + titleSt.substr(queryEndPosition);
+
+					$elementTitle.html(markedTitle);
+				}
 			}
 		}.bind(this));
 	};

@@ -22,29 +22,26 @@
 	}
 
 	@include mq($to: small) {
-	  float: none;
-	  width: calc(100% - 32px);
+		float: none;
+		width: calc(100% - 32px);
 
-	  border-bottom: 1px solid rgba($colorBg, 0.5);
-	  padding: 0;
-	  margin: 0 20px;
+		border-bottom: 1px solid rgba($colorBg, 0.5);
+		padding: 0;
+		margin: 0 20px;
 	}
 
 	ul {
-	  	margin-top: $basicPush * 1.4;
+		margin-top: $basicPush * 1.4;
 		@include mq($to: small) {
 			display: none;
+			padding-bottom: $basicPush * 1.75;
 
-		  	margin-top: 0;
-		  	padding-bottom: $basicPush * 1.75;
+			margin-top: 0;
 		}
 	}
 
 	&.is_open {
 		@include mq($to: small) {
-			ul {
-				display: block;
-			}
 
 			h4:after {
 				transform: translateY(-50%) rotate(0deg);
@@ -65,11 +62,10 @@
 		&:hover {
 			opacity: 1;
 
-		  	@include mq($to: small) {
-			  opacity: 0.8;
+			@include mq($to: small) {
+				opacity: 0.8;
 			}
 		}
-
 
 	}
 
@@ -87,7 +83,7 @@
 			cursor: pointer;
 
 			@include iconDataurl($name: 'close_white', $after: true);
-		  	border-bottom: none;
+			border-bottom: none;
 
 			&:after {
 				width: 12px;
@@ -98,6 +94,8 @@
 				top: 50%;
 
 				transform: translateY(-50%) rotate(45deg);
+
+				transition: transform $transitionLength $transitionEase;
 			}
 
 			&:last-of-type {

@@ -214,7 +214,8 @@ var data = _.merge(defaultData, {
 			}),
 			extendedlinks: requireNew('../../widgets/extendedlinks/extendedlinks.data.js'),
 			contact: requireNew('../../widgets/contact/contact.data.js'),
-			accordeon: requireNew('../../widgets/accordeon/accordeon.data.js')
+			accordeon: requireNew('../../widgets/accordeon/accordeon.data.js'),
+			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
 		}
 	});
 

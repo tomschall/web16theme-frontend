@@ -2,6 +2,24 @@ body.prevent-scroll {
 	overflow: hidden;
 }
 
+.modal {
+	@include mq($from: medium) {
+		// Modal Overlay
+			position: fixed;
+			z-index: zindex('modal');
+
+			content:" ";
+			display: block;
+
+			height: 100vh;
+			width: 100vw;
+
+			opacity: 0.4;
+			background-color: rgba(124, 121, 87, 0.2);
+
+	}
+}
+
 .accessibility-hidden {
 	visibility: hidden;
 	width: 0;

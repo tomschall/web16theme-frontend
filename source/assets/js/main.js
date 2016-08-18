@@ -21,6 +21,7 @@
  * @requires helpers/sidebarHelper.js
  * @requires helpers/search.js
  * @requires helpers/initVendorPlugins.js
+ * @requires helpers/modal.js
  *
  * @requires ../../widgets/share/share.js
  * @requires ../../widgets/searchbar/searchbar.js

@@ -88,8 +88,6 @@
 	position: relative;
 	overflow-y: auto;
 
-	padding-bottom: $searchbarBlackBarHeight;
-
 	@include mq($from: wide) {
 		min-height: calc(100vh - 150px);
 		max-height: calc(100vh - 150px);
@@ -108,7 +106,7 @@
 }
 
 .widg_searchbar-bar__search {
-	@include basicUnitHeight(height);
+	@include clickAreaSize(height);
 
 	position: relative;
 
@@ -221,42 +219,18 @@
 	}
 }
 
-.widg_searchbar__black-bar {
-	display: none;
-	position: absolute;
-	bottom: 0;
+.widg_searchbar__go-to-page {
+	display: block;
+	height: 100px;
+	line-height: 100px;
 
-	width: 100%;
-	background-color: $colorBlack;
-
-	opacity: 1;
-	color: $colorBg;
-	text-decoration: none;
-
+	text-align: center;
 	font-size: 1.25rem;
+	margin-bottom: $basicPush * 2;
 
-	height: $searchbarBlackBarHeight;
-	line-height: $searchbarBlackBarHeight;
-	padding: 0 $searchbarPadding;
+	font-weight: 600;
 
-	box-shadow: 13px 0 29px 0 rgba($colorBlack, 0.15);
-
-	@include iconDataurl('pfeil-weiss_short', $after: true);
-
-	&:after {
-		width: 17px;
-		height: $searchbarBlackBarHeight;
-
-		margin-right: 8px;
-
-		float: right;
-		display: block;
-
-		background-position: center center;
-	}
-
-	// When bar is set on show results show the black button
-	.show-results & {
-		display: block;
+	&:hover {
+		background-color: $colorLightGray;
 	}
 }

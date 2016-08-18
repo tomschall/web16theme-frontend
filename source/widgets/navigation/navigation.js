@@ -12,7 +12,8 @@
 
 	var name = 'navigation',
 			events = {
-				open: 'open.estatico.' + name
+				open: 'open.estatico.' + name,
+				close: 'close.estatico.' + name
 			},
 			defaults = {
 				domSelectors: {
@@ -168,6 +169,8 @@
 
 		this.options.currentLevel = targetLevel;
 
+		window.estatico.modal.showModal();
+
 		if (window.estatico.mq.query({from: 'medium'})) {
 			if (!$('html').hasClass(this.options.openNavClass)) {
 				$('html').addClass(this.options.openNavClass);
@@ -203,7 +206,7 @@
 			}
 		}.bind(this));
 
-		$('.layout_wrapper').one('click.' + this.uuid, function() {
+		$('.modal').one('click.' + this.uuid, function() {
 			this.closeNavigation();
 		}.bind(this));
 
@@ -230,8 +233,10 @@
 
 		this.options.currentLevel = 0;
 
+		$(window).trigger(events.close);
+
 		if (removePreventScroll) {
-			this.removePreventScroll();
+			window.estatico.modal.removePreventScroll();
 		}
 	};
 

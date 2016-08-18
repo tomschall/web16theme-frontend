@@ -20,7 +20,8 @@ var data = _.merge(defaultData, {
 			hero: _.assign({
 				heroImage: '/assets/media/img/cas_eingl_mgmt_hero.png',
 				heroAlt: 'Symbolbild'
-			}, requireNew('../../widgets/hero/hero.data.js'))
+			}, requireNew('../../widgets/hero/hero.data.js')),
+			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
 		}
 	});
 

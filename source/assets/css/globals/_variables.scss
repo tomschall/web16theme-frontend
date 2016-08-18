@@ -47,7 +47,6 @@ $colorErrorRed: #df305b;
 	*/
 $colorSubNavHover: #f7f7f5;
 
-
 /**
 Navigation vars
 */
@@ -116,6 +115,7 @@ $carouselAutoplayLength: 7.5s;
 $carouselTransitionSpeed: 1s;
 $carouselInitTransitionSpeed: 1s;
 $carouselAutoplayLengthWithoutTransition: $carouselAutoplayLength - $carouselTransitionSpeed;
+$transitionTransformLinkMove: 5px;
 
 /**
 	*
@@ -152,34 +152,35 @@ $smallElementHeight: 50px;
  * z-index
  */
 $zIndex: (
-		bg: 0,
-		content: 10,
-		carouselMeta: 20,
-		contentnav: 100,
-		actionbuttons: 800,
-		productBar: 1500,
-		header: 2000,
-		headerSecondLayer: 1900,
-		headerThirdLayer: 1800,
-		headerFourthLayer: 1700,
-
-		mobileHeaderTop: 2500,
-		mobileNavigation: 2400,
-		search: 3000,
-		topLink: 10000
+	bg: 0,
+	content: 10,
+	carouselMeta: 20,
+	contentnav: 100,
+	actionbuttons: 1502,
+	productBar: 1500,
+	header: 2000,
+	headerOpen: 3000,
+	headerSecondLayer: 2900,
+	headerThirdLayer: 2800,
+	headerFourthLayer: 2700,
+	mobileHeaderTop: 2500,
+	mobileNavigation: 2400,
+	search: 3001,
+	topLink: 5000,
+	modal: 1501
 );
 
 /**
   * Basic Unit height map
   */
 $basicUnitHeights: (
-		small: 50px,
-		normal: 100px,
-		xxl: 150px
+	small: 50px,
+	normal: 100px,
+	xxl: 150px
 );
 
 $clickAreaSizes: (
-		small: 70px,
-		normal: 100px,
-		xxl: 120px
+	small: 70px,
+	normal: 100px,
+	xxl: 120px
 );

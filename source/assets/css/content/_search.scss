@@ -21,10 +21,6 @@
 		padding-top: 10px;
 		padding-bottom: 9px;
 
-		border-bottom: none;
-
-		padding-left: $gutterWidth;
-		padding-right: $gutterWidth;
 	}
 }
 
@@ -64,7 +60,7 @@ a.search__cat-title {
 
 	ul {
 		list-style: none;
-		margin: 3px 0;
+		margin: 0;
 		padding: 0;
 	}
 }
@@ -96,8 +92,8 @@ a.search__cat-title {
 		@include iconDataurl('pfeil-black_short', $after: true);
 		position: relative;
 
-		span,
-		span:before {
+		span:not(.bold),
+		span:not(.bold):before {
 			transition: transform $transitionLength / 3 $transitionEase;
 			display: inline-block;
 		}
@@ -120,9 +116,9 @@ a.search__cat-title {
 		&:hover {
 			background-color: $colorLightGray;
 
-			span,
-			span:before {
-				transform: translateX(5px);
+			span:not(.bold),
+			span:not(.bold):before {
+				transform: translateX($transitionTransformLinkMove);
 			}
 
 			&:after {
@@ -174,6 +170,12 @@ a.search__cat-title {
 		height: 22px;
 
 		transform: translateY(3px);
+
+		transition: transform $transitionLength / 3 $transitionEase;
+	}
+
+	&:hover:before {
+		transform: translateY(3px) translateX($transitionTransformLinkMove);
 	}
 
 	.title {
@@ -256,6 +258,10 @@ a.search__cat-title {
 			top: 50%;
 			transform: translateY(-50%);
 		}
+
+		&:hover:before {
+			transform: translateY(-50%) translateX($transitionTransformLinkMove);
+		}
 	}
 }
 
@@ -314,88 +320,3 @@ a.search__cat-title {
 	}
 }
 
-.search__second-row {
-	max-height: 0;
-	overflow: hidden;
-	margin-top: 0;
-
-	transition: margin-left .5s, max-height .5s .5s, margin-top .5s .5s;
-
-	margin-left: -100vw;
-
-	&.is_visible {
-		max-height: 70px;
-		margin-top: $gutterWidth * 2;
-		margin-left: 0;
-
-		transition: max-height .5s, margin-top .5s, margin-left .5s .5s;
-	}
-}
-
-/**
-  * Everything for the third row
-  */
-
-.search__third-row {
-	margin-top: $basicPush * 2.5;
-}
-
-.search__extra-holder {
-	@include span(6);
-
-	&:last-of-type {
-		text-align: right;
-
-		font-size: 1.25rem;
-		line-height: 2;
-	}
-
-	button {
-		@include noStyledButton;
-		letter-spacing: normal;
-
-		font-size: 1.25rem;
-		color: $colorTextGrey;
-		font-weight: 600;
-
-		text-decoration: underline;
-		margin-right: $basicPush * 3.9;
-		position: relative;
-
-		padding-left: $buttonIconSize * 1.5;
-		line-height: 2;
-
-		&:hover {
-			color: $colorBlack;
-
-			&:before {
-				opacity: 1;
-			}
-		}
-
-		&:before {
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			left: 0;
-			opacity: 0.5;
-
-			width: $buttonIconSize;
-			height: $buttonIconSize;
-		}
-
-		&.search__expander {
-			@include iconDataurl('breadcrumb-expand');
-
-			&.is_active {
-				@include iconDataurl('breadcrumb-hide');
-			}
-		}
-
-		&.search__reset {
-			margin-right: 0;
-
-			@include iconDataurl('reset');
-		}
-	}
-}

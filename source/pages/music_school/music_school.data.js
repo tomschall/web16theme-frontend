@@ -116,7 +116,8 @@ var data = _.merge(defaultData, {
 					}
 				}
 			]
-		})
+		}),
+		actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
 	}
 });
 

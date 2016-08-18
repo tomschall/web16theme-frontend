@@ -33,6 +33,7 @@ h3 {
 .page_wrapper {
 	display: flex;
 	min-height: 100vh;
+	overflow-x: hidden;
 
 	@include mq($to: medium) {
 		display: block;

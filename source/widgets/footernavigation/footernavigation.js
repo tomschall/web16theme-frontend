@@ -65,11 +65,11 @@
 	Widget.prototype.addEventListeners = function() {
 		$(this.options.domSelectors.columnTitle).on('click.' + this.uuid, function(event) {
 			if ($(event.currentTarget).closest(this.options.domSelectors.column).hasClass(this.options.stateClasses.isOpen)) {
-				$(this.options.domSelectors.columnTitle).closest(this.options.domSelectors.column).removeClass(this.options.stateClasses.isOpen);
+				$(this.options.domSelectors.columnTitle).closest(this.options.domSelectors.column).removeClass(this.options.stateClasses.isOpen).find('ul').slideUp(500);
 			} else {
-				$(this.options.domSelectors.columnTitle).closest(this.options.domSelectors.column).removeClass(this.options.stateClasses.isOpen);
+				$(this.options.domSelectors.columnTitle).closest(this.options.domSelectors.column).removeClass(this.options.stateClasses.isOpen).find('ul').slideUp(500);
 
-				$(event.currentTarget).closest(this.options.domSelectors.column).addClass(this.options.stateClasses.isOpen);
+				$(event.currentTarget).closest(this.options.domSelectors.column).addClass(this.options.stateClasses.isOpen).find('ul').slideDown(500);
 			}
 		}.bind(this));
 	};

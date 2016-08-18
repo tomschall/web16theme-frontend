@@ -49,7 +49,8 @@ var data = _.merge(defaultData, {
 					}
 				]
 			}),
-			extendedlinks: requireNew('../../widgets/extendedlinks/extendedlinks.data.js')
+			extendedlinks: requireNew('../../widgets/extendedlinks/extendedlinks.data.js'),
+			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
 		}
 	});
 

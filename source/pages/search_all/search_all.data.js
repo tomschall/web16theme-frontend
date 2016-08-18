@@ -16,7 +16,8 @@ var data = _.merge(defaultData, {
 			}, requireNew('../../widgets/header/header.data.js')),
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),
-			searchpage: requireNew('../../widgets/searchpage/searchpage.data.js')
+			searchpage: requireNew('../../widgets/searchpage/searchpage.data.js'),
+			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
 		}
 	});
 

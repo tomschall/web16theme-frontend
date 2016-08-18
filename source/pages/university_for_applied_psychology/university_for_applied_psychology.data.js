@@ -149,7 +149,8 @@ var data = _.merge(defaultData, {
 					}
 				]
 			}),
-			tabnavigation: requireNew('../../widgets/tabnavigation/tabnavigation.data.js')
+			tabnavigation: requireNew('../../widgets/tabnavigation/tabnavigation.data.js'),
+			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
 		}
 	});
 
