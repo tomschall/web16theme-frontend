@@ -90,8 +90,6 @@
 			this.options.searchIsOpen = false;
 
 			$(this.options.domSelectors.searchbutton).removeClass(this.options.stateClasses.isActive);
-
-			this.removePreventScroll();
 		}.bind(this));
 	};
 
@@ -99,7 +97,21 @@
 	 * Shows the full header
 	 */
 	Widget.prototype.showFullHeader = function() {
-		$('.widg_header').addClass(this.options.stateClasses.isNavOpen);
+		var $headerOrigin = $('.widg_header'),
+				$clone = $('.widg_header___cloned');
+
+		if ($clone.length === 0) {
+			$clone = $headerOrigin.clone(true);
+
+			$clone.addClass('widg_header___cloned');
+
+			$clone.find('.widg_header__inner-top').remove();
+
+			$('.page_wrapper').append($clone);
+		}
+
+		$headerOrigin.addClass(this.options.stateClasses.isNavOpen);
+		$clone.addClass(this.options.stateClasses.isNavOpen);
 
 		this.options.fullHeader = true;
 
@@ -146,8 +158,6 @@
 		$('.widg_header').removeClass(this.options.stateClasses.openSearch);
 
 		$(window).trigger(events.closeSearch);
-		this.removePreventScroll();
-
 		this.removePreventScroll();
 	};
 

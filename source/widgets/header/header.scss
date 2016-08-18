@@ -1,170 +1,176 @@
 
 .widg_header {
-  @include clearfix;
-  @include transition(all $transitionLength $transitionEase);
+	@include clearfix;
+	@include transition(all $transitionLength / 3 $transitionEase);
 
-  transform: translate3D(0, 0, 0);
+	transform: translate3D(0, 0, 0);
 
-  width: $widthYellowBar;
-  position: fixed;
-  max-height: 100vh;
-  height: 100vh;
+	width: $widthYellowBar;
+	position: fixed;
+	max-height: 100vh;
+	height: 100vh;
 
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  background-color: $colorYellow;
-  padding: $gutter;
-  padding-top: 25px;
+	background-color: $colorYellow;
+	padding: $gutter;
+	padding-top: 25px;
 
-  z-index: zindex('header');
+	z-index: zindex('header');
 
-  .widg_header__inner-top {
-	@include mq($to: $sizeBreakpointMedium) {
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  right: 0;
+	.widg_header__inner-top {
+		@include mq($to: $sizeBreakpointMedium) {
 
-	  height: $headerHeightTop;
 
-	  width: 100%;
-	  box-shadow: 0 2px 10px 0 rgba($colorBlack, 0.15);
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
 
-	  z-index: zindex('mobileHeaderTop');
+			height: $headerHeightTop;
+
+			width: 100%;
+
+			z-index: zindex('mobileHeaderTop');
+		}
 	}
-  }
 
-  .widg_header__nav {
-	flex-grow: 1;
+	.widg_header__nav {
 
-	@include mq($to: $sizeBreakpointMedium) {
-	  transform: translateY(-15px);
-	  margin-top: $headerHeightTop;
+		flex-grow: 1;
+
+		@include mq($to: $sizeBreakpointMedium) {
+			transform: translateY(-15px);
+			margin-top: $headerHeightTop;
+
+			display: none;
+		}
 	}
-  }
 
-  /**
+	/**
   * Smaller then 1024 leads to the top bar
   */
-  @include mq($to: medium) {
-	width: 100%;
-	min-height: $headerHeightTop;
-	max-height: $headerHeightTop;
+	@include mq($to: medium) {
+		width: 100%;
+		min-height: $headerHeightTop;
+		max-height: $headerHeightTop;
 
-	position: static;
-	padding: 15px $basicPush * 4;
+		position: static;
+		padding: 15px $basicPush * 4;
 
-	@include mq($to: small) {
-	  padding: 15px $basicPush * 2;
+		&.is_nav-open {
+			box-shadow: 0 2px 10px 0 rgba($colorBlack, 0.15);
+		}
+
+		@include mq($to: small) {
+			padding: 15px $basicPush * 2;
+		}
 	}
 
-	&.is_nav-open,
-	&.is_search-open {
-	  position: fixed;
-	  max-height: none;
+	//Extended Header (Wide) only exists between betweener and wide
+	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+		.header__wide & {
+			width: $widthYellowBarWide;
+		}
 	}
-  }
 
-  //Extended Header (Wide) only exists between betweener and wide
-  @include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
-	.header__wide & {
-	  width: $widthYellowBarWide;
-	}
-  }
-
-  /**
+	/**
   * Supersized YellowBar
   */
-  @include mq($from: $sizeBreakpointWide) {
-	width: $widthYellowBarSuperWide;
-  }
+	@include mq($from: $sizeBreakpointWide) {
+		width: $widthYellowBarSuperWide;
+	}
 
 }
 
 .is_shrinked {
-  @include basicUnitHeight(max-height);
+	@include basicUnitHeight(max-height);
 
-  overflow: hidden;
+	overflow: hidden;
 
-  @include mq($from: $sizeBreakpointMedium) {
-	max-height: basicUnitHeight(normal);
+	@include mq($from: $sizeBreakpointMedium) {
+		max-height: basicUnitHeight(normal);
 
-	.widg_header__expander {
-	  display: block;
+		.widg_header__expander {
+			display: block;
+		}
+
+		cursor: pointer;
+
+		&:hover,
+		&:focus {
+			background-color: $colorYellowBarHover;
+		}
 	}
-
-	cursor: pointer;
-
-	&:hover,
-	&:focus {
-	  background-color: $colorYellowBarHover;
-	}
-  }
 }
 
 @include mq($from: $sizeBreakpointMedium) {
-  .is_expanded {
-	max-height: 100vh;
+	.is_expanded {
+		max-height: 100vh;
 
-	&:hover,
-	&:focus {
-	  background-color: $colorYellow;
+		&:hover,
+		&:focus {
+			background-color: $colorYellow;
+		}
 	}
-  }
 }
 
 .widg_header__expander {
-  width: 14px;
-  height: 10px;
-
-  @include iconDataurl('dropdown-arrow');
-
-  display: none;
-  position: absolute;
-  top: 50%;
-  right: 25px;
-
-  transform: translateY(-50%);
-
-  &:before {
-	@include centerDataurlIcon();
-
 	width: 14px;
 	height: 10px;
-  }
 
-  .is_expanded & {
+	@include iconDataurl('dropdown-arrow');
+
 	display: none;
-  }
+	position: absolute;
+	top: 50%;
+	right: 25px;
+
+	transform: translateY(-50%);
+
+	&:before {
+		@include centerDataurlIcon();
+
+		width: 14px;
+		height: 10px;
+	}
+
+	.is_expanded & {
+		display: none;
+	}
 }
 
 .widg_header__hide-on-shrinked {
-  opacity: 1;
+	opacity: 1;
 
-  @include transition(opacity $transitionLength $transitionEase);
-  @include transition-delay($transitionLength);
+	@include transition(opacity $transitionLength $transitionEase);
+	@include transition-delay($transitionLength);
 
-  transform: translate3D(0, 0, 0);
+	transform: translate3D(0, 0, 0);
 
-  .is_shrinked & {
-	opacity: 0;
-  }
+	.is_shrinked & {
+		opacity: 0;
+	}
 }
 
 .widg_header__inner-foot {
-  @include mq($to: $sizeBreakpointMedium) {
-	display: none;
-	z-index: -1;
+	@include mq($to: $sizeBreakpointMedium) {
+		display: none;
+		z-index: -1;
 
-	.is_nav-open & {
-	  display: block;
+		.is_nav-open & {
+			display: block;
+
+			@include mq($to: medium) {
+				display: none;
+			}
+		}
 	}
-  }
 
-  @include mq($to: small) {
-	padding-bottom: $basicPush * 3;
-  }
+	@include mq($to: small) {
+		padding-bottom: $basicPush * 3;
+	}
 }
 
 /**
@@ -172,13 +178,51 @@
  */
 
 .widg_header {
-  .header__wide & {
-	@include mq($from: $sizeBreakpointLarge) {
-	  min-width: 300px;
+	.header__wide & {
+		@include mq($from: $sizeBreakpointLarge) {
+			min-width: 300px;
+		}
+
+		@include mq($from: $sizeBreakpointWide) {
+			min-width: 400px;
+		}
+	}
+}
+
+/**
+  * Some very special mobile styles
+  */
+.widg_header___cloned {
+	max-height: calc(100vh - 70px);
+
+	position: absolute;
+	top: $headerHeightTop;
+
+	left: 0;
+	width: 100vw;
+	opacity: 0;
+
+	transform: translateY(-20%);
+	z-index: -1;
+
+	.widg_header__nav {
+		margin-top: 0;
 	}
 
-	@include mq($from: $sizeBreakpointWide) {
-	  min-width: 400px;
+	> div {
+		opacity: 0;
+
+		transform: opacity $transitionLength / 3 $transitionEase;
 	}
-  }
+
+	&.is_nav-open {
+		transform: translateY(0);
+		opacity: 1;
+		z-index: zindex(header);
+
+		> div {
+			opacity: 1;
+			display: block;
+		}
+	}
 }

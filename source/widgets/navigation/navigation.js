@@ -118,7 +118,7 @@
 		}.bind(this));
 
 		$(window).on('open.estatico.searchbar.' + this.uuid, function() {
-			this.closeNavigation();
+			this.closeNavigation(false);
 		}.bind(this));
 	};
 
@@ -148,7 +148,7 @@
 		if (window.estatico.mq.query({from: 'medium'})) {
 			$subList.clone(true).appendTo($targetWrapper);
 		} else {
-			$subList.clone(true).appendTo(this.$element).addClass(this.options.stateClasses.isVisible);
+			$subList.clone(true).appendTo('.widg_navigation').addClass(this.options.stateClasses.isVisible);
 		}
 	};
 
@@ -161,9 +161,6 @@
 				headerWidth = $('.widg_header').outerWidth(),
 				pullLeft = headerWidth * targetLevel - (targetLevel * 1),
 				mobilePullLeft = -1 * targetLevel * 100;
-
-		console.log('headerWidth', headerWidth);
-		console.log('targetLevel', targetLevel);
 
 		if (headerWidth < 300 && targetLevel >= 2) {
 			pullLeft = pullLeft + (40 * (targetLevel - 1));
@@ -218,7 +215,11 @@
 	/**
 	 * Closes the navigation
 	 */
-	Widget.prototype.closeNavigation = function() {
+	Widget.prototype.closeNavigation = function(removePreventScroll) {
+		if (typeof removePreventScroll === typeof undefined) {
+			removePreventScroll = true;
+		}
+
 		var $wrappers = $(this.options.domSelectors.subWrappers),
 				$expandableNavItems = $(this.options.domSelectors.expandable);
 
@@ -228,6 +229,10 @@
 		$wrappers.removeAttr('style');
 
 		this.options.currentLevel = 0;
+
+		if (removePreventScroll) {
+			this.removePreventScroll();
+		}
 	};
 
 	/**

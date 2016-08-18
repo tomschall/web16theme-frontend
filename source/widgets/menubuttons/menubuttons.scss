@@ -1,71 +1,72 @@
 .widg_menubuttons {
-  @include mq($from: $sizeBreakpointMedium) {
-	display: none;
-  }
-
-  position: absolute;
-
-  transform: translateY(-50%);
-  top: 50%;
-
-  height: 70px;
-  width: auto;
-  right: 0;
-
-  a {
-	display: block;
-	height: 70px;
-	float: left;
-	line-height: 70px;
-	padding: 0 1.3 * $basicPush;
-	text-decoration: none;
-	font-weight: 500;
-
-	font-family: $fontSerifBold;
-	font-size: 1.5rem;
-	margin-right: 6px;
-	&:hover,
-	&:focus,
-	&.is_active {
-	  background-color: $colorYellowNavHover;
-	  cursor: pointer;
+	@include mq($from: $sizeBreakpointMedium) {
+		display: none;
 	}
-  }
+
+	position: absolute;
+
+	transform: translateY(-50%);
+	top: 50%;
+
+	height: 70px;
+	width: auto;
+	right: 0;
+
+	a {
+		display: block;
+		height: 70px;
+		float: left;
+		line-height: 70px;
+		padding: 0 1.3 * $basicPush;
+		text-decoration: none;
+		font-weight: 500;
+
+		font-family: $fontSerifBold;
+		font-size: 1.5rem;
+		margin-right: 6px;
+		&:hover,
+		&:focus,
+		&.is_active {
+			background-color: $colorYellowNavHover;
+			cursor: pointer;
+		}
+	}
 
 }
 
 .widg_menubuttons__menu {
-  @include iconDataurl('mobile-menu');
-
-  &:before {
-	height: 12px;
-	width: 20px;
-  }
-
-  &.is_active {
-	@include iconDataurl('close');
+	@include iconDataurl('mobile-menu');
 
 	&:before {
-	  height: 16px;
-
-	  transform: translateY(2px);
-	  width: 18px;
+		height: 12px;
+		width: 20px;
 	}
-  }
+
+	&.is_active {
+		@include iconDataurl('close');
+
+		&:before {
+			height: 16px;
+
+			transform: translateY(2px);
+			width: 18px;
+			padding-left: 2px;
+		}
+	}
 }
 
 .widg_menubuttons__search {
-  @include iconDataurl('search');
+	@include iconDataurl('search');
 
-  &:before {
-	height: 16px;
-	width: 17px;
+	&:before {
+		height: 16px;
+		width: 17px;
 
-	transform: translateY(2px);
-  }
+		transform: translateY(2px);
+	}
 
-  @include mq($from: $sizeBreakpointSmall, $to: $sizeBreakpointMedium) {
-	margin-right: 20px !important;
-  }
+	@include mq($from: $sizeBreakpointSmall, $to: $sizeBreakpointMedium) {
+		margin-right: 20px !important;
+	}
 }
 
