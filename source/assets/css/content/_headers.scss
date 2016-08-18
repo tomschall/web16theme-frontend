@@ -18,15 +18,15 @@ h1 {
 		margin-top: $basicPush * 1.3;
 	}
 
-  	@include mq($to: $sizeBreakpointBetweener) {
+  	@include mq($to: betweener) {
 	  	font-size: 3rem;
 	}
 
-  @include mq($to: $sizeBreakpointMedium) {
+  @include mq($to: medium) {
 	font-size: 2.83333rem;
   }
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		font-size: 2rem;
 
 		&:after {
@@ -76,7 +76,7 @@ h3 {
 	line-height: 1.6;
 	margin-top: $basicPush * 2;
 
-  @include mq($to: $sizeBreakpointSmall) {
+  @include mq($to: small) {
 	font-weight: 600;
 	font-size: 1.5rem;
   }

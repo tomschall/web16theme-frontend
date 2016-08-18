@@ -43,7 +43,7 @@
 		}
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		margin-top: $basicPush * 2 - 3;
 	}
 }

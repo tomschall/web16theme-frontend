@@ -25,7 +25,7 @@
 	bottom: $basicPush * 3.6;
 	top: auto;
 
-	@include mq($to: $sizeBreakpointSubnav) {
+	@include mq($to: subnav) {
 		right: $basicPush * 4;
 		bottom: $basicPush * 2.9;
 	}
@@ -39,7 +39,7 @@
 
 		@include iconDataurl('efqm_logo_neg');
 
-		@include mq($to: $sizeBreakpointSubnav) {
+		@include mq($to: subnav) {
 			&:before {
 				height: 60px;
 				width: 100px;

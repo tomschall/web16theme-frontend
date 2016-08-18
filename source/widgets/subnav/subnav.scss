@@ -16,15 +16,15 @@
 	width: 18%;
 	right: basicUnitHeight(normal);
 
-	@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
+	@include mq($from: medium, $to: large) {
 		right: basicUnitHeight(small);
 	}
 
-	@include mq($from: $sizeBreakpointWide) {
+	@include mq($from: wide) {
 		right: basicUnitHeight(xxl);
 	}
 
-	@include mq($to: $sizeBreakpointSubnav) {
+	@include mq($to: subnav) {
 		position: static;
 
 		@include span(12);
@@ -46,7 +46,7 @@
 	width: 100%;
   	line-height: 24px;
 
-	@include mq($to: $sizeBreakpointSubnav) {
+	@include mq($to: subnav) {
 		display: none;
 	}
 }

@@ -16,7 +16,11 @@ var data = _.merge(defaultData, {
 			}, requireNew('../../widgets/header/header.data.js')),
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),
-			searchpage: requireNew('../../widgets/searchpage/searchpage.data.js')
+			searchpage: requireNew('../../widgets/searchpage/searchpage.data.js'),
+			hero: _.assign({
+				heroImage: '/assets/media/img/cas_eingl_mgmt_hero.png',
+				heroAlt: 'Symbolbild'
+			}, requireNew('../../widgets/hero/hero.data.js'))
 		}
 	});
 

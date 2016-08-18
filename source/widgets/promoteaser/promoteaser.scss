@@ -24,7 +24,7 @@
 		}
 	}
 
-	@include mq($to: $sizeBreakpointMedium){
+	@include mq($to: medium){
 		display: none;
 	}
 

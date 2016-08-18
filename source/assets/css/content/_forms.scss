@@ -58,7 +58,8 @@ input {
 	background: transparent;
 
 	&:focus {
-		outline: none;
+		outline: $colorYellow solid 2px;
+		outline-offset: 0;
 	}
 }
 
@@ -151,7 +152,7 @@ input[type="checkbox"].error:checked + label {
 
 		transition: all $transitionLength $transitionEase;
 
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: medium) {
 			top: 0;
 		}
 	}
@@ -178,7 +179,7 @@ input[type="checkbox"].error:checked + label {
 			border: 2px solid $colorErrorRed;
 		}
 
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: medium) {
 			padding-top: 13px;
 		}
 	}
@@ -194,7 +195,7 @@ input[type="checkbox"].error:checked + label {
 		font-size: 0.91666667rem;
 		top: 13px;
 
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: medium) {
 			top: -12px;
 		}
 	}

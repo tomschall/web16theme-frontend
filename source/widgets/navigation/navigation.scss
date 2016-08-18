@@ -10,7 +10,7 @@
 		transform: none;
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		display: none;
 		margin-top: 0;
 
@@ -106,7 +106,7 @@ styling of all links and lists
 		}
 
 		//Smaller the right margin on touch screens
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: medium) {
 			&:after,
 			&:hover:after,
 			&.is_active:after {
@@ -116,11 +116,11 @@ styling of all links and lists
 		}
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		padding: 17px $basicPush * 4 16px $basicPush * 4;
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		padding: 15px $basicPush * 2 14px $basicPush * 2;
 
 		font-size: 1.3rem;
@@ -149,7 +149,7 @@ The back arrow only visible on mobile navigation
 		width: 34px;
 		height: 13px;
 
-		@include mq($to: $sizeBreakpointSmall) {
+		@include mq($to: small) {
 			left: $basicPush * 2;
 		}
 	}
@@ -185,7 +185,7 @@ The back arrow only visible on mobile navigation
 		}
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		//Adding extra space for the list, iOS Bars prevent getting to the last link in the list
 		ul {
 			padding-bottom: $basicPush * 5;
@@ -216,12 +216,12 @@ The Subwrappers only desktop
 		margin-top: $basicPush * 12.2;
 	}
 
-	@include mq($from: $sizeBreakpointMedium) {
+	@include mq($from: medium) {
 		height: 100vh;
 	}
 
 	//Extended Header (Wide) only exists between betweener and wide
-	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+	@include mq($from: betweener, $to: wide) {
 		.header__wide & {
 			width: $widthYellowBarWide;
 		}
@@ -230,18 +230,18 @@ The Subwrappers only desktop
 	/**
     * Supersized YellowBar
     */
-	@include mq($from: $sizeBreakpointWide) {
+	@include mq($from: wide) {
 		width: $widthYellowBarSuperWide;
 	}
 
 	&[data-navigation-level="1"] {
 		left: 180px;
 
-		@include mq($from: $sizeBreakpointWide) {
+		@include mq($from: wide) {
 			left: 350px;
 		}
 
-		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+		@include mq($from: betweener, $to: wide) {
 			.header__wide & {
 				left: 250px;
 			}
@@ -251,11 +251,11 @@ The Subwrappers only desktop
 	&[data-navigation-level="2"] {
 		left: 410px;
 
-		@include mq($from: $sizeBreakpointWide) {
+		@include mq($from: wide) {
 			left: 750px;
 		}
 
-		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+		@include mq($from: betweener, $to: wide) {
 			.header__wide & {
 				left: 550px;
 			}
@@ -265,11 +265,11 @@ The Subwrappers only desktop
 	&[data-navigation-level="3"] {
 		left: 640px;
 
-		@include mq($from: $sizeBreakpointWide) {
+		@include mq($from: wide) {
 			left: 1150px;
 		}
 
-		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+		@include mq($from: betweener, $to: wide) {
 			.header__wide & {
 				left: 850px;
 			}
@@ -297,7 +297,7 @@ Subtitle for every additional layer (only desktop)
 
 	color: $colorTextGrey;
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		display: none;
 	}
 }
@@ -317,7 +317,7 @@ Mobile Styles
 for better overview they are seperated here
 **/
 
-@include mq($to: $sizeBreakpointMedium) {
+@include mq($to: medium) {
 	.widg_navigation {
 		position: relative;
 	}
@@ -354,7 +354,7 @@ for better overview they are seperated here
 				display: block;
 			}
 
-			@include mq($to: $sizeBreakpointSmall) {
+			@include mq($to: small) {
 				left: calc(100vw - 20px);
 			}
 		}
@@ -362,7 +362,7 @@ for better overview they are seperated here
 		&[data-navigation-level="2"] {
 			left: calc(200vw - 40px);
 
-			@include mq($to: $sizeBreakpointSmall) {
+			@include mq($to: small) {
 				left: calc(200vw - 20px);
 			}
 		}
@@ -371,12 +371,12 @@ for better overview they are seperated here
 		&[data-navigation-level="3"] {
 			left: calc(300vw - 40px);
 
-			@include mq($to: $sizeBreakpointSmall) {
+			@include mq($to: small) {
 				left: calc(300vw - 20px);
 			}
 		}
 
-		@include mq($to: $sizeBreakpointSmall) {
+		@include mq($to: small) {
 			padding-top: $basicPush * 2;
 			left: -2 * $basicPush;
 		}

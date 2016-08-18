@@ -125,11 +125,11 @@
 }
 
 @mixin contentWrapperForSmallDevices($gutterSize: 0) {
-	@include mq($from: $sizeBreakpointSmall, $to: $sizeBreakpointMedium) {
+	@include mq($from: small, $to: medium) {
 		padding: 0 ($pagePaddingTablet - $gutterSize);
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		padding: 0 ($pagePaddingPhone - $gutterSize);
 	}
 }
@@ -137,21 +137,21 @@
 @mixin yellowBarDiffer() {
 	padding-left: $paddingBehindYellowBar;
 
-	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+	@include mq($from: betweener, $to: wide) {
 		.header__wide & {
 			padding-left: $paddingBehindYellowBarWide
 		}
 
-		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointLarge) {
+		@include mq($from: betweener, $to: large) {
 			padding-left: $paddingBehindYellowBarWideNarrow;
 		}
 	}
 
-	@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
+	@include mq($from: medium, $to: large) {
 		padding-left: $paddingBehindYellowBarNarrow;
 	}
 
-	@include mq($from: $sizeBreakpointWide) {
+	@include mq($from: wide) {
 		padding-left: $paddingBehindYellowBarSuperWide;
 	}
 
@@ -165,21 +165,21 @@
 
 	padding: 0 ($pagePadding - $gutterSize ) 0 ($paddingBehindYellowBar - $gutterSize);
 
-	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+	@include mq($from: betweener, $to: wide) {
 		.header__wide & {
 			padding: 0 ($pagePadding - $gutterSize) 0 ($paddingBehindYellowBarWide - $gutterSize);
 		}
 
-		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointLarge) {
+		@include mq($from: betweener, $to: large) {
 			padding: 0 ($pagePaddingSmall - $gutterSize) 0 ($paddingBehindYellowBarWideNarrow - $gutterSize);
 		}
 	}
 
-	@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
+	@include mq($from: medium, $to: large) {
 		padding: 0 ($pagePaddingSmall - $gutterSize) 0 ($paddingBehindYellowBarNarrow - $gutterSize);
 	}
 
-	@include mq($from: $sizeBreakpointWide) {
+	@include mq($from: wide) {
 		padding: 0 ($pagePaddingWide - $gutterSize) 0 ($paddingBehindYellowBarSuperWide - $gutterSize);
 	}
 
@@ -196,11 +196,11 @@
 @mixin basicUnitHeight($attr) {
 	#{$attr}: basicUnitHeight(normal);
 
-  	@include mq($from: $sizeBreakpointWide) {
+  	@include mq($from: wide) {
 	  	#{$attr}: basicUnitHeight(xxl);
 	}
 
-	@include mq($to: $sizeBreakpointLarge) {
+	@include mq($to: large) {
 		#{$attr}: basicUnitHeight(small);
 	}
 }
@@ -208,11 +208,11 @@
 @mixin clickAreaSize($attr) {
   #{$attr}: clickAreaSizes(normal);
 
-  @include mq($from: $sizeBreakpointWide) {
+  @include mq($from: wide) {
 	#{$attr}: clickAreaSizes(xxl);
   }
 
-  @include mq($to: $sizeBreakpointSubnav) {
+  @include mq($to: subnav) {
 	#{$attr}: clickAreaSizes(small);
   }
 }
@@ -222,32 +222,32 @@
 	margin-left: -1 * $paddingBehindYellowBar + $gutterSize;
 	margin-right: -1 * $pagePadding + $gutterSize;
 
-	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+	@include mq($from: betweener, $to: wide) {
 		.header__wide & {
 			margin-left: -1 * $paddingBehindYellowBarWide + $gutterSize;
 		}
 
-		@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointLarge) {
+		@include mq($from: betweener, $to: large) {
 			margin-left: -1 * $paddingBehindYellowBarWideNarrow + $gutterSize;
 			margin-right: -1 * $pagePaddingSmall  + $gutterSize;
 		}
 	}
 
-	@include mq($from: $sizeBreakpointMedium, $to: $sizeBreakpointLarge) {
+	@include mq($from: medium, $to: large) {
 		margin-left: -1 * $paddingBehindYellowBarNarrow + $gutterSize;
 		margin-right: -1 * $pagePaddingSmall  + $gutterSize;
 	}
 
-	@include mq($from: $sizeBreakpointWide) {
+	@include mq($from: wide) {
 		margin-left: -1 * $paddingBehindYellowBarSuperWide + $gutterSize;
 		margin-right: -1 * $pagePaddingWide  + $gutterSize;
 	}
 
-	@include mq($from: $sizeBreakpointSmall, $to: $sizeBreakpointMedium) {
+	@include mq($from: small, $to: medium) {
 		margin: 0 -1 * $pagePaddingTablet + $gutterSize;
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		margin: 0 -1 * $pagePaddingPhone + $gutterSize;
 	}
 }
@@ -265,7 +265,7 @@
 	height: buttonHeight(desktop);
 	line-height: buttonHeight(desktop);
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		height: buttonHeight(mobile);
 		line-height: buttonHeight(mobile);
 	}

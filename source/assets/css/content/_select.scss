@@ -64,7 +64,7 @@ select {
 				outline: none;
 			}
 
-			@include mq($to: $sizeBreakpointMedium) {
+			@include mq($to: medium) {
 				line-height: 47px;
 			}
 		}

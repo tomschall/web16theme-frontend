@@ -45,7 +45,7 @@ input[type="reset"] {
 		}
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		min-width: $buttonMobileWidth;
 	}
 }

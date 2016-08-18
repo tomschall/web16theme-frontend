@@ -49,16 +49,16 @@ h3 {
 	.header__wide & {
 		display: block;
 
-		@include mq($from: $sizeBreakpointMedium) {
+		@include mq($from: medium) {
 			width: calc(100% - 300px);
 		}
 
-		@include mq($from: $sizeBreakpointWide) {
+		@include mq($from: wide) {
 			width: calc(100% - 400px);
 		}
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		display: block;
 	}
 }
@@ -77,11 +77,11 @@ h3 {
 		display: none;
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		padding: 0;
 	}
 
-  	@include mq($to: $sizeBreakpointSmall) {
+  	@include mq($to: small) {
 	  	margin-top: $basicPush;
 	}
 }
@@ -93,11 +93,11 @@ h3 {
 		@include span(12);
 	}
 
-	@include mq($to: $sizeBreakpointSubnav) {
+	@include mq($to: subnav) {
 		@include span(12);
 	}
 
-  	@include mq($from: $sizeBreakpointSmall, $to: $sizeBreakpointMedium) {
+  	@include mq($from: small, $to: medium) {
 	  padding-left: $basicPush * 4;
 	  padding-right: $basicPush * 4;
 	}
@@ -108,7 +108,7 @@ h3 {
 	@include span(3);
 	@include push(0.3);
 
-	@include mq($to: $sizeBreakpointSubnav) {
+	@include mq($to: subnav) {
 		display: none;
 	}
 }

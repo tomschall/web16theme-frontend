@@ -3,7 +3,7 @@
 
 	position: relative;
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		min-height: 0;
 	}
 
@@ -11,7 +11,7 @@
 		img {
 			display: none;
 		}
-		@include mq($from: $sizeBreakpointSubnav) {
+		@include mq($from: subnav) {
 			.widg_hero__wrapper {
 				min-height: 0;
 			}
@@ -25,13 +25,13 @@
 
 	overflow: hidden;
 
-	@include mq($from: $sizeBreakpointSubnav) {
+	@include mq($from: subnav) {
 		min-height: 400px;
 	}
 
 	max-height: 50vh;
 
-  	@include mq($to: $sizeBreakpointSubnav) {
+  	@include mq($to: subnav) {
 	  min-height: 250px;
 	}
 }
@@ -43,15 +43,15 @@
 
 .hero {
 	.header__wide & {
-		@include mq($from: $sizeBreakpointMedium) {
+		@include mq($from: medium) {
 			margin-left: 230px;
 		}
 
-		@include mq($from: $sizeBreakpointLarge) {
+		@include mq($from: large) {
 			margin-left: 300px;
 		}
 
-		@include mq($from: $sizeBreakpointWide) {
+		@include mq($from: wide) {
 			margin-left: 400px;
 		}
 	}

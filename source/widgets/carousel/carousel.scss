@@ -1,7 +1,7 @@
 .widg_carousel {
 	overflow: hidden;
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		min-height: calc(100vh - 70px);
 	}
 
@@ -10,11 +10,11 @@
 		min-height: 100vh;
 		opacity: 0;
 
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: medium) {
 			min-height: calc(100vh - 70px);
 		}
 
-		@include mq($to: $sizeBreakpointSmall) {
+		@include mq($to: small) {
 			min-height: calc(60vh - 70px);
 		}
 
@@ -46,11 +46,11 @@
 		z-index: 1001 !important;
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		max-height: calc(100vh - 70px);
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		max-height: calc(60vh - 70px);
 	}
 
@@ -75,11 +75,11 @@
 	transition: all 0.3s;
 	transform: translate3D(0, 0, 0);
 
-	@include mq($to: $sizeBreakpointLarge) {
+	@include mq($to: large) {
 		min-height: $basicPush * 26;
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		top: auto;
 		bottom: $basicPush * 10;
 		right: $basicPush * 4;
@@ -87,7 +87,7 @@
 		width: 50%;
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		top: auto;
 		bottom: 0;
 		left: 0;
@@ -106,11 +106,11 @@
 		min-height: $basicPush * 32;
 		text-decoration: none;
 
-		@include mq($to: $sizeBreakpointLarge) {
+		@include mq($to: large) {
 			min-height: $basicPush * 26;
 		}
 
-		@include mq($to: $sizeBreakpointSmall) {
+		@include mq($to: small) {
 			min-height: 40vh;
 		}
 
@@ -145,11 +145,11 @@
 	padding-bottom: $basicPush * 10.3;
 	line-height: 1.2;
 
-	@include mq($to: $sizeBreakpointLarge) {
+	@include mq($to: large) {
 		font-size: 2.75rem;
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		font-size: 2rem;
 		padding-bottom: $basicPush * 3;
 	}
@@ -205,7 +205,7 @@
 
 	@include iconDataurl('pfeil-weiss');
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		top: 0;
 
 		transform: translateY(-100%);
@@ -234,7 +234,7 @@
 
 		text-indent: -100000px;
 
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: medium) {
 			margin-right: 0;
 		}
 
@@ -265,19 +265,19 @@
 		background-color: $colorYellow;
 	}
 
-	@include mq($to: $sizeBreakpointLarge) {
+	@include mq($to: large) {
 		width: 2 * basicUnitHeight(small);
 
 		top: calc(100% + 60px);
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		width: 2 * basicUnitHeight(small);
 
 		top: 0;
 	}
 
-	@include mq($from: $sizeBreakpointWide) {
+	@include mq($from: wide) {
 		width: 2 * basicUnitHeight(xxl);
 
 		top: calc(100% + 150px);

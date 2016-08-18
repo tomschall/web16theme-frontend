@@ -22,20 +22,24 @@
 		bottom: auto;
 	}
 
+	&.no-entries {
+		display: none;
+	}
+
 	@include contentWrapper($hasGrid: false, $gutterSize: $gutterWidth);
 	@include basicUnitHeight(right);
 
   	padding-top: $basicPush * 2 !important;
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		position: static;
 	}
 
-	@include mq($from: $sizeBreakpointMedium) {
+	@include mq($from: medium) {
 		padding-right: $gutterWidth * 2;
 	}
 
-  	@include mq($to: $sizeBreakpointSubnav) {
+  	@include mq($to: subnav) {
 	  right: 0;
 	}
 
@@ -103,7 +107,7 @@
 			right: -1 * $basicPush * 0.75;
 		}
 
-	  @include mq($to: $sizeBreakpointSmall) {
+	  @include mq($to: small) {
 		font-size: 1.083333rem;
 	  }
 	}
@@ -144,7 +148,7 @@
 			}
 		}
 
-	  @include mq($to: $sizeBreakpointSmall) {
+	  @include mq($to: small) {
 		width: 2px;
 
 		&:before {

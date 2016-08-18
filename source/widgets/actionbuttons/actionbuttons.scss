@@ -5,11 +5,11 @@
 	width: 2 * $basicUnitHeight;
 	z-index: zindex(actionbuttons);
 
-	@include mq($to: $sizeBreakpointLarge) {
+	@include mq($to: large) {
 		width: 2 * clickAreaSizes(small);
 	}
 
-	@include mq($from: $sizeBreakpointWide) {
+	@include mq($from: wide) {
 		width: 2 * clickAreaSizes(xxl);
 	}
 
@@ -17,7 +17,7 @@
 		@include clickAreaSize(width);
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		visibility: hidden;
 	}
 }

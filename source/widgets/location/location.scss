@@ -9,7 +9,7 @@
 		width: 100%;
   }
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		@include span(12);
 	}
 }
@@ -22,7 +22,7 @@
 		margin-top: $basicPush * 3;
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		@include span(12);
 		@include push(0);
 	}

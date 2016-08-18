@@ -11,13 +11,13 @@
 }
 
 .mobile_only {
-	@include mq($from: $sizeBreakpointMedium) {
+	@include mq($from: medium) {
 		display: none !important;
 	}
 }
 
 .desktop_only {
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		display: none !important;
 	}
 }

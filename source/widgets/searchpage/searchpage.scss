@@ -51,13 +51,13 @@
   */
 .search__wrapper {
 	@include bleedFull($gutterWidth);
+	margin-top: $basicPush * 2;
 }
 
 .search__form-wrapper {
 	@include contentWrapper($gutterWidth, true);
 
-	box-shadow: 0 3px 14px 0 rgba($colorBlack, 0.07);
-	padding-bottom: $basicPush * 4.5;
+	padding-bottom: $basicPush * 4.5 !important;
 
 	position: relative;
 	z-index: 2;

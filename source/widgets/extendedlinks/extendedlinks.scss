@@ -17,7 +17,7 @@
 	h4 {
 		margin-top: $basicPush * 2.6;
 
-		@include mq($to: $sizeBreakpointSmall) {
+		@include mq($to: small) {
 			margin-top: 3px;
 		  	font-size: 1.25rem;
 		}
@@ -78,13 +78,13 @@
 
 			transform: translateY(-50%);
 
-			@include mq($to: $sizeBreakpointSmall) {
+			@include mq($to: small) {
 				position: static;
 			  	margin-bottom: $basicPush;
 			}
 		}
 
-		@include mq($to: $sizeBreakpointSmall) {
+		@include mq($to: small) {
 		  	padding-left: 10px;
 		  	padding-right: 0;
 
@@ -95,7 +95,7 @@
 	&.has_date a {
 		padding-left: $basicPush * 15;
 
-		@include mq($to: $sizeBreakpointSmall) {
+		@include mq($to: small) {
 		  padding-left: 10px;
 		  padding-right: 0;
 
@@ -127,7 +127,7 @@
 
 	font-weight: 600;
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		position: static;
 		font-size: 1.08333rem;
 	}

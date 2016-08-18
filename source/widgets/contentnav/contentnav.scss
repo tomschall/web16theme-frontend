@@ -14,7 +14,7 @@
 		position: fixed;
 	}
 
-  @include mq($from: $sizeBreakpointMedium) {
+  @include mq($from: medium) {
 	min-height: basicUnitHeight(normal);
   }
 }
@@ -23,7 +23,7 @@
   height: 100%;
   position: relative;
 
-  @include mq($to: $sizeBreakpointMedium) {
+  @include mq($to: medium) {
 	overflow-x: scroll;
   }
 
@@ -41,7 +41,7 @@
 
   @include basicUnitHeight(height);
 
-  @include mq($from: $sizeBreakpointMedium) {
+  @include mq($from: medium) {
 	min-height: basicUnitHeight(normal);
   }
 
@@ -56,7 +56,7 @@
     @include basicUnitHeight(max-height);
     @include basicUnitHeight(line-height);
 
-	@include mq($from: $sizeBreakpointMedium) {
+	@include mq($from: medium) {
 	  max-height: basicUnitHeight(normal);
 	  line-height: basicUnitHeight(normal);
 	}

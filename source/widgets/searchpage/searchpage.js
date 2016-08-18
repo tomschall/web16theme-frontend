@@ -141,6 +141,13 @@
 
 			this.sendSearchQuery();
 		}.bind(this));
+
+		/**
+		 * Functionality for the reset btn
+		 */
+		$(this.options.domSelectors.resetBtn).on('click.' + this.uuid, function() {
+			this.resetFields();
+		}.bind(this));
 	};
 
 	Widget.prototype.initFormFunctionality = function() {
@@ -209,9 +216,21 @@
 		return properParamCounter > 0;
 	};
 
+	Widget.prototype.resetFields = function() {
+		data.$formElements.map(function(index, element) {
+			$(element).val('');
+
+			if ($(element).is('select')) {
+				$(element).select2('destroy');
+
+				window.estatico.formElementHelper.initSelect2();
+			}
+
+		});
+	};
+
 	/**
 	 * Sends the complete xhr request to search
-	 * @param _inputValue
    */
 	Widget.prototype.sendSearchQuery = function() {
 		this.grabParameters();
@@ -231,7 +250,9 @@
 		if (this.checkParameters()) {
 			window.estatico.search.search(searchParam, false, isCategorySearch);
 
-			this.changeStatus(this.options.stateClasses.showLoading);
+			if (!loadMoreMode) {
+				this.changeStatus(this.options.stateClasses.showLoading);
+			}
 
 			$(window).one(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults) {
 				this.showResults(data, foundEntries, limitedToResults);

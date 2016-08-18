@@ -26,7 +26,7 @@
 			margin-right: $gutterWidth;
 		}
 
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: medium) {
 			width: calc(100% + 32px);
 			max-width: none;
 		}
@@ -35,12 +35,12 @@
 	&.span-9 {
 		max-width: 75%;
 
-		@include mq($to: $sizeBreakpointSmall) {
+		@include mq($to: small) {
 			max-width: 100%;
 		}
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		margin-bottom: $basicPush * 3;
 	}
 
@@ -68,7 +68,7 @@
 			left: 0;
 		}
 
-	  	@include mq($to:$sizeBreakpointSmall) {
+	  	@include mq($to:small) {
 		  font-size: 1.25rem;
 		  line-height: 23px;
 		}

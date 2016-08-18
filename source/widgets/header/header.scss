@@ -20,7 +20,7 @@
 	z-index: zindex('header');
 
 	.widg_header__inner-top {
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: medium) {
 
 
 			position: absolute;
@@ -40,7 +40,7 @@
 
 		flex-grow: 1;
 
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: medium) {
 			transform: translateY(-15px);
 			margin-top: $headerHeightTop;
 
@@ -69,7 +69,7 @@
 	}
 
 	//Extended Header (Wide) only exists between betweener and wide
-	@include mq($from: $sizeBreakpointBetweener, $to: $sizeBreakpointWide) {
+	@include mq($from: betweener, $to: wide) {
 		.header__wide & {
 			width: $widthYellowBarWide;
 		}
@@ -78,7 +78,7 @@
 	/**
   * Supersized YellowBar
   */
-	@include mq($from: $sizeBreakpointWide) {
+	@include mq($from: wide) {
 		width: $widthYellowBarSuperWide;
 	}
 
@@ -89,7 +89,7 @@
 
 	overflow: hidden;
 
-	@include mq($from: $sizeBreakpointMedium) {
+	@include mq($from: medium) {
 		max-height: basicUnitHeight(normal);
 
 		.widg_header__expander {
@@ -105,7 +105,7 @@
 	}
 }
 
-@include mq($from: $sizeBreakpointMedium) {
+@include mq($from: medium) {
 	.is_expanded {
 		max-height: 100vh;
 
@@ -155,7 +155,7 @@
 }
 
 .widg_header__inner-foot {
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		display: none;
 		z-index: -1;
 
@@ -179,11 +179,11 @@
 
 .widg_header {
 	.header__wide & {
-		@include mq($from: $sizeBreakpointLarge) {
+		@include mq($from: large) {
 			min-width: 300px;
 		}
 
-		@include mq($from: $sizeBreakpointWide) {
+		@include mq($from: wide) {
 			min-width: 400px;
 		}
 	}

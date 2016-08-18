@@ -39,7 +39,7 @@
 		z-index: zindex(search);
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		width: 100vw;
 
 		top: $headerHeightTop;
@@ -75,7 +75,7 @@
 	.search__results {
 		padding: 0 32px 0 28px;
 
-		@include mq($to: $sizeBreakpointSmall) {
+		@include mq($to: small) {
 			padding: 0 24px 0 20px;
 		}
 	}
@@ -90,18 +90,18 @@
 
 	padding-bottom: $searchbarBlackBarHeight;
 
-	@include mq($from: $sizeBreakpointWide) {
+	@include mq($from: wide) {
 		min-height: calc(100vh - 150px);
 		max-height: calc(100vh - 150px);
 	}
 
-	@include mq($to: $sizeBreakpointLarge) {
+	@include mq($to: large) {
 		min-height: calc(100vh - 60px);
 		max-height: calc(100vh - 60px);
 
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		min-height: calc(100vh - 130px);
 		max-height: calc(100vh - 130px);
 	}
@@ -124,7 +124,11 @@
 
 		background-color: $colorSearchBarInputFocus;
 
-		@include mq($to: $sizeBreakpointSmall) {
+		&:focus {
+			outline: none;
+		}
+
+		@include mq($to: small) {
 			padding-left: $basicPush * 2;
 		}
 	}
@@ -162,7 +166,7 @@
 	padding: $basicPush * 2 $basicPush * 3;
 	display: none;
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		padding: $basicPush * 2;
 	}
 

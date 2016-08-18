@@ -20,7 +20,7 @@
 			left: 0;
 		}
 
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: medium) {
 			@include span(12);
 
 			padding-left: $basicPush * 5.5;
@@ -30,7 +30,7 @@
 	ul {
 		@include span(10);
 
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: medium) {
 			@include span(12);
 			padding: 0 0 $basicPush * 1.5 0;
 		}
@@ -38,7 +38,7 @@
 		li {
 			display: inline-block;
 
-			@include mq($to: $sizeBreakpointMedium) {
+			@include mq($to: medium) {
 				line-height: 1;
 				height: auto;
 
@@ -60,7 +60,7 @@
 					color: $colorBlack;
 				}
 
-				@include mq($to: $sizeBreakpointMedium) {
+				@include mq($to: medium) {
 					height: auto;
 					line-height: 1;
 					padding: 6px 0;

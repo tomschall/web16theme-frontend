@@ -15,16 +15,16 @@
 	  max-width: 100%;
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 	  width: 50%;
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 	  width: 84px;
 	}
   }
 
-  @include mq($to: $sizeBreakpointMedium) {
+  @include mq($to: medium) {
 	width: 50%;
 
 	top: 50%;
@@ -42,7 +42,7 @@
 	}
   }
 
-  @include mq($to: $sizeBreakpointSmall) {
+  @include mq($to: small) {
 	height: 60px;
 	width: 75px;
 

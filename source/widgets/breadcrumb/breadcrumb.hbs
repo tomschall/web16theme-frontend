@@ -1,4 +1,4 @@
-<nav class="widg_breadcrumb" data-init="breadcrumb">
+<nav class="widg_breadcrumb {{#if entries}}{{else}}no-entries{{/if}}" data-init="breadcrumb">
   <ul>
 		{{#each entries}}
       <li class="{{extraClasses}}">

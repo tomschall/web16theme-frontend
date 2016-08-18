@@ -1,5 +1,5 @@
 .widg_menubuttons {
-	@include mq($from: $sizeBreakpointMedium) {
+	@include mq($from: medium) {
 		display: none;
 	}
 
@@ -65,7 +65,7 @@
 		transform: translateY(2px);
 	}
 
-	@include mq($from: $sizeBreakpointSmall, $to: $sizeBreakpointMedium) {
+	@include mq($from: small, $to: medium) {
 		margin-right: 20px !important;
 	}
 }

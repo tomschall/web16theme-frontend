@@ -41,7 +41,7 @@
 			background-color: $colorLightGray;
 		}
 
-		@include mq($to: $sizeBreakpointMedium) {
+		@include mq($to: medium) {
 			min-height: buttonHeight(mobile);
 			padding-top: $gutterWidth/2;
 			padding-bottom: $gutterWidth/2;
@@ -129,7 +129,7 @@ div.widg_accordeon__button {
 		display: block;
 	}
 
-	@include mq($to: $sizeBreakpointMedium) {
+	@include mq($to: medium) {
 		min-height: buttonHeight(mobile);
 	}
 }

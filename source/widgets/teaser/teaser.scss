@@ -5,14 +5,14 @@
 	padding-bottom: $basicPush * 5;
 	margin-bottom: $basicPush * 4;
 
-  	@include mq($to: $sizeBreakpointSmall) {
+  	@include mq($to: small) {
 	  padding-bottom: $basicPush * 1.5;
 	}
 
 	&:hover {
 		background-color: $colorLightGray;
 
-		@include mq($from: $sizeBreakpointMedium) {
+		@include mq($from: medium) {
 			.widg_teaser__img {
 				img {
 					transform: scale(1.1);
@@ -25,13 +25,13 @@
 		font-size: 1.25rem;
 		opacity: 0.7;
 
-		@include mq($to: $sizeBreakpointSmall) {
+		@include mq($to: small) {
 			font-size: 1.15rem;
 		}
 	}
 
 	h4 {
-		@include mq($to: $sizeBreakpointSmall) {
+		@include mq($to: small) {
 			font-size: 1.2rem;
 		}
 	}
@@ -40,7 +40,7 @@
 		@include span(4);
 	}
 
-	@include mq($from: $sizeBreakpointSmall, $to: $sizeBreakpointMedium) {
+	@include mq($from: small, $to: medium) {
 		@include span(6);
 
 		&.wide___third {
@@ -48,7 +48,7 @@
 		}
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		margin-bottom: 0;
 		border-bottom: 1px solid $colorGreyHover;
 
@@ -96,7 +96,7 @@
 		transition: all $transitionLength $transitionEase;
 	}
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		float: left;
 		margin-left: -90px;
 
@@ -129,7 +129,7 @@
 	position: absolute;
 	bottom: $basicPush * 1.8;
 
-  @include mq($to: $sizeBreakpointSmall) {
+  @include mq($to: small) {
 	@include iconDataurl('pfeil-black_short');
 
 	top: 50%;
@@ -148,7 +148,7 @@
 	color: $colorBorderGrey;
 	display: block;
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		padding-bottom: 0;
 	  font-size: 1.08333333rem;
 	  margin-bottom: 3px;
@@ -174,7 +174,7 @@
 	display: flex;
 	flex-wrap: wrap;
 
-	@include mq($to: $sizeBreakpointSmall) {
+	@include mq($to: small) {
 		padding: 0 $gutterWidth;
 	  display: block;
 	  flex-wrap: nowrap;
