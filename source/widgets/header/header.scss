@@ -1,7 +1,7 @@
 
 .widg_header {
 	@include clearfix;
-	@include transition(all $transitionLength / 3 $transitionEase);
+	@include transition(all $transitionLength $transitionEase);
 
 	transform: translate3D(0, 0, 0);
 
