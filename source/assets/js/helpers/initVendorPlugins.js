@@ -17,8 +17,11 @@
 		});
 
 		$('.widg_hero__img, .widg_teaser__img img').imageScale({
-			rescaleOnResize: true
+			rescaleOnResize: true,
+			scale: 'best-fill'
 		});
+
+		$('.widg_teaser__img img').imageScale('scale');
 	});
 
 	$(window).load(function() {

@@ -1,0 +1,17 @@
+<div class="widg_sidebar" data-init="sidebar">
+	{{#if widgets.application}}
+		{{> "widgets/sidebar_application/sidebar_application" widgets.application}}
+	{{/if}}
+
+	{{#if widgets.events}}
+		{{> "widgets/sidebar_events/sidebar_events" widgets.events }}
+	{{/if}}
+
+	{{#if widgets.keydata}}
+		{{> "widgets/sidebar_key_data/sidebar_key_data" widgets.keydata }}
+	{{/if}}
+
+	{{#if widgets.contact}}
+		{{> "widgets/sidebar_contact/sidebar_contact" widgets.contact }}
+	{{/if}}
+</div>

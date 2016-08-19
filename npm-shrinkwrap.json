@@ -29525,6 +29525,11 @@
       "from": "scrollmagic@2.0.5",
       "resolved": "https://registry.npmjs.org/scrollmagic/-/scrollmagic-2.0.5.tgz"
     },
+    "scrolltofixed": {
+      "version": "1.0.6",
+      "from": "scrolltofixed@1.0.6",
+      "resolved": "https://registry.npmjs.org/scrolltofixed/-/scrolltofixed-1.0.6.tgz"
+    },
     "select2": {
       "version": "4.0.3",
       "from": "select2@4.0.3",

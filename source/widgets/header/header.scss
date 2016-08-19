@@ -1,8 +1,8 @@
 
 .widg_header {
 	@include clearfix;
-	@include transition(all $transitionLength $transitionEase);
 
+	transition: all $transitionLength $transitionEase;
 	transform: translate3D(0, 0, 0);
 
 	width: $widthYellowBar;
@@ -52,6 +52,13 @@
 		}
 	}
 
+	.widg_header__nav,
+	.widg_header__inner-foot {
+		opacity: 1;
+
+		transition: opacity $transitionLength $transitionEase $transitionLength;
+	}
+
 	/**
   * Smaller then 1024 leads to the top bar
   */
@@ -88,16 +95,18 @@
 
 }
 
-.is_shrinked {
+.widg_header.is_shrinked {
 	@include basicUnitHeight(max-height);
 
 	overflow: hidden;
+	transition: all $transitionLength $transitionEase $transitionLength;
 
 	@include mq($from: medium) {
 		max-height: basicUnitHeight(normal);
 
 		.widg_header__expander {
-			display: block;
+			opacity: 1.0;
+			transition: opacity $transitionLength $transitionEase $transitionLength * 1.5;
 		}
 
 		cursor: pointer;
@@ -106,6 +115,13 @@
 		&:focus {
 			background-color: $colorYellowBarHover;
 		}
+	}
+
+	.widg_header__nav,
+	.widg_header__inner-foot {
+		opacity: 0;
+
+		transition: opacity $transitionLength $transitionEase;
 	}
 }
 
@@ -126,10 +142,12 @@
 
 	@include iconDataurl('dropdown-arrow');
 
-	display: none;
 	position: absolute;
 	top: 50%;
 	right: 25px;
+
+	opacity: 0;
+	transition: opacity $transitionLength / 2 $transitionEase;
 
 	transform: translateY(-50%);
 
@@ -138,23 +156,6 @@
 
 		width: 14px;
 		height: 10px;
-	}
-
-	.is_expanded & {
-		display: none;
-	}
-}
-
-.widg_header__hide-on-shrinked {
-	opacity: 1;
-
-	@include transition(opacity $transitionLength $transitionEase);
-	@include transition-delay($transitionLength);
-
-	transform: translate3D(0, 0, 0);
-
-	.is_shrinked & {
-		opacity: 0;
 	}
 }
 

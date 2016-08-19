@@ -1,0 +1,26 @@
+.widg_sidebar {
+	@include span(3);
+	@include push(0.3);
+}
+
+.widg_sidebar__item {
+	padding: 17px 25px 25px 25px;
+
+	background-color: $colorBg;
+	border: 1px solid $colorGreyHover;
+
+	margin-bottom: $basicPush * 3;
+
+	> h3 {
+		margin-top: 0;
+		padding-bottom: 16px;
+
+		border-bottom: 1px solid $colorGreyHover;
+	}
+}
+
+.widg_sidebar__content {
+	.scroll-to-fixed-fixed & {
+		display: none;
+	}
+}

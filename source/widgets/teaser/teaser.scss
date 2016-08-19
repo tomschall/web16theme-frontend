@@ -1,12 +1,12 @@
 .widg_teaser {
-  @include span(3);
+	@include span(3);
 	position: relative;
 	padding-top: $basicPush * 1.7;
 	padding-bottom: $basicPush * 5;
 	margin-bottom: $basicPush * 4;
 
-  	@include mq($to: small) {
-	  padding-bottom: $basicPush * 1.5;
+	@include mq($to: small) {
+		padding-bottom: $basicPush * 1.5;
 	}
 
 	&:hover {
@@ -55,13 +55,13 @@
 		@include span(12);
 
 		padding-left: 100px;
-	  	padding-right: $gutterWidth * 2;
+		padding-right: $gutterWidth * 2;
 
 		&.wide___third {
 			@include span(12);
 
 			padding-left: 100px;
-		  	padding-right: $gutterWidth * 2;
+			padding-right: $gutterWidth * 2;
 		}
 
 		&.no-image,
@@ -74,11 +74,11 @@
 		}
 	}
 
-  	@include mq($to: 374px) {
-	  	padding-left: 80px;
+	@include mq($to: 374px) {
+		padding-left: 80px;
 
-	  	&.wide___third {
-		  padding-left: 80px;
+		&.wide___third {
+			padding-left: 80px;
 		}
 	}
 }
@@ -96,29 +96,36 @@
 		transition: all $transitionLength $transitionEase;
 	}
 
+	@include mq($from: small) {
+		width: 100%;
+		padding-top: 62%;
+	}
+
 	@include mq($to: small) {
 		float: left;
 		margin-left: -90px;
 
 		width: 70px;
-	  	height: 70px;
-	  	margin-bottom: 0;
+		height: 70px;
+		margin-bottom: 0;
 	}
 
-  	@include mq($to: 374px) {
-	  width: 50px;
-	  height: 50px;
+	@include mq($to: 374px) {
+		width: 50px;
+		height: 50px;
 
-	  margin-left: -70px;
+		margin-left: -70px;
 	}
 }
 
 .widg_teaser__link {
 	position: absolute;
-	top: 0; left: 0; right: 0; bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 
 	text-indent: -100000px;
-
 
 }
 
@@ -129,18 +136,16 @@
 	position: absolute;
 	bottom: $basicPush * 1.8;
 
-  @include mq($to: small) {
-	@include iconDataurl('pfeil-black_short');
+	@include mq($to: small) {
+		@include iconDataurl('pfeil-black_short');
 
-	top: 50%;
-	right: 8px;
+		top: 50%;
+		right: 8px;
 
-	transform: translateY(-34%);
-  }
+		transform: translateY(-34%);
+	}
 
 }
-
-
 
 .widg_teaser__date {
 	padding-bottom: 8px;
@@ -150,8 +155,8 @@
 
 	@include mq($to: small) {
 		padding-bottom: 0;
-	  font-size: 1.08333333rem;
-	  margin-bottom: 3px;
+		font-size: 1.08333333rem;
+		margin-bottom: 3px;
 	}
 }
 
@@ -176,7 +181,7 @@
 
 	@include mq($to: small) {
 		padding: 0 $gutterWidth;
-	  display: block;
-	  flex-wrap: nowrap;
+		display: block;
+		flex-wrap: nowrap;
 	}
 }

@@ -2,6 +2,7 @@ h1, h2, h3, h4, h5 {
 	margin: 0;
 	font-weight: normal;
 }
+
 h1 {
 	font-family: $fontSerifRoman;
 	font-size: 3.33333333rem;
@@ -18,13 +19,13 @@ h1 {
 		margin-top: $basicPush * 1.3;
 	}
 
-  	@include mq($to: betweener) {
-	  	font-size: 3rem;
+	@include mq($to: betweener) {
+		font-size: 3rem;
 	}
 
-  @include mq($to: medium) {
-	font-size: 2.83333rem;
-  }
+	@include mq($to: medium) {
+		font-size: 2.83333rem;
+	}
 
 	@include mq($to: small) {
 		font-size: 2rem;
@@ -45,45 +46,32 @@ h1 {
 
 h2 {
 	font-weight: 600;
-	font-size: 2.2rem;
+	font-size: 1.83333rem;
 	line-height: 1.1;
 
 	padding-bottom: $basicPush * 1.8;
 
 	position: relative;
 
-	&:after {
-		content: " ";
-		display: block;
-		position: absolute;
-
-		height: 4px;
-		width: 100%;
-
-
-		background-color: $colorGreyHover;
-		bottom: 0;
-	}
-
-  	@include mq($to: small) {
-	  font-size: 1.75rem;
+	@include mq($to: small) {
+		font-size: 1.75rem;
 	}
 }
 
 h3 {
-  font-size: 1.66667rem;
+	font-size: 1.66667rem;
 	font-weight: 700;
 	line-height: 1.6;
 	margin-top: $basicPush * 2;
 
-  @include mq($to: small) {
-	font-weight: 600;
-	font-size: 1.5rem;
-  }
+	@include mq($to: small) {
+		font-weight: 600;
+		font-size: 1.5rem;
+	}
 }
 
 h3 + p {
-  margin-top: 0;
+	margin-top: 0;
 }
 
 h4 {

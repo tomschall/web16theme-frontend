@@ -1,5 +1,8 @@
 .content__element {
-	margin-bottom: $basicPush * 4;
+	margin-bottom: $basicPush * 5;
+	padding-bottom: $basicPush * 3;
+
+	border-bottom: 1px solid $colorGreyHover;
 
 	@include clearfix();
 

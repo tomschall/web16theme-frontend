@@ -17,7 +17,8 @@ var taskName = 'scaffold',
 				name: 'widget',
 				src: './source/widgets/.scaffold',
 				dest: './source/widgets/',
-				hasAssets: true
+				hasAssets: true,
+				allowUnderscores: true
 			},
 			page: {
 				name: 'Page',
