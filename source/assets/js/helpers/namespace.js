@@ -1,5 +1,6 @@
 /*
  * @requires ../../../../node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js
+ * @requires ../../../../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js
  *
  */
 

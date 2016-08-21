@@ -65,7 +65,8 @@
 	Widget.prototype.addInitialScrollMagic = function() {
 		var scene = new ScrollMagic.Scene({
 			triggerElement: '.page_wrapper',
-			offset: 1000
+			offset: 1000,
+			triggerHook: 0
 		});
 
 		scene.on('enter leave', function() {

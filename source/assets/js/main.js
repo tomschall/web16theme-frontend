@@ -11,7 +11,7 @@
  * @requires ../../../node_modules/jquery-mousewheel/jquery.mousewheel.js
  * @requires ../../../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js
  * @requires ../../../node_modules/material-spinner/dist/js/material.spinner.js
- * @requires ../../../node_modules/scrolltofixed/jquery-scrolltofixed.js
+ * @requires ../../../node_modules/lodash/lodash.js
 
  * @requires ../.tmp/templates.js
 
@@ -23,8 +23,7 @@
  * @requires helpers/search.js
  * @requires helpers/initVendorPlugins.js
  * @requires helpers/modal.js
- *
- * @requires ../../widgets/share/share.js
+
  * @requires ../../widgets/searchbar/searchbar.js
  * @requires ../../widgets/menubuttons/menubuttons.js
  * @requires ../../widgets/header/header.js
@@ -34,7 +33,6 @@
  * @requires ../../widgets/tabnavigation/tabnavigation.js
  * @requires ../../widgets/footernavigation/footernavigation.js
  * @requires ../../widgets/breadcrumb/breadcrumb.js
- * @requires ../../widgets/productbar/productbar.js
  * @requires ../../widgets/toplink/toplink.js
  * @requires ../../widgets/searchpage/searchpage.js
  * @requires ../../widgets/sidebar/sidebar.js

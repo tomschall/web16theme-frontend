@@ -1,4 +1,6 @@
 <div class="widg_sidebar" data-init="sidebar">
+	<div class="widg_sidebar__hider" data-sidebar="hider"></div>
+
 	{{#if widgets.application}}
 		{{> "widgets/sidebar_application/sidebar_application" widgets.application}}
 	{{/if}}
@@ -14,4 +16,6 @@
 	{{#if widgets.contact}}
 		{{> "widgets/sidebar_contact/sidebar_contact" widgets.contact }}
 	{{/if}}
+
+	<div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
 </div>
