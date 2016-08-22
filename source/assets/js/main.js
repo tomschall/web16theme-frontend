@@ -36,6 +36,7 @@
  * @requires ../../widgets/toplink/toplink.js
  * @requires ../../widgets/searchpage/searchpage.js
  * @requires ../../widgets/sidebar/sidebar.js
+ * @requires ../../widgets/subnav/subnav.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js

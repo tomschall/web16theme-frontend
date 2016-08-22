@@ -24,21 +24,26 @@
 				hider: '[data-' + name + '="hider"]'
 			},
 			stateClasses: {
-				isFixed: 'is_fixed',
-				isVisible: 'is_visible',
-				isExpanded: 'is_expanded'
+				isFixed: 'is_fixed', // When an element gets fixed
+				isVisible: 'is_visible', // For the hider to define if visible or not
+				isRequested: 'is_requested', // Added when Content is requested to be pulled down
+				isPushed: 'is_pushed', // Added when element has to be pushed
+				isPulledDown: 'is_pulled-down' // When the content actually will be pulled down
 			},
 			metrics: {
-				objectPush: 30
-			}
+				objectPush: 30,
+				contentPaddingTop: 17
+			},
+			animationSpeed: 250
 		},
 		data = {
 			objects: null,
-			trigger: null,
+			triggers: null,
 			hider: null
 		},
 		dataParams = {
-			objectIndex: name + '-object-index'
+			objectIndex: name + '-object-index',
+			initialTop: name + '-initial-top'
 		},
 		elements = {
 			$content: $('.page_content')
@@ -46,12 +51,14 @@
 		scrollMagic = {
 			controller: new ScrollMagic.Controller({addIndicators: true}),
 			scenes: {
-				fixedScene: null,
+				fixedScenes: {},
 				undoScenes: {}
 			}
 		},
 		nextElementToFix = 0,
-		activeObj = null;
+		activeObj = null,
+		hasExtended = false,
+		extendedObj = null;
 
 	/**
 	 * Create an instance of the widget
@@ -84,13 +91,13 @@
 
 		if (window.estatico.mq.query({from: 'medium'})) {
 			data.objects = this.$element.find(this.options.domSelectors.object).toArray();
-			data.trigger = this.$element.find(this.options.domSelectors.trigger)[0];
+			data.triggers = this.$element.find(this.options.domSelectors.trigger).toArray();
 			data.hider = this.$element.find(this.options.domSelectors.hider)[0];
 
 			this._setObjectIndex();
 
 			this._setSidebarMinHeight();
-			this._setupInitialScene();
+			this._setupInitialScenes();
 
 			// Check for initial scroll position
 			if ($body.scrollTop() > this.$element.offset().top) {
@@ -155,6 +162,7 @@
 			'padding-top': titleHeight
 		});
 
+		this._bindFixedClickEvent($object);
 		this._setupUndoFixScene();
 
 		activeObj = null;
@@ -173,32 +181,166 @@
 			this._setHiderInvisible();
 		}
 
-		$object.removeClass(this.options.stateClasses.isFixed);
+		$object
+				.removeClass(this.options.stateClasses.isFixed)
+				.removeClass(this.options.stateClasses.isRequested)
+				.removeClass(this.options.stateClasses.isPushed)
+				.removeClass(this.options.stateClasses.isPulledDown);
+
 		$object.removeTitlePositionAndMetrics();
 		$object.css({
 			'padding-top': 0
 		});
 
 		this._removeUndoScene(objectIndex);
+		this._unbindFixedClickEvent($object);
 
 		nextElementToFix = objectIndex;
 
 		this._repositionFixedScene();
 	};
 
+	// //////// CONTENT DISPLAYING ///////// //
+
+	/**
+	 * Requests the content to be displayed, checks if already has some extended
+	 * @param $object
+	 * @private
+   */
+	Widget.prototype._requestContent = function($object) {
+		if (hasExtended) {
+			this._hideContent(extendedObj);
+
+			setTimeout(function() {
+				this._showContent($object);
+			}.bind(this), this.options.animationSpeed + 1);
+		} else {
+			this._showContent($object);
+		}
+	};
+
+	/**
+	 * Shows the content
+	 * @param $object
+	 * @private
+   */
+	Widget.prototype._showContent = function($object) {
+		var contentHeight = $object.getContentHeight(),
+				contentOffsetBottom = $object.getContentOffsetBottom(),
+				titleOffsetBottom = $object.getTitleOffsetBottom(),
+				initialContentTop = 0;
+
+		this._addPushToObjects(contentHeight, parseInt($object.data(dataParams.objectIndex)));
+
+		if (contentOffsetBottom > titleOffsetBottom) {
+			initialContentTop = $object[0].getBoundingClientRect().top - 1;
+		} else {
+			initialContentTop = (titleOffsetBottom - $(window).scrollTop()) - contentHeight;
+		}
+
+		$object.data(dataParams.initialTop, initialContentTop).setContentPositionAndMetrics(initialContentTop);
+		$object.addClass(this.options.stateClasses.isRequested);
+
+		// Now we have set everything so we can actuall move the content to the correct position (finally)
+		this._moveContentIn($object);
+
+		hasExtended = true;
+		extendedObj = $object;
+	};
+
+	/**
+	 * Move Content in
+	 * @param $object
+	 * @private
+   */
+	Widget.prototype._moveContentIn = function($object) {
+		var pullDown = $object.getTitleOffsetBottom() - $(window).scrollTop() - 1;
+
+		$object.addClass(this.options.stateClasses.isPulledDown);
+
+		$object.setContentPositionAndMetrics(pullDown);
+	};
+
+	/**
+	 * Add push to the objects following, if fixed all, not fixed only the first
+	 * @param push
+	 * @param requestedOrderNumber
+	 * @private
+   */
+	Widget.prototype._addPushToObjects = function(push, requestedOrderNumber) {
+		var unfixedCounter = 0;
+
+		for (var i = requestedOrderNumber + 1; i < data.objects.length; i++) {
+			var $object = $(data.objects[i]),
+					$requestedObject = $(data.objects[requestedOrderNumber]);
+
+			$object.addClass(this.options.stateClasses.isPushed);
+
+			if ($object.hasClass(this.options.stateClasses.isFixed)) {
+				var top = parseInt($object.find(this.options.domSelectors.title).css('top'), 10) + push;
+
+				$object.setTitleTop(top);
+
+				// Repositioning the undo scene
+				this._repositionUndoScene(i, push);
+			} else if (unfixedCounter === 0) {
+				this._pushTrigger($requestedObject.getContentHeight(), i);
+
+				$requestedObject.css({
+					'padding-top': $requestedObject.getTitleHeight() + $requestedObject.getContentHeight()
+				});
+
+				unfixedCounter++;
+			}
+		}
+	};
+
+	/**
+	 * Hides the content of the object actin
+	 * @param $object
+	 * @private
+   */
+	Widget.prototype._hideContent = function($object) {
+		var initialTop = $object.data(dataParams.initialTop),
+				titleHeight = $object.getTitleHeight(),
+				contentHeight = $object.getContentHeight(),
+				objIndex = parseInt($object.data(dataParams.objectIndex));
+
+		$object.setContentPositionAndMetrics(initialTop).css({
+			'padding-top': titleHeight
+		});
+
+		this._repositionFixedScene(objIndex);
+
+		this.$element.find('.' + this.options.stateClasses.isPushed).map(function(index, mappedObject) {
+			this._calcIfFixed($(mappedObject), contentHeight);
+		}.bind(this));
+
+		$object.removeClass(this.options.stateClasses.isRequested);
+
+		setTimeout(function() {
+			$object.removeClass(this.options.stateClasses.isPulledDown);
+		}.bind(this), this.options.animationSpeed);
+	};
+
 	// ///// SCROLL MAGIC METHODS ///// //
 
 	/**
-	 * Sets up the initial scene for scroll magic
-	 */
-	Widget.prototype._setupInitialScene = function() {
-		scrollMagic.scenes.fixedScene = new ScrollMagic.Scene({
-			triggerElement: data.trigger,
-			offset: 0,
-			triggerHook: 0
-		}).addTo(scrollMagic.controller);
+	 *
+	 * @private
+   */
+	Widget.prototype._setupInitialScenes = function() {
+		for (var i = 0; i < data.objects.length; i++) {
+			scrollMagic.scenes.fixedScenes[i] = new ScrollMagic.Scene({
+				triggerElement: data.triggers[i],
+				triggerHook: 0,
+				offset: 0
+			}).addTo(scrollMagic.controller);
 
-		this._listenDoFixScene();
+			this._repositionFixedScene(i);
+
+			this._listenDoFixScene(i);
+		}
 	};
 
 	/**
@@ -221,8 +363,8 @@
 	 * Adds the fixed scene event
 	 * @private
 	 */
-	Widget.prototype._listenDoFixScene = function() {
-		scrollMagic.scenes.fixedScene.on('enter.' + this.uuid, function() {
+	Widget.prototype._listenDoFixScene = function(objIndex) {
+		scrollMagic.scenes.fixedScenes[objIndex].on('enter.' + this.uuid, function() {
 			this._doFixation();
 		}.bind(this));
 	};
@@ -244,20 +386,54 @@
 	 * Repositioning the fixed scene trigger to the next element
 	 * @private
    */
-	Widget.prototype._repositionFixedScene = function() {
-		if (nextElementToFix === 0) {
-			$(data.trigger).css({
+	Widget.prototype._repositionFixedScene = function(objIndex) {
+		if (typeof objIndex === typeof undefined) {
+			objIndex = nextElementToFix;
+		}
+
+		if (objIndex === 0) {
+			$(data.triggers[objIndex]).css({
 				'top': -1 * defaults.metrics.objectPush
 			});
 		} else {
 			var titlesHeight = this._getCombTitlesHeight(),
-					$objectToTrigger = $(data.objects[nextElementToFix]),
+					$objectToTrigger = $(data.objects[objIndex]),
 					toTriggerPosition = $objectToTrigger.position().top;
 
-			$(data.trigger).css({
+			$(data.triggers[objIndex]).css({
 				'top': toTriggerPosition - titlesHeight - defaults.metrics.objectPush
 			});
 		}
+	};
+
+	/**
+	 * Pushing the trigger to a new value
+	 * @param push the distance to push
+	 * @param objIndex for which trigger
+	 * @private
+   */
+	Widget.prototype._pushTrigger = function(push, objIndex) {
+		var titlesHeight = this._getCombTitlesHeight(objIndex),
+				$objectToTrigger = $(data.objects[nextElementToFix]),
+				toTriggerPosition = $objectToTrigger.position().top;
+
+		$(data.triggers[objIndex]).css({
+			'top': toTriggerPosition - titlesHeight - push - defaults.metrics.objectPush
+		});
+	};
+
+	/**
+	 * Repositioning an undo scene, with getting the push
+	 * @param objIndex
+	 * @param push
+	 * @private
+   */
+	Widget.prototype._repositionUndoScene = function(objIndex, push) {
+		var undoScene = scrollMagic.scenes.undoScenes[objIndex],
+				currentOffset = undoScene.offset(),
+				newOffset = currentOffset - push;
+
+		undoScene.offset(newOffset);
 	};
 
 	/**
@@ -268,9 +444,42 @@
 	Widget.prototype._removeUndoScene = function(objIndex) {
 		var scene = scrollMagic.scenes.undoScenes[objIndex];
 
-		scene.destroy();
+		if (typeof scene !== typeof undefined) {
+			scene.destroy();
+		}
 
 		delete scrollMagic.scenes.undoScenes[objIndex];
+	};
+
+	// /////// EVENT METHODS /////// //
+
+	/**
+	 * Add Fixed Click Event
+	 * @param $object sidebar_object
+	 * @private
+   */
+	Widget.prototype._bindFixedClickEvent = function($object) {
+		var $title = $object.find(this.options.domSelectors.title);
+
+		$title.on('click.' + this.uuid, function() {
+			if ($object.hasClass(this.options.stateClasses.isPulledDown)) {
+				this._hideContent($object);
+			} else {
+				this._requestContent($object);
+			}
+
+		}.bind(this));
+	};
+
+	/**
+	 * Unbind the fixed clicked event
+	 * @param $object
+	 * @private
+   */
+	Widget.prototype._unbindFixedClickEvent = function($object) {
+		var $title = $object.find(this.options.domSelectors.title);
+
+		$title.unbind('click.' + this.uuid);
 	};
 
 	// ////// CALCULATION METHODS /////// ///
@@ -280,8 +489,12 @@
 	 * @returns {number}
 	 * @private
    */
-	Widget.prototype._calcTopOffset = function() {
-		if (nextElementToFix === 0) {
+	Widget.prototype._calcTopOffset = function(objIndex) {
+		if (typeof objIndex === typeof undefined) {
+			objIndex = nextElementToFix;
+		}
+
+		if (objIndex === 0) {
 			return this.options.metrics.objectPush;
 		} else {
 			var titlesHeight = this._getCombTitlesHeight();
@@ -290,6 +503,23 @@
 
 			return titlesHeight;
 		}
+	};
+
+	Widget.prototype._calcIfFixed = function($object, modifierHeight) {
+		var top = parseInt($object.find(this.options.domSelectors.title).css('top'), 10) - modifierHeight,
+				objectOffsetTop = $object.offset().top,
+				objectTitleOffsetTop = $object.getTitleOffsetTop() - modifierHeight - $object.getTitleHeight();
+
+		if (objectOffsetTop <= objectTitleOffsetTop) {
+			$object.setTitlePositionAndMetrics(top);
+		} else {
+			this._undoFixation($object);
+		}
+
+		// Wait till triggering the repositioning of the fixed scene
+		setTimeout(function() {
+			this._repositionFixedScene($object.data(dataParams.objectIndex));
+		}.bind(this), this.options.animationSpeed + 5);
 	};
 
 	// ////// USEFUL METHODS /////// //
@@ -321,25 +551,47 @@
 	 * @returns {number}
 	 * @private
    */
-	Widget.prototype._getCombTitlesHeight = function() {
+	Widget.prototype._getCombTitlesHeight = function(objIndex) {
 		var titlesHeight = 0;
 
-		for (var i = 0; i < nextElementToFix; i++) {
+		if (typeof objIndex === typeof undefined) {
+			objIndex = nextElementToFix;
+		}
+
+		for (var i = 0; i < objIndex; i++) {
 			titlesHeight += $(data.objects[i]).getTitleHeight() - 1;
+
+			if ($(data.objects[i]).hasClass(this.options.stateClasses.isPulledDown)) {
+				titlesHeight += $(data.objects[i]).getContentHeight() - 1;
+			}
 		}
 
 		return titlesHeight;
 	};
 
+	Widget.prototype._resetAllCalc = function() {
+		for (var i = 0; i < data.objects.length; i++) {
+			$(data.objects[i]).setTitlePositionAndMetrics(this._calcTopOffset(i));
+
+			this._calcIfFixed($(data.objects[i]), 0);
+		}
+	};
+
 	// //// BODY METHODS ///// //
 
+	/**
+	 * Corrects the body scroll
+	 * @private
+   */
 	Widget.prototype._correctBodyScroll = function() {
 		$(this.options.domSelectors.object).map(function(index, object) {
 			var $nextObject = $(data.objects[index + 1]),
-					thisObjectBottomPosition = $(object).getTitlePosition() + $(object).getTitleHeight(),
+					thisObjectBottomPosition = $(object).getTitleOffsetTop() + $(object).getTitleHeight(),
 					nextObjectOffsetTop = 0,
 					thisHasFixed = $(object).hasClass(this.options.stateClasses.isFixed),
 					nextHasNotFixed = false;
+
+			this._calcIfFixed($(data.objects[index]), 0);
 
 			if ($nextObject.length > 0) {
 				nextObjectOffsetTop = $nextObject.offset().top;
@@ -355,7 +607,6 @@
 					}
 				}
 			}
-
 		}.bind(this));
 	};
 
@@ -393,14 +644,52 @@
 				'top': top,
 				'width': $parent.outerWidth()
 			});
+
+			return $parent;
+		},
+
+		setTitleTop: function(top) {
+			$(this).find(defaults.domSelectors.title).css({
+				'top': top
+			});
+
+			return $(this);
 		},
 
 		removeTitlePositionAndMetrics: function() {
 			$(this).find(defaults.domSelectors.title).removeAttr('style');
 		},
 
-		getTitlePosition: function() {
+		getTitleOffsetTop: function() {
 			return $(this).find(defaults.domSelectors.title).offset().top;
+		},
+
+		getTitleOffsetBottom: function() {
+			return $(this).find(defaults.domSelectors.title).offset().top + $(this).find(defaults.domSelectors.title).outerHeight();
+		},
+
+		getContentHeight: function() {
+			return $(this).find(defaults.domSelectors.content).outerHeight();
+		},
+
+		setContentPositionAndMetrics: function(top) {
+			var $parent = $(this);
+
+			$parent.find(defaults.domSelectors.content).css({
+				'left': $parent.offset().left,
+				'top': top,
+				'width': $parent.outerWidth()
+			});
+
+			return $(this);
+		},
+
+		getContentOffsetTop: function() {
+			return $(this).find(defaults.domSelectors.content).offset().top;
+		},
+
+		getContentOffsetBottom: function() {
+			return $(this).find(defaults.domSelectors.content).offset().top + $(this).find(defaults.domSelectors.content).outerHeight();
 		}
 	});
 

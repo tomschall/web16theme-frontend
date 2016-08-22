@@ -11,12 +11,18 @@ $sidebarObjectPush: $basicPush * 3;
 .widg_sidebar__object {
 	border: 1px solid $colorGreyHover;
 	margin-bottom: $basicPush * 3;
+
+	.is_requested {
+		transition: padding-bottom $transitionLength / 2 $transitionEase;
+	}
 }
 
 .object__title {
 	padding: $sidebarObjectGutter - 10 ($sidebarObjectGutter + 12 + 8) 0 $sidebarObjectGutter;
 	position: relative;
+	z-index: zindex(sidebarTitle);
 
+	margin-top: 0;
 
 	@include iconDataurl('accordeon_close', $after: true);
 
@@ -26,7 +32,10 @@ $sidebarObjectPush: $basicPush * 3;
 		right: $sidebarObjectGutter;
 		top: 50%;
 
-		transform: translateY(-50%) rotate(45deg);
+		transform: translateY(-50%) rotate(45deg) scale(0.6);
+		opacity: 0;
+
+		transition: all $transitionLength / 2 $transitionEase;
 	}
 
 	> h4 {
@@ -61,19 +70,57 @@ $sidebarObjectPush: $basicPush * 3;
 		border: 1px solid $colorGreyHover;
 		border-bottom: none;
 
+		&:hover {
+			background-color: $colorGreyHover;
+		}
+
+		&:after {
+			transform: translateY(-50%) rotate(45deg) scale(1.0);
+
+			opacity: 1.0;
+		}
+
 		> h4:after {
 			left: -1 * $sidebarObjectGutter;
 			right: -1 * ($sidebarObjectGutter + 12 + 8);
 		}
 	}
+
+	.is_requested & {
+		&:after {
+			transform: translateY(-50%) rotate(90deg) scale(1.0);
+		}
+	}
+
+	.is_pulled-down & {
+		> h4:after {
+			left: 0;
+			right: -1 * (($sidebarObjectGutter + 12 + 8) - $sidebarObjectGutter);
+		}
+	}
+
+	.is_pushed & {
+		transition: top $transitionLength / 2 $transitionEase, margin-top $transitionLength / 2 $transitionEase;
+	}
 }
 
 .object__content {
 	padding: $sidebarObjectGutter - 9 $sidebarObjectGutter $sidebarObjectGutter;
+	z-index: zindex(sidebarContent);
 
 	p {
 		font-size: 1.25rem;
 		margin: 0;
+	}
+
+	.is_requested & {
+		position: fixed;
+		border: 1px solid $colorGreyHover;
+		background-color: $colorBg;
+	}
+
+	.is_pulled-down & {
+		transition: top $transitionLength / 2 $transitionEase;
 	}
 }
 

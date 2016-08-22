@@ -3,19 +3,24 @@
 
 	{{#if widgets.application}}
 		{{> "widgets/sidebar_application/sidebar_application" widgets.application}}
+    <div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
 	{{/if}}
 
 	{{#if widgets.events}}
 		{{> "widgets/sidebar_events/sidebar_events" widgets.events }}
+    <div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
 	{{/if}}
 
 	{{#if widgets.keydata}}
 		{{> "widgets/sidebar_key_data/sidebar_key_data" widgets.keydata }}
+    <div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
 	{{/if}}
 
 	{{#if widgets.contact}}
 		{{> "widgets/sidebar_contact/sidebar_contact" widgets.contact }}
+    <div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
 	{{/if}}
 
-	<div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
+
+
 </div>

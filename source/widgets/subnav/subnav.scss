@@ -13,8 +13,16 @@
 
 	position: absolute;
 
-	width: 17.8%;
+	margin-left: 0;
+	padding: 0;
+
 	right: basicUnitHeight(normal);
+
+	width: 17.8%;
+
+	> .widg_subnav__inner {
+		@include container();
+	}
 
 	@include mq($from: medium, $to: large) {
 		right: basicUnitHeight(small);
