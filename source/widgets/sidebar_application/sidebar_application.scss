@@ -1,3 +1,13 @@
 .widg_sidebar_application {
+	p:not(.small) {
+		margin-bottom: $basicPush * 2;
+	}
+
+	p.small {
+		font-size: 1.0833333rem;
+
+		color: $colorTextDarkGrey;
+		margin-bottom: $basicPush;
+	}
 
 }

@@ -5,13 +5,39 @@ var _ = require('lodash'),
 	dataHelper = require('../../../helpers/data.js'),
 	defaultData = requireNew('../../data/default.data.js');
 
-var data = _.merge(defaultData, {
-		meta: {
-			title: 'Sidebar KeyData',
-			description: '',
-			code: dataHelper.getTemplateCode('sidebar_key_data.hbs'),
-			documentation: dataHelper.getDocumentation('sidebar_key_data.md')
-		}
-	});
+var templateData = {
+			entries: [
+				{
+					title: 'Abschluss',
+					text: 'CAS Eingliederungsmanagement'
+				},
+				{
+					title: 'ECTS Punkte',
+					text: '15 Credits'
+				},
+				{
+					title: 'Zeitraum & Dauer',
+					text: '1.4.2016 – 24.12.2016, 2 Semester'
+				},
+				{
+					title: 'Unterrichtssprache',
+					text: 'Deutsch'
+				}
+			]
+		},
+		data = _.assign(defaultData, {
+			meta: {
+				title: 'Sidebar KeyData',
+				description: '',
+				code: dataHelper.getTemplateCode('sidebar_key_data.hbs'),
+				documentation: dataHelper.getDocumentation('sidebar_key_data.md'),
+				mocks: [
+					{
+						description: null,
+						data: dataHelper.getFormattedJSON(templateData)
+					}
+				]
+			}
+		}, templateData);
 
 module.exports = data;

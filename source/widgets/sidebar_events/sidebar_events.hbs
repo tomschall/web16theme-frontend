@@ -3,6 +3,18 @@
 		<h4>Infoveranstaltungen</h4>
 	</div>
 	<div class="object__content" data-sidebar="content">
-		<p>Hier kommen die tollsten Infoveranstaltungen der Welt</p>
+		<ul>
+			{{#each entries}}
+				<li>
+					<a href="{{url}}">
+						<span class="event__title">{{title}}</span>
+						<span class="event__date-location">{{dateTime}}, {{location}}</span>
+					</a>
+				</li>
+			{{/each}}
+		</ul>
+		<a href="{{button.url}}" class="button small_button">
+			{{button.text}}
+		</a>
 	</div>
 </div>

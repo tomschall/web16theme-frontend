@@ -32,7 +32,8 @@
 			},
 			metrics: {
 				objectPush: 30,
-				contentPaddingTop: 17
+				contentPaddingTop: 17,
+				pageBottomGutter: 80
 			},
 			animationSpeed: 250
 		},
@@ -99,6 +100,10 @@
 			} else {
 				this._initSidebar();
 			}
+
+			$(window).on('resize.' + this.uuid, function() {
+				this._handleResize();
+			}.bind(this));
 		}
 	};
 
@@ -256,6 +261,8 @@
 		hasExtended = true;
 		extendedObj = $object;
 
+		this._checkSidebarHeight(contentHeight);
+
 		// After all functions have dissolved we can allow content requesting again
 		setTimeout(function() {
 			doingAnimation = false;
@@ -342,6 +349,8 @@
 			$object.removeClass(this.options.stateClasses.isPulledDown);
 
 			$object.find(this.options.domSelectors.content).removeAttr('style');
+
+			this._checkSidebarHeight();
 
 			doingAnimation = false;
 		}.bind(this), this.options.animationSpeed);
@@ -522,7 +531,7 @@
 		if (objIndex === 0) {
 			return this.options.metrics.objectPush;
 		} else {
-			var titlesHeight = this._getCombTitlesHeight();
+			var titlesHeight = this._getCombTitlesHeight(objIndex);
 
 			titlesHeight += this.options.metrics.objectPush;
 
@@ -604,7 +613,7 @@
 				.removeAttr('style');
 	};
 
-	// //// BODY METHODS ///// //
+	// //// BODY AND LAYOUT METHODS ///// //
 
 	/**
 	 * Corrects the body scroll
@@ -614,6 +623,66 @@
 		$(this.options.domSelectors.object).map(function(index, object) {
 			this._resetEverything($(object));
 		}.bind(this));
+	};
+
+	/**
+	 * Checks the sidebarheight
+	 * @param contentHeight of the new content displayed, so we know before animation what will be the new offset
+	 * @private
+   */
+	Widget.prototype._checkSidebarHeight = function(contentHeight) {
+		var $lastObject = $(data.objects[data.objects.length - 1]),
+				bottomOffset = 0,
+				bottomOffsetSidebar = $('.page_content').offset().top + $('.page_content').outerHeight(),
+				differenceOffset = 0;
+
+		if ($lastObject.hasClass(this.options.stateClasses.isPulledDown)) {
+			bottomOffset = $lastObject.getContentOffsetBottom() + contentHeight;
+		} else {
+			bottomOffset = $lastObject.getTitleOffsetBottom() + contentHeight;
+		}
+
+		if (bottomOffset > bottomOffsetSidebar) {
+			differenceOffset = bottomOffset - bottomOffsetSidebar + this.options.metrics.pageBottomGutter;
+
+			this.$element.css('min-height', differenceOffset + $('.page_content').height());
+
+		} else {
+			this._setSidebarMinHeight();
+		}
+
+	};
+
+	// ////// HANDLING THE RESIZE ////// //
+
+	/**
+	 * Handling the resize event
+	 * @private
+   */
+	Widget.prototype._handleResize = function() {
+		if (hasExtended) {
+			this._hideContent(extendedObj);
+
+			setTimeout(function() {
+				this._repositionAll();
+			}.bind(this), this.options.animationSpeed + 1);
+		} else {
+			this._repositionAll();
+		}
+	};
+
+	// /////// RESET FUNCTIONS /////// //
+
+	/**
+	 * Reposition all elements
+	 * @private
+   */
+	Widget.prototype._repositionAll = function() {
+		for (var i = 0; i < data.objects.length; i++) {
+			var $object = $(data.objects[i]);
+
+			$object.setTitlePositionAndMetrics(this._calcTopOffset(i));
+		}
 	};
 
 	/**

@@ -1,3 +1,70 @@
 .widg_sidebar_events {
+	ul {
+		@include resetList();
 
+		li {
+			margin: 0 -1 * $sidebarObjectGutter;
+			padding: 10px $sidebarObjectGutter 0;
+
+			a {
+				opacity: 1;
+
+				display: block;
+
+				text-decoration: none;
+
+				position: relative;
+				border-bottom: 1px solid $colorGreyHover;
+
+				padding-bottom: 10px;
+
+				@include iconDataurl('pfeil-black_short', $after: true);
+				transition: transform $transitionLength / 2 $transitionEase;
+				transform: translateX(0);
+
+				&:after {
+					display: block;
+					height: 10px;
+
+					top: 50%;
+					right: 1px;
+
+					transform: translateY(-50%);
+
+					position: absolute;
+				}
+			}
+
+			&:hover {
+				background-color: $colorGreyHover;
+
+				a {
+					transform: translateX($transitionTransformLinkMove);
+				}
+			}
+
+			&:first-of-type {
+			}
+
+			&:last-of-type {
+				a {
+					border-bottom: none;
+				}
+			}
+		}
+	}
+
+	.event__title {
+		font-size: 1.25rem;
+		display: block;
+
+		color: $colorBlack;
+		font-weight: 600;
+	}
+
+	.event__date-location {
+		color: $colorTextGrey;
+
+		font-size: 1.083333rem;
+	}
 }

@@ -6,6 +6,8 @@ $sidebarObjectPush: $basicPush * 3;
 	@include push(0.3);
 
 	position: relative;
+
+	transition: min-height $transitionLength / 2 $transitionEase;
 }
 
 .widg_sidebar__object {
@@ -143,7 +145,42 @@ $sidebarObjectPush: $basicPush * 3;
 	height: $sidebarObjectPush;
 	background-color: $colorBg;
 
+	z-index: zindex(sidebarHider);
+
 	&.is_visible {
 		display: block;
+	}
+}
+
+.object__content a.button {
+	font-size: 0.91667rem;
+
+	width: 100%;
+	min-width: 0;
+
+	@include mq($to: 'large') {
+		letter-spacing: 1.5px;
+	}
+}
+
+.object__content dl {
+	dt,
+	dd {
+		margin: 0;
+		width: 100%;
+		font-size: 1.25rem;
+	}
+
+	dt {
+		font-weight: 600;
+		margin-bottom: $basicPush * 0.3;
+	}
+
+	dd {
+		margin-bottom: $basicPush * 1.7;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
 	}
 }

@@ -3,6 +3,14 @@
 		<h4>Kontakt</h4>
 	</div>
 	<div class="object__content" data-sidebar="content">
-		<p>Das ist das Kontakt-Widget für die Sidebar</p>
+		<img src="{{img.src}}" alt="{{img.alt}}"/>
+		<dl>
+			<dt class="contact__name">{{name}}</dt>
+			<dd>{{jobDescr}}</dd>
+			<dt>{{langStrings.telephone}}</dt>
+			<dd><a href="tel:{{telephone}}">{{telephone}}</a></dd>
+			<dt>{{langStrings.email}}</dt>
+			<dd><a href="mailto:{{email}}">{{email}}</a></dd>
+		</dl>
 	</div>
 </div>

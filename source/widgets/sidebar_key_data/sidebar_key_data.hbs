@@ -3,6 +3,11 @@
 		<h4>Eckdaten</h4>
 	</div>
 	<div class="object__content" data-sidebar="content">
-		<p>Das ist das Eckdaten-Widget, es wird wohl eher ein bisschen länger.</p>
+		<dl>
+			{{#each entries}}
+				<dt>{{title}}:</dt>
+				<dd>{{text}}</dd>
+			{{/each}}
+		</dl>
 	</div>
 </div>

@@ -265,6 +265,11 @@
 	height: buttonHeight(desktop);
 	line-height: buttonHeight(desktop);
 
+	&.small_button {
+		height: buttonHeight(mobile);
+		line-height: buttonHeight(mobile);
+	}
+
 	@include mq($to: medium) {
 		height: buttonHeight(mobile);
 		line-height: buttonHeight(mobile);
