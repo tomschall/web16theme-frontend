@@ -49,7 +49,7 @@
 			$content: $('.page_content')
 		},
 		scrollMagic = {
-			controller: new ScrollMagic.Controller({addIndicators: true}),
+			controller: new ScrollMagic.Controller({addIndicators: false}),
 			scenes: {
 				fixedScenes: {},
 				undoScenes: {}
@@ -58,7 +58,8 @@
 		nextElementToFix = 0,
 		activeObj = null,
 		hasExtended = false,
-		extendedObj = null;
+		extendedObj = null,
+		doingAnimation = false;
 
 	/**
 	 * Create an instance of the widget
@@ -88,24 +89,28 @@
 	 */
 	Widget.prototype.init = function() {
 		// Only initialize when minimum medium screen size
-
 		if (window.estatico.mq.query({from: 'medium'})) {
-			data.objects = this.$element.find(this.options.domSelectors.object).toArray();
-			data.triggers = this.$element.find(this.options.domSelectors.trigger).toArray();
-			data.hider = this.$element.find(this.options.domSelectors.hider)[0];
-
-			this._setObjectIndex();
-
-			this._setSidebarMinHeight();
-			this._setupInitialScenes();
-
-			// Check for initial scroll position
 			if ($body.scrollTop() > this.$element.offset().top) {
 				setTimeout(function() {
 					this._correctBodyScroll();
+
+					this._initSidebar();
 				}.bind(this), 5);
+			} else {
+				this._initSidebar();
 			}
 		}
+	};
+
+	Widget.prototype._initSidebar = function() {
+		data.objects = this.$element.find(this.options.domSelectors.object).toArray();
+		data.triggers = this.$element.find(this.options.domSelectors.trigger).toArray();
+		data.hider = this.$element.find(this.options.domSelectors.hider)[0];
+
+		this._setObjectIndex();
+
+		this._setSidebarMinHeight();
+		this._setupInitialScenes();
 	};
 
 	// //// GETTER AND SETTERS OF ELEMENTS ///// //
@@ -157,6 +162,7 @@
 		}
 
 		$object.addClass(this.options.stateClasses.isFixed);
+
 		$object.setTitlePositionAndMetrics(this._calcTopOffset());
 		$object.css({
 			'padding-top': titleHeight
@@ -208,6 +214,9 @@
 	 * @private
    */
 	Widget.prototype._requestContent = function($object) {
+		// While requesting the content avoid everything new clicks on that
+		doingAnimation = true;
+
 		if (hasExtended) {
 			this._hideContent(extendedObj);
 
@@ -233,7 +242,7 @@
 		this._addPushToObjects(contentHeight, parseInt($object.data(dataParams.objectIndex)));
 
 		if (contentOffsetBottom > titleOffsetBottom) {
-			initialContentTop = $object[0].getBoundingClientRect().top - 1;
+			initialContentTop = $object[0].getBoundingClientRect().top;
 		} else {
 			initialContentTop = (titleOffsetBottom - $(window).scrollTop()) - contentHeight;
 		}
@@ -246,6 +255,11 @@
 
 		hasExtended = true;
 		extendedObj = $object;
+
+		// After all functions have dissolved we can allow content requesting again
+		setTimeout(function() {
+			doingAnimation = false;
+		}, this.options.animationSpeed);
 	};
 
 	/**
@@ -254,7 +268,7 @@
 	 * @private
    */
 	Widget.prototype._moveContentIn = function($object) {
-		var pullDown = $object.getTitleOffsetBottom() - $(window).scrollTop() - 1;
+		var pullDown = $object.getTitleOffsetBottom() - $(window).scrollTop();
 
 		$object.addClass(this.options.stateClasses.isPulledDown);
 
@@ -277,9 +291,9 @@
 			$object.addClass(this.options.stateClasses.isPushed);
 
 			if ($object.hasClass(this.options.stateClasses.isFixed)) {
-				var top = parseInt($object.find(this.options.domSelectors.title).css('top'), 10) + push;
+				var calcedTop = parseInt($object.find(this.options.domSelectors.title).css('top'), 10) + push;
 
-				$object.setTitleTop(top);
+				$object.setTitleTop(calcedTop);
 
 				// Repositioning the undo scene
 				this._repositionUndoScene(i, push);
@@ -306,6 +320,8 @@
 				contentHeight = $object.getContentHeight(),
 				objIndex = parseInt($object.data(dataParams.objectIndex));
 
+		doingAnimation = true;
+
 		$object.setContentPositionAndMetrics(initialTop).css({
 			'padding-top': titleHeight
 		});
@@ -314,12 +330,20 @@
 
 		this.$element.find('.' + this.options.stateClasses.isPushed).map(function(index, mappedObject) {
 			this._calcIfFixed($(mappedObject), contentHeight);
+
+			setTimeout(function() {
+				$(mappedObject).removeClass(this.options.stateClasses.isPushed);
+			}.bind(this), this.options.animationSpeed);
 		}.bind(this));
 
 		$object.removeClass(this.options.stateClasses.isRequested);
 
 		setTimeout(function() {
 			$object.removeClass(this.options.stateClasses.isPulledDown);
+
+			$object.find(this.options.domSelectors.content).removeAttr('style');
+
+			doingAnimation = false;
 		}.bind(this), this.options.animationSpeed);
 	};
 
@@ -462,12 +486,13 @@
 		var $title = $object.find(this.options.domSelectors.title);
 
 		$title.on('click.' + this.uuid, function() {
-			if ($object.hasClass(this.options.stateClasses.isPulledDown)) {
-				this._hideContent($object);
-			} else {
-				this._requestContent($object);
+			if (!doingAnimation) {
+				if ($object.hasClass(this.options.stateClasses.isPulledDown)) {
+					this._hideContent($object);
+				} else {
+					this._requestContent($object);
+				}
 			}
-
 		}.bind(this));
 	};
 
@@ -506,7 +531,7 @@
 	};
 
 	Widget.prototype._calcIfFixed = function($object, modifierHeight) {
-		var top = parseInt($object.find(this.options.domSelectors.title).css('top'), 10) - modifierHeight,
+		var top = parseInt($object.find(this.options.domSelectors.title).css('top')) - modifierHeight + 1,
 				objectOffsetTop = $object.offset().top,
 				objectTitleOffsetTop = $object.getTitleOffsetTop() - modifierHeight - $object.getTitleHeight();
 
@@ -569,12 +594,14 @@
 		return titlesHeight;
 	};
 
-	Widget.prototype._resetAllCalc = function() {
-		for (var i = 0; i < data.objects.length; i++) {
-			$(data.objects[i]).setTitlePositionAndMetrics(this._calcTopOffset(i));
-
-			this._calcIfFixed($(data.objects[i]), 0);
-		}
+	/**
+	 * Resets the object to basic element
+	 * @param $object
+	 * @private
+   */
+	Widget.prototype._resetEverything = function($object) {
+		$object.removeAttr('style').removeClass(this.options.stateClasses.isFixed).find(this.options.domSelectors.content)
+				.removeAttr('style');
 	};
 
 	// //// BODY METHODS ///// //
@@ -585,28 +612,7 @@
    */
 	Widget.prototype._correctBodyScroll = function() {
 		$(this.options.domSelectors.object).map(function(index, object) {
-			var $nextObject = $(data.objects[index + 1]),
-					thisObjectBottomPosition = $(object).getTitleOffsetTop() + $(object).getTitleHeight(),
-					nextObjectOffsetTop = 0,
-					thisHasFixed = $(object).hasClass(this.options.stateClasses.isFixed),
-					nextHasNotFixed = false;
-
-			this._calcIfFixed($(data.objects[index]), 0);
-
-			if ($nextObject.length > 0) {
-				nextObjectOffsetTop = $nextObject.offset().top;
-				nextHasNotFixed = !$nextObject.hasClass(this.options.stateClasses.isFixed);
-
-				if (thisHasFixed && nextHasNotFixed) {
-					nextObjectOffsetTop = $nextObject.offset().top;
-
-					if (thisObjectBottomPosition >= nextObjectOffsetTop) {
-						nextElementToFix = index + 1;
-
-						this._doFixation();
-					}
-				}
-			}
+			this._resetEverything($(object));
 		}.bind(this));
 	};
 

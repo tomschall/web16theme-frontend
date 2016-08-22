@@ -121,6 +121,8 @@ $sidebarObjectPush: $basicPush * 3;
 
 	.is_pulled-down & {
 		transition: top $transitionLength / 2 $transitionEase;
+
+		border-top: 0;
 	}
 }
 
