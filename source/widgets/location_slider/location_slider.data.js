@@ -51,7 +51,7 @@ var templateData = {
 				}
 			]
 		},
-		data = _.assign(defaultData, {
+		data = _.merge(defaultData, {
 			meta: {
 				title: 'Location Slider',
 				description: '',
