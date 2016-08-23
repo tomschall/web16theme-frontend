@@ -4,6 +4,10 @@ $infoPadding: 34px;
 
 .widg_location_slider {
 	margin-top: $basicPush * 5;
+
+	@include mq($to: 'medium') {
+		display: none;
+	}
 }
 
 .widg_location_slider nav {
