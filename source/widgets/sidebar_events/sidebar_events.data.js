@@ -38,6 +38,6 @@ var templateData = {
 					}
 				]
 			}
-	}, templateData);
+		}, templateData);
 
 module.exports = data;
