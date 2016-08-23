@@ -18,6 +18,10 @@
 		}
 	}
 
+	&:last-of-type {
+		border-bottom: none;
+	}
+
 	&.has_grid {
 		@include gridWrapper($gutterWidth);
 
@@ -98,5 +102,22 @@
 				border-bottom: none;
 			}
 		}
+	}
+}
+
+.content__element___bleed {
+	@include bleedFull($gutterWidth);
+
+	padding-top: $basicPush * 6;
+
+	clear: both;
+	border-top: 1px solid $colorGreyHover;
+}
+
+.bleed__inner {
+	@include contentWrapper();
+
+	&.site-has-sidebar {
+		padding-right: span(3.3);
 	}
 }

@@ -30,3 +30,19 @@ body.prevent-scroll {
 .element-hidden {
 	display: none;
 }
+
+.only-phone {
+	display: none;
+
+	@include mq($to: 'medium') {
+		display: block;
+	}
+}
+
+.only-desktop {
+	display: none;
+
+	@include mq($from: 'medium') {
+		display: block;
+	}
+}

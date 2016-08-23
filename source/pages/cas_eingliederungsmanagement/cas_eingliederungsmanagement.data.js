@@ -229,7 +229,8 @@ var data = _.merge(defaultData, {
 				]
 			}),
 			sidebar: _.assign(requireNew('../../widgets/sidebar/sidebar.data.js'), {
-			})
+			}),
+			locationSlider: _.assign(requireNew('../../widgets/location_slider/location_slider.data.js'))
 		}
 	});
 

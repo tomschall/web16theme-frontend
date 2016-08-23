@@ -47,7 +47,7 @@
 			initialTop: name + '-initial-top'
 		},
 		elements = {
-			$content: $('.page_content')
+			$layout: $('.layout_content')
 		},
 		scrollMagic = {
 			controller: new ScrollMagic.Controller({addIndicators: false}),
@@ -60,7 +60,10 @@
 		activeObj = null,
 		hasExtended = false,
 		extendedObj = null,
-		doingAnimation = false;
+		doingAnimation = false,
+		formerLayoutHeight = 0,
+		sidebarIsInitialized = false,
+		oldWidth = 0;
 
 	/**
 	 * Create an instance of the widget
@@ -90,7 +93,7 @@
 	 */
 	Widget.prototype.init = function() {
 		// Only initialize when minimum medium screen size
-		if (window.estatico.mq.query({from: 'medium'})) {
+		if (window.estatico.mq.query({from: 'subnav'})) {
 			if ($body.scrollTop() > this.$element.offset().top) {
 				setTimeout(function() {
 					this._correctBodyScroll();
@@ -100,11 +103,15 @@
 			} else {
 				this._initSidebar();
 			}
-
-			$(window).on('resize.' + this.uuid, function() {
-				this._handleResize();
-			}.bind(this));
 		}
+
+		var oldWidth = $(window).width();
+
+		$(window).on('resize.' + this.uuid, function() {
+			if (oldWidth !== $(window).width()) {
+				this._handleResize();
+			}
+		}.bind(this));
 	};
 
 	Widget.prototype._initSidebar = function() {
@@ -116,6 +123,8 @@
 
 		this._setSidebarMinHeight();
 		this._setupInitialScenes();
+
+		sidebarIsInitialized = true;
 	};
 
 	// //// GETTER AND SETTERS OF ELEMENTS ///// //
@@ -125,7 +134,7 @@
 	 */
 	Widget.prototype._setSidebarMinHeight = function() {
 		this.$element.css({
-			'min-height': elements.$content.outerHeight()
+			'min-height': $('.page_content').height()
 		});
 	};
 
@@ -633,7 +642,7 @@
 	Widget.prototype._checkSidebarHeight = function(contentHeight) {
 		var $lastObject = $(data.objects[data.objects.length - 1]),
 				bottomOffset = 0,
-				bottomOffsetSidebar = $('.page_content').offset().top + $('.page_content').outerHeight(),
+				bottomOffsetSidebar = elements.$layout.offset().top + elements.$layout.outerHeight(),
 				differenceOffset = 0;
 
 		if ($lastObject.hasClass(this.options.stateClasses.isPulledDown)) {
@@ -645,10 +654,14 @@
 		if (bottomOffset > bottomOffsetSidebar) {
 			differenceOffset = bottomOffset - bottomOffsetSidebar + this.options.metrics.pageBottomGutter;
 
-			this.$element.css('min-height', differenceOffset + $('.page_content').height());
+			formerLayoutHeight = elements.$layout.height();
+
+			elements.$layout.css('min-height', differenceOffset + elements.$layout.height());
 
 		} else {
-			this._setSidebarMinHeight();
+			if (formerLayoutHeight !== 0) {
+				elements.$layout.css('min-height', formerLayoutHeight);
+			}
 		}
 
 	};
@@ -660,6 +673,10 @@
 	 * @private
    */
 	Widget.prototype._handleResize = function() {
+		if (!sidebarIsInitialized) {
+			this._initSidebar();
+		}
+
 		if (hasExtended) {
 			this._hideContent(extendedObj);
 
@@ -669,6 +686,8 @@
 		} else {
 			this._repositionAll();
 		}
+
+		oldWidth = $(window).width();
 	};
 
 	// /////// RESET FUNCTIONS /////// //

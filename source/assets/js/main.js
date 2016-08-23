@@ -37,6 +37,7 @@
  * @requires ../../widgets/searchpage/searchpage.js
  * @requires ../../widgets/sidebar/sidebar.js
  * @requires ../../widgets/subnav/subnav.js
+ * @requires ../../widgets/location_slider/location_slider.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js

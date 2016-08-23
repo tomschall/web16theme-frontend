@@ -8,6 +8,10 @@ $sidebarObjectPush: $basicPush * 3;
 	position: relative;
 
 	transition: min-height $transitionLength / 2 $transitionEase;
+
+	@include mq($to: 'subnav') {
+		display: none;
+	}
 }
 
 .widg_sidebar__object {

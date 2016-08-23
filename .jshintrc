@@ -97,6 +97,7 @@
 		"Handlebars": false,
 		"open": true,
 		"Promise": false,
-	  	"ScrollMagic": true
+	  	"ScrollMagic": true,
+	  	"google": true
 	}
 }
