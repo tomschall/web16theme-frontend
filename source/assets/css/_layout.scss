@@ -50,13 +50,6 @@ h3 {
 	.header__wide & {
 		display: block;
 
-		@include mq($from: medium) {
-			width: calc(100% - 300px);
-		}
-
-		@include mq($from: wide) {
-			width: calc(100% - 400px);
-		}
 	}
 
 	@include mq($to: medium) {

@@ -66,8 +66,9 @@
 	position: absolute;
 
 	@include clearfix();
-	@include basicUnitHeight(top);
-	@include basicUnitHeight(right);
+
+	top: 70px;
+	right: 70px;
 
 	min-height: $basicPush * 32;
 
@@ -158,9 +159,9 @@
 .widg_carousel__teasers {
 	position: absolute;
 
-	@include basicUnitHeight(bottom);
-	@include basicUnitHeight(left);
-	@include basicUnitHeight(right);
+	@include clickAreaSize(bottom);
+	@include clickAreaSize(left);
+	@include clickAreaSize(right);
 
 	align-items: stretch;
 	display: flex;
@@ -174,8 +175,8 @@
 
 	position: absolute;
 	bottom: $basicPush * 3.1;
-	left: $basicPush * 5;
-	right: $basicPush * 5;
+	left: $basicPush * 7;
+	right: $basicPush * 7;
 
 	min-width: 0;
 	height: 30px;
@@ -198,8 +199,8 @@
 
 	text-indent: -10000px;
 
-	@include basicUnitHeight(width);
-	@include basicUnitHeight(height);
+	@include clickAreaSize(width);
+	@include clickAreaSize(height);
 
 	background-color: rgba($colorBlack, 0.7);
 
@@ -230,7 +231,7 @@
 	}
 
 	&.widg_carousel__prev {
-		@include basicUnitHeight(right);
+		@include clickAreaSize(right);
 
 		text-indent: -100000px;
 
@@ -257,7 +258,7 @@
 	top: calc(100% + 100px);
 	right: 0;
 
-	width: 2 * basicUnitHeight(normal);
+	width: 2 * clickAreaSizes(normal);
 
 	div {
 		height: 5px;
@@ -266,20 +267,20 @@
 	}
 
 	@include mq($to: large) {
-		width: 2 * basicUnitHeight(small);
+		width: 2 * clickAreaSizes(small);
 
-		top: calc(100% + 60px);
+		top: calc(100% + 70px);
 	}
 
 	@include mq($to: small) {
-		width: 2 * basicUnitHeight(small);
+		width: 2 * clickAreaSizes(small);
 
 		top: 0;
 	}
 
 	@include mq($from: wide) {
-		width: 2 * basicUnitHeight(xxl);
+		width: 2 * clickAreaSizes(xxl);
 
-		top: calc(100% + 150px);
+		top: calc(100% + 120px);
 	}
 }
