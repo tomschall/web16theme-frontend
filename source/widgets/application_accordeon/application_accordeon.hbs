@@ -22,7 +22,11 @@
           <dl>
 						{{#each informationEntries}}
               <dt>{{label}}</dt>
-              <dd>{{text}}</dd>
+              <dd>{{text}}
+								{{#if iCalURL}}
+									<a class="ical" href="{{iCalURL}}">iCal</a>
+								{{/if}}
+							</dd>
 						{{/each}}
           </dl>
           <p class="additional-information">{{additionalInformation}}</p>

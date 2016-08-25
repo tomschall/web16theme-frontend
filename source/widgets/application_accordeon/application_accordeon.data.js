@@ -16,7 +16,8 @@ var templateData = {
 					informationEntries: [
 						{
 							label: 'Start- und Endtermin',
-							text: '01.01.2016 - 15.05.2016'
+							text: '01.01.2016 - 15.05.2016',
+							iCalURL: '#'
 						},
 						{
 							label: 'Dauer',
@@ -44,8 +45,7 @@ var templateData = {
 						}
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-					btnUrl: '#',
-					iCalURL: '#'
+					btnUrl: '#'
 				},
 				{
 					uid: '2',
@@ -56,7 +56,8 @@ var templateData = {
 					informationEntries: [
 						{
 							label: 'Start- und Endtermin',
-							text: '01.01.2016 - 15.05.2016'
+							text: '01.01.2016 - 15.05.2016',
+							iCalURL: '#'
 						},
 						{
 							label: 'Dauer',
@@ -96,7 +97,8 @@ var templateData = {
 					informationEntries: [
 						{
 							label: 'Start- und Endtermin',
-							text: '01.01.2016 - 15.05.2016'
+							text: '01.01.2016 - 15.05.2016',
+							iCalURL: '#'
 						},
 						{
 							label: 'Dauer',

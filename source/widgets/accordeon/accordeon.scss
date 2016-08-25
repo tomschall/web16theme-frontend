@@ -155,7 +155,7 @@ $colorAvailabilityRed: #f05f1b;
 
 			margin-left: $basicPush * 4;
 
-			@include mq($to: subnav) {
+			@include mq($to: large) {
 				min-width: 0;
 			}
 		}

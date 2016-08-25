@@ -157,7 +157,7 @@ a.search__cat-title {
 }
 
 .search__result-event a {
-	@include iconDataurl('event');
+	@include iconDataurl('ical');
 
 	// basic padding left event icon width margin between text and event icon
 	padding-left: 50px;

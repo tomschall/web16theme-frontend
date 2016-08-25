@@ -61,6 +61,8 @@
 		$(window).on('resize.' + this.uuid, function() {
 			if (window.estatico.mq.query({from: 'subnav'})) {
 				this.doWidthCalculation();
+			} else {
+				this.$element.removeAttr('style');
 			}
 		}.bind(this));
 	};

@@ -4,6 +4,7 @@ $sidebarObjectPush: $basicPush * 3;
 .widg_sidebar {
 	@include span(3);
 	@include push(0.3);
+	@include clearfix();
 
 	position: relative;
 

@@ -72,6 +72,10 @@
 
 				a {
 					transform: translateX($transitionTransformLinkMove);
+
+					@include mq($to: medium) {
+						transform: none;
+					}
 				}
 			}
 		}

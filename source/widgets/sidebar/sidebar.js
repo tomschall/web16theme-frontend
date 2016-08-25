@@ -120,8 +120,6 @@
 		data.hider = this.$element.find(this.options.domSelectors.hider)[0];
 
 		this._setObjectIndex();
-
-		this._setSidebarMinHeight();
 		this._setupInitialScenes();
 
 		sidebarIsInitialized = true;

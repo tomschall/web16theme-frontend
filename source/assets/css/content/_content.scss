@@ -11,11 +11,15 @@
 	}
 
 	h2 {
-		margin-bottom: $basicPush * 2.5;
+		margin-bottom: $basicPush * 1.5;
 
 	  	@include mq($to: small) {
 		  margin-bottom: $basicPush * 1.25;
 		}
+	}
+
+	.widg_sidebar__object {
+		margin-bottom: 0;
 	}
 
 	&:last-of-type:not(.content__element___bordered) {
@@ -124,9 +128,17 @@
 
 .content__element___bordered {
 	border: 1px solid $colorGreyHover ;
-	padding: $basicPush * 7 $basicPush * 6 $basicPush * 4;
+	padding: $basicPush * 4 $basicPush * 6 $basicPush * 4;
 
 	@include mq($to: medium) {
 		padding: $basicPush * 2;
 	}
+}
+
+.content__element___top-bordered {
+	border-top: 1px solid $colorGreyHover;
+	padding-top: $basicPush * 3;
+}
+.content__element___borderless {
+	border-bottom: none;
 }
