@@ -57,6 +57,8 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
+		console.log('init accordeon', this.options);
+
 		this.addEventHandlers();
 
 		if (this.$element.data('multiple')) {

@@ -109,14 +109,14 @@ var data = _.merge(defaultData, {
 					}
 				]
 			}),
-			nextCoursesAccordeon: _.assign(requireNew('../../widgets/accordeon/accordeon.data.js'), {
-				onlineApplication: true,
+			nextCoursesAccordeon: _.assign(requireNew('../../widgets/application_accordeon/application_accordeon.data.js'), {
 				entries: [
 					{
 						uid: '1',
 						eventStart: '19.09.2016',
 						eventLocation: 'Basel',
 						availableSeats: 3,
+						availabilityState: 'state-red',
 						informationEntries: [
 							{
 								label: 'Start- und Endtermin',
@@ -155,6 +155,7 @@ var data = _.merge(defaultData, {
 						eventStart: '13.05.2017',
 						eventLocation: 'Basel',
 						availableSeats: 12,
+						availabilityState: 'state-green',
 						informationEntries: [
 							{
 								label: 'Start- und Endtermin',
@@ -193,6 +194,7 @@ var data = _.merge(defaultData, {
 						eventStart: '17.09.2017',
 						eventLocation: 'Basel',
 						availableSeats: 12,
+						availabilityState: 'state-green',
 						informationEntries: [
 							{
 								label: 'Start- und Endtermin',

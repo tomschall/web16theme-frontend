@@ -1,4 +1,8 @@
-.widg_accordeon {
+$colorAvailabilityGreen: #7fca26;
+$colorAvailabilityRed: #f05f1b;
+
+.widg_accordeon,
+.widg_application_accordeon {
 	fieldset {
 		border: none;
 		border-bottom: 1px solid $colorBlack;
@@ -21,12 +25,18 @@
 		border-bottom: none;
 	}
 
+	> button,
+	> div > button[data-accordeon="button"],
+	> div > button[data-application-accordeon="button"] {
+		@include noStyledButton;
 
-	> a,
-	> div > label[data-accordeon="button"] {
+		width: 100%;
+		max-width: none;
 
 		min-height: buttonHeight(desktop);
 		display: block;
+
+		font-size: 1.5rem;
 
 		padding: ($gutterWidth - 4) $gutterWidth + 2;
 		position: relative;
@@ -48,7 +58,8 @@
 		}
 	}
 
-	> a {
+	> button,
+	> div > button[data-application-accordeon="button"]{
 		@include iconDataurl('accordeon_close', $after: true);
 
 		line-height: 2;
@@ -58,7 +69,7 @@
 			content: " ";
 			display: block;
 
-		  	transition: transform $transitionLength / 2 $transitionEase;
+			transition: transform $transitionLength / 2 $transitionEase;
 
 			top: 50%;
 			transform: translateY(-50%) rotate(45deg);
@@ -71,13 +82,14 @@
 		}
 	}
 
-	> div > label[data-accordeon="button"] {
-		padding-left: $basicPush * 3.1 + 18;
-		padding-right: $gutterWidth + 6;
+	> div > button[data-accordeon="button"],
+	> div > button[data-application-accordeon="button"] {
 
 		font-size: 1.5rem;
 		line-height: 1.8;
 		font-weight: 400;
+		padding-top: 23px;
+		padding-bottom: 13px;
 
 		.button__date,
 		.button__availability,
@@ -89,6 +101,29 @@
 
 		.button__availability {
 			text-align: right;
+
+			&:after {
+				display: block;
+				content: " ";
+				float: right;
+
+				width: 20px;
+				height: 20px;
+
+				border-radius: 50%;
+				background-color: $colorBlack;
+
+				margin-left: 8px;
+				transform: translateY(6px);
+			}
+
+			&.state-red:after {
+				background-color: $colorAvailabilityRed;
+			}
+
+			&.state-green:after {
+				background-color: $colorAvailabilityGreen;
+			}
 		}
 
 		&:before,
@@ -98,14 +133,21 @@
 
 		.button__date {
 			font-weight: 700;
-			width: 60%;
 
 			text-align: left;
 		}
+
+		a.button {
+			margin-top: -11.5px;
+			transform: translateY(-3px);
+
+			margin-left: $basicPush * 4;
+		}
 	}
 
-	&.is_open > a,
-	&.is_open > div > label[data-accordeon="button"] {
+	&.is_open > button,
+	&.is_open > div > button[data-accordeon="button"],
+	&.is_open > div > button[data-application-accordeon="button"] {
 		background-color: $colorYellowAccordeonActive;
 
 		&:hover {
@@ -113,7 +155,8 @@
 		}
 	}
 
-	&.is_open > a {
+	&.is_open > button,
+	&.is_open > div > button[data-application-accordeon="button"]{
 		&:after {
 			transform: translateY(-50%) rotate(90deg);
 		}
@@ -154,7 +197,7 @@ div.widg_accordeon__button {
 
 		float: left;
 
-		border-bottom: 1px solid $colorBlack;
+		border-bottom: 1px solid $colorGreyHover;
 		padding: 14px 0;
 
 		&:last-of-type {
@@ -170,53 +213,10 @@ div.widg_accordeon__button {
 		text-align: right;
 	}
 
-    > h3,
-    > p,
-    > div,
-    > dl {
-      padding-top: 10px;
-    }
-}
-
-/**
-* Styles for the accordeon in the sidebar (smaller)
-*/
-.product_sidebar {
-	.widg_accordeon {
-		margin-top: $basicPush * 4;
-		overflow-y: scroll;
-
-		max-height: calc(100vh - 105px);
+	> h3,
+	> p,
+	> div,
+	> dl {
+		padding-top: 10px;
 	}
-	.widg_accordeon__entry {
-		> a {
-			min-height: buttonHeight(mobile);
-			padding: ($gutterWidth - 5px) ($gutterWidth - 1px);
-
-			font-size: (15rem / 12);
-		}
-	}
-
-	.widg_accordeon__content {
-		dt,
-		dd {
-			font-size: 1.25rem;
-			margin-left: 0;
-			width: 100%;
-			float: none;
-
-			border: none;
-			padding: 0;
-		}
-
-		dt {
-			font-weight: 700;
-			margin-bottom: $basicPush * 0.5;
-		}
-
-		dd {
-			margin-bottom: $basicPush * 1.4;
-		}
-	}
-
 }

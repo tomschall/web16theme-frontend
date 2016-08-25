@@ -38,6 +38,7 @@
  * @requires ../../widgets/sidebar/sidebar.js
  * @requires ../../widgets/subnav/subnav.js
  * @requires ../../widgets/location_slider/location_slider.js
+ * @requires ../../widgets/application_accordeon/application_accordeon.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js

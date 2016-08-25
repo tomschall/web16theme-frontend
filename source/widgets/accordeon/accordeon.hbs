@@ -1,52 +1,19 @@
 <div class="widg_accordeon" data-init="accordeon" {{#if multiple}}data-multiple="true"{{/if}}>
-	<!-- Custom html structure if its the accordeon for an online application -->
-	{{#if onlineApplication}}
-		{{#each entries}}
-			<div class="widg_accordeon__entry" data-accordeon="entry">
-				<div class="widg_accordeon__button">
-					<input type="radio" id="radio{{uid}}" name="onlineApplication" value="{{uid}}">
-					<label for="radio{{uid}}" data-accordeon="button">
-						<span class="button__date">
-							<span class="accessibility-hidden" id="date-{{uid}}">{{../../langStrings.eventStart}}: </span>
-							<span aria-describedby="date-{{uid}}">{{eventStart}}</span>
-						</span>
-						<span class="button__location">
-							<span class="accessibility-hidden" id="location-{{uid}}">{{../../langStrings.eventLocation}}</span>
-							<span aria-describedby="location-{{uid}}">{{eventLocation}}</span>
-						</span>
-						<span class="button__availability">
-							<span>({{availableSeats}} {{../../langStrings.availableSeats}})</span>
-						</span>
-					</label>
-				</div>
-				<div class="widg_accordeon__content" aria-hidden="true" data-accordeon="content">
-					<dl>
-						{{#each informationEntries}}
-							<dt>{{label}}</dt>
-							<dd>{{text}}</dd>
-						{{/each}}
-					</dl>
-					<p class="additional-information">{{additionalInformation}}</p>
-					<a class="button" href="{{btnUrl}}">{{../../langStrings.applyOnline}}</a>
-				</div>
-			</div>
-		{{/each}}
-	{{else}}
-		{{#each entries}}
-      <div class="widg_accordeon__entry" data-accordeon="entry">
-        <a href="" data-accordeon="button">
-					{{title}}
-        </a>
-        <div class="widg_accordeon__content" aria-hidden="true" data-accordeon="content">
-					{{#if contactData}}
-						{{> "widgets/contact/contact" contactData}}
-					{{else}}
-						{{{accordeonContent}}}
-					{{/if}}
+  <!-- Custom html structure if its the accordeon for an online application -->
 
-        </div>
+	{{#each entries}}
+    <div class="widg_accordeon__entry" data-accordeon="entry">
+      <button aria-expanded="false" data-accordeon="button">
+				{{title}}
+      </button>
+      <div class="widg_accordeon__content" aria-hidden="true" data-accordeon="content">
+				{{#if contactData}}
+					{{> "widgets/contact/contact" contactData}}
+				{{else}}
+					{{{accordeonContent}}}
+				{{/if}}
+
       </div>
-		{{/each}}
-	{{/if}}
-
+    </div>
+	{{/each}}
 </div>

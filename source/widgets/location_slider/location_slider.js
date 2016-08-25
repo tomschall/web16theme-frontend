@@ -202,8 +202,6 @@
 	Widget.prototype._setNavActive = function(index) {
 		var $navOption = $(data.navOptions[index]);
 
-		console.log($navOption);
-
 		this.$element.find(this.options.domSelectors.navOption).removeClass(this.options.stateClasses.isActive);
 		$navOption.addClass(this.options.stateClasses.isActive);
 

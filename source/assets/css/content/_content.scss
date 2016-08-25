@@ -18,7 +18,7 @@
 		}
 	}
 
-	&:last-of-type {
+	&:last-of-type:not(.content__element___bordered) {
 		border-bottom: none;
 	}
 
@@ -120,4 +120,9 @@
 	&.site-has-sidebar {
 		padding-right: span(3.3);
 	}
+}
+
+.content__element___bordered {
+	border: 1px solid $colorGreyHover ;
+	padding: $basicPush * 7 $basicPush * 6;
 }

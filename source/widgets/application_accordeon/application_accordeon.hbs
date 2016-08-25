@@ -1,0 +1,32 @@
+<div class="widg_application_accordeon" data-init="application_accordeon" {{#if multiple}}data-multiple="true"{{/if}}>
+  <!-- Custom html structure if its the accordeon for an online application -->
+		{{#each entries}}
+      <div class="widg_accordeon__entry" data-application-accordeon="entry">
+        <div class="widg_accordeon__button">
+					<button aria-expanded="false" data-application-accordeon="button">
+						<span class="button__date">
+							<span class="accessibility-hidden" id="date-{{uid}}">{{../langStrings.eventStart}}: </span>
+							<span aria-describedby="date-{{uid}}">{{eventStart}}</span>
+						</span>
+            <span class="button__location">
+							<span class="accessibility-hidden" id="location-{{uid}}">{{../langStrings.eventLocation}}</span>
+							<span aria-describedby="location-{{uid}}">{{eventLocation}}</span>
+						</span>
+            <span class="button__availability {{availabilityState}}">
+							<span>({{availableSeats}} {{../langStrings.availableSeats}})</span>
+						</span>
+						<a href="{{btnUrl}}" class="button button__apply small_button">Anmelden</a>
+          </button>
+        </div>
+        <div class="widg_accordeon__content" aria-hidden="true" data-application-accordeon="content">
+          <dl>
+						{{#each informationEntries}}
+              <dt>{{label}}</dt>
+              <dd>{{text}}</dd>
+						{{/each}}
+          </dl>
+          <p class="additional-information">{{additionalInformation}}</p>
+        </div>
+      </div>
+		{{/each}}
+</div>
