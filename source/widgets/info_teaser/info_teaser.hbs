@@ -1,0 +1,20 @@
+<div class="widg_info_teaser" data-init="info_teaser">
+	<img src="{{img.src}}" alt="{{img.alt}}"/>
+	{{{text}}}
+	<h3>Nächste Infoveranstaltungen:</h3>
+	<ul class="not-default">
+		{{#each events}}
+			<li>
+				<a href="{{url}}" class="not-default">
+					<span class="event-date">{{date}}</span>
+					<span class="event-time">{{time}}</span>
+					<span class="event-location">{{location}}</span>
+				</a>
+			</li>
+		{{/each}}
+	</ul>
+	<a class="button" href="{{allURL}}">Alle anzeigen</a>
+	<span class="event-room_info">
+		{{roomInfo}}
+	</span>
+</div>

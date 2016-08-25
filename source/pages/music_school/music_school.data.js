@@ -83,7 +83,7 @@ var data = _.merge(defaultData, {
 				}
 			]
 		}),
-		eventTeasers: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
+		infoEvents: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
 			teasers: [
 				{
 					title: 'Viktor Gàl, Saxophone Klasse Marcus Weiss',

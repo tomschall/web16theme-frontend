@@ -1,4 +1,11 @@
-a {
+a,
+a:visited,
+a:hover,
+a:active {
+	color: $colorBlack;
+}
+
+a:not(.not-default) {
 	color: $colorBlack;
 	text-decoration: underline;
 	opacity: 0.7;

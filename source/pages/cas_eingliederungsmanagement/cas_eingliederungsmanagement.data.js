@@ -55,24 +55,7 @@ var data = _.merge(defaultData, {
 				]
 			}),
 			informationAccordeon: _.assign(requireNew('../../widgets/accordeon/accordeon.data.js'), {
-				entries: [
-					{
-						title: 'Struktur und Methodik / Programm',
-						accordeonContent: '<p>Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte!\nHatte einer seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen? Er konnte die Aufforderung stehen zu bleiben schon</p>'
-					},
-					{
-						title: 'Detaillierte Inhaltsbeschreibung',
-						accordeonContent: '<p>Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte!\nHatte einer seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen? Er konnte die Aufforderung stehen zu bleiben schon</p>'
-					},
-					{
-						title: 'Modulbeschreibung',
-						accordeonContent: '<p>Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte!\nHatte einer seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen? Er konnte die Aufforderung stehen zu bleiben schon</p>'
-					},
-					{
-						title: 'Gehört zu',
-						accordeonContent: '<p>Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte!\nHatte einer seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen? Er konnte die Aufforderung stehen zu bleiben schon</p>'
-					}
-				]
+
 			}),
 			organisationAccordeon: _.assign(requireNew('../../widgets/accordeon/accordeon.data.js'), {
 				entries: [
@@ -98,17 +81,7 @@ var data = _.merge(defaultData, {
 					}
 				]
 			}),
-			eventTeasers: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
-				teasers: [
-					{
-						title: 'Informationsanslass Weiterbildung 2016',
-						category: 'Hochschule für Soziale Arbeit',
-						variant: 'wide___third',
-						text: '27.06.2016 um 18:15 Uhr, Windisch',
-						url: '#'
-					}
-				]
-			}),
+			infoEvents: requireNew('../../widgets/info_teaser/info_teaser.data.js'),
 			nextCoursesAccordeon: _.assign(requireNew('../../widgets/application_accordeon/application_accordeon.data.js'), {
 				entries: [
 					{
@@ -148,7 +121,8 @@ var data = _.merge(defaultData, {
 							}
 						],
 						additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-						btnUrl: '#'
+						btnUrl: '#',
+						iCalURL: '#'
 					},
 					{
 						uid: '2',
@@ -187,7 +161,8 @@ var data = _.merge(defaultData, {
 							}
 						],
 						additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-						btnUrl: '#'
+						btnUrl: '#',
+						iCalURL: '#'
 					},
 					{
 						uid: '3',
@@ -226,12 +201,14 @@ var data = _.merge(defaultData, {
 							}
 						],
 						additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-						btnUrl: '#'
+						btnUrl: '#',
+						iCalURL: '#'
 					}
 				]
 			}),
 			sidebar: _.assign(requireNew('../../widgets/sidebar/sidebar.data.js')),
-			locationSlider: _.assign(requireNew('../../widgets/location_slider/location_slider.data.js'))
+			locationSlider: _.assign(requireNew('../../widgets/location_slider/location_slider.data.js')),
+			querlinks: _.assign(requireNew('../../widgets/extendedlinks/extendedlinks.data.js'))
 		}
 	});
 

@@ -21,7 +21,7 @@ var templateData = {
 		},
 		data = _.assign(defaultData, {
 			meta: {
-				title: 'Sidebar Contact',
+				title: 'Sidebar Kontakt | WI_053',
 				description: '',
 				code: dataHelper.getTemplateCode('sidebar_contact.hbs'),
 				documentation: dataHelper.getDocumentation('sidebar_contact.md'),

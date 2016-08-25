@@ -44,7 +44,8 @@ var templateData = {
 						}
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-					btnUrl: '#'
+					btnUrl: '#',
+					iCalURL: '#'
 				},
 				{
 					uid: '2',
@@ -83,7 +84,8 @@ var templateData = {
 						}
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-					btnUrl: '#'
+					btnUrl: '#',
+					iCalURL: '#'
 				},
 				{
 					uid: '3',
@@ -122,7 +124,8 @@ var templateData = {
 						}
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-					btnUrl: '#'
+					btnUrl: '#',
+					iCalURL: '#'
 				}
 			],
 			langStrings: {

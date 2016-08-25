@@ -23,8 +23,7 @@
 			stateClasses: {
 				isOpen: 'is_open'
 			},
-			allowsMultiple: false,
-			isInSidebar: false
+			allowsMultiple: false
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -64,10 +63,6 @@
 		if (this.$element.data('multiple')) {
 			this.options.allowsMultiple = true;
 		}
-
-		if (this.$element.closest('.product_sidebar').length >= 1) {
-			this.options.isInSidebar = true;
-		}
 	};
 
 	/**
@@ -105,10 +100,7 @@
 		$button.closest(this.options.domSelectors.entry).addClass(this.options.stateClasses.isOpen);
 		$button.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).attr('aria-hidden', 'false');
 		$button.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).slideDown(500);
-
-		if (this.options.isInSidebar) {
-			$(document.body).trigger('sticky_kit:recalc');
-		}
+		$button.attr('aria-expanded', 'true');
 	};
 
 	/**
@@ -118,7 +110,7 @@
 		this.$element.find(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).find(this.options.domSelectors.content).slideUp(500);
 		this.$element.find(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).removeClass(this.options.stateClasses.isOpen);
 		this.$element.find(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).find(this.options.domSelectors.content).attr('aria-hidden', 'true');
-
+		this.$element.find(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen).find(this.options.domSelectors.button).attr('aria-expanded', 'false');
 	};
 
 	/**
@@ -128,6 +120,7 @@
 		$target.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).slideUp(500);
 		$target.closest(this.options.domSelectors.entry).removeClass(this.options.stateClasses.isOpen);
 		$target.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).attr('aria-hidden', 'true');
+		$target.attr('aria-expanded', 'false');
 	};
 
 	/**

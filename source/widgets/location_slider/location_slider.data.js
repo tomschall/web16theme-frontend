@@ -53,7 +53,7 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Location Slider',
+				title: 'Location Slider | WI_057',
 				description: '',
 				code: dataHelper.getTemplateCode('location_slider.hbs'),
 				documentation: dataHelper.getDocumentation('location_slider.md')

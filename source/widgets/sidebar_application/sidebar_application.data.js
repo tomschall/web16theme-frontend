@@ -10,12 +10,12 @@ var templateData = {
 			note: 'Anmeldehinweis - eher klein',
 			button: {
 				text: 'Durchführung wählen',
-				url: '#gotoapplication'
+				url: '#targetOnlineApplication'
 			}
 		},
 		data = _.assign(defaultData, {
 			meta: {
-				title: 'Sidebar Application',
+				title: 'Sidebar Anmeldung | WI_052',
 				description: '',
 				code: dataHelper.getTemplateCode('sidebar_application.hbs'),
 				documentation: dataHelper.getDocumentation('sidebar_application.md'),
