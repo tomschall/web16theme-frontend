@@ -67,8 +67,8 @@
 
 	@include clearfix();
 
-	top: 70px;
-	right: 70px;
+	@include clickAreaSize(top);
+	@include clickAreaSize(right);
 
 	min-height: $basicPush * 32;
 
