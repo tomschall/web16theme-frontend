@@ -193,7 +193,7 @@
 			}
 		}.bind(this));
 
-		$('.layout_wrapper').one('click.' + this.uuid, function() {
+		$('.modal').one('click.' + this.uuid, function() {
 			this.closeSearchBar();
 		}.bind(this));
 	};

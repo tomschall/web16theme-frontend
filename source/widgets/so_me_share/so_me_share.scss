@@ -1,0 +1,121 @@
+$shareIconWrapperSize: 35px;
+
+$twitterLightBlue: #0084b4;
+$twitterDarkBlue: #0070a3;
+
+$mailToGrey: #767573;
+$mailToDarkGrey: #4c4c4c;
+
+$facebookBlue: #3b5998;
+$facebookBlueDark: #2d4785;
+
+.widg_so_me_share {
+	padding-bottom: $basicPush * 4;
+
+	@include clearfix();
+
+	@include mq($to: medium) {
+		padding-top: $basicPush * 4.5;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	a {
+		display: inline-block;
+		color: $colorBg;
+		margin-right: $basicPush * 1.6;
+		font-size: 1.083333rem;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+
+	.some-text {
+		display: block;
+		float: left;
+		padding: 8px 15px 8px 15px;
+
+		@include mq($to: medium) {
+			display: none;
+		}
+	}
+
+
+	.some-icon {
+		display: block;
+		float: left;
+		text-align: center;
+
+		width: $shareIconWrapperSize;
+		height: $shareIconWrapperSize;
+
+		&:before {
+			background-size: 100% 100% !important;
+
+			margin-top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+
+	.twitter {
+		.some-icon {
+			background-color: $twitterDarkBlue;
+
+			@include iconDataurl('twitter_bird');
+
+			&:before {
+				width: 17px;
+				height: 14px;
+			}
+		}
+
+		background-color: $twitterLightBlue;
+	}
+
+	.mailto {
+		background-color: $mailToGrey;
+
+		.some-icon {
+			background-color: $mailToDarkGrey;
+
+			@include iconDataurl('mailto');
+
+			&:before {
+				width: 22px;
+				height: 14px;
+			}
+		}
+	}
+
+	.facebook {
+		background-color: $facebookBlue;
+
+		.some-icon {
+			background-color: $facebookBlueDark;
+
+			@include iconDataurl('facebook_share');
+
+			&:before {
+				width: 14.2px;
+				height: 19.3px;
+			}
+		}
+	}
+}
+
+.widg_so_me_share__text {
+	font-size: 1.5rem;
+
+	float: left;
+	margin-right: $basicPush * 3;
+	padding: 4px 0;
+}
+
+.widg_so_me_share__buttons {
+	float: left;
+
+	@include mq($to: medium) {
+		float: right;
+	}
+}

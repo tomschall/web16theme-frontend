@@ -11,7 +11,6 @@
 	 * Adds the modal to the html
 	 */
 	function showModal() {
-		console.log('test');
 		var $modal = $('<div class="modal"></div>');
 
 		if ($('.modal').length === 0) {
