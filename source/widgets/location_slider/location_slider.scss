@@ -82,7 +82,7 @@ $infoPadding: 34px;
 	height: $mapHeight;
 }
 
-.widg_location_slider .location__info {
+.location__info {
 	position: absolute;
 	width: $infoWidth;
 
@@ -93,104 +93,132 @@ $infoPadding: 34px;
 	box-shadow: 0 2px 14px 0 rgba($colorBlack, 0.18);
 
 	@include pushLeftAccordingToHeader(left);
+}
 
-	.location__upper {
-		padding: $infoPadding;
+.location__upper {
+	padding: $infoPadding;
 
-		h3 {
-			margin-top: 0;
+	h3 {
+		margin-top: 0;
+	}
+
+	.button {
+		width: 100%;
+	}
+
+	.location__address {
+		margin-bottom: $basicPush * 2.5;
+
+		> span {
+			display: block;
+
+			font-size: 1.25rem;
 		}
 
-		.button {
-			width: 100%;
+		@include mq($to: medium) {
+			margin-bottom: $basicPush * 1.5;
+		}
+	}
+
+	.location__contact {
+		@include clearfix();
+
+		margin-bottom: $basicPush * 4.2;
+
+		@include mq($to: medium) {
+			margin-bottom: $basicPush * 2;
 		}
 
-		.location__address {
-			margin-bottom: $basicPush * 2.5;
+		dt,
+		dd a {
+			font-size: 1.25rem;
+			opacity: 1;
+		}
 
-			> span {
-				display: block;
+		dt,
+		dd {
+			float: left;
 
-				font-size: 1.25rem;
+			@include mq($to: medium) {
+				padding: 0;
 			}
 		}
 
-		.location__contact {
-			@include clearfix();
+		dt {
+			width: 32%;
+		}
 
-			margin-bottom: $basicPush * 4.2;
+		dd {
+			width: 68%;
+			margin-left: 0;
+			border-bottom: none;
+			text-align: right;
 
-			dt,
-			dd a {
-				font-size: 1.25rem;
-				opacity: 1;
-			}
+			a {
+				font-weight: 600;
+				color: $colorTextGrey;
 
-			dt,
-			dd {
-				float: left;
-			}
-
-			dt {
-				width: 32%;
-			}
-
-			dd {
-				width: 68%;
-				margin-left: 0;
-
-				a {
-					font-weight: 600;
-					color: $colorTextGrey;
-
-					&:hover {
-						color: $colorBlack;
-					}
+				&:hover {
+					color: $colorBlack;
 				}
 			}
 		}
 	}
+}
 
-	.location__inferior {
-		border-top: 1px solid $colorGreyHover;
+.location__inferior {
+	border-top: 1px solid $colorGreyHover;
 
-		a {
-			display: block;
-			height: 73px;
-			line-height: 73px;
+	a {
+		display: block;
+		height: 73px;
+		line-height: 73px;
 
-			text-align: center;
-			width: 100%;
+		text-align: center;
+		width: 100%;
 
-			font-size: 1.25rem;
-			font-weight: 600;
-			text-decoration: none;
-			opacity: 1;
+		font-size: 1.25rem;
+		font-weight: 600;
+		text-decoration: none;
+		opacity: 1;
 
-			color: $colorTextGrey;
-			background-color: $colorSearchBarInputFocus;
+		color: $colorTextGrey;
+		background-color: $colorSearchBarInputFocus;
 
-			&:hover {
-				background-color: $colorGreyHover;
-				color: $colorBlack;
-
-				span {
-					@include iconDataurl('route_black');
-				}
-			}
+		&:hover {
+			background-color: $colorGreyHover;
+			color: $colorBlack;
 
 			span {
-				@include iconDataurl('route');
-
-				display: inline-block;
-				margin: 0 auto;
-
-			 	&:before {
-					margin-right: 5px;
-
-					vertical-align: middle;
-				}
+				@include iconDataurl('route_black');
 			}
 		}
+
+		span {
+			@include iconDataurl('route');
+
+			display: inline-block;
+			margin: 0 auto;
+
+			&:before {
+				margin-right: 5px;
+
+				vertical-align: middle;
+			}
+		}
+	}
+}
+
+.accordeon__location {
+	border: 1px solid $colorGreyHover;
+	padding-top: 0 !important;
+	margin-top: $basicPush;
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	.location__upper {
 	}
 }
