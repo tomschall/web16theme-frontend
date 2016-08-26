@@ -1,5 +1,5 @@
 <div class="widg_tabnavigation" data-init="tabnavigation">
-  <nav class="widg_tabnavigation__nav">
+  <nav class="widg_tabnavigation__nav only-desktop">
 		<ul class="not-default">
 			{{#each tabs}}
 				<li>
@@ -11,9 +11,12 @@
 	</nav>
 	<div class="widg_tabnavigation__content">
 		{{#each tabs}}
-			<div class="content__entry" data-tabnavigation="content" aria-hidden="true">
-				{{{tabContent}}}
-			</div>
+			<div class="content__entry-wrapper">
+				<button class="only-phone not-default content__accordeon-button" data-tabnavigation="accordeonButton" aria-expanded="false">{{title}}</button>
+				<div class="content__entry" data-tabnavigation="content" aria-hidden="true">
+					{{{tabContent}}}
+				</div>
+      </div>
 		{{/each}}
 	</div>
 </div>

@@ -38,6 +38,16 @@
 	}
 }
 
+.content__entry-wrapper {
+	@include mq($to: medium) {
+		border-bottom: 1px solid $colorGreyHover;
+
+		&:last-of-type {
+			border-bottom: none;
+		}
+	}
+}
+
 .widg_tabnavigation__content .content__entry {
 	display: none;
 
@@ -45,5 +55,72 @@
 
 	&.is_active {
 		display: block;
+
+	}
+
+	@include mq($to: medium) {
+		padding: 0 18px 12px 18px;
+	}
+}
+
+.content__accordeon-button {
+	@include noStyledButton;
+
+	width: 100%;
+	max-width: none;
+
+	min-height: buttonHeight(desktop);
+
+	font-size: 1.5rem;
+
+	padding: ($gutterWidth - 4) $gutterWidth + 2;
+	position: relative;
+
+	opacity: 1;
+	text-decoration: none;
+	font-weight: 700;
+
+	margin: 0;
+	@include iconDataurl('accordeon_close', $after: true);
+
+	line-height: 2;
+
+	&:hover {
+		background-color: $colorLightGray;
+	}
+
+	&:after {
+		position: absolute;
+		content: " ";
+		display: block;
+
+		transition: transform $transitionLength / 2 $transitionEase;
+
+		top: 50%;
+		transform: translateY(-50%) rotate(45deg);
+
+		width: 12px;
+		height: 12px;
+
+		right: $gutterWidth;
+
+	}
+
+	@include mq($to: medium) {
+		min-height: buttonHeight(mobile);
+		padding-top: $gutterWidth/2;
+		padding-bottom: $gutterWidth/2;
+	}
+
+	&.is_active {
+		background-color: $colorYellowAccordeonActive;
+
+		&:hover {
+			background-color: $colorYellowAccordeonActive;
+		}
+
+		&:after {
+			transform: translateY(-50%) rotate(90deg);
+		}
 	}
 }

@@ -18,14 +18,17 @@
 			domSelectors: {
 				button: '[data-' + name + '="button"]',
 				content: '[data-' + name + '="content"]',
-				bar: '[data-' + name + '="bar"]'
+				bar: '[data-' + name + '="bar"]',
+				accordeonButton: '[data-' + name + '="accordeonButton"]'
 			},
 			stateClasses: {
 				isActive: 'is_active'
 			}
 		},
 		data = {
-			content: []
+			content: [],
+			buttons: [],
+			accordeonButtons: []
 		};
 
 	/**
@@ -50,7 +53,7 @@
 	Widget.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Widget.prototype);
 
 	/**
-	 * Initialize Widget, bind events.
+	 * Initialize Widget, bind events adding the objects to data, mapping the indices, and set the first element active.
 	 * @method
 	 * @public
 	 */
@@ -59,30 +62,70 @@
 			$(element).data('tabnavigation-index', index);
 		}.bind(this));
 
+		this.$element.find(this.options.domSelectors.accordeonButton).map(function(index, element) {
+			$(element).data('tabnavigation-index', index);
+		}.bind(this));
+
 		data.content = $(this.options.domSelectors.content).toArray();
+		data.buttons = $(this.options.domSelectors.button).toArray();
+		data.accordeonButtons = $(this.options.domSelectors.accordeonButton).toArray();
 
 		this.addEventHandlers();
 		this.setElementActive(this.$element.find(this.options.domSelectors.button).first());
 	};
 
+	/**
+	 * Adding the event handlers
+	 */
 	Widget.prototype.addEventHandlers = function() {
 		this.$element.find(this.options.domSelectors.button).on('click.' + this.uuid, function(event) {
 			this.setElementActive($(event.target));
 		}.bind(this));
+
+		this.$element.find(this.options.domSelectors.accordeonButton).on('click.' + this.uuid, function(event) {
+			if ($(event.target).hasClass(this.options.stateClasses.isActive)) {
+				this.closeSpecific($(event.target));
+			} else {
+				this.setElementActive($(event.target));
+			}
+
+		}.bind(this));
 	};
 
+	/**
+	 * Setting the element active, according to the button (or accordeon content) for mobile devices)
+	 * @param $button normal button or accordeon button
+	 */
 	Widget.prototype.setElementActive = function($button) {
+		var $accButton = null;
+
+		if ($button.hasClass('content__accordeon-button')) {
+			$accButton = $button;
+			$button = $(data.buttons[$accButton.data('tabnavigation-index')]);
+		} else {
+			$accButton = $(data.accordeonButtons[$button.data('tabnavigation-index')]);
+		}
+
 		var index = $button.data('tabnavigation-index'),
 				$content = $(data.content[index]);
 
 		this.closeOther();
 
+		if (window.estatico.mq.query({to: 'medium'})) {
+			$content.slideDown(250);
+		}
+
 		$button.addClass(this.options.stateClasses.isActive).attr('aria-expanded', 'true');
+		$accButton.addClass(this.options.stateClasses.isActive).attr('aria-expanded', 'true');
 		$content.addClass(this.options.stateClasses.isActive).attr('aria-hidden', 'false');
 
 		this.moveNavBar($button);
 	};
 
+	/**
+	 * Moving the nav bar below the navigation
+	 * @param $button the button on which the bar should be attached
+	 */
 	Widget.prototype.moveNavBar = function($button) {
 		var buttonLeft = $button.offset().left,
 				$nav = $button.closest('nav'),
@@ -96,9 +139,33 @@
 		});
 	};
 
+	/**
+	 * Closing all other tabs
+	 */
 	Widget.prototype.closeOther = function() {
+		if (window.estatico.mq.query({to: 'medium'})) {
+			this.$element.find(this.options.domSelectors.content + '.' + this.options.stateClasses.isActive).slideUp(250);
+		}
+
 		this.$element.find(this.options.domSelectors.button).removeClass(this.options.stateClasses.isActive).attr('aria-expanded', 'false');
+		this.$element.find(this.options.domSelectors.accordeonButton).removeClass(this.options.stateClasses.isActive).attr('aria-expanded', 'false');
 		this.$element.find(this.options.domSelectors.content).removeClass(this.options.stateClasses.isActive).attr('aria-hidden', 'true');
+	};
+
+	/**
+	 * Close specific accordeon
+	 * @param $accButton
+	 */
+	Widget.prototype.closeSpecific = function($accButton) {
+		var $button = $(data.buttons[$accButton.data('tabnavigation-index')]),
+				$content = $(data.content[$accButton.data('tabnavigation-index')]);
+
+		$content.slideUp(250);
+
+		$button.removeClass(this.options.stateClasses.isActive).attr('aria-expanded', 'false');
+		$accButton.removeClass(this.options.stateClasses.isActive).attr('aria-expanded', 'false');
+		$content.removeClass(this.options.stateClasses.isActive).attr('aria-hidden', 'true');
+
 	};
 
 	/**
