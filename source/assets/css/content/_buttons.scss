@@ -1,5 +1,5 @@
-button,
-a.button,
+button:not(.not-default),
+a.button:not(.not-default),
 input[type="button"],
 input[type="submit"],
 input[type="reset"] {

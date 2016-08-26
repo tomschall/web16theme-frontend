@@ -82,7 +82,9 @@
 	}
 
 	.button {
-		width: 100%;
+		@include mq($to: small) {
+			width: 100%;
+		}
 	}
 
 	.event-room_info {

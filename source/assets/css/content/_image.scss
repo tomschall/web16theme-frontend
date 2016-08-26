@@ -1,0 +1,12 @@
+img.one-span {
+	@include span(3);
+
+	margin-left: -1 * $gutterWidth;
+}
+
+img.full-span {
+	@include span(12);
+
+	margin-left: -1 * $gutterWidth;
+	margin-right: -1 * $gutterWidth;
+}

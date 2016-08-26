@@ -1,104 +1,47 @@
 .widg_tabnavigation {
-
+	margin-top: $basicPush * 4;
 }
 
 .widg_tabnavigation__nav {
-	@include clearfix();
-	@include contentWrapper(0, false);
-
-	@include mq($to: small) {
-		background-color: $colorLightGray;
-
-		@include contentWrapper($gutterWidth, false);
-
-		padding-top: $basicPush * 2.7 !important;
-		padding-bottom: $basicPush * 2.7 !important;
-	}
+	border-bottom: 1px solid $colorGreyHover;
+	padding-bottom: 4px;
+	position: relative;
 
 	ul {
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
-		padding-right: 0;
-
 		li {
+			display: inline-block;
 
-			float: left;
+			button {
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: $colorTextGrey;
+				margin-right: $basicPush * 3.4;
 
-			@include mq($to: small) {
-				float: none;
-
-				border-bottom: 1px solid $colorBlack;
-
-
-				&:last-of-type {
-					border: none;
-				}
-
-				.widg_tabnavigation__entry {
-					padding: $basicPush * 2 0;
-				}
-			}
-
-			> a {
-				text-decoration: none;
-				opacity: 1;
-				color: $colorBorderGrey;
-
-				font-weight: 700;
-				padding: $gutterWidth;
-				display: block;
-
-				@include mq($to: small) {
-					padding: $gutterWidth / 1.5 $gutterWidth / 2;
-					color: $colorBlack;
-					position: relative;
-					font-weight: 300;
-
-					@include iconDataurl($name: 'close', $after: true);
-
-					&:after {
-						position: absolute;
-						right: $basicPush * 1.9;
-						transform: rotate(45deg) translateY(-70%);
-						height: 14px;
-						width: 14px;
-						top: 50%;
-					}
-				}
+				padding-bottom: $basicPush * 1.4;
 
 				&.is_active {
-					background-color: $colorLightGray;
 					color: $colorBlack;
-
-					@include mq($to: small) {
-						&:after {
-							transform: rotate(0deg) translateY(-50%);
-							right: $basicPush;
-						}
-					}
 				}
 			}
 		}
 	}
-}
 
-.widg_tabnavigation__content {
-	@include contentWrapper(0, false);
-	@include clearfix();
+	.nav__bar {
+		position: absolute;
+		height: 4px;
+		left: 0;
 
-	background-color: $colorLightGray;
+		width: 100px;
+		background-color: $colorYellow;
 
-	padding-top: $basicPush * 5 !important;
-	padding-bottom: $basicPush * 6 !important;
-
-	@include mq($to: small) {
-		display: none;
+		transition: all $transitionLength / 2 $transitionEase;
 	}
 }
 
-.widg_tabnavigation__entry {
+.widg_tabnavigation__content .content__entry {
 	display: none;
+
+	padding: 20px;
 
 	&.is_active {
 		display: block;

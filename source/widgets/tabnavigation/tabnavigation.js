@@ -16,16 +16,16 @@
 		},
 		defaults = {
 			domSelectors: {
-				entry: '[data-tabnavigation="entry"]',
-				nav: '[data-tabnavigation="nav"]',
-				navEntry: '[data-tabnavigation="nav-entry"]'
+				button: '[data-' + name + '="button"]',
+				content: '[data-' + name + '="content"]',
+				bar: '[data-' + name + '="bar"]'
 			},
 			stateClasses: {
 				isActive: 'is_active'
 			}
 		},
 		data = {
-			// items: ["Item 1", "Item 2"]
+			content: []
 		};
 
 	/**
@@ -55,66 +55,50 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		this.addNavigation();
+		this.$element.find(this.options.domSelectors.button).map(function(index, element) {
+			$(element).data('tabnavigation-index', index);
+		}.bind(this));
+
+		data.content = $(this.options.domSelectors.content).toArray();
 
 		this.addEventHandlers();
+		this.setElementActive(this.$element.find(this.options.domSelectors.button).first());
 	};
 
-	/**
-	 * Generate the navigation
-	 */
-	Widget.prototype.addNavigation = function() {
-		var navigations = [],
-				tempObject = {};
-
-		$(this.options.domSelectors.entry).each(function() {
-			tempObject = {};
-
-			tempObject.name = $(this).data('name');
-			tempObject.title = $(this).data('title');
-
-			navigations.push(tempObject);
-		});
-
-		navigations.forEach(function(navigation) {
-			$(this.options.domSelectors.nav).find('ul').append('<li><a href="#" data-tabnavigation="nav-entry" data-target="' + navigation.name + '">' + navigation.title + '</a></li>');
-		}.bind(this));
-
-		if (window.estatico.mq.query({from: 'small'})) {
-			$(this.options.domSelectors.navEntry).first().addClass(this.options.stateClasses.isActive);
-			$(this.options.domSelectors.entry).first().addClass(this.options.stateClasses.isActive);
-		}
-	};
-
-	/**
-	 * Adding the necessary event listeners
-	 */
 	Widget.prototype.addEventHandlers = function() {
-		$(this.options.domSelectors.navEntry).click(function(event) {
-			event.preventDefault();
-
-			if ($(event.currentTarget).hasClass(this.options.stateClasses.isActive) && window.estatico.mq.query({to: 'small'})) {
-				$('li ' + this.options.domSelectors.entry).remove();
-
-				$(this.options.domSelectors.navEntry).removeClass(this.options.stateClasses.isActive);
-			} else {
-				this.setActiveContent($(event.currentTarget));
-				$(this.options.domSelectors.navEntry).removeClass(this.options.stateClasses.isActive);
-				$(event.currentTarget).addClass(this.options.stateClasses.isActive);
-			}
+		this.$element.find(this.options.domSelectors.button).on('click.' + this.uuid, function(event) {
+			this.setElementActive($(event.target));
 		}.bind(this));
 	};
 
-	Widget.prototype.setActiveContent = function(target) {
-		var $targetEntry = $('[data-name="' + target.data('target') + '"]');
+	Widget.prototype.setElementActive = function($button) {
+		var index = $button.data('tabnavigation-index'),
+				$content = $(data.content[index]);
 
-		$(this.options.domSelectors.entry).removeClass(this.options.stateClasses.isActive);
-		$targetEntry.addClass(this.options.stateClasses.isActive);
+		this.closeOther();
 
-		if (window.estatico.mq.query({to: 'small'})) {
-			$('li ' + this.options.domSelectors.entry).remove();
-			$targetEntry.clone(true).appendTo(target.closest('li'));
-		}
+		$button.addClass(this.options.stateClasses.isActive).attr('aria-expanded', 'true');
+		$content.addClass(this.options.stateClasses.isActive).attr('aria-hidden', 'false');
+
+		this.moveNavBar($button);
+	};
+
+	Widget.prototype.moveNavBar = function($button) {
+		var buttonLeft = $button.offset().left,
+				$nav = $button.closest('nav'),
+				navLeft = $nav.offset().left,
+				leftPosition = buttonLeft - navLeft,
+				width = $button.width();
+
+		this.$element.find(this.options.domSelectors.bar).css({
+			'left': leftPosition,
+			'width': width
+		});
+	};
+
+	Widget.prototype.closeOther = function() {
+		this.$element.find(this.options.domSelectors.button).removeClass(this.options.stateClasses.isActive).attr('aria-expanded', 'false');
+		this.$element.find(this.options.domSelectors.content).removeClass(this.options.stateClasses.isActive).attr('aria-hidden', 'true');
 	};
 
 	/**

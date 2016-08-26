@@ -86,7 +86,8 @@ var data = _.merge(defaultData, {
 		}),
 		sidebar: _.assign(requireNew('../../widgets/sidebar/sidebar.data.js')),
 		locationSlider: _.assign(requireNew('../../widgets/location_slider/location_slider.data.js')),
-		querlinks: _.assign(requireNew('../../widgets/extendedlinks/extendedlinks.data.js'))
+		querlinks: _.assign(requireNew('../../widgets/extendedlinks/extendedlinks.data.js')),
+		tabnavigation: requireNew('../../widgets/tabnavigation/tabnavigation.data.js')
 	}
 	});
 

@@ -1,14 +1,19 @@
 <div class="widg_tabnavigation" data-init="tabnavigation">
-  <div class="widg_tabnavigation__nav" data-tabnavigation="nav">
-		<ul></ul>
-	</div>
-  <div class="widg_tabnavigation__content">
-		{{#each entries}}
-			<div class="widg_tabnavigation__entry" data-tabnavigation="entry" data-name="{{name}}" data-title="{{title}}">
-				{{#if_eq type 'contact'}}
-					{{> "widgets/contact/contact" templateData}}
-				{{/if_eq}}
+  <nav class="widg_tabnavigation__nav">
+		<ul class="not-default">
+			{{#each tabs}}
+				<li>
+					<button class="not-default" aria-expanded="false" data-tabnavigation="button">{{title}}</button>
+				</li>
+			{{/each}}
+		</ul>
+		<div class="nav__bar" data-tabnavigation="bar"></div>
+	</nav>
+	<div class="widg_tabnavigation__content">
+		{{#each tabs}}
+			<div class="content__entry" data-tabnavigation="content" aria-hidden="true">
+				{{{tabContent}}}
 			</div>
 		{{/each}}
-  </div>
+	</div>
 </div>
