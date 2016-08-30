@@ -60,7 +60,7 @@
 	@include clearfix();
 }
 
-.page_content ul:not(.not-default) {
+.page_content ul:not(.not-default):not(.select2-selection__rendered) {
 	padding-left: 0;
 	list-style-type: none;
 
@@ -121,7 +121,7 @@
 }
 
 .bleed__inner {
-	@include contentWrapper();
+	@include contentWrapper(0);
 
 	&.site-has-sidebar {
 		padding-right: span(3.3);

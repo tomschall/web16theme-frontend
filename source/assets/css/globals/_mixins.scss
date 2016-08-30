@@ -215,6 +215,8 @@
 @mixin gridWrapper($gutterSize: 0) {
   @include container();
 
+	max-width: none;
+
   margin-left: -1 * $gutterSize;
   margin-right: -1 * $gutterSize;
 }

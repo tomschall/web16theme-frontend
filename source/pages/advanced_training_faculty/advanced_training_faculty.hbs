@@ -1,0 +1,28 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content">
+      <h1>{{title}}</h1>
+      <p class="text__lead">
+				{{leadText}}
+      </p>
+
+			{{> "widgets/in_content_search/in_content_search" widgets.inContentSearch}}
+
+    </div>
+		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+
+    <div class="content__element content__element___bleed" id="locations">
+      <div class="bleed__inner site-has-sidebar">
+        <h2>Durchführungsorte</h2>
+        <p>Der Studiengang wird am Standort Olten und Brugg durchgeführt. Lorem ipsum dolor vanitas carpe diem memento mori.</p>
+      </div>
+			{{> "widgets/location_slider/location_slider" widgets.locationSlider}}
+      <div class="only-phone">
+				{{> "widgets/accordeon/accordeon" widgets.locationAccordeon }}
+      </div>
+    </div>
+	{{/content}}
+{{/extend}}

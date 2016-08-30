@@ -53,7 +53,8 @@ select {
 		.select2-selection__rendered {
 			@include defaultElementHeight();
 
-			line-height: 57px;
+			// TO override page content settings
+			line-height: 57px !important;
 
 			color: $colorBlack;
 			font-size: 1.25rem;

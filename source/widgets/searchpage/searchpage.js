@@ -83,6 +83,8 @@
 	Widget.prototype.init = function() {
 		searchType = $(this.options.domSelectors.formWrapper).data('searchpage-type');
 
+		this.eventListeners();
+
 		this.initFormFunctionality();
 
 		this.initSearchParam();
@@ -100,8 +102,6 @@
 		if (typeof searchParam.q !== typeof undefined) {
 			this.sendSearchQuery();
 		}
-
-		this.eventListeners();
 	};
 
 	/**
@@ -162,6 +162,14 @@
 	 */
 	Widget.prototype.initSearchParam = function() {
 		searchParam = window.estatico.search.getSearchParameters();
+
+		if (searchParam.extended === 'true') {
+			$(this.options.domSelectors.expanderBtn).trigger('click');
+		}
+
+		if (searchParam.si === 'true') {
+			this.sendSearchQuery();
+		}
 	};
 
 	/**

@@ -1,0 +1,70 @@
+.widg_in_content_search {
+	padding-bottom: $basicPush * 2;
+
+	border-bottom: 1px solid $colorGreyHover;
+
+	margin-bottom: $basicPush * 4;
+
+	@include mq($to: 'subnav') {
+		margin-bottom: $basicPush * 2;
+	}
+
+	h3 {
+		margin-bottom: $basicPush * 3;
+	}
+}
+
+.widg_in_content_search__form {
+	@include gridWrapper($gutterWidth);
+	@include clearfix();
+}
+
+.in_content_search__holder {
+	@include span(3);
+
+	position: relative;
+
+	margin-bottom: $basicPush;
+
+	&.in_content_search__holder___wide {
+		@include span(6);
+	}
+
+	@include mq($to: small) {
+		@include full;
+
+		&.in_content_search__holder___wide {
+			@include full;
+		}
+	}
+}
+
+button.in_content_search__button {
+	min-width: 0;
+	width: 100%;
+}
+
+.in_content_search__links {
+
+	padding-top: $basicPush;
+
+}
+
+a.in_content_search__link {
+	font-size: 1.25rem;
+	font-weight: 600;
+	margin-right: $basicPush * 3;
+
+	@include iconDataurl('pfeil-black_short');
+
+	&:before {
+		width: 17px;
+		height: 9px;
+
+		margin-right: 8px;
+	}
+
+	&:last-of-type {
+		margin-right: 0;
+	}
+}

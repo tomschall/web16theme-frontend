@@ -1,0 +1,35 @@
+<div class="widg_in_content_search" data-init="in_content_search">
+	<h3>{{title}}</h3>
+	<div class="widg_in_content_search__form">
+		<form action="{{searchFilterPageURL}}" method="get">
+      <div class="search__holder in_content_search__holder in_content_search__holder___wide  select2__wrapper">
+        <select id="faculty" name="faculty" data-searchparam="faculty" class="custom-select" multiple="multiple">
+          <option value="is">International Studies</option>
+          <option value="it">Informatik</option>
+          <option value="ls">Life Sciences</option>
+          <option value="mc">Musik</option>
+          <option value="ph">Pädagogik</option>
+          <option value="ps">Psychologie</option>
+          <option value="sw">Soziale Arbeit</option>
+          <option value="tn">Technik</option>
+        </select>
+        <label class="formQuestion" for="faculty">Fachbereich wählen ...</label>
+      </div>
+      <div class="search__holder in_content_search__holder select2__wrapper">
+        <select id="study_type" name="study_type" data-searchparam="study_type" class="custom-select" multiple="multiple">
+          <option value="mas">MAS</option>
+          <option value="cas">CAS</option>
+          <option value="das">DAS</option>
+        </select>
+        <label class="formQuestion" for="study_type">Typ</label>
+      </div>
+			<div class="in_content_search__holder">
+				<button type="submit" class="in_content_search__button">Suchen</button>
+			</div>
+		</form>
+	</div>
+  <div class="in_content_search__links">
+    <a class="in_content_search__link" href="{{searchFilterPageURL}}?extended=true">Erweiterte Suche</a>
+    <a class="in_content_search__link" href="{{searchFilterPageURL}}?si=true">Alle Angebote anzeigen</a>
+  </div>
+</div>
