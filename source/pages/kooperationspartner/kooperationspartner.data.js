@@ -57,7 +57,8 @@ var data = _.merge(defaultData, {
 				]
 			}),
 			contact: requireNew('../../widgets/contact/contact.data.js'),
-			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
+			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
+			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js')
 		}
 	});
 

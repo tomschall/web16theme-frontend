@@ -61,7 +61,8 @@ var data = _.merge(defaultData, {
 				}
 			]
 		}),
-		extendedlinks: requireNew('../../widgets/extendedlinks/extendedlinks.data.js')
+		extendedlinks: requireNew('../../widgets/extendedlinks/extendedlinks.data.js'),
+		soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js')
 	}
 });
 

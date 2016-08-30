@@ -8,7 +8,7 @@ var _ = require('lodash'),
 var templateData = {
 			button: {
 				text: 'Alle ansehen',
-				url: '#gotoevents'
+				url: '#targetInfoEvents'
 			},
 			entries: [
 				{

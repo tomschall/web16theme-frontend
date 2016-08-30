@@ -111,7 +111,8 @@ var data = _.merge(defaultData, {
 					}
 				]
 			}),
-			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
+			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
+			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js')
 		}
 	});
 

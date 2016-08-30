@@ -157,11 +157,25 @@ $sidebarObjectPush: $basicPush * 3;
 	}
 }
 
-.object__content a.button {
+.object__content a.button:not(.not-default).small_button {
 	font-size: 0.91667rem;
 
 	width: 100%;
 	min-width: 0;
+
+	line-height: 1.4;
+	position: relative;
+
+	span {
+		display: block;
+		position: absolute;
+
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		width: 90%;
+	}
 
 	@include mq($to: 'large') {
 		letter-spacing: 1.5px;

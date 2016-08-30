@@ -36,7 +36,8 @@ var data = _.merge(defaultData, {
 			}, requireNew('../../widgets/hero/hero.data.js')),
 			subnav: requireNew('../../widgets/subnav/subnav.data.js'),
 			extendedlinks: requireNew('../../widgets/extendedlinks/extendedlinks.data.js'),
-			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
+			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
+			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js')
 		}
 	});
 

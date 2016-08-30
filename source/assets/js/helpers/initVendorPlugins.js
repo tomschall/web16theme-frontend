@@ -1,5 +1,5 @@
 /**
- Initializes the spinner
+ Initializes the vendor plugins
 
  **/
 

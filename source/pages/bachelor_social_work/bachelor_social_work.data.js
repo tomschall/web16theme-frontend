@@ -84,7 +84,71 @@ var data = _.merge(defaultData, {
 		infoEvents: requireNew('../../widgets/info_teaser/info_teaser.data.js'),
 		nextCoursesAccordeon: _.assign(requireNew('../../widgets/application_accordeon/application_accordeon.data.js'), {
 		}),
-		sidebar: _.assign(requireNew('../../widgets/sidebar/sidebar.data.js')),
+		sidebar: _.merge(requireNew('../../widgets/sidebar/sidebar.data.js'), {
+			widgets: {
+				application: _.assign(requireNew('../../widgets/sidebar_application/sidebar_application.data.js'), {
+					button: {
+						text: 'Zur Anmeldung'
+					}
+				}),
+				keydata: _.assign(requireNew('../../widgets/sidebar_key_data/sidebar_key_data.data.js'), {
+					entries: [
+						{
+							title: 'Semesterstart',
+							text: 'Herbst/Frühjahr'
+						},
+						{
+							title: 'Abschluss',
+							text: 'Bachelor Soziale Arbeit'
+						},
+						{
+							title: 'Nächster Starttermin',
+							text: '21.9.2016'
+						},
+						{
+							title: 'Vollzeit / Teilzeit',
+							text: 'Ja'
+						},
+						{
+							title: 'Berufsbegleitend',
+							text: 'Nein'
+						},
+						{
+							title: 'Dauer',
+							text: '6 Semester'
+						},
+						{
+							title: 'Anmeldegebühr',
+							text: '600 CHF'
+						},
+						{
+							title: 'Semestergebühr',
+							text: '700 CHF'
+						},
+						{
+							title: 'Unterrichtssprache',
+							text: 'Deutsch'
+						},
+						{
+							title: 'Auslandsaufenthalt',
+							text: 'Ja'
+						},
+						{
+							title: 'Studienmodell',
+							text: 'Facherweiterung, Quereinstieg'
+						},
+						{
+							title: 'Durchführungsort(e)',
+							text: 'Brugg, Olten'
+						},
+						{
+							title: 'Anmeldeschluss',
+							text: '1.8.2016'
+						}
+					]
+				})
+			}
+		}),
 		locationSlider: _.assign(requireNew('../../widgets/location_slider/location_slider.data.js')),
 		querlinks: _.assign(requireNew('../../widgets/extendedlinks/extendedlinks.data.js')),
 		tabnavigation: requireNew('../../widgets/tabnavigation/tabnavigation.data.js'),
@@ -100,7 +164,8 @@ var data = _.merge(defaultData, {
 				}
 			]
 		}),
-		soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js')
+		soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js'),
+		mobileContentNavigation: requireNew('../../widgets/mobile_content_navigation/mobile_content_navigation.data.js')
 	}
 	});
 

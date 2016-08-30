@@ -16,14 +16,14 @@
 		<link rel="stylesheet" href="/assets/css/dev.css">
 	{{/if}}
 
-  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAtsbCcnWMHXekqJgv8kPMNNfSFaUMHBGs"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtsbCcnWMHXekqJgv8kPMNNfSFaUMHBGs"></script>
   <script src="/assets/js/head{{#unless env.dev}}.min{{/unless}}.js"></script>
 
 	{{#if env.dev}}
 		<script src="/assets/js/dev.js"></script>
 	{{/if}}
 
-  <script type="text/javascript" src="http://fast.fonts.net/jsapi/bc81933a-a353-421f-9055-6274c625f4a9.js"></script>
+  <script type="text/javascript" src="https://fast.fonts.net/jsapi/bc81933a-a353-421f-9055-6274c625f4a9.js"></script>
 </head>
 <body>
 
@@ -40,10 +40,15 @@
     <div class="layout_content">
       {{#block "content"}}
       {{/block}}
+
+			{{#if widgets.soMeShare}}
+				{{> "widgets/so_me_share/so_me_share" widgets.soMeShare }}
+			{{/if}}
     </div>
 
 		{{#block "metainfo"}}
 		{{/block}}
+
 
     {{> "widgets/footer/footer" widgets.footer}}
   </div>

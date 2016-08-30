@@ -1,0 +1,35 @@
+.widg_mobile_content_navigation {
+	padding: 10px 20px;
+
+	margin-left: -20px;
+	margin-right: -20px;
+
+	a {
+		font-size: 1.0833333rem;
+		color: $colorTextGrey;
+
+		margin-right: 16px;
+
+
+		@include iconDataurl('dropdown-arrow');
+
+		&:before {
+			width: 9px;
+			height: 6.8px;
+
+			opacity: 0.5;
+			margin-right: 5px;
+		}
+	}
+}
+
+
+.widg_mobile_content_navigation__shade {
+	height: 16px;
+
+	margin-left: -20px;
+	margin-right: -20px;
+	margin-top: 15px;
+
+	background-image: linear-gradient(to bottom, $colorLightGray, $colorBg);
+}

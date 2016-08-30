@@ -18,6 +18,7 @@
  * @requires helpers/module.js
  * @requires helpers/events.js
  * @requires helpers/mediaqueries.js
+ * @requires helpers/links.js
  * @requires helpers/formElementHelper.js
  * @requires helpers/sidebarHelper.js
  * @requires helpers/search.js
