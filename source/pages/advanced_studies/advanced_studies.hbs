@@ -1,0 +1,30 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content">
+      <h1>{{title}}</h1>
+      <p class="text__lead">
+				{{leadText}}
+      </p>
+      <p>
+        Im Weiterbildungsbereich steht die Fachhochschule Nordwestschweiz FHNW für ein fachlich fundiertes, vielfältiges und persönliches Angebot, das mit der Verknüpfung von Praxisnähe und theoretischer Fundierung mit gezieltem Einbezug von aktuellen Forschungsergebnissen überzeugt. So entstehen optimale Qualifikationsmöglichkeiten für Ihre neuen beruflichen Herausforderungen.
+      </p>
+
+			{{> "widgets/in_content_search/in_content_search" widgets.inContentSearch}}
+
+			<div class="content__element">
+				<h2>Unsere Fachbereiche</h2>
+				{{> "widgets/teaser/teaser" widgets.ourFaculties}}
+			</div>
+
+			<div class="content__element">
+				<h2>Veranstaltungen</h2>
+				{{> "widgets/teaser/teaser" widgets.events}}
+			</div>
+
+		</div>
+		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+	{{/content}}
+{{/extend}}

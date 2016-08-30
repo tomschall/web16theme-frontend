@@ -11,6 +11,10 @@ $facebookBlueDark: #2d4785;
 
 .widg_so_me_share {
 	padding-bottom: $basicPush * 4;
+	float: left;
+
+	padding-left: $gutterWidth;
+	padding-right: $gutterWidth;
 
 	@include clearfix();
 
@@ -110,6 +114,10 @@ $facebookBlueDark: #2d4785;
 	float: left;
 	margin-right: $basicPush * 3;
 	padding: 4px 0;
+
+	@include mq($to: small) {
+		font-size: 1.25rem;
+	}
 }
 
 .widg_so_me_share__buttons {
