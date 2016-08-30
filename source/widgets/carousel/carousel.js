@@ -80,8 +80,8 @@
 
 		this.$element.find(this.options.domSelectors.slider).slick({
 			appendArrows: '.widg_carousel__info-box',
-			prevArrow: '<button data-carousel="button" class="widg_carousel__prev">Vorherige</button>',
-			nextArrow: '<button data-carousel="button" class="widg_carousel__next">Nächste</button>',
+			prevArrow: '<button data-carousel="button" class="widg_carousel__prev not-default">Vorherige</button>',
+			nextArrow: '<button data-carousel="button" class="widg_carousel__next not-default">Nächste</button>',
 			autoplay: true,
 			autoplaySpeed: durationTime,
 			fade: true,

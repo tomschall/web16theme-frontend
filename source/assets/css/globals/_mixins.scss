@@ -238,7 +238,7 @@
 	#{$attr}: clickAreaSizes(xxl);
   }
 
-  @include mq($to: subnav) {
+  @include mq($to: large) {
 	#{$attr}: clickAreaSizes(small);
   }
 }
