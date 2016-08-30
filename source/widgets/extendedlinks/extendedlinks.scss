@@ -24,6 +24,19 @@
 	}
 
 	margin-bottom: $basicPush * 4;
+
+	.widg_extendedlinks__entry:not(.has_description) {
+		h4 {
+			margin-top: $basicPush * 1.6;
+			padding-bottom: $basicPush * 1.6;
+
+			@include mq($to: small) {
+				padding-top: 10px;
+				margin-top: 0;
+				font-size: 1.25rem;
+			}
+		}
+	}
 }
 
 .widg_extendedlinks__entry {

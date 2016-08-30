@@ -64,7 +64,95 @@ var data = _.merge(defaultData, {
 			}),
 			locationSlider: _.assign(requireNew('../../widgets/location_slider/location_slider.data.js')),
 			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js'),
-			inContentSearch: requireNew('../../widgets/in_content_search/in_content_search.data.js')
+			inContentSearch: requireNew('../../widgets/in_content_search/in_content_search.data.js'),
+			masTeasers: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
+				teasers: [
+					{
+						title: 'Change und Organisationsdynamik',
+						category: 'MAS',
+						text: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta lorem ipsum dolor vanitas.',
+						url: '#',
+						variant: 'wide___third',
+					},
+					{
+						title: 'FHNW in Coaching',
+						category: 'MAS',
+						text: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta lorem ipsum dolor vanitas.',
+						url: '#',
+						variant: 'wide___third',
+					},
+					{
+						title: 'Psychosoziales Management',
+						category: 'MAS',
+						text: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta lorem ipsum dolor vanitas.',
+						url: '#',
+						variant: 'wide___third',
+					}
+				]
+			}),
+			dasTeasers: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
+				teasers: [
+					{
+						title: 'Eingliederungsmanagement',
+						category: 'DAS',
+						text: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta lorem ipsum dolor vanitas.',
+						url: '#',
+						variant: 'wide___third'
+					},
+					{
+						title: 'Organisationsdynamische Prozessbegleitung',
+						category: 'DAS',
+						text: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta lorem ipsum dolor vanitas.',
+						url: '#',
+						variant: 'wide___third'
+					},
+					{
+						title: 'Lorem Ipsum dolor vanitas carpe diem memento',
+						category: 'DAS',
+						text: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta lorem ipsum dolor vanitas.',
+						url: '#',
+						variant: 'wide___third'
+					}
+				]
+			}),
+			casLinks: _.assign(requireNew('../../widgets/extendedlinks/extendedlinks.data.js'), {
+				links: [
+					{
+						title: 'CAS Angewandte Philosophie im beruflichen Kontext 2017',
+						url: '#'
+					},
+					{
+						title: 'CAS Changeprozess in Organisationen',
+						url: '#'
+					},
+					{
+						title: 'CAS Eingliederungsmanagement',
+						url: '#'
+					}
+				]
+			}),
+			news: _.assign(requireNew('../../widgets/extendedlinks/extendedlinks.data.js'), {
+				links: [
+					{
+						date: '23.07.2016',
+						title: '5. Schweizer Symposium zu Unterstützer Kommunikation (UK)',
+						description: 'Das Symposium findet am 9. September 2016 im Neubau auf dem FHNW-Campus Olten statt. Das Institut Integration und Partizipation IIP der Hochschule für Soziale Arbeit FHNW unterstützt den Anlass als Eventpartner.',
+						url: '#'
+					},
+					{
+						date: '12.07.2016',
+						title: 'Info-Veranstaltung in Olten: Bachelor-Studium in Sozialer Arbeit',
+						description: 'An der Hochschule für Soziale Arbeit der Fachhochschule Nordwestschweiz wird in Basel und Olten ein Bachelor-Studium in Sozialer Arbeit - für eine professionelle Tätigkeit in den Berufsfeldern Sozialarbeit und Sozialpädagogik...',
+						url: '#'
+					},
+					{
+						date: '08.04.2016',
+						title: 'Informationsveranstaltung in Olten: Master-Studium in Sozialer Arbeit',
+						description: 'Das Master-Studium der Hochschule für Soziale Arbeit FHNW ist anwendungsorientiert, forschungsbasiert und international. Absolventinnen und Absolventen verfügen über die Kompetenz zur Gestaltung und Optimierung ...',
+						url: '#'
+					}
+				]
+			})
 		}
 	});
 
