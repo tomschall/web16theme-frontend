@@ -1,0 +1,37 @@
+.widg_infobox {
+	@include bleed();
+	@include clearfix();
+
+	background-color: $colorLightGray;
+	padding-top: $basicPush * 6;
+	padding-bottom: $basicPush * 6;
+}
+
+.infobox__img {
+	@include span(4);
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	@include mq($to: medium) {
+		@include span(12);
+	}
+}
+
+.infobox__content {
+	@include span(12);
+
+	.has-img & {
+		@include span(8);
+
+		@include mq($to: medium) {
+			@include span(12);
+		}
+	}
+}
+
+.infobox__button {
+	margin-top: 24px;
+}

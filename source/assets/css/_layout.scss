@@ -48,6 +48,10 @@ h3 {
 
 	flex-direction: column;
 
+	min-height: 1px;
+
+	transition: min-height $transitionLength $transitionEase;
+
 	.header__wide & {
 		display: block;
 

@@ -14,7 +14,7 @@
 
 			{{> "widgets/in_content_search/in_content_search" widgets.inContentSearch}}
 
-			<div class="content__element">
+			<div class="content__element content__element___borderless">
 				<h2>Unsere Fachbereiche</h2>
 				{{> "widgets/teaser/teaser" widgets.ourFaculties}}
 			</div>
@@ -23,9 +23,13 @@
 				{{> "widgets/blockquote/blockquote" widgets.quote}}
 			</div>
 
-			<div class="content__element">
+			<div class="content__element content__element___borderless content__element___top-bordered">
 				<h2>Veranstaltungen</h2>
 				{{> "widgets/teaser/teaser" widgets.events}}
+			</div>
+
+			<div class="content__element content__element___bleed content__element___borderless">
+				{{> "widgets/infobox/infobox" widgets.infobox}}
 			</div>
 
 		</div>

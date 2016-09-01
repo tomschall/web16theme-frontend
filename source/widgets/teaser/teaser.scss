@@ -178,10 +178,19 @@
 .widg_teaser__wrapper {
 	display: flex;
 	flex-wrap: wrap;
+	position: relative;
 
 	@include mq($to: small) {
 		padding: 0 $gutterWidth;
 		display: block;
 		flex-wrap: nowrap;
 	}
+}
+
+.teaser__more-button {
+	position: absolute;
+	top: 0;
+	right: $gutterWidth;
+
+	transform: translateY(-140%);
 }

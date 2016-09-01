@@ -155,7 +155,8 @@ var data = _.merge(defaultData, {
 						},
 						variant: 'wide___third'
 					}
-				]
+				],
+				moreButton: false
 			}),
 			events: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
 				teasers: [
@@ -191,7 +192,8 @@ var data = _.merge(defaultData, {
 					}
 				]
 			}),
-			quote: requireNew('../../widgets/blockquote/blockquote.data.js')
+			quote: requireNew('../../widgets/blockquote/blockquote.data.js'),
+			infobox: requireNew('../../widgets/infobox/infobox.data.js')
 		}
 	});
 

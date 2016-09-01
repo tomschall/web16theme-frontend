@@ -1,0 +1,17 @@
+<div class="widg_infobox {{#if img}}has-img{{/if}}" data-init="infobox">
+	{{#if img}}
+		<div class="infobox__img">
+			<img src="{{img.src}}" alt="{{img.alt}}"/>
+		</div>
+	{{/if}}
+
+	<div class="infobox__content">
+		<h2>{{title}}</h2>
+
+		<div>{{{infoBoxContent}}}</div>
+
+		{{#if button}}
+			<a class="button infobox__button" href="{{button.url}}">{{button.label}}</a>
+		{{/if}}
+	</div>
+</div>

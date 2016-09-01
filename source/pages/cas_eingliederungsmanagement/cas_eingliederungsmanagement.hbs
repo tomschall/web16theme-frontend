@@ -3,7 +3,7 @@
 		{{> "widgets/hero/hero" widgets.hero}}
 	{{/content}}
 	{{#content "content"}}
-    <div class="page_content">
+    <div class="page_content" id="first_page_content">
       <h1>{{title}}</h1>
       <p class="text__lead">
 				{{leadText}}
@@ -85,7 +85,7 @@
 
 		{{> "widgets/sidebar/sidebar" widgets.sidebar}}
 
-    <div class="page_content">
+    <div class="page_content" id="second_page_content">
       <div class="content__element content__element___top-bordered">
         <h2>Querlinks</h2>
 				{{> "widgets/extendedlinks/extendedlinks" widgets.querlinks}}

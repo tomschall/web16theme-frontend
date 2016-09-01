@@ -155,6 +155,10 @@ $sidebarObjectPush: $basicPush * 3;
 	&.is_visible {
 		display: block;
 	}
+
+	.hide_hider & {
+		display: none;
+	}
 }
 
 .object__content a.button:not(.not-default).small_button {

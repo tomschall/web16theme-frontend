@@ -28,7 +28,8 @@
 				isVisible: 'is_visible', // For the hider to define if visible or not
 				isRequested: 'is_requested', // Added when Content is requested to be pulled down
 				isPushed: 'is_pushed', // Added when element has to be pushed
-				isPulledDown: 'is_pulled-down' // When the content actually will be pulled down
+				isPulledDown: 'is_pulled-down', // When the content actually will be pulled down,
+				hideHider: 'hide_hider'
 			},
 			metrics: {
 				objectPush: 30,
@@ -53,7 +54,11 @@
 			controller: new ScrollMagic.Controller({addIndicators: false}),
 			scenes: {
 				fixedScenes: {},
-				undoScenes: {}
+				undoScenes: {},
+				bleedScenes: {
+					beginScenes: {},
+					leaveScenes: {}
+				}
 			}
 		},
 		nextElementToFix = 0,
@@ -121,20 +126,12 @@
 
 		this._setObjectIndex();
 		this._setupInitialScenes();
+		this._setupBleedScenes();
 
 		sidebarIsInitialized = true;
 	};
 
 	// //// GETTER AND SETTERS OF ELEMENTS ///// //
-
-	/**
-	 * Sets the min height of the sidebar according to the body
-	 */
-	Widget.prototype._setSidebarMinHeight = function() {
-		this.$element.css({
-			'min-height': $('.page_content').height()
-		});
-	};
 
 	/**
 	 * Sets the hider to visible
@@ -489,6 +486,28 @@
 		}
 
 		delete scrollMagic.scenes.undoScenes[objIndex];
+	};
+
+	Widget.prototype._setupBleedScenes = function() {
+		$('.content__element___bleed').map(function(index, element) {
+			scrollMagic.scenes.bleedScenes.beginScenes[index] = new ScrollMagic.Scene({
+				triggerElement: element,
+				offset: 0,
+				triggerHook: 0
+			}).addTo(scrollMagic.controller);
+
+			this._listenBleedBeginScene(scrollMagic.scenes.bleedScenes.beginScenes[index]);
+		}.bind(this));
+	};
+
+	Widget.prototype._listenBleedBeginScene = function(scene) {
+		scene.on('enter.' + this.uuid, function() {
+			this.$element.addClass(this.options.stateClasses.hideHider);
+		}.bind(this));
+
+		scene.on('leave.' + this.uuid, function() {
+			this.$element.removeClass(this.options.stateClasses.hideHider);
+		}.bind(this));
 	};
 
 	// /////// EVENT METHODS /////// //

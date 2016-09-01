@@ -21,4 +21,7 @@
       <span class="widg_teaser__arrow"></span>
     </div>
 	{{/each}}
+	{{#if moreButton}}
+    <a class="button button__secondary mini_button teaser__more-button" href="{{moreButton.url}}">{{moreButton.label}}</a>
+	{{/if}}
 </div>

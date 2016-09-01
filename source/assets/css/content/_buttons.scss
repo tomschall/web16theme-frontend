@@ -17,7 +17,7 @@ input[type="reset"] {
 	background-color: $colorBlack;
 	color: $colorBg;
 	font-size: 1rem;
-	padding: 0 $basicPush;
+	padding: 0 $basicPush * 3;
 	text-decoration: none;
 	opacity: 1;
 	font-weight: 600;
@@ -44,8 +44,8 @@ input[type="reset"] {
 	}
 }
 
-.button__secondary,
-a.button__secondary,
+.button__secondary:not(.not-default),
+a.button__secondary:not(.not-default),
 input[type="reset"] {
 	@extend .button;
 

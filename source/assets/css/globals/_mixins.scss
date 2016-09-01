@@ -344,9 +344,19 @@
 		font-size: 0.916667rem;
 	}
 
+	&.mini_button {
+		height: buttonHeight(mini);
+		line-height: buttonHeight(mini);
+	}
+
 	@include mq($to: medium) {
 		height: buttonHeight(mobile);
 		line-height: buttonHeight(mobile);
+
+		&.mini_button {
+			height: buttonHeight(mini);
+			line-height: buttonHeight(mini);
+		}
 	}
 }
 

@@ -40,6 +40,10 @@ var templateData = {
 			}
 		}
 	],
+	moreButton: {
+		label: 'Alle ansehen',
+		url: '#'
+	},
 	langStrings: {
 		toLinkTarget: 'zu',
 		projectTime: 'Projektdauer'
@@ -56,7 +60,6 @@ data = _.merge(defaultData, {
 				data: dataHelper.getFormattedJSON(templateData)
 			}
 		]
-
 	}, templateData);
 
 module.exports = data;
