@@ -190,7 +190,8 @@ var data = _.merge(defaultData, {
 						variant: 'wide___third'
 					}
 				]
-			})
+			}),
+			quote: requireNew('../../widgets/blockquote/blockquote.data.js')
 		}
 	});
 

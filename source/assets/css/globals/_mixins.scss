@@ -280,6 +280,16 @@
 	}
 }
 
+@mixin bleed($hasPadding: true) {
+	margin-left: -100%;
+	margin-right: -100%;
+
+	@if $hasPadding {
+		padding-left: 100%;
+		padding-right: 100%;
+	}
+}
+
 @mixin bleedFullFromContent($gutterSize: 0) {
 	margin-left: -1 * $paddingBehindYellowBar + $gutterSize;
 	margin-right: -1 * $pagePadding + $gutterSize;

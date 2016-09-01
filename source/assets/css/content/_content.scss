@@ -110,7 +110,7 @@
 }
 
 .content__element___bleed {
-	@include bleedFull($gutterWidth);
+	@include bleed();
 
 	padding-top: $basicPush * 6;
 
@@ -118,14 +118,6 @@
 	border-top: 1px solid $colorGreyHover;
 
 	padding-bottom: 0;
-}
-
-.bleed__inner {
-	@include contentWrapper(0);
-
-	&.site-has-sidebar {
-		padding-right: span(3.3);
-	}
 }
 
 .content__element___bordered {
@@ -141,6 +133,8 @@
 	border-top: 1px solid $colorGreyHover;
 	padding-top: $basicPush * 3;
 }
+
 .content__element___borderless {
-	border-bottom: none;
+	border: none;
+	padding-top: 0;
 }

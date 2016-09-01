@@ -3,6 +3,8 @@ $infoWidth: 394px;
 $infoPadding: 34px;
 
 .widg_location_slider {
+	@include bleedFull($gutterWidth);
+
 	margin-top: $basicPush * 5;
 
 	@include mq($to: 'medium') {
@@ -11,7 +13,7 @@ $infoPadding: 34px;
 }
 
 .widg_location_slider nav {
-	@include contentWrapper();
+	@include contentWrapper($gutterWidth);
 
 
 

@@ -155,7 +155,7 @@ var data = _.merge(defaultData, {
 			}),
 			testimonial: _.assign(requireNew('../../widgets/blockquote/blockquote.data.js'), {
 				img: {
-					src: 'testimonial.png',
+					src: '/assets/media/img/testimonial.png',
 					alt: 'Herr X von Z'
 				},
 				quote: 'Dass wir im Rahmen unserer Projektarbeit im CAS Social Media einen Blog betreuen finde ich spannend, weil einem so richtig «am eigenen Leib», vor Augen geführt wird, dass einen Blog zu betreuen grundsätzlich Knochenarbeit bedeutet und einiges an Zeit verschlingt. In diesem Lehrgang wird man aktiv an die Aufgabe herangeführt und bei Problemen dennoch nicht «im Regen stehen gelassen». Für Fragen steht im Unterricht das Plenum oder daneben die Dozentenschaft bereit.',

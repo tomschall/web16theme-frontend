@@ -1,3 +1,13 @@
-<div class="widg_blockquote" data-init="blockquote">
-	Blockquote
+<div class="widg_blockquote {{#if img}}has-img{{/if}}" data-init="blockquote">
+	{{#if img}}
+		<div class="blockquote__img">
+			<img src="{{img.src}}" alt="{{img.alt}}"/>
+		</div>
+	{{/if}}
+
+		<div class="blockquote__quote">
+			<p>{{quote}}</p>
+			<span class="blockquote__author">{{author}}</span>
+		</div>
+
 </div>
