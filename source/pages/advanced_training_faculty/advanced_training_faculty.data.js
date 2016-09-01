@@ -72,21 +72,21 @@ var data = _.merge(defaultData, {
 						category: 'MAS',
 						text: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta lorem ipsum dolor vanitas.',
 						url: '#',
-						variant: 'wide___third',
+						variant: 'wide___third'
 					},
 					{
 						title: 'FHNW in Coaching',
 						category: 'MAS',
 						text: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta lorem ipsum dolor vanitas.',
 						url: '#',
-						variant: 'wide___third',
+						variant: 'wide___third'
 					},
 					{
 						title: 'Psychosoziales Management',
 						category: 'MAS',
 						text: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta lorem ipsum dolor vanitas.',
 						url: '#',
-						variant: 'wide___third',
+						variant: 'wide___third'
 					}
 				]
 			}),
@@ -152,6 +152,14 @@ var data = _.merge(defaultData, {
 						url: '#'
 					}
 				]
+			}),
+			testimonial: _.assign(requireNew('../../widgets/blockquote/blockquote.data.js'), {
+				img: {
+					src: 'testimonial.png',
+					alt: 'Herr X von Z'
+				},
+				quote: 'Dass wir im Rahmen unserer Projektarbeit im CAS Social Media einen Blog betreuen finde ich spannend, weil einem so richtig «am eigenen Leib», vor Augen geführt wird, dass einen Blog zu betreuen grundsätzlich Knochenarbeit bedeutet und einiges an Zeit verschlingt. In diesem Lehrgang wird man aktiv an die Aufgabe herangeführt und bei Problemen dennoch nicht «im Regen stehen gelassen». Für Fragen steht im Unterricht das Plenum oder daneben die Dozentenschaft bereit.',
+				author: 'Peter Gschwend, höhenkurve.langsame mobilität erleben'
 			})
 		}
 	});
