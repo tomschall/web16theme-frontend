@@ -488,6 +488,10 @@
 		delete scrollMagic.scenes.undoScenes[objIndex];
 	};
 
+	/**
+	 * Setting up the bleed scenes, a scene to hide the hider when over an bleed element like location slider
+	 * @private
+	 */
 	Widget.prototype._setupBleedScenes = function() {
 		$('.content__element___bleed').map(function(index, element) {
 			scrollMagic.scenes.bleedScenes.beginScenes[index] = new ScrollMagic.Scene({
@@ -497,9 +501,22 @@
 			}).addTo(scrollMagic.controller);
 
 			this._listenBleedBeginScene(scrollMagic.scenes.bleedScenes.beginScenes[index]);
+
+			scrollMagic.scenes.bleedScenes.leaveScenes[index] = new ScrollMagic.Scene({
+				triggerElement: element,
+				offset: $(element).outerHeight(),
+				triggerHook: 0
+			}).addTo(scrollMagic.controller);
+
+			this._listenBleedLeaveScene(scrollMagic.scenes.bleedScenes.leaveScenes[index]);
 		}.bind(this));
 	};
 
+	/**
+	 * Listeners for the scene at the beginning of the bleed element
+	 * @param scene
+	 * @private
+	 */
 	Widget.prototype._listenBleedBeginScene = function(scene) {
 		scene.on('enter.' + this.uuid, function() {
 			this.$element.addClass(this.options.stateClasses.hideHider);
@@ -507,6 +524,21 @@
 
 		scene.on('leave.' + this.uuid, function() {
 			this.$element.removeClass(this.options.stateClasses.hideHider);
+		}.bind(this));
+	};
+
+	/**
+	 * Listeners for the scene at the end of the bleed element
+	 * @param scene
+	 * @private
+	 */
+	Widget.prototype._listenBleedLeaveScene = function(scene) {
+		scene.on('enter.' + this.uuid, function() {
+			this.$element.removeClass(this.options.stateClasses.hideHider);
+		}.bind(this));
+
+		scene.on('leave.' + this.uuid, function() {
+			this.$element.addClass(this.options.stateClasses.hideHider);
 		}.bind(this));
 	};
 
