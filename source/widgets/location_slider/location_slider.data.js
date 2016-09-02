@@ -6,6 +6,7 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
+			marker: '/assets/media/img/maps_marker.png',
 			entries: [
 				{
 					type: 'location',

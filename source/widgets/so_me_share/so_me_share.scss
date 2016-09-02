@@ -11,12 +11,14 @@ $facebookBlueDark: #2d4785;
 
 .widg_so_me_share {
 	padding-bottom: $basicPush * 4;
-	float: left;
-
 	padding-left: $gutterWidth;
 	padding-right: $gutterWidth;
+	padding-top: $basicPush * 4;
+	float: left;
 
 	@include clearfix();
+
+	width: 100%;
 
 	@include mq($to: medium) {
 		padding-top: $basicPush * 4.5;

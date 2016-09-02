@@ -68,7 +68,7 @@ var data = _.merge(defaultData, {
 					}
 				]
 			}),
-			infoEvents: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
+			eventTeasers: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
 				teasers: [
 					{
 						title: 'Info-Veranstaltung Master of Science Angewandte Psychologie',
@@ -119,7 +119,8 @@ var data = _.merge(defaultData, {
 							alt: 'ifk'
 						}
 					}
-				]
+				],
+				moreButton: false
 			}),
 			extendedLinks: _.assign(requireNew('../../widgets/extendedlinks/extendedlinks.data.js'), {
 				links: [
@@ -150,7 +151,23 @@ var data = _.merge(defaultData, {
 				]
 			}),
 			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
-			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js')
+			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js'),
+			quote: requireNew('../../widgets/blockquote/blockquote.data.js'),
+			querlinks: requireNew('../../widgets/extendedlinks/extendedlinks.data.js'),
+			newsletterSubscription: requireNew('../../widgets/newsletter_subscription/newsletter_subscription.data.js'),
+			locationSlider: _.assign(requireNew('../../widgets/location_slider/location_slider.data.js')),
+			locationAccordeon: _.assign(requireNew('../../widgets/accordeon/accordeon.data.js'), {
+				entries: [
+					{
+						title: 'Standort Olten',
+						accordeonContent: '<div class="accordeon__location"><img class="location__map-image" src="/assets/media/img/location_accordeon_olten.png" alt="Standort Olten auf Karte"/><div class="location__upper"><h3>Campus Olten</h3><div class="location__address"><span>Fachhochschule Nordwestschweiz FHNW</span><span>Campus-Bibliothek Olten 6.1C</span><span>Bahnhofstrasse 6</span><span>5200 Olten</span></div><div class="location__contact"><dl><dt>Telefon:</dt><dd><a href="tel:+41 56 202 77 70" tabindex="0">+41 56 202 77 70</a></dd><dt>E-Mail:</dt><dd><a href="mailto:bibliothek.windisch@fhnw.ch">bibliothek.windisch@fhnw.ch</a></dd></dl></div><a class="button small_button" href="/pages/location_brugg/location_brugg.html" tabindex="0">Mehr Infos zum Standort</a></div><div class="location__inferior"> <a href="https://maps.google.ch" target="_blank" tabindex="0"><span>Route berechnen</span></a> </div></div>'
+					},
+					{
+						title: 'Standort Brugg',
+						accordeonContent: '<div class="accordeon__location"><img class="location__map-image" src="/assets/media/img/location_accordeon_olten.png" alt="Standort Olten auf Karte"/><div class="location__upper"><h3>Campus Olten</h3><div class="location__address"><span>Fachhochschule Nordwestschweiz FHNW</span><span>Campus-Bibliothek Olten 6.1C</span><span>Bahnhofstrasse 6</span><span>5200 Olten</span></div><div class="location__contact"><dl><dt>Telefon:</dt><dd><a href="tel:+41 56 202 77 70" tabindex="0">+41 56 202 77 70</a></dd><dt>E-Mail:</dt><dd><a href="mailto:bibliothek.windisch@fhnw.ch">bibliothek.windisch@fhnw.ch</a></dd></dl></div><a class="button small_button" href="/pages/location_brugg/location_brugg.html" tabindex="0">Mehr Infos zum Standort</a></div><div class="location__inferior"> <a href="https://maps.google.ch" target="_blank" tabindex="0"><span>Route berechnen</span></a> </div></div>'
+					}
+				]
+			}),
 		}
 	});
 

@@ -14,4 +14,7 @@
 			</a>
 		</div>
 	{{/each}}
+	{{#if moreButton}}
+    <a class="button button__secondary mini_button extendedlinks__more-button" href="{{moreButton.url}}">{{moreButton.label}}</a>
+	{{/if}}
 </div>

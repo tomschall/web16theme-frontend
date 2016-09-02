@@ -1,5 +1,6 @@
 .widg_extendedlinks {
 	margin-top: $basicPush * 3;
+	position: relative;
 
 	p {
 		font-size: 1.25rem;
@@ -144,4 +145,12 @@
 		position: static;
 		font-size: 1.08333rem;
 	}
+}
+
+.extendedlinks__more-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	transform: translateY(-175%);
 }

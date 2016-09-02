@@ -3,7 +3,7 @@
 		{{> "widgets/hero/hero" widgets.hero}}
 	{{/content}}
 	{{#content "content"}}
-    <div class="page_content">
+    <div class="page_content" id="pageContentTop">
       <h1>{{title}}</h1>
       <p class="text__lead">
 				{{leadText}}
@@ -17,6 +17,9 @@
 					<li>und ein praxisnahes und wissenschaftlich fundiertes Weiterbildungsangebot.</li>
 				</ul>
 			</div>
+      <div class="content__element content__element___bleed content__element___borderless">
+				{{> "widgets/blockquote/blockquote" widgets.quote}}
+      </div>
 			<div class="content__element has_grid">
 				<h2>Veranstaltungen</h2>
 				{{> "widgets/teaser/teaser" widgets.eventTeasers}}
@@ -31,5 +34,27 @@
 			</div>
     </div>
 		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+
+		<div class="page_content" id="pageContentBottom">
+			<div class="content__element content__element___borderless">
+				<h2>Querlinks</h2>
+				{{> "widgets/extendedlinks/extendedlinks" widgets.querlinks}}
+			</div>
+
+			<div class="content__element content__element___bleed">
+				{{> "widgets/newsletter_subscription/newsletter_subscription" widgets.newsletterSubscription}}
+			</div>
+		</div>
+
+    <div class="content__element content__element___bleed" id="locations">
+      <div class="bleed__inner site-has-sidebar">
+        <h2>Durchführungsorte</h2>
+        <p>Der Studiengang wird am Standort Olten und Brugg durchgeführt. Lorem ipsum dolor vanitas carpe diem memento mori.</p>
+      </div>
+			{{> "widgets/location_slider/location_slider" widgets.locationSlider}}
+      <div class="only-phone">
+				{{> "widgets/accordeon/accordeon" widgets.locationAccordeon }}
+      </div>
+    </div>
 	{{/content}}
 {{/extend}}

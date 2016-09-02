@@ -1,5 +1,4 @@
 .content__element {
-	margin-bottom: $basicPush * 5;
 	padding-bottom: $basicPush * 3;
 
 	border-bottom: 1px solid $colorGreyHover;
@@ -26,8 +25,9 @@
 		margin-bottom: 0;
 	}
 
-	&:last-of-type:not(.content__element___bordered) {
+	&:last-of-type {
 		border-bottom: none;
+		margin-bottom: 0;
 	}
 
 	&.has_grid {
@@ -57,6 +57,10 @@
 
 	@include mq($to: medium) {
 		margin-bottom: $basicPush * 3;
+	}
+
+	.page_content & {
+		margin-bottom: $basicPush * 5;
 	}
 
 }
@@ -116,12 +120,13 @@
 .content__element___bleed {
 	@include bleed();
 
-	padding-top: $basicPush * 6;
-
 	clear: both;
-	border-top: 1px solid $colorGreyHover;
 
 	padding-bottom: 0;
+
+	.bleed__inner {
+		padding-top: $basicPush * 6;
+	}
 }
 
 .content__element___bordered {
@@ -141,4 +146,8 @@
 .content__element___borderless {
 	border: none;
 	padding-top: 0;
+}
+
+.content__element___marginless {
+	margin-bottom: 0;
 }

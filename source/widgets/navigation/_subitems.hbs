@@ -5,16 +5,16 @@
 
   <ul>
 			<li>
-				<a class="widg_navigation__entry widg_navigation__back" data-navigation="back">{{ lang.back}}</a>
+				<a class="widg_navigation__entry widg_navigation__back not-default" data-navigation="back">{{ lang.back}}</a>
 			</li>
 		{{#each entries}}
       <li>
 				{{#if list}}
-          <a class="is_expandable" data-navigation-is-expandable="true" data-navigation="entry">{{title}}</a>
+          <a class="is_expandable not-default" data-navigation-is-expandable="true" data-navigation="entry">{{title}}</a>
 
 					{{> "widgets/navigation/_subitems" list title=title lang=../../lang }}
 				{{else}}
-          <a href="{{url}}">{{title}}</a>
+          <a class="not-default" href="{{url}}">{{title}}</a>
 				{{/if}}
       </li>
 

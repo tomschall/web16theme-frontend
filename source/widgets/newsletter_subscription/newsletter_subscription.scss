@@ -1,0 +1,28 @@
+.widg_newsletter_subscription {
+	@include bleed();
+
+	background-image: url('/assets/media/img/ns_bg.png');
+
+	padding-top: $basicPush * 5.6;
+	padding-bottom: $basicPush * 5.6;
+}
+
+.ns__label {
+	display: block;
+
+	font-size: 1.5rem;
+	margin-bottom: $basicPush * 2;
+}
+
+.ns__field {
+	max-width: 400px;
+
+	@include mq($to: small) {
+		max-width: 275px;
+	}
+
+	&.ArchetypesStringWidget input {
+		border-right: 0;
+		background-color: $colorBg;
+	}
+}

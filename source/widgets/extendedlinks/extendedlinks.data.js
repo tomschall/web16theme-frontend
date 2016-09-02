@@ -16,7 +16,11 @@ var templateData = {
 			description: 'Die Fachhochschule Nordwestschweiz FHNW verfügt an ihren verschiedenen Standorten über zahlreiche Bibliotheken',
 			url: '../library_overview/library_overview.html'
 		}
-	]
+	],
+	moreButton: {
+		url: '#',
+		label: 'Alle Ansehen'
+	}
 },
 	data = _.merge(defaultData, {
 		meta: {

@@ -8,11 +8,40 @@
       <p class="text__lead">
 				{{leadText}}
       </p>
+			<div class="content__element content__element___borderless">
+				<p>Wir beschäftigen uns mit der Frage, wie komplexe Systeme zu gestalten sind. Dabei verfolgen wir die folgenden Ziele:</p>
+				<ul>
+					<li>
+            Förderung der Gesundheit und Leistungsfähigkeit von Menschen und Organisationen
+					</li>
+					<li>
+            Sicherung der Zuverlässigkeit soziotechnischer Systeme
+					</li>
+				</ul>
+				<h3>Themenfelder des MikS:</h3>
+				<ul>
+					<li>Arbeit und Gesundheit</li>
+					<li>Zuverlässigkeit und Sicherheit</li>
+					<li>Eignung und Personalentwicklung</li>
+				</ul>
+			</div>
 			<div class="content__element has_grid">
 				<h2>Aktuelle Projekte</h2>
 				{{> "widgets/teaser/teaser" widgets.projectTeasers}}
 			</div>
     </div>
 		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+
+    <div class="content__element content__element___bleed" id="locations">
+      <div class="bleed__inner site-has-sidebar">
+        <h2>Durchführungsorte</h2>
+        <p>Der Studiengang wird am Standort Olten und Brugg durchgeführt. Lorem ipsum dolor vanitas carpe diem memento mori.</p>
+      </div>
+			{{> "widgets/location_slider/location_slider" widgets.locationSlider}}
+      <div class="only-phone">
+				{{> "widgets/accordeon/accordeon" widgets.locationAccordeon }}
+      </div>
+    </div>
+
 	{{/content}}
 {{/extend}}

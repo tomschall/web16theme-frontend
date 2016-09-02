@@ -33,7 +33,7 @@
 					scrollwheel: false
 				},
 				markerIconProps: {
-					url: '/assets/media/img/maps_marker.png',
+					url: '',
 					size: new google.maps.Size(104, 86),
 					scaledSize: new google.maps.Size(104, 86),
 					anchor: new google.maps.Point(73, 95)
@@ -145,6 +145,8 @@
 	 */
 	Widget.prototype.init = function() {
 		data.navOptions = $(this.options.domSelectors.navOption).toArray();
+
+		this.options.markerIconProps.url = this.$element.data('maps-marker');
 
 		this.initMaps();
 
