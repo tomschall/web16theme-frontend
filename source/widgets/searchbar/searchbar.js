@@ -107,12 +107,12 @@
 		$(this.options.domSelectors.input).on('keyup.' + this.uuid, function(event) {
 			var value = $(event.currentTarget).val();
 
+			this.removeSearchResults();
+
 			if (value.length >= 3 && value !== currentSearchValue) {
 				this.sendXHRObject($(event.currentTarget).val());
 			} else if (value.length === 0) {
 				this.changeSearchbarStatus(this.options.stateClasses.showIntro);
-
-				this.removeSearchResults();
 			}
 
 			currentSearchValue = value;
@@ -133,7 +133,7 @@
 
 		this.changeSearchbarStatus(this.options.stateClasses.showLoader);
 
-		$(window).one(this.options.searchEvents.dataLoaded, function(event, data) {
+		$(window).on(this.options.searchEvents.dataLoaded, function(event, data) {
 			this.showResults(data);
 		}.bind(this));
 	};
@@ -203,11 +203,7 @@
 	 * @param html the generated html
    */
 	Widget.prototype.showResults = function(html) {
-		if (resultsShown) {
-			$(this.options.domSelectors.content).find('.search__results').remove();
-		}
-
-		$(this.options.domSelectors.content).find('.mCSB_container').prepend(html);
+		$(this.options.domSelectors.content).find('.mCSB_container .search__results').prepend(html);
 
 		this.changeSearchbarStatus(this.options.stateClasses.showResults);
 
@@ -236,9 +232,11 @@
 	Widget.prototype.appendGoToPageBtn = function() {
 		var completePageUrl = searchPageUrl + '?q=' + currentSearchValue,
 				showAllResultsString = $(this.options.domSelectors.bar).data('lang-all-results'),
-				$btn = $('<a class="widg_searchbar__go-to-page" href="' + completePageUrl + '">' + showAllResultsString + '</a>');
+				$btn = $('<a class="widg_searchbar__go-to-page not-default" href="' + completePageUrl + '">' + showAllResultsString + '</a>');
 
-		$('.search__results').append($btn);
+		if ($('.widg_searchbar__go-to-page').length === 0) {
+			$('.search__results').append($btn);
+		}
 	};
 
 	/**
@@ -276,7 +274,7 @@
 	 * Remove search results
 	 */
 	Widget.prototype.removeSearchResults = function() {
-		$(this.options.domSelectors.content).find('.search__results').remove();
+		$(this.options.domSelectors.content).find('.search__results .search__cat').remove();
 	};
 
 	/**

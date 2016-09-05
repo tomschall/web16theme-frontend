@@ -140,7 +140,7 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Application Accordeon',
+				title: 'Application Accordeon | WI_058',
 				description: '',
 				code: dataHelper.getTemplateCode('application_accordeon.hbs'),
 				documentation: dataHelper.getDocumentation('application_accordeon.md')

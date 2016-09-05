@@ -48,7 +48,8 @@
 		},
 		searchParam = {},
 		resultsShown = false,
-		searchType = '',
+		searchTemplate = '',
+		searchCategory = '',
 		expandedFilters = false,
 		isCategorySearch = false,
 		loadMoreMode = false,
@@ -81,7 +82,8 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		searchType = $(this.options.domSelectors.formWrapper).data('searchpage-type');
+		searchTemplate = $(this.options.domSelectors.formWrapper).data('searchpage-template');
+		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 
 		this.eventListeners();
 
@@ -89,12 +91,13 @@
 
 		this.initSearchParam();
 
-		if (searchType === 'all') {
+		if (searchTemplate === 'search_full') {
 			this.fillFormAndTitle();
 		} else {
 			isCategorySearch = true;
 
-			searchParam.category = searchType;
+			searchParam.template = searchTemplate;
+			searchParam.category = searchCategory;
 
 			this.fillForm();
 		}
@@ -149,9 +152,10 @@
 		data.$formElements = $formElements;
 
 		$formElements.on('change.' + this.uuid, function() {
+			this.removeSearchResults();
 			this.sendSearchQuery();
 
-			if (searchType === 'all') {
+			if (searchTemplate === 'search_full') {
 				this.updateTitle();
 			}
 		}.bind(this));
@@ -270,7 +274,7 @@
 				this.changeStatus(this.options.stateClasses.showLoading);
 			}
 
-			$(window).one(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults) {
+			$(window).on(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults) {
 				this.showResults(data, foundEntries, limitedToResults);
 			}.bind(this));
 		}
@@ -284,10 +288,6 @@
 	 */
 	Widget.prototype.showResults = function(html, foundEntries, limitedToResults) {
 		var $resultsTd = $('.search__results td');
-
-		if (resultsShown && !loadMoreMode) {
-			this.$element.find('.search__results').remove();
-		}
 
 		if (loadMoreMode) {
 			html = this.generateAdditionalTableHTML(html);
@@ -432,6 +432,13 @@
 		}.bind(this));
 
 		window.estatico.formElementHelper.initSelect2();
+	};
+
+	/**
+	 * Remove search results
+	 */
+	Widget.prototype.removeSearchResults = function() {
+		this.$element.find('.search__results .search__cat, .search__results table').remove();
 	};
 
 	/**

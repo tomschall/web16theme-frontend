@@ -1,16 +1,16 @@
 'use strict';
 
 var _ = require('lodash'),
-	requireNew = require('require-new'),
-	defaultData = requireNew('../../data/default.data.js');
+		requireNew = require('require-new'),
+		defaultData = requireNew('../../data/default.data.js');
 
 var data = _.merge(defaultData, {
-		meta: {
-			title: 'Bachelor of Arts in Sozialer Arbeit'
-		},
-		title: 'Bachelor of Arts in Sozialer Arbeit (B.A)',
-		text: 'Die Hochschule für Soziale Arbeit der Fachhochschule Nordwestschweiz FHNW bietet ein Bachelor-Studium in Sozialer Arbeit an, das in einer wissenschaftlich fundierten, praxisnahen Ausbildung zu einer generalistischen Berufsbefähigung führt.',
-		widgets: {
+	meta: {
+		title: 'Bachelor of Arts in Sozialer Arbeit'
+	},
+	title: 'Bachelor of Arts in Sozialer Arbeit (B.A)',
+	text: 'Die Hochschule für Soziale Arbeit der Fachhochschule Nordwestschweiz FHNW bietet ein Bachelor-Studium in Sozialer Arbeit an, das in einer wissenschaftlich fundierten, praxisnahen Ausbildung zu einer generalistischen Berufsbefähigung führt.',
+	widgets: {
 		header: _.assign({
 			hasPromoTeaser: false,
 			isCollapsible: true
@@ -54,9 +54,7 @@ var data = _.merge(defaultData, {
 				}
 			]
 		}),
-		informationAccordeon: _.assign(requireNew('../../widgets/accordeon/accordeon.data.js'), {
-
-		}),
+		informationAccordeon: _.assign(requireNew('../../widgets/accordeon/accordeon.data.js'), {}),
 		organisationAccordeon: _.assign(requireNew('../../widgets/accordeon/accordeon.data.js'), {
 			entries: [
 				{
@@ -82,8 +80,7 @@ var data = _.merge(defaultData, {
 			]
 		}),
 		infoEvents: requireNew('../../widgets/info_teaser/info_teaser.data.js'),
-		nextCoursesAccordeon: _.assign(requireNew('../../widgets/application_accordeon/application_accordeon.data.js'), {
-		}),
+		nextCoursesAccordeon: _.assign(requireNew('../../widgets/application_accordeon/application_accordeon.data.js'), {}),
 		sidebar: _.merge(requireNew('../../widgets/sidebar/sidebar.data.js'), {
 			widgets: {
 				application: _.assign(requireNew('../../widgets/sidebar_application/sidebar_application.data.js'), {
@@ -165,8 +162,9 @@ var data = _.merge(defaultData, {
 			]
 		}),
 		soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js'),
-		mobileContentNavigation: requireNew('../../widgets/mobile_content_navigation/mobile_content_navigation.data.js')
+		mobileContentNavigation: requireNew('../../widgets/mobile_content_navigation/mobile_content_navigation.data.js'),
+		actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
 	}
-	});
+});
 
 module.exports = data;

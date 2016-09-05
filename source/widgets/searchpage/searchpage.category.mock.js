@@ -1,127 +1,58 @@
 'use strict';
 
 var data = {
+	'responseHeader': {
+		'params': {
+			'category': 'training'
+		}
+	},
 	'response': {
-		'foundNumber': 203,
-		'limitedResults': 50,
-		'headers': [
+		'numFound': 203,
+		'start': 0,
+		'length': 50,
+		'tableHeaders': [
 			'Titel',
 			'Typ',
 			'Fachbereich',
 			'Ort',
 			'URL'
 		],
-		'results': [
-			[
-				{
-					type: 'title',
-					text: 'MAS Behinderung und Partizipation'
-				},
-				{
-					type: 'type',
-					text: 'MAS'
-				},
-				{
-					type: 'faculty',
-					text: 'Soziale Arbeit'
-				},
-				{
-					type: 'location',
-					text: 'Olten'
-				},
-				{
-					type: 'url',
-					text: '#'
-				}
-			],
-			[
-				{
-					type: 'title',
-					text: 'MAS Ethische Entscheidungsfindung in Organisation und Gesellschaft'
-				},
-				{
-					type: 'type',
-					text: 'MAS'
-				},
-				{
-					type: 'faculty',
-					text: 'Soziale Arbeit'
-				},
-				{
-					type: 'location',
-					text: 'Olten'
-				},
-				{
-					type: 'url',
-					text: '#'
-				}
-			],
-			[
-				{
-					type: 'title',
-					text: 'MAS FHNW in Coaching'
-				},
-				{
-					type: 'type',
-					text: 'MAS'
-				},
-				{
-					type: 'faculty',
-					text: 'Soziale Arbeit'
-				},
-				{
-					type: 'location',
-					text: 'Olten'
-				},
-				{
-					type: 'url',
-					text: '#'
-				}
-			],
-			[
-				{
-					type: 'title',
-					text: 'CAS Eingliederungsmanagement - Zielgruppen und Methoden'
-				},
-				{
-					type: 'type',
-					text: 'CAS'
-				},
-				{
-					type: 'faculty',
-					text: 'Soziale Arbeit'
-				},
-				{
-					type: 'location',
-					text: 'Windisch'
-				},
-				{
-					type: 'url',
-					text: '#'
-				}
-			],
-			[
-				{
-					type: 'title',
-					text: 'CAS Eingliederungsmanagement «Fallberatung»'
-				},
-				{
-					type: 'type',
-					text: 'CAS'
-				},
-				{
-					type: 'faculty',
-					text: 'Soziale Arbeit'
-				},
-				{
-					type: 'location',
-					text: 'Olten'
-				},
-				{
-					type: 'url',
-					text: '#'
-				}
-			]
+		'docs': [
+			{
+				Title: 'MAS Behinderung und Partizipation',
+				type: 'MAS',
+				faculty: 'Soziale Arbeit',
+				location: 'Olten',
+				url: '#'
+			},
+			{
+				Title: 'MAS Ethische Entscheidungsfindung in Organisation und Gesellschaft',
+				type: 'MAS',
+				faculty: 'Soziale Arbeit',
+				location: 'Olten',
+				url: '#'
+			},
+			{
+				Title: 'MAS FHNW in Coaching',
+				type: 'MAS',
+				faculty: 'Soziale Arbeit',
+				location: 'Olten',
+				url: '#'
+			},
+			{
+				Title: 'CAS Eingliederungsmanagement - Zielgruppen und Methoden',
+				type: 'CAS',
+				faculty: 'Soziale Arbeit',
+				location: 'Windisch',
+				url: '#'
+			},
+			{
+				Title: 'CAS Eingliederungsmanagement «Fallberatung»',
+				type: 'CAS',
+				faculty: 'Soziale Arbeit',
+				location: 'Windisch',
+				url: '#'
+			}
 		]
 	}
 };

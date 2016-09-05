@@ -17,32 +17,65 @@
 			},
 
 			listEntryTemplates = {
-				normal: '<li class="search__result-normal"><a href="{{link}}"><span class="title">{{title}}</span>{{#each additionalInformation}} <span class="{{type}} visible-in-page">{{text}}</span>{{/each}} </a></li>',
-				event: '<li class="search__result-event"><a href="{{link}}"><span class="title">{{title}}</span><span class="event-info">{{eventDetail}}</span></a></li>',
-				doc: '<li class="search__result-doc"><a href="{{link}}"><span class="title">{{title}}<span class="visible-in-bar">({{fileType}})</span></span><span class="file-type visible-in-page">{{fileType}}</span></a></li>',
-				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryLink}}">{{categoryLinkText}}</a></li>'
+				searchbar: {
+					normal: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span></a></li>',
+					event: '<li class="search__result-event"><a href="{{url}}"><span class="title">{{Title}}</span><span class="event-info">{{eventDetail}}</span></a></li>',
+					doc: '<li class="search__result-doc"><a href="{{url}}"><span class="title">{{Title}}<span class="visible-in-bar">({{fileType}})</span></span><span class="file-type visible-in-page">{{fileType}}</span></a></li>'
+				},
+				searchpage: {
+					normal: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span></a></li>',
+					training: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span><span class="study_type">{{study_type}}</span></a></li>'
+				},
+				categorySearch: {
+					training: '<tr><td>{{Title}}</td><td>{{type}}</td><td>{{faculty}}</td><td>{{location}}</td><td data-searchpage="url"><a href="{{url}}"></a></td></tr>'
+				},
+				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
 			},
-			activeCategorySearch = false;
+			searchCategories = [
+					'training',
+					'studies',
+					'events',
+					'organisation',
+					'documents',
+					'irf',
+					'web'
+			],
+			activeCategorySearch = false,
+			searchTemplate = 'livesearch';
 
-	function generateSearchListItem(listEntry) {
-		var template = null,
-				generatedHTML = null;
+	function generateSearchListItem(listEntry, category) {
+		var template = null;
 
-		switch (listEntry.type) {
-			case 'normal':
-				template = Handlebars.compile(listEntryTemplates.normal);
-				break;
-			case 'event':
-				template = Handlebars.compile(listEntryTemplates.event);
-				break;
-			case 'doc':
-				template = Handlebars.compile(listEntryTemplates.doc);
-				break;
+		if (searchTemplate === 'livesearch') {
+			switch (category) {
+				case 'event':
+					template = Handlebars.compile(listEntryTemplates.searchbar.event);
+					break;
+				case 'doc':
+					template = Handlebars.compile(listEntryTemplates.searchbar.doc);
+					break;
+				default:
+					template = Handlebars.compile(listEntryTemplates.searchbar.normal);
+					break;
+			}
+		} else {
+			switch (category) {
+				case 'event':
+					template = Handlebars.compile(listEntryTemplates.searchbar.event);
+					break;
+				case 'doc':
+					template = Handlebars.compile(listEntryTemplates.searchbar.doc);
+					break;
+				case 'training':
+					template = Handlebars.compile(listEntryTemplates.searchpage.training);
+					break;
+				default:
+					template = Handlebars.compile(listEntryTemplates.searchpage.normal);
+					break;
+			}
 		}
 
-		generatedHTML = template(listEntry);
-
-		return generatedHTML;
+		return template(listEntry);
 	}
 
 	/**
@@ -50,11 +83,11 @@
 	 * @param data
    */
 	function generateResultTable(data) {
-		var results = data.response.results,
-				headers = data.response.headers,
+		var results = data.response.docs,
+				headers = data.response.tableHeaders,
 				$responseHTML = $('<table></table>'),
 				$headersRow = $('<tr></tr>'),
-				$tempRow = $('<tr></tr>');
+				template = null;
 
 		headers.forEach(function(header) {
 			if (header === 'URL') {
@@ -67,17 +100,9 @@
 		$responseHTML.append($headersRow);
 
 		results.forEach(function(row) {
-			$tempRow = $('<tr></tr>');
+			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
 
-			row.forEach(function(cell) {
-				if (cell.type === 'url') {
-					$tempRow.append('<td data-searchpage="' + cell.type + '"><a href="' + cell.text + '"></a></td>');
-				} else {
-					$tempRow.append('<td data-searchpage="' + cell.type + '">' + cell.text + '</td>');
-				}
-			});
-
-			$responseHTML.append($tempRow);
+			$responseHTML.append(template(row));
 		});
 
 		return $responseHTML;
@@ -88,37 +113,35 @@
 	 * @param data
    */
 	function handleReturnData(data) {
-		var responseData = data.response,
+		var responseData = data.response.docs,
 				$searchCategory = null,
 				$categoryList = null,
 				$categoryTitle = null,
 				$tempListDOM = null,
-				$responseHTML = $('<div class="search__results"></div>');
+				$responseHTML = $('<div></div>');
 
 		if (activeCategorySearch) {
 			$responseHTML.addClass('search__table').append(generateResultTable(data));
 		} else {
-			responseData.forEach(function(entry) {
-				$searchCategory = $('<div class="search__cat"></div>');
-				$categoryList = $('<ul></ul>');
-				$categoryTitle = $('<span class="search__cat-title">' + entry.categoryTitle + '</span>');
+			$searchCategory = $('<div class="search__cat"></div>');
+			$categoryList = $('<ul></ul>');
+			$categoryTitle = $('<span class="search__cat-title">' + data.response.categoryTitle + '</span>');
 
-				entry.entries.forEach(function(listEntry) {
-					$tempListDOM = generateSearchListItem(listEntry);
+			responseData.forEach(function(listEntry) {
+				$tempListDOM = generateSearchListItem(listEntry, data.responseHeader.params.category);
 
-					$categoryList.append($tempListDOM);
-				});
-
-				if (entry.categoryLink) {
-					var template = Handlebars.compile(listEntryTemplates.showAll);
-
-					$categoryList.append(template(entry));
-				}
-
-				$searchCategory.append($categoryTitle).append($categoryList);
-
-				$responseHTML.append($searchCategory);
+				$categoryList.append($tempListDOM);
 			});
+
+			if (data.response.categoryUrl) {
+				var template = Handlebars.compile(listEntryTemplates.showAll);
+
+				$categoryList.append(template(data.response));
+			}
+
+			$searchCategory.append($categoryTitle).append($categoryList);
+
+			$responseHTML = $searchCategory;
 		}
 
 		$(window).trigger(events.dataLoaded, [$responseHTML, responseData.foundNumber, responseData.limitedResults]);
@@ -131,6 +154,9 @@
 	 * @param isCategorySearch if the search should be a category search (different ajax target and different templates)
    */
 	function search(query, isSearchbar, isCategorySearch) {
+		var isPageSearch = false,
+				targetUrl = searchpageURL;
+
 		if (typeof isSearchbar === typeof undefined) {
 			isSearchbar = false;
 		}
@@ -139,25 +165,37 @@
 			isCategorySearch = false;
 		}
 
-		activeCategorySearch = isCategorySearch;
-
-		var targetUrl = searchpageURL;
-
-		if (isSearchbar) {
-			targetUrl = searchbarURL;
-		} else if (isCategorySearch) {
-			targetUrl = searchpageCategoryURL;
+		if (!isSearchbar && !isCategorySearch) {
+			isPageSearch = true;
+			searchTemplate = 'search_full';
 		}
 
-		if (query) {
+		activeCategorySearch = isCategorySearch;
+
+		if (isSearchbar || isPageSearch) {
+			if (isSearchbar) {
+				targetUrl = searchbarURL;
+				searchTemplate = 'livesearch';
+			}
+
+			searchCategories.forEach(function(category) {
+				$.ajax({
+					data: _.assign(query, {
+						category: category,
+						template: searchTemplate
+					}),
+					dataType: 'json',
+					success: handleReturnData,
+					url: targetUrl
+				});
+			});
+		} else if (isCategorySearch) {
 			$.ajax({
 				data: query,
 				dataType: 'json',
 				success: handleReturnData,
-				url: targetUrl
+				url: searchpageCategoryURL
 			});
-		} else {
-			console.error('No search query defined');
 		}
 	}
 
@@ -218,7 +256,8 @@
 		search: {
 			search: search,
 			getSearchParameters: getSearchParameters,
-			updateFilter: updateFilter
+			updateFilter: updateFilter,
+			handleReturnData: handleReturnData
 		}
 	});
 })(jQuery);
