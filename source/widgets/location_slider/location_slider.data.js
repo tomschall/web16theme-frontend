@@ -7,6 +7,8 @@ var _ = require('lodash'),
 
 var templateData = {
 			marker: '/assets/media/img/maps_marker.png',
+			locationTitle: 'Durchführungsorte',
+			locationDescription: 'Der Studiengang wird am Standort Olten und Brugg durchgeführt. Lorem ipsum dolor vanitas carpe diem memento mori.',
 			entries: [
 				{
 					type: 'location',
