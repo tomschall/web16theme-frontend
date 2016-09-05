@@ -1,16 +1,20 @@
 <div class="widg_sidebar_contact widg_sidebar__object" data-init="sidebar_contact" data-sidebar="object">
-	<div class="object__title" data-sidebar="title">
-		<h4>Kontakt</h4>
-	</div>
-	<div class="object__content" data-sidebar="content">
-		<img src="{{img.src}}" alt="{{img.alt}}"/>
-		<dl>
-			<dt class="contact__name">{{name}}</dt>
-			<dd>{{jobDescr}}</dd>
-			<dt>{{langStrings.telephone}}</dt>
-			<dd><a href="tel:{{telephone}}">{{telephone}}</a></dd>
-			<dt>{{langStrings.email}}</dt>
-			<dd><a href="mailto:{{email}}">{{email}}</a></dd>
-		</dl>
-	</div>
+
+		<div class="object__title" data-sidebar="title">
+			<h4>Kontakt</h4>
+		</div>
+		<div class="object__content" data-sidebar="content">
+			{{#each contacts}}
+					<img src="{{img.src}}" alt="{{img.alt}}"/>
+					<dl>
+						<dt class="contact__name">{{name}}</dt>
+						<dd>{{jobDescr}}</dd>
+						<dt>{{../langStrings.telephone}}</dt>
+						<dd><a href="tel:{{telephone}}">{{telephone}}</a></dd>
+						<dt>{{../langStrings.email}}</dt>
+						<dd><a href="mailto:{{email}}">{{email}}</a></dd>
+					</dl>
+			{{/each}}
+		</div>
+
 </div>

@@ -274,9 +274,16 @@
 				this.changeStatus(this.options.stateClasses.showLoading);
 			}
 
-			$(window).on(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults) {
-				this.showResults(data, foundEntries, limitedToResults);
-			}.bind(this));
+			if (isCategorySearch) {
+				$(window).one(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults) {
+					this.showResults(data, foundEntries, limitedToResults);
+				}.bind(this));
+			} else {
+				$(window).on(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults) {
+					this.showResults(data, foundEntries, limitedToResults);
+				}.bind(this));
+			}
+
 		}
 	};
 
@@ -292,7 +299,9 @@
 		if (loadMoreMode) {
 			html = this.generateAdditionalTableHTML(html);
 
-			this.$element.find('.search__results').append(html);
+			console.log('html', html);
+
+			this.$element.find('.search__results .search__table').append(html);
 
 			// Reset the load more mode to false
 			loadMoreMode = false;

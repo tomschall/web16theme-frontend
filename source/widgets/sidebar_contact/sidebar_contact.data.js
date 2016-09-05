@@ -6,14 +6,28 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
-			img: {
-				src: '/assets/media/img/img_contact_sidebar.png',
-				alt: 'Portrait Prof. Dr. Hans Muster'
-			},
-			name: 'Prof. Dr. Hans Muster',
-			jobDescr: 'Leitung',
-			email: 'hans.muster@fhnw.ch',
-			telephone: '+41 62 957 24 26',
+			contacts: [
+				{
+					img: {
+						src: '/assets/media/img/img_contact_sidebar.png',
+						alt: 'Portrait Prof. Dr. Hans Muster'
+					},
+					name: 'Prof. Dr. Hans Muster',
+					jobDescr: 'Leitung',
+					email: 'hans.muster@fhnw.ch',
+					telephone: '+41 62 957 24 26',
+				},
+				{
+					img: {
+						src: '/assets/media/img/img_contact_sidebar.png',
+						alt: 'Portrait Prof. Dr. Hans Muster'
+					},
+					name: 'Prof. Dr. Hans Muster',
+					jobDescr: 'Leitung',
+					email: 'hans.muster@fhnw.ch',
+					telephone: '+41 62 957 24 26',
+				},
+			],
 			langStrings: {
 				telephone: 'Telefon',
 				email: 'E-Mail'

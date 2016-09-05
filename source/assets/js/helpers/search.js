@@ -144,7 +144,7 @@
 			$responseHTML = $searchCategory;
 		}
 
-		$(window).trigger(events.dataLoaded, [$responseHTML, responseData.foundNumber, responseData.limitedResults]);
+		$(window).trigger(events.dataLoaded, [$responseHTML, data.response.numFound, responseData.length]);
 	}
 
 	/**
