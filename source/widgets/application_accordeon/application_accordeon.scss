@@ -1,4 +1,7 @@
 .widg_application_accordeon {
+	border: 1px solid $colorGreyHover;
+	padding: $basicPush * 4 $basicPush * 6;
+
 	.widg_accordeon__content {
 		p {
 			font-size: 1.25rem;

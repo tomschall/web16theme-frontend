@@ -6,6 +6,8 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
+			title: 'Anmeldung',
+			description: 'Lorem ipsum dolores sit amet:',
 			entries: [
 				{
 					uid: '1',
