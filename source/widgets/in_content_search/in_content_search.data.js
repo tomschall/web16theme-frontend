@@ -11,10 +11,16 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'In-Content Search',
+				title: 'In-Content Suche | WI_059',
 				description: '',
 				code: dataHelper.getTemplateCode('in_content_search.hbs'),
-				documentation: dataHelper.getDocumentation('in_content_search.md')
+				documentation: dataHelper.getDocumentation('in_content_search.md'),
+				mocks: [
+					{
+						description: null,
+						data: dataHelper.getFormattedJSON(templateData)
+					}
+				]
 			}
 		}, templateData);
 

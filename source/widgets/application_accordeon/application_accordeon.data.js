@@ -145,7 +145,13 @@ var templateData = {
 				title: 'Application Accordeon | WI_058',
 				description: '',
 				code: dataHelper.getTemplateCode('application_accordeon.hbs'),
-				documentation: dataHelper.getDocumentation('application_accordeon.md')
+				documentation: dataHelper.getDocumentation('application_accordeon.md'),
+				mocks: [
+					{
+						description: null,
+						data: dataHelper.getFormattedJSON(templateData)
+					}
+				]
 			}
 		}, templateData);
 

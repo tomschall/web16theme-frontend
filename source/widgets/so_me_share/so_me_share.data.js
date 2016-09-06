@@ -18,10 +18,16 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 		meta: {
-			title: 'SoMe Share',
+			title: 'Tell-a-Friend / Share this Site | WI_021',
 			description: '',
 			code: dataHelper.getTemplateCode('so_me_share.hbs'),
-			documentation: dataHelper.getDocumentation('so_me_share.md')
+			documentation: dataHelper.getDocumentation('so_me_share.md'),
+			mocks: [
+				{
+					description: null,
+					data: dataHelper.getFormattedJSON(templateData)
+				}
+			]
 		}
 	}, templateData);
 

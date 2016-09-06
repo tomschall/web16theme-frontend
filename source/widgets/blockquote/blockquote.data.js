@@ -11,7 +11,7 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Blockquote',
+				title: 'Zitate, Testimonial | WI_047',
 				description: '',
 				code: dataHelper.getTemplateCode('blockquote.hbs'),
 				documentation: dataHelper.getDocumentation('blockquote.md'),

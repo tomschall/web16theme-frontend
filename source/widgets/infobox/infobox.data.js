@@ -15,7 +15,7 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Infobox',
+				title: 'Infobox | WI_060',
 				description: '',
 				code: dataHelper.getTemplateCode('infobox.hbs'),
 				documentation: dataHelper.getDocumentation('infobox.md'),

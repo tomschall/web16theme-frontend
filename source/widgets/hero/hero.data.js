@@ -5,16 +5,26 @@ var _ = require('lodash'),
 	dataHelper = require('../../../helpers/data.js'),
 	defaultData = requireNew('../../data/default.data.js');
 
-var data = _.merge(defaultData, {
-		meta: {
-			title: 'TopBild | WI_043',
-			description: '',
-			code: dataHelper.getTemplateCode('hero.hbs'),
-			documentation: dataHelper.getDocumentation('hero.md')
+var templateData = {
+			heroImg: '/assets/media/img/hero.png',
+			heroAlt: 'Symbolbild'
 		},
-		widgets: {
-			breadcrumb: requireNew('../breadcrumb/breadcrumb.data.js')
-		}
-	});
+		data = _.merge(defaultData, {
+			meta: {
+				title: 'TopBild | WI_043',
+				description: '',
+				code: dataHelper.getTemplateCode('hero.hbs'),
+				documentation: dataHelper.getDocumentation('hero.md'),
+				mocks: [
+					{
+						description: null,
+						data: dataHelper.getFormattedJSON(templateData)
+					}
+				]
+			},
+			widgets: {
+				breadcrumb: requireNew('../breadcrumb/breadcrumb.data.js')
+			}
+		}, templateData);
 
 module.exports = data;

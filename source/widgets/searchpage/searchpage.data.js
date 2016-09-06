@@ -16,7 +16,7 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Searchpage',
+				title: 'Suchseite Formular | WI_061',
 				description: '',
 				code: dataHelper.getTemplateCode('searchpage.hbs'),
 				documentation: dataHelper.getDocumentation('searchpage.md'),
