@@ -26,7 +26,7 @@ var templateData = {
 					jobDescr: 'Leitung',
 					email: 'hans.muster@fhnw.ch',
 					telephone: '+41 62 957 24 26',
-				},
+				}
 			],
 			langStrings: {
 				telephone: 'Telefon',
