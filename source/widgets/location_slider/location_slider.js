@@ -20,7 +20,8 @@
 					map: '[data-' + name + '="map"]',
 					bar: '[data-' + name + '="bar"]',
 					navOption: '[data-' + name + '="nav-option"]',
-					navList: '[data-' + name + '="nav-list"]'
+					navList: '[data-' + name + '="nav-list"]',
+					markerData: '[data-' + name + '="markerData"]'
 				},
 				stateClasses: {
 					isActive: 'is_active'
@@ -114,8 +115,10 @@
 			},
 			data = {
 				maps: [],
-				navOptions: []
-			};
+				navOptions: [],
+				markers: []
+			},
+			isOneMapOnly = false;
 
 	/**
 	 * Create an instance of the widget
@@ -148,11 +151,18 @@
 
 		this.options.markerIconProps.url = this.$element.data('maps-marker');
 
-		this.initMaps();
+		if (this.$element.hasClass('all-locations')) {
+			isOneMapOnly = true;
+		}
+
+		if (!isOneMapOnly) {
+			this.initMaps();
+			this.initSlickNav();
+		} else {
+			this.initAllLocations();
+		}
 
 		this.initSlick();
-
-		this.initSlickNav();
 	};
 
 	/**
@@ -170,6 +180,9 @@
 		});
 	};
 
+	/**
+	 * initializing the maps
+	 */
 	Widget.prototype.initMaps = function() {
 		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
 			var $mapElement = $(element),
@@ -185,6 +198,9 @@
 		}.bind(this));
 	};
 
+	/**
+	 * initializing the nav to controll slick
+	 */
 	Widget.prototype.initSlickNav = function() {
 		$(this.options.domSelectors.navOption).map(function(index, element) {
 			var $navOption = $(element);
@@ -195,12 +211,22 @@
 		}.bind(this));
 	};
 
+	/**
+	 * Go to slide
+	 * @param index
+	 * @private
+	 */
 	Widget.prototype._goTo = function(index) {
 		this._setNavActive(index);
 
 		this._setSlideActive(index);
 	};
 
+	/**
+	 * Setting the nav item active according to the index
+	 * @param index
+	 * @private
+	 */
 	Widget.prototype._setNavActive = function(index) {
 		var $navOption = $(data.navOptions[index]);
 
@@ -210,6 +236,11 @@
 		this._moveNavBar($navOption);
 	};
 
+	/**
+	 * Moving the nav bar to the nav options position and giving their width
+	 * @param $navOption
+	 * @private
+	 */
 	Widget.prototype._moveNavBar = function($navOption) {
 		var $bar = this.$element.find(this.options.domSelectors.bar),
 				offsetLeft = $navOption.offset().left - this.$element.find(this.options.domSelectors.navList).offset().left;
@@ -234,10 +265,72 @@
 		var markerProps = _.assign({
 					position: new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))),
 					icon: this.options.markerIconProps
-				}, this.options.markerProps),
+				}),
 				marker = new google.maps.Marker(markerProps);
 
 		marker.setMap(map);
+	};
+
+	/**
+	 * Initializing the map for all locations including their markers
+	 */
+	Widget.prototype.initAllLocations = function() {
+		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
+			var mapProp = _.assign(this.options.mapProps, {
+						center: new google.maps.LatLng(47.5, 7.5),
+						styles: this.options.mapStyles,
+						zoom: 9
+					}),
+					map = new google.maps.Map(element, mapProp);
+
+			data.maps = map;
+		}.bind(this));
+
+		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
+			var $markerElement = $(element),
+					markerProps = {
+						position: new google.maps.LatLng(parseFloat($markerElement.data('coordinates-y')), parseFloat($markerElement.data('coordinates-x'))),
+						icon: this.options.markerIconProps,
+						opacity: 0.5
+					},
+					marker = new google.maps.Marker(markerProps);
+
+			marker.setMap(data.maps);
+
+			data.markers.push(marker);
+
+			google.maps.event.addListener(marker, 'click', function() {
+				this._setMarkerOpacityDefault();
+
+				if (marker.getOpacity() !== 1) {
+					marker.set('opacity', 1.0);
+					this._showInfo($markerElement);
+				}
+			}.bind(this));
+		}.bind(this));
+	};
+
+	/**
+	 * Sets the opacity for all markers back to default
+	 * @private
+	 */
+	Widget.prototype._setMarkerOpacityDefault = function() {
+		data.markers.forEach(function(marker) {
+			marker.set('opacity', 0.5);
+		});
+	};
+
+	/**
+	 * Makes one location visible
+	 * @param $marker the span of the marker with the title attribute, so we find the the marker
+	 * @private
+	 */
+	Widget.prototype._showInfo = function($marker) {
+		$('.location__info').fadeOut(250);
+
+		var titleAttr = $marker.data('location-title');
+
+		$('.location__info[data-location-target="' + titleAttr + '"]').fadeIn(250);
 	};
 
 	/**

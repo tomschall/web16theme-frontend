@@ -224,3 +224,14 @@ $infoPadding: 34px;
 	.location__upper {
 	}
 }
+
+/**
+  * Styles for the all locations map
+  */
+
+.widg_location_slider.all-locations {
+	.location__info,
+	nav {
+		display: none;
+	}
+}
