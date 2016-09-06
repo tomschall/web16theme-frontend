@@ -15,7 +15,7 @@ var templateData = {
 					name: 'Prof. Dr. Hans Muster',
 					jobDescr: 'Leitung',
 					email: 'hans.muster@fhnw.ch',
-					telephone: '+41 62 957 24 26',
+					telephone: '+41 62 957 24 26'
 				},
 				{
 					img: {
@@ -25,7 +25,7 @@ var templateData = {
 					name: 'Prof. Dr. Hans Muster',
 					jobDescr: 'Leitung',
 					email: 'hans.muster@fhnw.ch',
-					telephone: '+41 62 957 24 26',
+					telephone: '+41 62 957 24 26'
 				}
 			],
 			langStrings: {
