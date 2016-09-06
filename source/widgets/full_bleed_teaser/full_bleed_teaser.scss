@@ -1,0 +1,47 @@
+.widg_full_bleed_teaser {
+	margin-right: -1 * span(3.3);
+	margin-bottom: $basicPush * 2;
+	position: relative;
+
+	img {
+		max-width: 100%;
+	}
+}
+
+.full_bleed_teaser__img {
+	@include bleedFull();
+
+	margin-right: -1 * span(1.7);
+}
+
+.full_bleed_teaser__text {
+	position: absolute;
+	top: 50%;
+
+	max-width: 40%;
+
+	transform: translateY(-50%);
+
+	h2 {
+		position: relative;
+		margin-bottom: $basicPush * 2;
+
+		&:after {
+			display: block;
+			content: " ";
+			position: absolute;
+
+			bottom: 0;
+			left: 0;
+			height: 4px;
+
+			background-color: $colorYellow;
+			width: 80px;
+		}
+	}
+
+	a.button {
+		margin-top: 5px;
+	}
+
+}
