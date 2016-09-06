@@ -6,6 +6,7 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
+	title: 'Kontakt',
 	persons: [
 		{
 			fullname: 'Prof. Dr. Adrian Schwaninger',
@@ -13,7 +14,17 @@ var templateData = {
 			phone: '+41 62 957 24 26',
 			email: 'adrian.schwaninger@fhnw.ch',
 			img: {
-				src: '/assets/media/img/schwaninger.png',
+				src: '/assets/media/img/img_contact_sidebar.png',
+				alt: 'Prof. Dr. Adrian Schwaninger'
+			}
+		},
+		{
+			fullname: 'Prof. Dr. Adrian Schwaninger',
+			jobDescription: 'Institutsleitung',
+			phone: '+41 62 957 24 26',
+			email: 'adrian.schwaninger@fhnw.ch',
+			img: {
+				src: '/assets/media/img/img_contact_sidebar.png',
 				alt: 'Prof. Dr. Adrian Schwaninger'
 			}
 		}

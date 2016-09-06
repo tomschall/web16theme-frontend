@@ -1,5 +1,24 @@
 .widg_contact {
 	@include clearfix();
+
+	.content__element & {
+		h2 {
+			margin-bottom: $basicPush * 0.4;
+		}
+	}
+
+	border-top: 1px solid $colorGreyHover;
+	border-bottom: 1px solid $colorGreyHover;
+
+	padding-top: $basicPush * 2;
+}
+
+.widg_contact__entry {
+	float: none;
+	display: block;
+	margin-bottom: $basicPush * 0.5;
+
+	@include clearfix;
 }
 
 .widg_contact__portrait {
@@ -18,10 +37,11 @@
 .widg_contact__info {
 	float: left;
 
-	span {
+	span,
+	a {
 		display: block;
 
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 	}
 }
 
@@ -32,27 +52,4 @@
 .widg_contact__label {
 	margin-bottom: $basicPush / 3;
 	font-weight: 700;
-}
-
-.product_sidebar,
-.product_sidebar_v3 {
-	.widg_contact {
-		margin-top: $basicPush / 1.5;
-	}
-
-	.widg_contact__portrait {
-		float: none;
-		width: 100%;
-		margin-right: 0;
-		max-width: 100%;
-	}
-
-	.widg_contact__info {
-		margin-top: $basicPush;
-
-		span,
-		a {
-			font-size: 1.25rem;
-		}
-	}
 }
