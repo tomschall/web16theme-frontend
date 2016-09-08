@@ -17,7 +17,7 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Full Bleed Teaser',
+				title: 'Full Bleed Teaser | WI_062',
 				description: '',
 				code: dataHelper.getTemplateCode('full_bleed_teaser.hbs'),
 				documentation: dataHelper.getDocumentation('full_bleed_teaser.md'),

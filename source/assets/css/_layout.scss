@@ -67,6 +67,9 @@ h3 {
 	position: relative;
 	margin-top: $contentMarginTop;
 
+	min-height: 0;
+	transition: min-height $transitionLength / 2 $transitionEase;
+
 	flex-grow: 1;
 
 	@include clearfix();
