@@ -115,6 +115,8 @@
 		$(window).on('resize.' + this.uuid, function() {
 			if (oldWidth !== $(window).width()) {
 				this._handleResize();
+
+				this._updateHider();
 			}
 		}.bind(this));
 	};
@@ -192,6 +194,8 @@
 	Widget.prototype._undoFixation = function($object) {
 		var objectIndex = parseInt($object.data(dataParams.objectIndex));
 
+		$object.find(this.options.domSelectors.content).removeAttr('style');
+
 		if (objectIndex === 0) {
 			this._setHiderInvisible();
 		}
@@ -246,7 +250,15 @@
 		var contentHeight = $object.getContentHeight(),
 				contentOffsetBottom = $object.getContentOffsetBottom(),
 				titleOffsetBottom = $object.getTitleOffsetBottom(),
-				initialContentTop = 0;
+				initialContentTop = 0,
+				combTitlesHeight = this._getCombTitlesHeight(data.objects.length) + 60,
+				maxHeightForContent = $(window).outerHeight() - combTitlesHeight;
+
+		if (contentHeight > maxHeightForContent) {
+			contentHeight = maxHeightForContent;
+
+			$object.find(this.options.domSelectors.content).css('max-height', maxHeightForContent);
+		}
 
 		this._addPushToObjects(contentHeight, parseInt($object.data(dataParams.objectIndex)));
 

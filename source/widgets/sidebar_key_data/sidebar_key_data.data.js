@@ -6,6 +6,7 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
+			title: 'Eckdaten',
 			entries: [
 				{
 					title: 'Abschluss',

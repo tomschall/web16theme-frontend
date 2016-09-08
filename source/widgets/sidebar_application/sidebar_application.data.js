@@ -6,6 +6,7 @@ var _ = require('lodash'),
 		defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
+			title: 'Anmeldung',
 			text: 'Das ist der Text für die Anmeldung',
 			note: 'Anmeldehinweis - eher klein',
 			button: {

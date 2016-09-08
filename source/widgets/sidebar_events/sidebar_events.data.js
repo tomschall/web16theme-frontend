@@ -10,6 +10,7 @@ var templateData = {
 				text: 'Alle ansehen',
 				url: '#targetInfoEvents'
 			},
+			title: 'Infoveranstaltungen',
 			entries: [
 				{
 					title: 'Info-Veranstaltung CAS-Eingliederungsmanagement',
