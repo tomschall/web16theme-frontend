@@ -5,7 +5,9 @@
 		</div>
 		<div class="object__content custom-scrollbar" data-sidebar="content">
 			{{#each contacts}}
-					<img src="{{img.src}}" alt="{{img.alt}}"/>
+					{{#if img}}
+						<img src="{{img.src}}" alt="{{img.alt}}"/>
+					{{/if}}
 					<dl>
 						<dt class="contact__name">{{name}}</dt>
 						<dd>{{jobDescr}}</dd>
@@ -13,6 +15,11 @@
 						<dd><a href="tel:{{telephone}}">{{telephone}}</a></dd>
 						<dt>{{../langStrings.email}}</dt>
 						<dd><a href="mailto:{{email}}">{{email}}</a></dd>
+
+						{{#if location}}
+							<dt>{{../../langStrings.location}}</dt>
+							<dd>{{location}}</dd>
+						{{/if}}
 					</dl>
 			{{/each}}
 		</div>

@@ -31,7 +31,8 @@ var templateData = {
 			],
 			langStrings: {
 				telephone: 'Telefon',
-				email: 'E-Mail'
+				email: 'E-Mail',
+				location: 'Standort'
 			}
 		},
 		data = _.assign(defaultData, {
