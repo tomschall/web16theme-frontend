@@ -149,7 +149,7 @@
 	Widget.prototype.setMetaInfo = function($slide) {
 		var category = $slide.data(name + '-cat'),
 				title = $slide.data(name + '-title'),
-				link = $slide.data(name + 'link');
+				link = $slide.data(name + '-link');
 
 		$(this.options.domSelectors.title).text(title).animate({
 			'opacity': 1
@@ -157,7 +157,7 @@
 		$(this.options.domSelectors.category).text(category).animate({
 			'opacity': 1
 		}, this.options.transitionSpeed / 2);
-		$(this.options.domSelectors.link).text(link).animate({
+		$(this.options.domSelectors.link).attr('href', link).animate({
 			'opacity': 1
 		}, this.options.transitionSpeed / 2);
 
