@@ -87,6 +87,18 @@
 
 			margin-bottom: $gutterWidth;
 		}
+
+		&.search__holder___wide {
+			@include span(9);
+
+			@include mq($from: small, $to: subnav) {
+				@include span(6);
+			}
+
+			@include mq($to: small) {
+				@include span(12);
+			}
+		}
 	}
 
 	/**

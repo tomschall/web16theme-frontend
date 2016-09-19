@@ -44,7 +44,8 @@
 		resultsShown = false,
 		currentSearchValue = null,
 		searchBarIsOpen = false,
-		searchPageUrl = 'test';
+		searchPageUrl = 'test',
+		jsonURL = '';
 
 	/**
 	 * Create an instance of the Widget
@@ -73,6 +74,8 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
+		jsonURL = this.$element.data('json-url');
+
 		this.addEventHandlers();
 	};
 
@@ -129,7 +132,7 @@
 			q: _inputValue
 		};
 
-		window.estatico.search.search(xhrObject, true);
+		window.estatico.search.search(xhrObject, true, false, false, jsonURL);
 
 		this.changeSearchbarStatus(this.options.stateClasses.showLoader);
 

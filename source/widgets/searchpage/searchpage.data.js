@@ -12,7 +12,8 @@ var templateData = {
 				advancedStudiesFoundPlural: 'Weiterbildungsangebote gefunden',
 				advancedStudiesFoundSingular: 'Weiterbildungsangebot gefunden',
 				more: 'Mehr Informationen'
-			}
+			},
+			jsonURL: '/mocks/widgets/searchpage/searchpage.category.json'
 		},
 		data = _.merge(defaultData, {
 			meta: {

@@ -6,9 +6,9 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Suchseite - Alle Suchergebnisse'
+			title: 'Suchesuche mit Filter - Alle Kernkompetenzen'
 		},
-		title: 'Suchseite - Alle Suchergebnisse',
+		title: 'Alle Kernkompetenzen',
 		widgets: {
 			header: _.assign({
 				hasPromoTeaser: false,
@@ -17,8 +17,12 @@ var data = _.merge(defaultData, {
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),
 			searchpage: _.assign(requireNew('../../widgets/searchpage/searchpage.data.js'), {
-				jsonURL: '/mocks/widgets/searchpage/searchpage.json'
+				jsonURL: '/mocks/widgets/searchpage/searchpage.expertises.json'
 			}),
+			hero: _.assign({
+				heroImage: '/assets/media/img/cas_eingl_mgmt_hero.png',
+				heroAlt: 'Symbolbild'
+			}, requireNew('../../widgets/hero/hero.data.js')),
 			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
 		}
 	});

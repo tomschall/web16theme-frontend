@@ -1,0 +1,76 @@
+{{#extend "layouts/layout" pageTypeClass="search-page"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <h1 id="search-title" data-searchpage="title">{{title}}</h1>
+
+    <div class="search__wrapper" data-searchpage-template="expertises_full" data-searchpage-category="expertises" data-searchpage="formWrapper">
+      <div class="search__form-wrapper search__form-wrapper___with-letter-list">
+				<div>
+          <div class="search__holder search__holder___wide">
+            <div class="search__string">
+              <input type="text" value="" id="search-string" name="search-string" data-searchpage="query" data-searchparam="q"/>
+              <label class="formQuestion" for="search-string">Suchbegriff</label>
+              <span class="reset-field" aria-hidden="true">Feld zurücksetzen</span>
+            </div>
+          </div>
+          <div class="search__holder select2__wrapper">
+            <select id="faculty" name="faculty" data-searchparam="faculty" class="custom-select" multiple="multiple">
+              <option value="is">International Studies</option>
+              <option value="it">Informatik</option>
+              <option value="ls">Life Sciences</option>
+              <option value="mc">Musik</option>
+              <option value="ph">Pädagogik</option>
+              <option value="ps">Psychologie</option>
+              <option value="sw">Soziale Arbeit</option>
+              <option value="tn">Technik</option>
+            </select>
+            <label class="formQuestion" for="faculty">Fachbereich</label>
+          </div>
+				</div>
+
+				<div class="search__third-row">
+					<div class="search__extra-holder">
+						<button class="search__reset not-default" data-searchpage="reset">Alle Felder zurücksetzen</button>
+					</div>
+					<div class="search__extra-holder element-hidden">
+						<span data-searchpage="countNumber"></span> Kompetenzen gefunden
+					</div>
+				</div>
+
+				<div class="search__letter-list">
+					<a data-searchpage="char" href="#searchpage-char-A">A</a>
+          <a data-searchpage="char" href="#searchpage-char-B">B</a>
+          <a data-searchpage="char" href="#searchpage-char-C">C</a>
+          <a data-searchpage="char" href="#searchpage-char-D">D</a>
+          <a data-searchpage="char" href="#searchpage-char-E">E</a>
+          <a data-searchpage="char" href="#searchpage-char-F">F</a>
+          <a data-searchpage="char" href="#searchpage-char-G">G</a>
+          <a data-searchpage="char" href="#searchpage-char-H">H</a>
+          <a data-searchpage="char" href="#searchpage-char-I">I</a>
+          <a data-searchpage="char" href="#searchpage-char-J">J</a>
+          <a data-searchpage="char" href="#searchpage-char-K">K</a>
+          <a data-searchpage="char" href="#searchpage-char-L">L</a>
+          <a data-searchpage="char" href="#searchpage-char-M">M</a>
+          <a data-searchpage="char" href="#searchpage-char-N">N</a>
+          <a data-searchpage="char" href="#searchpage-char-O">O</a>
+          <a data-searchpage="char" href="#searchpage-char-P">P</a>
+          <a data-searchpage="char" href="#searchpage-char-Q">Q</a>
+          <a data-searchpage="char" href="#searchpage-char-R">R</a>
+          <a data-searchpage="char" href="#searchpage-char-S">S</a>
+          <a data-searchpage="char" href="#searchpage-char-T">T</a>
+          <a data-searchpage="char" href="#searchpage-char-U">U</a>
+          <a data-searchpage="char" href="#searchpage-char-V">V</a>
+          <a data-searchpage="char" href="#searchpage-char-W">W</a>
+          <a data-searchpage="char" href="#searchpage-char-X">X</a>
+          <a data-searchpage="char" href="#searchpage-char-Y">Y</a>
+          <a data-searchpage="char" href="#searchpage-char-Z">Z</a>
+				</div>
+
+      </div>
+			{{> "widgets/searchpage/searchpage" widgets.searchpage }}
+    </div>
+
+	{{/content}}
+{{/extend}}

@@ -7,10 +7,7 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var searchbarURL = '/mocks/widgets/searchbar/searchbar.json',
-			searchpageURL = '/mocks/widgets/searchpage/searchpage.json',
-			searchpageCategoryURL = '/mocks/widgets/searchpage/searchpage.category.json',
-			updateFilterURL = '/mocks/widgets/searchpage/searchpage.updateFilter.json',
+	var updateFilterURL = '/mocks/widgets/searchpage/searchpage.updateFilter.json',
 			events = {
 				dataLoaded: 'dataLoaded.estatico.search',
 				updateFilterLoaded: 'updateFilterLoaded.estatico.search'
@@ -153,9 +150,8 @@
 	 * @param isSearchbar if the search is triggered in the searchbar (different ajax target)
 	 * @param isCategorySearch if the search should be a category search (different ajax target and different templates)
    */
-	function search(query, isSearchbar, isCategorySearch) {
-		var isPageSearch = false,
-				targetUrl = searchpageURL;
+	function search(query, isSearchbar, isCategorySearch, searchTemplate, searchURL) {
+		var isPageSearch = false;
 
 		if (typeof isSearchbar === typeof undefined) {
 			isSearchbar = false;
@@ -170,11 +166,14 @@
 			searchTemplate = 'search_full';
 		}
 
+		if (typeof searchTemplate === typeof undefined) {
+			searchTemplate = 'search_full';
+		}
+
 		activeCategorySearch = isCategorySearch;
 
 		if (isSearchbar || isPageSearch) {
 			if (isSearchbar) {
-				targetUrl = searchbarURL;
 				searchTemplate = 'livesearch';
 			}
 
@@ -186,7 +185,7 @@
 					}),
 					dataType: 'json',
 					success: handleReturnData,
-					url: targetUrl
+					url: searchURL
 				});
 			});
 		} else if (isCategorySearch) {
@@ -194,7 +193,7 @@
 				data: query,
 				dataType: 'json',
 				success: handleReturnData,
-				url: searchpageCategoryURL
+				url: searchURL
 			});
 		}
 	}

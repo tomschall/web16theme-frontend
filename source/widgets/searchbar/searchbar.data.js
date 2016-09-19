@@ -8,7 +8,8 @@ var _ = require('lodash'),
 var templateData = {
 			langStrings: {
 				allResults: 'Alle Suchergebnisse'
-			}
+			},
+			jsonURL: '/mocks/widgets/searchbar/searchbar.json'
 		},
 		data = _.assign(defaultData, {
 			meta: {

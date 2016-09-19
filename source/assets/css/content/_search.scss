@@ -315,8 +315,39 @@ a.search__cat-title {
 }
 
 .search__form-wrapper {
+	box-shadow: 0 7px 14px 0 rgba($colorBlack, 0.07);
+
 	> div {
 		@include clearfix;
 	}
+
+	&.search__form-wrapper___with-letter-list {
+		padding-bottom: 0 !important;
+	}
 }
 
+.search__letter-list {
+	padding: 0 $gutterWidth;
+
+	margin-top: $basicPush * 2;
+
+	a {
+		display: block;
+		float: left;
+
+		width: 3.84%;
+		text-align: center;
+
+		height: 50px;
+		line-height: 50px;
+
+		color: $customScrollbarColor;
+
+		text-decoration: none;
+
+		&:hover {
+			background-color: rgba($colorLightGray, 0.5);
+			color: $colorBlack;
+		}
+	}
+}

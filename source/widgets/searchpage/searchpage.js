@@ -53,7 +53,9 @@
 		expandedFilters = false,
 		isCategorySearch = false,
 		loadMoreMode = false,
-		currentLimitOffset = 0;
+		currentLimitOffset = 0,
+		templatesWithoutMoreButton = ['expertises_full'],
+		jsonURL = '';
 
 	/**
 	 * Create an instance of the widget
@@ -84,6 +86,7 @@
 	Widget.prototype.init = function() {
 		searchTemplate = $(this.options.domSelectors.formWrapper).data('searchpage-template');
 		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
+		jsonURL = this.$element.data('json-url');
 
 		this.eventListeners();
 
@@ -268,7 +271,7 @@
 		}
 
 		if (this.checkParameters()) {
-			window.estatico.search.search(searchParam, false, isCategorySearch);
+			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL);
 
 			if (!loadMoreMode) {
 				this.changeStatus(this.options.stateClasses.showLoading);
@@ -299,8 +302,6 @@
 		if (loadMoreMode) {
 			html = this.generateAdditionalTableHTML(html);
 
-			console.log('html', html);
-
 			this.$element.find('.search__results .search__table').append(html);
 
 			// Reset the load more mode to false
@@ -316,6 +317,10 @@
 		this.changeStatus(this.options.stateClasses.showResults);
 
 		resultsShown = true;
+
+		if ($.inArray(searchTemplate, templatesWithoutMoreButton) >= 0) {
+			$(this.options.domSelectors.moreResultsBtn).remove();
+		}
 
 		/**
 		 * When there is a count number holder in the document
