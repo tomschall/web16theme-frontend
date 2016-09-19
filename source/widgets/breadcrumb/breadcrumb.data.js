@@ -6,6 +6,21 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
+		entries: [
+			{
+				'url': '../startpage_prototype/startpage_prototype.html',
+				'title': '',
+				'extraClasses': 'is_home'
+			}, {
+				'url': '#',
+				'title': 'Weiterbildung',
+				'extraClasses': ''
+			}, {
+				'url': '.#',
+				'title': 'Fachbereiche',
+				'extraClasses': ''
+			}
+		],
 		langStrings: {
 			extend: 'Breadcrumb erweitern'
 		}
