@@ -41,6 +41,7 @@
  * @requires ../../widgets/location_slider/location_slider.js
  * @requires ../../widgets/application_accordeon/application_accordeon.js
  * @requires ../../widgets/so_me_share/so_me_share.js
+ * @requires ../../widgets/expertise_areas/expertise_areas.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js

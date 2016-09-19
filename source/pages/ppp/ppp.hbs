@@ -1,0 +1,62 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content">
+      <h1>{{title}}</h1>
+      <p class="text__lead">
+				{{leadText}}
+      </p>
+
+			<div class="content__element">
+				<h2>Leistungsumfang</h2>
+				<p>
+          Die FHNW arbeite zum Thema Informatik auf verschiedenste Weisen mit der Wirtschaft zusammen. Unter anderem gibt es:
+				</p>
+				{{> "widgets/accordeon/accordeon" widgets.accordeon}}
+			</div>
+
+			<div class="content__element content__element___borderless">
+				{{> "widgets/blockquote/blockquote" widgets.testimonial}}
+			</div>
+
+			<div class="content__element">
+				<h2>Formen der Zusammenarbeit</h2>
+				<ul>
+					<li>
+						<h4>Direkte Zusammenarbeit</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</p>
+					</li>
+          <li>
+            <h4>Projekte im Rahmen des KTI-Frameworks</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</p>
+					</li>
+          <li>
+            <h4>Zusammenarbeit mit Aargauer Forschungsfonds</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</p>
+					</li>
+				</ul>
+			</div>
+
+			<div class="content__element content__element___borderless">
+				{{> "widgets/expertise_areas/expertise_areas" widgets.expertiseAreas}}
+			</div>
+
+			<div class="content__element">
+				<h2>Aktuelle Projekte</h2>
+				<p>An der FHNW ist immer etwas los. Hier finden Sie ein paar Beispiel für die spannenden Projekte die wir in kooperation mit Wirtschaft und Öffentlichkeit im Augenblick durchführen dürfen.</p>
+
+				{{> "widgets/teaser/teaser" widgets.projectTeasers}}
+			</div>
+
+			<div class="content__element">
+				<h2>Ausgewählte Publikationen</h2>
+
+				{{> "widgets/extendedlinks/extendedlinks" widgets.publications}}
+			</div>
+
+    </div>
+		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+	{{/content}}
+{{/extend}}
