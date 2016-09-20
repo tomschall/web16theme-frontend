@@ -87,11 +87,13 @@
 			fade: true,
 			speed: speed,
 			useCSS: false,
-			pauseOnHover: false
+			pauseOnHover: true
 		});
 
 		this.initVideoProperties();
 		this.resizeVideo();
+
+		$('video')[0].play();
 	};
 
 	/**

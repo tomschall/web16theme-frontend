@@ -9,6 +9,12 @@ var _ = require('lodash'),
 var templateData = {
 		slides: [
 			{
+				title: 'Video',
+				category: 'Test',
+				url: '#',
+				video: '/assets/media/video/video_test.mp4'
+			},
+			{
 				title: 'Campus in Muttenz öffnet im Jahre 2018 die Tore',
 				category: 'Neuer Standort',
 				url: '#slide1',
@@ -25,12 +31,6 @@ var templateData = {
 				category: 'Infoabend',
 				url: '#slide3',
 				image: '/assets/media/img/bg_home_01.jpg'
-			},
-			{
-				title: 'Video',
-				category: 'Test',
-				url: '#',
-				video: '/assets/media/video/video_test.mp4'
 			}
 		],
 		widgets: {
