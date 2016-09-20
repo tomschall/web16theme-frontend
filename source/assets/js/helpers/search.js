@@ -15,9 +15,9 @@
 
 			listEntryTemplates = {
 				searchbar: {
-					normal: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span></a></li>',
-					event: '<li class="search__result-event"><a href="{{url}}"><span class="title">{{Title}}</span><span class="event-info">{{eventDetail}}</span></a></li>',
-					doc: '<li class="search__result-doc"><a href="{{url}}"><span class="title">{{Title}}<span class="visible-in-bar">({{fileType}})</span></span><span class="file-type visible-in-page">{{fileType}}</span></a></li>'
+					normal: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span></a></li>',
+					event: '<li class="search__result-event"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="event-info">{{eventDetail}}</span></a></li>',
+					doc: '<li class="search__result-doc"><a href="{{path_string}}"><span class="title">{{Title}}<span class="visible-in-bar">({{fileType}})</span></span><span class="file-type visible-in-page">{{fileType}}</span></a></li>'
 				},
 				searchpage: {
 					normal: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span></a></li>',
