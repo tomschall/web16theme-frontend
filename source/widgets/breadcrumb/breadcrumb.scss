@@ -54,6 +54,11 @@
 		padding-top: $basicPush * 1 !important;
 	  }
 	}
+
+	.is-profile-hero & {
+		top: $basicPush / 2;
+		background-color: transparent;
+	}
 }
 
 .widg_breadcrumb ul li,

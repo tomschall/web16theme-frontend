@@ -16,7 +16,7 @@
 			color: '#999999'
 		});
 
-		$('.widg_hero__img, .widg_teaser__img img').imageScale({
+		$('.widg_hero__img:not(.is-profile-hero), .widg_teaser__img img').imageScale({
 			rescaleOnResize: true,
 			scale: 'best-fill'
 		});

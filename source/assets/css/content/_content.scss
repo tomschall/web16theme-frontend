@@ -126,6 +126,11 @@
 
 	.bleed__inner {
 		padding-top: $basicPush * 6;
+
+		@include mq($to: medium) {
+			padding-left: $gutterWidth;
+			padding-right: $gutterWidth;
+		}
 	}
 }
 

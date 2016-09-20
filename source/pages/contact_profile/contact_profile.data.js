@@ -8,7 +8,7 @@ var data = _.merge(defaultData, {
 		meta: {
 			title: 'Kontaktprofil mit Bild'
 		},
-		title: 'Contact Profile',
+		title: 'Prof. Dr. Verena Muster',
 		leadText: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
 		widgets: {
 			header: _.assign({
@@ -17,27 +17,13 @@ var data = _.merge(defaultData, {
 			}, requireNew('../../widgets/header/header.data.js')),
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),
-			hero: _.assign({
+			hero: _.assign(requireNew('../../widgets/hero/hero.data.js'), {
 				heroImage: '/assets/media/img/prof_verena_muster.png',
 				heroAlt: 'Symbolbild',
-				breadcrumb: {
-					entries: [
-						{
-							'url': '../startpage_prototype/startpage_prototype.html',
-							'title': '',
-							'extraClasses': 'is_home'
-						}, {
-							'url': '#',
-							'title': 'Weiterbildung',
-							'extraClasses': ''
-						}, {
-							'url': '.#',
-							'title': 'Fachbereiche',
-							'extraClasses': ''
-						}
-					]
+				profileInfo: {
+					name: 'Prof. Dr. Verena Muster'
 				}
-			}, requireNew('../../widgets/hero/hero.data.js')),
+			}),
 			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js'),
 			sidebar: _.assign(requireNew('../../widgets/sidebar/sidebar.data.js'), {
 				widgets: {

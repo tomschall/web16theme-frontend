@@ -193,4 +193,9 @@
 	right: 0;
 
 	transform: translateY(-140%);
+
+	@include mq($to: medium) {
+		position: static;
+		transform: none;
+	}
 }

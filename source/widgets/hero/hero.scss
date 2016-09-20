@@ -34,6 +34,11 @@
   	@include mq($to: subnav) {
 	  min-height: 250px;
 	}
+
+	.is-profile-hero & {
+		max-height: none;
+		min-height: 0;
+	}
 }
 
 .widg_hero__img {
@@ -55,4 +60,13 @@
 			margin-left: 400px;
 		}
 	}
+}
+
+.widg_hero__profile-name {
+	@include contentWrapper(0, false);
+
+	position: absolute;
+
+	top: 30%;
+	z-index: zindex(titleProfile);
 }
