@@ -5,6 +5,17 @@
 
 	dl {
 
+		margin-bottom: $basicPush * 2;
+		padding-bottom: $basicPush * 2;
+
+		border-bottom: 1px solid $colorGreyHover;
+
+		&:last-of-type {
+			margin-bottom: 0;
+			padding-bottom: 0;
+			border-bottom: 0;
+		}
+
 		dd, dt {
 			font-weight: 300;
 		}

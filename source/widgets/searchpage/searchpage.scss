@@ -70,6 +70,9 @@
 	@include contentWrapper($gutterWidth, true);
 
 	padding-bottom: $basicPush * 4.5 !important;
+	padding-top: $basicPush * 2 !important;
+
+	background-color: $colorBg;
 
 	position: relative;
 	z-index: 2;

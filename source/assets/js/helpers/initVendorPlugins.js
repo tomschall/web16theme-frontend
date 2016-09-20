@@ -22,6 +22,8 @@
 		});
 
 		$('.widg_teaser__img img').imageScale('scale');
+
+		$('.search__form-wrapper').scrollToFixed();
 	});
 
 	$(window).load(function() {

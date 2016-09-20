@@ -12,6 +12,7 @@
  * @requires ../../../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js
  * @requires ../../../node_modules/material-spinner/dist/js/material.spinner.js
  * @requires ../../../node_modules/lodash/lodash.js
+ * @requires ../../../node_modules/scrolltofixed/jquery-scrolltofixed.js
 
  * @requires ../.tmp/templates.js
 

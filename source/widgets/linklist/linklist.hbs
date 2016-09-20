@@ -1,0 +1,20 @@
+<div class="widg_linklist" data-init="linklist">
+	<h2>{{title}}</h2>
+	<ul class="not-default">
+		{{#each listEntries}}
+			<li class="widg_linklist___entry {{#if isExternal}}is_external{{/if}}">
+				<a href="{{url}}">
+					{{#if img}}
+						<div class="widg_linklist__img-wrapper">
+							<img src="{{img.src}}" alt="{{img.alt}}"/>
+						</div>
+					{{/if}}
+
+          <h4>{{title}}</h4>
+          <p>{{entryText}}</p>
+				</a>
+			</li>
+		{{/each}}
+	</ul>
+
+</div>

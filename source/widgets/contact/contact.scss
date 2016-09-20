@@ -16,7 +16,7 @@
 .widg_contact__entry {
 	float: none;
 	display: block;
-	margin-bottom: $basicPush * 0.5;
+	margin-bottom: $basicPush * 2;
 
 	@include clearfix;
 }
