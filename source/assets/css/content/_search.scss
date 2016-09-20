@@ -351,3 +351,37 @@ a.search__cat-title {
 		}
 	}
 }
+
+.search__word-list {
+	padding-top: $basicPush * 2;
+
+	> div {
+		@include clearfix();
+
+		margin-bottom: $basicPush * 4;
+	}
+
+	h2 {
+		color: $customScrollbarColor;
+
+		border-bottom: 3px solid $customScrollbarColor;
+	}
+
+	.search__result-word-list {
+		width: 33%;
+		float: left;
+
+		a {
+			border-bottom: 1px solid $colorGreyHover;
+			padding-left: $basicPush;
+		}
+
+		@include mq($to: medium) {
+			width: 50%;
+		}
+
+		@include mq($to: small) {
+			width: 100%;
+		}
+	}
+}

@@ -7,7 +7,28 @@ var _ = require('lodash'),
 
 var templateData = {
 			heroImg: '/assets/media/img/hero.png',
-			heroAlt: 'Symbolbild'
+			heroAlt: 'Symbolbild',
+			breadcrumb: {
+				entries: [
+					{
+						'url': '../startpage_prototype/startpage_prototype.html',
+						'title': '',
+						'extraClasses': 'is_home'
+					}, {
+						'url': '#',
+						'title': 'Weiterbildung',
+						'extraClasses': ''
+					}, {
+						'url': '.#',
+						'title': 'Fachbereiche',
+						'extraClasses': ''
+					}, {
+						'url': '#',
+						'title': 'Fachbereich für Soziale Arbeit',
+						'extraClasses': ''
+					}
+				]
+			}
 		},
 		data = _.merge(defaultData, {
 			meta: {

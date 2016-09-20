@@ -24,7 +24,8 @@
 					training: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span><span class="study_type">{{study_type}}</span></a></li>'
 				},
 				categorySearch: {
-					training: '<tr><td>{{Title}}</td><td>{{type}}</td><td>{{faculty}}</td><td>{{location}}</td><td data-searchpage="url"><a href="{{url}}"></a></td></tr>'
+					training: '<tr><td>{{Title}}</td><td>{{type}}</td><td>{{faculty}}</td><td>{{location}}</td><td data-searchpage="url"><a href="{{url}}"></a></td></tr>',
+					expertises: '<div class="search__result-word-list"><a href="{{url}}">{{Title}}</a></div>'
 				},
 				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
 			},
@@ -38,7 +39,28 @@
 					'web'
 			],
 			activeCategorySearch = false,
-			searchTemplate = 'livesearch';
+			searchTemplate = 'livesearch',
+			localeKeyMapping = {
+				ä: 'a',
+				ö: 'o',
+				ü: 'u',
+				é: 'e',
+				è: 'e',
+				à: 'a'
+			};
+
+	/**
+	 * Normalizing the car for word list if Umlaut
+	 * @param char
+	 * @returns {*}
+	 */
+	function normalizeChar(char) {
+		if (localeKeyMapping.hasOwnProperty(char.toLowerCase())) {
+			char = localeKeyMapping[char.toLowerCase()].toUpperCase();
+		}
+
+		return char;
+	}
 
 	function generateSearchListItem(listEntry, category) {
 		var template = null;
@@ -106,6 +128,43 @@
 	}
 
 	/**
+	 * Generates the Word List
+	 * @param data
+	 * @returns {*|HTMLElement}
+	 */
+	function generateWordList(data) {
+		var results = data.response.docs,
+				$responseHTML = $('<div class="search__word-list"></div>'),
+				template = null,
+				activeLetter = null,
+				$letterBox = null;
+
+		results.forEach(function(wordItem) {
+			var firstLetterItem = normalizeChar(wordItem.Title.charAt(0));
+
+			if (activeLetter !== firstLetterItem) {
+				activeLetter = firstLetterItem;
+
+				if ($letterBox) {
+					$letterBox.append('</div>');
+
+					$responseHTML.append($letterBox);
+				}
+
+				$letterBox = $('<div id="searchpage-char-' + firstLetterItem + '"><h2>' + firstLetterItem + '</h2></div>');
+			}
+
+			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
+
+			$letterBox.append(template(wordItem));
+		});
+
+		$responseHTML.append($letterBox);
+
+		return $responseHTML;
+	}
+
+	/**
 	 * Handles the returned data and puts it in the html Templates
 	 * @param data
    */
@@ -118,7 +177,11 @@
 				$responseHTML = $('<div></div>');
 
 		if (activeCategorySearch) {
-			$responseHTML.addClass('search__table').append(generateResultTable(data));
+			if (data.responseHeader.params.category === 'expertises') {
+				$responseHTML.append(generateWordList(data));
+			} else {
+				$responseHTML.addClass('search__table').append(generateResultTable(data));
+			}
 		} else {
 			$searchCategory = $('<div class="search__cat"></div>');
 			$categoryList = $('<ul></ul>');
@@ -149,6 +212,8 @@
 	 * @param query the single word search query
 	 * @param isSearchbar if the search is triggered in the searchbar (different ajax target)
 	 * @param isCategorySearch if the search should be a category search (different ajax target and different templates)
+	 * @param searchTemplate the template for the search results (how to display)
+	 * @param searchURL the search url
    */
 	function search(query, isSearchbar, isCategorySearch, searchTemplate, searchURL) {
 		var isPageSearch = false;

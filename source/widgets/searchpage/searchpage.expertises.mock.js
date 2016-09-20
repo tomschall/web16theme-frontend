@@ -3,23 +3,20 @@
 var data = {
 	'responseHeader': {
 		'params': {
-			'category': 'training'
+			'category': 'expertises'
 		}
 	},
 	'response': {
 		'numFound': 203,
 		'start': 0,
 		'length': 50,
-		'tableHeaders': [
-			'Titel',
-			'Typ',
-			'Fachbereich',
-			'Ort',
-			'URL'
-		],
 		'docs': [
 			{
 				Title: 'Advanced Management',
+				url: '#'
+			},
+			{
+				Title: 'Ästhetik',
 				url: '#'
 			},
 			{
