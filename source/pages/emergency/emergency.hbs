@@ -1,0 +1,26 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content">
+      <h1>{{title}}</h1>
+      <p class="text__lead">
+				{{leadText}}
+      </p>
+
+			<div class="content__element content__element___borderless">
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel.</p>
+			</div>
+
+			<div class="content__element content__element___emergency">
+				<h2>Notfalltelefon:</h2>
+				<p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+
+				<a class="emergency__phone" href="tel:08003456789">Telefon 0800 345 67 89</a>
+				<span class="emergency__describe-phone">(Gratisnummer)</span>
+			</div>
+
+    </div>
+	{{/content}}
+{{/extend}}

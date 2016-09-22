@@ -156,3 +156,19 @@
 .content__element___marginless {
 	margin-bottom: 0;
 }
+
+.content__element___emergency {
+	padding: $basicPush * 3.2 $basicPush * 4.1;
+
+	background: $colorRedBackground;
+	border: 1px solid $colorEmergencyBorder !important;
+
+	h2 {
+		color: $colorEmergencyBorder;
+	}
+
+	.emergency__phone {
+		display: block;
+		text-decoration: none;
+	}
+}
