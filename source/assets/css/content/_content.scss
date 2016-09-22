@@ -172,3 +172,42 @@
 		text-decoration: none;
 	}
 }
+
+.arrow__list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+
+	li {
+		a {
+			@include iconDataurl('pfeil-black_short');
+
+			opacity: 1;
+			color: $colorTextGrey;
+
+			padding: 5px 0 5px $basicPush * 2.8;
+			display: block;
+			position: relative;
+
+			&:hover {
+				color: $colorBlack;
+
+				&:before {
+					opacity: 1;
+				}
+			}
+
+			&:before {
+				position: absolute;
+				width: 18px;
+				height: 11px;
+
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%);
+
+				opacity: 0.5;
+			}
+		}
+	}
+}

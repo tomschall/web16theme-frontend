@@ -28,7 +28,7 @@ var data = _.merge(defaultData, {
 					]
 				}
 			}),
-			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js'),
+			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js')
 		}
 	});
 

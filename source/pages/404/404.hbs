@@ -1,0 +1,38 @@
+{{#extend "layouts/layout"  pageTypeClass="full-width-page"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content">
+      <h1>{{title}}</h1>
+      <p class="text__lead">
+				{{leadText}}
+      </p>
+
+			<div class="content__element content__element___borderless">
+				<h2>Sie haben evt. folgendes gesucht</h2>
+				<ul class="not-default arrow__list">
+					<li><a href="#">CAS Lerncoaching</a></li>
+					<li><a href="#">CAS Projektmanagement</a></li>
+					<li><a href="#">CAS Giessereitechnik</a></li>
+					<li><a href="#">CAS Theaterpädagogik</a></li>
+					<li><a href="#">CAS Kompetenzmanagement</a></li>
+				</ul>
+			</div>
+
+			<div class="content__element content__element___borderless">
+				<h2>Weitere Möglichkeiten:</h2>
+				{{> "widgets/teaser/teaser" widgets.teaser}}
+			</div>
+
+    </div>
+
+    <div class="content__element content__element___bleed content__element___top-bordered" id="locations">
+
+			{{> "widgets/location_slider/location_slider" widgets.locationSlider}}
+      <div class="only-phone">
+				{{> "widgets/accordeon/accordeon" widgets.locationAccordeon }}
+      </div>
+    </div>
+	{{/content}}
+{{/extend}}
