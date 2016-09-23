@@ -133,6 +133,17 @@ a.search__cat-title {
 		}
 	}
 
+	.path_string {
+		font-size: 1.083333rem;
+		color: $colorTextGrey;
+
+		display: block;
+	}
+
+	.description {
+		display: block;
+	}
+
 	&:last-of-type a {
 		border-bottom: none;
 	}
@@ -384,4 +395,8 @@ a.search__cat-title {
 			width: 100%;
 		}
 	}
+}
+
+.search__contact-adress {
+	margin-bottom: $basicPush * 2;
 }

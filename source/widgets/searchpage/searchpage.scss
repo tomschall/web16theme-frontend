@@ -49,12 +49,29 @@
 		width: 1%;
 	}
 
-	a {
+	a:not(.button__secondary):not(.search__contact-link) {
 		font-size: 0.1rem;
 		color: transparent;
 		width: 0;
 		height: 0;
 		display: inline-block;
+	}
+
+	.search__contact-link {
+		font-size: 1.25rem;
+
+		display: block;
+
+		float: left;
+		width: 60%;
+	}
+
+	.search__contact-label {
+		float: left;
+		display: block;
+
+		width: 40%;
+		font-weight: 600;
 	}
 }
 
@@ -93,6 +110,18 @@
 
 		&.search__holder___wide {
 			@include span(9);
+
+			@include mq($from: small, $to: subnav) {
+				@include span(6);
+			}
+
+			@include mq($to: small) {
+				@include span(12);
+			}
+		}
+
+		&.search__holder___double {
+			@include span(6);
 
 			@include mq($from: small, $to: subnav) {
 				@include span(6);
@@ -223,7 +252,11 @@
 		}
 	}
 
-	tr:hover {
+	td {
+		vertical-align: top;
+	}
+
+	tr[data-clickable="true"]:hover {
 		td {
 			background-color: $colorLightGray;
 			cursor: pointer;
@@ -233,6 +266,10 @@
 	th {
 		text-align: left;
 		border-bottom: 2px solid $colorGreyHover;
+	}
+
+	a.button__secondary {
+		margin-top: $basicPush * 2;
 	}
 }
 
@@ -267,3 +304,4 @@
 	}
 
 }
+

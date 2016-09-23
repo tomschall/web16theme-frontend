@@ -302,7 +302,7 @@
 		if (loadMoreMode) {
 			html = this.generateAdditionalTableHTML(html);
 
-			this.$element.find('.search__results .search__table').append(html);
+			this.$element.find('.search__results table').append(html);
 
 			// Reset the load more mode to false
 			loadMoreMode = false;

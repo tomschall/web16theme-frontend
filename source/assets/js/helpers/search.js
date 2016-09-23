@@ -16,16 +16,19 @@
 			listEntryTemplates = {
 				searchbar: {
 					normal: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span></a></li>',
-					event: '<li class="search__result-event"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="event-info">{{eventDetail}}</span></a></li>',
-					doc: '<li class="search__result-doc"><a href="{{path_string}}"><span class="title">{{Title}}<span class="visible-in-bar">({{fileType}})</span></span><span class="file-type visible-in-page">{{fileType}}</span></a></li>'
+					event: '<li class="search__result-event"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="event-info">{{start}}</span></a></li>',
+					doc: '<li class="search__result-doc"><a href="{{path_string}}"><span class="title">{{Title}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>'
 				},
 				searchpage: {
-					normal: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span></a></li>',
-					training: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span><span class="study_type">{{study_type}}</span></a></li>'
+					normal: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span></a></li>',
+					training: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="study_type">{{edu_type}}</span></a></li>',
+					event: '<li class="search__result-event"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="event-info">{{portal_type}}, {{start}}</span></a></li>',
+					sonst: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="description">{{description}}</span><span class="path_string">{{path_string}}</span></a></li>'
 				},
 				categorySearch: {
-					training: '<tr><td>{{Title}}</td><td>{{type}}</td><td>{{faculty}}</td><td>{{location}}</td><td data-searchpage="url"><a href="{{url}}"></a></td></tr>',
-					expertises: '<div class="search__result-word-list"><a href="{{url}}">{{Title}}</a></div>'
+					training: '<tr data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{path_string}}"></a></td></tr>',
+					expertises: '<div data-clickable="true" class="search__result-word-list"><a href="{{url}}">{{Title}}</a></div>',
+					profiles: '<tr data-clickable="false"><td><div><h4>{{Title}}</h4></div><div>{{description}}</div><a class="button__secondary" href="{{path_string}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if phone}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{phone}}">{{phone}}</a></div>{{/if}}{{#if central_phone}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{central_phone}}">{{central_phone}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="tel:{{email}}">{{email}}</a></div>{{/if}}</td></tr>'
 				},
 				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
 			},
@@ -36,7 +39,8 @@
 					'organisation',
 					'documents',
 					'irf',
-					'web'
+					'web',
+					'sonst'
 			],
 			activeCategorySearch = false,
 			searchTemplate = 'livesearch',
@@ -47,7 +51,8 @@
 				é: 'e',
 				è: 'e',
 				à: 'a'
-			};
+			},
+			langStrings = {};
 
 	/**
 	 * Normalizing the car for word list if Umlaut
@@ -88,6 +93,9 @@
 				case 'training':
 					template = Handlebars.compile(listEntryTemplates.searchpage.training);
 					break;
+				case 'webservice':
+					template = Handlebars.compile(listEntryTemplates.searchpage.webservice);
+					break;
 				default:
 					template = Handlebars.compile(listEntryTemplates.searchpage.normal);
 					break;
@@ -108,20 +116,22 @@
 				$headersRow = $('<tr></tr>'),
 				template = null;
 
-		headers.forEach(function(header) {
-			if (header === 'URL') {
-				$headersRow.append('<th class="url">' + header + '</th>');
-			} else {
-				$headersRow.append('<th>' + header + '</th>');
-			}
-		});
+		if (typeof headers !== typeof undefined) {
+			headers.forEach(function(header) {
+				if (header === 'URL') {
+					$headersRow.append('<th class="url">' + header + '</th>');
+				} else {
+					$headersRow.append('<th>' + header + '</th>');
+				}
+			});
+		}
 
 		$responseHTML.append($headersRow);
 
 		results.forEach(function(row) {
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
 
-			$responseHTML.append(template(row));
+			$responseHTML.append(template(_.assign(row, langStrings)));
 		});
 
 		return $responseHTML;
@@ -164,6 +174,25 @@
 		return $responseHTML;
 	}
 
+	function getAllLangStrings() {
+		var $searchpage = $('.widg_searchpage');
+
+		if ($searchpage.length > 0) {
+			var d = {},
+					re_dataAttr = /^data-lang\-(.+)$/;
+
+			$.each($searchpage.get(0).attributes, function(index, attr) {
+				if (re_dataAttr.test(attr.nodeName)) {
+					var key = attr.nodeName.match(re_dataAttr)[1];
+
+					d[key] = attr.nodeValue;
+				}
+			});
+
+			langStrings = d;
+		}
+	}
+
 	/**
 	 * Handles the returned data and puts it in the html Templates
 	 * @param data
@@ -175,6 +204,8 @@
 				$categoryTitle = null,
 				$tempListDOM = null,
 				$responseHTML = $('<div></div>');
+
+		getAllLangStrings();
 
 		if (activeCategorySearch) {
 			if (data.responseHeader.params.category === 'expertises') {

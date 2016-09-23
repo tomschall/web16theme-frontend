@@ -1,0 +1,136 @@
+{{#extend "layouts/layout" pageTypeClass="search-page"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <h1 id="search-title" data-searchpage="title">Weiterbildungsangebot der FHNW</h1>
+
+    <div class="search__wrapper" data-searchpage-template="profiles_full" data-searchpage-category="profiles" data-searchpage="formWrapper">
+      <div class="search__form-wrapper">
+				<div>
+          <div class="search__holder search__holder___double">
+            <div class="search__string">
+              <input type="text" value="" id="search-string" name="search-string" data-searchpage="query" data-searchparam="q"/>
+              <label class="formQuestion" for="search-string">Suchbegriff</label>
+              <span class="reset-field" aria-hidden="true">Feld zurücksetzen</span>
+            </div>
+          </div>
+
+          <div class="search__holder select2__wrapper">
+            <select id="faculty" name="faculty" data-searchparam="faculty" class="custom-select" multiple="multiple">
+              <option value="is">International Studies</option>
+              <option value="it">Informatik</option>
+              <option value="ls">Life Sciences</option>
+              <option value="mc">Musik</option>
+              <option value="ph">Pädagogik</option>
+              <option value="ps">Psychologie</option>
+              <option value="sw">Soziale Arbeit</option>
+              <option value="tn">Technik</option>
+            </select>
+            <label class="formQuestion" for="faculty">Fachbereich</label>
+          </div>
+
+
+          <div class="search__holder select2__wrapper">
+            <select class="custom-select custom-select___long has_optgroup" name="topic" id="topic" data-searchparam="topic" data-placeholder="">
+              <option value=""></option>
+              <option value="7192">Akustik</option>
+              <option value="7191">Andragogik</option>
+              <option value="7193">Architektur</option>
+              <option value="8335">Audiodesign</option>
+              <option value="7194">Automation</option>
+              <option value="7206">Banking/Finance/Controlling</option>
+              <option value="7195">Bau</option>
+              <option value="8080">Bauleitung</option>
+              <option value="7196">Begabungs-/Begabtenförderung</option>
+              <option value="7197">Behinderung/Integration</option>
+              <option value="7198">Beratung/Coaching</option>
+              <option value="7199">Berufsrolle</option>
+              <option value="8092">Bildung - Schule - Unterricht</option>
+              <option value="7200">Change Management</option>
+              <option value="8336">Dirigieren</option>
+              <option value="7202">Disziplin/Partizipation</option>
+              <option value="8026">Eingliederungsmanagement</option>
+              <option value="8096">Einkauf/Beschaffung</option>
+              <option value="7203">Elektronik</option>
+              <option value="7204">Energie</option>
+              <option value="7205">Ethik</option>
+              <option value="7207">Forschung</option>
+              <option value="7208">Geomatik</option>
+              <option value="8095">Gestalten - Musik - Bewegung</option>
+              <option value="7209">Gesundheit</option>
+              <option value="8347">Graphic Design and Typography</option>
+              <option value="7210">Heterogenität</option>
+              <option value="7211">Human Resource Management</option>
+              <option value="8337">Improvisation</option>
+              <option value="7212">Informatik</option>
+              <option value="7213">Integration</option>
+              <option value="8338">Jazz</option>
+              <option value="8377">Kinder und Jugendhilfe</option>
+              <option value="7215">Kinder/Jugendliche</option>
+              <option value="8339">Komposition</option>
+              <option value="7216">Kulturmanagement</option>
+              <option value="7217">Kunststofftechnik</option>
+              <option value="7218">Lerncoaching</option>
+              <option value="7219">Logistik</option>
+              <option value="7220">Management/Führung</option>
+              <option value="7221">Maschinenbau</option>
+              <option value="7223">Methoden</option>
+              <option value="7629">Migration</option>
+              <option value="7224">Mikrotechnologie</option>
+              <option value="8340">Musik</option>
+              <option value="8341">Musik und Bewegung</option>
+              <option value="8343">Musikpädagogik</option>
+              <option value="8344">Musikvermittlung</option>
+              <option value="8184">Nachhaltigkeit</option>
+              <option value="8094">Natur - Gesellschaft - Technik</option>
+              <option value="7226">Nonprofit Management</option>
+              <option value="8183">Ökologie</option>
+              <option value="7850">Online-Marketing</option>
+              <option value="7227">Pädagogischer ICT-Support</option>
+              <option value="8345">Performance</option>
+              <option value="7228">Praxisausbildende Soz.Arbeit</option>
+              <option value="7879">Public Management</option>
+              <option value="7231">Qualitätsmanagement</option>
+              <option value="7229">Recht</option>
+              <option value="7230">Schulleitung</option>
+              <option value="8346">Schulmusik</option>
+              <option value="7232">Sicherheitsmanagement</option>
+              <option value="7233">Sozialmanagement</option>
+              <option value="8155">Sozialplanung</option>
+              <option value="8385">Sport</option>
+              <option value="8093">Sprachen - Mathematik - Medien</option>
+              <option value="7819">Stadtentwicklung</option>
+              <option value="7235">Train-the-Trainers</option>
+              <option value="7239">Umwelt</option>
+              <option value="7237">Umweltmanagement</option>
+              <option value="8185">Umweltrecht</option>
+              <option value="7238">Umweltschutz</option>
+              <option value="7236">Umwelttechnik</option>
+              <option value="7241">Unternehmenskommunikation</option>
+              <option value="8307">Usability/User Experience </option>
+              <option value="8145">Weiterbildung im Bildungsraum</option>
+              <option value="7243">Wirtschaftsinformatik/E-Business</option>
+              <option value="7244">Zusammenarbeit</option>
+            </select>
+            <label class="formQuestion" for="topic">Thema</label>
+            <span class="custom-select___remover" aria-hidden="true"></span>
+          </div>
+
+				</div>
+
+				<div class="search__third-row">
+					<div class="search__extra-holder">
+						<button class="search__reset not-default" data-searchpage="reset">Alle Felder zurücksetzen</button>
+					</div>
+					<div class="search__extra-holder element-hidden">
+						<span data-searchpage="countNumber"></span> Weiterbildungsangebote gefunden
+					</div>
+				</div>
+
+      </div>
+			{{> "widgets/searchpage/searchpage" widgets.searchpage }}
+    </div>
+
+	{{/content}}
+{{/extend}}

@@ -11,7 +11,11 @@ var templateData = {
 				all: 'Alle',
 				advancedStudiesFoundPlural: 'Weiterbildungsangebote gefunden',
 				advancedStudiesFoundSingular: 'Weiterbildungsangebot gefunden',
-				more: 'Mehr Informationen'
+				more: 'Mehr Informationen',
+				toProfile: 'Zum Profil',
+				email: 'E-Mail',
+				phoneDirect: 'T Direkt',
+				phoneCentral: 'T Zentrale'
 			},
 			jsonURL: '/mocks/widgets/searchpage/searchpage.category.json'
 		},
