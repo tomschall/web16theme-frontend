@@ -16,7 +16,7 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Kompetenz Auswahl | WI_062',
+				title: 'Kompetenz Auswahl | WI_063',
 				description: '',
 				code: dataHelper.getTemplateCode('expertise_areas.hbs'),
 				documentation: dataHelper.getDocumentation('expertise_areas.md'),
