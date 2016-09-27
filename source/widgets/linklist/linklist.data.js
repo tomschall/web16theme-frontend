@@ -48,7 +48,7 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Linklist',
+				title: 'Link-Liste mit/ohne Bildern | WI_061',
 				description: '',
 				code: dataHelper.getTemplateCode('linklist.hbs'),
 				documentation: dataHelper.getDocumentation('linklist.md'),
