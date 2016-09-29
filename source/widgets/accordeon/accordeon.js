@@ -74,7 +74,7 @@
 		});
 
 		this.$element.find(this.options.domSelectors.button).on('click.' + this.uuid, function(event) {
-			if ($(event.currentTarget.closest(this.options.domSelectors.entry)).hasClass(this.options.stateClasses.isOpen)) {
+			if ($(event.currentTarget).closest(this.options.domSelectors.entry).hasClass(this.options.stateClasses.isOpen)) {
 				if (!this.options.allowsMultiple) {
 					this.closeOpenEntries();
 				} else {
