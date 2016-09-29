@@ -15,7 +15,9 @@
 							<span aria-describedby="location-{{uid}}">{{eventLocation}}</span>
 						</span>
             <span class="button__availability {{availabilityState}}">
-							<span>({{availableSeats}} {{../langStrings.availableSeats}})</span>
+							{{#if availableSeats}}
+								<span>({{availableSeats}} {{../langStrings.availableSeats}})</span>
+							{{/if}}
 						</span>
 						<a href="{{btnUrl}}" class="button button__apply small_button">Anmelden</a>
           </button>
