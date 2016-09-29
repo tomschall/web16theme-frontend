@@ -73,6 +73,8 @@ input {
 		&:focus {
 			background-color: $colorBg;
 			border: 1px solid $colorBlack;
+
+			outline: none;
 		}
 	}
 }
