@@ -53,7 +53,9 @@ var data = _.merge(defaultData, {
 				]
 			}),
 			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js'),
-			teaser: requireNew('../../widgets/teaser/teaser.data.js'),
+			teaser: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
+				moreButton: false
+			}),
 			locationSlider: _.assign(requireNew('../../widgets/location_slider/location_slider.data.js'), {
 				locationTitle: 'Unsere Standorte',
 				locationDescription: 'Die Fachhochschule Nordwestschweiz ist in verschiedenen Ortschaften angesiedelt. Hier finden Sie eine Übersicht nach Standorten.',
