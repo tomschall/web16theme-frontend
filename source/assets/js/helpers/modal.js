@@ -16,13 +16,17 @@
 		if ($('.modal').length === 0) {
 			$('.page_wrapper').append($modal);
 		}
+
+		$modal.show(250);
 	}
 
 	/**
 	 * Removes the modal from dom tree
 	 */
 	function hideModal() {
-		$('.modal').remove();
+		$('.modal').hide(250, function() {
+			$(this).remove();
+		});
 	}
 
 	/**
