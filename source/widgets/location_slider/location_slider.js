@@ -176,6 +176,7 @@
 		this.$element.find(this.options.domSelectors.slider).slick({
 			arrows: false,
 			draggable: false,
+			fade: true,
 			infinite: false
 		});
 	};

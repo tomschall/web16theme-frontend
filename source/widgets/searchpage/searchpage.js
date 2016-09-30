@@ -442,8 +442,9 @@
 				}
 			}.bind(this));
 
-			$field.select2('destroy');
 		}.bind(this));
+
+		$('.custom-select').select2('destroy');
 
 		window.estatico.formElementHelper.initSelect2();
 	};

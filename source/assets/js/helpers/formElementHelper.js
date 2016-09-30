@@ -8,6 +8,8 @@
 ;(function($, undefined) {
 	'use strict';
 
+	var eventsSet = false;
+
 	/**
 	 * Checks the active selection for the last visible to add ('...') or for the last over all to remove the comma
 	 * @param $select2
@@ -105,9 +107,11 @@
 			if ($select.val() === null || $select.val() === '') {
 				$select2.removeClass('has-selection');
 				$select2.nextAll('.custom-select___remover').hide();
+				$select.removeClass('has-value');
 			} else {
 				$select2.addClass('has-selection');
 				$select2.nextAll('.custom-select___remover').show();
+				$select.addClass('has-value');
 
 				checkSelection($select2);
 			}
@@ -117,13 +121,6 @@
 			// Options are not initialized immediately, so we wait 100 millisec
 			setTimeout(function() {
 				var $select2ResultsOptions = $('.select2-results__options');
-
-				$select2ResultsOptions.mCustomScrollbar({
-					theme: 'fhnw',
-					advanced: {
-						updateOnContentResize: true
-					}
-				});
 
 				if ($select2ResultsOptions.find('[role="group"]').length > 0) {
 					$select2ResultsOptions.addClass('has_groups');
@@ -138,6 +135,8 @@
 		$('.custom-select___remover').on('click.formElementHelper', function() {
 			$(this).prevAll('select').val('').trigger('change');
 		});
+
+		eventsSet = true;
 	}
 
 	/**
@@ -152,24 +151,30 @@
 			}
 		});
 
-		$selectFields.select2();
+		$selectFields.select2({
+			minimumResultsForSearch: 1
+		});
 
 		$selectFields.map(function(index, select) {
 			var $select = $(select),
 					$select2 = $(select).nextAll('.select2-container');
 
-			if ($select.val() === null || $select.val() === '') {
+			if (!$select.hasClass('has-value')) {
 				$select2.removeClass('has-selection');
 				$select2.nextAll('.custom-select___remover').hide();
 			} else {
 				$select2.addClass('has-selection');
 				$select2.nextAll('.custom-select___remover').show();
 
-				checkSelection($select2);
+				if ($select.not('.custom-select__long')) {
+					checkSelection($select2);
+				}
 			}
 		});
 
-		addSelect2Events();
+		if (!eventsSet) {
+			addSelect2Events();
+		}
 	}
 
 	/**
@@ -215,8 +220,7 @@
 	 */
 	$.extend(true, estatico, {
 		formElementHelper: {
-			initSelect2: initSelect2,
-			addSelect2Events: addSelect2Events
+			initSelect2: initSelect2
 		}
 	});
 })(jQuery);
