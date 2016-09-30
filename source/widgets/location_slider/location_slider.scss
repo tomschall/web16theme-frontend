@@ -10,6 +10,10 @@ $infoPadding: 34px;
 	@include mq($to: 'medium') {
 		display: none;
 	}
+
+	&.all-locations {
+		border-top: 1px solid $colorGreyHover;
+	}
 }
 
 .widg_location_slider nav {

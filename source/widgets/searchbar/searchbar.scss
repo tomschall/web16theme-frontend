@@ -126,6 +126,11 @@
 			outline: none;
 		}
 
+		&:hover,
+		&:focus {
+			border: none !important;
+		}
+
 		@include mq($to: small) {
 			padding-left: $basicPush * 2;
 		}

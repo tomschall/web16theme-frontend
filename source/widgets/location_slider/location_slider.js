@@ -280,7 +280,7 @@
 			var mapProp = _.assign(this.options.mapProps, {
 						center: new google.maps.LatLng(47.5, 7.5),
 						styles: this.options.mapStyles,
-						zoom: 9
+						zoom: 10
 					}),
 					map = new google.maps.Map(element, mapProp);
 
