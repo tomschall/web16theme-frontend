@@ -211,7 +211,7 @@ The Subwrappers only desktop
 
 	box-shadow: 3px 0 10px 0 rgba($colorBlack, 0.05);
 
-	> .widg_navigation__list {
+	.mCSB_container > .widg_navigation__list {
 		display: block;
 		margin-top: $basicPush * 12.2;
 	}

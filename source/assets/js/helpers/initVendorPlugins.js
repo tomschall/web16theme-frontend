@@ -27,7 +27,7 @@
 	});
 
 	$(window).load(function() {
-		$('.custom-scrollbar').mCustomScrollbar({
+		$('.custom-scrollbar, .widg_navigation__sub-wrapper').mCustomScrollbar({
 			theme: 'fhnw'
 		});
 	});

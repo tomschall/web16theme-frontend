@@ -147,7 +147,7 @@
 		$targetWrapper.find(this.options.domSelectors.list).remove();
 
 		if (window.estatico.mq.query({from: 'medium'})) {
-			$subList.clone(true).appendTo($targetWrapper);
+			$subList.clone(true).appendTo($targetWrapper.find('.mCSB_container'));
 		} else {
 			$subList.clone(true).appendTo('.widg_navigation').addClass(this.options.stateClasses.isVisible);
 		}
