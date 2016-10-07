@@ -59,7 +59,8 @@ var data = _.merge(defaultData, {
 					img: {
 						src: '/assets/media/img/standort_solothurn.png',
 						alt: 'Standort Solothurn'
-					}
+					},
+					text: 'ppppp ppppppp pppppppp pppp pppppppppp pppppppp pppppppppp pppppppppppppppp ppppppppp ppppp pppp pppppp pp pp ppppp pppppp pp ppp ppp ppp ppppp pd pdp dpdpdpd pdp dpd pdp dp'
 				}
 			],
 			moreButton: false
