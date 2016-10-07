@@ -14,11 +14,12 @@
 							<span class="accessibility-hidden" id="location-{{uid}}">{{../langStrings.eventLocation}}</span>
 							<span aria-describedby="location-{{uid}}">{{eventLocation}}</span>
 						</span>
-            <span class="button__availability {{availabilityState}}">
-							{{#if availableSeats}}
-								<span>({{availableSeats}} {{../langStrings.availableSeats}})</span>
-							{{/if}}
-						</span>
+						{{#if availableSeats}}
+							<span class="button__availability {{availabilityState}}">
+									<span>({{availableSeats}} {{../langStrings.availableSeats}})</span>
+							</span>
+						{{/if}}
+
 						<a href="{{btnUrl}}" class="button button__apply small_button">Anmelden</a>
           </button>
         </div>
