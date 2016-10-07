@@ -16,7 +16,8 @@ var data = _.merge(defaultData, {
 			navigation: requireNew('../navigation/navigation.data.js'),
 			languageSwitcher: requireNew('../langswitcher/langswitcher.data.js'),
 			headerMetaNavigation: requireNew('../headermetanavigation/headermetanavigation.data.js'),
-			soMeLinks: requireNew('../somelinks/somelinks.data.js')
+			soMeLinks: requireNew('../somelinks/somelinks.data.js'),
+			promoteaser: requireNew('../promoteaser/promoteaser.data.js')
 		}
 	});
 
