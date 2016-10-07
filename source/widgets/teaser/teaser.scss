@@ -92,8 +92,6 @@
 		height: auto;
 
 		transform: scale(1.2);
-
-		transition: all $transitionLength $transitionEase;
 	}
 
 	@include mq($from: small) {
