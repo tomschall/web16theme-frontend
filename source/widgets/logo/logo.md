@@ -1,7 +1,7 @@
 ## Description
 
-
+Logo.
 
 ## Integration
 
-Copy HTML.
+HTML hinzufügen. Keine Daten

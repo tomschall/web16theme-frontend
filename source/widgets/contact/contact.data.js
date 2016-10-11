@@ -41,10 +41,10 @@ data = _.merge(defaultData, {
 			description: '',
 			code: dataHelper.getTemplateCode('contact.hbs'),
 			documentation: dataHelper.getDocumentation('contact.md'),
-			mocks: {
+			mocks: [{
 				description: null,
 				data: dataHelper.getFormattedJSON(templateData)
-			}
+			}]
 		}
 	}, templateData);
 

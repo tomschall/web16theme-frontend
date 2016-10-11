@@ -1,7 +1,7 @@
 ## Description
 
-
+Das Wrapper-Widget für den Footer
 
 ## Integration
 
-Copy HTML.
+HTML einfügen. Sonst keine besonderen Integrationsanforderungen

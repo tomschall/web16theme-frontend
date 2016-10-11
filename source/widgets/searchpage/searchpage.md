@@ -1,7 +1,9 @@
 ## Description
 
-
+Suchseite mit genauen Informationen
 
 ## Integration
 
-Copy HTML.
+HTML und JS einabuen.
+
+Response und Call sind in der Solr-Dokumentation beschrieben.

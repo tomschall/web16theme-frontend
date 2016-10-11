@@ -27,10 +27,10 @@ var templateData = {
 				description: '',
 				code: dataHelper.getTemplateCode('tabnavigation.hbs'),
 				documentation: dataHelper.getDocumentation('tabnavigation.md'),
-				mocks: {
-					documentation: null,
+				mocks: [{
+					description: null,
 					data: dataHelper.getFormattedJSON(templateData)
-				}
+				}]
 			}
 		}, templateData);
 

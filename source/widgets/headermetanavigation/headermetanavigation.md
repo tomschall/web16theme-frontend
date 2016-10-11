@@ -1,7 +1,12 @@
 ## Description
 
-
+Header-Meta Navigation
 
 ## Integration
 
-Copy HTML.
+HTML einbinden. Kein JS
+
+### Fields
+
+* **title**: Titel
+* **url**: Dazugehöriger Seitenlink

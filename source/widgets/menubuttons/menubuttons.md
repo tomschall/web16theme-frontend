@@ -1,7 +1,7 @@
 ## Description
 
-
+Statische Headerbuttons im mobile Header (suche und menü)
 
 ## Integration
 
-Copy HTML.
+HTML und JS einbinden. Kein Javascript
