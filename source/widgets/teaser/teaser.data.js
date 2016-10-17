@@ -54,13 +54,13 @@ data = _.merge(defaultData, {
 			title: 'Teaser (halb, voll, 1/3, 1/4) | WI_028',
 			code: dataHelper.getTemplateCode('teaser.hbs'),
 			documentation: dataHelper.getDocumentation('teaser.md'),
-		},
-		mocks: [
-			{
-				description: null,
-				data: dataHelper.getFormattedJSON(templateData)
-			}
-		]
+			mocks: [
+				{
+					description: null,
+					data: dataHelper.getFormattedJSON(templateData)
+				}
+			]
+		}
 	}, templateData);
 
 module.exports = data;
