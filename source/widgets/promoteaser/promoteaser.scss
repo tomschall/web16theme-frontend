@@ -1,10 +1,24 @@
 .widg_promoteaser {
-	width: 90%;
-	padding-top: 90%;
+	width: 98%;
+	padding-top: 98%;
 	position: relative;
-	border-radius: 50%;
-	background-color: $colorBg;
+
 	margin-top: $basicPush * 4;
+	margin-left: 1%;
+
+	.widg_promoteaser__circle {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		background-color: $colorBg;
+		border-radius: 50%;
+
+		transform: scale(1.0);
+		transition: transform $transitionLength / 2 $transitionEase;
+	}
 
 	.widg_promoteaser__inner {
 		position: absolute;
@@ -21,6 +35,10 @@
 
 		.widg_promoteaser__button:before {
 			animation: arrowAnimationWithCenterIcon $animationDuration;
+		}
+
+		.widg_promoteaser__circle {
+			transform: scale(1.1);
 		}
 	}
 

@@ -119,7 +119,7 @@
 		}.bind(this));
 
 		$(window).on('open.estatico.searchbar.' + this.uuid, function() {
-			this.closeNavigation(false);
+			this.closeNavigation(false, false);
 		}.bind(this));
 	};
 
@@ -218,9 +218,13 @@
 	/**
 	 * Closes the navigation
 	 */
-	Widget.prototype.closeNavigation = function(removePreventScroll) {
+	Widget.prototype.closeNavigation = function(removePreventScroll, controlModal) {
 		if (typeof removePreventScroll === typeof undefined) {
 			removePreventScroll = true;
+		}
+
+		if (typeof controlModal === typeof undefined) {
+			controlModal = true;
 		}
 
 		var $wrappers = $(this.options.domSelectors.subWrappers),
@@ -233,7 +237,7 @@
 
 		this.options.currentLevel = 0;
 
-		$(window).trigger(events.close);
+		$(window).trigger(events.close, [controlModal]);
 
 		if (removePreventScroll) {
 			window.estatico.modal.removePreventScroll();

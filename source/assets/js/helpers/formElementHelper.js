@@ -152,7 +152,7 @@
 		});
 
 		$selectFields.select2({
-			minimumResultsForSearch: 1
+			minimumResultsForSearch: 25
 		});
 
 		$selectFields.map(function(index, select) {

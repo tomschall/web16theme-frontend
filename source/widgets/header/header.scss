@@ -67,11 +67,16 @@
 		min-height: $headerHeightTop;
 		max-height: $headerHeightTop;
 
-		position: static;
 		padding: 15px $basicPush * 4;
 
-		&.is_nav-open {
+		&.is_nav-open:not(.widg_header___cloned) {
 			box-shadow: 0 2px 10px 0 rgba($colorBlack, 0.15);
+
+			position: relative;
+		}
+
+		&:not(.widg_header___cloned) {
+			z-index: 3000;
 		}
 
 		@include mq($to: small) {

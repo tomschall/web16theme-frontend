@@ -17,24 +17,41 @@ select {
 		transform: translateY(-50%);
 
 		font-size: 1.25rem;
+		cursor: pointer;
 	}
 
 	.select2-container.has-selection + .formQuestion {
 		font-size: 1rem;
 		transform: translateY(0);
-		top: 10px;
+		top: 7px;
 		color: $colorBorderGrey;
+	}
+}
+
+fieldset .select2-selection__rendered {
+	transform: translateY(-12px);
+
+	@include mq($from: small) {
+		transform: translateY(-8px);
 	}
 }
 
 .search__holder.select2__wrapper {
 	.formQuestion {
 		left: $gutterWidth + 18px;
+
+		@include mq($to: medium) {
+			left: $gutterWidth + 14px;
+		}
 	}
 }
 
 .select2-container {
 	width: 100% !important;
+
+	&:hover {
+		cursor: pointer;
+	}
 
 	.select2-selection--single,
 	.select2-selection--multiple,
@@ -65,6 +82,7 @@ select {
 
 			padding-left: 16px;
 			padding-top: 9px;
+			cursor: pointer;
 
 			&:focus {
 				outline: none;
@@ -72,6 +90,8 @@ select {
 
 			@include mq($to: medium) {
 				line-height: 47px;
+
+				padding-left: 13px;
 			}
 		}
 
@@ -81,7 +101,7 @@ select {
 
 			top: 0;
 			bottom: 0;
-			right: 7px;
+			right: 12px;
 
 			@include iconDataurl('dropdown-arrow');
 
@@ -110,9 +130,12 @@ select {
 		&:after {
 			position: absolute;
 
-			right: 10px;
+			right: 12px;
 			top: 50%;
 			transform: translateY(-50%);
+
+			width: 12px;
+			height: 7px;
 		}
 
 		.select2-selection__rendered {
@@ -130,6 +153,7 @@ select {
 			border-radius: 0;
 			margin-top: 10px;
 			float: left;
+			cursor: pointer;
 
 			&:after {
 				content: ",";
@@ -147,6 +171,10 @@ select {
 				}
 			}
 
+			@include mq($to: medium) {
+				margin-top: 4px;
+			}
+
 			.select2-selection__choice__remove {
 				display: none;
 			}
@@ -161,6 +189,14 @@ select {
 
 	.has_groups .select2-results__option[aria-disabled="true"] {
 		display: none;
+	}
+
+	.has_groups .select2-results__option:not([role="group"]) {
+		padding-left: 19px;
+	}
+
+	.has_groups .select2-results__group {
+		padding-left: 19px;
 	}
 }
 
@@ -225,7 +261,13 @@ select {
 		content: " ";
 
 		background: $colorBg;
-		border: 1px solid $colorBlack;
+		border: 1px solid $colorGreyHover;
+	}
+
+	&:hover {
+		&:before {
+			border-color: $customScrollbarColor;
+		}
 	}
 
 	&[aria-selected="true"],
@@ -234,6 +276,10 @@ select {
 		background-color: $colorYellowAccordeonActive;
 
 		@include iconDataurl('checkmark', $after: true);
+
+		&:before {
+			border-color: $colorBlack;
+		}
 
 		&:after {
 			height: $radioCheckboxDimensionInner;
@@ -302,6 +348,14 @@ select {
 	height: 40px;
 
 	border: none;
+	padding-left: 15px;
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.select2-container--default .select2-results__message {
+	font-size: 1rem;
+	color: $colorTextGrey;
 }
 
 	/**
@@ -337,4 +391,15 @@ select {
 	&.is_sticky {
 		position: fixed;
 	}
+}
+
+.select2-selection__placeholder {
+	display: inline-block;
+
+	transform: translateY(-1px);
+}
+
+
+.select2-container--default .select2-results > .select2-results__options {
+	max-height: 400px;
 }

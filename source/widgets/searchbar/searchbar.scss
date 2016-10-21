@@ -28,6 +28,11 @@
 	box-shadow: 3px 0 29px 0 rgba($colorBlack, 0.15);
 
 	transition: all $transitionLength / 2 $transitionEase;
+
+	@include mq($to: medium) {
+		transition: all $transitionLength $transitionEase;
+	}
+
 	z-index: -1;
 
 	&.is_open {
@@ -110,7 +115,7 @@
 
 	position: relative;
 
-	input {
+	input[type="text"] {
 		@include clickAreaSize(height);
 		@include clickAreaSize(line-height);
 
@@ -118,12 +123,14 @@
 
 		width: 100%;
 		font-size: 1.5rem;
-		padding-left: $basicPush * 2.4;
+		padding-left: $basicPush * 3;
+		border: none !important;
 
 		background-color: $colorSearchBarInputFocus;
 
 		&:focus {
 			outline: none;
+			background-color: $colorSearchBarInputFocus;
 		}
 
 		&:hover,
@@ -166,7 +173,7 @@
 }
 
 .widg_searchbar-bar__intro {
-	padding: $basicPush * 2 $basicPush * 3;
+	padding: $basicPush * 2 $basicPush * 3 $basicPush * 2;
 	display: none;
 
 	@include mq($to: small) {
@@ -186,7 +193,7 @@
 		opacity: 1;
 		text-decoration: none;
 		padding: 10.5px 17px;
-		border: 1px solid $colorBlack;
+		border: 1px solid $colorGreyHover;
 
 		position: relative;
 
@@ -206,7 +213,7 @@
 		}
 
 		&:hover {
-			background-color: $colorLightGray;
+			border-color: $colorBlack;
 		}
 
 	}
@@ -232,10 +239,23 @@
 	text-align: center;
 	font-size: 1.25rem;
 	margin-bottom: $basicPush * 2;
+	margin-top: $basicPush * -1;
 
 	font-weight: 600;
 
+	opacity: 0.7;
+	text-decoration: none;
+
 	&:hover {
 		background-color: $colorLightGray;
+	}
+}
+
+.widg_searchbar-bar__loader {
+	height: 100px;
+	position: relative;
+
+	.fhnw-spinner {
+		transform: translateY(50px);
 	}
 }

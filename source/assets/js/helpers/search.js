@@ -15,20 +15,20 @@
 
 			listEntryTemplates = {
 				searchbar: {
-					normal: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span></a></li>',
-					event: '<li class="search__result-event"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="event-info">{{start}}</span></a></li>',
-					doc: '<li class="search__result-doc"><a href="{{path_string}}"><span class="title">{{Title}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>'
+					normal: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span></a></li>',
+					event: '<li class="search__result-event"><a href="{{url}}"><span class="title">{{Title}}</span><span class="event-info">{{start}}</span></a></li>',
+					doc: '<li class="search__result-doc"><a href="{{url}}"><span class="title">{{Title}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>'
 				},
 				searchpage: {
-					normal: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span></a></li>',
-					training: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="study_type">{{edu_type}}</span></a></li>',
-					event: '<li class="search__result-event"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="event-info">{{portal_type}}, {{start}}</span></a></li>',
-					sonst: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="description">{{description}}</span><span class="path_string">{{path_string}}</span></a></li>'
+					normal: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span></a></li>',
+					training: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span><span class="study_type">{{edu_type}}</span></a></li>',
+					event: '<li class="search__result-event"><a href="{{url}}"><span class="title">{{Title}}</span><span class="event-info">{{portal_type}}, {{start}}</span></a></li>',
+					sonst: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span><span class="description">{{description}}</span><span class="url">{{url}}</span></a></li>'
 				},
 				categorySearch: {
-					training: '<tr data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{path_string}}"></a></td></tr>',
+					training: '<tr data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{url}}"></a></td></tr>',
 					expertises: '<div data-clickable="true" class="search__result-word-list"><a href="{{url}}">{{Title}}</a></div>',
-					profiles: '<tr data-clickable="false"><td><div><h4>{{Title}}</h4></div><div>{{description}}</div><a class="button__secondary" href="{{path_string}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if phone}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{phone}}">{{phone}}</a></div>{{/if}}{{#if central_phone}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{central_phone}}">{{central_phone}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="tel:{{email}}">{{email}}</a></div>{{/if}}</td></tr>'
+					profiles: '<tr data-clickable="false"><td><div><h4>{{Title}}</h4></div><div>{{description}}</div><a class="button__secondary" href="{{url}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if phone}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{phone}}">{{phone}}</a></div>{{/if}}{{#if central_phone}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{central_phone}}">{{central_phone}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="tel:{{email}}">{{email}}</a></div>{{/if}}</td></tr>'
 				},
 				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
 			},

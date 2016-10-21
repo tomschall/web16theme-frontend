@@ -13,7 +13,7 @@ var data = _.merge(defaultData, {
 		widgets: {
 			header: _.assign({
 				hasPromoTeaser: false,
-				isCollapsible: true
+				isCollapsible: false
 			}, requireNew('../../widgets/header/header.data.js')),
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),

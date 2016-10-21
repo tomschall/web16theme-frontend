@@ -50,20 +50,20 @@
 	}
 
 	ul li a {
-		color: $colorBg;
+		color: $customScrollbarColor;
 		padding: 5px 0;
 
 		display: block;
 		font-size: 1.25rem;
 		line-height: 1.7;
-		opacity: 0.8;
 		text-decoration: none;
+		font-weight: 500;
+		opacity: 1;
 
 		&:hover {
-			opacity: 1;
+			color: $colorBg;
 
 			@include mq($to: small) {
-				opacity: 0.8;
 			}
 		}
 

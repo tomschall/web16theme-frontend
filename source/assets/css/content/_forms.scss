@@ -8,7 +8,7 @@
 .ArchetypesBooleanWidget label,
 .ArchetypesMultiSelectWidget label,
 input[type="radio"] + label,
-input[type="checkbox"] label {
+input[type="checkbox"] + label {
 	padding-left: $basicPush + $radioCheckboxDimension;
 
 	position: relative;
@@ -25,28 +25,34 @@ input[type="checkbox"] label {
 		left: 0;
 		top: 50%;
 
-		background-color: $colorBg;
+		background-color: $colorInputTextHover;
 
 		transform: translateY(-50%);
 
 		width: $radioCheckboxDimension;
 		height: $radioCheckboxDimension;
 
-		border: 1px solid $colorBorderGrey;
+		border: 1px solid $colorGreyHover;
 	}
 
 	&:hover:before {
-		border-color: $colorBlack;
+		border-color: $customScrollbarColor;
+		background-color: $colorInputTextHover;
 	}
 }
 
 .ArchetypesBooleanWidget label,
 .ArchetypesMultiSelectWidget label,
-input[type="radio"] + label,
-input[type="checkbox"] label {
+input[type="radio"] + label {
 	&:before,
 	&:after {
 		border-radius: 50%;
+	}
+}
+
+.ArchetypesBooleanWidget input[type="checkbox"] + label {
+	&:before {
+		border-radius: 0;
 	}
 }
 
@@ -62,9 +68,14 @@ input {
 	&[type="email"],
 	&[type="search"],
 	&[type="url"],
-	&[type="tel"] {
+	&[type="tel"],
+	&[type="number"] {
 		background: $colorInputTextHover;
 		border: 1px solid $colorGreyHover;
+		border-radius: 0;
+		box-shadow: none;
+
+		-webkit-appearance: none;
 
 		&:hover {
 			border: 1px solid $customScrollbarColor;
@@ -115,8 +126,8 @@ input[type="checkbox"]:checked + label {
 		display: block;
 		content: " ";
 		position: absolute;
-		left: $radioCheckboxDimensionInner;
 		top: 50%;
+		left: $radioCheckboxDimensionInner;
 
 		transform: translateY(-50%) translateX(-45%);
 
@@ -124,6 +135,11 @@ input[type="checkbox"]:checked + label {
 		height: $radioCheckboxDimensionInner;
 
 		background-color: $colorBlack;
+	}
+
+	&:before {
+		background-color: $colorBg;
+		border-color: $colorBlack;
 	}
 }
 
@@ -134,7 +150,7 @@ input[type="checkbox"]:checked + label {
 
 		height: $radioCheckboxDimensionInner;
 		width: 14px;
-		left: $radioCheckboxDimensionInner;
+		left: $radioCheckboxDimensionInner + 1;
 	}
 }
 
@@ -166,11 +182,15 @@ input[type="checkbox"].error:checked + label {
 
 		top: 23px;
 
-		transition: all $transitionLength $transitionEase;
+		transition: all $transitionLength / 2 $transitionEase;
 
 		@include mq($to: medium) {
 			top: 0;
 		}
+	}
+
+	label {
+		cursor: text;
 	}
 
 	input {
@@ -203,6 +223,18 @@ input[type="checkbox"].error:checked + label {
 	input,
 	label {
 		padding-left: 18px;
+
+		@include mq($to: medium) {
+			padding-left: 13px;
+		}
+	}
+
+	input {
+		padding-left: 17px;
+
+		@include mq($to: medium) {
+			padding-left: 12px;
+		}
 	}
 
 	input:focus + label,
@@ -212,7 +244,7 @@ input[type="checkbox"].error:checked + label {
 		top: 13px;
 
 		@include mq($to: medium) {
-			top: -12px;
+			top: -9px;
 		}
 	}
 

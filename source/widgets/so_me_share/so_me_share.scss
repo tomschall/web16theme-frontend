@@ -13,17 +13,21 @@ $facebookBlueDark: #2d4785;
 	padding-bottom: $basicPush * 4;
 	padding-left: $gutterWidth;
 	padding-right: $gutterWidth;
-	padding-top: $basicPush * 4;
+	padding-top: $basicPush * 3.1;
 	float: left;
+
+	margin-top: -1px;
 
 	@include clearfix();
 
 	width: 100%;
 
 	@include mq($to: medium) {
-		padding-top: $basicPush * 4.5;
+		padding-top: $basicPush * 1.25;
 		padding-left: 20px;
 		padding-right: 20px;
+
+		padding-bottom: $basicPush * 2;
 	}
 
 	a {
@@ -106,6 +110,14 @@ $facebookBlueDark: #2d4785;
 				width: 14.2px;
 				height: 19.3px;
 			}
+		}
+	}
+
+	.twitter,
+	.mailto,
+	.facebook {
+		&:hover {
+			opacity: 0.8;
 		}
 	}
 }

@@ -17,16 +17,18 @@
 			$('.page_wrapper').append($modal);
 		}
 
-		$modal.show(250);
+		$modal.fadeIn(250);
 	}
 
 	/**
 	 * Removes the modal from dom tree
 	 */
 	function hideModal() {
-		$('.modal').hide(250, function() {
-			$(this).remove();
-		});
+		$('.modal').fadeOut(250);
+
+		setTimeout(function() {
+			$('.modal').remove();
+		}, 250);
 	}
 
 	/**

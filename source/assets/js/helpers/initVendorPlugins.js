@@ -24,12 +24,14 @@
 		$('.widg_hero__img:not(.is-profile-hero)').imageScale({
 			rescaleOnResize: true,
 			scale: 'best-fill',
-			align: 'top'
+			align: 'right'
 		});
 
 		$('.widg_teaser__img img').imageScale('scale');
 
-		$('.search__form-wrapper').scrollToFixed();
+		if (window.estatico.mq.query({from: 'subnav'})) {
+			$('.search__form-wrapper').scrollToFixed();
+		}
 	});
 
 	$(window).load(function() {

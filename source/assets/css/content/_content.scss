@@ -5,15 +5,24 @@
 
 	@include clearfix();
 
+	@include mq($to: medium) {
+		padding-bottom: $basicPush * 2;
+	}
+
 	h3 {
 		margin-bottom: $basicPush;
 	}
 
 	h2 {
-		margin-bottom: $basicPush * 1.5;
+		margin-bottom: $basicPush * 0;
+		padding-bottom: 6px;
 
 	  	@include mq($to: small) {
-		  margin-bottom: $basicPush * 1.25;
+				padding-bottom: 3px;
+			}
+
+		+ .widg_accordeon {
+			margin-top: 18px;
 		}
 	}
 
@@ -55,12 +64,13 @@
 		}
 	}
 
-	@include mq($to: medium) {
-		margin-bottom: $basicPush * 3;
-	}
-
 	.page_content & {
 		margin-bottom: $basicPush * 5;
+
+		@include mq($to: medium) {
+			margin-bottom: $basicPush * 3;
+		}
+
 	}
 
 }
@@ -149,10 +159,10 @@
 
 .content__element___bordered {
 	border: 1px solid $colorGreyHover ;
-	padding: $basicPush * 4 $basicPush * 6 $basicPush * 4;
+	padding: $basicPush * 4 $basicPush * 3.5 $basicPush * 4;
 
 	@include mq($to: medium) {
-		padding: $basicPush * 2;
+		padding: $basicPush * 3.5;
 	}
 }
 

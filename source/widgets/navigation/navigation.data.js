@@ -18,8 +18,17 @@ var templateData = {
 						url: '#'
 					},
 					{
-						title: 'Forschung & Praxis',
-						url: '#'
+						title: 'Forschung & Dienstleistung',
+						url: '#',
+						list: {
+							level: 1,
+							entries: [
+								{
+									title: 'Übersicht',
+									url: '#'
+								}
+							]
+						}
 					},
 					{
 						title: 'Die FHNW',

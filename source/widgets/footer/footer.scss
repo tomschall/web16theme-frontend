@@ -11,8 +11,7 @@
 .widg_footer__adress-claim {
 	@include contentWrapper($hasGrid: false);
 
-	color: $colorBg;
-	opacity: 0.8;
+	color: $customScrollbarColor;
 	font-size: 1.08333333rem;
 	padding-bottom: $basicPush * 1.5 !important;
   	margin-top: $basicPush * 2;

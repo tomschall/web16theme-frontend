@@ -13,13 +13,13 @@ var templateData = {
 			title: 'Infoveranstaltungen',
 			entries: [
 				{
-					title: 'Info-Veranstaltung CAS-Eingliederungsmanagement',
+					title: 'Info-Veranstaltung',
 					dateTime: '27.06.2016 um 18:15 Uhr',
 					location: 'Windisch',
 					url: '/'
 				},
 				{
-					title: 'Info-Veranstlatung CAS-Eingliederungsmanagement',
+					title: 'Info-Veranstlatung',
 					dateTime: '27.06.2016 um 18:15 Uhr',
 					location: 'Windisch',
 					url: '/'

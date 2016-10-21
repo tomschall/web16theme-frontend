@@ -192,11 +192,15 @@ $infoPadding: 34px;
 		background-color: $colorSearchBarInputFocus;
 
 		&:hover {
-			background-color: $colorGreyHover;
+			background-color: rgba($colorGreyHover, 0.5);
 			color: $colorBlack;
 
 			span {
 				@include iconDataurl('route_black');
+
+				&:before {
+					background-size: 100% 100%;
+				}
 			}
 		}
 
@@ -208,6 +212,9 @@ $infoPadding: 34px;
 
 			&:before {
 				margin-right: 5px;
+
+				height: 23px;
+				width: 20px;
 
 				vertical-align: middle;
 			}

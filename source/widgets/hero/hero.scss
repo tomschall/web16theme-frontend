@@ -30,9 +30,15 @@
 	}
 
 	max-height: 50vh;
+	height: 40vh;
 
-  	@include mq($to: subnav) {
-	  min-height: 250px;
+
+	@include mq($to: subnav) {
+	  min-height: 200px;
+	}
+
+	@include mq($to: small) {
+		height: 28vh;
 	}
 
 	.is-profile-hero & {

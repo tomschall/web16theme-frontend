@@ -106,6 +106,7 @@
 
 		min-height: $basicPush * 32;
 		text-decoration: none;
+		font-weight: 400;
 
 		@include mq($to: large) {
 			min-height: $basicPush * 26;
@@ -137,6 +138,8 @@
 	letter-spacing: 1px;
 	font-size: 1rem;
 	font-weight: 600;
+
+	margin-bottom: 5px;
 }
 
 .widg_carousel__title {

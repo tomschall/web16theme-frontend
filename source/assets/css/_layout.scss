@@ -80,12 +80,12 @@ h3 {
 		display: none;
 	}
 
-	@include mq($to: medium) {
+	@include mq($to: small) {
 		padding: 0;
 	}
 
   	@include mq($to: small) {
-	  	margin-top: $basicPush;
+	  	margin-top: $basicPush * 2;
 	}
 }
 

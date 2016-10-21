@@ -87,11 +87,15 @@
 	margin-bottom: $basicPush * 2;
 	overflow: hidden;
 
+
 	img {
 		width: 100%;
 		height: auto;
 
-		transform: scale(1.2);
+		transform: scale(1);
+
+		transition: transform $transitionLength $transitionEase;
+
 	}
 
 	@include mq($from: small) {

@@ -93,10 +93,16 @@
 			this.$element.addClass(this.options.stateClasses.isNavOpen);
 		}.bind(this));
 
-		$(window).on('close.estatico.navigation.' + this.uuid, function() {
+		$(window).on('close.estatico.navigation.' + this.uuid, function(event, controlModal) {
 			this.$element.removeClass(this.options.stateClasses.isNavOpen);
 
-			window.estatico.modal.hideModal();
+			if (typeof controlModal === typeof undefined) {
+				controlModal = true;
+			}
+
+			if (controlModal) {
+				window.estatico.modal.hideModal();
+			}
 		}.bind(this));
 	};
 

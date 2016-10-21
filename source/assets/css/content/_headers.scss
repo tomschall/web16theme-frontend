@@ -38,6 +38,9 @@ h1 {
 	&#search-title {
 		padding-left: $gutterWidth;
 		padding-right: $gutterWidth;
+
+		margin-bottom: 0px;
+
 		&:after {
 			display: none;
 		}
@@ -45,7 +48,7 @@ h1 {
 }
 
 h2 {
-	font-weight: 600;
+	font-weight: 700;
 	font-size: 1.83333rem;
 	line-height: 1.1;
 

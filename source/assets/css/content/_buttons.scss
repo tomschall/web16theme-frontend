@@ -7,6 +7,7 @@ input[type="reset"] {
 	text-align: center;
 
 	border: 0;
+	border-radius: 0;
 
 	@include defaultElementHeight();
 
@@ -52,13 +53,13 @@ input[type="reset"] {
 	color: $colorBlack;
 	background-color: $colorBg;
 
-	border: 1px solid $colorBorderGrey;
+	border: 1px solid $colorGreyHover;
 
 	&:hover,
 	&:active,
 	&:focus {
 		border-color: $colorBlack;
-		background-color: $colorLightGray;
+		background-color: $colorBg;
 	}
 
 	&:disabled,
@@ -72,7 +73,7 @@ input[type="reset"] {
 		&:focus {
 			background-color: $colorBg;
 			color: $colorBlack;
-			border-color: $colorBorderGrey;
+			border-color: $colorGreyHover;
 		}
 	}
 }

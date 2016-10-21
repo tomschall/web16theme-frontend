@@ -10,18 +10,32 @@
 	display: block;
 	border-top: 1px solid $colorGreyHover;
 
-	padding: $basicPush * 2.4 0;
+	position: relative;
 
 	@include clearfix();
+
 
 	a {
 		text-decoration: none;
 		position: relative;
 		display: block;
 
-		padding: 0 $gutterWidth * 3 0 $gutterWidth;
+		opacity: 1;
+
+		padding: $basicPush * 2.4 $gutterWidth * 5 $basicPush * 1.2 $gutterWidth;
+
+		transition: transform $transitionLength / 2 $transitionEase;
+		transform: translateX(0);
 
 		@include iconDataurl('pfeil-black');
+
+		&:hover {
+			transform: translateX(5px);
+
+			&:hover:before {
+				transform: translateY(-50%) translateX(0);
+			}
+		}
 
 		&:before {
 			position: absolute;
@@ -32,7 +46,8 @@
 			right: $gutterWidth;
 			top: 50%;
 
-			transform: translateY(-50%);
+			transform: translateY(-50%) translateX(0);
+			transition: transform $transitionLength / 2 $transitionEase;
 		}
 	}
 
@@ -47,9 +62,14 @@
 		}
 	}
 
+	&:hover {
+		background-color: $colorLightGray;
+	}
+
 	p {
-		font-size: 1.083333333rem;
-		color: $colorTextGrey;
+		font-size: 1.25rem;
+		line-height: 1.7;
+		font-weight: 300;
 	}
 }
 
@@ -69,7 +89,7 @@
 	margin-right: 20px;
 
 	img {
-		max-width: 100%;
+		max-width: 90% !important;
 		max-height: 80px;
 
 		text-align: center;

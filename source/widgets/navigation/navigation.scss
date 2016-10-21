@@ -132,7 +132,7 @@ styling of all links and lists
 The back arrow only visible on mobile navigation
 **/
 .widg_navigation__back {
-	@include iconDataurl('arrow');
+	@include iconDataurl('pfeil-black');
 
 	text-indent: -100000px;
 
@@ -146,8 +146,8 @@ The back arrow only visible on mobile navigation
 
 		transform: translateY(-50%) rotate(180deg);
 
-		width: 34px;
-		height: 13px;
+		width: 27px;
+		height: 9px;
 
 		@include mq($to: small) {
 			left: $basicPush * 2;
@@ -177,6 +177,10 @@ The back arrow only visible on mobile navigation
 
 		&:hover {
 			background-color: $colorSubNavHover;
+
+			@include mq($to: small) {
+				background-color: $colorBg;
+			}
 		}
 
 		&.is_active,
@@ -295,7 +299,7 @@ Subtitle for every additional layer (only desktop)
 
 	padding: 0 $basicPush * 3.2;
 
-	color: $colorTextGrey;
+	color: $customScrollbarColor;
 
 	@include mq($to: medium) {
 		display: none;
