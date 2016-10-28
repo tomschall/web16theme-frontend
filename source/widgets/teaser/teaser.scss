@@ -187,6 +187,31 @@
 		display: block;
 		flex-wrap: nowrap;
 	}
+
+	&:not(.is_on_startpage) {
+		.teaser__more-button {
+			@extend .mini_button;
+		}
+	}
+
+	&.is_on_startpage {
+		margin-bottom: $basicPush * 10;
+
+		.widg_teaser:first-child {
+			@include push(1.5);
+		}
+
+		.teaser__more-button {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+
+			bottom: -20%;
+
+			top: initial;
+			right: initial;
+		}
+	}
 }
 
 .teaser__more-button {

@@ -59,7 +59,6 @@ h3 {
 
 	.header__wide & {
 		display: block;
-
 	}
 
 	@include mq($to: medium) {
@@ -80,10 +79,6 @@ h3 {
 	@include clearfix();
 
 	@include contentWrapper($gutterWidth);
-
-	.header__wide & {
-		display: none;
-	}
 
 	@include mq($to: small) {
 		padding: 0;

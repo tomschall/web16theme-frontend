@@ -44,6 +44,7 @@ var templateData = {
 		label: 'Alle ansehen',
 		url: '#'
 	},
+	isOnStartpage: false,
 	langStrings: {
 		toLinkTarget: 'zu',
 		projectTime: 'Projektdauer'

@@ -18,7 +18,36 @@ var data = _.merge(defaultData, {
 		footer: requireNew('../../widgets/footer/footer.data.js'),
 		breadcrumb: requireNew('../../widgets/breadcrumb/breadcrumb.data.js'),
 		carousel: requireNew('../../widgets/carousel/carousel.data.js'),
-		actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
+		actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
+		teaser: _.assign(requireNew('../../widgets/teaser/teaser.data.js'), {
+			teasers: [
+				{
+					title: 'Campus Dreispitz (Basel)',
+					url: '#',
+					img: {
+						src: '/assets/media/img/campus_dreispitz.png',
+						alt: 'Campus Dreispitz'
+					}
+				},
+				{
+					title: 'Campus Brugg-Windisch',
+					url: '#',
+					img: {
+						src: '/assets/media/img/campus_brugg.png',
+						alt: 'Campus Brugg-Windisch'
+					}
+				},
+				{
+					title: 'Campus Muttenz',
+					url: '#',
+					img: {
+						src: '/assets/media/img/campus_muttenz.png',
+						alt: 'Campus Muttenz'
+					}
+				}
+			],
+			isOnStartpage: true
+		})
 	},
 	wrapperClass: 'header__wide'
 });

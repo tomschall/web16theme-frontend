@@ -59,6 +59,28 @@ h2 {
 	@include mq($to: small) {
 		font-size: 1.75rem;
 	}
+
+	&.startpage__title {
+		text-align: center;
+		position: relative;
+
+		margin-bottom: $basicPush * 3;
+
+		&:after {
+			position: absolute;
+			width: 80px;
+			height: 4px;
+
+			content: " ";
+
+			background-color: $colorYellow;
+
+			left: 50%;
+			transform: translateX(-50%);
+
+			top: 80%;
+		}
+	}
 }
 
 h3 {
