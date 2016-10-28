@@ -40,15 +40,7 @@
 		@include span(4);
 	}
 
-	@include mq($from: small, $to: medium) {
-		@include span(6);
-
-		&.wide___third {
-			@include span(6);
-		}
-	}
-
-	@include mq($to: small) {
+	@include mq($to: medium) {
 		margin-bottom: 0;
 		border-bottom: 1px solid $colorGreyHover;
 
@@ -98,12 +90,12 @@
 
 	}
 
-	@include mq($from: small) {
+	@include mq($from: medium) {
 		width: 100%;
 		padding-top: 62%;
 	}
 
-	@include mq($to: small) {
+	@include mq($to: medium) {
 		float: left;
 		margin-left: -90px;
 
@@ -138,7 +130,7 @@
 	position: absolute;
 	bottom: $basicPush * 1.8;
 
-	@include mq($to: small) {
+	@include mq($to: medium) {
 		@include iconDataurl('pfeil-black_short');
 
 		top: 50%;
@@ -155,7 +147,7 @@
 	color: $colorBorderGrey;
 	display: block;
 
-	@include mq($to: small) {
+	@include mq($to: medium) {
 		padding-bottom: 0;
 		font-size: 1.08333333rem;
 		margin-bottom: 3px;
@@ -182,7 +174,7 @@
 	flex-wrap: wrap;
 	position: relative;
 
-	@include mq($to: small) {
+	@include mq($to: medium) {
 		padding: 0 $gutterWidth;
 		display: block;
 		flex-wrap: nowrap;
@@ -196,9 +188,14 @@
 
 	&.is_on_startpage {
 		margin-bottom: $basicPush * 10;
+		@include clearfix();
 
 		.widg_teaser:first-child {
 			@include push(1.5);
+
+			@include mq($to: medium) {
+				@include push(0);
+			}
 		}
 
 		.teaser__more-button {
@@ -206,10 +203,19 @@
 			left: 50%;
 			transform: translateX(-50%);
 
-			bottom: -20%;
+			bottom: -1 * $basicPush * 8;
 
 			top: initial;
 			right: initial;
+
+			@include mq($to: medium) {
+				transform: translateX(-50%);
+				position: absolute;
+			}
+
+			@include mq($to: small) {
+				width: 60vw;
+			}
 		}
 	}
 }

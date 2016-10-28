@@ -143,6 +143,12 @@
 					break;
 			}
 		}.bind(this));
+
+		$('.widg_carousel__scroll').on('click.' + this.uuid, function() {
+			$('html, body').animate({
+				scrollTop: 250
+			}, 300);
+		});
 	};
 
 	/**

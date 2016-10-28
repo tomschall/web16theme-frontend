@@ -15,7 +15,7 @@
 		}
 
 		@include mq($to: small) {
-			min-height: calc(60vh - 70px);
+			min-height: 300px;
 		}
 
 	}
@@ -46,18 +46,14 @@
 		z-index: 1001 !important;
 	}
 
-	@include mq($to: medium) {
-		max-height: calc(100vh - 70px);
-	}
-
-	@include mq($to: small) {
-		max-height: calc(60vh - 70px);
-	}
-
 	.is_zoomed {
 		transform: scale(1.1) translate3D(0, 0, 0);
 		transition: transform $carouselInitTransitionSpeed * 2 $transitionEase;
 
+	}
+
+	@include mq($to: small) {
+		height: 75vh;
 	}
 }
 
@@ -95,7 +91,7 @@
 		right: 0;
 		width: 100%;
 
-		min-height: 40vh;
+		min-height: 0;
 	}
 
 	a {
@@ -113,7 +109,7 @@
 		}
 
 		@include mq($to: small) {
-			min-height: 40vh;
+			min-height: 0;
 		}
 
 		padding: $basicPush * 4 $basicPush * 5;
@@ -126,6 +122,10 @@
 			.widg_carousel__arrow {
 				animation: arrowAnimationBig $animationDuration 1;
 			}
+		}
+
+		@include mq($to: small) {
+			padding: $basicPush * 2.7 $basicPush * 2.5;
 		}
 	}
 }
@@ -178,13 +178,22 @@
 
 	position: absolute;
 	bottom: $basicPush * 3.1;
-	left: $basicPush * 7;
+	left: $basicPush * 5.3;
 	right: $basicPush * 7;
 
 	min-width: 0;
 	height: 30px;
 
 	background-color: transparent;
+
+	@include mq($to: small) {
+		left: $basicPush * 3.0;
+
+		position: static;
+
+		transform: translateY(-15px);
+		display: block;
+	}
 
 	&:hover,
 	&:active {
@@ -285,5 +294,33 @@
 		width: 2 * clickAreaSizes(xxl);
 
 		top: calc(100% + 120px);
+	}
+}
+
+.widg_carousel__scroll {
+	position: absolute;
+	height: 50px;
+	width: 50px;
+
+	left: 53%;
+	transform: translateX(-50%) translateY(-125%);
+
+	background-color: $colorBlack;
+	opacity: 0.7;
+
+	border-radius: 50%;
+
+	@include iconDataurl('pfeil-weiss');
+
+	&:hover {
+		opacity: 1;
+	}
+
+	&:before {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		transform: translate(-50%, -50%) rotate(90deg);
 	}
 }

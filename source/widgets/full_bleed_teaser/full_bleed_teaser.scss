@@ -40,8 +40,18 @@
 		}
 	}
 
-	a.button {
+	a.button:not(.not-default) {
 		margin-top: 5px;
+
+		@include mq($to: small) {
+			font-size: 0.93333rem;
+			letter-spacing: 1px;
+		}
 	}
 
+	@include mq($to: medium) {
+		padding-left: $gutterWidth + 4;
+		padding-top: 15px;
+
+	}
 }
