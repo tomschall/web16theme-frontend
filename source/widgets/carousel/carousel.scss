@@ -299,21 +299,21 @@
 
 .widg_carousel__scroll {
 	position: absolute;
-	height: 50px;
-	width: 50px;
+	height: 73px;
+	width: 73px;
 
 	left: 53%;
 	transform: translateX(-50%) translateY(-125%);
 
 	background-color: $colorBlack;
-	opacity: 0.7;
+	opacity: 0.3;
 
 	border-radius: 50%;
 
 	@include iconDataurl('pfeil-weiss');
 
 	&:hover {
-		opacity: 1;
+		opacity: 0.5;
 	}
 
 	&:before {
