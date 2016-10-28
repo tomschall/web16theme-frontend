@@ -58,7 +58,7 @@
 		this.getListElements();
 		this.getLangString();
 
-		if (this.data.listElements.length >= 5) {
+		if (this.data.listElements.length >= 4) {
 			this.addExtendBtn();
 		}
 	};
@@ -81,7 +81,7 @@
 	 * Add The Extend Button
 	 */
 	Widget.prototype.addExtendBtn = function() {
-		var allowedIndex = [0, 1, 2, this.data.listElements.length - 1],
+		var allowedIndex = [0, 1, this.data.listElements.length - 1],
 				$lastElementToRemove = null;
 
 		this.data.listElements.each(function(index) {
