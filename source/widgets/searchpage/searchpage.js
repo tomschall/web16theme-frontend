@@ -297,8 +297,6 @@
 	 * @param limitedToResults the number of to which the entries are limited
 	 */
 	Widget.prototype.showResults = function(html, foundEntries, limitedToResults) {
-		var $resultsTd = $('.search__results td');
-
 		if (loadMoreMode) {
 			html = this.generateAdditionalTableHTML(html);
 
@@ -346,6 +344,8 @@
 		this.$element.find('.fhnw-spinner').css({
 			'min-height': $('.search__results').height()
 		});
+
+		var $resultsTd = $('.search__results td');
 
 		$resultsTd.unbind('click.' + this.uuid);
 
