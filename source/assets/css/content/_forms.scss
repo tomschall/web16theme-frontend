@@ -149,9 +149,9 @@ input[type="checkbox"]:checked + label {
 	&:after {
 		background-color: transparent;
 
-		height: $radioCheckboxDimensionInner;
+		height: 11px;
 		width: 14px;
-		left: $radioCheckboxDimensionInner + 1;
+		left: 10px;
 	}
 }
 

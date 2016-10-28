@@ -229,6 +229,7 @@
 		transform: translateY(0);
 		opacity: 1;
 		z-index: zindex(header);
+		overflow-x: hidden;
 
 		> div {
 			opacity: 1;
