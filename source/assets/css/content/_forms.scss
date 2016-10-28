@@ -127,12 +127,13 @@ input[type="checkbox"]:checked + label {
 		content: " ";
 		position: absolute;
 		top: 50%;
-		left: $radioCheckboxDimensionInner;
+		left: 10px;
 
-		transform: translateY(-50%) translateX(-45%);
 
-		width: $radioCheckboxDimensionInner;
-		height: $radioCheckboxDimensionInner;
+		transform: translateY(-50%) translateX(-41%);
+
+		width: 11px;
+		height: 11px;
 
 		background-color: $colorBlack;
 	}
