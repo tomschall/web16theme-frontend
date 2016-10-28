@@ -216,7 +216,7 @@
 
 		nextElementToFix = objectIndex;
 
-		this._repositionFixedScene();
+		this._repositionFixedScene(objectIndex);
 	};
 
 	// //////// CONTENT DISPLAYING ///////// //
