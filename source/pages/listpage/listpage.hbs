@@ -1,0 +1,35 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content">
+      <h1>{{title}}</h1>
+      <p class="text__lead">
+				{{leadText}}
+      </p>
+
+			<div class="content__element">
+				<ul class="arrow__list not-default">
+					<li><a href="http://www.fhnw.ch">Ein erster link</a></li>
+          <li><a href="http://www.fhnw.ch">Ein zweiter link</a></li>
+          <li><a href="http://www.fhnw.ch">Ein drittter link</a></li>
+          <li><a href="http://www.fhnw.ch">Ein 4. link</a></li>
+          <li><a href="http://www.fhnw.ch">Der sagenumwobene fünfte link</a></li>
+          <li><a href="http://www.fhnw.ch">Last but not least</a></li>
+				</ul>
+
+        <ul class="arrow__list not-default download__list">
+          <li><a href="http://www.fhnw.ch">Ein erster link</a></li>
+          <li><a href="http://www.fhnw.ch">Ein zweiter link</a></li>
+          <li><a href="http://www.fhnw.ch">Ein drittter link</a></li>
+          <li><a href="http://www.fhnw.ch">Ein 4. link</a></li>
+          <li><a href="http://www.fhnw.ch">Der sagenumwobene fünfte link</a></li>
+          <li><a href="http://www.fhnw.ch">Last but not least</a></li>
+        </ul>
+			</div>
+
+    </div>
+		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+	{{/content}}
+{{/extend}}

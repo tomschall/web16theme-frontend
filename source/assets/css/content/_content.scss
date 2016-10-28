@@ -233,4 +233,17 @@
 			}
 		}
 	}
+
+	&.download__list {
+		li {
+			a {
+				@include iconDataurl('download-arrow');
+
+				&:before {
+					width: 23px;
+					height: 17px;
+				}
+			}
+		}
+	}
 }
