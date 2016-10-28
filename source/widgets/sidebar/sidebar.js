@@ -196,10 +196,6 @@
 
 		$object.find(this.options.domSelectors.content).removeAttr('style');
 
-		if (objectIndex === 0) {
-			this._setHiderInvisible();
-		}
-
 		$object
 				.removeClass(this.options.stateClasses.isFixed)
 				.removeClass(this.options.stateClasses.isRequested)
@@ -217,6 +213,14 @@
 		nextElementToFix = objectIndex;
 
 		this._repositionFixedScene(objectIndex);
+
+		if ($('.widg_sidebar__object.is_fixed').length === 0) {
+			nextElementToFix = 0;
+
+			this._setHiderInvisible();
+
+			this._repositionFixedScene();
+		}
 	};
 
 	// //////// CONTENT DISPLAYING ///////// //
