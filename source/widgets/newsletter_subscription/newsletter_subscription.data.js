@@ -12,7 +12,8 @@ var templateData = {
 			msg: {
 				required: 'Feld muss angegeben werden',
 				email: 'Ungültiges E-Mail Format'
-			}
+			},
+			requestURL: '/mocks/widgets/newsletter_subscription/newsletter_subscription.json'
 		},
 		data = _.merge(defaultData, {
 			meta: {

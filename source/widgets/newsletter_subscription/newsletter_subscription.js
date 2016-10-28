@@ -16,7 +16,8 @@
 		},
 		defaults = {
 			domSelectors: {
-				// item: '[data-' + name + '="item"]'
+				form: '[data-' + name + '="form"]',
+				emailInput: '[data-' + name + '="mailInput"]'
 			},
 			stateClasses: {
 				// isActive: 'is_active'
@@ -53,7 +54,27 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		// console.log('Widget "newsletter_subscription" initialized');
+		this.bindEvents();
+	};
+
+	Widget.prototype.bindEvents = function() {
+		$(this.options.domSelectors.form).on('submit', function(event) {
+			event.preventDefault();
+
+			if (!$(this.options.domSelectors.emailInput).hasClass('error')) {
+				var emailValue = $(this.options.domSelectors.emailInput).val();
+
+				$.ajax({
+					url: $(this.options.domSelectors.form).data('request-url'),
+					data: {
+						email: emailValue
+					}
+					/** success: function() {
+
+					}.bind(this) **/
+				});
+			}
+		}.bind(this));
 	};
 
 	/**
