@@ -2,12 +2,13 @@
 	{{#if title}}
     <div class="widg_subnav__title {{#if subtitle}}has-subtitle{{/if}}">
       <div class="widg_subnav__main-link">
+        <a href="{{titleUrl}}">
 
-				{{#if logo}}
-          <img class="widg_subnav__logo" src="{{logo}}" alt="Logo {{title}}"/>
-				{{/if}}
-        <h2>{{title}}</h2>
-				<a href="{{titleUrl}}"></a>
+					{{#if logo}}
+          	<img class="widg_subnav__logo" src="{{logo}}" alt="Logo {{title}}"/>
+					{{/if}}
+        	<h2>{{title}}</h2>
+				</a>
       </div>
 			{{#if subtitle}}
         <div class="widg_subnav__subtitle">
