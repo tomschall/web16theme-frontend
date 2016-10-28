@@ -45,6 +45,10 @@
 		color: transparent;
 	}
 
+	td {
+		transition: transform $transitionLength / 2 $transitionEase;
+	}
+
 	td[data-searchpage="url"] {
 		width: 1%;
 	}
@@ -72,6 +76,26 @@
 
 		width: 40%;
 		font-weight: 600;
+	}
+
+	td:last-child {
+		padding-right: $gutterWidth;
+
+		@include iconDataurl('pfeil-black', $after: true);
+
+		&:after {
+			height: 9px;
+			width: 27px;
+
+			transform: translateY(-5px);
+		}
+	}
+
+	tr:hover {
+		td {
+			transform: translateX(5px);
+
+		}
 	}
 
 	@include mq($to: small) {
