@@ -1,0 +1,76 @@
+.widg_image_gallery {
+	.image_gallery__slide img {
+		width: 100%;
+	}
+}
+
+.image_gallery__arrow {
+	width: 70px;
+	height: 70px;
+
+	position: absolute;
+	background-color: $colorBlack;
+
+	opacity: 0.7;
+
+	top: 50%;
+	transform: translateY(-50%);
+
+	z-index: 100;
+
+	@include iconDataurl('pfeil-weiss');
+
+	&:before {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&:hover {
+		opacity: 1;
+	}
+
+	&.image_gallery__next {
+		right: 0;
+	}
+
+	&.image_gallery__prev {
+		transform: rotate(180deg) translateY(50%);
+	}
+}
+
+.image_gallery__dots {
+	position: absolute;
+	top: 0;
+	left: 50%;
+
+	transform: translateX(-50%);
+
+	li {
+		display: inline-block;
+
+		button {
+			text-indent: -10000px;
+			height: 14px;
+			width: 14px;
+
+			padding: 0;
+			margin-right: 6px;
+		}
+
+		&.slick-active {
+			button {
+				background-color: $colorYellow;
+			}
+		}
+	}
+}
+
+.image_gallery__legend {
+	font-size: 1.083333rem;
+	margin-top: $basicPush * 2;
+
+	display: block;
+	color: $colorTextGrey;
+}

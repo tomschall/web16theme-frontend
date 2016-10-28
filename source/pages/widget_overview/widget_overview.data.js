@@ -216,7 +216,8 @@ var data = _.merge(defaultData, {
 			contact: requireNew('../../widgets/contact/contact.data.js'),
 			accordeon: requireNew('../../widgets/accordeon/accordeon.data.js'),
 			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
-			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js')
+			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js'),
+			gallery: requireNew('../../widgets/image_gallery/image_gallery.data.js')
 		}
 	});
 

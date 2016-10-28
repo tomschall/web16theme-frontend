@@ -1,0 +1,12 @@
+<div class="widg_image_gallery" data-init="image_gallery">
+	<div class="image_gallery__slider" data-image_gallery="slider">
+		{{#each slides}}
+			<div class="image_gallery__slide">
+				<img src="{{img.src}}" alt="{{img.alt}}"/>
+				<span class="image_gallery__legend">
+					{{legend}}
+				</span>
+			</div>
+		{{/each}}
+	</div>
+</div>
