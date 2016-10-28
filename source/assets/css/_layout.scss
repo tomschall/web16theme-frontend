@@ -38,6 +38,11 @@ h3 {
 
 	@include mq($to: medium) {
 		display: block;
+
+		.prevent-scroll & {
+			max-height: 100vh;
+			overflow: hidden;
+		}
 	}
 }
 
