@@ -75,6 +75,7 @@
 	 */
 	Widget.prototype.init = function() {
 		jsonURL = this.$element.data('json-url');
+		searchPageUrl = this.$element.data('searchpage-url');
 
 		this.addEventHandlers();
 	};
@@ -161,6 +162,13 @@
 		}.bind(this), 100);
 
 		this.addSingleEventListeners();
+
+		if (localStorage.getItem('fhnw_search_query') !== null) {
+			var serializedObject = $.parseJSON(localStorage.getItem('fhnw_search_query'));
+
+			$(this.options.domSelectors.input).val(serializedObject.q);
+			$(this.options.domSelectors.input).trigger('keyup');
+		}
 	};
 
 	/**

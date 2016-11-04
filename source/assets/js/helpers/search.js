@@ -15,15 +15,19 @@
 
 			listEntryTemplates = {
 				searchbar: {
-					normal: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span></a></li>',
-					event: '<li class="search__result-event"><a href="{{url}}"><span class="title">{{Title}}</span><span class="event-info">{{start}}</span></a></li>',
-					doc: '<li class="search__result-doc"><a href="{{url}}"><span class="title">{{Title}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>'
+					normal: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span></a></li>',
+					event: '<li class="search__result-event"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="event-info">{{start}}</span></a></li>',
+					doc: '<li class="search__result-doc"><a href="{{path_string}}"><span class="title">{{Title}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>',
+					webservices: '<li class="search__result-normal"><a href="{{base_url}}{{path_string}}"><span class="title">{{Title}}</span></a></li>',
+					irf: '<li class="search__result-normal"><a href="{{base_url}}{{path_string}}"><span class="title">{{Title}}</span></a></li>'
 				},
 				searchpage: {
-					normal: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span></a></li>',
-					training: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span><span class="study_type">{{edu_type}}</span></a></li>',
-					event: '<li class="search__result-event"><a href="{{url}}"><span class="title">{{Title}}</span><span class="event-info">{{portal_type}}, {{start}}</span></a></li>',
-					sonst: '<li class="search__result-normal"><a href="{{url}}"><span class="title">{{Title}}</span><span class="description">{{description}}</span><span class="url">{{url}}</span></a></li>'
+					normal: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span></a></li>',
+					training: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="study_type">{{edu_type}}</span></a></li>',
+					event: '<li class="search__result-event"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="event-info">{{portal_type}}, {{start}}</span></a></li>',
+					sonst: '<li class="search__result-normal"><a href="{{path_string}}"><span class="title">{{Title}}</span><span class="description">{{description}}</span><span class="url">{{url}}</span></a></li>',
+					webservices: '<li class="search__result-normal"><a href="{{base_url}}{{path_string}}"><span class="title">{{Title}}</span></a></li>',
+					irf: '<li class="search__result-normal"><a href="{{base_url}}{{path_string}}"><span class="title">{{Title}}</span></a></li>'
 				},
 				categorySearch: {
 					training: '<tr data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{url}}"></a></td></tr>',
@@ -238,6 +242,10 @@
 		$(window).trigger(events.dataLoaded, [$responseHTML, data.response.numFound, responseData.length]);
 	}
 
+	function saveToLocalStorage(query) {
+		localStorage.setItem('fhnw_search_query', JSON.stringify(query));
+	}
+
 	/**
 	 * Execs the search
 	 * @param query the single word search query
@@ -292,6 +300,10 @@
 				url: searchURL
 			});
 		}
+
+		if (typeof localStorage !== typeof undefined) {
+			saveToLocalStorage(query);
+		}
 	}
 
 	/**
@@ -343,7 +355,17 @@
 	function getSearchParameters() {
 		var searchprmtrs = window.location.search.substr(1);
 
-		return searchprmtrs !== null && searchprmtrs !== '' ? transformToAssocArray(searchprmtrs) : {};
+		if (searchprmtrs === null || searchprmtrs === '') {
+			searchprmtrs = localStorage.getItem('fhnw_search_query');
+
+			if (searchprmtrs !== null) {
+				searchprmtrs = $.parseJSON(searchprmtrs);
+			}
+		} else {
+			searchprmtrs = transformToAssocArray(searchprmtrs);
+		}
+
+		return searchprmtrs !== null && searchprmtrs !== '' ? searchprmtrs : {};
 	}
 
 	// Save to global namespace

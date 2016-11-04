@@ -9,7 +9,24 @@ var templateData = {
 			langStrings: {
 				allResults: 'Alle Suchergebnisse'
 			},
-			jsonURL: '/mocks/widgets/searchbar/searchbar.json'
+			jsonURL: '/mocks/widgets/searchbar/searchbar.json',
+			searchPageURL: '/pages/search_all/search_all.html',
+			introText: '<span class="bold">Geben Sie einen Suchbegriff ein</span> und suchen Sie nach Weiterbildungen Studienangeboten, Veranstaltungen, Dokumenten und anderen Inhalten.',
+			introLinks: [
+				{
+					url: '#',
+					linkText: 'Weiterbildungen und Kurse suchen'
+				},
+				{
+					url: '#',
+					linkText: 'Ausbildungen suchen'
+				},
+				{
+					url: '#',
+					linkText: 'Veranstaltungen suchen'
+				}
+			],
+			searchPlaceholder: 'Suche'
 		},
 		data = _.assign(defaultData, {
 			meta: {

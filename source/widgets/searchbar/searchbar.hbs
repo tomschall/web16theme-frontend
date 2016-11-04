@@ -1,4 +1,4 @@
-<div class="widg_searchbar" data-init="searchbar" data-json-url="{{jsonURL}}">
+<div class="widg_searchbar" data-init="searchbar" data-json-url="{{jsonURL}}" data-searchpage-url="{{searchPageURL}}">
 	<button class="widg_searchbar__btn widg_actionbutton__item not-default" data-searchbar="btn">
 		Suchen
 	</button>
@@ -6,14 +6,15 @@
 <div class="widg_searchbar-bar show-intro" data-searchbar="bar" data-lang-all-results="{{langStrings.allResults}}">
 	<div class="widg_searchbar-bar__search">
     <div class="widg_searchbar-bar__close" data-searchbar="close"></div>
-		<input type="text" placeholder="Suche" name="searchbar_search" data-searchbar="input"/>
+		<input type="text" placeholder="{{searchPlaceholder}}" name="searchbar_search" data-searchbar="input"/>
 	</div>
 	<div class="widg_searchbar-bar__content custom-scrollbar" data-searchbar="content">
 		<div class="widg_searchbar-bar__intro">
-			<p><span class="bold">Geben Sie einen Suchbegriff ein</span> und suchen Sie nach Weiterbildungen Studienangeboten, Veranstaltungen, Dokumenten und anderen Inhalten.</p>
-			<a href="#">Weiterbildungen und Kurse suchen</a>
-			<a href="#">Ausbildungen suchen</a>
-			<a href="#">Veranstaltungen suchen</a>
+			<p>{{{introText}}}</p>
+
+			{{#each introLinks}}
+				<a href="{{url}}">{{linkText}}</a>
+			{{/each}}
 		</div>
     <div class="widg_searchbar-bar__loader" data-searchbar="loader">
       <div class="fhnw-spinner"></div>
