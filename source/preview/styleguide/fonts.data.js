@@ -9,17 +9,17 @@ var data = _.merge(defaultData, {
 		title: 'Fonts',
 	},
 	fonts: [{
-		family: 'Roboto',
+		family: 'Raleway',
 		font: [{
-			weight: [400, 700],
-			style: ['normal', 'italic'],
+			weight: [300, 400, 500, 600, 700, 800],
+			style: ['normal'],
 			size: [16]
 		}]
 	}, {
-		family: 'Courier',
+		family: 'Egyptienne F LT W01_56 Italic',
 		font: [{
-			weight: [400, 700],
-			style: ['normal'],
+			weight: [500],
+			style: ['italic'],
 			size: [12, 16, 22]
 		}]
 	}],

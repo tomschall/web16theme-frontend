@@ -9,7 +9,7 @@ var data = _.merge(defaultData, {
 		meta: {
 			title: 'Colors',
 		},
-		colors: dataHelper.getColors('../../assets/css/data/colors.html'),
+		colors: dataHelper.getColors('../../assets/css/data/colors.json'),
 		additionalLayoutClass: 'sg_colors'
 	});
 

@@ -1,26 +1,20 @@
 {
-	// Built partially with http://paletton.com/palette.php?uid=c0J4W3l280kDutnCp-MuwByCSpQD6nh
-	// Lighter colors
-	"IcyIvory": "#ffffff",
-	"SoulSide": "#FF990C",
-	"ClearChill": "#0B9CB0",
-	"LiquidLime": "#CDF80C",
-	"EclecticEggplant": "#B809B8",
-	"CharmedChalice": "#999999",
-
-	// Colors
-	"AlpineAlabaster": "#f8f8f8",
+	"FHNW Gelb": "#FDE70E",
+	"FHNW Gelb 1": "#f5dd19",
+	"FHNW Gelb 2": "#fbd100",
+	"FHNW Gelb 3": "#fef387",
+	"FHNW Gelb 4": "#fff48d",
+	"Text Schwarz": "#000000",
+	"Hintergrund-Farbe": "#FFFFFF",
 	"TrueTangerine": "#EA8700",
-	"BondiBlue": "#027E8F",
-	"LividLime": "#B8E100",
-	"EnergicEggplant": "#B300B3",
-	"GreasyGray": "#808080",
-
-	// Darker colors
-	"AltruisticAlto": "#dddddd",
-	"IndocileIndochine": "#B96B00",
-	"LambentLagoon": "#026472",
-	"GraspingGrass": "#92B300",
-	"PoppyPompadour": "#790079",
-	"DottedDove": "#666666"
+	"Helles Grau": "#F1F1EE",
+	"Mittleres Grau": "#999999",
+	"Text und Border Grau": "#767573",
+	"Mouseover Grau": "#deded9",
+	"Fokus Suchleiste": "#f7f7f5",
+	"Scrollbar Grau": "#bebdb9",
+	"Text Dunkelgrau": "#4c4c4c",
+	"Fehlerrot": "#df305b",
+	"Rot Hintergrund": "#fff7f7",
+	"Notfall Border": "#e31650"
 }
