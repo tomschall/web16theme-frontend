@@ -11,7 +11,7 @@
 					href = $link.attr('href');
 
 			if (typeof href !== typeof undefined) {
-				if (href.charAt(0) === '#') {
+				if (href.charAt(0) === '#' && $link.data('carousel') !== 'link') {
 					$link.addClass('anchor-link');
 				}
 			}
@@ -20,9 +20,11 @@
 		$('.anchor-link').on('click.links', function(ev) {
 			ev.preventDefault();
 
-			$('html, body').animate({
-				scrollTop: $($.attr(this, 'href')).offset().top - 45
-			}, 250);
+			if ($.attr(this, 'href') !== '#') {
+				$('html, body').animate({
+					scrollTop: $($.attr(this, 'href')).offset().top - 45
+				}, 250);
+			}
 		});
 	});
 })(jQuery);
