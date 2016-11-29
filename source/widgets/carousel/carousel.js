@@ -91,9 +91,12 @@
 		});
 
 		this.initVideoProperties();
-		this.resizeVideo();
 
-		$('video')[0].play();
+		if (this.$element.find('video').length > 0) {
+			this.resizeVideo();
+
+			this.$element.find('video')[0].play();
+		}
 	};
 
 	/**
