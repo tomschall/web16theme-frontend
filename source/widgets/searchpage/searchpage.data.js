@@ -17,7 +17,8 @@ var templateData = {
 				phoneDirect: 'T Direkt',
 				phoneCentral: 'T Zentrale'
 			},
-			jsonURL: '/mocks/widgets/searchpage/searchpage.category.json'
+			jsonURL: '/mocks/widgets/searchpage/searchpage.category.json',
+			filterURL: '/mocks/widgets/searchpage/searchpage.updateFilter.json'
 		},
 		data = _.merge(defaultData, {
 			meta: {
