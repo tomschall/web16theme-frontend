@@ -55,7 +55,8 @@
 		loadMoreMode = false,
 		currentLimitOffset = 0,
 		templatesWithoutMoreButton = ['expertises_full'],
-		jsonURL = '';
+		jsonURL = '',
+		filterURL = '';
 
 	/**
 	 * Create an instance of the widget
@@ -87,6 +88,7 @@
 		searchTemplate = $(this.options.domSelectors.formWrapper).data('searchpage-template');
 		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 		jsonURL = this.$element.data('json-url');
+		filterURL = this.$element.data('filter-url');
 
 		this.eventListeners();
 
@@ -263,7 +265,7 @@
 		}
 
 		if (isCategorySearch) {
-			window.estatico.search.updateFilter(searchParam);
+			window.estatico.search.updateFilter(searchParam, filterURL);
 
 			$(window).one(this.options.searchEvents.updateFilterLoaded, function(event, data) {
 				this.updateFilters(data.response);
