@@ -7,6 +7,23 @@
  * //@requires ../../../node_Widgets/some/dependency.js
  */
 
+function debounce(fn, delay) {
+	'use strict';
+
+	var timer = null;
+
+	return function() {
+		var context = this,
+				args = arguments;
+
+		clearTimeout(timer);
+
+		timer = setTimeout(function() {
+			fn.apply(context, args);
+		}, delay);
+	};
+}
+
 ;(function($, undefined) {
 	'use strict';
 
@@ -108,20 +125,23 @@
 			this.closeSearchBar();
 		}.bind(this));
 
-		$(this.options.domSelectors.input).on('keyup.' + this.uuid, function(event) {
-			var value = $(event.currentTarget).val();
+		$(this.options.domSelectors.input).keypress(debounce(function(event) {
+			this.startSearch($(event.currentTarget));
+		}.bind(this), 250));
+	};
 
-			this.removeSearchResults();
+	Widget.prototype.startSearch = function($inputField) {
+		var value = $inputField.val();
 
-			if (value.length >= 3 && value !== currentSearchValue) {
-				this.sendXHRObject($(event.currentTarget).val());
-			} else if (value.length === 0) {
-				this.changeSearchbarStatus(this.options.stateClasses.showIntro);
-			}
+		this.removeSearchResults();
 
-			currentSearchValue = value;
+		if (value.length >= 3 && value !== currentSearchValue) {
+			this.sendXHRObject($inputField.val());
+		} else if (value.length === 0) {
+			this.changeSearchbarStatus(this.options.stateClasses.showIntro);
+		}
 
-		}.bind(this));
+		currentSearchValue = value;
 	};
 
 	/**
@@ -167,7 +187,7 @@
 			var serializedObject = $.parseJSON(localStorage.getItem('fhnw_search_query'));
 
 			$(this.options.domSelectors.input).val(serializedObject.q);
-			$(this.options.domSelectors.input).trigger('keyup');
+			$(this.options.domSelectors.input).trigger('keypress');
 		}
 	};
 
