@@ -7,8 +7,7 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var updateFilterURL = '/mocks/widgets/searchpage/searchpage.updateFilter.json',
-			events = {
+	var events = {
 				dataLoaded: 'dataLoaded.estatico.search',
 				updateFilterLoaded: 'updateFilterLoaded.estatico.search'
 			},
@@ -317,13 +316,13 @@
 	 * Sending the ajax request for update the filter
  	 * @param query
 	 */
-	function updateFilter(query) {
+	function updateFilter(query, filterURL) {
 		if (query) {
 			$.ajax({
 				data: query,
 				dataType: 'json',
 				success: handleUpdateFilterData,
-				url: updateFilterURL
+				url: filterURL
 			});
 		} else {
 			console.error('no update filter query defined');
