@@ -439,7 +439,7 @@
 					$options = $field.find('option');
 
 			$options.map(function(index, option) {
-				if ($.inArray($(option).attr('value'), field.disable) !== -1) {
+				if ($.inArray($(option).attr('value'), field.enable) !== -1) {
 					$(option).attr('disabled', 'disabled');
 				}
 			}.bind(this));
