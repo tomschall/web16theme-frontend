@@ -18,32 +18,38 @@ var data = {
 				{
 					'type': 'normal',
 					'Title': 'MAS Sozialmanagement',
-					'path_string': '#'
+					'path_string': '#',
+					'base_url': ''
 				},
 				{
 					'type': 'normal',
 					'Title': 'DAS Eingliederungsmanagement',
-					'path_string': '#'
+					'path_string': '#',
+					'base_url': ''
 				},
 				{
 					'type': 'normal',
 					'Title': 'CAS Forschung in den Sozialwissenschaften',
-					'path_string': '#'
+					'path_string': '#',
+					'base_url': ''
 				},
 				{
 					'type': 'normal',
 					'Title': 'MAS Sozialmanagement',
-					'path_string': '#'
+					'path_string': '#',
+					'base_url': ''
 				},
 				{
 					'type': 'normal',
 					'Title': 'DAS Eingliederungsmanagement',
-					'path_string': '#'
+					'path_string': '#',
+					'base_url': ''
 				},
 				{
 					'type': 'normal',
 					'Title': 'CAS Forschung in den Sozialwissenschaften',
-					'path_string': '#'
+					'path_string': '#',
+					'base_url': ''
 				}
 			]
 		}

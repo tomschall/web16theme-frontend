@@ -14,6 +14,7 @@ var data = {
 			{
 				Title: 'Prof. Dr. Barbara Gorssenbacher Künzler',
 				path_string: '#',
+				base_url: '',
 				description: 'Co-Leiterin der Professur für Französischdidaktik und ihre Disziplinen',
 				standortadresse: 'Pädagogische Hochschule FHNW<br/>Institut Primarstufe<br/>Obere Sternengasse 7<br/>CH - 4502 Solothurn',
 				phone: '+ 41 62 957 24 26',
@@ -23,6 +24,7 @@ var data = {
 			{
 				Title: 'Prof. Dr. Barbara Gorssenbacher Künzler',
 				path_string: '#',
+				base_url: '',
 				description: 'Co-Leiterin der Professur für Französischdidaktik und ihre Disziplinen',
 				standortadresse: 'Pädagogische Hochschule FHNW<br/>Institut Primarstufe<br/>Obere Sternengasse 7<br/>CH - 4502 Solothurn',
 				phone: '+ 41 62 957 24 26'
