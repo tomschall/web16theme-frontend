@@ -200,6 +200,7 @@ input[type="checkbox"].error:checked + label {
 	line-height: 1;
 
 	label,
+	span.label,
 	.fieldErrorBox {
 		font-size: 1.25rem;
 		color: $colorBorderGrey;
@@ -215,7 +216,8 @@ input[type="checkbox"].error:checked + label {
 		}
 	}
 
-	label {
+	label,
+	span.label {
 		cursor: text;
 	}
 
@@ -251,6 +253,7 @@ input[type="checkbox"].error:checked + label {
 
 	input,
 	label,
+	span.label,
 	textarea {
 		padding-left: 18px;
 
@@ -271,6 +274,9 @@ input[type="checkbox"].error:checked + label {
 	input:focus + label,
 	input.is_filled + label,
 	textarea.is_filled + label,
+	input:focus + span.label,
+	input.is_filled + span.label,
+	textarea.is_filled + span.label,
 	.fieldErrorBox {
 		font-size: 0.91666667rem;
 		top: 13px;
