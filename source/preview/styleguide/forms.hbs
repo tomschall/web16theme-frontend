@@ -1,76 +1,91 @@
 {{#extend "preview/layouts/layout"}}
 	{{#content "content"}}
-		<section class="sg_inner_wrapper">
-			<h2 class="sg_h2">Form buttons</h2>
-			<div class="sg_demo">
-				<form>
-					<fieldset>
-						<p><input type="button" value="Input type button"></p>
-						<p><input type="reset" value="Input type reset"></p>
-						<p><input type="submit" value="Input type submit"></p>
-						<p><input type="submit" value="Input type submit disabled" disabled></p>
-						<p><button type="button">Button type button</button></p>
-						<p><button type="reset">Button type reset</button></p>
-						<p><button type="submit">Button type submit</button></p>
-						<p><button type="button" disabled>Button type button disabled</button></p>
-						<p><button>Button</button></p>
-            <p><button class="button__secondary">Sekundär Button</button></p>
-            <p><button class="button__secondary" disabled>Sekundär Button Disabled</button></p>
-					</fieldset>
-				</form>
-			</div>
-		</section>
+    <section class="sg_inner_wrapper">
+      <h2 class="sg_h2">Form buttons</h2>
+      <div class="sg_demo">
+        <form>
+          <fieldset>
+            <p><input type="button" value="Input type button"></p>
+            <p><input type="reset" value="Input type reset"></p>
+            <p><input type="submit" value="Input type submit"></p>
+            <p><input type="submit" value="Input type submit disabled" disabled></p>
+            <p>
+              <button type="button">Button type button</button>
+            </p>
+            <p>
+              <button type="reset">Button type reset</button>
+            </p>
+            <p>
+              <button type="submit">Button type submit</button>
+            </p>
+            <p>
+              <button type="button" disabled>Button type button disabled</button>
+            </p>
+            <p>
+              <button>Button</button>
+            </p>
+            <p>
+              <button class="button__secondary">Sekundär Button</button>
+            </p>
+            <p>
+              <button class="button__secondary" disabled>Sekundär Button Disabled</button>
+            </p>
+          </fieldset>
+        </form>
+      </div>
+    </section>
 
-		<section class="sg_inner_wrapper">
-			<h2 class="sg_h2">Form fields default</h2>
-			<div class="sg_demo">
-				<form>
-					<fieldset>
-						<div class="ArchetypesStringWidget field">
-							<input type="text" id="text"/>
-							<label class="formQuestion" for="text">Text-Inputfeld</label>
-							<div class="fieldErrorBox"></div>
-						</div>
-						<div class="field ArchetypesSelectionWidget">
-							<select class="custom-select" data-placeholder="Select an option">
-								<option></option>
-								<option value="A">Answer A</option>
+    <section class="sg_inner_wrapper">
+      <h2 class="sg_h2">Form fields default</h2>
+      <div class="sg_demo">
+        <form>
+          <fieldset>
+            <div class="ArchetypesStringWidget field">
+              <input type="text" id="text"/>
+              <label class="formQuestion" for="text">Text-Inputfeld</label>
+              <div class="fieldErrorBox"></div>
+            </div>
+            <div class="field ArchetypesSelectionWidget">
+              <select class="custom-select" data-placeholder="Select an option">
+                <option></option>
+                <option value="A">Answer A</option>
                 <option value="B">Answer B</option>
                 <option value="V">Answer V</option>
-							</select>
-						</div>
-					</fieldset>
-				</form>
-			</div>
-		</section>
+              </select>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </section>
 
     <section class="sg_inner_wrapper">
       <h2 class="sg_h2">Example form</h2>
       <div class="sg_demo">
         <form class="form" data-validate="true">
           <fieldset>
-            <select class="custom-select custom-select___short" data-placeholder="Anrede" data-rule-selectRequired="true" data-msg-selectRequired="Pflichtfeld">
+            <select class="custom-select custom-select___short" data-placeholder="Anrede"
+                    data-rule-selectRequired="true" data-msg-selectRequired="Pflichtfeld">
               <option></option>
               <option value="mr">Herr</option>
               <option value="mrs">Frau</option>
             </select>
-					</fieldset>
+          </fieldset>
           <fieldset>
             <div class="ArchetypesStringWidget">
               <input type="text" id="surname" name="surname" data-rule-required="true" data-msg-required="Pflichtfeld"/>
               <label class="formQuestion" for="surname">Name
-								<span class="required" title="Erforderlich"> </span>
-							</label>
-							<div class="fieldErrorBox"></div>
+                <span class="required" title="Erforderlich"> </span>
+              </label>
+              <div class="fieldErrorBox"></div>
             </div>
-					</fieldset>
+          </fieldset>
           <fieldset>
             <div class="ArchetypesStringWidget">
               <input type="text" id="prename" name="prename" data-rule-required="true" data-msg-required="Pflichtfeld"/>
               <label class="formQuestion" for="prename">Vorname</label>
               <div class="fieldErrorBox"></div>
 
-						</div>
+            </div>
           </fieldset>
           <fieldset>
             <div class="ArchetypesStringWidget large">
@@ -78,53 +93,239 @@
               <label class="formQuestion" for="street">Strasse</label>
               <div class="fieldErrorBox"></div>
 
-						</div>
+            </div>
             <div class="ArchetypesStringWidget  xs">
-              <input type="text" id="house_number" name="house_number" data-rule-required="true" data-msg-required="Pflichtfeld"/>
+              <input type="text" id="house_number" name="house_number" data-rule-required="true"
+                     data-msg-required="Pflichtfeld"/>
               <label class="formQuestion" for="house_number">Nr.</label>
               <div class="fieldErrorBox"></div>
 
-						</div>
+            </div>
           </fieldset>
           <fieldset>
             <div class="ArchetypesStringWidget small">
-              <input type="number" id="zip" name="zip" data-rule-required="true" data-msg-required="Pflichtfeld" data-rule-number="true" data-msg-number="Die PLZ muss eine Zahl sein"/>
+              <input type="number" id="zip" name="zip" data-rule-required="true" data-msg-required="Pflichtfeld"
+                     data-rule-number="true" data-msg-number="Die PLZ muss eine Zahl sein"/>
               <label class="formQuestion" for="zip">PLZ</label>
               <div class="fieldErrorBox"></div>
 
-						</div>
+            </div>
             <div class="ArchetypesStringWidget medium">
               <input type="text" id="city" name="city" data-rule-required="true" data-msg-required="Pflichtfeld"/>
               <label class="formQuestion" for="city">Ort</label>
               <div class="fieldErrorBox"></div>
 
-						</div>
+            </div>
           </fieldset>
           <fieldset>
             <div class="ArchetypesStringWidget">
-              <input type="email" id="email" name="email" data-rule-required="true" data-msg-required="Pflichtfeld" data-rule-email="true" data-msg-email="Ungültiges E-Mail Format"/>
+              <input type="email" id="email" name="email" data-rule-required="true" data-msg-required="Pflichtfeld"
+                     data-rule-email="true" data-msg-email="Ungültiges E-Mail Format"/>
               <label class="formQuestion" for="email">Email</label>
               <div class="fieldErrorBox"></div>
 
-						</div>
+            </div>
           </fieldset>
           <fieldset>
-						<div class="ArchetypesBooleanWidget field">
-              <input type="radio" name="radio" id="rad1" data-rule-required="true" data-msg-required="error message radio button" value="accepted" />
+            <div class="ArchetypesBooleanWidget field">
+              <input type="radio" name="radio" id="rad1" data-rule-required="true"
+                     data-msg-required="error message radio button" value="accepted"/>
               <label class="formQuestion" for="rad1">Radio input</label>
               <div class="fieldErrorBox"></div>
-						</div>
+            </div>
 
-					</fieldset>
+          </fieldset>
           <fieldset>
             <div class="ArchetypesBooleanWidget field">
-              <input type="checkbox" name="agree" id="check1" data-rule-required="true" data-msg-required="true" value="yes" />
+              <input type="checkbox" name="agree" id="check1" data-rule-required="true" data-msg-required="true"
+                     value="yes"/>
               <label class="formQuestion" for="check1">Checkbox input</label>
               <div class="fieldErrorBox"></div>
             </div>
-					</fieldset>
+          </fieldset>
           <button type="submit">Online Anmelden</button>
         </form>
+      </div>
+    </section>
+
+    <section class="sg_inner_wrapper">
+      <h2 class="sg_h2">Code</h2>
+			<pre class="sg_code hljs">
+				<span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"form"</span> <span class="hljs-attribute">data-validate</span>=<span class="hljs-value">"true"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">select</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"custom-select custom-select___short"</span> <span class="hljs-attribute">data-placeholder</span>=<span class="hljs-value">"Anrede"</span>
+            <span class="hljs-attribute">data-rule-selectRequired</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">data-msg-selectRequired</span>=<span class="hljs-value">"Pflichtfeld"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">option</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"mr"</span>&gt;</span>Herr<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">option</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"mrs"</span>&gt;</span>Frau<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">select</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">fieldset</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"ArchetypesStringWidget"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"surname"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"surname"</span> <span class="hljs-attribute">data-rule-required</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">data-msg-required</span>=<span class="hljs-value">"Pflichtfeld"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"formQuestion"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"surname"</span>&gt;</span>Name
+        <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"required"</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">"Erforderlich"</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"fieldErrorBox"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">fieldset</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"ArchetypesStringWidget"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"prename"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"prename"</span> <span class="hljs-attribute">data-rule-required</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">data-msg-required</span>=<span class="hljs-value">"Pflichtfeld"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"formQuestion"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"prename"</span>&gt;</span>Vorname<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"fieldErrorBox"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">fieldset</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"ArchetypesStringWidget large"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"street"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"street"</span> <span class="hljs-attribute">data-rule-required</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">data-msg-required</span>=<span class="hljs-value">"Pflichtfeld"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"formQuestion"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"street"</span>&gt;</span>Strasse<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"fieldErrorBox"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"ArchetypesStringWidget  xs"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"house_number"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"house_number"</span> <span class="hljs-attribute">data-rule-required</span>=<span class="hljs-value">"true"</span>
+             <span class="hljs-attribute">data-msg-required</span>=<span class="hljs-value">"Pflichtfeld"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"formQuestion"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"house_number"</span>&gt;</span>Nr.<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"fieldErrorBox"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">fieldset</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"ArchetypesStringWidget small"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"number"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"zip"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"zip"</span> <span class="hljs-attribute">data-rule-required</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">data-msg-required</span>=<span class="hljs-value">"Pflichtfeld"</span>
+             <span class="hljs-attribute">data-rule-number</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">data-msg-number</span>=<span class="hljs-value">"Die PLZ muss eine Zahl sein"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"formQuestion"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"zip"</span>&gt;</span>PLZ<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"fieldErrorBox"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"ArchetypesStringWidget medium"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"city"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"city"</span> <span class="hljs-attribute">data-rule-required</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">data-msg-required</span>=<span class="hljs-value">"Pflichtfeld"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"formQuestion"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"city"</span>&gt;</span>Ort<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"fieldErrorBox"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">fieldset</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"ArchetypesStringWidget"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"email"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"email"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"email"</span> <span class="hljs-attribute">data-rule-required</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">data-msg-required</span>=<span class="hljs-value">"Pflichtfeld"</span>
+             <span class="hljs-attribute">data-rule-email</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">data-msg-email</span>=<span class="hljs-value">"Ungültiges E-Mail Format"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"formQuestion"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"email"</span>&gt;</span>Email<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"fieldErrorBox"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">fieldset</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"ArchetypesBooleanWidget field"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"radio"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"radio"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"rad1"</span> <span class="hljs-attribute">data-rule-required</span>=<span class="hljs-value">"true"</span>
+             <span class="hljs-attribute">data-msg-required</span>=<span class="hljs-value">"error message radio button"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"accepted"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"formQuestion"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"rad1"</span>&gt;</span>Radio input<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"fieldErrorBox"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-title">fieldset</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"ArchetypesBooleanWidget field"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"agree"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"check1"</span> <span class="hljs-attribute">data-rule-required</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">data-msg-required</span>=<span class="hljs-value">"true"</span>
+             <span class="hljs-attribute">value</span>=<span class="hljs-value">"yes"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"formQuestion"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"check1"</span>&gt;</span>Checkbox input<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"fieldErrorBox"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">fieldset</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>Online Anmelden<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span>
+			</pre>
+		</section>
+
+    <section class="sg_inner_wrapper">
+      <h2 class="sg_h2">Basic Form (delivered by FHNW)</h2>
+      <div class="sg_demo">
+        <div class="form">
+          <form id="form" enctype="multipart/form-data" method="post"
+                class="rowlike enableUnloadProtection enableFormTabbing pat-autotoc easyformForm kssattr-formname-view autotabs"
+                data-pat-autotoc="levels: legend; section: fieldset; className: autotabs">
+            <!-- Default fieldset -->
+            <fieldset id="fieldset-default" class="autotoc-section active">
+              <legend id="fieldsetlegend-default">Default</legend>
+              <div id="formfield-form-widgets-replyto" data-fieldname="form.widgets.replyto"
+                   class="field pat-inlinevalidation kssattr-fieldname-form.widgets.replyto empty"
+                   data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
+                <label class="horizontal" for="form-widgets-replyto">
+                  Ihre E-Mail Adresse
+                  <span title="Erforderlich" class="required horizontal">&nbsp;</span>
+                </label>
+                <div class="fieldErrorBox"></div>
+                <input type="text" value="" class="text-widget required textline-field" name="form.widgets.replyto"
+                       id="form-widgets-replyto">
+              </div>
+              <div id="formfield-form-widgets-topic" data-fieldname="form.widgets.topic"
+                   class="field pat-inlinevalidation kssattr-fieldname-form.widgets.topic empty"
+                   data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
+                <label class="horizontal" for="form-widgets-topic">
+                  Betreff
+                  <span title="Erforderlich" class="required horizontal">&nbsp;</span>
+                </label>
+                <div class="fieldErrorBox"></div>
+                <input type="text" value="" class="text-widget required textline-field" name="form.widgets.topic"
+                       id="form-widgets-topic">
+              </div>
+              <div id="formfield-form-widgets-comments" data-fieldname="form.widgets.comments"
+                   class="field field__textarea pat-inlinevalidation kssattr-fieldname-form.widgets.comments empty"
+                   data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
+                <label class="horizontal" for="form-widgets-comments">
+                  Kommentar
+                  <span title="Erforderlich" class="required horizontal">&nbsp;</span>
+                </label>
+                <div class="fieldErrorBox"></div>
+                <textarea class="textarea-widget required text-field" name="form.widgets.comments"
+                          id="form-widgets-comments" rows="5"></textarea>
+              </div>
+              <div id="formfield-form-widgets-auswahl" data-fieldname="form.widgets.auswahl"
+                   class="field pat-inlinevalidation kssattr-fieldname-form.widgets.auswahl empty"
+                   data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
+                <label class="horizontal" for="form-widgets-auswahl">
+                  Auswahl
+                </label>
+                <div class="fieldErrorBox"></div>
+                <span class="option">
+									<label for="form-widgets-auswahl-0">
+									<input type="radio" value="true" class="radio-widget bool-field" name="form.widgets.auswahl"
+												 id="form-widgets-auswahl-0">
+										<span class="label">ja</span>
+									</label>
+								</span>
+                <span class="option">
+									<label for="form-widgets-auswahl-1">
+									<input type="radio" value="false" class="radio-widget bool-field" name="form.widgets.auswahl"
+												 id="form-widgets-auswahl-1">
+										<span class="label">nein</span>
+									</label>
+								</span>
+                <input type="hidden" value="1" name="form.widgets.auswahl-empty-marker">
+              </div>
+              <div id="formfield-form-widgets-einfache_auswahl" data-fieldname="form.widgets.einfache_auswahl"
+                   class="field pat-inlinevalidation kssattr-fieldname-form.widgets.einfache_auswahl empty"
+                   data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
+                <div class="fieldErrorBox"></div>
+                <select size="1" class="select-widget choice-field" name="form.widgets.einfache_auswahl:list"
+												data-placeholder="Einfache Auswahl"
+                        id="form-widgets-einfache_auswahl">
+									<option></option>
+                  <option value="Äpfel" id="form-widgets-einfache_auswahl-0">Äpfel</option>
+                  <option value="Birnen" id="form-widgets-einfache_auswahl-1">Birnen</option>
+                </select>
+                <input type="hidden" value="1" name="form.widgets.einfache_auswahl-empty-marker">
+              </div>
+            </fieldset>
+            <!-- Secondary fieldsets -->
+            <div class="formControls">
+              <input type="submit" value="Einreichen" class="submit-widget button-field" name="form.buttons.submit"
+                     id="form-buttons-submit">
+            </div>
+            <input type="hidden" value="43dfe602a7e1d65b326e4906b887cfdfe7d0b5fc" name="_authenticator">
+          </form>
+        </div>
       </div>
     </section>
 	{{/content}}

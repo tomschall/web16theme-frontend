@@ -59,7 +59,8 @@ input[type="radio"] + label {
 /**
   * Input
   */
-input {
+input,
+textarea {
 	border: 0;
 	background: $colorBg;
 
@@ -69,7 +70,8 @@ input {
 	&[type="search"],
 	&[type="url"],
 	&[type="tel"],
-	&[type="number"] {
+	&[type="number"]
+	{
 		background: $colorInputTextHover;
 		border: 1px solid $colorGreyHover;
 		border-radius: 0;
@@ -87,6 +89,26 @@ input {
 
 			outline: none;
 		}
+	}
+}
+
+textarea {
+	background: $colorInputTextHover;
+	border: 1px solid $colorGreyHover;
+	border-radius: 0;
+	box-shadow: none;
+
+	-webkit-appearance: none;
+
+	&:hover {
+		border: 1px solid $customScrollbarColor;
+	}
+
+	&:focus {
+		background-color: $colorBg;
+		border: 1px solid $colorBlack;
+
+		outline: none;
 	}
 }
 
@@ -166,16 +188,19 @@ input[type="checkbox"].error:checked + label {
   * Textfields
   */
 .ArchetypesStringWidget,
-.search__string {
+.search__string,
+.field {
 	position: relative;
 
-	@include defaultElementHeight();
+	min-height: map-get($elementHeight, desktop);
+
 	float: left;
 	width: 100%;
 
 	line-height: 1;
 
 	label,
+	span.label,
 	.fieldErrorBox {
 		font-size: 1.25rem;
 		color: $colorBorderGrey;
@@ -184,17 +209,20 @@ input[type="checkbox"].error:checked + label {
 		top: 23px;
 
 		transition: all $transitionLength / 2 $transitionEase;
+		z-index: 10;
 
 		@include mq($to: medium) {
 			top: 0;
 		}
 	}
 
-	label {
+	label,
+	span.label {
 		cursor: text;
 	}
 
-	input {
+	input,
+	textarea {
 		display: block;
 		width: 100%;
 
@@ -207,6 +235,8 @@ input[type="checkbox"].error:checked + label {
 
 		font-size: 1.25rem;
 		border: 1px solid $colorGreyHover;
+
+		resize: none;
 
 		&:focus {
 			border-color: $colorBlack;
@@ -222,7 +252,9 @@ input[type="checkbox"].error:checked + label {
 	}
 
 	input,
-	label {
+	label,
+	span.label,
+	textarea {
 		padding-left: 18px;
 
 		@include mq($to: medium) {
@@ -230,7 +262,8 @@ input[type="checkbox"].error:checked + label {
 		}
 	}
 
-	input {
+	input,
+	textarea {
 		padding-left: 17px;
 
 		@include mq($to: medium) {
@@ -240,6 +273,10 @@ input[type="checkbox"].error:checked + label {
 
 	input:focus + label,
 	input.is_filled + label,
+	textarea.is_filled + label,
+	input:focus + span.label,
+	input.is_filled + span.label,
+	textarea.is_filled + span.label,
 	.fieldErrorBox {
 		font-size: 0.91666667rem;
 		top: 13px;
@@ -253,6 +290,14 @@ input[type="checkbox"].error:checked + label {
 		right: $basicPush * 1.1;
 		color: $colorErrorRed;
 		font-family: $fontSansSerifBold;
+	}
+
+	&.field__textarea {
+		min-height: map-get($elementHeight, desktop) * 2;
+
+		@include mq($to: medium) {
+			min-height: map-get($elementHeight, mobile) * 2;
+		}
 	}
 
 	/**
@@ -273,6 +318,10 @@ input[type="checkbox"].error:checked + label {
 	&.large {
 		width: 70%;
 	}
+
+	@include mq($to: medium) {
+		min-height:  map-get($elementHeight, mobile);;
+	}
 }
 
 
@@ -289,5 +338,9 @@ input[type="checkbox"].error:checked + label {
 		div.ArchetypesStringWidget:first-child:not(last-child) {
 			margin-right: 3.5%;
 		}
+	}
+
+	.field {
+		margin-bottom: $basicPush;
 	}
 }

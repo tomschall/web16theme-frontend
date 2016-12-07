@@ -41,7 +41,7 @@
 	 * Initializes the text input fields
 	 */
 	function initTextInputFields() {
-		var $textInputFields = $('.ArchetypesStringWidget, .search__string').find('input');
+		var $textInputFields = $('.ArchetypesStringWidget, .search__string, .field').find('input, textarea');
 
 		/**
 		 * Event when text input fields are changed
@@ -143,7 +143,7 @@
 	 * Initializes the select2 dropdowns
 	 */
 	function initSelect2() {
-		var $selectFields = $('.custom-select');
+		var $selectFields = $('.custom-select, .select-widget');
 
 		$selectFields.map(function(index, select) {
 			if ($(select).hasClass('has_optgroup')) {

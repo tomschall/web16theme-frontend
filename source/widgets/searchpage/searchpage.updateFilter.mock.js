@@ -4,19 +4,19 @@ var data = {
 	'response': [
 		{
 			field: 'location',
-			disable: [
+			enable: [
 					'bsl'
 			]
 		},
 		{
 			field: 'study_type',
-			disable: [
+			enable: [
 					'cas'
 			]
 		},
 		{
 			field: 'topic',
-			disable: [
+			enable: [
 					'7200',
 					'7203'
 			]
