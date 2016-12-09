@@ -28,16 +28,12 @@
 				},
 				mapProps: {
 					zoom: 16,
-					mapTypeId: google.maps.MapTypeId.ROADMAP,
+					mapTypeId: null,
 					disableDoubleClickZoom: true,
 					keyboardShortcuts: false,
 					scrollwheel: false
 				},
 				markerIconProps: {
-					url: '',
-					size: new google.maps.Size(104, 86),
-					scaledSize: new google.maps.Size(104, 86),
-					anchor: new google.maps.Point(73, 95)
 				},
 				mapStyles: [{
 					'featureType': 'landscape.man_made',
@@ -149,20 +145,28 @@
 	Widget.prototype.init = function() {
 		data.navOptions = $(this.options.domSelectors.navOption).toArray();
 
-		this.options.markerIconProps.url = this.$element.data('maps-marker');
+		if (typeof google !== typeof undefined) {
+			this.options.mapProps.mapTypeId = google.maps.MapTypeId.ROADMAP;
+			this.options.markerIconProps = {
+				size: new google.maps.Size(104, 86),
+				scaledSize: new google.maps.Size(104, 86),
+				anchor: new google.maps.Point(73, 95),
+				url: this.$element.data('maps-marker')
+			};
 
-		if (this.$element.hasClass('all-locations')) {
-			isOneMapOnly = true;
+			if (this.$element.hasClass('all-locations')) {
+				isOneMapOnly = true;
+			}
+
+			if (!isOneMapOnly) {
+				this.initMaps();
+				this.initSlickNav();
+			} else {
+				this.initAllLocations();
+			}
+
+			this.initSlick();
 		}
-
-		if (!isOneMapOnly) {
-			this.initMaps();
-			this.initSlickNav();
-		} else {
-			this.initAllLocations();
-		}
-
-		this.initSlick();
 	};
 
 	/**
