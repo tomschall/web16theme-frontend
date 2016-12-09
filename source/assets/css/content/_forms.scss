@@ -8,7 +8,9 @@
 .ArchetypesBooleanWidget label,
 .ArchetypesMultiSelectWidget label,
 input[type="radio"] + label,
-input[type="checkbox"] + label {
+input[type="checkbox"] + label,
+input[type="radio"] + .label,
+input[type="checkbox"] + .label {
 	padding-left: $basicPush + $radioCheckboxDimension;
 
 	position: relative;
@@ -17,6 +19,7 @@ input[type="checkbox"] + label {
 	font-size: 1.25rem;
 
 	margin-bottom: $basicPush;
+	display: block;
 
 	&:before {
 		display: block;
@@ -143,7 +146,9 @@ input[type="checkbox"] {
 }
 
 input[type="radio"]:checked + label,
-input[type="checkbox"]:checked + label {
+input[type="checkbox"]:checked + label,
+input[type="radio"]:checked + .label,
+input[type="checkbox"]:checked + .label {
 	&:after {
 		display: block;
 		content: " ";
@@ -166,7 +171,8 @@ input[type="checkbox"]:checked + label {
 	}
 }
 
-input[type="checkbox"]:checked + label {
+input[type="checkbox"]:checked + label,
+input[type="checkbox"]:checked + .label {
 	@include iconDataurl($name: 'checkmark', $after: true);
 	&:after {
 		background-color: transparent;
@@ -178,7 +184,9 @@ input[type="checkbox"]:checked + label {
 }
 
 input[type="radio"].error:checked + label,
-input[type="checkbox"].error:checked + label {
+input[type="checkbox"].error:checked + label,
+input[type="radio"].error:checked + .label,
+input[type="checkbox"].error:checked + .label{
 	&:before {
 		border: 2px solid $colorErrorRed;
 	}
@@ -342,5 +350,16 @@ input[type="checkbox"].error:checked + label {
 
 	.field {
 		margin-bottom: $basicPush;
+	}
+}
+
+span.option {
+	display: block;
+
+	@include clearfix();
+
+	.label {
+		display: block;
+		position: relative;
 	}
 }

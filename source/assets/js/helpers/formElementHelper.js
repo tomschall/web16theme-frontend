@@ -41,7 +41,7 @@
 	 * Initializes the text input fields
 	 */
 	function initTextInputFields() {
-		var $textInputFields = $('.ArchetypesStringWidget, .search__string, .field').find('input, textarea');
+		var $textInputFields = $('.ArchetypesStringWidget, .search__string, .field').find('input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="url"], input[type="tel"], input[type="number"], textarea');
 
 		/**
 		 * Event when text input fields are changed
