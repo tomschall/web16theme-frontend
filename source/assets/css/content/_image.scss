@@ -1,7 +1,21 @@
-img.one-span {
+img.one-span,
+img.image-left {
 	@include span(3);
 
 	margin-left: -1 * $gutterWidth;
+
+	@include mq($to: small) {
+		@include span(12);
+
+		margin-bottom: $basicPush;
+		margin-right: -1 * $gutterWidth;
+	}
+}
+
+img.image-right {
+	@include span(3);
+  float: right;
+	margin-right: -1 * $gutterWidth;
 
 	@include mq($to: small) {
 		@include span(12);
