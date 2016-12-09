@@ -3,6 +3,7 @@ img.image-left {
 	@include span(3);
 
 	margin-left: -1 * $gutterWidth;
+	height: auto;
 
 	@include mq($to: small) {
 		@include span(12);
@@ -15,6 +16,7 @@ img.image-left {
 img.image-right {
 	@include span(3);
   float: right;
+	height: auto;
 	margin-right: -1 * $gutterWidth;
 
 	@include mq($to: small) {
