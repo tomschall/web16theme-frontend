@@ -33,3 +33,7 @@ img.full-span {
 	margin-left: -1 * $gutterWidth;
 	margin-right: -1 * $gutterWidth;
 }
+
+img.image-inline {
+	max-width: 100%;
+}
