@@ -117,6 +117,10 @@
 	}
 }
 
+table.content__table {
+	width: 100%;
+}
+
 .content__table {
 	th, td {
 		padding: $gutterWidth $gutterWidth $gutterWidth 0;
@@ -128,8 +132,14 @@
 	}
 
 	tr {
-		td, th {
+		th {
 			border-bottom: 1px solid $colorBlack;
+		}
+	}
+
+	tr {
+		td {
+			border-bottom: 1px solid $colorGreyHover;
 		}
 
 		&:last-of-type {
