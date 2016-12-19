@@ -103,6 +103,7 @@ $paddingBehindYellowBarNarrow: $widthYellowBar + $pagePaddingSmall;
 $paddingBehindYellowBarSuperWide: $widthYellowBarSuperWide + $pagePaddingWide;
 
 $contentMarginTop: $basicPush * 4;
+$contentMarginBottom: $basicPush * 4;
 
 /**
   * Header
@@ -198,3 +199,8 @@ $clickAreaSizes: (
 	normal: 100px,
 	xxl: 120px
 );
+
+/**
+	* Image plone prefix
+	*/
+$imgSrcPrefix: '/++theme++web16theme';
