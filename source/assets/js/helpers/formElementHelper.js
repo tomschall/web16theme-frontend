@@ -12,6 +12,12 @@
 			stateClasses = {
 				isFilled: 'is_filled',
 				isFocused: 'is_focused'
+			},
+			validationMapping = {
+				'required': {
+					ruleName: 'required',
+					initialValue: true
+				}
 			};
 
 	/**
@@ -206,21 +212,57 @@
 	 * Extends the validators
 	 */
 	function extendValidator() {
-		$('form[data-validate="true"]').validate({
-			onfocusout: function(element) {
-				$(element).valid();
-			},
+		$('.form form').each(function(formIdx, form) {
+			var $form = $(form),
+					rules = {},
+					messages = {};
 
-			ignore: [],
-			errorPlacement: function(error, element) {
-				if ($(element).is('select')) {
-					return true;
-				} else if ($(element).is('input[type="radio"]') || $(element).is('input[type="check"]') || $(element).is('input[type="checkbox"]')) {
-					return true;
-				} else {
-					$(element).siblings('.fieldErrorBox').text(error.text());
+			$form.find('.field').each(function(fieldIdx, field) {
+				var $field = $(field),
+						temprules = {},
+						tempmessages = {};
+
+				$field.find('span').each(function(spanIdx, span) {
+					var $span = $(span),
+							classList = $span.attr('class').split(/\s+/);
+
+					classList.forEach(function(className) {
+						if (validationMapping[className]) {
+							if (typeof validationMapping[className].initialValue === 'function') {
+								temprules[validationMapping[className].ruleName] = validationMapping[className].initialValue();
+							} else {
+								temprules[validationMapping[className].ruleName] = validationMapping[className].initialValue;
+							}
+
+							tempmessages[validationMapping[className].ruleName] = $span.attr('title');
+						}
+					});
+				});
+
+				if (temprules !== {}) {
+					rules[$field.find('input, textarea').attr('name')] = temprules;
+					messages[$field.find('input, textarea').attr('name')] = tempmessages;
 				}
-			}
+			});
+
+			$form.validate({
+				onfocusout: function(element) {
+					$(element).valid();
+				},
+
+				rules: rules,
+				messages: messages,
+				ignore: [],
+				errorPlacement: function(error, element) {
+					if ($(element).is('select')) {
+						return true;
+					} else if ($(element).is('input[type="radio"]') || $(element).is('input[type="check"]') || $(element).is('input[type="checkbox"]')) {
+						return true;
+					} else {
+						$(element).siblings('.fieldErrorBox').text(error.text());
+					}
+				}
+			});
 		});
 
 		/**
