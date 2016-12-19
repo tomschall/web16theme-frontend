@@ -17,7 +17,7 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Newsletter Subscription',
+				title: 'Newsletter Subscription | WI_064',
 				description: '',
 				code: dataHelper.getTemplateCode('newsletter_subscription.hbs'),
 				documentation: dataHelper.getDocumentation('newsletter_subscription.md'),

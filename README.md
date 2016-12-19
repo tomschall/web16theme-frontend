@@ -1,6 +1,11 @@
-# [PROJECT NAME] [YEAR]
+# [FHNW Frontend Theme] [2016]
 
-[SHORT DESCRIPTION]
+This is the frontend theme for the main FHNW Website. It is the frontend
+code only and can be used for different projects.
+
+To use it with Plone look into fhnw.web16theme. There is a *deploy_theme.sh*
+script in buildout-fhnw.ch which copies the necessary parts over to
+the Plone integration product.
 
 
 ---
@@ -8,12 +13,10 @@
 
 ## LINKS
 
-* Code repository: [URL]
-* Jira: [URL]
-* Jenkins / Teamcity: [URL]
-* Preview Server: [URL]
-* Design: [URL]
-* IA: [URL]
+* Code repository: https://gitlab.fhnw.ch/webteam/web16theme-frontend/
+* Issues: https://gitlab.fhnw.ch/webteam/web16theme-frontend/issues
+* Preview Server: http://fhnw.fe-preview.unic.com/
+* Design: https://www.unic.com/de.html
 
 
 ---
@@ -21,7 +24,7 @@
 
 ## DEVELOPERS
 
-* [NAME / SHORT NAME] [YEAR]
+* [Marcel Bührig] [2016]
 
 
 ---
