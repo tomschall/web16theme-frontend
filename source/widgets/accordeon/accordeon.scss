@@ -38,7 +38,7 @@ $colorAvailabilityRed: #f05f1b;
 
 		font-size: 1.5rem;
 
-		padding: ($gutterWidth - 4) $gutterWidth + 2;
+		padding: ($gutterWidth - 4) $basicPush * 4  ($gutterWidth -4) $gutterWidth + 2;
 		position: relative;
 
 		opacity: 1;
