@@ -228,35 +228,37 @@
 
 		getAllLangStrings();
 
-		if (activeCategorySearch) {
-			if (data.responseHeader.params.category === 'expertises') {
-				$responseHTML.append(generateWordList(data));
+		if (data.response.docs.length > 0) {
+			if (activeCategorySearch) {
+				if (data.responseHeader.params.category === 'expertises') {
+					$responseHTML.append(generateWordList(data));
+				} else {
+					$responseHTML.addClass('search__table').append(generateResultTable(data));
+				}
 			} else {
-				$responseHTML.addClass('search__table').append(generateResultTable(data));
+				$searchCategory = $('<div class="search__cat"></div>');
+				$categoryList = $('<ul></ul>');
+				$categoryTitle = $('<span class="search__cat-title">' + data.response.categoryTitle + '</span>');
+
+				responseData.forEach(function(listEntry) {
+					$tempListDOM = generateSearchListItem(listEntry, data.responseHeader.params.category);
+
+					$categoryList.append($tempListDOM);
+				});
+
+				if (data.response.categoryUrl) {
+					var template = Handlebars.compile(listEntryTemplates.showAll);
+
+					$categoryList.append(template(data.response));
+				}
+
+				$searchCategory.append($categoryTitle).append($categoryList);
+
+				$responseHTML = $searchCategory;
 			}
-		} else {
-			$searchCategory = $('<div class="search__cat"></div>');
-			$categoryList = $('<ul></ul>');
-			$categoryTitle = $('<span class="search__cat-title">' + data.response.categoryTitle + '</span>');
 
-			responseData.forEach(function(listEntry) {
-				$tempListDOM = generateSearchListItem(listEntry, data.responseHeader.params.category);
-
-				$categoryList.append($tempListDOM);
-			});
-
-			if (data.response.categoryUrl) {
-				var template = Handlebars.compile(listEntryTemplates.showAll);
-
-				$categoryList.append(template(data.response));
-			}
-
-			$searchCategory.append($categoryTitle).append($categoryList);
-
-			$responseHTML = $searchCategory;
+			$(window).trigger(events.dataLoaded, [$responseHTML, data.response.numFound, responseData.length]);
 		}
-
-		$(window).trigger(events.dataLoaded, [$responseHTML, data.response.numFound, responseData.length]);
 	}
 
 	function saveToLocalStorage(query) {
