@@ -287,6 +287,10 @@ function debounce(fn, delay) {
 
 			if ($elementTitle.length > 0) {
 				titleSt = $elementTitle.html();
+				titleSt = titleSt.replace('<span class="bold">', '');
+				titleSt = titleSt.replace('</span>', '');
+
+				console.log('titleSt', titleSt);
 
 				queryStartPosition = titleSt.toLowerCase().search(currentSearchValue.toLowerCase());
 
