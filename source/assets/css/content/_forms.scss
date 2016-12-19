@@ -5,8 +5,6 @@
 	display: inline-block;
 }
 
-.ArchetypesBooleanWidget label,
-.ArchetypesMultiSelectWidget label,
 input[type="radio"] + label,
 input[type="checkbox"] + label,
 input[type="radio"] + .label,
@@ -44,8 +42,6 @@ input[type="checkbox"] + .label {
 	}
 }
 
-.ArchetypesBooleanWidget label,
-.ArchetypesMultiSelectWidget label,
 input[type="radio"] + label {
 	&:before,
 	&:after {
@@ -58,79 +54,6 @@ input[type="radio"] + label {
 		border-radius: 0;
 	}
 }
-
-/**
-  * Input
-  */
-input,
-textarea {
-	border: 0;
-	background: $colorBg;
-
-	&[type="text"],
-	&[type="password"],
-	&[type="email"],
-	&[type="search"],
-	&[type="url"],
-	&[type="tel"],
-	&[type="number"]
-	{
-		background: $colorInputTextHover;
-		border: 1px solid $colorGreyHover;
-		border-radius: 0;
-		box-shadow: none;
-
-		-webkit-appearance: none;
-
-		&:hover {
-			border: 1px solid $customScrollbarColor;
-		}
-
-		&:focus {
-			background-color: $colorBg;
-			border: 1px solid $colorBlack;
-
-			outline: none;
-		}
-	}
-}
-
-textarea {
-	background: $colorInputTextHover;
-	border: 1px solid $colorGreyHover;
-	border-radius: 0;
-	box-shadow: none;
-
-	-webkit-appearance: none;
-
-	&:hover {
-		border: 1px solid $customScrollbarColor;
-	}
-
-	&:focus {
-		background-color: $colorBg;
-		border: 1px solid $colorBlack;
-
-		outline: none;
-	}
-}
-
-/**
-  * Resetting default number input
-  */
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
-
-input[type=number] {
-	-moz-appearance: textfield;
-}
-
-/**
-  * Checkboxes and radios
-  */
 
 input[type="radio"],
 input[type="checkbox"] {
@@ -193,9 +116,55 @@ input[type="checkbox"].error:checked + .label{
 }
 
 /**
+  * Input
+  */
+.field {
+	input,
+	textarea {
+		border: 0;
+
+		background: $colorInputTextHover;
+		border: 1px solid $colorGreyHover;
+		border-radius: 0;
+		box-shadow: none;
+
+		-webkit-appearance: none;
+
+		&:hover {
+			border: 1px solid $customScrollbarColor;
+		}
+
+		&:focus {
+			background-color: $colorBg;
+			border: 1px solid $colorBlack;
+
+			outline: none;
+		}
+	}
+}
+
+/**
+  * Resetting default number input
+  */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+/**
+  * Checkboxes and radios
+  */
+
+
+
+/**
   * Textfields
   */
-.ArchetypesStringWidget,
 .search__string,
 .field {
 	position: relative;
@@ -279,21 +248,6 @@ input[type="checkbox"].error:checked + .label{
 		}
 	}
 
-	input:focus + label,
-	input.is_filled + label,
-	textarea.is_filled + label,
-	input:focus + span.label,
-	input.is_filled + span.label,
-	textarea.is_filled + span.label,
-	.fieldErrorBox {
-		font-size: 0.91666667rem;
-		top: 13px;
-
-		@include mq($to: medium) {
-			top: -9px;
-		}
-	}
-
 	.fieldErrorBox {
 		right: $basicPush * 1.1;
 		color: $colorErrorRed;
@@ -332,7 +286,16 @@ input[type="checkbox"].error:checked + .label{
 	}
 }
 
+.field.is_filled label,
+.field.is_focused label,
+.fieldErrorBox {
+	font-size: 0.91666667rem;
+	top: 13px;
 
+	@include mq($to: medium) {
+		top: -9px;
+	}
+}
 
 /**
   * Forms

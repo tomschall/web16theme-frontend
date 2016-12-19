@@ -8,7 +8,11 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var eventsSet = false;
+	var eventsSet = false,
+			stateClasses = {
+				isFilled: 'is_filled',
+				isFocused: 'is_focused'
+			};
 
 	/**
 	 * Checks the active selection for the last visible to add ('...') or for the last over all to remove the comma
@@ -47,11 +51,32 @@
 		 * Event when text input fields are changed
 		 */
 		$textInputFields.on('change.fillInput', function() {
-			if ($(this).val() !== '') {
-				$(this).addClass('is_filled');
+			var $inputField = $(this),
+					$parentField = $inputField.parent('.field');
+
+			if ($inputField.val() !== '') {
+				$inputField.addClass(stateClasses.isFilled);
+				$parentField.addClass(stateClasses.isFilled);
 			} else {
-				$(this).removeClass('is_filled');
+				$inputField.removeClass(stateClasses.isFilled);
+				$parentField.removeClass(stateClasses.isFilled);
 			}
+		});
+
+		$textInputFields.on('focus.formElementHelper', function() {
+			var $inputField = $(this),
+					$parentField = $inputField.parent('.field');
+
+			$inputField.addClass(stateClasses.isFocused);
+			$parentField.addClass(stateClasses.isFocused);
+		});
+
+		$textInputFields.on('blur.formElementHelper', function() {
+			var $inputField = $(this),
+					$parentField = $inputField.parent('.field');
+
+			$inputField.removeClass(stateClasses.isFocused);
+			$parentField.removeClass(stateClasses.isFocused);
 		});
 
 		$('.reset-field').on('click.formElementHelper', function() {
