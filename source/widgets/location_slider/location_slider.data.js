@@ -32,7 +32,7 @@ var templateData = {
 						y: '47.347906'
 					},
 					mobileImage: {
-						src:'/assets/media/img/location_accordeon_olten.png',
+						src: '/assets/media/img/location_accordeon_olten.png',
 						alt: 'Standort Olten auf Karte{{'
 					}
 				},
@@ -57,7 +57,7 @@ var templateData = {
 						y: '47.347906'
 					},
 					mobileImage: {
-						src:'/assets/media/img/location_accordeon_olten.png',
+						src: '/assets/media/img/location_accordeon_olten.png',
 						alt: 'Standort Olten auf Karte{{'
 					}
 				}
