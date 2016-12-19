@@ -1,7 +1,23 @@
-img.one-span {
+img.one-span,
+img.image-left {
 	@include span(3);
 
 	margin-left: -1 * $gutterWidth;
+	height: auto;
+
+	@include mq($to: small) {
+		@include span(12);
+
+		margin-bottom: $basicPush;
+		margin-right: -1 * $gutterWidth;
+	}
+}
+
+img.image-right {
+	@include span(3);
+  float: right;
+	height: auto;
+	margin-right: -1 * $gutterWidth;
 
 	@include mq($to: small) {
 		@include span(12);
@@ -16,4 +32,8 @@ img.full-span {
 
 	margin-left: -1 * $gutterWidth;
 	margin-right: -1 * $gutterWidth;
+}
+
+img.image-inline {
+	max-width: 100%;
 }
