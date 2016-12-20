@@ -5,116 +5,6 @@
 	display: inline-block;
 }
 
-input[type="radio"] + label,
-input[type="checkbox"] + label,
-input[type="radio"] + .label,
-input[type="checkbox"] + .label {
-	padding-left: $basicPush + $radioCheckboxDimension;
-
-	position: relative;
-
-	font-family: $fontSansSerifRoman;
-	font-size: 1.25rem;
-
-	margin-bottom: $basicPush;
-	display: block;
-
-	&:before {
-		display: block;
-		content: " ";
-		position: absolute;
-		left: 0;
-		top: 50%;
-
-		background-color: $colorInputTextHover;
-
-		transform: translateY(-50%);
-
-		width: $radioCheckboxDimension;
-		height: $radioCheckboxDimension;
-
-		border: 1px solid $colorGreyHover;
-	}
-
-	&:hover:before {
-		border-color: $customScrollbarColor;
-		background-color: $colorInputTextHover;
-	}
-}
-
-input[type="radio"] + label {
-	&:before,
-	&:after {
-		border-radius: 50%;
-	}
-}
-
-.ArchetypesBooleanWidget input[type="checkbox"] + label {
-	&:before {
-		border-radius: 0;
-	}
-}
-
-input[type="radio"],
-input[type="checkbox"] {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: none;
-
-	opacity: 0;
-	width: 0;
-	height: 0;
-
-	visibility: hidden;
-}
-
-input[type="radio"]:checked + label,
-input[type="checkbox"]:checked + label,
-input[type="radio"]:checked + .label,
-input[type="checkbox"]:checked + .label {
-	&:after {
-		display: block;
-		content: " ";
-		position: absolute;
-		top: 50%;
-		left: 10px;
-
-
-		transform: translateY(-50%) translateX(-41%);
-
-		width: 11px;
-		height: 11px;
-
-		background-color: $colorBlack;
-	}
-
-	&:before {
-		background-color: $colorBg;
-		border-color: $colorBlack;
-	}
-}
-
-input[type="checkbox"]:checked + label,
-input[type="checkbox"]:checked + .label {
-	@include iconDataurl($name: 'checkmark', $after: true);
-	&:after {
-		background-color: transparent;
-
-		height: 11px;
-		width: 14px;
-		left: 10px;
-	}
-}
-
-input[type="radio"].error:checked + label,
-input[type="checkbox"].error:checked + label,
-input[type="radio"].error:checked + .label,
-input[type="checkbox"].error:checked + .label{
-	&:before {
-		border: 2px solid $colorErrorRed;
-	}
-}
-
 /**
   * Input
   */
@@ -183,8 +73,6 @@ input[type=number] {
 		color: $colorBorderGrey;
 		position: absolute;
 
-		top: 23px;
-
 		transition: all $transitionLength / 2 $transitionEase;
 		z-index: 10;
 
@@ -196,6 +84,7 @@ input[type=number] {
 	label,
 	span.label {
 		cursor: text;
+		top: 23px;
 	}
 
 	input,
@@ -230,7 +119,8 @@ input[type=number] {
 
 	textarea {
 		padding-top: 28px;
-		min-height: 60px;
+		min-height: 240px;
+		resize: none;
 	}
 
 	input,
@@ -293,6 +183,7 @@ input[type=number] {
 
 .field.is_filled label,
 .field.is_focused label,
+.field.has-select label,
 .fieldErrorBox {
 	font-size: 0.91666667rem;
 	top: 13px;
@@ -330,4 +221,8 @@ span.option {
 		display: block;
 		position: relative;
 	}
+}
+
+.formHelp {
+	display: none;
 }

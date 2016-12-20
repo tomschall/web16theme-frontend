@@ -17,6 +17,10 @@
 				'required': {
 					ruleName: 'required',
 					initialValue: true
+				},
+				'selectRequired': {
+					ruleName: 'selectRequired',
+					initialValue: true
 				}
 			};
 
@@ -188,7 +192,12 @@
 
 		$selectFields.map(function(index, select) {
 			var $select = $(select),
-					$select2 = $(select).nextAll('.select2-container');
+					$select2 = $(select).nextAll('.select2-container'),
+					$field = $select.parent('.field');
+
+			if ($field.length > 0) {
+				$field.addClass('has-select');
+			}
 
 			if (!$select.hasClass('has-value')) {
 				$select2.removeClass('has-selection');
@@ -227,6 +236,11 @@
 							classList = $span.attr('class').split(/\s+/);
 
 					classList.forEach(function(className) {
+
+						if (className === 'required' && $field.hasClass('has-select')) {
+							className = 'selectRequired';
+						}
+
 						if (validationMapping[className]) {
 							if (typeof validationMapping[className].initialValue === 'function') {
 								temprules[validationMapping[className].ruleName] = validationMapping[className].initialValue();
@@ -240,13 +254,20 @@
 				});
 
 				if (temprules !== {}) {
-					rules[$field.find('input, textarea').attr('name')] = temprules;
-					messages[$field.find('input, textarea').attr('name')] = tempmessages;
+					rules[$field.find('input, textarea, select').attr('name')] = temprules;
+					messages[$field.find('input, textarea, select').attr('name')] = tempmessages;
 				}
 			});
 
+			console.log('rules', rules);
+			console.log('messages', messages);
+
 			$form.validate({
 				onfocusout: function(element) {
+					$(element).siblings('.fieldErrorBox').empty();
+					$(element).closest('.field').removeClass('error');
+					$(element).closest('.field').find('.fieldErrorBox').empty();
+
 					$(element).valid();
 				},
 
@@ -254,9 +275,16 @@
 				messages: messages,
 				ignore: [],
 				errorPlacement: function(error, element) {
+					$(element).siblings('.fieldErrorBox').empty();
+					$(element).closest('.field').addClass('error');
+					$(element).closest('.field').find('.fieldErrorBox').empty();
+
 					if ($(element).is('select')) {
-						return true;
+						$(element).siblings('.fieldErrorBox').text(error.text());
 					} else if ($(element).is('input[type="radio"]') || $(element).is('input[type="check"]') || $(element).is('input[type="checkbox"]')) {
+						$(element).closest('.field').addClass('error');
+						$(element).closest('.field').find('.fieldErrorBox').text(error.text());
+
 						return true;
 					} else {
 						$(element).siblings('.fieldErrorBox').text(error.text());
@@ -269,17 +297,38 @@
 		 * Adding additional validator methods
 		 */
 		$.validator.addMethod('selectRequired', function(value) {
-			return value !== '';
+			return value !== '--NOVALUE--';
+		});
+	}
+
+	function initTextAreas() {
+		$('form textarea').each(function(txtAreaIdx, txtArea) {
+			var $txtArea = $(txtArea),
+					txtAreaHeight = $txtArea.outerHeight(),
+					$txtAreaParent = $txtArea.parent('.field');
+
+			$txtAreaParent.css({
+				'min-height': txtAreaHeight
+			});
+		});
+	}
+
+	function initRadios() {
+		$('input[type="radio"]').each(function(radioIdx, radio) {
+			var $radio = $(radio);
+
+			$radio.closest('.field').addClass('has-radio');
 		});
 	}
 
 	$(document).ready(function() {
 
 		initTextInputFields();
-
+		initRadios();
 		initSelect2();
-
 		extendValidator();
+
+		initTextAreas();
 	});
 
 	/**
