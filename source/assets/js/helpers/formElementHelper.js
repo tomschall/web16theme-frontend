@@ -21,6 +21,10 @@
 				'selectRequired': {
 					ruleName: 'selectRequired',
 					initialValue: true
+				},
+				'selectMultipleRequired': {
+					ruleName: 'selectMultipleRequired',
+					initialValue: true
 				}
 			};
 
@@ -133,20 +137,34 @@
 	}
 
 	function addSelect2Events() {
-		var $selectFields = $('.custom-select');
+		var $selectFields = $('.custom-select, .select-widget, .field select');
 
 		$selectFields.on('change.formElementHelper', function(event) {
 			var $select = $(event.target),
-					$select2 = $select.nextAll('.select2-container');
+					$select2 = $select.nextAll('.select2-container'),
+					$field = null;
+
+			if ($select.closest('.field').length > 0) {
+				$field = $select.closest('.field');
+			}
 
 			if ($select.val() === null || $select.val() === '') {
 				$select2.removeClass('has-selection');
 				$select2.nextAll('.custom-select___remover').hide();
 				$select.removeClass('has-value');
+
+				if ($field !== null) {
+					$field.removeClass('has-value');
+				}
+
 			} else {
 				$select2.addClass('has-selection');
 				$select2.nextAll('.custom-select___remover').show();
 				$select.addClass('has-value');
+
+				if ($field !== null) {
+					$field.addClass('has-value');
+				}
 
 				checkSelection($select2);
 			}
@@ -178,7 +196,7 @@
 	 * Initializes the select2 dropdowns
 	 */
 	function initSelect2() {
-		var $selectFields = $('.custom-select, .select-widget');
+		var $selectFields = $('.custom-select, .select-widget, .field select');
 
 		$selectFields.map(function(index, select) {
 			if ($(select).hasClass('has_optgroup')) {
@@ -197,6 +215,10 @@
 
 			if ($field.length > 0) {
 				$field.addClass('has-select');
+
+				if (typeof $select.attr('multiple') !== typeof undefined) {
+					$field.addClass('has-multiple-select');
+				}
 			}
 
 			if (!$select.hasClass('has-value')) {
@@ -239,6 +261,10 @@
 
 						if (className === 'required' && $field.hasClass('has-select')) {
 							className = 'selectRequired';
+
+							if (typeof $field.find('select').attr('multiple') !== typeof undefined) {
+								className = 'selectMultipleRequired';
+							}
 						}
 
 						if (validationMapping[className]) {
@@ -299,6 +325,10 @@
 		$.validator.addMethod('selectRequired', function(value) {
 			return value !== '--NOVALUE--';
 		});
+
+		$.validator.addMethod('selectMultipleRequired', function(value) {
+			return value !== null;
+		});
 	}
 
 	function initTextAreas() {
@@ -321,12 +351,21 @@
 		});
 	}
 
+	function initFileupload() {
+		$('input[type="file"]').each(function(fileIdx, file) {
+			var $file = $(file);
+
+			$file.closest('.field').addClass('has-upload');
+		});
+	}
+
 	$(document).ready(function() {
 
 		initTextInputFields();
 		initRadios();
 		initSelect2();
 		extendValidator();
+		initFileupload();
 
 		initTextAreas();
 	});

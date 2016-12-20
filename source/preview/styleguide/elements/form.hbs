@@ -111,6 +111,36 @@
 			</span>
 			<input name="form.widgets.radio_required-empty-marker" type="hidden" value="1">
 		</div>
+		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.checkbox empty"
+				 data-fieldname="form.widgets.checkbox" id="formfield-form-widgets-checkbox">
+			<label for="form-widgets-checkbox" class="horizontal">
+				Checkbox
+				<span class="required horizontal" title="Erforderlich" aria-required="true">&nbsp</span>
+			</label>
+			<div class="fieldErrorBox"></div>
+			<select id="form-widgets-checkbox" name="form.widgets.checkbox:list"
+							class="select-widget set-field select2-hidden-accessible" multiple="" size="5" tabindex="-1"
+							aria-hidden="true">
+				<option id="form-widgets-checkbox-0" value="a">a</option>
+				<option id="form-widgets-checkbox-1" value="b">b</option>
+				<option id="form-widgets-checkbox-2" value="c">c</option>
+				<option id="form-widgets-checkbox-3" value="d">d</option>
+			</select>
+		</div>
+		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.image empty"
+				 data-fieldname="form.widgets.image" id="formfield-form-widgets-image">
+			<label for="form-widgets-image" class="horizontal">
+				Bild
+				<span class="formHelp">Bild uploaden</span></label>
+				<div class="fieldErrorBox"></div>
+				<span id="form-widgets-image" class="named-image-widget namedblobimage-field">
+					<input type="file"
+								 id="form-widgets-image-input"
+								 name="form.widgets.image">
+				</span>
+		</div>
 		<!-- Secondary fieldsets -->
 		<div class="formControls">
 			<input id="form-buttons-submit" name="form.buttons.submit" class="submit-widget button-field" value="Einreichen"

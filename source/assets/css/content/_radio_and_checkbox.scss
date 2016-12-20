@@ -115,6 +115,10 @@ input[type="checkbox"].error:checked + .label{
 .has-radio {
 	padding-top: $basicPush * 2.1;
 
+	@include mq($to: medium) {
+		padding-top: 16px;
+	}
+
 	> label {
 		padding-left: 0;
 		top: 0;
