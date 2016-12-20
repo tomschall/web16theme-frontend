@@ -11,6 +11,7 @@ var data = {
 	},
 	'response':
 		{
+			'base_url': 'localhost:9000',
 			'categoryTitle': 'Weiterbildung',
 			'categoryUrl': '#',
 			'categoryUrlText': 'Alle anzeigen (12)',
@@ -18,38 +19,32 @@ var data = {
 				{
 					'type': 'normal',
 					'Title': 'MAS Sozialmanagement',
-					'path_string': '#',
-					'base_url': ''
+					'path_string': '/de/testimage.jpg'
 				},
 				{
 					'type': 'normal',
 					'Title': 'DAS Eingliederungsmanagement',
-					'path_string': '#',
-					'base_url': ''
+					'path_string': '#'
 				},
 				{
 					'type': 'normal',
 					'Title': 'CAS Forschung in den Sozialwissenschaften',
-					'path_string': '#',
-					'base_url': ''
+					'path_string': '#'
 				},
 				{
 					'type': 'normal',
 					'Title': 'MAS Sozialmanagement',
-					'path_string': '#',
-					'base_url': ''
+					'path_string': '#'
 				},
 				{
 					'type': 'normal',
 					'Title': 'DAS Eingliederungsmanagement',
-					'path_string': '#',
-					'base_url': ''
+					'path_string': '#'
 				},
 				{
 					'type': 'normal',
 					'Title': 'CAS Forschung in den Sozialwissenschaften',
-					'path_string': '#',
-					'base_url': ''
+					'path_string': '#'
 				}
 			]
 		}

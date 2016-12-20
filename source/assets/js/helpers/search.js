@@ -55,7 +55,8 @@
 				è: 'e',
 				à: 'a'
 			},
-			langStrings = {};
+			langStrings = {},
+			currentBaseURL = null;
 
 	/**
 	 * Normalizing the car for word list if Umlaut
@@ -74,7 +75,7 @@
 		var template = null;
 
 		if (typeof listEntry.url === typeof undefined) {
-			listEntry.combinedURL = listEntry.base_url + listEntry.path_string;
+			listEntry.combinedURL = currentBaseURL + listEntry.path_string;
 		} else {
 			listEntry.combinedURL = listEntry.url;
 		}
@@ -141,7 +142,7 @@
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
 
 			if (typeof row.url === typeof undefined) {
-				row.combinedURL = row.base_url + row.path_string;
+				row.combinedURL = currentBaseURL + row.path_string;
 			} else {
 				row.combinedURL = row.url;
 			}
@@ -229,6 +230,10 @@
 		getAllLangStrings();
 
 		if (data.response.docs.length > 0) {
+			if (typeof data.response.base_url !== typeof undefined) {
+				currentBaseURL = data.response.base_url;
+			}
+
 			if (activeCategorySearch) {
 				if (data.responseHeader.params.category === 'expertises') {
 					$responseHTML.append(generateWordList(data));
