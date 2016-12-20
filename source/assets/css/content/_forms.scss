@@ -187,6 +187,8 @@ input[type=number] {
 
 .field.is_filled label,
 .field.is_focused label,
+.is_focused + label,
+.is_filled + label,
 .field.has-select label,
 .field.has-multiple-select.has-value label,
 .fieldErrorBox {

@@ -280,12 +280,12 @@
 			}
 
 			if (isCategorySearch) {
-				$(window).one(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults) {
-					this.showResults(data, foundEntries, limitedToResults);
+				$(window).one(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults, category) {
+					this.showResults(data, foundEntries, limitedToResults, category);
 				}.bind(this));
 			} else {
-				$(window).on(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults) {
-					this.showResults(data, foundEntries, limitedToResults);
+				$(window).on(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults, category) {
+					this.showResults(data, foundEntries, limitedToResults, category);
 				}.bind(this));
 			}
 
@@ -298,7 +298,7 @@
 	 * @param foundEntries the integer with the number of found entries
 	 * @param limitedToResults the number of to which the entries are limited
 	 */
-	Widget.prototype.showResults = function(html, foundEntries, limitedToResults) {
+	Widget.prototype.showResults = function(html, foundEntries, limitedToResults, category) {
 		if (loadMoreMode) {
 			html = this.generateAdditionalTableHTML(html);
 
@@ -307,7 +307,7 @@
 			// Reset the load more mode to false
 			loadMoreMode = false;
 		} else {
-			$(this.options.domSelectors.moreResultsBtnWrapper).before(html);
+			this.$element.find('.search__results span[data-category=" ' + category + '"]').after(html);
 		}
 
 		this.replaceLinkPlaceholder();

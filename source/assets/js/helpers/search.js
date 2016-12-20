@@ -262,7 +262,7 @@
 				$responseHTML = $searchCategory;
 			}
 
-			$(window).trigger(events.dataLoaded, [$responseHTML, data.response.numFound, responseData.length]);
+			$(window).trigger(events.dataLoaded, [$responseHTML, data.response.numFound, responseData.length, data.responseHeader.params.category]);
 		}
 	}
 
