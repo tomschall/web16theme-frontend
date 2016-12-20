@@ -216,7 +216,7 @@ input[type=number] {
 	top: 23px;
 
 	@include mq($to: medium) {
-		top: 0;
+		top: 18px;
 	}
 }
 
