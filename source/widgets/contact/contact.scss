@@ -1,5 +1,6 @@
 .widg_contact {
 	@include clearfix();
+	margin-bottom: $contentMarginBottom;
 
 	.content__element & {
 		h2 {

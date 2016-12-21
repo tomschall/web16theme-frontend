@@ -338,6 +338,13 @@ fieldset .select2-selection__rendered {
 	border-top-width: 0;
 
 	transform: translateY(-1px);
+
+	&.select2-dropdown--above {
+		border-bottom-width: 0;
+		border-top-width: 1px;
+
+		transform: translateY(1px);
+	}
 }
 
 .select2-search--inline {
@@ -365,7 +372,7 @@ fieldset .select2-selection__rendered {
 	width: 32.5% !important;
 }
 
-.custom-select.error + .select2-container .select2-selection {
+select.error + .select2-container .select2-selection {
 	border: 2px solid $colorErrorRed;
 }
 

@@ -8,7 +8,25 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var eventsSet = false;
+	var eventsSet = false,
+			stateClasses = {
+				isFilled: 'is_filled',
+				isFocused: 'is_focused'
+			},
+			validationMapping = {
+				'required': {
+					ruleName: 'required',
+					initialValue: true
+				},
+				'selectRequired': {
+					ruleName: 'selectRequired',
+					initialValue: true
+				},
+				'selectMultipleRequired': {
+					ruleName: 'selectMultipleRequired',
+					initialValue: true
+				}
+			};
 
 	/**
 	 * Checks the active selection for the last visible to add ('...') or for the last over all to remove the comma
@@ -41,17 +59,38 @@
 	 * Initializes the text input fields
 	 */
 	function initTextInputFields() {
-		var $textInputFields = $('.ArchetypesStringWidget, .search__string, .field').find('input, textarea');
+		var $textInputFields = $('.ArchetypesStringWidget, .search__string, .field').find('input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="url"], input[type="tel"], input[type="number"], textarea');
 
 		/**
 		 * Event when text input fields are changed
 		 */
 		$textInputFields.on('change.fillInput', function() {
-			if ($(this).val() !== '') {
-				$(this).addClass('is_filled');
+			var $inputField = $(this),
+					$parentField = $inputField.parent('.field');
+
+			if ($inputField.val() !== '') {
+				$inputField.addClass(stateClasses.isFilled);
+				$parentField.addClass(stateClasses.isFilled);
 			} else {
-				$(this).removeClass('is_filled');
+				$inputField.removeClass(stateClasses.isFilled);
+				$parentField.removeClass(stateClasses.isFilled);
 			}
+		});
+
+		$textInputFields.on('focus.formElementHelper', function() {
+			var $inputField = $(this),
+					$parentField = $inputField.parent('.field');
+
+			$inputField.addClass(stateClasses.isFocused);
+			$parentField.addClass(stateClasses.isFocused);
+		});
+
+		$textInputFields.on('blur.formElementHelper', function() {
+			var $inputField = $(this),
+					$parentField = $inputField.parent('.field');
+
+			$inputField.removeClass(stateClasses.isFocused);
+			$parentField.removeClass(stateClasses.isFocused);
 		});
 
 		$('.reset-field').on('click.formElementHelper', function() {
@@ -98,20 +137,34 @@
 	}
 
 	function addSelect2Events() {
-		var $selectFields = $('.custom-select');
+		var $selectFields = $('.custom-select, .select-widget, .field select');
 
 		$selectFields.on('change.formElementHelper', function(event) {
 			var $select = $(event.target),
-					$select2 = $select.nextAll('.select2-container');
+					$select2 = $select.nextAll('.select2-container'),
+					$field = null;
+
+			if ($select.closest('.field').length > 0) {
+				$field = $select.closest('.field');
+			}
 
 			if ($select.val() === null || $select.val() === '') {
 				$select2.removeClass('has-selection');
 				$select2.nextAll('.custom-select___remover').hide();
 				$select.removeClass('has-value');
+
+				if ($field !== null) {
+					$field.removeClass('has-value');
+				}
+
 			} else {
 				$select2.addClass('has-selection');
 				$select2.nextAll('.custom-select___remover').show();
 				$select.addClass('has-value');
+
+				if ($field !== null) {
+					$field.addClass('has-value');
+				}
 
 				checkSelection($select2);
 			}
@@ -143,7 +196,7 @@
 	 * Initializes the select2 dropdowns
 	 */
 	function initSelect2() {
-		var $selectFields = $('.custom-select, .select-widget');
+		var $selectFields = $('.custom-select, .select-widget, .field select');
 
 		$selectFields.map(function(index, select) {
 			if ($(select).hasClass('has_optgroup')) {
@@ -157,7 +210,16 @@
 
 		$selectFields.map(function(index, select) {
 			var $select = $(select),
-					$select2 = $(select).nextAll('.select2-container');
+					$select2 = $(select).nextAll('.select2-container'),
+					$field = $select.parent('.field');
+
+			if ($field.length > 0) {
+				$field.addClass('has-select');
+
+				if (typeof $select.attr('multiple') !== typeof undefined) {
+					$field.addClass('has-multiple-select');
+				}
+			}
 
 			if (!$select.hasClass('has-value')) {
 				$select2.removeClass('has-selection');
@@ -181,38 +243,131 @@
 	 * Extends the validators
 	 */
 	function extendValidator() {
-		$('form[data-validate="true"]').validate({
-			onfocusout: function(element) {
-				$(element).valid();
-			},
+		$('.form form').each(function(formIdx, form) {
+			var $form = $(form),
+					rules = {},
+					messages = {};
 
-			ignore: [],
-			errorPlacement: function(error, element) {
-				if ($(element).is('select')) {
-					return true;
-				} else if ($(element).is('input[type="radio"]') || $(element).is('input[type="check"]') || $(element).is('input[type="checkbox"]')) {
-					return true;
-				} else {
-					$(element).siblings('.fieldErrorBox').text(error.text());
+			$form.find('.field').each(function(fieldIdx, field) {
+				var $field = $(field),
+						temprules = {},
+						tempmessages = {};
+
+				$field.find('span').each(function(spanIdx, span) {
+					var $span = $(span),
+							classList = $span.attr('class').split(/\s+/);
+
+					classList.forEach(function(className) {
+
+						if (className === 'required' && $field.hasClass('has-select')) {
+							className = 'selectRequired';
+
+							if (typeof $field.find('select').attr('multiple') !== typeof undefined) {
+								className = 'selectMultipleRequired';
+							}
+						}
+
+						if (validationMapping[className]) {
+							if (typeof validationMapping[className].initialValue === 'function') {
+								temprules[validationMapping[className].ruleName] = validationMapping[className].initialValue();
+							} else {
+								temprules[validationMapping[className].ruleName] = validationMapping[className].initialValue;
+							}
+
+							tempmessages[validationMapping[className].ruleName] = $span.attr('title');
+						}
+					});
+				});
+
+				if (temprules !== {}) {
+					rules[$field.find('input, textarea, select').attr('name')] = temprules;
+					messages[$field.find('input, textarea, select').attr('name')] = tempmessages;
 				}
-			}
+			});
+
+			console.log('rules', rules);
+			console.log('messages', messages);
+
+			$form.validate({
+				onfocusout: function(element) {
+					$(element).siblings('.fieldErrorBox').empty();
+					$(element).closest('.field').removeClass('error');
+					$(element).closest('.field').find('.fieldErrorBox').empty();
+
+					$(element).valid();
+				},
+
+				rules: rules,
+				messages: messages,
+				ignore: [],
+				errorPlacement: function(error, element) {
+					$(element).siblings('.fieldErrorBox').empty();
+					$(element).closest('.field').addClass('error');
+					$(element).closest('.field').find('.fieldErrorBox').empty();
+
+					if ($(element).is('select')) {
+						$(element).siblings('.fieldErrorBox').text(error.text());
+					} else if ($(element).is('input[type="radio"]') || $(element).is('input[type="check"]') || $(element).is('input[type="checkbox"]')) {
+						$(element).closest('.field').addClass('error');
+						$(element).closest('.field').find('.fieldErrorBox').text(error.text());
+
+						return true;
+					} else {
+						$(element).siblings('.fieldErrorBox').text(error.text());
+					}
+				}
+			});
 		});
 
 		/**
 		 * Adding additional validator methods
 		 */
 		$.validator.addMethod('selectRequired', function(value) {
-			return value !== '';
+			return value !== '--NOVALUE--';
+		});
+
+		$.validator.addMethod('selectMultipleRequired', function(value) {
+			return value !== null;
+		});
+	}
+
+	function initTextAreas() {
+		$('form textarea').each(function(txtAreaIdx, txtArea) {
+			var $txtArea = $(txtArea),
+					txtAreaHeight = $txtArea.outerHeight(),
+					$txtAreaParent = $txtArea.parent('.field');
+
+			$txtAreaParent.css({
+				'min-height': txtAreaHeight
+			});
+		});
+	}
+
+	function initRadios() {
+		$('input[type="radio"]').each(function(radioIdx, radio) {
+			var $radio = $(radio);
+
+			$radio.closest('.field').addClass('has-radio');
+		});
+	}
+
+	function initFileupload() {
+		$('input[type="file"]').each(function(fileIdx, file) {
+			var $file = $(file);
+
+			$file.closest('.field').addClass('has-upload');
 		});
 	}
 
 	$(document).ready(function() {
 
 		initTextInputFields();
-
+		initRadios();
 		initSelect2();
-
 		extendValidator();
+		initFileupload();
+
+		initTextAreas();
 	});
 
 	/**

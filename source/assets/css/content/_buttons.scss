@@ -2,7 +2,8 @@ button:not(.not-default),
 a.button:not(.not-default),
 input[type="button"],
 input[type="submit"],
-input[type="reset"] {
+input[type="reset"],
+#form-buttons-reset {
 	display: inline-block;
 	text-align: center;
 
@@ -47,7 +48,8 @@ input[type="reset"] {
 
 .button__secondary:not(.not-default),
 a.button__secondary:not(.not-default),
-input[type="reset"] {
+input[type="reset"],
+#form-buttons-reset {
 	@extend .button;
 
 	color: $colorBlack;

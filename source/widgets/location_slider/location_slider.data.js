@@ -30,6 +30,10 @@ var templateData = {
 					coordinates: {
 						x: '7.907837',
 						y: '47.347906'
+					},
+					mobileImage: {
+						src: '/assets/media/img/location_accordeon_olten.png',
+						alt: 'Standort Olten auf Karte{{'
 					}
 				},
 				{
@@ -51,9 +55,19 @@ var templateData = {
 					coordinates: {
 						x: '7.907837',
 						y: '47.347906'
+					},
+					mobileImage: {
+						src: '/assets/media/img/location_accordeon_olten.png',
+						alt: 'Standort Olten auf Karte{{'
 					}
 				}
-			]
+			],
+			langStrings: {
+				telephone: 'Telefon',
+				email: 'E-Mail',
+				moreInfoForLocation: 'Mehr Infos zum Standort',
+				calcRoute: 'Route berechnen'
+			}
 		},
 		data = _.merge(defaultData, {
 			meta: {

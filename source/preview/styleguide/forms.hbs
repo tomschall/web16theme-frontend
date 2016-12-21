@@ -35,7 +35,7 @@
       </div>
     </section>
 
-    <section class="sg_inner_wrapper">
+    <!-- <section class="sg_inner_wrapper">
       <h2 class="sg_h2">Form fields default</h2>
       <div class="sg_demo">
         <form>
@@ -56,12 +56,13 @@
           </fieldset>
         </form>
       </div>
-    </section>
+    </section> -->
 
     <section class="sg_inner_wrapper">
       <h2 class="sg_h2">Example form</h2>
       <div class="sg_demo">
-        <form class="form" data-validate="true">
+				{{> "preview/styleguide/elements/form"}}
+				<!-- <form class="form" data-validate="true">
           <fieldset>
             <select class="custom-select custom-select___short" data-placeholder="Anrede"
                     data-rule-selectRequired="true" data-msg-selectRequired="Pflichtfeld">
@@ -144,11 +145,13 @@
             </div>
           </fieldset>
           <button type="submit">Online Anmelden</button>
-        </form>
+        </form> -->
+
       </div>
     </section>
 
     <section class="sg_inner_wrapper">
+			<!--
       <h2 class="sg_h2">Code</h2>
 			<pre class="sg_code hljs">
 				<span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"form"</span> <span class="hljs-attribute">data-validate</span>=<span class="hljs-value">"true"</span>&gt;</span>
@@ -235,17 +238,17 @@
   <span class="hljs-tag">&lt;/<span class="hljs-title">fieldset</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>Online Anmelden<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span>
-			</pre>
+			</pre> -->
 		</section>
 
     <section class="sg_inner_wrapper">
+			<!--
       <h2 class="sg_h2">Basic Form (delivered by FHNW)</h2>
       <div class="sg_demo">
         <div class="form">
           <form id="form" enctype="multipart/form-data" method="post"
                 class="rowlike enableUnloadProtection enableFormTabbing pat-autotoc easyformForm kssattr-formname-view autotabs"
                 data-pat-autotoc="levels: legend; section: fieldset; className: autotabs">
-            <!-- Default fieldset -->
             <fieldset id="fieldset-default" class="autotoc-section active">
               <legend id="fieldsetlegend-default">Default</legend>
               <div id="formfield-form-widgets-replyto" data-fieldname="form.widgets.replyto"
@@ -318,7 +321,6 @@
                 <input type="hidden" value="1" name="form.widgets.einfache_auswahl-empty-marker">
               </div>
             </fieldset>
-            <!-- Secondary fieldsets -->
             <div class="formControls">
               <input type="submit" value="Einreichen" class="submit-widget button-field" name="form.buttons.submit"
                      id="form-buttons-submit">
@@ -327,6 +329,7 @@
           </form>
         </div>
       </div>
+      -->
     </section>
 	{{/content}}
 {{/extend}}

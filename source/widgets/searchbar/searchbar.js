@@ -157,8 +157,8 @@ function debounce(fn, delay) {
 
 		this.changeSearchbarStatus(this.options.stateClasses.showLoader);
 
-		$(window).on(this.options.searchEvents.dataLoaded, function(event, data) {
-			this.showResults(data);
+		$(window).on(this.options.searchEvents.dataLoaded, function(event, data, unecessary1, unecessary2, category) {
+			this.showResults(data, category);
 		}.bind(this));
 	};
 
@@ -233,8 +233,8 @@ function debounce(fn, delay) {
 	 * Show results
 	 * @param html the generated html
    */
-	Widget.prototype.showResults = function(html) {
-		$(this.options.domSelectors.content).find('.mCSB_container .search__results').prepend(html);
+	Widget.prototype.showResults = function(html, category) {
+		$(this.options.domSelectors.content).find('.mCSB_container .search__results span[data-category="' + category + '"]').after(html);
 
 		this.changeSearchbarStatus(this.options.stateClasses.showResults);
 
@@ -287,6 +287,10 @@ function debounce(fn, delay) {
 
 			if ($elementTitle.length > 0) {
 				titleSt = $elementTitle.html();
+				titleSt = titleSt.replace('<span class="bold">', '');
+				titleSt = titleSt.replace('</span>', '');
+
+				console.log('titleSt', titleSt);
 
 				queryStartPosition = titleSt.toLowerCase().search(currentSearchValue.toLowerCase());
 

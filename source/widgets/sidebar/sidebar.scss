@@ -6,6 +6,7 @@ $sidebarObjectPush: $basicPush * 3;
 	@include push(0.3);
 	@include clearfix();
 
+	margin-top: 120px;
 	position: relative;
 
 	transition: min-height $transitionLength / 2 $transitionEase;

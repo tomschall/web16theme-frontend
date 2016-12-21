@@ -38,7 +38,7 @@ $colorAvailabilityRed: #f05f1b;
 
 		font-size: 1.5rem;
 
-		padding: ($gutterWidth - 4) $gutterWidth + 2;
+		padding: ($gutterWidth - 4) $basicPush * 4  ($gutterWidth -4) $gutterWidth + 2;
 		position: relative;
 
 		opacity: 1;
@@ -88,8 +88,8 @@ $colorAvailabilityRed: #f05f1b;
 		font-size: 1.5rem;
 		line-height: 1.8;
 		font-weight: 400;
-		padding-top: 23px;
-		padding-bottom: 13px;
+		padding-top: 19px;
+		padding-bottom: 17px;
 
 		.button__date,
 		.button__availability,
@@ -171,11 +171,6 @@ $colorAvailabilityRed: #f05f1b;
 				width: auto;
 			}
 
-			a.button__apply {
-				margin: 10px auto 0 50%;
-
-				transform: translateX(-50%);
-			}
 		}
 	}
 
@@ -197,10 +192,19 @@ $colorAvailabilityRed: #f05f1b;
 	}
 }
 
+.button__apply {
+	position: absolute;
+	top: 50%;
+	right: 40px;
+
+	transform: translateY(-50%);
+}
+
 div.widg_accordeon__button {
 	min-height: buttonHeight(desktop);
 
 	line-height: 0;
+	position: relative;
 
 	> input[type="radio"] {
 		display: block;

@@ -1,0 +1,150 @@
+/* Old version */
+input[type="radio"] + label,
+input[type="checkbox"] + label,
+input[type="radio"] + .label,
+input[type="checkbox"] + .label {
+	padding-left: $basicPush + $radioCheckboxDimension;
+
+	position: relative;
+
+	font-family: $fontSansSerifRoman;
+	font-size: 1.25rem;
+
+	margin-bottom: $basicPush;
+	display: block;
+
+	&:before {
+		display: block;
+		content: " ";
+		position: absolute;
+		left: 0;
+		top: 50%;
+
+		background-color: $colorInputTextHover;
+
+		transform: translateY(-50%);
+
+		width: $radioCheckboxDimension;
+		height: $radioCheckboxDimension;
+
+		border: 1px solid $colorGreyHover;
+	}
+
+	&:hover:before {
+		border-color: $customScrollbarColor;
+		background-color: $colorInputTextHover;
+	}
+}
+
+input[type="radio"] + label,
+input[type="radio"] + .label {
+	&:before,
+	&:after {
+		border-radius: 50%;
+	}
+}
+
+.ArchetypesBooleanWidget input[type="checkbox"] + label {
+	&:before {
+		border-radius: 0;
+	}
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+
+	opacity: 0;
+	width: 0;
+	height: 0;
+
+	visibility: hidden;
+}
+
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label,
+input[type="radio"]:checked + .label,
+input[type="checkbox"]:checked + .label {
+	&:after {
+		display: block;
+		content: " ";
+		position: absolute;
+		top: 50%;
+		left: 10px;
+
+
+		transform: translateY(-50%) translateX(-41%);
+
+		width: 11px;
+		height: 11px;
+
+		background-color: $colorBlack;
+	}
+
+	&:before {
+		background-color: $colorBg;
+		border-color: $colorBlack;
+	}
+}
+
+input[type="checkbox"]:checked + label,
+input[type="checkbox"]:checked + .label {
+	@include iconDataurl($name: 'checkmark', $after: true);
+	&:after {
+		background-color: transparent;
+
+		height: 11px;
+		width: 14px;
+		left: 10px;
+	}
+}
+
+input[type="radio"].error:checked + label,
+input[type="checkbox"].error:checked + label,
+input[type="radio"].error:checked + .label,
+input[type="checkbox"].error:checked + .label{
+	&:before {
+		border: 2px solid $colorErrorRed;
+	}
+}
+
+/* New version */
+
+.has-radio {
+	padding-top: $basicPush * 2.1;
+
+	@include mq($to: medium) {
+		padding-top: 16px;
+	}
+
+	> label {
+		padding-left: 0;
+		top: 0;
+		float: left;
+		position: static;
+	}
+
+	.option {
+		float: left;
+		margin-right: $basicPush * 1;
+
+		label {
+			position: static;
+			display: block;
+
+			.label {
+				float: left;
+				top: 0;
+			}
+
+			input {
+			}
+		}
+	}
+}
+
+.has-radio.error {
+	border: 2px solid $colorErrorRed;
+}

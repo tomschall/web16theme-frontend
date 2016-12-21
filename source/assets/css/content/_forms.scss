@@ -5,73 +5,14 @@
 	display: inline-block;
 }
 
-.ArchetypesBooleanWidget label,
-.ArchetypesMultiSelectWidget label,
-input[type="radio"] + label,
-input[type="checkbox"] + label {
-	padding-left: $basicPush + $radioCheckboxDimension;
-
-	position: relative;
-
-	font-family: $fontSansSerifRoman;
-	font-size: 1.25rem;
-
-	margin-bottom: $basicPush;
-
-	&:before {
-		display: block;
-		content: " ";
-		position: absolute;
-		left: 0;
-		top: 50%;
-
-		background-color: $colorInputTextHover;
-
-		transform: translateY(-50%);
-
-		width: $radioCheckboxDimension;
-		height: $radioCheckboxDimension;
-
-		border: 1px solid $colorGreyHover;
-	}
-
-	&:hover:before {
-		border-color: $customScrollbarColor;
-		background-color: $colorInputTextHover;
-	}
-}
-
-.ArchetypesBooleanWidget label,
-.ArchetypesMultiSelectWidget label,
-input[type="radio"] + label {
-	&:before,
-	&:after {
-		border-radius: 50%;
-	}
-}
-
-.ArchetypesBooleanWidget input[type="checkbox"] + label {
-	&:before {
-		border-radius: 0;
-	}
-}
-
 /**
   * Input
   */
-input,
-textarea {
-	border: 0;
-	background: $colorBg;
+.field {
+	input,
+	textarea {
+		border: 0;
 
-	&[type="text"],
-	&[type="password"],
-	&[type="email"],
-	&[type="search"],
-	&[type="url"],
-	&[type="tel"],
-	&[type="number"]
-	{
 		background: $colorInputTextHover;
 		border: 1px solid $colorGreyHover;
 		border-radius: 0;
@@ -92,26 +33,6 @@ textarea {
 	}
 }
 
-textarea {
-	background: $colorInputTextHover;
-	border: 1px solid $colorGreyHover;
-	border-radius: 0;
-	box-shadow: none;
-
-	-webkit-appearance: none;
-
-	&:hover {
-		border: 1px solid $customScrollbarColor;
-	}
-
-	&:focus {
-		background-color: $colorBg;
-		border: 1px solid $colorBlack;
-
-		outline: none;
-	}
-}
-
 /**
   * Resetting default number input
   */
@@ -129,65 +50,11 @@ input[type=number] {
   * Checkboxes and radios
   */
 
-input[type="radio"],
-input[type="checkbox"] {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: none;
 
-	opacity: 0;
-	width: 0;
-	height: 0;
-
-	visibility: hidden;
-}
-
-input[type="radio"]:checked + label,
-input[type="checkbox"]:checked + label {
-	&:after {
-		display: block;
-		content: " ";
-		position: absolute;
-		top: 50%;
-		left: 10px;
-
-
-		transform: translateY(-50%) translateX(-41%);
-
-		width: 11px;
-		height: 11px;
-
-		background-color: $colorBlack;
-	}
-
-	&:before {
-		background-color: $colorBg;
-		border-color: $colorBlack;
-	}
-}
-
-input[type="checkbox"]:checked + label {
-	@include iconDataurl($name: 'checkmark', $after: true);
-	&:after {
-		background-color: transparent;
-
-		height: 11px;
-		width: 14px;
-		left: 10px;
-	}
-}
-
-input[type="radio"].error:checked + label,
-input[type="checkbox"].error:checked + label {
-	&:before {
-		border: 2px solid $colorErrorRed;
-	}
-}
 
 /**
   * Textfields
   */
-.ArchetypesStringWidget,
 .search__string,
 .field {
 	position: relative;
@@ -206,19 +73,22 @@ input[type="checkbox"].error:checked + label {
 		color: $colorBorderGrey;
 		position: absolute;
 
-		top: 23px;
-
 		transition: all $transitionLength / 2 $transitionEase;
 		z-index: 10;
 
 		@include mq($to: medium) {
-			top: 0;
+			top: 5px;
 		}
 	}
 
 	label,
 	span.label {
 		cursor: text;
+		top: 23px;
+
+		@include mq($to: medium) {
+			top: 18px;
+		}
 	}
 
 	input,
@@ -251,6 +121,12 @@ input[type="checkbox"].error:checked + label {
 		}
 	}
 
+	textarea {
+		padding-top: 28px;
+		min-height: 240px;
+		resize: none;
+	}
+
 	input,
 	label,
 	span.label,
@@ -268,21 +144,6 @@ input[type="checkbox"].error:checked + label {
 
 		@include mq($to: medium) {
 			padding-left: 12px;
-		}
-	}
-
-	input:focus + label,
-	input.is_filled + label,
-	textarea.is_filled + label,
-	input:focus + span.label,
-	input.is_filled + span.label,
-	textarea.is_filled + span.label,
-	.fieldErrorBox {
-		font-size: 0.91666667rem;
-		top: 13px;
-
-		@include mq($to: medium) {
-			top: -9px;
 		}
 	}
 
@@ -324,6 +185,42 @@ input[type="checkbox"].error:checked + label {
 	}
 }
 
+.field.is_filled label,
+.field.is_focused label,
+.is_focused + label,
+.is_filled + label,
+.field.has-select label,
+.field.has-multiple-select.has-value label,
+.fieldErrorBox {
+	font-size: 0.91666667rem;
+	top: 13px;
+
+	@include mq($to: medium) {
+		top: 10px;
+	}
+}
+
+.field.has-select label,
+.field.has-multiple-select.has-value label {
+	@include mq($to: medium) {
+		top: 10px;
+	}
+}
+
+.field.has-multiple-select label {
+	font-size: 1.25rem;
+	color: $colorBorderGrey;
+	position: absolute;
+
+	transition: all $transitionLength / 2 $transitionEase;
+	z-index: 10;
+
+	top: 23px;
+
+	@include mq($to: medium) {
+		top: 18px;
+	}
+}
 
 
 /**
@@ -342,5 +239,85 @@ input[type="checkbox"].error:checked + label {
 
 	.field {
 		margin-bottom: $basicPush;
+	}
+}
+
+span.option {
+	display: block;
+
+	@include clearfix();
+
+	.label {
+		display: block;
+		position: relative;
+	}
+}
+
+.formHelp {
+	display: none;
+}
+
+.has-upload {
+	padding-top: 21px;
+
+	@include mq($to: medium) {
+		padding-top: 16px;
+	}
+
+	input[type="file"] {
+		border: none;
+		position: static;
+		display: block;
+		float: left;
+		padding: 15px 0 0 0;
+		margin-left: $basicPush * 2;
+
+		background-color: $colorBlack;
+		color: $colorBg;
+		text-transform: uppercase;
+
+		min-height: map-get($elementHeight, desktop);
+
+		transform: translateY(-21px);
+
+		@include mq($to: medium) {
+			min-height: map-get($elementHeight, mobile);
+			padding-top: 11px;
+		}
+
+		&:hover,
+		&:active,
+		&:focus {
+			color: $colorBlack;
+			background-color: $colorYellow;
+		}
+
+		&:disabled,
+		&[disabled="disabled"] {
+
+			opacity: 0.4;
+			color: $colorBg;
+
+			&:hover,
+			&:active,
+			&:focus {
+				background-color: $colorBlack;
+				color: $colorBg;
+			}
+		}
+	}
+
+	> span {
+		display: block;
+		float: left;
+	}
+
+	label {
+		position: static;
+		top: 0;
+		left: 0;
+		display: block;
+		float: left;
+		padding: 0;
 	}
 }

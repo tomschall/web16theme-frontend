@@ -55,7 +55,8 @@
 				è: 'e',
 				à: 'a'
 			},
-			langStrings = {};
+			langStrings = {},
+			currentBaseURL = null;
 
 	/**
 	 * Normalizing the car for word list if Umlaut
@@ -74,7 +75,7 @@
 		var template = null;
 
 		if (typeof listEntry.url === typeof undefined) {
-			listEntry.combinedURL = listEntry.base_url + listEntry.path_string;
+			listEntry.combinedURL = currentBaseURL + listEntry.path_string;
 		} else {
 			listEntry.combinedURL = listEntry.url;
 		}
@@ -141,7 +142,7 @@
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
 
 			if (typeof row.url === typeof undefined) {
-				row.combinedURL = row.base_url + row.path_string;
+				row.combinedURL = currentBaseURL + row.path_string;
 			} else {
 				row.combinedURL = row.url;
 			}
@@ -228,35 +229,41 @@
 
 		getAllLangStrings();
 
-		if (activeCategorySearch) {
-			if (data.responseHeader.params.category === 'expertises') {
-				$responseHTML.append(generateWordList(data));
+		if (data.response.docs.length > 0) {
+			if (typeof data.response.base_url !== typeof undefined) {
+				currentBaseURL = data.response.base_url;
+			}
+
+			if (activeCategorySearch) {
+				if (data.responseHeader.params.category === 'expertises') {
+					$responseHTML.append(generateWordList(data));
+				} else {
+					$responseHTML.addClass('search__table').append(generateResultTable(data));
+				}
 			} else {
-				$responseHTML.addClass('search__table').append(generateResultTable(data));
+				$searchCategory = $('<div class="search__cat"></div>');
+				$categoryList = $('<ul></ul>');
+				$categoryTitle = $('<span class="search__cat-title">' + data.response.categoryTitle + '</span>');
+
+				responseData.forEach(function(listEntry) {
+					$tempListDOM = generateSearchListItem(listEntry, data.responseHeader.params.category);
+
+					$categoryList.append($tempListDOM);
+				});
+
+				if (data.response.categoryUrl) {
+					var template = Handlebars.compile(listEntryTemplates.showAll);
+
+					$categoryList.append(template(data.response));
+				}
+
+				$searchCategory.append($categoryTitle).append($categoryList);
+
+				$responseHTML = $searchCategory;
 			}
-		} else {
-			$searchCategory = $('<div class="search__cat"></div>');
-			$categoryList = $('<ul></ul>');
-			$categoryTitle = $('<span class="search__cat-title">' + data.response.categoryTitle + '</span>');
 
-			responseData.forEach(function(listEntry) {
-				$tempListDOM = generateSearchListItem(listEntry, data.responseHeader.params.category);
-
-				$categoryList.append($tempListDOM);
-			});
-
-			if (data.response.categoryUrl) {
-				var template = Handlebars.compile(listEntryTemplates.showAll);
-
-				$categoryList.append(template(data.response));
-			}
-
-			$searchCategory.append($categoryTitle).append($categoryList);
-
-			$responseHTML = $searchCategory;
+			$(window).trigger(events.dataLoaded, [$responseHTML, data.response.numFound, responseData.length, data.responseHeader.params.category]);
 		}
-
-		$(window).trigger(events.dataLoaded, [$responseHTML, data.response.numFound, responseData.length]);
 	}
 
 	function saveToLocalStorage(query) {

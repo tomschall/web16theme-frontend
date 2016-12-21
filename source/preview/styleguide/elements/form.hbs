@@ -1,0 +1,153 @@
+<div class="form">
+	<form data-pat-autotoc="levels: legend; section: fieldset; className: autotabs"
+				class="rowlike enableUnloadProtection  easyformForm kssattr-formname-view"
+				action="http://webcms0.localhost:8000/plone/de/easyform" method="post" enctype="multipart/form-data"
+				id="form">
+		<!-- Default fieldset -->
+		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.replyto empty"
+				 data-fieldname="form.widgets.replyto" id="formfield-form-widgets-replyto">
+			<label for="form-widgets-replyto" class="horizontal">
+				Ihre E-Mail Adresse
+				<span class="required horizontal" title="Erforderlich">&nbsp;</span>
+			</label>
+			<div class="fieldErrorBox"></div>
+			<input id="form-widgets-replyto" name="form.widgets.replyto" class="text-widget required textline-field" value=""
+						 type="text">
+		</div>
+		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.topic empty"
+				 data-fieldname="form.widgets.topic" id="formfield-form-widgets-topic">
+			<label for="form-widgets-topic" class="horizontal">
+				Betreff
+				<span class="required horizontal" title="Erforderlich">&nbsp;</span>
+			</label>
+			<div class="fieldErrorBox"></div>
+			<input id="form-widgets-topic" name="form.widgets.topic" class="text-widget required textline-field" value=""
+						 type="text">
+		</div>
+		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.comments empty"
+				 data-fieldname="form.widgets.comments" id="formfield-form-widgets-comments">
+			<label for="form-widgets-comments" class="horizontal">
+				Kommentar
+				<span class="required horizontal" title="Erforderlich">&nbsp;</span>
+			</label>
+			<div class="fieldErrorBox"></div>
+			<textarea id="form-widgets-comments" name="form.widgets.comments"
+								class="textarea-widget required text-field"></textarea>
+		</div>
+		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.choice empty"
+				 data-fieldname="form.widgets.choice" id="formfield-form-widgets-choice">
+			<label for="form-widgets-choice" class="horizontal">
+				Choice
+				<span class="required horizontal" title="Erforderlich" aria-required="true">&nbsp;</span></label>
+			<div class="fieldErrorBox"></div>
+			<select id="form-widgets-choice" name="form.widgets.choice:list"
+							class="select-widget required choice-field select2-hidden-accessible valid" size="1" tabindex="-1"
+							aria-hidden="true" aria-required="true" aria-invalid="false">
+				<option id="form-widgets-choice2-novalue" value="--NOVALUE--" selected="selected">Bitte auswählen</option>
+				<option id="form-widgets-choice-0" value="ja">ja</option>
+				<option id="form-widgets-choice-1" value="nein">nein</option>
+			</select>
+		</div>
+		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.choice2 empty"
+				 data-fieldname="form.widgets.choice2" id="formfield-form-widgets-choice2">
+			<label for="form-widgets-choice2" class="horizontal">
+				Choice2 <span class="formHelp">Lorem ipsum</span></label>
+			<div class="fieldErrorBox"></div>
+			<select id="form-widgets-choice2" name="form.widgets.choice2:list"
+							class="select-widget choice-field select2-hidden-accessible valid" size="1" tabindex="-1"
+							aria-hidden="true" aria-invalid="false">
+				<option id="form-widgets-choice2-novalue" value="--NOVALUE--" selected="selected">Kein Wert</option>
+				<option id="form-widgets-choice2-0" value="Ja">Ja</option>
+				<option id="form-widgets-choice2-1" value="Nein">Nein</option>
+			</select>
+		</div>
+		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.radio empty"
+				 data-fieldname="form.widgets.radio" id="formfield-form-widgets-radio"><label for="form-widgets-radio"
+																																											class="horizontal">
+			Radio
+		</label>
+			<div class="fieldErrorBox"></div>
+			<span class="option">
+				<label for="form-widgets-radio-0">
+					<input id="form-widgets-radio-0" name="form.widgets.radio" class="radio-widget bool-field" value="true" type="radio"><span
+					class="label">ja</span></label>
+			</span>
+			<span class="option"><label for="form-widgets-radio-1">
+				<input
+					id="form-widgets-radio-1" name="form.widgets.radio" class="radio-widget bool-field" value="false"
+					type="radio"><span class="label">nein</span></label>
+			</span>
+			<input name="form.widgets.radio-empty-marker" type="hidden" value="1">
+		</div>
+		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.radio_required empty"
+				 data-fieldname="form.widgets.radio_required" id="formfield-form-widgets-radio_required"><label
+				for="form-widgets-radio_required" class="horizontal">
+			Radio Required
+			<span class="required horizontal" title="Erforderlich" aria-required="true">&nbsp;</span></label>
+			<div class="fieldErrorBox"></div>
+			<span class="option">
+				<label for="form-widgets-radio_required-0">
+					<input id="form-widgets-radio_required-0" name="form.widgets.radio_required"
+								 class="radio-widget required bool-field"
+								 value="true" type="radio"
+								 aria-required="true">
+					<span
+					class="label">ja</span></label>
+			</span>
+			<span class="option">
+				<label for="form-widgets-radio_required-1">
+					<input
+					id="form-widgets-radio_required-1" name="form.widgets.radio_required" class="radio-widget required bool-field"
+					value="false" type="radio" aria-required="true">
+					<span class="label">nein</span>
+				</label>
+			</span>
+			<input name="form.widgets.radio_required-empty-marker" type="hidden" value="1">
+		</div>
+		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.checkbox empty"
+				 data-fieldname="form.widgets.checkbox" id="formfield-form-widgets-checkbox">
+			<label for="form-widgets-checkbox" class="horizontal">
+				Checkbox
+				<span class="required horizontal" title="Erforderlich" aria-required="true">&nbsp</span>
+			</label>
+			<div class="fieldErrorBox"></div>
+			<select id="form-widgets-checkbox" name="form.widgets.checkbox:list"
+							class="select-widget set-field select2-hidden-accessible" multiple="" size="5" tabindex="-1"
+							aria-hidden="true">
+				<option id="form-widgets-checkbox-0" value="a">a</option>
+				<option id="form-widgets-checkbox-1" value="b">b</option>
+				<option id="form-widgets-checkbox-2" value="c">c</option>
+				<option id="form-widgets-checkbox-3" value="d">d</option>
+			</select>
+		</div>
+		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.image empty"
+				 data-fieldname="form.widgets.image" id="formfield-form-widgets-image">
+			<label for="form-widgets-image" class="horizontal">
+				Bild
+				<span class="formHelp">Bild uploaden</span></label>
+				<div class="fieldErrorBox"></div>
+				<span id="form-widgets-image" class="named-image-widget namedblobimage-field">
+					<input type="file"
+								 id="form-widgets-image-input"
+								 name="form.widgets.image">
+				</span>
+		</div>
+		<!-- Secondary fieldsets -->
+		<div class="formControls">
+			<input id="form-buttons-submit" name="form.buttons.submit" class="submit-widget button-field" value="Einreichen"
+						 type="submit">
+			<input id="form-buttons-reset" name="form.buttons.reset" class="submit-widget button-field" value="Zurücksetzen"
+						 type="submit">
+		</div>
+		<input type="hidden" name="_authenticator" value="4d4299000c3e4296440ef05152de9a0ea2eae7e7">
+	</form>
+</div>
