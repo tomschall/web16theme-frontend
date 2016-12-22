@@ -186,6 +186,7 @@
 	@include contentWrapperForSmallDevices($gutterSize);
 }
 
+
 @mixin pushLeftAccordingToHeader($attr) {
 	#{$attr}: $paddingBehindYellowBar;
 

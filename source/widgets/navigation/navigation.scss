@@ -53,7 +53,6 @@ styling of all links and lists
 	text-decoration: none;
 	opacity: 1;
 
-
 	&.widg_navigation__back {
 		display: none;
 	}
@@ -63,7 +62,7 @@ styling of all links and lists
 	}
 
 	&.is_active {
-		background-color: $colorYellowNavHover;
+		background-color: darken($colorYellowNavHover, 5%);
 
 		&:before {
 			left: 0;
@@ -168,15 +167,18 @@ The back arrow only visible on mobile navigation
 
 .widg_navigation__list[data-navigation-level="1"],
 .widg_navigation__list[data-navigation-level="2"],
-.widg_navigation__list[data-navigation-level="3"]{
+.widg_navigation__list[data-navigation-level="3"] {
 	ul li a {
 
-	  	font-size: 1.333rem;
-	  	padding-top: 14px;
-	  	padding-bottom: 13px;
+		font-size: 1.1666667rem;
+		padding-top: 15px;
+		padding-bottom: 14px;
+		font-weight: 600;
+		color: $colorTextGrey;
 
 		&:hover {
 			background-color: $colorSubNavHover;
+			color: $colorBlack;
 
 			@include mq($to: small) {
 				background-color: $colorBg;
@@ -186,6 +188,7 @@ The back arrow only visible on mobile navigation
 		&.is_active,
 		&.is_active:hover {
 			background-color: $colorSubNavActive;
+			color: $colorBlack;
 		}
 	}
 
@@ -197,12 +200,11 @@ The back arrow only visible on mobile navigation
 	}
 }
 
-
 /**
 The Subwrappers only desktop
 **/
 
-.widg_navigation__sub-wrapper{
+.widg_navigation__sub-wrapper {
 	transition: all $transitionLength / 4 $transitionEase;
 
 	opacity: 0;
@@ -286,16 +288,16 @@ Subtitle for every additional layer (only desktop)
 **/
 
 .widg_navigation__subtitle {
-	font-size: 1rem;
+	font-size: 0.9166777rem;
 	font-family: $fontSansSerifRoman;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	line-height: 1.8;
+	line-height: 1.7;
 
 	position: absolute;
 	top: $basicPush * 1.4;
 
-    font-weight: 600;
+	font-weight: 600;
 
 	padding: 0 $basicPush * 3.2;
 
@@ -347,12 +349,12 @@ for better overview they are seperated here
 
 		&[data-navigation-level="1"],
 		&[data-navigation-level="2"],
-		&[data-navigation-level="3"]{
+		&[data-navigation-level="3"] {
 			left: calc(100vw - 40px);
 			// @TODO: if header top height changes, this has to be reflected here too
 			height: calc(100vh - 70px);
 
-		  	transform: translate3D(0,0,0);
+			transform: translate3D(0, 0, 0);
 
 			.widg_navigation__back {
 				display: block;
@@ -370,7 +372,6 @@ for better overview they are seperated here
 				left: calc(200vw - 20px);
 			}
 		}
-
 
 		&[data-navigation-level="3"] {
 			left: calc(300vw - 40px);

@@ -137,7 +137,8 @@
 	}
 
 	function addSelect2Events() {
-		var $selectFields = $('.custom-select, .select-widget, .field select');
+		var $selectFields = $('.custom-select, .select-widget, .field select'),
+				$relatedLabels = $selectFields.siblings('label, .label');
 
 		$selectFields.on('change.formElementHelper', function(event) {
 			var $select = $(event.target),
@@ -187,6 +188,21 @@
 
 		$('.custom-select___remover').on('click.formElementHelper', function() {
 			$(this).prevAll('select').val('').trigger('change');
+		});
+
+		$relatedLabels.on('mouseover.formElementHelper', function() {
+
+			$(this).parent('div').addClass('has-focused-label');
+		});
+
+		$relatedLabels.on('click.formElementHelper', function() {
+			var $select = $(this).siblings('select');
+
+			$select.select2('open');
+		});
+
+		$relatedLabels.on('mouseout.formElementHelper', function() {
+			$(this).parent('div').removeClass('has-focused-label');
 		});
 
 		eventsSet = true;
