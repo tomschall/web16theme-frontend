@@ -226,10 +226,8 @@
 
 .teaser__more-button {
 	position: absolute;
-	top: 0;
+	top: -85px;
 	right: 0;
-
-	transform: translateY(-140%);
 
 	@include mq($to: medium) {
 		position: static;

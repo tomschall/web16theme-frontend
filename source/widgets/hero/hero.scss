@@ -26,7 +26,11 @@
 	overflow: hidden;
 
 	@include mq($from: subnav) {
-		min-height: 400px;
+		min-height: 500px;
+	}
+
+	@include mq($from: large) {
+		min-height: 30vw;
 	}
 
 	max-height: 50vh;
@@ -42,8 +46,7 @@
 	}
 
 	.is-profile-hero & {
-		max-height: none;
-		min-height: 0;
+		min-height: 40vw;
 	}
 }
 
@@ -73,6 +76,8 @@
 
 	position: absolute;
 
-	top: 30%;
+	top: 128px;
+	max-width: 52vw;
+
 	z-index: zindex(titleProfile);
 }

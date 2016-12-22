@@ -21,10 +21,10 @@
 			scale: 'best-fill'
 		});
 
-		$('.widg_hero__img:not(.is-profile-hero)').imageScale({
+		$('.widg_hero__img').imageScale({
 			rescaleOnResize: true,
 			scale: 'best-fill',
-			align: 'right'
+			align: 'top-right'
 		});
 
 		$('.widg_teaser__img img').imageScale('scale');

@@ -1,8 +1,6 @@
 .content__element {
 	padding-bottom: $basicPush * 3;
 
-	border-bottom: 1px solid $colorGreyHover;
-
 	@include clearfix();
 
 	@include mq($to: medium) {
@@ -14,11 +12,11 @@
 	}
 
 	h2 {
-		margin-bottom: $basicPush * 0;
-		padding-bottom: 6px;
+		margin-bottom: $basicPush * 2;
+		padding-bottom: 16px;
 
 	  	@include mq($to: small) {
-				padding-bottom: 3px;
+				padding-bottom: 8px;
 			}
 
 		+ .widg_accordeon {
@@ -177,7 +175,6 @@ table.content__table {
 }
 
 .content__element___top-bordered {
-	border-top: 1px solid $colorGreyHover;
 	padding-top: $basicPush * 3;
 }
 

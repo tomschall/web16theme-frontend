@@ -149,10 +149,9 @@
 
 .extendedlinks__more-button {
 	position: absolute;
-	top: 0;
+	top: -85px - 11px;
 	right: 0;
 
-	transform: translateY(-175%);
 
 	@include mq($to: medium) {
 		position: static;

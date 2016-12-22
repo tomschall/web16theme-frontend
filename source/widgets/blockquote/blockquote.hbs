@@ -1,5 +1,6 @@
 <div class="widg_blockquote {{#if img}}has-img{{/if}}" data-init="blockquote">
 	{{#if img}}
+		<h2>{{testimonialTitle}}</h2>
 		<div class="blockquote__img">
 			<img src="{{img.src}}" alt="{{img.alt}}"/>
 		</div>
@@ -8,6 +9,10 @@
 		<div class="blockquote__quote">
 			<p>{{quote}}</p>
 			<span class="blockquote__author">{{author}}</span>
+
+			{{#if testimonialLink}}
+				<a href="{{testimonialLink}}" class="button button__primary blockquote__button">{{langStrings.readMore}}</a>
+			{{/if}}
 		</div>
 
 </div>
