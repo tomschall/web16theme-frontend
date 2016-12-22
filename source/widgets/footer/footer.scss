@@ -1,5 +1,6 @@
 .widg_footer {
   @include clearfix;
+	@include bleedFull($gutterWidth);
 }
 
 .widg_inner-footer {
