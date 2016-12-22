@@ -49,10 +49,15 @@ $colorAvailabilityRed: #f05f1b;
 		color: $colorTextDarkGrey;
 
 		background-color: $colorLightGray;
+		transition: all $transitionLength / 6 $transitionEase;
 
-		&:hover,
 		&:focus {
+			background-color: $colorLightGray;
+		}
+
+		&:hover {
 			background-color: $colorGreyHover;
+			color: $colorBlack;
 		}
 
 		@include mq($to: medium) {
@@ -202,7 +207,7 @@ $colorAvailabilityRed: #f05f1b;
 .button__apply {
 	position: absolute;
 	top: 50%;
-	right: 40px;
+	right: 55px;
 
 	transform: translateY(-50%);
 }

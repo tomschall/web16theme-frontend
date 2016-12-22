@@ -308,6 +308,8 @@ a.search__cat-title {
 
 		opacity: 0.5;
 
+		max-height: 0;
+
 		@include iconDataurl('breadcrumb-expand', $after: true);
 
 		&:after {

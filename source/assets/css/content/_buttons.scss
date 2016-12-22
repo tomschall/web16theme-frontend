@@ -24,6 +24,8 @@ input[type="reset"],
 	opacity: 1;
 	font-weight: 600;
 
+	transition: all $transitionLength / 6 $transitionEase;
+
 	&:hover,
 	&:active,
 	&:focus {
@@ -55,7 +57,7 @@ input[type="reset"],
 	color: $colorBlack;
 	background-color: $colorBg;
 
-	border: 1px solid $colorGreyHover;
+	border: 2px solid $colorGreyHover;
 
 	&:hover,
 	&:active,

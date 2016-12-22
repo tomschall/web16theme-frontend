@@ -156,6 +156,8 @@
 
 			@include iconDataurl($name: 'triangle-arrow_right_darkgrey', $after: true);
 
+			transition: all $transitionLength / 6 $transitionEase;
+
 			&:hover {
 				background-color: $colorGreyHover;
 				cursor: pointer;

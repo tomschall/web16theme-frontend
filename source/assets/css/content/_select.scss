@@ -225,8 +225,10 @@ fieldset .select2-selection__rendered {
 
 .select2-results__option {
 	font-size: 1.25rem;
-	padding: 14px 10px;
+	padding: 14px 10px 14px 14px;
 	margin-bottom: 2px;
+	font-weight: 500;
+	color: $colorTextDarkGrey;
 }
 
 /**
@@ -251,13 +253,13 @@ fieldset .select2-selection__rendered {
 
 .select2-container [aria-multiselectable="true"] .select2-results__option {
 	position: relative;
-	padding-left: 10px + $radioCheckboxDimension + 10px;
+	padding-left: 10px + $radioCheckboxDimension + 20px;
 
 	&:before {
 		width: $radioCheckboxDimension;
 		height: $radioCheckboxDimension;
 
-		left: 10px;
+		left: 16px;
 
 		top: 50%;
 		transform: translateY(-50%);
@@ -297,7 +299,7 @@ fieldset .select2-selection__rendered {
 			top: 50%;
 			transform: translateY(-50%) translateX(-50%);
 
-			left: 23px;
+			left: 29px;
 			margin-top: 1px;
 
 		}

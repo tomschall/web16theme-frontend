@@ -198,7 +198,11 @@
 		$relatedLabels.on('click.formElementHelper', function() {
 			var $select = $(this).siblings('select');
 
-			$select.select2('open');
+			console.log($(this).siblings('.select2-container--open').length);
+
+			if ($(this).siblings('.select2-container--open').length === 0) {
+				$select.select2('open');
+			}
 		});
 
 		$relatedLabels.on('mouseout.formElementHelper', function() {
@@ -300,9 +304,6 @@
 					messages[$field.find('input, textarea, select').attr('name')] = tempmessages;
 				}
 			});
-
-			console.log('rules', rules);
-			console.log('messages', messages);
 
 			$form.validate({
 				onfocusout: function(element) {

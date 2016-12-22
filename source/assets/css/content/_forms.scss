@@ -14,7 +14,7 @@
 		border: 0;
 
 		background: $colorInputTextHover;
-		border: 1px solid $colorGreyHover;
+		border: 2px solid $colorGreyHover;
 		border-radius: 0;
 		box-shadow: none;
 
@@ -104,12 +104,18 @@ input[type=number] {
 		bottom: 0;
 
 		font-size: 1.25rem;
-		border: 1px solid $colorGreyHover;
+		border: 2px solid $colorGreyHover;
+
+		transition: all $transitionLength / 3 $transitionEase;
 
 		resize: none;
 
 		&:focus {
 			border-color: $colorBlack;
+		}
+
+		&:hover {
+			border: 2px solid $customScrollbarColor;
 		}
 
 		&.error {

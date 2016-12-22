@@ -307,7 +307,9 @@
 			// Reset the load more mode to false
 			loadMoreMode = false;
 		} else {
-			this.$element.find('.search__results span[data-category=" ' + category + '"]').after(html);
+			this.$element.find('.search__results span[data-category="' + category + '"]').after(html);
+
+			console.log(this.$element.find('.search__results span[data-category=" ' + category + '"]'));
 		}
 
 		this.replaceLinkPlaceholder();

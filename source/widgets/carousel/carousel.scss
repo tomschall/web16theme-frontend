@@ -302,8 +302,16 @@
 	height: 73px;
 	width: 73px;
 
-	left: 53%;
-	transform: translateX(-50%) translateY(-125%);
+	left: 50%;
+	transform: translateX(-50%) translateY(-150%);
+
+	@include mq($from: betweener , $to: large) {
+		left: 52.5%;
+	}
+
+	@include mq($from: subnav, $to: betweener) {
+		left: 50%;
+	}
 
 	background-color: $colorBlack;
 	opacity: 0.3;

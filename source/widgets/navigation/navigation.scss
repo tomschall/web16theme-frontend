@@ -53,6 +53,9 @@ styling of all links and lists
 	text-decoration: none;
 	opacity: 1;
 
+	transition: all $transitionLength / 6 $transitionEase;
+	background-color: transparent;
+
 	&.widg_navigation__back {
 		display: none;
 	}
@@ -175,6 +178,8 @@ The back arrow only visible on mobile navigation
 		padding-bottom: 14px;
 		font-weight: 600;
 		color: $colorTextGrey;
+
+		transition: all $transitionLength / 6 $transitionEase;
 
 		&:hover {
 			background-color: $colorSubNavHover;
