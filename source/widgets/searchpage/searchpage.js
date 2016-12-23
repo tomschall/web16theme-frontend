@@ -300,16 +300,20 @@
 	 */
 	Widget.prototype.showResults = function(html, foundEntries, limitedToResults, category) {
 		if (loadMoreMode) {
-			html = this.generateAdditionalTableHTML(html);
+			if (category === "events") {
+				html = this.generateAdditionalTeasers(html);
 
-			this.$element.find('.search__results table').append(html);
+				this.$element.find('.search__results .widg_teaser__wrapper').append(html);
+			} else {
+				html = this.generateAdditionalTableHTML(html);
+
+				this.$element.find('.search__results table').append(html);
+			}
 
 			// Reset the load more mode to false
 			loadMoreMode = false;
 		} else {
 			this.$element.find('.search__results span[data-category="' + category + '"]').after(html);
-
-			console.log(this.$element.find('.search__results span[data-category=" ' + category + '"]'));
 		}
 
 		this.replaceLinkPlaceholder();
@@ -371,6 +375,12 @@
    */
 	Widget.prototype.generateAdditionalTableHTML = function(html) {
 		return html.find('tr').not(':eq(0)');
+	};
+
+	Widget.prototype.generateAdditionalTeasers = function(html) {
+		var $html = html.find('.widg_teaser__wrapper').html();
+
+		return $html;
 	};
 
 	/**

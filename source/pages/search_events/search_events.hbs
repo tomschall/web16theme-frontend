@@ -1,0 +1,58 @@
+{{#extend "layouts/layout" pageTypeClass="search-page"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+		<h1 id="search-title" data-searchpage="title">Alle Veranstaltungen</h1>
+
+		<div class="search__wrapper" data-searchpage-template="events_full" data-searchpage-category="events" data-searchpage="formWrapper">
+			<div class="search__form-wrapper">
+				<div>
+					<div class="search__holder search__holder___double">
+						<div class="search__string">
+							<input type="text" value="" id="search-string" name="search-string" data-searchpage="query" data-searchparam="q"/>
+							<label class="formQuestion" for="search-string">Suchbegriff</label>
+							<span class="reset-field" aria-hidden="true">Feld zurücksetzen</span>
+						</div>
+					</div>
+					<div class="search__holder select2__wrapper">
+						<select id="faculty" name="faculty" data-searchparam="faculty" class="custom-select" multiple="multiple">
+							<option value="is">International Studies</option>
+							<option value="it">Informatik</option>
+							<option value="ls">Life Sciences</option>
+							<option value="mc">Musik</option>
+							<option value="ph">Pädagogik</option>
+							<option value="ps">Psychologie</option>
+							<option value="sw">Soziale Arbeit</option>
+							<option value="tn">Technik</option>
+						</select>
+						<label class="formQuestion" for="faculty">Fachbereich</label>
+					</div>
+					<div class="search__holder select2__wrapper">
+						<select id="location" name="location" data-searchparam="location" class="custom-select" multiple="multiple">
+							<option value="bsl">Basel</option>
+							<option value="mtz">Muttenz</option>
+							<option value="brg">Brugg-Windisch</option>
+							<option value="olt">Olten</option>
+							<option value="slt">Solothurn</option>
+						</select>
+						<label class="formQuestion" for="location">Standort</label>
+					</div>
+
+				</div>
+
+				<div class="search__third-row">
+					<div class="search__extra-holder">
+						<button class="search__reset not-default" data-searchpage="reset">Alle Felder zurücksetzen</button>
+					</div>
+					<div class="search__extra-holder element-hidden">
+						<span data-searchpage="countNumber"></span> Veranstaltungen gefunden
+					</div>
+				</div>
+
+			</div>
+			{{> "widgets/searchpage/searchpage" widgets.searchpage }}
+		</div>
+
+	{{/content}}
+{{/extend}}

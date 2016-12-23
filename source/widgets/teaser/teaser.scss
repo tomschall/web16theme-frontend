@@ -97,6 +97,10 @@
 	@include mq($from: medium) {
 		width: 100%;
 		padding-top: 62%;
+
+		.search__results & {
+			padding-top: 0;
+		}
 	}
 
 	@include mq($to: medium) {
