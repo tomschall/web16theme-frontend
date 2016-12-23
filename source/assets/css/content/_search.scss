@@ -75,6 +75,39 @@ a.search__cat-title {
 
 [class^="search__result-"] {
 	padding: 0;
+	position: relative;
+
+	.search__result-arrow {
+		position: absolute !important;
+		left: calc(100% - 38px);
+		min-width: 10px;
+		height: 2px;
+
+		background-color: $colorBlack;
+
+		top: 50%;
+		transform: translateY(-1px);
+
+		transition: all $transitionLength / 3 $transitionEase;
+
+		@include iconDataurl('triangle-arrow_right');
+
+		opacity: 0;
+
+		&:before {
+			position: absolute;
+			content: " ";
+			display: block;
+
+			left: 100%;
+			width: 7px;
+			height: 11px;
+
+			top: 50%;
+
+			transform: translateY(-50%);
+		}
+	}
 
 	a {
 		@include clearfix();
@@ -89,7 +122,6 @@ a.search__cat-title {
 
 		border-bottom: 1px solid $colorGreyHover;
 
-		@include iconDataurl('pfeil-black_short', $after: true);
 		position: relative;
 
 		span:not(.bold),
@@ -124,6 +156,17 @@ a.search__cat-title {
 			&:after {
 				opacity: 1.0;
 				right: 11px;
+			}
+
+			.search__result-arrow,
+			+ .search__result-arrow {
+				min-width: 20px;
+				transform: translateY(-1px);
+				opacity: 1;
+
+				&:before {
+					transform: translateY(-50%);
+				}
 			}
 		}
 
@@ -206,23 +249,12 @@ a.search__cat-title {
   */
 .widg_searchpage [class^="search__result-"] {
 	padding: 0;
+	position: relative;
 
 	a {
 		padding: 25px 0 24px 0;
 		@include clearfix;
-
-		@include iconDataurl('pfeil-black', $after: true);
-
-		&:after {
-			display: none;
-
-			width: 27px;
-			height: 9px;
-		}
-		&:hover:after {
-			display: block;
-		}
-
+		position: relative;
 	}
 
 	&.search__result-doc {

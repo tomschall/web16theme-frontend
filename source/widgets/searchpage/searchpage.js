@@ -300,7 +300,7 @@
 	 */
 	Widget.prototype.showResults = function(html, foundEntries, limitedToResults, category) {
 		if (loadMoreMode) {
-			if (category === "events") {
+			if (category === 'events') {
 				html = this.generateAdditionalTeasers(html);
 
 				this.$element.find('.search__results .widg_teaser__wrapper').append(html);
