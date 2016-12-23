@@ -60,7 +60,7 @@ var data = {
 					src: '/assets/media/img/music_school_event_3.png',
 					alt: 'Event-Bild'
 				}
-			},
+			}
 		]
 	}
 };

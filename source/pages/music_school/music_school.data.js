@@ -135,7 +135,8 @@ var data = _.merge(defaultData, {
 				}
 			]
 		}),
-		newsletterSubscription: requireNew('../../widgets/newsletter_subscription/newsletter_subscription.data.js')
+		newsletterSubscription: requireNew('../../widgets/newsletter_subscription/newsletter_subscription.data.js'),
+		followUs: _.assign(requireNew('../../widgets/follow_us/follow_us.data.js'))
 	}
 });
 
