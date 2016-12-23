@@ -30,10 +30,11 @@
 	}
 
 	@include mq($from: large) {
-		min-height: 30vw;
+		min-height: 50vh;
+		height: 60vh;
 	}
 
-	max-height: 50vh;
+	max-height: 60vh;
 	height: 40vh;
 
 
@@ -47,6 +48,24 @@
 
 	.is-profile-hero & {
 		min-height: 40vw;
+	}
+
+	.is_hero2 & {
+		@include mq($from: medium) {
+			height: 60vh;
+			max-height: 60vh;
+		}
+
+		@include mq($to: medium) {
+			height: 75vw;
+			max-height: 75vw;
+		}
+
+		@include mq($from: large) {
+			height: 80vh;
+			max-height: 80vh;
+		}
+
 	}
 }
 

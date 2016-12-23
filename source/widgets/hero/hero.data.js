@@ -6,6 +6,7 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
+			isHero2: false,
 			heroImg: '/assets/media/img/hero.png',
 			heroAlt: 'Symbolbild',
 			breadcrumb: {
