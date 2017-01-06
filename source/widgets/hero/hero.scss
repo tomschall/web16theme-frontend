@@ -26,10 +26,15 @@
 	overflow: hidden;
 
 	@include mq($from: subnav) {
-		min-height: 400px;
+		min-height: 500px;
 	}
 
-	max-height: 50vh;
+	@include mq($from: large) {
+		min-height: 50vh;
+		height: 60vh;
+	}
+
+	max-height: 60vh;
 	height: 40vh;
 
 
@@ -42,8 +47,25 @@
 	}
 
 	.is-profile-hero & {
-		max-height: none;
-		min-height: 0;
+		min-height: 40vw;
+	}
+
+	.is_hero2 & {
+		@include mq($from: medium) {
+			height: 60vh;
+			max-height: 60vh;
+		}
+
+		@include mq($to: medium) {
+			height: 75vw;
+			max-height: 75vw;
+		}
+
+		@include mq($from: large) {
+			height: 80vh;
+			max-height: 80vh;
+		}
+
 	}
 }
 
@@ -73,6 +95,8 @@
 
 	position: absolute;
 
-	top: 30%;
+	top: 128px;
+	max-width: 52vw;
+
 	z-index: zindex(titleProfile);
 }

@@ -59,16 +59,19 @@ fieldset .select2-selection__rendered {
 		@include defaultElementHeight();
 
 		border-radius: 0;
-		border: 1px solid $colorGreyHover;
+		border: 2px solid $colorGreyHover;
 
-		&:hover {
-			border: 1px solid $customScrollbarColor;
+		transition: border $transitionLength / 3 $transitionEase;
+
+		&:hover,
+		.has-focused-label & {
+			border: 2px solid $customScrollbarColor;
 		}
 
 		&:focus
 		{
 			outline: none;
-			border: 1px solid $colorBlack;
+			border: 2px solid $colorBlack;
 		}
 
 		.select2-selection__rendered {
@@ -136,6 +139,8 @@ fieldset .select2-selection__rendered {
 
 			width: 12px;
 			height: 7px;
+
+			cursor: pointer;
 		}
 
 		.select2-selection__rendered {
@@ -201,11 +206,13 @@ fieldset .select2-selection__rendered {
 }
 
 .select2-container--open .select2-selection--single,
-.select2-container--open .select2-selection--multiple {
-	border: 1px solid $colorBlack;
+.select2-container--open .select2-selection--multiple,
+.has-focused-label .select2-container--open .select2-selection--single,
+.has-focused-label .select2-container--open .select2-selection--multiple{
+	border: 2px solid $colorBlack;
 
 	&:hover {
-		border: 1px solid $colorBlack;
+		border: 2px solid $colorBlack;
 	}
 }
 
@@ -218,8 +225,10 @@ fieldset .select2-selection__rendered {
 
 .select2-results__option {
 	font-size: 1.25rem;
-	padding: 14px 10px;
+	padding: 14px 10px 14px 14px;
 	margin-bottom: 2px;
+	font-weight: 500;
+	color: $colorTextDarkGrey;
 }
 
 /**
@@ -244,13 +253,13 @@ fieldset .select2-selection__rendered {
 
 .select2-container [aria-multiselectable="true"] .select2-results__option {
 	position: relative;
-	padding-left: 10px + $radioCheckboxDimension + 10px;
+	padding-left: 10px + $radioCheckboxDimension + 20px;
 
 	&:before {
 		width: $radioCheckboxDimension;
 		height: $radioCheckboxDimension;
 
-		left: 10px;
+		left: 16px;
 
 		top: 50%;
 		transform: translateY(-50%);
@@ -261,7 +270,7 @@ fieldset .select2-selection__rendered {
 		content: " ";
 
 		background: $colorBg;
-		border: 1px solid $colorGreyHover;
+		border: 2px solid $colorGreyHover;
 	}
 
 	&:hover {
@@ -282,15 +291,16 @@ fieldset .select2-selection__rendered {
 		}
 
 		&:after {
-			height: $radioCheckboxDimensionInner;
-			width: 14px;
+			height: $radioCheckboxDimensionInner + 1;
+			width: 14px + 1;
 
 			position: absolute;
 
 			top: 50%;
 			transform: translateY(-50%) translateX(-50%);
 
-			left: 22px;
+			left: 29px;
+			margin-top: 1px;
 
 		}
 	}
@@ -336,14 +346,15 @@ fieldset .select2-selection__rendered {
 	border-radius: 0;
 	border-color: $colorBlack;
 	border-top-width: 0;
+	border-width: 2px;
 
-	transform: translateY(-1px);
+	transform: translateY(-2px);
 
 	&.select2-dropdown--above {
 		border-bottom-width: 0;
-		border-top-width: 1px;
+		border-top-width: 2px;
 
-		transform: translateY(1px);
+		transform: translateY(2px);
 	}
 }
 
@@ -403,7 +414,7 @@ select.error + .select2-container .select2-selection {
 .select2-selection__placeholder {
 	display: inline-block;
 
-	transform: translateY(-1px);
+	transform: translateY(-2px);
 }
 
 

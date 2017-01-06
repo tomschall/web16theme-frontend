@@ -7,7 +7,10 @@ var _ = require('lodash'),
 
 var templateData = {
 			quote: 'Ganzheitliche Ansätze und die Kombination von industrieller Produktion, Umweltschutz und moderner Ressourcenrückgewinnung sind Zukunftsthemen. Die Hochschule für Life Sciences FHNW ist bereits aktiv dabei engagiert.',
-			author: 'Prof. Dr. Frank Pude, Leiter Aus- und Weiterbildung'
+			author: 'Prof. Dr. Frank Pude, Leiter Aus- und Weiterbildung',
+			langStrings: {
+				readMore: 'mehr erfahren'
+			}
 		},
 		data = _.merge(defaultData, {
 			meta: {

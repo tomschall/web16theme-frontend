@@ -1,4 +1,7 @@
 <div class="widg_teaser__wrapper {{#if isOnStartpage}}is_on_startpage{{/if}}">
+	{{#if moreButton}}
+		<a class="button button__secondary teaser__more-button" href="{{moreButton.url}}">{{moreButton.label}}</a>
+	{{/if}}
 	{{#each teasers}}
     <div class="widg_teaser{{#if variant}} {{variant}}{{/if}} {{#if img}}{{else}}no-image{{/if}}">
 			{{#if img}}
@@ -21,7 +24,4 @@
       <span class="widg_teaser__arrow"></span>
     </div>
 	{{/each}}
-	{{#if moreButton}}
-    <a class="button button__secondary teaser__more-button" href="{{moreButton.url}}">{{moreButton.label}}</a>
-	{{/if}}
 </div>

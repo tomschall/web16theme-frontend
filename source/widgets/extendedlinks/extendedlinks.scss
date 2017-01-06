@@ -3,15 +3,10 @@
 	position: relative;
 
 	p {
-		font-size: 1.25rem;
-		line-height: 1.7;
-		font-weight: 300;
+		margin: $basicPush 0 $basicPush * 2.6 0;
 
-		margin: $basicPush * 1.6 0 $basicPush * 2.6 0;
-
-	  	@include mq($to: small) {
-		  font-size: 1.083333rem;
-		  margin-top: 9px;
+		@include mq($to: small) {
+			margin-top: 9px;
 		}
 	}
 
@@ -20,7 +15,7 @@
 
 		@include mq($to: small) {
 			margin-top: 3px;
-		  	font-size: 1.25rem;
+			font-size: 1.25rem;
 		}
 	}
 
@@ -57,28 +52,28 @@
 		text-decoration: none;
 		opacity: 1;
 
-	  	@include mq($from: medium) {
-		  span,
-		  h4,
-		  p,
-		  &:after {
-			transition: transform $transitionLength / 3 $transitionEase;
-		  }
+		@include mq($from: medium) {
+			span,
+			h4,
+			p,
+			&:after {
+				transition: transform $transitionLength / 3 $transitionEase;
+			}
 		}
 
 		&:hover {
 			background-color: $colorLightGray;
 
-		  	@include mq($from: medium) {
-			  span,
-			  h4,
-			  p {
-				transform: translateX(5px);
-			  }
+			@include mq($from: medium) {
+				span,
+				h4,
+				p {
+					transform: translateX(5px);
+				}
 
-			  &:after {
-				transform: translateX(5px) translateY(-50%);
-			  }
+				&:after {
+					transform: translateX(5px) translateY(-50%);
+				}
 			}
 		}
 
@@ -94,15 +89,15 @@
 
 			@include mq($to: small) {
 				position: static;
-			  	margin-bottom: $basicPush;
+				margin-bottom: $basicPush;
 			}
 		}
 
 		@include mq($to: small) {
-		  	padding-left: 10px;
-		  	padding-right: 0;
+			padding-left: 10px;
+			padding-right: 0;
 
-		  	@include iconDataurl('pfeil-black_short', $after: true);
+			@include iconDataurl('pfeil-black_short', $after: true);
 		}
 	}
 
@@ -110,10 +105,10 @@
 		padding-left: $basicPush * 15;
 
 		@include mq($to: small) {
-		  padding-left: 10px;
-		  padding-right: 0;
+			padding-left: 10px;
+			padding-right: 0;
 
-		  @include iconDataurl('pfeil-black_short', $after: true);
+			@include iconDataurl('pfeil-black_short', $after: true);
 		}
 	}
 
@@ -121,12 +116,12 @@
 		border-bottom: none;
 	}
 
-  	@include mq($to: small) {
-	  padding-top: 12px;
+	@include mq($to: small) {
+		padding-top: 12px;
 
-	  &:first-of-type {
-		padding-top: 0;
-	  }
+		&:first-of-type {
+			padding-top: 0;
+		}
 	}
 }
 
@@ -149,13 +144,12 @@
 
 .extendedlinks__more-button {
 	position: absolute;
-	top: 0;
+	top: -85px - 11px;
 	right: 0;
-
-	transform: translateY(-175%);
 
 	@include mq($to: medium) {
 		position: static;
 		transform: none;
+		margin-top: $basicPush;
 	}
 }

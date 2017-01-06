@@ -1,38 +1,42 @@
 p {
-  font-size: 1.5rem;
-  font-family: $fontSerifRoman;
-  line-height: 1.7;
-  margin-top: 12px;
-  margin-bottom: 12px;
+	font-size: 1.333rem;
+	font-family: $fontSerifRoman;
+	line-height: 1.625;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-weight: 500;
+	color: $colorTextDarkGrey;
 
-  @include mq($to: small) {
-	font-size: 1.25rem;
-	line-height: 23px;
-  }
+	@include mq($to: small) {
+		font-size: 1.25rem;
+		line-height: 23px;
+	}
 
-  b {
-    font-weight: 700;
-  }
+	b {
+		font-weight: 700;
+	}
 }
 
 .text__lead {
-  font-size: 1.8333rem;
-  line-height: 1.545454;
-  margin-bottom: $basicPush * 2.3;
-  margin-top: 0;
+	font-size: 1.8333rem;
+	line-height: 1.545454;
+	margin-bottom: $basicPush * 4;
+	margin-top: 0;
+	font-weight: 500;
+	color: $colorTextGrey;
 
-  @include mq($to: small) {
-	font-size: 1.5rem;
-	line-height: 1.5555555;
-	margin-bottom: 0;
-  }
+	@include mq($to: small) {
+		font-size: 1.5rem;
+		line-height: 1.5555555;
+		margin-bottom: 0;
+	}
 }
 
 .text__lead + .has_grid {
-  margin-top: $basicPush * 6.6;
+	margin-top: $basicPush * 6.6;
 }
 
 span.bold,
 b {
-  font-weight: 700;
+	font-weight: 700;
 }

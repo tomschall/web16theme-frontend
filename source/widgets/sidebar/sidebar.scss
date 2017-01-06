@@ -32,7 +32,12 @@ $sidebarObjectPush: $basicPush * 3;
 
 	margin-top: 0;
 
-	@include iconDataurl('accordeon_close', $after: true);
+	@include iconDataurl('accordeon_close_grey', $after: true);
+
+	background-color: $colorBg;
+	color: $colorTextDarkGrey;
+
+	// transition: all $transitionLength / 2 $transitionEase;
 
 	&:after {
 		position: absolute;
@@ -77,9 +82,22 @@ $sidebarObjectPush: $basicPush * 3;
 		background-color: $colorBg;
 		border: 1px solid $colorGreyHover;
 		border-bottom: none;
+		color: $colorTextGrey;
 
 		&:hover {
-			background-color: $colorGreyHover;
+			background-color: $colorLightGray;
+			color: $colorBlack;
+
+			@include iconDataurl('accordeon_close', $after: true);
+
+			&:after {
+				position: absolute;
+
+				right: $sidebarObjectGutter;
+				top: 50%;
+
+				transform: translateY(-50%) rotate(45deg);
+			}
 		}
 
 		&:after {
@@ -95,7 +113,8 @@ $sidebarObjectPush: $basicPush * 3;
 	}
 
 	.is_requested & {
-		&:after {
+		&:after,
+		&:hover:after {
 			transform: translateY(-50%) rotate(90deg) scale(1.0);
 		}
 	}

@@ -21,7 +21,13 @@
 			scale: 'best-fill'
 		});
 
-		$('.widg_hero__img:not(.is-profile-hero)').imageScale({
+		$('.widg_hero__img').imageScale({
+			rescaleOnResize: true,
+			scale: 'best-fill',
+			align: 'top-right'
+		});
+
+		$('.widg_full_bleed_teaser img').imageScale({
 			rescaleOnResize: true,
 			scale: 'best-fill',
 			align: 'right'

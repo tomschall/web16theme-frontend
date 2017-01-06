@@ -14,24 +14,25 @@
 
 			listEntryTemplates = {
 				searchbar: {
-					normal: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a></li>',
-					event: '<li class="search__result-event"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="event-info">{{start}}</span></a></li>',
+					normal: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
+					event: '<li class="search__result-event"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="event-info">{{start}}</span></a><span class="search__result-arrow"></span></li>',
 					doc: '<li class="search__result-doc"><a href="{{combinedURL}}"><span class="title">{{Title}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>',
-					webservices: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a></li>',
-					irf: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a></li>'
+					webservices: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
+					irf: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>'
 				},
 				searchpage: {
-					normal: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a></li>',
-					training: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="study_type">{{edu_type}}</span></a></li>',
-					event: '<li class="search__result-event"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="event-info">{{portal_type}}, {{start}}</span></a></li>',
-					sonst: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="description">{{description}}</span><span class="url">{{url}}</span></a></li>',
-					webservices: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a></li>',
-					irf: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a></li>'
+					normal: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span> </a><span class="search__result-arrow"></span></li>',
+					training: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="study_type">{{edu_type}}</span></a><span class="search__result-arrow"></span></li>',
+					event: '<li class="search__result-event"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="event-info">{{portal_type}}, {{start}}</span></a><span class="search__result-arrow"></span></li>',
+					sonst: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="description">{{description}}</span><span class="url">{{url}}</span></a><span class="search__result-arrow"></span></li>',
+					webservices: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
+					irf: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>'
 				},
 				categorySearch: {
-					training: '<tr data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a></td></tr>',
-					expertises: '<div data-clickable="true" class="search__result-word-list"><a href="{{combinedURL}}">{{Title}}</a></div>',
-					profiles: '<tr data-clickable="false"><td><div><h4>{{Title}}</h4></div><div>{{description}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if phone}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{phone}}">{{phone}}</a></div>{{/if}}{{#if central_phone}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{central_phone}}">{{central_phone}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="tel:{{email}}">{{email}}</a></div>{{/if}}</td></tr>'
+					training: '<tr data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
+					expertises: '<div data-clickable="true" class="search__result-word-list"><a href="{{combinedURL}}">{{Title}}<span class="search__result-arrow"></span></a></div>',
+					profiles: '<tr data-clickable="false"><td><div><h4>{{Title}}</h4></div><div>{{description}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if phone}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{phone}}">{{phone}}</a></div>{{/if}}{{#if central_phone}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{central_phone}}">{{central_phone}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="tel:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
+					events: '<div class="widg_teaser">{{#if img}} <div class="widg_teaser__img"><img src="{{img.src}}"/></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}} <h4>{{{Title}}}</h4>{{#if descriptionText}} <p>{{dotdotdot_teaser descriptionText}}</p>{{/if}} <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>'
 				},
 				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
 			},
@@ -95,16 +96,16 @@
 		} else {
 			switch (category) {
 				case 'event':
-					template = Handlebars.compile(listEntryTemplates.searchbar.event);
+					template = Handlebars.compile(listEntryTemplates.searchpage.event);
 					break;
 				case 'doc':
-					template = Handlebars.compile(listEntryTemplates.searchbar.doc);
+					template = Handlebars.compile(listEntryTemplates.searchpage.doc);
 					break;
 				case 'training':
 					template = Handlebars.compile(listEntryTemplates.searchpage.training);
 					break;
 				case 'webservice':
-					template = Handlebars.compile(listEntryTemplates.searchpage.webservice);
+					template = Handlebars.compile(listEntryTemplates.searchpage.webservices);
 					break;
 				default:
 					template = Handlebars.compile(listEntryTemplates.searchpage.normal);
@@ -140,6 +141,8 @@
 
 		results.forEach(function(row) {
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
+
+
 
 			if (typeof row.url === typeof undefined) {
 				row.combinedURL = currentBaseURL + row.path_string;
@@ -196,6 +199,23 @@
 		return $responseHTML;
 	}
 
+	/**
+	 * Generates the Events teasers
+	 */
+	function generateTeasers(data) {
+		var results = data.response.docs,
+				$responseHTML = $('<div class="widg_teaser__wrapper"></div>'),
+				template = null;
+
+		results.forEach(function(teaserItem) {
+			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
+
+			$responseHTML.append(template(teaserItem));
+		});
+
+		return $responseHTML;
+	}
+
 	function getAllLangStrings() {
 		var $searchpage = $('.widg_searchpage');
 
@@ -237,6 +257,8 @@
 			if (activeCategorySearch) {
 				if (data.responseHeader.params.category === 'expertises') {
 					$responseHTML.append(generateWordList(data));
+				} else if (data.responseHeader.params.category === 'events') {
+					$responseHTML.append(generateTeasers(data));
 				} else {
 					$responseHTML.addClass('search__table').append(generateResultTable(data));
 				}
@@ -402,3 +424,13 @@
 		}
 	});
 })(jQuery);
+
+Handlebars.registerHelper('dotdotdot_teaser', function(str) {
+	'use strict';
+
+	if (str.length > 160) {
+		return str.substring(0, 160) + '...';
+	}
+
+	return str;
+});

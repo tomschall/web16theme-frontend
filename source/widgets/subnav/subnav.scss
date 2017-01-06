@@ -63,10 +63,6 @@
 	padding: 29px 22px;
 	position: relative;
 
-	&:hover {
-		background-color: rgba($colorBlack, 0.8);
-	}
-
 	a {
 		opacity: 1;
 	}
@@ -85,6 +81,8 @@
 
 		padding-bottom: $basicPush * 1.4;
 		position: relative;
+
+		border-bottom: none;
 
 		&:after {
 			position: absolute;
@@ -154,11 +152,31 @@
 			text-decoration: none;
 			opacity: 1;
 
-			@include iconDataurl($name: 'pfeil-black_short', $after: true);
+			color: $colorTextDarkGrey;
+
+			@include iconDataurl($name: 'triangle-arrow_right_darkgrey', $after: true);
+
+			transition: all $transitionLength / 6 $transitionEase;
 
 			&:hover {
 				background-color: $colorGreyHover;
 				cursor: pointer;
+				color: $colorBlack;
+
+				@include iconDataurl($name: 'triangle-arrow_right', $after: true);
+
+				&:after {
+					content: " ";
+					display: block;
+					position: absolute;
+
+					right: 14px;
+					top: 50%;
+					transform: translateY(-50%);
+
+					width: 10px;
+					height: 10px;
+				}
 			}
 
 			&:after {
@@ -170,13 +188,13 @@
 				top: 50%;
 				transform: translateY(-50%);
 
-				width: 17px;
+				width: 10px;
 				height: 10px;
 			}
 
 			&.is_back {
 				background-color: $colorSubNavActive;
-				padding: 14px 14px 14px 52px;
+				padding: 14px 14px 14px 37px;
 
 				&:hover {
 					background-color: $colorYellow;
@@ -186,7 +204,7 @@
 					right: auto;
 					left: 14px;
 
-					transform: translateY(-50%) rotate(180deg);
+					transform: translateY(-60%) rotate(180deg);
 				}
 			}
 		}

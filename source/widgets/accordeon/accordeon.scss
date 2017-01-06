@@ -18,11 +18,11 @@ $colorAvailabilityRed: #f05f1b;
 }
 
 .widg_accordeon__entry {
-	border-bottom: 1px solid $colorGreyHover;
+	margin-bottom: 2px;
 	overflow: hidden;
 
 	&:last-of-type {
-		border-bottom: none;
+		margin-bottom: 0;
 	}
 
 	> button,
@@ -38,7 +38,7 @@ $colorAvailabilityRed: #f05f1b;
 
 		font-size: 1.5rem;
 
-		padding: ($gutterWidth - 4) $basicPush * 4  ($gutterWidth -4) $gutterWidth + 2;
+		padding: ($gutterWidth - 4) $basicPush * 4  ($gutterWidth - 4) $gutterWidth + 2;
 		position: relative;
 
 		opacity: 1;
@@ -46,9 +46,18 @@ $colorAvailabilityRed: #f05f1b;
 		font-weight: 600;
 
 		margin: 0;
+		color: $colorTextDarkGrey;
+
+		background-color: $colorLightGray;
+		transition: all $transitionLength / 6 $transitionEase;
+
+		&:focus {
+			background-color: $colorLightGray;
+		}
 
 		&:hover {
-			background-color: $colorLightGray;
+			background-color: $colorGreyHover;
+			color: $colorBlack;
 		}
 
 		@include mq($to: medium) {
@@ -77,13 +86,15 @@ $colorAvailabilityRed: #f05f1b;
 			width: 12px;
 			height: 12px;
 
-			right: $gutterWidth;
+			right: $gutterWidth + 4;
 
 		}
 	}
 
 	> div > button[data-accordeon="button"],
 	> div > button[data-application-accordeon="button"] {
+
+		background-color: $colorLightGray;
 
 		font-size: 1.5rem;
 		line-height: 1.8;
@@ -178,6 +189,7 @@ $colorAvailabilityRed: #f05f1b;
 	&.is_open > div > button[data-accordeon="button"],
 	&.is_open > div > button[data-application-accordeon="button"] {
 		background-color: $colorYellowAccordeonActive;
+		color: $colorBlack;
 
 		&:hover {
 			background-color: $colorYellowAccordeonActive;
@@ -195,7 +207,7 @@ $colorAvailabilityRed: #f05f1b;
 .button__apply {
 	position: absolute;
 	top: 50%;
-	right: 40px;
+	right: 55px;
 
 	transform: translateY(-50%);
 }

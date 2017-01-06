@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var templateData = {
 			img: {
-				src: '/assets/media/img/full_bleed_emagazin.png',
+				src: '/assets/media/img/full_bleed_emagazin.jpg',
 				alt: 'Das neue E-Magazin'
 			},
 			title: 'Nachwuchsförderung',

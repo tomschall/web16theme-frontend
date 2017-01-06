@@ -17,7 +17,8 @@ var data = _.merge(defaultData, {
 		}, requireNew('../../widgets/header/header.data.js')),
 		navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 		footer: requireNew('../../widgets/footer/footer.data.js'),
-		hero: _.assign({
+		hero: _.assign(requireNew('../../widgets/hero/hero.data.js'), {
+			isHero2: true,
 			heroImage: '/assets/media/img/piano.png',
 			heroAlt: 'Klavier an den Musikhochschulen',
 			breadcrumb: {
@@ -37,7 +38,7 @@ var data = _.merge(defaultData, {
 					}
 				]
 			}
-		}, requireNew('../../widgets/hero/hero.data.js')),
+		}),
 		subnav: _.assign(requireNew('../../widgets/subnav/subnav.data.js'), {
 			title: 'Musikhochschulen FHNW',
 			logo: '/assets/media/img/music_school_logo.png',
@@ -134,7 +135,8 @@ var data = _.merge(defaultData, {
 				}
 			]
 		}),
-		newsletterSubscription: requireNew('../../widgets/newsletter_subscription/newsletter_subscription.data.js')
+		newsletterSubscription: requireNew('../../widgets/newsletter_subscription/newsletter_subscription.data.js'),
+		followUs: _.assign(requireNew('../../widgets/follow_us/follow_us.data.js'))
 	}
 });
 

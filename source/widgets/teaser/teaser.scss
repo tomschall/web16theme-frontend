@@ -97,6 +97,10 @@
 	@include mq($from: medium) {
 		width: 100%;
 		padding-top: 62%;
+
+		.search__results & {
+			padding-top: 0;
+		}
 	}
 
 	@include mq($to: medium) {
@@ -125,22 +129,40 @@
 
 	text-indent: -100000px;
 
+	&:hover + .widg_teaser__arrow {
+		min-width: 20px;
+	}
 }
 
 .widg_teaser__arrow {
-	@include iconDataurl('pfeil-black');
+	@include iconDataurl('dropdown-arrow');
 
 	display: block;
 	position: absolute;
 	bottom: $basicPush * 1.8;
 
+	height: 2px;
+	min-width: 10px;
+	background-color: $colorBlack;
+	transition: min-width $transitionLength / 3 $transitionEase;
+
+	transform: translate3d(0, 0, 0);
+
 	@include mq($to: medium) {
-		@include iconDataurl('pfeil-black_short');
 
 		top: 50%;
 		right: 8px;
 
-		transform: translateY(-34%);
+		transform: translateY(-34%) translate3d(0, 0, 0);
+	}
+
+	&:before {
+		transform: rotate(-90deg) translate3d(0, 0, 0);
+		position: absolute;
+
+		top: -2px;
+		left: 80%;
+
 	}
 
 }
@@ -177,6 +199,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	position: relative;
+	margin-top: 80px;
 
 	@include mq($to: medium) {
 		padding: 0 $gutterWidth;
@@ -191,7 +214,8 @@
 	}
 
 	&.is_on_startpage {
-		margin-bottom: $basicPush * 10;
+
+		margin-bottom: $basicPush * 11;
 		@include clearfix();
 
 		.widg_teaser:first-child {
@@ -207,7 +231,7 @@
 			left: 50%;
 			transform: translateX(-50%);
 
-			bottom: -1 * $basicPush * 8;
+			bottom: -1 * $basicPush * 5.5;
 
 			top: initial;
 			right: initial;
@@ -226,10 +250,9 @@
 
 .teaser__more-button {
 	position: absolute;
-	top: 0;
+	top: -85px;
 	right: 0;
-
-	transform: translateY(-140%);
+	margin-top: 25px;
 
 	@include mq($to: medium) {
 		position: static;

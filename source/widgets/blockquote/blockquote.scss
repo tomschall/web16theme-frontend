@@ -7,13 +7,26 @@
 	padding-bottom: $basicPush * 7;
 
 	@include clearfix;
+
+	&.has-img {
+		background: transparent;
+		padding: 0;
+		margin: 0 0 $basicPush * 5 0;
+
+
+		h2 {
+			margin-bottom: $basicPush * 3.5;
+		}
+	}
 }
 
 .blockquote__img {
 	@include span(4);
 
+	padding-top: 5px;
+
 	img {
-		max-width: 100%;
+		width: 100%;
 	}
 
 	@include mq($to: medium) {
@@ -84,4 +97,8 @@
 	font-size: 1.0833333rem;
 	font-weight: 600;
 	color: $colorTextGrey;
+}
+
+.blockquote__button {
+	margin-top: $basicPush * 3.5;
 }

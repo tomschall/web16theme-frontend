@@ -17,6 +17,10 @@ h1 {
 		width: 80px;
 		display: block;
 		margin-top: $basicPush * 1.3;
+
+		@include mq($to: medium) {
+			margin-top: $basicPush;
+		}
 	}
 
 	@include mq($to: betweener) {
@@ -25,6 +29,7 @@ h1 {
 
 	@include mq($to: medium) {
 		font-size: 2.83333rem;
+		margin-bottom: $basicPush * 2;
 	}
 
 	@include mq($to: small) {
@@ -56,6 +61,8 @@ h2 {
 
 	position: relative;
 
+	border-bottom: 4px solid $colorGreyHover;
+
 	@include mq($to: small) {
 		font-size: 1.75rem;
 	}
@@ -66,6 +73,8 @@ h2 {
 
 		margin-bottom: $basicPush * 3;
 		padding-bottom: 25px !important;
+		border-bottom: none;
+		margin-top: $basicPush * 4;
 
 		&:after {
 			position: absolute;
