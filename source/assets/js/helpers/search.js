@@ -142,8 +142,6 @@
 		results.forEach(function(row) {
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
 
-
-
 			if (typeof row.url === typeof undefined) {
 				row.combinedURL = currentBaseURL + row.path_string;
 			} else {
