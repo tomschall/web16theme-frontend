@@ -1,53 +1,51 @@
 'use strict';
 
 var data = {
-	'responseHeader': {
-		'status': 0,
-		'QTime': 5,
-		'params': {
-			'category': 'training',
-			'template': 'livesearch'
-		}
-	},
-	'response':
+	'@id': '#',
+	category: 'training',
+	template: 'livesearch',
+	categoryUrl: '#',
+	categoryTitle: 'Weiterbildung',
+	categoryUrlText: 'Alle anzeigen (12)',
+	items: [
 		{
-			'base_url': 'localhost:9000',
-			'categoryTitle': 'Weiterbildung',
-			'categoryUrl': '#',
-			'categoryUrlText': 'Alle anzeigen (12)',
-			'docs': [
-				{
-					'type': 'normal',
-					'Title': 'MAS Sozialmanagement',
-					'path_string': '/de/testimage.jpg'
-				},
-				{
-					'type': 'normal',
-					'Title': 'DAS Eingliederungsmanagement',
-					'path_string': '#'
-				},
-				{
-					'type': 'normal',
-					'Title': 'CAS Forschung in den Sozialwissenschaften',
-					'path_string': '#'
-				},
-				{
-					'type': 'normal',
-					'Title': 'MAS Sozialmanagement',
-					'path_string': '#'
-				},
-				{
-					'type': 'normal',
-					'Title': 'DAS Eingliederungsmanagement',
-					'path_string': '#'
-				},
-				{
-					'type': 'normal',
-					'Title': 'CAS Forschung in den Sozialwissenschaften',
-					'path_string': '#'
-				}
-			]
+			'@id': '#',
+			'@type': 'EduProduct',
+			'description': 'Lorem Ipsum',
+			'title': 'MAS Sozialmanagement'
+		},
+		{
+			'@id': '#',
+			'@type': 'EduProduct',
+			'description': 'Lorem Ipsum',
+			'title': 'DAS Eingliederungsmanagement'
+		},
+		{
+			'@id': '#',
+			'@type': 'EduProduct',
+			'description': 'Lorem Ipsum',
+			'title': 'CAS Forschung in den Sozialwissenschaften'
+		},
+		{
+			'@id': '#',
+			'@type': 'EduProduct',
+			'description': 'Lorem Ipsum',
+			'title': 'DAS Eingliederungsmanagement'
+		},
+		{
+			'@id': '#',
+			'@type': 'EduProduct',
+			'description': 'Lorem Ipsum',
+			'title': 'MAS Sozialmanagement'
+		},
+		{
+			'@id': '#',
+			'@type': 'EduProduct',
+			'description': 'Lorem Ipsum',
+			'title': 'CAS Forschung in den Sozialwissenschaften'
 		}
+	],
+	items_total: 206
 };
 
 module.exports = data;

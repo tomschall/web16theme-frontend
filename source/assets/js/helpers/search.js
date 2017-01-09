@@ -14,25 +14,25 @@
 
 			listEntryTemplates = {
 				searchbar: {
-					normal: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
-					event: '<li class="search__result-event"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="event-info">{{start}}</span></a><span class="search__result-arrow"></span></li>',
-					doc: '<li class="search__result-doc"><a href="{{combinedURL}}"><span class="title">{{Title}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>',
-					webservices: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
-					irf: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>'
+					normal: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{title}}</span></a><span class="search__result-arrow"></span></li>',
+					event: '<li class="search__result-event"><a href="{{combinedURL}}"><span class="title">{{title}}</span><span class="event-info">{{start}}</span></a><span class="search__result-arrow"></span></li>',
+					doc: '<li class="search__result-doc"><a href="{{combinedURL}}"><span class="title">{{title}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>',
+					webservices: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{title}}</span></a><span class="search__result-arrow"></span></li>',
+					irf: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{title}}</span></a><span class="search__result-arrow"></span></li>'
 				},
 				searchpage: {
-					normal: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span> </a><span class="search__result-arrow"></span></li>',
-					training: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="study_type">{{edu_type}}</span></a><span class="search__result-arrow"></span></li>',
-					event: '<li class="search__result-event"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="event-info">{{portal_type}}, {{start}}</span></a><span class="search__result-arrow"></span></li>',
-					sonst: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="description">{{description}}</span><span class="url">{{url}}</span></a><span class="search__result-arrow"></span></li>',
-					webservices: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
-					irf: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>'
+					normal: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{title}}</span> </a><span class="search__result-arrow"></span></li>',
+					training: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{title}}</span><span class="study_type">{{edu_type}}</span></a><span class="search__result-arrow"></span></li>',
+					event: '<li class="search__result-event"><a href="{{combinedURL}}"><span class="title">{{title}}</span><span class="event-info">{{portal_type}}, {{start}}</span></a><span class="search__result-arrow"></span></li>',
+					sonst: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{title}}</span><span class="description">{{description}}</span><span class="url">{{url}}</span></a><span class="search__result-arrow"></span></li>',
+					webservices: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{title}}</span></a><span class="search__result-arrow"></span></li>',
+					irf: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{title}}</span></a><span class="search__result-arrow"></span></li>'
 				},
 				categorySearch: {
-					training: '<tr data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
-					expertises: '<div data-clickable="true" class="search__result-word-list"><a href="{{combinedURL}}">{{Title}}<span class="search__result-arrow"></span></a></div>',
-					profiles: '<tr data-clickable="false"><td><div><h4>{{Title}}</h4></div><div>{{description}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if phone}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{phone}}">{{phone}}</a></div>{{/if}}{{#if central_phone}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{central_phone}}">{{central_phone}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="tel:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
-					events: '<div class="widg_teaser">{{#if img}} <div class="widg_teaser__img"><img src="{{img.src}}"/></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}} <h4>{{{Title}}}</h4>{{#if descriptionText}} <p>{{dotdotdot_teaser descriptionText}}</p>{{/if}} <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>'
+					training: '<tr data-clickable="true" ><td>{{title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
+					expertises: '<div data-clickable="true" class="search__result-word-list"><a href="{{combinedURL}}">{{title}}<span class="search__result-arrow"></span></a></div>',
+					profiles: '<tr data-clickable="false"><td><div><h4>{{title}}</h4></div><div>{{description}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if phone}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{phone}}">{{phone}}</a></div>{{/if}}{{#if central_phone}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{central_phone}}">{{central_phone}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="tel:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
+					events: '<div class="widg_teaser">{{#if getIcon}} <div class="widg_teaser__img"><img src="{{combindedURL}}/@@images/image/preview" alt="{{description}}" /></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}} <h4>{{{title}}}</h4>{{#if description}} <p>{{dotdotdot_teaser description}}</p>{{/if}} <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>'
 				},
 				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
 			},
@@ -56,8 +56,7 @@
 				è: 'e',
 				à: 'a'
 			},
-			langStrings = {},
-			currentBaseURL = null;
+			langStrings = {};
 
 	/**
 	 * Normalizing the car for word list if Umlaut
@@ -75,11 +74,7 @@
 	function generateSearchListItem(listEntry, category) {
 		var template = null;
 
-		if (typeof listEntry.url === typeof undefined) {
-			listEntry.combinedURL = currentBaseURL + listEntry.path_string;
-		} else {
-			listEntry.combinedURL = listEntry.url;
-		}
+		listEntry.combinedURL = listEntry['@id'];
 
 		if (searchTemplate === 'livesearch') {
 			switch (category) {
@@ -121,8 +116,8 @@
 	 * @param data
    */
 	function generateResultTable(data) {
-		var results = data.response.docs,
-				headers = data.response.tableHeaders,
+		var results = data.items,
+				headers = data.tableHeaders,
 				$responseHTML = $('<table></table>'),
 				$headersRow = $('<tr></tr>'),
 				template = null;
@@ -140,13 +135,9 @@
 		$responseHTML.append($headersRow);
 
 		results.forEach(function(row) {
-			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
+			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
 
-			if (typeof row.url === typeof undefined) {
-				row.combinedURL = currentBaseURL + row.path_string;
-			} else {
-				row.combinedURL = row.url;
-			}
+			row.combinedURL = row['@id'];
 
 			$responseHTML.append(template(_.assign(row, langStrings)));
 		});
@@ -160,14 +151,14 @@
 	 * @returns {*|HTMLElement}
 	 */
 	function generateWordList(data) {
-		var results = data.response.docs,
+		var results = data.items,
 				$responseHTML = $('<div class="search__word-list"></div>'),
 				template = null,
 				activeLetter = null,
 				$letterBox = null;
 
 		results.forEach(function(wordItem) {
-			var firstLetterItem = normalizeChar(wordItem.Title.charAt(0));
+			var firstLetterItem = normalizeChar(wordItem.title.charAt(0));
 
 			if (typeof wordItem.url === typeof undefined) {
 				wordItem.combinedURL = wordItem.base_url + wordItem.path_string;
@@ -187,7 +178,7 @@
 				$letterBox = $('<div id="searchpage-char-' + firstLetterItem + '"><h2>' + firstLetterItem + '</h2></div>');
 			}
 
-			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
+			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
 
 			$letterBox.append(template(wordItem));
 		});
@@ -201,12 +192,12 @@
 	 * Generates the Events teasers
 	 */
 	function generateTeasers(data) {
-		var results = data.response.docs,
+		var results = data.items,
 				$responseHTML = $('<div class="widg_teaser__wrapper"></div>'),
 				template = null;
 
 		results.forEach(function(teaserItem) {
-			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
+			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
 
 			$responseHTML.append(template(teaserItem));
 		});
@@ -238,7 +229,7 @@
 	 * @param data
    */
 	function handleReturnData(data) {
-		var responseData = data.response.docs,
+		var responseData = data.items,
 				$searchCategory = null,
 				$categoryList = null,
 				$categoryTitle = null,
@@ -247,15 +238,11 @@
 
 		getAllLangStrings();
 
-		if (data.response.docs.length > 0) {
-			if (typeof data.response.base_url !== typeof undefined) {
-				currentBaseURL = data.response.base_url;
-			}
-
+		if (data.items.length > 0) {
 			if (activeCategorySearch) {
-				if (data.responseHeader.params.category === 'expertises') {
+				if (data.category === 'expertises') {
 					$responseHTML.append(generateWordList(data));
-				} else if (data.responseHeader.params.category === 'events') {
+				} else if (data.category === 'events') {
 					$responseHTML.append(generateTeasers(data));
 				} else {
 					$responseHTML.addClass('search__table').append(generateResultTable(data));
@@ -263,18 +250,18 @@
 			} else {
 				$searchCategory = $('<div class="search__cat"></div>');
 				$categoryList = $('<ul></ul>');
-				$categoryTitle = $('<span class="search__cat-title">' + data.response.categoryTitle + '</span>');
+				$categoryTitle = $('<span class="search__cat-title">' + data.categoryTitle + '</span>');
 
 				responseData.forEach(function(listEntry) {
-					$tempListDOM = generateSearchListItem(listEntry, data.responseHeader.params.category);
+					$tempListDOM = generateSearchListItem(listEntry, data.category);
 
 					$categoryList.append($tempListDOM);
 				});
 
-				if (data.response.categoryUrl) {
+				if (data.categoryUrl) {
 					var template = Handlebars.compile(listEntryTemplates.showAll);
 
-					$categoryList.append(template(data.response));
+					$categoryList.append(template(data.items));
 				}
 
 				$searchCategory.append($categoryTitle).append($categoryList);
@@ -282,7 +269,7 @@
 				$responseHTML = $searchCategory;
 			}
 
-			$(window).trigger(events.dataLoaded, [$responseHTML, data.response.numFound, responseData.length, data.responseHeader.params.category]);
+			$(window).trigger(events.dataLoaded, [$responseHTML, data.items_total, responseData.length, data.category]);
 		}
 	}
 
