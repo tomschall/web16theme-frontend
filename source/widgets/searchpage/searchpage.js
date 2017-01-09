@@ -268,7 +268,7 @@
 			window.estatico.search.updateFilter(searchParam, filterURL);
 
 			$(window).one(this.options.searchEvents.updateFilterLoaded, function(event, data) {
-				this.updateFilters(data.items);
+				this.updateFilters(data.response);
 			}.bind(this));
 		}
 

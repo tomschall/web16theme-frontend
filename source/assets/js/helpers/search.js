@@ -32,7 +32,7 @@
 					training: '<tr data-clickable="true" ><td>{{title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
 					expertises: '<div data-clickable="true" class="search__result-word-list"><a href="{{combinedURL}}">{{title}}<span class="search__result-arrow"></span></a></div>',
 					profiles: '<tr data-clickable="false"><td><div><h4>{{title}}</h4></div><div>{{description}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if phone}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{phone}}">{{phone}}</a></div>{{/if}}{{#if central_phone}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{central_phone}}">{{central_phone}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="tel:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
-					events: '<div class="widg_teaser">{{#if img}} <div class="widg_teaser__img"><img src="{{img.src}}"/></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}} <h4>{{{title}}}</h4>{{#if descriptionText}} <p>{{dotdotdot_teaser descriptionText}}</p>{{/if}} <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>'
+					events: '<div class="widg_teaser">{{#if getIcon}} <div class="widg_teaser__img"><img src="{{combindedURL}}/@@images/image/preview" alt="{{description}}" /></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}} <h4>{{{title}}}</h4>{{#if description}} <p>{{dotdotdot_teaser description}}</p>{{/if}} <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>'
 				},
 				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
 			},
@@ -192,12 +192,12 @@
 	 * Generates the Events teasers
 	 */
 	function generateTeasers(data) {
-		var results = data.response.docs,
+		var results = data.items,
 				$responseHTML = $('<div class="widg_teaser__wrapper"></div>'),
 				template = null;
 
 		results.forEach(function(teaserItem) {
-			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
+			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
 
 			$responseHTML.append(template(teaserItem));
 		});
@@ -242,7 +242,7 @@
 			if (activeCategorySearch) {
 				if (data.category === 'expertises') {
 					$responseHTML.append(generateWordList(data));
-				} else if (data.responseHeader.params.category === 'events') {
+				} else if (data.category === 'events') {
 					$responseHTML.append(generateTeasers(data));
 				} else {
 					$responseHTML.addClass('search__table').append(generateResultTable(data));
