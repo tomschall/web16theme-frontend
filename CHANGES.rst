@@ -1,4 +1,4 @@
-Changeloggg
+Changelogg
 =========
 
 Next Release
