@@ -1,4 +1,4 @@
-Changelog6
+Changelog7
 =========
 
 Next Release
