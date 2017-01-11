@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var templateData = {
 			title: 'Anmeldung',
-			description: 'Lorem ipsum dolores sit amet:',
+			description: 'Lorem ipsum dolores sit <a href="http://help.fhnw.ch/">Help</a> amet:',
 			entries: [
 				{
 					uid: '1',
@@ -137,7 +137,8 @@ var templateData = {
 				eventStart: 'Durchführungsbeginn',
 				eventLocation: 'Veranstaltungsort',
 				availableSeats: 'Freie Plätze',
-				applyOnline: 'Online Anmelden'
+				applyOnline: 'Online Anmelden',
+				applyLabel: 'Anmelden'
 			}
 		},
 		data = _.merge(defaultData, {
