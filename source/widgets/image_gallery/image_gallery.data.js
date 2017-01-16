@@ -32,7 +32,7 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 		meta: {
-			title: 'Image Gallery | WI_063',
+			title: 'Image Gallery | WI_065',
 			description: '',
 			code: dataHelper.getTemplateCode('image_gallery.hbs'),
 			documentation: dataHelper.getDocumentation('image_gallery.md')
