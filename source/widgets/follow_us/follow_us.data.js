@@ -47,7 +47,7 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Follow Us | WI_065',
+				title: 'Follow Us | WI_066',
 				description: '',
 				code: dataHelper.getTemplateCode('follow_us.hbs'),
 				documentation: dataHelper.getDocumentation('follow_us.md'),
