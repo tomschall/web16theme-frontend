@@ -9,7 +9,7 @@ var data = _.merge(defaultData, {
 			title: 'Suche mit Filter - Weiterbildungsangebot der FHNW'
 		},
 		title: 'Weiterbildungsangebot der FHNW',
-	    langStrings: {
+		langStrings: {
 			resetFields: 'Alle Felder zurücksetzen',
 			resultsFound: 'Weiterbildungsangebote gefunden',
 			extSearch: 'Erweiterte Suche'

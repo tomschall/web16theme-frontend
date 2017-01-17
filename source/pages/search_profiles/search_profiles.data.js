@@ -9,7 +9,7 @@ var data = _.merge(defaultData, {
 			title: 'Suche mit Filter - Kontaktpersonsensuche'
 		},
 		title: 'Kontaktpersonensuche',
-	    langStrings: {
+		langStrings: {
 			resetFields: 'Alle Felder zurücksetzen',
 			resultsFound: 'Kontaktpersonen gefunden'
 		},
