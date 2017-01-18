@@ -1,4 +1,6 @@
 .widg_follow_us {
+	margin-bottom: 2em;
+
 	ul {
 		list-style-type: none;
 		padding: 0;
@@ -54,4 +56,24 @@
 
 .follow__youtube {
 	@include iconDataurl('youtube_follow');
+}
+
+.follow__xing {
+	@include iconDataurl('facebook_follow');
+}
+
+.follow__instagram {
+	@include iconDataurl('facebook_follow');
+}
+
+.follow__itunes {
+	@include iconDataurl('facebook_follow');
+}
+
+.follow__linkedin {
+	@include iconDataurl('facebook_follow');
+}
+
+.follow__googleplus {
+	@include iconDataurl('facebook_follow');
 }
