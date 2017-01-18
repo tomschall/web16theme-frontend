@@ -8,7 +8,11 @@ var data = _.merge(defaultData, {
 		meta: {
 			title: 'Suche mit Filter - Kontaktpersonsensuche'
 		},
-		title: 'Weiterbildungsangebot der FHNW',
+		title: 'Kontaktpersonensuche',
+		langStrings: {
+			resetFields: 'Alle Felder zurücksetzen',
+			resultsFound: 'Kontaktpersonen gefunden'
+		},
 		widgets: {
 			header: _.assign({
 				hasPromoTeaser: false,
