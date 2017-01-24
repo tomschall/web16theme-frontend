@@ -1,5 +1,5 @@
 .widg_subnav {
-	transform: translateY(-1 * $contentMarginTop - $smallElementHeight - 25px);
+	transform: translateY(-1 * $contentMarginTop - $smallElementHeight);
 
 	&.widg_subnav___no-hero {
 		transform: none;

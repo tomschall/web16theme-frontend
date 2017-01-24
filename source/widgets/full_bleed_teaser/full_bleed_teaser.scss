@@ -8,7 +8,7 @@
 }
 
 .full_bleed_teaser__img {
-	@include bleedFull($gutterWidth);
+	@include bleedFull(-2.2 * $gutterWidth);
 
 	height: 640px;
 }
