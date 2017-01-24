@@ -11,12 +11,10 @@
 							<span aria-describedby="date-{{uid}}">{{eventStart}}</span>
 						</span>
             <span class="button__location">
-							<span class="accessibility-hidden" id="location-{{uid}}">{{../langStrings.eventLocation}}</span>
-							<span aria-describedby="location-{{uid}}">{{eventLocation}}</span>
 						</span>
 						{{#if availableSeats}}
 							<span class="button__availability {{availabilityState}}">
-									<span>({{availableSeats}} {{../langStrings.availableSeats}})</span>
+
 							</span>
 						{{/if}}
 
@@ -34,7 +32,8 @@
 							</dd>
 						{{/each}}
           </dl>
-          <p class="additional-information">{{additionalInformation}}</p>
+					<a href="{{btnUrl}}" class="button button__apply button__apply___inside small_button">Anmelden</a>
+					<p class="additional-information">{{additionalInformation}}</p>
         </div>
       </div>
 		{{/each}}

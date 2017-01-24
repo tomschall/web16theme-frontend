@@ -125,7 +125,7 @@ function debounce(fn, delay) {
 			this.closeSearchBar();
 		}.bind(this));
 
-		$(this.options.domSelectors.input).keypress(debounce(function(event) {
+		$(this.options.domSelectors.input).keydown(debounce(function(event) {
 			this.startSearch($(event.currentTarget));
 		}.bind(this), 250));
 	};
@@ -139,6 +139,8 @@ function debounce(fn, delay) {
 			this.sendXHRObject($inputField.val());
 		} else if (value.length === 0) {
 			this.changeSearchbarStatus(this.options.stateClasses.showIntro);
+
+			estatico.search.removeFromLocalStorage();
 		}
 
 		currentSearchValue = value;
@@ -188,6 +190,7 @@ function debounce(fn, delay) {
 
 			$(this.options.domSelectors.input).val(serializedObject.q);
 			$(this.options.domSelectors.input).trigger('keypress');
+			$(this.options.domSelectors.input).select();
 		}
 	};
 

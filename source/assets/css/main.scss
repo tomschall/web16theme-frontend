@@ -11,7 +11,6 @@
 @import "globals/functions";
 @import "globals/mixins";
 @import "globals/mediaqueries";
-@import "globals/links";
 @import "globals/containers";
 @import "content/grids";
 @import "globals/buttons";
@@ -35,6 +34,9 @@
 
 // General layout
 @import "layout";
+
+@import "globals/links";
+
 
 // Modules
 @import "../../widgets/teaser/teaser";

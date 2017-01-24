@@ -73,20 +73,28 @@
 
 	font-size: 1.5rem;
 
-	padding: ($gutterWidth - 4) $gutterWidth + 2;
+	padding: ($gutterWidth - 4) $basicPush * 4  ($gutterWidth - 4) $gutterWidth + 2;
 	position: relative;
 
 	opacity: 1;
 	text-decoration: none;
-	font-weight: 700;
+	font-weight: 600;
 
 	margin: 0;
 	@include iconDataurl('accordeon_close', $after: true);
 
 	line-height: 2;
 
-	&:hover {
+	background-color: $colorLightGray;
+	transition: all $transitionLength / 6 $transitionEase;
+
+	&:focus {
 		background-color: $colorLightGray;
+	}
+
+	&:hover {
+		background-color: $colorGreyHover;
+		color: $colorBlack;
 	}
 
 	&:after {
@@ -102,7 +110,7 @@
 		width: 12px;
 		height: 12px;
 
-		right: $gutterWidth;
+		right: $gutterWidth + 4;
 
 	}
 
@@ -114,6 +122,7 @@
 
 	&.is_active {
 		background-color: $colorYellowAccordeonActive;
+		color: $colorBlack;
 
 		&:hover {
 			background-color: $colorYellowAccordeonActive;

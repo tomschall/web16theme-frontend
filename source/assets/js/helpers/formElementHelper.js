@@ -92,10 +92,6 @@
 			$inputField.removeClass(stateClasses.isFocused);
 			$parentField.removeClass(stateClasses.isFocused);
 		});
-
-		$('.reset-field').on('click.formElementHelper', function() {
-			$(this).prevAll('input').val('').trigger('change.fillInput');
-		});
 	}
 
 	function initOptgroups($field) {

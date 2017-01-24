@@ -9,7 +9,7 @@ a:not(.not-default) {
 	color: $colorBlack;
 	text-decoration: underline;
 	opacity: 0.7;
-	font-size: 1.5rem;
+	font-size: 1.333rem;
 	font-weight: 600;
 
 	&:focus {
@@ -18,5 +18,16 @@ a:not(.not-default) {
 
 	&:hover {
 		opacity: 1;
+	}
+
+	&[data-linktype="external"] {
+		@include iconDataurl('external', $after: true);
+
+		&:after {
+			margin-left: 5px;
+			transform: translateY(5px);
+			width: 17px;
+			height: 16.2px;
+		}
 	}
 }

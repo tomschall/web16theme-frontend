@@ -291,6 +291,10 @@
 		localStorage.setItem('fhnw_search_query', JSON.stringify(query));
 	}
 
+	function removeFromLocalStorage() {
+		localStorage.removeItem('fhnw_search_query');
+	}
+
 	/**
 	 * Execs the search
 	 * @param query the single word search query
@@ -419,7 +423,8 @@
 			search: search,
 			getSearchParameters: getSearchParameters,
 			updateFilter: updateFilter,
-			handleReturnData: handleReturnData
+			handleReturnData: handleReturnData,
+			removeFromLocalStorage: removeFromLocalStorage
 		}
 	});
 })(jQuery);
