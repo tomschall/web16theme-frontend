@@ -71,7 +71,6 @@ function debounce(fn, delay) {
 		expandedFilters = false,
 		isCategorySearch = false,
 		loadMoreMode = false,
-		currentLimitOffset = 0,
 		templatesWithoutMoreButton = ['expertises_full'],
 		loadedEntries = 0,
 		jsonURL = '',
