@@ -7,6 +7,23 @@
  * //@requires ../../../node_modules/some/dependency.js
  */
 
+function debounce(fn, delay) {
+	'use strict';
+
+	var timer = null;
+
+	return function() {
+		var context = this,
+				args = arguments;
+
+		clearTimeout(timer);
+
+		timer = setTimeout(function() {
+			fn.apply(context, args);
+		}, delay);
+	};
+}
+
 ;(function($, undefined) {
 	'use strict';
 
@@ -25,7 +42,8 @@
 				tdURL: '[data-' + name + '="url"]',
 				countNumber: '[data-' + name + '="countNumber"]',
 				moreResultsBtn: '[data-' + name + '="moreResultsBtn"]',
-				moreResultsBtnWrapper: '[data-' + name + '="moreResultsBtnWrapper"]'
+				moreResultsBtnWrapper: '[data-' + name + '="moreResultsBtnWrapper"]',
+				catPageResult: '.cat_page_result'
 			},
 			stateClasses: {
 				isFilled: 'is_filled',
@@ -55,6 +73,7 @@
 		loadMoreMode = false,
 		currentLimitOffset = 0,
 		templatesWithoutMoreButton = ['expertises_full'],
+		loadedEntries = 0,
 		jsonURL = '',
 		filterURL = '';
 
@@ -133,6 +152,10 @@
 
 			$(event.currentTarget).toggleClass(this.options.stateClasses.isActive);
 		}.bind(this));
+
+		$(this.options.domSelectors.queryInput).keypress(debounce(function() {
+			this.sendSearchQuery();
+		}.bind(this), 250));
 
 		/**
 		 * Load more results to the table when limited results
@@ -264,14 +287,6 @@
 			searchParam.offset = currentLimitOffset;
 		}
 
-		if (isCategorySearch) {
-			window.estatico.search.updateFilter(searchParam, filterURL);
-
-			$(window).one(this.options.searchEvents.updateFilterLoaded, function(event, data) {
-				this.updateFilters(data.response);
-			}.bind(this));
-		}
-
 		if (this.checkParameters()) {
 			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL);
 
@@ -280,12 +295,20 @@
 			}
 
 			if (isCategorySearch) {
-				$(window).one(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults, category) {
+				$(window).one(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults, category, facets) {
 					this.showResults(data, foundEntries, limitedToResults, category);
+
+					if (isCategorySearch) {
+						this.updateFilters(facets);
+					}
 				}.bind(this));
 			} else {
-				$(window).on(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults, category) {
+				$(window).on(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults, category, facets) {
 					this.showResults(data, foundEntries, limitedToResults, category);
+
+					if (isCategorySearch) {
+						this.updateFilters(facets);
+					}
 				}.bind(this));
 			}
 
@@ -316,6 +339,8 @@
 			this.$element.find('.search__results span[data-category="' + category + '"]').after(html);
 		}
 
+		loadedEntries = $(this.options.domSelectors.catPageResult).length;
+
 		this.replaceLinkPlaceholder();
 		this.markSearchQuery();
 		this.addCatTitleLabel();
@@ -339,10 +364,14 @@
 		/**
 		 * When the results which where returned are limited
 		 */
-		if (typeof limitedToResults !== typeof undefined) {
+
+		if (typeof limitedToResults !== typeof undefined && loadedEntries < foundEntries) {
 			$(this.options.domSelectors.moreResultsBtnWrapper).removeClass(this.options.stateClasses.elementHidden);
 
 			currentLimitOffset = limitedToResults;
+		} else if (loadedEntries >= foundEntries) {
+			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
+
 		} else {
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 

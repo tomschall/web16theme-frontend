@@ -36,7 +36,29 @@ var data = {
 					'url': '#',
 					'study_type': 'MAS'
 				}
+			],
+			'facets': [
+				{
+					field: 'location',
+					enable: [
+						'bsl'
+					]
+				},
+				{
+					field: 'study_type',
+					enable: [
+						'cas'
+					]
+				},
+				{
+					field: 'topic',
+					enable: [
+						'7200',
+						'7203'
+					]
+				}
 			]
+
 		}
 };
 
