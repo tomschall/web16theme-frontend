@@ -3,7 +3,7 @@
 		{{> "widgets/hero/hero" widgets.hero}}
 	{{/content}}
 	{{#content "content"}}
-    <h1 id="search-title" data-searchpage="title">Weiterbildungsangebot der FHNW</h1>
+    <h1 id="search-title" data-searchpage="title">{{meta.title}}</h1>
 
     <div class="search__wrapper" data-searchpage-template="training_full" data-searchpage-category="training" data-searchpage="formWrapper">
       <div class="search__form-wrapper">
@@ -147,11 +147,11 @@
 
 				<div class="search__third-row">
 					<div class="search__extra-holder">
-						<button class="search__expander not-default" data-searchpage="extendBtn">Erweiterte Suche</button>
-						<button class="search__reset not-default" data-searchpage="reset">Alle Felder zurücksetzen</button>
+						<button class="search__expander not-default" data-searchpage="extendBtn">{{langStrings.extSearch}}</button>
+						<button class="search__reset not-default" data-searchpage="reset">{{langStrings.resetFields}}</button>
 					</div>
 					<div class="search__extra-holder element-hidden">
-						<span data-searchpage="countNumber"></span> Weiterbildungsangebote gefunden
+						<span data-searchpage="countNumber"></span> {{langStrings.resultsFound}}
 					</div>
 				</div>
 

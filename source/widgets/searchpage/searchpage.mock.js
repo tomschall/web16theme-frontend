@@ -1,65 +1,71 @@
 'use strict';
 
 var data = {
-	'responseHeader': {
-		params: {
-			category: 'training'
-		}
-	},
-	'response':
+	'@id': '#',
+	'category': 'training',
+	'template': 'livesearch',
+	'categoryUrl': '#',
+	'categoryTitle': 'Weiterbildung',
+	'categoryUrlText': 'Alle anzeigen (12)',
+	'items': [
 		{
-			'categoryTitle': 'Weiterbildung',
-			'categoryUrl': '#',
-			'categoryUrlText': 'Alle anzeigen (12)',
-			'docs': [
-				{
-					'type': 'normal',
-					'Title': 'MAS Sozialmanagement',
-					'url': '#',
-					'study_type': 'MAS'
-				},
-				{
-					'type': 'normal',
-					'Title': 'DAS Eingliederungsmanagement',
-					'url': '#',
-					'study_type': 'MAS'
-				},
-				{
-					'type': 'normal',
-					'Title': 'CAS Forschung in den Sozialwissenschaften',
-					'url': '#',
-					'study_type': 'MAS'
-				},
-				{
-					'type': 'normal',
-					'Title': 'MAS Gesundheitsförderung und Prävention',
-					'url': '#',
-					'study_type': 'MAS'
-				}
-			],
-			'facets': [
-				{
-					field: 'location',
-					enable: [
-						'bsl'
-					]
-				},
-				{
-					field: 'study_type',
-					enable: [
-						'cas'
-					]
-				},
-				{
-					field: 'topic',
-					enable: [
-						'7200',
-						'7203'
-					]
-				}
-			]
+			'@id': '#',
+			'@type': 'EduProduct',
+			title: 'MAS Sozialmanagement',
+			description: 'Lorem Ipsum',
+			short_eduproducttype: 'MAS'
+		},
+		{
+			'@id': '#',
+			'@type': 'EduProduct',
+			'title': 'DAS Eingliederungsmanagement',
+			description: 'Lorem Ipsum',
+			short_eduproducttype: 'MAS'
+		},
+		{
+			'@id': '#',
+			'@type': 'EduProduct',
+			'title': 'CAS Forschung in den Sozialwissenschaften',
+			description: 'Lorem Ipsum',
+			short_eduproducttype: 'MAS'
+		},
+		{
+			'@id': '#',
+			'@type': 'EduProduct',
+			'title': 'DAS Eingliederungsmanagement',
+			description: 'Lorem Ipsum',
+			short_eduproducttype: 'MAS'
+		},
+		{
+			'@id': '#',
+			'@type': 'EduProduct',
 
+			'title': 'MAS Sozialmanagement',
+			description: 'Lorem Ipsum',
+			short_eduproducttype: 'MAS'
+		},
+	'facets': [
+		{
+			field: 'location',
+			enable: [
+				'bsl'
+			]
+		},
+		{
+			field: 'study_type',
+			enable: [
+				'cas'
+			]
+		},
+		{
+			field: 'topic',
+			enable: [
+				'7200',
+				'7203'
+			]
 		}
+	]
+	'items_total': 206
 };
 
 module.exports = data;
