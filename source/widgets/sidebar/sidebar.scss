@@ -12,16 +12,25 @@ $sidebarObjectPush: $basicPush * 3;
 	transition: min-height $transitionLength / 2 $transitionEase;
 
 	@include mq($to: 'subnav') {
-		display: none;
+		width: 100%;
+		float: left;
+		padding: 0;
+		margin: 0;
+		position: relative;
 	}
 }
 
 .widg_sidebar__object {
 	border: 1px solid $colorGreyHover;
 	margin-bottom: $basicPush * 3;
+	background: $colorBg;
 
 	.is_requested {
 		transition: padding-bottom $transitionLength / 2 $transitionEase;
+	}
+
+	@include mq($to: 'subnav') {
+		border: none;
 	}
 }
 
