@@ -284,7 +284,7 @@ function debounce(fn, delay) {
 		this.grabParameters();
 
 		if (loadMoreMode) {
-			searchParam.offset = currentLimitOffset;
+			searchParam.offset = $(this.options.domSelectors.catPageResult).length;
 		}
 
 		if (this.checkParameters()) {
@@ -368,14 +368,11 @@ function debounce(fn, delay) {
 		if (typeof limitedToResults !== typeof undefined && loadedEntries < foundEntries) {
 			$(this.options.domSelectors.moreResultsBtnWrapper).removeClass(this.options.stateClasses.elementHidden);
 
-			currentLimitOffset = limitedToResults;
 		} else if (loadedEntries >= foundEntries) {
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 
 		} else {
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
-
-			currentLimitOffset = 0;
 		}
 
 		this.$element.find('.fhnw-spinner').css({

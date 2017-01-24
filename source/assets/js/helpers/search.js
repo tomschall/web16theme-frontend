@@ -284,7 +284,7 @@
 			}
 		}
 
-		$(window).trigger(events.dataLoaded, [$responseHTML, data.response.numFound, responseData.length, data.responseHeader.params.category, data.response.facets]);
+		$(window).trigger(events.dataLoaded, [$responseHTML, data.response.items_total, responseData.length, data.responseHeader.params.category, data.response.facets]);
 	}
 
 	function saveToLocalStorage(query) {

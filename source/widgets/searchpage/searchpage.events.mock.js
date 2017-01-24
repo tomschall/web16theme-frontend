@@ -7,7 +7,7 @@ var data = {
 		}
 	},
 	'response': {
-		'numFound': 5,
+		'items_total': 5,
 		'start': 0,
 		'length': 5,
 		'docs': [

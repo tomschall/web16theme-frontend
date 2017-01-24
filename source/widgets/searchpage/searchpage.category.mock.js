@@ -7,7 +7,7 @@ var data = {
 		}
 	},
 	'response': {
-		'numFound': 203,
+		'items_total': 203,
 		'start': 0,
 		'length': 50,
 		'tableHeaders': [
