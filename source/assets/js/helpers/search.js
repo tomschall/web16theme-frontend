@@ -75,12 +75,8 @@
 
 	function generateSearchListItem(listEntry, category) {
 		var template = null;
-
-		if (typeof listEntry.url === typeof undefined) {
-			listEntry.combinedURL = currentBaseURL + listEntry.path_string;
-		} else {
-			listEntry.combinedURL = listEntry.url;
-		}
+	        
+		listEntry.combinedURL = listEntry['@id'];
 
 		if (searchTemplate === 'livesearch') {
 			switch (category) {
@@ -143,11 +139,8 @@
 		results.forEach(function(row) {
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
 
-			if (typeof row.url === typeof undefined) {
-				row.combinedURL = currentBaseURL + row.path_string;
-			} else {
-				row.combinedURL = row.url;
-			}
+			row.combinedURL = row['@id'];
+			row.standortadresse = row.standortadresse.replace(/(?:\r\n|\r|\n)/g, '<br />');
 
 			$responseHTML.append(template(_.assign(row, langStrings)));
 		});
@@ -170,11 +163,7 @@
 		results.forEach(function(wordItem) {
 			var firstLetterItem = normalizeChar(wordItem.Title.charAt(0));
 
-			if (typeof wordItem.url === typeof undefined) {
-				wordItem.combinedURL = wordItem.base_url + wordItem.path_string;
-			} else {
-				wordItem.combinedURL = wordItem.url;
-			}
+			wordItem.combinedURL = row['@id'];
 
 			if (activeLetter !== firstLetterItem) {
 				activeLetter = firstLetterItem;
@@ -268,7 +257,7 @@
 					$categoryList.append($tempListDOM);
 				});
 
-				if (data.response.categoryUrl) {
+				if (data.categoryUrl) {
 					var template = Handlebars.compile(listEntryTemplates.showAll);
 
 					$categoryList.append(template(data.items));
