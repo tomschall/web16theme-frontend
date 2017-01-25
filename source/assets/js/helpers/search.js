@@ -57,8 +57,7 @@
 				è: 'e',
 				à: 'a'
 			},
-			langStrings = {},
-			currentBaseURL = null;
+			langStrings = {};
 
 	/**
 	 * Normalizing the car for word list if Umlaut
@@ -75,7 +74,7 @@
 
 	function generateSearchListItem(listEntry, category) {
 		var template = null;
-	        
+
 		listEntry.combinedURL = listEntry['@id'];
 
 		if (searchTemplate === 'livesearch') {
@@ -163,7 +162,7 @@
 		results.forEach(function(wordItem) {
 			var firstLetterItem = normalizeChar(wordItem.Title.charAt(0));
 
-			wordItem.combinedURL = row['@id'];
+			wordItem.combinedURL = wordItem['@id'];
 
 			if (activeLetter !== firstLetterItem) {
 				activeLetter = firstLetterItem;
