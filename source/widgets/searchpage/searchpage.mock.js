@@ -43,7 +43,8 @@ var data = {
 			'title': 'MAS Sozialmanagement',
 			description: 'Lorem Ipsum',
 			short_eduproducttype: 'MAS'
-		},
+		}
+	],
 	'facets': [
 		{
 			field: 'location',
@@ -64,7 +65,7 @@ var data = {
 				'7203'
 			]
 		}
-	]
+	],
 	'items_total': 206
 };
 

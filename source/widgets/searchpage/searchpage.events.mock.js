@@ -32,6 +32,7 @@ var data = {
 			'@id': '#',
 			getIcon: true
 		}
+	],
 	'facets': [
 		{
 			field: 'location',
@@ -52,9 +53,6 @@ var data = {
 				'7203'
 			]
 		}
-	]
-
-	}
 	],
 	'items_total': 5
 };

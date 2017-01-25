@@ -14,7 +14,6 @@ var data = {
 			'Ort',
 			'URL'
 		],
-	}
 	'items': [
 		{
 			'@id': '#',
@@ -83,7 +82,7 @@ var data = {
 				'7203'
 			]
 		}
-	]
+	],
 	'items_total': 204
 };
 

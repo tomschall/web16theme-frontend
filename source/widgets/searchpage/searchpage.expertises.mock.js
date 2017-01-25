@@ -39,7 +39,7 @@ var data = {
 			title: 'Chor',
 			'@id': '#'
 		}
-	]
+	],
 	'facets': [
 		{
 			field: 'location',
@@ -60,7 +60,7 @@ var data = {
 				'7203'
 			]
 		}
-	]
+	],
 	'items_total': 204
 };
 
