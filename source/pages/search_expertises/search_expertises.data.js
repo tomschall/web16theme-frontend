@@ -34,36 +34,36 @@ var data = _.merge(defaultData, {
 			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
 			facultyOptions: [
 				{
-					"optionLabel": "International Studies",
-					"optionValue": "is"
+					'optionLabel': 'International Studies',
+					'optionValue': 'is'
 				},
 				{
-					"optionLabel": "Informatik",
-					"optionValue": "it"
+					'optionLabel': 'Informatik',
+					'optionValue': 'it'
 				},
 				{
-					"optionLabel": "Life Sciences",
-					"optionValue": "ls"
+					'optionLabel': 'Life Sciences',
+					'optionValue': 'ls'
 				},
 				{
-					"optionLabel": "Musik",
-					"optionValue": "mc"
+					'optionLabel': 'Musik',
+					'optionValue': 'mc'
 				},
 				{
-					"optionLabel": "Pädagogik",
-					"optionValue": "ph"
+					'optionLabel': 'Pädagogik',
+					'optionValue': 'ph'
 				},
 				{
-					"optionLabel": "Psychologie",
-					"optionValue": "ps"
+					'optionLabel': 'Psychologie',
+					'optionValue': 'ps'
 				},
 				{
-					"optionLabel": "Soziale Arbeit",
-					"optionValue": "sw"
+					'optionLabel': 'Soziale Arbeit',
+					'optionValue': 'sw'
 				},
 				{
-					"optionLabel": "Technik",
-					"optionValue": "tn"
+					'optionLabel': 'Technik',
+					'optionValue': 'tn'
 				}
 			]
 		}
