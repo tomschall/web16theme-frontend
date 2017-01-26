@@ -170,6 +170,8 @@
 		this.options.currentLevel = targetLevel;
 
 		window.estatico.modal.showModal();
+		window.estatico.modal.addPreventScroll();
+
 
 		if (window.estatico.mq.query({from: 'medium'})) {
 			if (!$('html').hasClass(this.options.openNavClass)) {
@@ -242,6 +244,8 @@
 		if (removePreventScroll) {
 			window.estatico.modal.removePreventScroll();
 		}
+
+		window.estatico.modal.removePreventScroll();
 	};
 
 	/**

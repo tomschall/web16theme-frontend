@@ -389,6 +389,7 @@ for better overview they are seperated here
 		@include mq($to: small) {
 			padding-top: $basicPush * 2;
 			left: -2 * $basicPush;
+			right: -2 * $basicPush;
 		}
 	}
 }

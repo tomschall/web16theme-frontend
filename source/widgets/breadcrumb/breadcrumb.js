@@ -60,6 +60,8 @@
 
 		if (this.data.listElements.length >= 4) {
 			this.addExtendBtn();
+		} else if (this.data.listElements.length === 0) {
+			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
 	};
 

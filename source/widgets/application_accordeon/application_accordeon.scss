@@ -2,6 +2,10 @@
 	border: 1px solid $colorGreyHover;
 	padding: $basicPush * 4 $basicPush * 6;
 
+	@include mq($to: medium) {
+		padding: 18px;
+	}
+
 	.button__apply {
 		@include mq($to: medium) {
 			display: none;

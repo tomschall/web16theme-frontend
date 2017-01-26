@@ -17,23 +17,14 @@ var data = _.merge(defaultData, {
 			}, requireNew('../../widgets/header/header.data.js')),
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),
-			hero: _.assign({
+			hero: _.assign(requireNew('../../widgets/hero/hero.data.js'), {
 				heroImage: '/assets/media/img/libraries_overview.png',
 				heroAlt: 'Bibliotheken',
 				breadcrumb: {
 					entries: [
-						{
-							'url': '../startpage_prototype/startpage_prototype.html',
-							'title': '',
-							'extraClasses': 'is_home'
-						}, {
-							'url': '../about_us/about_us.html',
-							'title': 'Die FHNW',
-							'extraClasses': ''
-						}
 					]
 				}
-			}, requireNew('../../widgets/hero/hero.data.js')),
+			}),
 			subnav: _.assign(requireNew('../../widgets/subnav/subnav.data.js'), {
 				title: 'Bibliotheken der FHNW',
 				subtitle: null,
