@@ -327,38 +327,6 @@ a.search__cat-title {
 	}
 }
 
-/**
-  * Special styling for search fields
-  */
-.search__string {
-	.reset-field {
-		display: none;
-	}
-	input.is_filled + label + .reset-field {
-		display: block;
-		text-indent: -10000px;
-
-		opacity: 0.5;
-
-		max-height: 0;
-
-		@include iconDataurl('breadcrumb-expand', $after: true);
-
-		&:after {
-			position: absolute;
-			top: 50%;
-			right: 19px;
-
-			transform: translateY(-50%) rotate(45deg);
-		}
-
-		&:hover {
-			opacity: 1;
-			cursor: pointer;
-		}
-	}
-}
-
 .search__form-wrapper {
 	box-shadow: 0 7px 14px 0 rgba($colorBlack, 0.07);
 

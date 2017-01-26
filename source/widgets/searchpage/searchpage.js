@@ -186,6 +186,15 @@ function debounce(fn, delay) {
 				this.updateTitle();
 			}
 		}.bind(this));
+
+		$(this.options.domSelectors.queryInput).keypress(debounce(function() {
+			this.removeSearchResults();
+			this.sendSearchQuery();
+
+			if (searchTemplate === 'search_full') {
+				this.updateTitle();
+			}
+		}.bind(this), 250));
 	};
 
 	/**
@@ -245,7 +254,7 @@ function debounce(fn, delay) {
 	 */
 	Widget.prototype.checkParameters = function() {
 		var properParamCounter = 0,
-				arrayWithNoneParams = ['category','offset'];
+				arrayWithNoneParams = ['category','offset', 'template'];
 
 		for (var key in searchParam) {
 			if ($.inArray(key, arrayWithNoneParams) === -1) {
@@ -311,6 +320,11 @@ function debounce(fn, delay) {
 				}.bind(this));
 			}
 
+		} else {
+			this.updateFilters('enableAll');
+			this.$element.find('.search__table').remove();
+			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
+			$(this.options.domSelectors.countNumber).closest('div').addClass(this.options.stateClasses.elementHidden);
 		}
 	};
 
@@ -335,6 +349,7 @@ function debounce(fn, delay) {
 			// Reset the load more mode to false
 			loadMoreMode = false;
 		} else {
+			this.$element.find('.search__table').remove();
 			this.$element.find('.search__results span[data-category="' + category + '"]').after(html);
 		}
 
@@ -470,18 +485,27 @@ function debounce(fn, delay) {
 		}.bind(this));
 	};
 
-	Widget.prototype.updateFilters = function(response) {
-		response.facets.forEach(function(field) {
-			var $field = $('[data-searchparam="' + field.field + '"]'),
-					$options = $field.find('option');
+	Widget.prototype.updateFilters = function(facets) {
+		if (facets === 'enableAll') {
+			var $options = $('option');
 
 			$options.map(function(index, option) {
-				if ($.inArray($(option).attr('value'), field.enable) == -1) {
-					$(option).attr('disabled', 'disabled');
-				}
-			}.bind(this));
+				$(option).removeAttr('disabled');
+			});
+		} else {
+			facets.forEach(function(field) {
+				var $field = $('[data-searchparam="' + field.field + '"]'),
+						$options = $field.find('option');
 
-		}.bind(this));
+				$options.map(function(index, option) {
+					if ($.inArray($(option).attr('value'), field.enable) === -1) {
+						$(option).attr('disabled', 'disabled');
+					} else {
+						$(option).removeAttr('disabled');
+					}
+				}.bind(this));
+			}.bind(this));
+		}
 
 		$('.custom-select').select2('destroy');
 

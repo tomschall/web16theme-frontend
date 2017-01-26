@@ -2,6 +2,12 @@
 	border: 1px solid $colorGreyHover;
 	padding: $basicPush * 4 $basicPush * 6;
 
+	.button__apply {
+		@include mq($to: medium) {
+			display: none;
+		}
+	}
+
 	.widg_accordeon__content {
 		p {
 			font-size: 1.25rem;
@@ -22,6 +28,14 @@
 				vertical-align: middle;
 				transform: translateY(-1px);
 				margin-right: 8px;
+			}
+		}
+
+		.button__apply___inside {
+			display: none;
+
+			@include mq($to: medium) {
+				display: inline-block;
 			}
 		}
 	}

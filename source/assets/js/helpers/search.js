@@ -31,7 +31,7 @@
 				categorySearch: {
 					training: '<tr class="cat_page_result" data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
 					expertises: '<div class="cat_page_result" data-clickable="true" class="search__result-word-list"><a href="{{combinedURL}}">{{Title}}<span class="search__result-arrow"></span></a></div>',
-					profiles: '<tr class="cat_page_result" data-clickable="false"><td><div><h4>{{Title}}</h4></div><div>{{description}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if phone}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{phone}}">{{phone}}</a></div>{{/if}}{{#if central_phone}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{central_phone}}">{{central_phone}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="tel:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
+					profiles: '<tr class="cat_page_result" data-clickable="false"><td><div><h4>{{Title}}</h4></div><div>{{description}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if telefonnummer}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{telefonnummer}}">{{telefonnummer}}</a></div>{{/if}}{{#if telefonnummer_central}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{telefonnummer_central}}">{{telefonnummer_central}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="tel:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
 					events: '<div class="cat_page_result" class="widg_teaser">{{#if img}} <div class="widg_teaser__img"><img src="{{img.src}}"/></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}} <h4>{{{Title}}}</h4>{{#if descriptionText}} <p>{{dotdotdot_teaser descriptionText}}</p>{{/if}} <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>'
 				},
 				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
@@ -139,7 +139,10 @@
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
 
 			row.combinedURL = row['@id'];
-			row.standortadresse = row.standortadresse.replace(/(?:\r\n|\r|\n)/g, '<br />');
+
+			if (typeof row.standortadresse !== typeof undefined) {
+				row.standortadresse = row.standortadresse.replace(/(?:\r\n|\r|\n)/g, '<br />');
+			}
 
 			$responseHTML.append(template(_.assign(row, langStrings)));
 		});
@@ -275,6 +278,10 @@
 		localStorage.setItem('fhnw_search_query', JSON.stringify(query));
 	}
 
+	function removeFromLocalStorage() {
+		localStorage.removeItem('fhnw_search_query');
+	}
+
 	/**
 	 * Execs the search
 	 * @param query the single word search query
@@ -360,24 +367,6 @@
 	}
 
 	/**
-	 * Transforms the search parameters from the url to an associative array
-	 * @param searchprmtrs
-	 * @returns {{}}
-   */
-	function transformToAssocArray(searchprmtrs) {
-		var params = {},
-				pmarr = searchprmtrs.split('&');
-
-		for (var i = 0; i < pmarr.length; i++) {
-			var tmparr = pmarr[i].split('=');
-
-			params[tmparr[0]] = tmparr[1];
-		}
-
-		return params;
-	}
-
-	/**
 	 * Gets the searchparameters from the windows bar and sends back an assoc array
 	 * @returns {{}}
    */
@@ -391,10 +380,11 @@
 				searchprmtrs = $.parseJSON(searchprmtrs);
 			}
 		} else {
-			searchprmtrs = transformToAssocArray(searchprmtrs);
+			searchprmtrs = $.deparam(searchprmtrs);
 		}
 
 		return searchprmtrs !== null && searchprmtrs !== '' ? searchprmtrs : {};
+
 	}
 
 	// Save to global namespace
@@ -403,7 +393,8 @@
 			search: search,
 			getSearchParameters: getSearchParameters,
 			updateFilter: updateFilter,
-			handleReturnData: handleReturnData
+			handleReturnData: handleReturnData,
+			removeFromLocalStorage: removeFromLocalStorage
 		}
 	});
 })(jQuery);

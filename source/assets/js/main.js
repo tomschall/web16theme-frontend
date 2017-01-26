@@ -13,6 +13,7 @@
  * @requires ../../../node_modules/material-spinner/dist/js/material.spinner.js
  * @requires ../../../node_modules/lodash/lodash.js
  * @requires ../../../node_modules/scrolltofixed/jquery-scrolltofixed.js
+ * @requires ../../../node_modules/jquery-deparam/jquery-deparam.js
 
  * @requires ../.tmp/templates.js
 

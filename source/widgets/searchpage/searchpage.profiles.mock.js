@@ -38,6 +38,12 @@ var data = {
 			]
 		},
 		{
+			field: 'faculty',
+			enable: [
+					'it'
+			]
+		},
+		{
 			field: 'topic',
 			enable: [
 				'7200',

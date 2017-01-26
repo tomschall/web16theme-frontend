@@ -105,7 +105,7 @@ $colorAvailabilityRed: #f05f1b;
 		.button__date,
 		.button__availability,
 		.button__location {
-			width: 23%;
+			width: 5%;
 			display: block;
 			float: left;
 
@@ -204,12 +204,32 @@ $colorAvailabilityRed: #f05f1b;
 	}
 }
 
-.button__apply {
+.button__apply:not(.not-default) {
 	position: absolute;
 	top: 50%;
 	right: 55px;
 
 	transform: translateY(-50%);
+
+
+	&.button__apply___inside {
+		display: none;
+	}
+
+
+	@include mq($to: small) {
+		display: none !important;
+
+		&.button__apply___inside {
+			display: inline-block !important;
+
+			position: static;
+			top: 0;
+			right: 0;
+
+			transform: none;
+		}
+	}
 }
 
 div.widg_accordeon__button {
