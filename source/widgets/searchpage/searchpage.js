@@ -245,7 +245,7 @@ function debounce(fn, delay) {
 	 */
 	Widget.prototype.checkParameters = function() {
 		var properParamCounter = 0,
-				arrayWithNoneParams = ['category','offset'];
+				arrayWithNoneParams = ['category','offset', 'template'];
 
 		for (var key in searchParam) {
 			if ($.inArray(key, arrayWithNoneParams) === -1) {
@@ -311,6 +311,10 @@ function debounce(fn, delay) {
 				}.bind(this));
 			}
 
+		} else {
+			this.updateFilters('enableAll');
+			this.$element.find('.search__table').remove();
+			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 		}
 	};
 
@@ -472,19 +476,26 @@ function debounce(fn, delay) {
 	};
 
 	Widget.prototype.updateFilters = function(facets) {
-		facets.forEach(function(field) {
-			var $field = $('[data-searchparam="' + field.field + '"]'),
-					$options = $field.find('option');
+		if (facets === 'enableAll') {
+			var $options = $('option');
 
 			$options.map(function(index, option) {
-				if ($.inArray($(option).attr('value'), field.enable) === -1) {
-					$(option).attr('disabled', 'disabled');
-				} else {
-					$(option).removeAttr('disabled');
-				}
-			}.bind(this));
+				$(option).removeAttr('disabled');
+			});
+		} else {
+			facets.forEach(function(field) {
+				var $field = $('[data-searchparam="' + field.field + '"]'),
+						$options = $field.find('option');
 
-		}.bind(this));
+				$options.map(function(index, option) {
+					if ($.inArray($(option).attr('value'), field.enable) === -1) {
+						$(option).attr('disabled', 'disabled');
+					} else {
+						$(option).removeAttr('disabled');
+					}
+				}.bind(this));
+			}.bind(this));
+		}
 
 		$('.custom-select').select2('destroy');
 
