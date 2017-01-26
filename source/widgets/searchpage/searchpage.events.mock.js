@@ -1,90 +1,60 @@
 'use strict';
 
 var data = {
-	'responseHeader': {
-		'params': {
-			'category': 'events'
+	'@id': '#',
+	'category': 'events',
+	'items': [
+		{
+			title: 'Titel mehrzeilig lorem ipsum dolor vanitas 1',
+			description: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum.',
+			date: '23. Januar 2017',
+			'@id': '#',
+			getIcon: true
+		},
+		{
+			title: 'Titel mehrzeilig lorem ipsum dolor vanitas 2',
+			date: '23. Januar 2017',
+			description: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum.',
+			'@id': '#',
+			getIcon: true
+		},
+		{
+			title: 'Titel mehrzeilig lorem ipsum dolor vanitas 3',
+			date: '23. Januar 2017',
+			description: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum. 3',
+			'@id': '#',
+			getIcon: false
+		},
+		{
+			title: 'Titel mehrzeilig lorem ipsum dolor vanitas 4',
+			date: '23. Januar 2017',
+			description: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum. 4',
+			'@id': '#',
+			getIcon: true
 		}
-	},
-	'response': {
-		'items_total': 5,
-		'start': 0,
-		'length': 5,
-		'docs': [
-			{
-				Title: 'Titel mehrzeilig lorem ipsum dolor vanitas 1',
-				date: '23. Januar 2017',
-				descriptionText: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum.',
-				url: '#',
-				img: {
-					src: '/assets/media/img/music_school_event_1.png',
-					alt: 'Event-Bild'
-				}
-			},
-			{
-				Title: 'Titel mehrzeilig lorem ipsum dolor vanitas 2',
-				date: '23. Januar 2017',
-				descriptionText: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum.',
-				url: '#',
-				img: {
-					src: '/assets/media/img/music_school_event_2.png',
-					alt: 'Event-Bild'
-				}
-			},
-			{
-				Title: 'Titel mehrzeilig lorem ipsum dolor vanitas 3',
-				date: '23. Januar 2017',
-				descriptionText: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum.',
-				url: '#',
-				img: {
-					src: '/assets/media/img/music_school_event_3.png',
-					alt: 'Event-Bild'
-				}
-			},
-			{
-				Title: 'Titel mehrzeilig lorem ipsum dolor vanitas 4',
-				date: '23. Januar 2017',
-				descriptionText: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum.',
-				url: '#',
-				img: {
-					src: '/assets/media/img/music_school_event_2.png',
-					alt: 'Event-Bild'
-				}
-			},
-			{
-				Title: 'Titel mehrzeilig lorem ipsum dolor vanitas 5',
-				date: '23. Januar 2017',
-				descriptionText: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum.',
-				url: '#',
-				img: {
-					src: '/assets/media/img/music_school_event_3.png',
-					alt: 'Event-Bild'
-				}
-			}
-		],
-		'facets': [
-			{
-				field: 'location',
-				enable: [
-					'bsl'
-				]
-			},
-			{
-				field: 'study_type',
-				enable: [
-					'cas'
-				]
-			},
-			{
-				field: 'topic',
-				enable: [
-					'7200',
-					'7203'
-				]
-			}
-		]
-
-	}
+	],
+	'facets': [
+		{
+			field: 'location',
+			enable: [
+				'bsl'
+			]
+		},
+		{
+			field: 'study_type',
+			enable: [
+				'cas'
+			]
+		},
+		{
+			field: 'topic',
+			enable: [
+				'7200',
+				'7203'
+			]
+		}
+	],
+	'items_total': 5
 };
 
 module.exports = data;

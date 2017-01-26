@@ -1,6 +1,6 @@
 <div class="widg_application_accordeon" data-init="application_accordeon" {{#if multiple}}data-multiple="true"{{/if}}>
   <h2>{{title}}</h2>
-  <p>{{description}}</p>
+  <p>{{{description}}}</p>
   <!-- Custom html structure if its the accordeon for an online application -->
 		{{#each entries}}
       <div class="widg_accordeon__entry" data-application-accordeon="entry">
@@ -19,7 +19,7 @@
 						{{/if}}
 
           </button>
-					<a href="{{btnUrl}}" class="button button__apply small_button">Anmelden</a>
+					<a href="{{btnUrl}}" class="button button__apply small_button">{{../langStrings.applyLabel}}</a>
 				</div>
         <div class="widg_accordeon__content" aria-hidden="true" data-application-accordeon="content">
           <dl>

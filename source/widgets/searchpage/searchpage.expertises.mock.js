@@ -1,64 +1,67 @@
 'use strict';
 
 var data = {
-	'responseHeader': {
-		'params': {
-			'category': 'expertises'
+	'@id': 'http://nohost',
+	'category': 'expertises',
+	'template': 'livesearch',
+	'categoryUrl': '#',
+	'categoryTitle': 'Weiterbildung',
+	'categoryUrlText': 'Alle anzeigen (12)',
+	'tableHeaders': [
+		'Titel',
+		'Typ',
+		'Fachbereich',
+		'Ort',
+		'URL'
+	],
+	'items': [
+		{
+			title: 'Advanced Management',
+			'@id': '#'
+		},
+		{
+			title: 'Ästhetik',
+			'@id': '#'
+		},
+		{
+			title: 'Berufseinstieg und Wiedereinstieg',
+			'@id': '#'
+		},
+		{
+			title: 'Betriebliche Sozialarbeit',
+			'@id': '#'
+		},
+		{
+			title: 'Big Data',
+			'@id': '#'
+		},
+		{
+			title: 'Chor',
+			'@id': '#'
 		}
-	},
-	'response': {
-		'items_total': 203,
-		'start': 0,
-		'length': 50,
-		'docs': [
-			{
-				Title: 'Advanced Management',
-				url: '#'
-			},
-			{
-				Title: 'Ästhetik',
-				url: '#'
-			},
-			{
-				Title: 'Berufseinstieg und Wiedereinstieg',
-				url: '#'
-			},
-			{
-				Title: 'Betriebliche Sozialarbeit',
-				url: '#'
-			},
-			{
-				Title: 'Big Data',
-				url: '#'
-			},
-			{
-				Title: 'Chor',
-				url: '#'
-			}
-		],
-		'facets': [
-			{
-				field: 'location',
-				enable: [
-					'bsl'
-				]
-			},
-			{
-				field: 'study_type',
-				enable: [
-					'cas'
-				]
-			},
-			{
-				field: 'topic',
-				enable: [
-					'7200',
-					'7203'
-				]
-			}
-		]
-
-	}
+	],
+	'facets': [
+		{
+			field: 'location',
+			enable: [
+				'bsl'
+			]
+		},
+		{
+			field: 'study_type',
+			enable: [
+				'cas'
+			]
+		},
+		{
+			field: 'topic',
+			enable: [
+				'7200',
+				'7203'
+			]
+		}
+	],
+	'items_total': 204
 };
 
 module.exports = data;

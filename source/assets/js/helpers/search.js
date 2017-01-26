@@ -57,8 +57,7 @@
 				è: 'e',
 				à: 'a'
 			},
-			langStrings = {},
-			currentBaseURL = null;
+			langStrings = {};
 
 	/**
 	 * Normalizing the car for word list if Umlaut
@@ -76,11 +75,7 @@
 	function generateSearchListItem(listEntry, category) {
 		var template = null;
 
-		if (typeof listEntry.url === typeof undefined) {
-			listEntry.combinedURL = currentBaseURL + listEntry.path_string;
-		} else {
-			listEntry.combinedURL = listEntry.url;
-		}
+		listEntry.combinedURL = listEntry['@id'];
 
 		if (searchTemplate === 'livesearch') {
 			switch (category) {
@@ -122,8 +117,8 @@
 	 * @param data
    */
 	function generateResultTable(data) {
-		var results = data.response.docs,
-				headers = data.response.tableHeaders,
+		var results = data.items,
+				headers = data.tableHeaders,
 				$responseHTML = $('<table></table>'),
 				$headersRow = $('<tr></tr>'),
 				template = null;
@@ -141,13 +136,10 @@
 		$responseHTML.append($headersRow);
 
 		results.forEach(function(row) {
-			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
+			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
 
-			if (typeof row.url === typeof undefined) {
-				row.combinedURL = currentBaseURL + row.path_string;
-			} else {
-				row.combinedURL = row.url;
-			}
+			row.combinedURL = row['@id'];
+			row.standortadresse = row.standortadresse.replace(/(?:\r\n|\r|\n)/g, '<br />');
 
 			$responseHTML.append(template(_.assign(row, langStrings)));
 		});
@@ -161,7 +153,7 @@
 	 * @returns {*|HTMLElement}
 	 */
 	function generateWordList(data) {
-		var results = data.response.docs,
+		var results = data.items,
 				$responseHTML = $('<div class="search__word-list"></div>'),
 				template = null,
 				activeLetter = null,
@@ -170,11 +162,7 @@
 		results.forEach(function(wordItem) {
 			var firstLetterItem = normalizeChar(wordItem.Title.charAt(0));
 
-			if (typeof wordItem.url === typeof undefined) {
-				wordItem.combinedURL = wordItem.base_url + wordItem.path_string;
-			} else {
-				wordItem.combinedURL = wordItem.url;
-			}
+			wordItem.combinedURL = wordItem['@id'];
 
 			if (activeLetter !== firstLetterItem) {
 				activeLetter = firstLetterItem;
@@ -188,7 +176,7 @@
 				$letterBox = $('<div id="searchpage-char-' + firstLetterItem + '"><h2>' + firstLetterItem + '</h2></div>');
 			}
 
-			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
+			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
 
 			$letterBox.append(template(wordItem));
 		});
@@ -202,12 +190,12 @@
 	 * Generates the Events teasers
 	 */
 	function generateTeasers(data) {
-		var results = data.response.docs,
+		var results = data.items,
 				$responseHTML = $('<div class="widg_teaser__wrapper"></div>'),
 				template = null;
 
 		results.forEach(function(teaserItem) {
-			template = Handlebars.compile(listEntryTemplates.categorySearch[data.responseHeader.params.category]);
+			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
 
 			$responseHTML.append(template(teaserItem));
 		});
@@ -239,7 +227,7 @@
 	 * @param data
    */
 	function handleReturnData(data) {
-		var responseData = data.response.docs,
+		var responseData = data.items,
 				$searchCategory = null,
 				$categoryList = null,
 				$categoryTitle = null,
@@ -248,15 +236,11 @@
 
 		getAllLangStrings();
 
-		if (data.response.docs.length > 0) {
-			if (typeof data.response.base_url !== typeof undefined) {
-				currentBaseURL = data.response.base_url;
-			}
-
+		if (data.items.length > 0) {
 			if (activeCategorySearch) {
-				if (data.responseHeader.params.category === 'expertises') {
+				if (data.category === 'expertises') {
 					$responseHTML.append(generateWordList(data));
-				} else if (data.responseHeader.params.category === 'events') {
+				} else if (data.category === 'events') {
 					$responseHTML.append(generateTeasers(data));
 				} else {
 					$responseHTML.addClass('search__table').append(generateResultTable(data));
@@ -264,18 +248,18 @@
 			} else {
 				$searchCategory = $('<div class="search__cat"></div>');
 				$categoryList = $('<ul></ul>');
-				$categoryTitle = $('<span class="search__cat-title">' + data.response.categoryTitle + '</span>');
+				$categoryTitle = $('<span class="search__cat-title">' + data.categoryTitle + '</span>');
 
 				responseData.forEach(function(listEntry) {
-					$tempListDOM = generateSearchListItem(listEntry, data.responseHeader.params.category);
+					$tempListDOM = generateSearchListItem(listEntry, data.category);
 
 					$categoryList.append($tempListDOM);
 				});
 
-				if (data.response.categoryUrl) {
+				if (data.categoryUrl) {
 					var template = Handlebars.compile(listEntryTemplates.showAll);
 
-					$categoryList.append(template(data.response));
+					$categoryList.append(template(data.items));
 				}
 
 				$searchCategory.append($categoryTitle).append($categoryList);
@@ -284,7 +268,7 @@
 			}
 		}
 
-		$(window).trigger(events.dataLoaded, [$responseHTML, data.response.items_total, responseData.length, data.responseHeader.params.category, data.response.facets]);
+		$(window).trigger(events.dataLoaded, [$responseHTML, data.items_total, responseData.length, data.category, data.facets]);
 	}
 
 	function saveToLocalStorage(query) {
