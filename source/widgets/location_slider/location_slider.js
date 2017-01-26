@@ -148,9 +148,8 @@
 		if (typeof google !== typeof undefined) {
 			this.options.mapProps.mapTypeId = google.maps.MapTypeId.ROADMAP;
 			this.options.markerIconProps = {
-				size: new google.maps.Size(104, 86),
-				scaledSize: new google.maps.Size(104, 86),
-				anchor: new google.maps.Point(73, 95),
+				anchor: new google.maps.Point(73, 78),
+				origin: new google.maps.Point(0, 0),
 				url: this.$element.data('maps-marker')
 			};
 
@@ -192,7 +191,7 @@
 		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
 			var $mapElement = $(element),
 					mapProp = _.assign({
-						center: new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x')) - 0.007),
+						center: new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))),
 						styles: this.options.mapStyles
 					}, this.options.mapProps),
 					map = new google.maps.Map(element, mapProp);

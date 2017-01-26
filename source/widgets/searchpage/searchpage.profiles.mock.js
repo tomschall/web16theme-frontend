@@ -23,6 +23,27 @@ var data = {
 				standortadresse: 'Pädagogische Hochschule FHNW<br/>Institut Primarstufe<br/>Obere Sternengasse 7<br/>CH - 4502 Solothurn',
 				phone: '+ 41 62 957 24 26'
 			}
+		],
+	'facets': [
+		{
+			field: 'location',
+			enable: [
+				'bsl'
+			]
+		},
+		{
+			field: 'study_type',
+			enable: [
+				'cas'
+			]
+		},
+		{
+			field: 'topic',
+			enable: [
+				'7200',
+				'7203'
+			]
+		}
 	],
 	'items_total': 206
 };

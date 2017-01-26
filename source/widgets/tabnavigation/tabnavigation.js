@@ -66,9 +66,11 @@
 			$(element).data('tabnavigation-index', index);
 		}.bind(this));
 
-		data.content = $(this.options.domSelectors.content).toArray();
-		data.buttons = $(this.options.domSelectors.button).toArray();
-		data.accordeonButtons = $(this.options.domSelectors.accordeonButton).toArray();
+		this.$element.find(this.options.domSelectors.content).attr('data-widget', this.uuid);
+
+		data.content = this.$element.find(this.options.domSelectors.content).toArray();
+		data.buttons = this.$element.find(this.options.domSelectors.button).toArray();
+		data.accordeonButtons = this.$element.find(this.options.domSelectors.accordeonButton).toArray();
 
 		this.addEventHandlers();
 		this.setElementActive(this.$element.find(this.options.domSelectors.button).first());
@@ -107,17 +109,22 @@
 		}
 
 		var index = $button.data('tabnavigation-index'),
-				$content = $(data.content[index]);
+				$contents = this.$element.find(this.options.domSelectors.content + '[data-widget="' + this.uuid + '"]'),
+				$content = $contents.map(function(mapIndex, element) {
+					if (index === mapIndex) {
+						return $(element);
+					}
+				});
 
 		this.closeOther();
 
 		if (window.estatico.mq.query({to: 'medium'})) {
-			$content.slideDown(250);
+			$content[0].slideDown(250);
 		}
 
 		$button.addClass(this.options.stateClasses.isActive).attr('aria-expanded', 'true');
 		$accButton.addClass(this.options.stateClasses.isActive).attr('aria-expanded', 'true');
-		$content.addClass(this.options.stateClasses.isActive).attr('aria-hidden', 'false');
+		$content[0].addClass(this.options.stateClasses.isActive).attr('aria-hidden', 'false');
 
 		this.moveNavBar($button);
 	};
