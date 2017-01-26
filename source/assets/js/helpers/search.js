@@ -367,24 +367,6 @@
 	}
 
 	/**
-	 * Transforms the search parameters from the url to an associative array
-	 * @param searchprmtrs
-	 * @returns {{}}
-   */
-	function transformToAssocArray(searchprmtrs) {
-		var params = {},
-				pmarr = searchprmtrs.split('&');
-
-		for (var i = 0; i < pmarr.length; i++) {
-			var tmparr = pmarr[i].split('=');
-
-			params[tmparr[0]] = tmparr[1];
-		}
-
-		return params;
-	}
-
-	/**
 	 * Gets the searchparameters from the windows bar and sends back an assoc array
 	 * @returns {{}}
    */
