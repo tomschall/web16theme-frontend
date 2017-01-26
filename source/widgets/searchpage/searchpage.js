@@ -186,6 +186,15 @@ function debounce(fn, delay) {
 				this.updateTitle();
 			}
 		}.bind(this));
+
+		$(this.options.domSelectors.queryInput).keypress(debounce(function() {
+			this.removeSearchResults();
+			this.sendSearchQuery();
+
+			if (searchTemplate === 'search_full') {
+				this.updateTitle();
+			}
+		}.bind(this), 250));
 	};
 
 	/**
@@ -315,6 +324,7 @@ function debounce(fn, delay) {
 			this.updateFilters('enableAll');
 			this.$element.find('.search__table').remove();
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
+			$(this.options.domSelectors.countNumber).closest('div').addClass(this.options.stateClasses.elementHidden);
 		}
 	};
 
