@@ -248,6 +248,18 @@
 					checkSelection($select2);
 				}
 			}
+
+			/* var options = $select[0].options,
+					tempArray = [];
+
+			for(var i = 0; i < options.length; i++) {
+				tempArray.push({
+					optionLabel: options[i].text,
+					optionValue: options[i].value
+				});
+
+				console.log(tempArray);
+			} */
 		});
 
 		if (!eventsSet) {

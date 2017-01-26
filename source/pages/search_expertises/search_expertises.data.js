@@ -9,6 +9,14 @@ var data = _.merge(defaultData, {
 			title: 'Suche mit Filter - Alle Kernkompetenzen'
 		},
 		title: 'Alle Kernkompetenzen',
+		langStrings: {
+			labels: {
+				term: 'Suchbegriff',
+				faculty: 'Fachbereich'
+			},
+			resetFields: 'Alle Felder zurücksetzen',
+			resultsFound: 'Kernkompetenzen gefunden'
+		},
 		widgets: {
 			header: _.assign({
 				hasPromoTeaser: false,
@@ -23,7 +31,41 @@ var data = _.merge(defaultData, {
 				heroImage: '/assets/media/img/cas_eingl_mgmt_hero.png',
 				heroAlt: 'Symbolbild'
 			}, requireNew('../../widgets/hero/hero.data.js')),
-			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
+			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
+			facultyOptions: [
+				{
+					"optionLabel": "International Studies",
+					"optionValue": "is"
+				},
+				{
+					"optionLabel": "Informatik",
+					"optionValue": "it"
+				},
+				{
+					"optionLabel": "Life Sciences",
+					"optionValue": "ls"
+				},
+				{
+					"optionLabel": "Musik",
+					"optionValue": "mc"
+				},
+				{
+					"optionLabel": "Pädagogik",
+					"optionValue": "ph"
+				},
+				{
+					"optionLabel": "Psychologie",
+					"optionValue": "ps"
+				},
+				{
+					"optionLabel": "Soziale Arbeit",
+					"optionValue": "sw"
+				},
+				{
+					"optionLabel": "Technik",
+					"optionValue": "tn"
+				}
+			]
 		}
 	});
 

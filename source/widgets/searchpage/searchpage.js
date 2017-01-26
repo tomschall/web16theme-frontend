@@ -470,13 +470,13 @@ function debounce(fn, delay) {
 		}.bind(this));
 	};
 
-	Widget.prototype.updateFilters = function(response) {
-		response.facets.forEach(function(field) {
+	Widget.prototype.updateFilters = function(facets) {
+		facets.forEach(function(field) {
 			var $field = $('[data-searchparam="' + field.field + '"]'),
 					$options = $field.find('option');
 
 			$options.map(function(index, option) {
-				if ($.inArray($(option).attr('value'), field.enable) == -1) {
+				if ($.inArray($(option).attr('value'), field.enable) !== -1) {
 					$(option).attr('disabled', 'disabled');
 				}
 			}.bind(this));

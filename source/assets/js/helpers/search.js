@@ -139,7 +139,10 @@
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
 
 			row.combinedURL = row['@id'];
-			row.standortadresse = row.standortadresse.replace(/(?:\r\n|\r|\n)/g, '<br />');
+
+			if (typeof row.standortadresse !== typeof undefined) {
+				row.standortadresse = row.standortadresse.replace(/(?:\r\n|\r|\n)/g, '<br />');
+			}
 
 			$responseHTML.append(template(_.assign(row, langStrings)));
 		});
