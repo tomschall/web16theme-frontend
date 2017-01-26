@@ -335,6 +335,7 @@ function debounce(fn, delay) {
 			// Reset the load more mode to false
 			loadMoreMode = false;
 		} else {
+			this.$element.find('.search__table').remove();
 			this.$element.find('.search__results span[data-category="' + category + '"]').after(html);
 		}
 
@@ -476,8 +477,10 @@ function debounce(fn, delay) {
 					$options = $field.find('option');
 
 			$options.map(function(index, option) {
-				if ($.inArray($(option).attr('value'), field.enable) !== -1) {
+				if ($.inArray($(option).attr('value'), field.enable) === -1) {
 					$(option).attr('disabled', 'disabled');
+				} else {
+					$(option).removeAttr('disabled');
 				}
 			}.bind(this));
 
