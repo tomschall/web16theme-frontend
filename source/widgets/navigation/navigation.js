@@ -172,7 +172,6 @@
 		window.estatico.modal.showModal();
 		window.estatico.modal.addPreventScroll();
 
-
 		if (window.estatico.mq.query({from: 'medium'})) {
 			if (!$('html').hasClass(this.options.openNavClass)) {
 				$('html').addClass(this.options.openNavClass);

@@ -55,8 +55,8 @@ input[type=number] {
 /**
   * Textfields
   */
-.search__string,
-.field {
+.search__string
+{
 	position: relative;
 
 	min-height: map-get($elementHeight, desktop);
@@ -191,12 +191,8 @@ input[type=number] {
 	}
 }
 
-.field.is_filled label,
-.field.is_focused label,
 .is_focused + label,
 .is_filled + label,
-.field.has-select label,
-.field.has-multiple-select.has-value label,
 .fieldErrorBox {
 	font-size: 0.91666667rem;
 	top: 13px;
@@ -205,29 +201,6 @@ input[type=number] {
 		top: 10px;
 	}
 }
-
-.field.has-select label,
-.field.has-multiple-select.has-value label {
-	@include mq($to: medium) {
-		top: 10px;
-	}
-}
-
-.field.has-multiple-select label {
-	font-size: 1.25rem;
-	color: $colorBorderGrey;
-	position: absolute;
-
-	transition: all $transitionLength / 2 $transitionEase;
-	z-index: 10;
-
-	top: 23px;
-
-	@include mq($to: medium) {
-		top: 18px;
-	}
-}
-
 
 /**
   * Forms
@@ -256,74 +229,5 @@ span.option {
 	.label {
 		display: block;
 		position: relative;
-	}
-}
-
-.formHelp {
-	color: #df305b;
-}
-
-.has-upload {
-	padding-top: 21px;
-
-	@include mq($to: medium) {
-		padding-top: 16px;
-	}
-
-	input[type="file"] {
-		border: none;
-		position: static;
-		display: block;
-		float: left;
-		padding: 15px 0 0 0;
-		margin-left: $basicPush * 2;
-
-		background-color: $colorBlack;
-		color: $colorBg;
-		text-transform: uppercase;
-
-		min-height: map-get($elementHeight, desktop);
-
-		transform: translateY(-21px);
-
-		@include mq($to: medium) {
-			min-height: map-get($elementHeight, mobile);
-			padding-top: 11px;
-		}
-
-		&:hover,
-		&:active,
-		&:focus {
-			color: $colorBlack;
-			background-color: $colorYellow;
-		}
-
-		&:disabled,
-		&[disabled="disabled"] {
-
-			opacity: 0.4;
-			color: $colorBg;
-
-			&:hover,
-			&:active,
-			&:focus {
-				background-color: $colorBlack;
-				color: $colorBg;
-			}
-		}
-	}
-
-	> span {
-		display: block;
-		float: left;
-	}
-
-	label {
-		position: static;
-		top: 0;
-		left: 0;
-		display: block;
-		float: left;
-		padding: 0;
 	}
 }

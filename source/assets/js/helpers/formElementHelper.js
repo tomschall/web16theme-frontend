@@ -59,7 +59,7 @@
 	 * Initializes the text input fields
 	 */
 	function initTextInputFields() {
-		var $textInputFields = $('.ArchetypesStringWidget, .search__string, .field').find('input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="url"], input[type="tel"], input[type="number"], textarea');
+		var $textInputFields = $('.ArchetypesStringWidget, .search__string').find('input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="url"], input[type="tel"], input[type="number"], textarea');
 
 		/**
 		 * Event when text input fields are changed
@@ -193,8 +193,6 @@
 
 		$relatedLabels.on('click.formElementHelper', function() {
 			var $select = $(this).siblings('select');
-
-			console.log($(this).siblings('.select2-container--open').length);
 
 			if ($(this).siblings('.select2-container--open').length === 0) {
 				$select.select2('open');
