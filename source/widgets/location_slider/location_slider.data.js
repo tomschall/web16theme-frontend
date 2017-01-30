@@ -34,7 +34,8 @@ var templateData = {
 					mobileImage: {
 						src: '/assets/media/img/location_accordeon_olten.png',
 						alt: 'Standort Olten auf Karte{{'
-					}
+					},
+					zoomLevel: 17
 				},
 				{
 					type: 'location',
@@ -59,7 +60,8 @@ var templateData = {
 					mobileImage: {
 						src: '/assets/media/img/location_accordeon_olten.png',
 						alt: 'Standort Olten auf Karte{{'
-					}
+					},
+					zoomLevel: 16
 				}
 			],
 			langStrings: {

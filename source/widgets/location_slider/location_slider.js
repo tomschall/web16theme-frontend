@@ -27,7 +27,7 @@
 					isActive: 'is_active'
 				},
 				mapProps: {
-					zoom: 16,
+					zoom: 0,
 					mapTypeId: null,
 					disableDoubleClickZoom: true,
 					keyboardShortcuts: false,
@@ -192,7 +192,8 @@
 			var $mapElement = $(element),
 					mapProp = _.assign({
 						center: new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))),
-						styles: this.options.mapStyles
+						styles: this.options.mapStyles,
+						zoom: parseInt($mapElement.data('zoomlevel'))
 					}, this.options.mapProps),
 					map = new google.maps.Map(element, mapProp);
 

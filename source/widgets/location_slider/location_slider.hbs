@@ -55,7 +55,7 @@
 			{{#each entries}}
 				<div class="location__slide">
 					<div class="location__map" data-coordinates-x="{{coordinates.x}}" data-coordinates-y="{{coordinates.y}}"
-							 data-location_slider="map"></div>
+							 data-location_slider="map" data-zoomlevel="{{zoomLevel}}"></div>
 					<div class="location__info">
 						<div class="location__upper">
 							<h3>{{title}}</h3>
@@ -90,7 +90,7 @@
 	{{> "widgets/accordeon/accordeon" widgets.locationAccordeon }}
 	<div class="widg_accordeon" data-init="accordeon">
 		{{#each entries}}
-			<div class="widg_accordeon__entry" data-accordeon="entry">
+			<div class="widg_accordeon__entry" data-accordeon="entry" >
 				<button aria-expanded="false" class="not-default" data-accordeon="button">
 					{{navTitle}}
 				</button>

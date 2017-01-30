@@ -110,7 +110,7 @@ $colorAvailabilityRed: #f05f1b;
 		.button__date,
 		.button__availability,
 		.button__location {
-			width: 5%;
+			width: 10%;
 			display: block;
 			float: left;
 
@@ -120,11 +120,16 @@ $colorAvailabilityRed: #f05f1b;
 
 			@include mq($to: small) {
 				font-size: 1.333rem;
+				width: 5%;
 			}
 		}
 
 		.button__location {
 			padding-left: 10px;
+		}
+
+		.button__date {
+			min-width: 125px;
 		}
 
 		.button__availability {
