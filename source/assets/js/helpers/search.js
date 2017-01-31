@@ -262,7 +262,7 @@
 				if (data.categoryUrl) {
 					var template = Handlebars.compile(listEntryTemplates.showAll);
 
-					$categoryList.append(template(data.items));
+					$categoryList.append(template(data));
 				}
 
 				$searchCategory.append($categoryTitle).append($categoryList);
