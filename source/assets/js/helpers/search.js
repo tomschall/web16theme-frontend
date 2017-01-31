@@ -260,7 +260,7 @@
 						$categoryList.append($tempListDOM);
 					});
 
-					if (data.categoryUrl) {
+					if (data.categoryUrl || data.categoryUrl !== '') {
 						var template = Handlebars.compile(listEntryTemplates.showAll);
 
 						$categoryList.append(template(data));
