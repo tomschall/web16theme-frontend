@@ -190,7 +190,7 @@
 	Widget.prototype.initMaps = function() {
 		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
 			var $mapElement = $(element),
-					mapProp = _.assign( this.options.mapProps, {
+					mapProp = _.assign(this.options.mapProps, {
 						center: new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))),
 						styles: this.options.mapStyles,
 						zoom: parseInt($mapElement.data('zoomlevel'))
