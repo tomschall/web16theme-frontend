@@ -10,11 +10,11 @@
 			<label for="form-widgets-replyto" class="horizontal">
 				Ihre E-Mail Adresse
 				<span class="required horizontal" title="Erforderlich">&nbsp;</span>
+				<span class="formHelp">Dies ist ein Textfeld mit Beschreibungstext</span>
 			</label>
 			<div class="fieldErrorBox"></div>
 			<input id="form-widgets-replyto" name="form.widgets.replyto" class="text-widget required textline-field" value=""
 						 type="text" placeholder="E-Mail">
-			<span class="formHelp">Dies ist ein Textfeld mit Beschreibungstext</span>
 		</div>
 		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
 				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.topic empty"
@@ -57,7 +57,9 @@
 				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.choice2 empty"
 				 data-fieldname="form.widgets.choice2" id="formfield-form-widgets-choice2">
 			<label for="form-widgets-choice2" class="horizontal">
-				Choice2 </label>
+				Choice2
+				<span class="formHelp">Lorem ipsum</span>
+			</label>
 			<div class="fieldErrorBox"></div>
 			<select id="form-widgets-choice2" name="form.widgets.choice2:list"
 							class="select-widget choice-field select2-hidden-accessible valid" size="1" tabindex="-1"
@@ -66,7 +68,6 @@
 				<option id="form-widgets-choice2-0" value="Ja">Ja</option>
 				<option id="form-widgets-choice2-1" value="Nein">Nein</option>
 			</select>
-			<span class="formHelp">Lorem ipsum</span>
 		</div>
 		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
 				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.radio empty"
@@ -135,14 +136,14 @@
 				 data-fieldname="form.widgets.image" id="formfield-form-widgets-image">
 			<label for="form-widgets-image" class="horizontal">
 				Bild
-				</label>
+				<span class="formHelp">Bild uploaden</span>
+			</label>
 				<div class="fieldErrorBox"></div>
 				<span id="form-widgets-image" class="named-image-widget namedblobimage-field">
 					<input type="file"
 								 id="form-widgets-image-input"
 								 name="form.widgets.image">
 				</span>
-			<span class="formHelp">Bild uploaden</span>
 		</div>
 		<!-- Secondary fieldsets -->
 		<div class="formControls">

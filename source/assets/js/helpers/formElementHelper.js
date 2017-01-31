@@ -92,6 +92,17 @@
 			$inputField.removeClass(stateClasses.isFocused);
 			$parentField.removeClass(stateClasses.isFocused);
 		});
+
+		// EasyForm Move span class form Help
+		var $easyFormFields = $('.field');
+
+		$easyFormFields.each(function() {
+			var $formHelp = $(this).find('.formHelp');
+
+			if ($formHelp.length === 1) {
+				$formHelp.clone().appendTo($(this));
+			}
+		});
 	}
 
 	function initOptgroups($field) {
