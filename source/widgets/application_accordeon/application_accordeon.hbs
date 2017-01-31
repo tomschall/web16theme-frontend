@@ -25,12 +25,14 @@
         <div class="widg_accordeon__content" aria-hidden="true" data-application-accordeon="content">
           <dl>
 						{{#each informationEntries}}
-              <dt>{{label}}</dt>
-              <dd>{{text}}
-								{{#if iCalURL}}
-									<a class="ical" href="{{iCalURL}}">iCal</a>
-								{{/if}}
-							</dd>
+							<div class="application-accordeon__entry">
+								<dt>{{label}}</dt>
+								<dd>{{text}}
+									{{#if iCalURL}}
+										<a class="ical" href="{{iCalURL}}">iCal</a>
+									{{/if}}
+								</dd>
+							</div>
 						{{/each}}
           </dl>
 					<a href="{{btnUrl}}" class="button button__apply button__apply___inside small_button">Anmelden</a>

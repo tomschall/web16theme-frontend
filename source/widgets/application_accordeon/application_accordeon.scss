@@ -13,6 +13,16 @@
 	}
 
 	.widg_accordeon__content {
+		dt,
+		dd {
+			border-bottom: none;
+		}
+
+		dl > div {
+			@include clearfix();
+			border-bottom: 1px solid $colorGreyHover;
+		}
+
 		p {
 			font-size: 1.25rem;
 		}
