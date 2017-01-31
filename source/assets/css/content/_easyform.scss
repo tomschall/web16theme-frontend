@@ -43,6 +43,11 @@
 		.formHelp {
 			display: none;
 		}
+
+		span.required:after {
+			content: "*";
+			margin-left: -5px;
+		}
 	}
 
 	.fieldErrorBox {

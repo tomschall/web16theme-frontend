@@ -25,6 +25,10 @@
 				'selectMultipleRequired': {
 					ruleName: 'selectMultipleRequired',
 					initialValue: true
+				},
+				'email': {
+					ruleName: 'email',
+					initialValue: true
 				}
 			};
 
