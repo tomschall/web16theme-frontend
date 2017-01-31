@@ -16,7 +16,14 @@ var data = _.merge(defaultData, {
 			application: _.assign(requireNew('../sidebar_application/sidebar_application.data.js')),
 			events: _.assign(requireNew('../sidebar_events/sidebar_events.data.js')),
 			keydata: _.assign(requireNew('../sidebar_key_data/sidebar_key_data.data.js')),
-			contact: _.assign(requireNew('../sidebar_contact/sidebar_contact.data.js'))
+			contact: [
+				{
+					elementData: _.assign(requireNew('../sidebar_contact/sidebar_contact.data.js'))
+				},
+				{
+					elementData: _.assign(requireNew('../sidebar_contact/sidebar_contact.data.js'))
+				}
+			]
 		}
 	});
 
