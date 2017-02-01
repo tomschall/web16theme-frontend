@@ -250,12 +250,18 @@
 
 .teaser__more-button {
 	position: absolute;
-	top: -85px;
+	top: -92px;
 	right: 0;
 	margin-top: 25px;
+	margin-left: 0 !important;
 
 	@include mq($to: medium) {
 		position: static;
 		transform: none;
 	}
+}
+
+.content__element h2.teaser__title {
+	transform: translateY(74px);
+
 }
