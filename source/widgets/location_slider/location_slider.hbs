@@ -42,7 +42,9 @@
 									<dd><a href="mailto:{{contactData.email}}">{{contactData.email}}</a></dd>
 								</dl>
 							</div>
-							<a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
+                            {{#if locationPageURL}}
+							  <a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
+                            {{/if}}
 						</div>
 						<div class="location__inferior">
 							<a href="{{routeURL}}" target="_blank"><span>{{../langStrings.calcRoute}}</span></a>
@@ -73,7 +75,9 @@
 									<dd><a href="mailto:{{contactData.email}}">{{contactData.email}}</a></dd>
 								</dl>
 							</div>
-							<a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
+                            {{#if locationPageURL}}
+							  <a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
+                            {{/if}}
 						</div>
 						<div class="location__inferior">
 							<a href="{{routeURL}}" target="_blank"><span>{{../langStrings.calcRoute}}</span></a>
@@ -113,7 +117,9 @@
 									<dd><a href="mailto:{{contactData.email}}">{{contactData.email}}</a></dd>
 								</dl>
 							</div>
-							<a class="button small_button" href="{{locationPageURL}}" tabindex="0">{{../langStrings.moreInfoForLocation}}</a></div>
+                            {{#if locationPageURL}}
+							   <a class="button small_button" href="{{locationPageURL}}" tabindex="0">{{../langStrings.moreInfoForLocation}}</a></div>
+                            {{if}}
 						<div class="location__inferior"><a href="{{routeURL}}" target="_blank" tabindex="0"><span>{{../langStrings.calcRoute}}</span></a>
 						</div>
 					</div>
