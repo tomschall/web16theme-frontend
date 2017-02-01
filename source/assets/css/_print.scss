@@ -1,9 +1,109 @@
-.widg_header,
-.widg_actionbuttons,
-.widg_footer {
-	display: none;
+body {
+	font-family: inherit;
+	background: none;
+	color: black;
 }
 
-.scroll-to-fixed-fixed {
-	position: static !important;
+.page_wrapper,
+.page_content,
+.layout_content {
+    float: left;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.page_content .content__element {
+    margin-bottom: 10pt;
+}
+
+/* Text */
+p, .text__lead,
+ul, li,
+.page_content ul:not(.not-default):not(.select2-selection__rendered) li,
+.event__date-location {
+	font-size: 12pt;
+}
+
+h2, h3 {
+    font-size: 14pt;
+    border-bottom: 1pt solid black;
+}
+
+/* Headers */
+h1:after, h2.startpage__title:after {
+	border-bottom: 4pt solid black;
+	background: none;
+}
+h4, h5, h6 {
+	margin: 0 !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+}
+
+/* Blockquote */
+.widg_blockquote {
+    margin-top: 20px;
+    padding: 20px 100% 20px !important;
+}
+
+.blockquote__quote p {
+    font-size: 11pt;
+}
+
+.widg_header,
+.widg_actionbuttons,
+.widg_footer,
+.widg_expertise_areas,
+.widg_follow_us,
+.widg_subnav,
+.widg_newsletter_subscription,
+.widg_location_slider,
+.widg_so_me_share,
+.bleed__inner.site-has-sidebar,
+.widg_teaser__wrapper a.teaser__more-button,
+.widg_hero,
+.widg_toplink,
+.widg_location_slider,
+.widg_location_slider nav ul,
+.responsive-video,
+.image_gallery__arrow {
+	display: none;
+}
+/* Force hiding */
+.widg_image_gallery .image_gallery__slider button,
+a.button {
+    display: none !important;
+}
+
+/* Reset margin and padding */
+.widg_sidebar,
+.widg_sidebar_application,
+.object__title,
+.object__content,
+.widg_sidebar__object {
+    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
+    border: none;
+}
+.object__title>h4 {
+    line-height: 2em;
+}
+/* Widgets */
+.widg_sidebar {
+    width: 100%;
+}
+.widg_sidebar_application {
+    border: none;
+}
+
+/* Important Hidings */
+a.anchor-link {
+    display: none !important;
+}
+/* Table */
+th, tr, td, .content__table tr td {
+    font-size: 12pt;
+    border-top: 1pt solid black !important;
+    border-bottom: 1pt solid black !important;
 }
