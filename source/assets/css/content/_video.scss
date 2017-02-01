@@ -6,6 +6,9 @@
 	margin-bottom: 60px;
 }
 
+.responsive-video__small {
+	padding-bottom: 33.75%;
+}
 
 .responsive-video iframe,
 .responsive-video object,
@@ -15,4 +18,10 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+
+.responsive-video__small iframe,
+.responsive-video__small object,
+.responsive-video__small embed {
+	width: 60%;
 }

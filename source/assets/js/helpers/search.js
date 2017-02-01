@@ -230,48 +230,52 @@
 	 * @param data
    */
 	function handleReturnData(data) {
-		var responseData = data.items,
-				$searchCategory = null,
-				$categoryList = null,
-				$categoryTitle = null,
-				$tempListDOM = null,
-				$responseHTML = $('<div></div>');
+		if (typeof data.items !== typeof undefined) {
+			var responseData = data.items,
+					$searchCategory = null,
+					$categoryList = null,
+					$categoryTitle = null,
+					$tempListDOM = null,
+					$responseHTML = $('<div></div>');
 
-		getAllLangStrings();
+			getAllLangStrings();
 
-		if (data.items.length > 0) {
-			if (activeCategorySearch) {
-				if (data.category === 'expertises') {
-					$responseHTML.append(generateWordList(data));
-				} else if (data.category === 'events') {
-					$responseHTML.append(generateTeasers(data));
+			if (data.items.length > 0) {
+				if (activeCategorySearch) {
+					if (data.category === 'expertises') {
+						$responseHTML.append(generateWordList(data));
+					} else if (data.category === 'events') {
+						$responseHTML.append(generateTeasers(data));
+					} else {
+						$responseHTML.addClass('search__table').append(generateResultTable(data));
+					}
 				} else {
-					$responseHTML.addClass('search__table').append(generateResultTable(data));
+					$searchCategory = $('<div class="search__cat"></div>');
+					$categoryList = $('<ul></ul>');
+					$categoryTitle = $('<span class="search__cat-title">' + data.categoryTitle + '</span>');
+
+					responseData.forEach(function(listEntry) {
+						$tempListDOM = generateSearchListItem(listEntry, data.category);
+
+						$categoryList.append($tempListDOM);
+					});
+
+					if (data.categoryUrl || data.categoryUrl !== '') {
+						var template = Handlebars.compile(listEntryTemplates.showAll);
+
+						$categoryList.append(template(data));
+					}
+
+					$searchCategory.append($categoryTitle).append($categoryList);
+
+					$responseHTML = $searchCategory;
 				}
-			} else {
-				$searchCategory = $('<div class="search__cat"></div>');
-				$categoryList = $('<ul></ul>');
-				$categoryTitle = $('<span class="search__cat-title">' + data.categoryTitle + '</span>');
-
-				responseData.forEach(function(listEntry) {
-					$tempListDOM = generateSearchListItem(listEntry, data.category);
-
-					$categoryList.append($tempListDOM);
-				});
-
-				if (data.categoryUrl) {
-					var template = Handlebars.compile(listEntryTemplates.showAll);
-
-					$categoryList.append(template(data.items));
-				}
-
-				$searchCategory.append($categoryTitle).append($categoryList);
-
-				$responseHTML = $searchCategory;
 			}
-		}
 
-		$(window).trigger(events.dataLoaded, [$responseHTML, data.items_total, responseData.length, data.category, data.facets]);
+			$(window).trigger(events.dataLoaded, [$responseHTML, data.items_total, responseData.length, data.category, data.facets]);
+		} else {
+			$(window).trigger(events.dataLoaded, [false]);
+		}
 	}
 
 	function saveToLocalStorage(query) {
@@ -325,6 +329,7 @@
 					}),
 					dataType: 'json',
 					success: handleReturnData,
+					error: handleReturnData,
 					url: searchURL
 				});
 			});
@@ -333,6 +338,7 @@
 				data: query,
 				dataType: 'json',
 				success: handleReturnData,
+				error: handleReturnData,
 				url: searchURL
 			});
 		}

@@ -46,10 +46,6 @@
 		height: 28vh;
 	}
 
-	.is-profile-hero & {
-		min-height: 40vw;
-	}
-
 	.is_hero2 & {
 		@include mq($from: medium) {
 			height: 60vh;

@@ -1,5 +1,7 @@
 <div class="widg_linklist" data-init="linklist">
-	<h2>{{title}}</h2>
+	{{#if title}}
+			<h2>{{title}}</h2>
+	{{/if}}
 	<ul class="not-default">
 		{{#each listEntries}}
 			<li class="widg_linklist___entry {{#if isExternal}}is_external{{/if}}">

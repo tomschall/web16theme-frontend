@@ -16,10 +16,10 @@
     <div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
 	{{/if}}
 
-	{{#if widgets.contact}}
-		{{> "widgets/sidebar_contact/sidebar_contact" widgets.contact }}
-    <div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
-	{{/if}}
+	{{#each widgets.contact}}
+		{{> "widgets/sidebar_contact/sidebar_contact" elementData}}
+		<div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
+	{{/each}}
 
 
 

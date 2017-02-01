@@ -152,6 +152,14 @@
 				scrollTop: $('.hero').outerHeight() - 100
 			}, 300);
 		});
+
+		$(window).on('open.estatico.navigation', function() {
+			this.hideProgressBar();
+		}.bind(this));
+
+		$(window).on('open.estatico.searchbar', function() {
+			this.hideProgressBar();
+		}.bind(this));
 	};
 
 	/**

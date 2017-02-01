@@ -97,6 +97,8 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
+		this.checkPositionOfSidebar();
+
 		// Only initialize when minimum medium screen size
 		if (window.estatico.mq.query({from: 'subnav'})) {
 			if ($body.scrollTop() > this.$element.offset().top) {
@@ -119,6 +121,20 @@
 				this._updateHider();
 			}
 		}.bind(this));
+	};
+
+	Widget.prototype.checkPositionOfSidebar = function() {
+		var sidebarTopPosition = this.$element.offset().top,
+				subnavBottomPosition = $('.widg_subnav').offset().top + $('.widg_subnav').outerHeight(true),
+				margin = sidebarTopPosition - subnavBottomPosition;
+
+		if (margin < 20) {
+			var additionalPush = Math.round(20 - margin);
+
+			this.$element.css({
+				'margin-top': 120 + additionalPush
+			});
+		}
 	};
 
 	Widget.prototype._initSidebar = function() {
@@ -753,6 +769,8 @@
 		}
 
 		oldWidth = $(window).width();
+
+		this.checkPositionOfSidebar();
 	};
 
 	// /////// RESET FUNCTIONS /////// //

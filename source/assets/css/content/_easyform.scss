@@ -1,0 +1,130 @@
+.field {
+	@include clearfix();
+	position: relative;
+
+	input,
+	textarea {
+		border: 2px solid $colorGreyHover;
+		background: $colorSearchBarInputFocus;
+
+		display: block;
+		width: 100%;
+
+		font-size: 1.333rem;
+
+		padding-left: 17px;
+
+		@include defaultElementHeight;
+
+		&:hover {
+			border-width: 2px;
+		}
+
+		&:focus {
+			background: $colorBg;
+			border: 2px solid $colorBlack;
+		}
+	}
+
+	textarea {
+		resize: vertical;
+		min-height: 120px;
+	}
+
+	label {
+		font-size: 1.333rem;
+		font-weight: 600;
+
+		color: $colorTextGrey;
+		margin-bottom: 1px;
+
+		display: block;
+
+		.formHelp {
+			display: none;
+		}
+
+		span.required:after {
+			content: "*";
+			margin-left: -5px;
+		}
+	}
+
+	.fieldErrorBox {
+		position: absolute;
+		right: 17px;
+		top: 32px;
+
+		font-weight: 600;
+		font-size: 0.916667rem;
+
+		color: $colorErrorRed;
+	}
+
+	.formHelp {
+		display: block;
+		font-size: 1.333rem;
+		line-height: 1.888em;
+		margin-top: 3px;
+	}
+}
+
+.field.error {
+	input,
+	textarea {
+		border-color: $colorErrorRed;
+	}
+}
+
+/**
+  * STYLES FOR SELECT2 IN EASYFORMS
+  */
+.field {
+	.select2-container .select2-selection .select2-selection__rendered {
+		padding-top: 0;
+		line-height: 60px !important;
+
+		@include mq($to: medium) {
+			line-height: 50px !important;
+		}
+	}
+
+	.select2-container .select2-selection--multiple .select2-selection__choice {
+		margin-top: 0;
+	}
+}
+
+/**
+	STYLES FOR FORM CHECKBOX AND RADIO
+ */
+
+.field.has-radio {
+	padding-top: 10px;
+
+	input[type="checkbox"],
+	input[type="radio"] {
+		height: auto;
+		border-width: 1px;
+	}
+
+	.option:first-of-type {
+		margin-left: 10px;
+	}
+}
+
+
+.field.has-upload {
+	input {
+		border: none;
+		background: transparent;
+
+		height: auto;
+		padding-left: 0;
+
+		line-height: 1.2em;
+	}
+
+	label {
+		margin-bottom: 10px;
+	}
+}

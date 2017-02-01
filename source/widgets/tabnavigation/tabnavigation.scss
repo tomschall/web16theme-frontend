@@ -3,7 +3,6 @@
 }
 
 .widg_tabnavigation__nav {
-	border-bottom: 1px solid $colorGreyHover;
 	padding-bottom: 4px;
 	position: relative;
 
@@ -40,7 +39,7 @@
 
 .content__entry-wrapper {
 	@include mq($to: medium) {
-		border-bottom: 1px solid $colorGreyHover;
+		border-bottom: 2px solid $colorBg;
 
 		&:last-of-type {
 			border-bottom: none;

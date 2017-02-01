@@ -2,6 +2,10 @@
 	border: 1px solid $colorGreyHover;
 	padding: $basicPush * 4 $basicPush * 6;
 
+	@include mq($to: medium) {
+		padding: 18px;
+	}
+
 	.button__apply {
 		@include mq($to: medium) {
 			display: none;
@@ -9,6 +13,16 @@
 	}
 
 	.widg_accordeon__content {
+		dt,
+		dd {
+			border-bottom: none;
+		}
+
+		dl > div {
+			@include clearfix();
+			border-bottom: 1px solid $colorGreyHover;
+		}
+
 		p {
 			font-size: 1.25rem;
 		}

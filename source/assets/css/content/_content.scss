@@ -81,7 +81,7 @@
 	list-style-type: none;
 
 	li {
-		font-size: 1.5rem;
+		font-size: $textSize;
 		line-height: 1.7;
 		padding: 6px 0 6px 1em;
 		position: relative;
@@ -103,8 +103,10 @@
 }
 
 .page_content ol:not(.not-default):not(.select2-selection__rendered) {
+	padding-left: 0;
+
 	li {
-		font-size: 1.5rem;
+		font-size: $textSize;
 		line-height: 1.7;
 		padding: 6px 0 6px 1em;
 
@@ -126,7 +128,7 @@ table.content__table {
 		text-align: left;
 
 		line-height: 2.2;
-		font-size: 1.5rem;
+		font-size: $textSize;
 	}
 
 	tr {

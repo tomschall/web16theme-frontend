@@ -1,3 +1,10 @@
+img.image-left,
+img.one-span,
+img.image-right,
+img.full-span {
+	clear: both;
+}
+
 img.one-span,
 img.image-left {
 	@include span(3);

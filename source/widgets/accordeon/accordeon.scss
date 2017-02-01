@@ -102,16 +102,34 @@ $colorAvailabilityRed: #f05f1b;
 		padding-top: 19px;
 		padding-bottom: 17px;
 
+		@include mq($to: medium) {
+			padding-top: 11px;
+			padding-bottom: 9px;
+		}
+
 		.button__date,
 		.button__availability,
 		.button__location {
-			width: 5%;
+			width: 10%;
 			display: block;
 			float: left;
 
 			@include mq($to: large) {
 				width: 18%;
 			}
+
+			@include mq($to: small) {
+				font-size: 1.333rem;
+				width: 5%;
+			}
+		}
+
+		.button__location {
+			padding-left: 10px;
+		}
+
+		.button__date {
+			min-width: 125px;
 		}
 
 		.button__availability {
@@ -122,14 +140,18 @@ $colorAvailabilityRed: #f05f1b;
 				content: " ";
 				float: right;
 
-				width: 20px;
-				height: 20px;
+				width: 18px;
+				height: 18px;
 
 				border-radius: 50%;
 				background-color: $colorBlack;
 
 				margin-left: 8px;
-				transform: translateY(6px);
+				transform: translateY(7px);
+
+				@include mq($to: small) {
+					transform: translateY(5px);
+				}
 			}
 
 			&.state-red:after {
@@ -261,7 +283,7 @@ div.widg_accordeon__button {
 
 	dt,
 	dd {
-		font-size: 1.5rem;
+		font-size: 1.333rem;
 		margin-left: 0;
 		width: 50%;
 
@@ -276,6 +298,7 @@ div.widg_accordeon__button {
 
 		@include mq($to: subnav) {
 			width: 100%;
+			padding: 0;
 
 			&dt {
 				border-bottom: none;
@@ -290,6 +313,10 @@ div.widg_accordeon__button {
 		@include mq($to: subnav) {
 			border-bottom: none;
 		}
+
+		@include mq($to: medium) {
+			padding-top: 7px;
+		}
 	}
 
 	dd {
@@ -303,6 +330,10 @@ div.widg_accordeon__button {
 			&:last-of-type {
 				border-bottom: 1px solid $colorGreyHover;
 			}
+		}
+
+		@include mq($to: medium) {
+			padding-bottom: 7px;
 		}
 	}
 

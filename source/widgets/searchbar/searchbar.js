@@ -160,7 +160,11 @@ function debounce(fn, delay) {
 		this.changeSearchbarStatus(this.options.stateClasses.showLoader);
 
 		$(window).on(this.options.searchEvents.dataLoaded, function(event, data, unecessary1, unecessary2, category) {
-			this.showResults(data, category);
+			if (data) {
+				this.showResults(data, category);
+			} else {
+				this.changeSearchbarStatus(this.options.stateClasses.showIntro);
+			}
 		}.bind(this));
 	};
 

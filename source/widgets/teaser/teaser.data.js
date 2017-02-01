@@ -6,6 +6,7 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
+	title: 'Das ist ein Teaser',
 	teasers: [
 		{
 			title: 'Campus Dreispitz (Basel)',

@@ -59,21 +59,25 @@
 }
 
 .follow__xing {
-	@include iconDataurl('facebook_follow');
+	@include iconDataurl('xing_follow');
 }
 
 .follow__instagram {
-	@include iconDataurl('facebook_follow');
+	@include iconDataurl('instagram_follow');
 }
 
 .follow__itunes {
-	@include iconDataurl('facebook_follow');
+	@include iconDataurl('itunes_follow');
 }
 
 .follow__linkedin {
-	@include iconDataurl('facebook_follow');
+	@include iconDataurl('linkedin_follow');
 }
 
 .follow__googleplus {
-	@include iconDataurl('facebook_follow');
+	@include iconDataurl('googleplus_follow');
+}
+
+.follow__blogs {
+	@include iconDataurl('blog_follow');
 }

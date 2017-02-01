@@ -27,7 +27,7 @@
 					isActive: 'is_active'
 				},
 				mapProps: {
-					zoom: 16,
+					zoom: 0,
 					mapTypeId: null,
 					disableDoubleClickZoom: true,
 					keyboardShortcuts: false,
@@ -190,10 +190,11 @@
 	Widget.prototype.initMaps = function() {
 		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
 			var $mapElement = $(element),
-					mapProp = _.assign({
+					mapProp = _.assign(this.options.mapProps, {
 						center: new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))),
-						styles: this.options.mapStyles
-					}, this.options.mapProps),
+						styles: this.options.mapStyles,
+						zoom: parseInt($mapElement.data('zoomlevel'))
+					}),
 					map = new google.maps.Map(element, mapProp);
 
 			this.addMarker($mapElement, map);

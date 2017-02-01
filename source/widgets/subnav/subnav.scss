@@ -1,6 +1,10 @@
 .widg_subnav {
 	transform: translateY(-1 * $contentMarginTop - $smallElementHeight);
 
+	&.has-no-breadcrumb {
+		transform: translateY(-1 * $contentMarginTop);
+	}
+
 	&.widg_subnav___no-hero {
 		transform: none;
 

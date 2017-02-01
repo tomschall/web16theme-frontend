@@ -37,17 +37,27 @@
 	img {
 		width: 100%;
 	}
+
+	@include mq($to: small) {
+		max-width: none;
+		width: auto;
+
+	}
 }
 
 .widg_contact__info {
 	float: left;
-	width: 75%;
+	width: calc(75% - 39px);
 
 	span,
 	a {
 		display: block;
 
 		font-size: 1.25rem;
+	}
+
+	@include mq($to: small) {
+		width: 100%;
 	}
 }
 

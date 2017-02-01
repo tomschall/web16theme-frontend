@@ -42,7 +42,9 @@
 									<dd><a href="mailto:{{contactData.email}}">{{contactData.email}}</a></dd>
 								</dl>
 							</div>
-							<a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
+                            {{#if locationPageURL}}
+							  <a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
+                            {{/if}}
 						</div>
 						<div class="location__inferior">
 							<a href="{{routeURL}}" target="_blank"><span>{{../langStrings.calcRoute}}</span></a>
@@ -55,7 +57,7 @@
 			{{#each entries}}
 				<div class="location__slide">
 					<div class="location__map" data-coordinates-x="{{coordinates.x}}" data-coordinates-y="{{coordinates.y}}"
-							 data-location_slider="map"></div>
+							 data-location_slider="map" data-zoomlevel="{{zoomLevel}}"></div>
 					<div class="location__info">
 						<div class="location__upper">
 							<h3>{{title}}</h3>
@@ -73,7 +75,9 @@
 									<dd><a href="mailto:{{contactData.email}}">{{contactData.email}}</a></dd>
 								</dl>
 							</div>
-							<a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
+                            {{#if locationPageURL}}
+							  <a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
+                            {{/if}}
 						</div>
 						<div class="location__inferior">
 							<a href="{{routeURL}}" target="_blank"><span>{{../langStrings.calcRoute}}</span></a>
@@ -90,7 +94,7 @@
 	{{> "widgets/accordeon/accordeon" widgets.locationAccordeon }}
 	<div class="widg_accordeon" data-init="accordeon">
 		{{#each entries}}
-			<div class="widg_accordeon__entry" data-accordeon="entry">
+			<div class="widg_accordeon__entry" data-accordeon="entry" >
 				<button aria-expanded="false" class="not-default" data-accordeon="button">
 					{{navTitle}}
 				</button>
@@ -113,7 +117,9 @@
 									<dd><a href="mailto:{{contactData.email}}">{{contactData.email}}</a></dd>
 								</dl>
 							</div>
-							<a class="button small_button" href="{{locationPageURL}}" tabindex="0">{{../langStrings.moreInfoForLocation}}</a></div>
+                            {{#if locationPageURL}}
+							   <a class="button small_button" href="{{locationPageURL}}" tabindex="0">{{../langStrings.moreInfoForLocation}}</a></div>
+                            {{if}}
 						<div class="location__inferior"><a href="{{routeURL}}" target="_blank" tabindex="0"><span>{{../langStrings.calcRoute}}</span></a>
 						</div>
 					</div>

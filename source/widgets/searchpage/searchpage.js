@@ -304,18 +304,27 @@ function debounce(fn, delay) {
 
 			if (isCategorySearch) {
 				$(window).one(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults, category, facets) {
-					this.showResults(data, foundEntries, limitedToResults, category);
+					if (data) {
+						this.showResults(data, foundEntries, limitedToResults, category);
 
-					if (isCategorySearch) {
-						this.updateFilters(facets);
+						if (isCategorySearch) {
+							this.updateFilters(facets);
+						}
+					} else {
+						this.changeStatus(this.options.stateClasses.showResults);
 					}
+
 				}.bind(this));
 			} else {
 				$(window).on(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults, category, facets) {
-					this.showResults(data, foundEntries, limitedToResults, category);
+					if (data) {
+						this.showResults(data, foundEntries, limitedToResults, category);
 
-					if (isCategorySearch) {
-						this.updateFilters(facets);
+						if (isCategorySearch) {
+							this.updateFilters(facets);
+						}
+					} else {
+						this.changeStatus(this.options.stateClasses.showResults);
 					}
 				}.bind(this));
 			}

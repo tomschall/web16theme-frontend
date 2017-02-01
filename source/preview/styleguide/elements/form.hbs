@@ -10,10 +10,12 @@
 			<label for="form-widgets-replyto" class="horizontal">
 				Ihre E-Mail Adresse
 				<span class="required horizontal" title="Erforderlich">&nbsp;</span>
+				<span class="email horizontal" title="Ungültiges Format"> </span>
+				<span class="formHelp">Dies ist ein Textfeld mit Beschreibungstext</span>
 			</label>
 			<div class="fieldErrorBox"></div>
 			<input id="form-widgets-replyto" name="form.widgets.replyto" class="text-widget required textline-field" value=""
-						 type="text">
+						 type="text" placeholder="E-Mail">
 		</div>
 		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
 				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.topic empty"
@@ -24,7 +26,7 @@
 			</label>
 			<div class="fieldErrorBox"></div>
 			<input id="form-widgets-topic" name="form.widgets.topic" class="text-widget required textline-field" value=""
-						 type="text">
+						 type="text" placeholder="Betreffszeile">
 		</div>
 		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
 				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.comments empty"
@@ -35,7 +37,7 @@
 			</label>
 			<div class="fieldErrorBox"></div>
 			<textarea id="form-widgets-comments" name="form.widgets.comments"
-								class="textarea-widget required text-field"></textarea>
+								class="textarea-widget required text-field" placeholder="persönlicher Kommentar"></textarea>
 		</div>
 		<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
 				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.choice empty"
@@ -56,7 +58,9 @@
 				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.choice2 empty"
 				 data-fieldname="form.widgets.choice2" id="formfield-form-widgets-choice2">
 			<label for="form-widgets-choice2" class="horizontal">
-				Choice2 <span class="formHelp">Lorem ipsum</span></label>
+				Choice2
+				<span class="formHelp">Lorem ipsum</span>
+			</label>
 			<div class="fieldErrorBox"></div>
 			<select id="form-widgets-choice2" name="form.widgets.choice2:list"
 							class="select-widget choice-field select2-hidden-accessible valid" size="1" tabindex="-1"
@@ -121,7 +125,7 @@
 			<div class="fieldErrorBox"></div>
 			<select id="form-widgets-checkbox" name="form.widgets.checkbox:list"
 							class="select-widget set-field select2-hidden-accessible" multiple="" size="5" tabindex="-1"
-							aria-hidden="true">
+							aria-hidden="true" placeholder="Test">
 				<option id="form-widgets-checkbox-0" value="a">a</option>
 				<option id="form-widgets-checkbox-1" value="b">b</option>
 				<option id="form-widgets-checkbox-2" value="c">c</option>
@@ -133,7 +137,8 @@
 				 data-fieldname="form.widgets.image" id="formfield-form-widgets-image">
 			<label for="form-widgets-image" class="horizontal">
 				Bild
-				<span class="formHelp">Bild uploaden</span></label>
+				<span class="formHelp">Bild uploaden</span>
+			</label>
 				<div class="fieldErrorBox"></div>
 				<span id="form-widgets-image" class="named-image-widget namedblobimage-field">
 					<input type="file"

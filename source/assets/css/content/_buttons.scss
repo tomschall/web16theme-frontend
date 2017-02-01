@@ -48,6 +48,29 @@ input[type="reset"],
 	}
 }
 
+.button__360 {
+	span {
+		display: inline-block;
+
+
+
+		@include iconDataurl('experience');
+
+		&:before {
+			padding-right: 8px;
+			transform: translateY(7px);
+		}
+	}
+
+	&:hover {
+		span {
+			display: inline-block;
+
+			@include iconDataurl('experience_black');
+		}
+	}
+}
+
 .button__secondary:not(.not-default),
 a.button__secondary:not(.not-default),
 input[type="reset"],

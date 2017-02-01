@@ -5,6 +5,7 @@
 $sizeFontBase: 12px;
 $fontFamilyBase: Arial, sans-serif;
 $sizeLineHeightBase: 1.5;
+$textSize: 1.333rem;
 
 $sizeWidthContent: 960px;
 
@@ -74,7 +75,7 @@ $fontSansSerifLightCondensed: $fontSansSerifLight;
 $fontSansSerifCondensed: $fontSansSerifLight;
 $fontSansSerifBoldCondensed: $fontSansSerifBold;
 
-$fontEgyptienneItalic: 'Egyptienne F 55 Roman';
+$fontEgyptienneItalic: 'Egyptienne F LT W01_56 Italic';
 
 /**
   * Yellow Bar Width
@@ -168,13 +169,13 @@ $zIndex: (
 	actionbuttons: 1502,
 	productBar: 1500,
 	header: 2000,
-	headerOpen: 3000,
+	headerOpen: 5000,
 	headerSecondLayer: 2900,
 	headerThirdLayer: 2800,
 	headerFourthLayer: 2700,
 	mobileHeaderTop: 2500,
 	mobileNavigation: 2400,
-	search: 3001,
+	search: 2950,
 	topLink: 5000,
 	modal: 1501,
 
