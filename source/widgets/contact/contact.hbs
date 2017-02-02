@@ -3,7 +3,12 @@
 	{{#each persons}}
     <div class="widg_contact__entry">
       <div class="widg_contact__portrait">
-        <img src="{{img.src}}" alt={{img.alt}}/>
+				{{#if contactPageURL}}
+					<a href="{{contactPageURL}}"/><img src="{{img.src}}" alt={{img.alt}}/></a>
+				{{else}}
+					<img src="{{img.src}}" alt={{img.alt}}/>
+				{{/if}}
+
       </div>
       <div class="widg_contact__info">
 
