@@ -348,7 +348,7 @@
 				},
 
 				rules: rules,
-				lang: 'de',
+
 				messages: messages,
 				ignore: [],
 				errorPlacement: function(error, element) {

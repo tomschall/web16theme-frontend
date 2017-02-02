@@ -7,6 +7,7 @@
  * @requires ../../../node_modules/select2/dist/js/select2.js
  * @requires ../../../node_modules/jquery-validation/dist/jquery.validate.js
  * @requires ../../../node_modules/jquery-validation/dist/additional-methods.js
+ * @requires ../../../node_modules/jquery-validation/dist/localization/messages_de.js
  * @requires ../../../node_modules/sticky-kit/dist/sticky-kit.js
  * @requires ../../../node_modules/jquery-mousewheel/jquery.mousewheel.js
  * @requires ../../../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js
