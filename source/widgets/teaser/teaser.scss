@@ -218,7 +218,7 @@
 		margin-bottom: $basicPush * 11;
 		@include clearfix();
 
-		.widg_teaser:first-child {
+		.widg_teaser:first-of-type {
 			@include push(1.5);
 
 			@include mq($to: medium) {
