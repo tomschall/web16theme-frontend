@@ -332,7 +332,7 @@
 				rules['form.widgets.replyto'].email = validationMapping.email.initialValue;
 			}
 
-			$form.validate({
+			var validator = $form.validate({
 				onfocusout: function(element) {
 					$(element).siblings('.fieldErrorBox').empty();
 					$(element).closest('.field').removeClass('error');
@@ -348,7 +348,7 @@
 				},
 
 				rules: rules,
-
+				focusCleanup: true,
 				messages: messages,
 				ignore: [],
 				errorPlacement: function(error, element) {
@@ -372,9 +372,14 @@
 			$form.find('#form-buttons-reset').on('click', function(event) {
 				event.preventDefault();
 
-				$form.trigger('reset');
+				validator.resetForm();
+
+				$form.find('.error').removeClass('error');
+				$form.find('.fieldErrorBox').empty();
 
 				$form[0].reset();
+
+				$form.find('#form-buttons-submit').removeAttr('disabled');
 			});
 		});
 

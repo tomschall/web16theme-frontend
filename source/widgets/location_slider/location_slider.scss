@@ -200,6 +200,7 @@ $infoPadding: 34px;
 
 				&:before {
 					background-size: 100% 100%;
+					transform: translateY(-0.5px);
 				}
 			}
 		}
