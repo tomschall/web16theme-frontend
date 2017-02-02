@@ -213,7 +213,8 @@
 	width: 100vw;
 	opacity: 0;
 
-	transform: translateY(-20%);
+	transform: translateY(-20px);
+	transition-duration: $transitionLength / 2;
 	z-index: -1;
 
 	.widg_header__nav {

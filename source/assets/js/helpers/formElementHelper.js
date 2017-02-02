@@ -368,6 +368,14 @@
 					}
 				}
 			});
+
+			$form.find('#form-buttons-reset').on('click', function(event) {
+				event.preventDefault();
+
+				$form.trigger('reset');
+
+				$form[0].reset();
+			});
 		});
 
 		/**
