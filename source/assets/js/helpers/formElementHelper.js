@@ -320,6 +320,10 @@
 					});
 				});
 
+				if ($form.find('#form-widgets-replyto').length > 0) {
+					temprules[validationMapping.email.ruleName] = validationMapping.email.initialValue;
+				}
+
 				if (temprules !== {}) {
 					rules[$field.find('input, textarea, select').attr('name')] = temprules;
 					messages[$field.find('input, textarea, select').attr('name')] = tempmessages;
