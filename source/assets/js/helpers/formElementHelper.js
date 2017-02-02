@@ -323,6 +323,8 @@
 				if (temprules !== {}) {
 					rules[$field.find('input, textarea, select').attr('name')] = temprules;
 					messages[$field.find('input, textarea, select').attr('name')] = tempmessages;
+
+					$form.addClass('has-validation');
 				}
 			});
 
@@ -333,6 +335,12 @@
 					$(element).closest('.field').find('.fieldErrorBox').empty();
 
 					$(element).valid();
+
+					if ($form.find('.error').length > 0) {
+						$form.find('#form-buttons-submit').attr('disabled', 'disabled');
+					} else {
+						$form.find('#form-buttons-submit').removeAttr('disabled');
+					}
 				},
 
 				rules: rules,

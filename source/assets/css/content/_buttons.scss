@@ -17,6 +17,7 @@ input[type="reset"],
 	letter-spacing: 3.5px;
 
 	background-color: $colorBlack;
+	border: 2px solid transparent;
 	color: $colorBg;
 	font-size: 1rem;
 	padding: 0 $basicPush * 3;
