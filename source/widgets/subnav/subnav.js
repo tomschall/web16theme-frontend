@@ -65,6 +65,8 @@
 				this.$element.removeAttr('style');
 			}
 		}.bind(this));
+
+		$('body').addClass('has-subnav');
 	};
 
 	Widget.prototype.doWidthCalculation = function() {

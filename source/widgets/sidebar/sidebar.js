@@ -128,11 +128,14 @@
 				subnavBottomPosition = $('.widg_subnav').offset().top + $('.widg_subnav').outerHeight(true),
 				margin = sidebarTopPosition - subnavBottomPosition;
 
-		if (margin < 20) {
-			var additionalPush = Math.round(20 - margin);
+		console.log('margin', margin);
+
+		if (margin < 40) {
+			var additionalPush = Math.round(40 - margin),
+					currentMarginTop = parseInt(this.$element.css('marginTop'));
 
 			this.$element.css({
-				'margin-top': 120 + additionalPush
+				'margin-top': currentMarginTop + additionalPush
 			});
 		}
 	};
@@ -754,6 +757,8 @@
 	 * @private
    */
 	Widget.prototype._handleResize = function() {
+		this.checkPositionOfSidebar();
+
 		if (!sidebarIsInitialized) {
 			this._initSidebar();
 		}
@@ -770,7 +775,6 @@
 
 		oldWidth = $(window).width();
 
-		this.checkPositionOfSidebar();
 	};
 
 	// /////// RESET FUNCTIONS /////// //

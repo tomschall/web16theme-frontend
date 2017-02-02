@@ -13,13 +13,11 @@ input[type="reset"],
 	@include defaultElementHeight();
 
 	font-family: $fontSansSerifCondensed;
-	text-transform: uppercase;
-	letter-spacing: 3.5px;
 
 	background-color: $colorBlack;
 	border: 2px solid transparent;
 	color: $colorBg;
-	font-size: 1rem;
+	font-size: 1.25rem;
 	padding: 0 $basicPush * 3;
 	text-decoration: none;
 	opacity: 1;
@@ -52,8 +50,6 @@ input[type="reset"],
 .button__360 {
 	span {
 		display: inline-block;
-
-
 
 		@include iconDataurl('experience');
 
