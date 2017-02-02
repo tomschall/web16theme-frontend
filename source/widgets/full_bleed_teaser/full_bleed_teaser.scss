@@ -60,10 +60,11 @@
 
 .widg_full_bleed_teaser .widg_teaser {
 	position: absolute;
-	max-width: 50%;
-	min-width: 50%;
+	width: 50%;
 	top: 50%;
 	transform: translateY(-50%);
+
+	max-width: 460px;
 
 	padding: $gutterWidth * 2;
 	background-color: $colorBg;
@@ -88,7 +89,6 @@
 
 	@include mq($to: small) {
 		position: static;
-		min-width: 100%;
-		max-width: 100%;
+		width: 100%;
 	}
 }

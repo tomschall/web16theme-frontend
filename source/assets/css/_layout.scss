@@ -92,9 +92,21 @@ h3 {
 .page_content {
 	@include span(8.7);
 
+
+
 	.full-width-page & {
 		@include span(12);
 	}
+
+	@include mq($from: subnav) {
+		padding-right: 2vw;
+	}
+
+
+	@include mq($from: large) {
+		padding-right: 7.5vw;
+	}
+
 
 	@include mq($to: subnav) {
 		@include span(12);
