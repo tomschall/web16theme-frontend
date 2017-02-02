@@ -2,7 +2,7 @@
 	@include span(3);
 	position: relative;
 	padding-top: $basicPush * 1.7;
-	padding-bottom: $basicPush * 2.5;
+	padding-bottom: $basicPush * 3;
 	margin-bottom: $basicPush * 4;
 
 	@include mq($to: small) {
@@ -135,13 +135,13 @@
 }
 
 .widg_teaser__arrow {
-	@include iconDataurl('dropdown-arrow');
+	@include iconDataurl('triangle-arrow_right');
 
 	display: block;
 	position: absolute;
 	bottom: $basicPush * 1.8;
 
-	height: 2px;
+	height: 1px;
 	min-width: 10px;
 	background-color: $colorBlack;
 	transition: min-width $transitionLength / 3 $transitionEase;
@@ -157,11 +157,14 @@
 	}
 
 	&:before {
-		transform: rotate(-90deg) translate3d(0, 0, 0);
+		transform: translateY(-50%) translate3d(0, 0, 0);
 		position: absolute;
 
-		top: -2px;
+		top: 50%;
+
 		left: 80%;
+		width: 6px;
+		height: 10px;
 
 	}
 
@@ -188,10 +191,10 @@
 }
 
 .widg_teaser__category {
-	color: $colorBorderGrey;
+	color: $colorTextGrey;
 	display: block;
 	margin-bottom: $gutterWidth/3;
-	font-size: 1.1667rem;
+	font-size: 1rem;
 	font-weight: 600;
 }
 
@@ -199,7 +202,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	position: relative;
-	margin-top: 80px;
+	margin-top: 0px;
 
 	@include mq($to: medium) {
 		padding: 0 $gutterWidth;
@@ -215,7 +218,7 @@
 
 	&.is_on_startpage {
 
-		margin-bottom: $basicPush * 11;
+		margin-bottom: $basicPush * 4;
 		@include clearfix();
 
 		.widg_teaser:first-of-type {
@@ -262,6 +265,30 @@
 }
 
 .content__element h2.teaser__title {
-	transform: translateY(74px);
 
+	margin-left: $gutterWidth;
+	margin-right: $gutterWidth;
+	margin-top: $basicPush * 3.5;
+
+	&.is_on_startpage {
+		text-align: center;
+		border-bottom: 0;
+		position: relative;
+		padding-bottom: 16px;
+
+		&:after {
+			display: block;
+
+			content: " ";
+			position: absolute;
+
+			bottom: 0;
+			height: 4px;
+			background-color: $colorYellow;
+			width: 80px;
+
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
 }

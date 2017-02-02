@@ -87,7 +87,7 @@
 			fade: true,
 			speed: speed,
 			useCSS: false,
-			pauseOnHover: true
+			pauseOnHover: false
 		});
 
 		this.initVideoProperties();

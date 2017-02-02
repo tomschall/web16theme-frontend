@@ -89,6 +89,10 @@ h2 {
 			transform: translateX(-50%);
 
 			top: 80%;
+
+			@include mq($to: small) {
+				top: 88%;
+			}
 		}
 	}
 

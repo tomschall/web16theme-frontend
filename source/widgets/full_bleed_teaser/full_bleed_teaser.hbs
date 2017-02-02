@@ -2,9 +2,18 @@
 	<div class="full_bleed_teaser__img">
 		<img src="{{img.src}}" alt="{{img.alt}}"/>
 	</div>
-	<div class="full_bleed_teaser__text">
-		<h2>{{title}}</h2>
-		<p>{{description}}</p>
-		<a class="button" href="{{url}}">{{linkText}}</a>
+
+	<div class="widg_teaser">
+
+		{{#if category}}
+			<span class="widg_teaser__category">{{category}}</span>
+		{{/if}}
+		<h4>{{{title}}}</h4>
+		{{#if description}}
+			<p>{{dotdotdot_teaser description}}</p>
+		{{/if}}
+		<a class="widg_teaser__link" href="{{url}}">{{title}}</a>
+		<span class="widg_teaser__arrow"></span>
 	</div>
+
 </div>

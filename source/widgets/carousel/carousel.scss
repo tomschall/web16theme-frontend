@@ -120,7 +120,13 @@
 			background-color: $colorLightGray;
 
 			.widg_carousel__arrow {
-				animation: arrowAnimationBig $animationDuration 1;
+				&:before {
+					left: 20px;
+				}
+
+				&:after {
+					min-width: 20px;
+				}
 			}
 		}
 
@@ -131,11 +137,9 @@
 }
 
 .widg_carousel__category {
-	text-transform: uppercase;
 	color: $colorTextGrey;
 	display: block;
 	line-height: 1.8;
-	letter-spacing: 1px;
 	font-size: 1rem;
 	font-weight: 600;
 
@@ -173,7 +177,7 @@
 }
 
 .widg_carousel__arrow {
-	@include iconDataurl('pfeil-black');
+	@include iconDataurl('triangle-arrow_right');
 	@include noStyledButton();
 
 	position: absolute;
@@ -198,6 +202,33 @@
 	&:hover,
 	&:active {
 		background-color: transparent;
+	}
+
+	&:before {
+		width: 7px;
+		height: 11px;
+
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 12px;
+
+		transition: all $transitionLength / 5 $transitionEase;
+	}
+
+	&:after {
+		height: 1px;
+		background-color: $colorBlack;
+		min-width: 12px;
+
+		content: " ";
+		display: block;
+
+		position: absolute;
+		top: 50%;
+
+		transform: translateY(-50%);
+		transition: all $transitionLength / 5 $transitionEase;
 	}
 }
 

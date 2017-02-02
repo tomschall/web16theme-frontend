@@ -22,6 +22,10 @@
 		+ .widg_accordeon {
 			margin-top: 18px;
 		}
+
+		&.startpage__title {
+			padding-bottom: 16px;
+		}
 	}
 
 	img {
@@ -123,7 +127,7 @@ table.content__table {
 
 .content__table {
 	th, td {
-		padding: $gutterWidth $gutterWidth $gutterWidth 0;
+		padding: $gutterWidth - 5 $gutterWidth $gutterWidth - 5 18px;
 		vertical-align: top;
 		text-align: left;
 
@@ -134,6 +138,7 @@ table.content__table {
 	tr {
 		th {
 			border-bottom: 1px solid $colorBlack;
+			background-color: $colorLightGray;
 		}
 	}
 

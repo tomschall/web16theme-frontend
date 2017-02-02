@@ -13,7 +13,8 @@ var templateData = {
 			title: 'Nachwuchsförderung',
 			description: 'Der wissenschaftliche Nachwuchs wird an der FHNW unter spezieller Berücksichtigung von Gleichstellungsaspekten gefördert.',
 			url: '#',
-			linkText: 'Mehr Erfahren'
+			linkText: 'Mehr Erfahren',
+			category: 'Das Kategorie'
 		},
 		data = _.merge(defaultData, {
 			meta: {

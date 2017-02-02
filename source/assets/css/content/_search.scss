@@ -115,7 +115,7 @@ a.search__cat-title {
 		display: block;
 		opacity: 1;
 
-		padding: 12px 13px;
+		padding: 12px 42px 12px 13px;
 
 		font-size: 1.1666667rem;
 		text-decoration: none;
@@ -128,6 +128,7 @@ a.search__cat-title {
 		span:not(.bold):before {
 			transition: transform $transitionLength / 3 $transitionEase;
 			display: inline-block;
+			font-weight: 400;
 		}
 
 		&:after {

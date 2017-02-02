@@ -57,3 +57,38 @@
 
 	}
 }
+
+.widg_full_bleed_teaser .widg_teaser {
+	position: absolute;
+	max-width: 50%;
+	min-width: 50%;
+	top: 50%;
+	transform: translateY(-50%);
+
+	padding: $gutterWidth * 2;
+	background-color: $colorBg;
+
+	.widg_teaser__arrow {
+		position: static;
+		float: left;
+	}
+
+	p {
+		margin-bottom: 22px;
+		margin-top: 13px;
+	}
+
+	&:hover {
+		background-color: $colorLightGray;
+	}
+
+	.widg_teaser__category {
+		margin-bottom: 0;
+	}
+
+	@include mq($to: small) {
+		position: static;
+		min-width: 100%;
+		max-width: 100%;
+	}
+}
