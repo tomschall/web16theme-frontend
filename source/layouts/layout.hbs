@@ -9,8 +9,8 @@
 	<title>{{#if title}}{{title}} – {{/if}}{{project}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="/assets/css/main{{#unless env.dev}}.min{{/unless}}.css">
-	<link rel="stylesheet" href="/assets/css/print.css">
+	<link rel="stylesheet" href="/assets/css/main{{#unless env.dev}}.min{{/unless}}.css{{#if env.ver}}?{{env.ver}}{{/if}}">
+	<link rel="stylesheet" href="/assets/css/print.css" media="print">
 
   <link rel="apple-touch-icon" sizes="57x57" href="/assets/media/icons/device/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/assets/media/icons/device/apple-icon-60x60.png">
@@ -34,7 +34,7 @@
 		<link rel="stylesheet" href="/assets/css/dev.css">
 	{{/if}}
 
-  <script src="/assets/js/head{{#unless env.dev}}.min{{/unless}}.js"></script>
+  <script src="/assets/js/head{{#unless env.dev}}.min{{/unless}}.js{{#if env.ver}}?{{env.ver}}{{/if}}"></script>
 
 	{{#if env.dev}}
 		<script src="/assets/js/dev.js"></script>
@@ -83,7 +83,7 @@
 
 
 
-	<script src="/assets/js/main{{#unless env.dev}}.min{{/unless}}.js"></script>
+	<script src="/assets/js/main{{#unless env.dev}}.min{{/unless}}.js{{#if env.ver}}?{{env.ver}}{{/if}}"></script>
 
 	{{#block "scripts"}}
 		{{#if meta.testScripts}}
