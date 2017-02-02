@@ -2,7 +2,7 @@
 	@include span(3);
 	position: relative;
 	padding-top: $basicPush * 1.7;
-	padding-bottom: $basicPush * 5;
+	padding-bottom: $basicPush * 2.5;
 	margin-bottom: $basicPush * 4;
 
 	@include mq($to: small) {

@@ -30,7 +30,7 @@
 	transition: all $transitionLength / 2 $transitionEase;
 
 	@include mq($to: medium) {
-		transition: all $transitionLength $transitionEase;
+		transition: all $transitionLength / 2 $transitionEase;
 	}
 
 	z-index: -1;
