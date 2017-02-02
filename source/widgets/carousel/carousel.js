@@ -312,7 +312,7 @@
 			ratio = videoWidth / videoHeight;
 
 			if (ratio >= carouselRatio) {
-				$(value).height(carouselHeight);
+				// $(value).height(carouselHeight);
 
 				transformValue = -1 * (($(value).width() - carouselWidth) / 2);
 
