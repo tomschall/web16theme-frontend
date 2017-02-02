@@ -320,10 +320,6 @@
 					});
 				});
 
-				if ($form.find('#form-widgets-replyto').length > 0) {
-					temprules[validationMapping.email.ruleName] = validationMapping.email.initialValue;
-				}
-
 				if (temprules !== {}) {
 					rules[$field.find('input, textarea, select').attr('name')] = temprules;
 					messages[$field.find('input, textarea, select').attr('name')] = tempmessages;
@@ -331,6 +327,10 @@
 					$form.addClass('has-validation');
 				}
 			});
+
+			if ($form.find('#form-widgets-replyto').length > 0) {
+				rules['form.widgets.replyto'].email = validationMapping.email.initialValue;
+			}
 
 			$form.validate({
 				onfocusout: function(element) {
@@ -348,6 +348,7 @@
 				},
 
 				rules: rules,
+				lang: 'de',
 				messages: messages,
 				ignore: [],
 				errorPlacement: function(error, element) {

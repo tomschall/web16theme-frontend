@@ -10,6 +10,7 @@ var templateData = {
 	persons: [
 		{
 			fullname: 'Prof. Dr. Adrian Schwaninger',
+			contactPageURL: '#',
 			jobDescription: 'Institutsleitung',
 			phone: '+41 62 957 24 26',
 			email: 'adrian.schwaninger@fhnw.ch',
@@ -20,6 +21,7 @@ var templateData = {
 		},
 		{
 			fullname: 'Prof. Dr. Adrian Schwaninger',
+			contactPageURL: '#',
 			jobDescription: 'Institutsleitung',
 			phone: '+41 62 957 24 26',
 			email: 'adrian.schwaninger@fhnw.ch',

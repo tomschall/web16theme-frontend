@@ -7,7 +7,11 @@
       </div>
       <div class="widg_contact__info">
 
-        <span class="widg_contact__label">{{fullname}}</span>
+				{{#if contactPageURL}}
+					<a href="{{contactPageURL}}"/><span class="widg_contact__label">{{fullname}}</span></a>
+				{{else}}
+					<span class="widg_contact__label">{{fullname}}</span>
+				{{/if}}
         <span class="widg_contact__text">{{jobDescription}}</span>
         <span class="widg_contact__label">{{../langStrings.telephone}}:</span>
         <span class="widg_contact__text">{{phone}}</span>
