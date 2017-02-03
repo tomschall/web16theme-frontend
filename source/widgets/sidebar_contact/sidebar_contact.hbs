@@ -10,7 +10,7 @@
 					{{/if}}
 					<dl>
 						<dt class="contact__name"><a href="{{url}}">{{name}}</a></dt>
-						{{#if jobDescr}}<dd>{{jobDescr}}</dd>{{/if}}
+						<dd>{{#if jobDescr}}{{jobDescr}}{{/if}}</dd>
 						<dt>{{../langStrings.telephone}}</dt>
 						<dd><a href="tel:{{telephone}}">{{telephone}}</a></dd>
 						<dt>{{../langStrings.email}}</dt>
@@ -18,7 +18,7 @@
 
 						{{#if location}}
 							<dt>{{../../langStrings.location}}</dt>
-							<dd>{{location}}</dd>
+							<dd>{{{location}}}</dd>
 						{{/if}}
 					</dl>
 			{{/each}}

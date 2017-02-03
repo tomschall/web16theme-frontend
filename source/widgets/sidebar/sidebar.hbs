@@ -16,11 +16,24 @@
     <div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
 	{{/if}}
 
-	{{#each widgets.contact}}
-		{{> "widgets/sidebar_contact/sidebar_contact" elementData}}
+	{{#if widgets.contact}}
+		{{> "widgets/sidebar_contact/sidebar_contact" widgets.contact}}
 		<div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
-	{{/each}}
+	{{/if}}
 
+	{{#if widgets.secretariat }}
+		{{> "widgets/sidebar_contact/sidebar_contact" widgets.secretariat}}
+		<div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
+	{{/if}}
 
+	{{#if widgets.degreeleadership}}
+		{{> "widgets/sidebar_contact/sidebar_contact" widgets.degreeleadership}}
+		<div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
+	{{/if}}
+
+	{{#if widgets.leadership}}
+		{{> "widgets/sidebar_contact/sidebar_contact" widgets.leadership}}
+		<div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
+	{{/if}}
 
 </div>
