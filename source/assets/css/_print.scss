@@ -1,20 +1,20 @@
 body {
-	font-family: inherit;
-	background: none;
-	color: black;
+font-family: inherit;
+background: none;
+color: black;
 }
 
 .page_wrapper,
 .page_content,
 .layout_content {
-    float: left;
-    padding: 0;
-    margin: 0;
-    width: 100%;
+float: left;
+padding: 0;
+margin: 15pt 0;
+width: 100%;
 }
 
 .page_content .content__element {
-    margin-bottom: 10pt;
+margin-bottom: 10pt;
 }
 
 /* Text */
@@ -22,36 +22,41 @@ p, .text__lead,
 ul, li,
 .page_content ul:not(.not-default):not(.select2-selection__rendered) li,
 .event__date-location {
-	font-size: 12pt;
+font-size: 12pt;
 }
 
 h2, h3 {
-    font-size: 14pt;
-    border-bottom: 1pt solid black;
+font-size: 14pt;
+border-bottom: 1pt solid black;
 }
 
 /* Headers */
 h1:after, h2.startpage__title:after {
-	border-bottom: 4pt solid black;
-	background: none;
+border-bottom: 4pt solid black;
+background: none;
 }
 h4, h5, h6 {
-	margin: 0 !important;
-    padding: 0 !important;
-    border-bottom: none !important;
+margin: 0 !important;
+padding: 0 !important;
+border-bottom: none !important;
 }
 
 /* Blockquote */
 .widg_blockquote {
-    margin-top: 20px;
-    padding: 20px 100% 20px !important;
+margin-top: 20px;
+padding: 20px 100% 20px !important;
 }
 
 .blockquote__quote p {
-    font-size: 11pt;
+font-size: 11pt;
 }
 
-.widg_header,
+.widg_menubuttons,
+.widg_menubuttons__menu,
+.widg_header__inner-foot,
+.widg_header__nav,
+.widg_navigation__sub-wrapper,
+.widg_searchbar__btn,
 .widg_actionbuttons,
 .widg_footer,
 .widg_expertise_areas,
@@ -68,12 +73,25 @@ h4, h5, h6 {
 .widg_location_slider nav ul,
 .responsive-video,
 .image_gallery__arrow {
-	display: none;
+display: none;
+}
+
+/* Logo */
+.widg_logo {
+width: 150%;
+padding: 0;
+margin: 0;
+}
+
+.widg_header {
+margin: 0;
+padding: 0;
+background: transparent;
 }
 /* Force hiding */
 .widg_image_gallery .image_gallery__slider button,
 a.button {
-    display: none !important;
+display: none !important;
 }
 
 /* Reset margin and padding */
@@ -82,28 +100,28 @@ a.button {
 .object__title,
 .object__content,
 .widg_sidebar__object {
-    margin: 0 0 10px 0;
-    padding: 0 0 10px 0;
-    border: none;
+margin: 0 0 10px 0;
+padding: 0 0 10px 0;
+border: none;
 }
 .object__title>h4 {
-    line-height: 2em;
+line-height: 2em;
 }
 /* Widgets */
 .widg_sidebar {
-    width: 100%;
+width: 100%;
 }
 .widg_sidebar_application {
-    border: none;
+border: none;
 }
 
 /* Important Hidings */
 a.anchor-link {
-    display: none !important;
+display: none !important;
 }
 /* Table */
 th, tr, td, .content__table tr td {
-    font-size: 12pt;
-    border-top: 1pt solid black !important;
-    border-bottom: 1pt solid black !important;
+font-size: 12pt;
+border-top: 1pt solid black !important;
+border-bottom: 1pt solid black !important;
 }
