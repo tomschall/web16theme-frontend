@@ -194,7 +194,8 @@ function debounce(fn, delay) {
 
 			$(this.options.domSelectors.input).val(serializedObject.q);
 			$(this.options.domSelectors.input).trigger('keypress');
-			$(this.options.domSelectors.input).select();
+			$(this.options.domSelectors.input)[0].focus();
+			$(this.options.domSelectors.input)[0].select();
 		}
 	};
 
