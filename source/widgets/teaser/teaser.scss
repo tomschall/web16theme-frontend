@@ -202,7 +202,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	position: relative;
-	margin-top: 0px;
+	margin-top: 80px;
 
 	@include mq($to: medium) {
 		padding: 0 $gutterWidth;
