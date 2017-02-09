@@ -26,8 +26,8 @@
 					ruleName: 'selectMultipleRequired',
 					initialValue: true
 				},
-				'email': {
-					ruleName: 'email',
+				'customEmail': {
+					ruleName: 'customEmail',
 					initialValue: true
 				}
 			};
@@ -329,7 +329,8 @@
 			});
 
 			if ($form.find('#form-widgets-replyto').length > 0) {
-				rules['form.widgets.replyto'].email = validationMapping.email.initialValue;
+				rules['form.widgets.replyto'].customEmail = validationMapping.customEmail.initialValue;
+				messages['form.widgets.replyto'].customEmail = " ";
 			}
 
 			var validator = $form.validate({
@@ -386,6 +387,16 @@
 		/**
 		 * Adding additional validator methods
 		 */
+		$.validator.addMethod('customEmail', function(value) {
+			if (value !== '') {
+				var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+				return re.test(value);
+			} else {
+				return true;
+			}
+		});
+
 		$.validator.addMethod('selectRequired', function(value) {
 			return value !== '--NOVALUE--';
 		});
