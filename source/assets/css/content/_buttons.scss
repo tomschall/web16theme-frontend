@@ -47,6 +47,10 @@ input[type="reset"],
 	}
 }
 
+#form-buttons-reset {
+	margin-left: $basicPush;
+}
+
 .button__360 {
 	span {
 		display: inline-block;
