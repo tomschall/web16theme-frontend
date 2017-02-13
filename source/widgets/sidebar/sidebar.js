@@ -128,8 +128,6 @@
 				subnavBottomPosition = $('.widg_subnav').offset().top + $('.widg_subnav').outerHeight(true),
 				margin = sidebarTopPosition - subnavBottomPosition;
 
-		console.log('margin', margin);
-
 		if (margin < 40) {
 			var additionalPush = Math.round(40 - margin),
 					currentMarginTop = parseInt(this.$element.css('marginTop'));
