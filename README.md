@@ -7,6 +7,9 @@ To use it with Plone look into fhnw.web16theme. There is a *deploy_theme.sh*
 script in buildout-fhnw.ch which copies the necessary parts over to
 the Plone integration product.
 
+To build with cache booster run with `ver` option, like this:
+
+ `gulp --dev --ver=``git rev-parse --short HEAD`` `
 
 ---
 
