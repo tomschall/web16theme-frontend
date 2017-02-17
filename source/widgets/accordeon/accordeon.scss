@@ -126,14 +126,24 @@ $colorAvailabilityRed: #f05f1b;
 
 		.button__location {
 			padding-left: 10px;
+			position: relative;
 		}
 
 		.button__date {
 			min-width: 125px;
+			max-height: 33px;
 		}
 
 		.button__availability {
 			text-align: right;
+
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 0;
+
+			width: 18px;
+			height: 18px;
 
 			&:after {
 				display: block;
@@ -147,11 +157,6 @@ $colorAvailabilityRed: #f05f1b;
 				background-color: $colorBlack;
 
 				margin-left: 8px;
-				transform: translateY(7px);
-
-				@include mq($to: small) {
-					transform: translateY(5px);
-				}
 			}
 
 			&.state-red:after {
@@ -161,14 +166,10 @@ $colorAvailabilityRed: #f05f1b;
 			&.state-green:after {
 				background-color: $colorAvailabilityGreen;
 			}
-
-			@include mq($to: large) {
-				width: 28%;
-			}
 		}
 
 		.button__location {
-			width: 15%;
+			width: calc(100% - 125px - 180px)
 		}
 
 		&:before,

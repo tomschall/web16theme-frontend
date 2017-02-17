@@ -12,7 +12,7 @@ var templateData = {
 				{
 					uid: '1',
 					eventStart: '19.09.2016',
-					eventLocation: 'Basel',
+					eventLocation: 'Himelried Waldspielpatz Waldeck',
 					availableSeats: 3,
 					availabilityState: 'state-red',
 					informationEntries: [
@@ -54,7 +54,7 @@ var templateData = {
 				{
 					uid: '2',
 					eventStart: '13.05.2017',
-					eventLocation: 'Basel',
+					eventLocation: 'Himelried Waldspielpatz Waldeck',
 					availableSeats: 12,
 					availabilityState: 'state-green',
 					informationEntries: [
@@ -97,7 +97,7 @@ var templateData = {
 				{
 					uid: '3',
 					eventStart: '17.09.2017',
-					eventLocation: 'Basel',
+					eventLocation: 'Himelried Waldspielpatz Waldeck',
 					availableSeats: 12,
 					availabilityState: 'state-green',
 					informationEntries: [
