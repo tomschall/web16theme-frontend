@@ -47,7 +47,9 @@ var templateData = {
 						}
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-					btnUrl: '#'
+					btnUrl: '#',
+					applyLabel: 'Anmelden',
+					applicationIsActive: true
 				},
 				{
 					uid: '2',
@@ -88,7 +90,9 @@ var templateData = {
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
 					btnUrl: '#',
-					iCalURL: '#'
+					iCalURL: '#',
+					applyLabel: 'Anmelden',
+					applicationIsActive: false
 				},
 				{
 					uid: '3',
@@ -129,7 +133,9 @@ var templateData = {
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
 					btnUrl: '#',
-					iCalURL: '#'
+					iCalURL: '#',
+					applyLabel: 'Warteliste',
+					applicationIsActive: true
 				}
 			],
 			langStrings: {
@@ -137,8 +143,7 @@ var templateData = {
 				eventStart: 'Durchführungsbeginn',
 				eventLocation: 'Veranstaltungsort',
 				availableSeats: 'Freie Plätze',
-				applyOnline: 'Online Anmelden',
-				applyLabel: 'Anmelden'
+				applyOnline: 'Online Anmelden'
 			}
 		},
 		data = _.merge(defaultData, {

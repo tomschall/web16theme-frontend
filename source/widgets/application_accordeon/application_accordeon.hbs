@@ -20,7 +20,7 @@
 						{{/if}}
 
           </button>
-					<a href="{{btnUrl}}" class="button button__apply mini_button">{{../langStrings.applyLabel}}</a>
+					<a href="{{btnUrl}}" class="button button__apply mini_button" {{#if applicationIsActive}}{{else}}disabled="disabled"{{/if}}>{{applyLabel}}</a>
 				</div>
         <div class="widg_accordeon__content" aria-hidden="true" data-application-accordeon="content">
           <dl>
