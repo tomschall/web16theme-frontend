@@ -192,10 +192,17 @@ function debounce(fn, delay) {
 		if (localStorage.getItem('fhnw_search_query') !== null) {
 			var serializedObject = $.parseJSON(localStorage.getItem('fhnw_search_query'));
 
+			$(this.options.domSelectors.input).mouseup(function(e) {
+				e.preventDefault();
+			});
+
+			$(this.options.domSelectors.input).one('focus', function() {
+				$(this).select();
+			});
+
 			$(this.options.domSelectors.input).val(serializedObject.q);
 			$(this.options.domSelectors.input).trigger('keypress');
-			$(this.options.domSelectors.input)[0].focus();
-			$(this.options.domSelectors.input)[0].select();
+			$(this.options.domSelectors.input).focus();
 		}
 	};
 
