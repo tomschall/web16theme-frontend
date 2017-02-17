@@ -330,7 +330,7 @@
 
 			if ($form.find('#form-widgets-replyto').length > 0) {
 				rules['form.widgets.replyto'].customEmail = validationMapping.customEmail.initialValue;
-				messages['form.widgets.replyto'].customEmail = " ";
+				messages['form.widgets.replyto'].customEmail = ' ';
 			}
 
 			var validator = $form.validate({
