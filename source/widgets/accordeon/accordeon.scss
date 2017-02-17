@@ -113,7 +113,6 @@ $colorAvailabilityRed: #f05f1b;
 			width: 10%;
 			display: block;
 			float: left;
-
 			@include mq($to: large) {
 				width: 18%;
 			}
@@ -126,12 +125,13 @@ $colorAvailabilityRed: #f05f1b;
 
 		.button__location {
 			padding-left: 10px;
+			padding-right: 25px;
 			position: relative;
 		}
 
 		.button__date {
-			min-width: 125px;
 			max-height: 33px;
+			width: 125px;
 		}
 
 		.button__availability {
@@ -169,7 +169,7 @@ $colorAvailabilityRed: #f05f1b;
 		}
 
 		.button__location {
-			width: calc(100% - 125px - 180px)
+			width: calc(100% - 125px - 200px)
 		}
 
 		&:before,
@@ -202,7 +202,6 @@ $colorAvailabilityRed: #f05f1b;
 			span.button__availability,
 			span.button__date {
 				display: inline-block;
-				width: auto;
 			}
 
 		}
