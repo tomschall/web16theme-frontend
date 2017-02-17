@@ -1,3 +1,10 @@
+body {
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}
+
 .content__element {
 	padding-bottom: $basicPush * 3;
 

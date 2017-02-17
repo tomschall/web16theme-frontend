@@ -49,20 +49,10 @@ h6 {
 /* Blockquote */
 .widg_blockquote {
 	margin-top: 20px;
-	padding: 20px 100% !important;
 }
 
 .blockquote__quote p {
 	font-size: 11pt;
-}
-
-.page_content .content__element {
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-}
-
-.widg_teaser__wrapper {
-    margin-top: 10px;
 }
 
 .bleed__inner.site-has-sidebar,
@@ -104,11 +94,13 @@ h6 {
 	padding: 0;
 	background: transparent;
 }
+
 /* Force hiding */
 .widg_image_gallery .image_gallery__slider button,
 a.button {
 	display: none !important;
 }
+
 /* Reset margin and padding */
 .object__content,
 .object__title,
@@ -146,11 +138,7 @@ a.anchor-link {
     margin: 0;
 }
 
-/* Contact Widget */
-.widg_contact {
-    border-top: none;
-    border-bottom: none;
-}
+/* Kontakt Widget */
 .widg_contact__portrait {
     width: 100px;
 }
