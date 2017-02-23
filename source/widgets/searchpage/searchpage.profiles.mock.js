@@ -8,6 +8,10 @@ var data = {
 	'categoryUrlText': 'Alle anzeigen (12)',
 	'items': [
 		{
+				img: {
+					src: '/assets/media/img/hans_muster.png',
+					alt: 'Hans Muster'
+				},
 				title: 'Prof. Dr. Barbara Gorssenbacher Künzler',
 				'@id': '#',
 				description: 'Co-Leiterin der Professur für Französischdidaktik und ihre Disziplinen',
@@ -17,10 +21,22 @@ var data = {
 				email: 'barbara.grossenbacher@fhnw.ch'
 			},
 			{
+				img: {
+					src: '/assets/media/img/esther_muster.png',
+					alt: 'Esther Muster'
+				},
 				Title: 'Prof. Dr. Barbara Gorssenbacher Künzler',
 				'@id': '#',
 				description: 'Co-Leiterin der Professur für Französischdidaktik und ihre Disziplinen',
 				standortadresse: 'Pädagogische Hochschule FHNW<br/>Institut Primarstufe<br/>Obere Sternengasse 7<br/>CH - 4502 Solothurn',
+				phone: '+ 41 62 957 24 26'
+			},
+			{
+				img: {},
+				Title: 'Prof. Peter Muster',
+				'@id': '#',
+				description: 'Leiterin der Professur für Französischdidakt',
+				standortadresse: 'Pädagogische Hochschule FHNW<br/>CH - 4502 Solothurn',
 				phone: '+ 41 62 957 24 26'
 			}
 		],
