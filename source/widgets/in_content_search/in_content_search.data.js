@@ -7,7 +7,56 @@ var _ = require('lodash'),
 
 var templateData = {
 			title: 'Suche nach Weiterbildungsangeboten',
-			searchFilterPageURL: '/pages/search_filter/search_filter.html'
+			searchFilterPageURL: '/pages/search_filter/search_filter.html',
+			facultyOptions: [
+						{
+							'optionLabel': 'International Studies',
+							'optionValue': 'is'
+						},
+						{
+							'optionLabel': 'Informatik',
+							'optionValue': 'it'
+						},
+						{
+							'optionLabel': 'Life Sciences',
+							'optionValue': 'ls'
+						},
+						{
+							'optionLabel': 'Musik',
+							'optionValue': 'mc'
+						},
+						{
+							'optionLabel': 'Pädagogik',
+							'optionValue': 'ph'
+						},
+						{
+							'optionLabel': 'Psychologie',
+							'optionValue': 'ps'
+						},
+						{
+							'optionLabel': 'Soziale Arbeit',
+							'optionValue': 'sw'
+						},
+						{
+							'optionLabel': 'Technik',
+							'optionValue': 'tn'
+						}
+					],
+			studyTypeOptions:
+					[
+						{
+							'optionLabel': 'MAS',
+							'optionValue': 'mas'
+						},
+						{
+							'optionLabel': 'CAS',
+							'optionValue': 'cas'
+						},
+						{
+							'optionLabel': 'DAS',
+							'optionValue': 'das'
+						}
+					]
 		},
 		data = _.merge(defaultData, {
 			meta: {
