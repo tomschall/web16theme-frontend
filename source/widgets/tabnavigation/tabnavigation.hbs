@@ -1,4 +1,7 @@
 <div class="widg_tabnavigation" data-init="tabnavigation">
+	{{#if title}}
+		<h2>{{title}}</h2>
+	{{/if}}
   <nav class="widg_tabnavigation__nav only-desktop">
 		<ul class="not-default">
 			{{#each tabs}}
