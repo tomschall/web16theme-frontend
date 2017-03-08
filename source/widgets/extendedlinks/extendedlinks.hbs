@@ -1,4 +1,10 @@
 <div class="widg_extendedlinks" data-init="extendedlinks">
+	{{#if title}}
+		<h2>{{title}}</h2>
+	{{/if}}
+	{{#if description}}
+		<p>{{description}}</p>
+	{{/if}}
 	{{#each links}}
 		<div class="widg_extendedlinks__entry {{#if date}}has_date{{/if}} {{#if description}}has_description{{/if}}">
 			<a href={{url}}>

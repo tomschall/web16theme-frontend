@@ -2,6 +2,9 @@
 	{{#if title}}
 			<h2>{{title}}</h2>
 	{{/if}}
+	{{#if description}}
+		<p>{{description}}</p>
+	{{/if}}
 	<ul class="not-default">
 		{{#each listEntries}}
 			<li class="widg_linklist___entry {{#if isExternal}}is_external{{/if}}">
