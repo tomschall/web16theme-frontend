@@ -1,6 +1,9 @@
 {{#if title}}
 	<h2 class="teaser__title {{#if isOnStartpage}}is_on_startpage{{/if}}">{{title}}</h2>
 {{/if}}
+	{{#if description}}
+		<p>{{description}}</p>
+	{{/if}}
 <div class="widg_teaser__wrapper {{#if isOnStartpage}}is_on_startpage{{/if}}">
 
 	{{#if moreButton}}
