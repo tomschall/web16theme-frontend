@@ -6,9 +6,9 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 	meta: {
-		title: 'Suche mit Filter - Veranstaltungen'
+		title: 'Veranstaltungen'
 	},
-	title: 'Alle Veranstaltungen',
+	title: 'Veranstaltungen',
 	langStrings: {
 		labels: {
 			term: 'Suchbegriff',

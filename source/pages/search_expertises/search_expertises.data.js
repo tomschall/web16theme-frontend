@@ -6,9 +6,9 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Suche mit Filter - Alle Kernkompetenzen'
+			title: 'Kernkompetenzen'
 		},
-		title: 'Alle Kernkompetenzen',
+		title: 'Kernkompetenzen',
 		langStrings: {
 			labels: {
 				term: 'Suchbegriff',
