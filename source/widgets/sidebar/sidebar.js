@@ -129,7 +129,8 @@
 				margin = sidebarTopPosition - subnavBottomPosition;
 
 		if ($('.widg_subnav').length > 0) {
-			$('.widg_subnav').offset().top + $('.widg_subnav').outerHeight(true)
+			subnavBottomPosition = $('.widg_subnav').offset().top + $('.widg_subnav').outerHeight(true);
+			margin = sidebarTopPosition - subnavBottomPosition;
 		}
 
 		if (margin < 40) {
