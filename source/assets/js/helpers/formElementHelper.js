@@ -60,6 +60,28 @@
 	}
 
 	/**
+	 * Custom reset event handler to reset all the select2 fields
+	 */
+	function addResetEventHandler() {
+		$('.form form').each(function(formIdx, form) {
+			var $form = $(form);
+
+			$form.on('reset.fHelper', function() {
+				$('.select-widget').each(function(selectIdx, select) {
+					var $select = $(select),
+							$noValueOptionLength = $select.find('option[value="--NOVALUE--"]').length;
+
+					if ($noValueOptionLength > 0) {
+						$select.val('--NOVALUE--').trigger('change');
+					} else {
+						$select.val(null).trigger('change');
+					}
+				});
+			});
+		});
+	}
+
+	/**
 	 * Initializes the text input fields
 	 */
 	function initTextInputFields() {
@@ -274,6 +296,8 @@
 				console.log(tempArray);
 			} */
 		});
+
+		addResetEventHandler($selectFields);
 
 		if (!eventsSet) {
 			addSelect2Events();

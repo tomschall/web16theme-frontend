@@ -52,11 +52,7 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		console.log('Widget "in_content_search" initialized');
-
 		var searchParameters = estatico.search.getSearchParameters();
-
-		console.log(searchParameters);
 
 		this.fillForm(searchParameters);
 	};
