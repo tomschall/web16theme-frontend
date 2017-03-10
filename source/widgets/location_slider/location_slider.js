@@ -191,7 +191,6 @@
 		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
 			var $mapElement = $(element),
 					mapProp = _.assign(this.options.mapProps, {
-						center: new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))),
 						styles: this.options.mapStyles,
 						zoom: parseInt($mapElement.data('zoomlevel'))
 					}),
@@ -266,14 +265,50 @@
 	 * @param map
 	 */
 	Widget.prototype.addMarker = function($mapElement, map) {
+		var hasPlaceID = false,
+				marker = null,
+				markerProps = null,
+				that = this;
 
-		var markerProps = _.assign({
-					position: new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))),
-					icon: this.options.markerIconProps
-				}),
+		if (typeof $mapElement.data('placeid') !== typeof undefined) {
+
+			hasPlaceID = true;
+		}
+
+		if (hasPlaceID) {
+			var service = new google.maps.places.PlacesService(map),
+					placeID = $mapElement.data('placeid');
+
+			service.getDetails({
+				placeId: placeID
+			}, function(result) {
+
+				console.log('result', result.geometry.location.lat());
+
+				markerProps = _.assign({
+					icon: that.options.markerIconProps,
+					position: result.geometry.location
+				});
+
 				marker = new google.maps.Marker(markerProps);
 
-		marker.setMap(map);
+				marker.setMap(map);
+
+				map.setCenter(result.geometry.location);
+			});
+		} else {
+			markerProps = _.assign({
+				position: new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))),
+				icon: this.options.markerIconProps
+			});
+
+			marker = new google.maps.Marker(markerProps);
+
+			marker.setMap(map);
+
+			map.setCenter(new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))));
+		}
+
 	};
 
 	/**

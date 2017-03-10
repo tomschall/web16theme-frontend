@@ -27,10 +27,7 @@ var templateData = {
 					},
 					locationPageURL: '/pages/location_brugg/location_brugg.html',
 					routeURL: 'https://maps.google.ch',
-					coordinates: {
-						x: '7.907837',
-						y: '47.347906'
-					},
+					placeID: 'ChIJt9J5wzMwkEcRgWnc5loV14I',
 					mobileImage: {
 						src: '/assets/media/img/location_accordeon_olten.png',
 						alt: 'Standort Olten auf Karte{{'
