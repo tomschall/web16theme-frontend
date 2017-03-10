@@ -138,10 +138,10 @@ gulp.task(taskName, function (cb) {
 			.pipe(gulp.dest(taskConfig.dest))
 
 			// Create PNGs using PhantomJS
-			.pipe(raster().on('error', helpers.errors))
-			.pipe(rename({
-				extname: '.png'
-			}))
+			// .pipe(raster().on('error', helpers.errors))
+			// .pipe(rename({
+			// 	extname: '.png'
+			/// }))
 
 			// Optimize PNGs
 			.pipe(imagemin())
