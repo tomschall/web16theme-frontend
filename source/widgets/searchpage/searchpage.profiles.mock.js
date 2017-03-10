@@ -12,8 +12,8 @@ var data = {
 				'@id': '#',
 				description: 'Co-Leiterin der Professur für Französischdidaktik und ihre Disziplinen',
 				standortadresse: 'Pädagogische Hochschule FHNW<br/>Institut Primarstufe<br/>Obere Sternengasse 7<br/>CH - 4502 Solothurn',
-				phone: '+ 41 62 957 24 26',
-				central_phone: '+ 41 62 957 24 26',
+				telefonnummer: '+ 41 62 957 24 26',
+				telefonnummer_central: '+ 41 62 957 24 26',
 				email: 'barbara.grossenbacher@fhnw.ch'
 			},
 			{
@@ -21,14 +21,14 @@ var data = {
 				'@id': '#',
 				description: 'Co-Leiterin der Professur für Französischdidaktik und ihre Disziplinen',
 				standortadresse: 'Pädagogische Hochschule FHNW<br/>Institut Primarstufe<br/>Obere Sternengasse 7<br/>CH - 4502 Solothurn',
-				phone: '+ 41 62 957 24 26'
+				telefonnummer: '+ 41 62 957 24 26'
 			},
 			{
 				Title: 'Prof. Peter Muster',
 				'@id': '#',
 				description: 'Leiterin der Professur für Französischdidakt',
 				standortadresse: 'Pädagogische Hochschule FHNW<br/>CH - 4502 Solothurn',
-				phone: '+ 41 62 957 24 26'
+				telefonnummer: '+ 41 62 957 24 26'
 			}
 		],
 	'facets': [

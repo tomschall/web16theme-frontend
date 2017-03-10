@@ -95,6 +95,12 @@
 		}
 	}
 
+	.cat_page_profile_result {
+		td:last-child:after {
+			transform: translateY(10px);
+		}
+	}
+
 	tr:hover {
 		td {
 			transform: translateX(5px);
