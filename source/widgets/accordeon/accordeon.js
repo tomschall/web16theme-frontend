@@ -61,6 +61,21 @@
 		if (this.$element.data('multiple')) {
 			this.options.allowsMultiple = true;
 		}
+
+		if (window.location.hash) {
+			this.checkAndOpenHash(window.location.hash);
+		}
+	};
+
+	// Checks if hash can be found and opens it if necessary
+	Widget.prototype.checkAndOpenHash = function(hash) {
+		var hasChildWithHash = this.$element.find(hash).length > 0;
+
+		if (hasChildWithHash) {
+			this.addActiveClass(this.$element.find(hash).find(this.options.domSelectors.button));
+		}
+
+
 	};
 
 	/**

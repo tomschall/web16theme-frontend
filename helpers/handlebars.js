@@ -116,3 +116,8 @@ handlebars.registerHelper('dotdotdot_teaser', function(str) {
 	return str;
 });
 
+handlebars.registerHelper('get_id', function (str) {
+	str = str.replace(' ', '_');
+
+	return str.replace(/\W/g, '');
+});

@@ -9,7 +9,7 @@
 		<ul class="not-default">
 			{{#each tabs}}
 				<li>
-					<button class="not-default" aria-expanded="false" data-tabnavigation="button">{{title}}</button>
+					<button class="not-default" aria-expanded="false" data-tabnavigation="button" id="{{get_id title}}">{{title}}</button>
 				</li>
 			{{/each}}
 		</ul>
@@ -17,7 +17,7 @@
 	</nav>
 	<div class="widg_tabnavigation__content">
 		{{#each tabs}}
-			<div class="content__entry-wrapper">
+			<div class="content__entry-wrapper" >
 				<button class="only-phone not-default content__accordeon-button" data-tabnavigation="accordeonButton" aria-expanded="false">{{title}}</button>
 				<div class="content__entry" data-tabnavigation="content" aria-hidden="true">
 					{{{tabContent}}}

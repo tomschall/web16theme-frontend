@@ -74,6 +74,20 @@
 
 		this.addEventHandlers();
 		this.setElementActive(this.$element.find(this.options.domSelectors.button).first());
+
+		if (window.location.hash) {
+			this.checkAndOpenHash(window.location.hash);
+		}
+
+	};
+
+	// Checks if hash can be found and opens it if necessary
+	Widget.prototype.checkAndOpenHash = function(hash) {
+		var hasChildWithHash = this.$element.find(hash).length > 0;
+
+		if (hasChildWithHash) {
+			this.setElementActive(this.$element.find(hash));
+		}
 	};
 
 	/**

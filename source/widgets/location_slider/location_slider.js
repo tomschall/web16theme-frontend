@@ -283,8 +283,6 @@
 				placeId: placeID
 			}, function(result) {
 
-				console.log('result', result.geometry.location.lat());
-
 				markerProps = _.assign({
 					icon: that.options.markerIconProps,
 					position: result.geometry.location
