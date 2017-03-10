@@ -43,7 +43,8 @@ function debounce(fn, delay) {
 				countNumber: '[data-' + name + '="countNumber"]',
 				moreResultsBtn: '[data-' + name + '="moreResultsBtn"]',
 				moreResultsBtnWrapper: '[data-' + name + '="moreResultsBtnWrapper"]',
-				catPageResult: '.cat_page_result'
+				catPageResult: '.cat_page_result',
+				searchParameterBox: '[data-' + name + '="parameter-box"]'
 			},
 			stateClasses: {
 				isFilled: 'is_filled',
@@ -51,7 +52,8 @@ function debounce(fn, delay) {
 				showResults: 'show_results',
 				isVisible: 'is_visible',
 				isActive: 'is_active',
-				elementHidden: 'element-hidden'
+				elementHidden: 'element-hidden',
+				isHidden: 'is_hidden'
 			},
 			listItemSpanClasses: {
 				title: 'title'
@@ -170,6 +172,10 @@ function debounce(fn, delay) {
 		 */
 		$(this.options.domSelectors.resetBtn).on('click.' + this.uuid, function() {
 			this.resetFields();
+		}.bind(this));
+
+		$(this.options.domSelectors.searchParameterBox).on('click.' + this.uuid, function() {
+			$(this.options.domSelectors.searchParameterBox).focus().select();
 		}.bind(this));
 	};
 
@@ -406,6 +412,8 @@ function debounce(fn, delay) {
 
 		$resultsTd.unbind('click.' + this.uuid);
 
+		this.fillSearchParameterBox();
+
 		/**
 		 * Adding the event to add link functionality to search results
 		 */
@@ -526,6 +534,29 @@ function debounce(fn, delay) {
 	 */
 	Widget.prototype.removeSearchResults = function() {
 		this.$element.find('.search__results .search__cat, .search__results table').remove();
+	};
+
+	/**
+	 * Filling the search parameter box
+	 */
+	Widget.prototype.fillSearchParameterBox = function() {
+		var $searchParamBox = $(this.options.domSelectors.searchParameterBox),
+				cleanedSearchParam = {},
+				blacklistArray = ['category', 'template'];
+
+		for (var key in searchParam) {
+			if (searchParam.hasOwnProperty(key)) {
+				var isBlackListed = $.inArray(key, blacklistArray),
+						val = searchParam[key];
+
+				if (val !== '' && val !== null && isBlackListed === -1) {
+					cleanedSearchParam[key] = val;
+				}
+			}
+		}
+
+		$searchParamBox.val(window.location.href + '?' + $.param(cleanedSearchParam));
+		$searchParamBox.removeClass(this.options.stateClasses.isHidden);
 	};
 
 	/**
