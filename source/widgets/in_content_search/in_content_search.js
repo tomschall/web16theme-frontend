@@ -4,7 +4,6 @@
  * @author Unic AG
  * @copyright Unic AG
  *
- * //@requires ../../../node_modules/some/dependency.js
  */
 
 ;(function($, undefined) {
@@ -53,7 +52,21 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		// console.log('Widget "in_content_search" initialized');
+		console.log('Widget "in_content_search" initialized');
+
+		var searchParameters = estatico.search.getSearchParameters();
+
+		console.log(searchParameters);
+
+		this.fillForm(searchParameters);
+	};
+
+	Widget.prototype.fillForm = function(searchParameters) {
+		for (var key in searchParameters) {
+			if (searchParameters.hasOwnProperty(key)) {
+				$('[data-searchparam="' + key + '"]').val(searchParameters[key]).trigger('change');
+			}
+		}
 	};
 
 	/**

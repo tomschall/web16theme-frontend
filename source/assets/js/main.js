@@ -47,6 +47,7 @@
  * @requires ../../widgets/expertise_areas/expertise_areas.js
  * @requires ../../widgets/newsletter_subscription/newsletter_subscription.js
  * @requires ../../widgets/image_gallery/image_gallery.js
+ * @requires ../../widgets/in_content_search/in_content_search.js
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js
