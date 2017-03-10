@@ -1,6 +1,4 @@
 .widg_searchpage {
-	@include contentWrapper(0, false);
-
 	min-height: 100px;
 
 	.fhnw-spinner {
@@ -96,8 +94,18 @@
 	}
 
 	.cat_page_profile_result {
-		td:last-child:after {
-			transform: translateY(10px);
+		td:last-child {
+			&:after {
+				transform: translateY(10px);
+			}
+
+			@include mq($to: subnav) {
+				display: none;
+			}
+		}
+
+		td:nth-child(2) {
+			max-width: 50%;
 		}
 	}
 
