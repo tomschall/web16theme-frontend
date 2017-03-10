@@ -9,8 +9,9 @@ var templateData = {
 			langStrings: {
 				allResults: 'Alle Suchergebnisse für',
 				all: 'Alle',
-				advancedStudiesFoundPlural: 'Weiterbildungsangebote gefunden',
-				advancedStudiesFoundSingular: 'Weiterbildungsangebot gefunden',
+				resultsFoundPlural: 'Weiterbildungsangebote gefunden',
+				resultsFoundSingular: 'Weiterbildungsangebot gefunden',
+				noResultsFound: 'Keine Ergebnisse gefunden',
 				more: 'Mehr Informationen',
 				toProfile: 'Zum Profil',
 				email: 'E-Mail',
