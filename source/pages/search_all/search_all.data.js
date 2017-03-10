@@ -6,9 +6,9 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Suchseite - Alle Suchergebnisse'
+			title: 'Suchergebnisse'
 		},
-		title: 'Suchseite - Alle Suchergebnisse',
+		title: 'Suchergebnisse',
 		widgets: {
 			header: _.assign({
 				hasPromoTeaser: false,

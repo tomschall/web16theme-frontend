@@ -1,5 +1,11 @@
 <div class="widg_accordeon" data-init="accordeon" {{#if multiple}}data-multiple="true"{{/if}}>
   <!-- Custom html structure if its the accordeon for an online application -->
+	{{#if title}}
+		<h2>{{title}}</h2>
+	{{/if}}
+	{{#if description}}
+		<p>{{description}}</p>
+	{{/if}}
 
 	{{#each entries}}
     <div class="widg_accordeon__entry" data-accordeon="entry">
