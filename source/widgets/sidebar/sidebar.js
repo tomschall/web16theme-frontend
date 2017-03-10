@@ -125,8 +125,12 @@
 
 	Widget.prototype.checkPositionOfSidebar = function() {
 		var sidebarTopPosition = this.$element.offset().top,
-				subnavBottomPosition = $('.widg_subnav').offset().top + $('.widg_subnav').outerHeight(true),
+				subnavBottomPosition = 0,
 				margin = sidebarTopPosition - subnavBottomPosition;
+
+		if ($('.widg_subnav').length > 0) {
+			$('.widg_subnav').offset().top + $('.widg_subnav').outerHeight(true)
+		}
 
 		if (margin < 40) {
 			var additionalPush = Math.round(40 - margin),
