@@ -74,8 +74,6 @@
 		if (hasChildWithHash) {
 			this.addActiveClass(this.$element.find(hash).find(this.options.domSelectors.button));
 		}
-
-
 	};
 
 	/**
