@@ -5,7 +5,7 @@
       <div class="search__holder in_content_search__holder in_content_search__holder___wide  select2__wrapper">
 		<select id="faculty" name="faculty" data-searchparam="faculty" class="custom-select" multiple="multiple">
 		  {{#each facultyOptions}}
-							<option value="{{optionValue}}">{{optionLabel}}</option>
+							<option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
 						{{/each}}
 		</select>
         <label class="formQuestion" for="faculty">Fachbereich wählen ...</label>
@@ -13,7 +13,7 @@
       <div class="search__holder in_content_search__holder select2__wrapper">
 		<select id="study_type" name="study_type" data-searchparam="study_type" class="custom-select" multiple="multiple">
 		  {{#each studyTypeOptions}}
-			  <option value="{{optionValue}}">{{optionLabel}}</option>
+			  <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
 		  {{/each}}
 		</select>
         <label class="formQuestion" for="study_type">Typ</label>
