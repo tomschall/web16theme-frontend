@@ -4,7 +4,7 @@
     <div class="widg_contact__entry">
       <div class="widg_contact__portrait">
 				{{#if contactPageURL}}
-					<a href="{{contactPageURL}}"/><img src="{{img.src}}" alt={{img.alt}}/></a>
+					<a href="{{contactPageURL}}"><img src="{{img.src}}" alt={{img.alt}}/></a>
 				{{else}}
 					<img src="{{img.src}}" alt={{img.alt}}/>
 				{{/if}}
@@ -13,7 +13,7 @@
       <div class="widg_contact__info">
 
 				{{#if contactPageURL}}
-					<a href="{{contactPageURL}}"/><span class="widg_contact__label">{{fullname}}</span></a>
+					<a href="{{contactPageURL}}"><span class="widg_contact__label">{{fullname}}</span></a>
 				{{else}}
 					<span class="widg_contact__label">{{fullname}}</span>
 				{{/if}}
