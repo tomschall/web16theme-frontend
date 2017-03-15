@@ -8,473 +8,597 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var eventsSet = false,
-			stateClasses = {
-				isFilled: 'is_filled',
-				isFocused: 'is_focused'
+	var rules,
+	easyFormValidation = {
+
+		rules: {
+			$form: $('#form'),
+			$formSelect: $('#form select'),
+			$formCheckbox: $('#form input:checkbox'),
+			$formRadio: $('#form input:radio'),
+			required: 'required',
+			error: 'error',
+			$fieldErrorBox: $('.fieldErrorBox'),
+			$formSubmitButton: $('#form-buttons-submit'),
+			$formResetButton: $('#form-buttons-reset'),
+			formSubmitButtonText: $('#form-buttons-submit').val(),
+			formSubmitButtonErrorText_A: 'Das Formular enhält Fehler.',
+			removeChoice: 'select2-selection__choice',
+			optionSelected: 'selected',
+			optionNoValue: '--NOVALUE--',
+			optionListSelector: 'ul.select2-selection__rendered',
+			$optionSelectionchoice: $('ul.select2-selection__rendered').find('li.select2-selection__choice'),
+			$onOptionDropdownSelector: $('span.select2-selection__rendered')
+		},
+
+		init: function() {
+			rules = this.rules;
+
+			easyFormValidation.setup();
+			easyFormValidation.fieldRadioService();
+			easyFormValidation.select2Init();
+			easyFormValidation.addSelect2SelectionID();
+			easyFormValidation.onInput();
+			easyFormValidation.onOptionDropdown();
+			easyFormValidation.onOptionMultiSelect();
+			easyFormValidation.resetForm();
+			easyFormValidation.formSubmitState();
+		},
+
+		selectorFieldRules: {
+			addErrorClass: function($selectedElementID) {
+				$($selectedElementID).parent().addClass(rules.error);
 			},
-			validationMapping = {
-				'required': {
-					ruleName: 'required',
-					initialValue: true
-				},
-				'selectRequired': {
-					ruleName: 'selectRequired',
-					initialValue: true
-				},
-				'selectMultipleRequired': {
-					ruleName: 'selectMultipleRequired',
-					initialValue: true
-				},
-				'customEmail': {
-					ruleName: 'customEmail',
-					initialValue: true
-				}
-			};
 
-	/**
-	 * Checks the active selection for the last visible to add ('...') or for the last over all to remove the comma
-	 * @param $select2
-   */
-	function checkSelection($select2) {
-		var $selections = $select2.find('.select2-selection__choice'),
-				selectionWidth = $select2.find('.select2-selection__rendered').width(),
-				elementsWidth = 0,
-				indexNotVisible = -1;
+			removeErrorClass: function($selectedElementID) {
+				$($selectedElementID).parent().removeClass(rules.error);
+			},
 
-		$selections.removeClass('showEtc hideComma');
+			addErrorMessage: function($selectedElementID, $errorMsg) {
+				$($selectedElementID).prev().text($errorMsg);
+			},
 
-		$selections.each(function(index, element) {
-			elementsWidth += $(element).outerWidth();
+			removeErrorMessage: function($selectedElementID, $errorMsg) {
+				$($selectedElementID).prev().text($errorMsg);
+			},
 
-			if (elementsWidth > selectionWidth && indexNotVisible === -1) {
-				$($selections.get(index - 1)).addClass('showEtc');
+			addCheckboxErrorClass: function($selectedElementID) {
+				$($selectedElementID).parent().parent().addClass(rules.error);
+			},
 
-				indexNotVisible = index;
+			removeCheckboxErrorClass: function($selectedElementID) {
+				$($selectedElementID).parent().parent().removeClass(rules.error);
+			},
+
+			addOptionErrorClass: function($selectedElementID) {
+				$($selectedElementID).addClass(rules.error);
+			},
+
+			removeOptionErrorClass: function($selectedElementID) {
+				$($selectedElementID).removeClass(rules.error);
+			},
+
+			getSelectOptionID: function($selectedElementID) {
+				var $getOptionID = '#' + $('#' + $selectedElementID).parent().parent().prev().attr('id');
+
+				return $getOptionID;
+			},
+
+			getSelectOptionDropdownID: function($selectedElementID) {
+				var $getOptionID = '#' + $('#' + $selectedElementID).parent().parent().parent().prev().attr('id');
+
+				return $getOptionID;
 			}
-		});
+		},
 
-		if (indexNotVisible === -1) {
-			$selections.last().addClass('hideComma');
-		}
-	}
+		setup: function() {
+			/* Set error on required field on page load */
+			rules.$formSelect.each(function() {
+				if ($(this).hasClass(rules.required)) {
+					$(this).parent().addClass(rules.error);
+				}
+			});
 
-	/**
-	 * Custom reset event handler to reset all the select2 fields
-	 */
-	function addResetEventHandler() {
-		$('.form form').each(function(formIdx, form) {
-			var $form = $(form);
+			rules.$formCheckbox.each(function() {
+				if ($(this).hasClass(rules.required)) {
+					$(this).addClass(rules.error);
+				}
+			});
 
-			$form.on('reset.fHelper', function() {
-				$('.select-widget').each(function(selectIdx, select) {
-					var $select = $(select),
-							$noValueOptionLength = $select.find('option[value="--NOVALUE--"]').length;
+			rules.$formRadio.each(function() {
+				if ($(this).hasClass(rules.required)) {
+					$(this).addClass(rules.error);
+				}
+			});
+
+			/* Disable Submit Button
+			rules.$formSubmitButton.attr('disabled', 'disabled');
+			rules.$formResetButton.removeAttr('disabled');*/
+			easyFormValidation.formSubmitState();
+		},
+
+		formSubmitState: function() {
+			$(rules.$form).on('submit', function(e) {
+				var $formError = $(this).find('.' + rules.error).length;
+
+				/* console.info('Fehler gefunden: ' + $formError); */
+				/* Remove error class from submit and reset button */
+				rules.$formSubmitButton.parent().removeClass('error');
+
+				$(this).find(':input').each(function() {
+					if (easyFormValidation.fieldRequired(this)) {
+						if (($(this).val()) === '') {
+							var $selectedElementID = '#' + this.id;
+
+							easyFormValidation.selectorFieldRules.addErrorClass($selectedElementID);
+
+							/*console.info('[INPUT] Field has Error ' + this.id);*/
+						}
+					}
+				});
+
+				$(this).find('.radio-widget').each(function() {
+					if ($(this).hasClass('error')) {
+						$(this).parent().parent().prev().parent().addClass('error');
+					}
+				});
+
+				$(this).find('select.select-widget').each(function() {
+					var $selectedElementID = '#' + this.id;
+
+					if (easyFormValidation.fieldRequired($selectedElementID)) {
+						if ($($selectedElementID).hasClass('has-value') === false) {
+							easyFormValidation.selectorFieldRules.addOptionErrorClass($selectedElementID);
+							/*console.info('[SELECT] Field is Required and has no selection ->' + $selectedElementID);*/
+						}
+					}
+
+					if ($($selectedElementID).parent().hasClass('has-select') && $($selectedElementID).parent().hasClass('has-value') === true) {
+						easyFormValidation.selectorFieldRules.removeErrorClass($selectedElementID);
+						/* console.info('Dropdown has value! ' + $selectedElementID); */
+					}
+				});
+
+				if ($formError !== 0) {
+					rules.$formSubmitButton.val(easyFormValidation.rules.formSubmitButtonErrorText_A);
+					e.preventDefault();
+				} else {
+					rules.$formSubmitButton.val(easyFormValidation.rules.formSubmitButtonText);
+					return true;
+				}
+			});
+		},
+
+		resetForm: function() {
+			/* Reset the form */
+			rules.$formResetButton.click(function(e) {
+				e.preventDefault();
+				rules.$form[0].reset();
+				rules.$formSubmitButton.val(easyFormValidation.rules.formSubmitButtonText);
+				rules.$form.find('.' + rules.error).removeClass(rules.error);
+				rules.$form.find('.has-select').removeClass('has-select');
+				rules.$form.find('.has-value').removeClass('has-value');
+				rules.$form.find(rules.$fieldErrorBox).empty();
+
+				rules.$form.find('.radio-widget').each(function() {
+					if ($(this).hasClass('required')) {
+						$(this).addClass('error');
+					}
+				});
+
+				/* Reset Select2 Dropdown */
+				$('.select-widget').each(function() {
+					var $noValueOptionLength = $(this).find('option[value="--NOVALUE--"]').length;
 
 					if ($noValueOptionLength > 0) {
-						$select.val('--NOVALUE--').trigger('change');
+						$(this).val('--NOVALUE--').trigger('change');
 					} else {
-						$select.val(null).trigger('change');
+						$(this).val(null).trigger('change');
 					}
+				});
+
+				/* Reset Select2 Selection */
+				$('.select2-selection__choice').remove();
+				$('.select2-results__option[aria-selected="true"]').each(function() {
+					$(this).attr('aria-selected', 'false');
 				});
 			});
-		});
-	}
+		},
 
-	/**
-	 * Initializes the text input fields
-	 */
-	function initTextInputFields() {
-		var $textInputFields = $('.ArchetypesStringWidget, .search__string').find('input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="url"], input[type="tel"], input[type="number"], textarea');
+		buildurl: function($selectedElementID) {
+			/* Query Example http://localhost:8000/plone2/de/easyform/@@z3cform_validate_field?fname=form.widgets.allgemeine_geschaftsbedingungen&form.widgets.allgemeine_geschaftsbedingungen:list=--NOVALUE-- */
+			var url = window.location.href,
+					$z3cvalidator = '@@z3cform_validate_field?fname=',
+					$fieldNameOriginal = $($selectedElementID).attr('name'),
+					$fieldnameSplitted = '',
+					$requestURI = '';
 
-		/**
-		 * Event when text input fields are changed
-		 */
-		$textInputFields.on('change.fillInput', function() {
-			var $inputField = $(this),
-					$parentField = $inputField.parent('.field');
-
-			if ($inputField.val() !== '') {
-				$inputField.addClass(stateClasses.isFilled);
-				$parentField.addClass(stateClasses.isFilled);
+			if ($($selectedElementID).next().find(rules.$optionSelectionchoice).length) {
+				$fieldnameSplitted = $fieldNameOriginal;
 			} else {
-				$inputField.removeClass(stateClasses.isFilled);
-				$parentField.removeClass(stateClasses.isFilled);
+				$fieldnameSplitted = $fieldNameOriginal.split(':') ? $fieldNameOriginal.split(':')[0] : $fieldNameOriginal;
 			}
-		});
 
-		$textInputFields.on('focus.formElementHelper', function() {
-			var $inputField = $(this),
-					$parentField = $inputField.parent('.field');
+			$requestURI = url.substring(url.indexOf('?'), -1) + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + easyFormValidation.getFieldValue($selectedElementID);
 
-			$inputField.addClass(stateClasses.isFocused);
-			$parentField.addClass(stateClasses.isFocused);
-		});
+			return $requestURI;
+		},
 
-		$textInputFields.on('blur.formElementHelper', function() {
-			var $inputField = $(this),
-					$parentField = $inputField.parent('.field');
+		buildQueryString: function($selectedElementID, $fieldNameOriginal) {
+			var $fieldnameSplitted = '';
 
-			$inputField.removeClass(stateClasses.isFocused);
-			$parentField.removeClass(stateClasses.isFocused);
-		});
-
-		// EasyForm Move span class form Help
-		var $easyFormFields = $('.field');
-
-		$easyFormFields.each(function() {
-			var $formHelp = $(this).find('.formHelp');
-
-			if ($formHelp.length === 1) {
-				$formHelp.clone().appendTo($(this));
-			}
-		});
-	}
-
-	function initOptgroups($field) {
-		var $options = $field.find('option'),
-				currentChar = '',
-				counter = 0;
-
-		if ($field.find('optgroup').length > 1) {
-			$field.find('optgroup').remove();
-		}
-
-		$options.map(function(index, element) {
-			if ($(element).attr('disabled') !== 'disabled' && $(element).attr('value') !== '') {
-				var firstChar = $(element).text().slice(0, 1).toLowerCase();
-
-				// New Char, have to close optgroup, except if counter is on 0
-				if (firstChar !== currentChar) {
-					var optgroupString = '';
-
-					if (counter > 0) {
-						optgroupString = optgroupString + '</optgroup>';
+			switch ($selectedElementID) {
+				case $selectedElementID:
+					if ($($selectedElementID).next().find('li.select2-selection__choice').length) {
+						$fieldnameSplitted = $fieldNameOriginal;
+					} else {
+						$fieldnameSplitted = $fieldNameOriginal.split(':') ? $fieldNameOriginal.split(':')[0] : $fieldNameOriginal;
 					}
 
-					optgroupString = optgroupString + '<optgroup label="' + firstChar.toUpperCase() + '">';
+					return $fieldnameSplitted;
 
-					$(element).before(optgroupString);
-				}
-
-				currentChar = firstChar;
+				default:
+					$fieldnameSplitted = $fieldNameOriginal.split(':') ? $fieldNameOriginal.split(':')[0] : $fieldNameOriginal;
+					return $fieldnameSplitted;
 			}
+		},
 
-			if (counter === ($options.length - 1)) {
-				$(element).before('</optgroup>');
-			}
+		checkCheckbox: function($selectedElementID) {
+			var $checkBoxChecked = $($selectedElementID).prop('checked');
 
-			counter++;
+			return $checkBoxChecked;
+		},
 
-		});
-	}
+		onInput: function() {
+			$(':input')
+			.on('click', function() {
+				var $selectedElementID = '#' + $(this).attr('id'),
+						$currentFieldType = 'INPUT';
 
-	function addSelect2Events() {
-		var $selectFields = $('.custom-select, .select-widget, .field select'),
-				$relatedLabels = $selectFields.siblings('label, .label');
-
-		$selectFields.on('change.formElementHelper', function(event) {
-			var $select = $(event.target),
-					$select2 = $select.nextAll('.select2-container'),
-					$field = null;
-
-			if ($select.closest('.field').length > 0) {
-				$field = $select.closest('.field');
-			}
-
-			if ($select.val() === null || $select.val() === '') {
-				$select2.removeClass('has-selection');
-				$select2.nextAll('.custom-select___remover').hide();
-				$select.removeClass('has-value');
-
-				if ($field !== null) {
-					$field.removeClass('has-value');
-				}
-
-			} else {
-				$select2.addClass('has-selection');
-				$select2.nextAll('.custom-select___remover').show();
-				$select.addClass('has-value');
-
-				if ($field !== null) {
-					$field.addClass('has-value');
-				}
-
-				checkSelection($select2);
-			}
-		});
-
-		$selectFields.on('select2:open.formElementHelper', function() {
-			// Options are not initialized immediately, so we wait 100 millisec
-			setTimeout(function() {
-				var $select2ResultsOptions = $('.select2-results__options');
-
-				if ($select2ResultsOptions.find('[role="group"]').length > 0) {
-					$select2ResultsOptions.addClass('has_groups');
-				}
-			}, 1);
-		});
-
-		$selectFields.on('select2:closing.formElementHelper', function() {
-			$('.select2-results__options').mCustomScrollbar('destroy');
-		});
-
-		$('.custom-select___remover').on('click.formElementHelper', function() {
-			$(this).prevAll('select').val('').trigger('change');
-		});
-
-		$relatedLabels.on('mouseover.formElementHelper', function() {
-
-			$(this).parent('div').addClass('has-focused-label');
-		});
-
-		$relatedLabels.on('click.formElementHelper', function() {
-			var $select = $(this).siblings('select');
-
-			if ($(this).siblings('.select2-container--open').length === 0) {
-				$select.select2('open');
-			}
-		});
-
-		$relatedLabels.on('mouseout.formElementHelper', function() {
-			$(this).parent('div').removeClass('has-focused-label');
-		});
-
-		eventsSet = true;
-	}
-
-	/**
-	 * Initializes the select2 dropdowns
-	 */
-	function initSelect2() {
-		var $selectFields = $('.custom-select, .select-widget, .field select');
-
-		$selectFields.map(function(index, select) {
-			if ($(select).hasClass('has_optgroup')) {
-				initOptgroups($(select));
-			}
-		});
-
-		$selectFields.select2({
-			minimumResultsForSearch: 25
-		});
-
-		$selectFields.map(function(index, select) {
-			var $select = $(select),
-					$select2 = $(select).nextAll('.select2-container'),
-					$field = $select.parent('.field');
-
-			if ($field.length > 0) {
-				$field.addClass('has-select');
-
-				if (typeof $select.attr('multiple') !== typeof undefined) {
-					$field.addClass('has-multiple-select');
-				}
-			}
-
-			if (!$select.hasClass('has-value')) {
-				$select2.removeClass('has-selection');
-				$select2.nextAll('.custom-select___remover').hide();
-			} else {
-				$select2.addClass('has-selection');
-				$select2.nextAll('.custom-select___remover').show();
-
-				if ($select.not('.custom-select__long')) {
-					checkSelection($select2);
-				}
-			}
-
-			/* var options = $select[0].options,
-					tempArray = [];
-
-			for(var i = 0; i < options.length; i++) {
-				tempArray.push({
-					optionLabel: options[i].text,
-					optionValue: options[i].value
-				});
-
-				console.log(tempArray);
-			} */
-		});
-
-		addResetEventHandler($selectFields);
-
-		if (!eventsSet) {
-			addSelect2Events();
-		}
-	}
-
-	/**
-	 * Extends the validators
-	 */
-	function extendValidator() {
-		$('.form form').each(function(formIdx, form) {
-			var $form = $(form),
-					rules = {},
-					messages = {};
-
-			$form.find('.field').each(function(fieldIdx, field) {
-				var $field = $(field),
-						temprules = {},
-						tempmessages = {};
-
-				$field.find('span').each(function(spanIdx, span) {
-					var $span = $(span),
-							classList = $span.attr('class').split(/\s+/);
-
-					classList.forEach(function(className) {
-
-						if (className === 'required' && $field.hasClass('has-select')) {
-							className = 'selectRequired';
-
-							if (typeof $field.find('select').attr('multiple') !== typeof undefined) {
-								className = 'selectMultipleRequired';
-							}
-						}
-
-						if (validationMapping[className]) {
-							if (typeof validationMapping[className].initialValue === 'function') {
-								temprules[validationMapping[className].ruleName] = validationMapping[className].initialValue();
-							} else {
-								temprules[validationMapping[className].ruleName] = validationMapping[className].initialValue;
-							}
-
-							tempmessages[validationMapping[className].ruleName] = $span.attr('title');
-						}
+				if ($($selectedElementID).is(':radio')) {
+					$currentFieldType = 'RADIO';
+					$('input:radio').each(function() {
+						$(this).removeClass('error');
+						$(this).parent().parent().prev().parent().removeClass('error');
 					});
+
+					easyFormValidation.fieldRadioService($selectedElementID);
+				}
+
+				if ($($selectedElementID).is(':checkbox')) {
+					$currentFieldType = 'CHECKBOX';
+					easyFormValidation.fieldCheckboxService($selectedElementID, $currentFieldType);
+				}
+
+				if ($($selectedElementID).is(rules.$formResetButton) || $($selectedElementID).is(rules.$formSubmitButton)) {
+					easyFormValidation.formSubmitState();
+
+				} else {
+					easyFormValidation.onFormInput($selectedElementID);
+				}
+
+				if (easyFormValidation.fieldRequired($selectedElementID)) {
+					easyFormValidation.formSubmitState();
+				}
+			});
+		},
+
+		onFormInput: function($selectedElementID) {
+			$($selectedElementID)
+			.on('focusout', function() {
+				var $currentFieldType = 'INPUT';
+
+				easyFormValidation.validateElement($selectedElementID, $currentFieldType);
+			});
+		},
+
+		onOptionMultiSelect: function() {
+			$(rules.optionListSelector)
+			.on('click', function() {
+				var $selectedElementID = $(this).parent().attr('id');
+
+				$selectedElementID = easyFormValidation.selectorFieldRules.getSelectOptionID($selectedElementID);
+				easyFormValidation.onCheckOptionMultiSelect($selectedElementID);
+			});
+		},
+
+		onOptionDropdown: function() {
+			$(rules.onOptionDropdownSelector)
+				.on('click', function() {
+					var $selectedElementID = $(this).attr('id');
+
+					$selectedElementID = easyFormValidation.selectorFieldRules.getSelectOptionDropdownID($selectedElementID);
+					easyFormValidation.onCheckOptionMultiSelect($selectedElementID);
 				});
+		},
 
-				if (temprules !== {}) {
-					rules[$field.find('input, textarea, select').attr('name')] = temprules;
-					messages[$field.find('input, textarea, select').attr('name')] = tempmessages;
+		onCheckOptionMultiSelect: function($selectedElementID) {
+			$($selectedElementID).select2({
+				placeholder: 'Bitte wählen',
+				allowClear: true
+			});
 
-					$form.addClass('has-validation');
+			$($selectedElementID)
+			.on('change', function() {
+				var $currentFieldType = 'SELECT';
+
+				if ($($selectedElementID).next().find('li.select2-selection__choice').length) {
+					easyFormValidation.validateElement($selectedElementID);
+					easyFormValidation.selectorFieldRules.removeOptionErrorClass($selectedElementID);
+					$($selectedElementID).parent().removeClass('error');
+
+					easyFormValidation.selectorFieldRules.removeErrorMessage($selectedElementID, '');
+					$($selectedElementID).prev().css('z-index', '1000');
+				} else if ($($selectedElementID).parent().hasClass(rules.error)) {
+					$($selectedElementID).removeClass('error');
+					easyFormValidation.selectorFieldRules.removeErrorClass($selectedElementID);
+					easyFormValidation.selectorFieldRules.removeOptionErrorClass($selectedElementID);
+				} else {
+					easyFormValidation.validateElement($selectedElementID, $currentFieldType);
 				}
 			});
+		},
 
-			if ($form.find('#form-widgets-replyto').length > 0) {
-				rules['form.widgets.replyto'].customEmail = validationMapping.customEmail.initialValue;
-				messages['form.widgets.replyto'].customEmail = ' ';
-			}
+		validateElement: function($selectedElementID, $currentFieldType) {
+			var json = {};
 
-			var validator = $form.validate({
-				onfocusout: function(element) {
-					$(element).siblings('.fieldErrorBox').empty();
-					$(element).closest('.field').removeClass('error');
-					$(element).closest('.field').find('.fieldErrorBox').empty();
+			json = $.getJSON(easyFormValidation.buildurl($selectedElementID), function() {
+			})
+			.done(function() {
+			})
+			.fail(function() {
+			})
+			.always(function(json) {
+				var $errorMsg = json.errmsg,
+				$checkError = '';
 
-					$(element).valid();
+				/* Error Messages on case */
+				switch ($currentFieldType) {
+					case 'CHECKBOX':
+						$checkError = ($errorMsg !== '') ? easyFormValidation.selectorFieldRules.addCheckboxErrorClass($selectedElementID) : easyFormValidation.selectorFieldRules.removeCheckboxErrorClass($selectedElementID);
+						$checkError = ($errorMsg !== '') ? $($selectedElementID).next().append('<span class="error fieldErrorBox" style="left:30px; top:22px">' + $errorMsg + '</span>') : $('label span.error').remove();
 
-					if ($form.find('.error').length > 0) {
-						$form.find('#form-buttons-submit').attr('disabled', 'disabled');
-					} else {
-						$form.find('#form-buttons-submit').removeAttr('disabled');
-					}
-				},
+						return $checkError;
 
-				rules: rules,
-				focusCleanup: true,
-				messages: messages,
-				ignore: [],
-				errorPlacement: function(error, element) {
-					$(element).siblings('.fieldErrorBox').empty();
-					$(element).closest('.field').addClass('error');
-					$(element).closest('.field').find('.fieldErrorBox').empty();
+					case 'SELECT':
+						easyFormValidation.selectorFieldRules.addErrorMessage($selectedElementID, $errorMsg);
+						$checkError = ($errorMsg !== '') ? easyFormValidation.selectorFieldRules.addOptionErrorClass($selectedElementID) : easyFormValidation.selectorFieldRules.removeOptionErrorClass($selectedElementID);
 
-					if ($(element).is('select')) {
-						$(element).siblings('.fieldErrorBox').text(error.text());
-					} else if ($(element).is('input[type="radio"]') || $(element).is('input[type="check"]') || $(element).is('input[type="checkbox"]')) {
-						$(element).closest('.field').addClass('error');
-						$(element).closest('.field').find('.fieldErrorBox').text(error.text());
+						return $checkError;
 
-						return true;
-					} else {
-						$(element).siblings('.fieldErrorBox').text(error.text());
-					}
+					case 'INPUT':
+						easyFormValidation.selectorFieldRules.addErrorMessage($selectedElementID, $errorMsg);
+						$checkError = ($errorMsg !== '') ? easyFormValidation.selectorFieldRules.addErrorClass($selectedElementID) : easyFormValidation.selectorFieldRules.removeErrorClass($selectedElementID);
+
+						return $checkError;
 				}
 			});
+		},
 
-			$form.find('#form-buttons-reset').on('click', function(event) {
-				event.preventDefault();
+		fieldRadioService: function() {
+			$('input[type="radio"]').each(function(radioIdx, radio) {
+				var $radio = $(radio);
 
-				validator.resetForm();
-
-				$form.find('.error').removeClass('error');
-				$form.find('.fieldErrorBox').empty();
-
-				$form[0].reset();
-
-				$form.find('#form-buttons-submit').removeAttr('disabled');
+				$radio.closest('.field').addClass('has-radio');
 			});
-		});
+		},
 
-		/**
-		 * Adding additional validator methods
-		 */
-		$.validator.addMethod('customEmail', function(value) {
-			if (value !== '') {
-				var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-				return re.test(value);
+		fieldCheckboxService: function($selectedElementID, $currentFieldType) {
+			if (easyFormValidation.fieldRequired($selectedElementID) && easyFormValidation.checkCheckbox($selectedElementID)) {
+				$($selectedElementID).val(rules.optionSelected);
+				easyFormValidation.selectorFieldRules.removeOptionErrorClass($selectedElementID);
+			} else if (!easyFormValidation.fieldRequired($selectedElementID) && easyFormValidation.checkCheckbox($selectedElementID)) {
+				$($selectedElementID).val(rules.optionSelected);
 			} else {
-				return true;
+				$($selectedElementID).val(rules.optionNoValue);
 			}
-		});
 
-		$.validator.addMethod('selectRequired', function(value) {
-			return value !== '--NOVALUE--';
-		});
+			easyFormValidation.validateElement($selectedElementID, $currentFieldType);
+		},
 
-		$.validator.addMethod('selectMultipleRequired', function(value) {
-			return value !== null;
-		});
-	}
+		fieldInputService: function($currentElement, $selectedElementID) {
+			easyFormValidation.validateElement($currentElement, $selectedElementID);
+		},
 
-	function initTextAreas() {
-		$('form textarea').each(function(txtAreaIdx, txtArea) {
-			var $txtArea = $(txtArea),
-					txtAreaHeight = $txtArea.outerHeight(),
-					$txtAreaParent = $txtArea.parent('.field');
+		fieldRequired: function($selectedElementID) {
+			var $elementRequired = $($selectedElementID).hasClass(rules.required);
 
-			$txtAreaParent.css({
-				'min-height': txtAreaHeight
+			return $elementRequired;
+		},
+
+		getFieldValue: function($selectedElementID) {
+			var	$valueOfTheField = $($selectedElementID).val();
+
+			return $valueOfTheField;
+		},
+
+		select2Init: function initSelect2() {
+			var $selectFields = $('.custom-select, .select-widget, .field select'),
+					eventsSet = false;
+
+			$selectFields.map(function(index, select) {
+				if ($(select).hasClass('has_optgroup')) {
+					easyFormValidation.initOptgroups($(select));
+				}
 			});
-		});
-	}
 
-	function initRadios() {
-		$('input[type="radio"]').each(function(radioIdx, radio) {
-			var $radio = $(radio);
+			$selectFields.select2({
+				placeholder: '',
+				allowClear: true
+			});
 
-			$radio.closest('.field').addClass('has-radio');
-		});
-	}
+			$selectFields.select2({
+				minimumResultsForSearch: 25
+			});
 
-	function initFileupload() {
-		$('input[type="file"]').each(function(fileIdx, file) {
-			var $file = $(file);
+			$selectFields.map(function(index, select) {
+				var $select = $(select),
+				$select2 = $(select).nextAll('.select2-container'),
+				$field = $select.parent('.field');
 
-			$file.closest('.field').addClass('has-upload');
-		});
-	}
+				if ($field.length > 0) {
+					$field.addClass('has-select');
+					if (typeof $select.attr('multiple') !== typeof undefined) {
+						$field.addClass('has-multiple-select');
+					}
+				}
+
+				if (!$select.hasClass('has-value')) {
+					$select2.removeClass('has-selection');
+					$select2.nextAll('.custom-select___remover').hide();
+				} else {
+					$select2.addClass('has-selection');
+					$select2.nextAll('.custom-select___remover').show();
+					if ($select.not('.custom-select__long')) {
+						easyFormValidation.checkSelection($select2);
+					}
+				}
+			});
+
+			if (!eventsSet) {
+				easyFormValidation.addSelect2Events();
+			}
+		},
+
+		addSelect2SelectionID: function() {
+			/* Adding helper selector ids for better selection in option lists */
+			$('.select2-selection.select2-selection--multiple').each(function(idx) {
+				$(this).attr('id', 'select2-selection-'+ idx);
+			});
+		},
+
+		initOptgroups: function initOptgroups($field) {
+			var $options = $field.find('option'),
+			currentChar = '',
+			counter = 0;
+
+			if ($field.find('optgroup').length > 1) {
+				$field.find('optgroup').remove();
+			}
+
+			$options.map(function(index, element) {
+				if ($(element).attr('disabled') !== 'disabled' && $(element).attr('value') !== '') {
+					var firstChar = $(element).text().slice(0, 1).toLowerCase();
+
+					// New Char, have to close optgroup, except if counter is on 0
+					if (firstChar !== currentChar) {
+						var optgroupString = '';
+
+						if (counter > 0) {
+							optgroupString = optgroupString + '</optgroup>';
+						}
+
+						optgroupString = optgroupString + '<optgroup label="' + firstChar.toUpperCase() + '">';
+						$(element).before(optgroupString);
+					}
+
+					currentChar = firstChar;
+				}
+
+				if (counter === ($options.length - 1)) {
+					$(element).before('</optgroup>');
+				}
+
+				counter++;
+			});
+		},
+
+		addSelect2Events: function addSelect2Events() {
+			var $selectFields = $('.custom-select, .select-widget, .field select'),
+					$relatedLabels = $selectFields.siblings('label, .label'),
+					eventsSet = false;
+
+			$selectFields.on('change.formElementHelper', function(event) {
+				var $select = $(event.target),
+						$select2 = $select.nextAll('.select2-container'),
+						$field = null;
+
+				if ($select.closest('.field').length > 0) {
+					$field = $select.closest('.field');
+				}
+
+				if ($select.val() === null || $select.val() === '') {
+					$select2.removeClass('has-selection');
+					$select2.nextAll('.custom-select___remover').hide();
+					$select.removeClass('has-value');
+
+					if ($field !== null) {
+						$field.removeClass('has-value');
+					}
+				} else {
+					$select2.addClass('has-selection');
+					$select2.nextAll('.custom-select___remover').show();
+					$select.addClass('has-value');
+
+					if ($field !== null) {
+						$field.addClass('has-value');
+					}
+
+					easyFormValidation.checkSelection($select2);
+				}
+			});
+
+			$selectFields.on('select2:open.formElementHelper', function() {
+				// Options are not initialized immediately, so we wait 100 millisec
+				setTimeout(function() {
+					var $select2ResultsOptions = $('.select2-results__options');
+
+					if ($select2ResultsOptions.find('[role="group"]').length > 0) {
+						$select2ResultsOptions.addClass('has_groups');
+					}
+				}, 1);
+			});
+
+			$selectFields.on('select2:closing.formElementHelper', function() {
+				$('.select2-results__options').mCustomScrollbar('destroy');
+			});
+
+			$('.custom-select___remover').on('click.formElementHelper', function() {
+				$(this).prevAll('select').val('').trigger('change');
+			});
+
+			$relatedLabels.on('mouseover.formElementHelper', function() {
+				$(this).parent('div').addClass('has-focused-label');
+			});
+
+			$relatedLabels.on('click.formElementHelper', function() {
+				var $select = $(this).siblings('select');
+
+				if ($(this).siblings('.select2-container--open').length === 0) {
+					$select.select2('open');
+				}
+			});
+
+			$relatedLabels.on('mouseout.formElementHelper', function() {
+				$(this).parent('div').removeClass('has-focused-label');
+			});
+
+			eventsSet = true;
+		},
+
+		checkSelection: function checkSelection($select2) {
+			var $selections = $select2.find('.select2-selection__choice'),
+					selectionWidth = $select2.find('.select2-selection__rendered').width(),
+					elementsWidth = 0,
+					indexNotVisible = -1;
+
+			$selections.removeClass('showEtc hideComma');
+			$selections.each(function(index, element) {
+				elementsWidth += $(element).outerWidth();
+
+				if (elementsWidth > selectionWidth && indexNotVisible === -1) {
+					$($selections.get(index - 1)).addClass('showEtc');
+					indexNotVisible = index;
+				}
+			});
+
+			if (indexNotVisible === -1) {
+				$selections.last().addClass('hideComma');
+			}
+		}
+	};
 
 	$(document).ready(function() {
-
-		initTextInputFields();
-		initRadios();
-		initSelect2();
-		extendValidator();
-		initFileupload();
-
-		initTextAreas();
-	});
-
-	/**
-	 * Save to global Namespace
-	 */
-	$.extend(true, estatico, {
-		formElementHelper: {
-			initSelect2: initSelect2
-		}
+		easyFormValidation.init();
 	});
 })(jQuery);
