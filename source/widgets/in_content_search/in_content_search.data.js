@@ -15,7 +15,8 @@ var templateData = {
 						},
 						{
 							'optionLabel': 'Informatik',
-							'optionValue': 'it'
+							'optionValue': 'it',
+							'selected': 'selected'
 						},
 						{
 							'optionLabel': 'Life Sciences',
@@ -50,7 +51,8 @@ var templateData = {
 						},
 						{
 							'optionLabel': 'CAS',
-							'optionValue': 'cas'
+							'optionValue': 'cas',
+							'selected': 'selected'
 						},
 						{
 							'optionLabel': 'DAS',
