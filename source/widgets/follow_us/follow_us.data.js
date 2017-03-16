@@ -6,7 +6,7 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
-			widgetTitle: 'Folgen Sie uns:',
+			title: 'Folgen Sie uns:',
 			links: [
 				{
 					type: 'facebook',
