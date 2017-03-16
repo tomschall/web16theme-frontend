@@ -9,13 +9,14 @@
 	'use strict';
 
 	var rules,
+	$thisform = '#' + $('form').attr('id'),
 	easyFormValidation = {
 
 		rules: {
-			$form: $('#form'),
-			$formSelect: $('#form select'),
-			$formCheckbox: $('#form input:checkbox'),
-			$formRadio: $('#form input:radio'),
+			$form: $thisform,
+			$formSelect: $($thisform + ' select'),
+			$formCheckbox: $($thisform + ' input:checkbox'),
+			$formRadio: $($thisform + ' input:radio'),
 			required: 'required',
 			error: 'error',
 			$fieldErrorBox: $('.fieldErrorBox'),
@@ -173,14 +174,14 @@
 			/* Reset the form */
 			rules.$formResetButton.click(function(e) {
 				e.preventDefault();
-				rules.$form[0].reset();
+				$(rules.$form)[0].reset();
 				rules.$formSubmitButton.val(easyFormValidation.rules.formSubmitButtonText);
-				rules.$form.find('.' + rules.error).removeClass(rules.error);
-				rules.$form.find('.has-select').removeClass('has-select');
-				rules.$form.find('.has-value').removeClass('has-value');
-				rules.$form.find(rules.$fieldErrorBox).empty();
+				$(rules.$form).find('.' + rules.error).removeClass(rules.error);
+				$(rules.$form).find('.has-select').removeClass('has-select');
+				$(rules.$form).find('.has-value').removeClass('has-value');
+				$(rules.$form).find(rules.$fieldErrorBox).empty();
 
-				rules.$form.find('.radio-widget').each(function() {
+				$(rules.$form).find('.radio-widget').each(function() {
 					if ($(this).hasClass('required')) {
 						$(this).addClass('error');
 					}
