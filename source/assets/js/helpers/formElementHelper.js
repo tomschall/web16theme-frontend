@@ -94,7 +94,7 @@
 						if ($requiredSelectState.hasClass('radio-widget')) {
 							easyFormValidation.validateElement($selectedElementID, 'RADIO');
 
-							console.info('FORM SUBMIT STATE VALIDATE RADIO -> ' + $selectedElementID);
+							/*console.info('FORM SUBMIT STATE VALIDATE RADIO -> ' + $selectedElementID);*/
 
 							$countError++;
 						} else {
@@ -108,10 +108,10 @@
 
 				if ($countError !== 0) {
 					rules.$formSubmitButton.val(easyFormValidation.rules.formSubmitButtonErrorText_A);
-					console.info('TOTAL ERRORS FOUND -> ' + $countError);
+					console.log('TOTAL ERRORS FOUND -> ' + $countError);
 					return false;
-				} else {
-					console.info('FORM READY TO SUBMIT');
+				} else if ($countError === 0) {
+					console.log('FORM READY TO SUBMIT');
 					rules.$formSubmitButton.val(easyFormValidation.rules.formSubmitButtonText);
 					return true;
 				}
@@ -163,7 +163,7 @@
 
 			$requestURI = url.substring(url.indexOf('?'), -1) + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + easyFormValidation.getFieldValue($selectedElementID);
 
-			console.info('requestURI -> ' + $requestURI);
+			/*console.info('requestURI -> ' + $requestURI);*/
 
 			return $requestURI;
 		},
@@ -209,10 +209,8 @@
 			.on('mouseenter', function() {
 				var $selectedElementID = '#' + $(this).closest(rules.findField).find('select').attr('id');
 
-				/*console.info('[onOptionMultiSelect] MOUSEOVER -> ' + $selectedElementID);*/
 				$($selectedElementID).select2('open');
 
-				/*$selectedElementID = easyFormValidation.selectorFieldRules.getSelectOptionID($selectedElementID);*/
 				easyFormValidation.onCheckOptionMultiSelect($selectedElementID);
 			});
 		},
@@ -280,7 +278,7 @@
 						$($selectedElementID).closest(rules.findField).find(rules.$fieldErrorBox).text($errorMsg);
 						$checkError = ($errorMsg !== '') ? $($selectedElementID).addClass('error') : $($selectedElementID).removeClass('error');
 
-						console.info('VALIDATE SELECT ' + $selectedElementID);
+						/*console.info('VALIDATE SELECT ' + $selectedElementID);*/
 
 						return $checkError;
 
@@ -299,7 +297,7 @@
 						$checkError = ($errorMsg !== '') ? easyFormValidation.selectorFieldRules.addErrorClass($selectedElementID) : easyFormValidation.selectorFieldRules.removeErrorClass($selectedElementID);
 						$checkError = ($errorMsg !== '') ? $($selectedElementID).removeClass(rules.hasvalue) : $($selectedElementID).addClass(rules.hasvalue);
 
-						console.info('VALIDATE INPUT TEXTAREA CHECKBOX' + $selectedElementID);
+						/*console.info('VALIDATE INPUT TEXTAREA CHECKBOX' + $selectedElementID);*/
 
 						return $checkError;
 
@@ -309,7 +307,7 @@
 						$checkError = ($errorMsg !== '') ? easyFormValidation.selectorFieldRules.addErrorClass($selectedElementID) : easyFormValidation.selectorFieldRules.removeErrorClass($selectedElementID);
 						$checkError = ($errorMsg !== '') ? $($selectedElementID).removeClass(rules.hasvalue) : $($selectedElementID).addClass(rules.hasvalue);
 
-						console.info('VALIDATE DEFAULT' + $selectedElementID);
+						/*console.info('VALIDATE DEFAULT' + $selectedElementID);*/
 
 						return $checkError;
 				}
@@ -319,7 +317,7 @@
 		onRadioService: function($selectedElementID, $currentFieldType) {
 			$($selectedElementID).on('change', function() {
 
-				console.info('Radio Clicked -> ' + $selectedElementID);
+				/*console.info('Radio Clicked -> ' + $selectedElementID);*/
 
 				$($selectedElementID).closest('.field').find('input').each(function() {
 					var radioValue = $(this).next().text();
