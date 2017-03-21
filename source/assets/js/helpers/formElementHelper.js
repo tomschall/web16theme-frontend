@@ -25,7 +25,7 @@
 			$formSubmitButton: $('#form-buttons-submit'),
 			$formResetButton: $('#form-buttons-reset'),
 			formSubmitButtonText: $('#form-buttons-submit').val(),
-			formSubmitButtonErrorText_A: 'Das Formular enthält Fehler.',
+			formSubmitButtonErrorText_A: 'Überprüfen Sie die Angaben',
 			removeChoice: 'select2-selection__choice',
 			optionSelected: 'selected',
 			optionNoValue: '--NOVALUE--',
@@ -38,6 +38,7 @@
 			rules = this.rules;
 
 			easyFormValidation.setup();
+			easyFormValidation.getFormState();
 			easyFormValidation.onRadioService();
 			easyFormValidation.select2Init();
 			easyFormValidation.addSelect2SelectionID();
@@ -83,9 +84,8 @@
 
 		formSubmitState: function() {
 			rules.$formSubmitButton.on('click', function() {
-				var $countError = 0;
 
-				$('#form').find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
+				$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
 
 					var $requiredSelectState = $(this),
 					$selectedElementID = '#' + $requiredSelectState.attr('id');
@@ -96,26 +96,48 @@
 
 							/*console.info('FORM SUBMIT STATE VALIDATE RADIO -> ' + $selectedElementID);*/
 
-							$countError++;
 						} else {
 							/*console.info('tagname -> ' + $requiredSelectState.prop('tagName') + ' requiredSelectState -> ' + $requiredSelectState.attr('name') + ' has-value ' + $requiredSelectState.hasClass('has-value') + ' required ' + $requiredSelectState.hasClass('required'));*/
 							easyFormValidation.validateElement($selectedElementID, $requiredSelectState.prop('tagName'));
-
-							$countError++;
 						}
 					}
 				});
 
-				if ($countError !== 0) {
-					rules.$formSubmitButton.val(easyFormValidation.rules.formSubmitButtonErrorText_A);
-					console.log('TOTAL ERRORS FOUND -> ' + $countError);
+				var totalErrors = easyFormValidation.getFormState();
+
+				/*console.info('GET FORM STATE -> ERROR = ' + totalErrors);*/
+
+				if (totalErrors !== 0) {
+					/* console.info('MORE THAN 0 ERRORS = ' + totalErrors); */
+					$(this).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
+						$(this).val(rules.formSubmitButtonText).fadeTo(500, 1);
+					});
+
 					return false;
-				} else if ($countError === 0) {
-					console.log('FORM READY TO SUBMIT');
-					rules.$formSubmitButton.val(easyFormValidation.rules.formSubmitButtonText);
+				} else {
+
+					/* console.info('FORM READY TO SUBMIT!'); */
 					return true;
 				}
 			});
+		},
+
+		getFormState: function() {
+			var $countError = 0;
+
+			$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
+				var $requiredSelectState = $(this);
+
+				if ($requiredSelectState.hasClass(rules.required) && !($requiredSelectState.hasClass(rules.hasvalue))) {
+					if ($requiredSelectState.hasClass('radio-widget')) {
+						$countError++;
+					} else {
+						$countError++;
+					}
+				}
+			}).trigger('change');
+
+			return $countError;
 		},
 
 		resetForm: function() {
@@ -161,7 +183,14 @@
 				$fieldnameSplitted = $fieldNameOriginal.split(':') ? $fieldNameOriginal.split(':')[0] : $fieldNameOriginal;
 			}
 
-			$requestURI = url.substring(url.indexOf('?'), -1) + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + easyFormValidation.getFieldValue($selectedElementID);
+			var urlVar = url.substring(url.indexOf('?'), -1);
+
+			if (urlVar) {
+				url = urlVar;
+				/*console.info('use urlHash ' + urlVar);*/
+			}
+
+			$requestURI = url + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + easyFormValidation.getFieldValue($selectedElementID);
 
 			/*console.info('requestURI -> ' + $requestURI);*/
 
