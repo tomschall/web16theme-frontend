@@ -232,41 +232,19 @@ span.option {
 		position: relative;
 	}
 }
-/**
-	* Tabbed Navigation
-	*/
-.field.has-radio .fieldErrorBox {
-	top: 5px;
-}
 
 /**
-	* Tabbed Navigation
+	* select2 Customs
 	*/
-ul.tabs {
-	margin: 0px;
-	padding: 0px;
-	list-style: none;
+
+span.select2-selection__clear {
+	padding-right: 20px;
+  font-size: 30px;
+  font-weight: 100 !important;
+  padding-top: 4px;
 }
 
-ul.tabs li{
-	background: none;
-	color: #222;
-	display: inline-block;
-	padding: 10px 15px;
-	cursor: pointer;
-}
-
-ul.tabs li.current{
-	background: #ededed;
-	color: #222;
-}
-
-.tab-content{
-	display: none;
-	background: #ededed;
-	padding: 15px;
-}
-
-.tab-content.current{
-	display: inherit;
+ul span.select2-selection__clear {
+	padding-right: 0px;
+	padding-top: 0px;
 }
