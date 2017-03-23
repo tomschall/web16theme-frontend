@@ -232,3 +232,19 @@ span.option {
 		position: relative;
 	}
 }
+
+/**
+	* select2 Customs
+	*/
+
+span.select2-selection__clear {
+	padding-right: 20px;
+  font-size: 30px;
+  font-weight: 100 !important;
+  padding-top: 4px;
+}
+
+ul span.select2-selection__clear {
+	padding-right: 0px;
+	padding-top: 0px;
+}
