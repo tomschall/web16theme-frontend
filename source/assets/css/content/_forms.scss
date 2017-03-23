@@ -248,3 +248,10 @@ ul span.select2-selection__clear {
 	padding-right: 0px;
 	padding-top: 0px;
 }
+
+/**
+	* Radios Error Field
+	*/
+.field.has-radio .fieldErrorBox {
+	top: 5px;
+}
