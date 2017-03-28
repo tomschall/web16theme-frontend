@@ -8,7 +8,7 @@
 							<option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
 						{{/each}}
 		</select>
-        <label class="formQuestion" for="faculty">Fachbereich wählen ...</label>
+        <label class="formQuestion" for="faculty">{{langstrings.chooseExpertise}}</label>
       </div>
       <div class="search__holder in_content_search__holder select2__wrapper">
 		<select id="study_type" name="study_type" data-searchparam="study_type" class="custom-select" multiple="multiple">
@@ -24,7 +24,7 @@
 		</form>
 	</div>
   <div class="in_content_search__links">
-    <a class="in_content_search__link" href="{{searchFilterPageURL}}?extended=true">Erweiterte Suche</a>
-    <a class="in_content_search__link" href="{{searchFilterPageURL}}?si=true">Alle Angebote anzeigen</a>
+    <a class="in_content_search__link" href="{{searchFilterPageURL}}?extended=true">{{langStrings.extendedSearch}}Erweiterte Suche</a>
+    <a class="in_content_search__link" href="{{searchFilterPageURL}}?si=true">{{langStrings.showAllOffers}}Alle Angebote anzeigen</a>
   </div>
 </div>

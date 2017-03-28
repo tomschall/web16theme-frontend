@@ -7,13 +7,19 @@ var _ = require('lodash'),
 
 var templateData = {
 			twitter: {
-				text: 'Dies ist eine Seite der FHNW'
+				text: 'Dies ist eine Seite der FHNW',
+				action: 'Twittern'
 			},
 			mail: {
-				text: 'Dies ist eine Seite der FHNW'
+				text: 'Dies ist eine Seite der FHNW',
+				action: 'Versenden'
 			},
 			facebook: {
-				text: 'Eine coole Seite der FHNW die ich hier share'
+				text: 'Eine coole Seite der FHNW die ich hier share',
+				action: 'Empfehlen'
+			},
+			langStrings: {
+				sharePage: 'Diese Seite teilen:'
 			}
 		},
 		data = _.merge(defaultData, {

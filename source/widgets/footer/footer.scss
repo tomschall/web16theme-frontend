@@ -2,6 +2,10 @@
   @include clearfix;
 }
 
+.widg_footer_logo_label {
+   color: $colorBg;
+}
+
 .widg_inner-footer {
 	background-color: $colorBlack;
 	position: relative;

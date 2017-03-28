@@ -174,7 +174,10 @@ var templateData = {
 					expertiseTitle: 'Maschinenbau'
 				}
 			],
-			landingpageURL: '/pages/ppp/ppp.html'
+			landingpageURL: '/pages/ppp/ppp.html',
+			langStrings: {
+				chooseCompetence: 'Wählen sie eine Kompetenz aus...'
+			}
 		},
 		data = _.merge(defaultData, {
 			meta: {
