@@ -6,9 +6,9 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Suche nach Fachpersonen'
+			title: 'Suche: Experten'
 		},
-		title: 'Kontaktpersonensuche',
+		title: 'Expertensuche',
 		langStrings: {
 			labels: {
 				term: 'Suchbegriff',

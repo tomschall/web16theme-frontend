@@ -3,13 +3,12 @@
 var data = {
 	'@id': '#',
 	'category': 'training',
-	'template': 'livesearch',
 	'categoryUrl': '#',
 	'categoryTitle': 'Weiterbildung',
 	'categoryUrlText': 'Alle anzeigen (12)',
 	'items': [
 		{
-			'@id': '#',
+			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			title: 'MAS Sozialmanagement',
 			description: 'Lorem Ipsum',
@@ -18,29 +17,28 @@ var data = {
 		{
 			'@id': '#',
 			'@type': 'EduProduct',
-			'title': 'DAS Eingliederungsmanagement',
+			title: 'DAS Eingliederungsmanagement',
 			description: 'Lorem Ipsum',
 			short_eduproducttype: 'MAS'
 		},
 		{
 			'@id': '#',
 			'@type': 'EduProduct',
-			'title': 'CAS Forschung in den Sozialwissenschaften',
+			title: 'CAS Forschung in den Sozialwissenschaften',
 			description: 'Lorem Ipsum',
 			short_eduproducttype: 'MAS'
 		},
 		{
 			'@id': '#',
 			'@type': 'EduProduct',
-			'title': 'DAS Eingliederungsmanagement',
+			title: 'DAS Eingliederungsmanagement',
 			description: 'Lorem Ipsum',
 			short_eduproducttype: 'MAS'
 		},
 		{
 			'@id': '#',
 			'@type': 'EduProduct',
-
-			'title': 'MAS Sozialmanagement',
+			title: 'MAS Sozialmanagement',
 			description: 'Lorem Ipsum',
 			short_eduproducttype: 'MAS'
 		}
@@ -66,7 +64,7 @@ var data = {
 			]
 		}
 	],
-	'items_total': 206
+	items_total: 206
 };
 
 module.exports = data;

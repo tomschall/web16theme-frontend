@@ -434,7 +434,7 @@ function debounce(fn, delay) {
 			var $row = $(event.currentTarget).closest('tr'),
 					url = $row.find('a').attr('href');
 
-			window.location = location.origin + '/' + url;
+			window.location = url;
 		}.bind(this));
 	};
 
@@ -568,7 +568,14 @@ function debounce(fn, delay) {
 			}
 		}
 
-		$searchParamBox.val(window.location.href + '?' + $.param(cleanedSearchParam));
+		$searchParamBox.val([
+			location.protocol,
+			'//',
+			location.host,
+			location.pathname,
+			'?',
+			$.param(cleanedSearchParam)
+		].join(''));
 		$searchParamBox.removeClass(this.options.stateClasses.isHidden);
 	};
 

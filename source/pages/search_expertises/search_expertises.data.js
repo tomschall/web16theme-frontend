@@ -6,7 +6,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Kernkompetenzen'
+			title: 'Suche: Kernkompetenzen'
 		},
 		title: 'Kernkompetenzen',
 		langStrings: {

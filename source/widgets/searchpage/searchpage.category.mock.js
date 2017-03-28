@@ -16,7 +16,7 @@ var data = {
 		],
 	'items': [
 		{
-			'@id': '#',
+			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
 			'title': 'MAS Behinderung und Partizipation',
@@ -26,7 +26,7 @@ var data = {
 
 		},
 		{
-			'@id': '#',
+			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
 			'title': 'MAS Ethische Entscheidungsfindung in Organisation und Gesellschaft',
@@ -35,7 +35,7 @@ var data = {
 			location: 'Olten'
 		},
 		{
-			'@id': '#',
+			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
 			'title': 'MAS FHNW in Coaching',
@@ -44,7 +44,7 @@ var data = {
 			location: 'Olten'
 		},
 		{
-			'@id': '#',
+			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
 			'title': 'CAS Eingliederungsmanagement - Zielgruppen und Methoden',
@@ -53,7 +53,7 @@ var data = {
 			location: 'Windisch'
 		},
 		{
-			'@id': '#',
+			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
 			'title': 'CAS Eingliederungsmanagement «Fallberatung»',
