@@ -1,5 +1,10 @@
 <div class="widg_follow_us" data-init="follow_us">
-	<h2>{{title}}</h2>
+	{{#if title}}
+		<h2>{{title}}</h2>
+	{{/if}}
+	{{#if description}}
+		<p class="text__lead">{{description}}</p>
+	{{/if}}
 	<ul class="not-default">
 		{{#each links}}
 			<li>
