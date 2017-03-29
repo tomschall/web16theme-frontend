@@ -8,6 +8,11 @@ var _ = require('lodash'),
 var templateData = {
 			title: 'Suche nach Weiterbildungsangeboten',
 			searchFilterPageURL: '/pages/search_filter/search_filter.html',
+			langStrings: {
+				chooseExpertise: 'Fachbereich wählen ...',
+				extendedSearch: 'Erweiterte Suche',
+				showAllOffers: 'Alle Angebote anzeigen'
+			},
 			facultyOptions: [
 						{
 							'optionLabel': 'International Studies',

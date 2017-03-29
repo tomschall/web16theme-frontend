@@ -2,6 +2,10 @@
   @include clearfix;
 }
 
+.widg_footer_logo_label {
+   color: $colorBg;
+}
+
 .widg_inner-footer {
 	background-color: $colorBlack;
 	position: relative;
@@ -25,12 +29,13 @@
 	top: auto;
 
 	@include mq($to: subnav) {
-		right: $basicPush * 4;
-		bottom: $basicPush * 2.9;
+		/*right: $basicPush * 4;
+		bottom: $basicPush * 2.9;*/
+    display: none;
 	}
 
   	@include mq($to: small) {
-	  	right: $basicPush * 2;
+      display: none;
 	}
 
 	a {
@@ -40,10 +45,12 @@
 
 		@include mq($to: subnav) {
 			&:before {
-				height: 60px;
-				width: 100px;
-
+        display: none;
 			}
 		}
 	}
+}
+.widg_footer__efqm h4 {
+  border-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }

@@ -7,6 +7,9 @@ var _ = require('lodash'),
 
 var templateData = {
 			title: 'Infoveranstaltungen',
+			langStrings: {
+				nextInfoEvents: 'Nächste Infoanlässe:'
+			},
 			img: {
 				src: '/assets/media/img/info_events_example.png',
 				alt: 'Symbolbild Infoveranstaltungen'

@@ -1,7 +1,7 @@
 <div id="location-map">
 <div class="bleed__inner site-has-sidebar">
-	<h2>{{locationTitle}}</h2>
-	<p>{{locationDescription}}</p>
+	{{#if locationTitle}}<h2>{{locationTitle}}</h2>{{/if}}
+	{{#if locationDescription}}<p>{{locationDescription}}</p>{{/if}}
 </div>
 <div class="widg_location_slider {{#if oneMapOnly}}all-locations{{/if}}" data-init="location_slider"
 		 data-maps-marker="{{marker}}">
