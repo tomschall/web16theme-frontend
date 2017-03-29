@@ -6,7 +6,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Weiterbildungsangebot der FHNW'
+			title: 'Suche: Weiterbildungsangebot der FHNW'
 		},
 		title: 'Weiterbildungsangebot der FHNW',
 		langStrings: {

@@ -6,7 +6,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Suchergebnisse'
+			title: 'Suche: Alle Suchergebnisse'
 		},
 		title: 'Suchergebnisse',
 		widgets: {
