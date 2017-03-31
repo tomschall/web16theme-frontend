@@ -1,13 +1,9 @@
-{{#if title}}
-	<h2 class="teaser__title {{#if isOnStartpage}}is_on_startpage{{/if}}">{{title}}</h2>
-{{/if}}
-	{{#if description}}
-		<p class="text__lead">{{description}}</p>
-	{{/if}}
 <div class="widg_teaser__wrapper {{#if isOnStartpage}}is_on_startpage{{/if}}">
-
-	{{#if moreButton}}
-		<a class="button button__secondary teaser__more-button desktop_only" href="{{moreButton.url}}">{{moreButton.label}}</a>
+	{{#if title}}
+		<h2 class="teaser__title {{#if isOnStartpage}}is_on_startpage{{/if}}">{{title}}</h2>
+	{{/if}}
+	{{#if description}}
+		<div class="widg_teaser__desc"><p>{{description}}</p></div>
 	{{/if}}
 	{{#each teasers}}
     <div class="widg_teaser{{#if variant}} {{variant}}{{/if}} {{#if img}}{{else}}no-image{{/if}}">
@@ -32,6 +28,6 @@
     </div>
 	{{/each}}
 	{{#if moreButton}}
-		<a class="button button__secondary teaser__more-button only-phone" href="{{moreButton.url}}">{{moreButton.label}}</a>
+		<a class="button button__secondary teaser__more-button" href="{{moreButton.url}}">{{moreButton.label}}</a>
 	{{/if}}
 </div>

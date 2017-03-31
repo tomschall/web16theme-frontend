@@ -1,5 +1,4 @@
 .widg_extendedlinks {
-	margin-top: $basicPush * 3;
 	position: relative;
 
 	p {
@@ -18,8 +17,6 @@
 			font-size: 1.25rem;
 		}
 	}
-
-	margin-bottom: $basicPush * 4;
 
 	.widg_extendedlinks__entry:not(.has_description) {
 		h4 {
