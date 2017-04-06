@@ -9,3 +9,7 @@ atlassian-ide-plugin.xml
 .vagrant
 .qunit
 .DS_Store
+.installed.cfg
+/bin
+/parts
+/develop-eggs

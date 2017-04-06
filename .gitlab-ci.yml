@@ -1,0 +1,7 @@
+selftest:
+ stage: build
+ script:
+  - python bootstrap-buildout.py
+  - bin/buildout
+  - bin/gulp build --dev --interactive=false
+
