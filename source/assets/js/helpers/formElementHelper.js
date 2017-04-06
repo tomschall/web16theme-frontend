@@ -40,7 +40,11 @@
 			easyFormValidation.setup();
 			easyFormValidation.getFormState();
 			easyFormValidation.onRadioService();
-			easyFormValidation.select2Init();
+
+			if (easyFormValidation.rules.$form !== '#undefined') {
+				easyFormValidation.select2Init();
+			}
+
 			easyFormValidation.addSelect2SelectionID();
 			easyFormValidation.onInput();
 			easyFormValidation.onOptionDropdown();
