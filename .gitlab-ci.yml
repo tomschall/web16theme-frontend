@@ -1,7 +1,12 @@
 selftest:
  stage: build
+ cache:
+   paths:
+     - parts/
  script:
   - python bootstrap-buildout.py
   - bin/buildout
+  - bin/npm install
+  - bin/npm install jquery-deparam
   - bin/gulp build --dev --interactive=false
 
