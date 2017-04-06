@@ -1,4 +1,6 @@
-# [FHNW Frontend Theme] [2016]
+# [FHNW Frontend Theme] [2017]
+
+[![build status](https://gitlab.fhnw.ch/webteam/web16theme-frontend/badges/master/build.svg)](https://gitlab.fhnw.ch/webteam/web16theme-frontend/commits/master)
 
 This is the frontend theme for the main FHNW Website. It is the frontend
 code only and can be used for different projects.
