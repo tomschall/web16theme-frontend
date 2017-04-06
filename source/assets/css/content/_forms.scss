@@ -255,3 +255,14 @@ ul span.select2-selection__clear {
 .field.has-radio .fieldErrorBox {
 	top: 5px;
 }
+
+/**
+	* Thank you page customs
+	*/
+
+#content-core .field {
+	margin-bottom: 2rem;
+}
+.portalMessage.error {
+	display: none;
+}
