@@ -1,5 +1,8 @@
 selftest:
  stage: build
+ before_script:
+  - eval `ssh-agent`
+  - ssh-add ~/gitlab_deploy
  cache:
    paths:
      - parts/
@@ -9,4 +12,9 @@ selftest:
   - bin/npm install
   - bin/npm install jquery-deparam
   - bin/gulp build --dev --interactive=false
-
+deploy:
+ stage: deploy
+ script:
+  - deploy_theme.sh
+ only:
+  - master
