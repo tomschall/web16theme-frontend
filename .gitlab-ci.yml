@@ -10,6 +10,12 @@ selftest:
   - sh ./build_theme.sh
 deploy:
  stage: deploy
+ before_script:
+  - eval `ssh-agent`
+  - ssh-add ~/gitlab_deploy
+ cache:
+   paths:
+     - parts/
  script:
   - sh ./build_theme.sh
   - sh ./deploy_theme.sh
