@@ -16,3 +16,6 @@ atlassian-ide-plugin.xml
 /src
 .installed.cfg
 .mr.developer.cfg
+/include
+/lib*
+pip-selfcheck.json

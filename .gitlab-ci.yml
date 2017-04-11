@@ -7,14 +7,11 @@ selftest:
    paths:
      - parts/
  script:
-  - python bootstrap-buildout.py
-  - bin/buildout
-  - bin/npm install
-  - bin/npm install jquery-deparam
-  - bin/gulp build --dev --interactive=false
+  - sh ./build_theme.sh
 deploy:
  stage: deploy
  script:
-  - deploy_theme.sh
+  - sh ./build_theme.sh
+  - sh ./deploy_theme.sh
  only:
   - master
