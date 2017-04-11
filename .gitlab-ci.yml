@@ -7,7 +7,8 @@ selftest:
    paths:
      - parts/
  script:
-  - sh ./build_theme.sh
+  - sh ./prepare_build_theme.sh
+  - bin/gulp build --dev --interactive=false
 deploy:
  stage: deploy
  before_script:
@@ -17,7 +18,8 @@ deploy:
    paths:
      - parts/
  script:
-  - sh ./build_theme.sh
+  - sh ./prepare_build_theme.sh
+  - bin/gulp build --interactive=false
   - sh ./deploy_theme.sh
  only:
   - master
