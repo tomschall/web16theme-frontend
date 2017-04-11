@@ -13,3 +13,6 @@ atlassian-ide-plugin.xml
 /bin
 /parts
 /develop-eggs
+/src
+.installed.cfg
+.mr.developer.cfg
