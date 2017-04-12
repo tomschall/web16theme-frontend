@@ -8,7 +8,8 @@ var _ = require('lodash'),
 var templateData = {
 			title: 'Infoveranstaltungen',
 			langStrings: {
-				nextInfoEvents: 'Nächste Infoanlässe:'
+				nextInfoEvents: 'Nächste Infoanlässe:',
+				showAll: 'Alle anzeigen'
 			},
 			img: {
 				src: '/assets/media/img/info_events_example.png',

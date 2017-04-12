@@ -2,7 +2,7 @@
   <h2>{{title}}</h2>
   <img src="{{img.src}}" alt="{{img.alt}}"/>
 	<p>{{{text}}}</p>
-	<h3>{{langstrings.nextInfoEvents}}</h3>
+	<h3>{{langStrings.nextInfoEvents}}</h3>
 	<ul class="not-default">
 		{{#each events}}
 			<li>
@@ -14,7 +14,7 @@
 			</li>
 		{{/each}}
 	</ul>
-	<a class="button" href="{{allURL}}">Alle anzeigen</a>
+	<a class="button" href="{{allURL}}">{{langStrings.showAll}}</a>
 	<span class="event-room_info">
 		{{roomInfo}}
 	</span>
