@@ -11,7 +11,8 @@ var templateData = {
 			langStrings: {
 				chooseExpertise: 'Fachbereich wählen ...',
 				extendedSearch: 'Erweiterte Suche',
-				showAllOffers: 'Alle Angebote anzeigen'
+				showAllOffers: 'Alle Angebote anzeigen',
+				search: 'Suchen'
 			},
 			facultyOptions: [
 						{
