@@ -43,10 +43,6 @@
 
 		display: block;
 
-		.formHelp {
-			display: none;
-		}
-
 		span.required:after {
 			content: "*";
 			margin-left: -5px;
@@ -66,7 +62,8 @@
 
 	.formHelp {
 		display: block;
-		font-size: 1.333rem;
+		font-size: 1rem;
+		font-style: italic;
 		line-height: 1.888em;
 		margin-top: 3px;
 	}
