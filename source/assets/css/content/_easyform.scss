@@ -103,13 +103,13 @@
 
 	input[type="checkbox"],
 	input[type="radio"] {
-		height: auto;
+		height: 0;
 		border-width: 1px;
 	}
 
-	.option:first-of-type {
+	/*.option:first-of-type {
 		margin-left: 10px;
-	}
+	}*/
 }
 
 
