@@ -388,9 +388,7 @@
 		} else {
 			searchprmtrs = $.deparam(searchprmtrs);
 		}
-
 		return searchprmtrs !== null && searchprmtrs !== '' ? searchprmtrs : {};
-
 	}
 
 	// Save to global namespace
