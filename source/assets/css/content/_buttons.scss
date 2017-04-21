@@ -48,8 +48,9 @@ input[type="reset"],
 	}
 }
 
-#form-buttons-reset {
-	margin-left: $basicPush;
+#form-buttons-submit {
+	margin-right: $basicPush;
+	margin-bottom: $basicPush;
 }
 
 .button__360 {
