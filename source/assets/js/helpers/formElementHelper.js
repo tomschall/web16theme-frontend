@@ -64,15 +64,11 @@
 
 		init: function() {
 			rules = this.rules;
-
 			easyFormValidation.setup();
 			easyFormValidation.getFormState();
-			easyFormValidation.onRadioService();
-
 			if (easyFormValidation.rules.$form !== '#undefined') {
 				easyFormValidation.select2Init();
 			}
-
 			easyFormValidation.addSelect2SelectionID();
 			easyFormValidation.onInput();
 			easyFormValidation.onOptionDropdown();
@@ -81,23 +77,11 @@
 			easyFormValidation.formSubmitState();
 		},
 
-		selectorFieldRules: {
-			addErrorClass: function($selectedElementID) {
-				$($selectedElementID).parent().addClass(rules.error);
-			},
-
-			removeErrorClass: function($selectedElementID) {
-				$($selectedElementID).parent().removeClass(rules.error);
-			}
-		},
-
 		setup: function() {
-
 			$('.select-widget').prev().css('z-index', '1000');
 
 			$('input[type="radio"]').each(function(radioIdx, radio) {
 				var $radio = $(radio);
-
 				$radio.closest(rules.findField).addClass('has-radio');
 			});
 
@@ -173,17 +157,15 @@
 		formSubmitState: function() {
 			rules.$formSubmitButton.on('click', function() {
 				$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
-					var $requiredSelectState = $(this),
-					$selectedElementID = '#' + $requiredSelectState.attr('id');
-
+					var $requiredSelectState = $(this);
 					if ($requiredSelectState.hasClass(rules.required) && !($requiredSelectState.hasClass(rules.hasvalue))) {
 						if ($requiredSelectState.hasClass('radio-widget')) {
-							easyFormValidation.validateElement($selectedElementID, 'RADIO');
+							easyFormValidation.validateElement($requiredSelectState, 'RADIO');
 
-							/*console.info('FORM SUBMIT STATE VALIDATE RADIO -> ' + $selectedElementID);*/
+							/*console.info('FORM SUBMIT STATE VALIDATE RADIO -> ' + $requiredSelectState);*/
 						} else {
 							/*console.info('tagname -> ' + $requiredSelectState.prop('tagName') + ' requiredSelectState -> ' + $requiredSelectState.attr('name') + ' has-value ' + $requiredSelectState.hasClass('has-value') + ' required ' + $requiredSelectState.hasClass('required'));*/
-							easyFormValidation.validateElement($selectedElementID, $requiredSelectState.prop('tagName'));
+							easyFormValidation.validateElement($requiredSelectState, $requiredSelectState.prop('tagName'));
 						}
 					}
 				});
@@ -253,17 +235,16 @@
 			});
 		},
 
-		buildurl: function($selectedElementID) {
+		buildurl: function($el) {
 			/* Query Example http://localhost:8000/plone2/de/easyform/@@z3cform_validate_field?fname=form.widgets.allgemeine_geschaftsbedingungen&form.widgets.allgemeine_geschaftsbedingungen:list=--NOVALUE-- */
 			var url = window.location.href,
 					$z3cvalidator = '@@z3cform_validate_field?fname=',
-					$fieldNameOriginal = $($selectedElementID).attr('name'),
+					$fieldNameOriginal = $el.attr('name'),
 					$fieldnameSplitted = '',
 					$requestURI = '';
 
-			if ($($selectedElementID).hasClass(rules.hasvalue)) {
+			if ($el.hasClass(rules.hasvalue)) {
 				$fieldnameSplitted = $fieldNameOriginal;
-
 			} else {
 				$fieldnameSplitted = $fieldNameOriginal.split(':') ? $fieldNameOriginal.split(':')[0] : $fieldNameOriginal;
 			}
@@ -275,159 +256,111 @@
 				/*console.info('use urlHash ' + urlVar);*/
 			}
 
-			$requestURI = url + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + easyFormValidation.getFieldValue($selectedElementID);
-
+			$requestURI = url + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + easyFormValidation.getFieldValue($el);
 			/*console.info('requestURI -> ' + $requestURI);*/
-
 			return $requestURI;
 		},
 
-		checkCheckbox: function($selectedElementID) {
-			var $checkBoxChecked = $($selectedElementID).prop('checked');
-
-			return $checkBoxChecked;
+		checkCheckbox: function($el) {
+			return $el.prop('checked');
 		},
 
 		onInput: function() {
 			$(':input[type="text"], :input[type="checkbox"], :input[type="radio"], textarea, :input[type="password"], :input[type="file"]')
 			.on('click', function() {
-				var $selectedElementID = '#' + $(this).attr('id'),
-						$currentFieldType = 'INPUT';
-
-				if ($($selectedElementID).is(':radio')) {
-					$currentFieldType = 'RADIO';
-
-					easyFormValidation.onRadioService($selectedElementID, $currentFieldType);
+				var $el = $(this);
+				if ($el.is(':radio')) {
+					easyFormValidation.onRadioService($el, 'RADIO');
 				}
-
-				if ($($selectedElementID).is(':checkbox')) {
-					$currentFieldType = 'CHECKBOX';
-					easyFormValidation.fieldCheckboxService($selectedElementID, $currentFieldType);
+				if ($el.is(':checkbox')) {
+					easyFormValidation.fieldCheckboxService($el, 'CHECKBOX');
 				}
 			})
 			.on('focusout', _.debounce(easyFormValidation.onInputChange, 300));
 		},
 
 		onInputChange: function(event) {
-			easyFormValidation.validateElement('#' + event.target.id, 'INPUT');
+			easyFormValidation.validateElement($(event.target), 'INPUT');
 		},
 
 		onOptionMultiSelect: function() {
 			$('ul.select2-selection__rendered')
-			.on('mouseenter', function() {
-				var $selectedElementID = '#' + $(this).closest(rules.findField).find('select').attr('id');
-
-				$($selectedElementID).select2('open');
-
-				easyFormValidation.onCheckOptionMultiSelect($selectedElementID);
-			});
+				.on('mouseenter', function() {
+					var $el = $(this).closest(rules.findField).find('select');
+					$el.select2('open');
+					easyFormValidation.onCheckOptionMultiSelect($el);
+				});
 		},
 
 		onOptionDropdown: function() {
 			$('span.select2-selection__rendered')
 				.on('mouseenter', function() {
-					var $selectedElementID = '#' + $(this).closest(rules.findField).find('select').attr('id');
-
-					/*console.info('[onOptionDropdown] MOUSEOVER -> ' + $selectedElementID);*/
-
-					easyFormValidation.onCheckDropdownSelect($selectedElementID);
-
+					var $el = $(this).closest(rules.findField).find('select');
+					/*console.info('[onOptionDropdown] MOUSEOVER -> ' + $el);*/
+					easyFormValidation.onCheckDropdownSelect($el);
 				});
 		},
 
-		onCheckDropdownSelect: function($selectedElementID) {
-			$($selectedElementID).select2({
+		onCheckDropdownSelect: function($el) {
+			$el.select2({
 				placeholder: 'Bitte wählen',
 				closeOnSelect: true,
 				allowClear: true
 			});
 
-			$($selectedElementID).on('change', function() {
-
-				var $currentFieldType = 'SELECT';
-
-				easyFormValidation.validateElement($selectedElementID, $currentFieldType);
-
-				/*console.info('VALIDATE DROPDOWN ' + $selectedElementID);*/
+			$el.on('change', function() {
+				easyFormValidation.validateElement($el, 'SELECT');
+				/*console.info('VALIDATE DROPDOWN ' + $el);*/
 			});
 		},
 
-		onCheckOptionMultiSelect: function($selectedElementID) {
-
-			$($selectedElementID).select2({
+		onCheckOptionMultiSelect: function($el) {
+			$el.select2({
 				placeholder: 'Bitte wählen',
 				allowClear: true,
 				closeOnSelect: false
 			});
 
-			$($selectedElementID).on('change', function() {
-				var $currentFieldType = 'SELECT';
-
-				easyFormValidation.validateElement($selectedElementID, $currentFieldType);
+			$el.on('change', function() {
+				easyFormValidation.validateElement($el, 'SELECT');
 			});
 		},
 
-		validateElement: function($selectedElementID, $currentFieldType) {
-			var json = {};
-
-			json = $.getJSON(easyFormValidation.buildurl($selectedElementID), function() {
-			})
-			.done(function() {
-			})
-			.fail(function() {
-			})
-			.always(function(json) {
+		validateElement: function($el, $currentFieldType) {
+			$.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
 				var $errorMsg = json.errmsg,
-				$checkError = '';
+					isValid = $errorMsg === '';
+
+				$el.closest(rules.findField).find(rules.$fieldErrorBox).text($errorMsg);
 
 				/* Error Messages on case */
 				switch ($currentFieldType) {
 					case 'SELECT':
-						$($selectedElementID).closest(rules.findField).find(rules.$fieldErrorBox).text($errorMsg);
-						$checkError = ($errorMsg !== '') ? $($selectedElementID).addClass('error') : $($selectedElementID).removeClass('error');
-
-						/*console.info('VALIDATE SELECT ' + $selectedElementID);*/
-
-						return $checkError;
-
+						$el.toggleClass('error', !isValid);
+						break;
 					case 'RADIO':
-						$($selectedElementID).closest(rules.findField).find(rules.$fieldErrorBox).text($errorMsg);
-						$checkError = ($errorMsg !== '') ? $($selectedElementID).removeClass(rules.hasvalue) : $($selectedElementID).addClass(rules.hasvalue);
-						$checkError = ($errorMsg !== '') ? $($selectedElementID).closest(rules.findField).addClass(rules.error) : $($selectedElementID).closest(rules.findField).removeClass(rules.error);
-
-						return $checkError;
-
+						$el.toggleClass(rules.hasvalue, isValid);
+						$el.closest(rules.findField).toggleClass(rules.error, isValid);
+						break;
 					case 'INPUT':
 					case 'TEXTAREA':
 					case 'CHECKBOX':
-						$($selectedElementID).closest(rules.findField).find(rules.$fieldErrorBox).text($errorMsg);
-						/*$($selectedElementID).closest(rules.findField).find('fieldErrorBox').text($errorMsg);*/
-						$checkError = ($errorMsg !== '') ? easyFormValidation.selectorFieldRules.addErrorClass($selectedElementID) : easyFormValidation.selectorFieldRules.removeErrorClass($selectedElementID);
-						$checkError = ($errorMsg !== '') ? $($selectedElementID).removeClass(rules.hasvalue) : $($selectedElementID).addClass(rules.hasvalue);
-
-						/*console.info('VALIDATE INPUT TEXTAREA CHECKBOX' + $selectedElementID);*/
-
-						return $checkError;
-
+						$el.toggleClass(rules.hasvalue, isValid);
+						$el.parent().toggleClass(rules.error, !isValid);
+						break;
 					default:
-						$($selectedElementID).closest(rules.findField).find(rules.$fieldErrorBox).text($errorMsg);
-						/*$($selectedElementID).closest(rules.findField).find('fieldErrorBox').text($errorMsg);*/
-						$checkError = ($errorMsg !== '') ? easyFormValidation.selectorFieldRules.addErrorClass($selectedElementID) : easyFormValidation.selectorFieldRules.removeErrorClass($selectedElementID);
-						$checkError = ($errorMsg !== '') ? $($selectedElementID).removeClass(rules.hasvalue) : $($selectedElementID).addClass(rules.hasvalue);
-
-						/*console.info('VALIDATE DEFAULT' + $selectedElementID);*/
-
-						return $checkError;
+						$el.toggleClass(rules.hasvalue, isValid);
+						$el.parent().toggleClass(rules.error, !isValid);
 				}
 			});
 		},
 
-		onRadioService: function($selectedElementID, $currentFieldType) {
-			$($selectedElementID).on('change', function() {
+		onRadioService: function($el, $currentFieldType) {
+			$el.on('change', function() {
 
-				/*console.info('Radio Clicked -> ' + $selectedElementID);*/
+				/*console.info('Radio Clicked -> ' + $el);*/
 
-				$($selectedElementID).closest('.field').find('input').each(function() {
+				$el.closest('.field').find('input').each(function() {
 					var radioValue = $(this).next().text();
 
 					$(this).val(radioValue);
@@ -435,33 +368,30 @@
 					$(this).closest('.field').removeClass('error');
 				});
 
-				easyFormValidation.validateElement($selectedElementID, $currentFieldType);
+				easyFormValidation.validateElement($el, $currentFieldType);
 			});
 		},
 
-		fieldCheckboxService: function($selectedElementID, $currentFieldType) {
-			if (easyFormValidation.fieldRequired($selectedElementID) && easyFormValidation.checkCheckbox($selectedElementID)) {
-				$($selectedElementID).val(rules.optionSelected);
-				$($selectedElementID).addClass(rules.hasvalue);
-			} else if (!easyFormValidation.fieldRequired($selectedElementID) && easyFormValidation.checkCheckbox($selectedElementID)) {
-				$($selectedElementID).val(rules.optionSelected);
+		fieldCheckboxService: function($el, $currentFieldType) {
+			if (easyFormValidation.fieldRequired($el) && easyFormValidation.checkCheckbox($el)) {
+				$($el).val(rules.optionSelected);
+				$($el).addClass(rules.hasvalue);
+			} else if (!easyFormValidation.fieldRequired($el) && easyFormValidation.checkCheckbox($el)) {
+				$($el).val(rules.optionSelected);
 			} else {
-				$($selectedElementID).val(rules.optionNoValue);
-				$($selectedElementID).removeClass(rules.hasvalue);
+				$($el).val(rules.optionNoValue);
+				$($el).removeClass(rules.hasvalue);
 			}
 
-			easyFormValidation.validateElement($selectedElementID, $currentFieldType);
+			easyFormValidation.validateElement($el, $currentFieldType);
 		},
 
-		fieldRequired: function($selectedElementID) {
-			var $elementRequired = $($selectedElementID).hasClass(rules.required);
-
-			return $elementRequired;
+		fieldRequired: function($el) {
+			return $el.hasClass(rules.required);
 		},
 
-		getFieldValue: function($selectedElementID) {
-			var	$el = $($selectedElementID),
-				$valueOfTheField = $el.val();
+		getFieldValue: function($el) {
+			var	$valueOfTheField = $el.val();
 
 			if (($el).data().datepicker) {
 
@@ -562,8 +492,7 @@
 
 		addSelect2Events: function addSelect2Events() {
 			var $selectFields = $('.custom-select, .select-widget, .field select'),
-					$relatedLabels = $selectFields.siblings('label, .label'),
-					eventsSet = false;
+				$relatedLabels = $selectFields.siblings('label, .label');
 
 			$selectFields.on('change.formElementHelper', function(event) {
 				var $select = $(event.target),
@@ -630,8 +559,6 @@
 			$relatedLabels.on('mouseout.formElementHelper', function() {
 				$(this).parent('div').removeClass('has-focused-label');
 			});
-
-			eventsSet = true;
 		},
 
 		checkSelection: function checkSelection($select2) {
@@ -643,7 +570,6 @@
 			$selections.removeClass('showEtc hideComma');
 			$selections.each(function(index, element) {
 				elementsWidth += $(element).outerWidth();
-
 				if (elementsWidth > selectionWidth && indexNotVisible === -1) {
 					$($selections.get(index - 1)).addClass('showEtc');
 					indexNotVisible = index;
