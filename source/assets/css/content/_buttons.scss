@@ -48,9 +48,29 @@ input[type="reset"],
 	}
 }
 
-#form-buttons-submit {
+#form-buttons-submit, #form-buttons-reset {
 	margin-right: $basicPush;
 	margin-bottom: $basicPush;
+
+	@include mq($to: medium) {
+		height: auto;
+		font-size: 12px;
+		line-height: 2rem;
+		white-space: normal;
+		width: 100%;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	@include mq($to: small) {
+		height: auto;
+		font-size: 12px;
+		line-height: 2rem;
+		white-space: normal;
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+	}
 }
 
 .button__360 {
