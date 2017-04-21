@@ -245,94 +245,144 @@
 		</section>
 
     <section class="sg_inner_wrapper">
-			<!--
-      <h2 class="sg_h2">Basic Form (delivered by FHNW)</h2>
-      <div class="sg_demo">
-        <div class="form">
-          <form id="form" enctype="multipart/form-data" method="post"
-                class="rowlike enableUnloadProtection enableFormTabbing pat-autotoc easyformForm kssattr-formname-view autotabs"
-                data-pat-autotoc="levels: legend; section: fieldset; className: autotabs">
-            <fieldset id="fieldset-default" class="autotoc-section active">
-              <legend id="fieldsetlegend-default">Default</legend>
-              <div id="formfield-form-widgets-replyto" data-fieldname="form.widgets.replyto"
-                   class="field pat-inlinevalidation kssattr-fieldname-form.widgets.replyto empty"
-                   data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
-                <label class="horizontal" for="form-widgets-replyto">
-                  Ihre E-Mail Adresse
-                  <span title="Erforderlich" class="required horizontal">&nbsp;</span>
-                </label>
-                <div class="fieldErrorBox"></div>
-                <input type="text" value="" class="text-widget required textline-field" name="form.widgets.replyto"
-                       id="form-widgets-replyto">
-              </div>
-              <div id="formfield-form-widgets-topic" data-fieldname="form.widgets.topic"
-                   class="field pat-inlinevalidation kssattr-fieldname-form.widgets.topic empty"
-                   data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
-                <label class="horizontal" for="form-widgets-topic">
-                  Betreff
-                  <span title="Erforderlich" class="required horizontal">&nbsp;</span>
-                </label>
-                <div class="fieldErrorBox"></div>
-                <input type="text" value="" class="text-widget required textline-field" name="form.widgets.topic"
-                       id="form-widgets-topic">
-              </div>
-              <div id="formfield-form-widgets-comments" data-fieldname="form.widgets.comments"
-                   class="field field__textarea pat-inlinevalidation kssattr-fieldname-form.widgets.comments empty"
-                   data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
-                <label class="horizontal" for="form-widgets-comments">
-                  Kommentar
-                  <span title="Erforderlich" class="required horizontal">&nbsp;</span>
-                </label>
-                <div class="fieldErrorBox"></div>
-                <textarea class="textarea-widget required text-field" name="form.widgets.comments"
-                          id="form-widgets-comments" rows="5"></textarea>
-              </div>
-              <div id="formfield-form-widgets-auswahl" data-fieldname="form.widgets.auswahl"
-                   class="field pat-inlinevalidation kssattr-fieldname-form.widgets.auswahl empty"
-                   data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
-                <label class="horizontal" for="form-widgets-auswahl">
-                  Auswahl
-                </label>
-                <div class="fieldErrorBox"></div>
-                <span class="option">
-									<label for="form-widgets-auswahl-0">
-									<input type="radio" value="true" class="radio-widget bool-field" name="form.widgets.auswahl"
-												 id="form-widgets-auswahl-0">
-										<span class="label">ja</span>
-									</label>
-								</span>
-                <span class="option">
-									<label for="form-widgets-auswahl-1">
-									<input type="radio" value="false" class="radio-widget bool-field" name="form.widgets.auswahl"
-												 id="form-widgets-auswahl-1">
-										<span class="label">nein</span>
-									</label>
-								</span>
-                <input type="hidden" value="1" name="form.widgets.auswahl-empty-marker">
-              </div>
-              <div id="formfield-form-widgets-einfache_auswahl" data-fieldname="form.widgets.einfache_auswahl"
-                   class="field pat-inlinevalidation kssattr-fieldname-form.widgets.einfache_auswahl empty"
-                   data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
-                <div class="fieldErrorBox"></div>
-                <select size="1" class="select-widget choice-field" name="form.widgets.einfache_auswahl:list"
-												data-placeholder="Einfache Auswahl"
-                        id="form-widgets-einfache_auswahl">
-									<option></option>
-                  <option value="Äpfel" id="form-widgets-einfache_auswahl-0">Äpfel</option>
-                  <option value="Birnen" id="form-widgets-einfache_auswahl-1">Birnen</option>
-                </select>
-                <input type="hidden" value="1" name="form.widgets.einfache_auswahl-empty-marker">
-              </div>
-            </fieldset>
-            <div class="formControls">
-              <input type="submit" value="Einreichen" class="submit-widget button-field" name="form.buttons.submit"
-                     id="form-buttons-submit">
-            </div>
-            <input type="hidden" value="43dfe602a7e1d65b326e4906b887cfdfe7d0b5fc" name="_authenticator">
-          </form>
+
+		<form data-pat-autotoc="levels: legend; section: fieldset; className: autotabs"
+			  class="rowlike pat-formunloadalert  easyformForm kssattr-formname-view"
+			  action="http://localhost:8008/Plone/de/easyformexample" method="post"
+			  enctype="multipart/form-data" id="form"><!-- Default fieldset -->
+
+			<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.foo empty"
+				 data-fieldname="form.widgets.foo" id="formfield-form-widgets-foo">
+				<label for="form-widgets-foo" class="horizontal">
+					foo
+
+					<span class="required horizontal" title="Erforderlich"> </span><span
+						class="formHelp">helpfoo</span></label>
+				<div class="fieldErrorBox"></div>
+				<input id="form-widgets-foo" name="form.widgets.foo"
+					   class="text-widget required textline-field" value=""
+					   type="text"/></div>
+			<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+				 class="field pat-inlinevalidation kssattr-fieldname-form.widgets.now empty"
+				 data-fieldname="form.widgets.now" id="formfield-form-widgets-now">
+				<label for="form-widgets-now" class="horizontal">
+					now
+
+
+				</label>
+				<div class="fieldErrorBox"></div>
+
+				<input class="pat-pickadate" type="text" name="form.widgets.now"
+					   value=""
+
+					   id="form-widgets-now"
+
+					   data-pat-pickadate="{&quot;date&quot;: {&quot;format&quot;: &quot;d mmmm, yyyy&quot;, &quot;selectYears&quot;: 200, &quot;min&quot;: [1917, 1, 1], &quot;monthsFull&quot;: [&quot;Januar&quot;, &quot;Februar&quot;, &quot;M\u00e4rz&quot;, &quot;April&quot;, &quot;Mai&quot;, &quot;Juni&quot;, &quot;Juli&quot;, &quot;August&quot;, &quot;September&quot;, &quot;Oktober&quot;, &quot;November&quot;, &quot;Dezember&quot;], &quot;weekdaysShort&quot;: [&quot;So&quot;, &quot;Mo&quot;, &quot;Di&quot;, &quot;Mi&quot;, &quot;Do&quot;, &quot;Fr&quot;, &quot;Sa&quot;], &quot;weekdaysFull&quot;: [&quot;Sonntag&quot;, &quot;Montag&quot;, &quot;Dienstag&quot;, &quot;Mittwoch&quot;, &quot;Donnerstag&quot;, &quot;Freitag&quot;, &quot;Samstag&quot;], &quot;firstDay&quot;: 1, &quot;max&quot;: [2037, 1, 1], &quot;placeholder&quot;: &quot;Datum eingeben\u2026&quot;, &quot;monthsShort&quot;: [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mrz&quot;, &quot;Apr&quot;, &quot;Mai&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Okt&quot;, &quot;Nov&quot;, &quot;Dez&quot;]}, &quot;clear&quot;: &quot;Auswahl aufheben&quot;, &quot;today&quot;: &quot;Heute&quot;, &quot;time&quot;: false}"/>
+
+			</div><!-- Secondary fieldsets -->
+			<div class="formControls"><input id="form-buttons-submit"
+											 name="form.buttons.submit"
+											 class="submit-widget button-field"
+											 value="Einreichen" type="submit"/><input
+					id="form-buttons-reset" name="form.buttons.reset"
+					class="submit-widget button-field" value="Zurücksetzen"
+					type="submit"/></div>
+			<input type="hidden" name="_authenticator"
+				   value="0ce895ca68e382dd3af8973fc21a114aee269e56"/>
+
+		</form>
+
+
+
+		<!--
+  <h2 class="sg_h2">Basic Form (delivered by FHNW)</h2>
+  <div class="sg_demo">
+    <div class="form">
+      <form id="form" enctype="multipart/form-data" method="post"
+            class="rowlike enableUnloadProtection enableFormTabbing pat-autotoc easyformForm kssattr-formname-view autotabs"
+            data-pat-autotoc="levels: legend; section: fieldset; className: autotabs">
+        <fieldset id="fieldset-default" class="autotoc-section active">
+          <legend id="fieldsetlegend-default">Default</legend>
+          <div id="formfield-form-widgets-replyto" data-fieldname="form.widgets.replyto"
+               class="field pat-inlinevalidation kssattr-fieldname-form.widgets.replyto empty"
+               data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
+            <label class="horizontal" for="form-widgets-replyto">
+              Ihre E-Mail Adresse
+              <span title="Erforderlich" class="required horizontal">&nbsp;</span>
+            </label>
+            <div class="fieldErrorBox"></div>
+            <input type="text" value="" class="text-widget required textline-field" name="form.widgets.replyto"
+                   id="form-widgets-replyto">
+          </div>
+          <div id="formfield-form-widgets-topic" data-fieldname="form.widgets.topic"
+               class="field pat-inlinevalidation kssattr-fieldname-form.widgets.topic empty"
+               data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
+            <label class="horizontal" for="form-widgets-topic">
+              Betreff
+              <span title="Erforderlich" class="required horizontal">&nbsp;</span>
+            </label>
+            <div class="fieldErrorBox"></div>
+            <input type="text" value="" class="text-widget required textline-field" name="form.widgets.topic"
+                   id="form-widgets-topic">
+          </div>
+          <div id="formfield-form-widgets-comments" data-fieldname="form.widgets.comments"
+               class="field field__textarea pat-inlinevalidation kssattr-fieldname-form.widgets.comments empty"
+               data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
+            <label class="horizontal" for="form-widgets-comments">
+              Kommentar
+              <span title="Erforderlich" class="required horizontal">&nbsp;</span>
+            </label>
+            <div class="fieldErrorBox"></div>
+            <textarea class="textarea-widget required text-field" name="form.widgets.comments"
+                      id="form-widgets-comments" rows="5"></textarea>
+          </div>
+          <div id="formfield-form-widgets-auswahl" data-fieldname="form.widgets.auswahl"
+               class="field pat-inlinevalidation kssattr-fieldname-form.widgets.auswahl empty"
+               data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
+            <label class="horizontal" for="form-widgets-auswahl">
+              Auswahl
+            </label>
+            <div class="fieldErrorBox"></div>
+            <span class="option">
+                                <label for="form-widgets-auswahl-0">
+                                <input type="radio" value="true" class="radio-widget bool-field" name="form.widgets.auswahl"
+                                             id="form-widgets-auswahl-0">
+                                    <span class="label">ja</span>
+                                </label>
+                            </span>
+            <span class="option">
+                                <label for="form-widgets-auswahl-1">
+                                <input type="radio" value="false" class="radio-widget bool-field" name="form.widgets.auswahl"
+                                             id="form-widgets-auswahl-1">
+                                    <span class="label">nein</span>
+                                </label>
+                            </span>
+            <input type="hidden" value="1" name="form.widgets.auswahl-empty-marker">
+          </div>
+          <div id="formfield-form-widgets-einfache_auswahl" data-fieldname="form.widgets.einfache_auswahl"
+               class="field pat-inlinevalidation kssattr-fieldname-form.widgets.einfache_auswahl empty"
+               data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
+            <div class="fieldErrorBox"></div>
+            <select size="1" class="select-widget choice-field" name="form.widgets.einfache_auswahl:list"
+                                            data-placeholder="Einfache Auswahl"
+                    id="form-widgets-einfache_auswahl">
+                                <option></option>
+              <option value="Äpfel" id="form-widgets-einfache_auswahl-0">Äpfel</option>
+              <option value="Birnen" id="form-widgets-einfache_auswahl-1">Birnen</option>
+            </select>
+            <input type="hidden" value="1" name="form.widgets.einfache_auswahl-empty-marker">
+          </div>
+        </fieldset>
+        <div class="formControls">
+          <input type="submit" value="Einreichen" class="submit-widget button-field" name="form.buttons.submit"
+                 id="form-buttons-submit">
         </div>
-      </div>
-      -->
+        <input type="hidden" value="43dfe602a7e1d65b326e4906b887cfdfe7d0b5fc" name="_authenticator">
+      </form>
+    </div>
+  </div>
+  -->
     </section>
 	{{/content}}
 {{/extend}}

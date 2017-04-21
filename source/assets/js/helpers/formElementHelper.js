@@ -9,14 +9,42 @@
 	'use strict';
 
 	var rules,
-	$thisform = '#' + $('form').attr('id'),
-	easyFormValidation = {
+		formId = $('form').attr('id'), // TODO: the id does not seem to be set ?
+        $thisform = '#' + formId, // NOTE: can lead to `#undefined`
+        $form = $('form');
 
+	/**
+	 * Returns page language or defaults to `de`
+	 *
+	 * @returns {string} Langugae code
+	 */
+	function getLanguage() {
+		var acceptedLanguages = ['de', 'en', 'fr'],
+			lang = $('html').attr('lang');
+
+		// return the language or default to first one in the list
+		return acceptedLanguages.indexOf(lang) >= 0 ? lang : acceptedLanguages[0];
+	}
+
+	/**
+	 * Converts date if it matches d.m.y pattern, original value otherwise
+	 *
+	 * @param {string} str Date in d.m.y format
+	 * @returns {string} Date in yyyy-mm-dd format or original value
+	 */
+	function convertDate(str) {
+		return str.replace(/^\s*(\d{1,2})\.(\d{1,2})\.(\d{1,4})$\s*/g, function(__, d, m, y) {
+			return [_.padStart(y, 4, '0'), _.padStart(m, 2, '0'), _.padStart(d, 2, '0')].join('-');
+		});
+	}
+
+	var easyFormValidation = {
 		rules: {
 			$form: $thisform,
 			$formSelect: $($thisform + ' select'),
 			$formCheckbox: $($thisform + ' input:checkbox'),
 			$formRadio: $($thisform + ' input:radio'),
+			$formDate: $form.find('input.pat-pickadate'),
 			required: 'required',
 			error: 'error',
 			hasvalue: 'has-value',
@@ -84,13 +112,67 @@
 					$(this).val(rules.optionNoValue);
 				}
 			});
+
+			this.setupDatepickers();
+
+			$form.submit(function() {
+				// convert all date values on submit to backend format
+				rules.$formDate.each(function() {
+					var $el = $(this);
+
+					$el.val(convertDate(el.val()));
+				});
+			});
+		},
+
+		setupDatepickers: function() {
+			var language = getLanguage(),
+
+				// update datepicker defaults based on the current language and
+				// configuration provided by the first datepicker on te page
+				datepickerSettings = $('[data-pat-pickadate]').eq(0).attr('data-pat-pickadate');
+
+			if (datepickerSettings) {
+				datepickerSettings = JSON.parse(datepickerSettings);
+
+				$.fn.datepicker.dates[language] = $.extend({}, $.fn.datepicker.dates.en, {
+					days: datepickerSettings.date.weekdaysFull,
+					daysShort: datepickerSettings.date.weekdaysShort,
+					daysMin: datepickerSettings.date.weekdaysShort,
+					months: datepickerSettings.date.monthsFull,
+					monthsShort: datepickerSettings.date.monthsShort,
+					today: datepickerSettings.today,
+					clear: datepickerSettings.clear
+				});
+			}
+
+			rules.$formDate.each(function() {
+				var $el = $(this);
+
+				// convert loaded value from server side form (YYYY-MM-DD) to user format dd.mm.yyyy
+				$el.val($el.val().replace(/^(\d{4})-(\d{2})-(\d{2})$/g, '$3.$2.$1'));
+
+				$el.datepicker({
+					weekStart: 1,
+					autoclose: true,
+					todayHighlight: true,
+					format: 'dd.mm.yyyy',
+					language: language,
+					forceParse: false,
+					templates: {
+						leftArrow: ' ',
+						rightArrow: ' '
+					}
+				});
+
+				// append calendar icon after the input element
+				$el.after('<div class="datepicker-icon icon_ical"></div>');
+			});
 		},
 
 		formSubmitState: function() {
 			rules.$formSubmitButton.on('click', function() {
-
 				$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
-
 					var $requiredSelectState = $(this),
 					$selectedElementID = '#' + $requiredSelectState.attr('id');
 
@@ -99,7 +181,6 @@
 							easyFormValidation.validateElement($selectedElementID, 'RADIO');
 
 							/*console.info('FORM SUBMIT STATE VALIDATE RADIO -> ' + $selectedElementID);*/
-
 						} else {
 							/*console.info('tagname -> ' + $requiredSelectState.prop('tagName') + ' requiredSelectState -> ' + $requiredSelectState.attr('name') + ' has-value ' + $requiredSelectState.hasClass('has-value') + ' required ' + $requiredSelectState.hasClass('required'));*/
 							easyFormValidation.validateElement($selectedElementID, $requiredSelectState.prop('tagName'));
@@ -223,18 +304,12 @@
 					$currentFieldType = 'CHECKBOX';
 					easyFormValidation.fieldCheckboxService($selectedElementID, $currentFieldType);
 				}
-
-				easyFormValidation.onFormInput($selectedElementID);
-			});
+			})
+			.on('focusout', _.debounce(easyFormValidation.onInputChange, 300));
 		},
 
-		onFormInput: function($selectedElementID) {
-			$($selectedElementID)
-			.on('focusout', function() {
-				var $currentFieldType = 'INPUT';
-
-				easyFormValidation.validateElement($selectedElementID, $currentFieldType);
-			});
+		onInputChange: function(event) {
+			easyFormValidation.validateElement('#' + event.target.id, 'INPUT');
 		},
 
 		onOptionMultiSelect: function() {
@@ -385,7 +460,15 @@
 		},
 
 		getFieldValue: function($selectedElementID) {
-			var	$valueOfTheField = $($selectedElementID).val();
+			var	$el = $($selectedElementID),
+				$valueOfTheField = $el.val();
+
+			if (($el).data().datepicker) {
+
+				// element is a datepicker, perform value conversion as backend requires YYYY-MM-DD
+				// accepted user input is dd.mm.yyyy
+				$valueOfTheField = convertDate($valueOfTheField);
+			}
 
 			return $valueOfTheField;
 		},
@@ -513,6 +596,7 @@
 			});
 
 			$selectFields.on('select2:open.formElementHelper', function() {
+
 				// Options are not initialized immediately, so we wait 100 millisec
 				setTimeout(function() {
 					var $select2ResultsOptions = $('.select2-results__options');

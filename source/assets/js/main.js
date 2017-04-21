@@ -5,6 +5,8 @@
  * @requires ../../../node_modules/slick-carousel/slick/slick.js
  * @requires ../../../node_modules/image-scale/image-scale.js
  * @requires ../../../node_modules/select2/dist/js/select2.js
+ * @requires ../../../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js
+ *
  * @requires ../../../node_modules/jquery-validation/dist/jquery.validate.js
  * @requires ../../../node_modules/jquery-validation/dist/additional-methods.js
  * @requires ../../../node_modules/jquery-validation/dist/localization/messages_de.js
