@@ -388,6 +388,7 @@
 		} else {
 			searchprmtrs = $.deparam(searchprmtrs);
 		}
+
 		return searchprmtrs !== null && searchprmtrs !== '' ? searchprmtrs : {};
 	}
 

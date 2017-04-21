@@ -404,7 +404,7 @@
 		select2Init: function initSelect2() {
 			var $selectFields = $('.custom-select, .select-widget, .field select');
 
-			$selectFields = $selectFields.filter(function(){
+			$selectFields = $selectFields.filter(function() {
 				return $(this).is('select');
 			});
 
