@@ -97,8 +97,8 @@
 	"requireNamedUnassignedFunctions": null, // Require unassigned functions to be named inline
 	"requireNewlineBeforeBlockStatements": null, // Requires newline before opening curly brace of all block statements.
 	"requireOperatorBeforeLineBreak": true, // Requires operators to appear before line breaks and not after.
-	"requirePaddingNewLineAfterVariableDeclaration": true, // Requires an extra blank newline after var declarations, as long as it is not the last expression in the current block.
-	"requirePaddingNewLinesAfterBlocks": true, // Requires newline after blocks
+	"requirePaddingNewLineAfterVariableDeclaration": false, // Requires an extra blank newline after var declarations, as long as it is not the last expression in the current block.
+	"requirePaddingNewLinesAfterBlocks": false, // Requires newline after blocks
 	"requirePaddingNewLinesAfterUseStrict": true, // Requires a blank line after 'use strict'; statements
 	"requirePaddingNewLinesBeforeExport": null, // Requires newline before module.exports
 	"requirePaddingNewlinesBeforeKeywords": null, // Requires an empty line above the specified keywords unless the keyword is the first expression in a block.

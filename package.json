@@ -30,6 +30,7 @@
     "node": ">= 0.10"
   },
   "devDependencies": {
+    "bootstrap-datepicker": "^1.6.4",
     "callsite": "1.0.0",
     "change-case": "2.3.0",
     "cheerio": "0.20.0",
