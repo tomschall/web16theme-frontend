@@ -120,7 +120,7 @@
 				rules.$formDate.each(function() {
 					var $el = $(this);
 
-					$el.val(convertDate(el.val()));
+					$el.val(convertDate($el.val()));
 				});
 			});
 		},
