@@ -66,9 +66,7 @@
 			rules = this.rules;
 			easyFormValidation.setup();
 			easyFormValidation.getFormState();
-			if (easyFormValidation.rules.$form !== '#undefined') {
-				easyFormValidation.select2Init();
-			}
+			easyFormValidation.select2Init();
 			easyFormValidation.addSelect2SelectionID();
 			easyFormValidation.onInput();
 			easyFormValidation.onOptionDropdown();
@@ -404,8 +402,11 @@
 		},
 
 		select2Init: function initSelect2() {
-			var $selectFields = $('.custom-select, .select-widget, .field select'),
-					eventsSet = false;
+			var $selectFields = $('.custom-select, .select-widget, .field select');
+
+			$selectFields = $selectFields.filter(function() {
+				return $(this).is('select');
+			});
 
 			$selectFields.map(function(index, select) {
 				if ($(select).hasClass('has_optgroup')) {
@@ -442,9 +443,7 @@
 				}
 			});
 
-			if (!eventsSet) {
-				easyFormValidation.addSelect2Events();
-			}
+			easyFormValidation.addSelect2Events();
 		},
 
 		addSelect2SelectionID: function() {
@@ -581,6 +580,8 @@
 			}
 		}
 	};
+
+	window.estatico.easyFormValidation = easyFormValidation;
 
 	$(document).ready(function() {
 		easyFormValidation.init();

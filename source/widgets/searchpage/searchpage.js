@@ -284,10 +284,8 @@ function debounce(fn, delay) {
 
 			if ($(element).is('select')) {
 				$(element).select2('destroy');
-
-				window.estatico.formElementHelper.initSelect2();
+				window.estatico.easyFormValidation.select2Init();
 			}
-
 		});
 	};
 
@@ -539,7 +537,7 @@ function debounce(fn, delay) {
 
 		$('.custom-select').select2('destroy');
 
-		window.estatico.formElementHelper.initSelect2();
+		window.estatico.easyFormValidation.select2Init();
 	};
 
 	/**
