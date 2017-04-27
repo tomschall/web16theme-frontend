@@ -14,7 +14,7 @@
 
 .full_bleed_teaser__img {
 	@include bleedFull($gutterWidth - 40);
-	height: 100vh;
+	height: 640px;
 }
 
 .full_bleed_teaser__text {
