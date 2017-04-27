@@ -11,8 +11,8 @@ var templateData = {
 			entries: [
 				{
 					uid: '1',
-					eventStart: '19.09.2016',
-					eventLocation: 'Himelried Waldspielpatz Waldeck',
+					eventStart: 'Basel, 19.09.2016',
+					eventLocation: 'InfoTag im Rahmen von Next generation 2017',
 					availableSeats: 3,
 					availabilityState: 'state-red',
 					informationEntries: [
@@ -53,8 +53,8 @@ var templateData = {
 				},
 				{
 					uid: '2',
-					eventStart: '13.05.2017',
-					eventLocation: 'Himelried Waldspielpatz Waldeck',
+					eventStart: 'Basel, 13.05.2017',
+					eventLocation: 'Infotag zum OPEN HOUSE 2018',
 					availableSeats: 12,
 					availabilityState: 'state-green',
 					informationEntries: [
@@ -96,8 +96,8 @@ var templateData = {
 				},
 				{
 					uid: '3',
-					eventStart: '17.09.2017',
-					eventLocation: 'Himelried Waldspielpatz Waldeck',
+					eventStart: 'Windisch, 17.09.2017',
+					eventLocation: 'Infotag zum OPEN HOUSE 2018',
 					availableSeats: 12,
 					availabilityState: 'state-green',
 					informationEntries: [
