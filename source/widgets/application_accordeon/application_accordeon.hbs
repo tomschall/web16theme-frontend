@@ -6,22 +6,20 @@
       <div class="widg_accordeon__entry" data-application-accordeon="entry">
         <div class="widg_accordeon__button">
 					<button class="not-default" aria-expanded="false" data-application-accordeon="button">
+            {{#if availableSeats}}
+            <span class="button__availability {{availabilityState}}"></span>
+            {{/if}}
+            <span class="button__location">
+              {{eventLocation}}
+            </span>
 						<span class="button__date">
 							<span class="accessibility-hidden" id="date-{{uid}}">{{../langStrings.eventStart}}: </span>
 							<span aria-describedby="date-{{uid}}">{{eventStart}}</span>
 						</span>
-            <span class="button__location">
-							{{eventLocation}}
-							{{#if availableSeats}}
-								<span class="button__availability {{availabilityState}}">
-
-							</span>
-							{{/if}}
-						</span>
 
 
           </button>
-					<a href="{{btnUrl}}" class="button button__apply mini_button" {{#if applicationIsActive}}{{else}}disabled="disabled"{{/if}}>{{applyLabel}}</a>
+					<button onclick="window.location.href='{{btnUrl}}'" class="button button__apply mini_button" {{#if applicationIsActive}}{{else}}disabled="disabled"{{/if}}>{{applyLabel}}</button>
 				</div>
         <div class="widg_accordeon__content" aria-hidden="true" data-application-accordeon="content">
           <dl>
