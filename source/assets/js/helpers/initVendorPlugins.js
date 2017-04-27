@@ -29,8 +29,10 @@
 
 		$('.widg_full_bleed_teaser img').imageScale({
 			rescaleOnResize: true,
-			scale: 'best-fill',
-			align: 'right'
+			scale: 'none',
+			align: 'center',
+			hideParentOverflow: true,
+			fadeInDuration: true
 		});
 
 		$('.widg_teaser__img img').imageScale('scale');
