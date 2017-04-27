@@ -5,10 +5,6 @@
 	img {
 		width: 100%;
 
-		@include mq($to: medium) {
-			margin-left: $gutterWidth - 20;
-		}
-
 		@include mq($to: small) {
 			margin-left: $gutterWidth - 20;
 			max-width: 500px;
@@ -17,7 +13,7 @@
 }
 
 .full_bleed_teaser__img {
-	@include bleedFull($gutterWidth - 20);
+	@include bleedFull($gutterWidth - 40);
 	height: 100vh;
 }
 
