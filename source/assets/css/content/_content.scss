@@ -94,7 +94,8 @@ body {
 	li {
 		font-size: $textSize;
 		line-height: 1.7;
-		padding: 6px 0 6px 1em;
+		padding-left: 2.5rem;
+		margin-left: 3px;
 		position: relative;
 
 		&:before {
@@ -119,7 +120,8 @@ body {
 	li {
 		font-size: $textSize;
 		line-height: 1.7;
-		padding: 6px 0 6px 1em;
+		padding-left: 1.333rem;
+		margin-left: 1.333rem;
 
 		@include mq($to:small) {
 			font-size: 1.25rem;
