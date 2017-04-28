@@ -4,23 +4,24 @@
 
 	img {
 		width: 100%;
+
+		@include mq($to: small) {
+			margin-left: $gutterWidth - 20;
+			max-width: 500px;
+		}
 	}
 }
 
 .full_bleed_teaser__img {
-	@include bleedFull($gutterWidth - 16) ;
-
-	height: 100vh;
+	@include bleedFull($gutterWidth - 40);
+	height: 640px;
 }
 
 .full_bleed_teaser__text {
 	position: absolute;
 	top: 50%;
-
 	max-width: 40%;
-
 	transform: translateY(-50%);
-
 	padding: 10px;
 
 	h2 {
@@ -54,7 +55,6 @@
 	@include mq($to: medium) {
 		padding-left: $gutterWidth + 4;
 		padding-top: 15px;
-
 	}
 }
 
@@ -68,6 +68,14 @@
 
 	padding: $gutterWidth * 2;
 	background-color: $colorBg;
+
+	@include mq($to: medium) {
+		transform: translateY(-50%);
+	}
+
+	@include mq($to: small) {
+		transform: translateY(-225%);
+	}
 
 	.widg_teaser__arrow {
 		position: static;
