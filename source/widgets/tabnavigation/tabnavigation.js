@@ -96,6 +96,7 @@
 	Widget.prototype.addEventHandlers = function() {
 		this.$element.find(this.options.domSelectors.button).on('click.' + this.uuid, function(event) {
 			this.setElementActive($(event.target));
+			event.preventDefault(); // avoid submitting forms!
 		}.bind(this));
 
 		this.$element.find(this.options.domSelectors.accordeonButton).on('click.' + this.uuid, function(event) {
@@ -104,7 +105,7 @@
 			} else {
 				this.setElementActive($(event.target));
 			}
-
+			event.preventDefault(); // avoid submitting forms!
 		}.bind(this));
 	};
 

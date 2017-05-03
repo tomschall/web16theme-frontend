@@ -5,6 +5,19 @@
 	display: inline-block;
 }
 
+form {
+	.widg_tabnavigation__content .content__entry {
+		// no padding if the tab navigation occurs inside of the form (form wizard)
+		padding-left: 0;
+		padding-right: 0;
+
+		legend {
+			// hide legend
+			display: none;
+		}
+	}
+}
+
 /**
   * Input
   */
