@@ -32,15 +32,11 @@ $colorAvailabilityRed: #f05f1b;
 
 		width: 100%;
 		max-width: none;
-
 		min-height: buttonHeight(desktop);
 		display: block;
-
 		font-size: 1.5rem;
-
 		padding: ($gutterWidth - 4) $basicPush * 4  ($gutterWidth - 4) $gutterWidth + 2;
 		position: relative;
-
 		opacity: 1;
 		text-decoration: none;
 		font-weight: 600;
@@ -77,17 +73,12 @@ $colorAvailabilityRed: #f05f1b;
 			position: absolute;
 			content: " ";
 			display: block;
-
 			transition: transform $transitionLength / 2 $transitionEase;
-
 			top: 50%;
 			transform: translateY(-50%) rotate(45deg);
-
 			width: 12px;
 			height: 12px;
-
 			right: $gutterWidth + 4;
-
 		}
 	}
 
@@ -128,12 +119,18 @@ $colorAvailabilityRed: #f05f1b;
 			padding-right: 25px;
 			position: relative;
 			font-weight: 700;
-			line-height: 25px;
+			line-height: 1.4;
 		}
 
 		.button__date {
 			max-height: 33px;
 			width: 125px;
+			line-height: 1.4;
+
+			& span + span {
+				width: 220px;
+				display: inline-block;
+			}
 		}
 
 		.button__availability {
@@ -149,13 +146,10 @@ $colorAvailabilityRed: #f05f1b;
 				display: block;
 				content: " ";
 				float: right;
-
 				width: 18px;
 				height: 18px;
-
 				border-radius: 50%;
 				background-color: $colorBlack;
-
 				margin-left: 8px;
 			}
 
@@ -169,7 +163,7 @@ $colorAvailabilityRed: #f05f1b;
 		}
 
 		.button__location {
-			width: calc(100% - 125px - 150px)
+			width: calc(100% - 125px - 290px)
 		}
 
 		&:before,
