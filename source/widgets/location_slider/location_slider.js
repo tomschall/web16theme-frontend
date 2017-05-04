@@ -38,11 +38,11 @@
 				mapStyles: [{
 					'featureType': 'landscape.man_made',
 					'elementType': 'geometry.fill',
-					'stylers': [{'lightness': '39'}, {'color': '#f1f1ee'}]
+					'stylers': [{'lightness': '39'}, {'color': '#e8e8e5'}]
 				}, {
 					'featureType': 'landscape.natural',
 					'elementType': 'geometry.fill',
-					'stylers': [{'lightness': '100'}, {'saturation': '-100'}]
+					'stylers': [{'lightness': '54'}, {'saturation': '-100'}]
 				}, {
 					'featureType': 'landscape.natural',
 					'elementType': 'labels',
