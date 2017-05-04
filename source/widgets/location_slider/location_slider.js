@@ -11,110 +11,112 @@
 	'use strict';
 
 	var name = 'location_slider',
-			events = {
-				// eventname: 'eventname.estatico.' + name
+		events = {
+			// eventname: 'eventname.estatico.' + name
+		},
+		defaults = {
+			domSelectors: {
+				slider: '[data-' + name + '="slider"]',
+				map: '[data-' + name + '="map"]',
+				staticMap: '[data-' + name + '="static-map"]',
+				bar: '[data-' + name + '="bar"]',
+				navOption: '[data-' + name + '="nav-option"]',
+				navList: '[data-' + name + '="nav-list"]',
+				markerData: '[data-' + name + '="markerData"]'
 			},
-			defaults = {
-				domSelectors: {
-					slider: '[data-' + name + '="slider"]',
-					map: '[data-' + name + '="map"]',
-					bar: '[data-' + name + '="bar"]',
-					navOption: '[data-' + name + '="nav-option"]',
-					navList: '[data-' + name + '="nav-list"]',
-					markerData: '[data-' + name + '="markerData"]'
-				},
-				stateClasses: {
-					isActive: 'is_active'
-				},
-				mapProps: {
-					zoom: 0,
-					mapTypeId: null,
-					disableDoubleClickZoom: true,
-					keyboardShortcuts: false,
-					scrollwheel: false
-				},
-				markerIconProps: {
-				},
-				mapStyles: [{
-					'featureType': 'landscape.man_made',
-					'elementType': 'geometry.fill',
-					'stylers': [{'lightness': '39'}, {'color': '#f1f1ee'}]
-				}, {
-					'featureType': 'landscape.natural',
-					'elementType': 'geometry.fill',
-					'stylers': [{'lightness': '100'}, {'saturation': '-100'}]
-				}, {
-					'featureType': 'landscape.natural',
-					'elementType': 'labels',
-					'stylers': [{'visibility': 'off'}]
-				}, {
-					'featureType': 'poi.attraction',
-					'elementType': 'all',
-					'stylers': [{'visibility': 'off'}]
-				}, {
-					'featureType': 'poi.business',
-					'elementType': 'all',
-					'stylers': [{'visibility': 'off'}]
-				}, {
-					'featureType': 'poi.government',
-					'elementType': 'all',
-					'stylers': [{'visibility': 'off'}]
-				}, {
-					'featureType': 'poi.medical',
-					'elementType': 'all',
-					'stylers': [{'visibility': 'off'}]
-				}, {
-					'featureType': 'poi.park',
-					'elementType': 'all',
-					'stylers': [{'visibility': 'off'}]
-				}, {
-					'featureType': 'poi.place_of_worship',
-					'elementType': 'all',
-					'stylers': [{'visibility': 'off'}]
-				}, {
-					'featureType': 'poi.sports_complex',
-					'elementType': 'all',
-					'stylers': [{'visibility': 'off'}]
-				}, {
-					'featureType': 'road.highway',
-					'elementType': 'geometry.fill',
-					'stylers': [{'color': '#ffffff'}]
-				}, {
-					'featureType': 'road.highway',
-					'elementType': 'geometry.stroke',
-					'stylers': [{'color': '#d1d1d1'}]
-				}, {
-					'featureType': 'road.highway',
-					'elementType': 'labels',
-					'stylers': [{'visibility': 'off'}]
-				}, {
-					'featureType': 'road.arterial',
-					'elementType': 'geometry.fill',
-					'stylers': [{'lightness': '-10'}]
-				}, {
-					'featureType': 'road.arterial',
-					'elementType': 'labels',
-					'stylers': [{'visibility': 'off'}]
-				}, {
-					'featureType': 'road.local',
-					'elementType': 'geometry.fill',
-					'stylers': [{'lightness': '-10'}]
-				}, {
-					'featureType': 'road.local',
-					'elementType': 'labels',
-					'stylers': [{'visibility': 'on'}]
-				}, {
-					'featureType': 'water',
-					'elementType': 'geometry.fill',
-					'stylers': [{'saturation': '-9'}, {'lightness': '30'}]
-				}, {'featureType': 'water', 'elementType': 'labels', 'stylers': [{'visibility': 'off'}]}]
+			stateClasses: {
+				isActive: 'is_active'
 			},
-			data = {
-				maps: [],
-				navOptions: [],
-				markers: []
+			mapProps: {
+				zoom: 0,
+				mapTypeId: null,
+				disableDoubleClickZoom: true,
+				keyboardShortcuts: false,
+				scrollwheel: false
 			},
-			isOneMapOnly = false;
+			markerIconProps: {
+			},
+			mapStyles: [{
+				'featureType': 'landscape.man_made',
+				'elementType': 'geometry.fill',
+				'stylers': [{'lightness': '39'}, {'color': '#f1f1ee'}]
+			}, {
+				'featureType': 'landscape.natural',
+				'elementType': 'geometry.fill',
+				'stylers': [{'lightness': '100'}, {'saturation': '-100'}]
+			}, {
+				'featureType': 'landscape.natural',
+				'elementType': 'labels',
+				'stylers': [{'visibility': 'off'}]
+			}, {
+				'featureType': 'poi.attraction',
+				'elementType': 'all',
+				'stylers': [{'visibility': 'off'}]
+			}, {
+				'featureType': 'poi.business',
+				'elementType': 'all',
+				'stylers': [{'visibility': 'off'}]
+			}, {
+				'featureType': 'poi.government',
+				'elementType': 'all',
+				'stylers': [{'visibility': 'off'}]
+			}, {
+				'featureType': 'poi.medical',
+				'elementType': 'all',
+				'stylers': [{'visibility': 'off'}]
+			}, {
+				'featureType': 'poi.park',
+				'elementType': 'all',
+				'stylers': [{'visibility': 'off'}]
+			}, {
+				'featureType': 'poi.place_of_worship',
+				'elementType': 'all',
+				'stylers': [{'visibility': 'off'}]
+			}, {
+				'featureType': 'poi.sports_complex',
+				'elementType': 'all',
+				'stylers': [{'visibility': 'off'}]
+			}, {
+				'featureType': 'road.highway',
+				'elementType': 'geometry.fill',
+				'stylers': [{'color': '#ffffff'}]
+			}, {
+				'featureType': 'road.highway',
+				'elementType': 'geometry.stroke',
+				'stylers': [{'color': '#d1d1d1'}]
+			}, {
+				'featureType': 'road.highway',
+				'elementType': 'labels',
+				'stylers': [{'visibility': 'off'}]
+			}, {
+				'featureType': 'road.arterial',
+				'elementType': 'geometry.fill',
+				'stylers': [{'lightness': '-10'}]
+			}, {
+				'featureType': 'road.arterial',
+				'elementType': 'labels',
+				'stylers': [{'visibility': 'off'}]
+			}, {
+				'featureType': 'road.local',
+				'elementType': 'geometry.fill',
+				'stylers': [{'lightness': '-10'}]
+			}, {
+				'featureType': 'road.local',
+				'elementType': 'labels',
+				'stylers': [{'visibility': 'on'}]
+			}, {
+				'featureType': 'water',
+				'elementType': 'geometry.fill',
+				'stylers': [{'saturation': '-9'}, {'lightness': '30'}]
+			}, {'featureType': 'water', 'elementType': 'labels', 'stylers': [{'visibility': 'off'}]}],
+			GOOGLE_MAPS_URL: 'https://maps.googleapis.com/maps/api/staticmap'
+		},
+		data = {
+			maps: [],
+			navOptions: [],
+			markers: []
+		},
+		isOneMapOnly = false;
 
 	/**
 	 * Create an instance of the widget
@@ -159,6 +161,7 @@
 
 			if (!isOneMapOnly) {
 				this.initMaps();
+				this.initStaticMaps();
 				this.initSlickNav();
 			} else {
 				this.initAllLocations();
@@ -190,15 +193,102 @@
 	Widget.prototype.initMaps = function() {
 		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
 			var $mapElement = $(element),
-					mapProp = _.assign(this.options.mapProps, {
-						styles: this.options.mapStyles,
-						zoom: parseInt($mapElement.data('zoomlevel'))
-					}),
-					map = new google.maps.Map(element, mapProp);
+				mapProp = _.assign(this.options.mapProps, {
+					styles: this.options.mapStyles,
+					zoom: parseInt($mapElement.data('zoomlevel'))
+				}),
+				map = new google.maps.Map(element, mapProp);
 
+			console.info('map', mapProp);
 			this.addMarker($mapElement, map);
-
 			data.maps.push(map);
+		}.bind(this));
+	};
+
+	/**
+	 * Retrieves google maps API key
+	 *
+	 * This is at the moment parsed out from the <script> tag which loads google
+	 * maps api as it is the only place containing this information. Perhaps
+	 * candidate to change - as the API key shall not be hardcoded in template
+	 *
+	 * @returns {=string} API Key if found
+	 */
+	Widget.prototype.getGoogleMapsAPIKey = function() {
+		var url = $('script[src^=https\\:\\/\\/maps\\.googleapis\\.com\\/maps\\/]').attr('src'),
+			match = /\?key=([a-z0-9]+)/gim.exec(url);
+		if(match) {
+			return match[1];
+		}
+	};
+
+	Widget.prototype.getStaticMapUrl = function(mapProps) {
+		var props = {
+			size: '750x402',
+			center: [mapProps.location.lat(), mapProps.location.lng()].join(),
+			style: '',
+			zoom: mapProps.zoom,
+			key: this.getGoogleMapsAPIKey()
+		};
+
+
+		return this.options.GOOGLE_MAPS_URL + '?' + _.reduce(props, function(acc, value, key) {
+			if (key === 'style' && value) {
+				// process styles
+				console.info('value', value)
+				value = value.map(function(style) {
+					var attrs = [
+						'feature:' + style.featureType,
+						'element:' + elementType
+					];
+
+					// TODO: stylers
+
+					// .concat(style.stylers.map(function(styler) {
+					//
+					//
+					// }));
+
+					// TODO: cover single maps
+
+					// TODO: discuss rendering
+
+
+
+					return attrs.join('%7C')
+				}).join('&style=');
+			}
+
+			return [acc, '&', key, '=', value].join('');
+		}, '');
+		// ?size=310x166&zoom=15&center=Brooklyn&style=feature:road.local%7Celement:geometry%7Ccolor:0x00ff00&
+		// style=feature:landscape%7Celement:geometry.fill%7Ccolor:0x000000&style=element:labels%7Cinvert_lightness:true&
+		// style=feature:road.arterial%7Celement:labels%7Cinvert_lightness:false&key=YOUR_API_KEY
+
+		// {
+		// 	'featureType': 'landscape.man_made',
+		// 	'elementType': 'geometry.fill',
+		// 	'stylers': [{'lightness': '39'}, {'color': '#f1f1ee'}]
+		// }
+	};
+
+	Widget.prototype.initStaticMaps = function() {
+		// NOTE: this is accessing the sibling element of this widget as the static maps are
+		// wrongly placed within the template
+		var $images = this.$element.next('.only-phone').find(this.options.domSelectors.staticMap);
+		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
+			// retrieve the data from map element
+			var $mapElement = $(element);
+			this.getLocation($mapElement).then(function(location) {
+				var mapProps = _.assign(this.options.mapProps, {
+					styles: this.options.mapStyles,
+					location: location,
+					zoom: parseInt($mapElement.data('zoomlevel'))
+				});
+				// assign static image to image element
+				console.warn('url', this.getStaticMapUrl(mapProps));
+				$images.eq(index).attr('src', this.getStaticMapUrl(mapProps));
+			}.bind(this));
 		}.bind(this));
 	};
 
@@ -259,54 +349,43 @@
 		this.$element.find(this.options.domSelectors.slider).slick('slickGoTo', index);
 	};
 
+	Widget.prototype.getLocation = function($mapElement, map) {
+		var deferred = $.Deferred();
+		var hasPlaceId = typeof $mapElement.data('placeid') !== typeof undefined;
+
+		console.warn('hasPlaceId', hasPlaceId);
+
+		if (hasPlaceId) {
+			// PlaceService requires DOM node, there is no map element in case of static image
+			map = map === undefined ? document.createElement('div') : map;
+
+			var service = new google.maps.places.PlacesService(map),
+				placeID = $mapElement.data('placeid');
+			service.getDetails({
+				placeId: placeID
+			}, function(result) {
+				deferred.resolve(result.geometry.location);
+			});
+		} else {
+			deferred.resolve(new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))));
+		}
+		return deferred;
+	};
+
 	/**
 	 * Adding the marker to the map
 	 * @param $mapElement
 	 * @param map
 	 */
 	Widget.prototype.addMarker = function($mapElement, map) {
-		var hasPlaceID = false,
-				marker = null,
-				markerProps = null,
-				that = this;
-
-		if (typeof $mapElement.data('placeid') !== typeof undefined) {
-
-			hasPlaceID = true;
-		}
-
-		if (hasPlaceID) {
-			var service = new google.maps.places.PlacesService(map),
-					placeID = $mapElement.data('placeid');
-
-			service.getDetails({
-				placeId: placeID
-			}, function(result) {
-
-				markerProps = _.assign({
-					icon: that.options.markerIconProps,
-					position: result.geometry.location
-				});
-
-				marker = new google.maps.Marker(markerProps);
-
-				marker.setMap(map);
-
-				map.setCenter(result.geometry.location);
+		this.getLocation($mapElement, map).then(function(location) {
+			var marker = new google.maps.Marker({
+				icon: this.options.markerIconProps,
+				position: location
 			});
-		} else {
-			markerProps = _.assign({
-				position: new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))),
-				icon: this.options.markerIconProps
-			});
-
-			marker = new google.maps.Marker(markerProps);
-
 			marker.setMap(map);
-
-			map.setCenter(new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))));
-		}
-
+			map.setCenter(location);
+		}.bind(this));
 	};
 
 	/**
@@ -315,11 +394,11 @@
 	Widget.prototype.initAllLocations = function() {
 		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
 			var mapProp = _.assign(this.options.mapProps, {
-						center: new google.maps.LatLng(47.5, 7.5),
-						styles: this.options.mapStyles,
-						zoom: 10
-					}),
-					map = new google.maps.Map(element, mapProp);
+					center: new google.maps.LatLng(47.5, 7.5),
+					styles: this.options.mapStyles,
+					zoom: 10
+				}),
+				map = new google.maps.Map(element, mapProp);
 
 			data.maps = map;
 		}.bind(this));
@@ -334,9 +413,7 @@
 					marker = new google.maps.Marker(markerProps);
 
 			marker.setMap(data.maps);
-
 			data.markers.push(marker);
-
 			google.maps.event.addListener(marker, 'click', function() {
 				this._setMarkerOpacityDefault();
 

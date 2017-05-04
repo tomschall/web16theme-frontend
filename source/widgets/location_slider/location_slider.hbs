@@ -111,9 +111,13 @@
 					{{navTitle}}
 				</button>
 				<div class="widg_accordeon__content" aria-hidden="true" data-accordeon="content">
-					<div class="accordeon__location"><img class="location__map-image"
-																								src="{{mobileImage.src}}"
-																								alt="{{mobileImage.alt}}"/>
+					<div class="accordeon__location">
+						{{#if mobileImage.src }}
+							<img class="location__map-image" src="{{mobileImage.src}}" alt="{{mobileImage.alt}}"/>
+						{{ else }}
+							<img class="location__map-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-location_slider="static-map" alt="{{mobileImage.alt}}"/>
+						{{/if}}
+
 						<div class="location__upper"><h3>{{title}}</h3>
 							<div class="location__address">
 								<span>{{address.name}}</span>
