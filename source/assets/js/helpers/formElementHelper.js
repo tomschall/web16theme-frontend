@@ -133,7 +133,7 @@
 
 				// convert loaded value from server side form (YYYY-MM-DD) to user format dd.mm.yyyy
 				$el.val($el.val().replace(/^(\d{4})-(\d{2})-(\d{2})$/g, '$3.$2.$1'));
-
+				$el.attr('placeholder', 'DD.MM.YYYY');
 				$el.datepicker({
 					weekStart: 1,
 					autoclose: true,
@@ -325,6 +325,13 @@
 		},
 
 		validateElement: function($el, $currentFieldType) {
+			if ($el.is('.pat-pickadate') && $el.val().trim() && !/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/g.test($el.val())) {
+				// datepicker
+				$el.toggleClass(rules.hasvalue, false);
+				$el.parent().toggleClass(rules.error, true);
+				return;
+			}
+
 			$.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
 				var $errorMsg = json.errmsg,
 					isValid = $errorMsg === '';
