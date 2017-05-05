@@ -159,9 +159,15 @@ function debounce(fn, delay) {
 
 		this.changeSearchbarStatus(this.options.stateClasses.showLoader);
 
-		$(window).on(this.options.searchEvents.dataLoaded, function(event, data, unecessary1, unecessary2, category) {
+		$(window).on(this.options.searchEvents.dataLoaded, function(event, data, itemsTotal, unecessary2, category) {
 			if (data) {
+				console.warn('itemsTotal', itemsTotal);
 				this.showResults(data, category);
+				if (itemsTotal) {
+					// only add if there are some results
+					this.appendGoToPageBtn();
+				}
+
 			} else {
 				this.changeSearchbarStatus(this.options.stateClasses.showIntro);
 			}
@@ -254,7 +260,6 @@ function debounce(fn, delay) {
 		this.changeSearchbarStatus(this.options.stateClasses.showResults);
 
 		this.markSearchQuery();
-		this.appendGoToPageBtn();
 
 		$(this.options.domSelectors.content).css({
 			'height': $(this.options.domSelectors.content).height()
@@ -275,6 +280,7 @@ function debounce(fn, delay) {
 
 	};
 
+	// show all button on the bottom
 	Widget.prototype.appendGoToPageBtn = function() {
 		var completePageUrl = searchPageUrl + '?q=' + currentSearchValue,
 				showAllResultsString = $(this.options.domSelectors.bar).data('lang-all-results'),
@@ -305,8 +311,6 @@ function debounce(fn, delay) {
 				titleSt = titleSt.replace('<span class="bold">', '');
 				titleSt = titleSt.replace('</span>', '');
 
-				console.log('titleSt', titleSt);
-
 				queryStartPosition = titleSt.toLowerCase().search(currentSearchValue.toLowerCase());
 
 				if (queryStartPosition !== -1) {
@@ -325,6 +329,9 @@ function debounce(fn, delay) {
 	 */
 	Widget.prototype.removeSearchResults = function() {
 		$(this.options.domSelectors.content).find('.search__results .search__cat').remove();
+
+		// remove show all button as well
+		$('.widg_searchbar__go-to-page').remove();
 	};
 
 	/**
