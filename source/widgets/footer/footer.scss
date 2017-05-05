@@ -1,5 +1,8 @@
 .widg_footer {
   @include clearfix;
+  background: black;
+  float: left;
+  width: 100%;
 }
 
 .widg_footer_logo_label {
@@ -28,14 +31,28 @@
 	bottom: $basicPush * 3.6;
 	top: auto;
 
-	@include mq($to: subnav) {
-		/*right: $basicPush * 4;
-		bottom: $basicPush * 2.9;*/
-    display: none;
-	}
+  	@include mq($to: subnav) {
+  		/*right: $basicPush * 4;
+  		bottom: $basicPush * 2.9;*/
+      display: block;
+      position: relative;
+      float: left;
+      top: 0;
+      background: black;
+      left: 280px;
+      margin: 20px 0;
+      padding: 0;
+  	}
 
   	@include mq($to: small) {
-      display: none;
+      display: block;
+      position: relative;
+      float: left;
+      top: 0;
+      background: black;
+      left: 20px;
+      margin: 20px 0;
+      padding: 0;
 	}
 
 	a {
@@ -45,12 +62,15 @@
 
 		@include mq($to: subnav) {
 			&:before {
-        display: none;
+        display: block;
 			}
 		}
 	}
 }
 .widg_footer__efqm h4 {
-  border-bottom: 0 !important;
-  padding-bottom: 0 !important;
+  font-weight: 700;
+  font-size: 1.125rem !important;
+  color: $colorScrollbarGrau;
+  border-bottom: 0;
+  padding-bottom: 0;
 }
