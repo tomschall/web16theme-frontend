@@ -316,8 +316,8 @@
 		validateElement: function($el, $currentFieldType) {
 			if ($el.is('.pat-pickadate') && $el.val().trim() && !/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/g.test($el.val())) {
 				// datepicker
-				$el.toggleClass(rules.hasvalue, false);
-				$el.parent().toggleClass(rules.error, true);
+				$el.removeClass(rules.hasvalue);
+				$el.parent().addClass(rules.error);
 				return;
 			}
 
