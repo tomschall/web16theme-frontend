@@ -262,8 +262,10 @@
 
 					if (data.categoryUrl || data.categoryUrl !== '') {
 						var template = Handlebars.compile(listEntryTemplates.showAll);
-
-						$categoryList.append(template(data));
+						if (data.items.length > 5) {
+							// show show-all button only if there are more than 5 results
+							$categoryList.append(template(data));
+						}
 					}
 
 					$searchCategory.append($categoryTitle).append($categoryList);
