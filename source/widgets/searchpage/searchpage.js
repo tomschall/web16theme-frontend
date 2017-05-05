@@ -520,7 +520,7 @@ function debounce(fn, delay) {
 			$options.map(function(index, option) {
 				$(option).removeAttr('disabled');
 			});
-		} else {
+		} else if (facets) {
 			facets.forEach(function(field) {
 				var $field = $('[data-searchparam="' + field.field + '"]'),
 						$options = $field.find('option');
