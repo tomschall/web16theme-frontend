@@ -4,9 +4,14 @@
 	padding-top: $basicPush * 6 !important;
 	padding-bottom: $basicPush * 2.5 !important;
 
+
 	@include mq($to: small) {
 		padding-top: $basicPush * 3 !important;
 		padding-bottom: $basicPush * 2.25 !important;
+		
+		& div:last-child {
+			border-bottom: none;
+		}
 	}
 }
 
