@@ -339,6 +339,7 @@
 .search__table {
 	margin-bottom: $basicPush * 3;
 	margin-top: $basicPush * 1;
+	@include yellowBarDiffer();
 
 	td,
 	th {
@@ -437,5 +438,6 @@
 
 .search__parameter-link {
 	padding-bottom: $basicPush * 2;
+	@include yellowBarDiffer();
 }
 
