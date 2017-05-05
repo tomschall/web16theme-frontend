@@ -9,11 +9,8 @@
 	}
 
 	h2 {
-		border-bottom: none;
+		/*border-bottom: none;*/
 	}
-
-	border-top: 1px solid $colorGreyHover;
-	border-bottom: 1px solid $colorGreyHover;
 
 	padding-top: $basicPush * 2;
 }
@@ -22,6 +19,7 @@
 	float: none;
 	display: block;
 	margin-bottom: $basicPush * 2;
+	margin-top: $basicPush + 5;
 
 	@include clearfix;
 }
