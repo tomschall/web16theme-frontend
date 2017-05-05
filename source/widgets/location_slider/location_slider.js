@@ -118,6 +118,10 @@
 		},
 		isOneMapOnly = false;
 
+	function isMobileView() {
+		return (screen.availWidth ? screen.availWidth : document.documentElement.clientWidth) <= 1023;
+	}
+
 	/**
 	 * Create an instance of the widget
 	 * @constructor
@@ -146,6 +150,10 @@
 	 */
 	Widget.prototype.init = function() {
 		data.navOptions = $(this.options.domSelectors.navOption).toArray();
+		this.options.renderMobileView = isMobileView();
+
+		// keep track of all map instances
+		this.maps = [];
 
 		if (typeof google !== typeof undefined) {
 			this.options.mapProps.mapTypeId = google.maps.MapTypeId.ROADMAP;
@@ -159,15 +167,42 @@
 				isOneMapOnly = true;
 			}
 
-			if (!isOneMapOnly) {
+			this.renderMaps(this.options.renderMobileView);
+			this.initSlick();
+
+			this.resize = _.debounce(this._resize, 50).bind(this);
+			$(window).on('resize', this.resize);
+		}
+	};
+
+	Widget.prototype._resize = function() {
+		if (this.options.renderMobileView && !isMobileView()) {
+			this.options.renderMobileView = false;
+			this.renderMaps(this.options.renderMobileView);
+		}
+
+		this.maps.forEach(function(map) {
+			google.maps.event.trigger(map, 'resize');
+		});
+	};
+
+	Widget.prototype.renderMaps = function(mobileView) {
+		if (this.$element.hasClass('all-locations')) {
+			isOneMapOnly = true;
+		}
+		if (!isOneMapOnly) {
+			if (!mobileView) {
+				// not a mobile resolution - render interactive map as well
 				this.initMaps();
-				this.initStaticMaps();
-				this.initSlickNav();
-			} else {
+			}
+			this.initMapsStatic();
+			this.initSlickNav();
+		} else {
+			if (!mobileView) {
+				// not a mobile resolution - render interactive map as well
 				this.initAllLocations();
 			}
-
-			this.initSlick();
+			this.initAllLocationsStatic();
 		}
 	};
 
@@ -198,8 +233,7 @@
 					zoom: parseInt($mapElement.data('zoomlevel'))
 				}),
 				map = new google.maps.Map(element, mapProp);
-
-			console.info('map', mapProp);
+			this.maps.push(map);
 			this.addMarker($mapElement, map);
 			data.maps.push(map);
 		}.bind(this));
@@ -217,62 +251,52 @@
 	Widget.prototype.getGoogleMapsAPIKey = function() {
 		var url = $('script[src^=https\\:\\/\\/maps\\.googleapis\\.com\\/maps\\/]').attr('src'),
 			match = /\?key=([a-z0-9]+)/gim.exec(url);
-		if(match) {
+		if (match) {
 			return match[1];
 		}
 	};
 
 	Widget.prototype.getStaticMapUrl = function(mapProps) {
+		function latLng(location) {
+			return [location.lat(), location.lng()].join(',');
+		}
+
 		var props = {
-			size: '750x402',
-			center: [mapProps.location.lat(), mapProps.location.lng()].join(),
-			style: '',
+			size: '375x200', // 310x166 = 1.8674 // iphone width
+			scale: 2,
+			center: latLng(mapProps.center),
+			style: mapProps.styles,
+			markers: mapProps.locations,
 			zoom: mapProps.zoom,
 			key: this.getGoogleMapsAPIKey()
 		};
 
-
 		return this.options.GOOGLE_MAPS_URL + '?' + _.reduce(props, function(acc, value, key) {
 			if (key === 'style' && value) {
 				// process styles
-				console.info('value', value)
 				value = value.map(function(style) {
 					var attrs = [
 						'feature:' + style.featureType,
-						'element:' + elementType
-					];
-
-					// TODO: stylers
-
-					// .concat(style.stylers.map(function(styler) {
-					//
-					//
-					// }));
-
-					// TODO: cover single maps
-
-					// TODO: discuss rendering
-
-
-
-					return attrs.join('%7C')
+						'element:' + style.elementType
+					].concat(style.stylers.map(function(styler) {
+						return _.toPairs(styler).map(function(s) {
+							return [s[0], s[1].replace(/^#([a-z0-9]{6})$/gim, '0x$1')].join(':');
+						}).join('|');
+					}));
+					return encodeURIComponent(attrs.join('|'));
 				}).join('&style=');
+			} else if (key === 'markers') {
+				value = value.map(function(marker) {
+					return encodeURIComponent('color:black|' + latLng(marker));
+				}).join('&markers=');
+			} else {
+				value = encodeURIComponent(value);
 			}
-
 			return [acc, '&', key, '=', value].join('');
 		}, '');
-		// ?size=310x166&zoom=15&center=Brooklyn&style=feature:road.local%7Celement:geometry%7Ccolor:0x00ff00&
-		// style=feature:landscape%7Celement:geometry.fill%7Ccolor:0x000000&style=element:labels%7Cinvert_lightness:true&
-		// style=feature:road.arterial%7Celement:labels%7Cinvert_lightness:false&key=YOUR_API_KEY
-
-		// {
-		// 	'featureType': 'landscape.man_made',
-		// 	'elementType': 'geometry.fill',
-		// 	'stylers': [{'lightness': '39'}, {'color': '#f1f1ee'}]
-		// }
 	};
 
-	Widget.prototype.initStaticMaps = function() {
+	Widget.prototype.initMapsStatic = function() {
 		// NOTE: this is accessing the sibling element of this widget as the static maps are
 		// wrongly placed within the template
 		var $images = this.$element.next('.only-phone').find(this.options.domSelectors.staticMap);
@@ -282,11 +306,12 @@
 			this.getLocation($mapElement).then(function(location) {
 				var mapProps = _.assign(this.options.mapProps, {
 					styles: this.options.mapStyles,
-					location: location,
+					center: location,
+					locations: [location],
 					zoom: parseInt($mapElement.data('zoomlevel'))
 				});
+
 				// assign static image to image element
-				console.warn('url', this.getStaticMapUrl(mapProps));
 				$images.eq(index).attr('src', this.getStaticMapUrl(mapProps));
 			}.bind(this));
 		}.bind(this));
@@ -350,10 +375,8 @@
 	};
 
 	Widget.prototype.getLocation = function($mapElement, map) {
-		var deferred = $.Deferred();
-		var hasPlaceId = typeof $mapElement.data('placeid') !== typeof undefined;
-
-		console.warn('hasPlaceId', hasPlaceId);
+		var deferred = $.Deferred(),
+			hasPlaceId = typeof $mapElement.data('placeid') !== typeof undefined;
 
 		if (hasPlaceId) {
 			// PlaceService requires DOM node, there is no map element in case of static image
@@ -399,18 +422,18 @@
 					zoom: 10
 				}),
 				map = new google.maps.Map(element, mapProp);
-
+			this.maps.push(map);
 			data.maps = map;
 		}.bind(this));
 
 		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
 			var $markerElement = $(element),
-					markerProps = {
-						position: new google.maps.LatLng(parseFloat($markerElement.data('coordinates-y')), parseFloat($markerElement.data('coordinates-x'))),
-						icon: this.options.markerIconProps,
-						opacity: 0.5
-					},
-					marker = new google.maps.Marker(markerProps);
+				markerProps = {
+					position: new google.maps.LatLng(parseFloat($markerElement.data('coordinates-y')), parseFloat($markerElement.data('coordinates-x'))),
+					icon: this.options.markerIconProps,
+					opacity: 0.5
+				},
+				marker = new google.maps.Marker(markerProps);
 
 			marker.setMap(data.maps);
 			data.markers.push(marker);
@@ -423,6 +446,27 @@
 				}
 			}.bind(this));
 		}.bind(this));
+	};
+
+	Widget.prototype.initAllLocationsStatic = function() {
+		var locations = this.$element.find(this.options.domSelectors.markerData).map(function() {
+				var $markerElement = $(this);
+				return new google.maps.LatLng(parseFloat($markerElement.data('coordinates-y')), parseFloat($markerElement.data('coordinates-x')));
+			}.bind(this)).toArray(),
+
+			// NOTE: this is accessing the sibling element of this widget as the static maps are
+			// wrongly placed within the template
+			$image = this.$element.next('.only-phone').find(this.options.domSelectors.staticMap),
+
+			mapProps = _.assign(this.options.mapProps, {
+				styles: this.options.mapStyles,
+				center: new google.maps.LatLng(47.5, 7.5),
+				locations: locations,
+				zoom: 10
+			});
+
+		// assign static image to image element
+		$image.attr('src', this.getStaticMapUrl(mapProps));
 	};
 
 	/**
@@ -459,6 +503,8 @@
 
 		// Custom teardown (removing added DOM elements etc.)
 		// If there is no need for a custom teardown, this method can be removed
+		$(window).off('resize', this.resize);
+		this.maps = null;
 	};
 
 	// Make the plugin available through jQuery (and the global project namespace)

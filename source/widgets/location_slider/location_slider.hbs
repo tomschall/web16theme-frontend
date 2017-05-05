@@ -106,17 +106,13 @@
 	{{> "widgets/accordeon/accordeon" widgets.locationAccordeon }}
 	<div class="widg_accordeon" data-init="accordeon">
 		{{#each entries}}
-			<div class="widg_accordeon__entry" data-accordeon="entry" >
+			<div  class="widg_accordeon__entry" data-accordeon="entry" >
 				<button aria-expanded="false" class="not-default" data-accordeon="button">
 					{{navTitle}}
 				</button>
 				<div class="widg_accordeon__content" aria-hidden="true" data-accordeon="content">
 					<div class="accordeon__location">
-						{{#if mobileImage.src }}
-							<img class="location__map-image" src="{{mobileImage.src}}" alt="{{mobileImage.alt}}"/>
-						{{ else }}
-							<img class="location__map-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-location_slider="static-map" alt="{{mobileImage.alt}}"/>
-						{{/if}}
+						<img class="location__map-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-location_slider="static-map" alt=""/>
 
 						<div class="location__upper"><h3>{{title}}</h3>
 							<div class="location__address">
