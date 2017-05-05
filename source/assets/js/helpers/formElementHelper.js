@@ -96,13 +96,13 @@
 
 			this.setupDatepickers();
 
-			$form.submit(function() {
-				// convert all date values on submit to backend format
-				rules.$formDate.each(function() {
-					var $el = $(this);
 
-					$el.val(convertDate($el.val()));
-				});
+			// file inputs have proprietary constructs, propagate necessary classes onto input
+			$form.find('.named-file-widget input[type="file"]').each(function(){
+				var $input = $(this);
+				if ($input.parents('.named-file-widget').hasClass('required')) {
+					$input.addClass('required');
+				}
 			});
 		},
 
@@ -152,8 +152,8 @@
 		},
 
 		formSubmitState: function() {
-			rules.$formSubmitButton.on('click', function() {
-				$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], .named-file-widget, textarea').each(function() {
+			$form.on('submit', function(e) {
+				$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function () {
 					var $requiredSelectState = $(this);
 					if ($requiredSelectState.hasClass(rules.required) && !($requiredSelectState.hasClass(rules.hasvalue))) {
 						if ($requiredSelectState.hasClass('radio-widget')) {
@@ -163,22 +163,19 @@
 						}
 					}
 				});
-
 				var totalErrors = easyFormValidation.getFormState();
 
-				/*console.info('GET FORM STATE -> ERROR = ' + totalErrors);*/
-
 				if (totalErrors !== 0) {
-					/* console.info('MORE THAN 0 ERRORS = ' + totalErrors); */
-					$(this).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
+					$(this).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function () {
 						$(this).val(rules.formSubmitButtonText).fadeTo(500, 1);
 					});
-
-					return false;
+					// prevent form submission
+					e.preventDefault();
 				} else {
-
-					/* console.info('FORM READY TO SUBMIT!'); */
-					return true;
+					// convert all date values on submit to backend format
+					rules.$formDate.each(function() {
+						$(this).val(convertDate($el.val()));
+					});
 				}
 			});
 		},
@@ -191,7 +188,6 @@
 					$countError++;
 				}
 			}).trigger('change');
-
 			return $countError;
 		},
 
@@ -226,10 +222,10 @@
 		buildurl: function($el) {
 			/* Query Example http://localhost:8000/plone2/de/easyform/@@z3cform_validate_field?fname=form.widgets.allgemeine_geschaftsbedingungen&form.widgets.allgemeine_geschaftsbedingungen:list=--NOVALUE-- */
 			var url = window.location.href,
-					$z3cvalidator = '@@z3cform_validate_field?fname=',
-					$fieldNameOriginal = $el.attr('name'),
-					$fieldnameSplitted = '',
-					$requestURI = '';
+				$z3cvalidator = '@@z3cform_validate_field?fname=',
+				$fieldNameOriginal = $el.attr('name'),
+				$fieldnameSplitted = '',
+				$requestURI = '';
 
 			if ($el.hasClass(rules.hasvalue)) {
 				$fieldnameSplitted = $fieldNameOriginal;
@@ -340,7 +336,7 @@
 					case 'TEXTAREA':
 					case 'CHECKBOX':
 						$el.toggleClass(rules.hasvalue, isValid);
-						$el.parents('div:first').toggleClass(rules.error, !isValid);
+						$el.parents('.field:first').toggleClass(rules.error, !isValid);
 						break;
 					default:
 						$el.toggleClass(rules.hasvalue, isValid);
