@@ -9,9 +9,8 @@
 	'use strict';
 
 	var rules,
-		formId = $('form').attr('id'), // TODO: the id does not seem to be set ?
-        $thisform = '#' + formId, // NOTE: can lead to `#undefined`
-        $form = $('form');
+		$form = $('form'),
+		formId = $form.attr('id');
 
 	/**
 	 * Returns page language or defaults to `de`
@@ -40,10 +39,10 @@
 
 	var easyFormValidation = {
 		rules: {
-			$form: $thisform,
-			$formSelect: $($thisform + ' select'),
-			$formCheckbox: $($thisform + ' input:checkbox'),
-			$formRadio: $($thisform + ' input:radio'),
+			$form: '#' + formId,
+			$formSelect: $('select', $form),
+			$formCheckbox: $('input:checkbox', $form),
+			$formRadio: $('input:radio', $form),
 			$formDate: $form.find('input.pat-pickadate'),
 			required: 'required',
 			error: 'error',
@@ -256,16 +255,15 @@
 
 		onInput: function() {
 			$(':input[type="text"], :input[type="checkbox"], :input[type="radio"], textarea, :input[type="password"], :input[type="file"]')
-			.on('click', function() {
-				var $el = $(this);
-				if ($el.is(':radio')) {
-					easyFormValidation.onRadioService($el, 'RADIO');
-				}
-				if ($el.is(':checkbox')) {
-					easyFormValidation.fieldCheckboxService($el, 'CHECKBOX');
-				}
-			})
-			.on('focusout', _.debounce(easyFormValidation.onInputChange, 300));
+				.on('focusout', _.debounce(easyFormValidation.onInputChange, 300));
+
+			$form.find('input[type="radio"]').on('change', function() {
+				easyFormValidation.onRadioChange($(this), 'RADIO');
+			});
+
+			$form.find('input[type="checkbox"]').on('click', function() {
+				easyFormValidation.fieldCheckboxService($(this), 'CHECKBOX');
+			});
 		},
 
 		onInputChange: function(event) {
@@ -336,7 +334,7 @@
 						break;
 					case 'RADIO':
 						$el.toggleClass(rules.hasvalue, isValid);
-						$el.closest(rules.findField).toggleClass(rules.error, isValid);
+						$el.closest(rules.findField).toggleClass(rules.error, !isValid);
 						break;
 					case 'INPUT':
 					case 'TEXTAREA':
@@ -351,21 +349,14 @@
 			});
 		},
 
-		onRadioService: function($el, $currentFieldType) {
-			$el.on('change', function() {
-
-				/*console.info('Radio Clicked -> ' + $el);*/
-
-				$el.closest('.field').find('input').each(function() {
-					var radioValue = $(this).next().text();
-
-					$(this).val(radioValue);
-					$(this).removeClass('error');
-					$(this).closest('.field').removeClass('error');
-				});
-
-				easyFormValidation.validateElement($el, $currentFieldType);
+		onRadioChange: function($el, $currentFieldType) {
+			$el.closest('.field').find('input').each(function() {
+				var radioValue = $(this).next().text();
+				$(this).val(radioValue);
+				$(this).removeClass('error');
+				$(this).closest('.field').removeClass('error');
 			});
+			easyFormValidation.validateElement($el, $currentFieldType);
 		},
 
 		fieldCheckboxService: function($el, $currentFieldType) {
