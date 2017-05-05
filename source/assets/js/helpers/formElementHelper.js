@@ -154,15 +154,12 @@
 
 		formSubmitState: function() {
 			rules.$formSubmitButton.on('click', function() {
-				$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
+				$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], .named-file-widget, textarea').each(function() {
 					var $requiredSelectState = $(this);
 					if ($requiredSelectState.hasClass(rules.required) && !($requiredSelectState.hasClass(rules.hasvalue))) {
 						if ($requiredSelectState.hasClass('radio-widget')) {
 							easyFormValidation.validateElement($requiredSelectState, 'RADIO');
-
-							/*console.info('FORM SUBMIT STATE VALIDATE RADIO -> ' + $requiredSelectState);*/
 						} else {
-							/*console.info('tagname -> ' + $requiredSelectState.prop('tagName') + ' requiredSelectState -> ' + $requiredSelectState.attr('name') + ' has-value ' + $requiredSelectState.hasClass('has-value') + ' required ' + $requiredSelectState.hasClass('required'));*/
 							easyFormValidation.validateElement($requiredSelectState, $requiredSelectState.prop('tagName'));
 						}
 					}
@@ -189,16 +186,10 @@
 
 		getFormState: function() {
 			var $countError = 0;
-
 			$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
 				var $requiredSelectState = $(this);
-
 				if ($requiredSelectState.hasClass(rules.required) && !($requiredSelectState.hasClass(rules.hasvalue))) {
-					if ($requiredSelectState.hasClass('radio-widget')) {
-						$countError++;
-					} else {
-						$countError++;
-					}
+					$countError++;
 				}
 			}).trigger('change');
 
@@ -351,7 +342,7 @@
 					case 'TEXTAREA':
 					case 'CHECKBOX':
 						$el.toggleClass(rules.hasvalue, isValid);
-						$el.parent().toggleClass(rules.error, !isValid);
+						$el.parents('div:first').toggleClass(rules.error, !isValid);
 						break;
 					default:
 						$el.toggleClass(rules.hasvalue, isValid);
