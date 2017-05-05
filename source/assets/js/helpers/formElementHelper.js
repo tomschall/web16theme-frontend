@@ -96,13 +96,12 @@
 
 			this.setupDatepickers();
 
-			$form.submit(function() {
-				// convert all date values on submit to backend format
-				rules.$formDate.each(function() {
-					var $el = $(this);
-
-					$el.val(convertDate($el.val()));
-				});
+			// file inputs have proprietary constructs, propagate necessary classes onto input
+			$form.find('.named-file-widget input[type="file"]').each(function() {
+				var $input = $(this);
+				if ($input.parents('.named-file-widget').hasClass('required')) {
+					$input.addClass('required');
+				}
 			});
 		},
 
@@ -132,7 +131,7 @@
 
 				// convert loaded value from server side form (YYYY-MM-DD) to user format dd.mm.yyyy
 				$el.val($el.val().replace(/^(\d{4})-(\d{2})-(\d{2})$/g, '$3.$2.$1'));
-
+				$el.attr('placeholder', 'DD.MM.YYYY');
 				$el.datepicker({
 					weekStart: 1,
 					autoclose: true,
@@ -152,55 +151,44 @@
 		},
 
 		formSubmitState: function() {
-			rules.$formSubmitButton.on('click', function() {
+			$form.on('submit', function(e) {
 				$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
 					var $requiredSelectState = $(this);
 					if ($requiredSelectState.hasClass(rules.required) && !($requiredSelectState.hasClass(rules.hasvalue))) {
 						if ($requiredSelectState.hasClass('radio-widget')) {
 							easyFormValidation.validateElement($requiredSelectState, 'RADIO');
-
-							/*console.info('FORM SUBMIT STATE VALIDATE RADIO -> ' + $requiredSelectState);*/
 						} else {
-							/*console.info('tagname -> ' + $requiredSelectState.prop('tagName') + ' requiredSelectState -> ' + $requiredSelectState.attr('name') + ' has-value ' + $requiredSelectState.hasClass('has-value') + ' required ' + $requiredSelectState.hasClass('required'));*/
 							easyFormValidation.validateElement($requiredSelectState, $requiredSelectState.prop('tagName'));
 						}
 					}
 				});
-
 				var totalErrors = easyFormValidation.getFormState();
 
-				/*console.info('GET FORM STATE -> ERROR = ' + totalErrors);*/
-
 				if (totalErrors !== 0) {
-					/* console.info('MORE THAN 0 ERRORS = ' + totalErrors); */
 					$(this).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
 						$(this).val(rules.formSubmitButtonText).fadeTo(500, 1);
 					});
 
-					return false;
+					// prevent form submission
+					e.preventDefault();
 				} else {
-
-					/* console.info('FORM READY TO SUBMIT!'); */
-					return true;
+					// convert all date values on submit to backend format
+					rules.$formDate.each(function() {
+						var $el = $(this);
+						$el.val(convertDate($el.val()));
+					});
 				}
 			});
 		},
 
 		getFormState: function() {
 			var $countError = 0;
-
 			$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
 				var $requiredSelectState = $(this);
-
 				if ($requiredSelectState.hasClass(rules.required) && !($requiredSelectState.hasClass(rules.hasvalue))) {
-					if ($requiredSelectState.hasClass('radio-widget')) {
-						$countError++;
-					} else {
-						$countError++;
-					}
+					$countError++;
 				}
 			}).trigger('change');
-
 			return $countError;
 		},
 
@@ -235,10 +223,10 @@
 		buildurl: function($el) {
 			/* Query Example http://localhost:8000/plone2/de/easyform/@@z3cform_validate_field?fname=form.widgets.allgemeine_geschaftsbedingungen&form.widgets.allgemeine_geschaftsbedingungen:list=--NOVALUE-- */
 			var url = window.location.href,
-					$z3cvalidator = '@@z3cform_validate_field?fname=',
-					$fieldNameOriginal = $el.attr('name'),
-					$fieldnameSplitted = '',
-					$requestURI = '';
+				$z3cvalidator = '@@z3cform_validate_field?fname=',
+				$fieldNameOriginal = $el.attr('name'),
+				$fieldnameSplitted = '',
+				$requestURI = '';
 
 			if ($el.hasClass(rules.hasvalue)) {
 				$fieldnameSplitted = $fieldNameOriginal;
@@ -323,6 +311,13 @@
 		},
 
 		validateElement: function($el, $currentFieldType) {
+			if ($el.is('.pat-pickadate') && $el.val().trim() && !/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/g.test($el.val())) {
+				// datepicker
+				$el.removeClass(rules.hasvalue);
+				$el.parent().addClass(rules.error);
+				return;
+			}
+
 			$.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
 				var $errorMsg = json.errmsg,
 					isValid = $errorMsg === '';
@@ -342,7 +337,7 @@
 					case 'TEXTAREA':
 					case 'CHECKBOX':
 						$el.toggleClass(rules.hasvalue, isValid);
-						$el.parent().toggleClass(rules.error, !isValid);
+						$el.parents('.field:first').toggleClass(rules.error, !isValid);
 						break;
 					default:
 						$el.toggleClass(rules.hasvalue, isValid);

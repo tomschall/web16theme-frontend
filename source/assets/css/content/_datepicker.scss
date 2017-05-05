@@ -16,6 +16,10 @@ $range-today-bg: $colorLightGray;
 	bottom: 15px;
 	z-index: 1;
 	color: $formIconColor;
+
+	@include mq($to: medium) {
+		bottom: 11px;
+	}
 }
 
 .datepicker {
