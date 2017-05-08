@@ -1,8 +1,17 @@
 .widg_linklist {
+	h2 + p {
+		padding-bottom: 15px;
+		border-bottom: 1px solid $colorGreyHover;
+	}
+
 	ul {
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
+	}
+
+	& ul li:first-child {
+		border-top: none;
 	}
 }
 
@@ -13,7 +22,6 @@
 	position: relative;
 
 	@include clearfix();
-
 
 	a {
 		text-decoration: none;
