@@ -6,7 +6,8 @@ body {
 }
 
 .content__element {
-	padding-bottom: $basicPush * 3;
+	/*padding-bottom: $basicPush * 3;*/
+	padding-bottom: 0;
 
 	@include clearfix();
 
@@ -135,7 +136,11 @@ body {
 }
 
 table.content__table {
-	width: 100%;
+	display: block;
+	width: auto;
+	overflow-x: auto;
+	overflow-y: hidden;
+	table-layout: auto;
 }
 
 .content__table {
@@ -158,6 +163,7 @@ table.content__table {
 	tr {
 		td {
 			border-bottom: 1px solid $colorGreyHover;
+			min-width: 250px;
 		}
 
 		&:last-of-type {
@@ -166,6 +172,10 @@ table.content__table {
 			}
 		}
 	}
+}
+
+.widg_accordeon__content .content__table td:first-child {
+	padding-left: 0;
 }
 
 .content__element___bleed {
