@@ -237,6 +237,7 @@ function debounce(fn, delay) {
 	 */
 	Widget.prototype.fillForm = function() {
 		var key;
+
 		// first set value to all fields - can not trigger change event here
 		// as not all values are set yet
 		for (key in searchParam) {
@@ -244,6 +245,7 @@ function debounce(fn, delay) {
 				$('[data-searchparam="' + key + '"]').val(searchParam[key]);
 			}
 		}
+
 		// next trigger change event on all fields
 		for (key in searchParam) {
 			if (searchParam.hasOwnProperty(key)) {
@@ -551,7 +553,6 @@ function debounce(fn, delay) {
 	Widget.prototype.removeSearchResults = function() {
 		this.$element.find('.search__results .search__cat, .search__results table').remove();
 	};
-
 
 	/**
 	 * Unbind events, remove data, custom teardown

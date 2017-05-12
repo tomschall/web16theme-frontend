@@ -74,6 +74,7 @@
 				$('[data-searchparam="' + key + '"]').val(searchParameters[key]);
 			}
 		}
+
 		// change event corrects the select2 fields label positioning and rendering
 		this.$formElements.trigger('change');
 	};
@@ -84,6 +85,7 @@
 	 * @public
 	 */
 	Widget.prototype.destroy = function() {
+
 		// Unbind events, remove data
 		estatico.helpers.SuperClass.prototype.destroy.apply(this);
 

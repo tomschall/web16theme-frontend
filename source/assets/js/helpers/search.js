@@ -256,20 +256,19 @@
 
 					responseData.forEach(function(listEntry) {
 						$tempListDOM = generateSearchListItem(listEntry, data.category);
-
 						$categoryList.append($tempListDOM);
 					});
 
 					if (data.categoryUrl || data.categoryUrl !== '') {
 						if (data.items_total > 5) {
 							var template = Handlebars.compile(listEntryTemplates.showAll);
+
 							// show show-all button only if there are more than 5 results
 							$categoryList.append(template(data));
 						}
 					}
 
 					$searchCategory.append($categoryTitle).append($categoryList);
-
 					$responseHTML = $searchCategory;
 				}
 			}
@@ -278,6 +277,17 @@
 		} else {
 			$(window).trigger(events.dataLoaded, [false]);
 		}
+	}
+
+	function encodeSearchParameters(queryParams, ignoreKeys) {
+		if (ignoreKeys === undefined) {
+			ignoreKeys = [];
+		}
+		var params = _.pickBy(queryParams, function(v, k) {
+			return !_.isEmpty(v) && ignoreKeys.indexOf(k) < 0;
+		});
+
+		return $.param(params);
 	}
 
 	/**
@@ -385,17 +395,6 @@
    */
 	function getSearchParameters() {
 		return $.deparam(window.location.hash.substr(1)) || {};
-	}
-
-	function encodeSearchParameters(queryParams, ignoreKeys) {
-		if (ignoreKeys === undefined) {
-			ignoreKeys = [];
-		}
-		var params = _.pickBy(queryParams, function(v, k) {
-			return !_.isEmpty(v) && ignoreKeys.indexOf(k) < 0;
-		});
-
-		return $.param(params);
 	}
 
 	/**
