@@ -52,17 +52,30 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		var searchParameters = estatico.search.getSearchParameters();
-
+		var searchParameters = estatico.search.getSearchParameters(),
+			$form = this.$element.find('form');
+		this.$formElements = $form.find('select');
 		this.fillForm(searchParameters);
+
+		// override form submit action
+		$form.on('submit', function(event) {
+			event.preventDefault();
+			var searchParams = {};
+			this.$formElements.map(function(index, element) {
+				searchParams[$(element).data('searchparam')] = $(element).val();
+			});
+			window.location = $form.attr('action') + '#' + window.estatico.search.encodeSearchParameters(searchParams);
+		}.bind(this));
 	};
 
 	Widget.prototype.fillForm = function(searchParameters) {
 		for (var key in searchParameters) {
 			if (searchParameters.hasOwnProperty(key)) {
-				$('[data-searchparam="' + key + '"]').val(searchParameters[key]).trigger('change');
+				$('[data-searchparam="' + key + '"]').val(searchParameters[key]);
 			}
 		}
+		// change event corrects the select2 fields label positioning and rendering
+		this.$formElements.trigger('change');
 	};
 
 	/**

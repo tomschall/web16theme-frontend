@@ -136,13 +136,11 @@ function debounce(fn, delay) {
 		this.removeSearchResults();
 
 		if (value.length >= 3 && value !== currentSearchValue) {
-			this.sendXHRObject($inputField.val());
+			this.sendXHRObject(value);
 		} else if (value.length === 0) {
 			this.changeSearchbarStatus(this.options.stateClasses.showIntro);
-
-			estatico.search.removeFromLocalStorage();
 		}
-
+		window.estatico.search.updateSearchParameter('q', value);
 		currentSearchValue = value;
 	};
 
@@ -161,7 +159,6 @@ function debounce(fn, delay) {
 
 		$(window).on(this.options.searchEvents.dataLoaded, function(event, data, itemsTotal, unecessary2, category) {
 			if (data) {
-				console.warn('itemsTotal', itemsTotal);
 				this.showResults(data, category);
 				if (itemsTotal) {
 					// only add if there are some results
@@ -194,10 +191,8 @@ function debounce(fn, delay) {
 		}.bind(this), 100);
 
 		this.addSingleEventListeners();
-
-		if (localStorage.getItem('fhnw_search_query') !== null) {
-			var serializedObject = $.parseJSON(localStorage.getItem('fhnw_search_query'));
-
+		var searchParams = window.estatico.search.getSearchParameters();
+		if (searchParams.q) {
 			$(this.options.domSelectors.input).mouseup(function(e) {
 				e.preventDefault();
 			});
@@ -206,9 +201,12 @@ function debounce(fn, delay) {
 				$(this).select();
 			});
 
-			$(this.options.domSelectors.input).val(serializedObject.q);
+			$(this.options.domSelectors.input).val(searchParams.q);
 			$(this.options.domSelectors.input).trigger('keypress');
 			$(this.options.domSelectors.input).focus();
+
+			// invoke search
+			this.startSearch($(this.options.domSelectors.input));
 		}
 	};
 
@@ -230,6 +228,9 @@ function debounce(fn, delay) {
 			window.estatico.modal.hideModal();
 			window.estatico.modal.removePreventScroll();
 		}
+
+		// remove query from url
+		window.estatico.search.updateSearchParameter('q', '');
 	};
 
 	/**
