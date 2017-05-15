@@ -7,23 +7,6 @@
  * //@requires ../../../node_modules/some/dependency.js
  */
 
-function debounce(fn, delay) {
-	'use strict';
-
-	var timer = null;
-
-	return function() {
-		var context = this,
-				args = arguments;
-
-		clearTimeout(timer);
-
-		timer = setTimeout(function() {
-			fn.apply(context, args);
-		}, delay);
-	};
-}
-
 ;(function($, undefined) {
 	'use strict';
 
@@ -109,13 +92,11 @@ function debounce(fn, delay) {
 		jsonURL = this.$element.data('json-url');
 		filterURL = this.$element.data('filter-url');
 
-		this.eventListeners();
-
 		// debounce the search call invocation
-		this.sendSearchQuery = _.debounce(this._sendSearchQuery.bind(this), 50);
+		this.sendSearchQuery = _.debounce(this._sendSearchQuery.bind(this), 250);
 
+		this.eventListeners();
 		this.initFormFunctionality();
-
 		this.initSearchParam();
 
 		if (searchTemplate === 'search_full') {
@@ -156,9 +137,19 @@ function debounce(fn, delay) {
 			$(event.currentTarget).toggleClass(this.options.stateClasses.isActive);
 		}.bind(this));
 
-		$(this.options.domSelectors.queryInput).keypress(debounce(function() {
+		$(this.options.domSelectors.queryInput).on('input', function() {
+			this.removeSearchResults();
 			this.sendSearchQuery();
-		}.bind(this), 250));
+
+			if (searchTemplate === 'search_full') {
+				this.updateTitle();
+			}
+
+			// this.sendSearchQuery();
+			this.updateQueryInputState();
+		}.bind(this));
+		$(this.options.domSelectors.queryInput).change(this.updateQueryInputState.bind(this));
+
 
 		/**
 		 * Load more results to the table when limited results
@@ -190,15 +181,6 @@ function debounce(fn, delay) {
 				this.updateTitle();
 			}
 		}.bind(this));
-
-		$(this.options.domSelectors.queryInput).keypress(debounce(function() {
-			this.removeSearchResults();
-			this.sendSearchQuery();
-
-			if (searchTemplate === 'search_full') {
-				this.updateTitle();
-			}
-		}.bind(this), 250));
 	};
 
 	/**
@@ -215,12 +197,19 @@ function debounce(fn, delay) {
 		}
 	};
 
+	Widget.prototype.updateQueryInputState = function() {
+
+		// read current value from the field
+		var val = $(this.options.domSelectors.queryInput).val().trim();
+		$(this.options.domSelectors.queryInput).toggleClass(this.options.stateClasses.isFilled, !!val.length);
+	};
+
 	/**
 	 * Initializes the form and the title
 	 */
 	Widget.prototype.fillFormAndTitle = function() {
-		$(this.options.domSelectors.queryInput).addClass(this.options.stateClasses.isFilled).val(searchParam.q);
-
+		$(this.options.domSelectors.queryInput).val(searchParam.q);
+		this.updateQueryInputState();
 		this.updateTitle();
 	};
 
@@ -288,8 +277,9 @@ function debounce(fn, delay) {
 	 * Resetting all form fields
 	 */
 	Widget.prototype.resetFields = function() {
+		window.estatico.search.setSearchParameters({});
 		data.$formElements.map(function(index, element) {
-			$(element).val('');
+			$(element).val('').trigger('change');
 
 			if ($(element).is('select')) {
 				$(element).select2('destroy');
