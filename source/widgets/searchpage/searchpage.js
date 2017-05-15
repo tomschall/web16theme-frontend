@@ -93,7 +93,11 @@
 		filterURL = this.$element.data('filter-url');
 
 		// debounce the search call invocation
-		this.sendSearchQuery = _.debounce(this._sendSearchQuery.bind(this), 250);
+		var sendSearchQueryDebounced = _.debounce(this._sendSearchQuery.bind(this), 250);
+		this.sendSearchQuery = function() {
+			this.grabParameters();
+			sendSearchQueryDebounced();
+		};
 
 		this.eventListeners();
 		this.initFormFunctionality();
@@ -163,7 +167,6 @@
 		 */
 		$(this.options.domSelectors.moreResultsBtn).on('click.' + this.uuid, function() {
 			loadMoreMode = true;
-
 			this.sendSearchQuery();
 		}.bind(this));
 
@@ -225,7 +228,6 @@
 	 */
 	Widget.prototype.updateTitle = function() {
 		$(this.options.domSelectors.title).text(this.$element.data('lang-title') + ' «' + searchParam.q + '»');
-
 	};
 
 	/**
@@ -299,8 +301,6 @@
 	 * Sends the complete xhr request to search
    */
 	Widget.prototype._sendSearchQuery = function() {
-		this.grabParameters();
-
 		if (loadMoreMode) {
 			searchParam.offset = $(this.options.domSelectors.catPageResult).length;
 		}
