@@ -109,7 +109,12 @@ input[type=number] {
 		display: block;
 		width: 100%;
 
-		padding-top: 12px;
+		padding-top: 13px;
+
+		&.is_filled {
+			padding-top: 30px;
+		}
+
 		padding-bottom: 11px;
 
 		position: absolute;
@@ -138,6 +143,10 @@ input[type=number] {
 
 		@include mq($to: medium) {
 			padding-top: 13px;
+
+			&.is_filled {
+				padding-top: 28px;
+			}
 		}
 	}
 
@@ -208,8 +217,8 @@ input[type=number] {
 .is_focused + label,
 .is_filled + label,
 .fieldErrorBox {
-	font-size: 0.91666667rem;
-	top: 13px;
+	font-size: 1rem;
+	top: 10px;
 
 	@include mq($to: medium) {
 		top: 10px;
