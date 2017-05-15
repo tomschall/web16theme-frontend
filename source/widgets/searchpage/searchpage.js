@@ -93,8 +93,12 @@
 		filterURL = this.$element.data('filter-url');
 
 		// debounce the search call invocation
-		this.sendSearchQuery = _.debounce(this._sendSearchQuery.bind(this), 250);
-
+		var sendSearchQueryDebounced = _.debounce(this._sendSearchQuery.bind(this), 250);
+		this.sendSearchQuery = function() {
+			this.grabParameters();
+			sendSearchQueryDebounced();
+		};
+		this.initQueryClearBtn();
 		this.eventListeners();
 		this.initFormFunctionality();
 		this.initSearchParam();
@@ -113,6 +117,16 @@
 		if (typeof searchParam.q !== typeof undefined) {
 			this.sendSearchQuery();
 		}
+
+	};
+
+	Widget.prototype.initQueryClearBtn = function() {
+		this.$clearQueryBtn = $('<a href="#" class="search__string__clear"></a>').hide();
+		$(this.options.domSelectors.queryInput).parent().append(this.$clearQueryBtn);
+		this.$clearQueryBtn.click(function(event) {
+			event.preventDefault();
+			$(this).siblings('input').val('').change();
+		});
 	};
 
 	/**
@@ -145,18 +159,16 @@
 				this.updateTitle();
 			}
 
-			// this.sendSearchQuery();
 			this.updateQueryInputState();
 		}.bind(this));
-		$(this.options.domSelectors.queryInput).change(this.updateQueryInputState.bind(this));
 
+		$(this.options.domSelectors.queryInput).change(this.updateQueryInputState.bind(this));
 
 		/**
 		 * Load more results to the table when limited results
 		 */
 		$(this.options.domSelectors.moreResultsBtn).on('click.' + this.uuid, function() {
 			loadMoreMode = true;
-
 			this.sendSearchQuery();
 		}.bind(this));
 
@@ -202,6 +214,7 @@
 		// read current value from the field
 		var val = $(this.options.domSelectors.queryInput).val().trim();
 		$(this.options.domSelectors.queryInput).toggleClass(this.options.stateClasses.isFilled, !!val.length);
+		this.$clearQueryBtn[val ? 'show' : 'hide']();
 	};
 
 	/**
@@ -218,7 +231,6 @@
 	 */
 	Widget.prototype.updateTitle = function() {
 		$(this.options.domSelectors.title).text(this.$element.data('lang-title') + ' «' + searchParam.q + '»');
-
 	};
 
 	/**
@@ -292,11 +304,10 @@
 	 * Sends the complete xhr request to search
    */
 	Widget.prototype._sendSearchQuery = function() {
-		this.grabParameters();
-
 		if (loadMoreMode) {
 			searchParam.offset = $(this.options.domSelectors.catPageResult).length;
 		}
+		window.estatico.search.setSearchParameters(searchParam);
 
 		if (this.checkParameters()) {
 			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL);

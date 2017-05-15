@@ -163,29 +163,22 @@
 				$letterBox = null;
 
 		results.forEach(function(wordItem) {
-			var firstLetterItem = normalizeChar(wordItem.Title.charAt(0));
-
+			var firstLetterItem = normalizeChar(wordItem.title.charAt(0));
 			wordItem.combinedURL = wordItem['@id'];
-
 			if (activeLetter !== firstLetterItem) {
 				activeLetter = firstLetterItem;
-
 				if ($letterBox) {
 					$letterBox.append('</div>');
-
 					$responseHTML.append($letterBox);
 				}
-
 				$letterBox = $('<div id="searchpage-char-' + firstLetterItem + '"><h2>' + firstLetterItem + '</h2></div>');
 			}
 
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
-
 			$letterBox.append(template(wordItem));
 		});
 
 		$responseHTML.append($letterBox);
-
 		return $responseHTML;
 	}
 
