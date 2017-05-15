@@ -76,12 +76,14 @@ input[type=number] {
 
 	// anchor element to clear content of the search field
 	.search__string__clear {
-		@include iconDataurl('breadcrumb-expand');
+		font-size: 1.25rem;
 		position: absolute;
 		right: 23px;
 		top: 50%;
 		transform: translateY(-50%) rotate(45deg);
 		z-index: 1;
+
+		@include iconDataurl('breadcrumb-expand');
 	}
 
 	float: left;
