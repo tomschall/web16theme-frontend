@@ -48,10 +48,10 @@
 			error: 'error',
 			hasvalue: 'has-value',
 			findField: '.field',
-			$fieldErrorBox: $('.fieldErrorBox'),
-			$formSubmitButton: $('#form-buttons-submit'),
-			$formResetButton: $('#form-buttons-reset'),
-			formSubmitButtonText: $('#form-buttons-submit').val(),
+			$fieldErrorBox: $('.fieldErrorBox', $form),
+			$formSubmitButton: $('#form-buttons-submit', $form),
+			$formResetButton: $('#form-buttons-reset', $form),
+			formSubmitButtonText: $('#form-buttons-submit', $form).val(),
 			formSubmitButtonErrorText_A: 'Überprüfen Sie die Angaben',
 			removeChoice: 'select2-selection__choice',
 			optionSelected: 'selected',
@@ -75,14 +75,14 @@
 		},
 
 		setup: function() {
-			$('.select-widget').prev().css('z-index', '1000');
+			$form.find('.select-widget').prev().css('z-index', '1000');
 
-			$('input[type="radio"]').each(function(radioIdx, radio) {
+			$form.find('input[type="radio"]').each(function(radioIdx, radio) {
 				var $radio = $(radio);
 				$radio.closest(rules.findField).addClass('has-radio');
 			});
 
-			$('input[type="radio"]').each(function() {
+			$form.find('input[type="radio"]').each(function() {
 				if ($(this).hasClass('required')) {
 					$(this).val('--NOVALUE--');
 				}
@@ -110,7 +110,7 @@
 
 				// update datepicker defaults based on the current language and
 				// configuration provided by the first datepicker on te page
-				datepickerSettings = $('[data-pat-pickadate]').eq(0).attr('data-pat-pickadate');
+				datepickerSettings = $form.find('[data-pat-pickadate]').eq(0).attr('data-pat-pickadate');
 
 			if (datepickerSettings) {
 				datepickerSettings = JSON.parse(datepickerSettings);
@@ -206,12 +206,12 @@
 				$(rules.$form).find(rules.$fieldErrorBox).empty();
 
 				/* Reset Select2 Dropdown */
-				$('.select-widget').select2({
+				$form.find('.select-widget').select2({
 					placeholder: 'Bitte wählen',
 					val: null
 				});
 
-				$('input[type="radio"]').each(function() {
+				$form.find('input[type="radio"]').each(function() {
 					if ($(this).hasClass('required')) {
 						$(this).val('--NOVALUE--');
 					}
@@ -253,7 +253,7 @@
 		},
 
 		onInput: function() {
-			$(':input[type="text"], :input[type="checkbox"], :input[type="radio"], textarea, :input[type="password"], :input[type="file"]')
+			$form.find(':input[type="text"], :input[type="checkbox"], :input[type="radio"], textarea, :input[type="password"], :input[type="file"]')
 				.on('focusout', _.debounce(easyFormValidation.onInputChange, 300));
 
 			$form.find('input[type="radio"]').on('change', function() {
@@ -270,7 +270,7 @@
 		},
 
 		onOptionMultiSelect: function() {
-			$('ul.select2-selection__rendered')
+			$form.find('ul.select2-selection__rendered')
 				.on('mouseenter', function() {
 					var $el = $(this).closest(rules.findField).find('select');
 					$el.select2('open');
@@ -279,7 +279,7 @@
 		},
 
 		onOptionDropdown: function() {
-			$('span.select2-selection__rendered')
+			$form.find('span.select2-selection__rendered')
 				.on('mouseenter', function() {
 					var $el = $(this).closest(rules.findField).find('select');
 					/*console.info('[onOptionDropdown] MOUSEOVER -> ' + $el);*/
@@ -321,7 +321,7 @@
 			var $currentFieldType = $el.prop('tagName');
 
 			if ($el.hasClass('radio-widget')) {
-				// overide type if we are dealing with radio widget
+				// override type if we are dealing with radio widget
 				$currentFieldType = 'RADIO';
 			}
 
