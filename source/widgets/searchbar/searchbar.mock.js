@@ -9,7 +9,7 @@ var data = {
 	categoryUrlText: 'Alle anzeigen (12)',
 	items: [
 		{
-			'@id': '#',
+			'@id': 'http://www.google.com',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
 			'Title': 'MAS Sozialmanagement'

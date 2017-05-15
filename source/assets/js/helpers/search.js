@@ -256,20 +256,19 @@
 
 					responseData.forEach(function(listEntry) {
 						$tempListDOM = generateSearchListItem(listEntry, data.category);
-
 						$categoryList.append($tempListDOM);
 					});
 
 					if (data.categoryUrl || data.categoryUrl !== '') {
-						var template = Handlebars.compile(listEntryTemplates.showAll);
-						if (data.items.length > 5) {
+						if (data.items_total > 5) {
+							var template = Handlebars.compile(listEntryTemplates.showAll);
+
 							// show show-all button only if there are more than 5 results
 							$categoryList.append(template(data));
 						}
 					}
 
 					$searchCategory.append($categoryTitle).append($categoryList);
-
 					$responseHTML = $searchCategory;
 				}
 			}
@@ -280,12 +279,30 @@
 		}
 	}
 
-	function saveToLocalStorage(query) {
-		localStorage.setItem('fhnw_search_query', JSON.stringify(query));
+	function encodeSearchParameters(queryParams, ignoreKeys) {
+		if (ignoreKeys === undefined) {
+			ignoreKeys = [];
+		}
+		var params = _.pickBy(queryParams, function(v, k) {
+			return !_.isEmpty(v) && ignoreKeys.indexOf(k) < 0;
+		});
+
+		return $.param(params);
 	}
 
-	function removeFromLocalStorage() {
-		localStorage.removeItem('fhnw_search_query');
+	/**
+	 * Sets search parameters to the url while updating url. The
+	 * keys listed in ignoreKeys will be ignored in the url.
+	 *
+	 * @param {Object} queryParams Query parameters
+	 */
+	function setSearchParameters(queryParams) {
+		// update url
+		var ignoreKeys = [
+			'template',
+			'category'
+		];
+		window.history.replaceState({}, '', '#' + encodeSearchParameters(queryParams, ignoreKeys));
 	}
 
 	/**
@@ -345,9 +362,7 @@
 			});
 		}
 
-		if (typeof localStorage !== typeof undefined) {
-			saveToLocalStorage(query);
-		}
+		setSearchParameters(query);
 	}
 
 	/**
@@ -379,19 +394,19 @@
 	 * @returns {{}}
    */
 	function getSearchParameters() {
-		var searchprmtrs = window.location.search.substr(1);
+		return $.deparam(window.location.hash.substr(1)) || {};
+	}
 
-		if (searchprmtrs === null || searchprmtrs === '') {
-			searchprmtrs = localStorage.getItem('fhnw_search_query');
-
-			if (searchprmtrs !== null) {
-				searchprmtrs = $.parseJSON(searchprmtrs);
-			}
-		} else {
-			searchprmtrs = $.deparam(searchprmtrs);
-		}
-
-		return searchprmtrs !== null && searchprmtrs !== '' ? searchprmtrs : {};
+	/**
+	 * Updates specific search parameters value by key. Writes to URL.
+	 *
+	 * @param {string} key Search parameter key
+	 * @param {*} value Parameter's value
+	 */
+	function updateSearchParameter(key, value) {
+		var searchParams = getSearchParameters();
+		searchParams[key] = value;
+		setSearchParameters(searchParams);
 	}
 
 	// Save to global namespace
@@ -399,9 +414,11 @@
 		search: {
 			search: search,
 			getSearchParameters: getSearchParameters,
+			setSearchParameters: setSearchParameters,
+			updateSearchParameter: updateSearchParameter,
+			encodeSearchParameters: encodeSearchParameters,
 			updateFilter: updateFilter,
-			handleReturnData: handleReturnData,
-			removeFromLocalStorage: removeFromLocalStorage
+			handleReturnData: handleReturnData
 		}
 	});
 })(jQuery);

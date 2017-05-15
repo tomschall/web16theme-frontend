@@ -43,8 +43,7 @@ function debounce(fn, delay) {
 				countNumber: '[data-' + name + '="countNumber"]',
 				moreResultsBtn: '[data-' + name + '="moreResultsBtn"]',
 				moreResultsBtnWrapper: '[data-' + name + '="moreResultsBtnWrapper"]',
-				catPageResult: '.cat_page_result',
-				searchParameterBox: '[data-' + name + '="parameter-box"]'
+				catPageResult: '.cat_page_result'
 			},
 			stateClasses: {
 				isFilled: 'is_filled',
@@ -112,6 +111,9 @@ function debounce(fn, delay) {
 
 		this.eventListeners();
 
+		// debounce the search call invocation
+		this.sendSearchQuery = _.debounce(this._sendSearchQuery.bind(this), 50);
+
 		this.initFormFunctionality();
 
 		this.initSearchParam();
@@ -173,10 +175,6 @@ function debounce(fn, delay) {
 		$(this.options.domSelectors.resetBtn).on('click.' + this.uuid, function() {
 			this.resetFields();
 		}.bind(this));
-
-		$(this.options.domSelectors.searchParameterBox).on('click.' + this.uuid, function() {
-			$(this.options.domSelectors.searchParameterBox).focus().select();
-		}.bind(this));
 	};
 
 	Widget.prototype.initFormFunctionality = function() {
@@ -208,7 +206,6 @@ function debounce(fn, delay) {
 	 */
 	Widget.prototype.initSearchParam = function() {
 		searchParam = window.estatico.search.getSearchParameters();
-
 		if (searchParam.extended === 'true') {
 			$(this.options.domSelectors.expanderBtn).trigger('click');
 		}
@@ -239,11 +236,23 @@ function debounce(fn, delay) {
 	 * Fills the form with the get parameters
 	 */
 	Widget.prototype.fillForm = function() {
-		for (var key in searchParam) {
+		var key;
+
+		// first set value to all fields - can not trigger change event here
+		// as not all values are set yet
+		for (key in searchParam) {
 			if (searchParam.hasOwnProperty(key)) {
-				$('[data-searchparam="' + key + '"]').val(searchParam[key]).trigger('change');
+				$('[data-searchparam="' + key + '"]').val(searchParam[key]);
 			}
 		}
+
+		// next trigger change event on all fields
+		for (key in searchParam) {
+			if (searchParam.hasOwnProperty(key)) {
+				$('[data-searchparam="' + key + '"]').trigger('change');
+			}
+		}
+
 	};
 
 	/**
@@ -292,7 +301,7 @@ function debounce(fn, delay) {
 	/**
 	 * Sends the complete xhr request to search
    */
-	Widget.prototype.sendSearchQuery = function() {
+	Widget.prototype._sendSearchQuery = function() {
 		this.grabParameters();
 
 		if (loadMoreMode) {
@@ -423,8 +432,6 @@ function debounce(fn, delay) {
 
 		$resultsTd.unbind('click.' + this.uuid);
 
-		this.fillSearchParameterBox();
-
 		/**
 		 * Adding the event to add link functionality to search results
 		 */
@@ -545,36 +552,6 @@ function debounce(fn, delay) {
 	 */
 	Widget.prototype.removeSearchResults = function() {
 		this.$element.find('.search__results .search__cat, .search__results table').remove();
-	};
-
-	/**
-	 * Filling the search parameter box
-	 */
-	Widget.prototype.fillSearchParameterBox = function() {
-		var $searchParamBox = $(this.options.domSelectors.searchParameterBox),
-				cleanedSearchParam = {},
-				blacklistArray = ['category', 'template'];
-
-		for (var key in searchParam) {
-			if (searchParam.hasOwnProperty(key)) {
-				var isBlackListed = $.inArray(key, blacklistArray),
-						val = searchParam[key];
-
-				if (val !== '' && val !== null && isBlackListed === -1) {
-					cleanedSearchParam[key] = val;
-				}
-			}
-		}
-
-		$searchParamBox.val([
-			location.protocol,
-			'//',
-			location.host,
-			location.pathname,
-			'?',
-			$.param(cleanedSearchParam)
-		].join(''));
-		$searchParamBox.removeClass(this.options.stateClasses.isHidden);
 	};
 
 	/**
