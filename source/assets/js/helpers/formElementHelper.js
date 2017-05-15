@@ -48,10 +48,10 @@
 			error: 'error',
 			hasvalue: 'has-value',
 			findField: '.field',
-			$fieldErrorBox: $('.fieldErrorBox'),
-			$formSubmitButton: $('#form-buttons-submit'),
-			$formResetButton: $('#form-buttons-reset'),
-			formSubmitButtonText: $('#form-buttons-submit').val(),
+			$fieldErrorBox: $('.fieldErrorBox', $form),
+			$formSubmitButton: $('#form-buttons-submit', $form),
+			$formResetButton: $('#form-buttons-reset', $form),
+			formSubmitButtonText: $('#form-buttons-submit', $form).val(),
 			formSubmitButtonErrorText_A: 'Überprüfen Sie die Angaben',
 			removeChoice: 'select2-selection__choice',
 			optionSelected: 'selected',
@@ -75,14 +75,14 @@
 		},
 
 		setup: function() {
-			$('.select-widget').prev().css('z-index', '1000');
+			$form.find('.select-widget').prev().css('z-index', '1000');
 
-			$('input[type="radio"]').each(function(radioIdx, radio) {
+			$form.find('input[type="radio"]').each(function(radioIdx, radio) {
 				var $radio = $(radio);
 				$radio.closest(rules.findField).addClass('has-radio');
 			});
 
-			$('input[type="radio"]').each(function() {
+			$form.find('input[type="radio"]').each(function() {
 				if ($(this).hasClass('required')) {
 					$(this).val('--NOVALUE--');
 				}
@@ -110,7 +110,7 @@
 
 				// update datepicker defaults based on the current language and
 				// configuration provided by the first datepicker on te page
-				datepickerSettings = $('[data-pat-pickadate]').eq(0).attr('data-pat-pickadate');
+				datepickerSettings = $form.find('[data-pat-pickadate]').eq(0).attr('data-pat-pickadate');
 
 			if (datepickerSettings) {
 				datepickerSettings = JSON.parse(datepickerSettings);
@@ -152,44 +152,46 @@
 
 		formSubmitState: function() {
 			$form.on('submit', function(e) {
-				$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
-					var $requiredSelectState = $(this);
-					if ($requiredSelectState.hasClass(rules.required) && !($requiredSelectState.hasClass(rules.hasvalue))) {
-						if ($requiredSelectState.hasClass('radio-widget')) {
-							easyFormValidation.validateElement($requiredSelectState, 'RADIO');
-						} else {
-							easyFormValidation.validateElement($requiredSelectState, $requiredSelectState.prop('tagName'));
-						}
-					}
-				});
-				var totalErrors = easyFormValidation.getFormState();
 
-				if (totalErrors !== 0) {
-					$(this).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
-						$(this).val(rules.formSubmitButtonText).fadeTo(500, 1);
-					});
+				// internal flag - is set to true on second automated submit if
+				// validation was successful
+				if (this._formValid) {
+					this._formValid = false; // clear the flag
+					return; // do nothing, already validated
+				}
 
-					// prevent form submission
-					e.preventDefault();
-				} else {
+				// prevent form submission
+				e.preventDefault();
+
+				var validators = $(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').map(function() {
+					return easyFormValidation.validateElement($(this));
+				}).toArray();
+
+				$.when.apply($, validators).done(function() {
 					// convert all date values on submit to backend format
 					rules.$formDate.each(function() {
 						var $el = $(this);
 						$el.val(convertDate($el.val()));
 					});
-				}
+					this._formValid = true; // set valid flag
+					$form.submit();
+				}.bind(this)).fail(function() {
+					$(this).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
+						$(this).val(rules.formSubmitButtonText).fadeTo(500, 1);
+					});
+				}.bind(this));
 			});
 		},
 
 		getFormState: function() {
-			var $countError = 0;
+			var countError = 0;
 			$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
 				var $requiredSelectState = $(this);
 				if ($requiredSelectState.hasClass(rules.required) && !($requiredSelectState.hasClass(rules.hasvalue))) {
-					$countError++;
+					countError++;
 				}
 			}).trigger('change');
-			return $countError;
+			return countError;
 		},
 
 		resetForm: function() {
@@ -204,12 +206,12 @@
 				$(rules.$form).find(rules.$fieldErrorBox).empty();
 
 				/* Reset Select2 Dropdown */
-				$('.select-widget').select2({
+				$form.find('.select-widget').select2({
 					placeholder: 'Bitte wählen',
 					val: null
 				});
 
-				$('input[type="radio"]').each(function() {
+				$form.find('input[type="radio"]').each(function() {
 					if ($(this).hasClass('required')) {
 						$(this).val('--NOVALUE--');
 					}
@@ -251,24 +253,24 @@
 		},
 
 		onInput: function() {
-			$(':input[type="text"], :input[type="checkbox"], :input[type="radio"], textarea, :input[type="password"], :input[type="file"]')
+			$form.find(':input[type="text"], :input[type="checkbox"], :input[type="radio"], textarea, :input[type="password"], :input[type="file"]')
 				.on('focusout', _.debounce(easyFormValidation.onInputChange, 300));
 
 			$form.find('input[type="radio"]').on('change', function() {
-				easyFormValidation.onRadioChange($(this), 'RADIO');
+				easyFormValidation.onRadioChange($(this));
 			});
 
 			$form.find('input[type="checkbox"]').on('click', function() {
-				easyFormValidation.fieldCheckboxService($(this), 'CHECKBOX');
+				easyFormValidation.fieldCheckboxService($(this));
 			});
 		},
 
 		onInputChange: function(event) {
-			easyFormValidation.validateElement($(event.target), 'INPUT');
+			easyFormValidation.validateElement($(event.target));
 		},
 
 		onOptionMultiSelect: function() {
-			$('ul.select2-selection__rendered')
+			$form.find('ul.select2-selection__rendered')
 				.on('mouseenter', function() {
 					var $el = $(this).closest(rules.findField).find('select');
 					$el.select2('open');
@@ -277,7 +279,7 @@
 		},
 
 		onOptionDropdown: function() {
-			$('span.select2-selection__rendered')
+			$form.find('span.select2-selection__rendered')
 				.on('mouseenter', function() {
 					var $el = $(this).closest(rules.findField).find('select');
 					/*console.info('[onOptionDropdown] MOUSEOVER -> ' + $el);*/
@@ -293,8 +295,7 @@
 			});
 
 			$el.on('change', function() {
-				easyFormValidation.validateElement($el, 'SELECT');
-				/*console.info('VALIDATE DROPDOWN ' + $el);*/
+				easyFormValidation.validateElement($el);
 			});
 		},
 
@@ -306,11 +307,29 @@
 			});
 
 			$el.on('change', function() {
-				easyFormValidation.validateElement($el, 'SELECT');
+				easyFormValidation.validateElement($el);
 			});
 		},
 
-		validateElement: function($el, $currentFieldType) {
+		/**
+		 * Validates element value through call to backend.
+		 *
+		 * @param {HTMLElement} $el Input or composite element
+		 * @returns {Promise} Resolves if elements value is valid
+		 */
+		validateElement: function($el) {
+			var $currentFieldType = $el.prop('tagName');
+
+			if ($el.hasClass('radio-widget')) {
+				// override type if we are dealing with radio widget
+				$currentFieldType = 'RADIO';
+			}
+
+			if (!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) {
+				// no validation required
+				return $.when(true);
+			}
+
 			if ($el.is('.pat-pickadate') && $el.val().trim() && !/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/g.test($el.val())) {
 				// datepicker
 				$el.removeClass(rules.hasvalue);
@@ -318,7 +337,7 @@
 				return;
 			}
 
-			$.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
+			return $.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
 				var $errorMsg = json.errmsg,
 					isValid = $errorMsg === '';
 
@@ -343,20 +362,27 @@
 						$el.toggleClass(rules.hasvalue, isValid);
 						$el.parent().toggleClass(rules.error, !isValid);
 				}
+				if (isValid) {
+					// resolve promise
+					return isValid;
+				}
+
+				// reject promise, validation failed
+				$.Deferred().reject(isValid);
 			});
 		},
 
-		onRadioChange: function($el, $currentFieldType) {
+		onRadioChange: function($el) {
 			$el.closest('.field').find('input').each(function() {
 				var radioValue = $(this).next().text();
 				$(this).val(radioValue);
 				$(this).removeClass('error');
 				$(this).closest('.field').removeClass('error');
 			});
-			easyFormValidation.validateElement($el, $currentFieldType);
+			easyFormValidation.validateElement($el);
 		},
 
-		fieldCheckboxService: function($el, $currentFieldType) {
+		fieldCheckboxService: function($el) {
 			if (easyFormValidation.fieldRequired($el) && easyFormValidation.checkCheckbox($el)) {
 				$($el).val(rules.optionSelected);
 				$($el).addClass(rules.hasvalue);
@@ -367,7 +393,7 @@
 				$($el).removeClass(rules.hasvalue);
 			}
 
-			easyFormValidation.validateElement($el, $currentFieldType);
+			easyFormValidation.validateElement($el);
 		},
 
 		fieldRequired: function($el) {
