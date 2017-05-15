@@ -74,6 +74,16 @@ input[type=number] {
 
 	min-height: map-get($elementHeight, desktop);
 
+	// anchor element to clear content of the search field
+	.search__string__clear {
+		@include iconDataurl('breadcrumb-expand');
+		position: absolute;
+		right: 23px;
+		top: 50%;
+		transform: translateY(-50%) rotate(45deg);
+		z-index: 1;
+	}
+
 	float: left;
 	width: 100%;
 

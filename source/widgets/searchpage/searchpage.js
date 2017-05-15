@@ -113,6 +113,13 @@
 		if (typeof searchParam.q !== typeof undefined) {
 			this.sendSearchQuery();
 		}
+
+		var $clearQuery = $('<a href="#" class="search__string__clear"></a>');
+		$(this.options.domSelectors.queryInput).parent().append($clearQuery);
+		$clearQuery.click(function(event) {
+			event.preventDefault();
+			$(this).siblings('input').val('').change();
+		})
 	};
 
 	/**
