@@ -98,7 +98,7 @@
 			this.grabParameters();
 			sendSearchQueryDebounced();
 		};
-
+		this.initQueryClearBtn();
 		this.eventListeners();
 		this.initFormFunctionality();
 		this.initSearchParam();
@@ -118,12 +118,15 @@
 			this.sendSearchQuery();
 		}
 
-		var $clearQuery = $('<a href="#" class="search__string__clear"></a>');
-		$(this.options.domSelectors.queryInput).parent().append($clearQuery);
-		$clearQuery.click(function(event) {
+	};
+
+	Widget.prototype.initQueryClearBtn = function() {
+		this.$clearQueryBtn = $('<a href="#" class="search__string__clear"></a>').hide();
+		$(this.options.domSelectors.queryInput).parent().append(this.$clearQueryBtn);
+		this.$clearQueryBtn.click(function(event) {
 			event.preventDefault();
 			$(this).siblings('input').val('').change();
-		})
+		});
 	};
 
 	/**
@@ -156,11 +159,10 @@
 				this.updateTitle();
 			}
 
-			// this.sendSearchQuery();
 			this.updateQueryInputState();
 		}.bind(this));
-		$(this.options.domSelectors.queryInput).change(this.updateQueryInputState.bind(this));
 
+		$(this.options.domSelectors.queryInput).change(this.updateQueryInputState.bind(this));
 
 		/**
 		 * Load more results to the table when limited results
@@ -212,6 +214,7 @@
 		// read current value from the field
 		var val = $(this.options.domSelectors.queryInput).val().trim();
 		$(this.options.domSelectors.queryInput).toggleClass(this.options.stateClasses.isFilled, !!val.length);
+		this.$clearQueryBtn[val ? 'show' : 'hide']();
 	};
 
 	/**
@@ -304,6 +307,7 @@
 		if (loadMoreMode) {
 			searchParam.offset = $(this.options.domSelectors.catPageResult).length;
 		}
+		window.estatico.search.setSearchParameters(searchParam);
 
 		if (this.checkParameters()) {
 			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL);
