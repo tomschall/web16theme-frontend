@@ -11,6 +11,10 @@ body {
 
 	@include clearfix();
 
+	& p:last-child {
+		margin-bottom: 0;
+	}
+
 	@include mq($to: medium) {
 		padding-bottom: $basicPush * 2;
 	}
