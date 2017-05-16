@@ -189,7 +189,7 @@ table.content__table {
 	padding-bottom: 0;
 
 	.bleed__inner {
-		padding-top: $basicPush * 6;
+		padding-top: 0;
 
 		@include mq($to: medium) {
 			padding-left: $gutterWidth;
