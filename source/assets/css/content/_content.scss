@@ -11,6 +11,10 @@ body {
 
 	@include clearfix();
 
+	& p:last-child {
+		margin-bottom: 0;
+	}
+
 	@include mq($to: medium) {
 		padding-bottom: $basicPush * 2;
 	}
@@ -163,7 +167,6 @@ table.content__table {
 	tr {
 		td {
 			border-bottom: 1px solid $colorGreyHover;
-			min-width: 250px;
 		}
 
 		&:last-of-type {
@@ -186,7 +189,7 @@ table.content__table {
 	padding-bottom: 0;
 
 	.bleed__inner {
-		padding-top: $basicPush * 6;
+		padding-top: 0;
 
 		@include mq($to: medium) {
 			padding-left: $gutterWidth;
