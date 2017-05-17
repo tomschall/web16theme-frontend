@@ -7,8 +7,10 @@ var _ = require('lodash'),
 
 var templateData = {
 	title: 'Die FHNW',
+	titleUrl: 'http://www.fhnw.ch/titleurl',
 	logo: null,
-	subtitle: null,
+	subtitle: 'Hochschulen',
+	subtitleUrl: 'http://www.fhnw.ch/subtitleurl',
 	entries: [
 		{
 			title: 'Organisation',
