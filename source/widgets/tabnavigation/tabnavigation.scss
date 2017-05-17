@@ -1,5 +1,6 @@
 .widg_tabnavigation {
 	margin-top: $basicPush * 4;
+	margin-bottom: $basicPush;
 }
 
 .widg_tabnavigation__nav {
@@ -55,6 +56,15 @@
 	&.is_active {
 		display: block;
 
+	}
+
+	& > .responsive-video {
+		padding-top: 0;
+		margin-bottom: 25px;
+
+		@include mq($to: medium) {
+			padding-top: 15px;
+		}
 	}
 
 	@include mq($to: medium) {

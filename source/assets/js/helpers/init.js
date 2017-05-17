@@ -31,4 +31,7 @@
 		});
 	});
 
+	/* Removing empty p-Tags */
+	$('p:empty').remove();
+
 })(jQuery);
