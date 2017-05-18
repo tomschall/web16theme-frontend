@@ -267,7 +267,8 @@
 
 	// show all button on the bottom
 	Widget.prototype.appendGoToPageBtn = function() {
-		var completePageUrl = searchPageUrl + '?#=' + currentSearchValue,
+
+		var completePageUrl = searchPageUrl + '#q=' + currentSearchValue,
             showAllResultsString = $(this.options.domSelectors.bar).data('lang-all-results'),
             $btn = $('<a class="widg_searchbar__go-to-page not-default" href="' + completePageUrl + '">' + showAllResultsString + '</a>');
 
