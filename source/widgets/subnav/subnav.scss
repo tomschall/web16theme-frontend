@@ -114,6 +114,12 @@
 
 	padding: 10px 22px 20px 22px;
 
+	a {
+		font-weight: normal;
+    text-decoration: none;
+    font-size: inherit;
+	}
+
 	span {
 		color: $colorBg;
 		font-size: 1.25rem;

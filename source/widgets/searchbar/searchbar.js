@@ -7,23 +7,6 @@
  * //@requires ../../../node_Widgets/some/dependency.js
  */
 
-function debounce(fn, delay) {
-	'use strict';
-
-	var timer = null;
-
-	return function() {
-		var context = this,
-				args = arguments;
-
-		clearTimeout(timer);
-
-		timer = setTimeout(function() {
-			fn.apply(context, args);
-		}, delay);
-	};
-}
-
 ;(function($, undefined) {
 	'use strict';
 
@@ -93,7 +76,6 @@ function debounce(fn, delay) {
 	Widget.prototype.init = function() {
 		jsonURL = this.$element.data('json-url');
 		searchPageUrl = this.$element.data('searchpage-url');
-
 		this.addEventHandlers();
 	};
 
@@ -125,12 +107,14 @@ function debounce(fn, delay) {
 			this.closeSearchBar();
 		}.bind(this));
 
-		$(this.options.domSelectors.input).keydown(debounce(function(event) {
-			this.startSearch($(event.currentTarget));
-		}.bind(this), 250));
+		this.startSearch = _.debounce(function(event) {
+			this._startSearch($(event.currentTarget));
+		}.bind(this), 250);
+
+		$(this.options.domSelectors.input).on('input', this.startSearch);
 	};
 
-	Widget.prototype.startSearch = function($inputField) {
+	Widget.prototype._startSearch = function($inputField) {
 		var value = $inputField.val();
 
 		this.removeSearchResults();
@@ -206,7 +190,7 @@ function debounce(fn, delay) {
 			$(this.options.domSelectors.input).focus();
 
 			// invoke search
-			this.startSearch($(this.options.domSelectors.input));
+			this._startSearch($(this.options.domSelectors.input));
 		}
 	};
 
@@ -283,9 +267,10 @@ function debounce(fn, delay) {
 
 	// show all button on the bottom
 	Widget.prototype.appendGoToPageBtn = function() {
-		var completePageUrl = searchPageUrl + '?q=' + currentSearchValue,
-				showAllResultsString = $(this.options.domSelectors.bar).data('lang-all-results'),
-				$btn = $('<a class="widg_searchbar__go-to-page not-default" href="' + completePageUrl + '">' + showAllResultsString + '</a>');
+
+		var completePageUrl = searchPageUrl + '#q=' + currentSearchValue,
+            showAllResultsString = $(this.options.domSelectors.bar).data('lang-all-results'),
+            $btn = $('<a class="widg_searchbar__go-to-page not-default" href="' + completePageUrl + '">' + showAllResultsString + '</a>');
 
 		if ($('.widg_searchbar__go-to-page').length === 0) {
 			$('.search__results').append($btn);
