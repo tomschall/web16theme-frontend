@@ -173,8 +173,13 @@
 						var $el = $(this);
 						$el.val(convertDate($el.val()));
 					});
-					this._formValid = true; // set valid flag
-					$form.submit();
+
+					setTimeout(function() {
+
+						// set valid flag and resubmit form
+						this._formValid = true;
+						rules.$formSubmitButton.click();
+					}.bind(this));
 				}.bind(this)).fail(function() {
 					$(this).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
 						$(this).val(rules.formSubmitButtonText).fadeTo(500, 1);
@@ -320,14 +325,20 @@
 		validateElement: function($el) {
 			var $currentFieldType = $el.prop('tagName');
 
-			if ($el.hasClass('radio-widget')) {
-				// override type if we are dealing with radio widget
-				$currentFieldType = 'RADIO';
-			}
-
 			if (!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) {
 				// no validation required
 				return $.when(true);
+			}
+
+			// special handling for radio buttons
+			if ($el.hasClass('radio-widget')) {
+				$currentFieldType = 'RADIO';
+
+				// validate radio widgets client side only - #658
+				if ($form.find('[name=' + $el.attr('name').replace(/\./gm, '\\.') + ']:checked').size()) {
+					// some option is selected -> field is valid
+					return true;
+				}
 			}
 
 			if ($el.is('.pat-pickadate') && $el.val().trim() && !/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/g.test($el.val())) {
