@@ -173,8 +173,13 @@
 						var $el = $(this);
 						$el.val(convertDate($el.val()));
 					});
-					this._formValid = true; // set valid flag
-					$form.submit();
+
+					setTimeout(function() {
+
+						// set valid flag and resubmit form
+						this._formValid = true;
+						rules.$formSubmitButton.click();
+					}.bind(this));
 				}.bind(this)).fail(function() {
 					$(this).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
 						$(this).val(rules.formSubmitButtonText).fadeTo(500, 1);
