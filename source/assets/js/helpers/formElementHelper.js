@@ -320,14 +320,20 @@
 		validateElement: function($el) {
 			var $currentFieldType = $el.prop('tagName');
 
-			if ($el.hasClass('radio-widget')) {
-				// override type if we are dealing with radio widget
-				$currentFieldType = 'RADIO';
-			}
-
 			if (!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) {
 				// no validation required
 				return $.when(true);
+			}
+
+			// special handling for radio buttons
+			if ($el.hasClass('radio-widget')) {
+				$currentFieldType = 'RADIO';
+
+				// validate radio widgets client side only - #658
+				if ($form.find('[name=' + $el.attr('name').replace(/\./gm, '\\.') + ']:checked').size()) {
+					// some option is selected -> field is valid
+					return true;
+				}
 			}
 
 			if ($el.is('.pat-pickadate') && $el.val().trim() && !/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/g.test($el.val())) {
