@@ -16,6 +16,7 @@ gulp.task(taskName, function() {
 	var connect = require('connect'),
 		connectLivereload = require('connect-livereload'),
 		connectServeStatic = require('serve-static'),
+		proxy = require('http-proxy-middleware'),
 		url = require('url'),
 		http = require('http'),
 
@@ -23,6 +24,7 @@ gulp.task(taskName, function() {
 		open = require('open');
 
 	var app = connect()
+			.use(proxy('/de/searchbar.json', {target: 'https://www.dev.fhnw.ch', secure: false}))
 			.use(connectLivereload())
 			.use(function(req, res, next) {
 				var parts = url.parse(req.url, true),

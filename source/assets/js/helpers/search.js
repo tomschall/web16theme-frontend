@@ -57,7 +57,10 @@
 				è: 'e',
 				à: 'a'
 			},
-			langStrings = {};
+			langStrings = {},
+
+			// keeps track of requests not completed yet
+			outstandingRequests = [];
 
 	/**
 	 * Normalizing the car for word list if Umlaut
@@ -299,6 +302,25 @@
 	}
 
 	/**
+	 * Marks outstanding request as completed - removes it from the list
+	 * @param xhr {XMLHTTPRequest} request object
+	 */
+	function requestCompleted(xhr) {
+		outstandingRequests = outstandingRequests.filter(function(_xhr) {
+			return _xhr !== xhr;
+		});
+	}
+
+	/**
+	 * Cancells all outstanding requests and removes the from the list
+	 */
+	function cancelOutstandingRequests() {
+		outstandingRequests.forEach(function(xhr) {
+			xhr.abort();
+		});
+		outstandingRequests = [];
+	}
+	/**
 	 * Execs the search
 	 * @param query the single word search query
 	 * @param isSearchbar if the search is triggered in the searchbar (different ajax target)
@@ -327,6 +349,7 @@
 		}
 
 		activeCategorySearch = isCategorySearch;
+		cancelOutstandingRequests();
 
 		if (isSearchbar || isPageSearch) {
 			if (isSearchbar) {
@@ -334,7 +357,7 @@
 			}
 
 			searchCategories.forEach(function(category) {
-				$.ajax({
+				var xhr = $.ajax({
 					data: _.assign(query, {
 						category: category,
 						template: searchTemplate
@@ -342,19 +365,23 @@
 					dataType: 'json',
 					success: handleReturnData,
 					error: handleReturnData,
+					complete: requestCompleted,
 					url: searchURL
 				});
+
+				outstandingRequests.push(xhr);
 			});
 		} else if (isCategorySearch) {
-			$.ajax({
+			var xhr = $.ajax({
 				data: query,
 				dataType: 'json',
 				success: handleReturnData,
 				error: handleReturnData,
+				complete: requestCompleted,
 				url: searchURL
 			});
+			outstandingRequests.push(xhr);
 		}
-
 		setSearchParameters(query);
 	}
 
