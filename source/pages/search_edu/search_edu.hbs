@@ -1,0 +1,75 @@
+{{#extend "layouts/layout" pageTypeClass="search-page"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <h1 id="search-title" data-searchpage="title">{{title}}</h1>
+
+    <div class="search__wrapper" data-searchpage-template="studies_full" data-searchpage-category="studies" data-searchpage="formWrapper">
+
+		<div class="search__form-wrapper">
+			<div>
+				<div class="search__holder select2__wrapper">
+					<select id="faculty" name="faculty" data-searchparam="faculty" class="custom-select" multiple="multiple">
+						{{#each widgets.facultyOptions}}
+							<option value="{{optionValue}}">{{optionLabel}}</option>
+						{{/each}}
+					</select>
+					<label class="formQuestion" for="faculty">{{langStrings.labels.faculty}}</label>
+				</div>
+
+				<div class="search__holder select2__wrapper">
+					<select class="custom-select custom-select___long" name="study_type" id="study_type" data-searchparam="study_type" data-placeholder="" multiple="multiple">
+						{{#each widgets.studyTypeOptions}}
+							<option value="{{optionValue}}">{{optionLabel}}</option>
+						{{/each}}
+					</select>
+					<label class="formQuestion" for="study_type">{{langStrings.labels.studyType}}</label>
+					<span class="custom-select___remover" aria-hidden="true"></span>
+				</div>
+
+				<div class="search__holder select2__wrapper">
+					<select class="custom-select custom-select___long" name="location" id="location" data-searchparam="location" data-placeholder="" multiple="multiple">
+						{{#each widgets.locationOptions}}
+							<option value="{{optionValue}}">{{optionLabel}}</option>
+						{{/each}}
+					</select>
+					<label class="formQuestion" for="location">{{langStrings.labels.location}}</label>
+					<span class="custom-select___remover" aria-hidden="true"></span>
+				</div>
+
+				<div class="search__holder search__holder___double">
+					<div class="search__string">
+						<input type="text" value="" id="search-string" name="search-string" data-searchpage="query" data-searchparam="q"/>
+						<label class="formQuestion" for="search-string">{{langStrings.labels.term}}</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="search__third-row">
+				<div class="search__extra-holder">
+					<button class="search__reset not-default" data-searchpage="reset">{{langStrings.resetFields}}</button>
+				</div>
+				<div class="search__extra-holder element-hidden">
+					<span data-searchpage="countNumber"></span>
+					<span class="search__countNumber___text"></span>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="content__element has_grid">
+			<div class="widg_teaser__wrapper">
+				<div class="cat_page_result widg_teaser wide___third">{{#if img}}<div class="widg_teaser__img"><img src="{{img.src}}"/></div>{{/if}}<h4>{{Title}}</h4><p>{{Description}}</p><a class="widg_teaser__link" href="#{{combinedUrl}}">{{Title}}</a><span class="widg_teaser__arrow"></span></div>
+			</div>
+		</div>
+
+
+
+
+
+		{{> "widgets/searchpage/searchpage" widgets.searchpage }}
+    </div>
+
+	{{/content}}
+{{/extend}}

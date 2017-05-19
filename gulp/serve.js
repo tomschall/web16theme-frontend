@@ -24,24 +24,27 @@ gulp.task(taskName, function() {
 		open = require('open');
 
 	var app = connect()
-			.use(proxy('/de/searchbar.json', {target: 'https://www.dev.fhnw.ch', secure: false}))
-			.use(connectLivereload())
-			.use(function(req, res, next) {
-				var parts = url.parse(req.url, true),
-					delay = parts.query.delay;
+		//.use(proxy('/de/searchbar.json', {target: 'https://www.dev.fhnw.ch', secure: false}))
+		//.use(proxy('/de/searchbar.json', {target: 'https://www0.fhnw.ch', secure: false}))
+		.use(proxy('/de/searchbar.json', {target: 'https://www0.test.fhnw.ch', secure: false}))
 
-				if (delay) {
-					// Respond to optional 'delay' parameter
-					// Example: http://localhost:9000/mocks/demo/modules/slideshow/modules.json?delay=5000
-					setTimeout(function() {
-						next();
-					}, delay);
-				} else {
+		.use(connectLivereload())
+		.use(function(req, res, next) {
+			var parts = url.parse(req.url, true),
+				delay = parts.query.delay;
+
+			if (delay) {
+				// Respond to optional 'delay' parameter
+				// Example: http://localhost:9000/mocks/demo/modules/slideshow/modules.json?delay=5000
+				setTimeout(function() {
 					next();
-				}
-			})
-			.use(connectServeStatic(taskConfig.src)),
-		server = http.createServer(app).listen(9000);
+				}, delay);
+			} else {
+				next();
+			}
+		})
+		.use(connectServeStatic(taskConfig.src)),
+	server = http.createServer(app).listen(9000);
 
 	server.on('listening', function() {
 		open('http://localhost:9000');

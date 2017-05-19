@@ -118,7 +118,6 @@
 		var value = $inputField.val();
 
 		this.removeSearchResults();
-
 		if (value.length >= 3 && value !== currentSearchValue) {
 			this.sendXHRObject(value);
 		} else if (value.length === 0) {
@@ -201,20 +200,17 @@
 		if (typeof removePreventScroll === typeof undefined) {
 			removePreventScroll = true;
 		}
-
 		$(this.options.domSelectors.bar).removeClass(this.options.stateClasses.isOpen);
-
 		searchBarIsOpen = false;
-
 		$(window).trigger(events.close);
-
 		if (removePreventScroll) {
 			window.estatico.modal.hideModal();
 			window.estatico.modal.removePreventScroll();
 		}
 
-		// remove query from url
-		window.estatico.search.updateSearchParameter('q', '');
+		// remove query from field, reset results
+		$(this.options.domSelectors.input).val('');
+		this._startSearch($(this.options.domSelectors.input));
 	};
 
 	/**
@@ -267,7 +263,6 @@
 
 	// show all button on the bottom
 	Widget.prototype.appendGoToPageBtn = function() {
-
 		var completePageUrl = searchPageUrl + '#q=' + currentSearchValue,
             showAllResultsString = $(this.options.domSelectors.bar).data('lang-all-results'),
             $btn = $('<a class="widg_searchbar__go-to-page not-default" href="' + completePageUrl + '">' + showAllResultsString + '</a>');
