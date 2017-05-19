@@ -123,7 +123,7 @@
 		} else if (value.length === 0) {
 			this.changeSearchbarStatus(this.options.stateClasses.showIntro);
 		}
-		window.estatico.search.updateSearchParameter('q', value);
+		window.estatico.search.updateSearchParameter('qs', value);
 		currentSearchValue = value;
 	};
 
@@ -175,7 +175,7 @@
 
 		this.addSingleEventListeners();
 		var searchParams = window.estatico.search.getSearchParameters();
-		if (searchParams.q) {
+		if (searchParams.qs) {
 			$(this.options.domSelectors.input).mouseup(function(e) {
 				e.preventDefault();
 			});
@@ -184,7 +184,7 @@
 				$(this).select();
 			});
 
-			$(this.options.domSelectors.input).val(searchParams.q);
+			$(this.options.domSelectors.input).val(searchParams.qs);
 			$(this.options.domSelectors.input).trigger('keypress');
 			$(this.options.domSelectors.input).focus();
 
@@ -296,9 +296,7 @@
 
 				if (queryStartPosition !== -1) {
 					queryEndPosition = queryStartPosition + currentSearchValue.length;
-
 					markedTitle = titleSt.substr(0, queryStartPosition) + '<span class="bold">' + titleSt.substr(queryStartPosition, currentSearchValue.length) + '</span>' + titleSt.substr(queryEndPosition);
-
 					$elementTitle.html(markedTitle);
 				}
 			}

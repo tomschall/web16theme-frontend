@@ -300,6 +300,12 @@
 		});
 	};
 
+	Widget.prototype.queryMatch = function() {
+		var same = _.isEqual(searchParam, this._lastSearchParam);
+		this._lastSearchParam = _.clone(searchParam);
+		return same;
+	};
+
 	/**
 	 * Sends the complete xhr request to search
    */
@@ -308,6 +314,11 @@
 			searchParam.offset = $(this.options.domSelectors.catPageResult).length;
 		}
 		window.estatico.search.setSearchParameters(searchParam);
+
+		// avoid submission of the same query twice
+		if (this.queryMatch()) {
+			return false;
+		}
 
 		if (this.checkParameters()) {
 			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL);
@@ -515,8 +526,12 @@
 			});
 		} else if (facets) {
 			facets.forEach(function(field) {
-				var $field = $('[data-searchparam="' + field.field + '"]'),
-						$options = $field.find('option');
+
+				// field names coming from the endpoint are postfixed with [] if they contain lists
+				// removes postfix from the name
+				var fieldName = field.field.replace(/\[\]$/, ''),
+					$field = $('[data-searchparam="' + fieldName + '"]'),
+					$options = $field.find('option');
 
 				$options.map(function(index, option) {
 					if ($.inArray($(option).attr('value'), field.enable) === -1) {

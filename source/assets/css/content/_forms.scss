@@ -78,11 +78,10 @@ input[type=number] {
 	.search__string__clear {
 		font-size: 1.25rem;
 		position: absolute;
-		right: 23px;
+		right: 12px;
 		top: 50%;
 		transform: translateY(-50%) rotate(45deg);
 		z-index: 1;
-
 		@include iconDataurl('breadcrumb-expand');
 	}
 
