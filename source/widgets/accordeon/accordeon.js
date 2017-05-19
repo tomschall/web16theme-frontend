@@ -69,6 +69,11 @@
 
 	// Checks if hash can be found and opens it if necessary
 	Widget.prototype.checkAndOpenHash = function(hash) {
+		if (hash.indexOf('=') >= 0) {
+			// do nothing if search string is present
+			return;
+		}
+
 		var hasChildWithHash = this.$element.find(hash).length > 0;
 
 		if (hasChildWithHash) {

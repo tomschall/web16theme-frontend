@@ -317,37 +317,26 @@
 			}
 
 			if (isCategorySearch) {
-				$(window).one(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults, category, facets) {
-					if (data) {
-						this.showResults(data, foundEntries, limitedToResults, category);
-
-						if (isCategorySearch) {
-							this.updateFilters(facets);
-						}
-					} else {
-						this.changeStatus(this.options.stateClasses.showResults);
-					}
-
-				}.bind(this));
+				$(window).one(this.options.searchEvents.dataLoaded, this.handleData.bind(this));
 			} else {
-				$(window).on(this.options.searchEvents.dataLoaded, function(event, data, foundEntries, limitedToResults, category, facets) {
-					if (data) {
-						this.showResults(data, foundEntries, limitedToResults, category);
-
-						if (isCategorySearch) {
-							this.updateFilters(facets);
-						}
-					} else {
-						this.changeStatus(this.options.stateClasses.showResults);
-					}
-				}.bind(this));
+				$(window).on(this.options.searchEvents.dataLoaded, this.handleData.bind(this));
 			}
-
 		} else {
 			this.updateFilters('enableAll');
 			this.$element.find('.search__table').remove();
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 			$(this.options.domSelectors.countNumber).closest('div').addClass(this.options.stateClasses.elementHidden);
+		}
+	};
+
+	Widget.prototype.handleData = function(event, data, foundEntries, limitedToResults, category, facets) {
+		if (data) {
+			this.showResults(data, foundEntries, limitedToResults, category);
+			if (isCategorySearch) {
+				this.updateFilters(facets);
+			}
+		} else {
+			this.changeStatus(this.options.stateClasses.showResults);
 		}
 	};
 
@@ -381,7 +370,6 @@
 		this.replaceLinkPlaceholder();
 		this.markSearchQuery();
 		this.addCatTitleLabel();
-
 		this.changeStatus(this.options.stateClasses.showResults);
 
 		resultsShown = true;
@@ -430,17 +418,14 @@
 		});
 
 		var $resultsTd = $('.search__results td');
-
 		$resultsTd.unbind('click.' + this.uuid);
 
 		/**
 		 * Adding the event to add link functionality to search results
 		 */
 		$resultsTd.on('click.' + this.uuid, function(event) {
-			var $row = $(event.currentTarget).closest('tr'),
-					url = $row.find('a').attr('href');
-
-			window.location = url;
+			var $row = $(event.currentTarget).closest('tr');
+			window.location = $row.find('a').attr('href');
 		}.bind(this));
 	};
 
@@ -542,9 +527,7 @@
 				}.bind(this));
 			}.bind(this));
 		}
-
 		$('.custom-select').select2('destroy');
-
 		window.estatico.easyFormValidation.select2Init();
 	};
 
