@@ -93,7 +93,7 @@ fieldset .select2-selection__rendered {
 
 			@include mq($to: medium) {
 				line-height: 47px;
-
+				padding-top: 6px;
 				padding-left: 13px;
 			}
 		}
@@ -321,18 +321,12 @@ fieldset .select2-selection__rendered {
 	display: none;
 
 	@include iconDataurl('breadcrumb-expand');
-
 	position: absolute;
-
-	right: 23px;
+	right: 30px;
 	top: 50%;
 	transform: translateY(-50%) rotate(45deg);
-
-	width: 16px;
-	height: 16px;
-
-	opacity: 0.5;
-
+	font-size: 1.25rem;
+	opacity: 0.7;
 	&:hover {
 		opacity: 1.0;
 		cursor: pointer;
