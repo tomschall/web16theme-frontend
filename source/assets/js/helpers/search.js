@@ -33,7 +33,7 @@
 					expertises: '<div class="cat_page_result" data-clickable="true" class="search__result-word-list"><a href="{{combinedURL}}">{{Title}}<span class="search__result-arrow"></span></a></div>',
 					profiles: '<tr class="cat_page_result cat_page_profile_result" data-clickable="false"><td>{{#if combinedURL}}<img src="{{combinedURL}}/@@images/portrait_foto/f_search" alt="{{Title}}"/>{{/if}}</td><td><div><h4>{{Title}}</h4></div><div>{{fa_expertise}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if telefonnummer}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{telefonnummer}}">{{telefonnummer}}</a></div>{{/if}}{{#if telefonnummer_central}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{telefonnummer_central}}">{{telefonnummer_central}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="mailto:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
 					events: '<div class="cat_page_result" class="widg_teaser">{{#if img}}<div class="widg_teaser__img"><img src="{{img.src}}"/></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}} <h4>{{{Title}}}</h4>{{#if descriptionText}} <p>{{dotdotdot_teaser descriptionText}}</p>{{/if}} <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>',
-					studies: '<div class="cat_page_result widg_teaser wide___third">{{#if combinedURL}}<div class="widg_teaser__img"><img src="{{combinedURL}}/@@images/image/f_teaser"/></div>{{/if}}<h4>{{Title}}</h4><p>{{Description}}</p><a class="widg_teaser__link" href="{{combinedURL}}">{{Title}}</a><span class="widg_teaser__arrow"></span></div>'
+					studies: '<tr class="cat_page_result" data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>'
 				},
 				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
 			},
@@ -242,8 +242,6 @@
 						$responseHTML.append(generateWordList(data));
 					} else if (data.category === 'events') {
 						$responseHTML.append(generateTeasers(data));
-					} else if (data.category === 'studies') {
-						$responseHTML.addClass('content__element has_grid').appendTo($responseHTML).append(generateTeasers(data));
 					} else {
 						$responseHTML.addClass('search__table').append(generateResultTable(data));
 					}
@@ -277,12 +275,17 @@
 		}
 	}
 
+	function isEmpty(v) {
+		return v === undefined || v === '' || v === null || (_.isArray(v) && _.isEmpty(v));
+	}
+
 	function encodeSearchParameters(queryParams, ignoreKeys) {
+		console.info('queryParams', queryParams);
 		if (ignoreKeys === undefined) {
 			ignoreKeys = [];
 		}
 		var params = _.pickBy(queryParams, function(v, k) {
-			return !_.isEmpty(v) && ignoreKeys.indexOf(k) < 0;
+			return !isEmpty(v) && ignoreKeys.indexOf(k) < 0;
 		});
 
 		return $.param(params);
@@ -330,7 +333,7 @@
 	 * @param searchTemplate the template for the search results (how to display)
 	 * @param searchURL the search url
    */
-	function search(query, isSearchbar, isCategorySearch, searchTemplate, searchURL) {
+	function search(query, isSearchbar, isCategorySearch, searchTemplate, searchURL, preventHashUpdate) {
 		var isPageSearch = false;
 
 		if (typeof isSearchbar === typeof undefined) {
@@ -384,7 +387,10 @@
 			});
 			outstandingRequests.push(xhr);
 		}
-		setSearchParameters(query);
+
+		if (!preventHashUpdate) {
+			setSearchParameters(query);
+		}
 	}
 
 	/**
