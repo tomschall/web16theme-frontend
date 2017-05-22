@@ -235,8 +235,6 @@
 				$fieldNameOriginal = $el.attr('name'),
 				$fieldnameSplitted = '';
 
-			//url = '/Plone/de/easyformexample'
-
 			if ($el.hasClass(rules.hasvalue)) {
 				$fieldnameSplitted = $fieldNameOriginal;
 			} else {
