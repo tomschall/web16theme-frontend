@@ -44,6 +44,7 @@
 			$formCheckbox: $('input:checkbox', $form),
 			$formRadio: $('input:radio', $form),
 			$formDate: $form.find('input.pat-pickadate'),
+			$fieldsets: $form.find('fieldset'),
 			required: 'required',
 			error: 'error',
 			hasvalue: 'has-value',
@@ -232,8 +233,7 @@
 			var url = window.location.href,
 				$z3cvalidator = '@@z3cform_validate_field?fname=',
 				$fieldNameOriginal = $el.attr('name'),
-				$fieldnameSplitted = '',
-				$requestURI = '';
+				$fieldnameSplitted = '';
 
 			if ($el.hasClass(rules.hasvalue)) {
 				$fieldnameSplitted = $fieldNameOriginal;
@@ -248,8 +248,35 @@
 				/*console.info('use urlHash ' + urlVar);*/
 			}
 
-			$requestURI = url + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + easyFormValidation.getFieldValue($el);
-			/*console.info('requestURI -> ' + $requestURI);*/
+			var $requestURI = url + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + easyFormValidation.getFieldValue($el);
+
+			// Easy form validator requires fieldset index (fset attribute) to be added to the url,
+			// but this needs to be skipped for the first fieldset. Also the fset attribute for second
+			// fieldset is 0 instead of 1.
+
+			// Example:
+			//
+			// +----------------+
+			// |fieldset (0)    |
+			// |skip &fset      |
+			// +----------------+
+			// +----------------+
+			// |fieldset (1)    |
+			// |&fset=0         |
+			// +----------------+
+			// +----------------+
+			// |fieldset (2)    |
+			// |&fset=1         |
+			// +----------------+
+
+			for (var i = 1; i < rules.$fieldsets.size(); i++) {
+				if (rules.$fieldsets.eq(i).has($el).size()) {
+					// decrement index for the validator
+					$requestURI += '&fset=' + (i - 1);
+					break;
+				}
+			}
+
 			return $requestURI;
 		},
 
@@ -325,32 +352,8 @@
 		validateElement: function($el) {
 			var $currentFieldType = $el.prop('tagName');
 
-			if (!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) {
-				// no validation required
-				return $.when(true);
-			}
-
-			// special handling for radio buttons
-			if ($el.hasClass('radio-widget')) {
-				$currentFieldType = 'RADIO';
-
-				// validate radio widgets client side only - #658
-				if ($form.find('[name=' + $el.attr('name').replace(/\./gm, '\\.') + ']:checked').size()) {
-					// some option is selected -> field is valid
-					return true;
-				}
-			}
-
-			if ($el.is('.pat-pickadate') && $el.val().trim() && !/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/g.test($el.val())) {
-				// datepicker
-				$el.removeClass(rules.hasvalue);
-				$el.parent().addClass(rules.error);
-				return;
-			}
-
-			return $.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
-				var $errorMsg = json.errmsg,
-					isValid = $errorMsg === '';
+			function updateFieldStatus($el, $currentFieldType, isValid, $errorMsg) {
+				$errorMsg = $errorMsg === undefined ? '' : $errorMsg;
 
 				$el.closest(rules.findField).find(rules.$fieldErrorBox).text($errorMsg);
 
@@ -373,14 +376,42 @@
 						$el.toggleClass(rules.hasvalue, isValid);
 						$el.parent().toggleClass(rules.error, !isValid);
 				}
-				if (isValid) {
-					// resolve promise
-					return isValid;
-				}
+			}
 
-				// reject promise, validation failed
-				$.Deferred().reject(isValid);
+			if (!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) {
+				// no validation required
+				updateFieldStatus($el, $currentFieldType, true);
+				return;
+			}
+
+			// special handling for radio buttons
+			if ($el.hasClass('radio-widget')) {
+				$currentFieldType = 'RADIO';
+
+				// validate radio widgets client side only - #658
+				if ($form.find('[name=' + $el.attr('name').replace(/\./gm, '\\.') + ']:checked').size()) {
+					// some option is selected -> field is valid
+					updateFieldStatus($el, $currentFieldType, true);
+					return;
+				}
+			}
+
+			if ($el.is('.pat-pickadate') && $el.val().trim() && !/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/g.test($el.val())) {
+				// datepicker
+				updateFieldStatus($el, $currentFieldType, false);
+				return $.Deferred().reject('Invalid date format').promise();
+			}
+
+			var deferred = $.Deferred();
+
+			$.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
+				var $errorMsg = json.errmsg,
+					isValid = $errorMsg === '';
+
+				updateFieldStatus($el, $currentFieldType, isValid, $errorMsg);
+				return isValid ? deferred.resolve('') : deferred.reject($errorMsg);
 			});
+			return deferred.promise();
 		},
 
 		onRadioChange: function($el) {
