@@ -352,34 +352,8 @@
 		validateElement: function($el) {
 			var $currentFieldType = $el.prop('tagName');
 
-			if (!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) {
-				// no validation required
-				return;
-			}
-
-			// special handling for radio buttons
-			if ($el.hasClass('radio-widget')) {
-				$currentFieldType = 'RADIO';
-
-				// validate radio widgets client side only - #658
-				if ($form.find('[name=' + $el.attr('name').replace(/\./gm, '\\.') + ']:checked').size()) {
-					// some option is selected -> field is valid
-					return;
-				}
-			}
-
-			if ($el.is('.pat-pickadate') && $el.val().trim() && !/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/g.test($el.val())) {
-				// datepicker
-				$el.removeClass(rules.hasvalue);
-				$el.parent().addClass(rules.error);
-				return $.Deferred().reject('Invalid date format').promise();
-			}
-
-			var deferred = $.Deferred();
-
-			$.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
-				var $errorMsg = json.errmsg,
-					isValid = $errorMsg === '';
+			function updateFieldStatus($el, $currentFieldType, isValid, $errorMsg) {
+				$errorMsg = $errorMsg === undefined ? '' : $errorMsg;
 
 				$el.closest(rules.findField).find(rules.$fieldErrorBox).text($errorMsg);
 
@@ -402,7 +376,39 @@
 						$el.toggleClass(rules.hasvalue, isValid);
 						$el.parent().toggleClass(rules.error, !isValid);
 				}
+			}
 
+			if (!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) {
+				// no validation required
+				updateFieldStatus($el, $currentFieldType, true);
+				return;
+			}
+
+			// special handling for radio buttons
+			if ($el.hasClass('radio-widget')) {
+				$currentFieldType = 'RADIO';
+
+				// validate radio widgets client side only - #658
+				if ($form.find('[name=' + $el.attr('name').replace(/\./gm, '\\.') + ']:checked').size()) {
+					// some option is selected -> field is valid
+					updateFieldStatus($el, $currentFieldType, true);
+					return;
+				}
+			}
+
+			if ($el.is('.pat-pickadate') && $el.val().trim() && !/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/g.test($el.val())) {
+				// datepicker
+				updateFieldStatus($el, $currentFieldType, false);
+				return $.Deferred().reject('Invalid date format').promise();
+			}
+
+			var deferred = $.Deferred();
+
+			$.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
+				var $errorMsg = json.errmsg,
+					isValid = $errorMsg === '';
+
+				updateFieldStatus($el, $currentFieldType, isValid, $errorMsg);
 				return isValid ? deferred.resolve('') : deferred.reject($errorMsg);
 			});
 			return deferred.promise();
