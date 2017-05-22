@@ -327,7 +327,7 @@
 
 			if (!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) {
 				// no validation required
-				return $.when(true);
+				return $.when('');
 			}
 
 			// special handling for radio buttons
@@ -337,7 +337,7 @@
 				// validate radio widgets client side only - #658
 				if ($form.find('[name=' + $el.attr('name').replace(/\./gm, '\\.') + ']:checked').size()) {
 					// some option is selected -> field is valid
-					return true;
+					return $.when('');
 				}
 			}
 
@@ -345,7 +345,7 @@
 				// datepicker
 				$el.removeClass(rules.hasvalue);
 				$el.parent().addClass(rules.error);
-				return;
+				return $.Deferred().reject('Invalid date format');
 			}
 
 			return $.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
@@ -373,13 +373,8 @@
 						$el.toggleClass(rules.hasvalue, isValid);
 						$el.parent().toggleClass(rules.error, !isValid);
 				}
-				if (isValid) {
-					// resolve promise
-					return isValid;
-				}
 
-				// reject promise, validation failed
-				return $.Deferred().reject(isValid);
+				return isValid ? $.when($errorMsg) : $.Deferred().reject($errorMsg);
 			});
 		},
 
