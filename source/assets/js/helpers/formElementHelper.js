@@ -248,7 +248,7 @@
 				/*console.info('use urlHash ' + urlVar);*/
 			}
 
-			var $requestURI = url + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + easyFormValidation.getFieldValue($el);
+			var $requestURI = url + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + encodeURIComponent(easyFormValidation.getFieldValue($el));
 
 			// Easy form validator requires fieldset index (fset attribute) to be added to the url,
 			// but this needs to be skipped for the first fieldset. Also the fset attribute for second
