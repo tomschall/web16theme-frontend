@@ -232,8 +232,7 @@
 			var url = window.location.href,
 				$z3cvalidator = '@@z3cform_validate_field?fname=',
 				$fieldNameOriginal = $el.attr('name'),
-				$fieldnameSplitted = '',
-				$requestURI = '';
+				$fieldnameSplitted = '';
 
 			if ($el.hasClass(rules.hasvalue)) {
 				$fieldnameSplitted = $fieldNameOriginal;
@@ -248,8 +247,22 @@
 				/*console.info('use urlHash ' + urlVar);*/
 			}
 
-			$requestURI = url + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + easyFormValidation.getFieldValue($el);
-			/*console.info('requestURI -> ' + $requestURI);*/
+			var $requestURI = url + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + easyFormValidation.getFieldValue($el);
+
+			var $fieldsets = $form.find('fieldset'),
+				fieldsetIndex;
+
+			for (var i = 0; i < $fieldsets.size(); i++) {
+				if ($fieldsets.eq(i).has($el)) {
+					fieldsetIndex = i;
+					break;
+				}
+			}
+
+			if (fieldsetIndex) {
+				$requestURI += '&fset=' + (fieldsetIndex - 1);
+			}
+
 			return $requestURI;
 		},
 
