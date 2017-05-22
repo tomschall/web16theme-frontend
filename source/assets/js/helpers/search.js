@@ -257,6 +257,7 @@
 
 					if (data.categoryUrl || data.categoryUrl !== '') {
 						if (data.items_total > 5) {
+							data.categoryUrl += '&offset=45';
 							var template = Handlebars.compile(listEntryTemplates.showAll);
 
 							// show show-all button only if there are more than 5 results

@@ -44,7 +44,7 @@
 		resultsShown = false,
 		currentSearchValue = null,
 		searchBarIsOpen = false,
-		searchPageUrl = 'test',
+		searchPageUrl,
 		jsonURL = '';
 
 	/**
@@ -263,10 +263,9 @@
 
 	// show all button on the bottom
 	Widget.prototype.appendGoToPageBtn = function() {
-		var completePageUrl = searchPageUrl + '#q=' + currentSearchValue,
+		var completePageUrl = searchPageUrl + '#q=' + currentSearchValue + '&offset=5&sb=true',
             showAllResultsString = $(this.options.domSelectors.bar).data('lang-all-results'),
             $btn = $('<a class="widg_searchbar__go-to-page not-default" href="' + completePageUrl + '">' + showAllResultsString + '</a>');
-
 		if ($('.widg_searchbar__go-to-page').length === 0) {
 			$('.search__results').append($btn);
 		}

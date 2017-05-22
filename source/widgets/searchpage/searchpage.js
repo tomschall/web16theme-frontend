@@ -104,6 +104,9 @@
 		this.initQueryClearBtn();
 		this.initSearchParam();
 
+		// #669 - when coming from the search bar page, hide the search all button
+		this.searchAllFromSearchBar = !!searchParam.sb;
+
 		if (searchTemplate === 'search_full') {
 			this.fillFormAndTitle();
 		} else {
@@ -149,7 +152,7 @@
 			$(event.currentTarget).toggleClass(this.options.stateClasses.isActive);
 		}.bind(this));
 
-		$(this.options.domSelectors.queryInput).on('input', function(event) {
+		$(this.options.domSelectors.queryInput).on('input', function() {
 			this.sendSearchQuery();
 			if (searchTemplate === 'search_full') {
 				this.updateTitle();
@@ -417,11 +420,13 @@
 
 		if (typeof limitedToResults !== typeof undefined && loadedEntries < foundEntries) {
 			$(this.options.domSelectors.moreResultsBtnWrapper).removeClass(this.options.stateClasses.elementHidden);
-
 		} else if (loadedEntries >= foundEntries) {
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
-
 		} else {
+			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
+		}
+
+		if (this.searchAllFromSearchBar) {
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 		}
 
