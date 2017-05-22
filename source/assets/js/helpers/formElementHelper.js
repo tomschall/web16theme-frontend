@@ -44,6 +44,7 @@
 			$formCheckbox: $('input:checkbox', $form),
 			$formRadio: $('input:radio', $form),
 			$formDate: $form.find('input.pat-pickadate'),
+			$fieldsets: $form.find('fieldset'),
 			required: 'required',
 			error: 'error',
 			hasvalue: 'has-value',
@@ -234,6 +235,8 @@
 				$fieldNameOriginal = $el.attr('name'),
 				$fieldnameSplitted = '';
 
+			//url = '/Plone/de/easyformexample'
+
 			if ($el.hasClass(rules.hasvalue)) {
 				$fieldnameSplitted = $fieldNameOriginal;
 			} else {
@@ -249,18 +252,31 @@
 
 			var $requestURI = url + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + easyFormValidation.getFieldValue($el);
 
-			var $fieldsets = $form.find('fieldset'),
-				fieldsetIndex;
+			// Easy form validator requires fieldset index (fset attribute) to be added to the url,
+			// but this needs to be skipped for the first fieldset. Also the fset attribute for second
+			// fieldset is 0 instead of 1.
 
-			for (var i = 0; i < $fieldsets.size(); i++) {
-				if ($fieldsets.eq(i).has($el)) {
-					fieldsetIndex = i;
+			// Example:
+			//
+			// +----------------+
+			// |fieldset (0)    |
+			// |skip &fset      |
+			// +----------------+
+			// +----------------+
+			// |fieldset (1)    |
+			// |&fset=0         |
+			// +----------------+
+			// +----------------+
+			// |fieldset (2)    |
+			// |&fset=1         |
+			// +----------------+
+
+			for (var i = 0; i < rules.$fieldsets.size(); i++) {
+				if ($fieldsets.eq(i).has($el).size()) {
+					// decrement index for the validator
+					$requestURI += '&fset=' + (i - 1);
 					break;
 				}
-			}
-
-			if (fieldsetIndex) {
-				$requestURI += '&fset=' + (fieldsetIndex - 1);
 			}
 
 			return $requestURI;
