@@ -348,8 +348,9 @@
 				return $.Deferred().reject('Invalid date format').promise();
 			}
 
-			debugger;
-			return $.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
+			var deferred = $.Deferred();
+
+			$.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
 				var $errorMsg = json.errmsg,
 					isValid = $errorMsg === '';
 
@@ -375,10 +376,9 @@
 						$el.parent().toggleClass(rules.error, !isValid);
 				}
 
-				if (!isValid) {
-					return $.Deferred().reject($errorMsg).promise();
-				}
+				return isValid ? deferred.resolve('') : deferred.reject($errorMsg);
 			});
+			return deferred.promise();
 		},
 
 		onRadioChange: function($el) {
