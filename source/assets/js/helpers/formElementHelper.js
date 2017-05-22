@@ -270,7 +270,7 @@
 			// +----------------+
 
 			for (var i = 0; i < rules.$fieldsets.size(); i++) {
-				if ($fieldsets.eq(i).has($el).size()) {
+				if (rules.$fieldsets.eq(i).has($el).size()) {
 					// decrement index for the validator
 					$requestURI += '&fset=' + (i - 1);
 					break;
