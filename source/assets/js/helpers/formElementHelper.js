@@ -379,7 +379,7 @@
 				}
 
 				// reject promise, validation failed
-				$.Deferred().reject(isValid);
+				return $.Deferred().reject(isValid);
 			});
 		},
 
