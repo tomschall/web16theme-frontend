@@ -1,7 +1,7 @@
 .responsive-video {
 	position: relative;
 	padding-bottom: 56.25%;
-	margin-bottom: 3rem;
+	margin-bottom: 50px;
 }
 
 .responsive-video__small {
@@ -21,8 +21,4 @@
 .responsive-video__small object,
 .responsive-video__small embed {
 	width: 60%;
-}
-
-.responsive-video .tileHeading {
-	padding-bottom: 2%;
 }
