@@ -43,7 +43,8 @@
 			searchEvents: {
 				dataLoaded: 'dataLoaded.estatico.search',
 				updateFilterLoaded: 'updateFilterLoaded.estatico.search'
-			}
+			},
+			RESULT_SIZE: 5
 		},
 		data = {
 			$formElements: null
@@ -94,28 +95,31 @@
 
 		// debounce the search call invocation
 		var sendSearchQueryDebounced = _.debounce(this._sendSearchQuery.bind(this), 250);
+
 		this.sendSearchQuery = function() {
 			this.grabParameters();
 			sendSearchQueryDebounced();
 		};
-		this.initQueryClearBtn();
 		this.eventListeners();
-		this.initFormFunctionality();
+		this.initQueryClearBtn();
 		this.initSearchParam();
+
+		// #669 - when coming from the search bar page, hide the search all button
+		this.searchAllFromSearchBar = !!searchParam.sb;
 
 		if (searchTemplate === 'search_full') {
 			this.fillFormAndTitle();
 		} else {
 			isCategorySearch = true;
-
 			searchParam.template = searchTemplate;
 			searchParam.category = searchCategory;
-
 			this.fillForm();
 		}
 
+		this.initFormFunctionality();
+
 		if (typeof searchParam.q !== typeof undefined) {
-			this.sendSearchQuery();
+			sendSearchQueryDebounced(true);
 		}
 	};
 
@@ -148,15 +152,8 @@
 			$(event.currentTarget).toggleClass(this.options.stateClasses.isActive);
 		}.bind(this));
 
-		$(this.options.domSelectors.queryInput).on('input', function(event) {
-			var value = $(event.target).val().trim();
-			this.removeSearchResults();
-			if (value.length >= 3) {
-				this.sendSearchQuery();
-			} else {
-				window.estatico.search.updateSearchParameter('q', value);
-				searchParam.q = value;
-			}
+		$(this.options.domSelectors.queryInput).on('input', function() {
+			this.sendSearchQuery();
 			if (searchTemplate === 'search_full') {
 				this.updateTitle();
 			}
@@ -183,13 +180,9 @@
 
 	Widget.prototype.initFormFunctionality = function() {
 		var $formElements = $('.search__form-wrapper input:not(".select2-search__field"), .search__form-wrapper select');
-
 		data.$formElements = $formElements;
-
 		$formElements.on('change.' + this.uuid, function() {
-			this.removeSearchResults();
 			this.sendSearchQuery();
-
 			if (searchTemplate === 'search_full') {
 				this.updateTitle();
 			}
@@ -270,13 +263,13 @@
 	 */
 	Widget.prototype.checkParameters = function() {
 		var properParamCounter = 0,
-				arrayWithNoneParams = ['category','offset', 'template'];
+			arrayWithNoneParams = ['category', 'offset', 'template'];
 
 		for (var key in searchParam) {
 			if ($.inArray(key, arrayWithNoneParams) === -1) {
 				var value = searchParam[key];
 
-				if (value !== '' && value !== null) {
+				if (value !== '' && value !== null && (key !== 'q' || value.length >= 3)) {
 					properParamCounter++;
 				}
 			}
@@ -309,11 +302,22 @@
 	/**
 	 * Sends the complete xhr request to search
    */
-	Widget.prototype._sendSearchQuery = function() {
+	Widget.prototype._sendSearchQuery = function(firstLoad) {
 		if (loadMoreMode) {
-			searchParam.offset = $(this.options.domSelectors.catPageResult).length;
+			delete searchParam.limit; // remove limit
+			searchParam.offset = $(this.options.domSelectors.catPageResult).length - 1; // offset counts from 0
+		} else if (!firstLoad) {
+			delete searchParam.offset;
+			delete searchParam.limit;
+			this.removeSearchResults();
 		}
 		window.estatico.search.setSearchParameters(searchParam);
+
+		if (firstLoad && searchParam.offset) {
+			// translate offset - internally
+			searchParam.limit = parseInt(searchParam.offset) + this.options.RESULT_SIZE;
+			searchParam.offset = 0;
+		}
 
 		// avoid submission of the same query twice
 		if (this.queryMatch()) {
@@ -321,7 +325,7 @@
 		}
 
 		if (this.checkParameters()) {
-			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL);
+			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL, firstLoad);
 
 			if (!loadMoreMode) {
 				this.changeStatus(this.options.stateClasses.showLoading);
@@ -335,6 +339,7 @@
 		} else {
 			this.updateFilters('enableAll');
 			this.$element.find('.search__table').remove();
+			this.$element.find('.content__element').remove();
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 			$(this.options.domSelectors.countNumber).closest('div').addClass(this.options.stateClasses.elementHidden);
 		}
@@ -361,17 +366,16 @@
 		if (loadMoreMode) {
 			if (category === 'events') {
 				html = this.generateAdditionalTeasers(html);
-
 				this.$element.find('.search__results .widg_teaser__wrapper').append(html);
 			} else {
 				html = this.generateAdditionalTableHTML(html);
-
 				this.$element.find('.search__results table').append(html);
 			}
 
 			// Reset the load more mode to false
 			loadMoreMode = false;
 		} else {
+			this.$element.find('.content__element').remove();
 			this.$element.find('.search__table').remove();
 			this.$element.find('.search__results span[data-category="' + category + '"]').after(html);
 		}
@@ -416,11 +420,13 @@
 
 		if (typeof limitedToResults !== typeof undefined && loadedEntries < foundEntries) {
 			$(this.options.domSelectors.moreResultsBtnWrapper).removeClass(this.options.stateClasses.elementHidden);
-
 		} else if (loadedEntries >= foundEntries) {
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
-
 		} else {
+			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
+		}
+
+		if (this.searchAllFromSearchBar) {
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 		}
 
@@ -482,15 +488,11 @@
 		$searchResultLists.each(function(index, element) {
 			$elementTitle = $(element).find('a .' + this.options.listItemSpanClasses.title);
 			titleSt = $elementTitle.html();
-
 			if ($elementTitle.hasClass('title')) {
 				queryStartPosition = titleSt.toLowerCase().search(searchParam.q.toLowerCase());
-
 				if (queryStartPosition !== -1) {
 					queryEndPosition = queryStartPosition + searchParam.q.length;
-
 					markedTitle = titleSt.substr(0, queryStartPosition) + '<span class="bold">' + titleSt.substr(queryStartPosition, searchParam.q.length) + '</span>' + titleSt.substr(queryEndPosition);
-
 					$elementTitle.html(markedTitle);
 				}
 			}
@@ -499,7 +501,7 @@
 
 	Widget.prototype.replaceLinkPlaceholder = function() {
 		var linkString = this.$element.data('lang-link'),
-				$linksInCell = $(this.options.domSelectors.tdURL + ' a');
+			$linksInCell = $(this.options.domSelectors.tdURL + ' a');
 
 		$linksInCell.each(function(index, element) {
 			$(element).html(linkString);
