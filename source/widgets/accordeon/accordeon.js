@@ -104,12 +104,30 @@
 		}.bind(this));
 	};
 
+	Widget.prototype.scrollToOpenButton = function($button) {
+		// calculate eventual scroll
+		var $openEntry = this.$element.find(this.options.domSelectors.entry + '.' + this.options.stateClasses.isOpen);
+		if ($button.parent().prevAll($openEntry).length !== 0) {
+			// if currently open entry is before and it closes, scroll might be necessary
+			var top = $button.offset().top - parseInt($button.css('marginTop'), 10) - parseInt($button.css('paddingTop'), 10),
+				openHeight = $openEntry.find(this.options.domSelectors.content).outerHeight();
+
+			if (top - openHeight < document.body.scrollTop) {
+				$('html, body').animate({
+					scrollTop: top - openHeight
+				}, 500);
+			}
+			this.$element.find(this.options.domSelectors.button);
+		}
+	};
+
 	/**
 	 * Adds the active classes for button
 	 * @param $button
    */
 	Widget.prototype.addActiveClass = function($button) {
 		if (!this.options.allowsMultiple) {
+			this.scrollToOpenButton($button);
 			this.closeOpenEntries();
 		}
 
