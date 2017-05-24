@@ -198,7 +198,40 @@ $colorAvailabilityRed: #f05f1b;
 			span.button__date {
 				display: inline-block;
 			}
+		}
 
+		@include mq($to: 'small') {
+			span.button__location,
+			span.button__date {
+				padding-left: 10px;
+			}
+
+			span.button__location {
+				width: 100%;
+				display: block;
+			}
+
+			span.button__availability {
+				position: relative;
+				transform: none;
+				left: 4px;
+				top: 6px;
+				margin-right: 5px;
+
+				&:after {
+					width: 12px;
+					height: 12px;
+				}
+			}
+
+			.button__date {
+				float: none;
+				width: calc(100% - 50px);
+				color: $colorTextGrey;
+				& span + span {
+					width: 100%;
+				}
+			}
 		}
 	}
 
@@ -225,25 +258,20 @@ $colorAvailabilityRed: #f05f1b;
 	position: absolute;
 	top: 50%;
 	right: 55px;
-
 	transform: translateY(-50%);
-
 
 	&.button__apply___inside {
 		display: none;
 	}
 
-
-	@include mq($to: small) {
+	@include mq($to: medium) {
 		display: none !important;
 
 		&.button__apply___inside {
 			display: inline-block !important;
-
 			position: static;
 			top: 0;
 			right: 0;
-
 			transform: none;
 		}
 	}
