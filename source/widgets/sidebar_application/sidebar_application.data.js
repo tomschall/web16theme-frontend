@@ -11,7 +11,8 @@ var templateData = {
 			note: 'Anmeldehinweis - eher klein',
 			button: {
 				text: 'Durchführung wählen',
-				url: '#targetOnlineApplication'
+				url: '#targetOnlineApplication',
+				disabled: false
 			}
 		},
 		data = _.assign(defaultData, {
