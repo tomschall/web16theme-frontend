@@ -415,7 +415,7 @@
 		},
 
 		onRadioChange: function($el) {
-			$el.closest('.field').find('input').each(function() {
+			$el.closest('.field').find('input').not('[type=hidden]').each(function() {
 				var radioValue = $(this).next().text();
 				$(this).val(radioValue);
 				$(this).removeClass('error');
