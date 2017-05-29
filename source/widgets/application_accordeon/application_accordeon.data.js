@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var templateData = {
 			title: 'Anmeldung',
-			description: 'Lorem ipsum dolores sit <a href="http://help.fhnw.ch/">Help</a> amet:',
+			description: '',
 			entries: [
 				{
 					uid: '1',
