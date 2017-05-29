@@ -110,9 +110,10 @@
 		if ($button.parent().prevAll($openEntry).length !== 0) {
 			// if currently open entry is before and it closes, scroll might be necessary
 			var top = $button.offset().top - parseInt($button.css('marginTop'), 10) - parseInt($button.css('paddingTop'), 10),
-				openHeight = $openEntry.find(this.options.domSelectors.content).outerHeight();
+				openHeight = $openEntry.find(this.options.domSelectors.content).outerHeight(true),
+				scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-			if (top - openHeight < document.body.scrollTop) {
+			if (top - openHeight < scrollTop) {
 				$('html, body').animate({
 					scrollTop: top - openHeight
 				}, 500);
@@ -124,7 +125,7 @@
 	/**
 	 * Adds the active classes for button
 	 * @param $button
-   */
+    */
 	Widget.prototype.addActiveClass = function($button) {
 		if (!this.options.allowsMultiple) {
 			this.scrollToOpenButton($button);
