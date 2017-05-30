@@ -1,0 +1,26 @@
+{{#extend "layouts/layout" pageTypeClass="search-page"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+		<h1 id="search-title" data-searchpage="title">{{title}}</h1>
+
+		<div class="search__wrapper" data-searchpage-template="documents_full" data-searchpage-category="documents" data-searchpage="formWrapper">
+			<div class="search__form-wrapper search__form-all">
+				<div class="search__string-holder">
+					<div class="search__string">
+						<input type="text" value="" id="search-string" name="search-string" data-searchpage="query" data-searchparam="q"/>
+						<label for="search-string">{{langStrings.labels.term}}</label>
+					</div>
+				</div>
+				<div class="search__button">
+					<button class="button search__button" data-searchpage="btn">{{langStrings.labels.search}}</button>
+				</div>
+			</div>
+			{{> "widgets/searchpage/searchpage" widgets.searchpage }}
+		</div>
+
+
+
+	{{/content}}
+{{/extend}}

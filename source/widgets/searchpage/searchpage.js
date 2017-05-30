@@ -107,6 +107,8 @@
 		// #669 - when coming from the search bar page, hide the search all button
 		this.searchAllFromSearchBar = !!searchParam.sb;
 
+		this.initFormFunctionality();
+
 		if (searchTemplate === 'search_full') {
 			this.fillFormAndTitle();
 		} else {
@@ -115,8 +117,6 @@
 			searchParam.category = searchCategory;
 			this.fillForm();
 		}
-
-		this.initFormFunctionality();
 
 		if (typeof searchParam.q !== typeof undefined) {
 			sendSearchQueryDebounced(true);
@@ -528,7 +528,6 @@
 			});
 		} else if (facets) {
 			facets.forEach(function(field) {
-
 				// field names coming from the endpoint are postfixed with [] if they contain lists
 				// removes postfix from the name
 				var fieldName = field.field.replace(/\[\]$/, ''),
