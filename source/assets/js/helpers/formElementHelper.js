@@ -78,15 +78,8 @@
 		setup: function() {
 			$form.find('.select-widget').prev().css('z-index', '1000');
 
-			$form.find('input[type="radio"]').each(function(radioIdx, radio) {
-				var $radio = $(radio);
-				$radio.closest(rules.findField).addClass('has-radio');
-			});
-
 			$form.find('input[type="radio"]').each(function() {
-				if ($(this).hasClass('required')) {
-					$(this).val('--NOVALUE--');
-				}
+				$(this).closest(rules.findField).addClass('has-radio');
 			});
 
 			rules.$formCheckbox.each(function() {
@@ -147,7 +140,12 @@
 				});
 
 				// append calendar icon after the input element
-				$el.after('<div class="datepicker-icon icon_ical"></div>');
+				var $icon = $('<a href="#" class="datepicker-icon icon_ical"></a>').click(function(event) {
+					$el.datepicker('show');
+					event.preventDefault();
+					event.stopPropagation();
+				});
+				$el.after($icon);
 			});
 		},
 
@@ -164,7 +162,16 @@
 				// prevent form submission
 				e.preventDefault();
 
-				var validators = $(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').map(function() {
+				var fields = [],
+					validators = $(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').map(function() {
+					var $el = $(this),
+						fieldName = $el.attr('name');
+					if (fields.indexOf(fieldName) >= 0) {
+						// field already validating
+						// NOTE we need this for field groups - e.g. there might be multiple radio fields with the same name
+						return;
+					}
+					fields.push(fieldName);
 					return easyFormValidation.validateElement($(this));
 				}).toArray();
 
@@ -176,7 +183,6 @@
 					});
 
 					setTimeout(function() {
-
 						// set valid flag and resubmit form
 						this._formValid = true;
 						rules.$formSubmitButton.click();
@@ -215,12 +221,6 @@
 				$form.find('.select-widget').select2({
 					placeholder: 'Bitte wählen',
 					val: null
-				});
-
-				$form.find('input[type="radio"]').each(function() {
-					if ($(this).hasClass('required')) {
-						$(this).val('--NOVALUE--');
-					}
 				});
 
 				easyFormValidation.onOptionDropdown();
@@ -354,7 +354,6 @@
 
 			function updateFieldStatus($el, $currentFieldType, isValid, $errorMsg) {
 				$errorMsg = $errorMsg === undefined ? '' : $errorMsg;
-
 				$el.closest(rules.findField).find(rules.$fieldErrorBox).text($errorMsg);
 
 				/* Error Messages on case */
@@ -416,8 +415,6 @@
 
 		onRadioChange: function($el) {
 			$el.closest('.field').find('input').not('[type=hidden]').each(function() {
-				var radioValue = $(this).next().text();
-				$(this).val(radioValue);
 				$(this).removeClass('error');
 				$(this).closest('.field').removeClass('error');
 			});
