@@ -7,65 +7,58 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var events = {
-				dataLoaded: 'dataLoaded.estatico.search',
-				updateFilterLoaded: 'updateFilterLoaded.estatico.search'
-			},
+	var RENDER_AS_LIST_ITEMS = [
+		'documents',
+		'irf',
+		'web',
+		'sonst'
+	],
+	events = {
+			dataLoaded: 'dataLoaded.estatico.search',
+			updateFilterLoaded: 'updateFilterLoaded.estatico.search'
+		},
 
-			listEntryTemplates = {
-				searchbar: {
-					normal: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
-					event: '<li class="search_result search__result-event"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="event-info">{{start}}</span></a><span class="search__result-arrow"></span></li>',
-					doc: '<li class="search_result search__result-doc"><a href="{{combinedURL}}"><span class="title">{{Title}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>',
-					webservices: '<li class="search_result search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
-					irf: '<li class="search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>'
-				},
-				searchpage: {
-					normal: '<li class="cat_page_result search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span> </a><span class="search__result-arrow"></span></li>',
-					training: '<li class="cat_page_result search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="study_type">{{edu_type}}</span></a><span class="search__result-arrow"></span></li>',
-					event: '<li class="cat_page_result search__result-event"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="event-info">{{portal_type}}, {{start}}</span></a><span class="search__result-arrow"></span></li>',
-					sonst: '<li class="cat_page_result search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="description">{{description}}</span><span class="url">{{url}}</span></a><span class="search__result-arrow"></span></li>',
-					webservices: '<li class="cat_page_result search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
-					irf: '<li class="cat_page_result search__result-normal"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>'
-				},
-				categorySearch: {
-					training: '<tr class="cat_page_result" data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
-					expertises: '<div class="cat_page_result" data-clickable="true" class="search__result-word-list"><a href="{{combinedURL}}">{{Title}}<span class="search__result-arrow"></span></a></div>',
-					profiles: '<tr class="cat_page_result cat_page_profile_result" data-clickable="false"><td>{{#if combinedURL}}<img src="{{combinedURL}}/@@images/portrait_foto/f_search" alt="{{Title}}"/>{{/if}}</td><td><div><h4>{{Title}}</h4></div><div>{{fa_expertise}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if telefonnummer}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{telefonnummer}}">{{telefonnummer}}</a></div>{{/if}}{{#if telefonnummer_central}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{telefonnummer_central}}">{{telefonnummer_central}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="mailto:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
-					events: '<div class="cat_page_result" class="widg_teaser">{{#if img}}<div class="widg_teaser__img"><img src="{{img.src}}"/></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}} <h4>{{{Title}}}</h4>{{#if descriptionText}} <p>{{dotdotdot_teaser descriptionText}}</p>{{/if}} <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>',
-					studies: '<tr class="cat_page_result" data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
-					documents: '<tr class="cat_page_result" data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
-					irf: '<tr class="cat_page_result" data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
-					web: '<tr class="cat_page_result" data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
-					sonst: '<tr class="cat_page_result" data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>'
-				},
-				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
+		listEntryTemplates = {
+			searchbar: {
+				normal: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
+				event: '<li class="search_result search__result-event search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="event-info">{{start}}</span></a><span class="search__result-arrow"></span></li>',
+				doc: '<li class="search_result search__result-doc search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>',
+				webservices: '<li class="search_result search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
+				irf: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>'
 			},
-			searchCategories = [
-				'training',
-				'studies',
-				'events',
-				'profiles',
-				'organisation',
-				'documents',
-				'irf',
-				'web',
-				'sonst'
-			],
-			activeCategorySearch = false,
-			searchTemplate = 'livesearch',
-			localeKeyMapping = {
-				ä: 'a',
-				ö: 'o',
-				ü: 'u',
-				é: 'e',
-				è: 'e',
-				à: 'a'
+			categorySearch: {
+				training: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
+				expertises: '<div class="cat_page_result search__result--item" data-clickable="true" class="search__result-word-list"><a href="{{combinedURL}}">{{Title}}<span class="search__result-arrow"></span></a></div>',
+				profiles: '<tr class="cat_page_result cat_page_profile_result search__result--item" data-clickable="false"><td>{{#if combinedURL}}<img src="{{combinedURL}}/@@images/portrait_foto/f_search" alt="{{Title}}"/>{{/if}}</td><td><div><h4>{{Title}}</h4></div><div>{{fa_expertise}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if telefonnummer}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{telefonnummer}}">{{telefonnummer}}</a></div>{{/if}}{{#if telefonnummer_central}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{telefonnummer_central}}">{{telefonnummer_central}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="mailto:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
+				events: '<div class="cat_page_result search__result--item" class="widg_teaser">{{#if img}}<div class="widg_teaser__img"><img src="{{img.src}}"/></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}} <h4>{{{Title}}}</h4>{{#if descriptionText}} <p>{{dotdotdot_teaser descriptionText}}</p>{{/if}} <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>',
+				studies: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td>{{Title}}</td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>'
 			},
-			langStrings = {},
+			showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
+		},
+		searchCategories = [
+			'studies',
+			'training',
+			'events',
+			'profiles',
+			'organisation',
+			'documents',
+			'irf',
+			'web',
+			'sonst'
+		],
+		activeCategorySearch = false,
+		localeKeyMapping = {
+			ä: 'a',
+			ö: 'o',
+			ü: 'u',
+			é: 'e',
+			è: 'e',
+			à: 'a'
+		},
+		langStrings = {},
 
-			// keeps track of requests not completed yet
-			outstandingRequests = [];
+		// keeps track of requests not completed yet
+		outstandingRequests = [];
 
 	/**
 	 * Normalizing the car for word list if Umlaut
@@ -82,41 +75,19 @@
 
 	function generateSearchListItem(listEntry, category) {
 		var template = null;
-
 		listEntry.combinedURL = listEntry['@id'];
 
-		if (searchTemplate === 'livesearch') {
-			switch (category) {
-				case 'event':
-					template = Handlebars.compile(listEntryTemplates.searchbar.event);
-					break;
-				case 'doc':
-					template = Handlebars.compile(listEntryTemplates.searchbar.doc);
-					break;
-				default:
-					template = Handlebars.compile(listEntryTemplates.searchbar.normal);
-					break;
-			}
-		} else {
-			switch (category) {
-				case 'event':
-					template = Handlebars.compile(listEntryTemplates.searchpage.event);
-					break;
-				case 'doc':
-					template = Handlebars.compile(listEntryTemplates.searchpage.doc);
-					break;
-				case 'training':
-					template = Handlebars.compile(listEntryTemplates.searchpage.training);
-					break;
-				case 'webservice':
-					template = Handlebars.compile(listEntryTemplates.searchpage.webservices);
-					break;
-				default:
-					template = Handlebars.compile(listEntryTemplates.searchpage.normal);
-					break;
-			}
+		switch (category) {
+			case 'event':
+				template = Handlebars.compile(listEntryTemplates.searchbar.event);
+				break;
+			case 'doc':
+				template = Handlebars.compile(listEntryTemplates.searchbar.doc);
+				break;
+			default:
+				template = Handlebars.compile(listEntryTemplates.searchbar.normal);
+				break;
 		}
-
 		return template(listEntry);
 	}
 
@@ -225,6 +196,18 @@
 		}
 	}
 
+	function generateListItems(data) {
+		var $searchCategory = $('<div class="search__cat"></div>'),
+			$categoryList = $('<ul></ul>');
+
+		data.items.forEach(function(listEntry) {
+			var $tempListDOM = generateSearchListItem(listEntry, data.category);
+			$categoryList.append($tempListDOM);
+		});
+		$searchCategory.append($categoryList);
+		return $searchCategory;
+	}
+
 	/**
 	 * Handles the returned data and puts it in the html Templates
 	 * @param data
@@ -232,11 +215,11 @@
 	function handleReturnData(data) {
 		if (typeof data.items !== typeof undefined) {
 			var responseData = data.items,
-					$searchCategory = null,
-					$categoryList = null,
-					$categoryTitle = null,
-					$tempListDOM = null,
-					$responseHTML = $('<div></div>');
+				$searchCategory = null,
+				$categoryList = null,
+				$categoryTitle = null,
+				$tempListDOM = null,
+				$responseHTML = $('<div></div>');
 
 			getAllLangStrings();
 
@@ -246,6 +229,8 @@
 						$responseHTML.append(generateWordList(data));
 					} else if (data.category === 'events') {
 						$responseHTML.append(generateTeasers(data));
+					} else if (RENDER_AS_LIST_ITEMS.indexOf(data.category) >= 0) {
+						$responseHTML = generateListItems(data);
 					} else {
 						$responseHTML.addClass('search__table').append(generateResultTable(data));
 					}
@@ -350,21 +335,12 @@
 
 		if (!isSearchbar && !isCategorySearch) {
 			isPageSearch = true;
-			searchTemplate = 'search_full';
-		}
-
-		if (typeof searchTemplate === typeof undefined) {
-			searchTemplate = 'search_full';
 		}
 
 		activeCategorySearch = isCategorySearch;
 		cancelOutstandingRequests();
 
 		if (isSearchbar || isPageSearch) {
-			if (isSearchbar) {
-				searchTemplate = 'livesearch';
-			}
-
 			searchCategories.forEach(function(category) {
 				var xhr = $.ajax({
 					data: _.assign(query, {
@@ -450,7 +426,8 @@
 			updateSearchParameter: updateSearchParameter,
 			encodeSearchParameters: encodeSearchParameters,
 			updateFilter: updateFilter,
-			handleReturnData: handleReturnData
+			handleReturnData: handleReturnData,
+			RENDER_AS_LIST_ITEMS: RENDER_AS_LIST_ITEMS
 		}
 	});
 })(jQuery);
