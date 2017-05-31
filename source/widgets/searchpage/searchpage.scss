@@ -58,7 +58,7 @@
 		width: 1%;
 	}
 
-	a:not(.button__secondary):not(.search__contact-link) {
+	a:not(.button__secondary):not(.search__contact-link):not(.search__cell-anchor) {
 		font-size: 0.1rem;
 		color: transparent;
 		width: 0;
@@ -436,5 +436,17 @@
 
 	> div .search__holder {
 		margin-bottom: 20px;
+	}
+}
+
+td.search__cell {
+	padding: 0;
+
+	.search__cell-anchor {
+		font-weight: normal;
+		text-decoration: none;
+		display: block;
+		width: 100%;
+		padding: 25px 10px 21px;
 	}
 }

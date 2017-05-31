@@ -12,14 +12,7 @@ var data = _.merge(defaultData, {
 		langStrings: {
 			resetFields: 'Alle Felder zurücksetzen',
 			resultsFound: 'Weiterbildungsangebote gefunden',
-			extSearch: 'Erweiterte Suche',
 			labels: {
-				term: 'Suchbegriff',
-				faculty: 'Fachbereich',
-				location: 'Standort',
-				study_type: 'Typ',
-				topic: 'Thema',
-				target_group: 'Zielgruppe'
 			}
 		},
 		widgets: {
@@ -36,6 +29,17 @@ var data = _.merge(defaultData, {
 				breadcrumb: null
 			}),
 			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
+
+			label_search: 'Suchbegrif',
+			label_btn_search: 'Suchen',
+			label_reset_fields: 'Reset',
+			label_target_group: 'Zielgruppe',
+			label_advanced_search: 'Erweiterte Suche',
+			label_topic: 'Thema',
+			label_location: 'Standort',
+			label_type: 'Typ',
+			label_faculty: 'Fachbereich',
+
 			facultyOptions: [
 				{
 					'optionLabel': 'International Studies',

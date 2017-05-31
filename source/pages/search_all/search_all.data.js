@@ -19,7 +19,11 @@ var data = _.merge(defaultData, {
 			searchpage: _.assign(requireNew('../../widgets/searchpage/searchpage.data.js'), {
 				jsonURL: '/mocks/widgets/searchpage/searchpage.json'
 			}),
-			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
+			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
+
+			label_search: 'Suchbegrif',
+			label_btn_search: 'Suchen',
+			label_reset_fields: 'Reset'
 		}
 	});
 

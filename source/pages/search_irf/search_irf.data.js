@@ -33,7 +33,11 @@ var data = _.merge(defaultData, {
 			heroAlt: 'Symbolbild',
 			breadcrumb: null
 		}),
-		actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js')
+		actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
+
+		label_search: 'Suchbegrif',
+		label_btn_search: 'Suchen',
+		label_reset_fields: 'Reset'
 	}
 });
 

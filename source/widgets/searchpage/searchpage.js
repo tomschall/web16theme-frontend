@@ -441,6 +441,9 @@
 		 * Adding the event to add link functionality to search results
 		 */
 		$resultsTd.on('click.' + this.uuid, function(event) {
+			if ($(event.target).is('a')) {
+				return;
+			}
 			var $row = $(event.currentTarget).closest('tr');
 			window.location = $row.find('a').attr('href');
 		}.bind(this));

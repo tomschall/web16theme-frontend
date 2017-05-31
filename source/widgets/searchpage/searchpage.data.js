@@ -18,8 +18,8 @@ var templateData = {
 				phoneDirect: 'T Direkt',
 				phoneCentral: 'T Zentrale'
 			},
-			XXjsonURL: '/mocks/widgets/searchpage/searchpage.category.json',
-			jsonURL: '/de/searchbar.json',
+
+			jsonURL: '/mocks/widgets/searchpage/searchpage.category.json',
 			filterURL: '/mocks/widgets/searchpage/searchpage.updateFilter.json'
 		},
 		data = _.merge(defaultData, {
