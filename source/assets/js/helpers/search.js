@@ -42,8 +42,8 @@
 				showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
 			},
 			searchCategories = [
-				'training',
 				'studies',
+				'training',
 				'events',
 				'profiles',
 				'organisation',
