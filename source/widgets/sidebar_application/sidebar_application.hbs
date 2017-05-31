@@ -5,8 +5,8 @@
 	<div class="object__content custom-scrollbar" data-sidebar="content">
 		<p>{{text}}</p>
 		<p class="small">{{note}}</p>
-		<button class="button small_button" {{#if button.disabled}}disabled="disabled"{{else}}{{/if}} onclick="window.location.href='{{button.url}}'" >
-            <span>{{button.text}}</span>
-        </button>
+		<a class="button small_button{{#if button.disabled}} disabled{{/if}}" href="{{#if button.disabled}}#{{else}}{{button.url}}{{/if}}">
+			<span>{{button.text}}</span>
+		</a>
 	</div>
 </div>
