@@ -26,7 +26,7 @@
 				countNumber: '[data-' + name + '="countNumber"]',
 				moreResultsBtn: '[data-' + name + '="moreResultsBtn"]',
 				moreResultsBtnWrapper: '[data-' + name + '="moreResultsBtnWrapper"]',
-				catPageResult: '.cat_page_result'
+				catPageResult: '.search__result--item'
 			},
 			stateClasses: {
 				isFilled: 'is_filled',
@@ -305,7 +305,7 @@
 	Widget.prototype._sendSearchQuery = function(firstLoad) {
 		if (loadMoreMode) {
 			delete searchParam.limit; // remove limit
-			searchParam.offset = $(this.options.domSelectors.catPageResult).length - 1; // offset counts from 0
+			searchParam.offset = $(this.options.domSelectors.catPageResult).length; // offset counts from 0
 		} else if (!firstLoad) {
 			delete searchParam.offset;
 			delete searchParam.limit;
@@ -367,6 +367,8 @@
 			if (category === 'events') {
 				html = this.generateAdditionalTeasers(html);
 				this.$element.find('.search__results .widg_teaser__wrapper').append(html);
+			} else if (estatico.search.RENDER_AS_LIST_ITEMS.indexOf(category) >= 0) {
+				this.$element.find('.search__cat ul').append(html.find('li'));
 			} else {
 				html = this.generateAdditionalTableHTML(html);
 				this.$element.find('.search__results table').append(html);
@@ -420,8 +422,6 @@
 
 		if (typeof limitedToResults !== typeof undefined && loadedEntries < foundEntries) {
 			$(this.options.domSelectors.moreResultsBtnWrapper).removeClass(this.options.stateClasses.elementHidden);
-		} else if (loadedEntries >= foundEntries) {
-			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 		} else {
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 		}
