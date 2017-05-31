@@ -35,6 +35,14 @@ var data = _.merge(defaultData, {
 				breadcrumb: null
 			}),
 			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
+
+			label_search: 'Suchbegrif',
+			label_btn_search: 'Suchen',
+			label_reset_fields: 'Reset',
+			label_location: 'Ort',
+			label_faculty: 'Fachbereich',
+			label_study_type: 'Typ',
+
 			facultyOptions: [
 				{
 					'optionLabel': 'International Studies',

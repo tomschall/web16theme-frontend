@@ -10,17 +10,14 @@
 				<div class="search__string-holder">
 					<div class="search__string">
 						<input type="text" value="" id="search-string" name="search-string" data-searchpage="query" data-searchparam="q"/>
-						<label for="search-string">{{langStrings.labels.term}}</label>
+						<label for="search-string">{{widgets.label_search}}</label>
 					</div>
 				</div>
 				<div class="search__button">
-					<button class="button search__button" data-searchpage="btn">{{langStrings.labels.search}}</button>
+					<button class="button search__button" data-searchpage="btn">{{widgets.label_btn_search}}</button>
 				</div>
 			</div>
 			{{> "widgets/searchpage/searchpage" widgets.searchpage }}
 		</div>
-
-
-
 	{{/content}}
 {{/extend}}

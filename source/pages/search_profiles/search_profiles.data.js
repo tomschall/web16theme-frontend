@@ -11,9 +11,6 @@ var data = _.merge(defaultData, {
 		title: 'Expertensuche',
 		langStrings: {
 			labels: {
-				term: 'Suchbegriff',
-				faculty: 'Fachbereich',
-				topic: 'Thema'
 			},
 			resetFields: 'Alle Felder zurücksetzen',
 			resultsFound: 'Kontaktpersonen gefunden'
@@ -33,6 +30,13 @@ var data = _.merge(defaultData, {
 				heroAlt: 'Symbolbild',
 				breadcrumb: null
 			}),
+
+			label_search: 'Suchbegrif',
+			label_btn_search: 'Suchen',
+			label_reset_fields: 'Reset',
+			label_topic: 'Thema',
+			label_faculty: 'Fachbereich',
+
 			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
 			facultyOptions: [
 				{
