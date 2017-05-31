@@ -1,14 +1,9 @@
 // Remove that ugly margin right
 .mCSB_inside > .mCSB_container {
 	margin-right: 0;
-
-	& button {
-		width: 100%;
-	}
 }
 
 .mCS-fhnw {
-	height: 100%;
 	&.mCSB_scrollTools {
 		width: 6px;
 		opacity: 1;
@@ -26,8 +21,4 @@
 			display: none;
 		}
 	}
-}
-
-#mCSB_1 #mCSB_1_scrollbar_vertical {
-	display: none !important;
 }
