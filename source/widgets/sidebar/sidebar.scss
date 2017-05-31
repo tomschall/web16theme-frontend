@@ -1,5 +1,5 @@
 $sidebarObjectGutter: 26px;
-$sidebarObjectPush: $basicPush * 3;
+$sidebarObjectPush: $basicPush * 5;
 
 .widg_sidebar {
 	@include span(3);
@@ -172,7 +172,7 @@ $sidebarObjectPush: $basicPush * 3;
 
 .widg_sidebar__hider {
 	position: fixed;
-	top: 0;
+	top: -20px;
 
 	display: none;
 
@@ -186,7 +186,7 @@ $sidebarObjectPush: $basicPush * 3;
 	}
 
 	.hide_hider & {
-		display: none;
+		display: block;
 	}
 }
 
