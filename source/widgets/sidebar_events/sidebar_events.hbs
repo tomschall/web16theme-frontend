@@ -2,14 +2,12 @@
 	<div class="object__title" data-sidebar="title">
 		<h4>{{title}}</h4>
 	</div>
-	<div class="object__content custom-scrollbar" data-sidebar="content">
+	<div class="object__content" data-sidebar="content">
 		<ul>
 			{{#each entries}}
 				<li>
-
-						<span class="event__title"><a href="{{url}}">{{title}}</a></span>
-						<span class="event__date-location">{{dateTime}}, {{location}}</span>
-
+					<span class="event__title"><a href="{{url}}">{{title}}</a></span>
+					<span class="event__date-location">{{dateTime}}, {{location}}</span>
 				</li>
 			{{/each}}
 		</ul>
