@@ -1,27 +1,25 @@
 <div class="widg_sidebar_contact widg_sidebar__object" data-init="sidebar_contact" data-sidebar="object">
-
 		<div class="object__title" data-sidebar="title">
 			<h4>{{title}}</h4>
 		</div>
-		<div class="object__content custom-scrollbar" data-sidebar="content">
+		<div class="object__content" data-sidebar="content">
 			{{#each contacts}}
-					{{#if img}}
-						<img src="{{img.src}}" alt="{{img.alt}}"/>
-					{{/if}}
-					<dl>
-						<dt class="contact__name"><a href="{{url}}">{{name}}</a></dt>
-						<dd>{{#if jobDescr}}{{jobDescr}}{{/if}}</dd>
-						<dt>{{../langStrings.telephone}}</dt>
-						<dd><a href="tel:{{telephone}}">{{telephone}}</a></dd>
-						<dt>{{../langStrings.email}}</dt>
-						<dd><a href="mailto:{{email}}">{{email}}</a></dd>
+				{{#if img}}
+					<img src="{{img.src}}" alt="{{img.alt}}"/>
+				{{/if}}
+				<dl>
+					<dt class="contact__name"><a href="{{url}}">{{name}}</a></dt>
+					<dd>{{#if jobDescr}}{{jobDescr}}{{/if}}</dd>
+					<dt>{{../langStrings.telephone}}</dt>
+					<dd><a href="tel:{{telephone}}">{{telephone}}</a></dd>
+					<dt>{{../langStrings.email}}</dt>
+					<dd><a href="mailto:{{email}}">{{email}}</a></dd>
 
-						{{#if location}}
-							<dt>{{../../langStrings.location}}</dt>
-							<dd>{{{location}}}</dd>
-						{{/if}}
-					</dl>
+					{{#if location}}
+						<dt>{{../../langStrings.location}}</dt>
+						<dd>{{{location}}}</dd>
+					{{/if}}
+				</dl>
 			{{/each}}
 		</div>
-
 </div>
