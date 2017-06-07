@@ -189,7 +189,7 @@ fieldset .select2-selection__rendered {
 	//Adding the disabled style
 	.select2-results__option[aria-disabled="true"] {
 		color: $colorBlack;
-		opacity: 0.5;
+		opacity: 0.2;
 	}
 
 	.has_groups .select2-results__option[aria-disabled="true"] {

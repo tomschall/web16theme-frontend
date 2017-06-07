@@ -440,16 +440,20 @@
 		},
 
 		getFieldValue: function($el) {
-			var	$valueOfTheField = $el.val();
+			$el = ($el);
+			var	value = $el.val();
 
-			if (($el).data().datepicker) {
-
-				// element is a datepicker, perform value conversion as backend requires YYYY-MM-DD
-				// accepted user input is dd.mm.yyyy
-				$valueOfTheField = convertDate($valueOfTheField);
+			if ($el.is('[type=radio]') && $form.find('[name=' + $el.attr('name').replace(/\./gm, '\\.') + ']:checked').size() === 0) {
+				// clear value if not checked
+				value = '';
 			}
 
-			return $valueOfTheField;
+			if ($el.data().datepicker) {
+				// element is a datepicker, perform value conversion as backend requires YYYY-MM-DD
+				// accepted user input is dd.mm.yyyy
+				value = convertDate(value);
+			}
+			return value;
 		},
 
 		select2Init: function initSelect2() {
