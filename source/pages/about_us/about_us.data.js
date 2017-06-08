@@ -189,7 +189,7 @@ var data = _.merge(defaultData, {
 					src: '/assets/media/img/beard.jpg',
 					alt: 'Das neue E-Magazin'
 				},
- 				title: 'Nachwuchsförderung',
+				title: 'Nachwuchsförderung',
 				description: 'Der wissenschaftliche Nachwuchs wird an der FHNW unter spezieller Berücksichtigung von Gleichstellungsaspekten gefördert.',
 				url: '#',
 				linkText: 'Mehr Erfahren',
@@ -200,13 +200,13 @@ var data = _.merge(defaultData, {
 					src: '/assets/media/img/panorama.jpg',
 					alt: 'Das neue E-Magazin'
 				},
- 				title: 'Nachwuchsförderung',
+				title: 'Nachwuchsförderung',
 				description: 'Der wissenschaftliche Nachwuchs wird an der FHNW unter spezieller Berücksichtigung von Gleichstellungsaspekten gefördert.',
 				url: '#',
 				linkText: 'Mehr Erfahren',
 				category: 'Das Kategorie'
 			})
-	             	}
+		}
 	});
 
 module.exports = data;

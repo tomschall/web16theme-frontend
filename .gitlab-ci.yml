@@ -19,7 +19,7 @@ deploy:
      - parts/
  script:
   - sh ./prepare_build_theme.sh
-  - bin/gulp build --interactive=false
+  - bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
   - sh ./deploy_theme.sh
  only:
   - master
