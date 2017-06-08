@@ -183,8 +183,30 @@ var data = _.merge(defaultData, {
 					}
 				]
 			}),
-			fullBleedTeaser: requireNew('../../widgets/full_bleed_teaser/full_bleed_teaser.data.js')
-		}
+			fullBleedTeaser: requireNew('../../widgets/full_bleed_teaser/full_bleed_teaser.data.js'),
+			fullBleedTeaserPortrait: _.assign({
+				img: {
+					src: '/assets/media/img/beard.jpg',
+					alt: 'Das neue E-Magazin'
+				},
+ 				title: 'Nachwuchsförderung',
+				description: 'Der wissenschaftliche Nachwuchs wird an der FHNW unter spezieller Berücksichtigung von Gleichstellungsaspekten gefördert.',
+				url: '#',
+				linkText: 'Mehr Erfahren',
+				category: 'Das Kategorie'
+			}),
+			fullBleedTeaserLong: _.assign({
+				img: {
+					src: '/assets/media/img/panorama.jpg',
+					alt: 'Das neue E-Magazin'
+				},
+ 				title: 'Nachwuchsförderung',
+				description: 'Der wissenschaftliche Nachwuchs wird an der FHNW unter spezieller Berücksichtigung von Gleichstellungsaspekten gefördert.',
+				url: '#',
+				linkText: 'Mehr Erfahren',
+				category: 'Das Kategorie'
+			})
+	             	}
 	});
 
 module.exports = data;
