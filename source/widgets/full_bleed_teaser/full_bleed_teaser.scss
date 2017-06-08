@@ -19,7 +19,6 @@
 
 .full_bleed_teaser__img {
 	@include bleedFull($gutterWidth - 20);
-	/*height: 100vh;*/
 }
 
 .full_bleed_teaser__text {
@@ -50,17 +49,7 @@
 
 	a.button:not(.not-default) {
 		margin-top: 5px;
-
-		/*@include mq($to: small) {
-			font-size: 0.93333rem;
-			letter-spacing: 1px;
-		}*/
 	}
-
-	/*@include mq($to: medium) {
-		padding-left: $gutterWidth + 4;
-		padding-top: 15px;
-	}*/
 }
 
 .widg_full_bleed_teaser .widg_teaser {
@@ -78,7 +67,7 @@
 		transform: translateY(-182%);
 		width: 425px;
 	}
-	
+
 	@include mq($to: medium) {
 		transform: translateY(-50%);
 	}
@@ -100,9 +89,4 @@
 	.widg_teaser__category {
 		margin-bottom: 0;
 	}
-
-	/*@include mq($to: small) {
-		position: static;
-		width: 100%;
-	}*/
 }

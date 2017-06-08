@@ -27,14 +27,6 @@
 			align: 'top-right'
 		});
 
-		/*$('.full_bleed_teaser__img img').imageScale({
-			rescaleOnResize: true,
-			scale: 'none',
-			align: 'center',
-			hideParentOverflow: true,
-			fadeInDuration: true
-		});*/
-
 		$('.widg_teaser__img img').imageScale('scale');
 
 		if (window.estatico.mq.query({from: 'subnav'})) {
