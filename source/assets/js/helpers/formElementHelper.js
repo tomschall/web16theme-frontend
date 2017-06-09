@@ -28,13 +28,23 @@
 	/**
 	 * Converts date if it matches d.m.y pattern, original value otherwise
 	 *
-	 * @param {string} str Date in d.m.y format
+	 * @param {string} d Date in d.m.y format
+	 * @param {string} t Time
 	 * @returns {string} Date in yyyy-mm-dd format or original value
 	 */
-	function convertDate(str) {
-		return str.replace(/^\s*(\d{1,2})\.(\d{1,2})\.(\d{1,4})$\s*/g, function(__, d, m, y) {
+	function convertDate(d, t) {
+		t = t || '';
+		return (d || '').replace(/^\s*(\d{1,2})\.(\d{1,2})\.(\d{1,4})$\s*/g, function(__, d, m, y) {
 			return [_.padStart(y, 4, '0'), _.padStart(m, 2, '0'), _.padStart(d, 2, '0')].join('-');
-		});
+		}) + (t ? ' ' + t : '');
+	}
+
+	function isValidDate(val) {
+		return /^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/g.test(val);
+	}
+
+	function isValidTime(val) {
+		return /^\s*(\d{1,2}):(\d{1,2})\s*$/g.test(val);
 	}
 
 	var easyFormValidation = {
@@ -108,7 +118,6 @@
 
 			if (datepickerSettings) {
 				datepickerSettings = JSON.parse(datepickerSettings);
-
 				$.fn.datepicker.dates[language] = $.extend({}, $.fn.datepicker.dates.en, {
 					days: datepickerSettings.date.weekdaysFull,
 					daysShort: datepickerSettings.date.weekdaysShort,
@@ -121,12 +130,38 @@
 			}
 
 			rules.$formDate.each(function() {
-				var $el = $(this);
+				var $el = $(this), // original input field
+					settings = JSON.parse($el.attr('data-pat-pickadate')),
+					$clone = $el.clone();
+
+				$el.addClass('field--date');
+				$clone.attr('id', 'ref-' + $el.attr('name'));
+				$clone.attr('name', $el.attr('name') + '--date');
+				$clone.addClass('pat-pickadate-ref--date field--partial'); // tell validator to skip validation, the origin field shall be validated instead.
+				$el.attr('type', 'hidden');
+				$el.after($clone);
+
+				if (settings.time) {
+					// append time picker
+
+					var $timepicker = $('<input type="text" class="pat-pickadate-ref--date field--time field--partial" placeholder="' + settings.time.placeholder + '" autocomplete="off">');
+					$timepicker.attr('name', $el.attr('name') + '--time');
+					$clone.after($timepicker);
+
+					$timepicker.timepicker({
+						timeFormat: 'HH:mm',
+						scrollDefault: 'now',
+						step: function() {
+							return 15;
+						}
+					});
+					$($el).parent('.field').addClass('fields-horizontal');
+				}
 
 				// convert loaded value from server side form (YYYY-MM-DD) to user format dd.mm.yyyy
-				$el.val($el.val().replace(/^(\d{4})-(\d{2})-(\d{2})$/g, '$3.$2.$1'));
-				$el.attr('placeholder', 'DD.MM.YYYY');
-				$el.datepicker({
+				$clone.val($el.val().replace(/^(\d{4})-(\d{2})-(\d{2})$/g, '$3.$2.$1'));
+				$clone.attr('placeholder', 'DD.MM.YYYY');
+				$clone.datepicker({
 					weekStart: 1,
 					autoclose: true,
 					todayHighlight: true,
@@ -141,11 +176,11 @@
 
 				// append calendar icon after the input element
 				var $icon = $('<a href="#" class="datepicker-icon icon_ical"></a>').click(function(event) {
-					$el.datepicker('show');
+					$clone.datepicker('show');
 					event.preventDefault();
 					event.stopPropagation();
 				});
-				$el.after($icon);
+				$clone.after($icon);
 			});
 		},
 
@@ -176,12 +211,6 @@
 				}).toArray();
 
 				$.when.apply($, validators).done(function() {
-					// convert all date values on submit to backend format
-					rules.$formDate.each(function() {
-						var $el = $(this);
-						$el.val(convertDate($el.val()));
-					});
-
 					setTimeout(function() {
 						// set valid flag and resubmit form
 						this._formValid = true;
@@ -295,10 +324,26 @@
 			$form.find('input[type="checkbox"]').on('click', function() {
 				easyFormValidation.fieldCheckboxService($(this));
 			});
+
+			$form.find(':input[type="text"].pat-pickadate-ref--date').change(function() {
+				easyFormValidation.synchronizeDateFields($(this));
+			});
 		},
 
 		onInputChange: function(event) {
-			easyFormValidation.validateElement($(event.target));
+			var $el = $(event.target);
+			if ($el.hasClass('pat-pickadate-ref--date')) {
+				// synchronize fields
+				easyFormValidation.synchronizeDateFields($el);
+			}
+
+			easyFormValidation.validateElement($el);
+		},
+
+		synchronizeDateFields: function($el) {
+			// find date and (if) time fields
+			var $inputs = $el.parent().find('.pat-pickadate-ref--date');
+			$el.parent().find('.pat-pickadate:not(.pat-pickadate-ref--date)').val(convertDate($inputs.eq(0).val(), $inputs.eq(1).val()));
 		},
 
 		onOptionMultiSelect: function() {
@@ -350,6 +395,8 @@
 		 * @returns {Promise} Resolves if elements value is valid
 		 */
 		validateElement: function($el) {
+			console.warn('validateElement()', $el.get(0));
+
 			var $currentFieldType = $el.prop('tagName');
 
 			function updateFieldStatus($el, $currentFieldType, isValid, $errorMsg) {
@@ -377,6 +424,29 @@
 				}
 			}
 
+			if ($el.hasClass('pat-pickadate-ref--date')) {
+				var $inputs = $el.parent().find('.pat-pickadate-ref--date'),
+					isRequired = $inputs.eq(0).hasClass(rules.required), // TODO: this does not work - required class wont be set!
+					date = $inputs.eq(0).val().trim(),
+					isValid = true;
+
+				isValid = (!isRequired && !date.length) || isValidDate(date);
+				$inputs.eq(0).toggleClass('field--partial-error', !isValid);
+
+				if ($inputs.size() === 2) {
+					// has time field
+					var time = $inputs.eq(1).val().trim(),
+						isTimeValid = (!isRequired && !date.length && !time.length) || (isValidTime(time) && date.length > 0);
+					isValid = isValid && isTimeValid;
+					$inputs.eq(1).toggleClass('field--partial-error', !isTimeValid);
+				}
+
+				if (!isValid) {
+					updateFieldStatus($el, $currentFieldType, false);
+					return $.Deferred().reject('Invalid format').promise();
+				}
+			}
+
 			if (!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) {
 				// no validation required
 				updateFieldStatus($el, $currentFieldType, true);
@@ -393,12 +463,6 @@
 					updateFieldStatus($el, $currentFieldType, true);
 					return;
 				}
-			}
-
-			if ($el.is('.pat-pickadate') && $el.val().trim() && !/^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/g.test($el.val())) {
-				// datepicker
-				updateFieldStatus($el, $currentFieldType, false);
-				return $.Deferred().reject('Invalid date format').promise();
 			}
 
 			var deferred = $.Deferred();

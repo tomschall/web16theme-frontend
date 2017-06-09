@@ -1,0 +1,104 @@
+{{#extend "preview/layouts/layout"}}
+	{{#content "content"}}
+		<section class="sg_inner_wrapper">
+
+			<form data-pat-autotoc="levels: legend; section: fieldset; className: autotabs"
+					class="rowlike pat-formunloadalert  easyformForm kssattr-formname-view"
+					action="http://localhost:8008/Plone/de/easyformexample" method="post"
+					enctype="multipart/form-data" id="form"><!-- Default fieldset -->
+
+{{!--
+				<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}" class="field pat-inlinevalidation kssattr-fieldname-form.widgets.colr empty" data-fieldname="form.widgets.colr" id="formfield-form-widgets-colr">
+					<label for="form-widgets-colr" class="horizontal">
+						colr
+						<span class="required horizontal" title="Erforderlich">&nbsp;</span></label>
+					<div class="fieldErrorBox"></div>
+					<span class="option"><label for="form-widgets-colr-0"><input id="form-widgets-colr-0" name="form.widgets.colr" class="radio-widget required choice-field" value="lime" type="radio"><span class="label">lime</span></label></span><span class="option"><label for="form-widgets-colr-1"><input id="form-widgets-colr-1" name="form.widgets.colr" class="radio-widget required choice-field" value="fuchsia" type="radio"><span class="label">fuchsia</span></label></span><span class="option"><label for="form-widgets-colr-2"><input id="form-widgets-colr-2" name="form.widgets.colr" class="radio-widget required choice-field" value="navyblue" type="radio"><span class="label">navyblue</span></label></span><input name="form.widgets.colr-empty-marker" type="hidden" value="1">
+				</div>
+
+				<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}" class="field pat-inlinevalidation kssattr-fieldname-form.widgets.fle0 empty" data-fieldname="form.widgets.fle0" id="formfield-form-widgets-fle0">
+					<label for="form-widgets-fle0" class="horizontal">fle0</label>
+					<div class="fieldErrorBox"></div>
+					<span id="form-widgets-fle0" class="named-file-widget namedblobfile-field"><input type="file" id="form-widgets-fle0-input" name="form.widgets.fle0"/></span>
+				</div>
+
+				<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}" class="field pat-inlinevalidation kssattr-fieldname-form.widgets.fle1 empty" data-fieldname="form.widgets.fle1" id="formfield-form-widgets-fle1">
+					<label for="form-widgets-fle1" class="horizontal">fle1
+						<span class="required horizontal" title="Erforderlich"> </span></label>
+					<div class="fieldErrorBox"></div>
+					<span id="form-widgets-fle1" class="named-file-widget required namedblobfile-field"><input type="file" id="form-widgets-fle1-input" name="form.widgets.fle1"/></span>
+				</div>
+
+				<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}" class="field pat-inlinevalidation kssattr-fieldname-form.widgets.dnes empty" data-fieldname="form.widgets.dnes" id="formfield-form-widgets-dnes"><label for="form-widgets-dnes" class="horizontal">
+					dnes
+				</label>
+					<div class="fieldErrorBox"></div>
+					<input class="pat-pickadate" type="text" name="form.widgets.dnes" value="" data-pat-pickadate="{&quot;date&quot;: {&quot;format&quot;: &quot;d mmmm, yyyy&quot;, &quot;selectYears&quot;: 200, &quot;min&quot;: [1917, 1, 1], &quot;monthsFull&quot;: [&quot;Januar&quot;, &quot;Februar&quot;, &quot;M\u00e4rz&quot;, &quot;April&quot;, &quot;Mai&quot;, &quot;Juni&quot;, &quot;Juli&quot;, &quot;August&quot;, &quot;September&quot;, &quot;Oktober&quot;, &quot;November&quot;, &quot;Dezember&quot;], &quot;weekdaysShort&quot;: [&quot;So&quot;, &quot;Mo&quot;, &quot;Di&quot;, &quot;Mi&quot;, &quot;Do&quot;, &quot;Fr&quot;, &quot;Sa&quot;], &quot;weekdaysFull&quot;: [&quot;Sonntag&quot;, &quot;Montag&quot;, &quot;Dienstag&quot;, &quot;Mittwoch&quot;, &quot;Donnerstag&quot;, &quot;Freitag&quot;, &quot;Samstag&quot;], &quot;firstDay&quot;: 1, &quot;max&quot;: [2037, 1, 1], &quot;placeholder&quot;: &quot;Datum eingeben\u2026&quot;, &quot;monthsShort&quot;: [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mrz&quot;, &quot;Apr&quot;, &quot;Mai&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Okt&quot;, &quot;Nov&quot;, &quot;Dez&quot;]}, &quot;clear&quot;: &quot;Auswahl aufheben&quot;, &quot;today&quot;: &quot;Heute&quot;, &quot;time&quot;: {&quot;placeholder&quot;: &quot;Zeit eingeben\u2026&quot;, &quot;format&quot;: &quot;HH:i&quot;}}">
+				</div>
+
+				<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+						class="field pat-inlinevalidation kssattr-fieldname-form.widgets.foo empty"
+						data-fieldname="form.widgets.foo" id="formfield-form-widgets-foo">
+					<label for="form-widgets-foo" class="horizontal">
+						foo
+
+						<span class="required horizontal" title="Erforderlich"> </span><span
+							class="formHelp">helpfoo</span></label>
+					<div class="fieldErrorBox"></div>
+					<input id="form-widgets-foo" name="form.widgets.foo"
+							class="text-widget required textline-field" value=""
+							type="text"/></div>
+
+				<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+						class="field pat-inlinevalidation kssattr-fieldname-form.widgets.now empty"
+						data-fieldname="form.widgets.now" id="formfield-form-widgets-now">
+					<label for="form-widgets-now" class="horizontal">
+						now
+					</label>
+					<div class="fieldErrorBox"></div>
+
+					<input class="pat-pickadate" type="text" name="form.widgets.now"
+							value=""
+							id="form-widgets-now"
+							data-pat-pickadate="{&quot;date&quot;: {&quot;format&quot;: &quot;d mmmm, yyyy&quot;, &quot;selectYears&quot;: 200, &quot;min&quot;: [1917, 1, 1], &quot;monthsFull&quot;: [&quot;Januar&quot;, &quot;Februar&quot;, &quot;M\u00e4rz&quot;, &quot;April&quot;, &quot;Mai&quot;, &quot;Juni&quot;, &quot;Juli&quot;, &quot;August&quot;, &quot;September&quot;, &quot;Oktober&quot;, &quot;November&quot;, &quot;Dezember&quot;], &quot;weekdaysShort&quot;: [&quot;So&quot;, &quot;Mo&quot;, &quot;Di&quot;, &quot;Mi&quot;, &quot;Do&quot;, &quot;Fr&quot;, &quot;Sa&quot;], &quot;weekdaysFull&quot;: [&quot;Sonntag&quot;, &quot;Montag&quot;, &quot;Dienstag&quot;, &quot;Mittwoch&quot;, &quot;Donnerstag&quot;, &quot;Freitag&quot;, &quot;Samstag&quot;], &quot;firstDay&quot;: 1, &quot;max&quot;: [2037, 1, 1], &quot;placeholder&quot;: &quot;Datum eingeben\u2026&quot;, &quot;monthsShort&quot;: [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mrz&quot;, &quot;Apr&quot;, &quot;Mai&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Okt&quot;, &quot;Nov&quot;, &quot;Dez&quot;]}, &quot;clear&quot;: &quot;Auswahl aufheben&quot;, &quot;today&quot;: &quot;Heute&quot;, &quot;time&quot;: false}"/>
+				</div>
+--}}
+				<!-- datetime filed -->
+				<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}" class="field pat-inlinevalidation kssattr-fieldname-form.widgets.cas empty" data-fieldname="form.widgets.cas" id="formfield-form-widgets-cas">
+					<label for="form-widgets-cas" class="horizontal">cas
+						<span class="required horizontal" title="Erforderlich">&nbsp;</span></label>
+					<div class="fieldErrorBox"></div>
+					<input class="pat-pickadate" type="text" name="form.widgets.cas" value="" data-pat-pickadate="{&quot;date&quot;: {&quot;format&quot;: &quot;d mmmm, yyyy&quot;, &quot;selectYears&quot;: 200, &quot;min&quot;: [1917, 1, 1], &quot;monthsFull&quot;: [&quot;Januar&quot;, &quot;Februar&quot;, &quot;M\u00e4rz&quot;, &quot;April&quot;, &quot;Mai&quot;, &quot;Juni&quot;, &quot;Juli&quot;, &quot;August&quot;, &quot;September&quot;, &quot;Oktober&quot;, &quot;November&quot;, &quot;Dezember&quot;], &quot;weekdaysShort&quot;: [&quot;So&quot;, &quot;Mo&quot;, &quot;Di&quot;, &quot;Mi&quot;, &quot;Do&quot;, &quot;Fr&quot;, &quot;Sa&quot;], &quot;weekdaysFull&quot;: [&quot;Sonntag&quot;, &quot;Montag&quot;, &quot;Dienstag&quot;, &quot;Mittwoch&quot;, &quot;Donnerstag&quot;, &quot;Freitag&quot;, &quot;Samstag&quot;], &quot;firstDay&quot;: 1, &quot;max&quot;: [2037, 1, 1], &quot;placeholder&quot;: &quot;Datum eingeben\u2026&quot;, &quot;monthsShort&quot;: [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mrz&quot;, &quot;Apr&quot;, &quot;Mai&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Okt&quot;, &quot;Nov&quot;, &quot;Dez&quot;]}, &quot;clear&quot;: false, &quot;today&quot;: &quot;Heute&quot;, &quot;time&quot;: {&quot;placeholder&quot;: &quot;Zeit eingeben\u2026&quot;, &quot;format&quot;: &quot;HH:i&quot;}}">
+				</div>
+
+				<!-- date field -->
+				<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}" class="field pat-inlinevalidation kssattr-fieldname-form.widgets.datum empty" data-fieldname="form.widgets.datum" id="formfield-form-widgets-datum">
+					<label for="form-widgets-datum" class="horizontal">datum<span class="required horizontal" title="Erforderlich">&nbsp;</span></label>
+					<div class="fieldErrorBox"></div>
+					<input class="pat-pickadate" type="text" name="form.widgets.datum" value="1999-12-01" data-pat-pickadate="{&quot;date&quot;: {&quot;format&quot;: &quot;d mmmm, yyyy&quot;, &quot;selectYears&quot;: 200, &quot;min&quot;: [1917, 1, 1], &quot;monthsFull&quot;: [&quot;Januar&quot;, &quot;Februar&quot;, &quot;M\u00e4rz&quot;, &quot;April&quot;, &quot;Mai&quot;, &quot;Juni&quot;, &quot;Juli&quot;, &quot;August&quot;, &quot;September&quot;, &quot;Oktober&quot;, &quot;November&quot;, &quot;Dezember&quot;], &quot;weekdaysShort&quot;: [&quot;So&quot;, &quot;Mo&quot;, &quot;Di&quot;, &quot;Mi&quot;, &quot;Do&quot;, &quot;Fr&quot;, &quot;Sa&quot;], &quot;weekdaysFull&quot;: [&quot;Sonntag&quot;, &quot;Montag&quot;, &quot;Dienstag&quot;, &quot;Mittwoch&quot;, &quot;Donnerstag&quot;, &quot;Freitag&quot;, &quot;Samstag&quot;], &quot;firstDay&quot;: 1, &quot;max&quot;: [2037, 1, 1], &quot;placeholder&quot;: &quot;Datum eingeben\u2026&quot;, &quot;monthsShort&quot;: [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mrz&quot;, &quot;Apr&quot;, &quot;Mai&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Okt&quot;, &quot;Nov&quot;, &quot;Dez&quot;]}, &quot;clear&quot;: false, &quot;today&quot;: &quot;Heute&quot;, &quot;time&quot;: false}">
+				</div>
+
+				<!-- singe checkbox required -->
+				<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}" class="field pat-inlinevalidation kssattr-fieldname-form.widgets.agb" data-fieldname="form.widgets.agb" id="formfield-form-widgets-agb">
+					<span class="option" id="form-widgets-agb">
+						<input id="form-widgets-agb-0" name="form.widgets.agb:list" class="single-checkbox-widget required bool-field" value="selected" type="checkbox">
+						<label for="form-widgets-agb-0"><span class="label">agb</span></label>
+					</span><input name="form.widgets.agb-empty-marker" type="hidden" value="1">
+					<div class="formHelp">ghfgh</div>
+					<div class="fieldErrorBox"></div>
+				</div>
+
+				<div class="formControls"><input id="form-buttons-submit"
+						name="form.buttons.submit"
+						class="submit-widget button-field"
+						value="Einreichen" type="submit"/><input
+						id="form-buttons-reset" name="form.buttons.reset"
+						class="submit-widget button-field" value="Zurücksetzen"
+						type="submit"/></div>
+				<input type="hidden" name="_authenticator"
+						value="0ce895ca68e382dd3af8973fc21a114aee269e56"/>
+
+			</form>
+		</section>
+	{{/content}}
+{{/extend}}

@@ -71,8 +71,13 @@
 
 .field.error {
 	input,
-	textarea {
+	textarea,
+	input.single-checkbox-widget + label:before {
 		border-color: $colorErrorRed;
+	}
+
+	input.single-checkbox-widget + label:before {
+		border-width: 2px;
 	}
 }
 
@@ -124,3 +129,22 @@
 		margin-bottom: 10px;
 	}
 }
+
+.fields-horizontal {
+	input.pat-pickadate-ref--date {
+		&:not(.field--time) {
+			margin-right: 10px;
+		}
+		width: calc(50% - 5px);
+		display: inline-block;
+	}
+}
+
+
+// workaround due to https://gitlab.fhnw.ch/webteam/fhnw.webauftritt/issues/638
+.easyformForm {
+	[id^=formfield-form-widgets-hidden_] {
+		display:none;
+	}
+}
+
