@@ -32,6 +32,15 @@ p {
 	}
 }
 
+.startpage-page {
+	& .layout_content {
+		@include mq($to: small) {
+			padding-left: 16px;
+			padding-right: 16px;
+		}
+	}
+}
+
 .text__lead + .has_grid {
 	margin-top: $basicPush * 6.6;
 }
