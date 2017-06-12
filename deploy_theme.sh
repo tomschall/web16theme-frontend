@@ -16,7 +16,7 @@ declare -a search_pages=("search_all" "search_documents" "search_edu" "search_ev
 for i in "${search_pages[@]}"
 do
    awk '/{{ *#content *"content"[^}]*}}/,/{{ *\/content *}}/' source/pages/$i/$i.hbs\
-    | sed -E 's/^[[:space:]]*{{ *[#/]content *("content" *)?}}[[:space:]]*//g'\
+    | sed -E 's/^[[:space:]]*\{\{ *[#/]content *("content" *)?\}\}[[:space:]]*//g'\
     > src/fhnw.contentwidgets/src/fhnw/contentwidgets/wi_061_searchpage/templates/$i.hbs;
 done
 
