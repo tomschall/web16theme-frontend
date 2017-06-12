@@ -6,6 +6,7 @@
 
     {{#content "content"}}
 
+
       <div class="content__element content__element___borderless">
 				{{> "widgets/teaser/teaser" widgets.teaser}}
 			</div>
@@ -16,9 +17,10 @@
 				{{> "widgets/teaser/teaser" widgets.teaser}}
 			</div>
 
+			<div class="content__element content__element___bleed content__element___top-bordered" id="locations">
+				{{> "widgets/location_slider/location_slider" widgets.locationSlider}}
+			</div>
+
     {{/content}}
-
-
-
 
 {{/extend}}
