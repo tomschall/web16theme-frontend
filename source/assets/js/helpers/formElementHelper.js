@@ -395,8 +395,6 @@
 		 * @returns {Promise} Resolves if elements value is valid
 		 */
 		validateElement: function($el) {
-			console.warn('validateElement()', $el.get(0));
-
 			var $currentFieldType = $el.prop('tagName');
 
 			function updateFieldStatus($el, $currentFieldType, isValid, $errorMsg) {
@@ -453,8 +451,13 @@
 				return;
 			}
 
-			// special handling for radio buttons
-			if ($el.hasClass('radio-widget')) {
+			if ($el.hasClass('single-checkbox-widget')) {
+				if (easyFormValidation.getFieldValue($el) === '') {
+					updateFieldStatus($el, $currentFieldType, false);
+					return $.Deferred().reject('Required').promise();
+				}
+			} else if ($el.hasClass('radio-widget')) {
+				// special handling for radio buttons
 				$currentFieldType = 'RADIO';
 
 				// validate radio widgets client side only - #658
@@ -510,9 +513,9 @@
 			if ($el.is('[type=radio]') && $form.find('[name=' + $el.attr('name').replace(/\./gm, '\\.') + ']:checked').size() === 0) {
 				// clear value if not checked
 				value = '';
-			}
-
-			if ($el.data().datepicker) {
+			} else if ($el.hasClass('single-checkbox-widget') && !$el.is(':checked')) {
+				value = '';
+			} else if ($el.data().datepicker) {
 				// element is a datepicker, perform value conversion as backend requires YYYY-MM-DD
 				// accepted user input is dd.mm.yyyy
 				value = convertDate(value);
