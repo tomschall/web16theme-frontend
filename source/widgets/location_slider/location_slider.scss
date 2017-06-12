@@ -16,6 +16,10 @@ $infoPadding: 34px;
 	}
 }
 
+.startpage-page .layout_content #location-map {
+	margin-top: 3rem;
+}
+
 .widg_location_slider nav {
 	@include contentWrapper($gutterWidth);
 
