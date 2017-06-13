@@ -4,21 +4,17 @@
 
 	img {
 		width: 100%;
-		min-height: 280px;
-
-		@include mq($to: medium) {
-			@include bleedFull($gutterWidth);
-		}
 
 		@include mq($to: small) {
-			@include bleedFull($gutterWidth);
-			min-height: 280px;
+			margin-left: $gutterWidth - 20;
+			max-width: 500px;
 		}
 	}
 }
 
 .full_bleed_teaser__img {
-	@include bleedFull($gutterWidth - 20);
+	@include bleedFull($gutterWidth - 40);
+	height: 100vh;
 }
 
 .full_bleed_teaser__text {
@@ -49,6 +45,16 @@
 
 	a.button:not(.not-default) {
 		margin-top: 5px;
+
+		@include mq($to: small) {
+			font-size: 0.93333rem;
+			letter-spacing: 1px;
+		}
+	}
+
+	@include mq($to: medium) {
+		padding-left: $gutterWidth + 4;
+		padding-top: 15px;
 	}
 }
 
@@ -63,13 +69,12 @@
 	padding: $gutterWidth * 2;
 	background-color: $colorBg;
 
-	@include mq($to: small) {
-		transform: translateY(-182%);
-		width: 425px;
-	}
-
 	@include mq($to: medium) {
 		transform: translateY(-50%);
+	}
+
+	@include mq($to: small) {
+		transform: translateY(-225%);
 	}
 
 	.widg_teaser__arrow {
@@ -88,5 +93,10 @@
 
 	.widg_teaser__category {
 		margin-bottom: 0;
+	}
+
+	@include mq($to: small) {
+		position: static;
+		width: 100%;
 	}
 }
