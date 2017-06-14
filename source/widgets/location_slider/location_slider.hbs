@@ -17,8 +17,6 @@
 				<div class="widg_location__nav-bar" data-location_slider="bar"></div>
 			</ul>
 		</nav>
-
-
 		<div class="slider" data-location_slider="slider">
 			{{#if oneMapOnly}}
 				<div class="location__slide">
@@ -100,11 +98,9 @@
 	</div>
 
 	<div class="only-phone">
-		<!-- LOCATION SLIDER WIDGET!!! -->
 		{{> "widgets/accordeon/accordeon" widgets.locationAccordeon }}
 		{{#each entries}}
 			<div class="widg_accordeon" data-init="accordeon">
-				<!-- LOCATION SLIDER ENTRY -->
 				<div class="widg_accordeon__entry" data-accordeon="entry">
 					<button aria-expanded="false" class="not-default" data-accordeon="button">
 					{{navTitle}}
@@ -112,7 +108,6 @@
 					<div class="widg_accordeon__content" aria-hidden="true" data-accordeon="content">
 						<div class="accordeon__location">
 							<img class="location__map-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-location_slider="static-map" alt="" />
-
 							<div class="location__upper">
 								<h3>{{title}}</h3>
 								<div class="location__address">
@@ -136,7 +131,6 @@
 							<div class="location__inferior"><a href="{{routeURL}}" target="_blank" tabindex="0"><span>{{../langStrings.calcRoute}}</span></a>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
