@@ -3,17 +3,13 @@
 	position: relative;
 
 	img {
-		width: 100%;
-		//min-height: 280px;
+		display: none; // hide until loaded
+	}
 
-		//@include mq($to: medium) {
-		//	@include bleedFull($gutterWidth);
-		//}
-
-		//@include mq($to: small) {
-		//	@include bleedFull($gutterWidth);
-		//	min-height: 280px;
-		//}
+	.full_bleed_teaser__img.is-loaded {
+		img {
+			display: block;
+		}
 	}
 }
 
@@ -84,15 +80,6 @@
 	padding: $gutterWidth * 2;
 	background-color: $colorBg;
 
-	//@include mq($to: small) {
-	//	transform: translateY(-182%);
-	//	width: 425px;
-	//}
-    //
-	//@include mq($to: medium) {
-	//	transform: translateY(-50%);
-	//}
-
 	.widg_teaser__arrow {
 		position: static;
 		float: left;
@@ -112,10 +99,12 @@
 	}
 
 	@include mq($to: small) {
-		position: static;
+		//position: static;
 		width: 100vw;
 		max-width: none;
 		transform: translateY(0);
+		top: auto;
+		bottom: 32px;
 
 		margin-left: -$gutterWidth;
 		margin-right: -$gutterWidth;
