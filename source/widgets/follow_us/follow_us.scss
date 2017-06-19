@@ -81,3 +81,11 @@
 .follow__blogs {
 	@include iconDataurl('blog_follow');
 }
+
+.follow__vimeo {
+	@include iconDataurl('vimeo_follow');
+}
+
+.follow__issuu {
+	@include iconDataurl('issuu_follow');
+}
