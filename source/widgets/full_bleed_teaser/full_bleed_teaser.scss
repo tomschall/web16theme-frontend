@@ -104,8 +104,8 @@
 		max-width: none;
 		transform: translateY(0);
 		top: auto;
-		bottom: 32px;
-
+		bottom: $gutterWidth;
+		left: $gutterWidth;
 		margin-left: -$gutterWidth;
 		margin-right: -$gutterWidth;
 	}
