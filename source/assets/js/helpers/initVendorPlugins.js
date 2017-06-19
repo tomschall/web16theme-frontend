@@ -30,9 +30,7 @@
 		$('.widg_full_bleed_teaser img').imageScale({
 			rescaleOnResize: true,
 			scale: 'best-fill',
-			align: 'center',
-			hideParentOverflow: true,
-			fadeInDuration: true
+			align: 'center'
 		});
 
 		$('.widg_teaser__img img').imageScale('scale');

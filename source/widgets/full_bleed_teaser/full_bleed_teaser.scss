@@ -4,17 +4,31 @@
 
 	img {
 		width: 100%;
+		//min-height: 280px;
 
-		@include mq($to: small) {
-			margin-left: $gutterWidth - 20;
-			max-width: 500px;
-		}
+		//@include mq($to: medium) {
+		//	@include bleedFull($gutterWidth);
+		//}
+
+		//@include mq($to: small) {
+		//	@include bleedFull($gutterWidth);
+		//	min-height: 280px;
+		//}
 	}
 }
 
 .full_bleed_teaser__img {
-	@include bleedFull($gutterWidth - 40);
-	height: 100vh;
+	height: 100%;
+	@include bleedFull(0);
+
+	@include mq($from: small, $to: medium) {
+		margin-left: - ($gutter * 2);
+		margin-right: - ($gutter * 2);
+	}
+
+	@include mq($to: small) {
+		margin-left: -$gutterWidth;
+	}
 }
 
 .full_bleed_teaser__text {
@@ -55,6 +69,7 @@
 	@include mq($to: medium) {
 		padding-left: $gutterWidth + 4;
 		padding-top: 15px;
+
 	}
 }
 
@@ -69,13 +84,14 @@
 	padding: $gutterWidth * 2;
 	background-color: $colorBg;
 
-	@include mq($to: medium) {
-		transform: translateY(-50%);
-	}
-
-	@include mq($to: small) {
-		transform: translateY(-225%);
-	}
+	//@include mq($to: small) {
+	//	transform: translateY(-182%);
+	//	width: 425px;
+	//}
+    //
+	//@include mq($to: medium) {
+	//	transform: translateY(-50%);
+	//}
 
 	.widg_teaser__arrow {
 		position: static;
@@ -97,6 +113,11 @@
 
 	@include mq($to: small) {
 		position: static;
-		width: 100%;
+		width: 100vw;
+		max-width: none;
+		transform: translateY(0);
+
+		margin-left: -$gutterWidth;
+		margin-right: -$gutterWidth;
 	}
 }
