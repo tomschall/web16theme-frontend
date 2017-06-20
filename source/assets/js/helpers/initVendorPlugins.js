@@ -27,12 +27,28 @@
 			align: 'top-right'
 		});
 
-		$('.widg_full_bleed_teaser img').imageScale({
-			rescaleOnResize: true,
-			scale: 'best-fill',
-			align: 'center',
-			hideParentOverflow: true,
-			fadeInDuration: true
+		function initScale(el) {
+			if ($(el).data('imageScale')) {
+				return;
+			}
+			var maxHeight = Math.min((el.naturalHeight || el.height), 640);
+			$(el).parent()
+				.css('height', maxHeight + 'px')
+				.addClass('is-loaded');
+			$(el).imageScale({
+				rescaleOnResize: true,
+				scale: 'best-fill',
+				align: 'center'
+			});
+		}
+
+		$('.widg_full_bleed_teaser img').load(function() {
+			initScale(this);
+		}).each(function() {
+			if (this.complete) {
+				// already loaded before the load event got registered
+				initScale(this);
+			}
 		});
 
 		$('.widg_teaser__img img').imageScale('scale');

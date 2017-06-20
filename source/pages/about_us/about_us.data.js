@@ -205,6 +205,17 @@ var data = _.merge(defaultData, {
 				url: '#',
 				linkText: 'Mehr Erfahren',
 				category: 'Das Kategorie'
+			}),
+			fullBleedTeaserExtraLong: _.assign({
+				img: {
+					src: '/assets/media/img/3000x300.jpg',
+					alt: '3000x300'
+				},
+				title: 'Nachwuchsförderung',
+				description: 'Der wissenschaftliche Nachwuchs wird an der FHNW unter spezieller Berücksichtigung von Gleichstellungsaspekten gefördert.',
+				url: '#',
+				linkText: 'Mehr Erfahren',
+				category: 'Das Kategorie'
 			})
 		}
 	});

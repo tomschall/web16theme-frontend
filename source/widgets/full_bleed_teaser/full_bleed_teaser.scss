@@ -3,18 +3,28 @@
 	position: relative;
 
 	img {
-		width: 100%;
+		display: none; // hide until loaded
+	}
 
-		@include mq($to: small) {
-			margin-left: $gutterWidth - 20;
-			max-width: 500px;
+	.full_bleed_teaser__img.is-loaded {
+		img {
+			display: block;
 		}
 	}
 }
 
 .full_bleed_teaser__img {
-	@include bleedFull($gutterWidth - 40);
-	height: 100vh;
+	height: 100%;
+	@include bleedFull(0);
+
+	@include mq($from: small, $to: medium) {
+		margin-left: - ($gutter * 2);
+		margin-right: - ($gutter * 2);
+	}
+
+	@include mq($to: small) {
+		margin-left: -$gutterWidth;
+	}
 }
 
 .full_bleed_teaser__text {
@@ -55,6 +65,7 @@
 	@include mq($to: medium) {
 		padding-left: $gutterWidth + 4;
 		padding-top: 15px;
+
 	}
 }
 
@@ -68,14 +79,6 @@
 
 	padding: $gutterWidth * 2;
 	background-color: $colorBg;
-
-	@include mq($to: medium) {
-		transform: translateY(-50%);
-	}
-
-	@include mq($to: small) {
-		transform: translateY(-225%);
-	}
 
 	.widg_teaser__arrow {
 		position: static;
@@ -96,7 +99,14 @@
 	}
 
 	@include mq($to: small) {
-		position: static;
-		width: 100%;
+		//position: static;
+		width: 100vw;
+		max-width: none;
+		transform: translateY(0);
+		top: auto;
+		bottom: $gutterWidth;
+		left: $gutterWidth;
+		margin-left: -$gutterWidth;
+		margin-right: -$gutterWidth;
 	}
 }
