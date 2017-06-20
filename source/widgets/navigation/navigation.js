@@ -142,11 +142,14 @@
    */
 	Widget.prototype.fillNavWrapper = function($subList) {
 		var subListLevel = parseInt($subList.data('navigation-level')),
-				$targetWrapper = this.data.wrappers[subListLevel];
+			$targetWrapper = this.data.wrappers[subListLevel];
 
 		$targetWrapper.find(this.options.domSelectors.list).remove();
 
 		if (window.estatico.mq.query({from: 'medium'})) {
+			// make sure the scrollbar is initialized
+			$targetWrapper.mCustomScrollbar({ theme: 'fhnw' });
+
 			$subList.clone(true).appendTo($targetWrapper.find('.mCSB_container'));
 		} else {
 			$subList.clone(true).appendTo('.widg_navigation').addClass(this.options.stateClasses.isVisible);
