@@ -46,6 +46,10 @@
 	}
 }
 
+[class^='follow__'] {
+	@include iconDataurl('default_follow');
+}
+
 .follow__twitter {
 	@include iconDataurl('twitter_follow');
 }
