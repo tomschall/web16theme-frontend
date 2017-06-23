@@ -232,7 +232,6 @@
 	}
 
 	&.is_on_startpage {
-
 		margin-bottom: $basicPush * 4;
 		@include clearfix();
 
@@ -262,6 +261,52 @@
 			@include mq($to: small) {
 				width: 60vw;
 			}
+		}
+	}
+}
+
+/* Startpage customs */
+.startpage-page {
+	@include mq($to: wide) {
+		& .content__element {
+			margin-bottom: 50px;
+		}
+
+		& .widg_teaser__wrapper {
+			@include push(4);
+			transform: translateX(-25%);
+		}
+
+		& h2 {
+			text-align: center;
+			border-bottom: none;
+		}
+
+		& h2:after {
+	    content: '';
+	    position: absolute;
+	    width: 10%;
+	    left: 45%;
+	    bottom: -4px;
+	    border-bottom: 4px solid #FDE70E;
+		}
+
+		& .widg_teaser__wrapper .teaser__more-button {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+	}
+	@include mq($to: small) {
+		& .widg_teaser__wrapper {
+			@include push(3);
+			width: 100%;
+		}
+	}
+
+	@include mq($to: medium) {
+		& .widg_teaser__wrapper {
+			@include push(3);
+			width: 100%;
 		}
 	}
 }
