@@ -34,16 +34,16 @@ gulp.task(taskName, function() {
 	return gulp.src(taskConfig.src)
 		.pipe(cached('linting'))
 		.pipe(jshint())
-		.pipe(jscs({
-			configPath: '.jscsrc'
-
-			// Automatically fix invalid code (files would have to be saved back to disk below)
-			// fix: true
-		}))
+		// .pipe(jscs({
+		// 	configPath: '.jscsrc'
+        //
+		// 	// Automatically fix invalid code (files would have to be saved back to disk below)
+		// 	// fix: true
+		// }))
 		.pipe(jshint.reporter('jshint-stylish'))
-		.pipe(jscs.reporter())
+		// .pipe(jscs.reporter())
 		.pipe(tap(function(file) {
-			if (!file.jshint.success || !file.jscs.success) {
+			if (!file.jshint.success /*|| !file.jscs.success*/) {
 				helpers.errors({
 					task: taskName,
 					message: 'Linting error in file "' + path.relative('./source/', file.path) + '" (details above)'

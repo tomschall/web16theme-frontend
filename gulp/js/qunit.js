@@ -5,12 +5,13 @@
  * @desc Run QUnit tests (using PhantomJS).
  */
 
-var gulp = require('gulp');
+var gulp = require('gulp'),
+	util = require('gulp-util');
 
 var taskName = 'js:qunit',
 	taskConfig = {
 		srcTests: [
-			'./node_modules/qunitjs/qunit/*',
+			'./source/preview/assets/js/test.js',
 			'./source/widgets/**/*.test.js',
 			'./source/demo/widgets/**/*.test.js'
 		],
@@ -32,7 +33,7 @@ var taskName = 'js:qunit',
 			'source/widgets/**/*.test.js',
 			'source/demo/widgets/**/*.test.js'
 		]
-	},
+		},
 	matchOperatorsRe = /[|\\{}()[\]^$+*?.]/g,
 	escapeRegEx = function(str) {
 		if (typeof str !== 'string') {
@@ -91,11 +92,10 @@ gulp.task(taskName, function(cb) {
 					relPathPrefix = escapeRegEx(relPathPrefix);
 
 					// Ignore files without a QUnit script reference
-					if (content.search(taskConfig.srcQUnit) === -1) {
-						ignoreFiles.push(file.path);
-
-						return;
-					}
+					// if (content.search(taskConfig.srcQUnit) === -1) {
+					// 	ignoreFiles.push(file.path);
+					// 	return;
+					// }
 
 					// Make paths relative to build directory, add base tag
 					content = content

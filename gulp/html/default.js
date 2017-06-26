@@ -3,9 +3,11 @@
 /**
  * @function `gulp html`
  * @desc Compile Handlebars templates to HTML. Use `.data.js` files for - surprise! - data.
+ * By default, a very basic dependency graph makes sure that only the necessary files are rebuilt on changes. Add the `--skipHtmlDependencyGraph` flag to disable this behavior and just build everything all the time.
  */
 
-var gulp = require('gulp');
+var gulp = require('gulp'),
+	util = require('gulp-util');
 
 var taskName = 'html',
 	taskConfig = {
@@ -24,6 +26,7 @@ var taskName = 'html',
 			'source/demo/widgets/**/*.hbs',
 			'source/preview/**/*.hbs'
 		],
+		partialPathBase: './source',
 		dest: './build/',
 		watch: [
 			'source/*.hbs',
@@ -43,120 +46,117 @@ var taskName = 'html',
 			'source/demo/widgets/**/*.md',
 			'source/assets/css/data/colors.html'
 		]
-	};
+	},
+	task = function(config, cb) {
+		var helpers = require('require-dir')('../../helpers'),
+			plumber = require('gulp-plumber'),
+			livereload = require('gulp-livereload'),
+			requireNew = require('require-new'),
+			path = require('path'),
+			fs = require('fs'),
+			tap = require('gulp-tap'),
+			rename = require('gulp-rename'),
 
-gulp.task(taskName, function(cb) {
-	var helpers = require('require-dir')('../../helpers'),
-		plumber = require('gulp-plumber'),
-		livereload = require('gulp-livereload'),
-		util = require('gulp-util'),
-		requireNew = require('require-new'),
-		path = require('path'),
-		fs = require('fs'),
-		tap = require('gulp-tap'),
-		rename = require('gulp-rename'),
+			// Format HTML (disabled due to incorrect resulting indentation)
+			// prettify = require('gulp-prettify'),
+			_ = require('lodash'),
+			handlebars = require('gulp-hb');
 
-		// Format HTML (disabled due to incorrect resulting indentation)
-		// prettify = require('gulp-prettify'),
-		_ = require('lodash'),
-		handlebars = require('gulp-hb'),
-		Handlebars = require('handlebars');
+	    var widgetPreviewTemplate;
 
-	var widgetPreviewTemplate;
+		gulp.src(config.src, {
+				base: './source'
+			})
+			.pipe(tap(function(file) {
+				var dataFile = util.replaceExtension(file.path, '.data.js'),
+					data = (function() {
+						try {
+							return requireNew(dataFile);
+						} catch (err) {
+							helpers.errors({
+								task: taskName,
+								message: 'Error reading "' + path.relative('./', dataFile) + '": ' + err,
+								stack: err.stack
+							});
 
-	gulp.src(taskConfig.src, {
-			base: './source'
-		})
-		.pipe(tap(function(file) {
-			var dataFile = util.replaceExtension(file.path, '.data.js'),
-				data = (function() {
-					try {
-						return requireNew(dataFile);
-					} catch (err) {
-						helpers.errors({
-							task: taskName,
-							message: 'Error reading "' + path.relative('./', dataFile) + '": ' + err,
-							stack: err.stack
-						});
-
-						return {};
-					}
+							return {};
+						}
 				})(),
 
 				widgetTemplate,
 				mergedData;
 
-			// Precompile module demo and variants
-			if (file.path.indexOf(path.sep + 'widgets' + path.sep) !== -1) {
-				widgetTemplate = file.contents.toString();
-				widgetPreviewTemplate = widgetPreviewTemplate || fs.readFileSync(taskConfig.srcWidgetPreview, 'utf8');
+			    // Precompile module demo and variants
+				if (file.path.indexOf(path.sep + 'widgets' + path.sep) !== -1) {
+                    widgetTemplate = file.contents.toString();
+                    widgetPreviewTemplate = widgetPreviewTemplate || fs.readFileSync(taskConfig.srcWidgetPreview, 'utf8');
 
-				data.demo = Handlebars.compile(widgetTemplate)(data);
+                    data.demo = helpers.handlebars.Handlebars.compile(widgetTemplate)(data);
 
-				// Compile variants
-				if (data.variants) {
-					data.variants = data.variants.map(function(variant) {
-						variant.demo = Handlebars.compile(widgetTemplate)(variant);
+                    // Compile variants
+                    if (data.variants) {
+                        data.variants = data.variants.map(function(variant) {
+                            variant.demo = helpers.handlebars.Handlebars.compile(widgetTemplate)(variant);
 
-						return variant;
-					});
+                            return variant;
+                        });
 
-					mergedData = _.extend({}, _.omit(data, ['project', 'env', 'meta', 'variants']), {
-							meta: {
-								title: 'Default',
-								desc: 'Default implemention.'
-							}
-						}
-					);
-					data.variants.unshift(mergedData);
+                        mergedData = _.extend({}, _.omit(data, ['project', 'env', 'meta', 'variants']), {
+                                meta: {
+                                    title: 'Default',
+                                    desc: 'Default implemention.'
+                                }
+                            }
+                        );
+                        data.variants.unshift(mergedData);
+                    }
+
+					// Replace file content with preview template
+					file.contents = new Buffer(widgetPreviewTemplate);
 				}
 
-				// Replace file content with preview template
-				file.contents = new Buffer(widgetPreviewTemplate);
-			}
+				// Save data by file name
+				file.data = data;
+			}))
+			.pipe(plumber())
+			.pipe(handlebars({
+				handlebars: helpers.handlebars.Handlebars,
+				partials: config.partials,
+				bustCache: true,
+				dataEach: function(context, file) {
+					return file.data;
+				},
+				parsePartialName: function(options, file) {
+					var filePath = file.path;
 
-			// Save data by file name
-			file.data = data;
-		}))
-		.pipe(plumber())
-		.pipe(handlebars({
-			partials: taskConfig.partials,
-			bustCache: true,
-			dataEach: function(context, file) {
-				return file.data;
-			}
-		}).on('error', helpers.errors))
+					// Relative to base
+					filePath = path.relative(config.partialPathBase, filePath);
 
-		// Relativify absolute paths
-		/*.pipe(tap(function(file) {
-			var content = file.contents.toString(),
-				relPathPrefix = path.join(path.relative(file.path, './source'));
+					// Remove extension
+					filePath = filePath.replace(path.extname(filePath), '');
 
-			relPathPrefix = relPathPrefix
-				.replace(new RegExp('\\' + path.sep, 'g'), '/') // Normalize path separator
-				.replace(/\.\.$/, ''); // Remove trailing ..
+					// Use forward slashes on every OS
+					filePath = filePath.replace(new RegExp('\\' + path.sep, 'g'), '/');
+					return filePath;
+				}
+			})
+			.on('error', helpers.errors))
+			.pipe(rename({
+				extname: '.html'
+			}))
+			.pipe(gulp.dest(config.dest))
+			.on('finish', function() {
+				livereload.reload();
+				cb();
+			});
+	};
 
-			content = content.replace(/('|")\//g, '$1' + relPathPrefix);
-
-			file.contents = new Buffer(content);
-		}))*/
-
-		// .pipe(prettify({
-		// 	indent_with_tabs: true,
-		// 	max_preserve_newlines: 1
-		// }))
-		.pipe(rename({
-			extname: '.html'
-		}))
-		.pipe(gulp.dest(taskConfig.dest))
-		.on('finish', function() {
-			livereload.reload();
-
-			cb();
-		});
+gulp.task(taskName, function(cb) {
+	return task(taskConfig, cb);
 });
 
 module.exports = {
 	taskName: taskName,
-	taskConfig: taskConfig
+	taskConfig: taskConfig,
+	task: task
 };
