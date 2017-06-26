@@ -199,16 +199,16 @@
 
 				var fields = [],
 					validators = $(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').map(function() {
-					var $el = $(this),
-						fieldName = $el.attr('name');
-					if (fields.indexOf(fieldName) >= 0) {
-						// field already validating
-						// NOTE we need this for field groups - e.g. there might be multiple radio fields with the same name
-						return;
-					}
-					fields.push(fieldName);
-					return easyFormValidation.validateElement($(this));
-				}).toArray();
+						var $el = $(this),
+							fieldName = $el.attr('name');
+						if (fields.indexOf(fieldName) >= 0) {
+							// field already validating
+							// NOTE we need this for field groups - e.g. there might be multiple radio fields with the same name
+							return;
+						}
+						fields.push(fieldName);
+						return easyFormValidation.validateElement($(this));
+					}).toArray();
 
 				$.when.apply($, validators).done(function() {
 					setTimeout(function() {
