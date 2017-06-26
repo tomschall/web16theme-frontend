@@ -449,24 +449,24 @@
 	};
 
 	Widget.prototype.initAllLocationsStatic = function() {
-		var locations = this.$element.find(this.options.domSelectors.markerData).map(function() {
-				var $markerElement = $(this);
-				return new google.maps.LatLng(parseFloat($markerElement.data('coordinates-y')), parseFloat($markerElement.data('coordinates-x')));
+		var locationPromises = this.$element.find(this.options.domSelectors.markerData).map(function(i, el) {
+				return this.getLocation($(el));
 			}.bind(this)).toArray(),
+			$image = this.$element.next('.only-phone').find(this.options.domSelectors.staticMap);
 
-			// NOTE: this is accessing the sibling element of this widget as the static maps are
-			// wrongly placed within the template
-			$image = this.$element.next('.only-phone').find(this.options.domSelectors.staticMap),
+		$.when.apply($, locationPromises).done(function(/* ...locations */) {
+			for (var i = 0; i < arguments.length; i++) {
+				var mapProps = _.assign(this.options.mapProps, {
+					styles: this.options.mapStyles,
+					center: arguments[i],
+					locations: [arguments[i]],
+					zoom: 16
+				});
 
-			mapProps = _.assign(this.options.mapProps, {
-				styles: this.options.mapStyles,
-				center: new google.maps.LatLng(47.5, 7.5),
-				locations: locations,
-				zoom: 10
-			});
-
-		// assign static image to image element
-		$image.attr('src', this.getStaticMapUrl(mapProps));
+				// assign static image to image element
+				$image.eq(i).attr('src', this.getStaticMapUrl(mapProps));
+			}
+		}.bind(this));
 	};
 
 	/**
