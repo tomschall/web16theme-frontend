@@ -91,6 +91,7 @@
 		searchTemplate = $(this.options.domSelectors.formWrapper).data('searchpage-template');
 		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 		jsonURL = this.$element.data('json-url');
+		// jsonURL = '/de/searchbar.json';
 		filterURL = this.$element.data('filter-url');
 
 		// debounce the search call invocation
@@ -309,7 +310,6 @@
 		} else if (!firstLoad) {
 			delete searchParam.offset;
 			delete searchParam.limit;
-			this.removeSearchResults();
 		}
 		window.estatico.search.setSearchParameters(searchParam);
 
@@ -319,9 +319,13 @@
 			searchParam.offset = 0;
 		}
 
-		// avoid submission of the same query twice
 		if (this.queryMatch()) {
+			// avoid submission of the same query twice
 			return false;
+		}
+
+		if (!loadMoreMode && !firstLoad) {
+			this.removeSearchResults();
 		}
 
 		if (this.checkParameters()) {
@@ -536,14 +540,18 @@
 				var fieldName = field.field.replace(/\[\]$/, ''),
 					$field = $('[data-searchparam="' + fieldName + '"]'),
 					$options = $field.find('option');
-
 				$options.map(function(index, option) {
+					if ($field.val() === $(option).val()) {
+						return;
+					}
+
 					if ($.inArray($(option).attr('value'), field.enable) === -1) {
 						$(option).attr('disabled', 'disabled');
 					} else {
 						$(option).removeAttr('disabled');
 					}
 				}.bind(this));
+				$field.find('optgroup').remove(); // remove all opt groups
 			}.bind(this));
 		}
 		$('.custom-select').select2('destroy');
