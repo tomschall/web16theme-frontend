@@ -91,7 +91,6 @@
 		searchTemplate = $(this.options.domSelectors.formWrapper).data('searchpage-template');
 		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 		jsonURL = this.$element.data('json-url');
-		// jsonURL = '/de/searchbar.json';
 		filterURL = this.$element.data('filter-url');
 
 		// debounce the search call invocation
