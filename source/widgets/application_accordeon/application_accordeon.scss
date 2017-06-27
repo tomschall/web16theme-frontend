@@ -1,8 +1,4 @@
 .widg_application_accordeon {
-	@include mq($to: medium) {
-		padding: 18px;
-	}
-
 	.button__apply {
 		@include mq($to: medium) {
 			display: none;
@@ -43,7 +39,7 @@
 		}
 
 		.button__apply___inside {
-			display: none;
+			/*display: none;*/
 
 			@include mq($to: medium) {
 				display: inline-block;
