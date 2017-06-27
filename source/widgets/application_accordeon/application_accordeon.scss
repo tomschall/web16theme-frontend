@@ -43,7 +43,7 @@
 		}
 
 		.button__apply___inside {
-			display: none;
+			/*display: none;*/
 
 			@include mq($to: medium) {
 				display: inline-block;

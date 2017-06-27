@@ -15,7 +15,7 @@
 					<span class="accessibility-hidden" id="date-{{uid}}">{{../langStrings.eventStart}}: </span>
 					<span aria-describedby="date-{{uid}}">{{eventStart}}</span>
 				</span>
-          	</button>
+      </button>
 			<button onclick="window.location.href='{{btnUrl}}'" class="button button__apply mini_button" {{#if applicationIsActive}}{{else}}disabled="disabled"{{/if}}>{{applyLabel}}</button>
 		</div>
         <div class="widg_accordeon__content" aria-hidden="true" data-application-accordeon="content">
@@ -33,9 +33,9 @@
 							{{/if}}
 						{{/each}}
           </dl>
-		  <a href="{{btnUrl}}" class="button button__apply button__apply___inside small_button">{{applyLabel}}</a>
+		  <button onclick="window.location.href='{{btnUrl}}'" class="button button__apply button__apply___inside small_button" {{#if applicationIsActive}}{{else}}disabled="disabled"{{/if}}>{{applyLabel}}</button>
 		  <p class="additional-information">{{additionalInformation}}</p>
         </div>
       </div>
-		{{/each}}
+      {{/each}}
 </div>
