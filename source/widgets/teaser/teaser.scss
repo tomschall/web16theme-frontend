@@ -294,6 +294,7 @@
 		& .widg_teaser__wrapper .teaser__more-button {
 			margin-left: auto !important;
 			margin-right: auto !important;
+
 		}
 	}
 	@include mq($to: small) {
@@ -311,18 +312,16 @@
 	}
 }
 
-/*.teaser__more-button {
-	position: absolute;
-	top: -92px;
-	right: 0;
-	margin-top: 25px;
-	margin-left: 0 !important;
-
-	@include mq($to: medium) {
-		position: static;
-		transform: none;
+.button__secondary {
+	@include mq($to: small) {
+		height: auto !important;
+		padding-top: 15px !important;
+		padding-bottom: 15px !important;
+		line-height: 30px !important;
+		margin: 15px 0 !important;
+		width: 100%;
 	}
-}*/
+}
 
 .widg_teaser__wrapper h2.teaser__title {
 
