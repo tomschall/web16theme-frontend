@@ -1,8 +1,7 @@
 .widg_in_content_search {
 	padding-bottom: 0;
 	margin-bottom: 0;
-	border-bottom: 1px solid $colorGreyHover;
-
+  
 	@include mq($to: 'subnav') {
 		margin-bottom: $basicPush * 2;
 	}
@@ -40,29 +39,4 @@
 button.in_content_search__button {
 	min-width: 0;
 	width: 100%;
-}
-
-.in_content_search__links {
-
-	padding-top: $basicPush;
-
-}
-
-a.in_content_search__link {
-	font-size: 1.25rem;
-	font-weight: 600;
-	margin-right: $basicPush * 3;
-
-	@include iconDataurl('pfeil-black_short');
-
-	&:before {
-		width: 17px;
-		height: 9px;
-
-		margin-right: 8px;
-	}
-
-	&:last-of-type {
-		margin-right: 0;
-	}
 }
