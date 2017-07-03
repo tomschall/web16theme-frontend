@@ -182,7 +182,7 @@
 
 		if ($searchpage.length > 0) {
 			var d = {},
-					re_dataAttr = /^data-lang\-(.+)$/;
+					re_dataAttr = /^data-lang-(.+)$/;
 
 			$.each($searchpage.get(0).attributes, function(index, attr) {
 				if (re_dataAttr.test(attr.nodeName)) {
@@ -314,6 +314,7 @@
 		});
 		outstandingRequests = [];
 	}
+
 	/**
 	 * Execs the search
 	 * @param query the single word search query
@@ -393,7 +394,7 @@
 				url: filterURL
 			});
 		} else {
-			console.error('no update filter query defined');
+			console.error('no update filter query defined'); // eslint-disable-line no-console
 		}
 	}
 

@@ -136,9 +136,7 @@
 	 * Adds the event listeners
 	 */
 	Widget.prototype.eventListeners = function() {
-		/**
-		 * When clicking on search query
-		 */
+		// When clicking on search query
 		$(this.options.domSelectors.btn).on('click.' + this.uuid, function() {
 			this.sendSearchQuery();
 		}.bind(this));

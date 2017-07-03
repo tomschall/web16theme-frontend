@@ -626,13 +626,11 @@
 
 		if (objIndex === 0) {
 			return this.options.metrics.objectPush;
-		} else {
-			var titlesHeight = this._getCombTitlesHeight(objIndex);
-
-			titlesHeight += this.options.metrics.objectPush;
-
-			return titlesHeight;
 		}
+
+		var titlesHeight = this._getCombTitlesHeight(objIndex);
+		titlesHeight += this.options.metrics.objectPush;
+		return titlesHeight;
 	};
 
 	Widget.prototype._calcIfFixed = function($object, modifierHeight) {

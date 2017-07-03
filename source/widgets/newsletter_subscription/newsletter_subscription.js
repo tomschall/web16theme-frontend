@@ -69,9 +69,6 @@
 					data: {
 						email: emailValue
 					}
-					/** success: function() {
-
-					}.bind(this) **/
 				});
 			}
 		}.bind(this));

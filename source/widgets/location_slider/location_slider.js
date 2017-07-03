@@ -1,3 +1,4 @@
+/* global google */
 /*!
  * Location Slider
  *

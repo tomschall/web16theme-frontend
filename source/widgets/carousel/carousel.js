@@ -144,6 +144,8 @@
 				case 39:
 					this.$element.find(this.options.domSelectors.slider).slick('slickNext');
 					break;
+				default:
+					break;
 			}
 		}.bind(this));
 

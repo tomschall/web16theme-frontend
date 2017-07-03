@@ -1,58 +1,51 @@
 'use strict';
 
 /**
- * @function `gulp js:lint`
- * @desc Lint JavaScript files (using `JSHint`).
+ * Ussage: `gulp js:lint`
  */
 
-var gulp = require('gulp');
+const gulp = require('gulp');
+const eslint = require('gulp-eslint');
+const cached = require('gulp-cached');
 
-var taskName = 'js:lint',
-	taskConfig = {
-		src: [
-
-			// './gulp/**/*.js',
-			// './helpers/**/*.js',
-			// './test/**/*.js',
-			// '!./test/**/expected/**/*.js',
-			'./source/assets/js/**/*.js',
-			'./source/widgets/**/*.js',
-			'./source/pages/**/*.js',
-			'./source/demo/widgets/**/*.js',
-			'./source/demo/pages/**/*.js'
-		]
-	};
-
-gulp.task(taskName, function() {
-	var helpers = require('require-dir')('../../helpers'),
-		tap = require('gulp-tap'),
-		path = require('path'),
-		cached = require('gulp-cached'),
-		jshint = require('gulp-jshint'),
-		jscs = require('gulp-jscs');
-
-	return gulp.src(taskConfig.src)
-		.pipe(cached('linting'))
-		.pipe(jshint())
-		// .pipe(jscs({
-		// 	configPath: '.jscsrc'
-        //
-		// 	// Automatically fix invalid code (files would have to be saved back to disk below)
-		// 	// fix: true
-		// }))
-		.pipe(jshint.reporter('jshint-stylish'))
-		// .pipe(jscs.reporter())
-		.pipe(tap(function(file) {
-			if (!file.jshint.success /*|| !file.jscs.success*/) {
-				helpers.errors({
-					task: taskName,
-					message: 'Linting error in file "' + path.relative('./source/', file.path) + '" (details above)'
-				});
+gulp.task('js:lint-data', function() {
+	return gulp.src([
+		'./source/assets/js/**/*.data.js',
+		'./source/widgets/**/*.data.js',
+		'./source/pages/**/*.data.js',
+		'./source/demo/widgets/**/*.data.js',
+		'./source/demo/pages/**/*.data.js'
+	])
+		.pipe(cached('linting-data'))
+		.pipe(eslint({
+			envs: [
+				'node'
+			],
+			rules: {
+				'max-len': 0
+				//camelcase: 0
 			}
-		}));
+		}))
+		.pipe(eslint.format())
+		.pipe(eslint.failAfterError());
+});
+
+gulp.task('js:lint', ['js:lint-data'], function() {
+
+	return gulp.src([
+		'./source/assets/js/**/*.js',
+		'./source/widgets/**/*.js',
+		'./source/pages/**/*.js',
+		'./source/demo/widgets/**/*.js',
+		'./source/demo/pages/**/*.js',
+		'!**/*.data.js'
+	])
+		.pipe(cached('linting'))
+		.pipe(eslint())
+		.pipe(eslint.format())
+		.pipe(eslint.failAfterError());
 });
 
 module.exports = {
-	taskName: taskName,
-	taskConfig: taskConfig
+	taskName: 'js:lint'
 };

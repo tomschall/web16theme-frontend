@@ -236,7 +236,7 @@
 		},
 
 		resetForm: function() {
-			/* Reset the form */
+			// Reset the form
 			rules.$formResetButton.click(function(e) {
 				e.preventDefault();
 				$(rules.$form)[0].reset();
@@ -246,7 +246,7 @@
 				$(rules.$form).find('.' + rules.hasvalue).removeClass(rules.hasvalue);
 				$(rules.$form).find(rules.$fieldErrorBox).empty();
 
-				/* Reset Select2 Dropdown */
+				// Reset Select2 Dropdown
 				$form.find('.select-widget').select2({
 					placeholder: 'Bitte wählen',
 					val: null
@@ -258,7 +258,7 @@
 		},
 
 		buildurl: function($el) {
-			/* Query Example http://localhost:8000/plone2/de/easyform/@@z3cform_validate_field?fname=form.widgets.allgemeine_geschaftsbedingungen&form.widgets.allgemeine_geschaftsbedingungen:list=--NOVALUE-- */
+			// Query Example http://localhost:8000/plone2/de/easyform/@@z3cform_validate_field?fname=form.widgets.allgemeine_geschaftsbedingungen&form.widgets.allgemeine_geschaftsbedingungen:list=--NOVALUE--
 			var url = window.location.href,
 				$z3cvalidator = '@@z3cform_validate_field?fname=',
 				$fieldNameOriginal = $el.attr('name'),
@@ -274,7 +274,6 @@
 
 			if (urlVar) {
 				url = urlVar;
-				/*console.info('use urlHash ' + urlVar);*/
 			}
 
 			var $requestURI = url + '/' + $z3cvalidator + $fieldnameSplitted + '&' + $fieldNameOriginal + '=' + encodeURIComponent(easyFormValidation.getFieldValue($el));
@@ -359,7 +358,6 @@
 			$form.find('span.select2-selection__rendered')
 				.on('mouseenter', function() {
 					var $el = $(this).closest(rules.findField).find('select');
-					/*console.info('[onOptionDropdown] MOUSEOVER -> ' + $el);*/
 					easyFormValidation.onCheckDropdownSelect($el);
 				});
 		},
@@ -401,7 +399,7 @@
 				$errorMsg = $errorMsg === undefined ? '' : $errorMsg;
 				$el.closest(rules.findField).find(rules.$fieldErrorBox).text($errorMsg);
 
-				/* Error Messages on case */
+				// Error Messages on case
 				switch ($currentFieldType) {
 					case 'SELECT':
 						$el.toggleClass('error', !isValid);
@@ -424,7 +422,7 @@
 
 			if ($el.hasClass('pat-pickadate-ref--date')) {
 				var $inputs = $el.parent().find('.pat-pickadate-ref--date'),
-					isRequired = $inputs.eq(0).hasClass(rules.required), // TODO: this does not work - required class wont be set!
+					isRequired = $inputs.eq(0).hasClass(rules.required),
 					date = $inputs.eq(0).val().trim(),
 					isValid = true;
 
@@ -507,7 +505,7 @@
 		},
 
 		getFieldValue: function($el) {
-			$el = ($el);
+			$el = $($el);
 			var	value = $el.val();
 
 			if ($el.is('[type=radio]') && $form.find('[name=' + $el.attr('name').replace(/\./gm, '\\.') + ']:checked').size() === 0) {
@@ -569,9 +567,9 @@
 		},
 
 		addSelect2SelectionID: function() {
-			/* Adding helper selector ids for better selection in option lists */
+			// Adding helper selector ids for better selection in option lists
 			$('.select2-selection.select2-selection--multiple').each(function(idx) {
-				$(this).attr('id', 'select2-selection-'+ idx);
+				$(this).attr('id', 'select2-selection-' + idx);
 			});
 		},
 
