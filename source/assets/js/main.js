@@ -36,6 +36,7 @@
  * @requires helpers/modal.js
  * @requires helpers/env.js
  * @requires helpers/cookiepolicy.js
+ * @requires helpers/eastereggs.js
  *
  * @requires ../../widgets/searchbar/searchbar.js
  * @requires ../../widgets/menubuttons/menubuttons.js
