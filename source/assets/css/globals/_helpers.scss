@@ -53,3 +53,13 @@ body.prevent-scroll {
 		display: block;
 	}
 }
+
+/* Logged in */
+#logged-in {
+  position: fixed;
+  top: 0;
+  height: 5px;
+	width: 100%;
+  background: red;
+  z-index: 10000;
+}
