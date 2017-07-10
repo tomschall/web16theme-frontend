@@ -1,25 +1,26 @@
+/* global T, describe, expect, it, xit, beforeEach, afterEach */
 'use strict';
 
-var QUnit = require('qunitjs'),
-	$ = require('jquery'),
-	moduleName = 'slideshow',
-	$node = $('.mod_' + moduleName).eq(0),
-	instance;
+describe('Accordeon', function() {
+	var $node;
 
-// Setup QUnit module
-QUnit.module('slideshow', {
-	beforeEach: function() {
-		instance = $node.data(moduleName + 'Instance');
-	},
+	beforeEach(function() {
+		// instantiate accordeon module
+		$node = T.withModule('accordeon');
+	});
 
-	afterEach: function() {
-		instance.destroy();
-		estatico.helpers.initModule(moduleName, $node);
-	}
-});
+	afterEach(function() {
+		// clean up - destroy all modules
+		T.tearDown();
+	});
 
-QUnit.test('Test correct plugin registration', function(assert) {
-	assert.expect(1);
+	it('should have 4 entries', function() {
+		expect($node.find('.widg_accordeon__entry').size()).toBe(4);
+	});
 
-	assert.equal(typeof instance, 'object', 'Plugin instance is an object');
+	it('should open first node on click', function() {
+		var $nodes = $node.find('.widg_accordeon__entry');
+		$nodes.eq(0).find('button').click();
+		expect($nodes.eq(0)).toContain('.is_open');
+	});
 });

@@ -15,6 +15,11 @@
 		return;
 	}
 
+	// avoid initialization if running in test mode
+	if (window.__PREVENT_INITIALIZATION__) {
+		return;
+	}
+
 	$document.on(keys.join(' '), function(event) {
 		var initPlugins = initEvents[event.type];
 

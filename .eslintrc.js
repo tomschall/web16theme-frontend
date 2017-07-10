@@ -34,6 +34,7 @@ module.exports = exports = {
 		"no-div-regex": WARN,
 		"no-else-return": WARN,
 		"no-labels": WARN,
+		"no-console": WARN,
 		"no-empty-pattern": WARN,
 		"no-eq-null": WARN,
 		"no-eval": ERROR,

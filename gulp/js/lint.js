@@ -8,14 +8,20 @@ const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const cached = require('gulp-cached');
 
+var taskName = 'js:test',
+	taskConfig = {
+		watch: [
+			'./source/assets/js/**/*.data.js',
+			'./source/widgets/**/*.data.js',
+			'./source/pages/**/*.data.js',
+			'./source/demo/widgets/**/*.data.js',
+			'./source/demo/pages/**/*.data.js'
+		]
+	};
+
+
 gulp.task('js:lint-data', function() {
-	return gulp.src([
-		'./source/assets/js/**/*.data.js',
-		'./source/widgets/**/*.data.js',
-		'./source/pages/**/*.data.js',
-		'./source/demo/widgets/**/*.data.js',
-		'./source/demo/pages/**/*.data.js'
-	])
+	return gulp.src(taskConfig.watch)
 		.pipe(cached('linting-data'))
 		.pipe(eslint({
 			envs: [
@@ -47,5 +53,6 @@ gulp.task('js:lint', ['js:lint-data'], function() {
 });
 
 module.exports = {
-	taskName: 'js:lint'
+	taskName: 'js:lint',
+	taskConfig: taskConfig
 };

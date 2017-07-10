@@ -17,7 +17,7 @@ gulp.task(taskName, function(cb) {
 		_ = require('lodash'),
 		inquirer = require('inquirer');
 
-	var callback = function(skipTests, cb) {
+	var callback = function(cb) {
         // Currently, the modernizr task cannot run in parallel with other tasks. This should get fixed as soon as Modernizr 3 is published and the plugin is officially released.
         var runTasks = [
             'clean',
@@ -39,7 +39,8 @@ gulp.task(taskName, function(cb) {
                 'media:copy',
                 'media:imageversions'
             ],
-            'js:qunit',
+            'js:test',
+			'js:tdd',
             'deploy',
             function(err) {
                 if (err) {
@@ -50,27 +51,16 @@ gulp.task(taskName, function(cb) {
             }
         ];
 
-        if (skipTests) {
-            runTasks = _.without(runTasks, 'js:qunit');
-        }
+        if (util.env.interactive !== 'false') {
+            runTasks = _.without(runTasks, 'js:test');
+        } else {
+			runTasks = _.without(runTasks, 'js:tdd');
+		}
 
         runSequence.apply(this, runTasks);
     };
 
-	if (util.env.interactive !== 'false') {
-		inquirer.prompt([
-			{
-            type: 'confirm',
-            name: 'runTests',
-            message: 'Do you want to run all QUnit tests in the end?',
-            default: true
-			}
-		]).then(function(answers) {
-			callback(!answers.runTests, cb);
-		});
-	} else {
-		callback(util.env.skipTests && util.env.skipTests !== 'false', cb);
-	}
+	callback(cb);
 });
 
 module.exports = {
