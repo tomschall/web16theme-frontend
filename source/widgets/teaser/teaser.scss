@@ -148,6 +148,10 @@
 	&:hover + .widg_teaser__arrow {
 		min-width: 20px;
 	}
+
+	&:focus {
+		outline: 0;
+	}
 }
 
 .widg_teaser__arrow {

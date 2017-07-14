@@ -13,7 +13,7 @@ a:not(.not-default) {
 	font-weight: 600;
 
 	&:focus {
-		outline: 0;
+		/* outline: 0; */ /* not WCAG 2.4.7 */
 	}
 
 	&:hover {

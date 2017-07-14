@@ -155,6 +155,10 @@ The back arrow only visible on mobile navigation
 			left: $basicPush * 2;
 		}
 	}
+
+	&:focus {
+		outline: 0;
+	}
 }
 
 /**

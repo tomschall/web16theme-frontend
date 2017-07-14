@@ -189,6 +189,10 @@
 		}
 	}
 
+	&:focus {
+		outline: 0;
+	}
+
 	&:before {
 		transform: translate(-50%, -50%);
 

@@ -272,6 +272,10 @@
         }
     }
 
+	&:focus {
+		outline: 0;
+	}
+
 	&:before {
 		@include centerDataurlIcon();
 
@@ -289,6 +293,10 @@
 		&:hover:before {
 			animation: arrowAnimationWithCenterIconFlipped $animationDuration 1;
 			animation-direction: reverse;
+		}
+
+		&:focus {
+			outline: 0;
 		}
 
 		&:before {
