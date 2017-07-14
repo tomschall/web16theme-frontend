@@ -28,7 +28,7 @@ body {
 }
 
 h2,
-h3 {
+h3:not(.childless) {
 	font-size: 14pt;
 	border-bottom: 1pt solid black;
 }
@@ -39,6 +39,7 @@ h2.startpage__title:after {
 	background: none;
 }
 
+[data-sidebar] > h2,
 h4,
 h5,
 h6 {
@@ -112,7 +113,7 @@ a.button {
 	border: none;
 }
 
-.object__title > h4 {
+.object__title > h2 {
 	line-height: 2em;
 }
 /* Widgets */

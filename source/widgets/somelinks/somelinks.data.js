@@ -7,9 +7,13 @@ var _ = require('lodash'),
 
 var templateData = {
 			xingURL: 'http://www.xing.com',
+			xingTitle: 'FHNW on Xing',
 			twitterURL: 'http://www.twitter.com',
+			twitterTitle: 'FHNW on Twitter',
 			fbURL: 'http://www.facebook.com',
-			linkedinURL: 'https://www.linkedin.com/organization/50566'
+			fbTitle: 'FHNW on Facebook',
+			linkedinURL: 'https://www.linkedin.com/organization/50566',
+			linkedinTitle: 'FHNW on LinkedIn'
 		},
 		data = _.merge(defaultData, {
 			meta: {

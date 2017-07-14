@@ -76,7 +76,7 @@
 		padding-bottom: 0;
 	}
 
-	h2 {
+	h2:not(.childless) {
 		color: $colorBg;
 		line-height: 24px;
 
