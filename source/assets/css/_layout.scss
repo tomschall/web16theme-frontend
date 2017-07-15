@@ -21,7 +21,7 @@ footer {
 	}
 }
 
-h2,
+:not([data-sidebar]) > h2,
 h3:not(.childless) {
 	color: $colorText;
 }
