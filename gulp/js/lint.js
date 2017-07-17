@@ -7,6 +7,7 @@
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const cached = require('gulp-cached');
+const util = require('gulp-util');
 
 var taskName = 'js:test',
 	taskConfig = {
@@ -19,7 +20,6 @@ var taskName = 'js:test',
 		]
 	};
 
-
 gulp.task('js:lint-data', function() {
 	return gulp.src(taskConfig.watch)
 		.pipe(cached('linting-data'))
@@ -29,7 +29,6 @@ gulp.task('js:lint-data', function() {
 			],
 			rules: {
 				'max-len': 0
-				//camelcase: 0
 			}
 		}))
 		.pipe(eslint.format())
@@ -37,6 +36,16 @@ gulp.task('js:lint-data', function() {
 });
 
 gulp.task('js:lint', ['js:lint-data'], function() {
+	var conf = {};
+
+	if (util.env.local) {
+		conf = {
+			rules: {
+				'no-debugger': 1,
+				"semi": [1, 'always']
+			}
+		}
+	}
 
 	return gulp.src([
 		'./source/assets/js/**/*.js',
@@ -47,12 +56,12 @@ gulp.task('js:lint', ['js:lint-data'], function() {
 		'!**/*.data.js'
 	])
 		.pipe(cached('linting'))
-		.pipe(eslint())
+		.pipe(eslint(conf))
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());
 });
 
 module.exports = {
-	taskName: 'js:lint',
+	taskName: taskName,
 	taskConfig: taskConfig
 };

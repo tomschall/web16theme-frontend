@@ -9,8 +9,7 @@
 	'use strict';
 
 	var rules,
-		$form = $('form'),
-		formId = $form.attr('id');
+		$form = $('form');
 
 	/**
 	 * Returns page language or defaults to `de`
@@ -47,9 +46,8 @@
 		return /^\s*(\d{1,2}):(\d{1,2})\s*$/g.test(val);
 	}
 
-	var easyFormValidation = {
-		rules: {
-			$form: '#' + formId,
+	function getRules() {
+		return {
 			$formSelect: $('select', $form),
 			$formCheckbox: $('input:checkbox', $form),
 			$formRadio: $('input:radio', $form),
@@ -70,9 +68,18 @@
 			optionListSelector: 'ul.select2-selection__rendered',
 			$optionSelectionchoice: 'li.select2-selection__choice',
 			$onOptionDropdownSelector: 'span.select2-selection__rendered'
-		},
+		};
+	}
 
-		init: function() {
+	var easyFormValidation = {
+		rules: getRules(),
+
+		init: function($form_) {
+			if ($form_ !== undefined) {
+				$form = $form_;
+				this.rules = getRules();
+			}
+
 			rules = this.rules;
 			easyFormValidation.setup();
 			easyFormValidation.getFormState();
@@ -82,7 +89,8 @@
 			easyFormValidation.onOptionDropdown();
 			easyFormValidation.onOptionMultiSelect();
 			easyFormValidation.resetForm();
-			easyFormValidation.formSubmitState();
+
+			$form.on('submit', easyFormValidation.onSubmit.bind(easyFormValidation));
 		},
 
 		setup: function() {
@@ -184,44 +192,41 @@
 			});
 		},
 
-		formSubmitState: function() {
-			$form.on('submit', function(e) {
+		onSubmit: function(e) {
+			// internal flag - is set to true on second automated submit if
+			// validation was successful
+			if (this._formValid) {
+				this._formValid = false; // clear the flag
+				return; // do nothing, already validated
+			}
 
-				// internal flag - is set to true on second automated submit if
-				// validation was successful
-				if (this._formValid) {
-					this._formValid = false; // clear the flag
-					return; // do nothing, already validated
-				}
+			// prevent form submission
+			e.preventDefault();
 
-				// prevent form submission
-				e.preventDefault();
+			var fields = [],
+				validators = $form.find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').map(function() {
+					var $el = $(this),
+						fieldName = $el.attr('name');
+					if (fields.indexOf(fieldName) >= 0) {
+						// field already validating
+						// NOTE we need this for field groups - e.g. there might be multiple radio fields with the same name
+						return;
+					}
+					fields.push(fieldName);
+					return easyFormValidation.validateElement($(this));
+				}).toArray();
 
-				var fields = [],
-					validators = $(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').map(function() {
-						var $el = $(this),
-							fieldName = $el.attr('name');
-						if (fields.indexOf(fieldName) >= 0) {
-							// field already validating
-							// NOTE we need this for field groups - e.g. there might be multiple radio fields with the same name
-							return;
-						}
-						fields.push(fieldName);
-						return easyFormValidation.validateElement($(this));
-					}).toArray();
-
-				$.when.apply($, validators).done(function() {
-					setTimeout(function() {
-						// set valid flag and resubmit form
-						this._formValid = true;
-						rules.$formSubmitButton.click();
-					}.bind(this));
-				}.bind(this)).fail(function() {
-					$(this).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
-						$(this).val(rules.formSubmitButtonText).fadeTo(500, 1);
-					});
+			return $.when.apply($, validators).done(function() {
+				setTimeout(function() {
+					// set valid flag and resubmit form
+					this._formValid = true;
+					rules.$formSubmitButton.click();
 				}.bind(this));
-			});
+			}.bind(this)).fail(function() {
+				$(e.target).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
+					$(e.target).val(rules.formSubmitButtonText).fadeTo(500, 1);
+				});
+			}.bind(this));
 		},
 
 		getFormState: function() {

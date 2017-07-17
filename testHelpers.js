@@ -1,8 +1,15 @@
 (function() {
 	window.__PREVENT_INITIALIZATION__ = true;
 
+	/**
+	 * Initializes specific estatico module (widget)
+	 *
+	 * NOTE: does not handle ajaxload event!
+	 *
+	 * @param {jQuery|HTMLElement} $node Node containing the widget.
+	 */
 	function initModule($node) {
-		// NOTE: does not handle ajaxload event!
+
 
 		var initEvents = estatico.helpers.initEvents || {},
 			initPlugins = initEvents.ready,
@@ -16,6 +23,14 @@
 		}
 	}
 
+	/**
+	 * Takes given module (widget), injects it into DOM and optionally performs
+	 * initialization.
+	 *
+	 * @param {string} moduleName Name of the module to initialize. E.g. `accordion`
+	 * @param {=bool} preventInit If true prevents widget initialization.
+	 * @returns {jQuery|HTMLElement} DOM node containing the widget
+	 */
 	function withModule(moduleName, preventInit) {
 		var htmlName = [moduleName, '/', moduleName, '.html'].join(''),
 			$node = $(window.__html__[htmlName]);
@@ -26,6 +41,10 @@
 		return $node;
 	}
 
+	/**
+	 * Cleans up all estatico instances.
+	 *
+	 */
 	function tearDown() {
 		for (var moduleName in estatico.widgets) {
 			if (!estatico.widgets.hasOwnProperty(moduleName)) {
