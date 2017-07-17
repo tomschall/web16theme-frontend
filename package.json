@@ -20,7 +20,6 @@
     "jquery-validation": "1.15.0",
     "karma": "^1.7.0",
     "karma-html2js-preprocessor": "^1.1.0",
-    "karma-phantomjs-launcher": "^1.0.4",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "material-spinner": "0.0.9",
     "mocha": "^3.4.2",
@@ -37,9 +36,10 @@
     "node": ">= 0.10"
   },
   "scripts": {
-    "--test": "mocha --ui exports",
-    "-test": "mocha ./source/**/*.test.js",
-    "test": "karma start"
+    "dev": "gulp --dev",
+    "build": "gulp build --dev --interactive=false",
+    "test": "gulp js:test",
+    "tdd": "gulp js:tdd"
   },
   "devDependencies": {
     "callsite": "^1.0.0",
