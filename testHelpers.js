@@ -16,11 +16,13 @@
 		}
 	}
 
-	function withModule(moduleName) {
+	function withModule(moduleName, preventInit) {
 		var htmlName = [moduleName, '/', moduleName, '.html'].join(''),
 			$node = $(window.__html__[htmlName]);
 		$('body').append($node);
-		initModule($node);
+		if (!preventInit) {
+			initModule($node);
+		}
 		return $node;
 	}
 

@@ -40,7 +40,7 @@ gulp.task(taskName, function(cb) {
                 'media:imageversions'
             ],
             'js:test',
-			'js:tdd',
+			//'js:tdd',
             'deploy',
             function(err) {
                 if (err) {
@@ -51,10 +51,10 @@ gulp.task(taskName, function(cb) {
             }
         ];
 
-        if (util.env.interactive !== 'false') {
-            runTasks = _.without(runTasks, 'js:test');
+        if ((util.env.interactive === 'false' && util.env.dev) || !util.env.dev) {
+			// runTasks = _.without(runTasks, 'js:tdd');
         } else {
-			runTasks = _.without(runTasks, 'js:tdd');
+			runTasks = _.without(runTasks, 'js:test');
 		}
 
         runSequence.apply(this, runTasks);

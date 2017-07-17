@@ -29,7 +29,7 @@ var taskName = 'js:test',
 	};
 
 
-gulp.task('js:test-templates', function() {
+gulp.task('js:test-templates', function(done) {
 	var helpers = require('require-dir')('../../helpers'),
 		requireNew = require('require-new'),
 		_ = require('lodash'),
@@ -76,14 +76,13 @@ gulp.task('js:test-templates', function() {
 				filePath = filePath.replace(new RegExp('\\' + path.sep, 'g'), '/');
 				return filePath;
 			}
-		})
-		.on('error', helpers.errors))
+		}).on('error', helpers.errors))
 		.pipe(rename({
 			extname: '.html'
 		}))
-
 		.pipe(gulp.dest('.test'))
-		.on('error', helpers.errors);
+		.on('error', helpers.errors)
+		.on('finish', done);
 });
 
 gulp.task('js:test', ['js:test-templates'], function (done) {
@@ -102,10 +101,17 @@ gulp.task('js:watch-test-templates', ['js:test-templates'], function () {
 });
 
 gulp.task('js:tdd', ['js:watch-test-templates'], function (done) {
-	new Server({
+	var conf = {
 		configFile: path.join(__dirname, '..', '..', 'karma.conf.js'),
 		singleRun: false
-	}, function() {
+	};
+
+	// --chrome switch
+	if (util.env.chrome) {
+		conf.browsers = ['Chrome']
+	}
+
+	new Server(conf, function() {
 		del('./.test', done);
 		done();
 	}).start();

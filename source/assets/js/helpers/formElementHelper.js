@@ -703,7 +703,9 @@
 
 	window.estatico.easyFormValidation = easyFormValidation;
 
-	$(document).ready(function() {
-		easyFormValidation.init();
-	});
+	if (!window.__PREVENT_INITIALIZATION__) {
+		$(document).ready(function() {
+			easyFormValidation.init();
+		});
+	}
 })(jQuery);
