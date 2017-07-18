@@ -27,7 +27,7 @@
 .widg_footer__efqm {
 
 	position: absolute;
-	right: $basicPush * 10;
+	right: $basicPush * 5; // 50px due to efqm logo
 	bottom: $basicPush * 3.6;
 	top: auto;
 
@@ -57,13 +57,23 @@
 
 	a {
 		display: block;
-
-		@include iconDataurl('efqm_logo_neg');
-
 		@include mq($to: subnav) {
 			&:before {
-        display: block;
+        		display: block;
 			}
+		}
+
+		&.fhnw {
+			@include iconDataurl('efqm_logo_neg');
+		}
+
+		&.efqm {
+			width: 125px;
+			height: 97px;
+			margin-bottom: 20px;
+			background-image: url('/assets/media/img/R4E_2017.png');
+			background-size: 125px 97px;
+			background-repeat: no-repeat;
 		}
 	}
 }
