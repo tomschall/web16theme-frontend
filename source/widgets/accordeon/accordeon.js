@@ -4,7 +4,7 @@
  * @author Unic AG
  * @copyright Unic AG
  *
- * //@requires ../../../node_modules/some/dependency.js
+ * //@requires ../../../node_modules/qunitjs/qunit/qunit.js
  */
 
 ;(function($, undefined) {

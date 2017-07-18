@@ -79,7 +79,7 @@ var data = _.merge(defaultData, {
 							src: '/assets/media/img/apevent1.png',
 							alt: 'Event für Angewandte Psychologie 1'
 						}
-					},{
+					}, {
 						title: 'Info-Veranstaltung Bachelor Angewandte Psychologie',
 						date: '04.05.2016',
 						url: '#',

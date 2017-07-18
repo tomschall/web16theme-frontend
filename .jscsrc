@@ -125,7 +125,7 @@
 		"with",
 		"typeof"
 	], // Requires space after keyword.
-	"requireSpaceAfterLineComment": true, // Requires that a line comment (//) be followed by a space.
+	"requireSpaceAfterLineComment": false, // Requires that a line comment (//) be followed by a space.
 	"requireSpaceAfterObjectKeys": null, // Requires space after object keys.
 	"requireSpaceAfterPrefixUnaryOperators": null, // Disallows sticking unary operators to the right.
 	"requireSpaceBeforeBinaryOperators": null, //Disallows sticking binary operators to the left.
@@ -161,7 +161,12 @@
 	"safeContextKeyword": null, // Option to check var that = this expressions
 
 	"validateAlignedFunctionParameters": null, // Validates proper alignment of function parameters.
-	"validateIndentation": "\t", // Validates indentation for switch statements and block statements
+	"validateIndentation": {
+	  	"value": "\t",
+		"allExcept": ["comments", "emptyLines"]
+	},
+
+
 	"validateLineBreaks": false, // Option to check line break characters (NOTE: disabled until we have figured out a sane way of enforcing "LF" on windows)
 	"validateNewlineAfterArrayElements": null, // Requires each element in array on a single line when array length is more than passed maximum number or array fills more than one line. Set ignoreBrackets to true to allow elements on the same line with brackets.
 	"validateParameterSeparator": ", ", // Enable validation of separators between function parameters. Will ignore newlines.

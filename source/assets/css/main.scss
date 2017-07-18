@@ -2,7 +2,7 @@
 
 @import "../../../node_modules/bourbon/app/assets/stylesheets/bourbon";
 @import "../../../node_modules/susy/sass/susy";
-@import "../../../node_modules/slick-carousel/slick/slick";
+@import "../../../node_modules/slick-carousel/slick/slick.scss";
 @import "../../../node_modules/select2/src/scss/core";
 @import "../../../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar";
 
@@ -26,7 +26,8 @@
 // Icons (as font or dataurl), PNG sprites
 @import "../.tmp/iconfont";
 @import "../.tmp/dataurls";
-@import "../.tmp/pngsprite";
+
+// @import "../.tmp/pngsprite"; // no png sprites in use
 
 // General styles
 @import "mediaqueries_sync";

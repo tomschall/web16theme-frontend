@@ -7,9 +7,7 @@
 	'use strict';
 
 	$(document).ready(function() {
-		/**
-		 * The Jquery Spinner, has to be implemented when element is added later than document.ready
-		 */
+		// The Jquery Spinner, has to be implemented when element is added later than document.ready
 		$('.fhnw-spinner').spinner({
 			radius: 30,
 			strokeWidth: 6,

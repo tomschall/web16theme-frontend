@@ -69,13 +69,10 @@
 	};
 
 	Widget.prototype.addEventListener = function() {
-		this.$element.on('click' + '.' + this.uuid, function() {
-
+		this.$element.on('click.' + this.uuid, function() {
 			if (this.$element.hasClass('is_shrinked') && window.estatico.mq.query({from: 'medium'})) {
-
 				this.$element.addClass('is_expanded');
 				this.$element.removeClass('is_shrinked');
-
 				this.addDynamicScrollMagic();
 			}
 		}.bind(this));

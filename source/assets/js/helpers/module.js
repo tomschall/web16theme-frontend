@@ -143,9 +143,8 @@
 				// Return either value or jQuery collection
 				if (value) {
 					return value;
-				} else {
-					return this;
 				}
+				return this;
 			}
 		};
 

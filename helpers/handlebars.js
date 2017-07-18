@@ -1,39 +1,38 @@
 'use strict';
 
 // Handlebars
-var handlebars = require('handlebars'),
-	layouts = require('handlebars-layouts'),
+var Handlebars = require('handlebars'),
+	handlebarsLayouts = require('handlebars-layouts'),
+	assembleHelpers = require('handlebars-helpers'),
 	errors = require('./errors'),
-	_ = require('lodash');
+	_ = require('lodash'),
+	helpers = {};
 
 // Make handlebars layout helpers available
-handlebars.registerHelper(layouts(handlebars));
+_.merge(helpers, handlebarsLayouts(Handlebars));
 
 // Make specific assemble helpers available
 // See http://assemble.io/helpers/ for a documentation
-//
 // Example: Use the comparisons provided by the handlebars-helpers package
-require('../node_modules/handlebars-helpers/lib/helpers/helpers-comparisons.js').register(handlebars);
+helpers.comparison = assembleHelpers.comparison();
 
-// WARNING: For some helpers, grunt has to be installed (npm install grunt --save && npm shrinkwrap)
-// This might be fixed at some point: https://github.com/assemble/handlebars-helpers/pull/157
 
 // Custom Handlebars helpers
 
 // Capitalize string
-handlebars.registerHelper('capitalize', function(value) {
-	return new handlebars.SafeString(
+helpers.capitalize = function(value) {
+	return new Handlebars.SafeString(
 		value.charAt(0).toUpperCase() + value.substr(1)
 	);
-});
+};
 
 // Output raw block (use: {{{{raw}}}} blabla {{title}} bla{{{{/raw}}}})
-handlebars.registerHelper('raw', function(options) {
+helpers.raw = function(options) {
 	return options.fn();
-});
+};
 
 // Repeat something X times
-handlebars.registerHelper('times', function(n, block) {
+helpers.times = function(n, block) {
 	var output = '';
 
 	for (var i = 0; i < n; i++) {
@@ -41,21 +40,14 @@ handlebars.registerHelper('times', function(n, block) {
 	}
 
 	return output;
-});
-
-// indent each new line of {{value}} with {{indentation}} number of spaces
-handlebars.registerHelper('indent', function(value, indentation) {
-	return new handlebars.SafeString(
-		value.replace(/(\r\n|\n|\r)/gm, '\r\n' + new Array(indentation + 1).join(' '))
-	);
-});
+};
 
 // Include partial with dynamic name
 // Based on http://stackoverflow.com/a/21411521
 // @param {String} name - Partial path, can contain placeholder as "{{key}}"
 // @param {Object} partialData - Data to pass to the partial
-// @param {Object} options.partialContext - Context to use for the placeholder replacement
-handlebars.registerHelper('dynamicPartial', function(name, partialData, options) {
+// @param {Object} options.replacementContext - Context to use for the placeholder replacement
+helpers.dynamicPartial = function(name, partialData, options) {
 	if (name === undefined) {
 		errors({
 			task: 'helpers/handlebars.js',
@@ -79,7 +71,7 @@ handlebars.registerHelper('dynamicPartial', function(name, partialData, options)
 		}
 	});
 
-	template = handlebars.partials[name];
+	template = Handlebars.partials[name];
 
 	if (template === undefined) {
 		errors({
@@ -91,33 +83,59 @@ handlebars.registerHelper('dynamicPartial', function(name, partialData, options)
 	}
 
 	if (typeof template !== 'function') {
-		template = handlebars.compile(template);
+		template = Handlebars.compile(template);
 	}
 
 	output = template(partialData).replace(/^\s+/, '');
 
-	return new handlebars.SafeString(output);
-});
+	return new Handlebars.SafeString(output);
+};
 
-handlebars.registerHelper('if_eq', function(a, b, opts) {
+// Module preview
+helpers.hasVariants = function(variants, options) {
+	if (Object.keys(variants).length > 1) {
+		return options.fn(this);
+	} else {
+		return options.inverse(this);
+	}
+};
+
+// indent each new line of {{value}} with {{indentation}} number of spaces
+helpers.indent = function(value, indentation) {
+	return new handlebars.SafeString(
+		value.replace(/(\r\n|\n|\r)/gm, '\r\n' + new Array(indentation + 1).join(' '))
+	);
+};
+
+helpers.if_eq = function(a, b, opts) {
 	if (a === b) {
 		return opts.fn(this);
 	}
 	else {
 		return opts.inverse(this);
 	}
-});
+};
 
-handlebars.registerHelper('dotdotdot_teaser', function(str) {
+helpers.dotdotdot_teaser = function(str) {
 	if (str.length > 160) {
 		return str.substring(0, 160) + '...';
 	}
 
 	return str;
-});
+};
 
-handlebars.registerHelper('get_id', function (str) {
+helpers.get_id = function (str) {
 	str = str.replace(' ', '_');
 
 	return str.replace(/\W/g, '');
-});
+};
+
+
+
+// Register helpers
+Handlebars.registerHelper(helpers);
+
+module.exports = {
+	Handlebars: Handlebars,
+	helpers: helpers
+};

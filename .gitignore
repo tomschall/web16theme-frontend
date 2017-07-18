@@ -19,3 +19,4 @@ atlassian-ide-plugin.xml
 /include
 /lib*
 pip-selfcheck.json
+/.test

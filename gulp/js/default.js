@@ -67,7 +67,9 @@ var taskName = 'js',
 							.pipe(gulp.dest, config.dest)
 							.pipe(excludeSourcemaps)
 							.pipe(uglify, {
-								preserveComments: 'some'
+								output: {
+									comments: 'some'
+								}
 							})
 							.pipe(rename, {
 								suffix: '.min'
