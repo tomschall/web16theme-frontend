@@ -87,6 +87,10 @@ h3:not(.childless) {
   	@include mq($to: small) {
 	  	margin-top: $basicPush * 2;
 	}
+
+	&:focus {
+		outline: 0;
+	}
 }
 
 .page_content {

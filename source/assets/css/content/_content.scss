@@ -5,6 +5,16 @@ body {
 	hyphens: manual;
 }
 
+[href="#maincontent"] {
+	position: absolute;
+	left: -100000px;
+
+	&:focus {
+		left: initial;
+		top: 1px;
+	}
+}
+
 .content__element {
 	/*padding-bottom: $basicPush * 3;*/
 	padding-bottom: 0;

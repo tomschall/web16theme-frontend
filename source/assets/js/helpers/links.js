@@ -24,6 +24,7 @@
 				$('html, body').animate({
 					scrollTop: $($.attr(this, 'href')).offset().top - 45
 				}, 250);
+				$($.attr(this, 'href')).attr('tabindex', 0).focus().attr('tabindex', -1);
 			}
 		});
 	});
