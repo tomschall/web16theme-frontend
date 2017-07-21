@@ -1,5 +1,16 @@
-<div class="widg_langswitcher" data-init="langswitcher">
-	{{#each languages}}
-		<a class="widg_langswitcher__lang not-default {{active}}" href="{{url}}">{{lang}}</a>
-	{{/each}}
-</div>
+<nav id="nav_language_selection" class="widg_langswitcher" data-init="langswitcher" aria-label="Language selection">
+	<ul class="list_language_selection" aria-labelledby="nav_language_selection">
+		{{#each languages}}
+			<li class="widg_langswitcher__lang {{active}}">
+				{{#if active}}
+					<span lang="{{lang}}">
+						<abbr title="{{langFull}}">{{lang}}</abbr>
+						<span class="visuallyhidden">{{isTheCurrently}}</span>
+					</span>
+				{{else}}
+					<a class="not-default" href="{{url}}" lang="{{lang}}"><abbr title="{{langFull}}">{{lang}}</abbr></a>
+				{{/if}}
+			</li>
+		{{/each}}
+	</ul>
+</nav>

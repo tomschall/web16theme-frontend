@@ -9,11 +9,15 @@ var templateData = {
 			languages: [
 				{
 					lang: 'de',
+					langFull: 'Deutsch',
+					isTheCurrently: 'Deutsch ist die aktuelle aktive Sprache',
 					url: '#',
 					active: 'is_active'
 				},
 				{
 					lang: 'en',
+					langFull: 'English',
+					isTheCurrently: 'English is the currently active language',
 					url: '#',
 					active: ''
 				}
