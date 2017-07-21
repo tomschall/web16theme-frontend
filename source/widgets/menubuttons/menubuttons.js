@@ -105,7 +105,7 @@
 		if ($clone.length === 0) {
 			$clone = $headerOrigin.clone(true);
 
-			$clone.addClass('widg_header___cloned');
+			$clone.addClass('widg_header___cloned').attr('id', 'widg_header___cloned');
 
 			$clone.find('.widg_header__inner-top').remove();
 
