@@ -180,7 +180,7 @@
 	}
 
 	@include mq($to: small) {
-		padding-bottom: $basicPush * 3;
+		padding-bottom: $basicPush;
 	}
 }
 

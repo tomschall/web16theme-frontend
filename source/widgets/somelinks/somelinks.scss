@@ -44,6 +44,6 @@
 	}
 
 	@include mq($to: small) {
-		margin-top: $basicPush * 2 - 3;
+		margin-top: $basicPush;
 	}
 }
