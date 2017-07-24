@@ -251,7 +251,7 @@
 	 */
 	Widget.prototype.getGoogleMapsAPIKey = function() {
 		var url = $('script[src^=https\\:\\/\\/maps\\.googleapis\\.com\\/maps\\/]').attr('src'),
-			match = /\?key=([a-z0-9]+)/gim.exec(url);
+			match = /\?key=([a-z0-9-_]+)/gim.exec(url);
 		if (match) {
 			return match[1];
 		}
@@ -427,24 +427,30 @@
 			data.maps = map;
 		}.bind(this));
 
-		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
-			var $markerElement = $(element),
-				markerProps = {
-					position: new google.maps.LatLng(parseFloat($markerElement.data('coordinates-y')), parseFloat($markerElement.data('coordinates-x'))),
-					icon: this.options.markerIconProps,
-					opacity: 0.5
-				},
-				marker = new google.maps.Marker(markerProps);
+		var $mapData = this.$element.find(this.options.domSelectors.markerData),
+			locationPromises = $mapData.map(function(i, el) {
+				return this.getLocation($(el));
+			}.bind(this)).toArray();
 
-			marker.setMap(data.maps);
-			data.markers.push(marker);
-			google.maps.event.addListener(marker, 'click', function() {
-				this._setMarkerOpacityDefault();
+		$.when.apply($, locationPromises).done(function(/* ...locations */) {
+			$(arguments).map(function(i, position) {
+				var $markerElement = $mapData.eq(i),
+					markerProps = _.assign(this.options.mapProps, {
+						position: position,
+						icon: this.options.markerIconProps,
+						opacity: 0.5
+					}),
+					marker = new google.maps.Marker(markerProps);
 
-				if (marker.getOpacity() !== 1) {
-					marker.set('opacity', 1.0);
-					this._showInfo($markerElement);
-				}
+				marker.setMap(data.maps);
+				data.markers.push(marker);
+				google.maps.event.addListener(marker, 'click', function() {
+					this._setMarkerOpacityDefault();
+					if (marker.getOpacity() !== 1) {
+						marker.set('opacity', 1.0);
+						this._showInfo($markerElement);
+					}
+				}.bind(this));
 			}.bind(this));
 		}.bind(this));
 	};
