@@ -1,3 +1,12 @@
+// env flags
+body.is-env-dev .widg_header {
+	background-color: #f952c2;
+}
+
+body.is-env-test .widg_header {
+	background-color: #86bfff;
+}
+
 
 .widg_header {
 	@include clearfix;
