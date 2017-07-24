@@ -43,13 +43,12 @@ gulp.task(taskName, function(cb) {
 			fontName: 'Icons',
 			normalize: true
 		}))
-		.on('codepoints', function(codepoints, options) {
+		.on('glyphs', function(glyphs, options) {
 			var icons = {};
-
 			// Normalize data to be consistent with dataurls.js and pngsprite.js
-			codepoints.forEach(function(icon) {
+			glyphs.forEach(function(icon) {
 				icons[icon.name] = {
-					codepoint: icon.codepoint.toString(16).toUpperCase()
+					codepoint: icon.unicode.toString(16).toUpperCase()
 				};
 			});
 
