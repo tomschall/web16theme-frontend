@@ -30,6 +30,7 @@
  * @requires helpers/search.js
  * @requires helpers/initVendorPlugins.js
  * @requires helpers/modal.js
+ * @requires helpers/env.js
 
  * @requires ../../widgets/searchbar/searchbar.js
  * @requires ../../widgets/menubuttons/menubuttons.js
