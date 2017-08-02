@@ -19,11 +19,12 @@ body {
 		padding-bottom: $basicPush * 2;
 	}
 
-	h3 {
+	h3:not(.childless),
+	h2.childless {
 		margin-bottom: $basicPush;
 	}
 
-	h2 {
+	h2:not(.childless) {
 		margin-bottom: $basicPush * 2;
 		padding-bottom: 8px;
 
@@ -231,7 +232,7 @@ table.content__table {
 	background: $colorRedBackground;
 	border: 1px solid $colorEmergencyBorder !important;
 
-	h2 {
+	h2:not(.childless) {
 		color: $colorEmergencyBorder;
 		border-bottom-color: $colorEmergencyBorder;
 	}

@@ -375,7 +375,7 @@ a.search__cat-title {
 		margin-bottom: $basicPush * 4;
 	}
 
-	h2 {
+	h2:not(.childless) {
 		color: $customScrollbarColor;
 
 		border-bottom: 3px solid $customScrollbarColor;

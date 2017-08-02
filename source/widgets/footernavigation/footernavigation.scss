@@ -8,7 +8,7 @@
 	@include mq($to: small) {
 		padding-top: $basicPush * 3 !important;
 		padding-bottom: $basicPush * 2.25 !important;
-		
+
 		& div:last-child {
 			border-bottom: none;
 		}
@@ -74,7 +74,8 @@
 
 	}
 
-	h4 {
+	span {
+		display: block;
 		font-weight: 700;
 		font-size: 1.25rem;
 		line-height: 1.7;
@@ -104,7 +105,7 @@
 			}
 
 			&:last-of-type {
-				h4 {
+				span {
 					border: none;
 				}
 			}

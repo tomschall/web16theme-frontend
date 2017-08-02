@@ -52,7 +52,7 @@ h1 {
 	}
 }
 
-h2 {
+h2:not(.childless) {
 	font-weight: 700;
 	font-size: 1.83333rem;
 	line-height: 1.1;
@@ -103,7 +103,8 @@ h2 {
 	}
 }
 
-h3 {
+h3:not(.childless),
+h2.childless {
 	font-size: 1.66667rem;
 	font-weight: 700;
 	line-height: 1.6;
@@ -115,11 +116,13 @@ h3 {
 	}
 }
 
-h3 + p {
+h3:not(.childless) + p,
+h2.childless + p {
 	margin-top: 0;
 }
 
-h4 {
+h4,
+h3.childless {
 	font-weight: 700;
 	font-size: 1.5rem;
 }

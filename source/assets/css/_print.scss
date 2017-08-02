@@ -28,7 +28,7 @@ body {
 }
 
 h2,
-h3 {
+h3:not(.childless) {
 	font-size: 14pt;
 	border-bottom: 1pt solid black;
 }

@@ -9,7 +9,7 @@
 		}
 	}
 
-	h4 {
+	h3.childless {
 		margin-top: $basicPush * 2.6;
 
 		@include mq($to: small) {
@@ -19,7 +19,7 @@
 	}
 
 	.widg_extendedlinks__entry:not(.has_description) {
-		h4 {
+		h3.childless {
 			margin-top: $basicPush * 1.6;
 			padding-bottom: $basicPush * 1.6;
 
@@ -51,7 +51,7 @@
 
 		@include mq($from: medium) {
 			span,
-			h4,
+			h3.childless,
 			p,
 			&:after {
 				transition: transform $transitionLength / 3 $transitionEase;
@@ -63,7 +63,7 @@
 
 			@include mq($from: medium) {
 				span,
-				h4,
+				h3.childless,
 				p {
 					transform: translateX(5px);
 				}

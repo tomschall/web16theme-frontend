@@ -3,12 +3,12 @@
 	margin-bottom: $contentMarginBottom;
 
 	.content__element & {
-		h2 {
+		h2:not(.childless) {
 			margin-bottom: $basicPush * 0.4;
 		}
 	}
 
-	h2 {
+	h2:not(.childless) {
 		/*border-bottom: none;*/
 	}
 
