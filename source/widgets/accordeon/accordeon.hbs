@@ -1,4 +1,4 @@
-<div class="widg_accordeon" data-init="accordeon" {{#if multiple}}data-multiple="true"{{/if}}>
+<div class="widg_accordeon" data-init="accordeon" {{#if multiple}}data-multiple="true"{{/if}} role="list">
   <!-- Custom html structure if its the accordeon for an online application. -->
 	{{#if title}}
 		<h2>{{title}}</h2>
@@ -8,7 +8,7 @@
 	{{/if}}
 
 	{{#each entries}}
-    <div class="widg_accordeon__entry" id="{{get_id title}}" data-accordeon="entry">
+    <div class="widg_accordeon__entry" id="{{get_id title}}" data-accordeon="entry" role="listitem">
       <button aria-expanded="false" class="not-default" data-accordeon="button">
 				{{title}}
       </button>
