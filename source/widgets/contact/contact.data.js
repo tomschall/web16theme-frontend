@@ -20,14 +20,14 @@ var templateData = {
 			}
 		},
 		{
-			fullname: 'Prof. Dr. Adrian Schwaninger',
+			fullname: 'Prof. Dr. Maria Muster',
 			contactPageURL: '#',
 			jobDescription: 'Institutsleitung',
 			phone: '+41 62 957 24 26',
-			email: 'adrian.schwaninger@fhnw.ch',
+			email: 'maria.muster@fhnw.ch',
 			img: {
-				src: '/assets/media/img/img_contact_sidebar.png',
-				alt: 'Prof. Dr. Adrian Schwaninger'
+				src: '/assets/media/img/img_contact_woman.png',
+				alt: 'Prof. Dr. Maria Muster'
 			}
 		}
 	],
