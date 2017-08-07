@@ -25,7 +25,7 @@ var data = _.merge(defaultData, {
 					title: 'Campus Dreispitz (Basel)',
 					url: '#',
 					img: {
-						src: '/assets/media/img/campus_dreispitz.png',
+						src: '/assets/media/img/campus_dreispitz.jpg',
 						alt: 'Campus Dreispitz'
 					}
 				},
@@ -33,7 +33,7 @@ var data = _.merge(defaultData, {
 					title: 'Campus Brugg-Windisch',
 					url: '#',
 					img: {
-						src: '/assets/media/img/campus_brugg.png',
+						src: '/assets/media/img/campus_brugg.jpg',
 						alt: 'Campus Brugg-Windisch'
 					}
 				},
@@ -41,7 +41,7 @@ var data = _.merge(defaultData, {
 					title: 'Campus Muttenz',
 					url: '#',
 					img: {
-						src: '/assets/media/img/campus_muttenz.png',
+						src: '/assets/media/img/campus_muttenz.jpg',
 						alt: 'Campus Muttenz'
 					}
 				}

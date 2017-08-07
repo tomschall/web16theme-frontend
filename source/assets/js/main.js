@@ -18,6 +18,7 @@
  * @requires ../../../node_modules/lodash/lodash.js
  * @requires ../../../node_modules/scrolltofixed/jquery-scrolltofixed.js
  * @requires ../../../node_modules/jquery-deparam/jquery-deparam.js
+ * @requires ../../../node_modules/picturefill/dist/picturefill.js
 
  * @requires ../.tmp/templates.js
 
