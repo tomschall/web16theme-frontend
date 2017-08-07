@@ -11,7 +11,7 @@
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 
-		margin-right: $basicPush;
+		margin-right: 7px;
 		opacity: 1;
 
 		&:last-child {
@@ -39,6 +39,14 @@
 
 			&:hover {
 				@include iconDataurl('facebook_hov');
+			}
+		}
+
+		&[data-somelink-target="linkedin"] {
+			@include iconDataurl('linkedin');
+
+			&:hover {
+				@include iconDataurl('linkedin_hov');
 			}
 		}
 	}
