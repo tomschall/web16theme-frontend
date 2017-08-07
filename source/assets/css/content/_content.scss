@@ -211,6 +211,10 @@ table.content__table {
 			padding-left: $gutterWidth;
 			padding-right: $gutterWidth;
 		}
+
+		&.bleed__inner--centered {
+			text-align: center;
+		}
 	}
 }
 
