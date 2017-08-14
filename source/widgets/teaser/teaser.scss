@@ -291,6 +291,14 @@
 	    border-bottom: 4px solid #FDE70E;
 		}
 
+		& .widg_infobox h2 {
+			text-align: left;
+		}
+
+		& .widg_infobox h2:after {
+			left: 0;
+		}
+
 		& .widg_teaser__wrapper .teaser__more-button {
 			margin-left: auto !important;
 			margin-right: auto !important;
