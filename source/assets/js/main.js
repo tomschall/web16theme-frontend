@@ -50,6 +50,7 @@
  * @requires ../../widgets/application_accordeon/application_accordeon.js
  * @requires ../../widgets/so_me_share/so_me_share.js
  * @requires ../../widgets/expertise_areas/expertise_areas.js
+ * @requires ../../widgets/i_want/i_want.js
  * @requires ../../widgets/newsletter_subscription/newsletter_subscription.js
  * @requires ../../widgets/image_gallery/image_gallery.js
  * @requires ../../widgets/in_content_search/in_content_search.js

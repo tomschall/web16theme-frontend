@@ -14,6 +14,48 @@ var data = _.merge(defaultData, {
 			hasPromoTeaser: true,
 			isCollapsible: false
 		}, requireNew('../../widgets/header/header.data.js')),
+		wantStudy: {
+			img: {
+				src: '/assets/media/img/bg_i_want_1.jpg'
+			},
+			title: 'Ich möchte studieren:',
+			defaultText: 'Studienrichtung wählen ...',
+			options: [
+				{
+					text: 'Angewandte Psychologie',
+					url: '/pages/alumni/alumni.html'
+				},
+				{
+					text: 'Architektur, Bau und Geomatik',
+					url: '/pages/bachelor_social_work/bachelor_social_work.html'
+				},
+				{
+					text: 'Gestaltung und Kunst',
+					url: '/pages/cas_eingliederungsmanagement/cas_eingliederungsmanagement.html'
+				}
+			]
+		},
+		wantFurtherEducation: {
+			img: {
+				src: '/assets/media/img/bg_i_want_2.jpg'
+			},
+			title: 'Ich möchte mich weiterbilden:',
+			defaultText: 'Fachbereich wählen ...',
+			options: [
+				{
+					text: 'Informatik',
+					url: '/pages/alumni/alumni.html'
+				},
+				{
+					text: 'Life Sciences',
+					url: '/pages/bachelor_social_work/bachelor_social_work.html'
+				},
+				{
+					text: 'Musik',
+					url: '/pages/cas_eingliederungsmanagement/cas_eingliederungsmanagement.html'
+				}
+			]
+		},
 		navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 		footer: requireNew('../../widgets/footer/footer.data.js'),
 		breadcrumb: requireNew('../../widgets/breadcrumb/breadcrumb.data.js'),
