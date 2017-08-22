@@ -14,7 +14,11 @@ var templateData = {
 		}, {
 			title: 'Bibliotheken der FHNW',
 			description: 'Die Fachhochschule Nordwestschweiz FHNW verfügt an ihren verschiedenen Standorten über zahlreiche Bibliotheken',
-			url: '../library_overview/library_overview.html'
+			url: '../library_overview/library_overview.html',
+					news_detail: {
+					    news_date: '27.06.2017',
+					    university: 'Hochschule für angewandte Psychologie'
+					},
 		}
 	],
 	moreButton: {
