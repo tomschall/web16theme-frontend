@@ -32,7 +32,11 @@ var templateData = {
 					title: 'Kanton Aargau, Departement Gesundheit und Soziales',
 					entryText: 'ist für die Luftfahrtentwicklung und die Aufsicht über die zivile Luftfahrt in der Schweiz zuständig. Das BAZL gehört zum Eidgenössischen Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK) und ist dafür verantwortlich, dass die Zivilluftfahrt in der Schweiz ein hohes Sicherheitsniveau.',
 					url: '#',
-					isExternal: true
+					isExternal: true,
+					news_detail: {
+					    news_date: '27.07.2017',
+					    university: 'Hochschule für Pädagogik'
+					}
 				},
 				{
 					title: 'Stadtpolizei Zürich, Wissenschaftlicher Forschungsdienst (WFD)',
@@ -40,6 +44,10 @@ var templateData = {
 					img: {
 						src: '/assets/media/img/stzh_logo.jpg',
 						alt: 'Stadtpolizei Zürich'
+					},
+					news_detail: {
+					    news_date: '27.06.2017',
+					    university: 'Hochschule für angewandte Psychologie'
 					},
 					url: '#',
 					isExternal: true
