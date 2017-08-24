@@ -24,3 +24,4 @@ deploy:
   - rsync -avz -e "ssh -o IdentityFile=/home/gitlab-runner/slavi.pem" build/ centos@86.119.33.139:/webserver/build/ --delete
  only:
   - master
+  - testing-preview-sync
