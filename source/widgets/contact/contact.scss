@@ -32,14 +32,34 @@
 
 	margin-right: $basicPush * 3.9;
 
+	a {
+		opacity: 1;
+	}
+
 	img {
 		width: 100%;
+		transition: transform $transitionLength $transitionEase;
 	}
 
 	@include mq($to: small) {
 		max-width: none;
 		width: auto;
+	}
 
+	.widg_contact__portrait__img {
+		width: 100%;
+		padding-top: 5px;
+		overflow-x: hidden;
+	}
+
+	&:hover {
+		@include mq($from: medium) {
+			.widg_contact__portrait__img {
+				img {
+					transform: scale(1.1);
+				}
+			}
+		}
 	}
 }
 
