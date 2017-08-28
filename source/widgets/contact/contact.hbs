@@ -1,27 +1,30 @@
 <div class="widg_contact" data-init="contact" role="list">
-  <h2>{{title}}</h2>
+	<h2>{{title}}</h2>
 	{{#each persons}}
-    <div class="widg_contact__entry" role="listitem">
-      <div class="widg_contact__portrait">
-				{{#if contactPageURL}}
-					<a href="{{contactPageURL}}"><img src="{{img.src}}" alt={{img.alt}}/></a>
-				{{else}}
-					<img src="{{img.src}}" alt={{img.alt}}/>
-				{{/if}}
-
-      </div>
-      <div class="widg_contact__info">
+		<div class="widg_contact__entry" role="listitem">
+			<div class="widg_contact__portrait">
+				<div class="widg_contact__portrait__img">
+					{{#if contactPageURL}}
+						<a href="{{contactPageURL}}"><img src="{{img.src}}" alt={{img.alt}}/></a>
+					{{else}}
+						<img src="{{img.src}}" alt={{img.alt}}/>
+					{{/if}}
+				</div>
+			</div>
+			<div class="widg_contact__info">
 				{{#if contactPageURL}}
 					<a href="{{contactPageURL}}"><span class="widg_contact__label">{{fullname}}</span></a>
 				{{else}}
 					<span class="widg_contact__label">{{fullname}}</span>
 				{{/if}}
-        <span class="widg_contact__text">{{jobDescription}}</span>
-        <span class="widg_contact__label">{{../langStrings.telephone}}:</span>
+				<span class="widg_contact__text">{{jobDescription}}</span>
+				<span class="widg_contact__label">{{../langStrings.telephone}}
+					:</span>
 				<span class="widg_contact__text"><a href="tel:{{phone}}">{{phone}}</a></span>
-        <span class="widg_contact__label">{{../langStrings.email}}:</span>
-        <span class="widg_contact__text"><a href="mailto:{{email}}">{{email}}</a></span>
-      </div>
-    </div>
+				<span class="widg_contact__label">{{../langStrings.email}}
+					:</span>
+				<span class="widg_contact__text"><a href="mailto:{{email}}">{{email}}</a></span>
+			</div>
+		</div>
 	{{/each}}
 </div>
