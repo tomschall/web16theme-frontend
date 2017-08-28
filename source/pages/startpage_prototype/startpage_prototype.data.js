@@ -48,7 +48,8 @@ var data = _.merge(defaultData, {
 			],
 			isOnStartpage: true
 		}),
-		fullBleedTeaser: requireNew('../../widgets/full_bleed_teaser/full_bleed_teaser.data.js')
+		fullBleedTeaser: requireNew('../../widgets/full_bleed_teaser/full_bleed_teaser.data.js'),
+		infobox: requireNew('../../widgets/infobox/infobox.data.js')
 	},
 	wrapperClass: 'header__wide'
 });
