@@ -151,6 +151,12 @@
 	 */
 	Widget.prototype.init = function() {
 		data.navOptions = $(this.options.domSelectors.navOption).toArray();
+
+		if (!data.navOptions.length) {
+			// Terminate initialization if there are no location data
+			return;
+		}
+
 		this.options.renderMobileView = isMobileView();
 
 		// keep track of all map instances
