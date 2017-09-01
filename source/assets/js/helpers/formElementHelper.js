@@ -318,8 +318,12 @@
 		},
 
 		onInput: function() {
-			$form.find(':input[type="text"], :input[type="checkbox"], :input[type="radio"], textarea, :input[type="password"], :input[type="file"]')
+			$form.find(':input[type="text"], :input[type="checkbox"], :input[type="radio"], textarea, :input[type="password"]')
 				.on('focusout', _.debounce(easyFormValidation.onInputChange, 300));
+
+			$form.find(':input[type="file"]').on('change', function() {
+				easyFormValidation.onFileChange($(this));
+			});
 
 			$form.find('input[type="radio"]').on('change', function() {
 				easyFormValidation.onRadioChange($(this));
@@ -340,7 +344,10 @@
 				// synchronize fields
 				easyFormValidation.synchronizeDateFields($el);
 			}
+			easyFormValidation.validateElement($el);
+		},
 
+		onFileChange: function($el) {
 			easyFormValidation.validateElement($el);
 		},
 
@@ -448,7 +455,7 @@
 				}
 			}
 
-			if (!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) {
+			if ((!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) && !($el.get(0).files && $el.get(0).files.length)) {
 				// no validation required
 				updateFieldStatus($el, $currentFieldType, true);
 				return;
