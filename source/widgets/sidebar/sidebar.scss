@@ -60,7 +60,7 @@ $sidebarObjectPush: $basicPush * 5;
 		transition: all $transitionLength / 2 $transitionEase;
 	}
 
-	> h4 {
+	> h2 {
 		margin-top: 0;
 		position: relative;
 		padding-bottom: $sidebarObjectGutter - 7;
@@ -115,7 +115,7 @@ $sidebarObjectPush: $basicPush * 5;
 			opacity: 1.0;
 		}
 
-		> h4:after {
+		> h2:after {
 			left: -1 * $sidebarObjectGutter;
 			right: -1 * ($sidebarObjectGutter + 12 + 8);
 		}
@@ -129,7 +129,7 @@ $sidebarObjectPush: $basicPush * 5;
 	}
 
 	.is_pulled-down & {
-		> h4:after {
+		> h2:after {
 			left: 0;
 			right: -1 * (($sidebarObjectGutter + 12 + 8) - $sidebarObjectGutter);
 		}

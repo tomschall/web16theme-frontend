@@ -108,7 +108,7 @@ $infoPadding: 34px;
 .location__upper {
 	padding: $infoPadding;
 
-	h3 {
+	h3:not(.childless) {
 		margin-top: 0;
 	}
 

@@ -53,4 +53,8 @@
 		top: 50%;
 		left: 50%;
 	}
+
+	&:focus {
+		outline: 0;
+	}
 }

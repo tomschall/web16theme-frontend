@@ -30,16 +30,6 @@
 		}
 	}
 
-	h4 {
-
-		max-width: 100%;
-		word-wrap: break-word;
-
-		@include mq($to: small) {
-			font-size: 1.2rem;
-		}
-	}
-
 	&.wide___third {
 		@include span(4);
 	}
@@ -148,6 +138,10 @@
 	&:hover + .widg_teaser__arrow {
 		min-width: 20px;
 	}
+
+	&:focus {
+		outline: 0;
+	}
 }
 
 .widg_teaser__arrow {
@@ -214,6 +208,18 @@
 	font-weight: 600;
 }
 
+.widg_teaser__title {
+	max-width: 100%;
+	word-wrap: break-word;
+
+	@include mq($to: small) {
+		font-size: 1.2rem;
+	}
+
+	font-weight: 700;
+	font-size: 1.5rem;
+}
+
 .widg_teaser__wrapper {
 	display: flex;
 	flex-wrap: wrap;
@@ -277,12 +283,12 @@
 			transform: translateX(-25%);
 		}
 
-		& h2 {
+		& h2:not(.childless) {
 			text-align: center;
 			border-bottom: none;
 		}
 
-		& h2:after {
+		& h2:not(.childless):after {
 	    content: '';
 	    position: absolute;
 	    width: 10%;

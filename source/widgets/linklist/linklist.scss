@@ -1,5 +1,5 @@
 .widg_linklist {
-	h2 + p {
+	h2:not(.childless) + p {
 		padding-bottom: 15px;
 		border-bottom: 1px solid $colorGreyHover;
 	}

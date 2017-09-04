@@ -39,6 +39,10 @@ styling of all links and lists
 	}
 }
 
+.widg_navigation__subtitle {
+	margin-top: 20px;
+}
+
 .widg_navigation__list ul li a {
 	cursor: pointer;
 	position: relative;
@@ -154,6 +158,10 @@ The back arrow only visible on mobile navigation
 		@include mq($to: small) {
 			left: $basicPush * 2;
 		}
+	}
+
+	&:focus {
+		outline: 0;
 	}
 }
 

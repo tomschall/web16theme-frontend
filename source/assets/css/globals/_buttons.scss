@@ -9,10 +9,14 @@ a.button {
 	text-align: left;
 
 	&:focus {
-		outline: 0;
+		/* outline: 0; */ /* not WCAG 2.4.7 */
 	}
 }
 
 .button__icon {
 	text-indent: -10000px;
+
+	&:focus {
+		outline: 0;
+	}
 }

@@ -8,7 +8,7 @@
 	{{#each teasers}}
     <div class="widg_teaser{{#if variant}} {{variant}}{{/if}} {{#if img}}{{else}}no-image{{/if}}">
 			{{#if img}}
-        <div class="widg_teaser__img"><img src="{{img.src}}"/></div>
+        <div class="widg_teaser__img"><img src="{{img.src}}" alt=""/></div>
 			{{/if}}
 			{{#if date}}
 				<span class="widg_teaser__date">{{date}}</span>
@@ -19,7 +19,7 @@
 			{{#if category}}
 				<span class="widg_teaser__category">{{category}}</span>
 			{{/if}}
-      <h4>{{{title}}}</h4>
+      <h3 class="widg_teaser__title childless">{{{title}}}</h3>
 			{{#if text}}
         <p>{{dotdotdot_teaser text}}</p>
 			{{/if}}

@@ -20,10 +20,21 @@
 		$('.anchor-link').on('click.links', function(ev) {
 			ev.preventDefault();
 
+			var $targetElement;
+			var initialTabIndex;
 			if ($.attr(this, 'href') !== '#') {
+				$targetElement = $($.attr(this, 'href'));
 				$('html, body').animate({
-					scrollTop: $($.attr(this, 'href')).offset().top - 45
+					scrollTop: $targetElement.offset().top - 45
 				}, 250);
+				initialTabIndex = $targetElement.prop('tabindex');
+				if (initialTabIndex === -1) {
+					$targetElement.prop('tabindex', 0);
+				}
+				$targetElement.focus();
+				if (initialTabIndex === -1) {
+					$targetElement.prop('tabindex', -1);
+				}
 			}
 		});
 	});

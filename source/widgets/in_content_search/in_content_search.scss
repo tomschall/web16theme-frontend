@@ -1,12 +1,12 @@
 .widg_in_content_search {
 	padding-bottom: 0;
 	margin-bottom: 0;
-  
+
 	@include mq($to: 'subnav') {
 		margin-bottom: $basicPush * 2;
 	}
 
-	h3 {
+	h3:not(.childless) {
 		margin-bottom: $basicPush * 3;
 	}
 }

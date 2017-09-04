@@ -355,11 +355,12 @@ a.search__cat-title {
 		height: 50px;
 		line-height: 50px;
 
-		color: $customScrollbarColor;
+		color: $colorMittleresGrau;
 
 		text-decoration: none;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			background-color: rgba($colorLightGray, 0.5);
 			color: $colorBlack;
 		}
@@ -375,7 +376,7 @@ a.search__cat-title {
 		margin-bottom: $basicPush * 4;
 	}
 
-	h2 {
+	h2:not(.childless) {
 		color: $customScrollbarColor;
 
 		border-bottom: 3px solid $customScrollbarColor;

@@ -14,7 +14,7 @@
 		margin: 0 0 $basicPush * 5 0;
 
 
-		h2 {
+		h2:not(.childless) {
 			margin-bottom: $basicPush * 3.5;
 		}
 	}

@@ -70,10 +70,12 @@
 	Widget.prototype.addEventListeners = function() {
 		$(this.options.domSelectors.menubutton).on('click.' + this.uuid, function() {
 			if (this.options.fullHeader) {
-				$(this.options.domSelectors.menubutton).removeClass(this.options.stateClasses.isActive);
+				$(this.options.domSelectors.menubutton).removeClass(this.options.stateClasses.isActive)
+						.attr('aria-expanded', 'false');
 				this.closeFullHeader();
 			} else {
-				$(this.options.domSelectors.menubutton).addClass(this.options.stateClasses.isActive);
+				$(this.options.domSelectors.menubutton).addClass(this.options.stateClasses.isActive)
+						.attr('aria-expanded', 'true');
 				this.showFullHeader();
 			}
 		}.bind(this));
@@ -103,7 +105,7 @@
 		if ($clone.length === 0) {
 			$clone = $headerOrigin.clone(true);
 
-			$clone.addClass('widg_header___cloned');
+			$clone.addClass('widg_header___cloned').attr('id', 'widg_header___cloned');
 
 			$clone.find('.widg_header__inner-top').remove();
 
@@ -140,7 +142,8 @@
 	Widget.prototype.openMobileSearch = function() {
 		this.options.searchIsOpen = true;
 
-		$(this.options.domSelectors.searchbutton).addClass(this.options.stateClasses.isActive);
+		$(this.options.domSelectors.searchbutton).addClass(this.options.stateClasses.isActive)
+				.attr('aria-expanded', 'true');
 		$('.widg_header').addClass(this.options.stateClasses.openSearch);
 
 		$(window).trigger(events.openSearch);
@@ -154,7 +157,8 @@
 	Widget.prototype.closeMobileSearch = function() {
 		this.options.searchIsOpen = false;
 
-		$(this.options.domSelectors.searchbutton).removeClass(this.options.stateClasses.isActive);
+		$(this.options.domSelectors.searchbutton).removeClass(this.options.stateClasses.isActive)
+				.attr('aria-expanded', 'false');
 		$('.widg_header').removeClass(this.options.stateClasses.openSearch);
 
 		$(window).trigger(events.closeSearch);
