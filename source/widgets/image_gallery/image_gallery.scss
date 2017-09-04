@@ -74,3 +74,19 @@
 	display: block;
 	color: $colorTextGrey;
 }
+
+@include mq($to: small) {
+	.image_gallery__arrow {
+		top: 107%
+	}
+	.image_gallery__dots {
+		top: 97%
+	}
+	.image_gallery__slider .stick-list {
+		margin-bottom: calc(320px - 43vw)
+	}
+	.image_gallery__legend {
+		padding-bottom: 30px;
+	}
+}
+
