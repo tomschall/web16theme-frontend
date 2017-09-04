@@ -178,6 +178,7 @@ body.is-env-test .widg_header {
 	@include mq($to: medium) {
 		display: none;
 		z-index: -1;
+		margin-top: 280px;
 
 		.is_nav-open & {
 			display: block;
@@ -190,6 +191,7 @@ body.is-env-test .widg_header {
 
 	@include mq($to: small) {
 		padding-bottom: $basicPush;
+		margin-top: 250px;
 	}
 }
 
