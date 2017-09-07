@@ -39,6 +39,10 @@ p {
 			padding-right: 16px;
 		}
 	}
+
+	&.text__lead {
+		text-align: center;
+	}
 }
 
 .text__lead + .has_grid {

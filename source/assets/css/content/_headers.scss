@@ -52,6 +52,20 @@ h1 {
 	}
 }
 
+.startpage-page {
+	h1 {
+		text-align: center;
+		position: relative;
+
+		&:after {
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}
+
 :not([data-sidebar]) > h2:not(.childless) {
 	font-weight: 700;
 	font-size: 1.83333rem;
