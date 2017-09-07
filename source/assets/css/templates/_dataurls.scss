@@ -65,7 +65,7 @@ $iconsDataurls: (
 
 	background-image: unquote(map-get($urls, "svgInline"));
 	background-repeat: no-repeat;
-	background-size: contain;
+	background-size: auto;
 
 	@if $skipDimensions != true {
 		height: pxToEm(map-get($dimensions, "y"));
