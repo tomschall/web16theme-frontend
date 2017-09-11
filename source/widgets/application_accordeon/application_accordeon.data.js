@@ -11,7 +11,7 @@ var templateData = {
 			entries: [
 				{
 					uid: '1',
-					eventStart: 'Basel, 19.09.2016',
+					eventStart: 'Basel, 19.09.2016 test',
 					eventLocation: 'InfoTag im Rahmen von Next generation 2017',
 					availableSeats: 3,
 					availabilityState: 'state-red',
@@ -48,7 +48,7 @@ var templateData = {
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
 					btnUrl: '#',
-					applyLabel: 'Anmelden',
+					applyLabel: 'Anmelden long button text',
 					applicationIsActive: true
 				},
 				{
