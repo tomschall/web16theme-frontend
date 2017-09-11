@@ -288,13 +288,17 @@
 			border-bottom: none;
 		}
 
-		& h2:not(.childless):after {
-	    content: '';
-	    position: absolute;
-	    width: 10%;
-	    left: 45%;
-	    bottom: -4px;
-	    border-bottom: 4px solid #FDE70E;
+		& h2:not(.childless) {
+			border-bottom: none !important;
+
+			&:after {
+				content: '';
+				position: absolute;
+				width: 10%;
+				left: 45%;
+				bottom: -4px;
+				border-bottom: 4px solid #FDE70E;
+			}
 		}
 
 		& .widg_infobox h2 {
