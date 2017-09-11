@@ -54,7 +54,7 @@
 	 */
 	Widget.prototype.init = function() {
 		$(this.options.domSelectors.slider).slick({
-			dots: true,
+			dots: false,
 			dotsClass: 'image_gallery__dots not-default',
 			nextArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__next">Next</button>',
 			prevArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__prev">Previous</button>'
