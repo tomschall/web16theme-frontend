@@ -110,6 +110,10 @@
 			$('.page_wrapper').append($clone);
 		}
 
+		if (!window.estatico.mq.query({from: 'medium'})) {
+			$clone.find('.widg_header__inner-foot').appendTo($clone.find('nav > .widg_navigation__list'));
+		}
+
 		$headerOrigin.addClass(this.options.stateClasses.isNavOpen);
 		$clone.addClass(this.options.stateClasses.isNavOpen);
 

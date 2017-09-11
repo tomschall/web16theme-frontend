@@ -92,11 +92,20 @@
 	Widget.prototype.addEventListener = function() {
 		$(this.options.domSelectors.expandable).on('click.' + this.uuid, function(event) {
 			var $eventTarget = $(event.currentTarget),
-					$subList = $eventTarget.next(this.options.domSelectors.list),
-					currentLevel = $eventTarget.closest(this.options.domSelectors.list).data('navigation-level');
+				$subList = $eventTarget.next(this.options.domSelectors.list),
+				currentLevel = $eventTarget.closest(this.options.domSelectors.list).data('navigation-level');
 
 			if (!$eventTarget.hasClass(this.options.stateClasses.isActive)) {
 				this.setNavActive($eventTarget, currentLevel);
+
+				if (!window.estatico.mq.query({from: 'medium'})) {
+					// remove the cloned node in mobile navigation
+					var $nodes = $('.widg_navigation > [data-navigation-level="' + (currentLevel + 1) +'"]');
+					$nodes.remove();
+
+					// scroll top
+					$('.widg_header___cloned').scrollTop(0);
+				}
 
 				this.fillNavWrapper($subList);
 
@@ -152,7 +161,8 @@
 
 			$subList.clone(true).appendTo($targetWrapper.find('.mCSB_container'));
 		} else {
-			$subList.clone(true).appendTo('.widg_navigation').addClass(this.options.stateClasses.isVisible);
+			$subList.clone(true).appendTo('.widg_navigation')
+				.addClass(this.options.stateClasses.isVisible);
 		}
 	};
 
