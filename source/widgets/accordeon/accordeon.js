@@ -69,8 +69,8 @@
 
 	// Checks if hash can be found and opens it if necessary
 	Widget.prototype.checkAndOpenHash = function(hash) {
-		if (hash.indexOf('=') >= 0) {
-			// do nothing if search string is present
+		if (hash.indexOf('=') >= 0 || hash === '#') {
+			// do nothing if search string is present, or if hash is empty
 			return;
 		}
 
