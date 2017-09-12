@@ -21,6 +21,27 @@ deploy:
   - sh ./prepare_build_theme.sh
   - bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
   - sh ./deploy_theme.sh
-  - rsync -avz -e "ssh -o IdentityFile=/home/gitlab-runner/slavi.pem" build/ centos@86.119.33.139:/webserver/build/ --delete
  only:
+  - master
+
+pages:
+  before_script:
+  - eval `ssh-agent`
+  - ssh-add ~/gitlab_deploy
+  stage: deploy
+  cache:
+    paths:
+      - build/
+  script:
+  - sh ./prepare_build_theme.sh
+  - bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
+  - sh ./deploy_theme.sh
+  - bin/gulp relative-paths
+  - mv build public
+
+  artifacts:
+    paths:
+    - public
+
+  only:
   - master
