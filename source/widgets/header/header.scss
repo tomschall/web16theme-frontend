@@ -75,9 +75,10 @@ body.is-env-test .widg_header {
 		width: 100%;
 		min-height: $headerHeightTop;
 		max-height: $headerHeightTop;
-
 		padding: 15px $basicPush * 4;
 		position: relative;
+		height: calc(100vh - 70px);
+		overflow-y: hidden;
 
 		&.is_nav-open:not(.widg_header___cloned) {
 			box-shadow: 0 2px 10px 0 rgba($colorBlack, 0.15);
@@ -178,6 +179,7 @@ body.is-env-test .widg_header {
 	@include mq($to: medium) {
 		display: none;
 		z-index: -1;
+		margin: 14px 20px 50px;
 
 		.is_nav-open & {
 			display: block;
@@ -185,6 +187,14 @@ body.is-env-test .widg_header {
 			@include mq($to: medium) {
 				display: none;
 			}
+		}
+
+		ul li a {
+			padding: 0;
+			font-size: 1.08333rem;
+			line-height: 1.9em;
+			text-decoration: none;
+			opacity: 0.7;
 		}
 	}
 
@@ -242,7 +252,8 @@ body.is-env-test .widg_header {
 		z-index: zindex(header);
 		overflow-x: hidden;
 
-		> div {
+		> div,
+		.widg_header__inner-foot {
 			opacity: 1;
 			display: block;
 		}

@@ -360,6 +360,10 @@ for better overview they are seperated here
 			display: block;
 		}
 
+		&[data-navigation-level="0"] {
+			height: calc(100vh - 70px);
+		}
+
 		&[data-navigation-level="1"],
 		&[data-navigation-level="2"],
 		&[data-navigation-level="3"] {
