@@ -29,16 +29,11 @@
 				padding: 7px 0 7px 42px;
 
 				&:before {
-					height: 31px;
-					width: 31px;
-
 					content: " ";
 					display: block;
 					position: absolute;
-
 					left: 0;
-
-					top: 50%;
+					top: 64%;
 					transform: translateY(-50%);
 				}
 			}
