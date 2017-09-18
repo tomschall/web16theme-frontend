@@ -25,14 +25,12 @@
 				display: block;
 				position: relative;
 				font-size: 1.416667rem;
-				padding: 7px 0 7px 42px;
+				padding: 14px 0 14px 42px;
 
 				&:before {
 					content: " ";
 					display: block;
 					position: absolute;
-					height: 32px;
-					width: 32px;
 					left: 0;
 					top: 50%;
 					transform: translateY(-50%);
