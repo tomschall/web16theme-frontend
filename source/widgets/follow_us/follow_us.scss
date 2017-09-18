@@ -31,10 +31,12 @@
 					content: " ";
 					display: block;
 					position: absolute;
+					height: 32px;
+					width: 32px;
 					left: 0;
 					top: 50%;
 					transform: translateY(-50%);
-					background-position: 2px;
+					background-position: center;
 				}
 			}
 		}
