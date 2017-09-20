@@ -25,11 +25,12 @@
 		opacity: 1;
 	}
 
-	& a {
+	a {
+		line-height: 2.4em  !important;
 		text-decoration: none;
 	}
 
-	& abbr[title] {
+	abbr[title] {
 		border-bottom: none;
 		text-decoration: none;
 	}
