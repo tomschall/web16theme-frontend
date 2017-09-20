@@ -442,6 +442,10 @@
 td.search__cell {
 	padding: 0;
 
+	&.search__cell-title a {
+		font-weight: bold;
+	}
+
 	.search__cell-anchor {
 		font-weight: normal;
 		text-decoration: none;
