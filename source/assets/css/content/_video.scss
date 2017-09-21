@@ -26,9 +26,6 @@
 .responsive-video__small embed {
 	width: 60%;
 
-	@include mq($to: medium) {
-		height: 31.5vh;
-	}
 	@include mq($to: small) {
 		width: 100%;
 	}
