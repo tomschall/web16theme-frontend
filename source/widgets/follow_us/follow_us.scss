@@ -24,22 +24,18 @@
 			a {
 				display: block;
 				position: relative;
-
 				font-size: 1.416667rem;
-				padding: 7px 0 7px 42px;
+				padding: 14px 0 14px 48px;
 
 				&:before {
-					height: 31px;
-					width: 31px;
-
 					content: " ";
 					display: block;
 					position: absolute;
-
+					width: 36px;
 					left: 0;
-
 					top: 50%;
 					transform: translateY(-50%);
+					background-position: center;
 				}
 			}
 		}
