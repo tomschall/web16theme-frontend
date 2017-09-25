@@ -9,7 +9,7 @@
 };
 
 .responsive-video__small {
-	padding-bottom: 33.75%;
+	padding-bottom: 0;
 }
 
 .responsive-video iframe,
@@ -24,5 +24,14 @@
 .responsive-video__small iframe,
 .responsive-video__small object,
 .responsive-video__small embed {
-	width: 60%;
+
+
+	@include mq($to: medium) {
+		width: 560px;
+		height: 360px;
+	}
+
+	@include mq($to: small) {
+		width: 100%;
+	}
 }
