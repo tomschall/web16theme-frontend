@@ -52,11 +52,15 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		var targetURL = '';
+		var $btn = this.$element.find('.in_content_search__button'),
+			targetURL = '';
 
-		this.$element.find('select').on('select2:select', function(evt) {
+		this.$element.find('select').on('change', function(evt) {
 			targetURL = $(evt.target).val();
+			$btn.prop('disabled', !targetURL.length);
+		}.bind(this));
 
+		$btn.click(function(evt) {
 			window.location.href = targetURL;
 		}.bind(this));
 	};

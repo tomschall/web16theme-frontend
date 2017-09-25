@@ -13,6 +13,14 @@
 	padding-top: $basicPush * 6;
 	background-size: cover;
 	background-position: center;
+
+	.field .select2-container .select2-selection .select2-selection__rendered {
+		padding-top: 5px;
+	}
+
+	.custom-select___remover {
+		right: 15px;
+	}
 }
 
 .widg_i_want h2,
@@ -31,7 +39,7 @@
 
 .widg_i_want .control_group {
 	margin-top: 330px;
-	text-align: center;
+	//text-align: center;
 }
 
 .widg_i_want .select2__wrapper {
@@ -63,6 +71,15 @@
 
 	@include mq($to: medium) {
 		margin-left: 0;
+		flex-direction: column;
+
+		h2, .control_group {
+			max-width: none;
+		}
+
+		.field .select2-container .select2-selection .select2-selection__rendered {
+			padding-left: 16px;
+		}
 	}
 
 	.header__wide & {
