@@ -55,6 +55,7 @@
 		var $btn = this.$element.find('.in_content_search__button'),
 			targetURL = '';
 
+		this.$element.find('select').val('').change();
 		this.$element.find('select').on('change', function(evt) {
 			targetURL = $(evt.target).val();
 			$btn.prop('disabled', !targetURL.length);
