@@ -111,9 +111,9 @@
 					$headersRow.append('<th>' + header + '</th>');
 				}
 			});
-		}
 
-		$responseHTML.append($headersRow);
+			$('<thead></thead>').appendTo($responseHTML).append($headersRow);
+		}
 
 		results.forEach(function(row) {
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
