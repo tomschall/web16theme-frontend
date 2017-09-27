@@ -40,6 +40,7 @@ h2.startpage__title:after {
 }
 
 [data-sidebar] > h2,
+h3,
 h4,
 h5,
 h6 {
@@ -98,7 +99,10 @@ h6 {
 
 /* Force hiding */
 .widg_image_gallery .image_gallery__slider button,
-a.button {
+a.button,
+.widg_accordeon__entry>button:after,
+.widg_accordeon__entry>div>button[data-application-accordeon=button]:after,
+#logged-in {
 	display: none !important;
 }
 
@@ -157,4 +161,29 @@ tr {
 	font-size: 12pt;
 	border-top: 1pt solid black !important;
 	border-bottom: 1pt solid black !important;
+}
+
+/* Accordeon */
+.widg_accordeon__entry>button,
+.widg_accordeon__entry>div>button[data-application-accordeon=button],
+.widg_accordeon__entry.is_open>button:hover,
+.widg_accordeon__entry.is_open>div>button[data-accordeon=button]:hover,
+.widg_accordeon__entry.is_open>div>button[data-application-accordeon=button]:hover {
+	left: 0;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  color: inherit;
+	background: none !important;
+	font-size: 20px;
+}
+
+.widg_accordeon__content {
+  display: block !important;
+  padding: 0;
+}
+
+.widg_accordeon__content p {
+	padding: 0;
+  margin: 15px 0 10px 0;
 }
