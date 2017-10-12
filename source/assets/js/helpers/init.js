@@ -39,9 +39,4 @@
 	/* Removing empty p-Tags */
 	$('p:empty').remove();
 
-	/* Responsive Videos without Title */
-	if($('.responsive-video .tile-id-no-title').length) {
-		$('.tile-id-no-title').parent().css('margin-bottom','0');
-	}
-
 })(jQuery);
