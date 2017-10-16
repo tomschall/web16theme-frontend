@@ -61,6 +61,24 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
+		var strings = {
+			de: {
+				menu: 'Menü',
+				search: 'Sucheee'
+			},
+			en: {
+				menu: 'Menu',
+				search: 'Search'
+			}
+		}[document.documentElement.lang];
+
+		$('[data-menubuttons="menu"]').each(function() {
+			this.innerText = ' ' + strings.menu;
+		});
+		$('[data-menubuttons="search"]').each(function() {
+			this.innerText = ' ' + strings.search;
+		});
+
 		this.addEventListeners();
 	};
 
