@@ -4,9 +4,14 @@
 		{{> "widgets/carousel/carousel" widgets.carousel}}
 	{{/content}}
 
+
+	{{#content "before_content"}}
+		<div class="i_want">
+			{{> "widgets/i_want/i_want" widgets.wantStudy}}{{> "widgets/i_want/i_want" widgets.wantFurtherEducation}}
+		</div>
+	{{/content}}
+
     {{#content "content"}}
-
-
       <div class="content__element content__element___borderless">
 				{{> "widgets/teaser/teaser" widgets.teaser}}
 			</div>

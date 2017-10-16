@@ -1,0 +1,101 @@
+.widg_i_want {
+	width: 100%;
+
+	@include mq($to: small) {
+		display: block;
+		width: 100%;
+	}
+
+	box-sizing: border-box;
+	min-height: 560px;
+	position: relative;
+
+	padding-top: $basicPush * 6;
+	background-size: cover;
+	background-position: center;
+
+	.field .select2-container .select2-selection .select2-selection__rendered {
+		padding-top: 5px;
+	}
+
+	.custom-select___remover {
+		right: 15px;
+	}
+}
+
+.widg_i_want h2,
+.widg_i_want .control_group {
+	margin: auto;
+	text-align: left;
+	width: 95%;
+	max-width: 473px;
+
+	@include clearfix;
+}
+
+.widg_i_want h2::after {
+	left: 0;
+}
+
+.widg_i_want .control_group {
+	margin-top: 330px;
+	//text-align: center;
+}
+
+.widg_i_want .select2__wrapper {
+	float: left;
+	width: 70%;
+	box-sizing: border-box;
+}
+
+.widg_i_want .in_content_search__button {
+	float: left;
+	width: 30%;
+	box-sizing: border-box;
+	text-transform: uppercase;
+	font-size: 14px;
+
+	@include mq($from: betweener) {
+		letter-spacing: 2.2px;
+		text-indent: 2.2px;
+	}
+}
+
+/* margin-left, depends on header.scss width definitions */
+.i_want {
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+
+	margin-left: $widthYellowBar;
+
+	@include mq($to: medium) {
+		margin-left: 0;
+		flex-direction: column;
+
+		h2, .control_group {
+			max-width: none;
+		}
+
+		.field .select2-container .select2-selection .select2-selection__rendered {
+			padding-left: 16px;
+		}
+	}
+
+	.header__wide & {
+		@include mq($from: betweener, $to: wide) {
+			margin-left: $widthYellowBarWide;
+		}
+		@include mq($from: large) {
+			min-width: 300px;
+		}
+
+		@include mq($from: wide) {
+			min-width: 400px;
+		}
+	}
+
+	@include mq($from: wide) {
+		margin-left: $widthYellowBarSuperWide;
+	}
+}
