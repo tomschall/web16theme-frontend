@@ -69,15 +69,18 @@
 			en: {
 				menu: 'Menu',
 				search: 'Search'
-			}
+			},
+			// other languages here
 		}[document.documentElement.lang];
 
-		$('[data-menubuttons="menu"]').each(function() {
-			this.innerText = ' ' + strings.menu;
-		});
-		$('[data-menubuttons="search"]').each(function() {
-			this.innerText = ' ' + strings.search;
-		});
+		if (document.documentElement.lang !== 'de') { // @pre German is already hardcoded in the templated
+			$('[data-menubuttons="menu"]').each(function() {
+				this.innerText = ' ' + strings.menu;
+			});
+			$('[data-menubuttons="search"]').each(function() {
+				this.innerText = ' ' + strings.search;
+			});
+		}
 
 		this.addEventListeners();
 	};
