@@ -64,7 +64,7 @@
 		var strings = {
 			de: {
 				menu: 'Menü',
-				search: 'Sucheee'
+				search: 'Suche'
 			},
 			en: {
 				menu: 'Menu',
