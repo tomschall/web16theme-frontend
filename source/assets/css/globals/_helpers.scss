@@ -63,3 +63,60 @@ body.prevent-scroll {
   background: red;
   z-index: 10000;
 }
+
+/* Release Notes */
+#release-bar {
+	display: none;
+	background: $colorBlack;
+	border-bottom: 1px solid #000;
+}
+#release-bar-button {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+  padding: 5px 15px;
+  height: 20px;
+  font-size: pxToEm(11px, 11px);
+  line-height: 0;
+}
+#release-bar-button:hover {
+	background: $colorBlack;
+	color: $colorBg; //BG makes no sense here, but we need white color
+}
+p.release-notes {
+	margin: 0;
+	padding: 20px 0 15px 20px;
+	font-size: pxToEm(11px, 11px);
+	color: $colorBg;
+	border-bottom: 1px solid #444444;
+}
+p.release-notes.events {
+	padding-top: 15px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid transparent;
+}
+p.release-notes img {
+	position: relative;
+  top: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+p.release-notes a {
+	font-size: pxToEm(11px, 11px);
+	color: $colorYellow;
+}
+p.release-notes strong {
+	background: $colorYellow;
+	color: $colorBlack;
+  padding: 2px 15px;
+	margin-left: 15px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 0;
+}
+p.release-notes span {
+	margin-left: 15px;
+	margin-right: 15px;
+	color: #4c4c4c;
+}
