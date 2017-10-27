@@ -48,4 +48,4 @@ pages:
     - public
 
   only:
-  - release-notes2
+  - master
