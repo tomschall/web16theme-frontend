@@ -61,31 +61,30 @@
 		    $("#release-bar").slideToggle();
 		  });
 
-		  $.ajax({
-		    url: "https:/gitlab.fhnw.ch/api/v4/projects/25/milestones?private_token=oatBqMZzaiuxaa5sf7az",
-		    format: "json"
-		  })
-		  .done(function(data) {
-		    var activeStates = [];
-		    $.each(data, function(key, val) {
-		      if (val.state !== 'closed') {
-		        activeStates.push(key, val)
-		      }
-		    })
-		    var strDate = activeStates[1].updated_at;
-		    var splitDate = strDate.split("T");
+			$.ajax({
+				 /*url: "https://gitlab.fhnw.ch/api/v4/projects/25/milestones?private_token=oatBqMZzaiuxaa5sf7az",*/
+				 url: "milestones.json",
+				 format: "json"
+			 })
+			 .done(function(data) {
+			    var activeStates = [];
+			    $.each(data, function(key, val) {
+			      if (val.state !== 'closed') {
+			        activeStates.push(key, val);
+			      }
+			    })
+			    var strDate = activeStates[1].updated_at;
+			    var splitDate = strDate.split("T");
 
-		    $('#release-bar').append('<p class="release-notes">Milestone: <strong>' + activeStates[1].title + '</strong>' + '<span>|</span> Updated at: ' + splitDate[0] + ' <span>|</span> ' + 'Due date: ' + activeStates[1].due_date + '</p>');
-		    $('#release-bar-button').text('Release Notes');
-		  })
-		  .fail(function(){
-		    $('body').prepend('<p class="release-notes">Service not available! Please contact your System Administrator</p>');
+			    $('#release-bar').append('<p class="release-notes">Milestone: <strong>' + activeStates[1].title + '</strong>' + '<span>|</span> Updated at: ' + splitDate[0] + ' <span>|</span> ' + 'Due date: ' + activeStates[1].due_date + '</p>');
+			    $('#release-bar-button').text('Release Notes');
+			    console.log(activeStates[1].title);
 		  });
 
 		  // Latest Commit -> web16theme-frontend
 			$.ajax({
 			    url: "https:/gitlab.fhnw.ch/api/v4/projects/257/repository/commits?private_token=oatBqMZzaiuxaa5sf7az",
-				format: "json"
+				format: "jsonp"
 			})
 			.done(function(data) {
 			    var activeStates = [];
@@ -98,7 +97,7 @@
 			    $('.release-notes').after('<p class="release-notes events">Latest activity: <a href="https://gitlab.fhnw.ch/webteam/web16theme-frontend/commit/' + activeStates[1].id + '" target="_blank">' + activeStates[1].title + '</a> by <i>' + activeStates[1].author_name + '</i><br />' + 'Short ID: ' + activeStates[1].short_id + '<br / >Created at: ' + splitDate[0] + '</p>');
 			})
 			.fail(function(){
-			    $('body').prepend('<p class="release-notes">Service not available! Please contact your System Administrator</p>');
+			    $('#release-bar').append('<p class="release-notes">Service not available! Please contact your System Administrator</p>');
 			});
 		});
 	</script>

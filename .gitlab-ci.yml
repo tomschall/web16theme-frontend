@@ -37,6 +37,8 @@ pages:
   - bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
   - sh ./deploy_theme.sh
   - bin/gulp relative-paths
+  - 'curl -o milestones.json --header "PRIVATE-TOKEN: oatBqMZzaiuxaa5sf7az" https://gitlab.fhnw.ch/api/v4/projects/25/milestones'
+  - cp milestones.json build/
   - mv build public
 
   artifacts:
@@ -44,4 +46,4 @@ pages:
     - public
 
   only:
-  - master
+  - release-notes2
