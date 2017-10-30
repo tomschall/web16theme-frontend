@@ -4504,10 +4504,6 @@ jpegtran-bin@^3.0.0:
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
 
-jquery-base64@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/jquery-base64/-/jquery-base64-1.0.0.tgz#154933ed4afff94a9e2fd8f821d7c837c202cb19"
-
 jquery-deparam@^0.5.3:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/jquery-deparam/-/jquery-deparam-0.5.3.tgz#51f937c448175445499081b87bf32b241b1e2693"
@@ -4541,6 +4537,10 @@ jquerykeyframes@0.0.7:
 js-base64@^2.1.8:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
+
+js-base64@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.3.2.tgz#a79a923666372b580f8e27f51845c6f7e8fbfbaf"
 
 js-beautify@^1.6.3:
   version "1.6.14"
