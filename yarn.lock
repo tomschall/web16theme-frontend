@@ -4504,6 +4504,10 @@ jpegtran-bin@^3.0.0:
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
 
+jquery-base64@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/jquery-base64/-/jquery-base64-1.0.0.tgz#154933ed4afff94a9e2fd8f821d7c837c202cb19"
+
 jquery-deparam@^0.5.3:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/jquery-deparam/-/jquery-deparam-0.5.3.tgz#51f937c448175445499081b87bf32b241b1e2693"

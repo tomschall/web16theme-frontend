@@ -19,6 +19,7 @@
  * @requires ../../../node_modules/scrolltofixed/jquery-scrolltofixed.js
  * @requires ../../../node_modules/jquery-deparam/jquery-deparam.js
  * @requires ../../../node_modules/picturefill/dist/picturefill.js
+ * @requires ../../../node_modules/jquery-base64/jquery.base64.js
 
  * @requires ../.tmp/templates.js
 
@@ -26,6 +27,7 @@
  * @requires helpers/events.js
  * @requires helpers/mediaqueries.js
  * @requires helpers/links.js
+ * @requires helpers/emails.js
  * @requires helpers/formElementHelper.js
  * @requires helpers/sidebarHelper.js
  * @requires helpers/search.js
