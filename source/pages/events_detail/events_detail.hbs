@@ -1,0 +1,25 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+		<div class="page_content">
+			{{#if event_detail }}
+			<p>{{event_detail.event_date}} | {{event_detail.university}}</p>
+			{{/if}}
+			<h1>{{title}}</h1>
+			<p class="text__lead">
+				{{text__lead}}
+			</p>
+			{{> "widgets/mobile_content_navigation/mobile_content_navigation" widgets.mobileContentNavigation}}
+      <div class="content__element">
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+      </div>
+			<div class="content__element">
+				{{> "widgets/contact/contact" widgets.contact}}
+			</div>
+		</div>
+		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+		{{> "widgets/sidebar/sidebar" widgets.sidebar}}
+	{{/content}}
+{{/extend}}
