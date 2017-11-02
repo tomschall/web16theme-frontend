@@ -21,9 +21,6 @@
 	.custom-select___remover {
 		right: 15px;
 	}
-	.in_content_search__button {
-		opacity: 1;
-	}
 }
 
 .widg_i_want h2,
@@ -39,6 +36,7 @@
 .widg_i_want h2:after {
 	display: block;
 	width: 10%;
+	padding-top: 5px;
 	border-bottom: 4px solid $colorYellow;
 }
 
