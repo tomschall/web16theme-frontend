@@ -24,19 +24,31 @@
 							{{event_detail.event_date}} | {{event_detail.location_short}}
 						</button>
 						<div class="widg_accordeon__content" aria-hidden="true" data-accordeon="content" style="margin-bottom: 20px;">
-							<h3 style="margin-top: 0px;">Ort</h3>
-							<p>Hochschule für Wirtschaft FHNW<br />
-								Mustergasse 37<br />
-								Raum A-XYZ<br />
-								5200 Brugg<br />
-								<a href="">Google Maps</a>
-							</p>
-							<h3>Kosten</h3>
-							<p>Die Teilname ist kostenlos.</p>
-							<h3>Veranstalter</h3>
-							<p>Hochschule für Wirtschaft<br />
-								Institut für Finanzmanagement
-							</p>
+								<div class="event__info">
+									<div class="location__upper">
+										<h3>{{address.title}}</h3>
+										<div class="location__address">
+											<span>{{address.name}}</span>
+											<span>{{address.department}}</span>
+											<span>{{address.street}}</span>
+											<span>{{address.zipCity}}</span>
+										</div>
+										<div class="location__contact">
+											<dl>
+												<dt>{{../langStrings.telephone}}</dt>
+												<dd><a href="tel:{{contactData.telephone}}">{{contactData.telephone}}</a></dd>
+												<dt>{{../langStrings.email}}</dt>
+												<dd><a href="mailto:{{contactData.email}}">{{contactData.email}}</a></dd>
+											</dl>
+										</div>
+										{{#if locationPageURL}}
+											<a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
+										{{/if}}
+									</div>
+									<div class="location__inferior">
+										<a href="{{routeURL}}" target="_blank"><span>{{../langStrings.calcRoute}}</span></a>
+									</div>
+								</div>
 						</div>
 					</div>
 					<div class="widg_accordeon__entry" id="{{get_id title}}" data-accordeon="entry" role="listitem">
@@ -53,5 +65,8 @@
 		</div> <!-- / END PAGE CONTENT -->
 		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
 		{{> "widgets/sidebar/sidebar" widgets.sidebar}}
+		<div class="content__element content__element___bleed content__element___top-bordered" id="locations">
+			{{> "widgets/location_slider/location_slider" widgets.locationSlider}}
+    </div>
 	{{/content}}
 {{/extend}}

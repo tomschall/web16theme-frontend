@@ -14,6 +14,23 @@ var data = _.merge(defaultData, {
 		university: 'Hochschule für Wirtschaft',
 		location_short: 'Campus Brugg-Windisch'
 	}),
+	address: _.assign({
+		title: 'Ort',
+		name: 'Campus Brugg Windisch',
+		department: 'Fachhochschule Nordwestscheiz',
+		street: 'Bahnhofstrasse 6',
+		zipCity: '5200 Brugg'
+	}),
+	contactData: {
+		telephone: '+41 56 202 77 70',
+		email: 'bibliothek.windisch@fhnw.ch'
+	},
+	langStrings: {
+		telephone: 'Telefon',
+		email: 'E-Mail',
+		moreInfoForLocation: 'Mehr Infos zum Standort',
+		calcRoute: 'Route berechnen'
+	},
 	text__lead: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
 	widgets: {
 		header: _.assign({
@@ -54,6 +71,7 @@ var data = _.merge(defaultData, {
 				})
 			}
 		}),
+		locationSlider: requireNew('../../widgets/location_slider/location_slider.data.js'),
 		mobileContentNavigation: requireNew('../../widgets/mobile_content_navigation/mobile_content_navigation.data.js'),
 	}
 });
