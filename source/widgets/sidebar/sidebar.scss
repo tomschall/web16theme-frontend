@@ -6,8 +6,8 @@ $sidebarObjectPush: $basicPush * 5;
 	@include push(0.3);
 	@include clearfix();
 
+	margin-top: 120px;
 	position: relative;
-	z-index: zindex(sidebar);
 
 	transition: min-height $transitionLength / 2 $transitionEase;
 
@@ -18,97 +18,12 @@ $sidebarObjectPush: $basicPush * 5;
 		margin: 0;
 		position: relative;
 	}
-
-	&.sticky,
-	.widg_sidebar__accordion {
-		position: fixed;
-		width: calc(20.6% - 15px);
-
-		/* mimick .layout_content's padding-right */
-		right: $pagePadding - $gutterWidth;
-		@include mq($from: betweener, $to: wide) {
-			.header_wide & {
-				right: $pagePadding - $gutterWidth;
-			}
-				@include mq($from: betweener, $to: large) {
-				right: $pagePaddingSmall - $gutterWidth;
-			}
-		}
-		@include mq($from: medium, $to: large) {
-			right: $pagePaddingSmall - $gutterWidth;
-		}
-		@include mq($from: wide) {
-			right: $pagePaddingWide - $gutterWidth;
-		}
-	}
-
-	&.sticky {
-		@include mq($from: 'subnav') {
-			overflow: hidden;
-		}
-	}
-}
-
-.widg_sidebar__accordion {
-	z-index: zindex(sidebarAccordion);
-	padding-left: 16px;
-	padding-right: 16px;
-
-	.widg_sidebar__object {
-		display: none; /* on load */
-		border-bottom: 0;
-		margin-bottom: 0;
-
-		&.displayed {
-			display: block; /* as you scroll down */
-		}
-
-		.object__title {
-			cursor: pointer;
-		}
-
-		.object__content {
-			overflow: hidden;
-			transition: max-height $transitionLength / 2 $transitionEase,
-					padding-top $transitionLength / 2 $transitionEase,
-					padding-bottom $transitionLength / 2 $transitionEase;
-		}
-
-		&:not(.unfolded) {
-			> .object__content {
-				max-height: 0; /* on load */
-				padding-top: 0;
-				padding-bottom: 0;
-			}
-		}
-
-		&.unfolded {
-			.object__content {
-				max-height: 1000px; /* when you unfold an accordion child */
-			}
-		}
-	}
-
-	&:after {
-		clear: both;
-	}
 }
 
 .widg_sidebar__object {
 	border: 1px solid $colorGreyHover;
 	margin-bottom: $basicPush * 3;
 	background: $colorBg;
-
-	&:not(.unfolded) + &.displayed {
-		border-top: none;
-	}
-
-	&.look-unfoldable {
-		h2:after {
-			left: -1 * $sidebarObjectGutter;
-			right: -1 * ($sidebarObjectGutter + 12 + 8);
-		}
-	}
 
 	.is_requested {
 		transition: padding-bottom $transitionLength / 2 $transitionEase;
@@ -121,6 +36,7 @@ $sidebarObjectPush: $basicPush * 5;
 
 .object__title {
 	padding: $sidebarObjectGutter - 10 ($sidebarObjectGutter + 12 + 8) 0 $sidebarObjectGutter;
+	position: relative;
 	z-index: zindex(sidebarTitle);
 
 	margin-top: 0;
@@ -135,9 +51,10 @@ $sidebarObjectPush: $basicPush * 5;
 	&:after {
 		position: absolute;
 
-		right: $sidebarObjectGutter + 16px;
+		right: $sidebarObjectGutter;
+		top: 50%;
 
-		transform: translateY(-300%) rotate(45deg) scale(0.6);
+		transform: translateY(-50%) rotate(45deg) scale(0.6);
 		opacity: 0;
 
 		transition: all $transitionLength / 2 $transitionEase;
@@ -166,11 +83,14 @@ $sidebarObjectPush: $basicPush * 5;
 		}
 	}
 
-	.look-unfoldable & {
+	.is_fixed & {
+		position: fixed;
 
 		cursor: pointer;
 
 		background-color: $colorBg;
+		border: 1px solid $colorGreyHover;
+		border-bottom: none;
 		color: $colorTextGrey;
 
 		&:hover {
@@ -182,14 +102,15 @@ $sidebarObjectPush: $basicPush * 5;
 			&:after {
 				position: absolute;
 
-				right: $sidebarObjectGutter + 16px;
+				right: $sidebarObjectGutter;
+				top: 50%;
 
-				transform: translateY(-300%) rotate(45deg);
+				transform: translateY(-50%) rotate(45deg);
 			}
 		}
 
 		&:after {
-			transform: translateY(-300%) rotate(45deg) scale(1.0);
+			transform: translateY(-50%) rotate(45deg) scale(1.0);
 
 			opacity: 1.0;
 		}
@@ -200,10 +121,10 @@ $sidebarObjectPush: $basicPush * 5;
 		}
 	}
 
-	.unfolded & {
+	.is_requested & {
 		&:after,
 		&:hover:after {
-			transform: translateY(-300%) rotate(90deg) scale(1.0);
+			transform: translateY(-50%) rotate(90deg) scale(1.0);
 		}
 	}
 
