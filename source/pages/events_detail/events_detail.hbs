@@ -1,0 +1,36 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+		<div class="page_content">
+			<div class="widg_event_detail content__element" data-init="event_detail">
+			{{#if event_detail }}
+			<p>{{event_detail.event_date}} | {{event_detail.university}}</p>
+			{{/if}}
+			<h1>{{title}}</h1>
+			<p class="text__lead">
+				{{text__lead}}
+			</p>
+			<div class="widg_event_detail content__element" data-init="event_detail">
+  		<!-- Custom html structure if its the accordeon for an online application. -->
+  		<h2>Koordinaten zu diesem Anlass</h2>
+			  <div class="event__info">
+			    <h3>Hochschule für Wirtschaft FHNW</h3>
+					<p><strong>Institut für Finanzmanagement</strong></p>
+					<p><strong>Zeit: </strong>Mittwoch, 10.10.20171, 16:00 Uhr - 20:30Uhr <a class="ical" href="https://www.fhnw.ch/de/weiterbildung/psychologie/mas-business-psychology/eduoccasion-1/@@ics_view">iCal</a><br>
+					<strong>Kosten:</strong> Die Teilnahme ist kostenlos.</p>
+					<h4>Weitere Informationen:</h4>
+					Weitere Informationen finden sie auf der Webseite des Anlasses.
+			  </div>
+		</div>
+			</div>
+			{{> "widgets/mobile_content_navigation/mobile_content_navigation" widgets.mobileContentNavigation}}
+		</div> <!-- / END PAGE CONTENT -->
+		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+		{{> "widgets/sidebar/sidebar" widgets.sidebar}}
+		<div class="content__element content__element___bleed content__element___top-bordered" id="locations">
+			{{> "widgets/location_slider/location_slider" widgets.locationSlider}}
+    </div>
+	{{/content}}
+{{/extend}}
