@@ -25,6 +25,10 @@ var data = _.merge(defaultData, {
 		telephone: '+41 56 202 77 70',
 		email: 'bibliothek.windisch@fhnw.ch'
 	},
+	locationPageURL: '/pages/location_brugg/location_brugg.html',
+	routeURL: 'https://maps.google.ch',
+	placeID: 'ChIJt9J5wzMwkEcRgWnc5loV14I',
+	zoomLevel: 17,
 	langStrings: {
 		telephone: 'Telefon',
 		email: 'E-Mail',
@@ -71,8 +75,32 @@ var data = _.merge(defaultData, {
 				})
 			}
 		}),
-		locationSlider: requireNew('../../widgets/location_slider/location_slider.data.js'),
-		mobileContentNavigation: requireNew('../../widgets/mobile_content_navigation/mobile_content_navigation.data.js'),
+		locationSlider: _.assign(requireNew('../../widgets/location_slider/location_slider.data.js'), {
+			locationTitle: 'Lageplan der Veranstaltung',
+			locationDescription: '',
+			entries: [
+				{
+					type: 'location',
+					title: 'Campus Olten',
+					navTitle: 'Standort Olten',
+					address: {
+						name: 'Fachhochschule Nordwestschweiz FHNW',
+						department: 'Institut für Finanzmanagement',
+						street: 'Bahnhofstrasse 6',
+						zipCity: '5200 Olten'
+					},
+					contactData: {
+						telephone: '+41 56 202 77 70',
+						email: 'bibliothek.windisch@fhnw.ch'
+					},
+					locationPageURL: '/pages/location_brugg/location_brugg.html',
+					routeURL: 'https://maps.google.ch',
+					placeID: 'ChIJt9J5wzMwkEcRgWnc5loV14I',
+					zoomLevel: 17
+				}
+			]
+		}),
+		mobileContentNavigation: requireNew('../../widgets/mobile_content_navigation/mobile_content_navigation.data.js')
 	}
 });
 

@@ -4,6 +4,7 @@
 	{{/content}}
 	{{#content "content"}}
 		<div class="page_content">
+			<div class="widg_event_detail content__element" data-init="event_detail">
 			{{#if event_detail }}
 			<p>{{event_detail.event_date}} | {{event_detail.university}}</p>
 			{{/if}}
@@ -11,57 +12,20 @@
 			<p class="text__lead">
 				{{text__lead}}
 			</p>
+			<div class="widg_event_detail content__element" data-init="event_detail">
+  		<!-- Custom html structure if its the accordeon for an online application. -->
+  		<h2>Koordinaten zu diesem Anlass</h2>
+			  <div class="event__info">
+			    <h3>Hochschule für Wirtschaft FHNW</h3>
+					<p><strong>Institut für Finanzmanagement</strong></p>
+					<p><strong>Zeit: </strong>Mittwoch, 10.10.20171, 16:00 Uhr - 20:30Uhr <a class="ical" href="https://www.fhnw.ch/de/weiterbildung/psychologie/mas-business-psychology/eduoccasion-1/@@ics_view">iCal</a><br>
+					<strong>Kosten:</strong> Die Teilnahme ist kostenlos.</p>
+					<h4>Weitere Informationen:</h4>
+					Weitere Informationen finden sie auf der Webseite des Anlasses.
+			  </div>
+		</div>
+			</div>
 			{{> "widgets/mobile_content_navigation/mobile_content_navigation" widgets.mobileContentNavigation}}
-      <div class="content__element">
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-      </div>
-				<!-- Start Application Accordeon -->
-				<div class="widg_accordeon" data-init="accordeon" {{#if multiple}}data-multiple="true"{{/if}} role="list">
-					<!-- Custom html structure if its the accordeon for an online application. -->
-					<h2>Koordinaten zu diesem Anlass</h2>
-					<div class="widg_accordeon__entry" id="{{get_id title}}" data-accordeon="entry" role="listitem">
-						<button aria-expanded="false" class="not-default" data-accordeon="button">
-							{{event_detail.event_date}} | {{event_detail.location_short}}
-						</button>
-						<div class="widg_accordeon__content" aria-hidden="true" data-accordeon="content" style="margin-bottom: 20px;">
-								<div class="event__info">
-									<div class="location__upper">
-										<h3>{{address.title}}</h3>
-										<div class="location__address">
-											<span>{{address.name}}</span>
-											<span>{{address.department}}</span>
-											<span>{{address.street}}</span>
-											<span>{{address.zipCity}}</span>
-										</div>
-										<div class="location__contact">
-											<dl>
-												<dt>{{../langStrings.telephone}}</dt>
-												<dd><a href="tel:{{contactData.telephone}}">{{contactData.telephone}}</a></dd>
-												<dt>{{../langStrings.email}}</dt>
-												<dd><a href="mailto:{{contactData.email}}">{{contactData.email}}</a></dd>
-											</dl>
-										</div>
-										{{#if locationPageURL}}
-											<a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
-										{{/if}}
-									</div>
-									<div class="location__inferior">
-										<a href="{{routeURL}}" target="_blank"><span>{{../langStrings.calcRoute}}</span></a>
-									</div>
-								</div>
-						</div>
-					</div>
-					<div class="widg_accordeon__entry" id="{{get_id title}}" data-accordeon="entry" role="listitem">
-						<button aria-expanded="false" class="not-default" data-accordeon="button">
-							Weitere Informationen
-						</button>
-						<div class="widg_accordeon__content" aria-hidden="true" data-accordeon="content">
-							<p>Weitere Informationen finden Sie auf der Webseite des Anlasses</p>
-						</div>
-					</div>
-				</div>
-				<!-- End Application Accordeon -->
-
 		</div> <!-- / END PAGE CONTENT -->
 		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
 		{{> "widgets/sidebar/sidebar" widgets.sidebar}}
