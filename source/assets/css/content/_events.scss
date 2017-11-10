@@ -1,0 +1,25 @@
+.widg_event_detail {
+  margin-top: 50px;
+}
+.event__info {
+  background: #F1F1EE;
+  padding: 10px 30px 30px;
+
+  & .ical {
+    font-weight: 600;
+
+    display: inline-block;
+    margin-left: 14px;
+
+    @include iconDataurl('ical');
+
+    &:before {
+      width: 20px;
+      height: 18px;
+
+      vertical-align: middle;
+      transform: translateY(-1px);
+      margin-right: 8px;
+    }
+  }
+}
