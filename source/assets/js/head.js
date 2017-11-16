@@ -8,6 +8,6 @@
 ;(function(undefined) {
 	'use strict';
 
-	estatico.helpers.fontsLoader.init();
+	//estatico.helpers.fontsLoader.init();
 
 })();
