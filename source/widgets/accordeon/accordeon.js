@@ -102,6 +102,10 @@
 				this.addActiveClass($(event.currentTarget));
 			}
 		}.bind(this));
+
+		$(window).on('hashchange', function() {
+			this.checkAndOpenHash(window.location.hash);
+		}.bind(this));
 	};
 
 	Widget.prototype.scrollToOpenButton = function($button) {
