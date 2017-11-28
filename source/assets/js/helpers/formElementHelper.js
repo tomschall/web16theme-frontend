@@ -204,7 +204,7 @@
 			e.preventDefault();
 
 			var fields = [],
-				validators = $form.find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').map(function() {
+				validators = $form.find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], textarea').map(function() {
 					var $el = $(this),
 						fieldName = $el.attr('name');
 					if (fields.indexOf(fieldName) >= 0) {
@@ -318,7 +318,7 @@
 		},
 
 		onInput: function() {
-			$form.find(':input[type="text"], :input[type="checkbox"], :input[type="radio"], textarea, :input[type="password"], :input[type="file"]')
+			$form.find(':input[type="text"], :input[type="checkbox"], :input[type="radio"], textarea, :input[type="password"]')
 				.on('focusout', _.debounce(easyFormValidation.onInputChange, 300));
 
 			$form.find('input[type="radio"]').on('change', function() {
