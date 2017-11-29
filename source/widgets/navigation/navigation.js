@@ -100,7 +100,7 @@
 
 				if (!window.estatico.mq.query({from: 'medium'})) {
 					// remove the cloned node in mobile navigation
-					var $nodes = $('.widg_navigation > [data-navigation-level="' + (currentLevel + 1) +'"]');
+					var $nodes = $('.widg_navigation > [data-navigation-level="' + (currentLevel + 1) + '"]');
 					$nodes.remove();
 
 					// scroll top
