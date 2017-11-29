@@ -9,7 +9,7 @@
 	'use strict';
 
 	var rules,
-		$form = $('#form');
+	$form = $('#form');
 
 	/**
 	 * Returns page language or defaults to `de`
@@ -711,6 +711,11 @@
 	if (!window.__PREVENT_INITIALIZATION__) {
 		$(document).ready(function() {
 			easyFormValidation.init();
+
+			// workaround https://gitlab.fhnw.ch/webteam/fhnw.webauftritt/issues/988 -> removing attribute "disabled" from upload button
+			if ($('.named-file-widget input').length) {
+				$('.named-file-widget input').removeAttr('disabled');
+			}
 		});
 	}
 })(jQuery);

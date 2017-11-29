@@ -141,10 +141,23 @@
 }
 
 
-// workaround due to https://gitlab.fhnw.ch/webteam/fhnw.webauftritt/issues/638
 .easyformForm {
+	// workaround due to https://gitlab.fhnw.ch/webteam/fhnw.webauftritt/issues/638
 	[id^=formfield-form-widgets-hidden_] {
 		display:none;
 	}
-}
 
+	// workaround -> removing radios after server respond file upload -> https://gitlab.fhnw.ch/webteam/fhnw.webauftritt/issues/988
+	& .named-file-widget {
+		& div:first-child {
+			display: none;
+		}
+		& div input {
+			border: none !important;
+		}
+
+		& div + div {
+			padding-left: 0 !important;
+		}
+	}
+}
