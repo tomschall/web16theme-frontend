@@ -20,7 +20,7 @@ deploy:
  script:
   - sh ./prepare_build_theme.sh
   - bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
-  - sh ./deploy_theme.sh
+  - DO_COMMIT=yes sh ./deploy_theme.sh
  only:
   - master
 
