@@ -23,7 +23,7 @@ var data = _.merge(defaultData, {
 	}),
 	contactData: {
 		telephone: '+41 56 202 77 70',
-		email: 'bibliothek.windisch@fhnw.ch'
+		email: 'YmlibGlvdGhlay53aW5kaXNjaEBmaG53LmNo'
 	},
 	locationPageURL: '/pages/location_brugg/location_brugg.html',
 	routeURL: 'https://maps.google.ch',
@@ -91,7 +91,7 @@ var data = _.merge(defaultData, {
 					},
 					contactData: {
 						telephone: '+41 56 202 77 70',
-						email: 'bibliothek.windisch@fhnw.ch'
+						email: 'YmlibGlvdGhlay53aW5kaXNjaEBmaG53LmNo'
 					},
 					locationPageURL: '/pages/location_brugg/location_brugg.html',
 					routeURL: 'https://maps.google.ch',
