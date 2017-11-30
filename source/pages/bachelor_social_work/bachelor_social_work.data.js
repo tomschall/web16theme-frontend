@@ -48,6 +48,36 @@ var data = _.merge(defaultData, {
 			titleUrl: '#',
 			entries: [
 				{
+					title: 'BSc Medizininformatik',
+					url: '#',
+					isBack: false
+				},
+				{
+					title: 'BSc Medizintechnik',
+					url: '#',
+					isBack: false
+				},
+				{
+					title: 'BSc Pharmatechnologie',
+					url: '#',
+					isBack: false
+				},
+				{
+					title: 'BSc Pharmatechnologie',
+					url: '#',
+					isBack: false
+				},
+				{
+					title: 'BSc Pharmatechnologie',
+					url: '#',
+					isBack: false
+				},
+				{
+					title: 'BSc Pharmatechnologie',
+					url: '#',
+					isBack: false
+				},
+				{
 					title: 'Fachbereich Soziale Arbeit',
 					url: '#',
 					isBack: true
