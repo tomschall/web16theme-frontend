@@ -47,7 +47,7 @@ var templateData = {
 						}
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-					btnUrl: '#',
+					btnUrl: 'geomailto:YmlibGlvdGhlay53aW5kaXNjaEBmaG53LmNo',
 					applyLabel: 'Anmelden long button text',
 					applicationIsActive: true
 				},
@@ -89,7 +89,7 @@ var templateData = {
 						}
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-					btnUrl: '#',
+					btnUrl: 'geomailto:YmlibGlvdGhlay53aW5kaXNjaEBmaG53LmNo',
 					iCalURL: '#',
 					applyLabel: 'Anmelden',
 					applicationIsActive: false

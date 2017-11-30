@@ -32,7 +32,7 @@ var data = _.merge(defaultData, {
 							{
 								name: 'Prof. Dr. Verena Muster',
 								jobDescr: 'Leitung',
-								email: 'hans.muster@fhnw.ch',
+								email: 'aGFucy5tdXN0ZXJAZmhudy5jaA==',
 								telephone: '+41 62 957 24 26',
 								location: 'Pädagogische Hochschule Brugg'
 							}
