@@ -56,7 +56,6 @@ $sidebarObjectPush: $basicPush * 5;
 
 	.widg_sidebar__object {
 		display: none; /* on load */
-		border-bottom: 0;
 		margin-bottom: 0;
 
 		&.displayed {
@@ -72,6 +71,11 @@ $sidebarObjectPush: $basicPush * 5;
 			transition: max-height $transitionLength / 2 $transitionEase,
 					padding-top $transitionLength / 2 $transitionEase,
 					padding-bottom $transitionLength / 2 $transitionEase;
+		}
+
+		&:not(:last-child),
+		&:not(.unfolded) {
+			border-bottom: 0;
 		}
 
 		&:not(.unfolded) {

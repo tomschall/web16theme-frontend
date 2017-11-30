@@ -27,31 +27,6 @@
 	 * Pros: Conceptually simple, easy to reason about.
 	 * Cons: Because of the twin show-hide transitions, a dozen lines of code will be required to avoid flashes of duplicated content
 	 *
-	 *
-	 *
-	 * Approach B:
-	 *
-	 * On page load, the sticky scroll threshold of each sidebar content child (child's threshold) is calculated.
-	 *
-	 * Considering that some grandchildren are title and others are content.
-	 *
-	 * On scroll, a title is elevated and fixed to its parent's threshold iif the scroll amount is above the parents's threshold.
-	 *
-	 * The static-rendering void caused by the now-fixed title, is re-filled with padding on the parent.
-	 *
-	 * When you unfold a title,
-	 * 		the corresponding content (C) is fixed to below the title,
-	 * 		parent is compensated with padding,
-	 * 		the threshold of the next children is decremented by the height of C
-	 *
-	 * When you fold a title,
-	 * 		the corresponding content is set static again,
-	 * 		parent's padding is removed,
-	 * 		the threshold of the next children is restored
-	 *
-	 * Pros: Structurally simple
-	 * Cons: Hard to reason about. Because of the fixed-static transitions, a dozen lines of code will be required to avoid flashes of wrong-positioned content
-	 *
 	 */
 
 
@@ -84,7 +59,7 @@
 
 	function initCurrentSize() {
 		window_scroll_top = $window.scrollTop();
-		content_height = $widg_sidebar_content.outerHeight(true);
+		content_height = $widg_sidebar_content.innerHeight();
 		widg_subnav_height = $('.widg_subnav').outerHeight(true);
 		widg_sidebar_margin_top = widg_subnav_height - 53;
 		widg_sidebar_sticky_top = -1 * widg_sidebar_margin_top + SIDEBAR_STICKY_MARGIN_TOP;
@@ -115,8 +90,6 @@
 			unstickSidebar();
 		}
 	}
-
-
 
 	/**
 	 * @post 6. Each accordion object is visible iif
@@ -150,8 +123,6 @@
 		accordion_height = $widg_sidebar_accordion.outerHeight(true);
 	}
 
-
-
 	/**
 	 * On page load
 	 */
@@ -163,7 +134,8 @@
 	initCurrentSize();
 
 	window.addEventListener('load', function() {
-		initCurrentSize(); // Distance to treppenhaus navigation depends on its height, which sometimes actually depends on assets to be loaded
+		// Distance to treppenhaus navigation depends on its height, which depends on its content, which is sometimes not fully known until the load event
+		initCurrentSize();
 	});
 
 	// 1. The content objects are copied to a floating (fixed, elevated) accordion, and set to display: none.
@@ -172,8 +144,6 @@
 	$widg_sidebar_accordion.html($widg_sidebar_content.html());
 	$widg_sidebar_accordion_objects = $('.widg_sidebar__object', $widg_sidebar_accordion);
 	$widg_sidebar_accordion_titles = $('.object__title', $widg_sidebar_accordion_objects);
-
-
 
 	/**
 	 * On click of an accordion title
@@ -199,8 +169,6 @@
 		}, ANIMATION_DURATION + 20);
 	});
 
-
-
 	/**
 	 * On scroll
 	 */
@@ -215,8 +183,6 @@
 		updateSidebarContent();
 		updateSidebarAccordion();
 	});
-
-
 
 	/**
 	 * On window resize

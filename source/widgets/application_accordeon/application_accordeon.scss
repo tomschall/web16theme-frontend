@@ -6,16 +6,7 @@
 	}
 
 	a.button.mini_button.button__apply {
-		// #842 - shrink button
-		max-width: 160px;
-		line-height: 1;
-		display: flex;
-		align-items: center;
-		height: auto;
-		min-height: 45px;
-		padding-top: 5px;
-		padding-bottom: 5px;
-		cursor: pointer;
+			cursor: pointer;
 	}
 
 	.widg_accordeon__content {

@@ -33,8 +33,11 @@
 	@include clearfix;
 }
 
-.widg_i_want h2::after {
-	left: 0;
+.widg_i_want h2:after {
+	display: block;
+	width: 10%;
+	padding-top: 5px;
+	border-bottom: 4px solid $colorYellow;
 }
 
 .widg_i_want .control_group {

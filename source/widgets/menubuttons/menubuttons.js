@@ -70,15 +70,20 @@
 				menu: 'Menu',
 				search: 'Search'
 			},
+			fr: {
+				menu: 'Menu',
+				search: 'Recherche'
+			},
 			// other languages here
-		}[document.documentElement.lang];
+		};
+		var lang = document.documentElement.lang;
 
-		if (document.documentElement.lang !== 'de') { // @pre German is already hardcoded in the templated
+		if (lang in strings) { // @pre German is already hardcoded in the templated
 			$('[data-menubuttons="menu"]').each(function() {
-				this.innerText = ' ' + strings.menu;
+				this.innerText = ' ' + strings[lang].menu;
 			});
 			$('[data-menubuttons="search"]').each(function() {
-				this.innerText = ' ' + strings.search;
+				this.innerText = ' ' + strings[lang].search;
 			});
 		}
 
