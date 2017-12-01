@@ -2,12 +2,28 @@
   <div class="event__info">
     <h3>{{langStrings.date_and_time}}</h3>
     <p>{{ event_detail.event_date }} <a class="ical" href="{{event_detail.url}}/@@ics_view">iCal</a></p>
-      <h3>{{langStrings.location}}</h3>
-      {{{event_detail.place_description}}}
-      <h3>{{langStrings.organizer}}</h3>
-      <p>{{event_detail.oe_label_0}}<br/>
-      {{event_detail.oe_label_1}}</p>
-      <p><strong>{{langStrings.costs}}: </strong> {{event_detail.costs}}<br>
-      <strong>{{langStrings.language}}: </strong> {{event_detail.teachinglanguage}}</p>
+      {{#if event_detail.place_description}}
+        <h3>{{langStrings.location}}</h3>
+        {{{event_detail.place_description}}}
+      {{/if}}
+      {{#if event_detail.oe_label_0}}
+        <h3>{{langStrings.organizer}}</h3>
+      {{/if}}
+      <p>
+        {{#if event_detail.oe_label_0}}
+          {{event_detail.oe_label_0}}<br/>
+        {{/if}}
+        {{#if event_detail.oe_label_1}}
+          {{event_detail.oe_label_1}}
+        {{/if}}
+      </p>
+      <p>
+        {{#if event_detail.costs}}
+          <strong>{{langStrings.costs}}: </strong> {{event_detail.costs}}<br />
+        {{/if}}
+        {{#if event_detail.teachinglanguage}}
+          <strong>{{langStrings.language}}: </strong> {{event_detail.teachinglanguage}}
+        {{/if}}
+      </p>
   </div>
 </div>
