@@ -40,15 +40,14 @@ var data = _.merge(defaultData, {
 		header: _.assign({
 			hasPromoTeaser: false,
 			isCollapsible: true
-		}, requireNew('../../widgets/header/header.data.js')),
+		},requireNew('../../widgets/header/header.data.js')),
 		navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 		footer: requireNew('../../widgets/footer/footer.data.js'),
 		hero: _.assign({
 			heroImage: '/assets/media/img/building_brugg.png',
 			heroAlt: 'Symbolbild',
 			breadcrumb: requireNew('../../widgets/breadcrumb/breadcrumb.data.js'),
-		},
-		requireNew('../../widgets/hero/hero.data.js')),
+		},requireNew('../../widgets/hero/hero.data.js')),
 		sidebar: _.assign(requireNew('../../widgets/sidebar/sidebar.data.js'), {
 			widgets: {
 				application: _.assign(requireNew('../../widgets/sidebar_application/sidebar_application.data.js'), {
