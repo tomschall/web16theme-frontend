@@ -19,10 +19,12 @@
       </p>
       <p>
         {{#if event_detail.costs}}
-          <strong>{{langStrings.costs}}: </strong> {{event_detail.costs}}<br />
+          <h3>{{langStrings.costs}}</h3> 
+          <p>{{event_detail.costs}}</p>
         {{/if}}
         {{#if event_detail.teachinglanguage}}
-          <strong>{{langStrings.language}}: </strong> {{event_detail.teachinglanguage}}
+          <h3>{{langStrings.language}}</h3> 
+          <p>{{event_detail.teachinglanguage}}</p>
         {{/if}}
       </p>
   </div>
