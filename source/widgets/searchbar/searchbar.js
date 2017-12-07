@@ -289,7 +289,8 @@
 				titleSt = titleSt.replace('<span class="bold">', '');
 				titleSt = titleSt.replace('</span>', '');
 
-				queryStartPosition = titleSt.toLowerCase().search(currentSearchValue.toLowerCase());
+				queryStartPosition = this.getWithoutPunctuationMarks(titleSt.toLowerCase())
+						.search(this.getWithoutPunctuationMarks(currentSearchValue.toLowerCase()));
 
 				if (queryStartPosition !== -1) {
 					queryEndPosition = queryStartPosition + currentSearchValue.length;
@@ -298,6 +299,31 @@
 				}
 			}
 		}.bind(this));
+	};
+
+	// @see https://de.wikipedia.org/wiki/Satzzeichen
+	Widget.prototype.getWithoutPunctuationMarks = function(str) {
+		return str
+			.replace(',', '')
+			.replace(';', '')
+			.replace(':', '')
+			.replace('.', '')
+			.replace('…', '')
+			.replace('·', '')
+			.replace('•', '')
+			.replace('?', '')
+			.replace('!', '')
+			.replace('\'', '')
+			.replace('-', '')
+			.replace('–', '')
+			.replace('"', '')
+			.replace('/', '')
+			.replace('\\', '')
+			.replace('(', '')
+			.replace(')', '')
+			.replace('[', '')
+			.replace(']', '')
+		;
 	};
 
 	/**
