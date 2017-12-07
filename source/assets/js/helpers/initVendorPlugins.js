@@ -16,7 +16,7 @@
 
 		$('.widg_teaser__img img').imageScale({
 			rescaleOnResize: true,
-			scale: 'best-fit-down'
+			scale: 'best-fill'
 		});
 
 		$('.widg_hero__img').imageScale({
