@@ -9,7 +9,7 @@
 	'use strict';
 
 	var rules,
-		$form = $('form');
+	$form = $('#form');
 
 	/**
 	 * Returns page language or defaults to `de`
@@ -204,7 +204,7 @@
 			e.preventDefault();
 
 			var fields = [],
-				validators = $form.find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').map(function() {
+				validators = $form.find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], textarea').map(function() {
 					var $el = $(this),
 						fieldName = $el.attr('name');
 					if (fields.indexOf(fieldName) >= 0) {
@@ -231,7 +231,7 @@
 
 		getFormState: function() {
 			var countError = 0;
-			$(rules.$form).find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
+			$form.find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
 				var $requiredSelectState = $(this);
 				if ($requiredSelectState.hasClass(rules.required) && !($requiredSelectState.hasClass(rules.hasvalue))) {
 					countError++;
@@ -244,12 +244,12 @@
 			// Reset the form
 			rules.$formResetButton.click(function(e) {
 				e.preventDefault();
-				$(rules.$form)[0].reset();
+				$form[0].reset();
 				rules.$formSubmitButton.val(easyFormValidation.rules.formSubmitButtonText);
-				$(rules.$form).find('.' + rules.error).removeClass(rules.error);
-				$(rules.$form).find('.has-select').removeClass('has-select');
-				$(rules.$form).find('.' + rules.hasvalue).removeClass(rules.hasvalue);
-				$(rules.$form).find(rules.$fieldErrorBox).empty();
+				$form.find('.' + rules.error).removeClass(rules.error);
+				$form.find('.has-select').removeClass('has-select');
+				$form.find('.' + rules.hasvalue).removeClass(rules.hasvalue);
+				$form.find(rules.$fieldErrorBox).empty();
 
 				// Reset Select2 Dropdown
 				$form.find('.select-widget').select2({
@@ -321,10 +321,6 @@
 			$form.find(':input[type="text"], :input[type="checkbox"], :input[type="radio"], textarea, :input[type="password"]')
 				.on('focusout', _.debounce(easyFormValidation.onInputChange, 300));
 
-			$form.find(':input[type="file"]').on('change', function() {
-				easyFormValidation.onFileChange($(this));
-			});
-
 			$form.find('input[type="radio"]').on('change', function() {
 				easyFormValidation.onRadioChange($(this));
 			});
@@ -344,10 +340,7 @@
 				// synchronize fields
 				easyFormValidation.synchronizeDateFields($el);
 			}
-			easyFormValidation.validateElement($el);
-		},
 
-		onFileChange: function($el) {
 			easyFormValidation.validateElement($el);
 		},
 
@@ -455,7 +448,7 @@
 				}
 			}
 
-			if ((!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) && !($el.get(0).files && $el.get(0).files.length)) {
+			if (!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) {
 				// no validation required
 				updateFieldStatus($el, $currentFieldType, true);
 				return;
@@ -718,6 +711,17 @@
 	if (!window.__PREVENT_INITIALIZATION__) {
 		$(document).ready(function() {
 			easyFormValidation.init();
+
+			// workaround https://gitlab.fhnw.ch/webteam/fhnw.webauftritt/issues/988 -> removing attribute "disabled" from upload button
+			if ($('.named-file-widget input').length) {
+				$('.named-file-widget input').removeAttr('disabled');
+
+					$('.named-file-widget input').each(function(index) {
+						 if ($('.named-file-widget input').is(':checked')) {
+							 $('.named-file-widget input').removeAttr('checked');
+						 }
+					});
+			}
 		});
 	}
 })(jQuery);

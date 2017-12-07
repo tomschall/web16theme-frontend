@@ -1,0 +1,70 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content">
+      <h1>{{title}}</h1>
+      <p class="text__lead">
+				{{leadText}}
+      </p>
+
+			<div class="content__element">
+				<div class="responsive-video__small">
+					<div class="tileItem tile-id-kleines-video-mit-titel">
+						<div class="tileHeading">
+							<h2>Kleines Video mit Titel und ohne Titel</h2>
+						</div>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/-7hkmNlaD28"></iframe>
+					</div>
+				</div>
+			</div>
+
+			<div class="content__element">
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.</p>
+				<p>Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.</p>
+			</div>
+
+			<div class="content__element">
+				<div class="responsive-video__small">
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/-7hkmNlaD28"></iframe>
+				</div>
+			</div>
+
+			<div class="content__element">
+				<a href="/" class="sg_logo">{{project}}  {{env.date}} {{env.build}}</a>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.</p>
+				<p>Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.</p>
+			</div>
+
+			<div class="content__element">
+				<div class="responsive-video">
+					<div class="tileItem tile-id-video-mit-titel">
+          	<div class="tileHeading">
+            	<h2>Grosses Video mit und ohne Titel (responsive)</h2>
+          	</div>
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/-7hkmNlaD28"></iframe>
+					</div>
+				</div>
+			</div>
+
+			<div class="content__element">
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.</p>
+				<p>Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.</p>
+			</div>
+
+			<div class="content__element">
+				<div class="responsive-video no-title">
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/-7hkmNlaD28"></iframe>
+				</div>
+			</div>
+
+			<div class="content__element">
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.</p>
+				<p>Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.</p>
+			</div>
+
+    </div>
+		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+	{{/content}}
+{{/extend}}

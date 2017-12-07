@@ -158,6 +158,7 @@ module.exports = exports = {
 		"ScrollMagic": true,
 		"_": true,
 		"module": true,
-		"Handlebars": true
+		"Handlebars": true,
+		"Base64": true
 	}
 };

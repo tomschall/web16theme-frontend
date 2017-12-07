@@ -2,11 +2,18 @@
 	position: relative;
 
 	p {
+		font-family: $fontSerifRoman;
+		font-size: 1.25rem;
+		font-weight: 300;
 		margin: $basicPush 0 $basicPush * 2.6 0;
 
 		@include mq($to: small) {
 			margin-top: 9px;
 		}
+	& + p {
+		padding-bottom: 2em;
+	}
+
 	}
 
 	h3.childless {

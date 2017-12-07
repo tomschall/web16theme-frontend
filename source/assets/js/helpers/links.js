@@ -26,7 +26,9 @@
 				$targetElement = $($.attr(this, 'href'));
 				$('html, body').animate({
 					scrollTop: $targetElement.offset().top - 45
-				}, 250);
+				}, 250, (function() {
+					window.location.hash = $.attr(this, 'href').substring(1);
+				}).bind(this));
 				initialTabIndex = $targetElement.prop('tabindex');
 				if (initialTabIndex === -1) {
 					$targetElement.prop('tabindex', 0);

@@ -79,6 +79,13 @@ body {
 			width: calc(100% + 32px);
 			max-width: none;
 		}
+
+		.widg_teaser {
+			h2, h3 {
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
 	}
 
 	&.span-9 {
@@ -210,10 +217,6 @@ table.content__table {
 		@include mq($to: medium) {
 			padding-left: $gutterWidth;
 			padding-right: $gutterWidth;
-		}
-
-		&.bleed__inner--centered {
-			text-align: center;
 		}
 	}
 }
