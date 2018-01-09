@@ -89,8 +89,55 @@
 			easyFormValidation.onOptionDropdown();
 			easyFormValidation.onOptionMultiSelect();
 			easyFormValidation.resetForm();
+			easyFormValidation.uploadSize();
 
 			$form.on('submit', easyFormValidation.onSubmit.bind(easyFormValidation));
+		},
+
+		uploadSize: function () {
+			var fileArr = [];
+	    var combinedSize = 0;
+
+			function bytesToSize(bytes) {
+   			var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+   			if (bytes === 0) {
+					return '0 Byte';
+				}
+   			var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+   			return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+			};
+
+	    $("input[type='file']").on('change',function() {
+
+	        for(var i=0;i<this.files.length;i++) {
+						  combinedSize = 0;
+						  var uploadField = '#' + $(this).attr('id');
+							console.log('Upload Field: ' + $(this).attr('id'));
+							$(uploadField).parent().parent().addClass('error');
+							$(uploadField).parent().parent().find('.fieldErrorBox').text(bytesToSize(this.files[i].size));
+	            combinedSize += (this.files[i].size||this.files[i].fileSize);
+
+							console.log('combinedSize ' + combinedSize);
+          		if($('#uploadWarning').length === 0) {
+								if (combinedSize > 1024) {
+									$('#form-buttons-submit').attr('disabled','disabled');
+									$(uploadField).parent().parent().find('.fieldErrorBox').css('color', '#df305b');
+									$('#form-buttons-submit').before('<div id="uploadWarning" style="color: #df305b; border: solid 2px #df305b; display: block; padding: 15px; margin-bottom: 15px;">Over Max Size: Bitte reduzieren Sie die Grösse ihrer Files.</div>');
+									console.log('Over Max Size' + uploadField);
+								}
+							}
+
+							if (combinedSize < 1024) {
+								console.log('Max Size Ok' + uploadField);
+								$('#form-buttons-submit').removeAttr('disabled');
+								$(uploadField).parent().parent().find('.fieldErrorBox').css('color', '#000000');
+								$(uploadField).parent().parent().removeClass('error');
+								$(uploadField).parent().parent().find('.fieldErrorBox').text();
+								$('#uploadWarning').remove();
+					}
+				}
+
+	    });
 		},
 
 		setup: function() {
@@ -250,6 +297,7 @@
 				$form.find('.has-select').removeClass('has-select');
 				$form.find('.' + rules.hasvalue).removeClass(rules.hasvalue);
 				$form.find(rules.$fieldErrorBox).empty();
+				$('#uploadWarning').remove();
 
 				// Reset Select2 Dropdown
 				$form.find('.select-widget').select2({
