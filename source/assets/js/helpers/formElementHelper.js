@@ -94,9 +94,7 @@
 			$form.on('submit', easyFormValidation.onSubmit.bind(easyFormValidation));
 		},
 
-		uploadSize: function () {
-			var fileArr = [];
-	    var combinedSize = 0;
+		uploadSize: function() {
 
 			function bytesToSize(bytes) {
    			var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
@@ -105,39 +103,52 @@
 				}
    			var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
    			return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
-			};
+			}
 
-	    $("input[type='file']").on('change',function() {
+			$('input[type="file"]').on('change',function() {
+		    var totalSize = 0;
+				var allowedUploadSize = 10485759;
 
-	        for(var i=0;i<this.files.length;i++) {
-						  combinedSize = 0;
-						  var uploadField = '#' + $(this).attr('id');
-							console.log('Upload Field: ' + $(this).attr('id'));
-							$(uploadField).parent().parent().addClass('error');
-							$(uploadField).parent().parent().find('.fieldErrorBox').text(bytesToSize(this.files[i].size));
-	            combinedSize += (this.files[i].size||this.files[i].fileSize);
+				console.log('ALLOWED UPLOAD SIZE -> ' + allowedUploadSize);
 
-							console.log('combinedSize ' + combinedSize);
-          		if($('#uploadWarning').length === 0) {
-								if (combinedSize > 1024) {
-									$('#form-buttons-submit').attr('disabled','disabled');
-									$(uploadField).parent().parent().find('.fieldErrorBox').css('color', '#df305b');
-									$('#form-buttons-submit').before('<div id="uploadWarning" style="color: #df305b; border: solid 2px #df305b; display: block; padding: 15px; margin-bottom: 15px;">Over Max Size: Bitte reduzieren Sie die Grösse ihrer Files.</div>');
-									console.log('Over Max Size' + uploadField);
-								}
-							}
+		    $('input[type="file"]').each(function() {
+					var uploadField = '#' + $(this).attr('id');
 
-							if (combinedSize < 1024) {
-								console.log('Max Size Ok' + uploadField);
-								$('#form-buttons-submit').removeAttr('disabled');
-								$(uploadField).parent().parent().find('.fieldErrorBox').css('color', '#000000');
-								$(uploadField).parent().parent().removeClass('error');
-								$(uploadField).parent().parent().find('.fieldErrorBox').text();
-								$('#uploadWarning').remove();
+		      for (var i = 0; i < this.files.length; i++) {
+						totalSize += this.files[i].size;
+						console.log('TOTAL SIZE = ' + totalSize);
+						$(uploadField).parent().parent().find('.fieldErrorBox').text(bytesToSize(this.files[i].size));
+						$(uploadField).parent().parent().find('.fieldErrorBox').css('color', 'black');
+		      }
+
+					var valid = totalSize <= allowedUploadSize;
+					var fileDiffSuccess = allowedUploadSize - totalSize;
+					var fileDiffError = totalSize - allowedUploadSize;
+
+			    if (!valid) {
+						$('input[type="file"]').each(function() {
+							$(this).parent().parent().addClass('error');
+							$(this).parent().parent().find('.fieldErrorBox').css('color', 'red');
+						});
+
+						$('#uploadWarning').remove();
+						console.log('ERROR -> Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Überschuss: ' + bytesToSize(fileDiffError));
+						$('#form-buttons-submit').attr('disabled','disabled');
+						$('#form-buttons-submit').before('<div id="uploadWarning" style="color: #df305b; border: solid 2px #df305b; display: block; padding: 15px; margin-bottom: 15px;">Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Die Daten sind ' + bytesToSize(fileDiffError) + ' zu gross. Bitte reduzieren Sie die Grösse.</div>');
 					}
-				}
+					if (valid) {
+						$('input[type="file"]').each(function() {
+							$(this).parent().parent().removeClass('error');
+							$(this).parent().parent().find('.fieldErrorBox').css('color', 'black');
+						});
 
-	    });
+						$('#uploadWarning').remove();
+						$('#form-buttons-submit').before('<div id="uploadWarning" style="color: green; border: solid 2px green; display: block; padding: 15px; margin-bottom: 15px;">Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Differenz: ' + bytesToSize(fileDiffSuccess) + '</div>');
+						console.log('SUCCESS -> Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Bestand: ' + bytesToSize(fileDiffSuccess));
+						$('#form-buttons-submit').removeAttr('disabled');
+					}
+				});
+	  	});
 		},
 
 		setup: function() {
@@ -764,7 +775,7 @@
 			if ($('.named-file-widget input').length) {
 				$('.named-file-widget input').removeAttr('disabled');
 
-					$('.named-file-widget input').each(function(index) {
+					$('.named-file-widget input').each(function() {
 						 if ($('.named-file-widget input').is(':checked')) {
 							 $('.named-file-widget input').removeAttr('checked');
 						 }
