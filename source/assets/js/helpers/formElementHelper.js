@@ -107,7 +107,7 @@
 
 			$('input[type="file"]').on('change',function() {
 		    var totalSize = 0;
-				var allowedUploadSize = 10485759;
+				var allowedUploadSize = 7340032; // 7 MB max. Data upload
 
 				console.log('ALLOWED UPLOAD SIZE -> ' + allowedUploadSize);
 
@@ -134,7 +134,7 @@
 						$('#uploadWarning').remove();
 						console.log('ERROR -> Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Überschuss: ' + bytesToSize(fileDiffError));
 						$('#form-buttons-submit').attr('disabled','disabled');
-						$('#form-buttons-submit').before('<div id="uploadWarning" style="color: #df305b; border: solid 2px #df305b; display: block; padding: 15px; margin-bottom: 15px;">Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Die Daten sind ' + bytesToSize(fileDiffError) + ' zu gross. Bitte reduzieren Sie die Grösse.</div>');
+						$('#form-buttons-submit').before('<div id="uploadWarning" style="background: rgba(225,50,90,.1); color: #df305b; border: solid 2px #df305b; display: block; padding: 15px; margin-bottom: 15px;">Der max. zulässige Datenanhang von <strong><i>' + bytesToSize(allowedUploadSize) + '</i></strong> wird um <strong>' + bytesToSize(fileDiffError) + '</strong> überschritten. Bitte reduzieren Sie Ihren Datenanhang.</div>');
 					}
 					if (valid) {
 						$('input[type="file"]').each(function() {
@@ -143,7 +143,7 @@
 						});
 
 						$('#uploadWarning').remove();
-						$('#form-buttons-submit').before('<div id="uploadWarning" style="color: green; border: solid 2px green; display: block; padding: 15px; margin-bottom: 15px;">Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Differenz: ' + bytesToSize(fileDiffSuccess) + '</div>');
+						$('#form-buttons-submit').before('<div id="uploadWarning" style="background: rgba(12, 128, 0, 0.14); color: green; border: solid 2px green; display: block; padding: 15px; margin-bottom: 15px;">Datenanhang: OK. Die max. erlaubte Datenmenge von <strong><i>' + bytesToSize(allowedUploadSize) + '</i></strong> hat noch Kapazität für <strong>' + bytesToSize(fileDiffSuccess) + '</strong>.</div>');
 						console.log('SUCCESS -> Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Bestand: ' + bytesToSize(fileDiffSuccess));
 						$('#form-buttons-submit').removeAttr('disabled');
 					}
