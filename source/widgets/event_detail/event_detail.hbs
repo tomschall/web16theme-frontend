@@ -6,7 +6,7 @@
         <h3>{{langStrings.location}}</h3>
         {{{event_detail.place_description}}}
       {{/if}}
-      {{#if event_detail.oe_label_0}}
+      {{#if event_detail.show_title}}
         <h3>{{langStrings.organizer}}</h3>
       {{/if}}
       <p>
@@ -15,6 +15,10 @@
         {{/if}}
         {{#if event_detail.oe_label_1}}
           {{event_detail.oe_label_1}}
+        {{/if}}
+        {{#if event_detail.organizer_name}}
+          <br/>
+          {{event_detail.organizer_name}}
         {{/if}}
       </p>
       <p>
