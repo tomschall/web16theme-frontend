@@ -110,7 +110,7 @@
 				return theLanguage;
 			}
 
-			$('input[type="file"]').on('change',function() {
+			$('input[type="file"]').on('change', function() {
 		    var totalSize = 0;
 				var allowedUploadSize = 7340032; // 7 MB max. Data upload
 				var lang = getLanguage();
@@ -130,6 +130,7 @@
 					var fileDiffSuccess = allowedUploadSize - totalSize;
 					var fileDiffError = totalSize - allowedUploadSize;
 
+					// FILEUPLOAD -> ERROR MESSAGES
 			    if (!valid) {
 						$('input[type="file"]').each(function() {
 							$(this).parent().parent().addClass('error');
@@ -138,17 +139,18 @@
 
 						$('#uploadWarning').remove();
 						//console.log('ERROR -> Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Überschuss: ' + bytesToSize(fileDiffError));
-						$('#form-buttons-submit').attr('disabled','disabled');
+						$('#form-buttons-submit').attr('disabled', 'disabled');
 							if (lang === 'de') {
 								$('#form-buttons-submit').before('<div id="uploadWarning" style="background: rgba(225,50,90,.1); color: #df305b; border: solid 2px #df305b; display: block; padding: 15px; margin-bottom: 15px;">Der max. zulässige Datenanhang von <strong><i>' + bytesToSize(allowedUploadSize) + '</i></strong> wird um <strong>' + bytesToSize(fileDiffError) + '</strong> überschritten. Bitte reduzieren Sie Ihren Datenanhang.</div>');
 							}
 							if (lang === 'en') {
-								$('#form-buttons-submit').before('<div id="uploadWarning" style="background: rgba(225,50,90,.1); color: #df305b; border: solid 2px #df305b; display: block; padding: 15px; margin-bottom: 15px;">LANG EN (tbd) - Der max. zulässige Datenanhang von <strong><i>' + bytesToSize(allowedUploadSize) + '</i></strong> wird um <strong>' + bytesToSize(fileDiffError) + '</strong> überschritten. Bitte reduzieren Sie Ihren Datenanhang.</div>');
+								$('#form-buttons-submit').before('<div id="uploadWarning" style="background: rgba(225,50,90,.1); color: #df305b; border: solid 2px #df305b; display: block; padding: 15px; margin-bottom: 15px;">The maximum data attachment of <strong><i>' + bytesToSize(allowedUploadSize) + '</i></strong> is exceeded by <strong>' + bytesToSize(fileDiffError) + '</strong>. Please reduce the size of your attachment.</div>');
 							}
 							if (lang === 'fr') {
-								$('#form-buttons-submit').before('<div id="uploadWarning" style="background: rgba(225,50,90,.1); color: #df305b; border: solid 2px #df305b; display: block; padding: 15px; margin-bottom: 15px;">LANG FR (tbd) - Der max. zulässige Datenanhang von <strong><i>' + bytesToSize(allowedUploadSize) + '</i></strong> wird um <strong>' + bytesToSize(fileDiffError) + '</strong> überschritten. Bitte reduzieren Sie Ihren Datenanhang.</div>');
+								$('#form-buttons-submit').before('<div id="uploadWarning" style="background: rgba(225,50,90,.1); color: #df305b; border: solid 2px #df305b; display: block; padding: 15px; margin-bottom: 15px;">La limite de <strong><i>' + bytesToSize(allowedUploadSize) + '</i></strong> a été excédée de <strong>' + bytesToSize(fileDiffError) + '</strong>. Veuillez réduire le poids de votre annexe.</div>');
 							}
 					}
+					// FILEUPLOAD -> SUCCESS MESSAGES
 					if (valid) {
 						$('input[type="file"]').each(function() {
 							$(this).parent().parent().removeClass('error');
@@ -160,10 +162,10 @@
 								$('#form-buttons-submit').before('<div id="uploadWarning" style="background: rgba(12, 128, 0, 0.14); color: green; border: solid 2px green; display: block; padding: 15px; margin-bottom: 15px;">Datenanhang: OK. Die max. erlaubte Datenmenge von <strong><i>' + bytesToSize(allowedUploadSize) + '</i></strong> hat noch Kapazität für <strong>' + bytesToSize(fileDiffSuccess) + '</strong>.</div>');
 							}
 							if (lang === 'en') {
-								$('#form-buttons-submit').before('<div id="uploadWarning" style="background: rgba(12, 128, 0, 0.14); color: green; border: solid 2px green; display: block; padding: 15px; margin-bottom: 15px;">LANG EN (tbd) - Datenanhang: OK. Die max. erlaubte Datenmenge von <strong><i>' + bytesToSize(allowedUploadSize) + '</i></strong> hat noch Kapazität für <strong>' + bytesToSize(fileDiffSuccess) + '</strong>.</div>');
+								$('#form-buttons-submit').before('<div id="uploadWarning" style="background: rgba(12, 128, 0, 0.14); color: green; border: solid 2px green; display: block; padding: 15px; margin-bottom: 15px;">Attachement: OK. Still <strong><i>' + bytesToSize(fileDiffSuccess) + '</i></strong> can be added for a maximum of <strong>' + bytesToSize(allowedUploadSize) + '</strong>.</div>');
 							}
 							if (lang === 'fr') {
-								$('#form-buttons-submit').before('<div id="uploadWarning" style="background: rgba(12, 128, 0, 0.14); color: green; border: solid 2px green; display: block; padding: 15px; margin-bottom: 15px;">LANG FR (tbd) - Datenanhang: OK. Die max. erlaubte Datenmenge von <strong><i>' + bytesToSize(allowedUploadSize) + '</i></strong> hat noch Kapazität für <strong>' + bytesToSize(fileDiffSuccess) + '</strong>.</div>');
+								$('#form-buttons-submit').before('<div id="uploadWarning" style="background: rgba(12, 128, 0, 0.14); color: green; border: solid 2px green; display: block; padding: 15px; margin-bottom: 15px;">Annexe: OK. <strong><i>' + bytesToSize(fileDiffSuccess) + '</i></strong> peuvent être ajoutés pour un maximum de <strong>' + bytesToSize(allowedUploadSize) + '</strong>.</div>');
 							}
 						//console.log('SUCCESS -> Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Bestand: ' + bytesToSize(fileDiffSuccess));
 						$('#form-buttons-submit').removeAttr('disabled');
