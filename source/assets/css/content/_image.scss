@@ -43,11 +43,11 @@ img.full-span {
 
 img.image-inline {
 	max-width: 100%;
+}
 
-	& span.img__caption {
+.img__caption {
 		font-size: 1.083333rem;
     margin: 20px 0 0;
     display: block;
     color: #767573;
-	}
 }
