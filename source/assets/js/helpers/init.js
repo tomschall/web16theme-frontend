@@ -36,6 +36,10 @@
 		});
 	});
 
+	/* Image caption */
+	var imageCaption = $('.image-inline').attr('title');
+	$('.image-inline').after('<span class="image_gallery__legend">' + imageCaption + '</span>');
+
 	/* Removing empty p-Tags */
 	$('p:empty').remove();
 
