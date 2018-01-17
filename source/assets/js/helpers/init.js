@@ -38,7 +38,7 @@
 
 	/* Image caption */
 	var imageCaption = $('.image-inline').attr('title');
-	$('.image-inline').after('<span class="image_gallery__legend">' + imageCaption + '</span>');
+	$('.image-inline').after('<span class="img__caption">' + imageCaption + '</span>');
 
 	/* Removing empty p-Tags */
 	$('p:empty').remove();

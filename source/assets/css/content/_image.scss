@@ -44,7 +44,10 @@ img.full-span {
 img.image-inline {
 	max-width: 100%;
 
-	& span.image_gallery__legend {
-		margin-bottom: 0px !important;
+	& span.img__caption {
+		font-size: 1.083333rem;
+    margin: 20px 0 0;
+    display: block;
+    color: #767573;
 	}
 }
