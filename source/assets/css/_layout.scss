@@ -91,15 +91,19 @@ h3:not(.childless) {
 	&:focus {
 		outline: 0;
 	}
+
 }
+
 
 .page_content {
 	@include span(8.7);
 
 
-
 	.full-width-page & {
 		@include span(12);
+		float: none;
+		margin: auto;
+		max-width: 1920px;
 	}
 
 	@include mq($from: subnav) {
