@@ -3,17 +3,19 @@
 		<h2 class="teaser__title {{#if isOnStartpage}}is_on_startpage{{/if}}">{{title}}</h2>
 	{{/if}}
 	{{#if description}}
-		<div class="widg_teaser__desc"><p>{{description}}</p></div>
+		<div class="widg_teaser__desc">
+			<p>{{description}}</p>
+		</div>
 	{{/if}}
 	{{#each teasers}}
-    <div class="widg_teaser{{#if variant}} {{variant}}{{/if}} {{#if img}}{{else}}no-image{{/if}}">
+		<div class="widg_teaser{{#if variant}} {{variant}}{{/if}} {{#if img}}{{else}}no-image{{/if}}">
 			{{#if img}}
-            <div class="widg_teaser__img"><img src="{{img.src}}" alt=""/></div>
-          {{/if}}
-        
-            {{#if event_detail}}
-                {{event_detail.event_date}} , {{event_detail.location_short}}
-            {{/if}}
+				<div class="widg_teaser__img"><img src="{{img.src}}" alt="" /></div>
+			{{/if}}
+
+			{{#if event_detail}}
+				<span class="widg_teaser__date">{{event_detail.event_date}}, {{event_detail.location_short}}</span>
+			{{/if}}
 
 			{{#if date}}
 				<span class="widg_teaser__date">{{date}}</span>
@@ -24,13 +26,13 @@
 			{{#if category}}
 				<span class="widg_teaser__category">{{category}}</span>
 			{{/if}}
-      <h3 class="widg_teaser__title childless">{{{title}}}</h3>
+			<h3 class="widg_teaser__title childless">{{{title}}}</h3>
 			{{#if text}}
-        <p>{{dotdotdot_teaser text}}</p>
+				<p>{{dotdotdot_teaser text}}</p>
 			{{/if}}
-      <a class="widg_teaser__link" href="{{url}}">{{../langStrings.toLinkTarget}} {{title}}</a>
-      <span class="widg_teaser__arrow"></span>
-    </div>
+			<a class="widg_teaser__link" href="{{url}}">{{../langStrings.toLinkTarget}} {{title}}</a>
+			<span class="widg_teaser__arrow"></span>
+		</div>
 	{{/each}}
 	{{#if moreButton}}
 		<a class="button button__secondary teaser__more-button" href="{{moreButton.url}}">{{moreButton.label}}</a>
