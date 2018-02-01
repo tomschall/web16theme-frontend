@@ -1,6 +1,6 @@
 <div class="widg_linklist" data-init="linklist">
 	{{#if title}}
-		<h2>{{title}}</h2>
+			<h2>{{title}}</h2>
 	{{/if}}
 	{{#if description}}
 		<p>{{description}}</p>
@@ -19,11 +19,12 @@
           <p>
             {{#if news_detail}} {{news_detail.news_date}} | {{news_detail.university}}  {{/if}}
           	{{#if event_detail}} {{event_detail.event_date}}, {{event_detail.location_short}}  {{/if}}
-					</p>
+		  </p>
 
           <p>{{entryText}}</p>
 				</a>
 			</li>
 		{{/each}}
 	</ul>
+
 </div>
