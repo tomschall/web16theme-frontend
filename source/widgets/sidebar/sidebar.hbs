@@ -1,32 +1,39 @@
 <div class="widg_sidebar" data-init="sidebar" role="complementary">
-	<div class="widg_sidebar__content">
+	<div class="widg_sidebar__hider" data-sidebar="hider"></div>
 
-		{{#if widgets.application}}
-			{{> "widgets/sidebar_application/sidebar_application" widgets.application}}
-		{{/if}}
+	{{#if widgets.application}}
+		{{> "widgets/sidebar_application/sidebar_application" widgets.application}}
+    <div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
+	{{/if}}
 
-		{{#if widgets.events}}
-			{{> "widgets/sidebar_events/sidebar_events" widgets.events }}
-		{{/if}}
+	{{#if widgets.events}}
+		{{> "widgets/sidebar_events/sidebar_events" widgets.events }}
+    <div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
+	{{/if}}
 
-		{{#if widgets.keydata}}
-			{{> "widgets/sidebar_key_data/sidebar_key_data" widgets.keydata }}
-		{{/if}}
+	{{#if widgets.keydata}}
+		{{> "widgets/sidebar_key_data/sidebar_key_data" widgets.keydata }}
+    <div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
+	{{/if}}
 
-		{{#if widgets.contact}}
-			{{> "widgets/sidebar_contact/sidebar_contact" widgets.contact}}
-		{{/if}}
+	{{#if widgets.contact}}
+		{{> "widgets/sidebar_contact/sidebar_contact" widgets.contact}}
+		<div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
+	{{/if}}
 
-		{{#if widgets.secretariat }}
-			{{> "widgets/sidebar_contact/sidebar_contact" widgets.secretariat}}
-		{{/if}}
+	{{#if widgets.secretariat }}
+		{{> "widgets/sidebar_contact/sidebar_contact" widgets.secretariat}}
+		<div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
+	{{/if}}
 
-		{{#if widgets.degreeleadership}}
-			{{> "widgets/sidebar_contact/sidebar_contact" widgets.degreeleadership}}
-		{{/if}}
+	{{#if widgets.degreeleadership}}
+		{{> "widgets/sidebar_contact/sidebar_contact" widgets.degreeleadership}}
+		<div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
+	{{/if}}
 
-		{{#if widgets.leadership}}
-			{{> "widgets/sidebar_contact/sidebar_contact" widgets.leadership}}
-		{{/if}}
-	</div>
+	{{#if widgets.leadership}}
+		{{> "widgets/sidebar_contact/sidebar_contact" widgets.leadership}}
+		<div class="widg_sidebar__trigger" data-sidebar="trigger"></div>
+	{{/if}}
+
 </div>

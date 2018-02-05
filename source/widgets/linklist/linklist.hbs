@@ -16,7 +16,11 @@
 					{{/if}}
 
           <h3 class="childless">{{title}}</h3>
-          <p>{{#if news_detail}} {{news_detail.news_date}} | {{news_detail.university}}  {{/if}}</p>
+          <p>
+            {{#if news_detail}} {{news_detail.news_date}} | {{news_detail.university}}  {{/if}}
+          	{{#if event_detail}} {{event_detail.event_date}}, {{event_detail.location_short}}  {{/if}}
+		  </p>
+
           <p>{{entryText}}</p>
 				</a>
 			</li>

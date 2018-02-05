@@ -8,8 +8,13 @@
 	{{#each teasers}}
     <div class="widg_teaser{{#if variant}} {{variant}}{{/if}} {{#if img}}{{else}}no-image{{/if}}">
 			{{#if img}}
-        <div class="widg_teaser__img"><img src="{{img.src}}" alt=""/></div>
-			{{/if}}
+            <div class="widg_teaser__img"><img src="{{img.src}}" alt=""/></div>
+          {{/if}}
+        
+            {{#if event_detail}}
+                <span class="widg_teaser__date">{{event_detail.event_date}}, {{event_detail.location_short}}</span>
+            {{/if}}
+
 			{{#if date}}
 				<span class="widg_teaser__date">{{date}}</span>
 			{{/if}}
