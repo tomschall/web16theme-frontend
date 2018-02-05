@@ -20,63 +20,62 @@ var data = {
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
 			Title: 'MAS Behinderung und Partizipation',
-			short_eduproducttype: 'MAS',
-			faculty: 'Soziale Arbeit',
-			location: 'Olten'
-
+			taxonomy_eduproducttype: 'MAS',
+			taxonomy_subjectarea: 'Soziale Arbeit',
+			city: 'Olten'
 		},
 		{
 			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
 			Title: 'MAS Ethische Entscheidungsfindung in Organisation und Gesellschaft',
-			short_eduproducttype: 'MAS',
-			faculty: 'Soziale Arbeit',
-			location: 'Olten'
+			taxonomy_eduproducttype: 'MAS',
+			taxonomy_subjectarea: 'Soziale Arbeit',
+			city: 'Olten'
 		},
 		{
 			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
 			Title: 'MAS FHNW in Coaching',
-			short_eduproducttype: 'MAS',
-			faculty: 'Soziale Arbeit',
-			location: 'Olten'
+			taxonomy_eduproducttype: 'MAS',
+			taxonomy_subjectarea: 'Soziale Arbeit',
+			city: 'Olten'
 		},
 		{
 			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
 			Title: 'CAS Eingliederungsmanagement - Zielgruppen und Methoden',
-			short_eduproducttype: 'CAS',
-			faculty: 'Soziale Arbeit',
-			location: 'Windisch'
+			taxonomy_eduproducttype: 'CAS',
+			taxonomy_subjectarea: 'Soziale Arbeit',
+			city: 'Windisch'
 		},
 		{
 			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
 			Title: 'CAS Eingliederungsmanagement «Fallberatung»',
-			short_eduproducttype: 'CAS',
-			faculty: 'Soziale Arbeit',
-			location: 'Windisch'
+			taxonomy_eduproducttype: 'CAS',
+			taxonomy_subjectarea: 'Soziale Arbeit',
+			city: 'Windisch'
 		}
 	],
 	'facets': [
 		{
-			field: 'location',
+			field: 'city',
 			enable: [
 				'bsl'
 			]
 		},
 		{
-			field: 'study_type',
+			field: 'taxonomy_eduproducttype',
 			enable: [
 				'cas'
 			]
 		},
 		{
-			field: 'topic',
+			field: 'taxonomy_competence',
 			enable: [
 				'7200',
 				'7203'
