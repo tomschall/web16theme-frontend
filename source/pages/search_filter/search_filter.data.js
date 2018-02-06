@@ -450,4 +450,6 @@ var data = _.merge(defaultData, {
 		}
 	});
 
+data.widgets.searchpage.jsonURL = '/mocks/widgets/searchpage/searchpage.training.json';
+
 module.exports = data;
