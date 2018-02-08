@@ -238,8 +238,6 @@
 
 		this.changeSearchbarStatus(this.options.stateClasses.showResults);
 
-		this.markSearchQuery();
-
 		$(this.options.domSelectors.content).css({
 			'height': $(this.options.domSelectors.content).height()
 		});
@@ -267,37 +265,6 @@
 		if ($('.widg_searchbar__go-to-page').length === 0) {
 			$('.search__results').append($btn);
 		}
-	};
-
-	/**
-	 * Marks the search query
-	 */
-	Widget.prototype.markSearchQuery = function() {
-		var $searchbarContent = $(this.options.domSelectors.content),
-				$searchResultLists = $searchbarContent.find('li'),
-				$elementTitle = null,
-				titleSt = '',
-				queryStartPosition = 0,
-				queryEndPosition = 0,
-				markedTitle = null;
-
-		$searchResultLists.each(function(index, element) {
-			$elementTitle = $(element).find('a .' + this.options.listItemSpanClasses.title);
-
-			if ($elementTitle.length > 0) {
-				titleSt = $elementTitle.html();
-				titleSt = titleSt.replace('<span class="bold">', '');
-				titleSt = titleSt.replace('</span>', '');
-
-				queryStartPosition = titleSt.toLowerCase().search(currentSearchValue.toLowerCase());
-
-				if (queryStartPosition !== -1) {
-					queryEndPosition = queryStartPosition + currentSearchValue.length;
-					markedTitle = titleSt.substr(0, queryStartPosition) + '<span class="bold">' + titleSt.substr(queryStartPosition, currentSearchValue.length) + '</span>' + titleSt.substr(queryEndPosition);
-					$elementTitle.html(markedTitle);
-				}
-			}
-		}.bind(this));
 	};
 
 	/**

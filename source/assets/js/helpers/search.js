@@ -20,11 +20,11 @@
 
 		listEntryTemplates = {
 			searchbar: {
-				normal: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
-				event: '<li class="search_result search__result-event search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="event-info">{{start}}</span></a><span class="search__result-arrow"></span></li>',
-				doc: '<li class="search_result search__result-doc search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>',
-				webservices: '<li class="search_result search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
-				irf: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>'
+				normal: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span></a><span class="search__result-arrow"></span></li>',
+				event: '<li class="search_result search__result-event search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span><span class="event-info">{{start}}</span></a><span class="search__result-arrow"></span></li>',
+				doc: '<li class="search_result search__result-doc search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>',
+				webservices: '<li class="search_result search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span></a><span class="search__result-arrow"></span></li>',
+				irf: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span></a><span class="search__result-arrow"></span></li>'
 			},
 
 			categorySearch: {
@@ -241,6 +241,9 @@
 					$categoryTitle = $('<span class="search__cat-title">' + data.categoryTitle + '</span>');
 
 					responseData.forEach(function(listEntry) {
+						if (listEntry.UID && (listEntry.UID in data.highlighting)) {
+							listEntry.Title = data.highlighting[listEntry.UID].Title[0];
+						}
 						$tempListDOM = generateSearchListItem(listEntry, data.category);
 						$categoryList.append($tempListDOM);
 					});
