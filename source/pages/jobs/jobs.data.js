@@ -6,9 +6,9 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'FHNW Stellenangebote'
+			title: 'Offene Stellen'
 		},
-		title: 'FHNW Stellenangebote',
+		title: 'Offene Stellen',
 		leadText: 'Als führende Fachhochschule bezüglich Innovationskraft und Praxisorientierung bietet die FHNW zukunftsorientierte Arbeitsplätze in der Nordwestschweiz mit attraktiven Anstellungsbedingungen und vielfältigen Laufbahnperspektiven.',
 		widgets: {
 			header: _.assign({
@@ -26,7 +26,7 @@ var data = _.merge(defaultData, {
 				}
 			}),
 			subnav: _.assign(requireNew('../../widgets/subnav/subnav.data.js'), {
-				title: 'Stellenangebote der FHNW',
+				title: 'Erste Wahl: FHNW',
 				subtitle: null,
 				titleurl: '#',
 				entries: [
