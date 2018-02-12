@@ -51,6 +51,11 @@
 	var widg_subnav_height;
 	var widg_sidebar_sticky_top;
 
+	/* Transparent place holder for when the main content is shorter than the sidebar */
+	function insertMinHeightLock() {
+		$widg_sidebar.clone().insertAfter($widg_sidebar).addClass('min_height_lock');
+	}
+
 	function unstickSidebar() {
 		$widg_sidebar.toggleClass('sticky', false);
 		$widg_sidebar.css('top', 0);
@@ -130,6 +135,8 @@
 	if (!$widg_sidebar.length) {
 		return;
 	}
+
+	insertMinHeightLock();
 
 	initCurrentSize();
 

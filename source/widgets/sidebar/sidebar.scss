@@ -19,6 +19,14 @@ $sidebarObjectPush: $basicPush * 5;
 		position: relative;
 	}
 
+	&.min_height_lock {
+		visibility: hidden;
+
+		@include mq($to: 'subnav') {
+			display: none;
+		}
+	}
+
 	&.sticky,
 	.widg_sidebar__accordion {
 		position: fixed;
