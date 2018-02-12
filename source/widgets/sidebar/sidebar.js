@@ -53,7 +53,7 @@
 
 	/* Transparent place holder for when the main content is shorter than the sidebar */
 	function insertMinHeightLock() {
-		$widg_sidebar.clone().insertAfter($widg_sidebar).addClass('min_height_lock');
+		$widg_sidebar.clone().addClass('min_height_lock').insertAfter($widg_sidebar);
 	}
 
 	function unstickSidebar() {
