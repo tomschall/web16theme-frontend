@@ -7,13 +7,13 @@ var data = {
 	'categoryUrl': '#',
 	'categoryTitle': 'Weiterbildung',
 	'categoryUrlText': 'Alle anzeigen (12)',
-	'tableHeaders': [
-			'Titel',
-			'Typ',
-			'Fachbereich',
-			'Ort',
-			'URL'
-		],
+	'fieldHeaders': {
+		title: 'Titel',
+		study_type: 'Typ',
+		faculty: 'Fachbereich',
+		location: 'Ort',
+		path_string: ''
+	},
 	'items': [
 		{
 			'@id': 'https://www.openbsd.org/',
