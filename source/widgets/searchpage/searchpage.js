@@ -179,7 +179,8 @@
 	Widget.prototype.initFormFunctionality = function() {
 		var $formElements = $('.search__form-wrapper input:not(".select2-search__field"), .search__form-wrapper select');
 		data.$formElements = $formElements;
-		$formElements.on('change.' + this.uuid, function() {
+		$formElements.on('change.' + this.uuid, function(event) {
+			searchParam.triggering_field = event.target.name;
 			this.sendSearchQuery();
 			if (searchTemplate === 'search_full') {
 				this.updateTitle();
@@ -327,6 +328,7 @@
 
 		if (this.checkParameters()) {
 			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL, firstLoad);
+			searchParam.triggering_field = '';
 
 			if (!loadMoreMode) {
 				this.changeStatus(this.options.stateClasses.showLoading);
@@ -355,6 +357,10 @@
 		} else {
 			this.changeStatus(this.options.stateClasses.showResults);
 		}
+
+		if (window.estatico.mq.query({from: 'subnav'})) {
+			this.fixResultsHeader(this.$element.find('table'));
+		}
 	};
 
 	/**
@@ -372,7 +378,7 @@
 				this.$element.find('.search__cat ul').append(html.find('li'));
 			} else {
 				html = this.generateAdditionalTableHTML(html);
-				this.$element.find('.search__results table').append(html);
+				this.$element.find('.search__results table:not(.cloned)').append(html);
 			}
 
 			// Reset the load more mode to false
@@ -564,6 +570,52 @@
 	};
 
 	/**
+	 * Enforces fixed table header on scroll
+	 *
+	 * @param {HTMLTableElement} $table Result table
+	 */
+	Widget.prototype.fixResultsHeader = function($table) {
+		var clone;
+
+		function resizeFixed() {
+			clone.width($table.width());
+			clone.find('th').each(function(index) {
+				$(this).css('width', $table.find('tr:first-child td').eq(index).outerWidth() + 'px');
+			});
+		}
+
+		function scrollFixed() {
+			var fixedHeight = $('.search__form-wrapper.scroll-to-fixed-fixed').outerHeight(),
+				offset = $(window).scrollTop() + fixedHeight,
+				tableOffsetTop = $table.offset().top,
+				tableOffsetBottom = tableOffsetTop + $table.height() - $table.find('thead').height();
+
+			clone.css('top', fixedHeight);
+
+			if (offset < tableOffsetTop || offset > tableOffsetBottom) {
+				clone.hide();
+			} else if (offset >= tableOffsetTop && offset <= tableOffsetBottom && clone.is(':hidden')) {
+				clone.show();
+			}
+		}
+
+		if (this._headerFixed || $table.find('thead').size() === 0) {
+			return;
+		}
+
+		clone = $table.find('thead').clone().wrap('<table>').parent();
+		clone.addClass('cloned').insertBefore($table);
+		clone
+			.hide()
+			.css('position', 'fixed')
+			.css('z-index', 1);
+		resizeFixed();
+		$(window).on('resize.' + this.uuid, resizeFixed);
+		$(window).on('scroll.' + this.uuid, scrollFixed);
+		this._headerFixed = true;
+	};
+
+	/**
 	 * Unbind events, remove data, custom teardown
 	 * @method
 	 * @public
@@ -571,6 +623,7 @@
 	Widget.prototype.destroy = function() {
 		// Unbind events, remove data
 		estatico.helpers.SuperClass.prototype.destroy.apply(this);
+		$(window).off('.' + this.uuid);
 
 		// Custom teardown (removing added DOM elements etc.)
 		// If there is no need for a custom teardown, this method can be removed
