@@ -40,7 +40,7 @@ var data = _.merge(defaultData, {
 		header: _.assign({
 			hasPromoTeaser: false,
 			isCollapsible: true
-		},requireNew('../../widgets/header/header.data.js')),
+		}, requireNew('../../widgets/header/header.data.js')),
 		navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 		footer: requireNew('../../widgets/footer/footer.data.js'),
 		hero: _.assign({

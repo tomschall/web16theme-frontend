@@ -1,0 +1,19 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content" id="first_page_content">
+      <h1>{{title}}</h1>
+    </div>
+		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+
+		{{> "widgets/sidebar/sidebar" widgets.sidebar}}
+
+    <div class="content__element content__element___bleed content__element___top-bordered" id="locations">
+
+			{{> "widgets/location_slider/location_slider" widgets.locationSlider}}
+
+    </div>
+	{{/content}}
+{{/extend}}
