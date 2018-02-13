@@ -98,17 +98,22 @@
    */
 	function generateResultTable(data) {
 		var results = data.items,
-				headers = data.tableHeaders,
+				headers = data.fieldHeaders,
 				$responseHTML = $('<table></table>'),
 				$headersRow = $('<tr></tr>'),
 				template = null;
 
 		if (typeof headers !== typeof undefined) {
-			headers.forEach(function(header) {
-				if (header === 'URL') {
-					$headersRow.append('<th class="url">' + header + '</th>');
+			var sortedHeaderKeys = ['title', 'study_type', 'faculty', 'location', 'path_string'];
+			sortedHeaderKeys.forEach(function(headerKey) {
+				if (!(headerKey in headers)) {
+					return;
+				};
+
+				if (headerKey === 'URL') {
+					$headersRow.append('<th class="url">' + headers[headerKey] + '</th>');
 				} else {
-					$headersRow.append('<th>' + header + '</th>');
+					$headersRow.append('<th>' + headers[headerKey] + '</th>');
 				}
 			});
 
