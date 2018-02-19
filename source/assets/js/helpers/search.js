@@ -4,6 +4,12 @@
  * @license APLv2
  */
 
+var fieldDictionaries = {
+	taxonomy_subjectarea: {},
+	taxonomy_eduproducttype: {}
+};
+
+
 ;(function($, undefined) {
 	'use strict';
 
@@ -28,7 +34,7 @@
 			},
 
 			categorySearch: {
-				training: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td class="search__cell search__cell-title"><a href="{{combinedURL}}" class="search__cell-anchor">{{Title}}</a></td><td>{{taxonomy_eduproducttype}}</td><td>{{taxonomy_subjectarea}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
+				training: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td class="search__cell search__cell-title"><a href="{{combinedURL}}" class="search__cell-anchor">{{Title}}</a></td><td>{{#get_taxonomy_eduproducttype}}{{taxonomy_eduproducttype}}{{/get_taxonomy_eduproducttype}}</td><td>{{#get_taxonomy_subjectarea}}{{taxonomy_subjectarea}}{{/get_taxonomy_subjectarea}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
 				expertises: '<div class="cat_page_result search__result--item" data-clickable="true" class="search__result-word-list"><a href="{{combinedURL}}">{{Title}}<span class="search__result-arrow"></span></a></div>',
 				profiles: '<tr class="cat_page_result cat_page_profile_result search__result--item" data-clickable="false"><td>{{#if combinedURL}}<img src="{{combinedURL}}/@@images/portrait_foto/f_search" alt="{{Title}}"/>{{/if}}</td><td><div><h4>{{Title}}</h4></div><div>{{fa_expertise}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if telefonnummer}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{telefonnummer}}">{{telefonnummer}}</a></div>{{/if}}{{#if telefonnummer_central}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{telefonnummer_central}}">{{telefonnummer_central}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="mailto:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
 				events: '<div class="cat_page_result search__result--item" class="widg_teaser">{{#if img}}<div class="widg_teaser__img"><img src="{{img.src}}" alt=""/></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}} <span class="widg_teaser__title">{{{Title}}}</span>{{#if descriptionText}} <p>{{dotdotdot_teaser descriptionText}}</p>{{/if}} <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>',
@@ -424,6 +430,17 @@
 		setSearchParameters(searchParams);
 	}
 
+	// init fieldDictionaries with the DOM option elements
+	for (var field in fieldDictionaries) {
+		if ($('#' + field).length === 0) {
+			continue;
+		}
+
+		$('#' + field + ' > option').each(function() { // eslint-disable-line no-loop-func
+			fieldDictionaries[field][this.value] = this.text;
+		});
+	}
+
 	// Save to global namespace
 	$.extend(true, estatico, {
 		search: {
@@ -448,3 +465,20 @@ Handlebars.registerHelper('dotdotdot_teaser', function(str) {
 
 	return str;
 });
+
+// fieldDictionaries helpers
+for (var field in fieldDictionaries) {
+	(function(field) {
+		Handlebars.registerHelper('get_' + field, function(options) {
+			'use strict';
+
+			return options.fn(this)
+					.split(',')
+					.map(function(item) {
+						return fieldDictionaries[field][item];
+					})
+					.join(', ');
+		});
+
+	})(field);
+}
