@@ -21,3 +21,4 @@ atlassian-ide-plugin.xml
 pip-selfcheck.json
 /.test
 .gitattributes
+.vimrc

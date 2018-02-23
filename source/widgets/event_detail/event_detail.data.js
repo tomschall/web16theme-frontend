@@ -47,8 +47,7 @@ var data = _.merge(defaultData, {
 			heroImage: '/assets/media/img/building_brugg.png',
 			heroAlt: 'Symbolbild',
 			breadcrumb: requireNew('../../widgets/breadcrumb/breadcrumb.data.js'),
-		},
-		requireNew('../../widgets/hero/hero.data.js')),
+		},requireNew('../../widgets/hero/hero.data.js')),
 		sidebar: _.assign(requireNew('../../widgets/sidebar/sidebar.data.js'), {
 			widgets: {
 				application: _.assign(requireNew('../../widgets/sidebar_application/sidebar_application.data.js'), {

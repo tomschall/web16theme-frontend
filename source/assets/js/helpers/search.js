@@ -4,6 +4,12 @@
  * @license APLv2
  */
 
+var fieldDictionaries = {
+	taxonomy_subjectarea: {},
+	taxonomy_eduproducttype: {}
+};
+
+
 ;(function($, undefined) {
 	'use strict';
 
@@ -20,14 +26,15 @@
 
 		listEntryTemplates = {
 			searchbar: {
-				normal: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
-				event: '<li class="search_result search__result-event search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}</span><span class="event-info">{{start}}</span></a><span class="search__result-arrow"></span></li>',
-				doc: '<li class="search_result search__result-doc search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>',
-				webservices: '<li class="search_result search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>',
-				irf: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{Title}}</span></a><span class="search__result-arrow"></span></li>'
+				normal: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span></a><span class="search__result-arrow"></span></li>',
+				event: '<li class="search_result search__result-event search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span><span class="event-info">{{start}}</span></a><span class="search__result-arrow"></span></li>',
+				doc: '<li class="search_result search__result-doc search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>',
+				webservices: '<li class="search_result search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span></a><span class="search__result-arrow"></span></li>',
+				irf: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span></a><span class="search__result-arrow"></span></li>'
 			},
+
 			categorySearch: {
-				training: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td class="search__cell"><a href="{{combinedURL}}" class="search__cell-anchor">{{Title}}</a></td><td>{{type}}</td><td>{{fields}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
+				training: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td class="search__cell search__cell-title"><a href="{{combinedURL}}" class="search__cell-anchor">{{Title}}</a></td><td>{{#get_taxonomy_eduproducttype}}{{taxonomy_eduproducttype}}{{/get_taxonomy_eduproducttype}}</td><td>{{#get_taxonomy_subjectarea}}{{taxonomy_subjectarea}}{{/get_taxonomy_subjectarea}}</td><td>{{fhnw_location}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
 				expertises: '<div class="cat_page_result search__result--item" data-clickable="true" class="search__result-word-list"><a href="{{combinedURL}}">{{Title}}<span class="search__result-arrow"></span></a></div>',
 				profiles: '<tr class="cat_page_result cat_page_profile_result search__result--item" data-clickable="false"><td>{{#if combinedURL}}<img src="{{combinedURL}}/@@images/portrait_foto/f_search" alt="{{Title}}"/>{{/if}}</td><td><div><h4>{{Title}}</h4></div><div>{{fa_expertise}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if telefonnummer}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{telefonnummer}}">{{telefonnummer}}</a></div>{{/if}}{{#if telefonnummer_central}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{telefonnummer_central}}">{{telefonnummer_central}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="mailto:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
 				events: '<div class="cat_page_result search__result--item" class="widg_teaser">{{#if img}}<div class="widg_teaser__img"><img src="{{img.src}}" alt=""/></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}} <span class="widg_teaser__title">{{{Title}}}</span>{{#if descriptionText}} <p>{{dotdotdot_teaser descriptionText}}</p>{{/if}} <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>',
@@ -97,22 +104,27 @@
    */
 	function generateResultTable(data) {
 		var results = data.items,
-				headers = data.tableHeaders,
+				headers = data.fieldHeaders,
 				$responseHTML = $('<table></table>'),
 				$headersRow = $('<tr></tr>'),
 				template = null;
 
 		if (typeof headers !== typeof undefined) {
-			headers.forEach(function(header) {
-				if (header === 'URL') {
-					$headersRow.append('<th class="url">' + header + '</th>');
+			var sortedHeaderKeys = ['title', 'study_type', 'faculty', 'location', 'path_string'];
+			sortedHeaderKeys.forEach(function(headerKey) {
+				if (!(headerKey in headers)) {
+					return;
+				};
+
+				if (headerKey === 'URL') {
+					$headersRow.append('<th class="url">' + headers[headerKey] + '</th>');
 				} else {
-					$headersRow.append('<th>' + header + '</th>');
+					$headersRow.append('<th>' + headers[headerKey] + '</th>');
 				}
 			});
-		}
 
-		$responseHTML.append($headersRow);
+			$('<thead></thead>').appendTo($responseHTML).append($headersRow);
+		}
 
 		results.forEach(function(row) {
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
@@ -240,6 +252,9 @@
 					$categoryTitle = $('<span class="search__cat-title">' + data.categoryTitle + '</span>');
 
 					responseData.forEach(function(listEntry) {
+						if (listEntry.UID && (listEntry.UID in data.highlighting)) {
+							listEntry.Title = data.highlighting[listEntry.UID].Title[0];
+						}
 						$tempListDOM = generateSearchListItem(listEntry, data.category);
 						$categoryList.append($tempListDOM);
 					});
@@ -418,6 +433,17 @@
 		setSearchParameters(searchParams);
 	}
 
+	// init fieldDictionaries with the DOM option elements
+	for (var field in fieldDictionaries) {
+		if ($('#' + field).length === 0) {
+			continue;
+		}
+
+		$('#' + field + ' > option').each(function() { // eslint-disable-line no-loop-func
+			fieldDictionaries[field][this.value] = this.text;
+		});
+	}
+
 	// Save to global namespace
 	$.extend(true, estatico, {
 		search: {
@@ -442,3 +468,20 @@ Handlebars.registerHelper('dotdotdot_teaser', function(str) {
 
 	return str;
 });
+
+// fieldDictionaries helpers
+for (var field in fieldDictionaries) {
+	(function(field) {
+		Handlebars.registerHelper('get_' + field, function(options) {
+			'use strict';
+
+			return options.fn(this)
+					.split(',')
+					.map(function(item) {
+						return fieldDictionaries[field][item];
+					})
+					.join(', ');
+		});
+
+	})(field);
+}

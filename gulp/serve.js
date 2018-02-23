@@ -26,7 +26,8 @@ gulp.task(taskName, function() {
 	var app = connect()
 		//.use(proxy('/de/searchbar.json', {target: 'https://www.dev.fhnw.ch', secure: false}))
 		//.use(proxy('/de/searchbar.json', {target: 'https://www0.fhnw.ch', secure: false}))
-		.use(proxy('/de/searchbar.json', {target: 'https://www0.test.fhnw.ch', secure: false}))
+		//.use(proxy('/de/searchbar.json', {target: 'https://www0.test.fhnw.ch', secure: false, changeOrigin: true}))
+		//.use(proxy('/de/searchbar.json', {target: 'https://www.fhnw.ch', secure: false, changeOrigin: true}))
 		.use(proxy('/Plone/de', {target: 'https://localhost:8008', secure: false}))
 
 		.use(connectLivereload())
