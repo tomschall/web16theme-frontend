@@ -1,5 +1,4 @@
 'use strict';
-
 var _ = require('lodash'),
 	requireNew = require('require-new'),
 	defaultData = requireNew('../../data/default.data.js');
