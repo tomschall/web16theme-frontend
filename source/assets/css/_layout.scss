@@ -101,6 +101,12 @@ h3:not(.childless) {
 	}
 }
 
+.startpage_content,
+.page_content {
+	@include mq($from: wide) {
+		max-width: 1920px;
+	}
+}
 
 .page_content {
 	@include span(8.7);
@@ -117,10 +123,6 @@ h3:not(.childless) {
 
 	@include mq($from: large) {
 		padding-right: 7.5vw;
-	}
-
-	@include mq($from: wide) {
-		max-width: 1920px;
 	}
 
 	@include mq($to: subnav) {
