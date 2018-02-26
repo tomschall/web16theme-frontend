@@ -44,7 +44,7 @@ var data = {
 		{
 			field: 'location',
 			enable: [
-				'bsl'
+				'basel'
 			]
 		},
 		{

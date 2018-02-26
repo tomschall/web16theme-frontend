@@ -31,8 +31,8 @@ var data = {
 			'taxonomy_competence': [
 				'1001'
 			],
-			'fhnw_location': [
-				'Brugg'
+			'city': [
+				'basel'
 			],
 			'taxonomy_subjectarea': [
 				'1005',
@@ -47,7 +47,7 @@ var data = {
 		{
 			field: 'city',
 			enable: [
-				'bsl'
+				'basel'
 			]
 		},
 		{
