@@ -539,7 +539,7 @@
 		} else if (facets) {
 			var facetsToItemsFieldnames = {
 				'faculty': 'taxonomy_subjectarea',
-				'study_type': 'taxnonomy_eduproducttype',
+				'study_type': 'taxonomy_eduproducttype',
 				'location': 'city'
 			};
 			facets.forEach(function(field) {
