@@ -537,10 +537,15 @@
 				$(option).removeAttr('disabled');
 			});
 		} else if (facets) {
+			var facetsToItemsFieldnames = {
+				'faculty[]': 'taxonomy_subjectarea',
+				'study_type[]': 'taxnonomy_eduproducttype',
+				'location[]': 'city'
+			};
 			facets.forEach(function(field) {
 				// field names coming from the endpoint are postfixed with [] if they contain lists
 				// removes postfix from the name
-				var fieldName = field.field.replace(/\[\]$/, ''),
+				var fieldName = facetsToItemsFieldnames[field.field.replace(/\[\]$/, '')],
 					$field = $('[data-searchparam="' + fieldName + '"]'),
 					$options = $field.find('option');
 				$options.map(function(index, option) {

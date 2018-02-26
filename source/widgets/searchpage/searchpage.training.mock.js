@@ -45,13 +45,13 @@ var data = {
 	],
 	'facets': [
 		{
-			field: 'city',
+			field: 'location[]',
 			enable: [
 				'bsl'
 			]
 		},
 		{
-			field: 'taxonomy_eduproducttype',
+			field: 'study_type[]',
 			enable: [
 				'cas'
 			]
