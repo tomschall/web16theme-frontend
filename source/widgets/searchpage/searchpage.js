@@ -179,8 +179,7 @@
 	Widget.prototype.initFormFunctionality = function() {
 		var $formElements = $('.search__form-wrapper input:not(".select2-search__field"), .search__form-wrapper select');
 		data.$formElements = $formElements;
-		$formElements.on('change.' + this.uuid, function(event) {
-			searchParam.triggering_field = event.target.name;
+		$formElements.on('change.' + this.uuid, function() {
 			this.sendSearchQuery();
 			if (searchTemplate === 'search_full') {
 				this.updateTitle();
@@ -328,7 +327,6 @@
 
 		if (this.checkParameters()) {
 			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL, firstLoad);
-			searchParam.triggering_field = '';
 
 			if (!loadMoreMode) {
 				this.changeStatus(this.options.stateClasses.showLoading);
