@@ -538,9 +538,9 @@
 			});
 		} else if (facets) {
 			var facetsToItemsFieldnames = {
-				'faculty[]': 'taxonomy_subjectarea',
-				'study_type[]': 'taxnonomy_eduproducttype',
-				'location[]': 'city'
+				'faculty': 'taxonomy_subjectarea',
+				'study_type': 'taxnonomy_eduproducttype',
+				'location': 'city'
 			};
 			facets.forEach(function(field) {
 				// field names coming from the endpoint are postfixed with [] if they contain lists
