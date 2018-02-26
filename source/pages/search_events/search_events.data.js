@@ -72,7 +72,7 @@ var data = _.merge(defaultData, {
 		locationOptions: [
 			{
 				'optionLabel': 'Basel',
-				'optionValue': 'bsl'
+				'optionValue': 'basel'
 			},
 			{
 				'optionLabel': 'Muttenz',
