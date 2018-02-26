@@ -444,7 +444,6 @@ var fieldDictionaries = {
 			fieldDictionaries[field][this.value] = this.text;
 		});
 	}
-	console.log(fieldDictionaries);
 
 	// Save to global namespace
 	$.extend(true, estatico, {
@@ -478,7 +477,7 @@ Handlebars.registerHelper('dotdotdot_teaser', function(str) {
 });
 
 // fieldDictionaries
-for (var field in fieldDictionaries) {
+for (var field in fieldDictionaries) { // eslint-disable-line guard-for-in
 	(function(field) {
 		Handlebars.registerHelper('get_' + field, function(options) {
 			'use strict';
