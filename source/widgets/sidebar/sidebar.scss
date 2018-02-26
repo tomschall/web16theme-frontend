@@ -94,11 +94,13 @@ $sidebarObjectPush: $basicPush * 5;
 			}
 		}
 
+		/* now calculated on browser runtime
 		&.unfolded {
 			.object__content {
-				max-height: 1000px; /* when you unfold an accordion child */
+				max-height: 1000px; * when you unfold an accordion child *
 			}
 		}
+		*/
 	}
 
 	&:after {
