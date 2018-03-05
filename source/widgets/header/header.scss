@@ -69,7 +69,7 @@ body.is-env-test .widg_header {
 	}
 
 	/**
-  * Smaller then 1024 leads to the top bar
+  * Smaller than 1024 leads to the top bar
   */
 	@include mq($to: medium) {
 		width: 100%;
@@ -92,6 +92,12 @@ body.is-env-test .widg_header {
 
 		@include mq($to: small) {
 			padding: 15px $basicPush * 2;
+		}
+	}
+
+	@include mq($from: medium) {
+		.-ms- & {
+			min-height: 570px;
 		}
 	}
 
