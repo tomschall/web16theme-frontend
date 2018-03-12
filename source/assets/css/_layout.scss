@@ -101,7 +101,7 @@ h3:not(.childless) {
 	}
 }
 
-.startpage_content,
+.startpage-page .content__element___borderless,
 .page_content {
 	@include mq($from: wide) {
 		max-width: 1920px;
