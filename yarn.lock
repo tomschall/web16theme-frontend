@@ -4534,13 +4534,9 @@ jquerykeyframes@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/jquerykeyframes/-/jquerykeyframes-0.0.7.tgz#f404432d98666da45b3b392a21678397e359a18f"
 
-js-base64@^2.1.8:
+js-base64@2.1.x, js-base64@^2.1.8:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
-
-js-base64@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.3.2.tgz#a79a923666372b580f8e27f51845c6f7e8fbfbaf"
 
 js-beautify@^1.6.3:
   version "1.6.14"
