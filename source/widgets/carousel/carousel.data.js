@@ -8,12 +8,13 @@ var _ = require('lodash'),
 
 var templateData = {
 		slides: [
-			{
+
+			/*{
 				title: 'Video',
 				category: 'Test',
 				url: '/pages/about_us/about_us.html',
 				video: '/assets/media/video/video_test.mp4'
-			},
+			},*/
 			{
 				title: 'Campus in Muttenz öffnet im Jahre 2018 die Tore',
 				category: 'Neuer Standort',
