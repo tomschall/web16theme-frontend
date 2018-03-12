@@ -31,8 +31,8 @@ var data = {
 			'taxonomy_competence': [
 				'1001'
 			],
-			'fhnw_location': [
-				'Brugg'
+			'city': [
+				'basel'
 			],
 			'taxonomy_subjectarea': [
 				'1005',
@@ -45,13 +45,13 @@ var data = {
 	],
 	'facets': [
 		{
-			field: 'city',
+			field: 'location[]',
 			enable: [
-				'bsl'
+				'basel'
 			]
 		},
 		{
-			field: 'taxonomy_eduproducttype',
+			field: 'study_type[]',
 			enable: [
 				'cas'
 			]

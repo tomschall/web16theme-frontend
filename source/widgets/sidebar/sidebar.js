@@ -44,12 +44,21 @@
 	var $widg_sidebar_accordion;
 	var $widg_sidebar_accordion_objects;
 	var $widg_sidebar_accordion_titles;
+	var $widg_sidebar_accordion_contents;
 	var accordion_height = 0;
 	var page_content_offset_top;
 	var sticky_scroll_threshold;
 	var is_window_wide_enough;
 	var widg_subnav_height;
 	var widg_sidebar_sticky_top;
+	var widg_sidebar_style;
+
+	function insertStyleElement(css) {
+		widg_sidebar_style = document.createElement('style');
+		widg_sidebar_style.id = 'sidebar-style';
+		widg_sidebar_style.setAttribute('type', 'text/css');
+		document.head.insertAdjacentElement('beforeend', widg_sidebar_style);
+	}
 
 	/* Transparent place holder for when the main content is shorter than the sidebar */
 	function insertMinHeightLock() {
@@ -60,6 +69,15 @@
 		$widg_sidebar.toggleClass('sticky', false);
 		$widg_sidebar.css('top', 0);
 		$widg_sidebar_content.css('margin-top', 0);
+	}
+
+	function initContentMaxHeight() {
+		var ACCORDION_CONTENT_HEIGHT = 62;
+		var max_height = window.innerHeight - (2 * SIDEBAR_STICKY_MARGIN_TOP + $widg_sidebar_accordion_contents.length * ACCORDION_CONTENT_HEIGHT);
+		while (widg_sidebar_style.firstChild) {
+			widg_sidebar_style.removeChild(widg_sidebar_style.firstChild);
+		}
+		widg_sidebar_style.appendChild(document.createTextNode('.widg_sidebar__object.unfolded .object__content { max-height: ' + max_height + 'px; }'));
 	}
 
 	function initCurrentSize() {
@@ -73,6 +91,7 @@
 		is_window_wide_enough = window.estatico.mq.query({from: 'subnav'});
 
 		$widg_sidebar.css('margin-top', widg_sidebar_margin_top);
+		initContentMaxHeight();
 		if (!is_window_wide_enough) {
 			unstickSidebar();
 		}
@@ -136,6 +155,16 @@
 		return;
 	}
 
+	// 1. The content objects are copied to a floating (fixed, elevated) accordion, and set to display: none.
+	$widg_sidebar[0].insertAdjacentHTML('afterbegin', '<div class="widg_sidebar__accordion"></div>');
+	$widg_sidebar_accordion = $('.widg_sidebar__accordion');
+	$widg_sidebar_accordion.html($widg_sidebar_content.html());
+	$widg_sidebar_accordion_objects = $('.widg_sidebar__object', $widg_sidebar_accordion);
+	$widg_sidebar_accordion_titles = $('.object__title', $widg_sidebar_accordion_objects);
+	$widg_sidebar_accordion_contents = $('.object__content', $widg_sidebar_accordion_objects);
+
+	insertStyleElement();
+
 	insertMinHeightLock();
 
 	initCurrentSize();
@@ -144,13 +173,6 @@
 		// Distance to treppenhaus navigation depends on its height, which depends on its content, which is sometimes not fully known until the load event
 		initCurrentSize();
 	});
-
-	// 1. The content objects are copied to a floating (fixed, elevated) accordion, and set to display: none.
-	$widg_sidebar[0].insertAdjacentHTML('afterbegin', '<div class="widg_sidebar__accordion"></div>');
-	$widg_sidebar_accordion = $('.widg_sidebar__accordion');
-	$widg_sidebar_accordion.html($widg_sidebar_content.html());
-	$widg_sidebar_accordion_objects = $('.widg_sidebar__object', $widg_sidebar_accordion);
-	$widg_sidebar_accordion_titles = $('.object__title', $widg_sidebar_accordion_objects);
 
 	/**
 	 * On click of an accordion title

@@ -61,23 +61,23 @@ var data = _.merge(defaultData, {
 			locationOptions: [
 				{
 					'optionLabel': 'Basel',
-					'optionValue': 'bsl'
+					'optionValue': 'basel'
 				},
 				{
 					'optionLabel': 'Muttenz',
-					'optionValue': 'mtz'
+					'optionValue': 'muttenz'
 				},
 				{
 					'optionLabel': 'Brugg-Windisch',
-					'optionValue': 'brg'
+					'optionValue': 'brugg'
 				},
 				{
 					'optionLabel': 'Olten',
-					'optionValue': 'olt'
+					'optionValue': 'olten'
 				},
 				{
 					'optionLabel': 'Solothurn',
-					'optionValue': 'slt'
+					'optionValue': 'solothurn'
 				}
 			],
 			competenceOptions: [

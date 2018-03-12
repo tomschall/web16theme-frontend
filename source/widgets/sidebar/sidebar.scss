@@ -96,7 +96,10 @@ $sidebarObjectPush: $basicPush * 5;
 
 		&.unfolded {
 			.object__content {
-				max-height: 1000px; /* when you unfold an accordion child */
+				/* now calculated on browser runtime
+				max-height: 1000px; * when you unfold an accordion child *
+				*/
+				overflow-y: auto;
 			}
 		}
 	}
