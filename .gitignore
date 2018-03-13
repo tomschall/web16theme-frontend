@@ -22,3 +22,5 @@ pip-selfcheck.json
 /.test
 .gitattributes
 .vimrc
+yarn-error.log
+/eggs

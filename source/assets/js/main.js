@@ -23,6 +23,7 @@
 
  * @requires ../.tmp/templates.js
 
+ * @requires helpers/utils.js
  * @requires helpers/module.js
  * @requires helpers/events.js
  * @requires helpers/mediaqueries.js
@@ -34,7 +35,8 @@
  * @requires helpers/initVendorPlugins.js
  * @requires helpers/modal.js
  * @requires helpers/env.js
-
+ * @requires helpers/cookiepolicy.js
+ *
  * @requires ../../widgets/searchbar/searchbar.js
  * @requires ../../widgets/menubuttons/menubuttons.js
  * @requires ../../widgets/header/header.js
