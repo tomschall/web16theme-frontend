@@ -8,7 +8,7 @@ var data = _.merge(defaultData, {
 		meta: {
 			title: 'Kontaktprofil mit Bild'
 		},
-		title: 'Prof. Dr. Anna-Verena von Niederhäusen',
+		title: 'Prof. Dr. Ańa-Verena von Niederhäusen',
 		leadText: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
 		widgets: {
 			header: _.assign({
@@ -21,7 +21,7 @@ var data = _.merge(defaultData, {
 				heroImage: '/assets/media/img/prof_verena_muster.png',
 				heroAlt: 'Symbolbild',
 				profileInfo: {
-					name: 'Prof. Dr. Anna-Verena von Niederhäusen'
+					name: 'Prof. Dr. Ańa-Verena von Niederhäusen'
 				}
 			}),
 			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js'),
