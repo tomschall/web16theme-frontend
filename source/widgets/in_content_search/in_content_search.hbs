@@ -3,7 +3,7 @@
 	<div class="widg_in_content_search__form">
 		<form action="{{searchFilterPageURL}}" method="get">
       <div class="search__holder in_content_search__holder in_content_search__holder___wide  select2__wrapper">
-		<select id="faculty" name="faculty" data-searchparam="faculty" class="custom-select" multiple="multiple">
+		<select id="faculty" name="taxonomy_subjectarea" data-searchparam="taxonomy_subjectarea" class="custom-select" multiple="multiple">
 		  {{#each facultyOptions}}
 							<option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
 						{{/each}}
@@ -11,7 +11,7 @@
         <label class="formQuestion" for="faculty">{{langstrings.chooseExpertise}}</label>
       </div>
       <div class="search__holder in_content_search__holder select2__wrapper">
-		<select id="study_type" name="study_type" data-searchparam="study_type" class="custom-select" multiple="multiple">
+		<select id="study_type" name="taxonomy_eduproducttype" data-searchparam="taxonomy_eduproducttype" class="custom-select" multiple="multiple">
 		  {{#each studyTypeOptions}}
 			  <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
 		  {{/each}}
