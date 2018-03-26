@@ -3,6 +3,10 @@
 		width: 100%;
 	}
 
+	img[src*="portrait_foto"] {
+		max-width: 480px;
+	}
+
 	dl {
 
 		margin-bottom: $basicPush * 2;
