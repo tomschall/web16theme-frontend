@@ -45,37 +45,21 @@ var data = _.merge(defaultData, {
 
 			facultyOptions: [
 				{
-					'optionLabel': 'International Studies',
-					'optionValue': 'is'
+					'optionLabel': 'Architektur, Bau & Geomatik',
+					'optionValue': '1000'
 				},
 				{
-					'optionLabel': 'Informatik',
-					'optionValue': 'it'
+					'optionLabel': 'International Studies',
+					'optionValue': '1003'
 				},
 				{
 					'optionLabel': 'Life Sciences',
-					'optionValue': 'ls'
+					'optionValue': '1004'
 				},
 				{
 					'optionLabel': 'Musik',
-					'optionValue': 'mc'
+					'optionValue': '1005'
 				},
-				{
-					'optionLabel': 'Pädagogik',
-					'optionValue': 'ph'
-				},
-				{
-					'optionLabel': 'Psychologie',
-					'optionValue': 'ps'
-				},
-				{
-					'optionLabel': 'Soziale Arbeit',
-					'optionValue': 'sw'
-				},
-				{
-					'optionLabel': 'Technik',
-					'optionValue': 'tn'
-				}
 			],
 			studyTypeOptions: [
 				{

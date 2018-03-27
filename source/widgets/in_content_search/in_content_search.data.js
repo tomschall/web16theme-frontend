@@ -15,54 +15,38 @@ var templateData = {
 				search: 'Suchen'
 			},
 			facultyOptions: [
-						{
-							'optionLabel': 'International Studies',
-							'optionValue': 'is'
-						},
-						{
-							'optionLabel': 'Informatik',
-							'optionValue': 'it',
-							'selected': 'selected'
-						},
-						{
-							'optionLabel': 'Life Sciences',
-							'optionValue': 'ls'
-						},
-						{
-							'optionLabel': 'Musik',
-							'optionValue': 'mc'
-						},
-						{
-							'optionLabel': 'Pädagogik',
-							'optionValue': 'ph'
-						},
-						{
-							'optionLabel': 'Psychologie',
-							'optionValue': 'ps'
-						},
-						{
-							'optionLabel': 'Soziale Arbeit',
-							'optionValue': 'sw'
-						},
-						{
-							'optionLabel': 'Technik',
-							'optionValue': 'tn'
-						}
-					],
+				{
+					'optionLabel': 'Architektur, Bau & Geomatik',
+					'optionValue': '1000'
+				},
+				{
+					'optionLabel': 'International Studies',
+					'optionValue': '1003',
+					'selected': 'selected'
+				},
+				{
+					'optionLabel': 'Life Sciences',
+					'optionValue': '1004'
+				},
+				{
+					'optionLabel': 'Musik',
+					'optionValue': '1005'
+				},
+			],
 			studyTypeOptions:
 					[
 						{
 							'optionLabel': 'MAS',
-							'optionValue': 'mas'
+							'optionValue': '2008'
 						},
 						{
 							'optionLabel': 'CAS',
-							'optionValue': 'cas',
+							'optionValue': '2000',
 							'selected': 'selected'
 						},
 						{
 							'optionLabel': 'DAS',
-							'optionValue': 'das'
+							'optionValue': '2001'
 						}
 					]
 		},

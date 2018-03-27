@@ -47,7 +47,7 @@ var data = {
 		{
 			field: 'faculty',
 			enable: [
-					'it'
+					'1003'
 			]
 		},
 		{
