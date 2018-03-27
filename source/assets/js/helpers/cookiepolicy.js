@@ -381,10 +381,14 @@
     var initialized = false;
     var init = function() {
         if (!initialized && document.readyState === 'interactive') {
-            // IE is not able to read script content as simple text
-            bannerRawConf =
-                $('#' + BANNER_CONF_ID).text() || $('#' + BANNER_CONF_ID).html();
-            bannerConfiguration = $.parseJSON(bannerRawConf);
+			// IE is not able to read script content as simple text
+			bannerRawConf =
+				$('#' + BANNER_CONF_ID).text() || $('#' + BANNER_CONF_ID).html();
+			if (bannerRawConf) {
+				bannerConfiguration = $.parseJSON(bannerRawConf);
+			} else {
+				bannerConfiguration = undefined;
+			}
             if (
                 !bannerConfiguration ||
                 bannerConfiguration.cookie_consent_configuration === undefined ||
