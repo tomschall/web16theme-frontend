@@ -25,6 +25,12 @@ var fieldDictionaries = {
 			updateFilterLoaded: 'updateFilterLoaded.estatico.search'
 		},
 
+		listHeadTemplates = {
+			categorySearch: {
+				training: '<tr><th>{{title}}</th><th>{{study_type}}</th><th>{{faculty}}</th><th>{{location}}</th></tr>',
+			}
+		},
+
 		listEntryTemplates = {
 			searchbar: {
 				normal: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span></a><span class="search__result-arrow"></span></li>',
@@ -105,26 +111,13 @@ var fieldDictionaries = {
    */
 	function generateResultTable(data) {
 		var results = data.items,
-				headers = data.fieldHeaders,
 				$responseHTML = $('<table></table>'),
 				$headersRow = $('<tr></tr>'),
 				template = null;
 
-		if (typeof headers !== typeof undefined) {
-			var sortedHeaderKeys = ['title', 'study_type', 'faculty', 'location', 'path_string'];
-			sortedHeaderKeys.forEach(function(headerKey) {
-				if (!(headerKey in headers)) {
-					return;
-				};
-
-				if (headerKey === 'URL') {
-					$headersRow.append('<th class="url">' + headers[headerKey] + '</th>');
-				} else {
-					$headersRow.append('<th>' + headers[headerKey] + '</th>');
-				}
-			});
-
-			$('<thead></thead>').appendTo($responseHTML).append($headersRow);
+		if (data.category in listHeadTemplates.categorySearch) {
+			template = Handlebars.compile(listHeadTemplates.categorySearch[data.category]);
+			$('<thead></thead>').appendTo($responseHTML).append(template(_.assign(data.fieldHeaders, langStrings)));
 		}
 
 		results.forEach(function(row) {
