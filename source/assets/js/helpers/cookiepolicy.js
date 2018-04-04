@@ -435,9 +435,7 @@
                 reject_url: 'javascript:void(0)', // eslint-disable-line no-script-url
                 learnMore: 'Privacy policy',
                 link: bannerConfiguration.portal_url + '/privacy',
-                theme:
-                    bannerConfiguration.portal_url +
-                    '/++resource++rer.cookieconsent.resources/cookiepolicy.css'
+                theme: ''
             };
 
             // Events for automatic policy acceptance
