@@ -10,7 +10,7 @@ var templateData = {
 			contacts: [
 				{
 					img: {
-						src: '/assets/media/img/img_contact_sidebar.png',
+						src: '/assets/media/img/portrait_foto/foto_1.png',
 						alt: 'Portrait Prof. Dr. Hans Muster'
 					},
 					name: 'Prof. Dr. Hans Muster',
@@ -21,7 +21,7 @@ var templateData = {
 				},
 				{
 					img: {
-						src: '/assets/media/img/img_contact_sidebar.png',
+						src: '/assets/media/img/portrait_foto/foto_2.png',
 						alt: 'Portrait Prof. Dr. Hans Muster'
 					},
 					name: 'Prof. Dr. Hans Muster',
