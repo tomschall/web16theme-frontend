@@ -16,8 +16,7 @@
 .cc_container a,
 .cc_container a:visited {
 	text-decoration: none;
-	color: #fff;
-	border-bottom: 1px solid #fff;
+	color: #fff !important;
 }
 
 .cc_container a:active,
@@ -31,7 +30,7 @@
 .cc_container .cc_btn:visited {
 	line-height: 1.2;
   text-decoration: none;
-	color: #000;
+	color: #000 !important;
 	background-color: #fde70e;
 	border-bottom: none;
 }
