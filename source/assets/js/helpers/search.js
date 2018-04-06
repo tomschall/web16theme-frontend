@@ -247,7 +247,10 @@ var fieldDictionaries = {
 
 					responseData.forEach(function(listEntry) {
 						if (listEntry.UID && (listEntry.UID in data.highlighting)) {
-							listEntry.Title = data.highlighting[listEntry.UID].Title[0];
+							var data_highlighting = data.highlighting[listEntry.UID];
+							if (data_highlighting.Title) {
+								listEntry.Title = data_highlighting.Title[0];
+							}
 						}
 						$tempListDOM = generateSearchListItem(listEntry, data.category);
 						$categoryList.append($tempListDOM);
