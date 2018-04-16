@@ -27,7 +27,7 @@ var data = _.merge(defaultData, {
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),
 			searchpage: _.assign(requireNew('../../widgets/searchpage/searchpage.data.js'), {
-				jsonURL: '/mocks/widgets/searchpage/searchpage.profiles.json'
+				jsonURL: '/mocks/widgets/searchpage/searchpage.category.json'
 			}),
 			hero: _.assign(requireNew('../../widgets/hero/hero.data.js'), {
 				heroImage: '/assets/media/img/cas_eingl_mgmt_hero.png',
@@ -90,19 +90,19 @@ var data = _.merge(defaultData, {
 				},
 				{
 					'optionLabel': 'Muttenz',
-					'optionValue': 'mtz'
+					'optionValue': 'muttenz'
 				},
 				{
 					'optionLabel': 'Brugg-Windisch',
-					'optionValue': 'brg'
+					'optionValue': 'brugg_windisch'
 				},
 				{
 					'optionLabel': 'Olten',
-					'optionValue': 'olt'
+					'optionValue': 'olten'
 				},
 				{
 					'optionLabel': 'Solothurn',
-					'optionValue': 'slt'
+					'optionValue': 'solothurn'
 				}
 			]
 		}

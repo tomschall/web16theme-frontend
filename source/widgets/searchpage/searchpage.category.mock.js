@@ -2,7 +2,7 @@
 
 var data = {
 	'@id': 'http://nohost',
-	'category': 'training',
+	'category': 'studies',
 	'template': 'livesearch',
 	'categoryUrl': '#',
 	'categoryTitle': 'Weiterbildung',
@@ -19,47 +19,51 @@ var data = {
 			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
-			'title': 'MAS Behinderung und Partizipation',
+			'Title': 'MAS Behinderung und Partizipation',
 			short_eduproducttype: 'MAS',
 			faculty: 'Soziale Arbeit',
-			location: 'Olten'
-
+			city: ['olten'],
+			fhnw_location: ['olten'],
 		},
 		{
 			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
-			'title': 'MAS Ethische Entscheidungsfindung in Organisation und Gesellschaft',
+			'Title': 'MAS Ethische Entscheidungsfindung in Organisation und Gesellschaft',
 			short_eduproducttype: 'MAS',
 			faculty: 'Soziale Arbeit',
-			location: 'Olten'
+			city: ['olten'],
+			fhnw_location: ['olten'],
 		},
 		{
 			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
-			'title': 'MAS FHNW in Coaching',
+			'Title': 'MAS FHNW in Coaching',
 			short_eduproducttype: 'MAS',
 			faculty: 'Soziale Arbeit',
-			location: 'Olten'
+			city: ['olten'],
+			fhnw_location: ['olten'],
 		},
 		{
 			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
-			'title': 'CAS Eingliederungsmanagement - Zielgruppen und Methoden',
+			'Title': 'CAS Eingliederungsmanagement - Zielgruppen und Methoden',
 			short_eduproducttype: 'CAS',
 			faculty: 'Soziale Arbeit',
-			location: 'Windisch'
+			city: ['brugg_windisch'],
+			fhnw_location: ['brugg_windisch'],
 		},
 		{
 			'@id': 'https://www.openbsd.org/',
 			'@type': 'EduProduct',
 			'description': 'Lorem Ipsum',
-			'title': 'CAS Eingliederungsmanagement «Fallberatung»',
+			'Title': 'CAS Eingliederungsmanagement «Fallberatung»',
 			short_eduproducttype: 'CAS',
 			faculty: 'Soziale Arbeit',
-			location: 'Windisch'
+			city: ['brugg_windisch'],
+			fhnw_location: ['brugg_windisch'],
 		}
 	],
 	'facets': [
