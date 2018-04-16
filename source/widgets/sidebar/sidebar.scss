@@ -20,6 +20,7 @@ $sidebarObjectPush: $basicPush * 5;
 	}
 
 	&.min_height_lock {
+		position: absolute;
 		visibility: hidden;
 
 		@include mq($to: 'subnav') {
