@@ -20,7 +20,7 @@ $sidebarObjectPush: $basicPush * 5;
 	}
 
 	&.min_height_lock {
-		position: absolute;
+		display: none;
 		visibility: hidden;
 
 		@include mq($to: 'subnav') {
@@ -52,6 +52,10 @@ $sidebarObjectPush: $basicPush * 5;
 	}
 
 	&.sticky {
+		+ .min_height_lock {
+			display: block;
+		}
+
 		@include mq($from: 'subnav') {
 			overflow: hidden;
 		}
