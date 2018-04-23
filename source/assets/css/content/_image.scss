@@ -42,7 +42,14 @@ img.full-span {
 }
 
 img.image-inline {
-	max-width: 183px;
+	max-width: 100%;
+}
+
+/* Only IE10+ */
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+	img.image-inline {
+		max-width: 183px;
+	}
 }
 
 .img__caption {
