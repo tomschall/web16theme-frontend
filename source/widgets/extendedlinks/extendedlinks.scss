@@ -37,7 +37,7 @@
 .widg_extendedlinks__entry {
 	@include clearfix();
 
-	margin-top: $basicPush * 1.3;
+	margin-top: $basicPush * 2.6;
 
 	&:not(:last-child) {
 		margin-bottom: $basicPush * 2.6;
