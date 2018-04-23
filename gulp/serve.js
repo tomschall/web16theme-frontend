@@ -30,7 +30,7 @@ gulp.task(taskName, function() {
 		//.use(proxy('/de/searchbar.json', {target: 'https://www.fhnw.ch', secure: false, changeOrigin: true}))
 		.use(proxy('/Plone/de', {target: 'https://localhost:8008', secure: false}))
 
-		.use(connectLivereload())
+		/*.use(connectLivereload())*/
 		.use(function(req, res, next) {
 			var parts = url.parse(req.url, true),
 				delay = parts.query.delay;
