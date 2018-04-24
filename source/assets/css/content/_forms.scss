@@ -313,3 +313,14 @@ ul span.select2-selection__clear {
 .portalMessage.error {
 	display: none;
 }
+
+
+/* COOKIE OPT-OUT */
+#optout-form .field input {
+	height: 0 !important;
+}
+
+#optout-form .optoutDescription {
+	font-size: 1.3333rem;
+  padding: 20px 0;
+}
