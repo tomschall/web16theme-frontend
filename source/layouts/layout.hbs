@@ -94,10 +94,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	{{> "widgets/toplink/toplink"}}
 </div>
 
-
-
-
 	<script src="/assets/js/main{{#unless env.dev}}.min{{/unless}}.js{{#if env.ver}}?{{env.ver}}{{/if}}"></script>
+	<div id="extrascripts"> </div>
 
 	{{#block "scripts"}}
 		{{#if meta.testScripts}}
