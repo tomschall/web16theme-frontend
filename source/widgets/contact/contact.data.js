@@ -13,7 +13,7 @@ var templateData = {
 			contactPageURL: '#',
 			jobDescription: 'Institutsleitung',
 			phone: '+41 62 957 24 26',
-			email: 'adrian.schwaninger@fhnw.ch',
+			email: 'dmljdG9yLmZlcm5hbmRlejJAdXBjbmV0LmVz',
 			img: {
 				src: '/assets/media/img/img_contact_sidebar.png',
 				alt: 'Prof. Dr. Adrian Schwaninger'
@@ -24,12 +24,45 @@ var templateData = {
 			contactPageURL: '#',
 			jobDescription: 'Institutsleitung',
 			phone: '+41 62 957 24 26',
-			email: 'maria.muster@fhnw.ch',
+			email: 'bcOpQG1lLmNvbSB0byBnZW9tYWlsdG86YmNPcFFHMWxMbU52YlE9PQ==',
 			img: {
 				src: '/assets/media/img/img_contact_woman.png',
 				alt: 'Prof. Dr. Maria Muster'
 			}
-		}
+		},
+		{
+			fullname: 'Prof. Dr. Maria Muster',
+			contactPageURL: '#',
+			jobDescription: 'Institutsleitung',
+			phone: '+41 62 957 24 26',
+			email: 'bWVAbWUuY29tIHRvIGdlb21haWx0bzpiV1ZBYldVdVkyOXQ=',
+			img: {
+				src: '/assets/media/img/img_contact_woman.png',
+				alt: 'Prof. Dr. Maria Muster'
+			}
+		},
+		{
+			fullname: 'Prof. Dr. Maria Muster',
+			contactPageURL: '#',
+			jobDescription: 'Institutsleitung',
+			phone: '+41 62 957 24 26',
+			email: 'bWVAbWUuY29tP3N1YmplY3Q9VGVzdCB0byBnZW9tYWlsdG86YldWQWJXVXVZMjl0UDNOMVltcGxZM1E5VkdWemRBPT0=',
+			img: {
+				src: '/assets/media/img/img_contact_woman.png',
+				alt: 'Prof. Dr. Maria Muster'
+			}
+		},
+		{
+			fullname: 'Prof. Dr. Maria Muster',
+			contactPageURL: '#',
+			jobDescription: 'Institutsleitung',
+			phone: '+41 62 957 24 26',
+			email: 'bWVAbWUuY29tP3N1YmplY3Q9VGVzdCZib2R5PVRlc3QgdG8gZ2VvbWFpbHRvOmJXVkFiV1V1WTI5dFAzTjFZbXBsWTNROVZHVnpkQ1ppYjJSNVBWUmxjM1E9',
+			img: {
+				src: '/assets/media/img/img_contact_woman.png',
+				alt: 'Prof. Dr. Maria Muster'
+			}
+		},
 	],
 	langStrings: {
 		telephone: 'Telefon',
