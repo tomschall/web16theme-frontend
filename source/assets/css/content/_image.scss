@@ -45,6 +45,13 @@ img.image-inline {
 	max-width: 100%;
 }
 
+/* Only IE10+ */
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+	img.image-inline {
+		max-width: 183px;
+	}
+}
+
 .img__caption {
 		font-size: 1.083333rem;
     margin: 20px 0 0;
