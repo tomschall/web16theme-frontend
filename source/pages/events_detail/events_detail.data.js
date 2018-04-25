@@ -23,7 +23,7 @@ var data = _.merge(defaultData, {
 	}),
 	contactData: {
 		telephone: '+41 56 202 77 70',
-		email: 'YmlibGlvdGhlay53aW5kaXNjaEBmaG53LmNo'
+		email: 'bibliothek.windisch@fhnw.ch'
 	},
 	locationPageURL: '/pages/location_brugg/location_brugg.html',
 	routeURL: 'https://maps.google.ch',
@@ -67,7 +67,7 @@ var data = _.merge(defaultData, {
 							},
 							name: 'Prof. Dr. Verena Muster',
 							jobDescr: 'Leitung',
-							email: 'aGFucy5tdXN0ZXJAZmhudy5jaA==',
+							email: 'hans.muster@fhnw.ch',
 							telephone: '+41 62 957 24 26',
 							location: 'Pädagogische Hochschule Brugg'
 						}
@@ -91,7 +91,7 @@ var data = _.merge(defaultData, {
 					},
 					contactData: {
 						telephone: '+41 56 202 77 70',
-						email: 'YmlibGlvdGhlay53aW5kaXNjaEBmaG53LmNo'
+						email: 'bibliothek.windisch@fhnw.ch'
 					},
 					locationPageURL: '/pages/location_brugg/location_brugg.html',
 					routeURL: 'https://maps.google.ch',

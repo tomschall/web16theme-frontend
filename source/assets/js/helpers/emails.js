@@ -26,12 +26,6 @@
 			var decodedMail = Base64.decode(encodedMail);
 			$(this).attr('href', 'mailto:' + decodedMail);
 		});
-		// Decode the geomailto from the onclick attribute to extract the mail
-		$('a[onclick^="window.location.href=\'geomailto:"]').each(function(i) {
-			var encodedMail = $(this).attr('onclick').replace('window.location.href=\'geomailto:', '').slice(0, -1);
-			var decodedMail = Base64.decode(encodedMail);
-			$(this).attr('onclick', 'window.location.href=\'mailto:' + decodedMail + '\'');
-		});
 	});
 
 })(jQuery, Base64);
