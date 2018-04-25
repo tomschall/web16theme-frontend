@@ -47,7 +47,7 @@ var templateData = {
 						}
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-					btnUrl: 'geomailto:YmlibGlvdGhlay53aW5kaXNjaEBmaG53LmNo',
+					btnUrl: '#',
 					applyLabel: 'Anmelden long button text',
 					applicationIsActive: true
 				},
@@ -89,7 +89,7 @@ var templateData = {
 						}
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-					btnUrl: 'geomailto:YmlibGlvdGhlay53aW5kaXNjaEBmaG53LmNo',
+					btnUrl: '#',
 					iCalURL: '#',
 					applyLabel: 'Anmelden',
 					applicationIsActive: false
@@ -133,49 +133,6 @@ var templateData = {
 					],
 					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
 					btnUrl: '#',
-					iCalURL: '#',
-					applyLabel: 'Warteliste',
-					applicationIsActive: true
-				},
-				{
-					uid: '4',
-					eventStart: 'Windisch, 17.09.2017',
-					eventLocation: 'Infotag zum OPEN HOUSE 2018',
-					availableSeats: 12,
-					availabilityState: 'state-green',
-					informationEntries: [
-						{
-							label: 'Start- und Endtermin',
-							text: '01.01.2016 - 15.05.2016',
-							iCalURL: '#'
-						},
-						{
-							label: 'Dauer',
-							text: '6 Monate'
-						},
-						{
-							label: 'ECTS-Punkte',
-							text: '15 Credits'
-						},
-						{
-							label: 'Durchführungsort(e)',
-							text: 'HS Soziale Arbeit FHNW, Von Roll Str 10, 4600 Olten'
-						},
-						{
-							label: 'Freie Plätze',
-							text: '12'
-						},
-						{
-							label: 'Anzahl Teilnehmer',
-							text: '6 - 18'
-						},
-						{
-							label: 'Nummer',
-							text: 'X0.12345'
-						}
-					],
-					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
-					btnUrl: 'geomailto:YmlibGlvdGhlay53aW5kaXNjaEBmaG53LmNo',
 					iCalURL: '#',
 					applyLabel: 'Warteliste',
 					applicationIsActive: true

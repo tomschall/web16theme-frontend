@@ -16,7 +16,7 @@ var templateData = {
 					name: 'Prof. Dr. Hans Muster',
 					url: '#',
 					jobDescr: 'Leitung',
-					email: 'aGFucy5tdXN0ZXJAZmhudy5jaA==',
+					email: 'hans.muster@fhnw.ch',
 					telephone: '+41 62 957 24 26'
 				},
 				{
@@ -27,7 +27,7 @@ var templateData = {
 					name: 'Prof. Dr. Hans Muster',
 					url: '#',
 					jobDescr: 'Leitung',
-					email: 'aGFucy5tdXN0ZXJAZmhudy5jaA==',
+					email: 'hans.muster@fhnw.ch',
 					telephone: '+41 62 957 24 26'
 				}
 			],

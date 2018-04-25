@@ -26,7 +26,7 @@ var data = _.merge(defaultData, {
 					telephone: '044 444 44 44',
 					jobDescr: null,
 					location: 'sdfsds',
-					email: 'bGF1cmUucG9sZXhlQGZobncuY2g='
+					email: 'laure.polexe@fhnw.ch'
 				}]
 			}),
 			degreeleadership: _.assign(requireNew('../sidebar_contact/sidebar_contact.data.js'), {
@@ -37,7 +37,7 @@ var data = _.merge(defaultData, {
 					url: 'http://localhost:8180/Plone/de/personen/kontaktperson',
 					telephone: '05555555',
 					location: 'Bahnhofstrasse 6\r\n5210 Windisch',
-					email: 'Y2hyaXN0aW5hLmNvcnNvQGZobncuY2g='
+					email: 'christina.corso@fhnw.ch'
 				}]
 			}),
 			leadership: _.assign(requireNew('../sidebar_contact/sidebar_contact.data.js'), {
@@ -48,7 +48,7 @@ var data = _.merge(defaultData, {
 					url: 'http://localhost:8180/Plone/de/personen/kontaktperson',
 					telephone: '0564620000',
 					location: 'Bahnhofstrasse 6\r\n5210 Windisch',
-					email: 'Y2hyaXN0aW5hLmNvcnNvQGZobncuY2g='
+					email: 'christina.corso@fhnw.ch'
 				}]
 			})
 		}
