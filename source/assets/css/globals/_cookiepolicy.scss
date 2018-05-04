@@ -49,6 +49,10 @@
 	bottom: 0;
 	overflow: hidden;
 	padding: 20px;
+
+	@include mq($to: 'medium') {
+			padding: 0;
+		}
 }
 
 .cc_container .cc_btn {
@@ -63,13 +67,20 @@
 	max-width: 70px;
 }
 
-.cc_container .cc_message {
-  font-size: 1.25rem;
+.cc_container .cc_message,
+.cc_container .cc_message a {
   line-height: 23px;
   color: #ffffff;
 	transition: font-size 200ms;
 	font-size: inherit;
-	display: block;
+	display: inline;
+}
+
+.cc_container .cc_message {
+	@include mq($to: 'medium') {
+		padding: 5px 100px 0 20px;
+		margin-bottom: 15px;
+	}
 }
 
 #accept_btn {
