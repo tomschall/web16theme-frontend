@@ -53,7 +53,7 @@ var data = {
 		{
 			field: 'study_type[]',
 			enable: [
-				'cas'
+				'2000'
 			]
 		},
 		{

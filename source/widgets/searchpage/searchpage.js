@@ -551,11 +551,7 @@
 						return;
 					}
 
-					if ($.inArray($(option).attr('value'), field.enable) === -1) {
-						$(option).attr('disabled', 'disabled');
-					} else {
-						$(option).removeAttr('disabled');
-					}
+					$(option).removeAttr('disabled');
 				}.bind(this));
 				$field.find('optgroup').remove(); // remove all opt groups
 			}.bind(this));
