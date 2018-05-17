@@ -57,10 +57,10 @@ var data = {
 			]
 		},
 		{
-			field: 'taxonomy_competence',
+			field: 'faculty[]',
 			enable: [
-				'7200',
-				'7203'
+				'1000',
+				'1003'
 			]
 		}
 	],
