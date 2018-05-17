@@ -45,20 +45,20 @@ var data = _.merge(defaultData, {
 
 			facultyOptions: [
 				{
-					'optionLabel': 'Architektur, Bau & Geomatik',
-					'optionValue': '1000'
+					'optionLabel': 'Art & Design',
+					'optionValue': '1001'
 				},
 				{
 					'optionLabel': 'International Studies',
 					'optionValue': '1003'
 				},
 				{
-					'optionLabel': 'Life Sciences',
-					'optionValue': '1004'
-				},
-				{
 					'optionLabel': 'Musik',
 					'optionValue': '1005'
+				},
+				{
+					'optionLabel': 'Business',
+					'optionValue': '1010'
 				},
 			],
 			studyTypeOptions: [

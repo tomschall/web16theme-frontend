@@ -54,7 +54,7 @@ var data = {
 				'basel'
 			],
 			'taxonomy_subjectarea': [
-				'1001'
+				'1003'
 			],
 			'review_state': null,
 			'@type': 'EduProduct'
