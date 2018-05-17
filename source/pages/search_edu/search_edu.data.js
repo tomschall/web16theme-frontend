@@ -41,7 +41,7 @@ var data = _.merge(defaultData, {
 			label_reset_fields: 'Reset',
 			label_location: 'Ort',
 			label_faculty: 'Fachbereich',
-			label_study_type: 'Typ',
+			label_type: 'Typ',
 
 			facultyOptions: [
 				{
@@ -64,23 +64,23 @@ var data = _.merge(defaultData, {
 			studyTypeOptions: [
 				{
 					'optionLabel': 'MBA',
-					'optionValue': 'mba'
+					'optionValue': '1000'
 				},
 				{
 					'optionLabel': 'MAS',
-					'optionValue': 'mas'
+					'optionValue': '1002'
 				},
 				{
 					'optionLabel': 'DAS',
-					'optionValue': 'das'
+					'optionValue': '1004'
 				},
 				{
 					'optionLabel': 'CAS',
-					'optionValue': 'cas'
+					'optionValue': '1013'
 				},
 				{
-					'optionLabel': 'Kurs',
-					'optionValue': 'kurs'
+					'optionLabel': 'Degree Programmes',
+					'optionValue': '8wjt11bpvt'
 				}
 			],
 			locationOptions: [
