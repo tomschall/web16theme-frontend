@@ -41,46 +41,46 @@ var data = _.merge(defaultData, {
 			label_reset_fields: 'Reset',
 			label_location: 'Ort',
 			label_faculty: 'Fachbereich',
-			label_study_type: 'Typ',
+			label_type: 'Typ',
 
 			facultyOptions: [
 				{
-					'optionLabel': 'Architektur, Bau & Geomatik',
-					'optionValue': '1000'
+					'optionLabel': 'Art & Design',
+					'optionValue': '1001'
 				},
 				{
 					'optionLabel': 'International Studies',
 					'optionValue': '1003'
 				},
 				{
-					'optionLabel': 'Life Sciences',
-					'optionValue': '1004'
-				},
-				{
 					'optionLabel': 'Musik',
 					'optionValue': '1005'
+				},
+				{
+					'optionLabel': 'Business',
+					'optionValue': '1010'
 				},
 			],
 			studyTypeOptions: [
 				{
 					'optionLabel': 'MBA',
-					'optionValue': 'mba'
+					'optionValue': '1000'
 				},
 				{
 					'optionLabel': 'MAS',
-					'optionValue': 'mas'
+					'optionValue': '1002'
 				},
 				{
 					'optionLabel': 'DAS',
-					'optionValue': 'das'
+					'optionValue': '1004'
 				},
 				{
 					'optionLabel': 'CAS',
-					'optionValue': 'cas'
+					'optionValue': '1013'
 				},
 				{
-					'optionLabel': 'Kurs',
-					'optionValue': 'kurs'
+					'optionLabel': 'Degree Programmes',
+					'optionValue': '8wjt11bpvt'
 				}
 			],
 			locationOptions: [

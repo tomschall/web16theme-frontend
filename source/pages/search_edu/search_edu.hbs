@@ -10,7 +10,7 @@
 			<div class="search__form-wrapper">
 				<div>
 					<div class="search__holder select2__wrapper">
-						<select id="faculty" name="taxonomy_subjectarea" data-searchparam="faculty" class="custom-select" multiple="multiple">
+						<select id="taxonomy_subjectarea" name="taxonomy_subjectarea" data-searchparam="taxonomy_subjectarea" class="custom-select" multiple="multiple">
 							{{#each widgets.facultyOptions}}
 								<option value="{{optionValue}}">{{optionLabel}}</option>
 							{{/each}}
@@ -19,7 +19,7 @@
 					</div>
 
 					<div class="search__holder select2__wrapper">
-						<select class="custom-select custom-select___long" name="study_type" id="study_type" data-searchparam="study_type" data-placeholder="" multiple="multiple">
+						<select class="custom-select custom-select___long" id="taxonomy_eduproducttype" name="taxonomy_eduproducttype" data-searchparam="taxonomy_eduproducttype" data-placeholder="" multiple="multiple">
 							{{#each widgets.studyTypeOptions}}
 								<option value="{{optionValue}}">{{optionLabel}}</option>
 							{{/each}}
