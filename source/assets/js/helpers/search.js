@@ -482,7 +482,10 @@ for (var field in fieldDictionaries) { // eslint-disable-line guard-for-in
 			return options.fn(this)
 					.split(',')
 					.map(function(item) {
-						return fieldDictionaries[field][item];
+						return (item in fieldDictionaries[field]) ? fieldDictionaries[field][item] : null;
+					})
+					.filter(function (value) {
+						return value !== null;
 					})
 					.join(', ');
 		});

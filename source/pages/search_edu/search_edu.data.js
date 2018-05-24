@@ -76,11 +76,13 @@ var data = _.merge(defaultData, {
 				},
 				{
 					'optionLabel': 'CAS',
-					'optionValue': '1013'
+					'optionValue': '1013',
+					'hide': false
 				},
 				{
 					'optionLabel': 'Degree Programmes',
-					'optionValue': '8wjt11bpvt'
+					'optionValue': '8wjt11bpvt',
+					'hide': true
 				}
 			],
 			locationOptions: [

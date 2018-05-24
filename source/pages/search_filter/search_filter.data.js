@@ -428,7 +428,13 @@ var data = _.merge(defaultData, {
 				},
 				{
 					'optionLabel': 'DAS',
-					'optionValue': '2001'
+					'optionValue': '2001',
+					'hide': false
+				},
+				{
+					'optionLabel': 'Continuing Education',
+					'optionValue': '2002',
+					'hide': true
 				}
 			]
 		}
