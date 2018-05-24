@@ -19,7 +19,9 @@
 					<div class="search__holder select2__wrapper">
 						<select id="taxonomy_eduproducttype" name="taxonomy_eduproducttype" data-searchparam="taxonomy_eduproducttype" class="custom-select" multiple="multiple">
 							{{#each widgets.studyTypeOptions}}
-								<option value="{{optionValue}}">{{optionLabel}}</option>
+								{{#unless hide}}
+									<option value="{{optionValue}}" >{{optionLabel}}</option>
+								{{/unless}}
 							{{/each}}
 						</select>
 						<label class="formQuestion" for="taxonomy_eduproducttype">{{widgets.label_type}}</label>
