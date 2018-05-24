@@ -40,8 +40,7 @@ var data = {
 			'portal_type': 'EduProduct',
 			'@id': 'https://www.fhnw.ch/en/degree-programmes/art-and-design/master-of-arts/master-of-arts-fhnw-in-design',
 			'taxonomy_eduproducttype': [
-				'8wjt11bpvt',
-				'1000'
+				'8wjt11bpvt'
 			],
 			'Description': 'The challenges of the modern lifeworld have become to complex to be mastered by single disciplines which is why the Masterstudio applies an integrative concept of design.',
 			'city': [
