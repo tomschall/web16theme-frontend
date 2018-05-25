@@ -343,9 +343,9 @@
     };
 
     function forcePolicyAcceptance(ev) {
-        // Prevent accepting policy if we want to read the policy or access the dashboard
+        // Prevent accepting policy if external link, we want to read the policy or access the dashboard
         if (this.tagName.toLowerCase() === 'a') {
-            if (
+            if (this.host !== location.host ||
                 this.href.indexOf(
                     cookie_consent_configuration.privacy_link_url
                 ) === 0 ||
