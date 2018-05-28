@@ -17,6 +17,11 @@
 						<label class="formQuestion" for="taxonomy_subjectarea">{{widgets.label_faculty}}</label>
 					</div>
 					<div class="search__holder select2__wrapper">
+						{{#each widgets.studyTypeOptions}}
+							{{#if hide}}
+								<span aria-hidden="true" class="is_hidden taxonomy_eduproducttype_hidden_option" data-value="{{optionValue}}" data-text="{{optionLabel}}"></span>
+							{{/if}}
+						{{/each}}
 						<select id="taxonomy_eduproducttype" name="taxonomy_eduproducttype" data-searchparam="taxonomy_eduproducttype" class="custom-select" multiple="multiple">
 							{{#each widgets.studyTypeOptions}}
 								{{#unless hide}}

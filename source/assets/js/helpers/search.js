@@ -438,7 +438,16 @@ var fieldDictionaries = {
 		}
 
 		$('#' + field + ' > option').each(function() { // eslint-disable-line no-loop-func
-			fieldDictionaries[field][this.value] = this.text;
+			fieldDictionaries[field][this.value] = {
+				text: this.text,
+				hide: false
+			};
+		});
+		$('.' + field + '_hidden_option').each(function() { // eslint-disable-line no-loop-func
+			fieldDictionaries[field][$(this).data('value')] = {
+				text: $(this).data('text'),
+				hide: true
+			};
 		});
 	}
 
@@ -476,18 +485,40 @@ Handlebars.registerHelper('dotdotdot_teaser', function(str) {
 // fieldDictionaries
 for (var field in fieldDictionaries) { // eslint-disable-line guard-for-in
 	(function(field) {
+
+		/**
+		 * @return
+		 *   Comma-separated list of the record's field's non-hidden values if it is not empty.
+		 *   Comma-separated list of the record's field hidden values otherwise.
+		 */
 		Handlebars.registerHelper('get_' + field, function(options) {
 			'use strict';
 
-			return options.fn(this)
+			var nonHiddenItems = options.fn(this)
 					.split(',')
 					.map(function(item) {
-						return (item in fieldDictionaries[field]) ? fieldDictionaries[field][item] : null;
+						return ((item in fieldDictionaries[field]) && !fieldDictionaries[field][item]['hide']) ? fieldDictionaries[field][item]['text'] : null;
 					})
 					.filter(function (value) {
 						return value !== null;
 					})
 					.join(', ');
+
+			if (nonHiddenItems !== '') {
+				return nonHiddenItems;
+			}
+
+			var hiddenItems = options.fn(this)
+					.split(',')
+					.map(function(item) {
+						return ((item in fieldDictionaries[field]) && fieldDictionaries[field][item]['hide']) ? fieldDictionaries[field][item]['text'] : null;
+					})
+					.filter(function (value) {
+						return value !== null;
+					})
+					.join(', ');
+
+			return hiddenItems;
 		});
 	})(field);
 }

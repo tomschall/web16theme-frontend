@@ -19,6 +19,11 @@
 					</div>
 
 					<div class="search__holder select2__wrapper">
+						{{#each widgets.studyTypeOptions}}
+							{{#if hide}}
+								<span aria-hidden="true" class="is_hidden taxonomy_eduproducttype_hidden_option" data-value="{{optionValue}}" data-text="{{optionLabel}}"></span>
+							{{/if}}
+						{{/each}}
 						<select class="custom-select custom-select___long" id="taxonomy_eduproducttype" name="taxonomy_eduproducttype" data-searchparam="taxonomy_eduproducttype" data-placeholder="" multiple="multiple">
 							{{#each widgets.studyTypeOptions}}
 								{{#unless hide}}
