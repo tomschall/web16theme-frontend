@@ -59,8 +59,11 @@ img.image-inline {
     color: #767573;
 }
 
-.richtext__imagelegend {
-	font-size: 1.083333rem;
+.richtext__imagelegend,
+.accordeon__imagelegend,
+.tabnavigation__imagelegend
+ {
+  font-size: 1.083333rem;
   margin: 0;
   padding: 0;
   position: relative;
