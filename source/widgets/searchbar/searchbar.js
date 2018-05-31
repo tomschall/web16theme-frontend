@@ -218,7 +218,7 @@
 	 */
 	Widget.prototype.addSingleEventListeners = function() {
 		// Additional single time events
-		$(window).one('keydown.' + this.uuid, function() {
+		$(window).one('keydown.' + this.uuid, function(event) {
 			if (event.keyCode === 27) {
 				this.closeSearchBar();
 			}
