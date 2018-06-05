@@ -77,9 +77,10 @@ input[type=number] {
 	// anchor element to clear content of the search field
 	.search__string__clear {
 		font-size: 1.25rem;
+		opacity: 0.4;
 		position: absolute;
 		right: 12px;
-		top: 50%;
+		top: 55%;
 		transform: translateY(-50%) rotate(45deg);
 		z-index: 1;
 		@include iconDataurl('breadcrumb-expand');
