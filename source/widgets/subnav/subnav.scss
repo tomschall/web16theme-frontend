@@ -135,7 +135,7 @@
 .widg_subnav__list {
 
 	@include mq($from: subnav) {
-		max-height: 90vh;
+		max-height: 38vh;
 		overflow: auto;
 	}
 
