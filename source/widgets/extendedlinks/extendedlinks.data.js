@@ -6,6 +6,8 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
+	title: 'Some title',
+	description: 'And some description Die FHNW ist eine der führenden Fachhochschulen in der Schweiz und ist mit ihren neun Hochschulen in Lehre, Forschung, Weiterbildung und Dienstleistung tätig – innovativ und praxisorientiert. Ihr breites Angebot an Studiengängen, ihre Nähe zur Praxis, ihre anwendungsorientierte und innovationsstarke Forschung sowie ihre weltweite',
 	links: [
 		{
 			title: 'Die neun Hochschulen der FHNW',

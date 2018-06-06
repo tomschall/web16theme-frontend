@@ -10,14 +10,9 @@
 		@include mq($to: small) {
 			margin-top: 9px;
 		}
-	& + p {
-		padding-bottom: 2em;
-	}
-
 	}
 
 	h3.childless {
-		margin-top: $basicPush * 2.6;
 
 		@include mq($to: small) {
 			margin-top: 3px;
@@ -41,6 +36,12 @@
 
 .widg_extendedlinks__entry {
 	@include clearfix();
+
+	margin-top: $basicPush * 2.6;
+
+	&:not(:last-child) {
+		margin-bottom: $basicPush * 2.6;
+	}
 
 	a {
 		@include clearfix();
