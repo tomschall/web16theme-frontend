@@ -64,6 +64,23 @@
 		$btn.click(function(evt) {
 			window.location.href = targetURL;
 		}.bind(this));
+
+		window.addEventListener('resize', (function() {
+			// setTimeout because no 'afterresize' event exists
+			window.setTimeout((function afterResize() {
+				this.initCurrentSize();
+			}).bind(this), 150);
+		}).bind(this));
+		this.initCurrentSize();
+	};
+
+	Widget.prototype.initCurrentSize = function() {
+		var is_small = window.estatico.mq.query({to: 'small'});
+		if (is_small) {
+			this.$element.css('background-image', 'url("' + this.$element.data('background-image') + '/@@images/image/f_home_middle")');
+		} else {
+			this.$element.css('background-image', 'url("' + this.$element.data('background-image') + '")');
+		}
 	};
 
 	/**
