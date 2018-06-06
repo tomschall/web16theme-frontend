@@ -31,6 +31,23 @@ var templateData = {
 						}
 					},
 					{
+						title: 'Internationales',
+						url: '#',
+						list: {
+							level: 1,
+							entries: [
+								{
+									title: 'Überblick',
+									url: '#'
+								},
+								{
+									title: 'Studium',
+									url: '#'
+								}
+							]
+						}
+					},
+					{
 						title: 'Die FHNW',
 						url: '',
 						list: {

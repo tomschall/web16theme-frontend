@@ -16,10 +16,13 @@
 
 				{{#if news_detail}} <p class="news_detail"> {{news_detail.news_date}} | {{news_detail.university}} </p> {{/if}}
 				{{#if event_detail}} <p class="event_detail"> {{event_detail.event_date}} , {{event_detail.location_short}} </p> {{/if}}
-
-				{{#if description}}
-					<p class="extendedlink_description">{{description}}</p>
-				{{/if}}
+                {{#if description}}<p class="extendedlink_description">{{description}}</p>{{/if}}
+				{{#if date}}<span class="widg_extendedlinks__date">{{date}}</span>{{/if}}
+        <h3 class="childless">{{title}}</h3>
+        {{#if news_detail}}<span>{{news_detail.news_date}} | {{news_detail.university}}</span>{{/if}}
+        {{#if event_detail}}<span>{{event_detail.event_date}} , {{event_detail.location_short}}</span>{{/if}}
+				{{#if description}}<p>{{description}}</p>{{/if}}
+>>>>>>> source/widgets/extendedlinks/extendedlinks.hbs
 			</a>
 		</div>
 	{{/each}}

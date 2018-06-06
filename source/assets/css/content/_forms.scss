@@ -77,9 +77,10 @@ input[type=number] {
 	// anchor element to clear content of the search field
 	.search__string__clear {
 		font-size: 1.25rem;
+		opacity: 0.4;
 		position: absolute;
 		right: 12px;
-		top: 50%;
+		top: 55%;
 		transform: translateY(-50%) rotate(45deg);
 		z-index: 1;
 		@include iconDataurl('breadcrumb-expand');
@@ -312,4 +313,15 @@ ul span.select2-selection__clear {
 }
 .portalMessage.error {
 	display: none;
+}
+
+
+/* COOKIE OPT-OUT */
+#optout-form .field input {
+	height: 0 !important;
+}
+
+#optout-form .optoutDescription {
+	font-size: 1.3333rem;
+  padding: 20px 0;
 }

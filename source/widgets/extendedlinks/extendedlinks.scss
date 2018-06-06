@@ -57,6 +57,12 @@
 		text-decoration: none;
 		opacity: 1;
 
+		& span {
+			display: block;
+			font-weight: 100;
+			color: #4c4c4c;
+		}
+
 		@include mq($from: medium) {
 			span,
 			h3.childless,

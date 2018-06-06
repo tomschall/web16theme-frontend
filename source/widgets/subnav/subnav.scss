@@ -55,7 +55,7 @@
 	position: absolute;
 	transform: translateY(-100%);
 	width: 100%;
-  	line-height: 24px;
+	line-height: 24px;
 
 	@include mq($to: subnav) {
 		display: none;
@@ -132,49 +132,70 @@
   * The link list
   */
 
-.widg_subnav__list ul {
-	@include resetList();
+.widg_subnav__list {
 
-	width: 100%;
+	@include mq($from: subnav) {
+		max-height: 38vh;
+		overflow: auto;
+	}
 
-	li {
-		position: relative;
-		min-height: $smallElementHeight;
-		display: block;
-		float: left;
+	ul {
+		@include resetList();
+
 		width: 100%;
-		padding: 0;
 
-		&:before {
-			display: none;
-		}
-
-		a {
+		li {
+			position: relative;
+			min-height: $smallElementHeight;
 			display: block;
 			float: left;
 			width: 100%;
+			padding: 0;
 
-			font-weight: 600;
-			font-size: 1.25rem;
+			&:before {
+				display: none;
+			}
 
-			background-color: $colorLightGray;
-			border-bottom: 2px solid $colorBg;
-			padding: 14px 52px 14px 14px;
-			text-decoration: none;
-			opacity: 1;
+			a {
+				display: block;
+				float: left;
+				width: 100%;
 
-			color: $colorTextDarkGrey;
+				font-weight: 600;
+				font-size: 1.25rem;
 
-			@include iconDataurl($name: 'triangle-arrow_right_darkgrey', $after: true);
+				background-color: $colorLightGray;
+				border-bottom: 2px solid $colorBg;
+				padding: 14px 52px 14px 14px;
+				text-decoration: none;
+				opacity: 1;
 
-			transition: all $transitionLength / 6 $transitionEase;
+				color: $colorTextDarkGrey;
 
-			&:hover {
-				background-color: $colorGreyHover;
-				cursor: pointer;
-				color: $colorBlack;
+				@include iconDataurl($name: 'triangle-arrow_right_darkgrey', $after: true);
 
-				@include iconDataurl($name: 'triangle-arrow_right', $after: true);
+				transition: all $transitionLength / 6 $transitionEase;
+
+				&:hover {
+					background-color: $colorGreyHover;
+					cursor: pointer;
+					color: $colorBlack;
+
+					@include iconDataurl($name: 'triangle-arrow_right', $after: true);
+
+					&:after {
+						content: " ";
+						display: block;
+						position: absolute;
+
+						right: 14px;
+						top: 50%;
+						transform: translateY(-50%);
+
+						width: 10px;
+						height: 10px;
+					}
+				}
 
 				&:after {
 					content: " ";
@@ -188,34 +209,21 @@
 					width: 10px;
 					height: 10px;
 				}
-			}
 
-			&:after {
-				content: " ";
-				display: block;
-				position: absolute;
+				&.is_back {
+					background-color: $colorSubNavActive;
+					padding: 14px 14px 14px 37px;
 
-				right: 14px;
-				top: 50%;
-				transform: translateY(-50%);
+					&:hover {
+						background-color: $colorYellow;
+					}
 
-				width: 10px;
-				height: 10px;
-			}
+					&:after {
+						right: auto;
+						left: 14px;
 
-			&.is_back {
-				background-color: $colorSubNavActive;
-				padding: 14px 14px 14px 37px;
-
-				&:hover {
-					background-color: $colorYellow;
-				}
-
-				&:after {
-					right: auto;
-					left: 14px;
-
-					transform: translateY(-60%) rotate(180deg);
+						transform: translateY(-60%) rotate(180deg);
+					}
 				}
 			}
 		}

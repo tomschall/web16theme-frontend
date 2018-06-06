@@ -59,7 +59,8 @@
 		templatesWithoutMoreButton = ['expertises_full'],
 		loadedEntries = 0,
 		jsonURL = '',
-		filterURL = '';
+		filterURL = '',
+		lastChangedFieldName = '';
 
 	/**
 	 * Create an instance of the widget
@@ -179,7 +180,8 @@
 	Widget.prototype.initFormFunctionality = function() {
 		var $formElements = $('.search__form-wrapper input:not(".select2-search__field"), .search__form-wrapper select');
 		data.$formElements = $formElements;
-		$formElements.on('change.' + this.uuid, function() {
+		$formElements.on('change.' + this.uuid, function(event) {
+			lastChangedFieldName = event.target && event.target.name ? event.target.name : '';
 			this.sendSearchQuery();
 			if (searchTemplate === 'search_full') {
 				this.updateTitle();
@@ -547,7 +549,8 @@
 					$field = $('[data-searchparam="' + fieldName + '"]'),
 					$options = $field.find('option');
 				$options.map(function(index, option) {
-					if ($field.val() === $(option).val()) {
+					if ($field.val() === $(option).val()
+							|| fieldName === lastChangedFieldName) {
 						return;
 					}
 

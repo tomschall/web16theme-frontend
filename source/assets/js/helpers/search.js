@@ -28,6 +28,7 @@ var fieldDictionaries = {
 		listHeadTemplates = {
 			categorySearch: {
 				training: '<tr><th>{{title}}</th><th>{{study_type}}</th><th>{{faculty}}</th><th>{{location}}</th></tr>',
+				studies: '<tr><th>{{title}}</th><th>{{study_type}}</th><th>{{faculty}}</th><th>{{location}}</th></tr>',
 			}
 		},
 
@@ -45,7 +46,7 @@ var fieldDictionaries = {
 				expertises: '<div class="cat_page_result search__result--item" data-clickable="true" class="search__result-word-list"><a href="{{combinedURL}}">{{Title}}<span class="search__result-arrow"></span></a></div>',
 				profiles: '<tr class="cat_page_result cat_page_profile_result search__result--item" data-clickable="false"><td>{{#if combinedURL}}<img src="{{combinedURL}}/@@images/portrait_foto/f_search" alt="{{Title}}"/>{{/if}}</td><td><div><h4>{{Title}}</h4></div><div>{{fa_expertise}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td><td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if telefonnummer}}<div><span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{telefonnummer}}">{{telefonnummer}}</a></div>{{/if}}{{#if telefonnummer_central}}<div><span class="search__contact-label">{{phone-central}}</span><a class="search__contact-link" href="tel:{{telefonnummer_central}}">{{telefonnummer_central}}</a></div>{{/if}}{{#if email}}<div><span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="mailto:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
 				events: '<div class="cat_page_result search__result--item" class="widg_teaser">{{#if img}}<div class="widg_teaser__img"><img src="{{img.src}}" alt=""/></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}} <span class="widg_teaser__title">{{{Title}}}</span>{{#if descriptionText}} <p>{{dotdotdot_teaser descriptionText}}</p>{{/if}} <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>',
-				studies: '<tr class="cat_page_result search__result--item" data-clickable="true"><td class="search__cell"><a href="{{combinedURL}}" class="search__cell-anchor">{{Title}}</a></td><td>{{type}}</td><td>{{fields}}</td><td>{{#get_city}}{{city}}{{/get_city}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>'
+				studies: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td class="search__cell search__cell-title"><a href="{{combinedURL}}" class="search__cell-anchor">{{Title}}</a></td><td>{{#get_taxonomy_eduproducttype}}{{taxonomy_eduproducttype}}{{/get_taxonomy_eduproducttype}}</td><td>{{#get_taxonomy_subjectarea}}{{taxonomy_subjectarea}}{{/get_taxonomy_subjectarea}}</td><td>{{#get_city}}{{city}}{{/get_city}}</td><td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
 			},
 			showAll: '<li class="search__result-normal search__result-show-all"><a href="{{categoryUrl}}">{{categoryUrlText}}</a></li>'
 		},
@@ -437,7 +438,16 @@ var fieldDictionaries = {
 		}
 
 		$('#' + field + ' > option').each(function() { // eslint-disable-line no-loop-func
-			fieldDictionaries[field][this.value] = this.text;
+			fieldDictionaries[field][this.value] = {
+				text: this.text,
+				hide: false
+			};
+		});
+		$('.' + field + '_hidden_option').each(function() { // eslint-disable-line no-loop-func
+			fieldDictionaries[field][$(this).data('value')] = {
+				text: $(this).data('text'),
+				hide: true
+			};
 		});
 	}
 
@@ -475,15 +485,40 @@ Handlebars.registerHelper('dotdotdot_teaser', function(str) {
 // fieldDictionaries
 for (var field in fieldDictionaries) { // eslint-disable-line guard-for-in
 	(function(field) {
+
+		/**
+		 * @return
+		 *   Comma-separated list of the record's field's non-hidden values if it is not empty.
+		 *   Comma-separated list of the record's field hidden values otherwise.
+		 */
 		Handlebars.registerHelper('get_' + field, function(options) {
 			'use strict';
 
-			return options.fn(this)
+			var nonHiddenItems = options.fn(this)
 					.split(',')
 					.map(function(item) {
-						return fieldDictionaries[field][item];
+						return ((item in fieldDictionaries[field]) && !fieldDictionaries[field][item]['hide']) ? fieldDictionaries[field][item]['text'] : null;
+					})
+					.filter(function (value) {
+						return value !== null;
 					})
 					.join(', ');
+
+			if (nonHiddenItems !== '') {
+				return nonHiddenItems;
+			}
+
+			var hiddenItems = options.fn(this)
+					.split(',')
+					.map(function(item) {
+						return ((item in fieldDictionaries[field]) && fieldDictionaries[field][item]['hide']) ? fieldDictionaries[field][item]['text'] : null;
+					})
+					.filter(function (value) {
+						return value !== null;
+					})
+					.join(', ');
+
+			return hiddenItems;
 		});
 	})(field);
 }

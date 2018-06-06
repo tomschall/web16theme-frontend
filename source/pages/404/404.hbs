@@ -1,4 +1,12 @@
 {{#extend "layouts/layout"  pageTypeClass="full-width-page"}}
+	{{#content "head"}}
+<script id="cookieconsent-banner-configuration" type="text/collective.jsconfiguration.json">{"accept_on_click": true, "cookie_consent_configuration": [{"lang": "de", "privacy_link_url": "https://www.fhnw.ch/de/impressum/rechtliches", "text": "Indem Sie diesen Hinweis schliessen oder mit dem Besuch der Seite fortfahren, akzeptieren Sie die Verwendung von Cookies. Weitere Informationen dazu finden Sie unter <a href='#'>Rechtliches</a>"}, {"lang": "en", "privacy_link_url": "https://www.fhnw.ch/en/imprint/legal", "text": "You accept the use of cookies by continuing to browse our site or closing this banner. Read more about cookies in our Legal Info"}], "dashboard_url": "https://www.dev.fhnw.ch/de/@@optout-dashboard", "portal_url": "https://www.dev.fhnw.ch", "here_url": "https://www.dev.fhnw.ch/de/startseite", "actual_url": "https://www.dev.fhnw.ch/de/startseite", "portal_path": "/"}</script><script id="cookieconsent-banner-configuration-label" type="text/collective.jsconfiguration.xml"><banner-configuration>
+    <accept>OK</accept>
+	<reject>Ablehnen</reject>
+</banner-configuration>
+</script>
+	{{/content}}
+
 	{{#content "hero"}}
 		{{> "widgets/hero/hero" widgets.hero}}
 	{{/content}}

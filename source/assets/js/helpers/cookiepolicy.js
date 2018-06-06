@@ -31,7 +31,7 @@
     var RESET_OPTOUT_COOKIES_VIEW = '@@reset-optout';
 
     // No point going further if they've already dismissed.
-    if (document.cookie.indexOf(DISMISSED_COOKIE) > -1) {
+    if (localStorage.getItem(DISMISSED_COOKIE) === "true") {
         return;
     }
 
@@ -103,26 +103,6 @@
                 }
             }
             return null;
-        },
-
-        setCookie: function(name, value, expirydays) {
-            var exdate = new Date();
-            if (expirydays === undefined) {
-                //if expirydays isn't givent, expire the cookie in 10 years
-                exdate.setFullYear(exdate.getFullYear() + 10);
-            } else {
-                exdate.setDate(exdate.getDate() + expirydays);
-            }
-            document.cookie =
-                name +
-                '=' +
-                value +
-                '; expires=' +
-                exdate.toUTCString() +
-                '; path=' +
-                (bannerConfiguration.portal_path ?
-                    bannerConfiguration.portal_path :
-                    '/');
         },
 
         addEventListener: function(el, event, eventListener) {
@@ -348,24 +328,24 @@
         },
 
         accept: function() {
-            this.setDismissedCookie('true');
+            this.setDismissedLocalStorage('true');
             this.container.removeChild(this.element);
         },
 
         reject: function() {
-            this.setDismissedCookie('false');
+            this.setDismissedLocalStorage('false');
             this.container.removeChild(this.element);
         },
 
-        setDismissedCookie: function(value) {
-            Util.setCookie(DISMISSED_COOKIE, value);
+        setDismissedLocalStorage: function(value) {
+            localStorage.setItem(DISMISSED_COOKIE, value);
         }
     };
 
     function forcePolicyAcceptance(ev) {
-        // Prevent accepting policy if we want to read the policy or access the dashboard
+        // Prevent accepting policy if external link, we want to read the policy or access the dashboard
         if (this.tagName.toLowerCase() === 'a') {
-            if (
+            if (this.host !== location.host ||
                 this.href.indexOf(
                     cookie_consent_configuration.privacy_link_url
                 ) === 0 ||
