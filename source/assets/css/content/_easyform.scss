@@ -160,4 +160,12 @@
 			padding-left: 0 !important;
 		}
 	}
+
+	& .select2-selection__clear.upload-reset {
+		position: absolute;
+    right: 10px;
+    top: 30%;
+    font-size: 3em;
+		cursor: pointer;
+	}
 }
