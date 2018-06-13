@@ -115,6 +115,15 @@
 				var allowedUploadSize = 7340032; // 7 MB max. Data upload
 				var lang = getLanguage();
 
+        // Adding reset button for upload field
+				var addFieldID = $(this).attr('id');
+				var rndFigure = Math.floor((Math.random() * 100) + 1);
+				$(this).after('<span class="select2-selection__clear upload-reset" id="' + addFieldID + '-' + rndFigure + '"> × </span>');
+
+				$('.upload-reset').on('click', function() {
+					$(this).prev().val('');
+					$(this).remove();
+				});
 
 		    $('input[type="file"]').each(function() {
 					var uploadField = '#' + $(this).attr('id');
