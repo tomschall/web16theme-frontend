@@ -549,8 +549,8 @@
 					$field = $('[data-searchparam="' + fieldName + '"]'),
 					$options = $field.find('option');
 				$options.map(function(index, option) {
-					if ($field.val() === $(option).val()
-							|| fieldName === lastChangedFieldName) {
+					if ($field.val() === $(option).val() ||
+							fieldName === lastChangedFieldName) {
 						return;
 					}
 
