@@ -65,6 +65,16 @@
 		$widg_sidebar.clone().addClass('min_height_lock').insertAfter($widg_sidebar);
 	}
 
+	function maybeInsertSomePageContent() {
+		$('.layout_content').each(function(index, element) {
+			if ($('.page_content *', element).length === 0) {
+				element.insertAdjacentHTML(
+						'afterbegin',
+						'<div class="page_content"><div class="content__element"></div></div>');
+			}
+		});
+	}
+
 	function unstickSidebar() {
 		$widg_sidebar.toggleClass('sticky', false);
 		$widg_sidebar.css('top', 0);
@@ -166,6 +176,8 @@
 	insertStyleElement();
 
 	insertMinHeightLock();
+
+	maybeInsertSomePageContent();
 
 	initCurrentSize();
 
