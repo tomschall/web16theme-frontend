@@ -178,6 +178,7 @@
 	}
 
 	& input::-ms-value {
+		border: none !important;
     box-shadow: none;
     background: none;
 	}
