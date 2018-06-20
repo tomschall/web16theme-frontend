@@ -18,8 +18,9 @@
 .widg_contact__entry {
 	float: none;
 	display: block;
-	margin-bottom: $basicPush * 2;
-	margin-top: $basicPush + 5;
+	margin-top: $basicPush * 4;
+	padding-bottom: $basicPush * 4;
+	border-bottom: 1px solid #deded9;
 
 	@include clearfix;
 }
@@ -42,8 +43,8 @@
 	}
 
 	@include mq($to: small) {
-		max-width: none;
-		width: auto;
+		max-width: 100%;
+		width: 100%;
 	}
 
 	.widg_contact__portrait__img {
@@ -63,15 +64,18 @@
 	}
 }
 
-.widg_contact__info {
+.widg_contact__name {
 	float: left;
 	width: calc(75% - 39px);
 
-	span,
 	a {
 		display: block;
-
 		font-size: 1.25rem;
+	}
+
+	span {
+		display: block;
+		font-size: 1.4rem;
 	}
 
 	@include mq($to: small) {
@@ -79,11 +83,33 @@
 	}
 }
 
+.widg_contact__info {
+	float: left;
+	width: calc(40% - 39px);
+
+	a {
+		font-size: 1.25rem;
+		margin-bottom: $basicPush - 5;
+	}
+
+	span {
+		font-size: 1.25rem;
+		margin-bottom: $basicPush - 5;
+	}
+
+	@include mq($to: small) {
+		width: 100%;
+		margin-top: 10px;
+	}
+}
+
 .widg_contact__text {
+	display: block;
 	margin-bottom: $basicPush * 2;
 }
 
 .widg_contact__label {
+	display: block;
 	margin-bottom: $basicPush / 3;
 	font-weight: 700;
 }
