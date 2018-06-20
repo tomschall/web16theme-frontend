@@ -1,5 +1,5 @@
 /*!
- * Sidebar Events
+ * Sidebar news
  *
  * @author Unic AG
  * @copyright Unic AG
@@ -10,8 +10,8 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var name = 'sidebar_events',
-		events = {
+	var name = 'sidebar_news',
+		news = {
 			// eventname: 'eventname.estatico.' + name
 		},
 		defaults = {
@@ -40,7 +40,7 @@
 			element: element,
 			defaults: defaults,
 			options: options,
-			events: events,
+			news: news,
 			data: data
 		});
 	}
@@ -48,21 +48,21 @@
 	Widget.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Widget.prototype);
 
 	/**
-	 * Initialize Widget, bind events.
+	 * Initialize Widget, bind news.
 	 * @method
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		// console.log('Widget "sidebar_events" initialized');
+		// console.log('Widget "sidebar_news" initialized');
 	};
 
 	/**
-	 * Unbind events, remove data, custom teardown
+	 * Unbind news, remove data, custom teardown
 	 * @method
 	 * @public
 	 */
 	Widget.prototype.destroy = function() {
-		// Unbind events, remove data
+		// Unbind news, remove data
 		estatico.helpers.SuperClass.prototype.destroy.apply(this);
 
 		// Custom teardown (removing added DOM elements etc.)
@@ -71,8 +71,8 @@
 
 	// Make the plugin available through jQuery (and the global project namespace)
 	estatico.helpers.SuperClass.register(Widget, name, {
-		initEvents: ['ready', 'ajaxload'],
-		events: events
+		initnews: ['ready', 'ajaxload'],
+		news: news
 	});
 
 })(jQuery);
