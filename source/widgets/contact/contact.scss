@@ -94,7 +94,7 @@
 
 	span {
 		font-size: 1.25rem;
-		margin-bottom: $basicPush - 5;
+		margin-bottom: 0;
 	}
 
 	@include mq($to: small) {
