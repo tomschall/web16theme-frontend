@@ -349,7 +349,8 @@
                 this.href.indexOf(
                     cookie_consent_configuration.privacy_link_url
                 ) === 0 ||
-                this.href.indexOf(bannerConfiguration.dashboard_url) === 0
+                this.href.indexOf(bannerConfiguration.dashboard_url) === 0 ||
+				this.href.indexOf('multilingual-selector') !== -1
             ) {
                 return;
             }
