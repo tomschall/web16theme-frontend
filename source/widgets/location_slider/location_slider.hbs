@@ -38,14 +38,20 @@
 									<span>{{address.street}}</span>
 									<span>{{address.zipCity}}</span>
 								</div>
+								{{#if contactData includeZero=true}}
 								<div class="location__contact">
 									<dl>
+										{{#if contactData.telephone}}
 										<dt>{{../langStrings.telephone}}</dt>
 										<dd><a href="tel:{{contactData.telephone}}">{{contactData.telephone}}</a></dd>
+										{{/if}}
+										{{#if contactData.email }}
 										<dt>{{../langStrings.email}}</dt>
 										<dd><a href="mailto:{{contactData.email}}">{{contactData.email}}</a></dd>
+										{{/if}}
 									</dl>
 								</div>
+								{{/if}}
 								{{#if locationPageURL}}
 									<a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
 								{{/if}}
