@@ -38,6 +38,7 @@
 									<span>{{address.street}}</span>
 									<span>{{address.zipCity}}</span>
 								</div>
+								{{#if contactData}}
 								<div class="location__contact">
 									<dl>
 										{{#if contactData.telephone}}
@@ -50,7 +51,7 @@
 										{{/if}}
 									</dl>
 								</div>
-
+								{{/if}}
 								{{#if locationPageURL}}
 									<a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
 								{{/if}}
