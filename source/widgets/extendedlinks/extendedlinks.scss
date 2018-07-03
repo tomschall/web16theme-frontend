@@ -40,7 +40,7 @@
 	margin-top: $basicPush * 2.6;
 
 	&:not(:last-child) {
-		margin-bottom: $basicPush * 2.6;
+		margin: 0;
 	}
 
 	a {
@@ -48,7 +48,7 @@
 
 		@include iconDataurl('pfeil-black', $after: true);
 
-		padding: 0 $basicPush * 12 0 $gutterWidth;
+		padding: 25px $basicPush * 12 0 $gutterWidth;
 		border-bottom: 1px solid $colorGreyHover;
 		display: block;
 		height: 100%;
