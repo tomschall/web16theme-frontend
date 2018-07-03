@@ -497,9 +497,9 @@ for (var field in fieldDictionaries) { // eslint-disable-line guard-for-in
 			var nonHiddenItems = options.fn(this)
 					.split(',')
 					.map(function(item) {
-						return ((item in fieldDictionaries[field]) && !fieldDictionaries[field][item]['hide']) ? fieldDictionaries[field][item]['text'] : null;
+						return ((item in fieldDictionaries[field]) && !fieldDictionaries[field][item].hide) ? fieldDictionaries[field][item].text : null;
 					})
-					.filter(function (value) {
+					.filter(function(value) {
 						return value !== null;
 					})
 					.join(', ');
@@ -511,9 +511,9 @@ for (var field in fieldDictionaries) { // eslint-disable-line guard-for-in
 			var hiddenItems = options.fn(this)
 					.split(',')
 					.map(function(item) {
-						return ((item in fieldDictionaries[field]) && fieldDictionaries[field][item]['hide']) ? fieldDictionaries[field][item]['text'] : null;
+						return ((item in fieldDictionaries[field]) && fieldDictionaries[field][item].hide) ? fieldDictionaries[field][item].text : null;
 					})
-					.filter(function (value) {
+					.filter(function(value) {
 						return value !== null;
 					})
 					.join(', ');
