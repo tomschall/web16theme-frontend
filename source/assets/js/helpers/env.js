@@ -4,7 +4,7 @@
 
 	if (/^https?:\/\/(www|webcms)\.dev\.fhnw\.ch/.test(location)) {
 		flagEnv = 'dev';
-	} else if (/^https?:\/\/(www|webcms)0\.test\.fhnw\.ch/.test(location)) {
+	} else if (/^https?:\/\/(www|webcms)0?\.test\.fhnw\.ch/.test(location)) {
 		flagEnv = 'test';
 	}
 

@@ -31,7 +31,7 @@
     var RESET_OPTOUT_COOKIES_VIEW = '@@reset-optout';
 
     // No point going further if they've already dismissed.
-    if (localStorage.getItem(DISMISSED_COOKIE) === "true") {
+    if (localStorage.getItem(DISMISSED_COOKIE) === 'true') {
         return;
     }
 
@@ -349,7 +349,8 @@
                 this.href.indexOf(
                     cookie_consent_configuration.privacy_link_url
                 ) === 0 ||
-                this.href.indexOf(bannerConfiguration.dashboard_url) === 0
+                this.href.indexOf(bannerConfiguration.dashboard_url) === 0 ||
+				this.href.indexOf('multilingual-selector') !== -1
             ) {
                 return;
             }

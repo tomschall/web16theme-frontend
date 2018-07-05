@@ -96,8 +96,8 @@ body.is-env-test .widg_header {
 	}
 
 	@include mq($from: medium) {
-		.-ms- & {
-			min-height: 680px;
+		.-ms- &:not(.is_shrinked) {
+			min-height: 620px;
 		}
 	}
 
