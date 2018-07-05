@@ -67,10 +67,8 @@
 
 	function maybeInsertSomePageContent() {
 		$('.layout_content').each(function(index, element) {
-			if ($('.page_content *', element).length === 0) {
-				element.insertAdjacentHTML(
-						'afterbegin',
-						'<div class="page_content"><div class="content__element"></div></div>');
+			if(!($('.page_content', element).find('.content__element').length)) {
+				$('.page_content', element).append('<div class="content__element"></div>');
 			}
 		});
 	}
