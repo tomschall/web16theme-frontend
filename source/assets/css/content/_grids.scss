@@ -1,3 +1,14 @@
+$susy: (
+	gutter-position: inside-static,
+	container: 100%,
+	columns: 12,
+	column-width: 69px,
+	gutters: 32px/69px,
+	use-custom: (
+		box-sizing: false
+	)
+);
+
 .grid__example {
 	@include span(4);
 
