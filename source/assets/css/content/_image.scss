@@ -47,7 +47,7 @@ img.image-inline {
 
 /* Only IE10+ */
 @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
-	td img:not([width]):not([style~="width"]).image-inline {
+	td img:not([width]):not([style*="width"]).image-inline {
 		max-width: 183px;
 	}
 }
