@@ -5,19 +5,19 @@ var _ = require('lodash'),
 	dataHelper = require('../../../helpers/data.js'),
 	defaultData = requireNew('../../data/default.data.js');
 
-var templateData = {  
+var templateData = {
    'title':'Contacts',
-   'langStrings':{  
+   'langStrings':{
       'location':'Standort',
       'telephone':'Telefonnummer',
       'email':'E-Mail'
    },
-   'contacts':[  
-      {  
+   'contacts':[
+      {
          'email':'peter.muster@fhnw.ch',
          'jobDescr':'',
          'name':'Peter Muster',
-         'img':{  
+         'img':{
             'src': '',
             'alt':'Peter Muster'
          },
@@ -25,11 +25,11 @@ var templateData = {
          'telephone':'+41 61 000 00 00',
          'location':'Fachhochschule Nordwestschweiz FHNW<br/>Campus Muttenz<br/>Hofackerstrasse 30<br/>4132 Muttenz'
       },
-      {  
+      {
          'email':'beatrice.muster@fhnw.ch',
          'jobDescr':'',
          'name':'Prof. Dr. B\xe9atrice Muster',
-         'img':{  
+         'img':{
             'src': '',
             'alt':'Prof. Dr. B\xe9atrice Muster'
          },
