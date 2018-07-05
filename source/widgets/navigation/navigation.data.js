@@ -10,11 +10,11 @@ var templateData = {
 				level: 0,
 				entries: [
 					{
-						title: 'Studium',
+						title: 'Degree Programmes',
 						url: '#'
 					},
 					{
-						title: 'Weiterbildung',
+						title: 'Continuing Education',
 						url: '#'
 					},
 					{
