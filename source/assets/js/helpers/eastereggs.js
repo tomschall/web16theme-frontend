@@ -154,19 +154,19 @@
 					this.$table.find('#' + this.rows[field.x] + this.columns[field.y]).click();
 				},
 				addFieldListener: function() {
-					var _this = this;
+					var self = this;
 					this.$table.delegate('td', 'click', function() {
 						if (!$(this).hasClass('blocked')) {
-							$(this).html(_this.players[_this.currentplayer]);
-							$(this).addClass(_this.players[_this.currentplayer] + '-field');
+							$(this).html(self.players[self.currentplayer]);
+							$(this).addClass(self.players[self.currentplayer] + '-field');
 							$(this).addClass('blocked');
-							var row = $.inArray($(this).context.id.charAt(0), _this.rows),
-								column = $.inArray($(this).context.id.charAt(1), _this.columns);
-							_this.values[row][column] = _this.players[_this.currentplayer];
-							_this.checkWinner();
-							_this.currentplayer = (_this.currentplayer + 1) % 2;
-							if (_this.currentplayer === 1) {
-								_this.cpu();
+							var row = $.inArray($(this).context.id.charAt(0), self.rows),
+								column = $.inArray($(this).context.id.charAt(1), self.columns);
+							self.values[row][column] = self.players[self.currentplayer];
+							self.checkWinner();
+							self.currentplayer = (self.currentplayer + 1) % 2;
+							if (self.currentplayer === 1) {
+								self.cpu();
 							}
 						}
 					});

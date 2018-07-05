@@ -148,6 +148,7 @@
 					this.appendGoToPageBtn();
 				}
 			} else {
+				// eslint-disable-next-line no-console
 				console.error('The response got from the search server via estatico is empty. Perhaps the HTTP request has not been successful.');
 				this.changeSearchbarStatus(this.options.stateClasses.showIntro);
 			}
