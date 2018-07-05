@@ -67,9 +67,9 @@
 
 	function maybeInsertSomePageContent() {
 		$('.layout_content').each(function(index, element) {
-    	if(!($('.page_content', element).find('.content__element').length)) {
-        $('.page_content', element).append('<div class="content__element"></div>');
-    	}
+			if(!($('.page_content', element).find('.content__element').length)) {
+				$('.page_content', element).append('<div class="content__element"></div>');
+			}
 		});
 	}
 
