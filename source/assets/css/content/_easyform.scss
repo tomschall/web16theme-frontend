@@ -168,4 +168,18 @@
     font-size: 3em;
 		cursor: pointer;
 	}
+
+	// Internet Explorer fix
+	& input[type='file']::-ms-browse {
+    background: #f7f7f5;
+    padding: 10px 60px 10px 10px;
+    width: 100px;
+    border: none;
+	}
+
+	& input::-ms-value {
+		border: none !important;
+    box-shadow: none;
+    background: none;
+	}
 }

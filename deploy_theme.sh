@@ -28,6 +28,7 @@ if [ "$DO_COMMIT" == "yes" ]
 then
       FRONTEND_REV=`git rev-parse --short HEAD`
       cd $BASE_PATH/fhnw.contentwidgets
+      git add src/fhnw/contentwidgets/templates/sidebar_news/
       git commit -am "Frontend build $FRONTEND_REV"
       git push
       cd ../../src/fhnw.web16theme
