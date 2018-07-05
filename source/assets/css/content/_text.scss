@@ -7,6 +7,10 @@ p {
 	font-weight: 500;
 	color: $colorTextDarkGrey;
 
+	& + ul {
+		margin-top: -15px;
+	}
+
 	@include mq($to: small) {
 		font-size: 1.25rem;
 		line-height: 23px;
