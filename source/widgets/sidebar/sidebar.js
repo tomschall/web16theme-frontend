@@ -129,6 +129,7 @@
 	 * 		b) if the accordion object is visible, the original copy surpasses the last object in the accordion
 	 */
 	function updateSidebarAccordion() {
+		// eslint-disable-next-line id-length
 		var height_of_last_accordion_object_visible =
 				$widg_sidebar_accordion_objects.filter('.displayed').last().outerHeight(true);
 		$widg_sidebar_content_objects.each(function(index, element) {
