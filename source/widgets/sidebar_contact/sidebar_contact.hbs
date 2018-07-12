@@ -11,13 +11,19 @@
 					<dt class="contact__name"><a href="{{url}}">{{name}}</a></dt>
 					<dd>{{#if jobDescr}}{{jobDescr}}{{/if}}</dd>
 					<dt>{{../langStrings.telephone}}</dt>
-					<dd><a href="tel:{{telephone}}">{{telephone}}</a></dd>
+					{{#if telephone}}<dd class="contact__phone"><a href="tel:{{telephone}}">{{telephone}}</a> {{#if telephone_addon}}({{telephone_addon}}){{/if}}</dd>{{/if}}
+					{{#if telephone_2}}<dd class="contact__phone last"><a href="tel:{{telephone_2}}">{{telephone_2}}</a> {{#if telephone_addon_2}}({{telephone_addon_2}}){{/if}}</dd>{{/if}}
 					<dt>{{../langStrings.email}}</dt>
 					<dd><a href="mailto:{{email}}">{{email}}</a></dd>
 
 					{{#if location}}
-						<dt>{{../../langStrings.location}}</dt>
+						<dt>{{../langStrings.location}}</dt>
 						<dd>{{{location}}}</dd>
+					{{/if}}
+
+					{{#if room}}
+						<dt>{{../langStrings.room}}</dt>
+						<dd>{{{room}}}</dd>
 					{{/if}}
 				</dl>
 			{{/each}}
