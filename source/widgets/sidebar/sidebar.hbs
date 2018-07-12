@@ -13,20 +13,10 @@
 			{{> "widgets/sidebar_key_data/sidebar_key_data" widgets.keydata }}
 		{{/if}}
 
-		{{#if widgets.contact}}
-			{{> "widgets/sidebar_contact/sidebar_contact" widgets.contact}}
-		{{/if}}
+        {{#each widgets.contact}}
 
-		{{#if widgets.secretariat }}
-			{{> "widgets/sidebar_contact/sidebar_contact" widgets.secretariat}}
-		{{/if}}
+                {{> "widgets/sidebar_contact/sidebar_contact" this }}
 
-		{{#if widgets.degreeleadership}}
-			{{> "widgets/sidebar_contact/sidebar_contact" widgets.degreeleadership}}
-		{{/if}}
-
-		{{#if widgets.leadership}}
-			{{> "widgets/sidebar_contact/sidebar_contact" widgets.leadership}}
-		{{/if}}
+        {{/each}}
 	</div>
 </div>
