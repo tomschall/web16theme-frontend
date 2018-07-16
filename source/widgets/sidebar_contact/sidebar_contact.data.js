@@ -17,7 +17,11 @@ var templateData = {
 					url: '#',
 					jobDescr: 'Leitung',
 					email: 'hans.muster@fhnw.ch',
-					telephone: '+41 62 957 24 26'
+					telephone: '+41 62 957 00 00',
+					telephone_addon: 'DIREKT',
+					telephone_2: '+41 62 957 11 22',
+					telephone_addon_2: 'ZENTRALE',
+					room: '1.045'
 				},
 				{
 					img: {
@@ -28,13 +32,17 @@ var templateData = {
 					url: '#',
 					jobDescr: 'Leitung',
 					email: 'hans.muster@fhnw.ch',
-					telephone: '+41 62 957 24 26'
+					telephone: '+41 62 957 24 00',
+					telephone_addon: 'DIREKT',
+					telephone_2: '+41 62 957 00 00',
+					telephone_addon_2: 'ZENTRALE'
 				}
 			],
 			langStrings: {
 				telephone: 'Telefon',
 				email: 'E-Mail',
-				location: 'Standort'
+				location: 'Standort',
+				room: 'Raum'
 			}
 		},
 		data = _.assign(defaultData, {

@@ -24,6 +24,14 @@
 			font-weight: 300;
 		}
 
+		.contact__phone {
+			margin-bottom: 0;
+
+			&.last {
+				margin-bottom: $basicPush * 2;
+			}
+		}
+
 		dd a,
 		dt.contact__name {
 			font-weight: 600;
