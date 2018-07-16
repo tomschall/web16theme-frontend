@@ -31,7 +31,7 @@
     var RESET_OPTOUT_COOKIES_VIEW = '@@reset-optout';
 
     // No point going further if they've already dismissed.
-    if (localStorage.getItem(DISMISSED_COOKIE) === 'true') {
+    if (localStorage.getItem(DISMISSED_COOKIE) !== null) {
         return;
     }
 
