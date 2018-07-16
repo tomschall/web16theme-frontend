@@ -25,8 +25,7 @@
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
-		},
-		maxOuterHeight = 600;
+		};
 
 	/**
 	 * Create an instance of the widget
@@ -57,13 +56,11 @@
 	Widget.prototype.init = function() {
 		if (window.estatico.mq.query({from: 'subnav'})) {
 			this.doWidthCalculation();
-			this.ensureEnoughHeight();
 		}
 
 		$(window).on('resize.' + this.uuid, function() {
 			if (window.estatico.mq.query({from: 'subnav'})) {
 				this.doWidthCalculation();
-				this.ensureEnoughHeight();
 			} else {
 				this.$element.removeAttr('style');
 			}
@@ -77,16 +74,6 @@
 				subnavWidth = (pageContentWidth / 2.9) - this.options.gutterWidth * 2;
 
 		this.$element.width(subnavWidth);
-	};
-
-	Widget.prototype.ensureEnoughHeight = function() {
-		if (this.$element.outerHeight() > $('.layout_content').outerHeight()) {
-			$('.layout_content').outerHeight(
-				this.$element.outerHeight() < maxOuterHeight ?
-					this.$element.outerHeight() :
-					maxOuterHeight
-			);
-		}
 	};
 
 	/**
