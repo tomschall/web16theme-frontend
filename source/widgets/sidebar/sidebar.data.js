@@ -23,10 +23,19 @@ var data = _.merge(defaultData, {
 					title: 'Sekretariat',
 					url: 'http://localhost:8180/Plone/de/personen/laura-polexe',
 					telephone: '044 444 44 44',
+					 telephone_addon: 'Direkt',
+					 telephone_2: '052 256 56 67',
+					 telephone_addon_2: 'Mobil',
 					jobDescr: null,
 					location: 'sdfsds',
-					email: 'laure.polexe@fhnw.ch'
-				}]},
+					email: 'laure.polexe@fhnw.ch',
+					 room: '6.4A7'
+				}], 			langStrings: {
+				telephone: 'Telefon',
+				email: 'E-Mail',
+				location: 'Standort',
+				room: 'Raum'
+			}},
 				{title: 'Sekretariat',
 				 contacts: [{
 					name: 'Laura Polexe',
@@ -36,7 +45,13 @@ var data = _.merge(defaultData, {
 					jobDescr: null,
 					location: 'sdfsds',
 					email: 'laure.polexe@fhnw.ch'
-				}]}
+				}],
+					langStrings: {
+				telephone: 'Telefon',
+				email: 'E-Mail',
+				location: 'Standort',
+				room: 'Raum'
+			}}
 			],
 		}
 	});
