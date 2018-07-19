@@ -101,6 +101,7 @@
 		$widg_sidebar.css('margin-top', widg_sidebar_margin_top);
 		initContentMaxHeight();
 		if (!is_window_wide_enough) {
+			$widg_sidebar.css('margin-top', 0);
 			unstickSidebar();
 		}
 	}
