@@ -55,6 +55,9 @@
 	 */
 	Widget.prototype.init = function() {
 		if (window.estatico.mq.query({from: 'subnav'})) {
+			if ($('.widg_sidebar').length === 0) {
+				this.insertMinHeightLock();
+			}
 			this.doWidthCalculation();
 		}
 
@@ -67,6 +70,11 @@
 		}.bind(this));
 
 		$('body').addClass('has-subnav');
+	};
+
+	/* Transparent place holder for when the main content is shorter than the sidebar */
+	Widget.prototype.insertMinHeightLock = function() {
+		this.$element.clone().addClass('min_height_lock').insertAfter(this.$element);
 	};
 
 	Widget.prototype.doWidthCalculation = function() {

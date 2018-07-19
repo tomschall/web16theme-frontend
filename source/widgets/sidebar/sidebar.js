@@ -174,11 +174,11 @@
 
 	insertStyleElement();
 
-	insertMinHeightLock();
-
 	maybeInsertSomePageContent();
 
 	initCurrentSize();
+
+	insertMinHeightLock();
 
 	window.addEventListener('load', function() {
 		// Distance to treppenhaus navigation depends on its height, which depends on its content, which is sometimes not fully known until the load event

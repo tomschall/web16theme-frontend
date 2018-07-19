@@ -6,10 +6,10 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 	meta: {
-		title: 'Bachelor of Arts in Sozialer Arbeit'
+		title: 'Bachelor of Arts (nur sidebar)'
 	},
-	title: 'Bachelor of Arts in Sozialer Arbeit (B.A)',
-	text: 'Die Hochschule für Soziale Arbeit der Fachhochschule Nordwestschweiz FHNW bietet ein Bachelor-Studium in Sozialer Arbeit an, das in einer wissenschaftlich fundierten, praxisnahen Ausbildung zu einer generalistischen Berufsbefähigung führt.',
+	title: 'Bachelor of Arts (nur sidebar)',
+	text: 'Layout test ohne subnav aber mit lange sidebar.',
 	widgets: {
 		header: _.assign({
 			hasPromoTeaser: false,
@@ -151,77 +151,7 @@ var data = _.merge(defaultData, {
 					title: 'Fachbereich Soziale Arbeit',
 					url: '#',
 					isBack: true
-				},
-				{
-					title: 'BSc Medizininformatik',
-					url: '#',
-					isBack: false
-				},
-				{
-					title: 'BSc Medizintechnik',
-					url: '#',
-					isBack: false
-				},
-				{
-					title: 'BSc Pharmatechnologie',
-					url: '#',
-					isBack: false
-				},
-				{
-					title: 'BSc Pharmatechnologie',
-					url: '#',
-					isBack: false
-				},
-				{
-					title: 'BSc Pharmatechnologie',
-					url: '#',
-					isBack: false
-				},
-				{
-					title: 'BSc Pharmatechnologie',
-					url: '#',
-					isBack: false
-				},
-				{
-					title: 'Fachbereich Soziale Arbeit',
-					url: '#',
-					isBack: true
-				},
-				{
-					title: 'BSc Medizininformatik',
-					url: '#',
-					isBack: false
-				},
-				{
-					title: 'BSc Medizintechnik',
-					url: '#',
-					isBack: false
-				},
-				{
-					title: 'BSc Pharmatechnologie',
-					url: '#',
-					isBack: false
-				},
-				{
-					title: 'BSc Pharmatechnologie',
-					url: '#',
-					isBack: false
-				},
-				{
-					title: 'BSc Pharmatechnologie',
-					url: '#',
-					isBack: false
-				},
-				{
-					title: 'BSc Pharmatechnologie',
-					url: '#',
-					isBack: false
-				},
-				{
-					title: 'Fachbereich Soziale Arbeit',
-					url: '#',
-					isBack: true
-				},
+				}
 			]
 		}),
 		informationAccordeon: _.assign(requireNew('../../widgets/accordeon/accordeon.data.js'), {}),
