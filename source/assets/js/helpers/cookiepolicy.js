@@ -138,6 +138,7 @@
             } else {
                 el.attachEvent('on' + event, eventListener);
             }
+            return undefined;
         };
 
         /*

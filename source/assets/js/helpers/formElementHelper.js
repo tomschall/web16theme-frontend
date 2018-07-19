@@ -287,7 +287,7 @@
 			// validation was successful
 			if (this._formValid) {
 				this._formValid = false; // clear the flag
-				return; // do nothing, already validated
+				return undefined; // do nothing, already validated
 			}
 
 			// prevent form submission
@@ -300,7 +300,7 @@
 					if (fields.indexOf(fieldName) >= 0) {
 						// field already validating
 						// NOTE we need this for field groups - e.g. there might be multiple radio fields with the same name
-						return;
+						return undefined;
 					}
 					fields.push(fieldName);
 					return easyFormValidation.validateElement($(this));
@@ -542,7 +542,7 @@
 			if (!$el.hasClass(rules.required) || $el.hasClass(rules.hasvalue)) {
 				// no validation required
 				updateFieldStatus($el, $currentFieldType, true);
-				return;
+				return undefined;
 			}
 
 			if ($el.hasClass('single-checkbox-widget')) {
@@ -558,7 +558,7 @@
 				if ($form.find('[name=' + $el.attr('name').replace(/\./gm, '\\.') + ']:checked').size()) {
 					// some option is selected -> field is valid
 					updateFieldStatus($el, $currentFieldType, true);
-					return;
+					return undefined;
 				}
 			}
 

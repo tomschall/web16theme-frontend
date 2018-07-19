@@ -138,6 +138,8 @@
 					if (value) {
 						return false;
 					}
+
+					return undefined;
 				});
 
 				// Return either value or jQuery collection
@@ -146,6 +148,8 @@
 				}
 				return this;
 			}
+
+			return undefined;
 		};
 
 		// Modules can provide a list of events like 'ready' where they are automatically initialized
