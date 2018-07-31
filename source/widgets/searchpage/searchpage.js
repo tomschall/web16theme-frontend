@@ -346,6 +346,8 @@
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 			$(this.options.domSelectors.countNumber).closest('div').addClass(this.options.stateClasses.elementHidden);
 		}
+
+		return undefined;
 	};
 
 	Widget.prototype.handleData = function(event, data, foundEntries, limitedToResults, category, facets) {

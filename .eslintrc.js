@@ -2,26 +2,20 @@ var OFF = 0, WARN = 1, ERROR = 2;
 
 module.exports = exports = {
 	"env": {
-		"browser": true
+		"browser": true,
+		"node": true,
 	},
 
 	"extends": "eslint:recommended",
 
 	"rules": {
-		//"no-extra-parens": ERROR, // TODO: fix code and enable rule
+		"no-extra-parens": OFF, // Extra parentheses make associativity more obvious and therefore are welcome
 		"no-unexpected-multiline": ERROR,
-		// "valid-jsdoc": [ ERROR, { // TODO: fix code and enable rule
-		// 	"requireReturn": false,
-		// 	"requireReturnDescription": false,
-		// 	"requireParamDescription": true,
-		// 	"prefer": {
-		// 		"return": "returns"
-		// 	}
-		// }],
+		"valid-jsdoc": OFF, // Documentation tends to stale and you should provide it if and only if your code is not self-documenting
 
 		// Best Practices
 		"block-scoped-var": WARN,
-		//"consistent-return": ERROR, // TODO: fix code and enable rule
+		"consistent-return": ERROR, // TODO: fix code and enable rule
 		"curly": ERROR,
 		"default-case": WARN,
 		"dot-location": [ WARN, "property" ],

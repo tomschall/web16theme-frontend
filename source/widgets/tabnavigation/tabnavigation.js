@@ -129,6 +129,7 @@
 					if (index === mapIndex) {
 						return $(element);
 					}
+					return undefined;
 				});
 
 		this.closeOther();
