@@ -50,9 +50,10 @@
 	}
 
 	.fieldErrorBox {
-		position: absolute;
-		right: 17px;
-		top: 32px;
+		position: relative;
+		float: right;
+		right: 10px;
+		top: 25px;
 
 		font-weight: 600;
 		font-size: 0.916667rem;
@@ -162,9 +163,9 @@
 	}
 
 	& .select2-selection__clear.upload-reset {
-		position: absolute;
-    right: 10px;
-    top: 30%;
+		position: relative;
+    float: right;
+    top: -57px;
     font-size: 3em;
 		cursor: pointer;
 	}
