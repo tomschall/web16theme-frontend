@@ -110,29 +110,39 @@
 				return theLanguage;
 			}
 
+			// Adding reset button for upload field
+			$('input[type="file"]').on('click', function() {
+				var addFieldID = $(this).attr('id');
+				var rndFigure = Math.floor((Math.random() * 100) + 1);
+        $(this).next().remove();
+				$(this).after('<span class="select2-selection__clear upload-reset" id="' + addFieldID + '-' + rndFigure + '"> × </span>');
+			});
+
 			$('input[type="file"]').on('change', function() {
 		    var totalSize = 0;
 				var allowedUploadSize = 7340032; // 7 MB max. Data upload
 				var lang = getLanguage();
 
-        // Adding reset button for upload field
-				var addFieldID = $(this).attr('id');
-				var rndFigure = Math.floor((Math.random() * 100) + 1);
-				$(this).after('<span class="select2-selection__clear upload-reset" id="' + addFieldID + '-' + rndFigure + '"> × </span>');
 
+        // Adding reset button, clearing upload field
 				$('.upload-reset').on('click', function() {
+					var whichElem = $(this).attr('id');
+					var curUploadField = $(this).prev().attr('id');
+
+					$('#' + whichElem).parent().prev().hide();
 					$(this).prev().val('');
+					$('#' + curUploadField).trigger('change');
 					$(this).remove();
 				});
 
-		    $('input[type="file"]').each(function() {
+				$('input[type="file"]').each(function() {
 					var uploadField = '#' + $(this).attr('id');
 
 		      for (var i = 0; i < this.files.length; i++) {
 						totalSize += this.files[i].size;
 						//console.log('TOTAL SIZE = ' + totalSize);
 						$(uploadField).parent().parent().find('.fieldErrorBox').text(bytesToSize(this.files[i].size));
-						$(uploadField).parent().parent().find('.fieldErrorBox').css('color', 'black');
+						$(uploadField).parent().parent().find('.fieldErrorBox').css('color', 'black').show();
 		      }
 
 					var valid = totalSize <= allowedUploadSize;
@@ -294,7 +304,7 @@
 			e.preventDefault();
 
 			var fields = [],
-				validators = $form.find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], textarea').map(function() {
+				validators = $form.find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').map(function() {
 					var $el = $(this),
 						fieldName = $el.attr('name');
 					if (fields.indexOf(fieldName) >= 0) {
@@ -338,6 +348,7 @@
 				rules.$formSubmitButton.val(easyFormValidation.rules.formSubmitButtonText);
 				$form.find('.' + rules.error).removeClass(rules.error);
 				$form.find('.has-select').removeClass('has-select');
+				$form.find('.upload-reset').remove();
 				$form.find('.' + rules.hasvalue).removeClass(rules.hasvalue);
 				$form.find(rules.$fieldErrorBox).empty();
 				$('#uploadWarning').remove();
