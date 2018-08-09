@@ -246,10 +246,10 @@
 		});
 
 		slickLeftValue = $currentSlide.css('left');
-		animatedLeftValue = parseInt($currentSlide.css('left')) - slickWidth;
+		animatedLeftValue = parseInt($currentSlide.css('left'), 10) - slickWidth;
 
 		if (directionModifier === -1) {
-			animatedLeftValue = parseInt($currentSlide.css('left')) + slickWidth;
+			animatedLeftValue = parseInt($currentSlide.css('left'), 10) + slickWidth;
 		}
 
 		$currentSlide.removeClass(this.options.stateClasses.slideIs2ndImportant);
