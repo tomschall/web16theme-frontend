@@ -60,11 +60,11 @@
 	Widget.prototype.init = function() {
 		this.$element.find(this.options.domSelectors.button).map(function(index, element) {
 			$(element).data('tabnavigation-index', index);
-		}.bind(this));
+		});
 
 		this.$element.find(this.options.domSelectors.accordeonButton).map(function(index, element) {
 			$(element).data('tabnavigation-index', index);
-		}.bind(this));
+		});
 
 		this.$element.find(this.options.domSelectors.content).attr('data-widget', this.uuid);
 

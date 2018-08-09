@@ -326,7 +326,7 @@
 				$(e.target).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
 					$(e.target).val(rules.formSubmitButtonText).fadeTo(500, 1);
 				});
-			}.bind(this));
+			});
 		},
 
 		getFormState: function() {

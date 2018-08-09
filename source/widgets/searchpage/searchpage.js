@@ -455,7 +455,7 @@
 			}
 			var $row = $(event.currentTarget).closest('tr');
 			window.location = $row.find('a').attr('href');
-		}.bind(this));
+		});
 	};
 
 	/**
@@ -561,9 +561,9 @@
 					} else {
 						$(option).removeAttr('disabled');
 					}
-				}.bind(this));
+				});
 				$field.find('optgroup').remove(); // remove all opt groups
-			}.bind(this));
+			});
 		}
 		$('.custom-select').select2('destroy');
 		window.estatico.easyFormValidation.select2Init();
