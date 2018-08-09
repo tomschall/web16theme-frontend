@@ -45,7 +45,7 @@ module.exports = exports = {
 		"no-labels": WARN,
 		"no-lone-blocks": WARN,
 		"no-loop-func": ERROR,
-		//"no-magic-numbers": WARN, // TODO: fix code and enable rule
+		//"no-magic-numbers": WARN, // TODO: fix code and enable rule. Edit: As of 2018-08-09 there is 237 warnings of this. Glups. Let's leave it for the end.
 		"no-multi-spaces": ERROR,
 		"no-multi-str": WARN,
 		"no-native-reassign": ERROR,
@@ -59,7 +59,7 @@ module.exports = exports = {
 		"no-return-assign": ERROR,
 		"no-script-url": ERROR,
 		"no-self-compare": ERROR,
-		//"no-throw-literal": ERROR, // TODO: fix code and enable rule
+		"no-throw-literal": ERROR, // TODO: fix code and enable rule
 		"no-unused-expressions": ERROR,
 		"no-useless-call": ERROR,
 		"no-useless-concat": ERROR,

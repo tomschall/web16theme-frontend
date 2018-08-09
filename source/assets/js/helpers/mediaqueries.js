@@ -63,7 +63,7 @@
 		if (typeof breakpoints[breakpoint] !== 'undefined') {
 			value = parseInt(breakpoints[breakpoint], 10);
 		} else {
-			throw 'Breakpoint not found: "' + breakpoint + '"';
+			throw new Error('Breakpoint not found: "' + breakpoint + '"');
 		}
 
 		return value;
@@ -75,14 +75,16 @@
 
 		if (typeof options !== 'object') {
 			// No or wrong arguments passed
-			throw 'Illegal argument of type "' + typeof options + '", expected "object"';
+			throw new Error('Illegal argument of type "' + typeof options + '", expected "object"');
 		} else if (typeof options.to !== 'undefined' && typeof options.from !== 'undefined') {
 			breakpointFrom = getBreakpointValue(options.from);
 			breakpointTo = getBreakpointValue(options.to);
 
 			// "from" cannot be larger than "to"
 			if (breakpointFrom > breakpointTo) {
-				throw String('Breakpoint ' + breakpointFrom + ' is larger than ' + breakpointTo);
+				throw new Error('Breakpoint ' + breakpointFrom + ' is larger than ' + breakpointTo + '');
+				// this edit will conflict with the branch 1209-eslint-noimplicitcoercion
+				// the solution is to accept this branch's change and then manually delete the ` + ''` before the `)`
 			}
 
 			// The breakpoint needs to smaller than the "to" (exclusive)
@@ -99,7 +101,7 @@
 			// Breakpoint needs larger or the same as "from" (inclusive)
 			return breakpointCurrent >= breakpointFrom;
 		} else {
-			throw 'No values for "to" or "from" received';
+			throw new Error('No values for "to" or "from" received');
 		}
 	}
 
