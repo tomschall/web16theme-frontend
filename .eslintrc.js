@@ -35,11 +35,11 @@ module.exports = exports = {
 		"no-extend-native": ERROR,
 		//"no-extra-bind": WARN, // TODO: fix code and enable rule
 		"no-floating-decimal": WARN, // TODO: fix code and enable rule
-		// "no-implicit-coercion": [ WARN, { // TODO: fix code and enable rule
-		// 	"boolean": true,
-		// 	"number": true,
-		// 	"string": true
-		// }],
+		"no-implicit-coercion": [ WARN, {
+			"boolean": true,
+			"number": true,
+			"string": true
+		}],
 		"no-implied-eval": ERROR,
 		"no-iterator": ERROR,
 		"no-labels": WARN,

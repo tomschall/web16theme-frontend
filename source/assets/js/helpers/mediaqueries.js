@@ -82,7 +82,7 @@
 
 			// "from" cannot be larger than "to"
 			if (breakpointFrom > breakpointTo) {
-				throw 'Breakpoint ' + breakpointFrom + ' is larger than ' + breakpointTo + '';
+				throw String('Breakpoint ' + breakpointFrom + ' is larger than ' + breakpointTo);
 			}
 
 			// The breakpoint needs to smaller than the "to" (exclusive)

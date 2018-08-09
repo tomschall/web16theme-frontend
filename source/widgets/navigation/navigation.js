@@ -173,7 +173,7 @@
 	Widget.prototype.showNavigation = function(targetLevel) {
 		var $targetWrapper = this.data.wrappers[targetLevel],
 				headerWidth = $('.widg_header').outerWidth(),
-				pullLeft = headerWidth * targetLevel - (targetLevel * 1),
+				pullLeft = headerWidth * targetLevel - Number(targetLevel),
 				mobilePullLeft = -1 * targetLevel * 100;
 
 		if (headerWidth < 300 && targetLevel >= 2) {
