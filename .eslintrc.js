@@ -78,8 +78,11 @@ module.exports = exports = {
 		"no-catch-shadow": WARN,
 		"no-delete-var": ERROR,
 		"no-label-var": ERROR,
-		// "no-shadow-restricted-names": ERROR, TODO: fix code and enable rule
-		// "no-shadow": WARN, // TODO: fix code and enable rule
+		// "no-shadow-restricted-names": ERROR, // TODO: fix code and enable rule.
+		// Edit 2018-08-09: Enabling this rule uncovers this uncovers this insane pattern https://toddmotto.com/what-function-window-document-undefined-iife-really-means/#what-about-undefined
+		// I need more research to understand the semantics and think of a convenient fix. We leave this for the end.
+
+		"no-shadow": WARN,
 		"no-undef-init": OFF,
 		"no-undef": ERROR,
 		"no-undefined": OFF,
