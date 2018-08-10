@@ -1,0 +1,58 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content">
+      <h1>{{title}}</h1>
+      <p class="text__lead">
+				{{leadText}}
+      </p>
+			{{> "widgets/image_gallery/image_gallery" widgets.image_gallery}}
+
+			<div class="content__element has_grid">
+				<div class="widg_image_gallery slider">
+						<div class="image_gallery__slide" data-index="1">
+							<img src="/assets/media/img/applied_psychology.png" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+						<div class="image_gallery__slide" data-index="2">
+							<img src="/assets/media/img/building_brugg.png" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+						<div class="image_gallery__slide" data-index="3">
+							<img src="/assets/media/img/applied_psychology.png" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+						<div class="image_gallery__slide" data-index="4">
+							<img src="/assets/media/img/building_brugg.png" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+						<div class="image_gallery__slide" data-index="5">
+							<img src="/assets/media/img/applied_psychology.png" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+				</div>
+
+				<!-- THUMBNAILS -->
+				<div class="slider-nav-thumbnails">
+					<div><img src="/assets/media/img/applied_psychology.png" slide="slide_1"></div>
+					<div><img src="/assets/media/img/building_brugg.png" slide="slide_2"></div>
+					<div><img src="/assets/media/img/applied_psychology.png" slide="slide3"></div>
+					<div><img src="/assets/media/img/building_brugg.png" slide="slide_4"></div>
+					<div><img src="/assets/media/img/applied_psychology.png" slide="slide_5"></div>
+				</div>
+			</div>
+    </div>
+	{{/content}}
+{{/extend}}
