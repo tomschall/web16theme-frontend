@@ -83,7 +83,7 @@ module.exports = exports = {
 		"no-undef-init": OFF,
 		"no-undef": ERROR,
 		"no-undefined": OFF,
-		"no-unused-vars": OFF, // TODO: fix code and enable rule
+		"no-unused-vars": [ ERROR, { "argsIgnorePattern": "undefined" } ],
 		// Disallow hoisting - let & const don't allow hoisting anyhow
 		"no-use-before-define": ERROR,
 

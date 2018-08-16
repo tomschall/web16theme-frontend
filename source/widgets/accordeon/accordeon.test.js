@@ -1,4 +1,4 @@
-/* global T, describe, expect, it, xit, beforeEach, afterEach */
+/* global T, describe, expect, it, beforeEach, afterEach */
 'use strict';
 
 describe('Accordeon', function() {

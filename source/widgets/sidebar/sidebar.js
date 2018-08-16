@@ -53,7 +53,7 @@
 	var widg_sidebar_sticky_top;
 	var widg_sidebar_style;
 
-	function insertStyleElement(css) {
+	function insertStyleElement() {
 		widg_sidebar_style = document.createElement('style');
 		widg_sidebar_style.id = 'sidebar-style';
 		widg_sidebar_style.setAttribute('type', 'text/css');
@@ -213,7 +213,7 @@
 	 * On scroll
 	 */
 
-	window.addEventListener('scroll', function(e) {
+	window.addEventListener('scroll', function() {
 		if (!is_window_wide_enough) {
 			return;
 		}

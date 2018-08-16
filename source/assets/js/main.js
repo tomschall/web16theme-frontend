@@ -23,7 +23,6 @@
 
  * @requires ../.tmp/templates.js
 
- * @requires helpers/utils.js
  * @requires helpers/module.js
  * @requires helpers/events.js
  * @requires helpers/mediaqueries.js

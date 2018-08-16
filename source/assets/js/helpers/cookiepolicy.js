@@ -343,7 +343,7 @@
         }
     };
 
-    function forcePolicyAcceptance(ev) {
+    function forcePolicyAcceptance() {
         // Prevent accepting policy if external link, we want to read the policy or access the dashboard
         if (this.tagName.toLowerCase() === 'a') {
             if (this.host !== location.host ||

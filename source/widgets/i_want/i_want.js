@@ -22,8 +22,7 @@
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
-		},
-		landingPageURL = null;
+		};
 
 	/**
 	 * Create an instance of the widget
@@ -61,7 +60,7 @@
 			$btn.prop('disabled', !targetURL.length);
 		}.bind(this));
 
-		$btn.click(function(evt) {
+		$btn.click(function() {
 			window.location.href = targetURL;
 		}.bind(this));
 
