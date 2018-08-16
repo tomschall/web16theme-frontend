@@ -49,5 +49,6 @@
 	$('#taxonomy_subjectarea option').sort(SelectOptionSorter).appendTo('#taxonomy_subjectarea');
 	$('#taxonomy_eduproducttype option').sort(SelectOptionSorter).appendTo('#taxonomy_eduproducttype');
 	$('#city option').sort(SelectOptionSorter).appendTo('#city');
+	$('#faculty option').sort(SelectOptionSorter).appendTo('#faculty');
 
 })(jQuery);
