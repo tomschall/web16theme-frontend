@@ -451,6 +451,21 @@ var fieldDictionaries = {
 		});
 	}
 
+	// Usage: $('#mySelectId option').sort(SelectOptionSorter).appendTo('#mySelectId');
+	function SelectOptionSorter(a, b) {
+		return (a.innerHTML > b.innerHTML) ? 1 : -1;
+	};
+
+	/**
+	 * Sorting select option values alphabetically
+	 */
+	// /Plone/en/search_edu
+	$('#taxonomy_subjectarea option').sort(SelectOptionSorter).appendTo('#taxonomy_subjectarea');
+	$('#taxonomy_eduproducttype option').sort(SelectOptionSorter).appendTo('#taxonomy_eduproducttype');
+	$('#city option').sort(SelectOptionSorter).appendTo('#city');
+	// /Plone/en/search_profiles
+	$('#faculty option').sort(SelectOptionSorter).appendTo('#faculty');
+
 	// Save to global namespace
 	$.extend(true, estatico, {
 		search: {
