@@ -16,9 +16,17 @@ var data = {
         {
             '@id': 'https://www.fhnw.ch/de/startseite',
             '@type': 'Document',
-            'Description': 'Willkommen an der Fachhochschule Nordwestschweiz FHNW. Die FHNW ist eine der führenden Fachhochschulen in der Schweiz und ist mit ihren neun Hochschulen in der Lehre, Forschung, Weiterbildung und Dienstleistung tätig – innovativ und praxisorientiert. Ihr breites Angebot an Studiengängen, ihre Nähe zur Praxis, ihre anwendungsorientierte und innovationsstarke Forschung sowie ihre weltweite Vernetzung machen die FHNW zu einer attraktiven und vielfältigen Bildungsstätte, zu einer nachgefragten Praxispartnerin und zu einer attraktiven Arbeitgeberin in der Nordwestschweiz.',
+            'Description': 'Willkommen an der Fachhochschule Nordwestschweiz FHNW. Die FHNW ist eine der führenden Fachhochschulen in der Schweiz und' +
+                    ' ist mit ihren neun Hochschulen in der Lehre, Forschung, Weiterbildung und Dienstleistung tätig – innovativ und praxisorientiert.' +
+                    ' Ihr breites Angebot an Studiengängen, ihre Nähe zur Praxis, ihre anwendungsorientierte und innovationsstarke Forschung sowie ihre' +
+                    ' weltweite Vernetzung machen die FHNW zu einer attraktiven und vielfältigen Bildungsstätte, zu einer nachgefragten Praxispartnerin' +
+                    ' und zu einer attraktiven Arbeitgeberin in der Nordwestschweiz.',
             'Title': 'FHNW',
-            'description': 'Willkommen an der Fachhochschule Nordwestschweiz FHNW. Die FHNW ist eine der führenden Fachhochschulen in der Schweiz und ist mit ihren neun Hochschulen in der Lehre, Forschung, Weiterbildung und Dienstleistung tätig – innovativ und praxisorientiert. Ihr breites Angebot an Studiengängen, ihre Nähe zur Praxis, ihre anwendungsorientierte und innovationsstarke Forschung sowie ihre weltweite Vernetzung machen die FHNW zu einer attraktiven und vielfältigen Bildungsstätte, zu einer nachgefragten Praxispartnerin und zu einer attraktiven Arbeitgeberin in der Nordwestschweiz.',
+            'description': 'Willkommen an der Fachhochschule Nordwestschweiz FHNW. Die FHNW ist eine der führenden Fachhochschulen in der Schweiz und ist mit' +
+                    ' ihren neun Hochschulen in der Lehre, Forschung, Weiterbildung und Dienstleistung tätig – innovativ und praxisorientiert. Ihr breites Angebot' +
+                    ' an Studiengängen, ihre Nähe zur Praxis, ihre anwendungsorientierte und innovationsstarke Forschung sowie ihre weltweite Vernetzung machen die' +
+                    ' FHNW zu einer attraktiven und vielfältigen Bildungsstätte, zu einer nachgefragten Praxispartnerin und zu einer attraktiven Arbeitgeberin in der' +
+                    ' Nordwestschweiz.',
             'path_string': '/Plone/de/startseite',
             'portal_type': 'Document',
             'review_state': null,
@@ -63,9 +71,11 @@ var data = {
         {
             '@id': 'https://www.fhnw.ch/de/die-fhnw/alumni-fhnw',
             '@type': 'Document',
-            'Description': 'Die Alumni bzw. die Absolventinnen und Absolventen der FHNW sind nach Hochschulen in selbstständigen Alumni-Vereinigungen organisiert. Alumni FHNW bildet das Dach der Alumnivereine.',
+            'Description': 'Die Alumni bzw. die Absolventinnen und Absolventen der FHNW sind nach Hochschulen in selbstständigen Alumni-Vereinigungen organisiert.' +
+                    ' Alumni FHNW bildet das Dach der Alumnivereine.',
             'Title': 'Alumni FHNW',
-            'description': 'Die Alumni bzw. die Absolventinnen und Absolventen der FHNW sind nach Hochschulen in selbstständigen Alumni-Vereinigungen organisiert. Alumni FHNW bildet das Dach der Alumnivereine.',
+            'description': 'Die Alumni bzw. die Absolventinnen und Absolventen der FHNW sind nach Hochschulen in selbstständigen Alumni-Vereinigungen organisiert.' +
+                    ' Alumni FHNW bildet das Dach der Alumnivereine.',
             'path_string': '/Plone/de/die-fhnw/alumni-fhnw',
             'portal_type': 'Document',
             'review_state': null,
@@ -78,9 +88,13 @@ var data = {
         {
             '@id': 'https://www.fhnw.ch/de/die-fhnw/stiftung-fhnw',
             '@type': 'Document',
-            'Description': 'Die Stiftung FHNW unterstützt die Fachhochschule Nordwestschweiz (FHNW) bei der Wahrnehmung ihrer gesellschaftlichen, kulturellen und wissenschaftlichen Verantwortung. Sie fördert innovative, herausragende und kreative Projekte und Aktivitäten in der Lehre und anwendungsorientierten Forschung.',
+            'Description': 'Die Stiftung FHNW unterstützt die Fachhochschule Nordwestschweiz (FHNW) bei der Wahrnehmung ihrer gesellschaftlichen, kulturellen und' +
+                    ' wissenschaftlichen Verantwortung. Sie fördert innovative, herausragende und kreative Projekte und Aktivitäten in der Lehre und' +
+                    ' anwendungsorientierten Forschung.',
             'Title': 'Stiftung FHNW',
-            'description': 'Die Stiftung FHNW unterstützt die Fachhochschule Nordwestschweiz (FHNW) bei der Wahrnehmung ihrer gesellschaftlichen, kulturellen und wissenschaftlichen Verantwortung. Sie fördert innovative, herausragende und kreative Projekte und Aktivitäten in der Lehre und anwendungsorientierten Forschung.',
+            'description': 'Die Stiftung FHNW unterstützt die Fachhochschule Nordwestschweiz (FHNW) bei der Wahrnehmung ihrer gesellschaftlichen, kulturellen und' +
+                    ' wissenschaftlichen Verantwortung. Sie fördert innovative, herausragende und kreative Projekte und Aktivitäten in der Lehre und' +
+                    ' anwendungsorientierten Forschung.',
             'path_string': '/Plone/de/die-fhnw/stiftung-fhnw',
             'portal_type': 'Document',
             'review_state': null,

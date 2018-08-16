@@ -504,7 +504,9 @@
 				queryStartPosition = titleSt.toLowerCase().search(searchParam.q.toLowerCase());
 				if (queryStartPosition !== -1) {
 					queryEndPosition = queryStartPosition + searchParam.q.length;
-					markedTitle = titleSt.substr(0, queryStartPosition) + '<span class="bold">' + titleSt.substr(queryStartPosition, searchParam.q.length) + '</span>' + titleSt.substr(queryEndPosition);
+					markedTitle = titleSt.substr(0, queryStartPosition) + '<span class="bold">' +
+							titleSt.substr(queryStartPosition, searchParam.q.length) + '</span>' +
+							titleSt.substr(queryEndPosition);
 					$elementTitle.html(markedTitle);
 				}
 			}

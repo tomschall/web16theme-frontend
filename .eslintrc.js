@@ -102,7 +102,7 @@ module.exports = exports = {
 		"linebreak-style": [ WARN, "unix" ],
 		"lines-around-comment": [ WARN, { "beforeBlockComment": true } ],
 		"max-depth": [ WARN, 8 ],
-		//"max-len": [ WARN, 80 ], // TODO: fix code and enable rule
+		"max-len": [ WARN, 180 ],
 		"max-nested-callbacks": [ WARN, 8 ],
 		"max-params": [ WARN, 8 ],
 		// "new-cap": WARN, // TODO: fix code and enable rule
