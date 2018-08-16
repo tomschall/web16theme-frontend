@@ -383,7 +383,7 @@
 	};
 
 	Widget.prototype.getLocation = function($mapElement, map) {
-		var deferred = $.Deferred(),
+		var deferred = new $.Deferred(),
 			hasPlaceId = typeof $mapElement.data('placeid') !== typeof undefined;
 
 		if (hasPlaceId) {
