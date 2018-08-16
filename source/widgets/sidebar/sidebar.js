@@ -229,11 +229,11 @@
 	 * On window resize
 	 */
 
-	 window.addEventListener('resize', function() {
+	window.addEventListener('resize', function() {
 		// setTimeout because no 'afterresize' event exists
 		window.setTimeout(function afterResize() {
 			initCurrentSize();
 		}, 150);
-	 });
+	});
 
 })(jQuery);

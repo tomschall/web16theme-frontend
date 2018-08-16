@@ -34,8 +34,8 @@ var templateData = {
 					url: '#',
 					isExternal: true,
 					news_detail: {
-					    news_date: '27.07.2017',
-					    university: 'Hochschule für Pädagogik'
+						news_date: '27.07.2017',
+						university: 'Hochschule für Pädagogik'
 					}
 				},
 				{
@@ -46,8 +46,8 @@ var templateData = {
 						alt: 'Stadtpolizei Zürich'
 					},
 					news_detail: {
-					    news_date: '27.06.2017',
-					    university: 'Hochschule für angewandte Psychologie'
+						news_date: '27.06.2017',
+						university: 'Hochschule für angewandte Psychologie'
 					},
 					url: '#',
 					isExternal: true
