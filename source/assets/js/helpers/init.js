@@ -7,12 +7,6 @@
 ;(function($, undefined) {
 	'use strict';
 
-	// Usage: $('#mySelectId option').sort(SelectOptionSorter).appendTo('#mySelectId');
-	function SelectOptionSorter(a, b) {
-          return (a.innerHTML > b.innerHTML) ? 1 : -1;
-      };
-
-
 	var $document = $(document),
 		initEvents = estatico.helpers.initEvents || {},
 		keys = Object.keys(initEvents);
@@ -44,10 +38,5 @@
 
 	/* Removing empty p-Tags */
 	$('p:empty').remove();
-
-	// /Plone/en/search_edu Sorting select option values alphabetically
-	$('#taxonomy_subjectarea option').sort(SelectOptionSorter).appendTo('#taxonomy_subjectarea');
-	$('#taxonomy_eduproducttype option').sort(SelectOptionSorter).appendTo('#taxonomy_eduproducttype');
-	$('#city option').sort(SelectOptionSorter).appendTo('#city');
 
 })(jQuery);
