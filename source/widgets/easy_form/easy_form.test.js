@@ -1,4 +1,4 @@
-/* global T, describe, expect, it, xit, beforeEach, afterEach, fdescribe, spyOn, fit $ */
+/* global T, describe, expect, it, beforeEach, afterEach, spyOn $ */
 'use strict';
 
 describe('Easy form', function() {

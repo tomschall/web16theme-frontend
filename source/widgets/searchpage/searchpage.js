@@ -50,7 +50,6 @@
 			$formElements: null
 		},
 		searchParam = {},
-		resultsShown = false,
 		searchTemplate = '',
 		searchCategory = '',
 		expandedFilters = false,
@@ -59,7 +58,6 @@
 		templatesWithoutMoreButton = ['expertises_full'],
 		loadedEntries = 0,
 		jsonURL = '',
-		filterURL = '',
 		lastChangedFieldName = '';
 
 	/**
@@ -92,7 +90,6 @@
 		searchTemplate = $(this.options.domSelectors.formWrapper).data('searchpage-template');
 		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 		jsonURL = this.$element.data('json-url');
-		filterURL = this.$element.data('filter-url');
 
 		// debounce the search call invocation
 		var sendSearchQueryDebounced = _.debounce(this._sendSearchQuery.bind(this), 250);
@@ -397,8 +394,6 @@
 		this.markSearchQuery();
 		this.addCatTitleLabel();
 		this.changeStatus(this.options.stateClasses.showResults);
-
-		resultsShown = true;
 
 		if ($.inArray(searchTemplate, templatesWithoutMoreButton) >= 0) {
 			$(this.options.domSelectors.moreResultsBtn).remove();

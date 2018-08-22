@@ -113,7 +113,6 @@ var fieldDictionaries = {
 	function generateResultTable(data) {
 		var results = data.items,
 				$responseHTML = $('<table></table>'),
-				$headersRow = $('<tr></tr>'),
 				template = null;
 
 		if (data.category in listHeadTemplates.categorySearch) {

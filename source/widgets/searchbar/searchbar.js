@@ -41,7 +41,6 @@
 		data = {
 			// items: ["Item 1", "Item 2"]
 		},
-		resultsShown = false,
 		currentSearchValue = null,
 		searchBarIsOpen = false,
 		searchPageUrl,
@@ -243,7 +242,6 @@
 			'height': $(this.options.domSelectors.content).height()
 		});
 
-		resultsShown = true;
 	};
 
 	/**

@@ -14,13 +14,13 @@
 
 	$(document).ready(function() {
 		// Decode the geomailaddress span to extract the mail
-		$('span.geomailaddress').each(function(i) {
+		$('span.geomailaddress').each(function() {
 			var encodedMail = $(this).text();
 			var decodedMail = Base64.decode(encodedMail);
 			$(this).replaceWith(decodedMail);
 		});
 		// Decode the geomailto href attribute to extract the mail
-		$('a[href^=geomailto]').each(function(i) {
+		$('a[href^=geomailto]').each(function() {
 			$(this).attr('class', 'link-mailto');
 			var encodedMail = $(this).attr('href').replace('geomailto:', '');
 			var decodedMail = Base64.decode(encodedMail);
