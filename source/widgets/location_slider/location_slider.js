@@ -237,7 +237,7 @@
 			var $mapElement = $(element),
 				mapProp = _.assign(this.options.mapProps, {
 					styles: this.options.mapStyles,
-					zoom: parseInt($mapElement.data('zoomlevel'))
+					zoom: parseInt($mapElement.data('zoomlevel'), 10)
 				}),
 				map = new google.maps.Map(element, mapProp);
 			this.maps.push(map);
@@ -316,7 +316,7 @@
 					styles: this.options.mapStyles,
 					center: location,
 					locations: [location],
-					zoom: parseInt($mapElement.data('zoomlevel'))
+					zoom: parseInt($mapElement.data('zoomlevel'), 10)
 				});
 
 				// assign static image to image element

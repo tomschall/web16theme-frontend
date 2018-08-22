@@ -71,7 +71,7 @@ module.exports = exports = {
 			"location": "start"
 		}],
 		"no-with": WARN,
-		//"radix": WARN, // TODO: fix code and enable rule
+		"radix": WARN,
 		"yoda": ERROR,
 
 		// Variables

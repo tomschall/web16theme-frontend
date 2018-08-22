@@ -314,7 +314,7 @@
 
 		if (firstLoad && searchParam.offset) {
 			// translate offset - internally
-			searchParam.limit = parseInt(searchParam.offset) + this.options.RESULT_SIZE;
+			searchParam.limit = parseInt(searchParam.offset, 10) + this.options.RESULT_SIZE;
 			searchParam.offset = 0;
 		}
 

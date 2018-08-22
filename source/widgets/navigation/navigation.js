@@ -111,7 +111,7 @@
 
 				this.showNavigation($subList.data('navigation-level'));
 			} else {
-				if (parseInt(currentLevel) === 0) {
+				if (parseInt(currentLevel, 10) === 0) {
 					this.closeNavigation();
 				} else {
 					this.closeNavigationLevel(currentLevel + 1);
@@ -150,7 +150,7 @@
 	 * @param $subList the list which has to be copied to the wrapper, which can be positioned
    */
 	Widget.prototype.fillNavWrapper = function($subList) {
-		var subListLevel = parseInt($subList.data('navigation-level')),
+		var subListLevel = parseInt($subList.data('navigation-level'), 10),
 			$targetWrapper = this.data.wrappers[subListLevel];
 
 		$targetWrapper.find(this.options.domSelectors.list).remove();
@@ -195,7 +195,7 @@
 			$targetWrapper.css({
 				left: pullLeft,
 				opacity: 1,
-				zIndex: 1800 - parseInt(targetLevel)
+				zIndex: 1800 - parseInt(targetLevel, 10)
 			});
 
 			$targetWrapper.addClass(this.options.stateClasses.hasShadow);
@@ -271,7 +271,7 @@
 		$levelWrapperToClose.find(this.options.domSelectors.expandable).removeClass(this.options.stateClasses.isActive);
 
 		$('[data-navigation-level]').each(function() {
-			if (parseInt($(this).data('navigation-level')) > levelToClose) {
+			if (parseInt($(this).data('navigation-level'), 10) > levelToClose) {
 				$(this).removeAttr('style');
 			}
 		});
