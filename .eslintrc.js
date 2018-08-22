@@ -15,7 +15,7 @@ module.exports = exports = {
 
 		// Best Practices
 		"block-scoped-var": WARN,
-		"consistent-return": ERROR, // TODO: fix code and enable rule
+		"consistent-return": ERROR,
 		"curly": ERROR,
 		"default-case": WARN,
 		"dot-location": [ WARN, "property" ],
@@ -33,7 +33,7 @@ module.exports = exports = {
 		"no-eq-null": WARN,
 		"no-eval": ERROR,
 		"no-extend-native": ERROR,
-		//"no-extra-bind": WARN, // TODO: fix code and enable rule
+		"no-extra-bind": WARN,
 		"no-floating-decimal": WARN, // TODO: fix code and enable rule
 		// "no-implicit-coercion": [ WARN, { // TODO: fix code and enable rule
 		// 	"boolean": true,

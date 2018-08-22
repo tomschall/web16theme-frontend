@@ -59,11 +59,11 @@
 		this.$element.find('select').on('change', function(evt) {
 			targetURL = $(evt.target).val();
 			$btn.prop('disabled', !targetURL.length);
-		}.bind(this));
+		});
 
 		$btn.click(function(evt) {
 			window.location.href = targetURL;
-		}.bind(this));
+		});
 
 		window.addEventListener('resize', (function() {
 			// setTimeout because no 'afterresize' event exists

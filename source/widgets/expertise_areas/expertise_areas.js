@@ -62,7 +62,7 @@
 			targetURL = landingPageURL + '/' + $(evt.target).val();
 
 			window.location.href = targetURL;
-		}.bind(this));
+		});
 	};
 
 	/**
