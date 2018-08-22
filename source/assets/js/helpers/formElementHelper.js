@@ -546,7 +546,7 @@
 
 				if (!isValid) {
 					updateFieldStatus($el, $currentFieldType, false);
-					return $.Deferred().reject('Invalid format').promise();
+					return new $.Deferred().reject('Invalid format').promise();
 				}
 			}
 
@@ -559,7 +559,7 @@
 			if ($el.hasClass('single-checkbox-widget')) {
 				if (easyFormValidation.getFieldValue($el) === '') {
 					updateFieldStatus($el, $currentFieldType, false);
-					return $.Deferred().reject('Required').promise();
+					return new $.Deferred().reject('Required').promise();
 				}
 			} else if ($el.hasClass('radio-widget')) {
 				// special handling for radio buttons
@@ -573,7 +573,7 @@
 				}
 			}
 
-			var deferred = $.Deferred();
+			var deferred = new $.Deferred();
 
 			$.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
 				var $errorMsg = json.errmsg,
