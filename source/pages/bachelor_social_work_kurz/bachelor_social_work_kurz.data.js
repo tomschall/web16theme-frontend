@@ -6,10 +6,10 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 	meta: {
-		title: 'Bachelor of Arts in Sozialer Arbeit'
+		title: 'Bachelor of Arts in Sozialer (kurz)'
 	},
-	title: 'Bachelor of Arts in Sozialer Arbeit (B.A)',
-	text: 'Die Hochschule für Soziale Arbeit der Fachhochschule Nordwestschweiz FHNW bietet ein Bachelor-Studium in Sozialer Arbeit an, das in einer wissenschaftlich fundierten, praxisnahen Ausbildung zu einer generalistischen Berufsbefähigung führt.',
+	title: 'Bachelor of Arts in Sozialer (kurz)',
+	text: 'Die Hochschule für Soziale Arbeit.',
 	widgets: {
 		header: _.assign({
 			hasPromoTeaser: false,

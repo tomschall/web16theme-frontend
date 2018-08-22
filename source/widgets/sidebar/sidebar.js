@@ -101,6 +101,7 @@
 		$widg_sidebar.css('margin-top', widg_sidebar_margin_top);
 		initContentMaxHeight();
 		if (!is_window_wide_enough) {
+			$widg_sidebar.css('margin-top', 0);
 			unstickSidebar();
 		}
 	}
@@ -174,11 +175,11 @@
 
 	insertStyleElement();
 
-	insertMinHeightLock();
-
 	maybeInsertSomePageContent();
 
 	initCurrentSize();
+
+	insertMinHeightLock();
 
 	window.addEventListener('load', function() {
 		// Distance to treppenhaus navigation depends on its height, which depends on its content, which is sometimes not fully known until the load event

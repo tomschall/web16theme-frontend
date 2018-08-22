@@ -1,6 +1,16 @@
 .widg_subnav {
 	transform: translateY(-1 * $contentMarginTop - $smallElementHeight);
 
+	&.min_height_lock {
+		float: left;
+		position: relative;
+		visibility: hidden;
+
+		@include mq($to: 'subnav') {
+			display: none;
+		}
+	}
+
 	&.has-no-breadcrumb {
 		transform: translateY(-1 * $contentMarginTop);
 	}

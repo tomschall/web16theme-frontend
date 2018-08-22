@@ -1,0 +1,23 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+		<div class="page_content">
+			<h1>{{title}}</h1>
+			<p class="text__lead">
+				{{text}}
+			</p>
+			{{> "widgets/mobile_content_navigation/mobile_content_navigation" widgets.mobileContentNavigation}}
+      <div class="content__element">
+        <p>Im Mittelpunkt steht sowohl die berufliche Integration, als auch die soziale und gesundheitliche Integration von
+        </p>
+      </div>
+		</div>
+		{{> "widgets/sidebar/sidebar" widgets.sidebar}}
+
+    <div class="content__element content__element___bleed content__element___top-bordered" id="locations">
+			{{> "widgets/location_slider/location_slider" widgets.locationSlider}}
+    </div>
+	{{/content}}
+{{/extend}}
