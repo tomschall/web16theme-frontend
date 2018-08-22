@@ -25,7 +25,10 @@ var templateData = {
 		{
 			fullname: 'Prof. Dr. Felix Specimen',
 			contactPageURL: '#',
-			jobDescription: 'Wissenschaftlicher Assistent, Institut für Wirtschaftsinformatik',
+			jobDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit' +
+					' sed do eiusmod tempor incididunt ut labore et dolore magna aliqua' +
+					' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat' +
+					' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
 			phone: '+41 62 957 24 26',
 			phone_2: '+41 62 957 24 00',
 			phone_addon: 'DIREKT',

@@ -26,7 +26,8 @@
 }
 
 .widg_contact__portrait {
-	float: left;
+	display: inline-block;
+	vertical-align: top;
 	width: 25%;
 	min-width: 100px;
 	max-width: 200px;
@@ -64,9 +65,14 @@
 	}
 }
 
+.widg_contact__definition_list {
+	display: inline-block;
+	width: calc(100% - 249px);
+}
+
 .widg_contact__name {
 	float: left;
-	width: calc(75% - 39px);
+	width: 100%;
 
 	a {
 		display: block;
@@ -77,15 +83,13 @@
 		display: block;
 		font-size: 1.4rem;
 	}
-
-	@include mq($to: small) {
-		width: 100%;
-	}
 }
 
-.widg_contact__info {
-	float: left;
-	width: calc(40% - 39px);
+.widg_contact__phone,
+.widg_contact__email {
+	display: inline-block;
+	vertical-align: top;
+	width: calc(50% - 20px);
 
 	a {
 		font-size: 1.25rem;
@@ -95,11 +99,6 @@
 	span {
 		font-size: 1.25rem;
 		margin-bottom: 0;
-	}
-
-	@include mq($to: small) {
-		width: 100%;
-		margin-top: 10px;
 	}
 }
 
@@ -112,4 +111,18 @@
 	display: block;
 	margin-bottom: $basicPush / 3;
 	font-weight: 700;
+}
+
+
+@include mq($to: small) {
+	.widg_contact__definition_list,
+	.widg_contact__phone,
+	.widg_contact__email {
+		width: 100%;
+	}
+
+	.widg_contact__phone,
+	.widg_contact__email {
+		margin-top: 10px;
+	}
 }
