@@ -106,7 +106,7 @@
 		this.initSearchParam();
 
 		// #669 - when coming from the search bar page, hide the search all button
-		this.searchAllFromSearchBar = !!searchParam.sb;
+		this.searchAllFromSearchBar = Boolean(searchParam.sb);
 
 		this.initFormFunctionality();
 
@@ -207,7 +207,7 @@
 
 		// read current value from the field
 		var val = $(this.options.domSelectors.queryInput).val().trim();
-		$(this.options.domSelectors.queryInput).toggleClass(this.options.stateClasses.isFilled, !!val.length);
+		$(this.options.domSelectors.queryInput).toggleClass(this.options.stateClasses.isFilled, Boolean(val.length));
 		this.$clearQueryBtn[val ? 'show' : 'hide']();
 	};
 
