@@ -8,7 +8,7 @@ var data = _.merge(defaultData, {
 		meta: {
 			title: 'Newsletter'
 		},
-		title: 'Newsletter Anmeldung',
+		title: 'Newsletter Anmeldung Beispielseite',
 		leadText: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
 		widgets: {
 			header: _.assign({
