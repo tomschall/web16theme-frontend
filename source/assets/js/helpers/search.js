@@ -525,20 +525,20 @@ Handlebars.registerHelper('dotdotdot_teaser', function(str) {
 
 // fieldDictionaries
 for (var field in fieldDictionaries) { // eslint-disable-line guard-for-in
-	(function(field) {
+	(function(local__field) {
 
 		/**
 		 * @return
 		 *   Comma-separated list of the record's field's non-hidden values if it is not empty.
 		 *   Comma-separated list of the record's field hidden values otherwise.
 		 */
-		Handlebars.registerHelper('get_' + field, function(options) {
+		Handlebars.registerHelper('get_' + local__field, function(options) {
 			'use strict';
 
 			var nonHiddenItems = options.fn(this)
 					.split(',')
 					.map(function(item) {
-						return ((item in fieldDictionaries[field]) && !fieldDictionaries[field][item].hide) ? fieldDictionaries[field][item].text : null;
+						return ((item in fieldDictionaries[local__field]) && !fieldDictionaries[local__field][item].hide) ? fieldDictionaries[local__field][item].text : null;
 					})
 					.filter(function(value) {
 						return value !== null;
@@ -552,7 +552,7 @@ for (var field in fieldDictionaries) { // eslint-disable-line guard-for-in
 			var hiddenItems = options.fn(this)
 					.split(',')
 					.map(function(item) {
-						return ((item in fieldDictionaries[field]) && fieldDictionaries[field][item].hide) ? fieldDictionaries[field][item].text : null;
+						return ((item in fieldDictionaries[local__field]) && fieldDictionaries[local__field][item].hide) ? fieldDictionaries[local__field][item].text : null;
 					})
 					.filter(function(value) {
 						return value !== null;

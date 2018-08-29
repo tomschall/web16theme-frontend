@@ -347,9 +347,9 @@
 		return undefined;
 	};
 
-	Widget.prototype.handleData = function(event, data, foundEntries, limitedToResults, category, facets) {
-		if (data) {
-			this.showResults(data, foundEntries, limitedToResults, category);
+	Widget.prototype.handleData = function(event, local__data, foundEntries, limitedToResults, category, facets) {
+		if (local__data) {
+			this.showResults(local__data, foundEntries, limitedToResults, category);
 			if (isCategorySearch) {
 				this.updateFilters(facets);
 			}
@@ -546,8 +546,8 @@
 				// removes postfix from the name
 				var fieldName = facetsToItemsFieldnames[field.field.replace(/\[\]$/, '')],
 					$field = $('[data-searchparam="' + fieldName + '"]'),
-					$options = $field.find('option');
-				$options.map(function(index, option) {
+					$local__options = $field.find('option');
+				$local__options.map(function(index, option) {
 					if ($field.val() === $(option).val() ||
 							fieldName === lastChangedFieldName) {
 						return;

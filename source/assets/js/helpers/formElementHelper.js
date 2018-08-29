@@ -33,8 +33,8 @@
 	 */
 	function convertDate(d, t) {
 		t = t || '';
-		return (d || '').replace(/^\s*(\d{1,2})\.(\d{1,2})\.(\d{1,4})$\s*/g, function(__, d, m, y) {
-			return [_.padStart(y, 4, '0'), _.padStart(m, 2, '0'), _.padStart(d, 2, '0')].join('-');
+		return (d || '').replace(/^\s*(\d{1,2})\.(\d{1,2})\.(\d{1,4})$\s*/g, function(__, day, m, y) {
+			return [_.padStart(y, 4, '0'), _.padStart(m, 2, '0'), _.padStart(day, 2, '0')].join('-');
 		}) + (t ? ' ' + t : '');
 	}
 
@@ -105,7 +105,7 @@
    			return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
 			}
 
-			function getLanguage() {
+			function local__getLanguage() {
 				var theLanguage = $('html').attr('lang');
 				return theLanguage;
 			}
@@ -121,7 +121,7 @@
 			$('input[type="file"]').on('change', function() {
 		    var totalSize = 0;
 				var allowedUploadSize = 7340032; // 7 MB max. Data upload
-				var lang = getLanguage();
+				var lang = local__getLanguage();
 
 
         // Adding reset button, clearing upload field
@@ -532,28 +532,28 @@
 		validateElement: function($el) {
 			var $currentFieldType = $el.prop('tagName');
 
-			function updateFieldStatus($el, $currentFieldType, isValid, $errorMsg) {
+			function updateFieldStatus($local__el, $local__currentFieldType, isValid, $errorMsg) {
 				$errorMsg = $errorMsg === undefined ? '' : $errorMsg;
-				$el.closest(rules.findField).find(rules.$fieldErrorBox).text($errorMsg);
+				$local__el.closest(rules.findField).find(rules.$fieldErrorBox).text($errorMsg);
 
 				// Error Messages on case
-				switch ($currentFieldType) {
+				switch ($local__currentFieldType) {
 					case 'SELECT':
-						$el.toggleClass('error', !isValid);
+						$local__el.toggleClass('error', !isValid);
 						break;
 					case 'RADIO':
-						$el.toggleClass(rules.hasvalue, isValid);
-						$el.closest(rules.findField).toggleClass(rules.error, !isValid);
+						$local__el.toggleClass(rules.hasvalue, isValid);
+						$local__el.closest(rules.findField).toggleClass(rules.error, !isValid);
 						break;
 					case 'INPUT':
 					case 'TEXTAREA':
 					case 'CHECKBOX':
-						$el.toggleClass(rules.hasvalue, isValid);
-						$el.parents('.field:first').toggleClass(rules.error, !isValid);
+						$local__el.toggleClass(rules.hasvalue, isValid);
+						$local__el.parents('.field:first').toggleClass(rules.error, !isValid);
 						break;
 					default:
-						$el.toggleClass(rules.hasvalue, isValid);
-						$el.parent().toggleClass(rules.error, !isValid);
+						$local__el.toggleClass(rules.hasvalue, isValid);
+						$local__el.parent().toggleClass(rules.error, !isValid);
 				}
 			}
 
@@ -607,10 +607,10 @@
 
 			$.getJSON(easyFormValidation.buildurl($el)).always(function(json) {
 				var $errorMsg = json.errmsg,
-					isValid = $errorMsg === '';
+					local__isValid = $errorMsg === '';
 
-				updateFieldStatus($el, $currentFieldType, isValid, $errorMsg);
-				return isValid ? deferred.resolve('') : deferred.reject($errorMsg);
+				updateFieldStatus($el, $currentFieldType, local__isValid, $errorMsg);
+				return local__isValid ? deferred.resolve('') : deferred.reject($errorMsg);
 			});
 			return deferred.promise();
 		},

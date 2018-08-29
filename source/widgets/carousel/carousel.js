@@ -288,7 +288,7 @@
 		// Initializes the data videos
 		this.data.videos = this.$element.find(this.options.domSelectors.video).toArray();
 
-		$.each(this.data.videos, function(name, video) {
+		$.each(this.data.videos, function(local__name, video) {
 			video.loop = true;
 		});
 	};
@@ -306,7 +306,7 @@
 				carouselRatio = carouselWidth / carouselHeight,
 				transformValue = 0;
 
-		$.each($videos, function(name, value) {
+		$.each($videos, function(local__name, value) {
 			$(value).removeAttr('style');
 
 			videoWidth = $(value).width();
