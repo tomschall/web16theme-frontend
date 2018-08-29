@@ -29,11 +29,11 @@
 
 	function improveEmailWrapping() {
 		$('a[href^=mailto]').each(function() {
-			$(this).html('<span>' + $(this).text().
-					replace('@', '</span>@<span>').
-					replace('.', '</span>.<span>').
-					replace('_', '</span>_<span>').
-					replace('-', '</span>-<span>') +
+			$(this).html('<span>' + $(this).text()
+					.replace('@', '</span>@<span>')
+					.replace('.', '</span>.<span>')
+					.replace('_', '</span>_<span>')
+					.replace('-', '</span>-<span>') +
 					'</span>');
 		});
 	}

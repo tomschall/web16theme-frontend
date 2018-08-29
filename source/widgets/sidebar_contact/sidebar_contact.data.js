@@ -17,7 +17,7 @@ var templateData = {
 					url: '#',
 					jobDescr: 'Leitung',
 					email: 'sebastian.gaulocher@fhnw.ch',
-					telephone: '+41 62 957 24 26'
+					telephone: '+41 62 957 24 26',
 					telephone_addon: 'DIREKT',
 					telephone_2: '+41 62 957 11 22',
 					telephone_addon_2: 'ZENTRALE',
