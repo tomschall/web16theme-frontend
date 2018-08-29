@@ -97,12 +97,12 @@
 		uploadSize: function() {
 
 			function bytesToSize(bytes) {
-   			var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-   			if (bytes === 0) {
+			var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+			if (bytes === 0) {
 					return '0 Byte';
 				}
-			var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
-   			return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+				var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
+				return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
 			}
 
 			function local__getLanguage() {
@@ -114,17 +114,17 @@
 			$('input[type="file"]').on('click', function() {
 				var addFieldID = $(this).attr('id');
 				var rndFigure = Math.floor((Math.random() * 100) + 1);
-        $(this).next().remove();
+		$(this).next().remove();
 				$(this).after('<span class="select2-selection__clear upload-reset" id="' + addFieldID + '-' + rndFigure + '"> × </span>');
 			});
 
 			$('input[type="file"]').on('change', function() {
-		    var totalSize = 0;
+			var totalSize = 0;
 				var allowedUploadSize = 7340032; // 7 MB max. Data upload
 				var lang = local__getLanguage();
 
 
-        // Adding reset button, clearing upload field
+		// Adding reset button, clearing upload field
 				$('.upload-reset').on('click', function() {
 					var whichElem = $(this).attr('id');
 					var curUploadField = $(this).prev().attr('id');
@@ -138,12 +138,12 @@
 				$('input[type="file"]').each(function() {
 					var uploadField = '#' + $(this).attr('id');
 
-		      for (var i = 0; i < this.files.length; i++) {
+					for (var i = 0; i < this.files.length; i++) {
 						totalSize += this.files[i].size;
 						//console.log('TOTAL SIZE = ' + totalSize);
 						$(uploadField).parent().parent().find('.fieldErrorBox').text(bytesToSize(this.files[i].size));
 						$(uploadField).parent().parent().find('.fieldErrorBox').css('color', 'black').show();
-		      }
+					}
 
 					var valid = totalSize <= allowedUploadSize;
 					var fileDiffSuccess = allowedUploadSize - totalSize;
@@ -217,7 +217,7 @@
 						$('#form-buttons-submit').removeAttr('disabled');
 					}
 				});
-	  	});
+			});
 		},
 
 		setup: function() {
@@ -422,16 +422,16 @@
 			// Example:
 			//
 			// +----------------+
-			// |fieldset (0)    |
-			// |skip &fset      |
+			// |fieldset (0)	|
+			// |skip &fset	  |
 			// +----------------+
 			// +----------------+
-			// |fieldset (1)    |
-			// |&fset=0         |
+			// |fieldset (1)	|
+			// |&fset=0		 |
 			// +----------------+
 			// +----------------+
-			// |fieldset (2)    |
-			// |&fset=1         |
+			// |fieldset (2)	|
+			// |&fset=1		 |
 			// +----------------+
 
 			for (var i = 1; i < rules.$fieldsets.size(); i++) {
@@ -848,11 +848,11 @@
 			if ($('.named-file-widget input').length) {
 				$('.named-file-widget input').removeAttr('disabled');
 
-					$('.named-file-widget input').each(function() {
-						 if ($('.named-file-widget input').is(':checked')) {
-							 $('.named-file-widget input').removeAttr('checked');
-						 }
-					});
+				$('.named-file-widget input').each(function() {
+					if ($('.named-file-widget input').is(':checked')) {
+						$('.named-file-widget input').removeAttr('checked');
+					}
+				});
 			}
 		});
 	}

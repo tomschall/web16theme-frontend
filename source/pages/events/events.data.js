@@ -99,8 +99,8 @@ var data = _.merge(defaultData, {
 						url: '#',
 						isExternal: false,
 						news_detail: {
-						    news_date: '27.07.2017',
-						    university: 'Hochschule für Pädagogik'
+							news_date: '27.07.2017',
+							university: 'Hochschule für Pädagogik'
 						}
 					}
 				]

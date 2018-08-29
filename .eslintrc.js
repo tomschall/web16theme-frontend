@@ -115,7 +115,7 @@ module.exports = exports = {
 		"no-continue": OFF,
 		"no-inline-comments": OFF,
 		//"no-lonely-if": WARN, // TODO: fix code and enable rule
-		"no-mixed-spaces-and-tabs": OFF, //WARN,
+		"no-mixed-spaces-and-tabs": WARN,
 		"no-multiple-empty-lines": WARN,
 		"no-negated-condition": OFF,
 		"no-nested-ternary": WARN,
