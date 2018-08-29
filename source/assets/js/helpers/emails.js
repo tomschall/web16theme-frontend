@@ -1,18 +1,17 @@
-/**
- Graceful E-mail Obfuscation
-
- Like:
- https://github.com/collective/collective.geotransform/blob/master/collective/geotransform/skins/collective_geotransform/geoMailDecoder.js
- Plus:
- * Fixed 'encodedMail', 'decodedMail' variable declared on global (browser's window) scope
- * Fixed code style triggers a couple of linter warnings
- * Support for utf-8 (and base64) encoded strings (via https://www.npmjs.com/package/js-base64)
- **/
-
 ;(function($, Base64) {
 	'use strict';
 
-	$(document).ready(function() {
+	/**
+	 Graceful E-mail Obfuscation
+
+	Like:
+	https://github.com/collective/collective.geotransform/blob/master/collective/geotransform/skins/collective_geotransform/geoMailDecoder.js
+	Plus:
+	* Fixed 'encodedMail', 'decodedMail' variable declared on global (browser's window) scope
+	* Fixed code style triggers a couple of linter warnings
+	* Support for utf-8 (and base64) encoded strings (via https://www.npmjs.com/package/js-base64)
+	**/
+	function obfuscateEmails() {
 		// Decode the geomailaddress span to extract the mail
 		$('span.geomailaddress').each(function() {
 			var encodedMail = $(this).text();
@@ -26,6 +25,22 @@
 			var decodedMail = Base64.decode(encodedMail);
 			$(this).attr('href', 'mailto:' + decodedMail);
 		});
+	}
+
+	function improveEmailWrapping() {
+		$('a[href^=mailto]').each(function() {
+			$(this).html('<span>' + $(this).text().
+					replace('@', '</span>@<span>').
+					replace('.', '</span>.<span>').
+					replace('_', '</span>_<span>').
+					replace('-', '</span>-<span>') +
+					'</span>');
+		});
+	}
+
+	$(document).ready(function() {
+		obfuscateEmails();
+		improveEmailWrapping();
 	});
 
 })(jQuery, Base64);

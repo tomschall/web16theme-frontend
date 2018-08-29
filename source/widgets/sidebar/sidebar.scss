@@ -314,6 +314,8 @@ $sidebarObjectPush: $basicPush * 5;
 		margin: 0;
 		width: 100%;
 		font-size: 1.25rem;
+		overflow-wrap: break-word;
+		word-wrap: break-word; /* IE, Edge < 18 */
 	}
 
 	dt {
