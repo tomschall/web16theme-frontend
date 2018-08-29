@@ -10,11 +10,10 @@
         <h3>{{langStrings.organizer}}</h3>
       {{/if}}
       <p>
-        {{#if event_detail.oe_label_0}}
-          {{event_detail.oe_label_0}}<br/>
-        {{/if}}
-        {{#if event_detail.oe_label_1}}
-          {{event_detail.oe_label_1}}<br/>
+        {{#if event_detail.oe_labels}}
+          {{#each event_detail.oe_labels}}
+            {{this}}<br/>
+          {{/each}}
         {{/if}}
         {{#if event_detail.organizer_name}}
           <br/>
