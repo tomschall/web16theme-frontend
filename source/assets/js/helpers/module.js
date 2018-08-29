@@ -115,7 +115,7 @@
 			} else if (typeof options === 'string') {
 				// Private method, throw error
 				if (options.substr(0, 1) === '_') {
-					throw '"' + options + '" is a private method';
+					throw new Error('"' + options + '" is a private method');
 				}
 
 				// Loop through elements
@@ -124,12 +124,12 @@
 
 					// No module instance found, throw error
 					if (!(instance instanceof Class)) {
-						throw 'Instance of "' + name + '" widget not found';
+						throw new Error('Instance of "' + name + '" widget not found');
 					}
 
 					// Method not found, throw error
 					if (typeof instance[options] !== 'function') {
-						throw '"' + name + '" has no method "' + options + '"';
+						throw new Error('"' + name + '" has no method "' + options + '"');
 					}
 
 					value = instance[options].apply(instance, Array.prototype.slice.call(args, 1));
