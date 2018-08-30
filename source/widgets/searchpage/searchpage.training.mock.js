@@ -66,7 +66,631 @@ var data = {
 			],
 			'review_state': null,
 			'@type': 'EduProduct'
-		}
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2000',
+				'2001',
+				'2008'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2002'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2000',
+				'2001',
+				'2008'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2002'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2000',
+				'2001',
+				'2008'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2002'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2000',
+				'2001',
+				'2008'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2002'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2000',
+				'2001',
+				'2008'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2002'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2000',
+				'2001',
+				'2008'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2002'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2000',
+				'2001',
+				'2008'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2002'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2000',
+				'2001',
+				'2008'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2002'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2000',
+				'2001',
+				'2008'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2002'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2000',
+				'2001',
+				'2008'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2002'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2000',
+				'2001',
+				'2008'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2002'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2000',
+				'2001',
+				'2008'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
+		{
+			'path_string': '/Plone/de/test-edu-1',
+			'description': '',
+			'Title': 'test-edu-1',
+			'portal_type': 'EduProduct',
+			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
+			'taxonomy_eduproducttype': [
+				'2002'
+			],
+			'Description': '',
+			'title': 'test-edu-1',
+			'taxonomy_competence': [
+				'1001'
+			],
+			'city': [
+				'basel'
+			],
+			'taxonomy_subjectarea': [
+				'1005',
+				'1004',
+				'1000'
+			],
+			'review_state': null,
+			'@type': 'EduProduct'
+		},
 	],
 	'facets': [
 		{
