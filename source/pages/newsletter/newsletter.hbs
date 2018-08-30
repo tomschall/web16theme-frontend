@@ -8,8 +8,119 @@
       <p class="text__lead">
 				{{leadText}}
       </p>
+			<h3>Newsletter Anmeldung</h3>
+			<form class="form" id="crform" action="https://eu.cleverreach.com/f/17266-133703/wcs/" method="post" target="_blank">
+			  <div class="cr_body cr_page cr_font formbox">
+			    <div class="non_sortable" style="text-align:left;">
+			    </div>
+
+			    <div class="field" style="text-align:left;">
+			      <div id="3017126" rel="email" class="cr_ipe_item ui-sortable musthave" style="margin-bottom:px;">
+			        <label for="text3017126" class="itemname">E-Mail*</label>
+							<input id="text3017126" name="email" value="" type="email" style="width:100%;" required />
+			      </div>
+
+						<!-- CHECKBOXES -->
+							<div class="field has-radio">
+								<span class="option">
+									<label class="labtitle">Auswahl Checkbox*
+										<input id="alpha3021209" class="cr_ipe_checkbox" name="269777[]" value="Kindergarten-/Unterstufe" type="checkbox" />
+										<span class="label">Kindergarten-/Unterstufe</span>
+									</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+										<input id="beta3021209" class="cr_ipe_checkbox" name="269777[]" value="Primarstufe" type="checkbox" />
+										<span class="label">Primarstufe</span>
+									</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+											<input id="gamma3021209" class="cr_ipe_checkbox" name="269777[]" value="Sekundarstufe I" type="checkbox" />
+											<span class="label">Sekundarstufe I</span>
+										</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+											<input id="gamma3021209" class="cr_ipe_checkbox" name="269777[]" value="Sekundarstufe II" type="checkbox" />
+											<span class="label">Sekundarstufe II</span>
+										</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+											<input id="gamma3021209" class="cr_ipe_checkbox" name="269777[]" value="Logopädie" type="checkbox" />
+											<span class="label">Logopädie</span>
+										</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+											<input id="gamma3021209" class="cr_ipe_checkbox" name="269777[]" value="Master Sonderpädagogik" type="checkbox" />
+											<span class="label">Master Sonderpädagogik</span>
+										</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+											<input id="gamma3021209" class="cr_ipe_checkbox" name="269777[]" value="Master Vermittlung in Kunst und Design" type="checkbox" />
+											<span class="label">Master Vermittlung in Kunst und Design</span>
+										</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+											<input id="gamma3021209" class="cr_ipe_checkbox" name="269777[]" value="Zulassungsverfahren Quereinstieg" type="checkbox" />
+											<span class="label">Zulassungsverfahren Quereinstieg</span>
+										</label>
+								</span>
+							</div>
+
+						<script>
+						'use strict';
+						window.onload = function() {
+							if (window.jQuery) {
+								$('#crform').validate({
+									errorElement: 'span',
+									errorClass: 'cr-error',
+									rules : {
+										'269777[]': { required: true, minlength: 1 }
+									},
+									errorPlacement: function (error, element) {
+            			if (element.attr("type") == "checkbox") {
+                		error.insertBefore($(element).parents('.labtitle'));
+            			}
+									if (element.attr("type") == "email") {
+                		error.insertBefore($(element).parents('.field'));
+            			}
+        				}
+								});
+							}
+						};
+						</script>
+
+			      <div id="3017128" rel="button" class="cr_ipe_item ui-sortable submit_container">
+			        <button type="submit" class="cr_button">Anmelden</button>
+			      </div>
+			    </div>
+			  </div>
+			</form>
+			<div class="">
+				&nbsp;
+			</div>
 			<h3>Newsletter Anmeldung DE</h3>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<form class="form" id="clever" action="https://eu.cleverreach.com/f/17266-133703/wcs/" method="post">
+				<div class="cr_body cr_page cr_font formbox">
+					<div class="non_sortable"></div>
+					<div class="editable_content">
+						<div id="3017126" rel="email" class="field" >
+							<label for="text3017126" class="itemname">E-Mail*</label>
+							<input id="text3017126" name="email" value="" type="text" placeholder="E-Mail"/>
+						</div>
+						<div id="3017128" rel="button" class="cr_ipe_item ui-sortable submit_container" >
+							<button type="submit" class="cr_button">Anmelden</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<p>&nbsp;</p>
 			<form class="form" action="https://eu.cleverreach.com/f/17266-133703/wcs/" method="post">
 				<div class="cr_body cr_page cr_font formbox">
 					<div class="non_sortable"></div>
@@ -18,8 +129,6 @@
 							<label for="text3017126" class="itemname">E-Mail*</label>
 							<input id="text3017126" name="email" value="" type="text" placeholder="E-Mail"/>
 						</div>
-
-
 					<div class="field has-radio">
 						<span class="option">
 							<label class="itemname">Auswahl
