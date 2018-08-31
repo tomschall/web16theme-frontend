@@ -44,7 +44,8 @@
 				dataLoaded: 'dataLoaded.estatico.search',
 				updateFilterLoaded: 'updateFilterLoaded.estatico.search'
 			},
-			RESULT_SIZE: 5
+			FIRST_RESULT_SIZE: 10,
+			RESULT_SIZE: 30,
 		},
 		data = {
 			$formElements: null
@@ -314,6 +315,10 @@
 			searchParam.limit = parseInt(searchParam.offset, 10) + this.options.RESULT_SIZE;
 			searchParam.offset = 0;
 		}
+
+		searchParam.limit = searchParam.offset ?
+				this.options.RESULT_SIZE :
+				this.options.FIRST_RESULT_SIZE;
 
 		if (this.queryMatch()) {
 			// avoid submission of the same query twice
