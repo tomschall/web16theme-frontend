@@ -1,0 +1,107 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content">
+      <h1>{{title}}</h1>
+      <p class="text__lead">
+				{{leadText}}
+      </p>
+			<h3>Newsletter Anmeldung</h3>
+			<form class="form" id="crform" action="https://eu.cleverreach.com/f/17266-133703/wcs/" method="post" target="_blank">
+			  <div class="cr_body cr_page cr_font formbox">
+			    <div class="non_sortable" style="text-align:left;">
+			    </div>
+
+			    <div class="field" style="text-align:left;">
+			      <div id="3017126" rel="email" class="cr_ipe_item ui-sortable musthave" style="margin-bottom:px;">
+			        <label for="text3017126" class="itemname">E-Mail*</label>
+							<input id="text3017126" name="email" value="" type="email" style="width:100%;" required />
+			      </div>
+
+						<!-- CHECKBOXES -->
+							<div class="field has-radio">
+								<span class="option">
+									<label class="labtitle">Auswahl Checkbox*
+										<input id="alpha3021209" class="cr_ipe_checkbox" name="269777[]" value="Kindergarten-/Unterstufe" type="checkbox" />
+										<span class="label">Kindergarten-/Unterstufe</span>
+									</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+										<input id="beta3021209" class="cr_ipe_checkbox" name="269777[]" value="Primarstufe" type="checkbox" />
+										<span class="label">Primarstufe</span>
+									</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+											<input id="gamma3021209" class="cr_ipe_checkbox" name="269777[]" value="Sekundarstufe I" type="checkbox" />
+											<span class="label">Sekundarstufe I</span>
+										</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+											<input id="gamma3021209" class="cr_ipe_checkbox" name="269777[]" value="Sekundarstufe II" type="checkbox" />
+											<span class="label">Sekundarstufe II</span>
+										</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+											<input id="gamma3021209" class="cr_ipe_checkbox" name="269777[]" value="Logopädie" type="checkbox" />
+											<span class="label">Logopädie</span>
+										</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+											<input id="gamma3021209" class="cr_ipe_checkbox" name="269777[]" value="Master Sonderpädagogik" type="checkbox" />
+											<span class="label">Master Sonderpädagogik</span>
+										</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+											<input id="gamma3021209" class="cr_ipe_checkbox" name="269777[]" value="Master Vermittlung in Kunst und Design" type="checkbox" />
+											<span class="label">Master Vermittlung in Kunst und Design</span>
+										</label>
+								</span>
+								<span class="option">
+									<label class="itemname">
+											<input id="gamma3021209" class="cr_ipe_checkbox" name="269777[]" value="Zulassungsverfahren Quereinstieg" type="checkbox" />
+											<span class="label">Zulassungsverfahren Quereinstieg</span>
+										</label>
+								</span>
+							</div>
+
+			      <div id="3017128" rel="button" class="cr_ipe_item ui-sortable submit_container">
+			        <button type="submit" class="cr_button">Anmelden</button>
+			      </div>
+			    </div>
+			  </div>
+			</form>
+			<script>
+			'use strict';
+			window.onload = function() {
+  			if (window.jQuery) {
+					$('#crform').validate({
+						errorElement: 'span',
+						errorClass: 'cr-error',
+						rules : {
+							'269777[]': { required: true, minlength: 1 }
+						},
+						errorPlacement: function (error, element) {
+						if (element.attr("type") == "checkbox") {
+							error.insertBefore($(element).parents('.labtitle'));
+						}
+						if (element.attr("type") == "email") {
+							error.insertBefore($(element));
+							//$(element).css('border', '2px solid #df305b');
+							$(element).toggleClass('error');
+						}
+					}
+					});
+				}
+			};
+			</script>
+    </div>
+	{{/content}}
+{{/extend}}
