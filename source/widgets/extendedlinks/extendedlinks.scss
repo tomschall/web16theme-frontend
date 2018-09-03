@@ -8,6 +8,7 @@
 		margin: $basicPush 0 $basicPush * 2.6 0 !important;
 
 		@include mq($to: small) {
+			width: 90%;
 			margin-top: 9px;
 		}
 	}
@@ -97,7 +98,7 @@
 			transform: translateY(-50%);
 
 			@include mq($to: small) {
-				position: static;
+				position: absolute;
 				margin-bottom: $basicPush;
 			}
 		}
