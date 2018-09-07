@@ -65,6 +65,33 @@
 		<div class="fieldErrorBox"></div>
 	</div>
 
+	<!-- Upload field required -->
+	<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}" class="field pat-inlinevalidation kssattr-fieldname-form.widgets.passport_photograph empty" data-fieldname="form.widgets.passport_photograph" id="formfield-form-widgets-passport_photograph">
+    <label for="form-widgets-passport_photograph" class="horizontal">
+        Passport photograph
+        <span class="required horizontal" title="Required">&nbsp;</span>
+        <span class="formHelp">Please upload a file in format JPG. The dimensions must be: width 272 x height 378 pixel - width 2.30 cm x height 3.20 cm.</span>
+    </label>
+    <div class="fieldErrorBox"></div>
+    <span id="form-widgets-passport_photograph" class="named-file-widget required namedblobfile-field">
+      <input type="file" id="form-widgets-passport_photograph-input" name="form.widgets.passport_photograph" class="required">
+    </span>
+</div>
+<!-- End upload field required -->
+
+<!-- Upload field NOT required -->
+<div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}" class="field pat-inlinevalidation kssattr-fieldname-form.widgets.copy_of_berufsmaturitat__swiss_matura_etc empty " data-fieldname="form.widgets.copy_of_berufsmaturitat__swiss_matura_etc" id="formfield-form-widgets-copy_of_berufsmaturitat__swiss_matura_etc">
+    <label for="form-widgets-copy_of_berufsmaturitat__swiss_matura_etc" class="horizontal">
+        Copy of Berufsmaturität, Swiss Matura etc
+        <span class="formHelp">This document is only required for applicants educated in Switzerland.</span>
+    </label>
+    <div class="fieldErrorBox"></div>
+    <span id="form-widgets-copy_of_berufsmaturitat__swiss_matura_etc" class="named-file-widget namedblobfile-field">
+      <input type="file" id="form-widgets-copy_of_berufsmaturitat__swiss_matura_etc-input" name="form.widgets.copy_of_berufsmaturitat__swiss_matura_etc">
+    </span>
+</div>
+<!-- End upload field NOT required -->
+
 	<div class="formControls"><input id="form-buttons-submit"
 			name="form.buttons.submit"
 			class="submit-widget button-field"

@@ -109,6 +109,28 @@ describe('Easy form', function() {
 		});
 	});
 
+  // File upload required
+	describe('Upload field', function() {
+		it('File upload should display field error if selection is empty', function(done) {
+			efv.onSubmit($.Event('submit')).always(function() {
+				// validation method was called
+				expect($node.find('#formfield-form-widgets-passport_photograph')).toContain('.error');
+				done();
+			});
+		});
+	});
+
+	// File upload required
+	describe('Upload field', function() {
+		it('File upload should NOT display field error if selection is empty', function(done) {
+			efv.onSubmit($.Event('submit')).always(function() {
+				// validation method was called
+				expect($node.find('#formfield-form-widgets-copy_of_berufsmaturitat__swiss_matura_etc')).not.toContain('.error');
+				done();
+			});
+		});
+	});
+
 
 	describe('checkbox', function() {
 		it('Should display field error if AGBs are not selected', function(done) {
