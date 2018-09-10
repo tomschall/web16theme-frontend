@@ -93,3 +93,39 @@
 		padding-bottom: 30px;
 	}
 }
+
+/* POC Image Gallery */
+ul.slick-dots {
+	text-align: center;
+}
+ul.slick-dots li:before {
+	content: '' !important;
+}
+ul.slick-dots li {
+	display: inline-block;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+ul.slick-dots .slick-active button {
+	background: #fde70e;
+	color: inherit;
+}
+
+.slider-nav-thumbnails button.image_gallery__arrow {
+	top: 36% !important;
+	outline: none;
+}
+.slick-slider ul.slick-dots button {
+	height: 30px;
+	width: 30px;
+	line-height: 26px;
+	margin: 0;
+	padding: 0 25px 27px 20px;
+}
+.slick-slide {
+	outline: none;
+}
+.slick-slide img {
+	outline: none;
+	cursor: grab;
+}
