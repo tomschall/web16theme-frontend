@@ -20,9 +20,12 @@ var data = _.merge(defaultData, {
 			{
 				title: 'Kontakt',
 				contacts: [{
+					img: {
+						src: '/assets/media/img/portrait_foto/foto_1.png',
+						alt: 'Portrait Prof. Dr. Hans Muster'
+					},
 					name: 'Laura Polexe',
-					title: 'Sekretariat',
-					url: 'http://localhost:8180/Plone/de/personen/laura-polexe',
+					url: '#',
 					telephone: '044 444 44 44',
 					telephone_addon: 'Direkt',
 					telephone_2: '052 256 56 67',
@@ -41,9 +44,13 @@ var data = _.merge(defaultData, {
 			{
 				title: 'Sekretariat',
 				contacts: [{
-					name: 'Laura Polexe',
+					img: {
+						src: '/assets/media/img/portrait_foto/foto_1.png',
+						alt: 'Portrait Prof. Dr. Hans Muster'
+					},
+					name: 'Prof. Dr. Hans Muster',
 					title: 'Sekretariat',
-					url: 'http://localhost:8180/Plone/de/personen/laura-polexe',
+					url: '#',
 					telephone: '044 444 44 44',
 					jobDescr: null,
 					location: 'sdfsds',
