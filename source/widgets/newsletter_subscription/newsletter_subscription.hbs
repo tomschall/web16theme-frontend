@@ -1,11 +1,72 @@
-<div class="widg_newsletter_subscription" data-init="newsletter_subscription">
-	<form data-validate="true" data-request-url="{{requestURL}}" data-newsletter_subscription="form">
-		<span class="ns__label">{{formLabel}}:</span>
-    <div class="ArchetypesStringWidget field ns__field">
-      <input type="email" id="ns__email" data-rule-required="true" data-msg-required="{{msg.required}}" data-rule-email="true" data-msg-email="{{msg.email}}" data-newsletter_subscription="mailInput"/>
-      <label class="formQuestion" for="ns__email">{{fieldLabel}}</label>
-      <div class="fieldErrorBox"></div>
+<div class="widg_newsletter_subscription">
+   {{#if cr_action}}
+   <form class="form" id="#crform" method="POST" action={{cr_action}} data-newsletter_subscription="newsletter_subscription">
+    <div class="field has-radio">
+    {{#each cr_fields}}
+      {{#if checkbox }}
+        <span class="option">
+          <label class="itemname">
+            <input id="{{this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" >
+            <span class="label" for={{id}}>{{this.value}}</span>
+          </label>
+        </span>
+      {{/if}}
+      {{#if radio }}
+        <span class="option">
+          <label class="itemname">
+            <input id="{{this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" >
+            <span class="label" for={{id}}>{{this.value}}</span>
+          </label>
+        </span>
+      {{/if}}
+      {{/each}}
     </div>
-		<button type="submit">{{buttonLabel}}</button>
-	</form>
+
+    <div class="field">
+      <div id="3017126" rel="email" class="cr_ipe_item ui-sortable musthave" style="margin-bottom:px;">
+        <label for="text3017126" class="itemname">E-Mail*</label>
+        <input id="text3017126" name="email" value="" type="email" style="width:100%;" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <button type="submit">{{buttonLabel}}</button>
+    </div>
+   </form>
+
+   {{else}}
+   <form id="#crform" method="POST" action={{cr_action}} data-newsletter_subscription="newsletter_subscription">
+    <div class="field has-radio">
+    {{#each cr_fields}}
+      {{#if checkbox }}
+        <span class="option">
+          <label class="itemname">
+            <input id="{{this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" >
+            <span class="label" for={{id}}>{{this.value}}</span>
+          </label>
+        </span>
+      {{/if}}
+      {{#if radio }}
+        <span class="option">
+          <label class="itemname">
+            <input id="{{this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" >
+            <span class="label" for={{id}}>{{this.value}}</span>
+          </label>
+        </span>
+      {{/if}}
+      {{/each}}
+    </div>
+
+    <div class="field">
+      <div id="3017126" rel="email" class="cr_ipe_item ui-sortable musthave" style="margin-bottom:px;">
+        <label for="text3017126" class="itemname">E-Mail*</label>
+        <input id="text3017126" name="email" value="" type="email" style="width:100%;" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <button type="submit">{{buttonLabel}}</button>
+    </div>
+   </form>
+    {{/if}}
 </div>
