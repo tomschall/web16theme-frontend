@@ -333,7 +333,7 @@
 
 			var fields = [],
 				validators = $form.find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"],' +
-						' input[type="password"], input[type="file"], textarea').map(function() {
+						' input[type="password"], textarea').map(function() {
 					var $el = $(this),
 						fieldName = $el.attr('name');
 					if (fields.indexOf(fieldName) >= 0) {

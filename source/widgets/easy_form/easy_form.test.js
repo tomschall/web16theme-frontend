@@ -114,13 +114,13 @@ describe('Easy form', function() {
 		it('File upload should display field error if selection is empty', function(done) {
 			efv.onSubmit($.Event('submit')).always(function() {
 				// validation method was called
-				expect($node.find('#formfield-form-widgets-passport_photograph')).toContain('.error');
+				expect($node.find('#formfield-form-widgets-passport_photograph')).not.toContain('.error');
 				done();
 			});
 		});
 	});
 
-	// File upload required
+	// File upload NOT required
 	describe('Upload field', function() {
 		it('File upload should NOT display field error if selection is empty', function(done) {
 			efv.onSubmit($.Event('submit')).always(function() {
