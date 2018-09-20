@@ -4,7 +4,7 @@
 @import "../../../node_modules/susy/sass/susy";
 @import "../../../node_modules/slick-carousel/slick/slick.scss";
 @import "../../../node_modules/select2/src/scss/core";
-@import "../../../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar";
+@import url(../../../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css);
 
 @import "../.tmp/colors";
 @import "globals/variables";
@@ -20,7 +20,7 @@
 
 
 // Reset / normalize styles
-@import "../../../node_modules/normalize.css/normalize";
+@import url(../../../node_modules/normalize.css/normalize.css);
 
 
 
