@@ -35,7 +35,7 @@ module.exports = exports = {
 		"no-extend-native": ERROR,
 		"no-extra-bind": WARN,
 		"no-floating-decimal": WARN, // TODO: fix code and enable rule
-		"no-implicit-coercion": [ WARN, {
+		"no-implicit-coercion": [ ERROR, {
 			"boolean": true,
 			"number": true,
 			"string": true
@@ -82,7 +82,7 @@ module.exports = exports = {
 		// Edit 2018-08-09: Enabling this rule uncovers this insane pattern https://toddmotto.com/what-function-window-document-undefined-iife-really-means/#what-about-undefined
 		// I need more research to understand the semantics and think of a convenient fix. We leave this for the end.
 
-		"no-shadow": WARN,
+		"no-shadow": ERROR,
 		"no-undef-init": OFF,
 		"no-undef": ERROR,
 		"no-undefined": OFF,
