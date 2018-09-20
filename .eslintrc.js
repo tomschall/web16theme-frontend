@@ -108,7 +108,7 @@ module.exports = exports = {
 		"max-len": [ WARN, 180 ],
 		"max-nested-callbacks": [ WARN, 8 ],
 		"max-params": [ WARN, 8 ],
-		"new-cap": WARN,
+		"new-cap": [ERROR, { "capIsNewExceptions": ["Event"] }],
 		"new-parens": WARN,
 		"no-array-constructor": WARN,
 		"no-bitwise": OFF,
