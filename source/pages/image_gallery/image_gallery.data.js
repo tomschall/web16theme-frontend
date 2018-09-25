@@ -6,7 +6,7 @@ var _ = require('lodash'),
 
 var data = _.merge(defaultData, {
 		meta: {
-			title: 'Image Gallery'
+			title: 'Image Gallery Standard'
 		},
 		title: 'Image Gallery',
 		leadText: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
@@ -66,25 +66,25 @@ var data = _.merge(defaultData, {
 			},
 			requireNew('../../widgets/hero/hero.data.js')),
 			subnav: _.assign(requireNew('../../widgets/subnav/subnav.data.js'), {
-				title: 'Weiterbildung',
-				subtitle: 'Fachbereich Soziale Arbeit',
+				title: 'Image Gallery Widget',
+				subtitle: 'Example Integration',
 				titleUrl: '#',
 				entries: [
 					{
-						title: 'Inhouse-Schulungen',
-						url: '#'
+						title: 'Image Gallery Numbers',
+						url: './image_gallery_numbers.html'
 					},
 					{
-						title: 'Beirat Weiterbildung',
-						url: '#'
+						title: 'Teaser Image Gallery',
+						url: './image_gallery_teaser.html'
 					},
 					{
-						title: 'Weiterbildungs-Award',
-						url: '#'
+						title: 'Image Gallery Thumbnails',
+						url: './image_gallery_thumbnail.html'
 					},
 					{
-						title: 'Zur Weiterbildungsübersicht',
-						url: '#',
+						title: 'Zur Übersicht',
+						url: 'https://webteam.pages.fhnw.ch/web16theme-frontend/',
 						isBack: true
 					}
 				]
