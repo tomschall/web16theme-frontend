@@ -1,0 +1,135 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content">
+      <h1>{{title}}</h1>
+      <p class="text__lead">
+				{{leadText}}
+      </p>
+			<h2>Image Gallery with Thumbnails (ext. image includes)</h2>
+			<div class="content__element">
+				<div class="widg_image_gallery slider" data-init="gallery_thumb">
+						<div class="image_gallery__slide">
+							<img src="https://webteam.pages.fhnw.ch/bootstrap-styleguide/assets/img/fhnw-slider-3.jpg" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+						<div class="image_gallery__slide">
+							<img src="https://webteam.pages.fhnw.ch/bootstrap-styleguide/assets/img/campus-brugg-windisch.jpg" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+						<div class="image_gallery__slide">
+							<img src="https://webteam.pages.fhnw.ch/bootstrap-styleguide/assets/img/fhnw-slider-2.jpg" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+						<div class="image_gallery__slide">
+							<img src="https://webteam.pages.fhnw.ch/bootstrap-styleguide/assets/img/campusbibliothek-2.jpg" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+						<div class="image_gallery__slide">
+							<img src="https://webteam.pages.fhnw.ch/bootstrap-styleguide/assets/img/campus-brugg-windisch.jpg" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+						<div class="image_gallery__slide">
+							<img src="https://webteam.pages.fhnw.ch/web16theme-frontend/assets/media/img/libraries_overview.png" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+						<div class="image_gallery__slide">
+							<img src="https://webteam.pages.fhnw.ch/web16theme-frontend/assets/media/img/building_brugg.png" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+						<div class="image_gallery__slide">
+							<img src="https://webteam.pages.fhnw.ch/web16theme-frontend/assets/media/img/piano.png" alt="One">
+							<span class="image_gallery__legend">
+								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+							</span>
+						</div>
+				</div>
+
+				<!-- THUMBNAILS -->
+				<div class="slider-nav-thumbnails">
+					<div><img src="https://webteam.pages.fhnw.ch/bootstrap-styleguide/assets/img/fhnw-slider-3.jpg" alt="One" slide="slide_1"></div>
+					<div><img src="https://webteam.pages.fhnw.ch/bootstrap-styleguide/assets/img/campus-brugg-windisch.jpg" alt="One" slide="slide_3"></div>
+					<div><img src="https://webteam.pages.fhnw.ch/bootstrap-styleguide/assets/img/fhnw-slider-2.jpg" alt="One" slide="slide_4"></div>
+					<div><img src="https://webteam.pages.fhnw.ch/bootstrap-styleguide/assets/img/campusbibliothek-2.jpg" alt="One" slide="slide_5"></div>
+					<div><img src="https://webteam.pages.fhnw.ch/bootstrap-styleguide/assets/img/campus-brugg-windisch.jpg" alt="One" slide="slide_6"></div>
+					<div><img src="https://webteam.pages.fhnw.ch/web16theme-frontend/assets/media/img/libraries_overview.png" alt="One" slide="slide_7"></div>
+					<div><img src="https://webteam.pages.fhnw.ch/web16theme-frontend/assets/media/img/building_brugg.png" alt="One" slide="slide_8"></div>
+					<div><img src="https://webteam.pages.fhnw.ch/web16theme-frontend/assets/media/img/piano.png" alt="One" slide="slide_9"></div>
+				</div>
+			</div>
+			<script type="text/javascript">
+				'use strict';
+
+				window.onload = function() {
+					if (window.jQuery) {
+
+						$('.slider').slick({
+						 slidesToShow: 1,
+						 slidesToScroll: 1,
+						 lazyLoad: 'ondemand',
+						 arrows: false,
+						 cssEase: 'ease-in-out',
+						 fade: false,
+						 asNavFor: '.slider-nav-thumbnails'
+						});
+
+						$('.slider-nav-thumbnails').slick({
+						 slidesToShow: 5,
+						 slidesToScroll: 1,
+						 asNavFor: '.slider',
+						 dots: false,
+						 adaptiveHeight: true,
+						 arrows: true,
+						 cssEase: 'ease-in-out',
+						 centerMode: true,
+						 focusOnSelect: true,
+						 nextArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__next">Next</button>',
+						 prevArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__prev">Previous</button>'
+						});
+
+						//remove active class from all thumbnail slides
+						$('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
+
+						//set active class to first thumbnail slides
+						$('.slider-nav-thumbnails .slick-slide').eq(0).addClass('slick-active');
+
+						// On before slide change match active thumbnail to current slide
+						$('.slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+							var mySlideNumber = nextSlide;
+							$('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
+							$('.slider-nav-thumbnails .slick-slide').eq(mySlideNumber).addClass('slick-active');
+						});
+
+						//UPDATED
+
+						$('.slider').on('afterChange', function(event, slick, currentSlide){
+						$('.content').hide();
+						$('.content[data-id=' + (currentSlide + 1) + ']').show();
+
+						});
+					}
+				}
+			</script>
+			<p class="text__lead">
+				{{leadText}}
+			</p>
+    </div>
+		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+	{{/content}}
+{{/extend}}

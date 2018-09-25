@@ -1,0 +1,76 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+    <div class="page_content">
+      <h1>{{title}}</h1>
+      <p class="text__lead">
+				{{leadText}}
+      </p>
+			<h2>Teaser Gallery</h2>
+			<div class="content__element">
+				<div class="widg_image_gallery slider teaser" data-init="gallery_teaser">
+					<div class="widg_teaser wide___third">
+						<div class="widg_teaser__img" style="position: relative; overflow: hidden;">
+							<img src="/assets/media/img/apevent1.png" alt="" style="position: absolute; top: -0.911765px; left: 0px; width: 290px; height: 181px; max-width: none;">
+						</div>
+							<h3 class="widg_teaser__title childless">Bachelor of Arts in Musik</h3>
+							<p>Bei international renommierten Dozierenden eine künstlerische Karriere vorbereiten</p>
+					</div>
+					<div class="widg_teaser wide___third">
+						<div class="widg_teaser__img" style="position: relative; overflow: hidden;">
+							<img src="/assets/media/img/apevent2.png" alt="" style="position: absolute; top: -0.911765px; left: 0px; width: 290px; height: 181px; max-width: none;">
+						</div>
+							<h3 class="widg_teaser__title childless">Bachelor of Arts in Musik und Bewegung</h3>
+							<p>Bei international renommierten Dozierenden eine künstlerische Karriere vorbereiten</p>
+					</div>
+					<div class="widg_teaser wide___third">
+						<div class="widg_teaser__img" style="position: relative; overflow: hidden;">
+							<img src="/assets/media/img/apevent3.png" alt="" style="position: absolute; top: -0.911765px; left: 0px; width: 290px; height: 181px; max-width: none;">
+						</div>
+							<h3 class="widg_teaser__title childless">Master of Arts in Musikpädagogik</h3>
+							<p>Bei international renommierten Dozierenden eine künstlerische Karriere vorbereiten</p>
+					</div>
+					<div class="widg_teaser wide___third">
+						<div class="widg_teaser__img" style="position: relative; overflow: hidden;">
+							<img src="/assets/media/img/bund_logo.png" alt="" style="position: absolute; top: -0.911765px; left: 0px; width: 290px; height: 181px; max-width: none;">
+						</div>
+							<h3 class="widg_teaser__title childless">Master of Arts in Komposition / Musiktheorie</h3>
+							<p>Bei international renommierten Dozierenden eine künstlerische Karriere vorbereiten</p>
+					</div>
+					<div class="widg_teaser wide___third">
+						<div class="widg_teaser__img" style="position: relative; overflow: hidden;">
+							<img src="/assets/media/img/campus_brugg.jpg" alt="" style="position: absolute; top: -0.911765px; left: 0px; width: 290px; height: 181px; max-width: none;">
+						</div>
+							<h3 class="widg_teaser__title childless">Master of Arts in Musikalischer Performance - Instrumental oder vokal</h3>
+							<p>Bei international renommierten Dozierenden eine künstlerische Karriere vorbereiten</p>
+					</div>
+				</div>
+			</div>
+			<script type="text/javascript">
+				'use strict';
+
+				window.onload = function() {
+					if (window.jQuery) {
+						$('.slider').slick({
+						 slidesToShow: 3,
+						 slidesToScroll: 1,
+						 autoplay: true,
+						 dots: false,
+						 adaptiveHeight: true,
+						 arrows: true,
+						 cssEase: 'ease-in',
+						 nextArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__next">Next</button>',
+						 prevArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__prev">Previous</button>'
+						});
+				}
+			}
+			</script>
+			<p class="text__lead">
+				{{leadText}}
+			</p>
+    </div>
+		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+	{{/content}}
+{{/extend}}
