@@ -23,6 +23,12 @@ $sidebarObjectPush: $basicPush * 5;
 		display: none;
 		visibility: hidden;
 
+		&.with_locations {
+			.widg_sidebar__content {
+				margin-top: -885px; /* Assuming .widg_location_slider .location__map { height: 670px }  */
+			}
+		}
+
 		@include mq($to: 'subnav') {
 			display: none;
 		}
