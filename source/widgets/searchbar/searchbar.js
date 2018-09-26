@@ -139,9 +139,9 @@
 
 		this.changeSearchbarStatus(this.options.stateClasses.showLoader);
 
-		$(window).on(this.options.searchEvents.dataLoaded, function(event, data, itemsTotal, unecessary2, category) {
-			if (data) {
-				this.showResults(data, category);
+		$(window).on(this.options.searchEvents.dataLoaded, function(event, loadedData, itemsTotal, unecessary2, category) {
+			if (loadedData) {
+				this.showResults(loadedData, category);
 				if (itemsTotal) {
 					// only add if there are some results
 					this.appendGoToPageBtn();

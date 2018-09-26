@@ -82,9 +82,7 @@
 
 			// "from" cannot be larger than "to"
 			if (breakpointFrom > breakpointTo) {
-				throw new Error('Breakpoint ' + breakpointFrom + ' is larger than ' + breakpointTo + '');
-				// this edit will conflict with the branch 1209-eslint-noimplicitcoercion
-				// the solution is to accept this branch's change and then manually delete the ` + ''` before the `)`
+				throw new Error('Breakpoint ' + breakpointFrom + ' is larger than ' + breakpointTo);
 			}
 
 			// The breakpoint needs to smaller than the "to" (exclusive)
