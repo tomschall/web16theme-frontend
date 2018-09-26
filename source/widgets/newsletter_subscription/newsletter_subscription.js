@@ -57,7 +57,7 @@
  			$(this.options.domSelectors.form).validate({
     		errorElement: 'span',
     		errorClass: 'cr-error',
-    		errorPlacement: function (error, element) {
+    		errorPlacement: function(error, element) {
     			if (element.attr("type") === "email") {
         		error.insertBefore($(element));
         		$(element).toggleClass('error');
