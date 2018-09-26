@@ -20,6 +20,24 @@
 		margin-right: 10px;
 		margin-top: 5px;
 	}
+	/* CLEVERREACH FORMS */
+	#crform .cr-error {
+		color: #df305b;
+	}
+
+	/* Toggle red border if error */
+	#crform .cr-error.error {
+		border: 2px solid #df305b;
+	}
+
+	#crform div[rel~='email'] span.cr-error {
+		display: block;
+		position: absolute;
+		right: 0px;
+		text-align: right;
+		margin-right: 10px;
+		margin-top: 5px;
+	}
 
 }
 
@@ -40,23 +58,4 @@
 	&.ArchetypesStringWidget input {
 		background-color: $colorBg;
 	}
-}
-
-/* CLEVERREACH FORMS */
-#crform .cr-error {
-	color: #df305b;
-}
-
-/* Toggle red border if error */
-#crform .cr-error.error {
-	border: 2px solid #df305b;
-}
-
-#crform div[rel~='email'] span.cr-error {
-	display: block;
-	position: absolute;
-	right: 0px;
-	text-align: right;
-	margin-right: 10px;
-	margin-top: 5px;
 }
