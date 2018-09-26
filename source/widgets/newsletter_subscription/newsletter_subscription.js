@@ -16,8 +16,8 @@
 		},
 		defaults = {
 			domSelectors: {
-				form: '[data-' + name + '="form"]',
-				emailInput: '[data-' + name + '="mailInput"]'
+				form: '[data-' + name + '="newsletter_subscription"]',
+				emailInput: 'email'
 			},
 			stateClasses: {
 				// isActive: 'is_active'
@@ -53,26 +53,18 @@
 	 * @method
 	 * @public
 	 */
-	Widget.prototype.init = function() {
-		this.bindEvents();
-	};
-
-	Widget.prototype.bindEvents = function() {
-		$(this.options.domSelectors.form).on('submit', function(event) {
-			event.preventDefault();
-
-			if (!$(this.options.domSelectors.emailInput).hasClass('error')) {
-				var emailValue = $(this.options.domSelectors.emailInput).val();
-
-				$.ajax({
-					url: $(this.options.domSelectors.form).data('request-url'),
-					data: {
-						email: emailValue
-					}
-				});
-			}
-		}.bind(this));
-	};
+	 Widget.prototype.init = function() {
+ 			$(this.options.domSelectors.form).validate({
+    		errorElement: 'span',
+    		errorClass: 'cr-error',
+    		errorPlacement: function (error, element) {
+    			if (element.attr("type") === "email") {
+        		error.insertBefore($(element));
+        		$(element).toggleClass('error');
+    			}
+				}
+			});
+ 		};
 
 	/**
 	 * Unbind events, remove data, custom teardown
