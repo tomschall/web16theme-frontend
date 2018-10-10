@@ -25,6 +25,13 @@
 			var decodedMail = Base64.decode(encodedMail);
 			$(this).attr('href', 'mailto:' + decodedMail);
 		});
+
+		// see https://gitlab.fhnw.ch/webteam/fhnw.webauftritt/issues/998
+		$('a[onclick*=geomailto]').each(function() {
+			var encodedMail = $(this).attr('onclick').slice(32, -1);
+			var decodedMail = Base64.decode(encodedMail);
+			$(this).attr('onclick', 'window.location.href="mailto:' + decodedMail + '"');
+		});
 	}
 
 	function improveEmailWrapping() {
