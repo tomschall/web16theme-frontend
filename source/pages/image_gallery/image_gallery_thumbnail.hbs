@@ -3,6 +3,93 @@
 		{{> "widgets/hero/hero" widgets.hero}}
 	{{/content}}
 	{{#content "content"}}
+	<style media="screen">
+	/* POC Image Gallery - webteam/fhnw.webauftritt#1232 */
+	ul.slick-dots {
+		text-align: center;
+	}
+	ul.slick-dots li:before {
+		content: '' !important;
+	}
+	ul.slick-dots li {
+		display: inline-block;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	ul.slick-dots button {
+		background: #f7f7f5;
+		color: inherit;
+	}
+	ul.slick-dots .slick-active button {
+		background: #deded9;
+		color: inherit;
+	}
+
+	.slider-nav-thumbnails button.image_gallery__arrow {
+		top: -360%;
+		outline: none;
+	}
+
+	.slick-slider ul.slick-dots button {
+		height: 70px;
+		width: 70px;
+		line-height: 70px;
+		margin: 0;
+		padding: 0 25px 0px 25px;
+	}
+
+	.slick-slide {
+		outline: none;
+	}
+
+	.slick-slide img {
+		outline: none;
+		cursor: grab;
+	}
+
+
+	// POC Image Gallery Variations
+	.slick-slide {
+		float: left;
+		height: 100%;
+		min-height: 1px;
+		display: none;
+		outline: 0;
+	}
+	.slick-slide img {
+		cursor: -webkit-grab;
+		cursor: grab;
+		outline: 0;
+	}
+	.slider-nav-thumbnails button.image_gallery__arrow {
+		top: -300%;
+		outline: 0;
+	}
+	.slider-nav-thumbnails .slick-slide img {
+		border-bottom: 3px solid #fff;
+		display: block;
+		float: left;
+		margin: 5px;
+		opacity: .7;
+	}
+	.slider-nav-thumbnails .slick-slide.slick-current.slick-center img {
+		border-bottom: 2px solid #000;
+		padding-bottom: 5px;
+		opacity: 1;
+	}
+	.slider-nav-thumbnails .slick-slide {
+			margin: 5px;
+	}
+
+	// Teaser Slider
+	.widg_image_gallery.slider.teaser.slick-initialized.slick-slider .slick-slide {
+			margin: 10px;
+	}
+	.widg_image_gallery.slider.teaser .image_gallery__arrow {
+		top: 25%;
+	}
+
+	</style>
     <div class="page_content">
       <h1>{{title}}</h1>
       <p class="text__lead">
