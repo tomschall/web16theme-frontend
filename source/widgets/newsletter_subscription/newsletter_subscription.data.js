@@ -6,6 +6,7 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
+			cr_title: 'Newsletter Anmeldung',
 			formLabel: 'Für den Newsletter der Musikhochschulen anmelden',
 			buttonLabel: 'Anmelden',
 			fieldLabel: 'E-Mail-Adresse',

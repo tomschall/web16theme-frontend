@@ -1,72 +1,69 @@
+{{#if cr_title}}
+  <h2>{{cr_title}}</h2>
+{{/if}}
 <div class="widg_newsletter_subscription">
    {{#if cr_action}}
    <form class="form" id="#crform" method="POST" action={{cr_action}} data-newsletter_subscription="newsletter_subscription">
-    <div class="field has-radio">
     {{#each cr_fields}}
-      {{#if checkbox }}
-        <span class="option">
-          <label class="itemname">
-            <input id="{{this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" >
-            <span class="label" for={{id}}>{{this.value}}</span>
-          </label>
-        </span>
-      {{/if}}
-      {{#if radio }}
-        <span class="option">
-          <label class="itemname">
-            <input id="{{this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" >
-            <span class="label" for={{id}}>{{this.value}}</span>
-          </label>
-        </span>
-      {{/if}}
-      {{/each}}
-    </div>
+    {{#if this.button }}
+        <div class="field">
+          <button type="submit">{{../buttonLabel}}</button>
+        </div>
+    {{/if}}
 
+    {{#if this.email }}
     <div class="field">
-      <div id="3017126" rel="email" class="cr_ipe_item ui-sortable musthave" style="margin-bottom:px;">
-        <label for="text3017126" class="itemname">E-Mail*</label>
-        <input id="text3017126" name="email" value="" type="email" style="width:100%;" required />
+      <div id="{{this.id}}" rel="{{this.rel}}">
+        <label for="{{this.id}}" class="itemname">{{this.label}}</label>
+        {{#each this.inputs }}
+        <input id="{{../this.id}}" name="{{this.name}}" value="{{this.value}}" type="email" required />
+        {{/each}}
       </div>
     </div>
+    {{/if}}
 
-    <div class="field">
-      <button type="submit">{{buttonLabel}}</button>
-    </div>
-   </form>
-
-   {{else}}
-   <form id="#crform" method="POST" action={{cr_action}} data-newsletter_subscription="newsletter_subscription">
+    {{#if this.checkbox }}
     <div class="field has-radio">
-    {{#each cr_fields}}
-      {{#if checkbox }}
-        <span class="option">
-          <label class="itemname">
-            <input id="{{this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" >
-            <span class="label" for={{id}}>{{this.value}}</span>
-          </label>
+      <label for="{{this.id}}" class="itemname">{{this.label}}</label>
+        {{#each this.inputs }}
+         <span class="option">
+         <label class="itemname">
+              <input id="{{../this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" >
+              <span class="label" for={{../this.id}}>{{this.value}}</span>
+        </label>
         </span>
-      {{/if}}
-      {{#if radio }}
-        <span class="option">
-          <label class="itemname">
-            <input id="{{this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" >
-            <span class="label" for={{id}}>{{this.value}}</span>
-          </label>
-        </span>
-      {{/if}}
       {{/each}}
     </div>
+    {{/if}}
 
+
+    {{#if this.radio }}
+    <div class="field has-radio">
+      <label for="this.id" class="itemname">{{this.label}}</label>
+        {{#each this.inputs }}
+         <span class="option">
+         <label class="itemname">
+              <input id="{{../this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" >
+              <span class="label" for={{../this.id}}>{{this.value}}</span>
+        </label>
+        </span>
+        {{/each}}
+    </div>
+    {{/if}}
+
+
+    {{#if this.text }}
     <div class="field">
-      <div id="3017126" rel="email" class="cr_ipe_item ui-sortable musthave" style="margin-bottom:px;">
-        <label for="text3017126" class="itemname">E-Mail*</label>
-        <input id="text3017126" name="email" value="" type="email" style="width:100%;" required />
+      <div id="{{this.id}}" rel="{{this.rel}}">
+      <label for="{{this.id}}" class="itemname">{{this.label}}</label>
+      {{#each this.inputs }}
+        <input id="{{../this.id}}" name="{{this.name}}" value="{{this.value}}" type="{{this.type}}" style="width:100%;"/>
+      {{/each}}
       </div>
     </div>
-
-    <div class="field">
-      <button type="submit">{{buttonLabel}}</button>
-    </div>
+    {{/if}}
+    {{/each}}
    </form>
     {{/if}}
 </div>
+
