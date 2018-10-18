@@ -62,7 +62,7 @@
 
 	/* Transparent place holder for when the main content is shorter than the sidebar */
 	function insertMinHeightLock() {
-		var with_locations_class = $('#locations').length > 0 ? ' with_locations' : '';
+		var with_locations_class = $('.widg_location_slider').length > 0 ? ' with_locations' : '';
 		$widg_sidebar.clone().addClass('min_height_lock' + with_locations_class).insertAfter($widg_sidebar);
 	}
 
