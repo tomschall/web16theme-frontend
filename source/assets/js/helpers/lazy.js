@@ -39,30 +39,11 @@
 
 		} else {
 
-			var JavaScript = {
-				load: function (src, callback) {
-					var script = document.createElement('script'), loaded;
-					console.log(script);
-					script.setAttribute('src', src);
-					if (callback) {
-						script.onreadystatechange = script.onload = function () {
-							if (!loaded) {
-								callback();
-							}
-							loaded = true;
-						};
-					}
-					document.getElementsByTagName('head')[0].appendChild(script);
+			window.bLazy = new Blazy({
+				container: '.container',
+				success: function (element) {
+					console.log("Element loaded: ", element.nodeName);
 				}
-			};
-
-			JavaScript.load("https://tomschall.github.io/blazy.js", function () {
-				window.bLazy = new Blazy({
-					container: '.container',
-					success: function (element) {
-						console.log("Element loaded: ", element.nodeName);
-					}
-				});
 			});
 
 		}
