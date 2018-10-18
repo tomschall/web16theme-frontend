@@ -6,19 +6,18 @@
  *
  */
 
-;(function (window, document, undefined) {
+;(function(window, document, undefined) {
 
-	document.addEventListener('DOMContentLoaded', function () {
+	document.addEventListener('DOMContentLoaded', function() {
 
 		var lazyScripts = [].slice.call(document.querySelectorAll('script.b-lazy'));
-
 		console.log('lazyScripts', lazyScripts);
 
 		if ('IntersectionObserver' in window) {
 
-			var lazyScriptObserver = new IntersectionObserver(function (entries) {
+			var lazyScriptObserver = new IntersectionObserver(function(entries) {
 				console.log('entries:', entries);
-				entries.forEach(function (entry) {
+				entries.forEach(function(entry) {
 					if (entry.isIntersecting) {
 						var lazyScript = entry.target;
 						console.log('lazyScript: ', lazyScript);
@@ -33,16 +32,16 @@
 				});
 			});
 
-			lazyScripts.forEach(function (lazyScript) {
+			lazyScripts.forEach(function(lazyScript) {
 				lazyScriptObserver.observe(lazyScript);
 			});
 
 		} else {
 
-			window.bLazy = new Blazy({
+			window.bLazy = new window.Blazy({
 				container: '.container',
-				success: function (element) {
-					console.log("Element loaded: ", element.nodeName);
+				success: function(element) {
+					console.log('Element loaded: ', element.nodeName);
 				}
 			});
 
