@@ -1,7 +1,7 @@
-{{#if cr_title}}
-  <h2>{{cr_title}}</h2>
-{{/if}}
 <div class="widg_newsletter_subscription">
+  {{#if cr_title}}
+    <h2>{{cr_title}}</h2>
+  {{/if}}
    {{#if cr_action}}
    <form class="form" id="#crform" method="POST" action={{cr_action}} data-newsletter_subscription="newsletter_subscription">
     {{#each cr_fields}}
@@ -66,4 +66,3 @@
    </form>
     {{/if}}
 </div>
-
