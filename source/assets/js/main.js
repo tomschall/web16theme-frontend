@@ -20,6 +20,7 @@
  * @requires ../../../node_modules/jquery-deparam/jquery-deparam.js
  * @requires ../../../node_modules/picturefill/dist/picturefill.js
  * @requires ../../../node_modules/js-base64/base64.js
+ * @requires ../../../node_modules/blazy/blazy.js
 
  * @requires ../.tmp/templates.js
 
