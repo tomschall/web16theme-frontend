@@ -257,10 +257,11 @@ $infoPadding: 34px;
 }
 
 .b-lazy {
-	display:inline-block;
-	position:relative;
-	left:0;
-	top:0;
-	height:100%;
-	width:100%;
+	display: inline-block;
+	position: relative;
+	left: 0;
+	top: 0;
+	height: 1px;
+	width: 1px;
+  	background: transparent;
 }
