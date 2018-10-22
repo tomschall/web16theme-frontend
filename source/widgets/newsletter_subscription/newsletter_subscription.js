@@ -57,12 +57,13 @@
 		$(this.options.domSelectors.form).validate({
 			errorElement: 'span',
 			errorClass: 'cr-error',
+			debug: true,
+			rules : {
+				'269778[]': { required: true, minlength: 1 }
+			},
 			errorPlacement: function(error, element) {
-				if (element.attr("type") === "radio") {
-					error.insertBefore($(element).parents('.labtitle'));
-				}
 				if (element.attr("type") === "checkbox") {
-					error.insertBefore($(element).parents('.labtitle'));
+					error.insertBefore($(element).parent('.labtitle'));
 				}
 				if (element.attr("type") === "email") {
 					error.insertBefore($(element));
