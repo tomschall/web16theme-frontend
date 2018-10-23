@@ -3,6 +3,8 @@
 	/* CLEVERREACH FORMS */
 	.cr-error {
 		color: #df305b;
+		font-size: 12px;
+		font-weight: 400;
 	}
 
 	/* Toggle red border if error */
@@ -10,25 +12,13 @@
 		border: 2px solid #df305b;
 	}
 
-	& div[rel~='email'] span.cr-error {
-		display: block;
-		position: absolute;
-		right: 0px;
-		text-align: right;
-		margin-right: 10px;
-		margin-top: 5px;
-	}
-	/* CLEVERREACH FORMS */
-	#crform .cr-error {
-		color: #df305b;
-	}
-
 	/* Toggle red border if error */
 	#crform .cr-error.error {
 		border: 2px solid #df305b;
 	}
 
-	#crform div[rel~='email'] span.cr-error {
+	#crform div[rel~='email'] span.cr-error,
+	#crform div[rel~='text'] span.cr-error {
 		display: block;
 		position: absolute;
 		right: 0px;

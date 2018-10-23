@@ -54,17 +54,27 @@
 	 * @public
 	 */
 	 Widget.prototype.init = function() {
- 			$(this.options.domSelectors.form).validate({
-    		errorElement: 'span',
-    		errorClass: 'cr-error',
-    		errorPlacement: function(error, element) {
-    			if (element.attr("type") === "email") {
-        		error.insertBefore($(element));
-        		$(element).toggleClass('error');
-    			}
+		$(this.options.domSelectors.form).validate({
+			errorElement: 'span',
+			errorClass: 'cr-error',
+			errorPlacement: function(error, element) {
+				if (element.attr("type") === "checkbox") {
+					error.insertBefore($(element));
 				}
-			});
- 		};
+				if (element.attr("type") === "text") {
+					error.insertBefore($(element));
+				}
+				if (element.attr("type") === "radio") {
+					error.insertBefore($(element));
+				}
+				if (element.attr("type") === "email") {
+					error.insertBefore($(element));
+					//$(element).css('border', '2px solid #df305b');
+					$(element).toggleClass('error');
+				}
+			}
+		});
+	};
 
 	/**
 	 * Unbind events, remove data, custom teardown

@@ -3,7 +3,7 @@
     <h2>{{cr_title}}</h2>
   {{/if}}
    {{#if cr_action}}
-   <form class="form" id="#crform" method="POST" action={{cr_action}} data-newsletter_subscription="newsletter_subscription">
+   <form class="form" id="crform" method="POST" action={{cr_action}} data-newsletter_subscription="newsletter_subscription">
     {{#each cr_fields}}
     {{#if this.button }}
         <div class="field">
@@ -24,11 +24,11 @@
 
     {{#if this.checkbox }}
     <div class="field has-radio">
-      <label for="{{this.id}}" class="itemname">{{this.label}}</label>
+        <label for="{{this.id}}" class="itemname">{{this.label}}</label>
         {{#each this.inputs }}
          <span class="option">
          <label class="itemname">
-              <input id="{{../this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" >
+              <input id="{{../this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" {{#if ../this.required}} required {{/if}}>
               <span class="label" for={{../this.id}}>{{this.value}}</span>
         </label>
         </span>
@@ -43,7 +43,7 @@
         {{#each this.inputs }}
          <span class="option">
          <label class="itemname">
-              <input id="{{../this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" >
+              <input id="{{../this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" {{#if ../this.required}} required {{/if}}>
               <span class="label" for={{../this.id}}>{{this.value}}</span>
         </label>
         </span>
@@ -57,7 +57,7 @@
       <div id="{{this.id}}" rel="{{this.rel}}">
       <label for="{{this.id}}" class="itemname">{{this.label}}</label>
       {{#each this.inputs }}
-        <input id="{{../this.id}}" name="{{this.name}}" value="{{this.value}}" type="{{this.type}}" style="width:100%;"/>
+        <input id="{{../this.id}}" name="{{this.name}}" value="{{this.value}}" type="{{this.type}}" {{#if ../this.required}} required {{/if}}>
       {{/each}}
       </div>
     </div>
