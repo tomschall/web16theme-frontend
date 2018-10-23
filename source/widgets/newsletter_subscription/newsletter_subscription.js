@@ -63,13 +63,13 @@
 				}
 				if (element.attr("type") === "text") {
 					error.insertBefore($(element));
+					$(element).toggleClass('error');
 				}
 				if (element.attr("type") === "radio") {
 					error.insertBefore($(element));
 				}
 				if (element.attr("type") === "email") {
 					error.insertBefore($(element));
-					//$(element).css('border', '2px solid #df305b');
 					$(element).toggleClass('error');
 				}
 			}
