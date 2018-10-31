@@ -2,6 +2,9 @@
  * Standard Image Gallery
  */
 .widg_image_gallery {
+	.slick-slider .slick-track {
+		margin: 0 auto;
+	}
 	.slick-slide {
 		outline: none;
 	}
@@ -84,6 +87,10 @@
 }
 
 @include mq($to: small) {
+  .widg_image_gallery_thumbs {
+		display: none;
+	}
+
 	.image_gallery__dots {
 		top: 97%
 	}
