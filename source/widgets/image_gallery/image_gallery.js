@@ -66,13 +66,15 @@
 			return obj;
 		}
 
+		// Count all slider images
 		function countThumbs() {
 			var totalImages = $('.widg_image_gallery_thumbs img').size();
 			if (totalImages <= 5) {
 				var setSlideToShow = totalImages;
 				console.log('setSlideToShow ' + setSlideToShow);
 			} else {
-				setSlideToShow = 5;
+				setSlideToShow = 5 + 1;
+				console.log('setSlideToShow ' + setSlideToShow);
 			}
 			return setSlideToShow;
 		}
@@ -81,11 +83,12 @@
 		var galleryThumbnailSettings = {
 			asNavFor: '.slider-remote',
 			arrows: false, // must always be false
-			slidesToShow: countThumbs(),
+			slidesToShow: countThumbs() - 1, // must always be one digit below
 			slidesToScroll: countThumbs(),
 			centerMode: false,
 			focusOnSelect: true,
 			centerPadding: '250px',
+			accessibility: false
 		};
 
 		// Responsive settings
