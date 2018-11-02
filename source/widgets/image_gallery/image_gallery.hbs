@@ -5,20 +5,22 @@
 	{{#if description}}
 		<p>{{description}}</p>
 	{{/if}}
-	<div class="image_gallery__slider slider-remote" data-image_gallery="slider">
+	<div class="image_gallery__slider slider-remote {{#unless legend_active}}no-legend{{/unless}}" data-image_gallery="slider">
 		{{#each slides}}
 			<div class="image_gallery__slide">
 				<img src="{{img.src}}" alt="{{img.alt}}"/>
 			</div>
 		{{/each}}
 	</div>
+	{{#if legend_active}}
 	<div class="image_gallery__legend slider-remote" data-image_gallery="legend">
 		{{#each slides}}
 			<span>{{legend}}</span>
 		{{/each}}
 	</div>
+	{{/if}}
 	{{#if thumbnails_active}}
-		<div class="widg_image_gallery_thumbs slider-remote" data-image_gallery="thumbs">
+		<div class="image_gallery__thumbs slider-remote" data-image_gallery="thumbs">
 			{{#each thumbs}}
 				<img src="{{this.src}}" alt="{{this.alt}}" />
 			{{/each}}

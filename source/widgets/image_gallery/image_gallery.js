@@ -66,17 +66,18 @@
 			return obj;
 		}
 
-		// Count all slider images
+		// Thumbnail navigation control - Relevant for slider with less than 5 images
 		function countThumbs() {
-			var totalImages = $('.widg_image_gallery_thumbs img').size();
-			if (totalImages <= 5) {
-				var setSlideToShow = totalImages;
-				console.log('setSlideToShow ' + setSlideToShow);
-			} else {
-				setSlideToShow = 5 + 1;
-				console.log('setSlideToShow ' + setSlideToShow);
-			}
-			return setSlideToShow;
+				var totalImages = $('.image_gallery__thumbs img').size();
+				console.log(totalImages);
+
+				if (totalImages <= 5) {
+					var setSlideToShow = totalImages;
+				} else {
+					setSlideToShow = 5 + 1;
+				}
+
+				return setSlideToShow;
 		}
 
 		// Thumbnail settings
@@ -88,7 +89,6 @@
 			centerMode: false,
 			focusOnSelect: true,
 			centerPadding: '250px',
-			accessibility: false
 		};
 
 		// Responsive settings
@@ -117,6 +117,7 @@
 			adaptiveHeight: true,
 			infinite: true,
 			dots: false,
+			accessibility: false,
 			mobileFirst: true,
 			dotsClass: 'image_gallery__dots not-default',
 			nextArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__next">Next</button>',

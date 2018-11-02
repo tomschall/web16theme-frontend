@@ -2,9 +2,15 @@
  * Standard Image Gallery
  */
 .widg_image_gallery {
+
+	.no-legend {
+		margin-bottom: 37px;
+	}
+
 	.slick-slider .slick-track {
 		margin: 0 auto;
 	}
+
 	.slick-slide {
 		outline: none;
 	}
@@ -81,13 +87,13 @@
 .image_gallery__legend {
 	font-size: 1.083333rem;
 	margin: 20px 0 15px 0;
-
-	//display: unset;
 	color: $colorTextGrey;
 }
 
+
+
 @include mq($to: small) {
-  .widg_image_gallery_thumbs {
+  .image_gallery__thumbs {
 		display: none;
 	}
 
@@ -102,7 +108,9 @@
 /* END STANDARD IMAGE GALLERY */
 
 /* START IMAGE GALLERY THUMBNAILS */
-.widg_image_gallery_thumbs {
+.image_gallery__thumbs {
+
+	margin-bottom: $basicPush * 5;
 
 	.slick-slide img {
 		border-bottom: 3px solid #fff;
@@ -113,7 +121,7 @@
 		margin: 5px;
 		outline: none;
 		cursor: pointer;
-		opacity: .7;
+		opacity: .6;
 	}
 
 	img.slick-center,
