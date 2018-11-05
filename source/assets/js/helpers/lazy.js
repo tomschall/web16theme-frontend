@@ -10,24 +10,52 @@
 
 	document.addEventListener('DOMContentLoaded', function() {
 
+		var mapsKeyUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBcDRcaQnzeQSjZQgeZSfhxrqwPXWKsYUY&libraries=places';
+
+		function loadScript(src, callback) {
+
+			var s,
+				r,
+				t;
+			r = false;
+			s = document.createElement('script');
+			s.type = 'text/javascript';
+			s.src = src;
+			s.onload = s.onreadystatechange = function() {
+				// console.log( this.readyState ); //uncomment this line to see which ready states are called.
+				if (!r && (!this.readyState || this.readyState === 'complete')) {
+					r = true;
+					callback();
+				}
+			};
+			t = document.getElementsByTagName('script')[0];
+			t.parentNode.insertBefore(s, t);
+
+		}
+
+		function initLocationSlider() {
+
+			var instances = Object.keys(window.estatico.widgets.location_slider.instances);
+			instances.forEach(function(inst) {
+				window.estatico.widgets.location_slider.instances[inst].init();
+			});
+		}
+
 		var lazyScripts = [].slice.call(document.querySelectorAll('script.b-lazy'));
-		console.log('lazyScripts', lazyScripts);
 
 		if ('IntersectionObserver' in window) {
 
 			var lazyScriptObserver = new IntersectionObserver(function(entries) {
-				console.log('entries:', entries);
 				entries.forEach(function(entry) {
 					if (entry.isIntersecting) {
 						var lazyScript = entry.target;
-						console.log('lazyScript: ', lazyScript);
-						lazyScript.src = lazyScript.dataset.src;
-						lazyScript.classList.remove('b-lazy');
-						lazyScript.removeAttribute('data-src');
-						lazyScript.removeAttribute('class');
-						lazyScript.removeAttribute('async');
-						lazyScriptObserver.unobserve(lazyScript);
-						console.log('successfully loaded script');
+						loadScript(mapsKeyUrl, function() {
+							initLocationSlider();
+							var el = document.querySelector('.b-lazy');
+							el.parentNode.removeChild(el);
+							lazyScriptObserver.unobserve(lazyScript);
+							console.log('Intersection Observer - Lazy Loading');
+						});
 					}
 				});
 			});
@@ -40,13 +68,16 @@
 
 			window.bLazy = new window.Blazy({
 				container: '.container',
-				success: function(element) {
-					console.log('Element loaded: ', element.nodeName);
+				success: function() {
+					loadScript(mapsKeyUrl, function() {
+						var el = document.querySelector('.b-lazy');
+						el.parentNode.removeChild(el);
+						initLocationSlider();
+						console.log('Fallback: B-Lazy');
+					});
 				}
 			});
-
 		}
-
 	});
 
 })(window, document);
