@@ -10,6 +10,8 @@
 
 	document.addEventListener('DOMContentLoaded', function() {
 
+		var mapsKeyUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBcDRcaQnzeQSjZQgeZSfhxrqwPXWKsYUY&libraries=places';
+
 		function loadScript(src, callback) {
 
 			var s,
@@ -47,11 +49,12 @@
 				entries.forEach(function(entry) {
 					if (entry.isIntersecting) {
 						var lazyScript = entry.target;
-						loadScript(lazyScript.dataset.src, function() {
+						loadScript(mapsKeyUrl, function() {
 							initLocationSlider();
 							var el = document.querySelector('.b-lazy');
 							el.parentNode.removeChild(el);
 							lazyScriptObserver.unobserve(lazyScript);
+							console.log('Intersection Observer - Lazy Loading');
 						});
 					}
 				});
@@ -66,15 +69,15 @@
 			window.bLazy = new window.Blazy({
 				container: '.container',
 				success: function() {
-					// console.log('Element loaded: ', element.nodeName);
-					setTimeout(function() {
+					loadScript(mapsKeyUrl, function() {
+						var el = document.querySelector('.b-lazy');
+						el.parentNode.removeChild(el);
 						initLocationSlider();
-					}, 500);
+						console.log('Fallback: B-Lazy');
+					});
 				}
 			});
-
 		}
-
 	});
 
 })(window, document);
