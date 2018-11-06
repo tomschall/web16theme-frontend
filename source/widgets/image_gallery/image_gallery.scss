@@ -90,8 +90,7 @@
 	color: $colorTextGrey;
 }
 
-
-
+/* Hide thumbs for devices under 768px */
 @include mq($to: small) {
   .image_gallery__thumbs {
 		display: none;

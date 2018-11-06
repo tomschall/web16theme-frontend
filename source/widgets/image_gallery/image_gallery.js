@@ -1,6 +1,5 @@
 /*!
  * Image Gallery
- *
  * @author Unic AG
  * @copyright Unic AG
  *
@@ -9,24 +8,23 @@
 
 ;(function($, undefined) {
 	'use strict';
-
 	var name = 'image_gallery',
-		events = {
-			// eventname: 'eventname.estatico.' + name
-		},
-		defaults = {
-			domSelectors: {
-				slider: '[data-' + name + '="slider"]',
-				thumbnails: '[data-' + name + '="thumbs"]',
-				legend: '[data-' + name + '="legend"]'
-			},
-			stateClasses: {
-				// isActive: 'is_active'
-			}
-		},
-		data = {
-			// items: ["Item 1", "Item 2"]
-		};
+	events = {
+	// eventname: 'eventname.estatico.' + name
+	},
+	defaults = {
+		domSelectors: {
+		slider: '[data-' + name + '="slider"]',
+		thumbnails: '[data-' + name + '="thumbs"]',
+		legend: '[data-' + name + '="legend"]'
+	},
+	stateClasses: {
+		// isActive: 'is_active'
+		}
+	},
+	data = {
+		// items: ["Item 1", "Item 2"]
+	};
 
 	/**
 	 * Create an instance of the widget
@@ -68,16 +66,16 @@
 
 		// Thumbnail navigation control - Relevant for slider with less than 5 images
 		function countThumbs() {
-				var totalImages = $('.image_gallery__thumbs img').size();
-				console.log(totalImages);
+			var setSlideToShow = 0;
+			var totalImages = $('.image_gallery__thumbs img').size();
 
-				if (totalImages <= 5) {
-					var setSlideToShow = totalImages;
-				} else {
-					setSlideToShow = 5 + 1;
-				}
+			if (totalImages <= 5) {
+				setSlideToShow = totalImages;
+			} else {
+				setSlideToShow = 5 + 1;
+			}
 
-				return setSlideToShow;
+			return setSlideToShow;
 		}
 
 		// Thumbnail settings
