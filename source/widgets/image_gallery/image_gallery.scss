@@ -51,6 +51,12 @@
 	&.image_gallery__prev {
 		transform: rotate(180deg) translateY(50%);
 	}
+
+	@include mq($to: small) {
+		width: 35px;
+		height: 35px;
+		text-indent: -10000px;
+	}
 }
 
 .image_gallery__dots {

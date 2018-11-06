@@ -95,7 +95,7 @@
 			arrows: false,
 			autoplay: false,
 			responsive: [{
-				breakpoint: 767,
+				breakpoint: 359,
 				settings: {
 					arrows: true,
 				}
