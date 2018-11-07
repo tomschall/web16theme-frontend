@@ -1,6 +1,5 @@
 /*!
  * Image Gallery
- *
  * @author Unic AG
  * @copyright Unic AG
  *
@@ -9,24 +8,23 @@
 
 ;(function($, undefined) {
 	'use strict';
-
 	var name = 'image_gallery',
-		events = {
-			// eventname: 'eventname.estatico.' + name
-		},
-		defaults = {
-			domSelectors: {
-				slider: '[data-' + name + '="slider"]',
-				thumbnails: '[data-' + name + '="thumbs"]',
-				legend: '[data-' + name + '="legend"]'
-			},
-			stateClasses: {
-				// isActive: 'is_active'
-			}
-		},
-		data = {
-			// items: ["Item 1", "Item 2"]
-		};
+	events = {
+	// eventname: 'eventname.estatico.' + name
+	},
+	defaults = {
+		domSelectors: {
+		slider: '[data-' + name + '="slider"]',
+		thumbnails: '[data-' + name + '="thumbs"]',
+		legend: '[data-' + name + '="legend"]'
+	},
+	stateClasses: {
+		// isActive: 'is_active'
+		}
+	},
+	data = {
+		// items: ["Item 1", "Item 2"]
+	};
 
 	/**
 	 * Create an instance of the widget
@@ -66,83 +64,103 @@
 			return obj;
 		}
 
-		// Settings for thumbnails
-		var galleryConfigThumbnails = {
+		// Thumbnail navigation control - Relevant for slider with less than 5 images
+		function countThumbs() {
+			var setSlideToShow = 0;
+			var totalImages = $('.image_gallery__thumbs img').size();
+
+			if (totalImages <= 5) {
+				setSlideToShow = totalImages;
+			} else {
+				setSlideToShow = 5 + 1;
+			}
+
+			return setSlideToShow;
+		}
+
+		// Thumbnail settings
+		var galleryThumbnailSettings = {
 			asNavFor: '.slider-remote',
 			arrows: false, // must always be false
-			slidesToShow: 5,
-			slidesToScroll: 5,
+			slidesToShow: countThumbs() - 1, // must always be one digit below
+			slidesToScroll: countThumbs(),
 			centerMode: false,
 			focusOnSelect: true,
-			centerPadding: '100px',
+			centerPadding: '0px',
+			infinite: true,
+			swipeToSlide: true, // important to prevent jumbs in active thumbnails
 		};
 
+		// Responsive settings
+		var galleryMobileSettings = {
+			asNavFor: '.slider-remote',
+			arrows: false,
+			autoplay: false,
+			responsive: [{
+				breakpoint: 359,
+				settings: {
+					arrows: true,
+				}
+			}]
+		};
+
+		// Image caption settings
 		var galleryWithLegends = {
 			adaptiveHeight: true,
 			arrows: false,
 			asNavFor: '.slider-remote',
 		};
 
-		// Settings for standard gallery with thumbnails
-		var galleryConfigStandard = {
-			adaptiveHeight: false,
-			arrows: true,
-		};
-
-		// Settings for standard gallery with thumbnails
-		var galleryConfigStandardWithThumbnails = {
-			arrows: true,
-			asNavFor: '.slider-remote',
-		};
-
 		// Gallery default settings
 		var galleryDefaults = {
-			//appendArrows: $('.image_gallery__slider'),
+			arrows: false,
 			adaptiveHeight: true,
 			infinite: true,
 			dots: false,
+			accessibility: false,
 			mobileFirst: true,
 			dotsClass: 'image_gallery__dots not-default',
 			nextArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__next">Next</button>',
 			prevArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__prev">Previous</button>',
 		};
 
-		// Standard Gallery
+		// Loading plain gallery w/o thumbnails
 		if (this.options.domSelectors.slider.length) {
 			if ($('.slider-remote').length) {
-				var galleryWithThumbnials = mergeSettings(galleryConfigStandardWithThumbnails, galleryDefaults);
-				//console.log('GALLERY OPTIONS with THUMBNAILS');
-				//console.log(galleryWithThumbnials);
+				var galleryThumbSettings = mergeSettings(galleryMobileSettings, galleryDefaults);
+				// console.log('GALLERY OPTIONS with THUMBNAILS -> SELECTOR SLIDER');
+				// console.log(galleryThumbSettings);
 
 				$(this.options.domSelectors.slider).slick(
-					galleryWithThumbnials
+					galleryThumbSettings
 				);
 			} else {
-				var galleryStandardOptions = mergeSettings(galleryConfigStandard, galleryDefaults);
-				//console.log('GALLERY STANDARD OPTIONS');
-				//console.log(galleryStandardOptions);
+				// console.log('GALLERY STANDARD OPTIONS -> SELECTOR SLIDER');
+				// console.log(galleryDefaults);
 
 				$(this.options.domSelectors.slider).slick(
-					galleryStandardOptions
+					galleryDefaults
 				);
 			}
 		}
 
-		// Legends as remote for main slider
+		// Image caption slider
 		if (this.options.domSelectors.legend.length) {
+			// console.log('GALLERY IMAGE CAPTION SETTINGS -> SELECTOR LEGEND');
+			// console.log(galleryWithLegends);
+
 			$(this.options.domSelectors.legend).slick(
 				galleryWithLegends
 			);
 		}
 
-		// Add thumbnails to gallery
+		// Thumbnail slider
 		if (this.options.domSelectors.thumbnails.length) {
-			var galleryThumbnailOptions = mergeSettings(galleryConfigThumbnails, galleryDefaults);
-			//console.log('THUMBNAILS CONFIGURATION');
-			//console.log(galleryThumbnailOptions);
+			// console.log('THUMBNAILS CONFIGURATION -> SELECTOR THUMBNAILS');
+			// console.log(galleryThumbnailSettings);
 
 			$(this.options.domSelectors.thumbnails).slick(
-				galleryThumbnailOptions
+				galleryThumbnailSettings
 			);
 		}
 	};
