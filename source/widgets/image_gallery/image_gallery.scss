@@ -53,8 +53,8 @@
 	}
 
 	@include mq($to: small) {
-		width: 35px;
-		height: 35px;
+		width: 40px;
+		height: 40px;
 		text-indent: -10000px;
 	}
 }
@@ -130,7 +130,7 @@
 	}
 
 	img.slick-center,
-	img.slick-current {
+	img.slick-current.slick-active {
 		border-bottom: 2px solid #000;
 		padding-bottom: 5px;
 		opacity: 1;

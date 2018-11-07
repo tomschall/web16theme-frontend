@@ -86,7 +86,9 @@
 			slidesToScroll: countThumbs(),
 			centerMode: false,
 			focusOnSelect: true,
-			centerPadding: '250px',
+			centerPadding: '0px',
+			infinite: true,
+			swipeToSlide: true, // important to prevent jumbs in active thumbnails
 		};
 
 		// Responsive settings
