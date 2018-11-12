@@ -16,9 +16,7 @@
 		},
 		defaults = {
 			domSelectors: {
-				slider: '[data-' + name + '="slider"]',
-				thumbnails: '[data-' + name + '="thumbs"]',
-				legend: '[data-' + name + '="legend"]'
+				slider: '[data-' + name + '="slider"]'
 			},
 			stateClasses: {
 				// isActive: 'is_active'
@@ -55,96 +53,12 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-
-		// Merge gallery settings -> see options below
-		function mergeSettings(obj, src) {
-			for (var key in src) {
-				if (src.hasOwnProperty(key)) {
-					obj[key] = src[key];
-				}
-			}
-			return obj;
-		}
-
-		// Settings for thumbnails
-		var galleryConfigThumbnails = {
-			asNavFor: '.slider-remote',
-			arrows: false, // must always be false
-			slidesToShow: 5,
-			slidesToScroll: 5,
-			centerMode: false,
-			focusOnSelect: true,
-			centerPadding: '100px',
-		};
-
-		var galleryWithLegends = {
-			adaptiveHeight: true,
-			arrows: false,
-			asNavFor: '.slider-remote',
-		};
-
-		// Settings for standard gallery with thumbnails
-		var galleryConfigStandard = {
-			adaptiveHeight: false,
-			arrows: true,
-		};
-
-		// Settings for standard gallery with thumbnails
-		var galleryConfigStandardWithThumbnails = {
-			arrows: true,
-			asNavFor: '.slider-remote',
-		};
-
-		// Gallery default settings
-		var galleryDefaults = {
-			//appendArrows: $('.image_gallery__slider'),
-			adaptiveHeight: true,
-			infinite: true,
+		$(this.options.domSelectors.slider).slick({
 			dots: false,
-			mobileFirst: true,
 			dotsClass: 'image_gallery__dots not-default',
 			nextArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__next">Next</button>',
-			prevArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__prev">Previous</button>',
-		};
-
-		// Standard Gallery
-		if (this.options.domSelectors.slider.length) {
-			if ($('.slider-remote').length) {
-				var galleryWithThumbnials = mergeSettings(galleryConfigStandardWithThumbnails, galleryDefaults);
-				//console.log('GALLERY OPTIONS with THUMBNAILS');
-				//console.log(galleryWithThumbnials);
-
-				$(this.options.domSelectors.slider).slick(
-					galleryWithThumbnials
-				);
-			} else {
-				var galleryStandardOptions = mergeSettings(galleryConfigStandard, galleryDefaults);
-				//console.log('GALLERY STANDARD OPTIONS');
-				//console.log(galleryStandardOptions);
-
-				$(this.options.domSelectors.slider).slick(
-					galleryStandardOptions
-				);
-			}
-		}
-
-		// Legends as remote for main slider
-		if (this.options.domSelectors.legend.length) {
-			$(this.options.domSelectors.legend).slick(
-				galleryWithLegends
-			);
-		}
-
-		// Add thumbnails to gallery
-		if (this.options.domSelectors.thumbnails.length) {
-			var galleryThumbnailOptions = mergeSettings(galleryConfigThumbnails, galleryDefaults);
-			//console.log('THUMBNAILS CONFIGURATION');
-			//console.log(galleryThumbnailOptions);
-
-			$(this.options.domSelectors.thumbnails).slick(
-				galleryThumbnailOptions
-			);
-		}
+			prevArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__prev">Previous</button>'
+		});
 	};
 
 	/**
