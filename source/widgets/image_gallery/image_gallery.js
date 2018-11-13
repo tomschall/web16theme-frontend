@@ -54,116 +54,81 @@
 	 */
 	Widget.prototype.init = function() {
 
-		// Merge gallery settings -> see options below
-		function mergeSettings(obj, src) {
-			for (var key in src) {
-				if (src.hasOwnProperty(key)) {
-					obj[key] = src[key];
-				}
+	// Thumbnail navigation control - Relevant for slider with less than 5 images
+	function countThumbs() {
+		var setSlideToShow = 0;
+		var totalImages = $('.image_gallery__thumbs img').size();
+
+		if (totalImages <= 5) {
+			setSlideToShow = totalImages;
+		} else {
+			setSlideToShow = 5 + 1;
+		}
+
+		return setSlideToShow;
+	}
+
+	/**
+	 * Slick Slider Option Collection
+	 */
+	var galleryDefaults = {
+		arrows: false,
+		adaptiveHeight: true,
+		infinite: true,
+		dots: false,
+		accessibility: false,
+		mobileFirst: true,
+		dotsClass: 'image_gallery__dots not-default',
+		nextArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__next">Next</button>',
+		prevArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__prev">Previous</button>',
+		autoplay: false,
+		responsive: [{
+			breakpoint: 359,
+			settings: {
+				arrows: true,
 			}
-			return obj;
-		}
-
-		// Thumbnail navigation control - Relevant for slider with less than 5 images
-		function countThumbs() {
-			var setSlideToShow = 0;
-			var totalImages = $('.image_gallery__thumbs img').size();
-
-			if (totalImages <= 5) {
-				setSlideToShow = totalImages;
-			} else {
-				setSlideToShow = 5 + 1;
-			}
-
-			return setSlideToShow;
-		}
-
-		// Thumbnail settings
-		var galleryThumbnailSettings = {
-			asNavFor: '.slider-remote',
-			arrows: false, // must always be false
-			slidesToShow: countThumbs() - 1, // must always be one digit below
-			slidesToScroll: countThumbs(),
-			centerMode: false,
-			focusOnSelect: true,
-			centerPadding: '0px',
-			infinite: true,
-			swipeToSlide: true, // important to prevent jumbs in active thumbnails
-		};
-
-		// Responsive settings
-		var galleryMobileSettings = {
-			asNavFor: '.slider-remote',
-			arrows: false,
-			autoplay: false,
-			responsive: [{
-				breakpoint: 359,
-				settings: {
-					arrows: true,
-				}
-			}]
-		};
-
-		// Image caption settings
-		var galleryWithLegends = {
-			adaptiveHeight: true,
-			arrows: false,
-			asNavFor: '.slider-remote',
-		};
-
-		// Gallery default settings
-		var galleryDefaults = {
-			arrows: false,
-			adaptiveHeight: true,
-			infinite: true,
-			dots: false,
-			accessibility: false,
-			mobileFirst: true,
-			dotsClass: 'image_gallery__dots not-default',
-			nextArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__next">Next</button>',
-			prevArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__prev">Previous</button>',
-		};
-
-		// Loading plain gallery w/o thumbnails
-		if (this.options.domSelectors.slider.length) {
-			if ($('.slider-remote').length) {
-				var galleryThumbSettings = mergeSettings(galleryMobileSettings, galleryDefaults);
-				// console.log('GALLERY OPTIONS with THUMBNAILS -> SELECTOR SLIDER');
-				// console.log(galleryThumbSettings);
-
-				$(this.options.domSelectors.slider).slick(
-					galleryThumbSettings
-				);
-			} else {
-				// console.log('GALLERY STANDARD OPTIONS -> SELECTOR SLIDER');
-				// console.log(galleryDefaults);
-
-				$(this.options.domSelectors.slider).slick(
-					galleryDefaults
-				);
-			}
-		}
-
-		// Image caption slider
-		if (this.options.domSelectors.legend.length) {
-			// console.log('GALLERY IMAGE CAPTION SETTINGS -> SELECTOR LEGEND');
-			// console.log(galleryWithLegends);
-
-			$(this.options.domSelectors.legend).slick(
-				galleryWithLegends
-			);
-		}
-
-		// Thumbnail slider
-		if (this.options.domSelectors.thumbnails.length) {
-			// console.log('THUMBNAILS CONFIGURATION -> SELECTOR THUMBNAILS');
-			// console.log(galleryThumbnailSettings);
-
-			$(this.options.domSelectors.thumbnails).slick(
-				galleryThumbnailSettings
-			);
-		}
+		}],
+		slidesToShow: countThumbs() - 1, // must always be one digit below
+		slidesToScroll: countThumbs(),
+		centerMode: false,
+		focusOnSelect: true,
+		centerPadding: '0px',
+		swipeToSlide: true
 	};
+
+
+	// Loading plain gallery w/o thumbnails
+	// If image caption or image thumbs is activated
+	if ($('.image_gallery__legend').length || $('.image_gallery__thumbs').length) {
+		var setGalleryOptions = _.pick(galleryDefaults, ['adaptiveHeight','infinite', 'dots', 'accessibility', 'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
+		var gallerDefaultOptions = _.assign(setGalleryOptions, { asNavFor: '.slider-remote'});
+
+		$(this.options.domSelectors.slider).slick(gallerDefaultOptions);
+
+	} else {
+		// Default settings without legends and thumbnails
+		// IMPORTANT -> works only without asNavFor -> .slider-remote !!!
+		var setGalleryDefaults = _.pick(galleryDefaults, ['adaptiveHeight','infinite', 'dots', 'accessibility', 'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
+
+		$(this.options.domSelectors.slider).slick(setGalleryDefaults);
+	}
+
+	// Image legend slider settings
+	if ($('.image_gallery__legend').length) {
+		var setLegendOptions = _.pick(galleryDefaults, ['adaptiveHeight']);
+		var galleryLegendOptions = _.assign(setLegendOptions, { asNavFor: '.slider-remote'}, { arrows: false });
+
+		$(this.options.domSelectors.legend).slick(galleryLegendOptions);
+	}
+
+	// Thumbnail slider settings
+	if ($('.image_gallery__thumbs').length) {
+		var setThumbsOptions = _.pick(galleryDefaults, ['centerPadding', 'focusOnSelect', 'centerMode', 'arrows', 'swipeToSlide', 'adaptiveHeight','infinite', 'dots', 'accessibility', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
+		var galleryThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.slider-remote'}, { slidesToScroll: countThumbs() }, {slidesToShow: countThumbs() -1 });
+
+		$(this.options.domSelectors.thumbnails).slick(galleryThumbsOptions);
+	}
+};
 
 	/**
 	 * Unbind events, remove data, custom teardown
