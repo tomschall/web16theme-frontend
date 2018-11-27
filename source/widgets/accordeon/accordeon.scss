@@ -124,7 +124,6 @@ $colorAvailabilityRed: #f05f1b;
 		}
 
 		.button__date {
-			max-height: 33px;
 			width: 125px;
 			line-height: 1.4;
 
@@ -137,7 +136,7 @@ $colorAvailabilityRed: #f05f1b;
 		.button__availability {
 			text-align: right;
 			position: absolute;
-			top: 50%;
+			top: 30px;
 			transform: translateY(-50%);
 			left: 15px;
 			width: 18px;
@@ -282,6 +281,10 @@ div.widg_accordeon__button {
 
 	line-height: 0;
 	position: relative;
+
+	& a.button.button__apply.mini_button  {
+		top: 30px;
+	}
 
 	> input[type="radio"] {
 		display: block;
