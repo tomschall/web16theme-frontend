@@ -34,6 +34,13 @@
 				}
 			}
 		});
+
+		/* Linklist mailto wrap */
+		if ($('.widg_extendedlinks__entry a[href^="mailto:"]').length) {
+			$('.widg_extendedlinks__entry a[href^="mailto:"] span').contents().unwrap();
+			$('.widg_extendedlinks__entry a[href^="mailto:"]').wrapInner('<h3 class="childless"></h3>');
+		}
+
 	});
 
 	/* Removing empty p-Tags */
