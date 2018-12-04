@@ -35,14 +35,16 @@
 	}
 
 	function improveEmailWrapping() {
-		$('a[href^=mailto]').each(function() {
-			$(this).html('<span>' + $(this).text()
-					.replace('@', '</span>@<span>')
-					.replace('.', '</span>.<span>')
-					.replace('_', '</span>_<span>')
-					.replace('-', '</span>-<span>') +
-					'</span>');
-		});
+		if(!($('.widg_extendedlinks').length || $('form.easyformForm').length)) { // Temp. hook -> exclude extended links and easyform
+			$('a[href^=mailto]').each(function() {
+				$(this).html('<span>' + $(this).text()
+						.replace('@', '</span>@<span>')
+						.replace('.', '</span>.<span>')
+						.replace('_', '</span>_<span>')
+						.replace('-', '</span>-<span>') +
+						'</span>');
+			});
+		}
 	}
 
 	$(document).ready(function() {
