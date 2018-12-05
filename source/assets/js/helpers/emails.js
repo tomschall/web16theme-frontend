@@ -49,7 +49,11 @@
 
 	$(document).ready(function() {
 		obfuscateEmails();
-		improveEmailWrapping();
+
+		// Exclude linklist
+		if(!($('.widg_extendedlinks'))) {
+			improveEmailWrapping();
+		}
 	});
 
 })(jQuery, Base64);
