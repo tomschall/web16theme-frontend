@@ -13,48 +13,45 @@
 	**/
 	function obfuscateEmails() {
 		// Decode the geomailaddress span to extract the mail
-		if(!($('.widg_extendedlinks').length || $('form.easyformForm').length)) {
-			$('span.geomailaddress').each(function() {
-				var encodedMail = $(this).text();
-				var decodedMail = Base64.decode(encodedMail);
-				$(this).replaceWith(decodedMail);
-			});
-		}
+		$('span.geomailaddress').each(function() {
+			var encodedMail = $(this).text();
+			var decodedMail = Base64.decode(encodedMail);
+			$(this).replaceWith(decodedMail);
+		});
+
 		// Decode the geomailto href attribute to extract the mail
-		if(!($('.widg_extendedlinks').length || $('form.easyformForm').length)) {
-			$('a[href^=geomailto]').each(function() {
-				$(this).attr('class', 'link-mailto');
-				var encodedMail = $(this).attr('href').replace('geomailto:', '');
-				var decodedMail = Base64.decode(encodedMail);
-				$(this).attr('href', 'mailto:' + decodedMail);
-			});
-		}
+		$('a[href^=geomailto]').each(function() {
+			$(this).attr('class', 'link-mailto');
+			var encodedMail = $(this).attr('href').replace('geomailto:', '');
+			var decodedMail = Base64.decode(encodedMail);
+			$(this).attr('href', 'mailto:' + decodedMail);
+		});
+
 		// see https://gitlab.fhnw.ch/webteam/fhnw.webauftritt/issues/998
-		if(!($('.widg_extendedlinks').length || $('form.easyformForm').length)) {
-			$('a[onclick*=geomailto]').each(function() {
-				var encodedMail = $(this).attr('onclick').slice(32, -1);
-				var decodedMail = Base64.decode(encodedMail);
-				$(this).attr('onclick', 'window.location.href="mailto:' + decodedMail + '"');
-			});
-		}
+		$('a[onclick*=geomailto]').each(function() {
+			var encodedMail = $(this).attr('onclick').slice(32, -1);
+			var decodedMail = Base64.decode(encodedMail);
+			$(this).attr('onclick', 'window.location.href="mailto:' + decodedMail + '"');
+		});
 	}
 
 	function improveEmailWrapping() {
-		if(!($('.widg_extendedlinks').length || $('form.easyformForm').length)) { // Temp. hook -> exclude extended links and easyform
-			$('a[href^=mailto]').each(function() {
-				$(this).html('<span>' + $(this).text()
-						.replace('@', '</span>@<span>')
-						.replace('.', '</span>.<span>')
-						.replace('_', '</span>_<span>')
-						.replace('-', '</span>-<span>') +
-						'</span>');
-			});
-		}
+		$('a[href^=mailto]').each(function() {
+			$(this).html('<span>' + $(this).text()
+					.replace('@', '</span>@<span>')
+					.replace('.', '</span>.<span>')
+					.replace('_', '</span>_<span>')
+					.replace('-', '</span>-<span>') +
+					'</span>');
+		});
 	}
 
 	$(document).ready(function() {
-		obfuscateEmails();
-		improveEmailWrapping();
+		// Exclude email protection for extended linklist and easyform
+		if(!($('.widg_extendedlinks').length || $('form.easyformForm').length)) {
+			obfuscateEmails();
+			improveEmailWrapping();
+		}
 	});
 
 })(jQuery, Base64);
