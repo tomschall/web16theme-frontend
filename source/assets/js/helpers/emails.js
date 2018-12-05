@@ -14,6 +14,7 @@
 	function obfuscateEmails() {
 		// Decode the geomailaddress span to extract the mail
 		if(!($('.widg_extendedlinks').length || $('form.easyformForm').length)) {
+			console.log('Not extended list!');
 			$('span.geomailaddress').each(function() {
 				var encodedMail = $(this).text();
 				var decodedMail = Base64.decode(encodedMail);
@@ -23,6 +24,7 @@
 
 		// Decode the geomailto href attribute to extract the mail
 		if(!($('.widg_extendedlinks').length || $('form.easyformForm').length)) {
+			console.log('Not extended list!');
 			$('a[href^=geomailto]').each(function() {
 				$(this).attr('class', 'link-mailto');
 				var encodedMail = $(this).attr('href').replace('geomailto:', '');
@@ -33,6 +35,7 @@
 
 		// see https://gitlab.fhnw.ch/webteam/fhnw.webauftritt/issues/998
 		if(!($('.widg_extendedlinks').length || $('form.easyformForm').length)) {
+			console.log('Not extended list!');
 			$('a[onclick*=geomailto]').each(function() {
 				var encodedMail = $(this).attr('onclick').slice(32, -1);
 				var decodedMail = Base64.decode(encodedMail);
@@ -43,6 +46,7 @@
 
 	function improveEmailWrapping() {
 		if(!($('.widg_extendedlinks').length || $('form.easyformForm').length)) {
+			console.log('Not extended list!');
 			$('a[href^=mailto]').each(function() {
 				$(this).html('<span>' + $(this).text()
 						.replace('@', '</span>@<span>')
@@ -57,7 +61,7 @@
 	$(document).ready(function() {
 		obfuscateEmails();
 		improveEmailWrapping();
-
+		console.log('Email protection invoked!');
 	});
 
 })(jQuery, Base64);
