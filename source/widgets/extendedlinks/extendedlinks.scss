@@ -23,8 +23,7 @@
 
 	.widg_extendedlinks__entry:not(.has_description) {
 		h3.childless {
-			margin-top: $basicPush * 1.6;
-			padding-bottom: $basicPush * 1.6;
+			padding-bottom: $basicPush * 1.8;
 
 			@include mq($to: small) {
 				padding-top: 10px;
