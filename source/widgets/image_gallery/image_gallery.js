@@ -16,8 +16,11 @@
 		},
 		defaults = {
 			domSelectors: {
-				slider: '[data-' + name + '="slider"]'
+				slider: '[data-' + name + '="slider"]',
+				thumbnails: '[data-' + name + '="thumbs"]',
+				legend: '[data-' + name + '="legend"]'
 			},
+
 			stateClasses: {
 				// isActive: 'is_active'
 			}
