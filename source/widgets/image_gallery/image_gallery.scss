@@ -1,4 +1,13 @@
 .widg_image_gallery {
+	.no-legend {
+		margin-bottom: 37px;
+	}
+	.slick-slider .slick-track {
+		margin: 0 auto;
+	}
+	.slick-slide {
+		outline: none;
+	}
 	.image_gallery__slide img {
 		width: 100%;
 	}
