@@ -23,8 +23,7 @@
 
 	.widg_extendedlinks__entry:not(.has_description) {
 		h3.childless {
-			margin-top: $basicPush * 1.6;
-			padding-bottom: $basicPush * 1.6;
+			padding-bottom: $basicPush * 1.8;
 
 			@include mq($to: small) {
 				padding-top: 10px;
@@ -61,6 +60,14 @@
 			font-weight: 100;
 			color: #4c4c4c;
 		}
+
+		& span:first-child {
+			font-size: 18px;
+			font-weight: 700;
+			padding-bottom: 22px;
+			color: black;
+		}
+
 
 		@include mq($from: medium) {
 			span,

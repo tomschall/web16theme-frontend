@@ -1,5 +1,6 @@
 /*!
  * Image Gallery
+ *
  * @author Unic AG
  * @copyright Unic AG
  *
@@ -8,23 +9,22 @@
 
 ;(function($, undefined) {
 	'use strict';
+
 	var name = 'image_gallery',
-	events = {
-	// eventname: 'eventname.estatico.' + name
-	},
-	defaults = {
-		domSelectors: {
-		slider: '[data-' + name + '="slider"]',
-		thumbnails: '[data-' + name + '="thumbs"]',
-		legend: '[data-' + name + '="legend"]'
-	},
-	stateClasses: {
-		// isActive: 'is_active'
-		}
-	},
-	data = {
-		// items: ["Item 1", "Item 2"]
-	};
+		events = {
+			// eventname: 'eventname.estatico.' + name
+		},
+		defaults = {
+			domSelectors: {
+				slider: '[data-' + name + '="slider"]'
+			},
+			stateClasses: {
+				// isActive: 'is_active'
+			}
+		},
+		data = {
+			// items: ["Item 1", "Item 2"]
+		};
 
 	/**
 	 * Create an instance of the widget
@@ -53,7 +53,6 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-
 	// Thumbnail navigation control - Relevant for slider with less than 5 images
 	function countThumbs() {
 		var setSlideToShow = 0;

@@ -18,6 +18,8 @@
 			var decodedMail = Base64.decode(encodedMail);
 			$(this).replaceWith(decodedMail);
 		});
+
+
 		// Decode the geomailto href attribute to extract the mail
 		$('a[href^=geomailto]').each(function() {
 			$(this).attr('class', 'link-mailto');
@@ -47,7 +49,11 @@
 
 	$(document).ready(function() {
 		obfuscateEmails();
-		improveEmailWrapping();
+
+		// Exclude linklist
+		if(!($('.widg_extendedlinks'))) {
+			improveEmailWrapping();
+		}
 	});
 
 })(jQuery, Base64);
