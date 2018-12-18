@@ -1,4 +1,5 @@
 .widg_image_gallery {
+
 	.no-legend {
 		margin-bottom: 37px;
 	}
@@ -91,7 +92,10 @@
 
 @include mq($to: small) {
 	.image_gallery__arrow {
-		top: 50%
+		top: 50%;
+		width: 8%;
+		height: 27%;
+    	text-indent: -10000px;
 	}
 	.image_gallery__dots {
 		top: 97%
@@ -100,12 +104,16 @@
 		margin-bottom: calc(320px - 43vw)
 	}
 	.image_gallery__legend {
-		padding-bottom: 30px;
+		padding-bottom: 0;
 	}
 }
 
 /* START IMAGE GALLERY THUMBNAILS */
 .image_gallery__thumbs {
+
+	@include mq($to: small) {
+		display: none;
+	}
 
 	margin-bottom: $basicPush * 5;
 
