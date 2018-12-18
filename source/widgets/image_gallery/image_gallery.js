@@ -85,9 +85,9 @@
 		prevArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__prev">Previous</button>',
 		autoplay: false,
 		responsive: [{
-			breakpoint: 359,
+			breakpoint: 480,
 			settings: {
-				arrows: true,
+				arrows: true
 			}
 		}],
 		slidesToShow: countThumbs() - 1, // must always be one digit below
@@ -102,7 +102,7 @@
 	// Loading plain gallery w/o thumbnails
 	// If image caption or image thumbs is activated
 	if ($('.image_gallery__legend').length || $('.image_gallery__thumbs').length) {
-		var setGalleryOptions = _.pick(galleryDefaults, ['adaptiveHeight','infinite', 'dots', 'accessibility', 'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
+		var setGalleryOptions = _.pick(galleryDefaults, ['adaptiveHeight','infinite', 'arrows','dots', 'accessibility', 'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
 		var gallerDefaultOptions = _.assign(setGalleryOptions, { asNavFor: '.slider-remote'});
 
 		$(this.options.domSelectors.slider).slick(gallerDefaultOptions);
@@ -110,7 +110,7 @@
 	} else {
 		// Default settings without legends and thumbnails
 		// IMPORTANT -> works only without asNavFor -> .slider-remote !!!
-		var setGalleryDefaults = _.pick(galleryDefaults, ['adaptiveHeight','infinite', 'dots', 'accessibility', 'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
+		var setGalleryDefaults = _.pick(galleryDefaults, ['adaptiveHeight','infinite', 'dots', 'arrows', 'accessibility', 'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
 
 		$(this.options.domSelectors.slider).slick(setGalleryDefaults);
 	}
@@ -126,7 +126,7 @@
 	// Thumbnail slider settings
 	if ($('.image_gallery__thumbs').length) {
 		var setThumbsOptions = _.pick(galleryDefaults, ['centerPadding', 'focusOnSelect', 'centerMode', 'arrows', 'swipeToSlide', 'adaptiveHeight','infinite', 'dots', 'accessibility', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
-		var galleryThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.slider-remote'}, { slidesToScroll: countThumbs() }, {slidesToShow: countThumbs() -1 });
+		var galleryThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.slider-remote'}, { slidesToScroll: countThumbs() }, {slidesToShow: countThumbs() -1 }, { arrows: false });
 
 		$(this.options.domSelectors.thumbnails).slick(galleryThumbsOptions);
 	}
