@@ -257,7 +257,7 @@
 	        .leaflet-top,
 	        .leaflet-bottom {
 	            position: absolute;
-	            z-index: 1000;
+	            z-index: 10;
 	            pointer-events: none;
 	        }
 
@@ -692,7 +692,7 @@
 	            position: absolute;
 	            top: 0;
 	            right: 0;
-	            padding: 4px 4px 0 0;
+	            padding: 20px 25px 0 0;
 	            border: none;
 	            text-align: center;
 	            width: 18px;
@@ -861,7 +861,7 @@
 	            options: {
 	                shadowUrl: 'https://www.fhnw.ch/++theme++web16theme/assets/media/img/maps_marker.png',
 	                iconSize: [104, 86],
-	                iconAnchor: [104, 86],
+	                iconAnchor: [60, 86],
 	                popupAnchor: [-400, 200]
 	            }
 	        });
@@ -884,19 +884,34 @@
 	            position: 'topright'
 	        }).addTo(map);
 
+			var mapAdditions = {
+				address: [{
+					title: '<h3>Hochschule für Architektur, Bau und Geomatik FHNW</h3>',
+					name: '<strong>Fachhochschule Nordwestschweiz FHNW</strong>',
+					department: '<p>Hochschule für Architektur, Bau und Geomatik',
+					street: 'Hofackerstrasse 30<br />',
+					zipCity: '4132 Muttenz</p>',
+					route: '<div class=\"location__inferior\"><a href=\"https://www.google.ch/maps/dir//,Hofackerstrasse+30,4132+Muttenz/@47.531359,7.636526,18z\" target=\"_blank\" tabindex=\"0\"><span>Route berechnen</span></a></div>'
+				}]
+			}
+
 	        L.tileLayer('http://86.119.28.228/hot/{z}/{x}/{y}.png', {
 	            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-	                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-	                'Imagery Â© <a href="https://www.mapbox.com/">Mapbox</a>'
-	        }).addTo(map);
+								'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+								'Imagery Â© <a href="https://www.mapbox.com/">Mapbox</a>'
+			}).addTo(map);
+
+			// Add popup custom css class
+			var popupOptions = {
+				className: ' location__address'
+			}
 
 	        L.marker([47.481000, 8.2120], {
 	                icon: fhnwIcon
-	        }).addTo(map)
-	        .bindPopup("<h3>Hochschule für Architektur, Bau und Geomatik FHNW</h3><strong>Fachhochschule Nordwestschweiz FHNW</strong><p>Hochschule für Architektur, Bau und Geomatik<br />" +
-	                "Hofackerstrasse 30<br />4132 Muttenz</p><div class=\"location__inferior\">" +
-	                "<a href=\"https://www.google.ch/maps/dir//,Hofackerstrasse+30,4132+Muttenz/@47.531359,7.636526,18z\" target=\"_blank\" tabindex=\"0\"><span>Route berechnen</span></a></div>")
-	        .openPopup();
+	        })
+			.bindPopup(mapAdditions.address[0].title + mapAdditions.address[0].name + mapAdditions.address[0].department + mapAdditions.address[0].street + mapAdditions.address[0].zipCity + mapAdditions.address[0].route, popupOptions).addTo(map)
+			.openPopup();
+
 	    </script>
 
     </div>
