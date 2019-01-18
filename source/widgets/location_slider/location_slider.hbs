@@ -1,6 +1,5 @@
 <div id="location-map">
-	<script class="b-lazy" data-src="https://tomschall.github.io/empty.js" async></script>
-	<div class="bleed__inner site-has-sidebar">
+    <div class="bleed__inner site-has-sidebar">
 		{{#if locationTitle}}
 			<h2>{{locationTitle}}</h2>{{/if}}
 		{{#if locationDescription}}
@@ -18,17 +17,18 @@
 				<div class="widg_location__nav-bar" data-location_slider="bar"></div>
 			</ul>
 		</nav>
+        <!-- STYLE SWITCHER -->
+        <div id='menu'>
+            <button aria-expanded="false" class="btn-default style_switcher" data-style="street">Street</button>
+            <button aria-expanded="false" class="btn-default style_switcher" data-style="D3map">3D-Map</button>
+        </div>
 		<div class="slider" data-location_slider="slider">
 			{{#if oneMapOnly}}
 				<div class="location__slide">
-					<div class="location__map" data-location_slider="map"></div>
+					<div id="mapbox__map-0" class="location__map" data-coordinates-x="47.5" data-coordinates-y="7.5" data-location_slider="map" data-zoomlevel="9"></div>
 
 					{{#each entries}}
-						{{#if placeID}}
-							<span class="location__marker-temp" data-location_slider="markerData" data-location-title="{{title}}" data-placeId="{{placeID}}"></span>
-						{{else}}
-							<span class="location__marker-temp" data-location_slider="markerData" data-location-title="{{title}}" data-coordinates-x="{{coordinates.x}}" data-coordinates-y="{{coordinates.y}}"></span>
-						{{/if}}
+						<span class="location__marker-temp" data-location_slider="markerData" data-location-title="{{title}}" data-coordinates-x="{{coordinates.x}}" data-coordinates-y="{{coordinates.y}}"></span>
 
 						<div class="location__info" data-location-target="{{title}}">
 							<div class="location__upper">
@@ -67,12 +67,7 @@
 			{{else}}
 				{{#each entries}}
 					<div class="location__slide">
-						{{#if placeID}}
-							<div class="location__map" data-placeId="{{placeID}}" data-location_slider="map" data-zoomlevel="{{zoomLevel}}"></div>
-						{{else}}
-							<div class="location__map" data-coordinates-x="{{coordinates.x}}" data-coordinates-y="{{coordinates.y}}" data-location_slider="map" data-zoomlevel="{{zoomLevel}}"></div>
-						{{/if}}
-
+						<div id="mapbox__map-{{@index}}" class="location__map" data-coordinates-x="{{coordinates.x}}" data-coordinates-y="{{coordinates.y}}" data-location_slider="map" data-zoomlevel="{{zoomLevel}}"></div>
 						<div class="location__info">
 							<div class="location__upper">
 								<h3>{{title}}</h3>

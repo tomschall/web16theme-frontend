@@ -28,7 +28,7 @@ var templateData = {
 					locationPageURL: '/pages/location_brugg/location_brugg.html',
 					routeURL: 'https://maps.google.ch',
 					placeID: 'ChIJt9J5wzMwkEcRgWnc5loV14I',
-					zoomLevel: 17
+					zoomLevel: 16
 				},
 				{
 					type: 'location',
