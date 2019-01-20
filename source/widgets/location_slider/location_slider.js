@@ -223,7 +223,12 @@
 								$('#location__marker-temp-' + idx).slideToggle('slow');
 								$('#location__marker-temp-' + idx).animate({ opacity: 0.9 });
 
-								map.flyTo({center: [Xcoordinates, Ycoordinates]});
+								map.flyTo({
+									center: [Xcoordinates, Ycoordinates],
+									zoom: 18,
+        							bearing: 0,
+									pitch: 60
+								});
     						});
 
 
