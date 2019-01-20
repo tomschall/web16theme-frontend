@@ -7,23 +7,12 @@ $infoPadding: 34px;
 
 	margin-top: $basicPush * 5;
 
-	@include mq($to: 'medium') {
-		display: none;
-	}
+	// @include mq($to: 'medium') {
+	// 	display: none;
+	// }
 
 	&.all-locations {
 		border-top: 1px solid $colorGreyHover;
-	}
-
-	.style_switcher {
-		position: relative;
-		top: 60px;
-		z-index: 10;
-		left: 1rem;
-		height: 38px;
-		line-height: 0;
-		color: #000;
-		background: white;
 	}
 }
 
@@ -57,7 +46,6 @@ $infoPadding: 34px;
 
 		padding-bottom: 4px;
 		position: relative;
-		top: 35px;
 	}
 
 	li {

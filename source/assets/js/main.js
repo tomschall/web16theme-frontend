@@ -20,7 +20,8 @@
  * @requires ../../../node_modules/jquery-deparam/jquery-deparam.js
  * @requires ../../../node_modules/picturefill/dist/picturefill.js
  * @requires ../../../node_modules/js-base64/base64.js
- * @requires ../../../node_modules/blazy/blazy.js
+ * @requires ../../../node_modules/mapbox-gl/dist/mapbox-gl.js
+
 
  * @requires ../.tmp/templates.js
 
@@ -36,7 +37,6 @@
  * @requires helpers/modal.js
  * @requires helpers/env.js
  * @requires helpers/cookiepolicy.js
- * @requires helpers/lazy.js
  *
  * @requires ../../widgets/searchbar/searchbar.js
  * @requires ../../widgets/menubuttons/menubuttons.js
@@ -59,6 +59,7 @@
  * @requires ../../widgets/newsletter_subscription/newsletter_subscription.js
  * @requires ../../widgets/image_gallery/image_gallery.js
  * @requires ../../widgets/in_content_search/in_content_search.js
+
  * //*autoinsertmodule*
  *
  * @requires helpers/init.js

@@ -1,6 +1,6 @@
 #!/bin/sh
-BASE_PATH=src
-#BASE_PATH=..
+# BASE_PATH=src
+BASE_PATH=..
 
 rsync -rva build/assets/ $BASE_PATH/fhnw.web16theme/src/fhnw/web16theme/theme/assets/
 rsync -rva build/pages/ $BASE_PATH/fhnw.web16theme/src/fhnw/web16theme/theme/pages/
@@ -24,14 +24,14 @@ done
 
 
 # commit & push changes
-if [ "$DO_COMMIT" == "yes" ]
-then
-      FRONTEND_REV=`git rev-parse --short HEAD`
-      cd $BASE_PATH/fhnw.contentwidgets
-      git add src/fhnw/contentwidgets/templates/sidebar_news/
-      git commit -am "Frontend build $FRONTEND_REV"
-      git push
-      cd ../../src/fhnw.web16theme
-      git commit -am "Frontend build $FRONTEND_REV"
-      git push
-fi
+# if [ "$DO_COMMIT" == "yes" ]
+# then
+#       FRONTEND_REV=`git rev-parse --short HEAD`
+#       cd $BASE_PATH/fhnw.contentwidgets
+#       git add src/fhnw/contentwidgets/templates/sidebar_news/
+#       git commit -am "Frontend build $FRONTEND_REV"
+#       git push
+#       cd ../../src/fhnw.web16theme
+#       git commit -am "Frontend build $FRONTEND_REV"
+#       git push
+# fi

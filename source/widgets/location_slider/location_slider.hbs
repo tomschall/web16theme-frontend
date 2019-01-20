@@ -17,11 +17,6 @@
 				<div class="widg_location__nav-bar" data-location_slider="bar"></div>
 			</ul>
 		</nav>
-        <!-- STYLE SWITCHER -->
-        <div id='menu'>
-            <button id="street" aria-expanded="false" class="btn-default style_switcher" data-style="street">Street</button>
-            <button id="D3map" aria-expanded="false" class="btn-default style_switcher" data-style="D3map">3D-Map</button>
-        </div>
 		<div class="slider" data-location_slider="slider">
 			{{#if oneMapOnly}}
 				<div class="location__slide">
@@ -30,7 +25,7 @@
 					{{#each entries}}
 						<span class="location__marker-temp" data-location_slider="markerData" data-location-title="{{title}}" data-coordinates-x="{{coordinates.x}}" data-coordinates-y="{{coordinates.y}}"></span>
 
-						<div id="location__marker-temp-{{@index}}" class="location__info" data-location-target="{{title}}">
+						<div class="location__info" data-location-target="{{title}}">
 							<div class="location__upper">
 								<h3>{{title}}</h3>
 								<div class="location__address">

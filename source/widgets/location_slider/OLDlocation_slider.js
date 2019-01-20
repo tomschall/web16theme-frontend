@@ -32,12 +32,12 @@
 				D3map: 'http://147.86.1.60/res/style-cdn_osm-liberty.json'
 			},
 			markerIconProps: {},
-			mapOptionsDefaults: {
+			mapProps: {
 				zoom: 10,
 				container: 'mapbox__map',
 				center: [8.211363, 47.481721], // Default Campus
 				style: 'http://147.86.1.60/res/style-cdn_osm-liberty.json',
-				pitch: 30,
+				pitch: 0,
 				bearing: 0
 			},
 		},
@@ -100,7 +100,6 @@
 
 		 this.renderMaps(this.options.renderMobileView);
 		 this.initSlick();
-		 this._changeMapStyle();
 
 		 //this.resize = _.debounce(this._resize, 50).bind(this);
          //$(window).on('resize', this.resize);
@@ -129,27 +128,29 @@
 			// this.initMapsStatic();
 			this.initSlickNav();
 		} else {
-			if (isOneMapOnly) {
+			if (!mobileView) {
 				// not a mobile resolution - render interactive map as well
-				this.initOneMap();
+				this.initMaps();
 			}
+			this.initMaps();
 		}
 	};
 
 	/**
-	 * initializing the nav to controll slick
+	 * Initialize the slick slider
 	 */
-	Widget.prototype._changeMapStyle = function() {
-		var defaultStyle = this.options.mapStyles.street;
+	Widget.prototype.initSlick = function() {
+		this.$element.find(this.options.domSelectors.slider).on('init', function() {
+			this._setNavActive(0);
+		}.bind(this));
 
-		$('.style_switcher').click(function() {
-			defaultStyle = $(this).attr('data-style');
-			defaultStyle = this.options.mapStyles + defaultStyle;
-			console.log(defaultStyle);
+		this.$element.find(this.options.domSelectors.slider).slick({
+			arrows: false,
+			draggable: false,
+			fade: true,
+			infinite: false
 		});
-		return defaultStyle;
 	};
-
 
 	/**
 	 * initializing the maps
@@ -158,56 +159,37 @@
 	Widget.prototype.initMaps = function() {
 		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
 			var $mapElement = $(element),
-					mapProp = _.assign(this.options.mapProps, {
-							  style: this.options.mapStyles.D3map,
-							  zoom: $mapElement.attr('data-zoomlevel'),
-							  center: [$(element).attr('data-coordinates-x'), $(element).attr('data-coordinates-y')],
-							  container: this.options.mapOptionsDefaults.container + '-' + index,
-							  pitch: this.options.mapOptionsDefaults.pitch,
-							  bearing: this.options.mapOptionsDefaults.bearing
-						      }),
-							  map = new window.mapboxgl.Map(mapProp);
+				mapProp = _.assign(this.options.mapProps, {
+					style: this.options.mapStyles.street,
+					zoom: $mapElement.attr('data-zoomlevel'),
+					center: [$(element).attr('data-coordinates-x'), $(element).attr('data-coordinates-y')],
+					container: this.options.mapProps.container.split('-')[0] + '-' + index
+				}), map = new window.mapboxgl.Map(mapProp);
 
-					this.maps.push(map);
-					data.maps.push(map);
+				// Adding map controls
+				Widget.prototype._addControls(map);
 
-					// Adding map controls
-					this._addControls(map);
-					this._addMarker(element, map);
+				this.maps.push(map);
+				data.maps.push(map);
+
+				Widget.prototype._addMarker(element, map);
 
 		}.bind(this));
 	};
 
-	/**
-	 * initializing the maps
-	 * data-slick-index="0"
-	 */
-	Widget.prototype.initOneMap = function() {
-		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
-			var $mapElement = $(element),
-					mapProp = _.assign(this.options.mapProps, {
-							  style: this.options.mapStyles.D3map,
-							  zoom: $mapElement.attr('data-zoomlevel'),
-							  center: [7.5, 47.5],
-							  container: this.options.mapOptionsDefaults.container + '-' + index, // DIV to placing map
-							  pitch: this.options.mapOptionsDefaults.pitch,
-							  bearing: this.options.mapOptionsDefaults.bearing
-						      }),
-							  map = new window.mapboxgl.Map(mapProp);
-							  console.log('ONE MAP RENDERED');
+	Widget.prototype._addMarkers = function() {
+		$(".location__marker-temp").each(function(map) {
+			var el = document.createElement('div');
+			el.className = 'mapboxgl-marker';
 
-							  // Addi map controls
-						      this._addControls(map);
+			console.log($(this).attr('data-coordinates-x'));
 
-							  // Add all markers
-							  this._addMarkers(map);
-
-							  this.maps.push(map);
-							  data.maps.push(map);
-
-		}.bind(this));
+			// Adjusting marker position
+			new window.mapboxgl.Marker(el, {offset: [-29, -35]})
+			.setLngLat([$(this).attr('data-coordinates-x'), $(this).attr('data-coordinates-y')])
+			.addTo(map);
+		});
 	};
-
 
 	/**
 	* Add marker
@@ -222,86 +204,6 @@
 		new window.mapboxgl.Marker(el, {offset: [-29, -35]})
 		.setLngLat([$(element).attr('data-coordinates-x'), $(element).attr('data-coordinates-y')])
 		.addTo(map);
-	};
-
-	Widget.prototype._addMarkers = function(map) {
-
-		// Find all locations -> template location_slider.hbs
-		$('.location__marker-temp').each(function(idx) {
-				var el = document.createElement('div');
-				el.className = 'mapboxgl-marker';
-
-				console.log($(this).attr('data-coordinates-x') + ' ' + $(this).attr('data-coordinates-y') + ' ' + $(this).attr('data-location-title'));
-
-				// Append marker x y positions and deploy marker
-				var Ycoordinates = $(this).attr('data-coordinates-y');
-				var Xcoordinates = $(this).attr('data-coordinates-x');
-
-				// Marker and location info animation
-				var flytolocation = 'flyto';
-
-				el.addEventListener('click', function() {
-					console.log(this + 'clicked');
-
-					if (flytolocation === 'flyto') {
-						$(el).animate({ opacity: 1 });
-						$('#location__marker-temp-' + idx).slideDown('slow');
-						$('#location__marker-temp-' + idx).animate({ opacity: 0.9 });
-
-						map.flyTo({
-							center: [Xcoordinates, Ycoordinates],
-							zoom: 14,
-							bearing: 3,
-							pitch: 90
-						});
-
-						flytolocation = 'flyback';
-
-					} else {
-						$(el).animate({ opacity: 0.3 });
-						$('#location__marker-temp-' + idx).slideDown('slow');
-						$('#location__marker-temp-' + idx).animate({ opacity: 0 });
-
-						map.flyTo({
-							center: [7.5, 47.5],
-							zoom: 9,
-							bearing: 0,
-							pitch: 0
-						});
-						flytolocation = 'flyto';
-					}
-
-
-					// $('.location__info').each(function() {
-					// 	$(this).hide();
-					// 	$('.mapboxgl-marker').animate({ opacity: 0.3 });
-					// });
-
-				});
-
-				$(el).animate({ opacity: 0.3 });
-
-				// Adjusting marker position and put marker to map
-				new window.mapboxgl.Marker(el, {offset: [-29, -35]})
-				.setLngLat([Xcoordinates, Ycoordinates])
-				.addTo(map);
-			});
-	};
-
-	/**
-	* Initialize the slick slider
-	*/
-	Widget.prototype.initSlick = function() {
-		this.$element.find(this.options.domSelectors.slider).on('init', function() {
-			this._setNavActive(0);
-		}.bind(this));
-
-		this.$element.find(this.options.domSelectors.slider).slick({
-			arrows: false,
-			draggable: false,
-			fade: true,
-			infinite: false
-		});
 	};
 
 	/**
