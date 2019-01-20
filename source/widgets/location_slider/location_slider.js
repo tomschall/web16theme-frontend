@@ -206,19 +206,28 @@
 
 							console.log($(this).attr('data-coordinates-x') + $(this).attr('data-coordinates-y') + $(this).attr('data-location-title'));
 
-							$('.location__marker-temp').each(function() {
-								$(this).hide();
-							});
-
-							el.addEventListener('click', function() {
-								console.log(this + 'clicked');
-								$('.location__marker-temp').toggle();
-								$('#location__marker-temp-' + idx).toggle();
-    						});
-
 							// Append marker x y positions and deploy marker
 							var Ycoordinates = $(this).attr('data-coordinates-y');
 							var Xcoordinates = $(this).attr('data-coordinates-x');
+
+							el.addEventListener('click', function() {
+								console.log(this + 'clicked');
+
+
+								$('.location__info').each(function() {
+									$(this).hide();
+									$('.mapboxgl-marker').animate({ opacity: 0.3 });
+								});
+
+								$(el).animate({ opacity: 1 });
+								$('#location__marker-temp-' + idx).slideToggle('slow');
+								$('#location__marker-temp-' + idx).animate({ opacity: 0.9 });
+
+								map.flyTo({center: [Xcoordinates, Ycoordinates]});
+    						});
+
+
+							$(el).animate({ opacity: 0.3 });
 							// Adjusting marker position }
 							new window.mapboxgl.Marker(el, {offset: [-29, -35]})
 							.setLngLat([Xcoordinates, Ycoordinates])
