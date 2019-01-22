@@ -227,50 +227,51 @@
 	Widget.prototype._addMarkers = function(map) {
 
 		// Find all locations -> template location_slider.hbs
-		$('.location__marker-temp').each(function(idx) {
+		$('.location__info').each(function(idx) {
 				var el = document.createElement('div');
-				el.className = 'mapboxgl-marker';
+				el.className = idx + 'mapboxgl-marker';
 
 				console.log($(this).attr('data-coordinates-x') + ' ' + $(this).attr('data-coordinates-y') + ' ' + $(this).attr('data-location-title'));
 
 				// Append marker x y positions and deploy marker
 				var Ycoordinates = $(this).attr('data-coordinates-y');
 				var Xcoordinates = $(this).attr('data-coordinates-x');
-
-				// Marker and location info animation
 				var flytolocation = 'flyto';
+
 
 				el.addEventListener('click', function() {
 					console.log(this + 'clicked');
 
+					$('.location__info').fadeOut(500);
+					$('.mapboxgl-marker').animate({ opacity: 0.3 });
+
 					if (flytolocation === 'flyto') {
-						$(el).animate({ opacity: 1 });
-						$('#location__marker-temp-' + idx).slideDown('slow');
-						$('#location__marker-temp-' + idx).animate({ opacity: 0.9 });
+						$(el).animate({ opacity: 0.9 }); // Clicked marker
+
+						$('#location__marker-temp-' + idx)
+							.fadeIn(1000)
+							.show();
 
 						map.flyTo({
 							center: [Xcoordinates, Ycoordinates],
 							zoom: 14,
-							bearing: 3,
-							pitch: 90
+							bearing: 0,
+							pitch: 45
 						});
 
 						flytolocation = 'flyback';
 
 					} else {
-						$(el).animate({ opacity: 0.3 });
-						$('#location__marker-temp-' + idx).slideDown('slow');
-						$('#location__marker-temp-' + idx).animate({ opacity: 0 });
-
+						$(this).animate({ opacity: 0.3 });
 						map.flyTo({
 							center: [7.5, 47.5],
 							zoom: 9,
 							bearing: 0,
 							pitch: 0
 						});
+
 						flytolocation = 'flyto';
 					}
-
 
 					// $('.location__info').each(function() {
 					// 	$(this).hide();
@@ -286,6 +287,14 @@
 				.setLngLat([Xcoordinates, Ycoordinates])
 				.addTo(map);
 			});
+
+			$('nav ul li button').click(function() {
+				var navTab = $(this).attr('id');
+				$(this).toggleClass('is_active');
+				console.log(navTab);
+				$('.mapboxgl-canvas-container').find('.' + navTab + 'mapboxgl-marker').trigger('click');
+			});
+
 	};
 
 	/**

@@ -7,13 +7,24 @@ $infoPadding: 34px;
 
 	margin-top: $basicPush * 5;
 
-	// @include mq($to: 'medium') {
-	// 	display: none;
-	// }
+	@include mq($to: 'medium') {
+		//display: none;
+	}
 
 	&.all-locations {
-		border-top: 1px solid $colorGreyHover;
+		//border-top: 1px solid $colorGreyHover;
 	}
+
+	// .style_switcher {
+	// 	position: relative;
+	// 	top: 60px;
+	// 	z-index: 10;
+	// 	left: 1rem;
+	// 	height: 38px;
+	// 	line-height: 0;
+	// 	color: #000;
+	// 	background: white;
+	// }
 }
 
 .startpage-page .layout_content #location-map {
@@ -26,8 +37,6 @@ $infoPadding: 34px;
 
 .widg_location_slider nav {
 	@include contentWrapper($gutterWidth);
-
-
 
 	.widg_location__nav-bar {
 		position: absolute;
@@ -88,12 +97,20 @@ $infoPadding: 34px;
 			overflow: hidden;
 			height: $mapHeight;
 			position: relative;
+
+			@include mq($to: 'medium') {
+				height: 250px;
+			}
 		}
 	}
 }
 
 .widg_location_slider .location__map {
 	height: $mapHeight;
+
+	@include mq($to: 'medium') {
+		height: auto;
+	}
 }
 
 .location__info {
@@ -252,7 +269,7 @@ $infoPadding: 34px;
 .widg_location_slider.all-locations {
 	.location__info,
 	nav {
-		display: none;
+		// display: none;
 	}
 }
 
