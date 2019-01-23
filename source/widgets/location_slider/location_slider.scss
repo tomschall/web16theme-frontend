@@ -5,7 +5,8 @@ $infoPadding: 34px;
 .widg_location_slider {
 	@include bleedFull($gutterWidth);
 
-	margin-top: $basicPush * 5;
+    margin-top: 5px;
+    overflow: hidden;
 
 	@include mq($to: 'medium') {
 		//display: none;
@@ -15,28 +16,37 @@ $infoPadding: 34px;
 		//border-top: 1px solid $colorGreyHover;
 	}
 
-	// .style_switcher {
-	// 	position: relative;
-	// 	top: 60px;
-	// 	z-index: 10;
-	// 	left: 1rem;
-	// 	height: 38px;
-	// 	line-height: 0;
-	// 	color: #000;
-	// 	background: white;
-	// }
 }
 
 .startpage-page .layout_content #location-map {
-	margin-top: 3rem;
-
+	margin-top: 3rem;	
+    
 	.bleed__inner {
 		text-align: center;
 	}
 }
 
+.widg_location__nav {
+
+    ul {
+        display: flex;
+        margin-top: $basicPush * 5;
+    }
+
+    @include mq($to: 'small') {
+        ul, button {
+            display: block;
+            width: 100%;
+       }
+    }
+}
+
 .widg_location_slider nav {
 	@include contentWrapper($gutterWidth);
+
+	@include mq($to: 'small') {
+		padding: 0;
+	}
 
 	.widg_location__nav-bar {
 		position: absolute;
@@ -55,11 +65,19 @@ $infoPadding: 34px;
 
 		padding-bottom: 4px;
 		position: relative;
+
+		@include mq($to: 'small') {
+	    	padding: 0;
+		}
 	}
 
 	li {
 		display: inline-block;
 		margin-right: $basicPush * 4;
+
+		@include mq($to: 'small') {
+			width: 100%;
+		}
 
 		button {
 			@include noStyledButton();
@@ -77,6 +95,18 @@ $infoPadding: 34px;
 			position: relative;
 
 			padding-bottom: $basicPush * 2.6;
+
+			@include mq($to: 'small') {
+		    	background: #F1F1EE;
+				font-size: 15px;
+				padding: 20px;
+				width: 100%;
+
+				&.is_active{
+					color: #fff !important;
+					background: #000;
+				}
+			}
 
 			&:hover,
 			&.is_active{
@@ -99,7 +129,7 @@ $infoPadding: 34px;
 			position: relative;
 
 			@include mq($to: 'medium') {
-				height: 250px;
+				height: 300px; // Map
 			}
 		}
 	}
@@ -107,9 +137,10 @@ $infoPadding: 34px;
 
 .widg_location_slider .location__map {
 	height: $mapHeight;
+	position: relative;
 
 	@include mq($to: 'medium') {
-		height: auto;
+		height: 300px;
 	}
 }
 
@@ -117,13 +148,31 @@ $infoPadding: 34px;
 	position: absolute;
 	width: $infoWidth;
 
-	top: 50%;
+	top: 75%;
+	left: 330px;
 	transform: translateY(-50%);
 
 	background-color: $colorBg;
 	box-shadow: 0 2px 14px 0 rgba($colorBlack, 0.18);
+	opacity: 0.9;
 
 	@include pushLeftAccordingToHeader(left);
+
+	@include mq($to: 'small') {
+		position: relative;
+		top: 160px;
+		left: 0;
+		width: 100%;
+		box-shadow: none;
+	}
+
+	@include mq($to: 'medium') {
+		position: relative;
+		top: 160px;
+		left: 0;
+		width: 100%;
+		box-shadow: none;
+	}
 }
 
 .location__upper {

@@ -99,23 +99,7 @@
 		 }
 
 		 this.renderMaps(this.options.renderMobileView);
-		 this.initSlick();
-		 this._changeMapStyle();
-
-		 //this.resize = _.debounce(this._resize, 50).bind(this);
-         //$(window).on('resize', this.resize);
 	 };
-
-	// Widget.prototype._resize = function() {
-	// 	if (this.options.renderMobileView && !isMobileView()) {
-	// 		this.options.renderMobileView = false;
-	// 		this.renderMaps(this.options.renderMobileView);
-	// 	}
-	//
-	// 	this.maps.forEach(function(map) {
-	// 		google.maps.event.trigger(map, 'resize');
-	// 	});
-	// };
 
 	Widget.prototype.renderMaps = function(mobileView) {
 		if (this.$element.hasClass('all-locations')) {
@@ -127,55 +111,13 @@
 				this.initMaps();
 			}
 			// this.initMapsStatic();
-			this.initSlickNav();
+			//this.initSlickNav();
 		} else {
 			if (isOneMapOnly) {
 				// not a mobile resolution - render interactive map as well
 				this.initOneMap();
 			}
 		}
-	};
-
-	/**
-	 * initializing the nav to controll slick
-	 */
-	Widget.prototype._changeMapStyle = function() {
-		var defaultStyle = this.options.mapStyles.street;
-
-		$('.style_switcher').click(function() {
-			defaultStyle = $(this).attr('data-style');
-			defaultStyle = this.options.mapStyles + defaultStyle;
-			console.log(defaultStyle);
-		});
-		return defaultStyle;
-	};
-
-
-	/**
-	 * initializing the maps
-	 * data-slick-index="0"
-	 */
-	Widget.prototype.initMaps = function() {
-		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
-			var $mapElement = $(element),
-					mapProp = _.assign(this.options.mapProps, {
-							  style: this.options.mapStyles.D3map,
-							  zoom: $mapElement.attr('data-zoomlevel'),
-							  center: [$(element).attr('data-coordinates-x'), $(element).attr('data-coordinates-y')],
-							  container: this.options.mapOptionsDefaults.container + '-' + index,
-							  pitch: this.options.mapOptionsDefaults.pitch,
-							  bearing: this.options.mapOptionsDefaults.bearing
-						      }),
-							  map = new window.mapboxgl.Map(mapProp);
-
-					this.maps.push(map);
-					data.maps.push(map);
-
-					// Adding map controls
-					this._addControls(map);
-					this._addMarker(element, map);
-
-		}.bind(this));
 	};
 
 	/**
@@ -186,28 +128,26 @@
 		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
 			var $mapElement = $(element),
 					mapProp = _.assign(this.options.mapProps, {
-							  style: this.options.mapStyles.D3map,
-							  zoom: $mapElement.attr('data-zoomlevel'),
-							  center: [7.5, 47.5],
-							  container: this.options.mapOptionsDefaults.container + '-' + index, // DIV to placing map
-							  pitch: this.options.mapOptionsDefaults.pitch,
-							  bearing: this.options.mapOptionsDefaults.bearing
-						      }),
-							  map = new window.mapboxgl.Map(mapProp);
-							  console.log('ONE MAP RENDERED');
+							style: this.options.mapStyles.D3map,
+							zoom: $mapElement.attr('data-zoomlevel'),
+							center: [7.5, 47.5],
+							container: this.options.mapOptionsDefaults.container + '-' + index, // DIV to placing map
+							pitch: this.options.mapOptionsDefaults.pitch,
+							bearing: this.options.mapOptionsDefaults.bearing
+					}),
+					map = new window.mapboxgl.Map(mapProp);
+					console.log('ONE MAP RENDERED');
 
-							  // Addi map controls
-						      this._addControls(map);
+					// Addi map controls
+					this._addControls(map);
 
-							  // Add all markers
-							  this._addMarkers(map);
-
-							  this.maps.push(map);
-							  data.maps.push(map);
+					// Add all markers
+					this.addMarker(map);
+					this.maps.push(map);
+					data.maps.push(map);
 
 		}.bind(this));
 	};
-
 
 	/**
 	* Add marker
@@ -224,7 +164,7 @@
 		.addTo(map);
 	};
 
-	Widget.prototype._addMarkers = function(map) {
+	Widget.prototype.addMarker = function(map) {
 
 		// Find all locations -> template location_slider.hbs
 		$('.location__info').each(function(idx) {
@@ -298,22 +238,6 @@
 	};
 
 	/**
-	* Initialize the slick slider
-	*/
-	Widget.prototype.initSlick = function() {
-		this.$element.find(this.options.domSelectors.slider).on('init', function() {
-			this._setNavActive(0);
-		}.bind(this));
-
-		this.$element.find(this.options.domSelectors.slider).slick({
-			arrows: false,
-			draggable: false,
-			fade: true,
-			infinite: false
-		});
-	};
-
-	/**
 	 * Add map controls
 	 * Zoom, Fullscreen, Rotate
 	 */
@@ -322,63 +246,6 @@
 		map.addControl(new window.mapboxgl.FullscreenControl());
 	};
 
-
-	/**
-	 * initializing the nav to controll slick
-	 */
-	Widget.prototype.initSlickNav = function() {
-		$(this.options.domSelectors.navOption).map(function(index, element) {
-			var $navOption = $(element);
-
-			$navOption.on('click.' + this.uuid, function() {
-				this._goTo(index);
-			}.bind(this));
-		}.bind(this));
-	};
-
-	/**
-	 * Go to slide
-	 * @param index
-	 * @private
-	 */
-	Widget.prototype._goTo = function(index) {
-		this._setNavActive(index);
-
-		this._setSlideActive(index);
-	};
-
-	/**
-	 * Setting the nav item active according to the index
-	 * @param index
-	 * @private
-	 */
-	Widget.prototype._setNavActive = function(index) {
-		var $navOption = $(data.navOptions[index]);
-
-		this.$element.find(this.options.domSelectors.navOption).removeClass(this.options.stateClasses.isActive);
-		$navOption.addClass(this.options.stateClasses.isActive);
-
-		this._moveNavBar($navOption);
-	};
-
-	/**
-	 * Moving the nav bar to the nav options position and giving their width
-	 * @param $navOption
-	 * @private
-	 */
-	Widget.prototype._moveNavBar = function($navOption) {
-		var $bar = this.$element.find(this.options.domSelectors.bar),
-				offsetLeft = $navOption.offset().left - this.$element.find(this.options.domSelectors.navList).offset().left;
-
-		$bar.css({
-			left: offsetLeft,
-			width: $navOption.width()
-		});
-	};
-
-	Widget.prototype._setSlideActive = function(index) {
-		this.$element.find(this.options.domSelectors.slider).slick('slickGoTo', index);
-	};
 
 	/**
 	 * Unbind events, remove data, custom teardown
