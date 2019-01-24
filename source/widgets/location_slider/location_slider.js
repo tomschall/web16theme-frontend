@@ -161,6 +161,8 @@
 
 			var marker = document.createElement('div');
 			marker.className = 'mapboxgl-marker';
+			marker.id = "marker-" + index;
+
 			$(marker).animate({ opacity: 0.3 });
 
 			// Add markers to map; adjusting marker position and put marker to map
@@ -168,23 +170,30 @@
 			.setLngLat([Xcoordinates, Ycoordinates])
 			.addTo(map);
 
-			$(element).on('click', function() {
-				$('.mapboxgl-marker').animate({ opacity: 0.3 });
+			// $(element).on('click', function() {
+			// 	$('.mapboxgl-marker').animate({ opacity: 0.3 });
+			// });
+
+			function flyTo(e) {
 				$('.location__info').fadeOut(1000);
-			});
+				if ($('#' + element.id).is(':hidden')) {
+					$('#' + element.id).fadeIn(1000);
+					$('#' + e).animate({ opacity: 0.9 });
+				}
+				map.flyTo({
+					center: [Xcoordinates, Ycoordinates],
+					zoom: 10,
+					bearing: 0,
+					pitch: 45
+				});
+			}
 
 			marker.addEventListener('click', function() {
 				$('.mapboxgl-marker').animate({ opacity: 0.3 });
 				$('.location__info').fadeOut(1000);
-
-					$(this).animate({ opacity: 0.9 });
-					$('#' + element.id).fadeIn(1000);
-					map.flyTo({
-						center: [Xcoordinates, Ycoordinates],
-						zoom: 14,
-						bearing: 0,
-						pitch: 45
-					});
+				var e = this.id;
+				flyTo(e);
+				console.log('Fly to ->' + marker.id);
 			});
 		});
 	};
