@@ -48,8 +48,6 @@
 		},
 		isOneMapOnly = false;
 
-
-
 	/**
 	* Mobile Viewport settings
 	*/
@@ -82,24 +80,24 @@
 	 * @method
 	 * @public
 	 */
-	 Widget.prototype.init = function() {
-		 data.navOptions = $(this.options.domSelectors.navOption).toArray();
+    Widget.prototype.init = function() {
+		data.navOptions = $(this.options.domSelectors.navOption).toArray();
 
-		 if (!data.navOptions.length) {
-			 // Terminate initialization if there are no location data
-			 return;
-		 }
+		if (!data.navOptions.length) {
+			// Terminate initialization if there are no location data
+			return;
+		}
 
-		 this.options.renderMobileView = isMobileView();
-		 // keep track of all map instances
-		 this.maps = [];
+		this.options.renderMobileView = isMobileView();
+		// keep track of all map instances
+		this.maps = [];
 
-		 if (this.$element.hasClass('all-locations')) {
+		if (this.$element.hasClass('all-locations')) {
 			isOneMapOnly = true;
-		 }
+		}
 
-		 this.renderMaps(this.options.renderMobileView);
-	 };
+		this.renderMaps(this.options.renderMobileView);
+	};
 
 	Widget.prototype.renderMaps = function(mobileView) {
 		if (this.$element.hasClass('all-locations')) {
@@ -138,7 +136,7 @@
 					map = new window.mapboxgl.Map(mapProp);
 					console.log('ONE MAP RENDERED');
 
-					// Addi map controls
+					// Add map controls
 					this._addControls(map);
 
 					// Add all markers
@@ -147,6 +145,48 @@
 					data.maps.push(map);
 
 		}.bind(this));
+	};
+
+	Widget.prototype.addMarker = function(map) {
+		// Hide all location__info
+		this.$element.find('.location__info').map(function(index, element) {
+			console.log('location info -> ' + element.id);
+			$(element).hide();
+		});
+
+		// Find coordinates of each location
+		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
+			var Xcoordinates = $(element).attr('data-coordinates-x');
+			var Ycoordinates = $(element).attr('data-coordinates-y');
+
+			var marker = document.createElement('div');
+			marker.className = 'mapboxgl-marker';
+			$(marker).animate({ opacity: 0.3 });
+
+			// Add markers to map; adjusting marker position and put marker to map
+			new window.mapboxgl.Marker(marker, {offset: [-29, -35]})
+			.setLngLat([Xcoordinates, Ycoordinates])
+			.addTo(map);
+
+			$(element).on('click', function() {
+				$('.mapboxgl-marker').animate({ opacity: 0.3 });
+				$('.location__info').fadeOut(1000);
+			});
+
+			marker.addEventListener('click', function() {
+				$('.mapboxgl-marker').animate({ opacity: 0.3 });
+				$('.location__info').fadeOut(1000);
+
+					$(this).animate({ opacity: 0.9 });
+					$('#' + element.id).fadeIn(1000);
+					map.flyTo({
+						center: [Xcoordinates, Ycoordinates],
+						zoom: 14,
+						bearing: 0,
+						pitch: 45
+					});
+			});
+		});
 	};
 
 	/**
@@ -162,79 +202,6 @@
 		new window.mapboxgl.Marker(el, {offset: [-29, -35]})
 		.setLngLat([$(element).attr('data-coordinates-x'), $(element).attr('data-coordinates-y')])
 		.addTo(map);
-	};
-
-	Widget.prototype.addMarker = function(map) {
-
-		// Find all locations -> template location_slider.hbs
-		$('.location__info').each(function(idx) {
-				var el = document.createElement('div');
-				el.className = idx + 'mapboxgl-marker';
-
-				console.log($(this).attr('data-coordinates-x') + ' ' + $(this).attr('data-coordinates-y') + ' ' + $(this).attr('data-location-title'));
-
-				// Append marker x y positions and deploy marker
-				var Ycoordinates = $(this).attr('data-coordinates-y');
-				var Xcoordinates = $(this).attr('data-coordinates-x');
-				var flytolocation = 'flyto';
-
-
-				el.addEventListener('click', function() {
-					console.log(this + 'clicked');
-
-					$('.location__info').fadeOut(500);
-					$('.mapboxgl-marker').animate({ opacity: 0.3 });
-
-					if (flytolocation === 'flyto') {
-						$(el).animate({ opacity: 0.9 }); // Clicked marker
-
-						$('#location__marker-temp-' + idx)
-							.fadeIn(1000)
-							.show();
-
-						map.flyTo({
-							center: [Xcoordinates, Ycoordinates],
-							zoom: 14,
-							bearing: 0,
-							pitch: 45
-						});
-
-						flytolocation = 'flyback';
-
-					} else {
-						$(this).animate({ opacity: 0.3 });
-						map.flyTo({
-							center: [7.5, 47.5],
-							zoom: 9,
-							bearing: 0,
-							pitch: 0
-						});
-
-						flytolocation = 'flyto';
-					}
-
-					// $('.location__info').each(function() {
-					// 	$(this).hide();
-					// 	$('.mapboxgl-marker').animate({ opacity: 0.3 });
-					// });
-
-				});
-
-				$(el).animate({ opacity: 0.3 });
-
-				// Adjusting marker position and put marker to map
-				new window.mapboxgl.Marker(el, {offset: [-29, -35]})
-				.setLngLat([Xcoordinates, Ycoordinates])
-				.addTo(map);
-			});
-
-			$('nav ul li button').click(function() {
-				var navTab = $(this).attr('id');
-				$(this).toggleClass('is_active');
-				console.log(navTab);
-				$('.mapboxgl-canvas-container').find('.' + navTab + 'mapboxgl-marker').trigger('click');
-			});
-
 	};
 
 	/**

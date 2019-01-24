@@ -39,6 +39,41 @@ $infoPadding: 34px;
             width: 100%;
        }
     }
+
+    button {
+        @include noStyledButton();
+
+        display: block;
+        opacity: 1.0;
+
+        font-size: 1.6667rem;
+
+        text-decoration: none;
+        color: $colorTextGrey;
+
+        font-weight: 600;
+
+        position: relative;
+
+        padding-bottom: $basicPush * 2.6;
+
+        @include mq($to: 'small') {
+            background: #F1F1EE;
+            font-size: 15px;
+            padding: 20px;
+            width: 100%;
+
+            &.is_active{
+                color: #fff !important;
+                background: #000;
+            }
+        }
+
+        &:hover,
+        &.is_active{
+            color: $colorBlack;
+        }
+    }
 }
 
 .widg_location_slider nav {
