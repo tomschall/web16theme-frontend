@@ -85,7 +85,7 @@
 		prevArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__prev">Previous</button>',
 		autoplay: false,
 		responsive: [{
-			breakpoint: 480,
+			breakpoint: 0,
 			settings: {
 				arrows: true
 			}
