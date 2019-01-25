@@ -174,43 +174,48 @@
 			// 	$('.mapboxgl-marker').animate({ opacity: 0.3 });
 			// });
 
-			function flyTo(e) {
+			function flyTo(currentMarker) {
 				$('.location__info').fadeOut(1000);
 				if ($('#' + element.id).is(':hidden')) {
 					$('#' + element.id).fadeIn(1000);
-					$('#' + e).animate({ opacity: 0.9 });
+					$('#' + currentMarker).animate({ opacity: 0.9 });					
+					map.flyTo({
+						center: [Xcoordinates, Ycoordinates],
+						zoom: 16,
+						bearing: 45,
+						pitch: 45
+					});
+				} else {
+					$('.widg_location__nav button').removeClass('is_active');
 				}
-				map.flyTo({
-					center: [Xcoordinates, Ycoordinates],
-					zoom: 10,
-					bearing: 0,
-					pitch: 45
-				});
 			}
 
 			marker.addEventListener('click', function() {
+				var currentMarker = this.id;
+				console.log('current marker -> ' + currentMarker);
+				
 				$('.mapboxgl-marker').animate({ opacity: 0.3 });
 				$('.location__info').fadeOut(1000);
-				var e = this.id;
-				flyTo(e);
-				console.log('Fly to ->' + marker.id);
+				$('nav button#'+ index).addClass('is_active');
+
+				map.flyTo({
+					center: [Xcoordinates, Ycoordinates],
+					zoom: 9,
+					bearing: 0,
+					pitch: 0
+				});
+				flyTo(currentMarker);
 			});
 		});
-	};
 
-	/**
-	* Add marker
-	* CSS marker configuration -> see location_slider.scss
-	* CSS marker class: mapboxgl-marker
-	*/
-	Widget.prototype._addMarker = function(element, map) {
-		var el = document.createElement('div');
-		el.className = 'mapboxgl-marker';
-
-		// Adjusting marker position
-		new window.mapboxgl.Marker(el, {offset: [-29, -35]})
-		.setLngLat([$(element).attr('data-coordinates-x'), $(element).attr('data-coordinates-y')])
-		.addTo(map);
+		$('.widg_location__nav button').on('click', function() {
+			$('.widg_location__nav button').removeClass('is_active');
+			var currentMarkerId = this.id;
+			var currentMarker = '#marker-' + currentMarkerId;
+			$(this).toggleClass('is_active');
+			console.log('nav button ->' + currentMarker);
+			$(currentMarker).trigger('click');
+		});
 	};
 
 	/**
@@ -221,7 +226,6 @@
 		map.addControl(new window.mapboxgl.NavigationControl(), 'bottom-right');
 		map.addControl(new window.mapboxgl.FullscreenControl());
 	};
-
 
 	/**
 	 * Unbind events, remove data, custom teardown

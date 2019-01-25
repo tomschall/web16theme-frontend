@@ -4,8 +4,7 @@ $infoPadding: 34px;
 
 .widg_location_slider {
 	@include bleedFull($gutterWidth);
-
-    margin-top: 5px;
+    
     overflow: hidden;
 
 	@include mq($to: 'medium') {
@@ -26,79 +25,17 @@ $infoPadding: 34px;
 	}
 }
 
-.widg_location__nav {
-
-    ul {
-        display: flex;
-        margin-top: $basicPush * 5;
-    }
-
-    @include mq($to: 'small') {
-        ul, button {
-            display: block;
-            width: 100%;
-       }
-    }
-
-    button {
-        @include noStyledButton();
-
-        display: block;
-        opacity: 1.0;
-
-        font-size: 1.6667rem;
-
-        text-decoration: none;
-        color: $colorTextGrey;
-
-        font-weight: 600;
-
-        position: relative;
-
-        padding-bottom: $basicPush * 2.6;
-
-        @include mq($to: 'small') {
-            background: #F1F1EE;
-            font-size: 15px;
-            padding: 20px;
-            width: 100%;
-
-            &.is_active{
-                color: #fff !important;
-                background: #000;
-            }
-        }
-
-        &:hover,
-        &.is_active{
-            color: $colorBlack;
-        }
-    }
-}
-
-.widg_location_slider nav {
-	@include contentWrapper($gutterWidth);
+nav.widg_location__nav {
+    //@include contentWrapper($gutterWidth);
+    margin-top: $basicPush * 5;
 
 	@include mq($to: 'small') {
 		padding: 0;
 	}
 
-	.widg_location__nav-bar {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-
-		min-width: 10px;
-		height: 4px;
-
-		background-color: $colorYellow;
-		transition: all $transitionLength / 2 $transitionEase;
-	}
-
 	ul {
 		@include resetList();
 
-		padding-bottom: 4px;
 		position: relative;
 
 		@include mq($to: 'small') {
@@ -108,14 +45,15 @@ $infoPadding: 34px;
 
 	li {
 		display: inline-block;
-		margin-right: $basicPush * 4;
-
-		@include mq($to: 'small') {
+        margin-right: $basicPush * 4;
+        
+ 		@include mq($to: 'small') {
 			width: 100%;
 		}
 
 		button {
-			@include noStyledButton();
+            @include noStyledButton();
+            border-bottom: 5px solid #fff;
 
 			display: block;
 			opacity: 1.0;
@@ -142,10 +80,10 @@ $infoPadding: 34px;
 					background: #000;
 				}
 			}
-
 			&:hover,
-			&.is_active{
-				color: $colorBlack;
+			&.is_active {
+                color: $colorBlack;
+                border-bottom: 5px solid #FDE70E;
 			}
 		}
 	}
