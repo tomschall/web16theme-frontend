@@ -1,153 +1,56 @@
 <div id="location-map">
-	<script class="b-lazy" data-src="https://tomschall.github.io/empty.js" async></script>
 	<div class="bleed__inner site-has-sidebar">
 		{{#if locationTitle}}
-			<h2>{{locationTitle}}</h2>{{/if}}
+			<h2>{{locationTitle}}</h2>
+		{{/if}}
 		{{#if locationDescription}}
 			<p>{{locationDescription}}</p>
 		{{/if}}
 	</div>
-	<div class="widg_location_slider {{#if oneMapOnly}}all-locations{{/if}}" data-init="location_slider" data-maps-marker="{{marker}}">
-		<nav>
-			<ul data-location_slider="nav-list">
-				{{#each entries}}
-					<li>
-						<button data-location_slider="nav-option">{{navTitle}}</button>
-					</li>
-				{{/each}}
-				<div class="widg_location__nav-bar" data-location_slider="bar"></div>
-			</ul>
-		</nav>
-		<div class="slider" data-location_slider="slider">
-			{{#if oneMapOnly}}
-				<div class="location__slide">
-					<div class="location__map" data-location_slider="map"></div>
-
-					{{#each entries}}
-						{{#if placeID}}
-							<span class="location__marker-temp" data-location_slider="markerData" data-location-title="{{title}}" data-placeId="{{placeID}}"></span>
-						{{else}}
-							<span class="location__marker-temp" data-location_slider="markerData" data-location-title="{{title}}" data-coordinates-x="{{coordinates.x}}" data-coordinates-y="{{coordinates.y}}"></span>
-						{{/if}}
-
-						<div class="location__info" data-location-target="{{title}}">
-							<div class="location__upper">
-								<h3>{{title}}</h3>
-								<div class="location__address">
-									<span>{{address.name}}</span>
-									<span>{{address.department}}</span>
-									<span>{{address.street}}</span>
-									<span>{{address.zipCity}}</span>
-								</div>
-								{{#if contactData}}
-								<div class="location__contact">
-									<dl>
-										{{#if contactData.telephone}}
-										<dt>{{../langStrings.telephone}}</dt>
-										<dd><a href="tel:{{contactData.telephone}}">{{contactData.telephone}}</a></dd>
-										{{/if}}
-										{{#if contactData.email }}
-										<dt>{{../langStrings.email}}</dt>
-										<dd><a href="mailto:{{contactData.email}}">{{contactData.email}}</a></dd>
-										{{/if}}
-									</dl>
-								</div>
-								{{/if}}
-								{{#if locationPageURL}}
-									<a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
-								{{/if}}
-							</div>
-							<div class="location__inferior">
-								<a href="{{routeURL}}" target="_blank"><span>{{../langStrings.calcRoute}}</span></a>
-							</div>
-						</div>
-					{{/each}}
-
-				</div>
-			{{else}}
-				{{#each entries}}
-					<div class="location__slide">
-						{{#if placeID}}
-							<div class="location__map" data-placeId="{{placeID}}" data-location_slider="map" data-zoomlevel="{{zoomLevel}}"></div>
-						{{else}}
-							<div class="location__map" data-coordinates-x="{{coordinates.x}}" data-coordinates-y="{{coordinates.y}}" data-location_slider="map" data-zoomlevel="{{zoomLevel}}"></div>
-						{{/if}}
-
-						<div class="location__info">
-							<div class="location__upper">
-								<h3>{{title}}</h3>
-								<div class="location__address">
-									<span>{{address.name}}</span>
-									<span>{{address.department}}</span>
-									<span>{{address.street}}</span>
-									<span>{{address.zipCity}}</span>
-								</div>
-								{{#if contactData}}
-								<div class="location__contact">
-									<dl>
-										{{#if contactData.telephone}}
-										<dt>{{../langStrings.telephone}}</dt>
-										<dd><a href="tel:{{contactData.telephone}}">{{contactData.telephone}}</a></dd>
-										{{/if}}
-										{{#if contactData.email }}
-										<dt>{{../langStrings.email}}</dt>
-										<dd><a href="mailto:{{contactData.email}}">{{contactData.email}}</a></dd>
-										{{/if}}
-									</dl>
-								</div>
-								{{/if}}
-								{{#if locationPageURL}}
-									<a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
-								{{/if}}
-							</div>
-							<div class="location__inferior">
-								<a href="{{routeURL}}" target="_blank"><span>{{../langStrings.calcRoute}}</span></a>
-							</div>
-						</div>
-					</div>
-				{{/each}}
-			{{/if}}
-		</div>
-	</div>
-
-	<div class="only-phone">
-		{{> "widgets/accordeon/accordeon" widgets.locationAccordeon }}
+	
+	<nav class="widg_location__nav {{#if oneMapOnly}}nav__state{{/if}}">
+		<ul data-location_slider="nav-list">
 		{{#each entries}}
-			<div class="widg_accordeon" data-init="accordeon">
-				<div class="widg_accordeon__entry" data-accordeon="entry">
-					<button aria-expanded="false" class="not-default" data-accordeon="button">
-					{{navTitle}}
-				</button>
-					<div class="widg_accordeon__content" aria-hidden="true" data-accordeon="content">
-						<div class="accordeon__location">
-							<img class="location__map-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-location_slider="static-map" alt="" />
-							<div class="location__upper">
-								<h3>{{title}}</h3>
-								<div class="location__address">
-									<span>{{address.name}}</span>
-									<span>{{address.department}}</span>
-									<span>{{address.street}}</span>
-									<span>{{address.zipCity}}</span>
-								</div>
-
-								<div class="location__contact">
-									<dl>
+			<li>
+				<button id="{{@index}}" data-location_slider="nav-option">{{navTitle}}</button>
+			</li>
+		{{/each}}
+		</ul>
+	</nav>
+	<div class="widg_location_slider" data-init="location_slider" data-maps-marker="{{marker}}">
+			<div id="mapbox__map-0" class="location__map" data-coordinates-x="7.5" data-coordinates-y="47.5" data-location_slider="map" data-zoomlevel="9"></div>
+			{{#each entries}}
+				<div id="location__marker-temp-{{@index}}" class="location__info" data-location-target="{{title}}" data-location_slider="markerData" data-coordinates-x="{{coordinates.x}}" data-coordinates-y="{{coordinates.y}}">
+					<div class="location__upper">
+						<h3>{{title}}</h3>
+						<div class="location__address">
+							<span>{{address.name}}</span>
+							<span>{{address.department}}</span>
+							<span>{{address.street}}</span>
+							<span>{{address.zipCity}}</span>
+						</div>
+						{{#if contactData}}
+							<div class="location__contact">
+								<dl>
+									{{#if contactData.telephone}}
 										<dt>{{../langStrings.telephone}}</dt>
-										<dd><a href="tel:{{contactData.telephone}}" tabindex="0">{{contactData.telephone}}</a></dd>
+										<dd><a href="tel:{{contactData.telephone}}">{{contactData.telephone}}</a></dd>
+									{{/if}}
+									{{#if contactData.email }}
 										<dt>{{../langStrings.email}}</dt>
 										<dd><a href="mailto:{{contactData.email}}">{{contactData.email}}</a></dd>
-									</dl>
-								</div>
-								{{#if locationPageURL}}
-									<a class="button small_button" href="{{locationPageURL}}" tabindex="0">{{../langStrings.moreInfoForLocation}}</a>
-								{{/if}}
+									{{/if}}
+								</dl>
 							</div>
-							<div class="location__inferior"><a href="{{routeURL}}" target="_blank" tabindex="0"><span>{{../langStrings.calcRoute}}</span></a>
-							</div>
-						</div>
+						{{/if}}
+						{{#if locationPageURL}}
+							<a class="button small_button" href="{{locationPageURL}}">{{../langStrings.moreInfoForLocation}}</a>
+						{{/if}}
+					</div>
+					<div class="location__inferior">
+						<a href="{{routeURL}}" target="_blank"><span>{{../langStrings.calcRoute}}</span></a>
 					</div>
 				</div>
-			</div>
-		{{/each}}
+			{{/each}}
 	</div>
 </div>

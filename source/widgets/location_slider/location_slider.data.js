@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var templateData = {
 			marker: '/assets/media/img/maps_marker.png',
 			oneMapOnly: false,
+			isMobile: false,
 			locationTitle: 'Durchführungsorte',
 			locationDescription: 'Der Studiengang wird am Standort Olten und Brugg durchgeführt. Lorem ipsum dolor vanitas carpe diem memento mori.',
 			entries: [
@@ -27,8 +28,12 @@ var templateData = {
 					},
 					locationPageURL: '/pages/location_brugg/location_brugg.html',
 					routeURL: 'https://maps.google.ch',
+					coordinates: {
+						x: '7.6402296',
+						y: '47.5346818'
+					},
 					placeID: 'ChIJt9J5wzMwkEcRgWnc5loV14I',
-					zoomLevel: 17
+					zoomLevel: 16
 				},
 				{
 					type: 'location',

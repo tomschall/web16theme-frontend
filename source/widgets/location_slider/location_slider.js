@@ -1,6 +1,5 @@
-/* global google */
 /*!
- * Location Slider
+ * Image Gallery
  *
  * @author Unic AG
  * @copyright Unic AG
@@ -23,115 +22,49 @@
 				bar: '[data-' + name + '="bar"]',
 				navOption: '[data-' + name + '="nav-option"]',
 				navList: '[data-' + name + '="nav-list"]',
-				markerData: '[data-' + name + '="markerData"]'
+				markerData: '[data-' + name + '="markerData"]',
 			},
 			stateClasses: {
 				isActive: 'is_active'
 			},
-			mapProps: {
-				zoom: 0,
-				mapTypeId: null,
-				disableDoubleClickZoom: true,
-				keyboardShortcuts: false,
-				scrollwheel: false
+			mapStyles: {
+				street: 'http://147.86.1.60/res/style-cdn.json',
+				D3map: 'http://147.86.1.60/res/style-cdn_osm-liberty.json'
 			},
-			markerIconProps: {
+			markerIconProps: {},
+			mapOptionsDefaults: {
+				zoom: 10,
+				container: 'mapbox__map-0',
+				center: [8, 47.5], // Default Campus
+				style: 'http://147.86.1.60/res/style-cdn_osm-liberty.json',
+				pitch: 30,
+				bearing: 0,
+				offset: [0, 0]
 			},
-			mapStyles: [{
-				'featureType': 'landscape.man_made',
-				'elementType': 'geometry.fill',
-				'stylers': [{'lightness': '39'}, {'color': '#f1f1ee'}]
-			}, {
-				'featureType': 'landscape.natural',
-				'elementType': 'geometry.fill',
-				'stylers': [{'lightness': '100'}, {'saturation': '-100'}]
-			}, {
-				'featureType': 'landscape.natural',
-				'elementType': 'labels',
-				'stylers': [{'visibility': 'off'}]
-			}, {
-				'featureType': 'poi.attraction',
-				'elementType': 'all',
-				'stylers': [{'visibility': 'off'}]
-			}, {
-				'featureType': 'poi.business',
-				'elementType': 'all',
-				'stylers': [{'visibility': 'off'}]
-			}, {
-				'featureType': 'poi.government',
-				'elementType': 'all',
-				'stylers': [{'visibility': 'off'}]
-			}, {
-				'featureType': 'poi.medical',
-				'elementType': 'all',
-				'stylers': [{'visibility': 'off'}]
-			}, {
-				'featureType': 'poi.park',
-				'elementType': 'all',
-				'stylers': [{'visibility': 'off'}]
-			}, {
-				'featureType': 'poi.place_of_worship',
-				'elementType': 'all',
-				'stylers': [{'visibility': 'off'}]
-			}, {
-				'featureType': 'poi.sports_complex',
-				'elementType': 'all',
-				'stylers': [{'visibility': 'off'}]
-			}, {
-				'featureType': 'road.highway',
-				'elementType': 'geometry.fill',
-				'stylers': [{'color': '#ffffff'}]
-			}, {
-				'featureType': 'road.highway',
-				'elementType': 'geometry.stroke',
-				'stylers': [{'color': '#d1d1d1'}]
-			}, {
-				'featureType': 'road.highway',
-				'elementType': 'labels',
-				'stylers': [{'visibility': 'off'}]
-			}, {
-				'featureType': 'road.arterial',
-				'elementType': 'geometry.fill',
-				'stylers': [{'lightness': '-10'}]
-			}, {
-				'featureType': 'road.arterial',
-				'elementType': 'labels',
-				'stylers': [{'visibility': 'off'}]
-			}, {
-				'featureType': 'road.local',
-				'elementType': 'geometry.fill',
-				'stylers': [{'lightness': '-10'}]
-			}, {
-				'featureType': 'road.local',
-				'elementType': 'labels',
-				'stylers': [{'visibility': 'on'}]
-			}, {
-				'featureType': 'water',
-				'elementType': 'geometry.fill',
-				'stylers': [{'saturation': '-9'}, {'lightness': '30'}]
-			}, {'featureType': 'water', 'elementType': 'labels', 'stylers': [{'visibility': 'off'}]}],
-			GOOGLE_MAPS_URL: 'https://maps.googleapis.com/maps/api/staticmap'
 		},
 		data = {
 			maps: [],
 			navOptions: [],
 			markers: []
-		},
-		isOneMapOnly = false;
+		};
+		//isOneMapOnly = false;
+
+	/**
+	* Mobile Viewport settings
+	*/
 
 	function isMobileView() {
 		return (screen.availWidth ? screen.availWidth : document.documentElement.clientWidth) <= 1023;
 	}
 
 	/**
-	 * Create an instance of the widget
-	 * @constructor
-	 * @param {object} element - The DOM element to bind the widget
-	 * @param {object} options - Options overwriting the defaults
-	 */
+	* Create an instance of the widget
+	* @constructor
+	* @param {object} element - The DOM element to bind the widget
+	* @param {object} options - Options overwriting the defaults
+	*/
 	function Widget(element, options) {
 		this._helper = estatico.helpers.SuperClass;
-
 		this._helper({
 			name: name,
 			element: element,
@@ -149,361 +82,160 @@
 	 * @method
 	 * @public
 	 */
-	Widget.prototype.init = function() {
-		data.navOptions = $(this.options.domSelectors.navOption).toArray();
+    Widget.prototype.init = function() {
+		this.hideLocationInfos = $(this.options.domSelectors.markerData).hide();
+		this.totalLocations = $(this.options.domSelectors.markerData).length;
+		this.renderMap();
+	};
+	
+	Widget.prototype.renderMap = function() {
+		this.options.renderMobileView = isMobileView();
+		this.getCoordinates();
 
-		if (!data.navOptions.length) {
-			// Terminate initialization if there are no location data
-			return;
+		if (this.options.renderMobileView && this.totalLocations === 1) {
+			var Xcoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-x');
+			var Ycoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-y');
+			console.log('X ' + Xcoordinates);
+
+			this.map = new window.mapboxgl.Map({
+				zoom: 16,
+				container: 'mapbox__map-0',
+				center: [Xcoordinates, Ycoordinates],
+				style: 'http://147.86.1.60/res/style-cdn_osm-liberty.json',
+				pitch: 30,
+				bearing: 0,
+				offset: [0, 0]
+			});
+		} else if (this.totalLocations === 1) {
+			var _Xcoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-x');
+			var _Ycoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-y');
+			console.log('X ' + _Xcoordinates);
+
+			this.map = new window.mapboxgl.Map({
+				zoom: 16,
+				container: 'mapbox__map-0',
+				center: [_Xcoordinates, _Ycoordinates],
+				style: 'http://147.86.1.60/res/style-cdn_osm-liberty.json',
+				pitch: 30,
+				bearing: 0,
+				offset: [0, 0]
+			});
+		} else {
+			this.map = new window.mapboxgl.Map(this.options.mapOptionsDefaults);
+		}
+		this.navState();
+		this.addControls();
+		this.addMarker(this.map);
+		this.tabNavigation();
+		this.setOneLocation();
+	};
+
+	Widget.prototype.navState = function() {
+		console.log('is mobile? ' + this.options.renderMobileView);
+
+		if (($('.widg_location__nav.nav__state').length)) {
+			console.log('navigation should be visibile');
+		} else {
+			$('.widg_location__nav').hide();
+			this.$element.find(this.options.domSelectors.map).css('margin-top', '50px');
 		}
 
-		this.options.renderMobileView = isMobileView();
+		if (this.options.renderMobileView === true) {
+			this.options.mapMarkerOffset = '[0, 0]';
+			console.log(this.options.mapMarkerOffset);
+			$('.widg_location__nav').show();
+			this.$element.find(this.options.domSelectors.map).css('margin-top', '0');
+		} else {
+			this.options.mapMarkerOffset = '[300, 0]';
+			console.log(this.options.mapMarkerOffset);
+		}
+	};
 
-		// keep track of all map instances
-		this.maps = [];
+	Widget.prototype.setOneLocation = function() {
+		if (this.totalLocations === 1) {
+			$(this.options.domSelectors.markerData).show();
+			$('.widg_location__nav').find('button').addClass(this.options.stateClasses.isActive);
+			$('.mapboxgl-marker').animate({ opacity: 0.9 });
+		};
+	};
 
-		if (typeof google !== typeof undefined) {
-			this.options.mapProps.mapTypeId = google.maps.MapTypeId.ROADMAP;
-			this.options.markerIconProps = {
-				anchor: new google.maps.Point(73, 78),
-				origin: new google.maps.Point(0, 0),
-				url: this.$element.data('maps-marker')
+	Widget.prototype.getCoordinates = function() {
+		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
+			this.Xcoordinates = $(element).attr('data-coordinates-x');
+			this.Ycoordinates = $(element).attr('data-coordinates-y');
+		});
+	};
+
+	/**
+	 * Find locations an render marker to map
+	*/
+	Widget.prototype.addMarker = function(map) {
+		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
+			var Xcoordinates = this.Xcoordinates;
+			var Ycoordinates = this.Ycoordinates;
+			var marker = document.createElement('div');
+			marker.className = 'mapboxgl-marker';
+			marker.id = 'marker-' + index;
+			new window.mapboxgl.Marker(marker, {offset: [-29, -35]})
+			.setLngLat([Xcoordinates, Ycoordinates])
+			.addTo(map);
+			if (this.totalLocations === 1) {  
+				this.setOneLocation();
 			};
 
-			if (this.$element.hasClass('all-locations')) {
-				isOneMapOnly = true;
-			}
+			marker.addEventListener('click', function() {
+				var currentMarker = this.id;	
+				$('.mapboxgl-marker').animate({ opacity: 0.3 });
+				$('.location__info').fadeOut(1000);
+				$('nav button#' + index).addClass('is_active');
 
-			this.renderMaps(this.options.renderMobileView);
-			this.initSlick();
-
-			this.resize = _.debounce(this._resize, 50).bind(this);
-			$(window).on('resize', this.resize);
-		}
-	};
-
-	Widget.prototype._resize = function() {
-		if (this.options.renderMobileView && !isMobileView()) {
-			this.options.renderMobileView = false;
-			this.renderMaps(this.options.renderMobileView);
-		}
-
-		this.maps.forEach(function(map) {
-			google.maps.event.trigger(map, 'resize');
-		});
-	};
-
-	Widget.prototype.renderMaps = function(mobileView) {
-		if (this.$element.hasClass('all-locations')) {
-			isOneMapOnly = true;
-		}
-		if (!isOneMapOnly) {
-			if (!mobileView) {
-				// not a mobile resolution - render interactive map as well
-				this.initMaps();
-			}
-			this.initMapsStatic();
-			this.initSlickNav();
-		} else {
-			if (!mobileView) {
-				// not a mobile resolution - render interactive map as well
-				this.initAllLocations();
-			}
-			this.initAllLocationsStatic();
-		}
-	};
-
-	/**
-	 * Initialize the slick slider
-	 */
-	Widget.prototype.initSlick = function() {
-		this.$element.find(this.options.domSelectors.slider).on('init', function() {
-			this._setNavActive(0);
-		}.bind(this));
-
-		this.$element.find(this.options.domSelectors.slider).slick({
-			arrows: false,
-			draggable: false,
-			fade: true,
-			infinite: false
-		});
-	};
-
-	/**
-	 * initializing the maps
-	 */
-	Widget.prototype.initMaps = function() {
-		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
-			var $mapElement = $(element),
-				mapProp = _.assign(this.options.mapProps, {
-					styles: this.options.mapStyles,
-					zoom: parseInt($mapElement.data('zoomlevel'), 10)
-				}),
-				map = new google.maps.Map(element, mapProp);
-			this.maps.push(map);
-			this.addMarker($mapElement, map);
-			data.maps.push(map);
-		}.bind(this));
-	};
-
-	/**
-	 * Retrieves google maps API key
-	 *
-	 * This is at the moment parsed out from the <script> tag which loads google
-	 * maps api as it is the only place containing this information. Perhaps
-	 * candidate to change - as the API key shall not be hardcoded in template
-	 *
-	 * @returns {=string} API Key if found
-	 */
-	Widget.prototype.getGoogleMapsAPIKey = function() {
-		var url = $('script[src^=https\\:\\/\\/maps\\.googleapis\\.com\\/maps\\/]').attr('src'),
-			match = /\?key=([a-z0-9-_]+)/gim.exec(url);
-		if (match) {
-			return match[1];
-		}
-		return undefined;
-	};
-
-	Widget.prototype.getStaticMapUrl = function(mapProps) {
-		function latLng(location) {
-			return [location.lat(), location.lng()].join(',');
-		}
-
-		var props = {
-			size: '375x200', // 310x166 = 1.8674 // iphone width
-			scale: 2,
-			center: latLng(mapProps.center),
-			style: mapProps.styles,
-			markers: mapProps.locations,
-			zoom: mapProps.zoom,
-			key: this.getGoogleMapsAPIKey()
-		};
-
-		return this.options.GOOGLE_MAPS_URL + '?' + _.reduce(props, function(acc, value, key) {
-			if (key === 'style' && value) {
-				// process styles
-				value = value.map(function(style) {
-					var attrs = [
-						'feature:' + style.featureType,
-						'element:' + style.elementType
-					].concat(style.stylers.map(function(styler) {
-						return _.toPairs(styler).map(function(s) {
-							return [s[0], s[1].replace(/^#([a-z0-9]{6})$/gim, '0x$1')].join(':');
-						}).join('|');
-					}));
-					return encodeURIComponent(attrs.join('|'));
-				}).join('&style=');
-			} else if (key === 'markers') {
-				value = value.map(function(marker) {
-					return encodeURIComponent('color:black|' + latLng(marker));
-				}).join('&markers=');
-			} else {
-				value = encodeURIComponent(value);
-			}
-			return [acc, '&', key, '=', value].join('');
-		}, '');
-	};
-
-	Widget.prototype.initMapsStatic = function() {
-		// NOTE: this is accessing the sibling element of this widget as the static maps are
-		// wrongly placed within the template
-		var $images = this.$element.next('.only-phone').find(this.options.domSelectors.staticMap);
-		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
-			// retrieve the data from map element
-			var $mapElement = $(element);
-			this.getLocation($mapElement).then(function(location) {
-				var mapProps = _.assign(this.options.mapProps, {
-					styles: this.options.mapStyles,
-					center: location,
-					locations: [location],
-					zoom: parseInt($mapElement.data('zoomlevel'), 10)
+				map.flyTo({
+					center: [Xcoordinates, Ycoordinates],
+					zoom: 9,
+					bearing: 0,
+					pitch: 0
 				});
-
-				// assign static image to image element
-				$images.eq(index).attr('src', this.getStaticMapUrl(mapProps));
-			}.bind(this));
-		}.bind(this));
-	};
-
-	/**
-	 * initializing the nav to controll slick
-	 */
-	Widget.prototype.initSlickNav = function() {
-		$(this.options.domSelectors.navOption).map(function(index, element) {
-			var $navOption = $(element);
-
-			$navOption.on('click.' + this.uuid, function() {
-				this._goTo(index);
-			}.bind(this));
-		}.bind(this));
-	};
-
-	/**
-	 * Go to slide
-	 * @param index
-	 * @private
-	 */
-	Widget.prototype._goTo = function(index) {
-		this._setNavActive(index);
-
-		this._setSlideActive(index);
-	};
-
-	/**
-	 * Setting the nav item active according to the index
-	 * @param index
-	 * @private
-	 */
-	Widget.prototype._setNavActive = function(index) {
-		var $navOption = $(data.navOptions[index]);
-
-		this.$element.find(this.options.domSelectors.navOption).removeClass(this.options.stateClasses.isActive);
-		$navOption.addClass(this.options.stateClasses.isActive);
-
-		this._moveNavBar($navOption);
-	};
-
-	/**
-	 * Moving the nav bar to the nav options position and giving their width
-	 * @param $navOption
-	 * @private
-	 */
-	Widget.prototype._moveNavBar = function($navOption) {
-		var $bar = this.$element.find(this.options.domSelectors.bar),
-				offsetLeft = $navOption.offset().left - this.$element.find(this.options.domSelectors.navList).offset().left;
-
-		$bar.css({
-			left: offsetLeft,
-			width: $navOption.width()
+				Widget.prototype.flyToLocation(currentMarker, element, map, Xcoordinates, Ycoordinates);
+			});
 		});
 	};
 
-	Widget.prototype._setSlideActive = function(index) {
-		this.$element.find(this.options.domSelectors.slider).slick('slickGoTo', index);
-	};
+	Widget.prototype.flyToLocation = function(currentMarker, element, map, Xcoordinates, Ycoordinates) {
+		$('.location__info').fadeOut(1000);
+		if ($('#' + element.id).is(':hidden')) {
+			$('#' + element.id).fadeIn(1000);
+			$('#' + currentMarker).animate({ opacity: 0.9 });
 
-	Widget.prototype.getLocation = function($mapElement, map) {
-		var deferred = new $.Deferred(),
-			hasPlaceId = typeof $mapElement.data('placeid') !== typeof undefined;
-
-		if (hasPlaceId) {
-			// PlaceService requires DOM node, there is no map element in case of static image
-			map = map === undefined ? document.createElement('div') : map;
-
-			var service = new google.maps.places.PlacesService(map),
-				placeID = $mapElement.data('placeid');
-			service.getDetails({
-				placeId: placeID
-			}, function(result) {
-				deferred.resolve(result.geometry.location);
+			map.flyTo({
+				center: [Xcoordinates, Ycoordinates],
+				zoom: 16,
+				bearing: 45,
+				pitch: 45,
+				offset: [0, 0]
 			});
 		} else {
-			deferred.resolve(new google.maps.LatLng(parseFloat($mapElement.data('coordinates-y')), parseFloat($mapElement.data('coordinates-x'))));
+			$('.widg_location__nav button').removeClass('is_active');
 		}
-		return deferred;
 	};
 
-	/**
-	 * Adding the marker to the map
-	 * @param $mapElement
-	 * @param map
-	 */
-	Widget.prototype.addMarker = function($mapElement, map) {
-		this.getLocation($mapElement, map).then(function(location) {
-			var marker = new google.maps.Marker({
-				icon: this.options.markerIconProps,
-				position: location
-			});
-			marker.setMap(map);
-			map.setCenter(location);
-		}.bind(this));
-	};
-
-	/**
-	 * Initializing the map for all locations including their markers
-	 */
-	Widget.prototype.initAllLocations = function() {
-		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
-			var mapProp = _.assign(this.options.mapProps, {
-					center: new google.maps.LatLng(47.5, 7.5),
-					styles: this.options.mapStyles,
-					zoom: 10
-				}),
-				map = new google.maps.Map(element, mapProp);
-			this.maps.push(map);
-			data.maps = map;
-		}.bind(this));
-
-		var $mapData = this.$element.find(this.options.domSelectors.markerData),
-			locationPromises = $mapData.map(function(i, el) {
-				return this.getLocation($(el));
-			}.bind(this)).toArray();
-
-		$.when.apply($, locationPromises).done(function(/* ...locations */) {
-			$(arguments).map(function(i, position) {
-				var $markerElement = $mapData.eq(i),
-					markerProps = _.assign(this.options.mapProps, {
-						position: position,
-						icon: this.options.markerIconProps,
-						opacity: 0.5
-					}),
-					marker = new google.maps.Marker(markerProps);
-
-				marker.setMap(data.maps);
-				data.markers.push(marker);
-				google.maps.event.addListener(marker, 'click', function() {
-					this._setMarkerOpacityDefault();
-					if (marker.getOpacity() !== 1) {
-						marker.set('opacity', 1.0);
-						this._showInfo($markerElement);
-					}
-				}.bind(this));
-			}.bind(this));
-		}.bind(this));
-	};
-
-	Widget.prototype.initAllLocationsStatic = function() {
-		var locationPromises = this.$element.find(this.options.domSelectors.markerData).map(function(i, el) {
-				return this.getLocation($(el));
-			}.bind(this)).toArray(),
-			$image = this.$element.next('.only-phone').find(this.options.domSelectors.staticMap);
-
-		$.when.apply($, locationPromises).done(function(/* ...locations */) {
-			for (var i = 0; i < arguments.length; i++) {
-				var mapProps = _.assign(this.options.mapProps, {
-					styles: this.options.mapStyles,
-					center: arguments[i],
-					locations: [arguments[i]],
-					zoom: 16
-				});
-
-				// assign static image to image element
-				$image.eq(i).attr('src', this.getStaticMapUrl(mapProps));
-			}
-		}.bind(this));
-	};
-
-	/**
-	 * Sets the opacity for all markers back to default
-	 * @private
-	 */
-	Widget.prototype._setMarkerOpacityDefault = function() {
-		data.markers.forEach(function(marker) {
-			marker.set('opacity', 0.5);
+	Widget.prototype.tabNavigation = function() {
+		$('.widg_location__nav button').on('click', function() {
+			$('.widg_location__nav button').removeClass('is_active');
+			var currentMarkerId = this.id;
+			var currentMarker = '#marker-' + currentMarkerId;
+			$(this).toggleClass('is_active');
+			console.log('Total nav buttons index ->' + currentMarker);
+			$(currentMarker).trigger('click');
 		});
 	};
 
 	/**
-	 * Makes one location visible
-	 * @param $marker the span of the marker with the title attribute, so we find the the marker
-	 * @private
+	 * Add map controls
+	 * Zoom, Fullscreen, Rotate
 	 */
-	Widget.prototype._showInfo = function($marker) {
-		$('.location__info').fadeOut(250);
-
-		var titleAttr = $marker.data('location-title');
-
-		$('.location__info[data-location-target="' + titleAttr + '"]').fadeIn(250);
+	Widget.prototype.addControls = function() {
+		this.map.addControl(new window.mapboxgl.NavigationControl(), 'bottom-right');
+		this.map.addControl(new window.mapboxgl.FullscreenControl(), 'bottom-right');
 	};
 
 	/**
@@ -517,8 +249,6 @@
 
 		// Custom teardown (removing added DOM elements etc.)
 		// If there is no need for a custom teardown, this method can be removed
-		$(window).off('resize', this.resize);
-		this.maps = null;
 	};
 
 	// Make the plugin available through jQuery (and the global project namespace)
