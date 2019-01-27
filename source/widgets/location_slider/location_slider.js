@@ -91,7 +91,7 @@
 	Widget.prototype.renderMap = function() {
 		this.options.renderMobileView = isMobileView();
 		this.getCoordinates();
-		
+
 		if (this.options.renderMobileView && this.totalLocations === 1) {
 			var Xcoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-x');
 			var Ycoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-y');
@@ -101,6 +101,20 @@
 				zoom: 16,
 				container: 'mapbox__map-0',
 				center: [Xcoordinates, Ycoordinates],
+				style: 'http://147.86.1.60/res/style-cdn_osm-liberty.json',
+				pitch: 30,
+				bearing: 0,
+				offset: [0, 0]
+			});
+		} else if (this.totalLocations === 1) {
+			var _Xcoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-x');
+			var _Ycoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-y');
+			console.log('X ' + _Xcoordinates);
+
+			this.map = new window.mapboxgl.Map({
+				zoom: 16,
+				container: 'mapbox__map-0',
+				center: [_Xcoordinates, _Ycoordinates],
 				style: 'http://147.86.1.60/res/style-cdn_osm-liberty.json',
 				pitch: 30,
 				bearing: 0,
