@@ -101,7 +101,7 @@
 				zoom: 16,
 				container: 'mapbox__map-0',
 				center: [Xcoordinates, Ycoordinates],
-				style: 'http://147.86.1.60/res/style-cdn_osm-liberty.json',
+				style: 'https://147.86.1.60/res/style-cdn_osm-liberty.json',
 				pitch: 30,
 				bearing: 0,
 				offset: [0, 0]
@@ -115,7 +115,7 @@
 				zoom: 16,
 				container: 'mapbox__map-0',
 				center: [_Xcoordinates, _Ycoordinates],
-				style: 'http://147.86.1.60/res/style-cdn_osm-liberty.json',
+				style: 'https://147.86.1.60/res/style-cdn_osm-liberty.json',
 				pitch: 30,
 				bearing: 0,
 				offset: [0, 0]
