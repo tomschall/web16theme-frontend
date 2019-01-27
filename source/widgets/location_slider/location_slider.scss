@@ -121,9 +121,9 @@ nav.widg_location__nav {
 	position: absolute;
 	width: $infoWidth;
 
-	top: 75%;
+    //	top: 75%;
 	left: 330px;
-	transform: translateY(-50%);
+	transform: translateY(-120%);
 
 	background-color: $colorBg;
 	box-shadow: 0 2px 14px 0 rgba($colorBlack, 0.18);
@@ -133,7 +133,8 @@ nav.widg_location__nav {
 
 	@include mq($to: 'small') {
 		position: relative;
-		top: 160px;
+        top: 245px;
+        transform: translateY(-54%);
 		left: 0;
 		width: 100%;
 		box-shadow: none;
@@ -141,7 +142,8 @@ nav.widg_location__nav {
 
 	@include mq($to: 'medium') {
 		position: relative;
-		top: 160px;
+        top: 245px;
+        transform: translateY(-54%);
 		left: 0;
 		width: 100%;
 		box-shadow: none;
@@ -283,28 +285,6 @@ nav.widg_location__nav {
 	.location__upper {
 	}
 }
-
-/**
-  * Styles for the all locations map
-  */
-
-.widg_location_slider.all-locations {
-	.location__info,
-	nav {
-		// display: none;
-	}
-}
-
-.b-lazy {
-	display: inline-block;
-	position: relative;
-	left: 0;
-	top: 0;
-	height: 1px;
-	width: 1px;
-  	background: transparent;
-}
-
 
 /* MAPBOX CSS */
 .mapboxgl-map:-webkit-full-screen {
