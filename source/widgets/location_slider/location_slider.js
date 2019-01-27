@@ -28,15 +28,15 @@
 				isActive: 'is_active'
 			},
 			mapStyles: {
-				street: 'http://147.86.1.60/res/style-cdn.json',
-				D3map: 'http://147.86.1.60/res/style-cdn_osm-liberty.json'
+				street: 'https://147.86.1.60/res/style-cdn.json',
+				D3map: 'https://147.86.1.60/res/style-cdn_osm-liberty.json'
 			},
 			markerIconProps: {},
 			mapOptionsDefaults: {
 				zoom: 10,
 				container: 'mapbox__map-0',
 				center: [8, 47.5], // Default Campus
-				style: 'http://147.86.1.60/res/style-cdn_osm-liberty.json',
+				style: 'https://147.86.1.60/res/style-cdn_osm-liberty.json',
 				pitch: 30,
 				bearing: 0,
 				offset: [0, 0]
