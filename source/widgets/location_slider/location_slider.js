@@ -34,23 +34,25 @@
 			markerIconProps: {},
 			mapOptionsDefaults: {
 				zoom: 10,
-				container: 'mapbox__map',
-				center: [8.211363, 47.481721], // Default Campus
+				container: 'mapbox__map-0',
+				center: [8, 47.5], // Default Campus
 				style: 'http://147.86.1.60/res/style-cdn_osm-liberty.json',
 				pitch: 30,
-				bearing: 0
+				bearing: 0,
+				offset: [0, 0]
 			},
 		},
 		data = {
 			maps: [],
 			navOptions: [],
 			markers: []
-		},
-		isOneMapOnly = false;
+		};
+		//isOneMapOnly = false;
 
 	/**
 	* Mobile Viewport settings
 	*/
+
 	function isMobileView() {
 		return (screen.availWidth ? screen.availWidth : document.documentElement.clientWidth) <= 1023;
 	}
@@ -81,122 +83,97 @@
 	 * @public
 	 */
     Widget.prototype.init = function() {
-		data.navOptions = $(this.options.domSelectors.navOption).toArray();
-
-		if (!data.navOptions.length) {
-			// Terminate initialization if there are no location data
-			return;
-		}
-
+		this.hideLocationInfos = $(this.options.domSelectors.markerData).hide();
+		this.totalLocations = $(this.options.domSelectors.markerData).length;
+		this.renderMap();
+	};
+	
+	Widget.prototype.renderMap = function() {
 		this.options.renderMobileView = isMobileView();
-		// keep track of all map instances
-		this.maps = [];
+		this.getCoordinates();
+		
+		if (this.options.renderMobileView && this.totalLocations === 1) {
+			var Xcoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-x');
+			var Ycoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-y');
+			console.log('X ' + Xcoordinates);
 
-		if (this.$element.hasClass('all-locations')) {
-			isOneMapOnly = true;
+			this.map = new window.mapboxgl.Map({
+				zoom: 16,
+				container: 'mapbox__map-0',
+				center: [Xcoordinates, Ycoordinates],
+				style: 'http://147.86.1.60/res/style-cdn_osm-liberty.json',
+				pitch: 30,
+				bearing: 0,
+				offset: [0, 0]
+			});
+		} else {
+			this.map = new window.mapboxgl.Map(this.options.mapOptionsDefaults);
 		}
-
-		this.renderMaps(this.options.renderMobileView);
+		this.navState();
+		this.addControls();
+		this.addMarker(this.map);
+		this.tabNavigation();
+		this.setOneLocation();
 	};
 
-	Widget.prototype.renderMaps = function(mobileView) {
-		if (this.$element.hasClass('all-locations')) {
-			isOneMapOnly = true;
-		}
-		if (!isOneMapOnly) {
-			if (!mobileView) {
-				// not a mobile resolution - render interactive map as well
-				this.initMaps();
-			}
-			// this.initMapsStatic();
-			//this.initSlickNav();
+	Widget.prototype.navState = function() {
+		console.log('is mobile? ' + this.options.renderMobileView);
+
+		if (($('.widg_location__nav.nav__state').length)) {
+			console.log('navigation should be visibile');
 		} else {
-			if (isOneMapOnly) {
-				// not a mobile resolution - render interactive map as well
-				this.initOneMap();
-			}
+			$('.widg_location__nav').hide();
+			this.$element.find(this.options.domSelectors.map).css('margin-top', '50px');
 		}
+
+		if (this.options.renderMobileView === true) {
+			this.options.mapMarkerOffset = '[0, 0]';
+			console.log(this.options.mapMarkerOffset);
+			$('.widg_location__nav').show();
+			this.$element.find(this.options.domSelectors.map).css('margin-top', '0');
+		} else {
+			this.options.mapMarkerOffset = '[300, 0]';
+			console.log(this.options.mapMarkerOffset);
+		}
+	};
+
+	Widget.prototype.setOneLocation = function() {
+		if (this.totalLocations === 1) {
+			$(this.options.domSelectors.markerData).show();
+			$('.widg_location__nav').find('button').addClass(this.options.stateClasses.isActive);
+			$('.mapboxgl-marker').animate({ opacity: 0.9 });
+		};
+	};
+
+	Widget.prototype.getCoordinates = function() {
+		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
+			this.Xcoordinates = $(element).attr('data-coordinates-x');
+			this.Ycoordinates = $(element).attr('data-coordinates-y');
+		});
 	};
 
 	/**
-	 * initializing the maps
-	 * data-slick-index="0"
-	 */
-	Widget.prototype.initOneMap = function() {
-		this.$element.find(this.options.domSelectors.map).map(function(index, element) {
-			var $mapElement = $(element),
-					mapProp = _.assign(this.options.mapProps, {
-							style: this.options.mapStyles.D3map,
-							zoom: $mapElement.attr('data-zoomlevel'),
-							center: [7.5, 47.5],
-							container: this.options.mapOptionsDefaults.container + '-' + index, // DIV to placing map
-							pitch: this.options.mapOptionsDefaults.pitch,
-							bearing: this.options.mapOptionsDefaults.bearing
-					}),
-					map = new window.mapboxgl.Map(mapProp);
-					console.log('ONE MAP RENDERED');
-
-					// Add map controls
-					this._addControls(map);
-
-					// Add all markers
-					this.addMarker(map);
-					this.maps.push(map);
-					data.maps.push(map);
-
-		}.bind(this));
-	};
-
+	 * Find locations an render marker to map
+	*/
 	Widget.prototype.addMarker = function(map) {
-		// Hide all location__info
-		this.$element.find('.location__info').map(function(index, element) {
-			console.log('location info -> ' + element.id);
-			$(element).hide();
-		});
-
-		// Find coordinates of each location
 		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
-			var Xcoordinates = $(element).attr('data-coordinates-x');
-			var Ycoordinates = $(element).attr('data-coordinates-y');
-
+			var Xcoordinates = this.Xcoordinates;
+			var Ycoordinates = this.Ycoordinates;
 			var marker = document.createElement('div');
 			marker.className = 'mapboxgl-marker';
-			marker.id = "marker-" + index;
-
-			$(marker).animate({ opacity: 0.3 });
-
-			// Add markers to map; adjusting marker position and put marker to map
+			marker.id = 'marker-' + index;
 			new window.mapboxgl.Marker(marker, {offset: [-29, -35]})
 			.setLngLat([Xcoordinates, Ycoordinates])
 			.addTo(map);
-
-			// $(element).on('click', function() {
-			// 	$('.mapboxgl-marker').animate({ opacity: 0.3 });
-			// });
-
-			function flyTo(currentMarker) {
-				$('.location__info').fadeOut(1000);
-				if ($('#' + element.id).is(':hidden')) {
-					$('#' + element.id).fadeIn(1000);
-					$('#' + currentMarker).animate({ opacity: 0.9 });					
-					map.flyTo({
-						center: [Xcoordinates, Ycoordinates],
-						zoom: 16,
-						bearing: 45,
-						pitch: 45
-					});
-				} else {
-					$('.widg_location__nav button').removeClass('is_active');
-				}
-			}
+			if (this.totalLocations === 1) {  
+				this.setOneLocation();
+			};
 
 			marker.addEventListener('click', function() {
-				var currentMarker = this.id;
-				console.log('current marker -> ' + currentMarker);
-				
+				var currentMarker = this.id;	
 				$('.mapboxgl-marker').animate({ opacity: 0.3 });
 				$('.location__info').fadeOut(1000);
-				$('nav button#'+ index).addClass('is_active');
+				$('nav button#' + index).addClass('is_active');
 
 				map.flyTo({
 					center: [Xcoordinates, Ycoordinates],
@@ -204,16 +181,36 @@
 					bearing: 0,
 					pitch: 0
 				});
-				flyTo(currentMarker);
+				Widget.prototype.flyToLocation(currentMarker, element, map, Xcoordinates, Ycoordinates);
 			});
 		});
+	};
 
+	Widget.prototype.flyToLocation = function(currentMarker, element, map, Xcoordinates, Ycoordinates) {
+		$('.location__info').fadeOut(1000);
+		if ($('#' + element.id).is(':hidden')) {
+			$('#' + element.id).fadeIn(1000);
+			$('#' + currentMarker).animate({ opacity: 0.9 });
+
+			map.flyTo({
+				center: [Xcoordinates, Ycoordinates],
+				zoom: 16,
+				bearing: 45,
+				pitch: 45,
+				offset: [0, 0]
+			});
+		} else {
+			$('.widg_location__nav button').removeClass('is_active');
+		}
+	};
+
+	Widget.prototype.tabNavigation = function() {
 		$('.widg_location__nav button').on('click', function() {
 			$('.widg_location__nav button').removeClass('is_active');
 			var currentMarkerId = this.id;
 			var currentMarker = '#marker-' + currentMarkerId;
 			$(this).toggleClass('is_active');
-			console.log('nav button ->' + currentMarker);
+			console.log('Total nav buttons index ->' + currentMarker);
 			$(currentMarker).trigger('click');
 		});
 	};
@@ -222,9 +219,9 @@
 	 * Add map controls
 	 * Zoom, Fullscreen, Rotate
 	 */
-	Widget.prototype._addControls = function(map) {
-		map.addControl(new window.mapboxgl.NavigationControl(), 'bottom-right');
-		map.addControl(new window.mapboxgl.FullscreenControl());
+	Widget.prototype.addControls = function() {
+		this.map.addControl(new window.mapboxgl.NavigationControl(), 'bottom-right');
+		this.map.addControl(new window.mapboxgl.FullscreenControl(), 'bottom-right');
 	};
 
 	/**

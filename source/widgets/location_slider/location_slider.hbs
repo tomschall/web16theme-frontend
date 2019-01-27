@@ -7,8 +7,8 @@
 			<p>{{locationDescription}}</p>
 		{{/if}}
 	</div>
-	{{#if oneMapOnly}}
-	<nav class="widg_location__nav">
+	
+	<nav class="widg_location__nav {{#if oneMapOnly}}nav__state{{/if}}">
 		<ul data-location_slider="nav-list">
 		{{#each entries}}
 			<li>
@@ -17,8 +17,7 @@
 		{{/each}}
 		</ul>
 	</nav>
-	{{/if}}
-	<div class="widg_location_slider {{#if oneMapOnly}}all-locations{{/if}}" data-init="location_slider" data-maps-marker="{{marker}}">
+	<div class="widg_location_slider" data-init="location_slider" data-maps-marker="{{marker}}">
 			<div id="mapbox__map-0" class="location__map" data-coordinates-x="7.5" data-coordinates-y="47.5" data-location_slider="map" data-zoomlevel="9"></div>
 			{{#each entries}}
 				<div id="location__marker-temp-{{@index}}" class="location__info" data-location-target="{{title}}" data-location_slider="markerData" data-coordinates-x="{{coordinates.x}}" data-coordinates-y="{{coordinates.y}}">
