@@ -47,7 +47,6 @@
 			navOptions: [],
 			markers: []
 		};
-		//isOneMapOnly = false;
 
 	/**
 	* Mobile Viewport settings
@@ -83,6 +82,7 @@
 	 * @public
 	 */
     Widget.prototype.init = function() {
+		this.oneMapNavigation = $('.widg_location__nav.nav__state').length;
 		this.hideLocationInfos = $(this.options.domSelectors.markerData).hide();
 		this.totalLocations = $(this.options.domSelectors.markerData).length;
 		this.renderMap();
@@ -132,22 +132,18 @@
 
 	Widget.prototype.navState = function() {
 		console.log('is mobile? ' + this.options.renderMobileView);
-
-		if (($('.widg_location__nav.nav__state').length)) {
-			console.log('navigation should be visibile');
-		} else {
+		
+		if (this.oneMapNavigation) {
 			$('.widg_location__nav').hide();
 			this.$element.find(this.options.domSelectors.map).css('margin-top', '50px');
 		}
 
 		if (this.options.renderMobileView === true) {
 			this.options.mapMarkerOffset = '[0, 0]';
-			console.log(this.options.mapMarkerOffset);
 			$('.widg_location__nav').show();
 			this.$element.find(this.options.domSelectors.map).css('margin-top', '0');
 		} else {
 			this.options.mapMarkerOffset = '[300, 0]';
-			console.log(this.options.mapMarkerOffset);
 		}
 	};
 
