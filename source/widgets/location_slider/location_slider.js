@@ -93,28 +93,28 @@
 		this.getCoordinates();
 
 		if (this.options.renderMobileView && this.totalLocations === 1) {
-			var Xcoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-x');
-			var Ycoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-y');
-			console.log('X ' + Xcoordinates);
+			var xCoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-x');
+			var yCoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-y');
+			console.log('X ' + xCoordinates);
 
 			this.map = new window.mapboxgl.Map({
 				zoom: 16,
 				container: 'mapbox__map-0',
-				center: [Xcoordinates, Ycoordinates],
+				center: [xCoordinates, yCoordinates],
 				style: 'https://147.86.1.60/res/style-cdn_osm-liberty.json',
 				pitch: 30,
 				bearing: 0,
 				offset: [0, 0]
 			});
 		} else if (this.totalLocations === 1) {
-			var _Xcoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-x');
-			var _Ycoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-y');
-			console.log('X ' + _Xcoordinates);
+			var _xCoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-x');
+			var _yCoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-y');
+			console.log('X ' + _xCoordinates);
 
 			this.map = new window.mapboxgl.Map({
 				zoom: 16,
 				container: 'mapbox__map-0',
-				center: [_Xcoordinates, _Ycoordinates],
+				center: [_xCoordinates, _yCoordinates],
 				style: 'https://147.86.1.60/res/style-cdn_osm-liberty.json',
 				pitch: 30,
 				bearing: 0,
@@ -157,8 +157,8 @@
 
 	Widget.prototype.getCoordinates = function() {
 		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
-			this.Xcoordinates = $(element).attr('data-coordinates-x');
-			this.Ycoordinates = $(element).attr('data-coordinates-y');
+			this.xCoordinates = $(element).attr('data-coordinates-x');
+			this.yCoordinates = $(element).attr('data-coordinates-y');
 		});
 	};
 
@@ -167,13 +167,13 @@
 	*/
 	Widget.prototype.addMarker = function(map) {
 		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
-			var Xcoordinates = this.Xcoordinates;
-			var Ycoordinates = this.Ycoordinates;
+			var xCoordinates = this.xCoordinates;
+			var yCoordinates = this.yCoordinates;
 			var marker = document.createElement('div');
 			marker.className = 'mapboxgl-marker';
 			marker.id = 'marker-' + index;
 			new window.mapboxgl.Marker(marker, {offset: [-29, -35]})
-			.setLngLat([Xcoordinates, Ycoordinates])
+			.setLngLat([xCoordinates, yCoordinates])
 			.addTo(map);
 			if (this.totalLocations === 1) {  
 				this.setOneLocation();
@@ -186,24 +186,24 @@
 				$('nav button#' + index).addClass('is_active');
 
 				map.flyTo({
-					center: [Xcoordinates, Ycoordinates],
+					center: [xCoordinates, yCoordinates],
 					zoom: 9,
 					bearing: 0,
 					pitch: 0
 				});
-				Widget.prototype.flyToLocation(currentMarker, element, map, Xcoordinates, Ycoordinates);
+				Widget.prototype.flyToLocation(currentMarker, element, map, xCoordinates, yCoordinates);
 			});
 		});
 	};
 
-	Widget.prototype.flyToLocation = function(currentMarker, element, map, Xcoordinates, Ycoordinates) {
+	Widget.prototype.flyToLocation = function(currentMarker, element, map, xCoordinates, yCoordinates) {
 		$('.location__info').fadeOut(1000);
 		if ($('#' + element.id).is(':hidden')) {
 			$('#' + element.id).fadeIn(1000);
 			$('#' + currentMarker).animate({ opacity: 0.9 });
 
 			map.flyTo({
-				center: [Xcoordinates, Ycoordinates],
+				center: [xCoordinates, yCoordinates],
 				zoom: 16,
 				bearing: 45,
 				pitch: 45,
@@ -220,7 +220,6 @@
 			var currentMarkerId = this.id;
 			var currentMarker = '#marker-' + currentMarkerId;
 			$(this).toggleClass('is_active');
-			console.log('Total nav buttons index ->' + currentMarker);
 			$(currentMarker).trigger('click');
 		});
 	};
