@@ -116,15 +116,19 @@
 				pitch: 30,
 				bearing: 0,
 				offset: [0, 0]
-			});
-		} else {
-			this.map = new window.mapboxgl.Map(this.options.mapOptionsDefaults);
-		}
-		this.navState();
-		this.addControls();
-		this.addMarker(this.map);
-		this.tabNavigation();
-		this.setOneLocation();
+				});
+				if (this.options.renderMobileView) {
+					// disable ScrollZoom
+					this.map.scrollZoom.disable();
+				}
+			} else {
+				this.map = new window.mapboxgl.Map(this.options.mapOptionsDefaults);
+			}
+			this.navState();
+			this.addControls();
+			this.addMarker(this.map);
+			this.tabNavigation();
+			this.setOneLocation();
 	};
 
 	Widget.prototype.getCoordinates = function() {
