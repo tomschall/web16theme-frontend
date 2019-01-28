@@ -25,18 +25,19 @@
 				markerData: '[data-' + name + '="markerData"]',
 			},
 			stateClasses: {
-				isActive: 'is_active'
+				isActive: 'is_active',
+				mapSelector: 'mapbox__map-0'
 			},
 			mapStyles: {
-				street: 'https://147.86.1.60/res/style-cdn.json',
-				D3map: 'https://147.86.1.60/res/style-cdn_osm-liberty.json'
+				street: 'https://maps.fhnw.ch/res/style-cdn.json',
+				D3map: 'https://maps.fhnw.ch/res/style-cdn_osm-liberty.json'
 			},
 			markerIconProps: {},
 			mapOptionsDefaults: {
 				zoom: 10,
 				container: 'mapbox__map-0',
 				center: [8, 47.5], // Default Campus
-				style: 'https://147.86.1.60/res/style-cdn_osm-liberty.json',
+				style: 'https://maps.fhnw.ch/res/style-cdn.json',
 				pitch: 30,
 				bearing: 0,
 				offset: [0, 0]
@@ -82,40 +83,36 @@
 	 * @public
 	 */
     Widget.prototype.init = function() {
+		this.mapStyle = this.options.mapStyles.D3map;
 		this.oneMapNavigation = $('.widg_location__nav.nav__state').length;
 		this.hideLocationInfos = $(this.options.domSelectors.markerData).hide();
 		this.totalLocations = $(this.options.domSelectors.markerData).length;
+		this.getCoordinates();
 		this.renderMap();
 	};
-	
+
 	Widget.prototype.renderMap = function() {
 		this.options.renderMobileView = isMobileView();
-		this.getCoordinates();
-
+		// Mobile view
 		if (this.options.renderMobileView && this.totalLocations === 1) {
-			var Xcoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-x');
-			var Ycoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-y');
-			console.log('X ' + Xcoordinates);
-
 			this.map = new window.mapboxgl.Map({
 				zoom: 16,
-				container: 'mapbox__map-0',
-				center: [Xcoordinates, Ycoordinates],
-				style: 'https://147.86.1.60/res/style-cdn_osm-liberty.json',
+				container: this.options.stateClasses.mapSelector,
+				center: [this.options.coordinates[0], this.options.coordinates[1]],
+				style: this.mapStyle,
 				pitch: 30,
 				bearing: 0,
 				offset: [0, 0]
 			});
-		} else if (this.totalLocations === 1) {
-			var _Xcoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-x');
-			var _Ycoordinates = $(this.options.domSelectors.markerData).attr('data-coordinates-y');
-			console.log('X ' + _Xcoordinates);
+			// disable ScrollZoom
+			this.map.scrollZoom.disable();
 
+		} else if (this.totalLocations === 1) {
 			this.map = new window.mapboxgl.Map({
 				zoom: 16,
-				container: 'mapbox__map-0',
-				center: [_Xcoordinates, _Ycoordinates],
-				style: 'https://147.86.1.60/res/style-cdn_osm-liberty.json',
+				container: this.options.stateClasses.mapSelector,
+				center: [this.options.coordinates[0], this.options.coordinates[1]],
+				style: this.mapStyle,
 				pitch: 30,
 				bearing: 0,
 				offset: [0, 0]
@@ -130,13 +127,18 @@
 		this.setOneLocation();
 	};
 
+	Widget.prototype.getCoordinates = function() {
+		var coordinates = this;
+		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
+			this.xCoordinates = $(element).attr('data-coordinates-x');
+			this.yCoordinates = $(element).attr('data-coordinates-y');
+			coordinates.options.coordinates = [ this.xCoordinates, this.yCoordinates ];
+			console.log('test: ' + this.xCoordinates + ' ' + this.yCoordinates);
+		});
+	};
+
 	Widget.prototype.navState = function() {
 		console.log('is mobile? ' + this.options.renderMobileView);
-		
-		if (this.oneMapNavigation) {
-			$('.widg_location__nav').hide();
-			this.$element.find(this.options.domSelectors.map).css('margin-top', '50px');
-		}
 
 		if (this.options.renderMobileView === true) {
 			this.options.mapMarkerOffset = '[0, 0]';
@@ -155,55 +157,48 @@
 		};
 	};
 
-	Widget.prototype.getCoordinates = function() {
-		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
-			this.Xcoordinates = $(element).attr('data-coordinates-x');
-			this.Ycoordinates = $(element).attr('data-coordinates-y');
-		});
-	};
-
 	/**
 	 * Find locations an render marker to map
 	*/
 	Widget.prototype.addMarker = function(map) {
-		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
-			var Xcoordinates = this.Xcoordinates;
-			var Ycoordinates = this.Ycoordinates;
+			this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
+			var xCoordinates = this.xCoordinates;
+			var yCoordinates = this.yCoordinates;
 			var marker = document.createElement('div');
 			marker.className = 'mapboxgl-marker';
 			marker.id = 'marker-' + index;
 			new window.mapboxgl.Marker(marker, {offset: [-29, -35]})
-			.setLngLat([Xcoordinates, Ycoordinates])
+			.setLngLat([xCoordinates, yCoordinates])
 			.addTo(map);
-			if (this.totalLocations === 1) {  
+			if (this.totalLocations === 1) {
 				this.setOneLocation();
 			};
 
 			marker.addEventListener('click', function() {
-				var currentMarker = this.id;	
+				var currentMarker = this.id;
 				$('.mapboxgl-marker').animate({ opacity: 0.3 });
 				$('.location__info').fadeOut(1000);
 				$('nav button#' + index).addClass('is_active');
 
 				map.flyTo({
-					center: [Xcoordinates, Ycoordinates],
+					center: [xCoordinates, yCoordinates],
 					zoom: 9,
 					bearing: 0,
 					pitch: 0
 				});
-				Widget.prototype.flyToLocation(currentMarker, element, map, Xcoordinates, Ycoordinates);
+				Widget.prototype.flyToLocation(currentMarker, element, map, xCoordinates, yCoordinates);
 			});
 		});
 	};
 
-	Widget.prototype.flyToLocation = function(currentMarker, element, map, Xcoordinates, Ycoordinates) {
+	Widget.prototype.flyToLocation = function(currentMarker, element, map, xCoordinates, yCoordinates) {
 		$('.location__info').fadeOut(1000);
 		if ($('#' + element.id).is(':hidden')) {
 			$('#' + element.id).fadeIn(1000);
 			$('#' + currentMarker).animate({ opacity: 0.9 });
 
 			map.flyTo({
-				center: [Xcoordinates, Ycoordinates],
+				center: [xCoordinates, yCoordinates],
 				zoom: 16,
 				bearing: 45,
 				pitch: 45,
@@ -220,7 +215,6 @@
 			var currentMarkerId = this.id;
 			var currentMarker = '#marker-' + currentMarkerId;
 			$(this).toggleClass('is_active');
-			console.log('Total nav buttons index ->' + currentMarker);
 			$(currentMarker).trigger('click');
 		});
 	};

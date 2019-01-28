@@ -4,7 +4,7 @@ $infoPadding: 34px;
 
 .widg_location_slider {
 	@include bleedFull($gutterWidth);
-    
+
     overflow: hidden;
 
 	@include mq($to: 'medium') {
@@ -18,8 +18,8 @@ $infoPadding: 34px;
 }
 
 .startpage-page .layout_content #location-map {
-	margin-top: 3rem;	
-    
+	margin-top: 3rem;
+
 	.bleed__inner {
 		text-align: center;
 	}
@@ -46,7 +46,7 @@ nav.widg_location__nav {
 	li {
 		display: inline-block;
         margin-right: $basicPush * 4;
-        
+
  		@include mq($to: 'small') {
 			width: 100%;
 		}
@@ -120,8 +120,7 @@ nav.widg_location__nav {
 .location__info {
 	position: absolute;
 	width: $infoWidth;
-
-    //	top: 75%;
+	// top: 75%;
 	left: 330px;
 	transform: translateY(-120%);
 
