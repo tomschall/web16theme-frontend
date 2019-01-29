@@ -263,7 +263,14 @@
 		background-color: rgba($colorBlack, 0.7);
 	}
 
-    &:hover,
+    &:hover {
+        background-color: rgba($colorBlack, 0.7);
+
+        &:before {
+            animation: arrowAnimationWithCenterIcon $animationDuration 1;
+        }
+    }
+
     &:active {
         background-color: rgba($colorBlack, 1);
 
