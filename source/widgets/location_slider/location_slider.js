@@ -36,11 +36,11 @@
 			mapOptionsDefaults: {
 				zoom: 10,
 				container: 'mapbox__map-0',
-				center: [8, 47.5], // Default Campus
+				center: [7.9, 47.46], // Default Campus
 				style: 'https://maps.fhnw.ch/res/style-cdn.json',
 				pitch: 30,
 				bearing: 0,
-				offset: [0, 0]
+				offset: [-29, -35]
 			},
 		},
 		data = {
@@ -83,62 +83,169 @@
 	 * @public
 	 */
     Widget.prototype.init = function() {
-		this.mapStyle = this.options.mapStyles.D3map;
-		this.oneMapNavigation = $('.widg_location__nav.nav__state').length;
+		this.mapStyle = this.options.mapStyles.street;
+		this.options.renderMobileView = isMobileView(); // true if mobile resolution < 1024
 		this.hideLocationInfos = $(this.options.domSelectors.markerData).hide();
 		this.totalLocations = $(this.options.domSelectors.markerData).length;
-		this.getCoordinates();
+		this.setLocationDatas();
 		this.renderMap();
+		this.mapSettings(this.map);
+		this.addMarker(this.map);
+		this.navState();
+		this.addControls();
+		this.tabNavigation();
+		this.setOneLocation(); // Default infobox visible, if just one location
+	};
+
+	Widget.prototype.mapSettings = function() {
+		this.map = new window.mapboxgl.Map({
+			zoom: this.zoom,
+			container: this.options.stateClasses.mapSelector,
+			center: this.center, //this.options.locationQuery,
+			style: this.mapStyle,
+			pitch: this.pitch,
+			bearing: this.bearing,
+			offset: this.offset,
+			interactive: this.interactive
+			// scrollZoom: false,
+			// boxZoom: false,
+			// doubleClickZoom : false
+		});
+
+
+		console.log(this.offset);
 	};
 
 	Widget.prototype.renderMap = function() {
-		this.options.renderMobileView = isMobileView();
-		// Mobile view
+		// Map settings -> mobile view true, one location true
 		if (this.options.renderMobileView && this.totalLocations === 1) {
-			this.map = new window.mapboxgl.Map({
-				zoom: 16,
-				container: this.options.stateClasses.mapSelector,
-				center: [this.options.coordinates[0], this.options.coordinates[1]],
-				style: this.mapStyle,
-				pitch: 30,
-				bearing: 0,
-				offset: [0, 0]
-			});
-			// disable ScrollZoom
-			this.map.scrollZoom.disable();
-
-		} else if (this.totalLocations === 1) {
-			this.map = new window.mapboxgl.Map({
-				zoom: 16,
-				container: this.options.stateClasses.mapSelector,
-				center: [this.options.coordinates[0], this.options.coordinates[1]],
-				style: this.mapStyle,
-				pitch: 30,
-				bearing: 0,
-				offset: [0, 0]
-				});
-				if (this.options.renderMobileView) {
-					// disable ScrollZoom
-					this.map.scrollZoom.disable();
-				}
-			} else {
-				this.map = new window.mapboxgl.Map(this.options.mapOptionsDefaults);
-			}
-			this.navState();
-			this.addControls();
-			this.addMarker(this.map);
-			this.tabNavigation();
-			this.setOneLocation();
+			this.zoom = 16;
+			this.center = [data.markers[0].features[0].geometry.coordinates[0], data.markers[0].features[0].geometry.coordinates[1]];
+			this.pitch = this.options.mapOptionsDefaults.pitch;
+			this.bearing = this.options.mapOptionsDefaults.bearing;
+			this.offset = this.options.mapOptionsDefaults.offset;
+			this.interactive = false;
+		}
+		// Map settings -> mobile view true, multiple locations true
+		if (this.options.renderMobileView && this.totalLocations > 1) {
+			this.zoom = 8;
+			this.center = this.options.mapOptionsDefaults.center;
+			this.pitch = this.options.mapOptionsDefaults.pitch;
+			this.bearing = this.options.mapOptionsDefaults.bearing;
+			this.offset = this.options.mapOptionsDefaults.offset;
+			this.interactive = false;
+		}
+		// Map settings -> mobile view false, one locations true
+		if (this.options.renderMobileView === false && this.totalLocations === 1) {
+			this.zoom = 16;
+			this.center = [data.markers[0].features[0].geometry.coordinates[0], data.markers[0].features[0].geometry.coordinates[1]];
+			this.pitch = this.options.mapOptionsDefaults.pitch;
+			this.bearing = this.options.mapOptionsDefaults.bearing;
+			this.offset = this.options.mapOptionsDefaults.offset;
+			this.interactive = true;
+		}
+		// Map settings -> mobile view false, one locations false
+		if (this.options.renderMobileView === false && this.totalLocations > 1) {
+			this.zoom = 9;
+			this.center = this.options.mapOptionsDefaults.center;
+			this.pitch = this.options.mapOptionsDefaults.pitch;
+			this.bearing = this.options.mapOptionsDefaults.bearing;
+			this.offset = this.options.mapOptionsDefaults.offset;
+			this.interactive = true;
+		}
 	};
 
-	Widget.prototype.getCoordinates = function() {
-		var coordinates = this;
+	Widget.prototype.setLocationDatas = function() {
 		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
-			this.xCoordinates = $(element).attr('data-coordinates-x');
-			this.yCoordinates = $(element).attr('data-coordinates-y');
-			coordinates.options.coordinates = [ this.xCoordinates, this.yCoordinates ];
-			console.log('test: ' + this.xCoordinates + ' ' + this.yCoordinates);
+			var xCoord = $(element).attr('data-coordinates-x');
+			var yCoord = $(element).attr('data-coordinates-y');
+			var locationTitle = $(element).attr('locations-target');
+			var idx = index;
+			console.log('test: ' + xCoord + ' ' + yCoord + ' ' + idx);
+			data.markers.push({
+			    'type': 'FeatureCollection',
+			    'features': [
+			        {
+			            'geometry': {
+			                'type': 'Point',
+			                'coordinates': [
+			                    xCoord,
+			                    yCoord
+			                ]
+			            },
+			            'type': 'Feature',
+			            'properties': {
+			                'description': '',
+			                'marker-symbol': 'rail-metro',
+			                'title': locationTitle,
+			                'url': 'https://www.dev.fhnw.ch/de/weiterbildung/technik/cas-data-science',
+			                'lines': [
+			                    'Green'
+			                ],
+			                'address': 'FHNW - Nordwestschweiz, Campus Brugg'
+			            }
+			        }
+				]
+			});
 		});
+	};
+
+	/**
+	* Find locations an render marker to map
+	*/
+	Widget.prototype.addMarker = function(map) {
+		var offset = this.offset;
+		var center = this.options.mapOptionsDefaults.center;
+		data.markers.forEach(function(index, e) {
+			var xCoordinates = index.features[0].geometry.coordinates[0];
+			var yCoordinates = index.features[0].geometry.coordinates[1];
+
+			var marker = document.createElement('div');
+			marker.className = 'mapboxgl-marker';
+			marker.id = 'marker-' + e;
+
+			new window.mapboxgl.Marker(marker, { offset: offset })
+			.setLngLat([xCoordinates, yCoordinates])
+			.addTo(map);
+
+			// if (this.totalLocations === 1) {
+			// 	this.setOneLocation();
+			// };
+
+			marker.addEventListener('click', function() {
+				marker = this.id;
+				console.log('clicked marker -> ' + marker);
+				$('.mapboxgl-marker').animate({ opacity: 0.3 });
+				$('.location__info').fadeOut(1000);
+				$('nav button#' + e).addClass('is_active');
+
+				map.flyTo({
+					center: center,
+					zoom: 9,
+					bearing: 0,
+					pitch: 0
+				});
+				Widget.prototype.flyToLocation(marker, map, e, xCoordinates, yCoordinates);
+			});
+		});
+	};
+
+	Widget.prototype.flyToLocation = function(marker, map, e, xCoordinates, yCoordinates) {
+		$('.location__info').fadeOut(1000);
+		if ($('#location__marker-temp-' + e).is(':hidden')) {
+			$('#location__marker-temp-' + e).fadeIn(1000);
+			$('#' + marker).animate({ opacity: 0.9 });
+
+			map.flyTo({
+				center: [xCoordinates, yCoordinates],
+				zoom: 16,
+				bearing: 45,
+				pitch: 45,
+				offset: [0, 0]
+			});
+		} else {
+			$('.widg_location__nav button').removeClass('is_active');
+		}
 	};
 
 	Widget.prototype.navState = function() {
@@ -159,58 +266,6 @@
 			$('.widg_location__nav').find('button').addClass(this.options.stateClasses.isActive);
 			$('.mapboxgl-marker').animate({ opacity: 0.9 });
 		};
-	};
-
-	/**
-	 * Find locations an render marker to map
-	*/
-	Widget.prototype.addMarker = function(map) {
-			this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
-			var xCoordinates = this.xCoordinates;
-			var yCoordinates = this.yCoordinates;
-			var marker = document.createElement('div');
-			marker.className = 'mapboxgl-marker';
-			marker.id = 'marker-' + index;
-			new window.mapboxgl.Marker(marker, {offset: [-29, -35]})
-			.setLngLat([xCoordinates, yCoordinates])
-			.addTo(map);
-			if (this.totalLocations === 1) {
-				this.setOneLocation();
-			};
-
-			marker.addEventListener('click', function() {
-				var currentMarker = this.id;
-				$('.mapboxgl-marker').animate({ opacity: 0.3 });
-				$('.location__info').fadeOut(1000);
-				$('nav button#' + index).addClass('is_active');
-
-				map.flyTo({
-					center: [xCoordinates, yCoordinates],
-					zoom: 9,
-					bearing: 0,
-					pitch: 0
-				});
-				Widget.prototype.flyToLocation(currentMarker, element, map, xCoordinates, yCoordinates);
-			});
-		});
-	};
-
-	Widget.prototype.flyToLocation = function(currentMarker, element, map, xCoordinates, yCoordinates) {
-		$('.location__info').fadeOut(1000);
-		if ($('#' + element.id).is(':hidden')) {
-			$('#' + element.id).fadeIn(1000);
-			$('#' + currentMarker).animate({ opacity: 0.9 });
-
-			map.flyTo({
-				center: [xCoordinates, yCoordinates],
-				zoom: 16,
-				bearing: 45,
-				pitch: 45,
-				offset: [0, 0]
-			});
-		} else {
-			$('.widg_location__nav button').removeClass('is_active');
-		}
 	};
 
 	Widget.prototype.tabNavigation = function() {
