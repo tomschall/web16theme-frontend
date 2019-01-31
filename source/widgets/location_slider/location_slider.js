@@ -26,7 +26,8 @@
 			},
 			stateClasses: {
 				isActive: 'is_active',
-				mapSelector: 'mapbox__map-0'
+				mapSelector: 'mapbox__map-0',
+				mapNavigationButton: '.widg_location__nav button'
 			},
 			mapStyles: {
 				street: 'https://maps.fhnw.ch/res/style-cdn.json',
@@ -87,14 +88,15 @@
 		this.options.renderMobileView = isMobileView(); // true if mobile resolution < 1024
 		this.hideLocationInfos = $(this.options.domSelectors.markerData).hide();
 		this.totalLocations = $(this.options.domSelectors.markerData).length;
-		this.setLocationDatas();
+		this.setlocationDataIndexs();
 		this.renderMap();
 		this.mapSettings(this.map);
 		this.addMarker(this.map);
 		this.navState();
 		this.addControls();
-		this.tabNavigation();
+		this.tabNavigation(this.map);
 		this.setOneLocation(); // Default infobox visible, if just one location
+		//this.flytoPoint(this.map);
 	};
 
 	Widget.prototype.mapSettings = function() {
@@ -111,9 +113,6 @@
 			// boxZoom: false,
 			// doubleClickZoom : false
 		});
-
-
-		console.log(this.offset);
 	};
 
 	Widget.prototype.renderMap = function() {
@@ -142,7 +141,7 @@
 			this.pitch = this.options.mapOptionsDefaults.pitch;
 			this.bearing = this.options.mapOptionsDefaults.bearing;
 			this.offset = this.options.mapOptionsDefaults.offset;
-			this.interactive = true;
+			this.interactive = false;
 		}
 		// Map settings -> mobile view false, one locations false
 		if (this.options.renderMobileView === false && this.totalLocations > 1) {
@@ -151,11 +150,11 @@
 			this.pitch = this.options.mapOptionsDefaults.pitch;
 			this.bearing = this.options.mapOptionsDefaults.bearing;
 			this.offset = this.options.mapOptionsDefaults.offset;
-			this.interactive = true;
+			this.interactive = false;
 		}
 	};
 
-	Widget.prototype.setLocationDatas = function() {
+	Widget.prototype.setlocationDataIndexs = function() {
 		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
 			var xCoord = $(element).attr('data-coordinates-x');
 			var yCoord = $(element).attr('data-coordinates-y');
@@ -235,7 +234,7 @@
 		if ($('#location__marker-temp-' + e).is(':hidden')) {
 			$('#location__marker-temp-' + e).fadeIn(1000);
 			$('#' + marker).animate({ opacity: 0.9 });
-
+			$('.widg_location__nav button#' + e).addClass('is_active');
 			map.flyTo({
 				center: [xCoordinates, yCoordinates],
 				zoom: 16,
@@ -245,6 +244,7 @@
 			});
 		} else {
 			$('.widg_location__nav button').removeClass('is_active');
+			$('#' + marker).animate({ opacity: 0.3 });
 		}
 	};
 
@@ -268,13 +268,38 @@
 		};
 	};
 
-	Widget.prototype.tabNavigation = function() {
-		$('.widg_location__nav button').on('click', function() {
+	Widget.prototype.animateInfobox = function(infoboxId) {
+		$('.location__info').fadeOut(1000);
+		if ($('#location__marker-temp-' + infoboxId).is(':hidden')) {
+			$('#location__marker-temp-' + infoboxId).fadeIn(1000);
+			$('#marker-' + infoboxId).animate({ opacity: 1 });
+		} else {
+			$('.mapboxgl-marker').animate({ opacity: 0.3 });
 			$('.widg_location__nav button').removeClass('is_active');
-			var currentMarkerId = this.id;
-			var currentMarker = '#marker-' + currentMarkerId;
-			$(this).toggleClass('is_active');
-			$(currentMarker).trigger('click');
+		}
+	};
+
+	Widget.prototype.getCoordinates = function(locationDataIndex) {
+		var locationDataIndexCoord = [data.markers[locationDataIndex].features[0].geometry.coordinates[0], data.markers[locationDataIndex].features[0].geometry.coordinates[1]];
+		return locationDataIndexCoord;
+	};
+
+	Widget.prototype.tabNavigation = function(map) {
+		$(this.options.stateClasses.mapNavigationButton).on('click', function() {
+			$('.widg_location__nav button').removeClass('is_active');
+			$('.mapboxgl-marker').animate({ opacity: 0.3 });
+			// $(this).addClass('is_active');
+			var locationDataIndex = this.id;
+			var marker = 'marker-' + locationDataIndex;
+			var xyCoordinates = Widget.prototype.getCoordinates(locationDataIndex);
+			map.flyTo({
+				center: xyCoordinates,
+				zoom: 9,
+				bearing: 0,
+				pitch: 0,
+				offset: [0, 0]
+			});
+			Widget.prototype.flyToLocation(marker, map, locationDataIndex, xyCoordinates[0], xyCoordinates[1]);
 		});
 	};
 
