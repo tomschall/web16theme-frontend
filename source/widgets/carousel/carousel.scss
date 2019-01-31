@@ -259,33 +259,59 @@
 		transform: translateY(-100%);
 	}
 
-	&:focus {
+  	@media screen {
+
+		&:focus {
 		background-color: rgba($colorBlack, 0.7);
+		}
+
+		&:hover,
+		&:active {
+			background-color: rgba($colorBlack, 1);
+
+			&:before {
+				animation: arrowAnimationWithCenterIcon $animationDuration 1;
+			}
+		}
+
+		&:focus {
+			outline: 0;
+		}
+
+		&:before {
+			@include centerDataurlIcon();
+
+		}
+
 	}
 
-    &:hover {
-        background-color: rgba($colorBlack, 0.7);
+  	@media (min-width: 320px) and (max-width: 1024px) {
 
-        &:before {
-            animation: arrowAnimationWithCenterIcon $animationDuration 1;
-        }
-    }
+	  	&:hover {
+		  	background-color: rgba($colorBlack, 0.7);
 
-    &:active {
-        background-color: rgba($colorBlack, 1);
+			&:before {
+				animation: arrowAnimationWithCenterIcon $animationDuration 1;
+			}
+		}
 
-        &:before {
-            animation: arrowAnimationWithCenterIcon $animationDuration 1;
-        }
-    }
+		&:active {
+				background-color: rgba($colorBlack, 0.7);
 
-	&:focus {
-		outline: 0;
-	}
+				&:before {
+					animation: arrowAnimationWithCenterIcon $animationDuration 1;
+				}
+		}
 
-	&:before {
-		@include centerDataurlIcon();
+	  	&:focus {
+			background-color: rgba($colorBlack, 0.7);
+		  	outline: 0;
+		}
 
+		&:before {
+			@include centerDataurlIcon();
+
+		}
 	}
 
 	&.widg_carousel__prev {
