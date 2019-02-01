@@ -84,26 +84,24 @@
 	 * @public
 	 */
     Widget.prototype.init = function() {
+		this.hideLocationInfos = $(this.options.domSelectors.markerData).hide();
 		this.mapStyle = this.options.mapStyles.street;
 		this.options.renderMobileView = isMobileView(); // true if mobile resolution < 1024
-		this.hideLocationInfos = $(this.options.domSelectors.markerData).hide();
 		this.totalLocations = $(this.options.domSelectors.markerData).length;
 		this.setlocationDataIndexs();
 		this.renderMap();
 		this.mapSettings(this.map);
 		this.addMarker(this.map);
-		this.navState();
 		this.addControls();
 		this.tabNavigation(this.map);
-		this.setOneLocation(this.map); // Default infobox visible, if just one location
-		//this.flytoPoint(this.map);
+		this.setFirstLocation(this.map);
 	};
 
 	Widget.prototype.mapSettings = function() {
 		this.map = new window.mapboxgl.Map({
 			zoom: this.zoom,
 			container: this.options.stateClasses.mapSelector,
-			center: this.center, //this.options.locationQuery,
+			center: this.center,
 			style: this.mapStyle,
 			pitch: this.pitch,
 			bearing: this.bearing,
@@ -154,6 +152,9 @@
 		}
 	};
 
+	/**
+	* Find locations and push it to map JSON
+	*/
 	Widget.prototype.setlocationDataIndexs = function() {
 		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
 			var xCoord = $(element).attr('data-coordinates-x');
@@ -190,7 +191,8 @@
 	};
 
 	/**
-	* Find locations an render marker to map
+	* Find locations and render marker to map
+	* Set eventlistener to markers
 	*/
 	Widget.prototype.addMarker = function(map) {
 		var offset = this.offset;
@@ -206,10 +208,6 @@
 			new window.mapboxgl.Marker(marker, { offset: offset })
 			.setLngLat([xCoordinates, yCoordinates])
 			.addTo(map);
-
-			// if (this.totalLocations === 1) {
-			// 	this.setOneLocation();
-			// };
 
 			marker.addEventListener('click', function() {
 				marker = this.id;
@@ -229,6 +227,9 @@
 		});
 	};
 
+	/**
+	* Fly to location
+	*/
 	Widget.prototype.flyToLocation = function(marker, map, e, xCoordinates, yCoordinates) {
 		$('.location__info').fadeOut(1000);
 		if ($('#location__marker-temp-' + e).is(':hidden')) {
@@ -248,19 +249,7 @@
 		}
 	};
 
-	Widget.prototype.navState = function() {
-		console.log('is mobile? ' + this.options.renderMobileView);
-
-		if (this.options.renderMobileView === true) {
-			this.options.mapMarkerOffset = '[0, 0]';
-			$('.widg_location__nav').show();
-			this.$element.find(this.options.domSelectors.map).css('margin-top', '0');
-		} else {
-			this.options.mapMarkerOffset = '[300, 0]';
-		}
-	};
-
-	Widget.prototype.setOneLocation = function(map) {
+	Widget.prototype.setFirstLocation = function(map) {
 		var xyCoordinates = Widget.prototype.getCoordinates(0);
 		Widget.prototype.flyToLocation('marker-0', map, 0, xyCoordinates[0], xyCoordinates[1]);
 	};

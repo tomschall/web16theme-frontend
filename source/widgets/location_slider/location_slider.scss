@@ -120,13 +120,14 @@ nav.widg_location__nav {
 .location__info {
 	position: absolute;
 	width: $infoWidth;
-	// top: 75%;
+	top: 50%;
 	left: 330px;
-	transform: translateY(-120%);
+	transform: translateY(-50%);
 
 	background-color: $colorBg;
 	box-shadow: 0 2px 14px 0 rgba($colorBlack, 0.18);
 	opacity: 0.9;
+	z-index: 1;
 
 	@include pushLeftAccordingToHeader(left);
 
