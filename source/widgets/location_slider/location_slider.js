@@ -35,11 +35,11 @@
 			},
 			markerIconProps: {},
 			mapOptionsDefaults: {
-				zoom: 10,
+				zoom: 9,
 				container: 'mapbox__map-0',
 				center: [7.9, 47.46], // Default Campus
 				style: 'https://maps.fhnw.ch/res/style-cdn.json',
-				pitch: 30,
+				pitch: 0,
 				bearing: 0,
 				offset: [-29, -35]
 			},
@@ -95,7 +95,7 @@
 		this.navState();
 		this.addControls();
 		this.tabNavigation(this.map);
-		this.setOneLocation(); // Default infobox visible, if just one location
+		this.setOneLocation(this.map); // Default infobox visible, if just one location
 		//this.flytoPoint(this.map);
 	};
 
@@ -238,8 +238,8 @@
 			map.flyTo({
 				center: [xCoordinates, yCoordinates],
 				zoom: 16,
-				bearing: 45,
-				pitch: 45,
+				bearing: 0,
+				pitch: 0,
 				offset: [0, 0]
 			});
 		} else {
@@ -260,12 +260,9 @@
 		}
 	};
 
-	Widget.prototype.setOneLocation = function() {
-		if (this.totalLocations === 1) {
-			$(this.options.domSelectors.markerData).show();
-			$('.widg_location__nav').find('button').addClass(this.options.stateClasses.isActive);
-			$('.mapboxgl-marker').animate({ opacity: 0.9 });
-		};
+	Widget.prototype.setOneLocation = function(map) {
+		var xyCoordinates = Widget.prototype.getCoordinates(0);
+		Widget.prototype.flyToLocation('marker-0', map, 0, xyCoordinates[0], xyCoordinates[1]);
 	};
 
 	Widget.prototype.animateInfobox = function(infoboxId) {
