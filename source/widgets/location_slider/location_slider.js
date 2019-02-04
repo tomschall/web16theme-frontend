@@ -27,7 +27,8 @@
 			stateClasses: {
 				isActive: 'is_active',
 				mapSelector: 'mapbox__map-0',
-				mapNavigationButton: '.widg_location__nav button'
+				mapNavigationButton: '.widg_location__nav button',
+				locationInfoBox: '.location__info'
 			},
 			mapStyles: {
 				street: 'https://maps.fhnw.ch/res/style-cdn.json',
@@ -48,7 +49,8 @@
 			maps: [],
 			navOptions: [],
 			markers: []
-		};
+		},
+		isMobile = false;
 
 	/**
 	* Mobile Viewport settings
@@ -88,13 +90,26 @@
 		this.mapStyle = this.options.mapStyles.street;
 		this.options.renderMobileView = isMobileView(); // true if mobile resolution < 1024
 		this.totalLocations = $(this.options.domSelectors.markerData).length;
-		this.setlocationDataIndexs();
+		this.navigationButton = this.options.stateClasses.mapNavigationButton;
+
+		if (this.options.renderMobileView === true) {
+			isMobile = true;
+			console.log(isMobile);
+			Widget.prototype.mobileView();
+		}
+
+		this.setLocationDataIndex();
 		this.renderMap();
 		this.mapSettings(this.map);
 		this.addMarker(this.map);
-		this.addControls();
+		this.addControls(this.map);
 		this.tabNavigation(this.map);
 		this.setFirstLocation(this.map);
+	};
+
+	Widget.prototype.mobileView = function() {
+		$('.location__info').clone().insertAfter('#mapbox__map-0');
+		$('#mapbox__map-0 .location__info').remove();
 	};
 
 	Widget.prototype.mapSettings = function() {
@@ -111,8 +126,12 @@
 			// boxZoom: false,
 			// doubleClickZoom : false
 		});
+		this.bounds = new window.mapboxgl.LngLatBounds();
 	};
 
+	/**
+	* Map settings based on device
+	*/
 	Widget.prototype.renderMap = function() {
 		// Map settings -> mobile view true, one location true
 		if (this.options.renderMobileView && this.totalLocations === 1) {
@@ -155,39 +174,41 @@
 	/**
 	* Find locations and push it to map JSON
 	*/
-	Widget.prototype.setlocationDataIndexs = function() {
+	Widget.prototype.setLocationDataIndex = function() {
 		this.$element.find(this.options.domSelectors.markerData).map(function(index, element) {
 			var xCoord = $(element).attr('data-coordinates-x');
 			var yCoord = $(element).attr('data-coordinates-y');
 			var locationTitle = $(element).attr('locations-target');
-			var idx = index;
-			console.log('test: ' + xCoord + ' ' + yCoord + ' ' + idx);
 			data.markers.push({
-			    'type': 'FeatureCollection',
-			    'features': [
-			        {
-			            'geometry': {
-			                'type': 'Point',
-			                'coordinates': [
-			                    xCoord,
-			                    yCoord
-			                ]
-			            },
-			            'type': 'Feature',
-			            'properties': {
-			                'description': '',
-			                'marker-symbol': 'rail-metro',
-			                'title': locationTitle,
-			                'url': 'https://www.dev.fhnw.ch/de/weiterbildung/technik/cas-data-science',
-			                'lines': [
-			                    'Green'
-			                ],
-			                'address': 'FHNW - Nordwestschweiz, Campus Brugg'
-			            }
-			        }
-				]
+				'type': 'FeatureCollection',
+				'features':[{
+					'geometry':{
+						'type': 'Point',
+						'coordinates':[
+							xCoord,
+							yCoord
+					]},
+					'type': 'Feature',
+					'properties':{
+						'description': '',
+						'marker-symbol': 'rail-metro',
+						'title': locationTitle,
+						'url': 'https://www.dev.fhnw.ch/de/weiterbildung/technik/cas-data-science',
+						'lines':['Green'],
+						'address': 'FHNW - Nordwestschweiz, Campus Brugg'
+					}
+				}]
 			});
 		});
+	};
+
+	/**
+	* Get location x and y coordinates from JSON
+	* See setLocationDataIndex
+	*/
+	Widget.prototype.getCoordinates = function(locationDataIndex) {
+		var locationDataIndexCoord = [data.markers[locationDataIndex].features[0].geometry.coordinates[0], data.markers[locationDataIndex].features[0].geometry.coordinates[1]];
+		return locationDataIndexCoord;
 	};
 
 	/**
@@ -196,7 +217,12 @@
 	*/
 	Widget.prototype.addMarker = function(map) {
 		var offset = this.offset;
-		var center = this.options.mapOptionsDefaults.center;
+		var bounds = this.bounds;
+		var totalLocations = this.totalLocations;
+		var navigationButton = this.options.stateClasses.mapNavigationButton;
+		var locationInfoBox = $(this.options.stateClasses.locationInfoBox);
+		//var center = this.options.mapOptionsDefaults.center;
+
 		data.markers.forEach(function(index, e) {
 			var xCoordinates = index.features[0].geometry.coordinates[0];
 			var yCoordinates = index.features[0].geometry.coordinates[1];
@@ -209,19 +235,24 @@
 			.setLngLat([xCoordinates, yCoordinates])
 			.addTo(map);
 
+			bounds.extend(index.features[0].geometry.coordinates);
+
 			marker.addEventListener('click', function() {
 				marker = this.id;
-				console.log('clicked marker -> ' + marker);
 				$('.mapboxgl-marker').animate({ opacity: 0.3 });
-				$('.location__info').fadeOut(1000);
-				$('nav button#' + e).addClass('is_active');
+				locationInfoBox.fadeOut(1000);
+				$(navigationButton + '#' + e).addClass('is_active');
+				if (totalLocations > 1) {
+					map.fitBounds(bounds, {padding: 100});
+				} else {
+					map.flyTo({
+						center: [xCoordinates, yCoordinates],
+						zoom: 9,
+						bearing: 0,
+						pitch: 0
+					});
 
-				map.flyTo({
-					center: center,
-					zoom: 9,
-					bearing: 0,
-					pitch: 0
-				});
+				}
 				Widget.prototype.flyToLocation(marker, map, e, xCoordinates, yCoordinates);
 			});
 		});
@@ -249,42 +280,39 @@
 		}
 	};
 
+	/**
+	* Set first infobox visible
+	*/
 	Widget.prototype.setFirstLocation = function(map) {
 		var xyCoordinates = Widget.prototype.getCoordinates(0);
 		Widget.prototype.flyToLocation('marker-0', map, 0, xyCoordinates[0], xyCoordinates[1]);
 	};
 
-	Widget.prototype.animateInfobox = function(infoboxId) {
-		$('.location__info').fadeOut(1000);
-		if ($('#location__marker-temp-' + infoboxId).is(':hidden')) {
-			$('#location__marker-temp-' + infoboxId).fadeIn(1000);
-			$('#marker-' + infoboxId).animate({ opacity: 1 });
-		} else {
-			$('.mapboxgl-marker').animate({ opacity: 0.3 });
-			$('.widg_location__nav button').removeClass('is_active');
-		}
-	};
-
-	Widget.prototype.getCoordinates = function(locationDataIndex) {
-		var locationDataIndexCoord = [data.markers[locationDataIndex].features[0].geometry.coordinates[0], data.markers[locationDataIndex].features[0].geometry.coordinates[1]];
-		return locationDataIndexCoord;
-	};
-
+	/**
+	* Trigger location marker from navigation tab
+	*/
 	Widget.prototype.tabNavigation = function(map) {
+		var mapDefaults = this.options.mapOptionsDefaults;
+		var bounds = this.bounds;
+		var totalLocations = this.totalLocations;
+
 		$(this.options.stateClasses.mapNavigationButton).on('click', function() {
 			$('.widg_location__nav button').removeClass('is_active');
 			$('.mapboxgl-marker').animate({ opacity: 0.3 });
-			// $(this).addClass('is_active');
 			var locationDataIndex = this.id;
 			var marker = 'marker-' + locationDataIndex;
 			var xyCoordinates = Widget.prototype.getCoordinates(locationDataIndex);
-			map.flyTo({
-				center: xyCoordinates,
-				zoom: 9,
-				bearing: 0,
-				pitch: 0,
-				offset: [0, 0]
-			});
+			if (totalLocations > 1) {
+				map.fitBounds(bounds, {padding: 100});
+			} else {
+				map.flyTo({
+					center: xyCoordinates,
+					zoom: mapDefaults.zoom,
+					bearing: mapDefaults.bearing,
+					pitch: mapDefaults.pitch
+				});
+
+			}
 			Widget.prototype.flyToLocation(marker, map, locationDataIndex, xyCoordinates[0], xyCoordinates[1]);
 		});
 	};
@@ -293,9 +321,9 @@
 	 * Add map controls
 	 * Zoom, Fullscreen, Rotate
 	 */
-	Widget.prototype.addControls = function() {
-		this.map.addControl(new window.mapboxgl.NavigationControl(), 'bottom-right');
-		this.map.addControl(new window.mapboxgl.FullscreenControl(), 'bottom-right');
+	Widget.prototype.addControls = function(map) {
+		map.addControl(new window.mapboxgl.NavigationControl(), 'bottom-right');
+		map.addControl(new window.mapboxgl.FullscreenControl(), 'bottom-right');
 	};
 
 	/**
