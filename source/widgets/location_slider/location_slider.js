@@ -27,7 +27,8 @@
 			stateClasses: {
 				isActive: 'is_active',
 				mapSelector: 'mapbox__map-0',
-				mapNavigationButton: '.widg_location__nav button'
+				mapNavigationButton: '.widg_location__nav button',
+				locationInfoBox: '.location__info'
 			},
 			mapStyles: {
 				street: 'https://maps.fhnw.ch/res/style-cdn.json',
@@ -48,7 +49,8 @@
 			maps: [],
 			navOptions: [],
 			markers: []
-		};
+		},
+		isMobile = false;
 
 	/**
 	* Mobile Viewport settings
@@ -88,7 +90,13 @@
 		this.mapStyle = this.options.mapStyles.street;
 		this.options.renderMobileView = isMobileView(); // true if mobile resolution < 1024
 		this.totalLocations = $(this.options.domSelectors.markerData).length;
-		this.flyBackOptions = this.options.mapOptionsDefaults;
+		this.navigationButton = this.options.stateClasses.mapNavigationButton;
+
+		if (this.options.renderMobileView === true) {
+			isMobile = true;
+			console.log(isMobile);
+			Widget.prototype.mobileView();
+		}
 
 		this.setLocationDataIndex();
 		this.renderMap();
@@ -97,6 +105,11 @@
 		this.addControls(this.map);
 		this.tabNavigation(this.map);
 		this.setFirstLocation(this.map);
+	};
+
+	Widget.prototype.mobileView = function() {
+		$('.location__info').clone().insertAfter('#mapbox__map-0');
+		$('#mapbox__map-0 .location__info').remove();
 	};
 
 	Widget.prototype.mapSettings = function() {
@@ -206,8 +219,10 @@
 		var offset = this.offset;
 		var bounds = this.bounds;
 		var totalLocations = this.totalLocations;
-		var center = this.options.mapOptionsDefaults.center;
-		
+		var navigationButton = this.options.stateClasses.mapNavigationButton;
+		var locationInfoBox = $(this.options.stateClasses.locationInfoBox);
+		//var center = this.options.mapOptionsDefaults.center;
+
 		data.markers.forEach(function(index, e) {
 			var xCoordinates = index.features[0].geometry.coordinates[0];
 			var yCoordinates = index.features[0].geometry.coordinates[1];
@@ -225,13 +240,13 @@
 			marker.addEventListener('click', function() {
 				marker = this.id;
 				$('.mapboxgl-marker').animate({ opacity: 0.3 });
-				$('.location__info').fadeOut(1000);
-				$('nav button#' + e).addClass('is_active');
+				locationInfoBox.fadeOut(1000);
+				$(navigationButton + '#' + e).addClass('is_active');
 				if (totalLocations > 1) {
 					map.fitBounds(bounds, {padding: 100});
 				} else {
 					map.flyTo({
-						center: center,
+						center: [xCoordinates, yCoordinates],
 						zoom: 9,
 						bearing: 0,
 						pitch: 0
@@ -277,14 +292,27 @@
 	* Trigger location marker from navigation tab
 	*/
 	Widget.prototype.tabNavigation = function(map) {
+		var mapDefaults = this.options.mapOptionsDefaults;
 		var bounds = this.bounds;
+		var totalLocations = this.totalLocations;
+
 		$(this.options.stateClasses.mapNavigationButton).on('click', function() {
 			$('.widg_location__nav button').removeClass('is_active');
 			$('.mapboxgl-marker').animate({ opacity: 0.3 });
 			var locationDataIndex = this.id;
 			var marker = 'marker-' + locationDataIndex;
 			var xyCoordinates = Widget.prototype.getCoordinates(locationDataIndex);
-			map.fitBounds(bounds, {padding: 100});
+			if (totalLocations > 1) {
+				map.fitBounds(bounds, {padding: 100});
+			} else {
+				map.flyTo({
+					center: xyCoordinates,
+					zoom: mapDefaults.zoom,
+					bearing: mapDefaults.bearing,
+					pitch: mapDefaults.pitch
+				});
+
+			}
 			Widget.prototype.flyToLocation(marker, map, locationDataIndex, xyCoordinates[0], xyCoordinates[1]);
 		});
 	};

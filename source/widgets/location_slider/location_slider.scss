@@ -8,7 +8,7 @@ $infoPadding: 34px;
     overflow: hidden;
 
 	@include mq($to: 'medium') {
-		//display: none;
+		//height: 820px;
 	}
 
 	&.all-locations {
@@ -102,7 +102,7 @@ nav.widg_location__nav {
 			position: relative;
 
 			@include mq($to: 'medium') {
-				height: 300px; // Map
+				//height: 300px; // Map
 			}
 		}
 	}
@@ -133,8 +133,8 @@ nav.widg_location__nav {
 
 	@include mq($to: 'small') {
 		position: relative;
-        top: 245px;
-        transform: translateY(-54%);
+        top: 0;
+        transform: translateY(0%);
 		left: 0;
 		width: 100%;
 		box-shadow: none;
@@ -142,11 +142,12 @@ nav.widg_location__nav {
 
 	@include mq($to: 'medium') {
 		position: relative;
-        top: 245px;
-        transform: translateY(-54%);
+        // top: 245px;
+        transform: translateY(0%);
 		left: 0;
 		width: 100%;
 		box-shadow: none;
+		top: 0;
 	}
 }
 
