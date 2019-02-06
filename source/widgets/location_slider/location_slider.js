@@ -54,10 +54,13 @@
 	/**
 	* Mobile Viewport settings
 	*/
-
 	function isMobileView() {
 		return (screen.availWidth ? screen.availWidth : document.documentElement.clientWidth) <= 1023;
 	}
+
+	window.onresize = function() {
+		location.reload();
+	};
 
 	/**
 	* Create an instance of the widget
@@ -90,8 +93,9 @@
 		this.options.renderMobileView = isMobileView(); // true if mobile resolution < 1024
 		this.totalLocations = $(this.options.domSelectors.markerData).length;
 		this.navigationButton = this.options.stateClasses.mapNavigationButton;
+		this.options.windowSize = $(window).width();
 
-		if (this.options.renderMobileView === true) {
+		if (this.options.renderMobileView === true || this.options.windowSize <= 1024) {
 			Widget.prototype.mobileView();
 		}
 
@@ -124,6 +128,10 @@
 			// doubleClickZoom : false
 		});
 		this.bounds = new window.mapboxgl.LngLatBounds();
+
+		$(this.options.stateClasses.mapSelector).slideToggle(200, function() {
+			this.map.resize();
+		});
 	};
 
 	/**
@@ -327,8 +335,6 @@
 	Widget.prototype._moveNavBar = function(locationDataIndex) {
 		var $bar = $('.widg_location__nav-bar'),
 				offsetLeft = $('nav button#' + locationDataIndex).offset().left - $('#mapnavi').offset().left;
-				console.log(offsetLeft);
-
 		$bar.css({
 			left: offsetLeft,
 			width: $('nav button#' + locationDataIndex).width()
