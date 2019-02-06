@@ -49,8 +49,7 @@
 			maps: [],
 			navOptions: [],
 			markers: []
-		},
-		isMobile = false;
+		};
 
 	/**
 	* Mobile Viewport settings
@@ -93,8 +92,6 @@
 		this.navigationButton = this.options.stateClasses.mapNavigationButton;
 
 		if (this.options.renderMobileView === true) {
-			isMobile = true;
-			console.log(isMobile);
 			Widget.prototype.mobileView();
 		}
 
@@ -121,8 +118,8 @@
 			pitch: this.pitch,
 			bearing: this.bearing,
 			offset: this.offset,
-			interactive: this.interactive
-			// scrollZoom: false,
+			interactive: this.interactive,
+			scrollZoom: this.scrollZoom
 			// boxZoom: false,
 			// doubleClickZoom : false
 		});
@@ -158,7 +155,8 @@
 			this.pitch = this.options.mapOptionsDefaults.pitch;
 			this.bearing = this.options.mapOptionsDefaults.bearing;
 			this.offset = this.options.mapOptionsDefaults.offset;
-			this.interactive = false;
+			this.interactive = true;
+			this.scrollZoom = false;
 		}
 		// Map settings -> mobile view false, one locations false
 		if (this.options.renderMobileView === false && this.totalLocations > 1) {
@@ -167,7 +165,8 @@
 			this.pitch = this.options.mapOptionsDefaults.pitch;
 			this.bearing = this.options.mapOptionsDefaults.bearing;
 			this.offset = this.options.mapOptionsDefaults.offset;
-			this.interactive = false;
+			this.interactive = true;
+			this.scrollZoom = false;
 		}
 	};
 
@@ -286,6 +285,7 @@
 	Widget.prototype.setFirstLocation = function(map) {
 		var xyCoordinates = Widget.prototype.getCoordinates(0);
 		Widget.prototype.flyToLocation('marker-0', map, 0, xyCoordinates[0], xyCoordinates[1]);
+		Widget.prototype._moveNavBar(0);
 	};
 
 	/**
@@ -302,6 +302,8 @@
 			var locationDataIndex = this.id;
 			var marker = 'marker-' + locationDataIndex;
 			var xyCoordinates = Widget.prototype.getCoordinates(locationDataIndex);
+			Widget.prototype._moveNavBar(locationDataIndex);
+
 			if (totalLocations > 1) {
 				map.fitBounds(bounds, {padding: 100});
 			} else {
@@ -314,6 +316,22 @@
 
 			}
 			Widget.prototype.flyToLocation(marker, map, locationDataIndex, xyCoordinates[0], xyCoordinates[1]);
+		});
+	};
+
+	/**
+	 * Moving the nav bar to the nav options position and giving their width
+	 * @param $navOption
+	 * @private
+	 */
+	Widget.prototype._moveNavBar = function(locationDataIndex) {
+		var $bar = $('.widg_location__nav-bar'),
+				offsetLeft = $('nav button#' + locationDataIndex).offset().left - $('#mapnavi').offset().left;
+				console.log(offsetLeft);
+
+		$bar.css({
+			left: offsetLeft,
+			width: $('nav button#' + locationDataIndex).width()
 		});
 	};
 
