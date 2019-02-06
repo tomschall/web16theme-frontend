@@ -54,10 +54,13 @@
 	/**
 	* Mobile Viewport settings
 	*/
-
 	function isMobileView() {
 		return (screen.availWidth ? screen.availWidth : document.documentElement.clientWidth) <= 1023;
 	}
+
+	window.onresize = function() {
+		location.reload();
+	};
 
 	/**
 	* Create an instance of the widget
@@ -88,10 +91,13 @@
 		this.hideLocationInfos = $(this.options.domSelectors.markerData).hide();
 		this.mapStyle = this.options.mapStyles.street;
 		this.options.renderMobileView = isMobileView(); // true if mobile resolution < 1024
+		console.log('mobile view -> ' + this.options.renderMobileView);
 		this.totalLocations = $(this.options.domSelectors.markerData).length;
 		this.navigationButton = this.options.stateClasses.mapNavigationButton;
+		this.options.windowSize = $(window).width();
+		console.log(this.options.windowSize);
 
-		if (this.options.renderMobileView === true) {
+		if (this.options.renderMobileView === true || this.options.windowSize <= 1024) {
 			Widget.prototype.mobileView();
 		}
 
@@ -124,6 +130,10 @@
 			// doubleClickZoom : false
 		});
 		this.bounds = new window.mapboxgl.LngLatBounds();
+
+		$(this.options.stateClasses.mapSelector).slideToggle(200, function() {
+			this.map.resize();
+		});
 	};
 
 	/**
