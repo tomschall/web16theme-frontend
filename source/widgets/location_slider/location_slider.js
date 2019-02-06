@@ -91,11 +91,9 @@
 		this.hideLocationInfos = $(this.options.domSelectors.markerData).hide();
 		this.mapStyle = this.options.mapStyles.street;
 		this.options.renderMobileView = isMobileView(); // true if mobile resolution < 1024
-		console.log('mobile view -> ' + this.options.renderMobileView);
 		this.totalLocations = $(this.options.domSelectors.markerData).length;
 		this.navigationButton = this.options.stateClasses.mapNavigationButton;
 		this.options.windowSize = $(window).width();
-		console.log(this.options.windowSize);
 
 		if (this.options.renderMobileView === true || this.options.windowSize <= 1024) {
 			Widget.prototype.mobileView();
@@ -337,8 +335,6 @@
 	Widget.prototype._moveNavBar = function(locationDataIndex) {
 		var $bar = $('.widg_location__nav-bar'),
 				offsetLeft = $('nav button#' + locationDataIndex).offset().left - $('#mapnavi').offset().left;
-				console.log(offsetLeft);
-
 		$bar.css({
 			left: offsetLeft,
 			width: $('nav button#' + locationDataIndex).width()
