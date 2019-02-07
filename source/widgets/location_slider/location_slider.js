@@ -58,9 +58,9 @@
 		return (screen.availWidth ? screen.availWidth : document.documentElement.clientWidth) <= 1023;
 	}
 
-	window.onresize = function() {
-		location.reload();
-	};
+	// window.onresize = function() {
+	// 	location.reload();
+	// };
 
 	/**
 	* Create an instance of the widget
@@ -96,7 +96,9 @@
 		this.options.windowSize = $(window).width();
 
 		if (this.options.renderMobileView === true || this.options.windowSize <= 1024) {
-			Widget.prototype.mobileView();
+			var locationContainer = this.options.stateClasses.locationInfoBox;
+			var mapContainer = this.options.stateClasses.mapSelector;
+			Widget.prototype.mobileView(locationContainer, mapContainer);
 		}
 
 		this.setLocationDataIndex();
@@ -106,11 +108,6 @@
 		this.addControls(this.map);
 		this.tabNavigation(this.map);
 		this.setFirstLocation(this.map);
-	};
-
-	Widget.prototype.mobileView = function() {
-		$('.location__info').clone().insertAfter('#mapbox__map-0');
-		$('#mapbox__map-0 .location__info').remove();
 	};
 
 	Widget.prototype.mapSettings = function() {
@@ -127,6 +124,8 @@
 			// boxZoom: false,
 			// doubleClickZoom : false
 		});
+
+		// Compendium of all markers
 		this.bounds = new window.mapboxgl.LngLatBounds();
 
 		$(this.options.stateClasses.mapSelector).slideToggle(200, function() {
@@ -176,6 +175,11 @@
 			this.interactive = true;
 			this.scrollZoom = false;
 		}
+	};
+
+	Widget.prototype.mobileView = function() {
+		$('.location__info').clone().insertAfter('#mapbox__map-0');
+		$('#mapbox__map-0 .location__info').remove();
 	};
 
 	/**
