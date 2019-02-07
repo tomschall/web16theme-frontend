@@ -58,10 +58,6 @@
 		return (screen.availWidth ? screen.availWidth : document.documentElement.clientWidth) <= 1023;
 	}
 
-	// window.onresize = function() {
-	// 	location.reload();
-	// };
-
 	/**
 	* Create an instance of the widget
 	* @constructor
@@ -92,13 +88,12 @@
 		this.mapStyle = this.options.mapStyles.street;
 		this.options.renderMobileView = isMobileView(); // true if mobile resolution < 1024
 		this.totalLocations = $(this.options.domSelectors.markerData).length;
-		this.navigationButton = this.options.stateClasses.mapNavigationButton;
 		this.options.windowSize = $(window).width();
 
+		// Reordering DOM for mobile or desktop view
 		if (this.options.renderMobileView === true || this.options.windowSize <= 1024) {
-			var locationContainer = this.options.stateClasses.locationInfoBox;
-			var mapContainer = this.options.stateClasses.mapSelector;
-			Widget.prototype.mobileView(locationContainer, mapContainer);
+			$(this.options.stateClasses.locationInfoBox).clone().insertAfter('#' + this.options.stateClasses.mapSelector);
+			$('#' + this.options.stateClasses.mapSelector + ' ' + this.options.stateClasses.locationInfoBox).remove();
 		}
 
 		this.setLocationDataIndex();
@@ -139,7 +134,7 @@
 	Widget.prototype.renderMap = function() {
 		// Map settings -> mobile view true, one location true
 		if (this.options.renderMobileView && this.totalLocations === 1) {
-			this.zoom = 16;
+			this.zoom = 18;
 			this.center = [data.markers[0].features[0].geometry.coordinates[0], data.markers[0].features[0].geometry.coordinates[1]];
 			this.pitch = this.options.mapOptionsDefaults.pitch;
 			this.bearing = this.options.mapOptionsDefaults.bearing;
@@ -148,7 +143,7 @@
 		}
 		// Map settings -> mobile view true, multiple locations true
 		if (this.options.renderMobileView && this.totalLocations > 1) {
-			this.zoom = 8;
+			this.zoom = 9;
 			this.center = this.options.mapOptionsDefaults.center;
 			this.pitch = this.options.mapOptionsDefaults.pitch;
 			this.bearing = this.options.mapOptionsDefaults.bearing;
@@ -157,7 +152,7 @@
 		}
 		// Map settings -> mobile view false, one locations true
 		if (this.options.renderMobileView === false && this.totalLocations === 1) {
-			this.zoom = 16;
+			this.zoom = 18;
 			this.center = [data.markers[0].features[0].geometry.coordinates[0], data.markers[0].features[0].geometry.coordinates[1]];
 			this.pitch = this.options.mapOptionsDefaults.pitch;
 			this.bearing = this.options.mapOptionsDefaults.bearing;
@@ -175,11 +170,6 @@
 			this.interactive = true;
 			this.scrollZoom = false;
 		}
-	};
-
-	Widget.prototype.mobileView = function() {
-		$('.location__info').clone().insertAfter('#mapbox__map-0');
-		$('#mapbox__map-0 .location__info').remove();
 	};
 
 	/**
@@ -278,13 +268,25 @@
 			$('#location__marker-temp-' + e).fadeIn(1000);
 			$('#' + marker).animate({ opacity: 0.9 });
 			$('.widg_location__nav button#' + e).addClass('is_active');
-			map.flyTo({
-				center: [xCoordinates, yCoordinates],
-				zoom: 16,
-				bearing: 0,
-				pitch: 0,
-				offset: [0, 0]
-			});
+
+			var mobileView = isMobileView();
+			if (mobileView) {
+				map.flyTo({
+					center: [xCoordinates, yCoordinates],
+					zoom: 16,
+					bearing: 0,
+					pitch: 0,
+					offset: [0, 0]
+				});
+			} else {
+				map.flyTo({
+					center: [xCoordinates, yCoordinates],
+					zoom: 18,
+					bearing: 0,
+					pitch: 0,
+					offset: [0, 0]
+				});
+			}
 		} else {
 			$('.widg_location__nav button').removeClass('is_active');
 			$('#' + marker).animate({ opacity: 0.3 });
