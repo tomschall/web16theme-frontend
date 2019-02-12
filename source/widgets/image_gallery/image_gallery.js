@@ -113,6 +113,14 @@
 				// Default gallery without legends and thumbnails
 				$(this).addClass('remote_' + index);
 				var setGalleryOptions = _.pick(galleryDefaults, ['adaptiveHeight','infinite', 'dots', 'arrows', 'accessibility', 'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
+
+				if ($(this).nextAll('.image_gallery__thumbs').length) {
+					console.log('set thumbnail condiitons');
+					setGalleryOptions = _.assign(setGalleryOptions, { asNavFor: '.remote_' + index});
+				} else {
+					console.log('set default gallery');
+					setGalleryOptions = _.assign(setGalleryOptions);
+				}
 				$('.remote_' + index).not('.slick-initialized').slick(setGalleryOptions);
 			}
 
