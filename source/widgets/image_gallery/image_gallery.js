@@ -56,81 +56,81 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-	// Thumbnail navigation control - Relevant for slider with less than 5 images
-	function countThumbs() {
-		var setSlideToShow = 0;
-		var totalImages = $('.image_gallery__thumbs img').size();
+		var galleryDefaults = {
+			arrows: false,
+			adaptiveHeight: true,
+			infinite: true,
+			dots: false,
+			accessibility: false,
+			mobileFirst: true,
+			dotsClass: 'image_gallery__dots not-default',
+			nextArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__next">Next</button>',
+			prevArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__prev">Previous</button>',
+			autoplay: false,
+			responsive: [{
+				breakpoint: 0,
+				settings: {
+					arrows: true
+				}
+			}],
+			slidesToShow: 1, //countThumbs() - 1, // must always be one digit below
+			slidesToScroll: 1, //countThumbs(),
+			centerMode: false,
+			focusOnSelect: true,
+			centerPadding: '0px',
+			swipeToSlide: true
+		};
 
-		if (totalImages <= 5) {
-			setSlideToShow = totalImages;
-		} else {
-			setSlideToShow = 5 + 1;
-		}
+		// function countThumbs(thumbs) {
+		// 	var setSlideToShow = 0;
+		// 	var totalImages = thumbs.size();
+		// 	console.log(totalImages);
+		//
+		// 	if (totalImages <= 5) {
+		// 		setSlideToShow = totalImages;
+		// 	} else {
+		// 		setSlideToShow = 5 + 1;
+		// 	}
+		//
+		// 	return setSlideToShow;
+		// }
 
-		return setSlideToShow;
-	}
 
-	/**
-	 * Slick Slider Option Collection
-	 */
-	var galleryDefaults = {
-		arrows: false,
-		adaptiveHeight: true,
-		infinite: true,
-		dots: false,
-		accessibility: false,
-		mobileFirst: true,
-		dotsClass: 'image_gallery__dots not-default',
-		nextArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__next">Next</button>',
-		prevArrow: '<button type="button" class="not-default image_gallery__arrow image_gallery__prev">Previous</button>',
-		autoplay: false,
-		responsive: [{
-			breakpoint: 0,
-			settings: {
-				arrows: true
+		$(this.options.domSelectors.slider).map(function(index) {
+			if ($(this).next('*[data-image_gallery="legend"]').length) {
+				$(this).addClass('remote_' + index);
+				var galleryOptions = _.assign(galleryDefaults, { asNavFor: '.remote_' + index });
+				$('.remote_' + index).not('.slick-initialized').slick(galleryOptions);
+
+				// legend options
+				$(this).next().addClass('remote_' + index);
+				var setLegendOptions = _.pick(galleryDefaults, ['adaptiveHeight']);
+				var galleryLegendOptions = _.assign(setLegendOptions, { asNavFor: '.remote_' + index }, { arrows: false });
+				$(this).next().not('.slick-initialized').slick(galleryLegendOptions);
+
+
+			} else {
+				// Default gallery without legends and thumbnails
+				$(this).addClass('remote_' + index);
+				var setGalleryOptions = _.pick(galleryDefaults, ['adaptiveHeight','infinite', 'dots', 'arrows', 'accessibility', 'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
+				$('.remote_' + index).not('.slick-initialized').slick(setGalleryOptions);
 			}
-		}],
-		slidesToShow: countThumbs() - 1, // must always be one digit below
-		slidesToScroll: countThumbs(),
-		centerMode: false,
-		focusOnSelect: true,
-		centerPadding: '0px',
-		swipeToSlide: true
+
+			if ($(this).nextAll('.image_gallery__thumbs').length) {
+				var thumbs = $('.remote_' + index + ' img').size();
+				$(this).nextAll('.image_gallery__thumbs').addClass('remote_' + index);
+				var totalImages = 0;
+				if (thumbs <= 5) {
+					totalImages = thumbs;
+				} else {
+					totalImages = 5 + 1;
+				}
+				var setThumbsOptions = _.pick(galleryDefaults, ['centerPadding', 'focusOnSelect', 'centerMode', 'arrows', 'swipeToSlide', 'adaptiveHeight','infinite', 'dots', 'accessibility', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
+			 	var galleryThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.remote_' + index}, { slidesToScroll: totalImages }, {slidesToShow: totalImages - 1 }, { arrows: false });
+			 	$('.remote_' + index).not('.slick-initialized').slick(galleryThumbsOptions);
+			}
+		});
 	};
-
-
-	// Loading plain gallery w/o thumbnails
-	// If image caption or image thumbs is activated
-	if ($('.image_gallery__legend').length || $('.image_gallery__thumbs').length) {
-		var setGalleryOptions = _.pick(galleryDefaults, ['adaptiveHeight','infinite', 'arrows','dots', 'accessibility', 'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
-		var gallerDefaultOptions = _.assign(setGalleryOptions, { asNavFor: '.slider-remote'});
-
-		$(this.options.domSelectors.slider).slick(gallerDefaultOptions);
-
-	} else {
-		// Default settings without legends and thumbnails
-		// IMPORTANT -> works only without asNavFor -> .slider-remote !!!
-		var setGalleryDefaults = _.pick(galleryDefaults, ['adaptiveHeight','infinite', 'dots', 'arrows', 'accessibility', 'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
-
-		$(this.options.domSelectors.slider).slick(setGalleryDefaults);
-	}
-
-	// Image legend slider settings
-	if ($('.image_gallery__legend').length) {
-		var setLegendOptions = _.pick(galleryDefaults, ['adaptiveHeight']);
-		var galleryLegendOptions = _.assign(setLegendOptions, { asNavFor: '.slider-remote'}, { arrows: false });
-
-		$(this.options.domSelectors.legend).slick(galleryLegendOptions);
-	}
-
-	// Thumbnail slider settings
-	if ($('.image_gallery__thumbs').length) {
-		var setThumbsOptions = _.pick(galleryDefaults, ['centerPadding', 'focusOnSelect', 'centerMode', 'arrows', 'swipeToSlide', 'adaptiveHeight','infinite', 'dots', 'accessibility', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
-		var galleryThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.slider-remote'}, { slidesToScroll: countThumbs() }, {slidesToShow: countThumbs() -1 }, { arrows: false });
-
-		$(this.options.domSelectors.thumbnails).slick(galleryThumbsOptions);
-	}
-};
 
 	/**
 	 * Unbind events, remove data, custom teardown
