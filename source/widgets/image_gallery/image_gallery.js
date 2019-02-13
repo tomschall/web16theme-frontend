@@ -89,15 +89,16 @@
 
 
 		$(this.options.domSelectors.slider).map(function(index) {
+			// Options for gallery with legends
 			if ($(this).next(legendSelector).length) {
 				$(this).addClass(remoteSelector + index);
-				var galleryOptions = _.assign(galleryDefaults, { asNavFor: '.remote_' + index });
+				var galleryOptions = _.assign(galleryDefaults, { asNavFor: '.' + remoteSelector + index });
 				$('.' + remoteSelector + index).not('.slick-initialized').slick(galleryOptions);
 
 				// Set legend gallery options
 				$(this).next().addClass(remoteSelector + index);
 				var setLegendOptions = _.pick(galleryDefaults, ['adaptiveHeight']);
-					setLegendOptions = _.assign(setLegendOptions, { asNavFor: '.remote_' + index }, { arrows: false });
+					setLegendOptions = _.assign(setLegendOptions, { asNavFor: '.' + remoteSelector + index }, { arrows: false });
 				$(this).next().not('.slick-initialized').slick(setLegendOptions);
 
 
@@ -108,29 +109,32 @@
 
 				if ($(this).nextAll(thumbnailSelector).length) {
 					// Set default gallery with thumbnails only
-					setGalleryOptions = _.assign(setGalleryOptions, { asNavFor: '.remote_' + index});
+					var setThumbnailOptions = _.pick(galleryDefaults);
+						setThumbnailOptions = _.assign(setGalleryOptions, { asNavFor: '.' + remoteSelector + index});
+					$('.' + remoteSelector + index).not('.slick-initialized').slick(setThumbnailOptions);
 				} else {
 					// Set default gallery without legends and thumbnails
-					setGalleryOptions = _.assign(setGalleryOptions);
+					setGalleryOptions = _.assign(galleryDefaults);
+					$('.' + remoteSelector + index).not('.slick-initialized').slick(galleryDefaults);
 				}
-				$('.' + remoteSelector + index).not('.slick-initialized').slick(setGalleryOptions);
 			}
 
 			if ($(this).nextAll(thumbnailSelector).length) {
-				var thumbs = $('.remote_' + index + ' img').size();
-				$(this).nextAll(thumbnailSelector).addClass('remote_' + index);
-				var totalImages = 0;
-				if (thumbs <= 5) {
-					totalImages = thumbs;
-				} else {
-					totalImages = 5 + 1;
-				}
-				// Set gallery thumbnail options
+				// Set gallery thumbnail options; Calculate exception for thumbnails less than 5 images.
+				$(this).nextAll(thumbnailSelector).addClass(remoteSelector + index);
+				var thumbs = $('.image_gallery__thumbs.remote_' + index + ' img').size();
+				var totalImages = Widget.prototype.countThumbs(thumbs);
 				var setThumbsOptions = _.pick(galleryDefaults, ['centerPadding', 'focusOnSelect', 'centerMode', 'arrows', 'swipeToSlide', 'adaptiveHeight','infinite', 'dots', 'accessibility', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
-			 		setThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.remote_' + index}, { slidesToScroll: totalImages }, {slidesToShow: totalImages - 1 }, { arrows: false });
+			 		setThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.' + remoteSelector + index}, { slidesToScroll: totalImages }, {slidesToShow: totalImages - 1 }, { arrows: false });
 			 	$('.' + remoteSelector + index).not('.slick-initialized').slick(setThumbsOptions);
 			}
 		});
+	};
+
+	Widget.prototype.countThumbs = function(thumbs) {
+		var totalImages = 0;
+		if (thumbs <= 5) { totalImages = thumbs; } else { totalImages = 5 + 1; }
+		return totalImages;
 	};
 
 	/**
