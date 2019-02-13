@@ -16,13 +16,14 @@
 		},
 		defaults = {
 			domSelectors: {
+				gallery: '[data-init="image_gallery"]',
 				slider: '[data-' + name + '="slider"]',
 				thumbnails: '[data-' + name + '="thumbs"]',
 				legend: '[data-' + name + '="legend"]'
 			},
 
 			stateClasses: {
-				// isActive: 'is_active'
+				remote: 'remote_'
 			}
 		},
 		data = {
@@ -81,61 +82,53 @@
 			swipeToSlide: true
 		};
 
-		// function countThumbs(thumbs) {
-		// 	var setSlideToShow = 0;
-		// 	var totalImages = thumbs.size();
-		// 	console.log(totalImages);
-		//
-		// 	if (totalImages <= 5) {
-		// 		setSlideToShow = totalImages;
-		// 	} else {
-		// 		setSlideToShow = 5 + 1;
-		// 	}
-		//
-		// 	return setSlideToShow;
-		// }
+		// Initialize selectors
+		var legendSelector = this.options.domSelectors.legend;
+		var thumbnailSelector = this.options.domSelectors.thumbnails;
+		var remoteSelector = this.options.stateClasses.remote;
 
 
 		$(this.options.domSelectors.slider).map(function(index) {
-			if ($(this).next('*[data-image_gallery="legend"]').length) {
-				$(this).addClass('remote_' + index);
+			if ($(this).next(legendSelector).length) {
+				$(this).addClass(remoteSelector + index);
 				var galleryOptions = _.assign(galleryDefaults, { asNavFor: '.remote_' + index });
-				$('.remote_' + index).not('.slick-initialized').slick(galleryOptions);
+				$('.' + remoteSelector + index).not('.slick-initialized').slick(galleryOptions);
 
-				// legend options
-				$(this).next().addClass('remote_' + index);
+				// Set legend gallery options
+				$(this).next().addClass(remoteSelector + index);
 				var setLegendOptions = _.pick(galleryDefaults, ['adaptiveHeight']);
-				var galleryLegendOptions = _.assign(setLegendOptions, { asNavFor: '.remote_' + index }, { arrows: false });
-				$(this).next().not('.slick-initialized').slick(galleryLegendOptions);
+					setLegendOptions = _.assign(setLegendOptions, { asNavFor: '.remote_' + index }, { arrows: false });
+				$(this).next().not('.slick-initialized').slick(setLegendOptions);
 
 
 			} else {
 				// Default gallery without legends and thumbnails
-				$(this).addClass('remote_' + index);
+				$(this).addClass(remoteSelector + index);
 				var setGalleryOptions = _.pick(galleryDefaults, ['adaptiveHeight','infinite', 'dots', 'arrows', 'accessibility', 'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
 
-				if ($(this).nextAll('.image_gallery__thumbs').length) {
-					console.log('set thumbnail condiitons');
+				if ($(this).nextAll(thumbnailSelector).length) {
+					// Set default gallery with thumbnails only
 					setGalleryOptions = _.assign(setGalleryOptions, { asNavFor: '.remote_' + index});
 				} else {
-					console.log('set default gallery');
+					// Set default gallery without legends and thumbnails
 					setGalleryOptions = _.assign(setGalleryOptions);
 				}
-				$('.remote_' + index).not('.slick-initialized').slick(setGalleryOptions);
+				$('.' + remoteSelector + index).not('.slick-initialized').slick(setGalleryOptions);
 			}
 
-			if ($(this).nextAll('.image_gallery__thumbs').length) {
+			if ($(this).nextAll(thumbnailSelector).length) {
 				var thumbs = $('.remote_' + index + ' img').size();
-				$(this).nextAll('.image_gallery__thumbs').addClass('remote_' + index);
+				$(this).nextAll(thumbnailSelector).addClass('remote_' + index);
 				var totalImages = 0;
 				if (thumbs <= 5) {
 					totalImages = thumbs;
 				} else {
 					totalImages = 5 + 1;
 				}
+				// Set gallery thumbnail options
 				var setThumbsOptions = _.pick(galleryDefaults, ['centerPadding', 'focusOnSelect', 'centerMode', 'arrows', 'swipeToSlide', 'adaptiveHeight','infinite', 'dots', 'accessibility', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
-			 	var galleryThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.remote_' + index}, { slidesToScroll: totalImages }, {slidesToShow: totalImages - 1 }, { arrows: false });
-			 	$('.remote_' + index).not('.slick-initialized').slick(galleryThumbsOptions);
+			 		setThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.remote_' + index}, { slidesToScroll: totalImages }, {slidesToShow: totalImages - 1 }, { arrows: false });
+			 	$('.' + remoteSelector + index).not('.slick-initialized').slick(setThumbsOptions);
 			}
 		});
 	};

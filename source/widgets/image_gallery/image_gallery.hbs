@@ -5,7 +5,7 @@
 	{{#if description}}
 	<p>{{description}}</p>
 	{{/if}}
-	<div class="image_gallery__slider slider-remote {{#unless legend_active}}no-legend{{/unless}}" data-image_gallery="slider">
+	<div class="image_gallery__slider {{#unless legend_active}}no-legend{{/unless}}" data-image_gallery="slider">
 		{{#each slides}}
 			<div class="image_gallery__slide">
 				<img src="{{img.src}}" alt="{{img.alt}}"/>
