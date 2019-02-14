@@ -163,11 +163,11 @@ ul#page-not-found-list {
 }
 
 table.content__table {
-	display: block;
-	width: auto;
+	display: table;
+	width: 100%;
 	overflow-x: auto;
 	overflow-y: hidden;
-	table-layout: auto;
+	table-layout: fixed;
 }
 
 .content__table {
