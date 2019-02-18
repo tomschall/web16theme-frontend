@@ -173,7 +173,7 @@ table.content__table {
   	@media (min-width: 320px) and (max-width: 1024px) {
 	  	display: block;
 		table-layout: auto;
-		overflow: scroll;
+		overflow: auto;
 	  	width: unset;
 	}
 }
