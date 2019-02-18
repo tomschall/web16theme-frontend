@@ -174,8 +174,9 @@ table.content__table {
 	  	display: block;
 		table-layout: auto;
 		overflow: scroll;
+	  	width: unset;
+	  	word-break: unset;
 	}
-
 }
 
 .content__table {
