@@ -163,11 +163,19 @@ ul#page-not-found-list {
 }
 
 table.content__table {
-	display: table;
-	width: 100%;
-	overflow-x: auto;
-	overflow-y: hidden;
-	table-layout: fixed;
+  	@media screen {
+	  	display: table;
+		width: 100%;
+		table-layout: fixed;
+		word-break: break-word;
+	}
+
+  	@media (min-width: 320px) and (max-width: 1024px) {
+	  	display: block;
+		table-layout: auto;
+		overflow: scroll;
+	}
+
 }
 
 .content__table {
