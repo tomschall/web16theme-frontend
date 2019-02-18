@@ -168,6 +168,7 @@ table.content__table {
 		width: 100%;
 		table-layout: fixed;
 		overflow-wrap: break-word;
+	  	-ms-word-wrap: break-word;
 	}
 
   	@media (min-width: 320px) and (max-width: 1024px) {
