@@ -143,7 +143,7 @@
 		}
 		// Map settings -> mobile view true, multiple locations true
 		if (this.options.renderMobileView && this.totalLocations > 1) {
-			this.zoom = 9;
+			this.zoom = 18;
 			this.center = this.options.mapOptionsDefaults.center;
 			this.pitch = this.options.mapOptionsDefaults.pitch;
 			this.bearing = this.options.mapOptionsDefaults.bearing;
@@ -152,7 +152,7 @@
 		}
 		// Map settings -> mobile view false, one locations true
 		if (this.options.renderMobileView === false && this.totalLocations === 1) {
-			this.zoom = 18;
+			this.zoom = 16;
 			this.center = [data.markers[0].features[0].geometry.coordinates[0], data.markers[0].features[0].geometry.coordinates[1]];
 			this.pitch = this.options.mapOptionsDefaults.pitch;
 			this.bearing = this.options.mapOptionsDefaults.bearing;
@@ -162,7 +162,7 @@
 		}
 		// Map settings -> mobile view false, one locations false
 		if (this.options.renderMobileView === false && this.totalLocations > 1) {
-			this.zoom = 9;
+			this.zoom = 16;
 			this.center = this.options.mapOptionsDefaults.center;
 			this.pitch = this.options.mapOptionsDefaults.pitch;
 			this.bearing = this.options.mapOptionsDefaults.bearing;
@@ -281,7 +281,7 @@
 			} else {
 				map.flyTo({
 					center: [xCoordinates, yCoordinates],
-					zoom: 18,
+					zoom: 17,
 					bearing: 0,
 					pitch: 0,
 					offset: [0, 0]
