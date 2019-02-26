@@ -209,6 +209,14 @@ table.content__table {
 	}
 }
 
+table.content__table__backcomp {
+  	display: block;
+	width: auto;
+	table-layout: auto;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
 .widg_accordeon__content .content__table td:first-child {
 	padding-left: 0;
 }
