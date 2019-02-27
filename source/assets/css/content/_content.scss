@@ -217,6 +217,36 @@ table.content__table__backcomp {
 	overflow-y: hidden;
 }
 
+.content__table__backcomp {
+	th, td {
+		padding: $gutterWidth - 5 $gutterWidth $gutterWidth - 5 18px;
+		vertical-align: top;
+		text-align: left;
+
+		line-height: 2.2;
+		font-size: $textSize;
+	}
+
+	tr {
+		th {
+			border-bottom: 1px solid $colorBlack;
+			background-color: $colorLightGray;
+		}
+	}
+
+	tr {
+		td {
+			border-bottom: 1px solid $colorGreyHover;
+		}
+
+		&:last-of-type {
+			td, th {
+				border-bottom: none;
+			}
+		}
+	}
+}
+
 .widg_accordeon__content .content__table td:first-child {
 	padding-left: 0;
 }
