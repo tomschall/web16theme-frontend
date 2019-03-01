@@ -101,7 +101,14 @@
 		this.mapSettings(this.map);
 		this.addMarker(this.map);
 		this.addControls(this.map);
-		this.tabNavigation(this.map);
+
+		/* Set tab navigation except on startpage */
+		if ($('.startpage-page').length) {
+			this.startpage = true;
+			$('.widg_location__nav.nav__state').hide();
+			this.tabNavigation(this.map);
+		}
+
 		this.setFirstLocation(this.map);
 	};
 
@@ -227,8 +234,8 @@
 		data.markers.forEach(function(index, e) {
 			var xCoordinates = index.features[0].geometry.coordinates[0];
 			var yCoordinates = index.features[0].geometry.coordinates[1];
-
 			var marker = document.createElement('div');
+
 			marker.className = 'mapboxgl-marker';
 			marker.id = 'marker-' + e;
 
@@ -298,8 +305,15 @@
 	*/
 	Widget.prototype.setFirstLocation = function(map) {
 		var xyCoordinates = Widget.prototype.getCoordinates(0);
-		Widget.prototype.flyToLocation('marker-0', map, 0, xyCoordinates[0], xyCoordinates[1]);
-		Widget.prototype._moveNavBar(0);
+		var isStartpage = this.startpage;
+		var bounds = this.bounds;
+
+		if (!isStartpage) {
+			Widget.prototype.flyToLocation('marker-0', map, 0, xyCoordinates[0], xyCoordinates[1]);
+			Widget.prototype._moveNavBar(0);
+		} else {
+			map.fitBounds(bounds, { padding: 100 });
+		}
 	};
 
 	/**
@@ -319,7 +333,7 @@
 			Widget.prototype._moveNavBar(locationDataIndex);
 
 			if (totalLocations > 1) {
-				map.fitBounds(bounds, {padding: 100});
+				map.fitBounds(bounds, { padding: 100 });
 			} else {
 				map.flyTo({
 					center: xyCoordinates,
