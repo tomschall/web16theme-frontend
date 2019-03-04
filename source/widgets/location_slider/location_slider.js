@@ -101,16 +101,15 @@
 		this.mapSettings(this.map);
 		this.addMarker(this.map);
 		this.addControls(this.map);
+		this.tabNavigation(this.map);
+		this.setFirstLocation(this.map);
 
-		/* Set tab navigation except on startpage */
+		/* Hide tab-navigation on startpage */
 		if ($('.startpage-page').length) {
-			console.log('Is on startpage');
+			console.log('Map on startpage -> true');
 			this.startpage = true;
 			$('.widg_location__nav.nav__state').hide();
-			this.tabNavigation(this.map);
 		}
-
-		this.setFirstLocation(this.map);
 	};
 
 	Widget.prototype.mapSettings = function() {
