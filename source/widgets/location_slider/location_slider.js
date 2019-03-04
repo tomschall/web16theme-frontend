@@ -104,6 +104,7 @@
 
 		/* Set tab navigation except on startpage */
 		if ($('.startpage-page').length) {
+			console.log('Is on startpage');
 			this.startpage = true;
 			$('.widg_location__nav.nav__state').hide();
 			this.tabNavigation(this.map);
@@ -312,6 +313,7 @@
 			Widget.prototype.flyToLocation('marker-0', map, 0, xyCoordinates[0], xyCoordinates[1]);
 			Widget.prototype._moveNavBar(0);
 		} else {
+			console.log('setFirstLocation -> fitBounds');
 			map.fitBounds(bounds, { padding: 100 });
 		}
 	};
