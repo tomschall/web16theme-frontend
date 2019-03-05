@@ -33,6 +33,10 @@ p {
 		font-size: 1.5rem;
 		line-height: 1.5555555;
 		margin-bottom: 0;
+
+		&.content__element.content__element___borderless {
+			margin-top: 50px;
+		}
 	}
 }
 
