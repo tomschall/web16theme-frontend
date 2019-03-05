@@ -54,7 +54,6 @@
 							var el = document.querySelector('.b-lazy');
 							el.parentNode.removeChild(el);
 							lazyScriptObserver.unobserve(lazyScript);
-							console.log('Intersection Observer - Lazy Loading');
 						});
 					}
 				});
