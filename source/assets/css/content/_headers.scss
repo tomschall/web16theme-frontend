@@ -59,9 +59,14 @@ h1 {
 
 		&:after {
 			position: absolute;
-			bottom: 0;
+			bottom: -5px;
 			left: 50%;
+			width: 150px;
 			transform: translateX(-50%);
+
+			@include mq($to: small) {
+				margin-bottom: -5px;
+			}
 		}
 	}
 }
