@@ -14,10 +14,10 @@
 	img {
 		width: 100%;
 		height: auto;
-	}
 
-	@include mq($to: medium) {
-		@include span(12);
+		@include mq($to: medium) {
+			margin-bottom: 16px;
+		}
 	}
 }
 
