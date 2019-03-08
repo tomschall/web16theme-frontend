@@ -15,6 +15,10 @@
 		width: 100%;
 		height: auto;
 	}
+	
+	@include mq($to: medium) {
+		@include span(12);
+	}
 }
 
 .infobox__content {
