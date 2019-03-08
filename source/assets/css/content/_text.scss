@@ -57,6 +57,10 @@ p {
 	margin-top: $basicPush * 6.6;
 }
 
+.text__lead + div .content__element.has_grid {
+	margin-top: 50px;
+}
+
 span.bold,
 b {
 	font-weight: 700;
