@@ -27,6 +27,7 @@
 
 		@include mq($to: small) {
 			font-size: 1.15rem;
+			width: 80%;
 		}
 	}
 
@@ -48,6 +49,10 @@
 
 			padding-left: 100px;
 			padding-right: $gutterWidth * 2;
+
+			@include mq($to: 374px) {
+				padding-right: 0;
+			}
 		}
 
 		&.no-image,
@@ -65,6 +70,10 @@
 
 		&.wide___third {
 			padding-left: 80px;
+
+			@include mq($to: 374px) {
+				padding-left: 0;
+			}
 		}
 	}
 }
@@ -103,10 +112,13 @@
 	}
 
 	@include mq($to: 374px) {
-		width: 50px;
-		height: 50px;
-
-		margin-left: -70px;
+		display: block;
+		float: left;
+		width: 100%;
+		height: 150px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 20px;
 	}
 }
 
@@ -158,6 +170,7 @@
 
 	transform: translate3d(0, 0, 0);
 
+
 	@include mq($to: medium) {
 
 		top: 50%;
@@ -166,6 +179,10 @@
 		transform: translateY(-34%) translate3d(0, 0, 0);
 	}
 
+	@include mq($to: 374px) {
+		top: 70%;
+	}
+	
 	&:before {
 		transform: translateY(-50%) translate3d(0, 0, 0);
 		position: absolute;
@@ -281,7 +298,7 @@
 		& .widg_teaser__wrapper {
 			@include push(4);
 			transform: translateX(-25%);
-			margin-bottom: $basicPush * 5;			
+			margin-bottom: $basicPush * 5;
 		}
 
 		& h2:not(.childless) {
