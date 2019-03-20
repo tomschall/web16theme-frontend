@@ -7,6 +7,7 @@
 
 	@include mq($to: small) {
 		padding-bottom: $basicPush * 1.5;
+		padding-right: 0;
 	}
 
 	&:hover {
@@ -27,7 +28,10 @@
 
 		@include mq($to: small) {
 			font-size: 1.15rem;
-			width: 80%;
+		}
+
+		@include mq($to: 374px) {
+			padding-right: $basicPush * 1.5;
 		}
 	}
 
@@ -49,10 +53,6 @@
 
 			padding-left: 100px;
 			padding-right: $gutterWidth * 2;
-
-			@include mq($to: 374px) {
-				padding-right: 0;
-			}
 		}
 
 		&.no-image,
@@ -66,14 +66,11 @@
 	}
 
 	@include mq($to: 374px) {
-		padding-left: 80px;
+		padding-left: 0;
+		padding-right: 0;
 
 		&.wide___third {
 			padding-left: 80px;
-
-			@include mq($to: 374px) {
-				padding-left: 0;
-			}
 		}
 	}
 }
@@ -170,7 +167,6 @@
 
 	transform: translate3d(0, 0, 0);
 
-
 	@include mq($to: medium) {
 
 		top: 50%;
@@ -182,7 +178,7 @@
 	@include mq($to: 374px) {
 		top: 70%;
 	}
-	
+
 	&:before {
 		transform: translateY(-50%) translate3d(0, 0, 0);
 		position: absolute;
