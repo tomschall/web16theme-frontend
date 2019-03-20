@@ -2,6 +2,14 @@
 	position: relative;
 	padding-bottom: 56.25%;
 	margin-bottom: 50px;
+
+	@include mq($from: medium) {
+		margin-bottom: $basicPush * 10;
+	}
+
+	@include mq($to: small) {
+		margin-bottom: $basicPush * 10;
+	}
 }
 
 .responsive-video.no-title {
