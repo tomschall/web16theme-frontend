@@ -83,12 +83,10 @@
 
 	img {
 		width: 100%;
+		max-width: 100%;
 		height: auto;
-
 		transform: scale(1);
-
-		transition: transform $transitionLength $transitionEase;
-
+    	transition: transform $transitionLength $transitionEase;
 	}
 
 	@include mq($from: medium) {
@@ -110,13 +108,14 @@
 	}
 
 	@include mq($to: 374px) {
-		display: block;
-		float: left;
+		left: 0;
 		width: 100%;
-		height: 150px;
+		height: auto !important;
+		object-fit: contain;
 		margin-left: auto;
 		margin-right: auto;
 		margin-bottom: 20px;
+		//transform: scale(1);
 	}
 }
 
