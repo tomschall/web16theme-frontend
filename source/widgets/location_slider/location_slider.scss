@@ -95,11 +95,11 @@ nav.widg_location__nav {
 
 				&.is_active{
 					color: $colorBlack;
-					background-color: $colorYellowAccordeonActive;
+					background-color: $colorYellowAccordeonActive !important;
 				}
 
 				&:focus {
-					background-color: $colorYellowAccordeonActive;
+					background-color: #F1F1EE; //$colorYellowAccordeonActive;
 				}
 
 				// &:after {
