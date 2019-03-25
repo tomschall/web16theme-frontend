@@ -104,11 +104,10 @@
 
 		/* Hide tab-navigation on startpage */
 		if ($('.startpage-page').length) {
-			console.log('Map on startpage -> true');
 			this.startpage = true;
 			$('.widg_location__nav.nav__state').hide();
 		}
-		
+
 		this.tabNavigation(this.map);
 		this.setFirstLocation(this.map);
 	};
@@ -276,6 +275,7 @@
 			$('#location__marker-temp-' + e).fadeIn(1000);
 			$('#' + marker).animate({ opacity: 0.9 });
 			$('.widg_location__nav button#' + e).addClass('is_active');
+			$('.widg_location__nav button').removeAttr('style');
 
 			var mobileView = isMobileView();
 			if (mobileView) {
@@ -296,7 +296,9 @@
 				});
 			}
 		} else {
+			console.log('is_active -> false');
 			$('.widg_location__nav button').removeClass('is_active');
+			$('.widg_location__nav button').css('background', '#F1F1EE');
 			$('#' + marker).animate({ opacity: 0.3 });
 		}
 	};
