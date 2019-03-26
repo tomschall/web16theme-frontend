@@ -80,7 +80,6 @@
 	margin-bottom: $basicPush * 2;
 	overflow: hidden;
 
-
 	img {
 		width: 100%;
 		max-width: 100%;
@@ -100,10 +99,11 @@
 
 	@include mq($to: medium) {
 		float: left;
-		margin-left: -90px;
+		margin-left: -100px;
+		margin-right: 20px;
 
-		width: 70px;
-		height: 70px;
+		width: 133px;
+		height: 133px;
 		margin-bottom: 0;
 	}
 
