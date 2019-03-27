@@ -87,7 +87,6 @@
 		var thumbnailSelector = this.options.domSelectors.thumbnails;
 		var remoteSelector = this.options.stateClasses.remote;
 
-
 		$(this.options.domSelectors.slider).map(function(index) {
 			// Options for gallery with legends
 			if ($(this).next(legendSelector).length) {
@@ -100,7 +99,6 @@
 				var setLegendOptions = _.pick(galleryDefaults, ['adaptiveHeight']);
 					setLegendOptions = _.assign(setLegendOptions, { asNavFor: '.' + remoteSelector + index }, { arrows: false });
 				$(this).next().not('.slick-initialized').slick(setLegendOptions);
-
 
 			} else {
 				// Default gallery without legends and thumbnails
@@ -128,7 +126,12 @@
 			 		setThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.' + remoteSelector + index}, { slidesToScroll: totalImages }, {slidesToShow: totalImages - 1 }, { arrows: false });
 			 	$('.' + remoteSelector + index).not('.slick-initialized').slick(setThumbsOptions);
 			}
+
+			var maxSlickImages = $('.remote_' + index + ' .image_gallery__slide[aria-hidden="true"]').not('.slick-cloned').length + 1;
+			var currentSlickIndex = $('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index');
+			console.log(maxSlickImages + ' / ' + currentSlickIndex);
 		});
+
 	};
 
 	Widget.prototype.countThumbs = function(thumbs) {
