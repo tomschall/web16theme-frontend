@@ -128,8 +128,13 @@
 			}
 
 			var maxSlickImages = $('.remote_' + index + ' .image_gallery__slide[aria-hidden="true"]').not('.slick-cloned').length + 1;
-			var currentSlickIndex = $('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index');
-			console.log(maxSlickImages + ' / ' + currentSlickIndex);
+			//var currentSlickIndex = $('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index');
+
+			$(this).on('click', function() {
+				var currentSlickIndex = $('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index');
+				console.log(maxSlickImages + ' / ' + currentSlickIndex);
+				$('.reference').text(maxSlickImages + ' / ' + currentSlickIndex);
+			});
 		});
 
 	};
