@@ -19,7 +19,8 @@
 				gallery: '[data-init="image_gallery"]',
 				slider: '[data-' + name + '="slider"]',
 				thumbnails: '[data-' + name + '="thumbs"]',
-				legend: '[data-' + name + '="legend"]'
+				legend: '[data-' + name + '="legend"]',
+				counter: '[data-' + name + '="counter"]'
 			},
 
 			stateClasses: {
@@ -79,7 +80,8 @@
 			centerMode: false,
 			focusOnSelect: true,
 			centerPadding: '0px',
-			swipeToSlide: true
+			swipeToSlide: true,
+			initialSlide: 1
 		};
 
 		// Initialize selectors
@@ -127,16 +129,29 @@
 			 	$('.' + remoteSelector + index).not('.slick-initialized').slick(setThumbsOptions);
 			}
 
+			// Initialize counter
 			var maxSlickImages = $('.remote_' + index + ' .image_gallery__slide[aria-hidden="true"]').not('.slick-cloned').length + 1;
-			//var currentSlickIndex = $('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index');
+			var currentSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'));
+			$('.image_gallery__slider.remote_' + index).attr('data-after', currentSlickIndex + ' | ' + maxSlickImages);
 
-			$(this).on('click', function() {
-				var currentSlickIndex = $('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index');
-				console.log(maxSlickImages + ' / ' + currentSlickIndex);
-				$('.reference').text(maxSlickImages + ' / ' + currentSlickIndex);
+			// Update active slide in counter (next)
+			$('.remote_' + index + ' .image_gallery__next.slick-arrow').on('click', function() {
+				Widget.prototype.activeSlideImage(maxSlickImages, index);
+			});
+			// Update active slide in counter (prev)
+			$('.remote_' + index + ' .image_gallery__prev.slick-arrow').on('click', function() {
+				Widget.prototype.activeSlideImage(maxSlickImages, index);
 			});
 		});
 
+	};
+
+	Widget.prototype.activeSlideImage = function(maxSlickImages, index) {
+		var activeSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'));
+		if (activeSlickIndex === 0) {
+			activeSlickIndex = maxSlickImages;
+		}
+		$('.image_gallery__slider.remote_' + index).attr('data-after', activeSlickIndex + ' | ' + maxSlickImages);
 	};
 
 	Widget.prototype.countThumbs = function(thumbs) {
