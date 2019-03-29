@@ -60,6 +60,30 @@
 
 			transform: translateY(-50%) translateX(0);
 			transition: transform $transitionLength / 2 $transitionEase;
+
+			@include mq($to: small) {
+				background-image: none;
+			}
+
+			@include mq($to: medium) {
+				top: 70%;
+			}
+		}
+
+		h3 {
+			@include mq($to: 767px) {
+				@include iconDataurl('pfeil-black');
+			}
+
+			&:before {
+				margin-top: 8px;
+				float: right;
+			}
+
+			&:after {
+				width: 17px;
+				height: 16.2px;
+			}
 		}
 	}
 
@@ -124,7 +148,8 @@
 		object-fit: contain;
 		margin-left: auto;
 		margin-right: auto;
-		margin-bottom: 20px;
+		margin-bottom: 0;
+		padding-right: 0;
 		//transform: scale(1);
 	}
 }
