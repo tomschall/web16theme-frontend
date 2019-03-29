@@ -92,6 +92,7 @@
 .widg_linklist__img-wrapper {
 	margin-bottom: $basicPush * 2;
 	overflow: hidden;
+	padding: 0 20px 0 0;
 
 	img {
 		width: 100%;
@@ -103,7 +104,6 @@
 
 	@include mq($from: medium) {
 		width: 133px;
-	    padding: 0 20px 0 0;
 	    float: left;
 	}
 
