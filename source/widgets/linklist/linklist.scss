@@ -93,14 +93,44 @@
 			@include iconDataurl('external');
 
 			&:before {
-				width: 17px;
+				width: 20px;
 				height: 16.2px;
+
+				@include mq($to: medium) {
+					background-image: none;
+				}
+			}
+
+			h3 {
+				@include mq($to: medium) {
+					@include iconDataurl('external');
+				}
+
+				@include mq($from: medium) {
+					background-image: none;
+				}
+
+				&:before {
+					margin-top: 8px;
+					float: right;
+				}
+
+				&:after {
+					width: 17px;
+					height: 16.2px;
+				}
 			}
 		}
 	}
 
 	&:hover {
 		background-color: $colorLightGray;
+	}
+
+	&:active {
+		@include mq($to: medium) {
+			background-color: red;
+		}
 	}
 
 	p {
@@ -150,7 +180,7 @@
 		margin-left: auto;
 		margin-right: auto;
 		margin-bottom: 0;
-		padding-right: 10px;
+		padding-right: 5px;
 		//transform: scale(1);
 	}
 }
