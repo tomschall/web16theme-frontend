@@ -18,7 +18,7 @@
 .widg_linklist___entry {
 	display: block;
 	border-top: 1px solid $colorGreyHover;
-	padding: $basicPush/2;
+	//padding: $basicPush/2;
 
 	position: relative;
 
@@ -28,22 +28,23 @@
 		text-decoration: none;
 		position: relative;
 		display: block;
-
 		opacity: 1;
-
 		padding: $basicPush * 2.4 $gutterWidth * 5 $basicPush * 2.4 $gutterWidth;
-
 		transition: transform $transitionLength / 2 $transitionEase;
 		transform: translateX(0);
+		margin-right: $basicPush * 2;
 
 		@include mq($to: medium ) {
 			padding: 24px 0px 24px 0;
+			margin-right: 0;
 		}
 
 		@include iconDataurl('pfeil-black');
 
 		&:hover {
-			transform: translateX(5px);
+			@include mq($from: small) {
+				transform: translateX(5px);
+			}
 
 			&:hover:before {
 				transform: translateY(-50%) translateX(0);
@@ -60,7 +61,7 @@
 			top: 50%;
 
 			transform: translateY(-50%) translateX(0);
-			transition: transform $transitionLength / 2 $transitionEase;
+				transition: transform $transitionLength / 2 $transitionEase;
 
 			@include mq($to: small) {
 				background-image: none;
@@ -128,7 +129,9 @@
 	}
 
 	&:hover {
-		background-color: $colorLightGray;
+		@include mq($from: 347px) {
+			background-color: $colorLightGray;
+		}
 	}
 
 	p {
@@ -162,8 +165,8 @@
 
 	@include mq($to: medium) {
 		float: left;
-		margin-left: 0;
-		margin-right: 20px;
+		margin-left: $basicPush * 2;
+		margin-right: 0;
 
 		width: 133px;
 		height: 133px;
