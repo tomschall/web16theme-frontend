@@ -97,6 +97,8 @@
 
 			this.$element.find('video')[0].play();
 		}
+
+		this.resetButtonEventListener();
 	};
 
 	/**
@@ -335,6 +337,33 @@
 		$(window).one('resize.' + this.uuid, function() {
 			this.resizeVideo();
 		}.bind(this));
+	};
+
+	/**
+	 * Remove Button Color and Reset to Transparency after Click
+	 * @method
+	 * @public
+	 */
+	Widget.prototype.resetButtonEventListener = function() {
+
+		$('button.widg_carousel__prev, button.widg_carousel__next').on('click', function() {
+			if ($(window).width() === 320 ||
+				$(window).width() === 360 ||
+				$(window).width() === 375 ||
+				$(window).width() === 768 ||
+				$(window).width() === 1024) {
+
+				var removeColor = function() {
+					$(this).css('background','rgba(0,0,0,.7)');
+				}.bind(this);
+
+				$(this).css('background', 'black');
+				setTimeout(function() {
+					removeColor();
+				}, 400);
+			}
+		});
+
 	};
 
 	/**
