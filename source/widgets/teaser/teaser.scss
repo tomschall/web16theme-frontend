@@ -22,6 +22,22 @@
 		}
 	}
 
+	h3 {
+		@include mq($to: 767px) {
+			@include iconDataurl('pfeil-black');
+		}
+
+		&:before {
+			margin-top: 8px;
+			float: right;
+		}
+
+		&:after {
+			width: 17px;
+			height: 16.2px;
+		}
+	}
+
 	p {
 		font-size: 1.25rem;
 		opacity: 0.7;
@@ -30,8 +46,8 @@
 			font-size: 1.15rem;
 		}
 
-		@include mq($to: 374px) {
-			padding-right: $basicPush * 1.5;
+		@include mq($to: medium) {
+			padding-right: $basicPush * 3;
 		}
 	}
 
@@ -46,13 +62,13 @@
 		@include span(12);
 
 		padding-left: 100px;
-		padding-right: $gutterWidth * 2;
+		padding-right: 0;
 
 		&.wide___third {
 			@include span(12);
 
 			padding-left: 100px;
-			padding-right: $gutterWidth * 2;
+			padding-right: 0;
 		}
 
 		&.no-image,
@@ -154,18 +170,21 @@
 }
 
 .widg_teaser__arrow {
-	@include iconDataurl('triangle-arrow_right');
 
-	display: block;
-	position: absolute;
-	bottom: $basicPush * 1.8;
+	@include mq($from: small) {
+		@include iconDataurl('triangle-arrow_right');
 
-	height: 1px;
-	min-width: 10px;
-	background-color: $colorBlack;
-	transition: min-width $transitionLength / 3 $transitionEase;
+		display: block;
+		position: absolute;
+		bottom: $basicPush * 1.8;
 
-	transform: translate3d(0, 0, 0);
+		height: 1px;
+		min-width: 20px;
+		background-color: $colorBlack;
+		transition: min-width $transitionLength / 3 $transitionEase;
+
+		transform: translate3d(0, 0, 0);
+	}
 
 	@include mq($to: medium) {
 
