@@ -42,7 +42,7 @@
 		margin-top: 0;
 		font-family: $fontNoTo;
 		font-style: italic;
-		font-size: 2.5rem;
+		font-size: 2rem;
 		font-weight: 600;
 		//color: #000;
 
@@ -61,7 +61,7 @@
 		@include span(8);
 
 		p {
-			font-size: 1.3rem;
+			font-size: 1.333rem;
 		}
 
 		p:before {
