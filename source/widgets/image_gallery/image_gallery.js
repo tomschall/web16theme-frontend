@@ -129,29 +129,47 @@
 			 	$('.' + remoteSelector + index).not('.slick-initialized').slick(setThumbsOptions);
 			}
 
+			// Language Mapping
+			var theLanguage = $('html').attr('lang');
+			var currentLanguage = '';
+			switch (theLanguage) {
+				case 'de':
+					currentLanguage = 'Bild';
+					break;
+				case 'en':
+					currentLanguage = 'Picture';
+					break;
+
+				case 'fr':
+					currentLanguage = 'Image';
+					break;
+				default:
+					currentLanguage = 'Bild';
+			}
+
 			// Initialize counter
 			var maxSlickImages = $('.remote_' + index + ' .image_gallery__slide[aria-hidden="true"]').not('.slick-cloned').length + 1;
 			var currentSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'));
-			$('.image_gallery__slider.remote_' + index).attr('data-after', currentSlickIndex + ' | ' + maxSlickImages);
+			$('.image_gallery__slider.remote_' + index).attr('data-after', currentLanguage + ' ' + currentSlickIndex + ' | ' + maxSlickImages);
 
 			// Update active slide in counter (next)
 			$('.remote_' + index + ' .image_gallery__next.slick-arrow').on('click', function() {
-				Widget.prototype.activeSlideImage(maxSlickImages, index);
+				Widget.prototype.activeSlideImage(maxSlickImages, index, currentLanguage);
 			});
 			// Update active slide in counter (prev)
 			$('.remote_' + index + ' .image_gallery__prev.slick-arrow').on('click', function() {
-				Widget.prototype.activeSlideImage(maxSlickImages, index);
+				Widget.prototype.activeSlideImage(maxSlickImages, index, currentLanguage);
 			});
 		});
 
 	};
 
-	Widget.prototype.activeSlideImage = function(maxSlickImages, index) {
+	Widget.prototype.activeSlideImage = function(maxSlickImages, index, currentLanguage) {
 		var activeSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'));
 		if (activeSlickIndex === 0) {
 			activeSlickIndex = maxSlickImages;
 		}
-		$('.image_gallery__slider.remote_' + index).attr('data-after', activeSlickIndex + ' | ' + maxSlickImages);
+		$('.image_gallery__slider.remote_' + index).attr('data-after', currentLanguage + ' ' + activeSlickIndex + ' | ' + maxSlickImages);
 	};
 
 	Widget.prototype.countThumbs = function(thumbs) {
