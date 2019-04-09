@@ -162,6 +162,8 @@
 			});
 		});
 
+		this.resetButtonEventListener();
+
 	};
 
 	Widget.prototype.activeSlideImage = function(maxSlickImages, index, currentLanguage) {
@@ -176,6 +178,24 @@
 		var totalImages = 0;
 		if (thumbs <= 5) { totalImages = thumbs; } else { totalImages = 5 + 1; }
 		return totalImages;
+	};
+
+	/**
+	 * add and remove button color after click
+	 * @method
+	 * @public
+	 */
+	Widget.prototype.resetButtonEventListener = function() {
+		$('button.image_gallery__prev, button.image_gallery__next').on('touchstart', function() {
+			$(this).css('opacity', '1');
+		}).on('touchend', function() {
+			var removeColor = function() {
+				$(this).css('opacity', '0.7');
+			}.bind(this);
+			setTimeout(function() {
+				removeColor();
+			}, 200);
+		});
 	};
 
 	/**
