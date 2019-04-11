@@ -81,7 +81,7 @@
 			focusOnSelect: true,
 			centerPadding: '0px',
 			swipeToSlide: true,
-			initialSlide: 1
+			initialSlide: 0
 		};
 
 		// Initialize selectors
@@ -129,47 +129,34 @@
 			 	$('.' + remoteSelector + index).not('.slick-initialized').slick(setThumbsOptions);
 			}
 
-			// Language Mapping
-			var theLanguage = $('html').attr('lang');
-			var currentLanguage = '';
-			switch (theLanguage) {
-				case 'de':
-					currentLanguage = 'Bild';
-					break;
-				case 'en':
-					currentLanguage = 'Picture';
-					break;
-
-				case 'fr':
-					currentLanguage = 'Image';
-					break;
-				default:
-					currentLanguage = 'Bild';
-			}
 
 			// Initialize counter
 			var maxSlickImages = $('.remote_' + index + ' .image_gallery__slide[aria-hidden="true"]').not('.slick-cloned').length + 1;
 			var currentSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'));
-			$('.image_gallery__slider.remote_' + index).attr('data-after', currentLanguage + ' ' + currentSlickIndex + ' | ' + maxSlickImages);
+			console.log('currentSlickIndex ' + currentSlickIndex);
+			currentSlickIndex++;
+			$('.image_gallery__slider.remote_' + index).attr('data-after', currentSlickIndex + ' | ' + maxSlickImages);
 
 			// Update active slide in counter (next)
 			$('.remote_' + index + ' .image_gallery__next.slick-arrow').on('click', function() {
-				Widget.prototype.activeSlideImage(maxSlickImages, index, currentLanguage);
+				Widget.prototype.activeSlideImage(maxSlickImages, index);
 			});
 			// Update active slide in counter (prev)
 			$('.remote_' + index + ' .image_gallery__prev.slick-arrow').on('click', function() {
-				Widget.prototype.activeSlideImage(maxSlickImages, index, currentLanguage);
+				Widget.prototype.activeSlideImage(maxSlickImages, index);
 			});
 		});
 
 	};
 
-	Widget.prototype.activeSlideImage = function(maxSlickImages, index, currentLanguage) {
+	Widget.prototype.activeSlideImage = function(maxSlickImages, index) {
 		var activeSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'));
+		activeSlickIndex++;
+		console.log('activeSlickIndex ' + activeSlickIndex);
 		if (activeSlickIndex === 0) {
 			activeSlickIndex = maxSlickImages;
 		}
-		$('.image_gallery__slider.remote_' + index).attr('data-after', currentLanguage + ' ' + activeSlickIndex + ' | ' + maxSlickImages);
+		$('.image_gallery__slider.remote_' + index).attr('data-after', activeSlickIndex + ' | ' + maxSlickImages);
 	};
 
 	Widget.prototype.countThumbs = function(thumbs) {
