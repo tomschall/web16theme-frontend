@@ -43,7 +43,6 @@
 		font-family: $fontNoTo;
 		font-style: italic;
 		font-size: 2rem;
-		font-weight: 600;
 		//color: #000;
 
 		line-height: 2;
@@ -82,7 +81,6 @@
 .blockquote__author {
 	display: block;
 	font-size: 1.0833333rem;
-	font-weight: 600;
 	color: $colorTextGrey;
 
 	@include mq($to: small) {
