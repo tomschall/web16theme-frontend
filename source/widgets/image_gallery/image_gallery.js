@@ -133,7 +133,6 @@
 			// Initialize counter
 			var maxSlickImages = $('.remote_' + index + ' .image_gallery__slide[aria-hidden="true"]').not('.slick-cloned').length + 1;
 			var currentSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'));
-			console.log('currentSlickIndex ' + currentSlickIndex);
 			currentSlickIndex++;
 			$('.image_gallery__slider.remote_' + index).attr('data-after', currentSlickIndex + ' | ' + maxSlickImages);
 
@@ -145,6 +144,11 @@
 			$('.remote_' + index + ' .image_gallery__prev.slick-arrow').on('click', function() {
 				Widget.prototype.activeSlideImage(maxSlickImages, index);
 			});
+
+			// Update active slide in counter (thumbnails)
+			$('.image_gallery__thumbs.remote_' + index + ' img').on('click', function() {
+				Widget.prototype.activeSlideImage(maxSlickImages, index);
+			});
 		});
 
 	};
@@ -152,7 +156,6 @@
 	Widget.prototype.activeSlideImage = function(maxSlickImages, index) {
 		var activeSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'));
 		activeSlickIndex++;
-		console.log('activeSlickIndex ' + activeSlickIndex);
 		if (activeSlickIndex === 0) {
 			activeSlickIndex = maxSlickImages;
 		}
