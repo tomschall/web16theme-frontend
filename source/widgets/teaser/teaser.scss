@@ -61,13 +61,13 @@
 
 		@include span(12);
 
-		padding-left: 100px;
+		padding-left: 0;
 		padding-right: 0;
 
 		&.wide___third {
 			@include span(12);
 
-			padding-left: 100px;
+			padding-left: 0;
 			padding-right: 0;
 		}
 
@@ -115,11 +115,11 @@
 
 	@include mq($to: medium) {
 		float: left;
-		margin-left: -100px;
+		margin-left: 0px;
 		margin-right: 20px;
 
 		width: 133px;
-		height: 133px;
+		height: 100%;
 		margin-bottom: 0;
 	}
 
