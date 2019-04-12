@@ -42,7 +42,8 @@
 	/* Teasers - Mobile < 1126px removing inline styles  */
 	$(document).ready(function() {
 		if ($(window).width() < 1126) {
-			console.log('width triggered');
+			console.log('window width', $(window).width());
+			console.log('elements:', $('.widg_teaser__img img'));
 			$('.widg_teaser__img img').attr('style', '');
 		}
 
