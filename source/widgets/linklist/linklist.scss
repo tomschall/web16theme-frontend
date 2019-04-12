@@ -165,11 +165,11 @@
 
 	@include mq($to: medium) {
 		float: left;
-		margin-left: $basicPush * 2;
+		margin-left: 0; //$basicPush * 2;
 		margin-right: 0;
 
 		width: 133px;
-		height: 133px;
+		height: auto;
 		margin-bottom: 0;
 	}
 
