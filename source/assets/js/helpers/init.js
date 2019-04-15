@@ -39,13 +39,4 @@
 	/* Removing empty p-Tags */
 	$('p:empty').remove();
 
-	/* Teasers - Mobile < 1126px removing inline styles  */
-	$(document).ready(function() {
-		if ($(window).width() < 1126) {
-			console.log('window width', $(window).width());
-			console.log('elements:', $('.widg_teaser__img img'));
-			$('.widg_teaser__img img').attr('style', '');
-		}
-
-	});
 })(jQuery);

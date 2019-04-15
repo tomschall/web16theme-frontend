@@ -60,13 +60,11 @@
 		border-bottom: 1px solid $colorGreyHover;
 
 		@include span(12);
-
 		padding-left: 0;
 		padding-right: 0;
 
 		&.wide___third {
 			@include span(12);
-
 			padding-left: 0;
 			padding-right: 0;
 		}
@@ -99,7 +97,7 @@
 	img {
 		width: 100%;
 		max-width: 100%;
-		height: auto;
+		height: 100%;
 		transform: scale(1);
     	transition: transform $transitionLength $transitionEase;
 	}
@@ -115,11 +113,9 @@
 
 	@include mq($to: medium) {
 		float: left;
-		margin-left: 0px;
+		margin-left: 0;
 		margin-right: 20px;
-
 		width: 133px;
-		height: 100%;
 		margin-bottom: 0;
 	}
 

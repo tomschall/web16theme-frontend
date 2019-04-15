@@ -14,10 +14,12 @@
 			color: '#999999'
 		});
 
-		$('.widg_teaser__img img').imageScale({
-			rescaleOnResize: true,
-			scale: 'best-fill'
-		});
+        if ($(window).width() > 1126) {
+            $('.widg_teaser__img img').imageScale({
+                rescaleOnResize: true,
+                scale: 'best-fill'
+            });
+    	}
 
 		$('.widg_hero__img').imageScale({
 			rescaleOnResize: true,
@@ -49,7 +51,10 @@
 			}
 		});
 
-		$('.widg_teaser__img img').imageScale('scale');
+        // TEASER IMG
+        if ($(window).width() > 1126) {
+            $('.widg_teaser__img img').imageScale('scale');
+        }
 
 		if (window.estatico.mq.query({from: 'subnav'})) {
 			$('.search__form-wrapper').scrollToFixed();
