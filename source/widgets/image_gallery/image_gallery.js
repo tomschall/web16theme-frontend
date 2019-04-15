@@ -19,7 +19,8 @@
 				gallery: '[data-init="image_gallery"]',
 				slider: '[data-' + name + '="slider"]',
 				thumbnails: '[data-' + name + '="thumbs"]',
-				legend: '[data-' + name + '="legend"]'
+				legend: '[data-' + name + '="legend"]',
+				counter: '[data-' + name + '="counter"]'
 			},
 
 			stateClasses: {
@@ -79,14 +80,14 @@
 			centerMode: false,
 			focusOnSelect: true,
 			centerPadding: '0px',
-			swipeToSlide: true
+			swipeToSlide: true,
+			initialSlide: 0
 		};
 
 		// Initialize selectors
 		var legendSelector = this.options.domSelectors.legend;
 		var thumbnailSelector = this.options.domSelectors.thumbnails;
 		var remoteSelector = this.options.stateClasses.remote;
-
 
 		$(this.options.domSelectors.slider).map(function(index) {
 			// Options for gallery with legends
@@ -100,7 +101,6 @@
 				var setLegendOptions = _.pick(galleryDefaults, ['adaptiveHeight']);
 					setLegendOptions = _.assign(setLegendOptions, { asNavFor: '.' + remoteSelector + index }, { arrows: false });
 				$(this).next().not('.slick-initialized').slick(setLegendOptions);
-
 
 			} else {
 				// Default gallery without legends and thumbnails
@@ -128,13 +128,64 @@
 			 		setThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.' + remoteSelector + index}, { slidesToScroll: totalImages }, {slidesToShow: totalImages - 1 }, { arrows: false });
 			 	$('.' + remoteSelector + index).not('.slick-initialized').slick(setThumbsOptions);
 			}
+
+
+			// Initialize counter
+			var maxSlickImages = $('.remote_' + index + ' .image_gallery__slide[aria-hidden="true"]').not('.slick-cloned').length + 1;
+			var currentSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'));
+			currentSlickIndex++;
+			$('.image_gallery__slider.remote_' + index).attr('data-after', currentSlickIndex + ' | ' + maxSlickImages);
+
+			// Update active slide in counter (next)
+			$('.remote_' + index + ' .image_gallery__next.slick-arrow').on('click', function() {
+				Widget.prototype.activeSlideImage(maxSlickImages, index);
+			});
+			// Update active slide in counter (prev)
+			$('.remote_' + index + ' .image_gallery__prev.slick-arrow').on('click', function() {
+				Widget.prototype.activeSlideImage(maxSlickImages, index);
+			});
+
+			// Update active slide in counter (thumbnails)
+			$('.image_gallery__thumbs.remote_' + index + ' img').on('click', function() {
+				Widget.prototype.activeSlideImage(maxSlickImages, index);
+			});
 		});
+
+		this.resetButtonEventListener();
+
+	};
+
+	Widget.prototype.activeSlideImage = function(maxSlickImages, index) {
+		var activeSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'));
+		activeSlickIndex++;
+		if (activeSlickIndex === 0) {
+			activeSlickIndex = maxSlickImages;
+		}
+		$('.image_gallery__slider.remote_' + index).attr('data-after', activeSlickIndex + ' | ' + maxSlickImages);
 	};
 
 	Widget.prototype.countThumbs = function(thumbs) {
 		var totalImages = 0;
 		if (thumbs <= 5) { totalImages = thumbs; } else { totalImages = 5 + 1; }
 		return totalImages;
+	};
+
+	/**
+	 * add and remove button color after click
+	 * @method
+	 * @public
+	 */
+	Widget.prototype.resetButtonEventListener = function() {
+		$('button.image_gallery__prev, button.image_gallery__next').on('touchstart', function() {
+			$(this).css('opacity', '1');
+		}).on('touchend', function() {
+			var removeColor = function() {
+				$(this).css('opacity', '0.7');
+			}.bind(this);
+			setTimeout(function() {
+				removeColor();
+			}, 200);
+		});
 	};
 
 	/**

@@ -104,11 +104,10 @@
 
 		/* Hide tab-navigation on startpage */
 		if ($('.startpage-page').length) {
-			console.log('Map on startpage -> true');
 			this.startpage = true;
 			$('.widg_location__nav.nav__state').hide();
 		}
-		
+
 		this.tabNavigation(this.map);
 		this.setFirstLocation(this.map);
 	};
@@ -296,6 +295,7 @@
 				});
 			}
 		} else {
+			console.log('is_active -> false');
 			$('.widg_location__nav button').removeClass('is_active');
 			$('#' + marker).animate({ opacity: 0.3 });
 		}

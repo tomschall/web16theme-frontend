@@ -97,6 +97,8 @@
 
 			this.$element.find('video')[0].play();
 		}
+
+		this.resetButtonEventListener();
 	};
 
 	/**
@@ -335,6 +337,24 @@
 		$(window).one('resize.' + this.uuid, function() {
 			this.resizeVideo();
 		}.bind(this));
+	};
+
+	/**
+	 * add and remove button color after click
+	 * @method
+	 * @public
+	 */
+	Widget.prototype.resetButtonEventListener = function() {
+		$('button.widg_carousel__prev, button.widg_carousel__next').on('touchstart', function() {
+			$(this).css('background', 'black');
+		}).on('touchend', function() {
+			var removeColor = function() {
+				$(this).css('background', 'rgba(0,0,0,.7)');
+			}.bind(this);
+			setTimeout(function() {
+				removeColor();
+			}, 200);
+		});
 	};
 
 	/**

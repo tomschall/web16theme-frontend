@@ -67,6 +67,7 @@ nav.widg_location__nav {
 
  		@include mq($to: 'small') {
 			width: 100%;
+			padding-bottom: 2px;
 		}
 
 		button {
@@ -82,7 +83,7 @@ nav.widg_location__nav {
 			padding-bottom: $basicPush * 2.6;
 
 			@include mq($to: 'small') {
-				@include iconDataurl('accordeon_close', $after: true);
+				//@include iconDataurl('accordeon_close', $after: true);
 				background-color: $colorLightGray;
 				background-repeat: no-repeat;
 				background-size: auto;
@@ -94,25 +95,25 @@ nav.widg_location__nav {
 
 				&.is_active{
 					color: $colorBlack;
-					background-color: $colorYellowAccordeonActive;
+					background-color: $colorYellowAccordeonActive !important;
 				}
 
 				&:focus {
-					background-color: $colorYellowAccordeonActive;
+					background-color: #F1F1EE; //$colorYellowAccordeonActive;
 				}
 
-				&:after {
-					position: absolute;
-					content: " ";
-					display: block;
-					transition: transform $transitionLength / 2 $transitionEase;
-					top: 50%;
-					opacity: 0.7;
-					transform: translateY(-50%) rotate(45deg);
-					width: 12px;
-					height: 12px;
-					right: $gutterWidth + 4;
-				}
+				// &:after {
+				// 	position: absolute;
+				// 	content: " ";
+				// 	display: block;
+				// 	transition: transform $transitionLength / 2 $transitionEase;
+				// 	top: 50%;
+				// 	opacity: 0.7;
+				// 	transform: translateY(-50%) rotate(45deg);
+				// 	width: 12px;
+				// 	height: 12px;
+				// 	right: $gutterWidth + 4;
+				// }
 			}
 			&:hover,
 			&.is_active {

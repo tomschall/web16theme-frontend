@@ -6,6 +6,7 @@
 	.slick-slider .slick-track {
 		margin: 0 auto;
 	}
+
 	.slick-slide {
 		outline: none;
 	}
@@ -170,4 +171,19 @@
 		cursor: grabbing;
 	}
 
+}
+
+.image_gallery__slider:after {
+	content: attr(data-after);
+	position: relative;
+	right: 10px;
+    top: -38px;
+    float: right;
+    background: #000;
+    padding: 5px 12px;
+    opacity: .5;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 2px;
+	margin-left: -100px;
 }
