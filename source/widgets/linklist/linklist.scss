@@ -150,6 +150,10 @@
 	overflow: hidden;
 	padding: 0 20px 0 0;
 
+	@include mq($to: small) {
+		text-align: center;
+	}
+
 	img {
 		width: 100%;
 		max-width: 100%;
@@ -173,7 +177,7 @@
 		margin-bottom: 0;
 	}
 
-	@include mq($to: 374px) {
+	@include mq($to: small) {
 		left: 0;
 		width: 100%;
 		height: auto !important;
@@ -182,6 +186,24 @@
 		margin-right: auto;
 		margin-bottom: 0;
 		padding-right: 5px;
-		//transform: scale(1);
+	}
+
+	@include mq($to: small) {
+		.widg_linklist__img-wrapper img[src*="technik"][alt="Infoabend"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Kontakt und Anmeldung"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Termine & Stundenpläne"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Vorbereitung auf das Studium"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Aufnahmebedingungen"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Aufnahmeprüfung"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Kosten und Gebühren"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Studienordnung"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Stipendien"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Computer-Anforderungen"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Kind & Studium"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Militär, Zivildienst und Zivilschutz"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Wohnen"],
+	    .widg_linklist__img-wrapper img[src*="technik"][alt="Barrierefreies Studium"] {
+			width: 30%;
+		}
 	}
 }
