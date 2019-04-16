@@ -156,7 +156,7 @@
 		font-size: 1.25rem;
 		line-height: 1.7;
 		font-weight: 300;
-		padding-top: 1.25rem;
+		padding-top: 0;
 
 		@include mq($to: medium) {
 			padding-right: $basicPush * 5;
@@ -179,10 +179,6 @@
 		height: auto;
 		transform: scale(1);
     	transition: transform $transitionLength $transitionEase;
-
-		@include mq($from: 374px) {
-			padding-top: 20%;
-		}
 	}
 
 	@include mq($from: medium) {
