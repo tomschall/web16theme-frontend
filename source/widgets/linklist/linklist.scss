@@ -64,9 +64,20 @@
 			transform: translateY(-50%) translateX(0);
 			transition: transform $transitionLength / 2 $transitionEase;
 
+			@include mq($to: 374px) {
+				background-image: none;
+			}
 		}
 
 		h3 {
+			@include mq($to: 374px) {
+				@include iconDataurl('pfeil-black');
+			}
+
+			@include mq($from: 374px) {
+				background-image: none;
+			}
+
 			&:before {
 				margin-top: 8px;
 				float: right;
@@ -76,6 +87,10 @@
 				width: 17px;
 				height: 16.2px;
 			}
+
+			@include mq($from: 374px) {
+				padding-right: $basicPush * 5;
+			}
 		}
 
 		span {
@@ -83,6 +98,10 @@
 			padding-top: 12px;
 			display: inline-block;
 			font-size: 1.25rem;
+
+			@include mq($to: medium) {
+				padding-right: $basicPush * 5;
+			}
 		}
 	}
 
@@ -93,9 +112,23 @@
 			&:before {
 				width: 20px;
 				height: 16.2px;
+
+				@include mq($to: 374px) {
+					background-image: none;
+				}
+
 			}
 
 			h3 {
+
+				@include mq($to: 374px) {
+					@include iconDataurl('external');
+				}
+
+				@include mq($from: 374px) {
+					background-image: none;
+				}
+
 				&:before {
 					margin-top: 8px;
 					float: right;
@@ -104,6 +137,10 @@
 				&:after {
 					width: 17px;
 					height: 16.2px;
+				}
+
+				@include mq($from: 374px) {
+					padding-right: $basicPush * 5;
 				}
 			}
 		}
@@ -122,7 +159,7 @@
 		padding-top: 1.25rem;
 
 		@include mq($to: medium) {
-			padding-right: $basicPush * 4;
+			padding-right: $basicPush * 5;
 		}
 	}
 }
