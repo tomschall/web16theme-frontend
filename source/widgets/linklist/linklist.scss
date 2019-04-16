@@ -182,20 +182,20 @@
     	transition: transform $transitionLength $transitionEase;
 
 		@include mq($to: 374px) {
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Infoabend"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Kontakt und Anmeldung"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Termine & Stundenpläne"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Vorbereitung auf das Studium"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Aufnahmebedingungen"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Aufnahmeprüfung"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Kosten und Gebühren"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Studienordnung"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Stipendien"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Computer-Anforderungen"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Kind & Studium"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Militär, Zivildienst und Zivilschutz"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Wohnen"],
-			.widg_linklist__img-wrapper img[src*="technik"][alt="Barrierefreies Studium"] {
+			&[src*="technik"][alt="Infoabend"],
+			&[src*="technik"][alt="Kontakt und Anmeldung"],
+			&[src*="technik"][alt="Termine & Stundenpläne"],
+			&[src*="technik"][alt="Vorbereitung auf das Studium"],
+			&[src*="technik"][alt="Aufnahmebedingungen"],
+			&[src*="technik"][alt="Aufnahmeprüfung"],
+			&[src*="technik"][alt="Kosten und Gebühren"],
+			&[src*="technik"][alt="Studienordnung"],
+			&[src*="technik"][alt="Stipendien"],
+			&[src*="technik"][alt="Computer-Anforderungen"],
+			&[src*="technik"][alt="Kind & Studium"],
+			&[src*="technik"][alt="Militär, Zivildienst und Zivilschutz"],
+			&[src*="technik"][alt="Wohnen"],
+			&[src*="technik"][alt="Barrierefreies Studium"] {
 				max-width: 30%;
 			}
 		}
