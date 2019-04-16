@@ -18,7 +18,6 @@
 .widg_linklist___entry {
 	display: block;
 	border-top: 1px solid $colorGreyHover;
-	//padding: $basicPush/2;
 
 	position: relative;
 
@@ -33,6 +32,8 @@
 		transition: transform $transitionLength / 2 $transitionEase;
 		transform: translateX(0);
 		margin-right: $basicPush * 2;
+		float: left;
+		width: 100%;
 
 		@include mq($to: medium ) {
 			padding: 24px 0px 24px 0;
@@ -61,22 +62,11 @@
 			top: 50%;
 
 			transform: translateY(-50%) translateX(0);
-				transition: transform $transitionLength / 2 $transitionEase;
+			transition: transform $transitionLength / 2 $transitionEase;
 
-			@include mq($to: small) {
-				background-image: none;
-			}
-
-			@include mq($to: medium) {
-				top: 70%;
-			}
 		}
 
 		h3 {
-			@include mq($to: 767px) {
-				@include iconDataurl('pfeil-black');
-			}
-
 			&:before {
 				margin-top: 8px;
 				float: right;
@@ -103,21 +93,9 @@
 			&:before {
 				width: 20px;
 				height: 16.2px;
-
-				@include mq($to: medium) {
-					background-image: none;
-				}
 			}
 
 			h3 {
-				@include mq($to: medium) {
-					@include iconDataurl('external');
-				}
-
-				@include mq($from: medium) {
-					background-image: none;
-				}
-
 				&:before {
 					margin-top: 8px;
 					float: right;
@@ -159,12 +137,15 @@
 	}
 
 	img {
-		padding-top: 20%;
 		width: 100%;
 		max-width: 100%;
 		height: auto;
 		transform: scale(1);
     	transition: transform $transitionLength $transitionEase;
+
+		@include mq($from: 374px) {
+			padding-top: 20%;
+		}
 	}
 
 	@include mq($from: medium) {
@@ -182,7 +163,7 @@
 		margin-bottom: 0;
 	}
 
-	@include mq($to: small) {
+	@include mq($to: 374px) {
 		left: 0;
 		width: 100%;
 		height: auto !important;
@@ -191,24 +172,5 @@
 		margin-right: auto;
 		margin-bottom: 0;
 		padding-right: 5px;
-	}
-
-	@include mq($to: small) {
-		.widg_linklist__img-wrapper img[src*="technik"][alt="Infoabend"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Kontakt und Anmeldung"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Termine & Stundenpläne"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Vorbereitung auf das Studium"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Aufnahmebedingungen"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Aufnahmeprüfung"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Kosten und Gebühren"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Studienordnung"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Stipendien"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Computer-Anforderungen"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Kind & Studium"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Militär, Zivildienst und Zivilschutz"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Wohnen"],
-	    .widg_linklist__img-wrapper img[src*="technik"][alt="Barrierefreies Studium"] {
-			width: 30%;
-		}
 	}
 }
