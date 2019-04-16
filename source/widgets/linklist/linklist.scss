@@ -168,6 +168,7 @@
 	margin-bottom: $basicPush * 2;
 	overflow: hidden;
 	padding: 0 20px 0 0;
+	text-align: center;
 
 	@include mq($to: small) {
 		text-align: center;
@@ -179,6 +180,25 @@
 		height: auto;
 		transform: scale(1);
     	transition: transform $transitionLength $transitionEase;
+
+		@include mq($to: 374px) {
+			&[src*="technik"][alt="Infoabend"],
+			&[src*="technik"][alt="Kontakt und Anmeldung"],
+			&[src*="technik"][alt="Termine & Stundenpläne"],
+			&[src*="technik"][alt="Vorbereitung auf das Studium"],
+			&[src*="technik"][alt="Aufnahmebedingungen"],
+			&[src*="technik"][alt="Aufnahmeprüfung"],
+			&[src*="technik"][alt="Kosten und Gebühren"],
+			&[src*="technik"][alt="Studienordnung"],
+			&[src*="technik"][alt="Stipendien"],
+			&[src*="technik"][alt="Computer-Anforderungen"],
+			&[src*="technik"][alt="Kind & Studium"],
+			&[src*="technik"][alt="Militär, Zivildienst und Zivilschutz"],
+			&[src*="technik"][alt="Wohnen"],
+			&[src*="technik"][alt="Barrierefreies Studium"] {
+				max-width: 30%;
+			}
+		}
 	}
 
 	@include mq($from: medium) {
