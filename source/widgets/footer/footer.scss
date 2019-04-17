@@ -24,16 +24,11 @@
 }
 
 .widg_footer__logos {
-
 	position: relative;
-  float: right;
-	right: $basicPush * 5; // 50px due to efqm logo
-	//bottom: $basicPush * 3.6;
-	//top: $basicPush * 5;
+    float: right;
+	right: 0; //$basicPush * 5;
 
   	@include mq($to: subnav) {
-  		/*right: $basicPush * 4;
-  		bottom: $basicPush * 2.9;*/
       display: block;
       position: relative;
       float: left;
