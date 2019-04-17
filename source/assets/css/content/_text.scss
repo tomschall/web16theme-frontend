@@ -67,6 +67,10 @@ p {
 	padding-bottom: 0;
 }
 
+.text__lead + div .content__element .widg_teaser__wrapper {
+	margin-bottom: 50px;
+}
+
 span.bold,
 b {
 	font-weight: 700;
