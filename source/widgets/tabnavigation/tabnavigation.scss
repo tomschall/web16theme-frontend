@@ -21,8 +21,8 @@
 				font-weight: 600;
 				color: $colorTextGrey;
 				margin-right: $basicPush * 3.4;
-
 				padding-bottom: $basicPush * 1.4;
+				outline: none;
 
 				&.is_active {
 					color: $colorBlack;
