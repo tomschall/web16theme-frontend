@@ -114,8 +114,10 @@
 
 	@include mq($to: medium) {
 		float: left;
-		margin: 0 20px 0;
+		margin-left: 0;
+		margin-right: 20px;
 		width: 133px;
+		margin-bottom: 0;
 	}
 
 	@include mq($to: 374px) {
