@@ -4,8 +4,8 @@
  * @author Not Me, ask the Product Owners
  * @copyright FHNW Brugg/Windisch
  *
- */
-"use strict";
+*/
+'use strict';
 
 ;(function($, document, undefined) {
 
@@ -28,5 +28,3 @@
 	});
 
 })(jQuery, document);
-
-

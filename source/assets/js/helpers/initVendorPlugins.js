@@ -6,7 +6,7 @@
 ;(function($, undefined) {
 	'use strict';
 
-	$( window ).resize(function() {
+	$(window).resize(function() {
 		if ($(window).width() > 1023) {
 			$('.widg_teaser__img img').imageScale({
 				rescaleOnResize: true,

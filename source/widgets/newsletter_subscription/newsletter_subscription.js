@@ -53,22 +53,22 @@
 	 * @method
 	 * @public
 	 */
-	 Widget.prototype.init = function() {
+	Widget.prototype.init = function() {
 		$(this.options.domSelectors.form).validate({
 			errorElement: 'span',
 			errorClass: 'cr-error',
 			errorPlacement: function(error, element) {
-				if (element.attr("type") === "checkbox") {
+				if (element.attr('type') === 'checkbox') {
 					error.insertBefore($(element));
 				}
-				if (element.attr("type") === "text") {
+				if (element.attr('type') === 'text') {
 					error.insertBefore($(element));
 					$(element).toggleClass('error');
 				}
-				if (element.attr("type") === "radio") {
+				if (element.attr('type') === 'radio') {
 					error.insertBefore($(element));
 				}
-				if (element.attr("type") === "email") {
+				if (element.attr('type') === 'email') {
 					error.insertBefore($(element));
 					$(element).toggleClass('error');
 				}
