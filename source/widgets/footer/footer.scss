@@ -27,11 +27,11 @@
 	position: relative;
     float: right;
 
-    @include mq($from: 1440px) {
+    @include mq($from: 1600px) {
         right: $basicPush * 5;
     }
 
-    @include mq($to: 1440px) {
+    @include mq($to: 1600px) {
         right: 0;
     }
 
