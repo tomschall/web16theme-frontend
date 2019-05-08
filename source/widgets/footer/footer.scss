@@ -20,20 +20,22 @@
 	color: $customScrollbarColor;
 	font-size: 1.08333333rem;
 	padding-bottom: $basicPush * 1.5 !important;
-  margin-top: $basicPush * 2;
+    margin-top: $basicPush * 2;
 }
 
 .widg_footer__logos {
-
 	position: relative;
-  float: right;
-	right: $basicPush * 5; // 50px due to efqm logo
-	//bottom: $basicPush * 3.6;
-	//top: $basicPush * 5;
+    float: right;
+
+    @include mq($from: 1440px) {
+        right: $basicPush * 5;
+    }
+
+    @include mq($to: 1440px) {
+        right: 0;
+    }
 
   	@include mq($to: subnav) {
-  		/*right: $basicPush * 4;
-  		bottom: $basicPush * 2.9;*/
       display: block;
       position: relative;
       float: left;
