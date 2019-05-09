@@ -1,8 +1,8 @@
 /*!
- * Image Gallery
+ * Mapbox GL
  *
- * @author Unic AG
- * @copyright Unic AG
+ * @author Roland von Aesch
+ * @copyright FHNW - Fachhochschule Nordwestscheiz
  *
  * //@requires ../../../node_modules/some/dependency.js
  */
@@ -295,7 +295,6 @@
 				});
 			}
 		} else {
-			console.log('is_active -> false');
 			$('.widg_location__nav button').removeClass('is_active');
 			$('#' + marker).animate({ opacity: 0.3 });
 		}
@@ -313,7 +312,6 @@
 			Widget.prototype.flyToLocation('marker-0', map, 0, xyCoordinates[0], xyCoordinates[1]);
 			Widget.prototype._moveNavBar(0);
 		} else {
-			console.log('setFirstLocation -> fitBounds');
 			map.fitBounds(bounds, { padding: 100 });
 		}
 	};

@@ -1,4 +1,4 @@
-/*!
+/*
  * Image Gallery
  *
  * @author Unic AG
@@ -105,7 +105,8 @@
 			} else {
 				// Default gallery without legends and thumbnails
 				$(this).addClass(remoteSelector + index);
-				var setGalleryOptions = _.pick(galleryDefaults, ['adaptiveHeight','infinite', 'dots', 'arrows', 'accessibility', 'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
+				var setGalleryOptions = _.pick(galleryDefaults, ['adaptiveHeight', 'infinite', 'dots', 'arrows', 'accessibility',
+				'mobileFirst', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
 
 				if ($(this).nextAll(thumbnailSelector).length) {
 					// Set default gallery with thumbnails only
@@ -124,15 +125,17 @@
 				$(this).nextAll(thumbnailSelector).addClass(remoteSelector + index);
 				var thumbs = $('.image_gallery__thumbs.remote_' + index + ' img').size();
 				var totalImages = Widget.prototype.countThumbs(thumbs);
-				var setThumbsOptions = _.pick(galleryDefaults, ['centerPadding', 'focusOnSelect', 'centerMode', 'arrows', 'swipeToSlide', 'adaptiveHeight','infinite', 'dots', 'accessibility', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
-			 		setThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.' + remoteSelector + index}, { slidesToScroll: totalImages }, {slidesToShow: totalImages - 1 }, { arrows: false });
-			 	$('.' + remoteSelector + index).not('.slick-initialized').slick(setThumbsOptions);
+				var setThumbsOptions = _.pick(galleryDefaults, ['centerPadding', 'focusOnSelect', 'centerMode', 'arrows', 'swipeToSlide',
+				'adaptiveHeight', 'infinite', 'dots', 'accessibility', 'dotsClass', 'nextArrow', 'prevArrow', 'autoplay', 'responsive']);
+				setThumbsOptions = _.assign(setThumbsOptions, { asNavFor: '.' + remoteSelector + index}, { slidesToScroll: totalImages },
+					{slidesToShow: totalImages - 1 }, { arrows: false });
+					$('.' + remoteSelector + index).not('.slick-initialized').slick(setThumbsOptions);
 			}
 
 
 			// Initialize counter
 			var maxSlickImages = $('.remote_' + index + ' .image_gallery__slide[aria-hidden="true"]').not('.slick-cloned').length + 1;
-			var currentSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'));
+			var currentSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'), 10);
 			currentSlickIndex++;
 			$('.image_gallery__slider.remote_' + index).attr('data-after', currentSlickIndex + ' | ' + maxSlickImages);
 
@@ -156,7 +159,7 @@
 	};
 
 	Widget.prototype.activeSlideImage = function(maxSlickImages, index) {
-		var activeSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'));
+		var activeSlickIndex = parseInt($('.remote_' + index + ' .image_gallery__slide.slick-slide.slick-current.slick-active').attr('data-slick-index'), 10);
 		activeSlickIndex++;
 		if (activeSlickIndex === 0) {
 			activeSlickIndex = maxSlickImages;
@@ -166,7 +169,11 @@
 
 	Widget.prototype.countThumbs = function(thumbs) {
 		var totalImages = 0;
-		if (thumbs <= 5) { totalImages = thumbs; } else { totalImages = 5 + 1; }
+		if (thumbs <= 5) {
+			totalImages = thumbs;
+		} else {
+			totalImages = 5 + 1;
+		}
 		return totalImages;
 	};
 

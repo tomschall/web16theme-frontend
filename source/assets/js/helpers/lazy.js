@@ -72,7 +72,6 @@
 						var el = document.querySelector('.b-lazy');
 						el.parentNode.removeChild(el);
 						initLocationSlider();
-						console.log('Fallback: B-Lazy');
 					});
 				}
 			});

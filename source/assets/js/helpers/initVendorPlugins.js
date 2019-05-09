@@ -6,6 +6,16 @@
 ;(function($, undefined) {
 	'use strict';
 
+	$(window).resize(function() {
+		if ($(window).width() > 1023) {
+			$('.widg_teaser__img img').imageScale({
+				rescaleOnResize: true,
+				scale: 'best-fill',
+				align: 'center'
+			});
+		}
+	});
+
 	$(document).ready(function() {
 		// The Jquery Spinner, has to be implemented when element is added later than document.ready
 		$('.fhnw-spinner').spinner({
@@ -14,12 +24,14 @@
 			color: '#999999'
 		});
 
-        if ($(window).width() > 1126) {
-            $('.widg_teaser__img img').imageScale({
-                rescaleOnResize: true,
-                scale: 'best-fill'
-            });
-    	}
+		if ($(window).width() > 1023) {
+			$('.widg_teaser__img img').imageScale({
+				rescaleOnResize: true,
+				scale: 'best-fill',
+				align: 'center'
+			});
+		}
+
 
 		$('.widg_hero__img').imageScale({
 			rescaleOnResize: true,
@@ -51,10 +63,15 @@
 			}
 		});
 
-        // TEASER IMG
-        if ($(window).width() > 1126) {
-            $('.widg_teaser__img img').imageScale('scale');
-        }
+		if ($(window).width() > 1023) {
+			$('.widg_teaser__img img').imageScale({
+				rescaleOnResize: true,
+				scale: 'best-fill',
+				align: 'center'
+			});
+			//$('.widg_teaser__img img').imageScale('destroy');
+		}
+
 
 		if (window.estatico.mq.query({from: 'subnav'})) {
 			$('.search__form-wrapper').scrollToFixed();

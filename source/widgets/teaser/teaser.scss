@@ -67,7 +67,7 @@
 		&.wide___third {
 			@include span(12);
 			padding-left: 0;
-			padding-right: 0;
+			padding-right: $basicPush * 3;
 		}
 
 		&.no-image,
@@ -103,7 +103,7 @@
     	transition: transform $transitionLength $transitionEase;
 	}
 
-	@include mq($from: medium) {
+	@include mq($from: 1023px) {
 		width: 100%;
 		padding-top: 62%;
 

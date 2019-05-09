@@ -51,7 +51,7 @@
 		obfuscateEmails();
 
 		// Exclude linklist
-		if(!($('.widg_extendedlinks'))) {
+		if (!($('.widg_extendedlinks'))) {
 			improveEmailWrapping();
 		}
 	});
