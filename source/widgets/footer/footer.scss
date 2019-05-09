@@ -27,12 +27,8 @@
 	position: relative;
     float: right;
 
-    @include mq($from: 1600px) {
-        right: $basicPush * 5;
-    }
-
-    @include mq($to: 1600px) {
-        right: 0;
+    @include mq($from: 1440px) {
+        left: $basicPush * 9.5;
     }
 
   	@include mq($to: subnav) {
@@ -41,7 +37,7 @@
       float: left;
       top: 0;
       background: black;
-      left: 20px;
+      left: 0;
       margin: 20px 0;
       padding: 0;
   	}
@@ -50,9 +46,9 @@
       display: block;
       position: relative;
       float: left;
-      top: 0;
+      top: $basicPush * 3;
       background: black;
-      left: 20px;
+      left: 0;
       margin: 20px 0;
       padding: 0;
 	}
@@ -96,4 +92,8 @@
   color: $colorScrollbarGrau;
   border-bottom: 0;
   padding-bottom: 0;
+
+  &:after {
+      background-image: none !important;
+  }
 }
