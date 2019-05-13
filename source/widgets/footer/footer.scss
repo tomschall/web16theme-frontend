@@ -90,10 +90,13 @@
   font-weight: 700;
   font-size: 1.125rem !important;
   color: $colorScrollbarGrau;
-  border-bottom: 0;
   padding-bottom: 0;
 
   &:after {
       background-image: none !important;
   }
+}
+
+.widg_footernavigation__column.widg_footer__logos span {
+    border: none;
 }
