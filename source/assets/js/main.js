@@ -60,6 +60,7 @@
  * @requires ../../widgets/newsletter_subscription/newsletter_subscription.js
  * @requires ../../widgets/image_gallery/image_gallery.js
  * @requires ../../widgets/in_content_search/in_content_search.js
+ * @requires ../../widgets/calltoaction/calltoaction.js
 
  * //*autoinsertmodule*
  *
