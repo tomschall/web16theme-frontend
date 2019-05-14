@@ -45,7 +45,8 @@ var templateData = {
 				]
 			},
 			widgets: {
-				breadcrumb: requireNew('../breadcrumb/breadcrumb.data.js')
+				breadcrumb: requireNew('../breadcrumb/breadcrumb.data.js'),
+				calltoaction: requireNew('../calltoaction/calltoaction.data.js')
 			}
 		}, templateData);
 
