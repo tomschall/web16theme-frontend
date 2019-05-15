@@ -39,4 +39,18 @@
 	/* Removing empty p-Tags */
 	$('p:empty').remove();
 
+	/* Call To Action */
+  	$('.widg_calltoaction .ch-info-back a').hover(function() {
+       console.log('cta hover');
+       $('.ch-info-back .widg_teaser__arrow').css({
+               'padding-left': 20
+       });
+   });
+   $('.widg_calltoaction .ch-info-back a').mouseout(function() {
+       console.log('cta mouseout');
+       $('.ch-info-back .widg_teaser__arrow').css({
+           'padding-left': 0
+       });
+   });
+
 })(jQuery);
