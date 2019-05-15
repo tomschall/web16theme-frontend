@@ -65,7 +65,7 @@
 
 		transition: all 0.4s ease-in-out;
 		transform-style: preserve-3d;
-		box-shadow: 0 0 0 10px rgba(0,0,0,0.2), inset 0 0 3px rgba(0,0,0,0.8);
+		box-shadow: 0 0 0 10px rgba(0,0,0,0.2), inset 0 0 3px rgba(255,255,255,0.8);
 	}
 
 	.ch-info > div {
@@ -83,9 +83,9 @@
  		background: #fde70e;
 	}
 
-	//.ch-img-1 {
-	//	background-image: url(https://webteam.pages.fhnw.ch/web16theme-frontend/assets/media/img/nw-dark.png);
-	//}
+	.ch-img-1 {
+		background-image: none;
+	}
 
 	.ch-img-2 {
 		background-image: url(https://webteam.pages.fhnw.ch/web16theme-frontend/assets/media/img/blockquote_bg.png);
@@ -118,6 +118,7 @@
 
 	.ch-info-back a {
 		text-decoration: none;
+		float: left;
 	}
 
 	.ch-info-back span.widg_teaser__arrow {
@@ -133,7 +134,7 @@
 		text-align: center;
 		margin: 0 30px;
 		font-size: 12px;
-		border-top: 1px solid rgba(255,255,255,0.3);
+		border-top: 1px solid rgba(0,0,0,0.5);
 	}
 
 	.ch-info p a {
