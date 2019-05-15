@@ -7,9 +7,9 @@ var _ = require('lodash'),
 
 var templateData = {
 			title: 'Call To Action',
-			text: 'Soon, there will be a <b>Call To Action<b> Button.',
+			text: 'Soon, there will be a Call To Action Button.',
 			buttonText: 'Mehr Informationen',
-			url: '#'
+			url: '/pages/universities_overview/universities_overview.html'
 		},
 		data = _.merge(defaultData, {
 			meta: {
