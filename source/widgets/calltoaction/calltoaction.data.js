@@ -9,7 +9,7 @@ var templateData = {
 			title: 'Call To Action',
 			text: 'Soon, there will be a Call To Action Button.',
 			buttonText: 'Mehr Informationen',
-			url: '/pages/universities_overview/universities_overview.html'
+			url: 'https://webteam.pages.fhnw.ch/web16theme-frontend/pages/universities_overview/universities_overview.html'
 		},
 		data = _.merge(defaultData, {
 			meta: {
