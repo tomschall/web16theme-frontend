@@ -39,6 +39,11 @@
 	/* Removing empty p-Tags */
 	$('p:empty').remove();
 
+	// $('.widg_calltoaction').delay(3000).animate({
+	// 	display: 'none',
+	// 	right: '20%'
+	// }, 'swing');
+
 	/* Call To Action */
   	$('.widg_calltoaction .ch-info-back a').hover(function() {
        console.log('cta hover');
