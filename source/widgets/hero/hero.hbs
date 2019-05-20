@@ -7,11 +7,11 @@
 		<div class="widg_hero__wrapper"><img src="{{heroImage}}" class="widg_hero__img {{#if profileInfo}}is-profile-hero{{/if}}" alt="{{profileInfo.name}}"/></div>
 	{{/if}}
 
-
 	{{#if breadcrumb}}
 		{{> "widgets/breadcrumb/breadcrumb" widgets.breadcrumb entries=breadcrumb.entries}}
 	{{/if}}
+
+	{{#if CallToAction.hasCallToAction}}
+		{{> "widgets/calltoaction/calltoaction" widgets.calltoaction}}
+	{{/if}}
 </div>
-{{#if hasCallToAction}}
-	{{> "widgets/calltoaction/calltoaction" widgets.calltoaction}}
-{{/if}}
