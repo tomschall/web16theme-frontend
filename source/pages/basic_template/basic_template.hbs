@@ -1,14 +1,33 @@
 {{#extend "layouts/layout"}}
 	{{#content "hero"}}
 		{{> "widgets/hero/hero" widgets.hero}}
+		<div class="widg_calltoaction widg_header__hide-on-shrinked" data-init="calltoaction">
+			<div class="ch-item ch-img-1">
+				<div class="ch-info-wrap">
+					<div class="ch-info">
+						<div class="ch-info-front">
+							<h2>This is a<br />Call 2 Action <br />Button<br />!</h2>
+						</div>
+						<div class="ch-info-front ch-img-1"></div>
+						<div class="ch-info-back">
+							<a href="https://www.google.com">
+								<h3>Call 2 Action</h3>
+								<p class="widg_promoteaser__text">Lorem ipsum dolor sit amet</p>
+							</a>
+							<span class="widg_teaser__arrow" style="padding-left: 0px;"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	{{/content}}
 	{{#content "content"}}
-    <div class="page_content">
-      <h1>{{title}}</h1>
-      <p class="text__lead">
+		<div class="page_content">
+			<h1>{{title}}</h1>
+			<p class="text__lead">
 				{{leadText}}
-      </p>
+			</p>
 
-    </div>
+		</div>
 	{{/content}}
 {{/extend}}
