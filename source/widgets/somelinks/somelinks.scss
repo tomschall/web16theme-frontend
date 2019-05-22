@@ -21,8 +21,8 @@
 		&[data-somelink-target] {
 			// overrides icon sizes to fix icon rendering in IE11
 			&:before {
-				width: 36px !important;
-				height: 36px !important;
+				width: 35px;
+				height: 35px;
 			}
 		}
 
@@ -51,7 +51,7 @@
 		}
 
 		&[data-somelink-target="linkedin"] {
-			@include iconDataurl('linkedin');			
+			@include iconDataurl('linkedin');
 
 			&:hover {
 				@include iconDataurl('linkedin_hov');
