@@ -301,7 +301,14 @@ ul span.select2-selection__clear {
 	* Radios Error Field
 	*/
 .field.has-radio .fieldErrorBox {
-	top: 5px;
+	top: -20px;
+}
+
+.errorOnSubmit {
+    border: 2px solid #df305b;
+    padding: 0 10px 10px;
+    margin-bottom: 20px;
+    background: rgba(223,48,91,0.1);
 }
 
 /**
