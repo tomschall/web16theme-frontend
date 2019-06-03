@@ -143,5 +143,6 @@ input[type="checkbox"].error:checked + .label{
 }
 
 .has-radio.error {
+	padding: 10px;
 	border: 2px solid $colorErrorRed;
 }

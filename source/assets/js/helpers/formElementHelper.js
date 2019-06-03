@@ -114,7 +114,7 @@
 			$('input[type="file"]').on('click', function() {
 				var addFieldID = $(this).attr('id');
 				var rndFigure = Math.floor((Math.random() * 100) + 1);
-		$(this).next().remove();
+                 $(this).next().remove();
 				$(this).after('<span class="select2-selection__clear upload-reset" id="' + addFieldID + '-' + rndFigure + '"> × </span>');
 			});
 
@@ -125,97 +125,98 @@
 
 
 		// Adding reset button, clearing upload field
-				$('.upload-reset').on('click', function() {
-					var whichElem = $(this).attr('id');
-					var curUploadField = $(this).prev().attr('id');
+		$('.upload-reset').on('click', function() {
+			var whichElem = $(this).attr('id');
+			var curUploadField = $(this).prev().attr('id');
 
-					$('#' + whichElem).parent().prev().hide();
-					$(this).prev().val('');
-					$('#' + curUploadField).trigger('change');
-					$(this).remove();
-				});
+			$('#' + whichElem).parent().prev().hide();
+			$(this).prev().val('');
+			$('#' + curUploadField).trigger('change');
+			$(this).remove();
+		});
 
-				$('input[type="file"]').each(function() {
-					var uploadField = '#' + $(this).attr('id');
+			$('input[type="file"]').each(function() {
+				var uploadField = '#' + $(this).attr('id');
 
-					for (var i = 0; i < this.files.length; i++) {
-						totalSize += this.files[i].size;
-						//console.log('TOTAL SIZE = ' + totalSize);
-						$(uploadField).parent().parent().find('.fieldErrorBox').text(bytesToSize(this.files[i].size));
-						$(uploadField).parent().parent().find('.fieldErrorBox').css('color', 'black').show();
+				for (var i = 0; i < this.files.length; i++) {
+					totalSize += this.files[i].size;
+					$(uploadField).parent().parent().find('.fieldErrorBox').text(bytesToSize(this.files[i].size));
+					$(uploadField).parent().parent().find('.fieldErrorBox').css('color', 'black').show();
+				}
+
+				var valid = totalSize <= allowedUploadSize;
+				var fileDiffSuccess = allowedUploadSize - totalSize;
+				var fileDiffError = totalSize - allowedUploadSize;
+				var notValidStyle = 'background: rgba(225,50,90,.1); color: #df305b; border: solid 2px #df305b; display: block; padding: 15px; margin-bottom: 15px;';
+				var validStyle = 'background: rgba(12, 128, 0, 0.14); color: green; border: solid 2px green; display: block; padding: 15px; margin-bottom: 15px;';
+
+				// FILEUPLOAD -> ERROR MESSAGES
+				if (!valid) {
+					$('input[type="file"]').each(function() {
+						$(this).parent().parent().addClass('error');
+						$(this).parent().parent().find('.fieldErrorBox').css('color', 'red');
+					});
+
+					$('#uploadWarning').remove();
+					//console.log('ERROR -> Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Überschuss: ' + bytesToSize(fileDiffError));
+					$('#form-buttons-submit').attr('disabled', 'disabled');
+						if (lang === 'de') {
+                            $('#form-buttons-submit').before('<div id="uploadWarning" style="' +
+									notValidStyle + '">Der max. zulässige Datenanhang von <strong><i>' +
+									bytesToSize(allowedUploadSize) + '</i></strong> wird um <strong>' +
+									bytesToSize(fileDiffError) +
+									'</strong> überschritten. Bitte reduzieren Sie Ihren Datenanhang.</div>');
+						}
+						if (lang === 'en') {
+							$('#form-buttons-submit').before('<div id="uploadWarning" style="' +
+									notValidStyle + '">The maximum data attachment of <strong><i>' +
+									bytesToSize(allowedUploadSize) + '</i></strong> is exceeded by <strong>' +
+									bytesToSize(fileDiffError) +
+									'</strong>. Please reduce the size of your attachment.</div>');
+						}
+						if (lang === 'fr') {
+							$('#form-buttons-submit').before('<div id="uploadWarning" style="' +
+									notValidStyle + '">La limite de <strong><i>' + bytesToSize(allowedUploadSize) +
+									'</i></strong> a été excédée de <strong>' +
+									bytesToSize(fileDiffError) +
+									'</strong>. Veuillez réduire le poids de votre annexe.</div>');
+						}
+				}
+				// FILEUPLOAD -> SUCCESS MESSAGES
+				if (valid) {
+					$('input[type="file"]').each(function() {
+                        $(this).parent().parent().removeClass('error');
+						$(this).parent().parent().find('.fieldErrorBox').css('color', 'black');
+					});
+
+
+					$('#uploadWarning').remove();
+
+					if (lang === 'de') {
+						$('#form-buttons-submit').before('<div id="uploadWarning" style="' +
+								validStyle + '">Datenanhang: OK. Die max. erlaubte Datenmenge von <strong><i>' +
+								bytesToSize(allowedUploadSize) +
+								'</i></strong> hat noch Kapazität für <strong>' +
+								bytesToSize(fileDiffSuccess) + '</strong>.</div>');
 					}
-
-					var valid = totalSize <= allowedUploadSize;
-					var fileDiffSuccess = allowedUploadSize - totalSize;
-					var fileDiffError = totalSize - allowedUploadSize;
-					var notValidStyle = 'background: rgba(225,50,90,.1); color: #df305b; border: solid 2px #df305b; display: block; padding: 15px; margin-bottom: 15px;';
-					var validStyle = 'background: rgba(12, 128, 0, 0.14); color: green; border: solid 2px green; display: block; padding: 15px; margin-bottom: 15px;';
-
-					// FILEUPLOAD -> ERROR MESSAGES
-					if (!valid) {
-						$('input[type="file"]').each(function() {
-							$(this).parent().parent().addClass('error');
-							$(this).parent().parent().find('.fieldErrorBox').css('color', 'red');
-						});
-
-						$('#uploadWarning').remove();
-						//console.log('ERROR -> Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Überschuss: ' + bytesToSize(fileDiffError));
-						$('#form-buttons-submit').attr('disabled', 'disabled');
-							if (lang === 'de') {
-								$('#form-buttons-submit').before('<div id="uploadWarning" style="' +
-										notValidStyle + '">Der max. zulässige Datenanhang von <strong><i>' +
-										bytesToSize(allowedUploadSize) + '</i></strong> wird um <strong>' +
-										bytesToSize(fileDiffError) +
-										'</strong> überschritten. Bitte reduzieren Sie Ihren Datenanhang.</div>');
-							}
-							if (lang === 'en') {
-								$('#form-buttons-submit').before('<div id="uploadWarning" style="' +
-										notValidStyle + '">The maximum data attachment of <strong><i>' +
-										bytesToSize(allowedUploadSize) + '</i></strong> is exceeded by <strong>' +
-										bytesToSize(fileDiffError) +
-										'</strong>. Please reduce the size of your attachment.</div>');
-							}
-							if (lang === 'fr') {
-								$('#form-buttons-submit').before('<div id="uploadWarning" style="' +
-										notValidStyle + '">La limite de <strong><i>' + bytesToSize(allowedUploadSize) +
-										'</i></strong> a été excédée de <strong>' +
-										bytesToSize(fileDiffError) +
-										'</strong>. Veuillez réduire le poids de votre annexe.</div>');
-							}
+					if (lang === 'en') {
+						$('#form-buttons-submit').before('<div id="uploadWarning" style="' +
+								validStyle + '">Attachement: OK. Still <strong><i>' +
+								bytesToSize(fileDiffSuccess) +
+								'</i></strong> can be added for a maximum of <strong>' +
+								bytesToSize(allowedUploadSize) +
+								'</strong>.</div>');
 					}
-					// FILEUPLOAD -> SUCCESS MESSAGES
-					if (valid) {
-						$('input[type="file"]').each(function() {
-							$(this).parent().parent().removeClass('error');
-							$(this).parent().parent().find('.fieldErrorBox').css('color', 'black');
-						});
-
-						$('#uploadWarning').remove();
-							if (lang === 'de') {
-								$('#form-buttons-submit').before('<div id="uploadWarning" style="' +
-										validStyle + '">Datenanhang: OK. Die max. erlaubte Datenmenge von <strong><i>' +
-										bytesToSize(allowedUploadSize) +
-										'</i></strong> hat noch Kapazität für <strong>' +
-										bytesToSize(fileDiffSuccess) + '</strong>.</div>');
-							}
-							if (lang === 'en') {
-								$('#form-buttons-submit').before('<div id="uploadWarning" style="' +
-										validStyle + '">Attachement: OK. Still <strong><i>' +
-										bytesToSize(fileDiffSuccess) +
-										'</i></strong> can be added for a maximum of <strong>' +
-										bytesToSize(allowedUploadSize) +
-										'</strong>.</div>');
-							}
-							if (lang === 'fr') {
-								$('#form-buttons-submit').before('<div id="uploadWarning" style="' +
-										validStyle + '">Annexe: OK. <strong><i>' +
-										bytesToSize(fileDiffSuccess) +
-										'</i></strong> peuvent être ajoutés pour un maximum de <strong>' +
-										bytesToSize(allowedUploadSize) + '</strong>.</div>');
-							}
-						//console.log('SUCCESS -> Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Bestand: ' + bytesToSize(fileDiffSuccess));
-						$('#form-buttons-submit').removeAttr('disabled');
+					if (lang === 'fr') {
+						$('#form-buttons-submit').before('<div id="uploadWarning" style="' +
+								validStyle + '">Annexe: OK. <strong><i>' +
+								bytesToSize(fileDiffSuccess) +
+								'</i></strong> peuvent être ajoutés pour un maximum de <strong>' +
+								bytesToSize(allowedUploadSize) + '</strong>.</div>');
 					}
+					// console.log('SUCCESS -> Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Bestand: ' + bytesToSize(fileDiffSuccess));
+					$('#form-buttons-submit').removeAttr('disabled');
+				}
 				});
 			});
 		},
@@ -321,12 +322,27 @@
 		},
 
 		onSubmit: function(e) {
-			// internal flag - is set to true on second automated submit if
+            easyFormValidation.getFormState();
+
+            // internal flag - is set to true on second automated submit if
 			// validation was successful
 			if (this._formValid) {
 				this._formValid = false; // clear the flag
 				return undefined; // do nothing, already validated
 			}
+
+            // Check upload fields
+            $form.find('input[type="file"]').each(function() {
+                if ($(this).hasClass('required')) {
+                    if ($(this).val() === '') {
+                        $(this).parents().addClass('error');
+                    } else {
+                        $(this).parents().removeClass('error');
+                    }
+                }
+            });
+
+
 
 			// prevent form submission
 			e.preventDefault();
@@ -352,21 +368,38 @@
 					rules.$formSubmitButton.click();
 				}.bind(this));
 			}.bind(this)).fail(function() {
-				$(e.target).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
-					$(e.target).val(rules.formSubmitButtonText).fadeTo(500, 1);
-				});
+				// $(e.target).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
+				// 	$(e.target).val(rules.formSubmitButtonText).fadeTo(500, 1);
+				// });
+
+                // Error message above submit button
+                if ($('.errorOnSubmit').length === 0) {
+                    $('#form-buttons-submit').before('<div class="errorOnSubmit"><p style="margin-bottom:0; font-size: 12px; font-weight: 100;">Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
+                    $('#form').prepend('<div class="errorOnSubmit"><p style="margin-bottom:0; font-size: 12px; font-weight: 100;">Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
+                }
+
+                // Set first error field on focus
+                var firstError = $('#form').find('.error').eq(0).attr('id');
+                // var findInput = $('#' + firstError).find('input').attr('id');
+                console.log('first error element -> ' + firstError);
+                //location.href = '#' + firstError;
+                if (firstError !== 'undefined') {
+                    $('html, body').animate({
+                        scrollTop: $('#'+firstError).offset().top}, 500
+                    );
+                }
 			});
 		},
 
 		getFormState: function() {
 			var countError = 0;
-			$form.find('.select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], input[type="file"], textarea').each(function() {
+			$form.find('input[type="text"], .select-widget, .radio-widget, .single-checkbox-widget, input[type="text"], input[type="password"], textarea').each(function() {
 				var $requiredSelectState = $(this);
 				if ($requiredSelectState.hasClass(rules.required) && !($requiredSelectState.hasClass(rules.hasvalue))) {
 					countError++;
 				}
-			}).trigger('change');
-			return countError;
+            }).trigger('change');
+            return countError;
 		},
 
 		resetForm: function() {
@@ -380,6 +413,7 @@
 				$form.find('.upload-reset').remove();
 				$form.find('.' + rules.hasvalue).removeClass(rules.hasvalue);
 				$form.find(rules.$fieldErrorBox).empty();
+                $('.errorOnSubmit').remove();
 				$('#uploadWarning').remove();
 
 				// Reset Select2 Dropdown
