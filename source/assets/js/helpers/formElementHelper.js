@@ -133,7 +133,6 @@
 			$(this).prev().val('');
 			$('#' + curUploadField).trigger('change');
 			$(this).remove();
-            console.log('Reset tiggered');
 		});
 
 			$('input[type="file"]').each(function() {
@@ -141,7 +140,6 @@
 
 				for (var i = 0; i < this.files.length; i++) {
 					totalSize += this.files[i].size;
-					//console.log('TOTAL SIZE = ' + totalSize);
 					$(uploadField).parent().parent().find('.fieldErrorBox').text(bytesToSize(this.files[i].size));
 					$(uploadField).parent().parent().find('.fieldErrorBox').css('color', 'black').show();
 				}
@@ -157,7 +155,6 @@
 					$('input[type="file"]').each(function() {
 						$(this).parent().parent().addClass('error');
 						$(this).parent().parent().find('.fieldErrorBox').css('color', 'red');
-                        console.log('Upload field not valid');
 					});
 
 					$('#uploadWarning').remove();
@@ -190,7 +187,6 @@
 					$('input[type="file"]').each(function() {
                         $(this).parent().parent().removeClass('error');
 						$(this).parent().parent().find('.fieldErrorBox').css('color', 'black');
-                        console.log('upload field valid');
 					});
 
 
@@ -218,7 +214,7 @@
 								'</i></strong> peuvent être ajoutés pour un maximum de <strong>' +
 								bytesToSize(allowedUploadSize) + '</strong>.</div>');
 					}
-					console.log('SUCCESS -> Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Bestand: ' + bytesToSize(fileDiffSuccess));
+					// console.log('SUCCESS -> Erlaubt: ' + bytesToSize(allowedUploadSize) + ': Bestand: ' + bytesToSize(fileDiffSuccess));
 					$('#form-buttons-submit').removeAttr('disabled');
 				}
 				});
@@ -235,7 +231,6 @@
 			rules.$formCheckbox.each(function() {
 				if ($(this).hasClass(rules.required)) {
 					$(this).val(rules.optionNoValue);
-                    console.log('$formCheckbox triggered');
 				}
 			});
 
@@ -246,7 +241,6 @@
 				var $input = $(this);
 				if ($input.parents('.named-file-widget').hasClass('required')) {
 					$input.addClass('required');
-                    console.log('required upload field found');
 				}
 			});
 		},
@@ -333,7 +327,6 @@
             // internal flag - is set to true on second automated submit if
 			// validation was successful
 			if (this._formValid) {
-                console.log('clear form valid -> false');
 				this._formValid = false; // clear the flag
 				return undefined; // do nothing, already validated
 			}
@@ -343,7 +336,6 @@
                 if ($(this).hasClass('required')) {
                     if ($(this).val() === '') {
                         $(this).parents().addClass('error');
-                        console.log('upload required no value');
                     } else {
                         $(this).parents().removeClass('error');
                     }
@@ -366,7 +358,6 @@
 						return undefined;
 					}
 					fields.push(fieldName);
-                    //console.log('validate field -> ' + fieldName);
 					return easyFormValidation.validateElement($(this));
 				}).toArray();
 
@@ -383,8 +374,19 @@
 
                 // Error message above submit button
                 if ($('.errorOnSubmit').length === 0) {
-                    $('#form-buttons-submit').before('<div class="errorOnSubmit"><p style="margin-bottom:0; font-size: 12px; font-weight: 700;">Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
-                    $('#form').prepend('<div class="errorOnSubmit"><p style="margin-bottom:0; font-size: 12px; font-weight: 700;">Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
+                    $('#form-buttons-submit').before('<div class="errorOnSubmit"><p style="margin-bottom:0; font-size: 12px; font-weight: 100;">Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
+                    $('#form').prepend('<div class="errorOnSubmit"><p style="margin-bottom:0; font-size: 12px; font-weight: 100;">Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
+                }
+
+                // Set first error field on focus
+                var firstError = $('#form').find('.error').eq(0).attr('id');
+                // var findInput = $('#' + firstError).find('input').attr('id');
+                console.log('first error element -> ' + firstError);
+                //location.href = '#' + firstError;
+                if (firstError !== 'undefined') {
+                    $('html, body').animate({
+                        scrollTop: $('#'+firstError).offset().top}, 500
+                    );
                 }
 			});
 		},
@@ -587,16 +589,6 @@
 						$local__el.toggleClass(rules.hasvalue, isValid);
 						$local__el.parent().toggleClass(rules.error, !isValid);
 				}
-
-                // Set first error field on focus
-                // var firstError = $('#form').find('.error').eq(0).attr('id');
-                // // var findInput = $('#' + firstError).find('input').attr('id');
-                // // console.log('first error element -> ' + findInput);
-                // setTimeout(function() {
-                //     $(function() {
-                //         $(document).scrollTop($('#' + firstError));
-                //     });
-                // }, 100 );
 			}
 
 			if ($el.hasClass('pat-pickadate-ref--date')) {
