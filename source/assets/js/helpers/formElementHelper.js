@@ -327,6 +327,13 @@
             // internal flag - is set to true on second automated submit if
 			// validation was successful
 			if (this._formValid) {
+                console.log('Form is valid!');
+                $('body').append('<div id="overlay"><div id="fhnw-spinner"></div></div>');
+                $('#fhnw-spinner').spinner({
+        			radius: 30,
+        			strokeWidth: 6,
+        			color: '#fff'
+        		});
 				this._formValid = false; // clear the flag
 				return undefined; // do nothing, already validated
 			}
