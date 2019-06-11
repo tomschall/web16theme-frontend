@@ -120,7 +120,7 @@ body {
 		font-weight: 500;
 		color: $colorTextDarkGrey;
 		line-height: 1.7;
-		padding-left: 2.5rem;
+		padding-left: 1.3rem;
 		margin-left: 3px;
 		position: relative;
 
@@ -186,8 +186,10 @@ table.content__table {
 		vertical-align: top;
 		text-align: left;
 
-		line-height: 2.2;
+		line-height: 1.7;
 		font-size: $textSize;
+	  	color: #4c4c4c;
+	  	font-weight: 500;
 	}
 
 	tr {
@@ -224,8 +226,10 @@ table.content__table__backcomp {
 		vertical-align: top;
 		text-align: left;
 
-		line-height: 2.2;
+		line-height: 1.7;
 		font-size: $textSize;
+	  	color: #4c4c4c;
+	    font-weight: 500;
 	}
 
 	tr {
