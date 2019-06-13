@@ -60,12 +60,12 @@
 
 	 // Reloading page if map exists and window is resize
 	 if ($('.widg_location_slider').length) {
-     console.log('Location map exists');
-		 $(window).bind('resize', function() {
-			 if (window.RT) {
-				 clearTimeout(window.RT);
-			 }
-			 	 window.RT = setTimeout(function() {
+	 var resizeTimer;
+		 $(window).on('resize', function() {
+			 clearTimeout(resizeTimer);
+			 console.log('Resize stopped!');
+			 resizeTimer = setTimeout(function() {
+				 // Run code here, resizing has "stopped"
 				 $('.widg_location_slider').append('<div id="overlay"><div id="fhnw-spinner"></div></div>');
 				 $('#fhnw-spinner').spinner({
 					 radius: 30,
@@ -73,7 +73,7 @@
 					 color: '#fff'
 				 });
 				 this.location.reload(false); /* false to get page from cache */
-			 }, 200);
+			 }, 1000);
 		 });
 	 }
 
