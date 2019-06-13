@@ -58,9 +58,9 @@
        });
    });
 
-	 // Reloading page if map exists and window is resized
+	 // Reloading page if map exists and window is resize
 	 if ($('.widg_location_slider').length) {
-
+     console.log('Location map exists');
 		 $(window).bind('resize', function() {
 			 if (window.RT) {
 				 clearTimeout(window.RT);
