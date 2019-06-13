@@ -58,4 +58,23 @@
        });
    });
 
+	 // Reloading page if map exists and window is resize
+	 if ($('.widg_location_slider').length) {
+     console.log('Location map exists');
+		 $(window).bind('resize', function() {
+			 if (window.RT) {
+				 clearTimeout(window.RT);
+			 }
+			 	 window.RT = setTimeout(function() {
+				 $('.widg_location_slider').append('<div id="overlay"><div id="fhnw-spinner"></div></div>');
+				 $('#fhnw-spinner').spinner({
+					 radius: 30,
+					 strokeWidth: 6,
+					 color: '#fff'
+				 });
+				 this.location.reload(false); /* false to get page from cache */
+			 }, 200);
+		 });
+	 }
+
 })(jQuery);
