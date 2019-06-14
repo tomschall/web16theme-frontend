@@ -59,23 +59,25 @@
    });
 
 	 // Reloading page if map exists and window is resize
-	 if ($('.widg_location_slider').length) {
-		 var resizeTimer;
-		 $(window).on('resize', function() {
-			 var windowSize = $(window).width();
-			 if (windowSize <= 1022) {
-				 clearTimeout(resizeTimer);
-				 resizeTimer = setTimeout(function() {
-					 $('.widg_location_slider').append('<div id="overlay"><div id="fhnw-spinner"></div></div>');
-					 $('#fhnw-spinner').spinner({
-						 radius: 30,
-						 strokeWidth: 6,
-						 color: '#fff'
-					 });
-					 this.location.reload(false); /* false to get page from cache */
-				 }, 1000);
-		 	}
-		 });
-	 }
-
+	 $(function() {
+		 if ($('.widg_location_slider').length) {
+			 var resizeTimer;
+			 $(window).on('resize', function() {
+				 var windowSize = $(window).width();
+				 if (windowSize <= 1022) {
+					 clearTimeout(resizeTimer);
+					 resizeTimer = setTimeout(function() {
+						 $('.widg_location_slider').append('<div id="overlay"><div id="fhnw-spinner"></div></div>');
+						 $('#fhnw-spinner').spinner({
+							 radius: 30,
+							 strokeWidth: 6,
+							 color: '#fff'
+						 });
+						 this.location.reload(false); /* false to get page from cache */
+					 }, 1000);
+				 }
+			 });
+		 }
+	 });
+	 
 })(jQuery);
