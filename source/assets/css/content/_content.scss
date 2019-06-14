@@ -1,8 +1,20 @@
+html {
+	height: 100%;
+	overflow: auto;
+	margin: 0;
+	-webkit-overflow-scrolling: touch;
+}
+
 body {
 	-moz-hyphens: manual;
 	-webkit-hyphens: manual;
 	-ms-hyphens: manual;
 	hyphens: manual;
+
+	height: 100%;
+	overflow: auto;
+	margin: 0;
+	-webkit-overflow-scrolling: touch;
 }
 
 [href="#maincontent"] {
