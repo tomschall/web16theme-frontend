@@ -2,7 +2,8 @@
 https://boagworld.com/dev/ios-safari-resizing-issues/ */
 html {
 	height: 100%;
-	overflow: inherit;
+	overflow: initial;
+	margin: 0;
 	-webkit-overflow-scrolling: touch;
 }
 
