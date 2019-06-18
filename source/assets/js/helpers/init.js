@@ -58,41 +58,27 @@
 	});
 
 	$(document).ready(function() {
-			if ($('.widg_location_slider').length) {
-				var resizeTimer;
-				$(window).resize(function() {
-					var windowSize = $(window).width();
-					if (windowSize <= 1022) {
-						clearTimeout(resizeTimer);
-						resizeTimer = setTimeout(function() {
-							$('.widg_location_slider').append('<div id="overlay"><div id="fhnw-spinner"></div></div>');
-							$('#fhnw-spinner').spinner({
-							 radius: 30,
-							 strokeWidth: 6,
-							 color: '#fff'
-							});
-	  						this.location.reload(false); /* false to get page from cache */
-	 					}, 1000);
-					}
-				});
+			var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
+			console.log('is mobile? ' + isMobile);
+			if (isMobile === null) {
+				if ($('.widg_location_slider').length) {
+					var resizeTimer;
+					$(window).resize(function() {
+						var windowSize = $(window).width();
+						if (windowSize <= 1022) {
+							clearTimeout(resizeTimer);
+							resizeTimer = setTimeout(function() {
+								$('.widg_location_slider').append('<div id="overlay"><div id="fhnw-spinner"></div></div>');
+								$('#fhnw-spinner').spinner({
+								 radius: 30,
+								 strokeWidth: 6,
+								 color: '#fff'
+								});
+		  						this.location.reload(false); /* false to get page from cache */
+		 					}, 1000);
+						}
+					});
+				}
 			}
  		});
-
-		// Detect iPhone devices
-		var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-		if (iOS === true) {
-			$('html').css({
-				'height': '100%',
-				'overflow': 'auto',
-				'margin': 0,
-				'-webkit-overflow-scrolling': 'touch',
-			});
-			$('body').css({
-				'height': '100%',
-				'overflow': 'auto',
-				'margin': 0,
-				'-webkit-overflow-scrolling': 'touch',
-			});
-		}
-
 })(jQuery);
