@@ -265,6 +265,13 @@ table.content__table__backcomp {
 	}
 }
 
+table.table_striped {
+	tr:nth-child(even) {
+		background-color: $colorLightGray;
+	}
+}
+
+
 .widg_accordeon__content .content__table td:first-child {
 	padding-left: 0;
 }
