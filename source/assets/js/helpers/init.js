@@ -78,4 +78,21 @@
 			}
  		});
 
+		// Detect iPhone devices
+		var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+		if (iOS === true) {
+			$('html').css({
+				'height': '100%',
+				'overflow': 'auto',
+				'margin': 0,
+				'-webkit-overflow-scrolling': 'touch',
+			});
+			$('body').css({
+				'height': '100%',
+				'overflow': 'auto',
+				'margin': 0,
+				'-webkit-overflow-scrolling': 'touch',
+			});
+		}
+
 })(jQuery);
