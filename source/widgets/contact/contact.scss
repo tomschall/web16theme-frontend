@@ -23,6 +23,26 @@
 	border-bottom: 1px solid #deded9;
 
 	@include clearfix;
+
+	@include mq($from: medium) {
+		@include iconDataurl('pfeil-black');
+
+		&:before {
+			background-position: right;
+			margin-top: 75px;
+			float: right;
+			width: 1.25em;
+
+			@include mq($to: 374px) {
+				width: 2.25em;
+			}
+		}
+
+		&:after {
+			width: 17px;
+			height: 16.2px;
+		}
+	}
 }
 
 .widg_contact__portrait {
@@ -31,8 +51,19 @@
 	width: 25%;
 	min-width: 100px;
 	max-width: 200px;
-
 	margin-right: $basicPush * 3.9;
+
+	@include mq($to: 374px) {
+		max-width: 100%;
+		width: 100%;
+		margin-right: 0;
+	}
+
+	@include mq($from: 374px) {
+		max-width: 133px;
+		width: 133px;
+		margin-right: 20px;
+	}
 
 	a {
 		opacity: 1;
@@ -43,10 +74,6 @@
 		transition: transform $transitionLength $transitionEase;
 	}
 
-	@include mq($to: small) {
-		max-width: 100%;
-		width: 100%;
-	}
 
 	.widg_contact__portrait__img {
 		width: 100%;
@@ -68,20 +95,77 @@
 .widg_contact__definition_list {
 	display: inline-block;
 	width: calc(100% - 249px);
+
+	@include mq($to: 374px) {
+		margin-top: $basicPush * 2;
+		width: 100%;
+	}
+
+	@include mq($from: 374px) {
+		margin-top: $basicPush * 2;
+		width: calc(100% - 160px);
+	}
+
+	@include mq($from: medium) {
+		margin-top: $basicPush * 2;
+		width: calc(100% - 249px);
+	}
 }
 
 .widg_contact__name {
 	float: left;
 	width: 100%;
 
+	@include mq($to: medium) {
+		@include iconDataurl('pfeil-black');
+	}
+
+	&:before {
+		background-position: right;
+		margin-top: 8px;
+		float: right;
+		width: 1.25em;
+
+		@include mq($to: 374px) {
+			width: 2.25em;
+		}
+	}
+
+	&:after {
+		width: 17px;
+		height: 16.2px;
+	}
+
 	a {
 		display: block;
 		font-size: 1.25rem;
+		text-decoration: none;
+		opacity: 1;
+
+		@include mq($to: medium) {
+
+			& .widg_contact__label {
+				font-size: 1.5rem;
+				color: $colorBlack;
+				font-weight: 700;
+				text-decoration: none;
+			}
+		}
+
+		@include mq($from: medium) {
+			text-decoration: underline;
+		}
 	}
 
 	span {
 		display: block;
 		font-size: 1.4rem;
+
+		@include mq($to: medium) {
+			font-size: 1.2rem;
+			font-weight: 500;
+			color: #999; //$colorTextDarkGrey;
+		}
 	}
 }
 
@@ -100,11 +184,19 @@
 		font-size: 1.25rem;
 		margin-bottom: 0;
 	}
+
+	@include mq($to: medium) {
+		display: none;
+	}
 }
 
 .widg_contact__text {
 	display: block;
 	margin-bottom: $basicPush * 2;
+
+	@include mq($to: medium) {
+		margin-top: $basicPush * 1.5;
+	}
 }
 
 .widg_contact__label {
@@ -115,12 +207,6 @@
 
 
 @include mq($to: small) {
-	.widg_contact__definition_list,
-	.widg_contact__phone,
-	.widg_contact__email {
-		width: 100%;
-	}
-
 	.widg_contact__phone,
 	.widg_contact__email {
 		margin-top: 10px;
