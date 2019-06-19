@@ -27,7 +27,11 @@ var fieldDictionaries = {
 
 		listHeadTemplates = {
 			categorySearch: {
-				training: '<tr><th>{{title}}</th><th>{{study_type}}</th><th>{{faculty}}</th><th>{{location}}</th></tr>',
+				training: '<tr><th>{{title}}<span id="sortAllSearchResults" class="icon-sortable">' +
+							'{{#check_sorting "sortable_title"}}&#9650;<br>&#9660;{{/check_sorting}}</span></th>' +
+							'<th>{{start_string_title}}<span id="sortNextExecutions" class="icon-sortable">' +
+							'{{#check_sorting "start"}}&#9650;<br>&#9660;{{/check_sorting}}</span></th>' +
+							'<th>{{study_type}}</th><th>{{faculty}}</th><th>{{location}}</th></tr>',
 				studies: '<tr><th>{{title}}</th><th>{{study_type}}</th><th>{{faculty}}</th><th>{{location}}</th></tr>',
 			}
 		},
@@ -51,6 +55,8 @@ var fieldDictionaries = {
 				// REFACTOR: perhaps moving these templates to a sibling "search.hbs" and reading them from here works
 				training: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td class="search__cell search__cell-title">' +
 						'<a href="{{combinedURL}}" class="search__cell-anchor">{{Title}}</a></td>' +
+						'<td>{{start_string}}{{#next_executions_check_date start_string combinedURL}}<br><span id="search__next-executions-link">' +
+						'<a href="{{combinedURL}}">Weitere Durchführungen -></a></span>{{/next_executions_check_date}}</td>' +
 						'<td>{{#get_taxonomy_eduproducttype}}{{taxonomy_eduproducttype}}{{/get_taxonomy_eduproducttype}}</td>' +
 						'<td>{{#get_taxonomy_subjectarea}}{{taxonomy_subjectarea}}{{/get_taxonomy_subjectarea}}</td><td>{{#get_city}}{{city}}{{/get_city}}</td>' +
 						'<td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
@@ -148,6 +154,7 @@ var fieldDictionaries = {
 		}
 
 		results.forEach(function(row) {
+
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
 
 			row.combinedURL = row['@id'];
@@ -363,6 +370,7 @@ var fieldDictionaries = {
 	 * @param searchURL the search url
    */
 	function search(query, isSearchbar, isCategorySearch, searchTemplate, searchURL, preventHashUpdate) {
+		console.log('query', query);
 		var isPageSearch = false;
 
 		if (typeof isSearchbar === typeof undefined) {
@@ -507,6 +515,71 @@ var fieldDictionaries = {
 	});
 })(jQuery);
 
+function getAllUrlParams(url) {
+
+  // get query string from url (optional) or window
+  var queryString = url ? url.split('#')[1] : window.location.search.slice(1);
+
+  // we'll store the parameters here
+  var obj = {};
+
+  // if query string exists
+  if (queryString) {
+
+    // split our query string into its component parts
+    var arr = queryString.split('&');
+
+    for (var i = 0; i < arr.length; i++) {
+      // separate the keys and the values
+      var a = arr[i].split('=');
+
+      // set parameter name and value (use 'true' if empty)
+      var paramName = a[0];
+      var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+
+      // (optional) keep case consistent
+      paramName = paramName.toLowerCase();
+      if (typeof paramValue === 'string') {
+		paramValue = paramValue.toLowerCase();
+      }
+
+      // if the paramName ends with square brackets, e.g. colors[] or colors[2]
+      if (paramName.match(/\[(\d+)?\]$/)) {
+
+        // create key if it doesn't exist
+        var key = paramName.replace(/\[(\d+)?\]/, '');
+        if (!obj[key]) {
+			obj[key] = [];
+		}
+
+        // if it's an indexed array e.g. colors[2]
+        if (paramName.match(/\[\d+\]$/)) {
+          // get the index value and add the entry at the appropriate position
+          var index = /\[(\d+)\]/.exec(paramName)[1];
+          obj[key][index] = paramValue;
+        } else {
+          // otherwise add the value to the end of the array
+          obj[key].push(paramValue);
+        }
+      } else {
+        // we're dealing with a string
+        if (!obj[paramName]) {
+          // if it doesn't exist, create property
+          obj[paramName] = paramValue;
+        } else if (obj[paramName] && typeof obj[paramName] === 'string') {
+          // if property does exist and it's a string, convert it to an array
+          obj[paramName] = [obj[paramName]];
+          obj[paramName].push(paramValue);
+        } else {
+          // otherwise add the property
+          obj[paramName].push(paramValue);
+        }
+      }
+    }
+  }
+
+  return obj;
+}
 
 /*
  * Handlebar helpers
@@ -521,6 +594,34 @@ Handlebars.registerHelper('dotdotdot_teaser', function(str) {
 	}
 
 	return str;
+});
+
+// check for date in string
+Handlebars.registerHelper('next_executions_check_date', function(start_string, combinedURL, context) {
+	if (start_string === '' || start_string === null) {
+		return '<span id="search__next-executions-link"><a href="' + combinedURL + '">Auf Anfrage -></a></span>';
+	}
+	var str = start_string.substring(0,10);
+	var regex = /^([0-2][0-9]|(3)[0-1])(\.)(((0)[0-9])|((1)[0-2]))(\.)\d{4}$/.test(str);
+	if (regex) {
+		return context.fn(this);
+	}
+	return '';
+});
+
+// check if search is asc or desc and set icon
+Handlebars.registerHelper('check_sorting', function(context, options) {
+	var url = getAllUrlParams(window.location.href);
+	if (context === url.sort_on && url.sort_on === 'sortable_title' && url.sort_order === 'ascending') {
+		return ('&#9650');
+	} else if (context === url.sort_on && url.sort_on === 'sortable_title' && url.sort_order === 'descending') {
+		return ('&#9660');
+	} else if (context === url.sort_on && url.sort_on === 'start' && url.sort_order === 'ascending') {
+		return ('&#9650');
+	} else if (context === url.sort_on && url.sort_on === 'start' && url.sort_order === 'descending') {
+		return ('&#9660');
+	}
+	return options.fn(this);
 });
 
 // fieldDictionaries
