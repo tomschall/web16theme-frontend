@@ -30,7 +30,7 @@ var data = _.merge(defaultData, {
 			}),
 			actionbuttons: requireNew('../../widgets/actionbuttons/actionbuttons.data.js'),
 
-			label_search: 'Suchbegrif',
+			label_search: 'Suchbegriff',
 			label_btn_search: 'Suchen',
 			label_reset_fields: 'Reset',
 			label_target_group: 'Zielgruppe',

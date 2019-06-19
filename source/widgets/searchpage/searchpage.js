@@ -26,7 +26,11 @@
 				countNumber: '[data-' + name + '="countNumber"]',
 				moreResultsBtn: '[data-' + name + '="moreResultsBtn"]',
 				moreResultsBtnWrapper: '[data-' + name + '="moreResultsBtnWrapper"]',
-				catPageResult: '.search__result--item'
+				catPageResult: '.search__result--item',
+			},
+			domSelectorsSort: {
+				sortAllSearchResults: '#sortAllSearchResults',
+				sortNextExecutions: '#sortNextExecutions'
 			},
 			stateClasses: {
 				isFilled: 'is_filled',
@@ -59,7 +63,19 @@
 		templatesWithoutMoreButton = ['expertises_full'],
 		loadedEntries = 0,
 		jsonURL = '',
-		lastChangedFieldName = '';
+		lastChangedFieldName = '',
+		clicksObj = [
+			0,
+			1
+		],
+		sortObjProp = [
+			'sortable_title',
+			'start'
+		],
+		sortObj = {
+			asc: 'ascending',
+			desc: 'descending'
+		};
 
 	/**
 	 * Create an instance of the widget
@@ -92,12 +108,15 @@
 		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 		jsonURL = this.$element.data('json-url');
 
+
 		// debounce the search call invocation
 		var sendSearchQueryDebounced = _.debounce(this._sendSearchQuery.bind(this), 250);
 
-		this.sendSearchQuery = function() {
-			this.grabParameters();
-			sendSearchQueryDebounced();
+		this.sendSearchQuery = function(firstLoad, sortOn, sortOrder) {
+			sortOn = sortOn || 'start';
+			sortOrder = sortOrder || 'ascending';
+			this.grabParameters(sortOn, sortOrder);
+			sendSearchQueryDebounced(firstLoad);
 		};
 		this.eventListeners();
 		this.initQueryClearBtn();
@@ -163,8 +182,9 @@
 		 * Load more results to the table when limited results
 		 */
 		$(this.options.domSelectors.moreResultsBtn).on('click.' + this.uuid, function() {
+			console.log('searchparam', searchParam);
 			loadMoreMode = true;
-			this.sendSearchQuery();
+			this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order, true);
 		}.bind(this));
 
 		/**
@@ -250,10 +270,12 @@
 	/**
 	 * Grab parameters from form fields
 	 */
-	Widget.prototype.grabParameters = function() {
+	Widget.prototype.grabParameters = function(sortOn, sortOrder) {
 		data.$formElements.map(function(index, element) {
 			searchParam[$(element).data('searchparam')] = $(element).val();
 		});
+		searchParam.sort_on = sortOn;
+		searchParam.sort_order = sortOrder;
 	};
 
 	/**
@@ -308,6 +330,7 @@
 			delete searchParam.offset;
 			delete searchParam.limit;
 		}
+
 		window.estatico.search.setSearchParameters(searchParam);
 
 		if (firstLoad && searchParam.offset) {
@@ -321,6 +344,7 @@
 				this.options.FIRST_RESULT_SIZE;
 
 		if (this.queryMatch()) {
+			console.log('queryMatch');
 			// avoid submission of the same query twice
 			return false;
 		}
@@ -391,6 +415,7 @@
 			this.$element.find('.content__element').remove();
 			this.$element.find('.search__table').remove();
 			this.$element.find('.search__results span[data-category="' + category + '"]').after(html);
+			this.addEventListenersForSorting();
 		}
 
 		loadedEntries = $(this.options.domSelectors.catPageResult).length;
@@ -462,7 +487,7 @@
 	 * Takes only the rows without headers from the generated html
 	 * @param html
 	 * @returns {*}
-   */
+   	*/
 	Widget.prototype.generateAdditionalTableHTML = function(html) {
 		return html.find('tr').not(':eq(0)');
 	};
@@ -474,9 +499,38 @@
 	};
 
 	/**
+	 * Adds event listeners for sorting
+	 */
+	Widget.prototype.addEventListenersForSorting = function() {
+		var a = 0;
+		var cB = function(i) {
+			var innerCB = function() {
+				// Sorting - toggle ajax requests
+				if (clicksObj[i] === 0) {
+					clicksObj[i]++;
+					this.sendSearchQuery(false, sortObjProp[i], sortObj.asc);
+				} else {
+					clicksObj[i]--;
+					this.sendSearchQuery(false, sortObjProp[i], sortObj.desc);
+				}
+			}.bind(this);
+			return innerCB;
+		}.bind(this);
+
+		for (var selector in this.options.domSelectorsSort) {
+			if (!this.options.domSelectorsSort.hasOwnProperty(selector)) {
+				continue;
+			}
+			var obj = this.options.domSelectorsSort[selector];
+			$(obj).on('click.' + this.uuid, cB(a));
+			a++;
+		}
+	};
+
+	/**
 	 * Change the current Status
 	 * @param newState
-   */
+   	*/
 	Widget.prototype.changeStatus = function(newState) {
 		this.$element.attr('class', function(index, css) {
 			return css.replace(/(^|\s)show_\S+/g, '');

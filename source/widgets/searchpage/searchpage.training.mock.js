@@ -9,6 +9,7 @@ var data = {
 	'categoryUrlText': 'Alle anzeigen (12)',
 	'fieldHeaders': {
 		title: 'Titel',
+		start_string_title: 'Nächste Durchführungen',
 		study_type: 'Typ',
 		faculty: 'Fachbereich',
 		location: 'Ort',
@@ -19,6 +20,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': 'test 30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -46,6 +48,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -71,6 +74,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': 'noch ein test 30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -98,6 +102,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -123,6 +128,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -150,6 +156,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': 'test 30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -175,6 +182,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -202,6 +210,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -227,6 +236,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -254,6 +264,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -279,6 +290,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -306,6 +318,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -331,6 +344,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -358,6 +372,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -383,6 +398,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -410,6 +426,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -435,6 +452,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -462,6 +480,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -487,6 +506,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -514,6 +534,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -539,6 +560,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -566,6 +588,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -591,6 +614,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -618,6 +642,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -643,6 +668,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -670,6 +696,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
+			'start_string': '30.09.2019',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
