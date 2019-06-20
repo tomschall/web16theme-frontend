@@ -108,7 +108,6 @@
 		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 		jsonURL = this.$element.data('json-url');
 
-
 		// debounce the search call invocation
 		var sendSearchQueryDebounced = _.debounce(this._sendSearchQuery.bind(this), 250);
 
@@ -274,8 +273,10 @@
 		data.$formElements.map(function(index, element) {
 			searchParam[$(element).data('searchparam')] = $(element).val();
 		});
-		searchParam.sort_on = sortOn;
-		searchParam.sort_order = sortOrder;
+		if (searchParam.category === 'training') {
+			searchParam.sort_on = sortOn;
+			searchParam.sort_order = sortOrder;
+		}
 	};
 
 	/**

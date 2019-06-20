@@ -31,7 +31,7 @@ var fieldDictionaries = {
 							'{{#check_sorting "sortable_title"}}&#9650;<br>&#9660;{{/check_sorting}}</span></th>' +
 							'<th>{{start_string_title}}<span id="sortNextExecutions" class="icon-sortable">' +
 							'{{#check_sorting "start"}}&#9650;<br>&#9660;{{/check_sorting}}</span></th>' +
-							'<th>{{study_type}}</th><th>{{faculty}}</th><th>{{location}}</th></tr>',
+							'<th>{{study_type}}</th><th>{{faculty}}</th><th>{{location}}</th><th></th></tr>',
 				studies: '<tr><th>{{title}}</th><th>{{study_type}}</th><th>{{faculty}}</th><th>{{location}}</th></tr>',
 			}
 		},
