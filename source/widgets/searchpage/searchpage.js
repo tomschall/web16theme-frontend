@@ -510,9 +510,13 @@
 				if (clicksObj[i] === 0) {
 					clicksObj[i]++;
 					this.sendSearchQuery(false, sortObjProp[i], sortObj.asc);
+					this._headerFixed = false;
+					this._headerFixedReq = false;
 				} else {
 					clicksObj[i]--;
 					this.sendSearchQuery(false, sortObjProp[i], sortObj.desc);
+					this._headerFixed = false;
+					this._headerFixedReq = false;
 				}
 			}.bind(this);
 			return innerCB;
@@ -668,7 +672,7 @@
 			return;
 		}
 
-		clone = $table.find('thead').clone().wrap('<table>').parent();
+		clone = $table.find('thead').clone(true, true).wrap('<table>').parent();
 		clone.addClass('cloned').insertBefore($table);
 		clone
 			.hide()
@@ -677,7 +681,11 @@
 		resizeFixed();
 		$(window).on('resize.' + this.uuid, resizeFixed);
 		$(window).on('scroll.' + this.uuid, scrollFixed);
+		if (!this._headerFixedReq) {
+			scrollFixed();
+		}
 		this._headerFixed = true;
+		this._headerFixedReq = true;
 	};
 
 	/**
