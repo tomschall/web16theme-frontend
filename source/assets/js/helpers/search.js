@@ -28,9 +28,9 @@ var fieldDictionaries = {
 		listHeadTemplates = {
 			categorySearch: {
 				training: '<tr><th>{{title}}<span id="sortAllSearchResults" class="icon-sortable">' +
-							'{{#check_sorting "sortable_title"}}&#9650;<br>&#9660;{{/check_sorting}}</span></th>' +
+							'{{#check_sorting "sortable_title"}}<span class="sortable-up">&#9650;</span><br><span class="sortable-down">&#9660;</span>{{/check_sorting}}</span></th>' +
 							'<th>{{start_string_title}}<span id="sortNextExecutions" class="icon-sortable">' +
-							'{{#check_sorting "start"}}&#9650;<br>&#9660;{{/check_sorting}}</span></th>' +
+							'{{#check_sorting "start"}}<span class="sortable-up">&#9650;</span><br><span class="sortable-down">&#9660;</span>{{/check_sorting}}</span></th>' +
 							'<th>{{study_type}}</th><th>{{faculty}}</th><th>{{location}}</th><th></th></tr>',
 				studies: '<tr><th>{{title}}</th><th>{{study_type}}</th><th>{{faculty}}</th><th>{{location}}</th></tr>',
 			}
@@ -55,8 +55,8 @@ var fieldDictionaries = {
 				// REFACTOR: perhaps moving these templates to a sibling "search.hbs" and reading them from here works
 				training: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td class="search__cell search__cell-title">' +
 						'<a href="{{combinedURL}}" class="search__cell-anchor">{{Title}}</a></td>' +
-						'<td>{{start_string}}{{#next_executions_check_date start_string combinedURL portal_type}}<br><span id="search__next-executions-link">' +
-						'<a href="{{combinedURL}}">Weitere Durchführungen -></a></span>{{/next_executions_check_date}}</td>' +
+						'<td>{{start_string}}{{#next_executions_check_date start_string combinedURL portal_type}}<br><span class="search__next-executions-link">' +
+						'<a class="button__search__list" href="{{combinedURL}}">Weitere Durchführungen</a></span>{{/next_executions_check_date}}</td>' +
 						'<td>{{#get_taxonomy_eduproducttype}}{{taxonomy_eduproducttype}}{{/get_taxonomy_eduproducttype}}</td>' +
 						'<td>{{#get_taxonomy_subjectarea}}{{taxonomy_subjectarea}}{{/get_taxonomy_subjectarea}}</td><td>{{#get_city}}{{city}}{{/get_city}}</td>' +
 						'<td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
@@ -600,7 +600,7 @@ Handlebars.registerHelper('dotdotdot_teaser', function(str) {
 Handlebars.registerHelper('next_executions_check_date', function(start_string, combinedURL, portal_type, context) {
 	if (portal_type === 'EduProduct') {
 		if (start_string === '' || start_string === null) {
-			return '<span id="search__next-executions-link"><a href="' + combinedURL + '">Auf Anfrage -></a></span>';
+			return '<span class="search__next-executions-link"><a class="button__search__list" href="' + combinedURL + '">Auf Anfrage</a></span>';
 		}
 		var str = start_string.substring(0,10);
 		var regex = /^([0-2][0-9]|(3)[0-1])(\.)(((0)[0-9])|((1)[0-2]))(\.)\d{4}$/.test(str);
