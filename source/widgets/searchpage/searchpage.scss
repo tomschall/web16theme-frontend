@@ -267,6 +267,7 @@
 		text-decoration: underline;
 		margin-right: $basicPush * 3.9;
 		position: relative;
+		outline: none;
 
 		padding-left: $buttonIconSize * 1.3;
 		line-height: 2;
@@ -325,8 +326,8 @@
 			@include iconDataurl('reset');
 
 			&:before {
-				width: 16px;
-				height: 16px;
+				width: 18px;
+				height: 18px;
 				@include centerDataurlIcon();
 
 				left: 6px;
