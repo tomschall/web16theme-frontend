@@ -408,12 +408,12 @@ span.search__next-executions-link {
 	}
 
 	& a {
-		text-decoration: none;
+		text-decoration: underline; 
 		display: inline-block;
-    color: $colorBlack !important;
-    font-size: inherit !important;
-    width: 100% !important;
-    font-weight: 500;
+        color: $colorBlack !important;
+        font-size: inherit !important;
+        width: 100% !important;
+        font-weight: 500;
 
 		&:hover {
 
