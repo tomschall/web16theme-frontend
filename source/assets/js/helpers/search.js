@@ -418,15 +418,6 @@ var fieldDictionaries = {
 
 		if (!preventHashUpdate) {
 			setSearchParameters(query);
-
-			/* EVENT SEARCH LIST -> Style fine tuning: add margin if there is a date or not */
-			$('.search__next-executions-link').each(function() {
-				var checkDigit = $(this).parent().text();
-				if (checkDigit.match(/^\d/)) {
-					console.log('has date');
-					$(this).css('margin-top', '10px');
-				}
-			});
 		}
 	}
 
