@@ -55,8 +55,8 @@ var fieldDictionaries = {
 				// REFACTOR: perhaps moving these templates to a sibling "search.hbs" and reading them from here works
 				training: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td class="search__cell search__cell-title">' +
 						'<a href="{{combinedURL}}" class="search__cell-anchor">{{Title}}</a></td>' +
-						'<td>{{start_string}}{{#next_executions_check_date start_string combinedURL portal_type}}<br><span class="search__next-executions-link">' +
-						'<a href="{{combinedURL}}">Weitere Durchführungen</a></span>{{/next_executions_check_date}}</td>' +
+						'<td>{{start_string}}{{#next_executions_check_date start_string combinedURL portal_type on-request}}<br><span class="search__next-executions-link">' +
+						'<a href="{{combinedURL}}">{{further-occasions}}</a></span>{{/next_executions_check_date}}</td>' +
 						'<td>{{#get_taxonomy_eduproducttype}}{{taxonomy_eduproducttype}}{{/get_taxonomy_eduproducttype}}</td>' +
 						'<td>{{#get_taxonomy_subjectarea}}{{taxonomy_subjectarea}}{{/get_taxonomy_subjectarea}}</td><td>{{#get_city}}{{city}}{{/get_city}}</td>' +
 						'<td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
@@ -144,6 +144,7 @@ var fieldDictionaries = {
 	 * @param data
    */
 	function generateResultTable(data) {
+		console.log('data', data);
 		var results = data.items,
 				$responseHTML = $('<table></table>'),
 				template = null;
@@ -597,10 +598,10 @@ Handlebars.registerHelper('dotdotdot_teaser', function(str) {
 });
 
 // check for date in string
-Handlebars.registerHelper('next_executions_check_date', function(start_string, combinedURL, portal_type, context) {
+Handlebars.registerHelper('next_executions_check_date', function(start_string, combinedURL, portal_type, on_request, context) {
 	if (portal_type === 'EduProduct') {
 		if (start_string === '' || start_string === null) {
-			return '<span class="search__next-executions-link"><a href="' + combinedURL + '">Auf Anfrage</a></span>';
+			return '<span class="search__next-executions-link"><a href="' + combinedURL + '">' + on_request + '</a></span>';
 		}
 		var str = start_string.substring(0,10);
 		var regex = /^([0-2][0-9]|(3)[0-1])(\.)(((0)[0-9])|((1)[0-2]))(\.)\d{4}$/.test(str);

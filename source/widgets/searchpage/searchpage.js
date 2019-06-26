@@ -184,6 +184,8 @@
 			console.log('searchparam', searchParam);
 			loadMoreMode = true;
 			this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order, true);
+			this._headerFixed = true;
+			this._headerFixedReq = false;
 		}.bind(this));
 
 		/**
@@ -644,6 +646,9 @@
 	 * @param {HTMLTableElement} $table Result table
 	 */
 	Widget.prototype.fixResultsHeader = function($table) {
+		var tb = $table.find('cloned');
+		console.log('tb', tb);
+
 		var clone;
 
 		function resizeFixed() {
@@ -681,7 +686,9 @@
 		resizeFixed();
 		$(window).on('resize.' + this.uuid, resizeFixed);
 		$(window).on('scroll.' + this.uuid, scrollFixed);
+		console.log('fixResultsHeader');
 		if (!this._headerFixedReq) {
+			console.log('scrollFixed');
 			scrollFixed();
 		}
 		this._headerFixed = true;

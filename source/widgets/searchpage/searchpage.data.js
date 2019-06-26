@@ -16,7 +16,9 @@ var templateData = {
 				toProfile: 'Zum Profil',
 				email: 'E-Mail',
 				phoneDirect: 'T Direkt',
-				phoneCentral: 'T Zentrale'
+				phoneCentral: 'T Zentrale',
+				furtherOccasions: 'Weitere Durchführungen',
+				onRequest: 'Auf Anfrage'
 			},
 
 			jsonURL: '/mocks/widgets/searchpage/searchpage.category.json',
