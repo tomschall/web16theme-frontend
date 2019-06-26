@@ -646,9 +646,6 @@
 	 * @param {HTMLTableElement} $table Result table
 	 */
 	Widget.prototype.fixResultsHeader = function($table) {
-		var tb = $table.find('cloned');
-		console.log('tb', tb);
-
 		var clone;
 
 		function resizeFixed() {
@@ -686,9 +683,7 @@
 		resizeFixed();
 		$(window).on('resize.' + this.uuid, resizeFixed);
 		$(window).on('scroll.' + this.uuid, scrollFixed);
-		console.log('fixResultsHeader');
 		if (!this._headerFixedReq) {
-			console.log('scrollFixed');
 			scrollFixed();
 		}
 		this._headerFixed = true;

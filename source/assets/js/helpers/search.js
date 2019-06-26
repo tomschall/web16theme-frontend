@@ -144,7 +144,6 @@ var fieldDictionaries = {
 	 * @param data
    */
 	function generateResultTable(data) {
-		console.log('data', data);
 		var results = data.items,
 				$responseHTML = $('<table></table>'),
 				template = null;
