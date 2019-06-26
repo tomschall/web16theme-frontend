@@ -184,6 +184,8 @@
 			console.log('searchparam', searchParam);
 			loadMoreMode = true;
 			this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order, true);
+			this._headerFixed = true;
+			this._headerFixedReq = false;
 		}.bind(this));
 
 		/**
