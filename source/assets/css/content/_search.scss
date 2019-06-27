@@ -245,6 +245,11 @@ a.search__cat-title {
 
 }
 
+.search__result-wb td:first-child, .search__result-wb td:nth-child(0n + 2) {
+  	max-width: 355px;
+  	width: 355px;
+}
+
 /**
   * Results on the searchpage
   */
@@ -400,7 +405,7 @@ a.search__cat-title {
 		}
 	}
 }
- /* Weitere Durchführungen */
+/* Weitere Durchführungen */
 span.search__next-executions-link {
 	display: block;
 
@@ -408,7 +413,7 @@ span.search__next-executions-link {
 	}
 
 	& a {
-		text-decoration: underline; 
+		text-decoration: underline;
 		display: inline-block;
         color: $colorBlack !important;
         font-size: inherit !important;

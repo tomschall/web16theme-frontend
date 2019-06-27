@@ -53,7 +53,7 @@ var fieldDictionaries = {
 			categorySearch: {
 				// REFACTOR: replace all this concatenation wall with some sort of templating
 				// REFACTOR: perhaps moving these templates to a sibling "search.hbs" and reading them from here works
-				training: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td class="search__cell search__cell-title">' +
+				training: '<tr class="cat_page_result search__result--item search__result-wb" data-clickable="true" ><td class="search__cell search__cell-title">' +
 						'<a href="{{combinedURL}}" class="search__cell-anchor">{{Title}}</a></td>' +
 						'<td>{{start_string}}{{#next_executions_check_date start_string combinedURL portal_type on-request}}<br><span class="search__next-executions-link">' +
 						'<a href="{{combinedURL}}">{{further-occasions}}</a></span>{{/next_executions_check_date}}</td>' +
