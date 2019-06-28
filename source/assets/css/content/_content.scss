@@ -211,7 +211,7 @@ table.content__table {
 }
 
 table.content__table__backcomp {
-  	display: block;
+	display: block;
 	width: auto;
 	table-layout: auto;
 	overflow-x: auto;
@@ -264,7 +264,12 @@ table {
 	}
 }
 
+/* Striped tables */
 table.table_striped {
+	& tr td {
+		border-bottom: none;
+	}
+	
 	tr:nth-child(even) {
 		background-color: $colorLightGray;
 	}
