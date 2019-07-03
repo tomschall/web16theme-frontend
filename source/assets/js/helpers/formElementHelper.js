@@ -338,19 +338,6 @@
 				return undefined; // do nothing, already validated
 			}
 
-            // Check upload fields
-            $form.find('input[type="file"]').each(function() {
-                if ($(this).hasClass('required')) {
-                    if ($(this).val() === '') {
-                        $(this).parents().addClass('error');
-                    } else {
-                        $(this).parents().removeClass('error');
-                    }
-                }
-            });
-
-
-
 			// prevent form submission
 			e.preventDefault();
 
@@ -375,26 +362,16 @@
 					rules.$formSubmitButton.click();
 				}.bind(this));
 			}.bind(this)).fail(function() {
-				// $(e.target).val(rules.formSubmitButtonErrorText_A).fadeTo(1000, 0.1, function() {
-				// 	$(e.target).val(rules.formSubmitButtonText).fadeTo(500, 1);
-				// });
+          // Error message above submit button
+          if ($('.errorOnSubmit').length === 0) {
+              $('#form-buttons-submit').before('<div class="errorOnSubmit"><p style="margin-bottom:0; font-size: 12px; font-weight: 100;">Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
+              $('#form').prepend('<div class="errorOnSubmit"><p style="margin-bottom:0; font-size: 12px; font-weight: 100;">Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
+          }
 
-                // Error message above submit button
-                if ($('.errorOnSubmit').length === 0) {
-                    $('#form-buttons-submit').before('<div class="errorOnSubmit"><p style="margin-bottom:0; font-size: 12px; font-weight: 100;">Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
-                    $('#form').prepend('<div class="errorOnSubmit"><p style="margin-bottom:0; font-size: 12px; font-weight: 100;">Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
-                }
-
-                // Set first error field on focus
-                var firstError = $('#form').find('.error').eq(0).attr('id');
-                // var findInput = $('#' + firstError).find('input').attr('id');
-                console.log('first error element -> ' + firstError);
-                //location.href = '#' + firstError;
-                if (firstError !== 'undefined') {
-                    $('html, body').animate({
-                        scrollTop: $('#'+firstError).offset().top}, 500
-                    );
-                }
+          // Set first error field on focus
+          $('html, body').animate({
+            scrollTop: $('.error:visible:first').offset().top
+          }, 1000);
 			});
 		},
 

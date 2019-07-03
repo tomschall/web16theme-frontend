@@ -58,6 +58,16 @@
 	});
 
 	$(document).ready(function() {
+		$('.noborder').each( function() {
+			$(this).parent().parent().parent().addClass('error');
+		});
+
+		if ($('#form').length) {
+			$('html, body').animate({
+				scrollTop: $('.error:visible:first').offset().top
+			}, 1000);
+		}
+
 			var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
 			console.log('is mobile? ' + isMobile);
 			if (isMobile === null) {
