@@ -338,6 +338,18 @@
 				return undefined; // do nothing, already validated
 			}
 
+      // Check upload fields
+      $form.find('input[type="file"]').each(function() {
+          if ($(this).hasClass('required')) {
+              if ($(this).val() === '') {
+                  $(this).parents().addClass('error');
+              } else {
+                  $(this).parents().removeClass('error');
+              }
+          }
+      });
+
+
 			// prevent form submission
 			e.preventDefault();
 
