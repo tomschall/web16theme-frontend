@@ -181,7 +181,6 @@
 		 * Load more results to the table when limited results
 		 */
 		$(this.options.domSelectors.moreResultsBtn).on('click.' + this.uuid, function() {
-			console.log('searchparam', searchParam);
 			loadMoreMode = true;
 			this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order, true);
 			this._headerFixed = true;
@@ -347,7 +346,6 @@
 				this.options.FIRST_RESULT_SIZE;
 
 		if (this.queryMatch()) {
-			console.log('queryMatch');
 			// avoid submission of the same query twice
 			return false;
 		}
