@@ -27,7 +27,7 @@
 		&:hover,
 		&:focus,
 		&.is_active {
-			background-color: $colorYellowNavHover;
+			// background-color: $colorYellowNavHover;
 			cursor: pointer;
 		}
 	}
@@ -38,7 +38,9 @@
 	@include iconDataurl('mobile-menu');
 
 	&:before {
-		height: 12px;
+		position: relative;
+		top: 2px;
+		height: 15px;
 		width: 20px;
 	}
 
@@ -51,6 +53,23 @@
 			transform: translateY(2px);
 			width: 18px;
 			padding-left: 2px;
+
+			@include mq($to: 480px) {
+
+			}
+		}
+	}
+
+	@include mq($to: 480px) {
+		text-indent: -20000px;
+		width: 50px;
+		// background: red;
+		margin-right: 0;
+
+		&:before {
+			position: relative;
+			top: 2px;
+			left: 20000px;
 		}
 	}
 }
@@ -59,14 +78,25 @@
 	@include iconDataurl('search');
 
 	&:before {
-		height: 16px;
-		width: 17px;
+		height: 20px;
+		width: 20px;
 
-		transform: translateY(2px);
+		transform: translateY(5px);
 	}
 
 	@include mq($from: small, $to: medium) {
 		margin-right: 20px !important;
 	}
-}
 
+	@include mq($to: 480px) {
+		text-indent: -20000px;
+		width: 50px;
+		// background: red;
+		margin-right: 0;
+
+		&:before {
+			position: relative;
+			left: 20000px;
+		}
+	}
+}
