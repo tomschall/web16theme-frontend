@@ -92,4 +92,15 @@
 		}
  	});
 
+	/* Wider navigation in english language */
+	var curLang = $('html').attr('lang') || 'en';
+	var windowSize = $(window).width();
+
+	if (curLang === 'en' && windowSize >= 1022) {
+		$('.widg_logo img').css('height', '30px');
+		console.log('Shrinking en logo');
+	} else {
+		$('.widg_logo img').css('height', '35px');
+	}
+
 })(jQuery);
