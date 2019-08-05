@@ -3,7 +3,6 @@
 	position: relative;
 	top: $basicPush * 1.5;
 	width: 50%;
-	overflow: hidden;
 
 	@include mq($to: tiny) {
 		width: 85px;
