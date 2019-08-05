@@ -16,6 +16,7 @@ $mqResponsive: true;
  * stakeholders, designers, developers, and testers.
  */
 $mqBreakpoints: (
+	tiny: $sizeBreakpointTiny,
 	small: $sizeBreakpointSmall,
 	medium: $sizeBreakpointMedium,
 	subnav: $sizeBreakpointSubnav,
