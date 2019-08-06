@@ -1,6 +1,10 @@
 .widg_full_bleed_teaser {
 	margin-bottom: $basicPush * 2;
-	// position: relative;
+	position: relative;
+
+	@include mq($to: medium) {
+		position: unset;
+	}
 
 	img {
 		display: none; // hide until loaded
