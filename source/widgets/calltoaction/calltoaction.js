@@ -53,7 +53,7 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		console.log('Widget "call to action" initialized');
+		// console.log('Widget "call to action" initialized');
 	};
 
 	/**
