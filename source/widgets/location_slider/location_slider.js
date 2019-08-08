@@ -138,54 +138,50 @@
 	};
 
 	Widget.prototype.colorBuilding = function(map) {
+		map.on('load', function() {
+			var layers = map.getStyle().layers;
+      // Find the index of the first symbol layer in the map style
+      var firstSymbolId;
+      for (var i = 0; i < layers.length; i++) {
+          if (layers[i].type === 'symbol') {
+              firstSymbolId = layers[i].id;
+              break;
+          }
+      }
 
-	   	map.on('load', function() {
-        var layers = map.getStyle().layers;
-        // Find the index of the first symbol layer in the map style
-        var firstSymbolId;
-        for (var i = 0; i < layers.length; i++) {
-            if (layers[i].type === 'symbol') {
-                firstSymbolId = layers[i].id;
-                break;
-            }
+      map.addSource('universities', {
+          type: 'geojson',
+          data: 'https://maps.fhnw.ch/universities.json'
+      });
+
+      map.addLayer({
+				'id': 'universitiy-buildings',
+        'type': 'fill',
+        'source': 'universities',
+        'paint': {
+            'fill-color': '#FDE70D',
+            'fill-opacity': 0.5,
+        },
+        'filter': ['==', '$type', 'Polygon']
+			}, firstSymbolId);
+
+      map.addLayer({
+				'id': 'housenumber-labels',
+        'type': 'symbol',
+        'source': 'universities',
+        'minzoom': 15,
+        'layout': {
+            'text-field': '{Housenumber}',
+            'text-justify': 'center',
+            'text-font': ['Noto Sans Bold'],
+        },
+        'paint': {
+            'text-color': '#000',
+            'text-halo-color': '#fff',
+            'text-halo-width': 2
         }
-
-        map.addSource('universities', {
-            type: 'geojson',
-            data: 'https://maps.fhnw.ch/universities.json'
-        });
-
-        map.addLayer({
-            "id": "universitiy-buildings",
-            "type": "fill",
-            "source": "universities",
-            /*"layout": {
-                "text-field": ["get", "description"]
-            },*/
-            "paint": {
-                "fill-color": "#FDE70D",
-                "fill-opacity": 0.5,
-            },
-            "filter": ["==", "$type", "Polygon"]
-        }, firstSymbolId);
-
-        map.addLayer({
-            "id": "housenumber-labels",
-            "type": "symbol",
-            "source": "universities",
-            "minzoom": 15,
-            "layout": {
-                "text-field": "{Housenumber}",
-                "text-justify": "center",
-                "text-font": ["Noto Sans Bold"],
-            },
-            "paint": {
-                "text-color": "#000",
-                "text-halo-color": "#fff",
-                "text-halo-width": 2
-            }
-        });
-    });
+			});
+		});
 	};
 
 	/**

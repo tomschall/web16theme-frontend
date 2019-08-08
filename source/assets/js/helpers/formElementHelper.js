@@ -327,16 +327,15 @@
             // internal flag - is set to true on second automated submit if
 			// validation was successful
 			if (this._formValid) {
-                console.log('Form is valid!');
-                $('body').append('<div id="overlay"><div id="fhnw-spinner"></div></div>');
-                $('#fhnw-spinner').spinner({
-        			radius: 30,
-        			strokeWidth: 6,
-        			color: '#fff'
-        		});
-				this._formValid = false; // clear the flag
-				return undefined; // do nothing, already validated
-			}
+        $('body').append('<div id="overlay"><div id="fhnw-spinner"></div></div>');
+        $('#fhnw-spinner').spinner({
+          radius: 30,
+          strokeWidth: 6,
+          color: '#fff'
+        });
+        this._formValid = false; // clear the flag
+        return undefined; // do nothing, already validated
+      }
 
       // Check upload fields
       $form.find('input[type="file"]').each(function() {
@@ -376,8 +375,12 @@
 			}.bind(this)).fail(function() {
           // Error message above submit button
           if ($('.errorOnSubmit').length === 0) {
-              $('#form-buttons-submit').before('<div class="errorOnSubmit"><p style="margin-bottom:0; font-size: 12px; font-weight: 100;">Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
-              $('#form').prepend('<div class="errorOnSubmit"><p style="margin-bottom:0; font-size: 12px; font-weight: 100;">Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
+              $('#form-buttons-submit').before('<div class="errorOnSubmit">' +
+              '<p style="margin-bottom:0; font-size: 12px; font-weight: 100;">' +
+              'Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
+              $('#form').prepend('<div class="errorOnSubmit">' +
+              '<p style="margin-bottom:0; font-size: 12px; font-weight: 100;">' +
+              'Bitte füllen Sie alle mit einem <span>*</span> gekennzeichneten Pflichtfelder aus.</p></div>');
           }
 
           // Set first error field on focus
