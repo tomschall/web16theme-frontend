@@ -131,7 +131,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-event-2',
-			'start_string': '30.09.2019',
+			'start_string': '30.09.2019, hier kommt ein test',
 			'portal_type': 'FHNWEvent',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -157,7 +157,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-event-3',
-			'start_string': 'noch ein test 30.09.2019',
+			'start_string': '30.09.2019, hier kommt 12.12.2019 noch ein test',
 			'portal_type': 'FHNWEvent',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [
@@ -185,7 +185,7 @@ var data = {
 			'path_string': '/Plone/de/test-edu-1',
 			'description': '',
 			'Title': 'test-edu-1',
-			'start_string': '',
+			'start_string': '30.09.2019, 30.02.2029 hier kommt 12.12.2019 noch ein test',
 			'portal_type': 'EduProduct',
 			'@id': 'http://localhost:8000/Plone/de/test-edu-1',
 			'taxonomy_eduproducttype': [

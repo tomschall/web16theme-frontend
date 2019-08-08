@@ -597,16 +597,12 @@ Handlebars.registerHelper('dotdotdot_teaser', function(str) {
 
 // check for date in string
 Handlebars.registerHelper('next_executions_check_date', function(start_string, combinedURL, portal_type, on_request, context) {
-	if (portal_type === 'EduProduct') {
-		if (start_string === '' || start_string === null) {
-			return '<span class="search__next-executions-link"><a href="' + combinedURL + '">' + on_request + '</a></span>';
-		}
-		var str = start_string.substring(0,10);
-		var regex = /^([0-2][0-9]|(3)[0-1])(\.)(((0)[0-9])|((1)[0-2]))(\.)\d{4}$/.test(str);
-		if (regex) {
-			return context.fn(this);
-		}
-		return '';
+	if (start_string === '' || start_string === null) {
+		return '<span class="search__next-executions-link"><a href="' + combinedURL + '">' + on_request + '</a></span>';
+	}
+	var regex = /^([0-2][0-9]|(3)[0-1])(\.)(((0)[0-9])|((1)[0-2]))(\.)\d{4}(, )([A-Za-zäöüÄÖÜ].*)+$/.test(start_string);
+	if (regex) {
+		return context.fn(this);
 	}
 	return '';
 });
