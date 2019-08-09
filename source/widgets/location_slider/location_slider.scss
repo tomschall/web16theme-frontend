@@ -3,6 +3,7 @@ $infoWidth: 394px;
 $infoPadding: 34px;
 
 .widg_location_slider {
+	position: relative;
 	@include bleedFull($gutterWidth);
 
     overflow: hidden;
