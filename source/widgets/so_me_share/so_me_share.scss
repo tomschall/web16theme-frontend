@@ -113,9 +113,25 @@ $facebookBlueDark: #2d4785;
 		}
 	}
 
+	.print_me {
+		background-color: $mailToGrey;
+
+		.some-icon {
+			background-color: $mailToDarkGrey;
+
+			@include iconDataurl('print');
+
+			&:before {
+				width: 22px;
+				height: 14px;
+			}
+		}
+	}
+
 	.twitter,
 	.mailto,
-	.facebook {
+	.facebook,
+	.print_me {
 		&:hover {
 			opacity: 0.8;
 		}
