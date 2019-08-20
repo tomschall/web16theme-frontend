@@ -18,6 +18,10 @@ var templateData = {
 				text: 'Eine coole Seite der FHNW die ich hier share',
 				action: 'Empfehlen'
 			},
+			print: {
+				text: 'Diese Seite drucken',
+				action: 'Drucken'
+			},
 			langStrings: {
 				sharePage: 'Diese Seite teilen:'
 			}

@@ -69,8 +69,6 @@ h6 {
 .widg_header__inner-foot,
 .widg_header__nav,
 .widg_hero,
-.widg_location_slider,
-.widg_location_slider,
 .widg_location_slider nav ul,
 .widg_menubuttons,
 .widg_menubuttons__menu,
@@ -123,7 +121,7 @@ a.button,
 }
 /* Widgets */
 .widg_sidebar {
-	width: 100%;
+	width: 100% !important;
 }
 
 .widg_sidebar_application {
@@ -185,6 +183,24 @@ tr {
 }
 
 .widg_accordeon__content p {
-	padding: 0;
+  padding: 0;
   margin: 15px 0 10px 0;
+}
+
+.widg_sidebar__accordion {
+  display: none;
+}
+
+.widg_sidebar__content {
+  margin-top: 0px !important;
+}
+
+.widg_sidebar.sticky {
+  position: unset !important;
+  display: block;
+  overflow: unset;
+}
+
+.page_wrapper {
+  overflow-x: unset;
 }

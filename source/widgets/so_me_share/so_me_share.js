@@ -18,7 +18,8 @@
 			domSelectors: {
 				tweet: '[data-' + name + '="tweet"]',
 				mailto: '[data-' + name + '="mailto"]',
-				fb: '[data-' + name + '="fb"]'
+				fb: '[data-' + name + '="fb"]',
+				print: '[data-' + name + '="print"]',
 			},
 			stateClasses: {
 				// isActive: 'is_active'
@@ -72,6 +73,8 @@
 		this.initMailToBtn();
 
 		this.initFacebookBtn();
+
+		this.initPrintBtn();
 	};
 
 	Widget.prototype.initTwitterBtn = function() {
@@ -95,20 +98,28 @@
 
 	Widget.prototype.initMailToBtn = function() {
 		var $mailtoButton = $(this.options.domSelectors.mailto),
-				hrefString = this.options.mailtoOptions.base,
-				subject = encodeURIComponent($mailtoButton.data('share-text')),
-				mailbody = '&body=' + encodeURIComponent(window.location.href);
+			hrefString = this.options.mailtoOptions.base,
+			subject = encodeURIComponent($mailtoButton.data('share-text')),
+			mailbody = '&body=' + encodeURIComponent(window.location.href);
 
 		$mailtoButton.attr('href', hrefString + subject + mailbody);
 	};
 
 	Widget.prototype.initFacebookBtn = function() {
 		var $fbButton = $(this.options.domSelectors.fb),
-				hrefString = this.options.facebookOptions.base,
-				url = 'u=' + encodeURIComponent(window.location.href),
-				title = '&title=' + encodeURIComponent($fbButton.data('share-text'));
+			hrefString = this.options.facebookOptions.base,
+			url = 'u=' + encodeURIComponent(window.location.href),
+			title = '&title=' + encodeURIComponent($fbButton.data('share-text'));
 
 		$fbButton.attr('href', hrefString + url + title);
+	};
+
+	Widget.prototype.initPrintBtn = function() {
+		var $printButton = $(this.options.domSelectors.print);
+
+		$printButton.click(function() {
+			window.print();
+		});
 	};
 
 	/**
