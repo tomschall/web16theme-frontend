@@ -5,17 +5,7 @@ $infoPadding: 34px;
 .widg_location_slider {
 	position: relative;
 	@include bleedFull($gutterWidth);
-
     overflow: hidden;
-
-	@include mq($to: 'medium') {
-		//height: 820px;
-	}
-
-	&.all-locations {
-		//border-top: 1px solid $colorGreyHover;
-	}
-
 }
 
 .startpage-page .layout_content #location-map {
@@ -27,8 +17,7 @@ $infoPadding: 34px;
 }
 
 nav.widg_location__nav {
-    //@include contentWrapper($gutterWidth);
-    margin-top: $basicPush * 5;
+	margin-top: $basicPush * 5;
 
 	.widg_location__nav-bar {
 		position: absolute;
@@ -72,8 +61,8 @@ nav.widg_location__nav {
 		}
 
 		button {
-            @include noStyledButton();
-            border-bottom: 5px solid #fff;
+      @include noStyledButton();
+      border-bottom: 5px solid #fff;
 			display: block;
 			opacity: 1.0;
 			font-size: 1.6667rem;
@@ -84,7 +73,6 @@ nav.widg_location__nav {
 			padding-bottom: $basicPush * 2.6;
 
 			@include mq($to: 'small') {
-				//@include iconDataurl('accordeon_close', $after: true);
 				background-color: $colorLightGray;
 				background-repeat: no-repeat;
 				background-size: auto;
@@ -94,31 +82,21 @@ nav.widg_location__nav {
 				width: 100%;
 				border-bottom: none;
 
-				&.is_active{
+				&.is_active {
+					color: $colorBlack;
+					background-color: $colorYellowAccordeonActive !important;
+				}
+
+				&:active {
 					color: $colorBlack;
 					background-color: $colorYellowAccordeonActive !important;
 				}
 
 				&:focus {
-					background-color: #F1F1EE; //$colorYellowAccordeonActive;
+					background-color: #F1F1EE;
 				}
-
-				// &:after {
-				// 	position: absolute;
-				// 	content: " ";
-				// 	display: block;
-				// 	transition: transform $transitionLength / 2 $transitionEase;
-				// 	top: 50%;
-				// 	opacity: 0.7;
-				// 	transform: translateY(-50%) rotate(45deg);
-				// 	width: 12px;
-				// 	height: 12px;
-				// 	right: $gutterWidth + 4;
-				// }
 			}
-			&:hover,
 			&.is_active {
-				//background-color: $colorYellowAccordeonActive;
 				color: $colorBlack;
 
 				&:after {
@@ -146,14 +124,9 @@ nav.widg_location__nav {
 		overflow: hidden;
 
 		.location__slide {
-
 			overflow: hidden;
 			height: $mapHeight;
 			position: relative;
-
-			@include mq($to: 'medium') {
-				//height: 300px; // Map
-			}
 		}
 	}
 }
@@ -184,8 +157,8 @@ nav.widg_location__nav {
 
 	@include mq($to: 'small') {
 		position: relative;
-        top: 0;
-        transform: translateY(0%);
+		top: 0;
+		transform: translateY(0%);
 		left: 0;
 		width: 100%;
 		box-shadow: none;
@@ -193,8 +166,7 @@ nav.widg_location__nav {
 
 	@include mq($to: 'medium') {
 		position: relative;
-        // top: 245px;
-        transform: translateY(0%);
+		transform: translateY(0%);
 		left: 0;
 		width: 100%;
 		box-shadow: none;
