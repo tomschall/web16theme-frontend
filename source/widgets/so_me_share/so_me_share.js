@@ -35,6 +35,11 @@
 			},
 			facebookOptions: {
 				base: 'http://www.facebook.com/sharer/sharer.php?'
+			},
+			translations: {
+				de: 'Drucken',
+				en: 'print',
+				fr: 'imprimer'
 			}
 		},
 		data = {
@@ -116,6 +121,14 @@
 
 	Widget.prototype.initPrintBtn = function() {
 		var $printButton = $(this.options.domSelectors.print);
+		var pathArr = window.location.pathname.split('/');
+		var lang = pathArr[1];
+		var langStr = (lang === 'de' || lang === 'en' || lang === 'fr') ? lang : 'de';
+
+		if (langStr !== 'de') {
+			var translation = '<span class="some-icon"></span><span class="some-text">' + this.options.translations[langStr] + '</span>';
+			$printButton[0].innerHTML = translation;
+		}
 
 		$printButton.click(function() {
 			window.print();
