@@ -2,7 +2,7 @@
 	// height: 35px;
 	position: relative;
 	top: $basicPush * 1.5;
-	width: 50%;
+	width: 44%;
 	overflow: hidden;
 
 	@include mq($to: tiny) {
@@ -19,9 +19,5 @@
 		}
 
 		cursor: pointer;
-	}
-
-	img {
-		// height: 35px;
 	}
 }
