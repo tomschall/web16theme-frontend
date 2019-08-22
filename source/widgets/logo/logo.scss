@@ -1,11 +1,12 @@
 .widg_logo {
-	height: 35px;
+	// height: 35px;
 	position: relative;
 	top: $basicPush * 1.5;
 	width: 50%;
+	overflow: hidden;
 
 	@include mq($to: tiny) {
-		width: 85px;
+		width: 110px;
 		overflow: hidden;
 	}
 
@@ -21,6 +22,6 @@
 	}
 
 	img {
-		height: 35px;
+		// height: 35px;
 	}
 }
