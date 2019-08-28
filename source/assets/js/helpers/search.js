@@ -370,6 +370,7 @@ var fieldDictionaries = {
 	 * @param searchURL the search url
    */
 	function search(query, isSearchbar, isCategorySearch, searchTemplate, searchURL, preventHashUpdate) {
+		console.log('query', query);
 		var isPageSearch = false;
 
 		if (typeof isSearchbar === typeof undefined) {
