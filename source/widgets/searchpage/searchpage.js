@@ -617,20 +617,34 @@
 				'location': 'city'
 			};
 			facets.forEach(function(field) {
+				console.log('facets for each: ', field);
 				// field names coming from the endpoint are postfixed with [] if they contain lists
 				// removes postfix from the name
 				var fieldName = facetsToItemsFieldnames[field.field.replace(/\[\]$/, '')],
 					$field = $('[data-searchparam="' + fieldName + '"]'),
 					$local__options = $field.find('option');
+					console.log('fieldName: ', fieldName);
+					console.log('$field: ', $field);
+					console.log('$local__options: ', $local__options);
+
 				$local__options.map(function(index, option) {
 					console.log('lastChangedFieldName updateFilters: ', lastChangedFieldName);
+
+					/*
 					if ($field.val() === $(option).val() || fieldName === lastChangedFieldName) {
+						console.log('$field.val()', $field.val());
+						console.log('$(option).val()', $(option).val());
+						console.log('returns cause $field.val() === $(option).val() || fieldName === lastChangedFieldName');
 						return;
 					}
+					*/
 
 					if ($.inArray($(option).attr('value'), field.enable) === -1) {
+						console.log('$(option).attr(\'value\')', $(option).attr('value'));
+						console.log('$(option)', $(option));
 						$(option).attr('disabled', 'disabled');
 					} else {
+						console.log('remove attribute disabled');
 						$(option).removeAttr('disabled');
 					}
 				});
