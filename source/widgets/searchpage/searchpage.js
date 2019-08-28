@@ -104,6 +104,7 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
+		console.log('init');
 		searchTemplate = $(this.options.domSelectors.formWrapper).data('searchpage-template');
 		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 		jsonURL = this.$element.data('json-url');
@@ -197,9 +198,11 @@
 
 	Widget.prototype.initFormFunctionality = function() {
 		var $formElements = $('.search__form-wrapper input:not(".select2-search__field"), .search__form-wrapper select');
+		console.log('formElements: ', $formElements);
 		data.$formElements = $formElements;
 		$formElements.on('change.' + this.uuid, function(event) {
 			lastChangedFieldName = event.target && event.target.name ? event.target.name : '';
+			console.log('lastChangedFieldName: ', lastChangedFieldName);
 			this.sendSearchQuery();
 			if (searchTemplate === 'search_full') {
 				this.updateTitle();
@@ -212,6 +215,7 @@
 	 */
 	Widget.prototype.initSearchParam = function() {
 		searchParam = window.estatico.search.getSearchParameters();
+		console.log('searchParam', searchParam);
 		if (searchParam.extended === 'true') {
 			$(this.options.domSelectors.expanderBtn).trigger('click');
 		}
@@ -355,6 +359,7 @@
 		}
 
 		if (this.checkParameters()) {
+			console.log('checkParameters');
 			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL, firstLoad);
 
 			if (!loadMoreMode) {
@@ -367,6 +372,7 @@
 				$(window).on(this.options.searchEvents.dataLoaded, this.handleData.bind(this));
 			}
 		} else {
+			console.log('hier');
 			this.updateFilters('enableAll');
 			this.$element.find('.search__table').remove();
 			this.$element.find('.content__element').remove();
@@ -378,12 +384,16 @@
 	};
 
 	Widget.prototype.handleData = function(event, local__data, foundEntries, limitedToResults, category, facets) {
+		console.log('local__data', local__data);
+		console.log('facets', facets);
 		if (local__data) {
+			console.log('local__data');
 			this.showResults(local__data, foundEntries, limitedToResults, category);
 			if (isCategorySearch) {
 				this.updateFilters(facets);
 			}
 		} else {
+			console.log('no local__data');
 			this.changeStatus(this.options.stateClasses.showResults);
 		}
 
@@ -593,6 +603,7 @@
 	};
 
 	Widget.prototype.updateFilters = function(facets) {
+		console.log('update filters');
 		if (facets === 'enableAll') {
 			var $options = $('option');
 
@@ -612,8 +623,8 @@
 					$field = $('[data-searchparam="' + fieldName + '"]'),
 					$local__options = $field.find('option');
 				$local__options.map(function(index, option) {
-					if ($field.val() === $(option).val() ||
-							fieldName === lastChangedFieldName) {
+					console.log('lastChangedFieldName updateFilters: ', lastChangedFieldName);
+					if ($field.val() === $(option).val() || fieldName === lastChangedFieldName) {
 						return;
 					}
 
