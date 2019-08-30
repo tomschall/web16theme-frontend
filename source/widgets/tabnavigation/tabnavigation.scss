@@ -1,6 +1,11 @@
 .widg_tabnavigation {
 	margin-top: $basicPush * 4;
 	margin-bottom: $basicPush;
+
+	.widg_tabnavigation__nav {
+		margin-top: $basicPush * 4.5;
+	}
+
 }
 
 .widg_tabnavigation__nav {
@@ -16,8 +21,8 @@
 				font-weight: 600;
 				color: $colorTextGrey;
 				margin-right: $basicPush * 3.4;
-
 				padding-bottom: $basicPush * 1.4;
+				outline: none;
 
 				&.is_active {
 					color: $colorBlack;
