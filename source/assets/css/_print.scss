@@ -54,7 +54,11 @@ h6 {
 
 .widg_teaser__img {
 	position: unset;
-	width: auto;
+	float: left;
+  margin-left: 0;
+  margin-right: 20px;
+  width: 133px;
+  margin-bottom: 0;
 }
 
 .blockquote__img {
@@ -96,7 +100,6 @@ h6 {
 .widg_subnav,
 .widg_teaser__wrapper a.teaser__more-button,
 .widg_toplink,
-.widg_full_bleed_teaser .widg_teaser,
 a.ical {
 	display: none;
 }
