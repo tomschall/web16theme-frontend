@@ -15,6 +15,10 @@ $colorAvailabilityRed: #f05f1b;
 
 		}
 	}
+
+	@media print {
+		display: contents;
+	}
 }
 
 .widg_accordeon__entry {
@@ -61,6 +65,15 @@ $colorAvailabilityRed: #f05f1b;
 			min-height: buttonHeight(mobile);
 			padding-top: $gutterWidth/2;
 			padding-bottom: $gutterWidth/2;
+		}
+
+		@media print {
+			color: $colorBlack;
+			display: contents;
+			background: transparent;
+			font-weight: 700;
+			padding: 0;
+			margin: 0;
 		}
 	}
 
@@ -365,5 +378,17 @@ div.widg_accordeon__button {
 	> div,
 	> dl {
 		padding-top: 10px;
+
+		@media print {
+			padding-top: 0;
+			// padding-bottom: $basicPush * 2;
+		}
+	}
+
+	@media print {
+		display: contents;
+		display: block;
+		padding: 0;
+		margin-bottom: 20pt;
 	}
 }

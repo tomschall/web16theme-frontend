@@ -18,6 +18,14 @@ p {
 
 	b {
 		font-weight: 700;
+
+		@media print {
+			font-size: 8pt;
+		}
+	}
+
+	@media print {
+		font-size: 10pt;
 	}
 }
 
@@ -41,6 +49,12 @@ p {
 		font-size: 1.5rem;
 		line-height: 1.5555555;
 		margin-bottom: 0;
+	}
+
+	@media print {
+		font-size: 10pt;
+		font-weight: 600;
+		color: $colorBlack;
 	}
 }
 

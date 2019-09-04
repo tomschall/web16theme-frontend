@@ -94,6 +94,12 @@ h3:not(.childless) {
 			width: calc(20.6% - 15px);
 		}
 	}
+
+	@media print {
+		padding: 0;
+		margin: 2cm 0;
+		width: 100%;
+	}
 }
 
 .startpage-page > .layout_content {
@@ -141,6 +147,12 @@ h3:not(.childless) {
   	@include mq($from: small, $to: medium) {
 	  padding-left: $basicPush * 4;
 	  padding-right: $basicPush * 4;
+	}
+
+	@media print {
+		margin: 0;
+		padding: 0;
+		width: 100%;
 	}
 }
 

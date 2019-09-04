@@ -34,8 +34,6 @@ body.is-env-test .widg_header {
 
 	.widg_header__inner-top {
 		@include mq($to: medium) {
-
-
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -46,6 +44,11 @@ body.is-env-test .widg_header {
 			width: 100%;
 
 			z-index: zindex('mobileHeaderTop');
+		}
+
+		@media print {
+			position: relative;
+			left: -33px;
 		}
 	}
 
@@ -59,6 +62,10 @@ body.is-env-test .widg_header {
 
 			display: none;
 		}
+
+		@media print {
+			display: none;
+		}
 	}
 
 	.widg_header__nav,
@@ -66,6 +73,10 @@ body.is-env-test .widg_header {
 		opacity: 1;
 
 		transition: opacity $transitionLength $transitionEase $transitionLength;
+
+		@media print {
+			display: none;
+		}
 	}
 
 	/**
@@ -113,6 +124,13 @@ body.is-env-test .widg_header {
   */
 	@include mq($from: wide) {
 		width: $widthYellowBarSuperWide;
+	}
+
+	@media print {
+		position: relative;
+		top: 0;
+		background: transparent;
+		height: 30pt;
 	}
 
 }

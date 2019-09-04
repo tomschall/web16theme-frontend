@@ -54,6 +54,10 @@
 		top: $basicPush / 2;
 		background-color: transparent;
 	}
+
+	@media only print {
+		display: none;
+	}
 }
 
 .widg_breadcrumb ul li,

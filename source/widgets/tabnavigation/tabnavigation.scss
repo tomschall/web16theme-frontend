@@ -4,8 +4,11 @@
 
 	.widg_tabnavigation__nav {
 		margin-top: $basicPush * 4.5;
-	}
 
+		@media print {
+			display: none !important;
+		}
+	}
 }
 
 .widg_tabnavigation__nav {
@@ -27,6 +30,14 @@
 				&.is_active {
 					color: $colorBlack;
 				}
+
+				@media print {
+					display: none;
+				}
+			}
+
+			@media print {
+				display: none;
 			}
 		}
 	}
@@ -41,6 +52,10 @@
 
 		transition: all $transitionLength / 2 $transitionEase;
 	}
+
+	@media print {
+		display: none;
+	}
 }
 
 .content__entry-wrapper {
@@ -51,6 +66,10 @@
 			border-bottom: none;
 		}
 	}
+
+	@media print {
+		margin: 0;
+	}
 }
 
 .widg_tabnavigation__content .content__entry {
@@ -60,6 +79,10 @@
 
 	&.is_active {
 		display: block;
+
+		@media print {
+			padding: 0;
+		}
 
 	}
 
@@ -74,6 +97,10 @@
 
 	@include mq($to: medium) {
 		padding: 0 18px 12px 18px;
+	}
+
+	@media print {
+		display: contents;
 	}
 }
 

@@ -1,6 +1,10 @@
 h1, h2, h3, h4, h5 {
 	margin: 0;
 	font-weight: normal;
+
+	@media print {
+		font-size: 12pt !important;
+	}
 }
 
 h1 {
@@ -48,6 +52,15 @@ h1 {
 
 		&:after {
 			display: none;
+		}
+	}
+
+	@media print {
+		font-size: 18pt !important;
+
+		&:after {
+			border-bottom: 4pt solid black;
+			background: none;
 		}
 	}
 }
@@ -133,6 +146,10 @@ h2.childless {
 	@include mq($to: small) {
 		font-weight: 600;
 		font-size: 1.5rem;
+	}
+
+	@media print {
+		margin-top: 0;
 	}
 }
 
