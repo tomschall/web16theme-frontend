@@ -6,7 +6,7 @@ body {
 	margin: 0;
 }
 
-a, button {
+a, button, .widg_contact__entry {
 	font-size: 10pt;
 	margin-bottom: 10pt;
 	text-decoration: none !important;
@@ -27,12 +27,11 @@ a, button {
 	}
 }
 
-
-
-
 #targetOnlineApplication,
 .button.anchor-link,
 #locations,
-.widg_follow_us {
+.widg_follow_us,
+.button__secondary,
+.widg_in_content_search {
 	display: none !important;
 }

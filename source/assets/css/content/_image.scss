@@ -18,6 +18,10 @@ img.image-left {
 		margin-bottom: $basicPush;
 		margin-right: -1 * $gutterWidth;
 	}
+
+	@media print {
+		@include span(4);
+	}
 }
 
 img.image-right {
