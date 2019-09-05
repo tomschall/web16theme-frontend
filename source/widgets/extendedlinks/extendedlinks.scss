@@ -68,6 +68,13 @@
 			display: block;
 			font-weight: 100;
 			color: #4c4c4c;
+
+			@media print {
+				font-size: 10pt !important;
+				font-weight: 100 !important;
+				color: $colorTextDarkGrey;
+				padding-bottom: 0 !important;
+			}
 		}
 
 		& span:first-child {

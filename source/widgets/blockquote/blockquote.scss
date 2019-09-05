@@ -37,6 +37,10 @@
 	@include mq($to: medium) {
 		@include span(12);
 	}
+
+	@media print {
+			@include span(4);
+	}
 }
 
 .blockquote__quote {
@@ -59,8 +63,9 @@
 		}
 
 		@media print {
+			float: left;
 			font-size: 10pt;
-			padding-right: 30pt;
+			// padding-right: 30pt;
 		}
 	}
 
@@ -83,11 +88,15 @@
 		@include mq($to: medium) {
 			@include span(12);
 		}
+
+		@media print {
+			@include span(8);
+		}
 	}
 
 	@media print {
-		margin-left: 20pt;
-		margin-right: 20pt;
+		// margin-left: 20pt;
+		// margin-right: 20pt;
 	}
 }
 
