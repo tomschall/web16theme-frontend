@@ -6,7 +6,7 @@
 		margin-top: $basicPush * 4.5;
 
 		@media print {
-			display: none !important;
+			display: none;
 		}
 	}
 }
@@ -30,14 +30,6 @@
 				&.is_active {
 					color: $colorBlack;
 				}
-
-				@media print {
-					display: none;
-				}
-			}
-
-			@media print {
-				display: none;
 			}
 		}
 	}
@@ -51,10 +43,6 @@
 		background-color: $colorYellow;
 
 		transition: all $transitionLength / 2 $transitionEase;
-	}
-
-	@media print {
-		display: none;
 	}
 }
 
@@ -172,5 +160,9 @@
 		&:after {
 			transform: translateY(-50%) rotate(90deg);
 		}
+	}
+
+	@media print {
+		display: none;
 	}
 }

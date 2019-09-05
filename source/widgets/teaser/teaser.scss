@@ -60,6 +60,12 @@
 
 	&.wide___third {
 		@include span(4);
+
+		@media print {
+			@include span(12);
+			padding: 0;
+			margin: 0;
+		}
 	}
 
 	@include mq($to: medium) {
@@ -332,6 +338,11 @@
 			}
 		}
 	}
+
+	@media print {
+		padding-left: 0;
+		margin-left: 0;
+	}
 }
 
 /* Startpage customs */
@@ -441,9 +452,10 @@
 	@include mq($to: small) {
 		margin-left: 0 !important;
 	}
-}
 
-/*.widg_teaser__wrapper h2 + p {
-		padding-left: $basicPush * 2;
-		padding-right: $basicPush * 2;
-}*/
+	@media print {
+		margin: 20pt 0 10pt 0;
+		padding: 0;
+		left: 0;
+	}
+}

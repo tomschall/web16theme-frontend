@@ -23,6 +23,10 @@ body {
 
 	& p:last-child {
 		margin-bottom: 0;
+
+		@media print {
+			padding-bottom: 20pt;
+		}
 	}
 
 	@include mq($to: medium) {
@@ -312,6 +316,12 @@ table.table_striped {
 			padding-left: $gutterWidth;
 			padding-right: $gutterWidth;
 		}
+	}
+
+	@media print {
+		width: 100%;
+		margin: 0;
+		padding: 0;
 	}
 }
 
