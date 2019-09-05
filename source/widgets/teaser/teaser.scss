@@ -63,8 +63,7 @@
 
 		@media print {
 			@include span(12);
-			padding: 0;
-			margin: 0;
+			margin-bottom: 10pt;
 		}
 	}
 
@@ -103,10 +102,9 @@
 	}
 
 	@media print {
-		width: 100%;
-		border-bottom: 0;
-		margin-bottom: 5pt;
 		padding-bottom: 0;
+		margin-bottom: 10pt;
+		border-bottom: 0;
 	}
 }
 
@@ -337,11 +335,6 @@
 				width: 60vw;
 			}
 		}
-	}
-
-	@media print {
-		padding-left: 0;
-		margin-left: 0;
 	}
 }
 

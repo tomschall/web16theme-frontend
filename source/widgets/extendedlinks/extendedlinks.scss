@@ -12,6 +12,10 @@
 			width: 90%;
 			margin-top: 9px;
 		}
+
+		@media print {
+			font-size: 10pt;
+		}
 	}
 
 	h3.childless {
@@ -19,6 +23,10 @@
 		@include mq($to: small) {
 			margin-top: 3px;
 			font-size: 1.25rem;
+		}
+
+		@media print {
+			font-size: 12pt;
 		}
 	}
 
@@ -119,7 +127,7 @@
 		}
 
 		@media print {
-			padding: 0;	
+			padding: 0;
 		}
 	}
 
