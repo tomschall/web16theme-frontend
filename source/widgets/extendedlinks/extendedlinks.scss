@@ -12,6 +12,10 @@
 			width: 90%;
 			margin-top: 9px;
 		}
+
+		@media print {
+			font-size: 10pt;
+		}
 	}
 
 	h3.childless {
@@ -19,6 +23,10 @@
 		@include mq($to: small) {
 			margin-top: 3px;
 			font-size: 1.25rem;
+		}
+
+		@media print {
+			font-size: 12pt;
 		}
 	}
 
@@ -60,6 +68,13 @@
 			display: block;
 			font-weight: 100;
 			color: #4c4c4c;
+
+			@media print {
+				font-size: 10pt !important;
+				font-weight: 100 !important;
+				color: $colorTextDarkGrey;
+				padding-bottom: 0 !important;
+			}
 		}
 
 		& span:first-child {
@@ -116,6 +131,10 @@
 			padding-right: 0;
 
 			@include iconDataurl('pfeil-black_short', $after: true);
+		}
+
+		@media print {
+			padding: 0;
 		}
 	}
 

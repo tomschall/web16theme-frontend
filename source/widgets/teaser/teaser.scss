@@ -18,6 +18,7 @@
 				img {
 					transform: scale(1.1);
 				}
+
 			}
 		}
 	}
@@ -37,6 +38,7 @@
 			width: 17px;
 			height: 16.2px;
 		}
+
 	}
 
 	p {
@@ -50,10 +52,19 @@
 		@include mq($to: medium) {
 			padding-right: $basicPush * 3;
 		}
+
+		@media print {
+			font-size: 10pt;
+		}
 	}
 
 	&.wide___third {
 		@include span(4);
+
+		@media print {
+			@include span(12);
+			margin-bottom: 10pt;
+		}
 	}
 
 	@include mq($to: medium) {
@@ -89,6 +100,12 @@
 			padding-right: 0;
 		}
 	}
+
+	@media print {
+		padding-bottom: 0;
+		margin-bottom: 10pt;
+		border-bottom: 0;
+	}
 }
 
 .widg_teaser__img {
@@ -100,7 +117,15 @@
 		max-width: 100%;
 		height: 100%;
 		transform: scale(1);
-    	transition: transform $transitionLength $transitionEase;
+    transition: transform $transitionLength $transitionEase;
+
+		@media print {
+			position: unset !important;
+			left: 0 !important;
+			width: 150px !important;
+			height: unset !important;
+			transform: scale(1) !important;
+		}
 	}
 
 	@include mq($from: 1023px) {
@@ -129,6 +154,13 @@
 		margin-right: auto;
 		margin-bottom: 20px;
 		//transform: scale(1);
+	}
+
+	@media print {
+		width: auto !important;
+		padding-top: 0 !important;
+		float: left;
+		padding-right: 10pt;
 	}
 }
 
@@ -163,6 +195,10 @@
 
 	&:focus {
 		outline: 0;
+	}
+
+	@media print {
+		display: none !important;
 	}
 }
 
@@ -203,6 +239,10 @@
 		width: 6px;
 		height: 10px;
 
+	}
+
+	@media print {
+		display: none;
 	}
 
 }
@@ -405,9 +445,10 @@
 	@include mq($to: small) {
 		margin-left: 0 !important;
 	}
-}
 
-/*.widg_teaser__wrapper h2 + p {
-		padding-left: $basicPush * 2;
-		padding-right: $basicPush * 2;
-}*/
+	@media print {
+		margin: 20pt 0 10pt 0;
+		padding: 0;
+		left: 0;
+	}
+}

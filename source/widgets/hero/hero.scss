@@ -17,6 +17,10 @@
 			}
 		}
 	}
+
+	@media only print {
+		display: none;
+	}
 }
 
 .widg_hero__wrapper {

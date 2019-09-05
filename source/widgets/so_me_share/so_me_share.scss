@@ -136,6 +136,10 @@ $facebookBlueDark: #2d4785;
 			opacity: 0.8;
 		}
 	}
+
+	@media print {
+		display: none;
+	}
 }
 
 .widg_so_me_share__text {

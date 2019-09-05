@@ -27,4 +27,8 @@
 		opacity: 1;
 	}
 
+	@media print {
+		display: none;
+	}
+
 }

@@ -66,6 +66,10 @@ $sidebarObjectPush: $basicPush * 5;
 			overflow: hidden;
 		}
 	}
+
+	@media print {
+		display: none;
+	}
 }
 
 .widg_sidebar__accordion {
@@ -88,8 +92,8 @@ $sidebarObjectPush: $basicPush * 5;
 		.object__content {
 			overflow: hidden;
 			transition: max-height $transitionLength / 2 $transitionEase,
-					padding-top $transitionLength / 2 $transitionEase,
-					padding-bottom $transitionLength / 2 $transitionEase;
+			padding-top $transitionLength / 2 $transitionEase,
+			padding-bottom $transitionLength / 2 $transitionEase;
 		}
 
 		&:not(:last-child),
@@ -118,6 +122,10 @@ $sidebarObjectPush: $basicPush * 5;
 	&:after {
 		clear: both;
 	}
+
+	@media print {
+		display: none;
+	}
 }
 
 .widg_sidebar__object {
@@ -142,6 +150,10 @@ $sidebarObjectPush: $basicPush * 5;
 
 	@include mq($to: 'subnav') {
 		border: none;
+	}
+
+	@media print {
+		display: none;
 	}
 }
 
@@ -242,6 +254,10 @@ $sidebarObjectPush: $basicPush * 5;
 
 	.is_pushed & {
 		transition: top $transitionLength / 2 $transitionEase, margin-top $transitionLength / 2 $transitionEase;
+	}
+
+	@media print {
+		display: none;
 	}
 }
 

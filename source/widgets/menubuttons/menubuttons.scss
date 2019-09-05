@@ -32,6 +32,10 @@
 		}
 	}
 
+	@media print {
+		display: none;
+	}
+
 }
 
 .widg_menubuttons__menu {
