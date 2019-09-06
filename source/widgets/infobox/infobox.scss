@@ -6,6 +6,12 @@
 	padding-top: $basicPush * 6;
 	padding-bottom: $basicPush * 6;
 	margin-bottom: $basicPush * 5;
+
+	@media print {
+		padding: 10pt 0;
+		margin: 0 !important;
+		background-color: none !important;
+	}
 }
 
 .infobox__img {
@@ -15,10 +21,14 @@
 		width: 100%;
 		height: auto;
 	}
-	
+
 	@include mq($to: medium) {
 		@include span(12);
 		margin-bottom: 16px;
+	}
+
+	@media print {
+		@include span(4);
 	}
 }
 
@@ -30,6 +40,10 @@
 
 		@include mq($to: medium) {
 			@include span(12);
+		}
+
+		@media print {
+			@include span(8);
 		}
 	}
 }
