@@ -64,6 +64,9 @@
 		loadedEntries = 0,
 		jsonURL = '',
 		lastChangedFieldName = '',
+		lastChangedFieldNameBefore = '',
+		lastChangedFieldEvent = '',
+		lastChangedFieldEventObj = {},
 		clicksObj = [
 			0,
 			1
@@ -116,6 +119,49 @@
 			sortOrder = sortOrder || 'ascending';
 			this.grabParameters(sortOn, sortOrder);
 			sendSearchQueryDebounced(firstLoad);
+		};
+		this.checkFormFieldUnset = function() {
+
+			if (Object.keys(lastChangedFieldEventObj[lastChangedFieldName]).length < 2) {
+				return false;
+			}
+
+			var lengthObj = 0,
+				c = 0,
+				countTrue = 0,
+				countTrueCompare = 0,
+				i = 0;
+
+			if (lastChangedFieldName === lastChangedFieldNameBefore || lastChangedFieldName !== lastChangedFieldNameBefore) {
+
+				lengthObj = Object.keys(lastChangedFieldEventObj[lastChangedFieldName]).length;
+
+				c = Object.keys(lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1]).length;
+				countTrue = 0;
+				countTrueCompare = 0;
+
+				for (i = 0; i < c; i++) {
+
+					if (lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2][i] === true &&
+						lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i] === false &&
+						lastChangedFieldEvent.currentTarget[i].disabled === false) {
+						countTrue++;
+					}
+
+					if (lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i] === true && lastChangedFieldEvent.target[i].disabled === false) {
+						countTrueCompare++;
+					}
+
+				}
+
+			}
+
+			if (countTrue === 1 && countTrueCompare === 0) {
+				return true;
+			}
+
+			return false;
+
 		};
 		this.eventListeners();
 		this.initQueryClearBtn();
@@ -199,7 +245,33 @@
 		var $formElements = $('.search__form-wrapper input:not(".select2-search__field"), .search__form-wrapper select');
 		data.$formElements = $formElements;
 		$formElements.on('change.' + this.uuid, function(event) {
+
+			var nest = function(obj, keys, v) {
+				if (keys.length === 1) {
+					obj[keys[0]] = v;
+				} else {
+					var key = keys.shift();
+					obj[key] = nest(typeof obj[key] === 'undefined' ? {} : obj[key], keys, v);
+				}
+				return obj;
+			};
+
+			lastChangedFieldNameBefore = lastChangedFieldName;
 			lastChangedFieldName = event.target && event.target.name ? event.target.name : '';
+
+			var index = 0;
+			if (lastChangedFieldEventObj[event.target.name] !== null && lastChangedFieldEventObj[event.target.name] !== undefined) {
+				index = Object.keys(lastChangedFieldEventObj[event.target.name]).length;
+			}
+
+			for (var i = 0; i < event.target.length; i++) {
+
+				nest(lastChangedFieldEventObj, [event.target.name, index, i], event.target[i].selected);
+
+			}
+
+			lastChangedFieldEvent = event;
+
 			this.sendSearchQuery();
 			if (searchTemplate === 'search_full') {
 				this.updateTitle();
@@ -600,6 +672,7 @@
 				$(option).removeAttr('disabled');
 			});
 		} else if (facets) {
+			var check = this.checkFormFieldUnset(facets);
 			var facetsToItemsFieldnames = {
 				'faculty': 'taxonomy_subjectarea',
 				'study_type': 'taxonomy_eduproducttype',
@@ -611,10 +684,13 @@
 				var fieldName = facetsToItemsFieldnames[field.field.replace(/\[\]$/, '')],
 					$field = $('[data-searchparam="' + fieldName + '"]'),
 					$local__options = $field.find('option');
+
 				$local__options.map(function(index, option) {
-					if ($field.val() === $(option).val() || fieldName === lastChangedFieldName) {
+
+					if (fieldName === lastChangedFieldName && check !== true) {
 						return;
 					}
+
 					if ($.inArray($(option).attr('value'), field.enable) === -1) {
 						$(option).attr('disabled', 'disabled');
 					} else {
