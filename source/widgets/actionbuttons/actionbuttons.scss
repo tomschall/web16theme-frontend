@@ -20,6 +20,10 @@
 	@include mq($to: medium) {
 		visibility: hidden;
 	}
+
+	@media print {
+		display: none;
+	}
 }
 
 .widg_actionbutton__item {

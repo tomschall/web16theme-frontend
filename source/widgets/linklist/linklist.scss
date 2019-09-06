@@ -161,6 +161,10 @@
 		@include mq($to: medium) {
 			padding-right: $basicPush * 5;
 		}
+
+		@media print {
+			font-size: 10pt;
+		}
 	}
 }
 
