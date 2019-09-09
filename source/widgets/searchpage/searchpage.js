@@ -122,6 +122,10 @@
 		};
 		this.checkFormFieldUnset = function() {
 
+			if (lastChangedFieldName === 'search-string') {
+				return true;
+			}
+
 			if (Object.keys(lastChangedFieldEventObj[lastChangedFieldName]).length < 2) {
 				return false;
 			}
