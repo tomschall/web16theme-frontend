@@ -64,10 +64,9 @@
 		loadedEntries = 0,
 		jsonURL = '',
 		lastChangedFieldName = '',
-		lastChangedFieldNameBefore = '',
-		lastChangedFieldEvent= '',
-		lastChangedFieldEventBeforeObj = {},
+		lastChangedFieldEvent = '',
 		lastChangedFieldEventObj = {},
+		removeAll = false,
 		clicksObj = [
 			0,
 			1
@@ -108,7 +107,6 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		console.log('init');
 		searchTemplate = $(this.options.domSelectors.formWrapper).data('searchpage-template');
 		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 		jsonURL = this.$element.data('json-url');
@@ -122,63 +120,53 @@
 			this.grabParameters(sortOn, sortOrder);
 			sendSearchQueryDebounced(firstLoad);
 		};
-		this.checkFormFieldUnset = function(facets) {
+		this.checkFormFieldUnset = function() {
 
-			console.log('lastChangedFieldName: ', lastChangedFieldName);
-			console.log('lastChangedFieldNameBefore: ', lastChangedFieldNameBefore);
-			console.log('lastChangedFieldEventBeforeObj: ', lastChangedFieldEventBeforeObj);
-			console.log('lastChangedFieldEventObj: ', lastChangedFieldEventObj);
-			console.log('lastChangedFieldEvent: ', lastChangedFieldEvent);
-			console.log('facets checkFormFieldUnset', facets);
+			// console.log('lastChangedFieldName: ', lastChangedFieldName);
+			// console.log('lastChangedFieldEventObj: ', lastChangedFieldEventObj);
+			// console.log('lastChangedFieldEvent: ', lastChangedFieldEvent);
+			// console.log('facets checkFormFieldUnset', facets);
+
+			if (lastChangedFieldName === 'search-string' || removeAll === true) {
+				return true;
+			}
 
 			if (Object.keys(lastChangedFieldEventObj[lastChangedFieldName]).length < 2) {
 				return false;
 			}
 
-			var lengthObj = 0,
-				c = 0,
-				countTrue = 0,
-				countTrueCompare = 0,
-				i = 0;
+			var lengthObj = Object.keys(lastChangedFieldEventObj[lastChangedFieldName]).length;
+			// console.log('lengthObj', lengthObj);
+			// console.log('start check!!');
+            
+			// console.log('lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1]', lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1]);
+			// console.log('lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2]', lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2]);
 
-			if (lastChangedFieldName === lastChangedFieldNameBefore || lastChangedFieldName !== lastChangedFieldNameBefore) {
+			var c = Object.keys(lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1]).length;
+			var countTrue = 0;
+			var countTrueCompare = 0;
 
-				console.log('lastChangedFieldName === lastChangedFieldNameBefore!!!!');
+			for (var i = 0; i < c; i++) {
 
-				lengthObj = Object.keys(lastChangedFieldEventObj[lastChangedFieldName]).length;
-				console.log('lengthObj', lengthObj);
-				console.log('start fucking check yeah!!');
+				// console.log('i', i);
 
+				// console.log('lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i]', lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i]);
+				// console.log('lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2][i]', lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2][i]);
 
-				console.log('lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1]', lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1]);
-				console.log('lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2]', lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2]);
+				if (lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2][i] === true &&
+					lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i] === false &&
+					lastChangedFieldEvent.currentTarget[i].disabled === false) {
+					countTrue++;
+				}
 
-				c = Object.keys(lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1]).length;
-				countTrue = 0;
-				countTrueCompare = 0;
-
-				for (i = 0; i < c; i++) {
-
-					console.log('i', i);
-
-					console.log('lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i]', lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i]);
-					console.log('lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2][i]', lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2][i]);
-
-					if (lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2][i] === true && lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i] === false && lastChangedFieldEvent.currentTarget[i].disabled === false) {
-						countTrue++;
-					}
-
-					if (lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i] === true && lastChangedFieldEvent.target[i].disabled === false) {
-						countTrueCompare++;
-					}
-
+				if (lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i] === true && lastChangedFieldEvent.target[i].disabled === false) {
+					countTrueCompare++;
 				}
 
 			}
 
-
-			console.log('countTrue', countTrue);
-			console.log('countTrueCompare', countTrueCompare);
+			// console.log('countTrue', countTrue);
+			// console.log('countTrueCompare', countTrueCompare);
 
 			if (countTrue === 1 && countTrueCompare === 0) {
 				return true;
@@ -267,9 +255,8 @@
 
 	Widget.prototype.initFormFunctionality = function() {
 		var $formElements = $('.search__form-wrapper input:not(".select2-search__field"), .search__form-wrapper select');
-		console.log('formElements: ', $formElements);
 		data.$formElements = $formElements;
-		$formElements.on('change.' + this.uuid, function(event) {
+		$formElements.on('change.' + this.uuid, function(event, remAll) {
 
 			var nest = function(obj, keys, v) {
 				if (keys.length === 1) {
@@ -281,10 +268,17 @@
 				return obj;
 			};
 
-			console.log('event', event);
-			lastChangedFieldNameBefore = lastChangedFieldName;
+			// console.log('event', event);
+
+			if (remAll !== undefined) {
+				removeAll = remAll;
+			} else {
+				removeAll = false;
+			}
+
+			// console.log('removeAll', removeAll);
+
 			lastChangedFieldName = event.target && event.target.name ? event.target.name : '';
-			// lastChangedFieldEventBeforeObj = Object.assign({}, lastChangedFieldEventObj);
 
 			var index = 0;
 			if (lastChangedFieldEventObj[event.target.name] !== null && lastChangedFieldEventObj[event.target.name] !== undefined) {
@@ -292,12 +286,8 @@
 			}
 
 			for (var i = 0; i < event.target.length; i++) {
-
 				nest(lastChangedFieldEventObj, [event.target.name, index, i], event.target[i].selected);
-
 			}
-
-
 
 			lastChangedFieldEvent = event;
 
@@ -313,7 +303,6 @@
 	 */
 	Widget.prototype.initSearchParam = function() {
 		searchParam = window.estatico.search.getSearchParameters();
-		console.log('searchParam', searchParam);
 		if (searchParam.extended === 'true') {
 			$(this.options.domSelectors.expanderBtn).trigger('click');
 		}
@@ -457,7 +446,7 @@
 		}
 
 		if (this.checkParameters()) {
-			console.log('checkParameters');
+			// console.log('checkParameters');
 			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL, firstLoad);
 
 			if (!loadMoreMode) {
@@ -470,7 +459,7 @@
 				$(window).on(this.options.searchEvents.dataLoaded, this.handleData.bind(this));
 			}
 		} else {
-			console.log('hier');
+			// console.log('hier');
 			this.updateFilters('enableAll');
 			this.$element.find('.search__table').remove();
 			this.$element.find('.content__element').remove();
@@ -482,16 +471,16 @@
 	};
 
 	Widget.prototype.handleData = function(event, local__data, foundEntries, limitedToResults, category, facets) {
-		console.log('local__data', local__data);
-		console.log('facets', facets);
+		// console.log('local__data', local__data);
+		// console.log('facets', facets);
 		if (local__data) {
-			console.log('local__data');
+			// console.log('local__data');
 			this.showResults(local__data, foundEntries, limitedToResults, category);
 			if (isCategorySearch) {
 				this.updateFilters(facets);
 			}
 		} else {
-			console.log('no local__data');
+			// console.log('no local__data');
 			this.changeStatus(this.options.stateClasses.showResults);
 		}
 
@@ -702,7 +691,7 @@
 
 	Widget.prototype.updateFilters = function(facets) {
 
-		console.log('update filters');
+		// console.log('update filters');
 		if (facets === 'enableAll') {
 			var $options = $('option');
 
@@ -711,43 +700,31 @@
 			});
 		} else if (facets) {
 			var check = this.checkFormFieldUnset(facets);
-			console.log('check', check);
+			// console.log('check', check);
 			var facetsToItemsFieldnames = {
 				'faculty': 'taxonomy_subjectarea',
 				'study_type': 'taxonomy_eduproducttype',
 				'location': 'city'
 			};
 			facets.forEach(function(field) {
-				console.log('facets for each: ', field);
 				// field names coming from the endpoint are postfixed with [] if they contain lists
 				// removes postfix from the name
 				var fieldName = facetsToItemsFieldnames[field.field.replace(/\[\]$/, '')],
 					$field = $('[data-searchparam="' + fieldName + '"]'),
 					$local__options = $field.find('option');
-					// console.log('fieldName: ', fieldName);
-					// console.log('$field: ', $field);
-					// console.log('$local__options: ', $local__options);
 
 				$local__options.map(function(index, option) {
-					console.log('$field.val(): ', $field.val());
-					console.log('$(option).val()', $(option).val());
 
 					if (fieldName === lastChangedFieldName && check !== true) {
-						console.log('$field.val() inside if', $field.val());
-						console.log('$(option).val() inside if', $(option).val());
-						console.log('returns cause $field.val() === $(option).val() || fieldName === lastChangedFieldName');
 						return;
 					}
 
-					if ($.inArray($(option).attr('value'), field.enable) === -1) {
-						// console.log('add attribute disabled');
-						// console.log('$(option).attr(\'value\')', $(option).attr('value'));
-						// console.log('$(option)', $(option));
+					if ($.inArray($(option).attr('value'), field.enable) === -1 && check !== true) {
 						$(option).attr('disabled', 'disabled');
 					} else {
-						// console.log('remove attribute disabled');
 						$(option).removeAttr('disabled');
 					}
+
 				});
 				$field.find('optgroup').remove(); // remove all opt groups
 			});

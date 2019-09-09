@@ -830,7 +830,7 @@
 			});
 
 			$('.custom-select___remover').on('click.formElementHelper', function() {
-				$(this).prevAll('select').val('').trigger('change');
+				$(this).prevAll('select').val('').trigger('change', [true]);
 			});
 
 			$relatedLabels.on('mouseover.formElementHelper', function() {
