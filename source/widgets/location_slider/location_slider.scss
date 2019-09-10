@@ -92,8 +92,10 @@ nav.widg_location__nav {
 					background-color: $colorYellowAccordeonActive !important;
 				}
 
-				&:focus {
+				// IMPORTANT: iPhone 6 hook -> prevent white button background
+				&:hover {
 					background-color: #F1F1EE;
+					color: #767573;
 				}
 			}
 			&.is_active {
