@@ -10,14 +10,16 @@
 .widg_sidebar_contact .object__content {
 	img {
 		width: 100%;
-
-		@media print {
-			width: 50%;
-		}
 	}
 
 	img[src*="portrait_foto"] {
 		max-width: 340px;
+
+		@media print {
+			width: 150px;
+			padding-top: 5pt;
+			margin-top: 0;
+		}
 	}
 
 	dl {
