@@ -18,6 +18,7 @@ $colorAvailabilityRed: #f05f1b;
 
 	@media print {
 		display: contents;
+		width: 50%;
 	}
 }
 
@@ -74,6 +75,7 @@ $colorAvailabilityRed: #f05f1b;
 			font-weight: 700;
 			padding: 0;
 			margin: 0;
+			width: 50%;
 		}
 	}
 
@@ -302,6 +304,10 @@ div.widg_accordeon__button {
 
 	@include mq($to: medium) {
 		min-height: buttonHeight(mobile);
+	}
+
+	@media print {
+		display: none;
 	}
 }
 
