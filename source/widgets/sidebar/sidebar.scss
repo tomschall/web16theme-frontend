@@ -108,7 +108,7 @@ $sidebarObjectPush: $basicPush * 5;
 				position: relative;
 				width: 100%;
 				float: left;
-				padding: 0;
+				padding: 10pt 0;
 				margin: 0;
 			}
 		}
@@ -120,11 +120,12 @@ $sidebarObjectPush: $basicPush * 5;
 			padding-bottom $transitionLength / 2 $transitionEase;
 
 			@media print {
+				display: unset;
+				
 				img {
 					margin-top: 10pt;
-					width: 150px;
+					width: 150px !important;
 				}
-				display: unset;
 			}
 		}
 
@@ -342,10 +343,12 @@ $sidebarObjectPush: $basicPush * 5;
 	}
 
 	@media print {
-		// display: block !important;
-		// position: relative;
 		padding: 0;
 		margin: 0;
+
+		a.button.small_button {
+			display: none;
+		}
 	}
 }
 
@@ -416,6 +419,10 @@ $sidebarObjectPush: $basicPush * 5;
 
 		&:last-of-type {
 			margin-bottom: 0;
+		}
+
+		@media print {
+			font-size: 10pt;
 		}
 	}
 }
