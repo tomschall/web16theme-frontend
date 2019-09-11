@@ -1,6 +1,20 @@
+.widg_sidebar_contact {
+	@media print {
+		width: 50%;
+		float: left;
+		padding: 10pt;
+		margin: 0;
+		page-break-before: always;
+	}
+}
+
 .widg_sidebar_contact .object__content {
 	img {
 		width: 100%;
+
+		@media print {
+			width: 50%;
+		}
 	}
 
 	img[src*="portrait_foto"] {
