@@ -9,8 +9,20 @@
 
 	.slick-slide {
 		outline: none;
+
+		@media print {
+			display: block;
+			position: relative;
+			float: left;
+			left: 0;
+			visibility: visible;
+		}
 	}
 	.image_gallery__slide img {
+		width: 100%;
+	}
+
+	@media print {
 		width: 100%;
 	}
 }
@@ -79,6 +91,10 @@
 
 	&.image_gallery__prev {
 		transform: rotate(180deg) translateY(50%);
+	}
+
+	@media print {
+		display: none;
 	}
 }
 
