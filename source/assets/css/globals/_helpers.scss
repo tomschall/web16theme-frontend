@@ -30,6 +30,10 @@ body.prevent-scroll {
 
 	display: inline-block;
 	float: left;
+
+	@media print {
+		display: none;
+	}
 }
 
 .element-hidden {
