@@ -12,13 +12,15 @@ $colorAvailabilityRed: #f05f1b;
 		}
 
 		button {
-
+			@media print {
+				border-bottom: 2pt solid $colorMouseoverGrau;
+			}
 		}
 	}
 
 	@media print {
-		display: contents;
-		width: 50%;
+		display: block;
+		width: 100%;
 	}
 }
 
@@ -69,13 +71,14 @@ $colorAvailabilityRed: #f05f1b;
 		}
 
 		@media print {
-			color: $colorBlack;
-			display: contents;
-			background: transparent;
-			font-weight: 700;
+			display: block;
+			left: 0;
+			width: 100%;
 			padding: 0;
 			margin: 0;
-			width: 50%;
+			color: $colorBlack;
+			background: transparent !important;
+			font-weight: 700;
 		}
 	}
 
@@ -137,6 +140,11 @@ $colorAvailabilityRed: #f05f1b;
 			position: relative;
 			font-weight: 700;
 			line-height: 1.4;
+
+			@media print {
+				width: 100% !important;
+				padding: 0;
+			}
 		}
 
 		.button__date {
@@ -146,6 +154,20 @@ $colorAvailabilityRed: #f05f1b;
 			& span + span {
 				width: 220px;
 				display: inline-block;
+
+				@media print {
+					width: 100%;
+					padding: 0;
+					margin: 0;
+				}
+			}
+
+			@media print {
+				position: relative;
+				float: left;
+				left: 0 !important;
+				width: 100%;
+				font-size: 10pt;
 			}
 		}
 
@@ -167,6 +189,10 @@ $colorAvailabilityRed: #f05f1b;
 				border-radius: 50%;
 				background-color: $colorBlack;
 				margin-left: 8px;
+
+				@media print {
+					display: none;
+				}
 			}
 
 			&.state-red:after {
@@ -175,6 +201,10 @@ $colorAvailabilityRed: #f05f1b;
 
 			&.state-green:after {
 				background-color: $colorAvailabilityGreen;
+			}
+
+			@media print {
+				display: none !important;
 			}
 		}
 
@@ -306,8 +336,14 @@ div.widg_accordeon__button {
 		min-height: buttonHeight(mobile);
 	}
 
+	& a.button.button__apply {
+		@media print {
+			display: none;
+		}
+	}
+
 	@media print {
-		display: none;
+		border-bottom: 2pt solid $colorGreyHover;
 	}
 }
 
@@ -387,7 +423,12 @@ div.widg_accordeon__button {
 
 		@media print {
 			padding-top: 0;
-			// padding-bottom: $basicPush * 2;
+		}
+	}
+
+	a.button.button__apply {
+		@media print {
+			display: none !important;
 		}
 	}
 

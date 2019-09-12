@@ -230,6 +230,10 @@ table.content__table {
 			}
 		}
 	}
+
+	@media print {
+		width: 100%;
+	}
 }
 
 table.content__table__backcomp {
@@ -267,6 +271,10 @@ table.content__table__backcomp {
 				border-bottom: none;
 			}
 		}
+	}
+
+	@media print {
+		width: 100%;
 	}
 }
 
