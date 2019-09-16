@@ -115,6 +115,7 @@ $facebookBlueDark: #2d4785;
 
 	.print_me {
 		background-color: $mailToGrey;
+		cursor: pointer;
 
 		.some-icon {
 			background-color: $mailToDarkGrey;
@@ -135,6 +136,10 @@ $facebookBlueDark: #2d4785;
 		&:hover {
 			opacity: 0.8;
 		}
+	}
+
+	@media print {
+		display: none;
 	}
 }
 

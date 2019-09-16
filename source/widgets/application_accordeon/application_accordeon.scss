@@ -1,4 +1,5 @@
 .widg_application_accordeon {
+
 	.button__apply {
 		@include mq($to: medium) {
 			display: none;
@@ -13,6 +14,13 @@
 		dt,
 		dd {
 			border-bottom: none;
+
+			@media print {
+				display: block;
+				float: left;
+				width: 50%;
+				font-size: 10pt;
+			}
 		}
 
 		dl > div {
@@ -40,6 +48,10 @@
 				transform: translateY(-1px);
 				margin-right: 8px;
 			}
+
+			@media print {
+				display: none;
+			}
 		}
 
 		.button__apply___inside {
@@ -48,6 +60,12 @@
 			@include mq($to: medium) {
 				display: inline-block;
 			}
+		}
+
+		@media print {
+			display: block;
+			width: 100%;
+			margin-bottom: 5pt;
 		}
 	}
 }

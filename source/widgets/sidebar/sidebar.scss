@@ -55,6 +55,15 @@ $sidebarObjectPush: $basicPush * 5;
 		@include mq($from: wide) {
 			right: $pagePaddingWide - $gutterWidth;
 		}
+
+		@media print {
+			position: relative;
+			margin: 0 !important;
+			padding: 0 !important;
+			left: 0;
+			@include span(12);
+			@include clearfix();
+		}
 	}
 
 	&.sticky {
@@ -65,6 +74,16 @@ $sidebarObjectPush: $basicPush * 5;
 		@include mq($from: 'subnav') {
 			overflow: hidden;
 		}
+	}
+
+	@media print {
+		display: block;
+		position: relative !important;
+		float: left;
+		left: 0 !important;
+		padding: 0;
+		margin: 0;
+		width: 100%;
 	}
 }
 
@@ -83,13 +102,31 @@ $sidebarObjectPush: $basicPush * 5;
 
 		.object__title {
 			cursor: pointer;
+
+			@media print {
+				display: block;
+				position: relative;
+				width: 100%;
+				float: left;
+				padding: 10pt 0;
+				margin: 0;
+			}
 		}
 
 		.object__content {
 			overflow: hidden;
 			transition: max-height $transitionLength / 2 $transitionEase,
-					padding-top $transitionLength / 2 $transitionEase,
-					padding-bottom $transitionLength / 2 $transitionEase;
+			padding-top $transitionLength / 2 $transitionEase,
+			padding-bottom $transitionLength / 2 $transitionEase;
+
+			@media print {
+				display: unset;
+				
+				img {
+					margin-top: 10pt;
+					width: 150px !important;
+				}
+			}
 		}
 
 		&:not(:last-child),
@@ -118,6 +155,10 @@ $sidebarObjectPush: $basicPush * 5;
 	&:after {
 		clear: both;
 	}
+
+	@media print {
+		// display: none;
+	}
 }
 
 .widg_sidebar__object {
@@ -134,6 +175,10 @@ $sidebarObjectPush: $basicPush * 5;
 			left: -1 * $sidebarObjectGutter;
 			right: -1 * ($sidebarObjectGutter + 12 + 8);
 		}
+
+		@media print {
+			display: none;
+		}
 	}
 
 	.is_requested {
@@ -142,6 +187,10 @@ $sidebarObjectPush: $basicPush * 5;
 
 	@include mq($to: 'subnav') {
 		border: none;
+	}
+
+	@media print {
+		border: 0;
 	}
 }
 
@@ -167,6 +216,10 @@ $sidebarObjectPush: $basicPush * 5;
 		opacity: 0;
 
 		transition: all $transitionLength / 2 $transitionEase;
+
+		@media print {
+			display: none;
+		}
 	}
 
 	> h2 {
@@ -189,6 +242,21 @@ $sidebarObjectPush: $basicPush * 5;
 			background-color: $colorGreyHover;
 
 			transition: left $transitionLength $transitionEase, right $transitionLength $transitionEase;
+
+			@media print {
+				display: none;
+			}
+		}
+
+		@media print {
+			padding: 15pt 0 3pt 0;
+			border-bottom: 3pt solid $colorLightGray;
+			color: $colorBlack;
+			// display: block;
+			// position: relative;
+			// float: left;
+			// width: 100%;
+			// margin: 0;
 		}
 	}
 
@@ -224,6 +292,10 @@ $sidebarObjectPush: $basicPush * 5;
 			left: -1 * $sidebarObjectGutter;
 			right: -1 * ($sidebarObjectGutter + 12 + 8);
 		}
+
+		@media print {
+			display: none;
+		}
 	}
 
 	.unfolded & {
@@ -242,6 +314,10 @@ $sidebarObjectPush: $basicPush * 5;
 
 	.is_pushed & {
 		transition: top $transitionLength / 2 $transitionEase, margin-top $transitionLength / 2 $transitionEase;
+	}
+
+	@media print {
+		padding: 0;
 	}
 }
 
@@ -264,6 +340,15 @@ $sidebarObjectPush: $basicPush * 5;
 		transition: top $transitionLength / 2 $transitionEase;
 
 		border-top: 0;
+	}
+
+	@media print {
+		padding: 0;
+		margin: 0;
+
+		a.button.small_button {
+			display: none;
+		}
 	}
 }
 
@@ -335,5 +420,15 @@ $sidebarObjectPush: $basicPush * 5;
 		&:last-of-type {
 			margin-bottom: 0;
 		}
+
+		@media print {
+			font-size: 10pt;
+		}
+	}
+}
+
+.widg_sidebar_application.widg_sidebar__object.displayed.look-unfoldable {
+	@media print {
+		display: none
 	}
 }

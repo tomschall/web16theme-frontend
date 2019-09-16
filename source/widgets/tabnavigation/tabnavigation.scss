@@ -4,8 +4,11 @@
 
 	.widg_tabnavigation__nav {
 		margin-top: $basicPush * 4.5;
-	}
 
+		@media print {
+			display: none;
+		}
+	}
 }
 
 .widg_tabnavigation__nav {
@@ -51,6 +54,10 @@
 			border-bottom: none;
 		}
 	}
+
+	@media print {
+		margin: 0;
+	}
 }
 
 .widg_tabnavigation__content .content__entry {
@@ -60,6 +67,10 @@
 
 	&.is_active {
 		display: block;
+
+		@media print {
+			padding: 0;
+		}
 
 	}
 
@@ -74,6 +85,10 @@
 
 	@include mq($to: medium) {
 		padding: 0 18px 12px 18px;
+	}
+
+	@media print {
+		display: contents;
 	}
 }
 
@@ -145,5 +160,9 @@
 		&:after {
 			transform: translateY(-50%) rotate(90deg);
 		}
+	}
+
+	@media print {
+		display: none;
 	}
 }

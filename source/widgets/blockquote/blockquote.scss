@@ -18,6 +18,11 @@
 			margin-bottom: $basicPush * 3.5;
 		}
 	}
+
+	@media print {
+		padding-top: 10pt;
+		padding-bottom: 10pt;
+	}
 }
 
 .blockquote__img {
@@ -32,6 +37,10 @@
 	@include mq($to: medium) {
 		@include span(12);
 	}
+
+	@media print {
+			@include span(3);
+	}
 }
 
 .blockquote__quote {
@@ -43,8 +52,6 @@
 		font-family: $fontNoTo;
 		font-style: italic;
 		font-size: 2rem;
-		//color: #000;
-
 		line-height: 2;
 
 		@include mq($to: small) {
@@ -53,6 +60,11 @@
 
 		@include mq($to: small) {
 			font-size: 1.7rem;
+		}
+
+		@media print {
+			float: left;
+			font-size: 10pt;
 		}
 	}
 
@@ -75,6 +87,15 @@
 		@include mq($to: medium) {
 			@include span(12);
 		}
+
+		@media print {
+			@include span(8);
+		}
+	}
+
+	@media print {
+		// margin-left: 20pt;
+		// margin-right: 20pt;
 	}
 }
 

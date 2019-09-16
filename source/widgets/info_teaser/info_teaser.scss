@@ -65,6 +65,11 @@
 						}
 					}
 				}
+
+				@media print {
+					font-size: 10pt;
+					padding: 0;
+				}
 			}
 
 			&:hover {
@@ -77,6 +82,10 @@
 						transform: none;
 					}
 				}
+			}
+
+			@media print {
+				display: contents;
 			}
 		}
 	}

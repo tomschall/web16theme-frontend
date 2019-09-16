@@ -21,5 +21,14 @@
       transform: translateY(-1px);
       margin-right: 8px;
     }
+
+    @media print {
+      display: none;
+    }
+  }
+
+  @media print {
+    background: none !important;
+    padding-left: 0;
   }
 }

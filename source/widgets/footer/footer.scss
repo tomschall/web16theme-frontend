@@ -12,6 +12,10 @@
 .widg_inner-footer {
 	background-color: $colorBlack;
 	padding-bottom: $basicPush;
+
+  @media print {
+    display: none;
+  }
 }
 
 .widg_footer__adress-claim {

@@ -30,6 +30,10 @@ body.prevent-scroll {
 
 	display: inline-block;
 	float: left;
+
+	@media print {
+		display: none;
+	}
 }
 
 .element-hidden {
@@ -43,6 +47,10 @@ body.prevent-scroll {
 		display: block;
 		max-width: 100vw;
 		margin-bottom: 2rem;
+	}
+
+	@media print {
+		display: none !important;
 	}
 }
 
