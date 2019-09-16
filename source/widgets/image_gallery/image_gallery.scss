@@ -1,10 +1,20 @@
 .widg_image_gallery {
 
+	.slick-list {
+		@media print {
+			width: 100% !important;
+		}
+	}
+
 	.no-legend {
 		margin-bottom: 37px;
 	}
 	.slick-slider .slick-track {
 		margin: 0 auto;
+
+		@media print {
+			width: 100% !important;
+		}
 	}
 
 	.slick-slide {
@@ -20,6 +30,10 @@
 	}
 	.image_gallery__slide img {
 		width: 100%;
+
+		@media print {
+			width: 100% !important;
+		}
 	}
 
 	@media print {
@@ -45,12 +59,12 @@
 	@include iconDataurl('pfeil-weiss');
 
   	@media screen {
-		&:before {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
+			&:before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
 
 		&:hover {
 			opacity: 1;
@@ -94,7 +108,7 @@
 	}
 
 	@media print {
-		display: none;
+		display: none !important;
 	}
 }
 
