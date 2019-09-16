@@ -6,6 +6,13 @@ body {
 	margin: 0;
 }
 
+.page_content {
+	p + h2 {
+		margin-top: 30pt;
+	}
+}
+
+// Display none content
 a, button, .widg_contact__entry {
 	font-size: 10pt;
 	margin-bottom: 10pt;
@@ -26,7 +33,7 @@ a, button, .widg_contact__entry {
 		display: none;
 	}
 }
-
+.slider-nav-thumbnails,
 .button.anchor-link,
 #locations,
 .widg_follow_us,

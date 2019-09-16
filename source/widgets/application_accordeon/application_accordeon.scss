@@ -1,4 +1,5 @@
 .widg_application_accordeon {
+
 	.button__apply {
 		@include mq($to: medium) {
 			display: none;
