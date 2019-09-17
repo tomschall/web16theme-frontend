@@ -33,6 +33,9 @@ a, button, .widg_contact__entry {
 		display: none;
 	}
 }
+
+.responsive-video,
+.responsive-video__small,
 .slider-nav-thumbnails,
 .button.anchor-link,
 #locations,
@@ -40,4 +43,9 @@ a, button, .widg_contact__entry {
 .button__secondary,
 .widg_in_content_search {
 	display: none !important;
+}
+
+/* DEV specific stuff */
+body.is-env-dev.widg_header {
+	background-color: none !important;
 }

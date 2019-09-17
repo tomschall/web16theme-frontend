@@ -1,19 +1,17 @@
 .widg_image_gallery {
 
-	.slick-list {
-		@media print {
-			width: 100% !important;
-		}
-	}
-
 	.no-legend {
 		margin-bottom: 37px;
 	}
 	.slick-slider .slick-track {
 		margin: 0 auto;
+	}
+
+	.slick-track {
 
 		@media print {
-			width: 100% !important;
+			display: unset !important;
+			width: 100% !important
 		}
 	}
 
@@ -21,17 +19,22 @@
 		outline: none;
 
 		@media print {
-			display: block;
-			position: relative;
-			float: left;
-			left: 0;
-			visibility: visible;
+			width: 100% !important;
+		}
+
+		.slide-cloned {
+			@media print {
+				display: none !important;
+			}
 		}
 	}
+
 	.image_gallery__slide img {
 		width: 100%;
 
 		@media print {
+			position: relative;
+			float: left;
 			width: 100% !important;
 		}
 	}
@@ -149,6 +152,13 @@
 
 	display: block;
 	color: $colorTextGrey;
+
+	@media print {
+		display: block;
+		float: left;
+		margin-top: 10pt;
+		font-size: 10pt !important;
+	}
 }
 
 @include mq($to: small) {
@@ -162,7 +172,11 @@
 		top: 97%
 	}
 	.image_gallery__slider .stick-list {
-		margin-bottom: calc(320px - 43vw)
+		margin-bottom: calc(320px - 43vw);
+
+		@media print {
+
+		}
 	}
 	.image_gallery__legend {
 		padding-bottom: 0;
