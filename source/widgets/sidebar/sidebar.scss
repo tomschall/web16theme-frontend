@@ -69,6 +69,10 @@ $sidebarObjectPush: $basicPush * 5;
 	&.sticky {
 		+ .min_height_lock {
 			display: block;
+
+			@media print {
+				display: none;
+			}
 		}
 
 		@include mq($from: 'subnav') {
@@ -121,7 +125,7 @@ $sidebarObjectPush: $basicPush * 5;
 
 			@media print {
 				display: unset;
-				
+
 				img {
 					margin-top: 10pt;
 					width: 150px !important;
