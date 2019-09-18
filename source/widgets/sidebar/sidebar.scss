@@ -351,7 +351,7 @@ $sidebarObjectPush: $basicPush * 5;
 		margin: 0;
 
 		a.button.small_button {
-			display: none;
+			display: none !important;
 		}
 	}
 }
