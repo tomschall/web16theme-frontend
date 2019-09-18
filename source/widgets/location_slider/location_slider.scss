@@ -145,6 +145,10 @@ nav.widg_location__nav {
 	@include mq($to: 'medium') {
 		height: 300px;
 	}
+
+	@media print {
+		height: auto;
+	}
 }
 
 .location__info {

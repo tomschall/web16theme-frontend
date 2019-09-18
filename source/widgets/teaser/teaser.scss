@@ -21,6 +21,10 @@
 
 			}
 		}
+
+		@media print {
+			background-color: none;
+		}
 	}
 
 	h3 {
@@ -102,6 +106,7 @@
 	}
 
 	@media print {
+		width: 100%;
 		padding-bottom: 0;
 		margin-bottom: 10pt;
 		border-bottom: 0;
