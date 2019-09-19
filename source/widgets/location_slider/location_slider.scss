@@ -9,6 +9,7 @@ $infoPadding: 34px;
   overflow: hidden;
 
 	@media print {
+		top: 0 !important;
 		margin-left: 0;
 	}
 }
@@ -121,6 +122,10 @@ nav.widg_location__nav {
 				}
 			}
 		}
+	}
+
+	@media print {
+		margin-top: 0 !important;
 	}
 }
 
