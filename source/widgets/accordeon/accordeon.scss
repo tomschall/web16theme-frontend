@@ -21,6 +21,7 @@ $colorAvailabilityRed: #f05f1b;
 	@media print {
 		display: block;
 		width: 100%;
+		height: auto !important;
 	}
 }
 
