@@ -37,7 +37,7 @@ $sidebarObjectPush: $basicPush * 5;
 	&.sticky,
 	.widg_sidebar__accordion {
 		position: fixed;
-		width: calc(20.6% - 15px);
+		width: calc(20.6% - 20px);
 
 		/* mimick .layout_content's padding-right */
 		right: $pagePadding - $gutterWidth;
