@@ -147,7 +147,7 @@ nav.widg_location__nav {
 	}
 
 	@media print {
-		height: auto;
+		height: auto !important;
 	}
 }
 
