@@ -86,7 +86,7 @@
 		while (widg_sidebar_style.firstChild) {
 			widg_sidebar_style.removeChild(widg_sidebar_style.firstChild);
 		}
-		widg_sidebar_style.appendChild(document.createTextNode('.widg_sidebar__object.unfolded .object__content { max-height: ' + max_height + 'px; }'));
+		widg_sidebar_style.appendChild(document.createTextNode('.widg_sidebar__object.unfolded .object__content { max-height: ' + max_height + 'px; top: 0; }'));
 	}
 
 	function initCurrentSize() {
