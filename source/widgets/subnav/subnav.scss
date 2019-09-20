@@ -1,5 +1,6 @@
 .widg_subnav {
 	transform: translateY(-1 * $contentMarginTop - $smallElementHeight);
+	top: 0;
 
 	&.min_height_lock {
 		float: left;
