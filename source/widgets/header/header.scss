@@ -163,6 +163,10 @@ body.is-env-test .widg_header {
 
 		transition: opacity $transitionLength $transitionEase;
 	}
+
+	.widg_logo {
+		width: 40%;
+	}
 }
 
 @include mq($from: medium) {
