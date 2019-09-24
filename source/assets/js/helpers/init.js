@@ -90,16 +90,5 @@
 			}
 		}
 	});
-
-	/* Engl. Logo size */
-	var windowWidth = $(window).width();
-	var currentLanguage = $('html')[0].lang;
-
-	if (windowWidth >= 1022 && currentLanguage === 'en') {
-		console.log('language englisch -> window size greater than 1022');
-		$('.widg_logo img').css('width', '220px');
-	} else {
-		$('.widg_logo img').css('width', 'unset');
-	}
-
+	
 })(jQuery);
