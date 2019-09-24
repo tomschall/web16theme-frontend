@@ -1,13 +1,13 @@
 .widg_logo {
-	// height: 35px;
 	position: relative;
 	top: 0;
+	// height: 35px;
 
 	@include mq($to: medium) {
 		top: $basicPush;
 	}
 
-	width: 44%;
+	width: 200%;
 	overflow: hidden;
 
 	@include mq($to: tiny) {
