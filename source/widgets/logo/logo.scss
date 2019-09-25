@@ -10,7 +10,7 @@
 	width: 335px;
 	overflow: hidden;
 
-	@include mq($to: tiny) {
+	@include mq($to: 540px) {
 		width: 110px;
 		overflow: hidden;
 	}
