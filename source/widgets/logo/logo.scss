@@ -32,6 +32,7 @@
 		@include mq($from: 1023px) {
 			img[src*="university-applied-sciences-arts-northwestern-switzerland-fhnw-logo"] {
 				width: 220px;
+				transition: all $carouselTransitionSpeed / 6 $transitionEase;
 			}
 		}
 	}
