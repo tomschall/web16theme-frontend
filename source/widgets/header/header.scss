@@ -163,6 +163,17 @@ body.is-env-test .widg_header {
 
 		transition: opacity $transitionLength $transitionEase;
 	}
+
+	/* Hide logo text when menu is shrinked */
+	.widg_logo {
+		width: 40%;
+		transition: all $carouselTransitionSpeed / 6 $transitionEase;
+
+		& a img[src*="university-applied-sciences-arts-northwestern-switzerland-fhnw-logo"] {
+			width: 312px;
+			transition: all $carouselTransitionSpeed / 6 $transitionEase;
+		}
+	}
 }
 
 @include mq($from: medium) {
