@@ -166,7 +166,7 @@ body.is-env-test .widg_header {
 
 	/* Hide logo text when menu is shrinked */
 	.widg_logo {
-		width: 40%;
+		width: 95px;
 		transition: all $carouselTransitionSpeed / 6 $transitionEase;
 
 		& a img[src*="university-applied-sciences-arts-northwestern-switzerland-fhnw-logo"] {

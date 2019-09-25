@@ -4,10 +4,10 @@
 	// height: 35px;
 
 	@include mq($to: medium) {
-		top: $basicPush;
+		top: $basicPush + 4;
 	}
 
-	width: 200%;
+	width: 335px;
 	overflow: hidden;
 
 	@include mq($to: tiny) {
