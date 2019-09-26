@@ -165,3 +165,16 @@ h3:not(.childless) {
 		display: none;
 	}
 }
+
+/* Logo: wider english logo for startpage webteam/fhnw.webauftritt#1402 */
+.page_wrapper.header__wide {
+	.widg_header {
+		.widg_header__inner-top {
+			.widg_logo {
+				& a img[src*="university-applied-sciences-arts-northwestern-switzerland-fhnw-logo"] {
+					width: 230px !important;
+				}
+			}
+		}
+	}
+}
