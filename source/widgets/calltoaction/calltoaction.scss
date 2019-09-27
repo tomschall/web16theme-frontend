@@ -1,167 +1,68 @@
 .widg_calltoaction {
 	position: absolute;
-	opacity: 0.7;
+	top: 50%;
+	right: 20%;
 
-	@include mq($to: 528px) {
-		width: 25%;
-		top: 21%;
-		right: 28%;
+	&.circle {
+		width: 200px;
+		height: 200px;
+		border-radius: 100px;
+		font-size: 20px;
+		color: #000;
+		background: #fff;
+		margin: auto;
+	  padding: 20px;
+		border: $basicPush - 5 solid $colorYellow;
+		box-shadow:1px 1px 2px #000;
+
+		@include mq($to: small) {
+			width: 150px;
+			height: 150px;
+			top: 30%;
+			right: 10%;
+		}
 	}
 
-	@include mq($from: 528px) {
-		width: 22%;
-		padding-top: 5%;
-		top: 20%;
-		right: 20%;
+	.quote {
+		display: table-cell;
+    vertical-align: middle;
+    height: 170px;
+		width: 200px;
+		text-align: center;
+
+		a {
+			text-decoration: none;
+
+			h2 {
+				font-family: $fontNoTo !important;
+				border-bottom: 0 !important;
+
+				@include mq($to: small) {
+					font-size: 1rem;
+				}
+			}
+		}
+
+		@include mq($to: small) {
+			height: 120px;
+		}
 	}
+
 	@include mq($from: small) {
-		width: 20%;
 		top: 40%;
 		right: 20%;
 	}
+
 	@include mq($from: medium) {
 		width: 15%;
 		top: 35%;
-		right: 20%;
+		right: 10%;
 	}
+
 	@include mq($from: large) {
-		width: 12%;
+		// width: 12%;
 		top: 50%;
-		right: 30%;
-	}
-
-	margin-top: $basicPush * 4;
-	margin-left: 1%;
-
-	.ch-item {
-		width: 100%;
-		height: 100%;
-		border-radius: 50%;
-		position: relative;
-		box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-		cursor: default;
-	}
-
-	.ch-info-wrap {
-		position: absolute;
-		width: 199px;
-		height: 199px;
-		border-radius: 50%;
-
-		perspective: 800px;
-		transition: all 0.4s ease-in-out;
-
-		top: 20px;
-		left: 20px;
-		background: #000 url('https://webteam.pages.fhnw.ch/web16theme-frontend/assets/media/img/nw-dark.png');
-		box-shadow: 0 0 0 20px rgba(255,255,255,0.3), inset 0 0 3px rgba(0,0,0, 0.8);
-	}
-
-	.ch-info {
-		position: absolute;
-		width: 200px;
-		height: 200px;
-		border-radius: 50%;
-
-		transition: all 0.4s ease-in-out;
-		transform-style: preserve-3d;
-		box-shadow: 0 0 0 10px rgba(0,0,0,0.2), inset 0 0 3px rgba(255,255,255,0.8);
-	}
-
-	.ch-info > div {
-		display: block;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		border-radius: 50%;
-		background-position: center center;
-		backface-visibility: hidden;
-	}
-
-	.ch-info .ch-info-back {
-		transform: rotate3d(0,1,0,180deg);
- 		background: #fde70e;
-	}
-
-	.ch-img-1 {
-		background-image: none;
-	}
-
-	.ch-img-2 {
-		background-image: url(https://webteam.pages.fhnw.ch/web16theme-frontend/assets/media/img/blockquote_bg.png);
-	}
-
-	.ch-img-3 {
-		background-image: url(https://webteam.pages.fhnw.ch/web16theme-frontend/assets/media/img/beard.jpg);
-	}
-
-	.ch-info h3, .ch-info-front h2 {
-		color: #000;
-		text-transform: uppercase;
-		text-align: center;
-		letter-spacing: 2px;
-		font-size: 14px;
-		margin: 0 15px;
-		padding: 60px 0 0 0;
-		height: 90px;
-		text-shadow:
-			0 0 1px #fff,
-			0 1px 2px rgba(0,0,0,0.3);
-	}
-
-	.ch-info-front h2 {
-		font-size: 1.5rem !important;
-		color: #fff;
-		border-bottom: none !important;
-		padding: ($basicPush * 5.4) ($basicPush - 4) ;
-	}
-
-	.ch-info-back a {
-		text-decoration: none;
-		float: left;
-	}
-
-	.ch-info-back span.widg_teaser__arrow {
-		right: 100px;
-		top: 80%;
-	}
-
-	.ch-info p {
-		color: #000;
-		padding: 10px 5px;
-		font-style: italic;
-		font-family: $fontNoTo;
-		text-align: center;
-		margin: 0 30px;
-		font-size: 12px;
-		border-top: 1px solid rgba(0,0,0,0.5);
-	}
-
-	.ch-info p a {
-		display: block;
-		color: #fff;
-		color: rgba(255,255,255,0.7);
-		font-style: normal;
-		font-weight: 700;
-		text-transform: uppercase;
-		font-size: 9px;
-		letter-spacing: 1px;
-		padding-top: 4px;
-	}
-
-	.ch-info p a:hover {
-		color: #fff222;
-		color: rgba(255,242,34, 0.8);
-	}
-
-	.ch-item:hover .ch-info-wrap {
-		box-shadow:
-			0 0 0 0 rgba(255,255,255,0.8),
-			inset 0 0 3px rgba(115,114, 23, 0.8);
-	}
-
-	.ch-item:hover .ch-info {
-		transform: rotate3d(0,1,0,-180deg);
+		right: 10%;
 	}
 
 	@media print {
