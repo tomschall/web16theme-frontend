@@ -5,15 +5,22 @@
 
 	&.circle {
 		width: 200px;
-		height: 200px;
-		border-radius: 100px;
-		font-size: 20px;
-		color: #000;
-		background: #fff;
-		margin: auto;
-	  padding: 20px;
-		border: $basicPush - 5 solid $colorYellow;
-		box-shadow:1px 1px 2px #000;
+    height: 200px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #000;
+    background: #fff;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 2px 2px 5px 2px #4c4c4c;
+    transition-duration: 0.5s;
+    transition-property: box-shadow, transform, background-color;
+
+		&:hover {
+			box-shadow: 2px 2px 5px 0px #4c4c4c;
+			transform: translateY(-20px);
+			background-color: #FDE70E;
+		}
 
 		@include mq($to: small) {
 			width: 150px;
@@ -34,7 +41,6 @@
 			text-decoration: none;
 
 			h2 {
-				font-family: $fontNoTo !important;
 				border-bottom: 0 !important;
 
 				@include mq($to: small) {
@@ -55,14 +61,14 @@
 
 	@include mq($from: medium) {
 		width: 15%;
-		top: 35%;
-		right: 10%;
+		top: 70%;
+		right: 23%;
 	}
 
 	@include mq($from: large) {
 		// width: 12%;
-		top: 50%;
-		right: 10%;
+		top: 72%;
+		right: 26%;
 	}
 
 	@media print {
