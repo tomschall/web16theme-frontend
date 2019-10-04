@@ -16,24 +16,24 @@
     transition-duration: 0.5s;
     transition-property: box-shadow, transform, background-color;
 
-		&:hover {
-			box-shadow: 2px 2px 5px 0px #4c4c4c;
-			transform: translateY(-20px);
-			background-color: #FDE70E;
-		}
-
-		@include mq($to: small) {
-			width: 150px;
-			height: 150px;
-			top: 30%;
-			right: 10%;
-		}
+	&:hover {
+		box-shadow: 2px 2px 5px 0px #4c4c4c;
+		transform: translateY(-20px);
+		background-color: #FDE70E;
 	}
+
+	@include mq($to: small) {
+		width: 150px;
+		height: 150px;
+		top: 30%;
+		right: 10%;
+	}
+}
 
 	.quote {
 		display: table-cell;
     vertical-align: middle;
-    height: 170px;
+    height: 180px;
 		width: 200px;
 		text-align: center;
 
