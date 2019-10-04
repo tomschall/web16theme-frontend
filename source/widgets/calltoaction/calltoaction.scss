@@ -42,6 +42,7 @@
 
 			h2 {
 				border-bottom: 0 !important;
+				font-weight: 100;
 
 				@include mq($to: small) {
 					font-size: 1rem;
