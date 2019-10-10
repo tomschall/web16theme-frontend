@@ -32,13 +32,6 @@
 			});
 		}
 
-
-		$('.widg_hero__img').imageScale({
-			rescaleOnResize: true,
-			scale: 'best-fill',
-			align: 'top-right'
-		});
-
 		function initScale(el) {
 			if ($(el).data('imageScale')) {
 				return;

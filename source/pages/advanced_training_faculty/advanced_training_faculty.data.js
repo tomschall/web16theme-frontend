@@ -18,6 +18,7 @@ var data = _.merge(defaultData, {
 			navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 			footer: requireNew('../../widgets/footer/footer.data.js'),
 			hero: _.assign({
+				isHero2: false,
 				heroImage: '/assets/media/img/cas_eingl_mgmt_hero.png',
 				heroAlt: 'Symbolbild',
 				breadcrumb: {
