@@ -12,7 +12,9 @@
 	{{/if}}
 
 	{{#if CallToAction.hasCallToAction}}
-		{{> "widgets/calltoaction/calltoaction" widgets.calltoaction}}
+		<div class="widg_callToAction__wrapper{{#if CallToAction.hasCallToActionDesktop}}{{else}} cta_hide_desktop{{/if}}{{#if CallToAction.hasCallToActionMobile}}{{else}} cta_hide_mobile{{/if}}">
+			{{> "widgets/calltoaction/calltoaction" widgets.calltoaction}}
+		</div>
 	{{/if}}
 
 </div>

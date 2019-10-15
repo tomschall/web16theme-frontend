@@ -30,11 +30,16 @@ var templateData = {
 						'extraClasses': ''
 					}
 				]
+			},
+			CallToAction: {
+				hasCallToAction: true,
+				hasCallToActionDesktop: true,
+				hasCallToActionMobile: false
 			}
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'TopBild | WI_043',
+				title: 'Hero - Top Bild | WI_043',
 				description: '',
 				code: dataHelper.getTemplateCode('hero.hbs'),
 				documentation: dataHelper.getDocumentation('hero.md'),

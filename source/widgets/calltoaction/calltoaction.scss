@@ -5,54 +5,54 @@
 
 	&.circle {
 		width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    font-size: 20px;
-    color: #000;
-    background: #fff;
-    margin: auto;
-    padding: 20px;
-    box-shadow: 2px 2px 5px 2px #4c4c4c;
-    transition-duration: 0.5s;
-    transition-property: box-shadow, transform, background-color;
+		height: 200px;
+		border-radius: 50%;
+		font-size: 20px;
+		color: #000;
+		background: #fff;
+		margin: auto;
+		padding: 20px;
+		box-shadow: 2px 2px 5px 2px #4c4c4c;
+		transition-duration: 0.5s;
+		transition-property: box-shadow, transform, background-color;
 
-	&:hover {
-		box-shadow: 2px 2px 5px 0px #4c4c4c;
-		transform: translateY(-20px);
-		background-color: #FDE70E;
-	}
-
-	@include mq($to: small) {
-		width: 150px;
-		height: 150px;
-		top: 30%;
-		right: 10%;
-	}
-}
-
-	.quote {
-		display: table-cell;
-    vertical-align: middle;
-    height: 180px;
-		width: 200px;
-		text-align: center;
-
-		a {
-			text-decoration: none;
-
-			h2 {
-				border-bottom: 0 !important;
-				font-weight: 100;
-
-				@include mq($to: small) {
-					font-size: 1rem;
-				}
-			}
+		&:hover {
+			box-shadow: 2px 2px 5px 0px #4c4c4c;
+			transform: translateY(-20px);
+			background-color: #FDE70E;
 		}
 
 		@include mq($to: small) {
-			height: 120px;
+			width: 150px;
+			height: 150px;
+			top: 30%;
+			right: 10%;
 		}
+	}
+
+	.quote {
+		display: table-cell;
+		vertical-align: middle;
+		height: 180px;
+			width: 200px;
+			text-align: center;
+
+			a {
+				text-decoration: none;
+
+				h2 {
+					border-bottom: 0 !important;
+					font-weight: 100;
+
+					@include mq($to: small) {
+						font-size: 1rem;
+					}
+				}
+			}
+
+			@include mq($to: small) {
+				height: 120px;
+			}
 	}
 
 	@include mq($from: small) {
@@ -75,4 +75,20 @@
 	@media print {
 		display: none;
 	}
+}
+
+.cta_hide_desktop {
+
+	@media (min-width: 1025px) {
+		display: none;
+	}
+
+}
+
+.cta_hide_mobile {
+
+	@media (max-width: 1024px) {
+		display: none;
+	}
+
 }
