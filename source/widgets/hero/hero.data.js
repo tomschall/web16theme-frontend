@@ -33,8 +33,10 @@ var templateData = {
 			},
 			CallToAction: {
 				hasCallToAction: true,
-				hasCallToActionDesktop: true,
-				hasCallToActionMobile: false
+				callToActionVisibleDesktop: true,
+				callToActionVisibleMobile: true,
+				title: 'Call To Action<br>Satisfaction',
+				url: 'https://webteam.pages.fhnw.ch/web16theme-frontend/pages/universities_overview/universities_overview.html'
 			}
 		},
 		data = _.merge(defaultData, {
