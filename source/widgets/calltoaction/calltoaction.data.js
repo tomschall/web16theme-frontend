@@ -6,7 +6,7 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
-			title: 'Call To Action',
+			title: 'Call To Action<br>Satisfaction',
 			text: 'Soon, there will be a Call To Action Button.',
 			buttonText: 'Mehr Informationen',
 			url: 'https://webteam.pages.fhnw.ch/web16theme-frontend/pages/universities_overview/universities_overview.html'
