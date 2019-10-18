@@ -11,7 +11,6 @@
 		color: #000;
 		background: #fff;
 		margin: auto;
-		padding: 20px;
 		box-shadow: 2px 2px 5px 2px #4c4c4c;
 		transition-duration: 0.5s;
 		transition-property: box-shadow, transform, background-color;
@@ -33,26 +32,28 @@
 	.quote {
 		display: table-cell;
 		vertical-align: middle;
-		height: 180px;
-			width: 200px;
-			text-align: center;
+		height: 200px;
+		width: 200px;
+		text-align: center;
 
-			a {
-				text-decoration: none;
+		a {
+			text-decoration: none;
 
-				h2 {
-					border-bottom: 0 !important;
-					font-weight: 100;
+			h2 {
+				border-bottom: 0 !important;
+				font-weight: 100;
+			  	padding: 90px 20px 90px 20px;
 
-					@include mq($to: small) {
-						font-size: 1rem;
-					}
+				@include mq($to: small) {
+					font-size: 1rem;
+				  	padding: 75px 20px 75px 20px;
 				}
 			}
+		}
 
-			@include mq($to: small) {
-				height: 120px;
-			}
+		@include mq($to: small) {
+			height: 120px;
+		}
 	}
 
 	@include mq($from: small) {
