@@ -30,10 +30,8 @@
 			height: 45px;
 		}
 
-		@include mq($from: 1023px) {
-			img[src*="university-applied-sciences-arts-northwestern-switzerland-fhnw-logo"] {
-				width: 200px;
-			}
+		img[src*="university-applied-sciences-arts-northwestern-switzerland-fhnw-logo"] {
+			height: 40px;
 		}
 	}
 
