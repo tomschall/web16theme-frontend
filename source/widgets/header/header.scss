@@ -166,11 +166,8 @@ body.is-env-test .widg_header {
 
 	/* Hide logo text when menu is shrinked */
 	.widg_logo {
-		width: 95px;
-
-		& a img[src*="university-applied-sciences-arts-northwestern-switzerland-fhnw-logo"] {
-			width: 312px;
-		}
+		width: 80px;
+		overflow: hidden;
 	}
 }
 
