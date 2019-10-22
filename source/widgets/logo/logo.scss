@@ -30,8 +30,10 @@
 			height: 45px;
 		}
 
-		img[src*="university-applied-sciences-arts-northwestern-switzerland-fhnw-logo"] {
-			height: 40px;
+		@include mq($from: medium) {
+			img[src*="university-applied-sciences-arts-northwestern-switzerland-fhnw-logo"] {
+				height: 40px;
+			}
 		}
 	}
 
