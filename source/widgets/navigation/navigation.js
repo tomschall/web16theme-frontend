@@ -182,7 +182,7 @@
 		}
 
 		if (headerWidth > 300 && targetLevel >= 2) {
-			pullLeft = pullLeft + (40 * (targetLevel - 1));
+			pullLeft = pullLeft + (targetLevel - 1);
 			console.log('greater 300');
 		}
 
