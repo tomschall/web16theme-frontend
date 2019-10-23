@@ -7,7 +7,7 @@
 	}
 
 	/* Breakpoint: Hiding logo text */
-	@include mq($to: 545px) {
+	@include mq($to: 560px) {
 		width: 110px;
 		overflow: hidden;
 	}
