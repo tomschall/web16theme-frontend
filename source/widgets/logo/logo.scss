@@ -1,14 +1,10 @@
 .widg_logo {
 	position: absolute;
 	top: 25px;
-	// height: 35px;
 
 	@include mq($to: medium) {
 		top: $basicPush + 4;
 	}
-
-	// width: 335px;
-	// overflow: hidden;
 
 	/* Breakpoint: Hiding logo text */
 	@include mq($to: 545px) {
@@ -21,7 +17,6 @@
 
 		@include mq($to: medium) {
 			padding: $basicPush * 2;
-			transform: translateY(50%);
 		}
 
 		cursor: pointer;
