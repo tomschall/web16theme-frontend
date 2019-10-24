@@ -42,11 +42,12 @@
 			h2 {
 				border-bottom: 0 !important;
 				font-weight: 100;
-			  	padding: 90px 20px 90px 20px;
+			  padding: 0;
+				margin: 10px;
 
 				@include mq($to: small) {
-					font-size: 1rem;
-				  	padding: 75px 20px 75px 20px;
+					font-size: 1.5rem;
+					padding: 25px 0;
 				}
 			}
 		}
@@ -63,7 +64,7 @@
 
 	@include mq($from: medium) {
 		width: 15%;
-		top: 70%;
+		top: 72%;
 		right: 23%;
 	}
 
