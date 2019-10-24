@@ -176,7 +176,7 @@
 				pullLeft = headerWidth * targetLevel - Number(targetLevel),
 				mobilePullLeft = -1 * targetLevel * 100;
 
-		if (headerWidth > 300 && targetLevel === 2) {
+		if (headerWidth > 300 && targetLevel >= 2) {
 			pullLeft = pullLeft + (40 * (targetLevel - 1));
 			console.log('greater 300');
 		}
