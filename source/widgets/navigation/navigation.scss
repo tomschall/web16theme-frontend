@@ -239,13 +239,6 @@ The Subwrappers only desktop
 		height: 100vh;
 	}
 
-	//Extended Header (Wide) only exists between betweener and wide
-	// @include mq($from: betweener, $to: wide) {
-	// 	.header__wide & {
-	// 		width: $widthYellowBarWide;
-	// 	}
-	// }
-
 	/**
     * Supersized YellowBar
     */
@@ -259,12 +252,6 @@ The Subwrappers only desktop
 		@include mq($from: wide) {
 			left: 350px;
 		}
-
-		// @include mq($from: betweener, $to: wide) {
-		// 	.header__wide & {
-		// 		left: 250px;
-		// 	}
-		// }
 	}
 
 	&[data-navigation-level="2"] {
@@ -273,12 +260,6 @@ The Subwrappers only desktop
 		@include mq($from: wide) {
 			left: 750px;
 		}
-
-		// @include mq($from: betweener, $to: wide) {
-		// 	.header__wide & {
-		// 		left: 550px;
-		// 	}
-		// }
 	}
 
 	&[data-navigation-level="3"] {
@@ -287,12 +268,6 @@ The Subwrappers only desktop
 		@include mq($from: wide) {
 			left: 1150px;
 		}
-
-		// @include mq($from: betweener, $to: wide) {
-		// 	.header__wide & {
-		// 		left: 850px;
-		// 	}
-		// }
 	}
 }
 
