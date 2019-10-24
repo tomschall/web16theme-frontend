@@ -53,7 +53,13 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		// console.log('Widget "call to action" initialized');
+		console.log('call to action init');
+		if ($('.widg_subnav__list ul li').length === 0) {
+			console.log('widg_subnav does not exists');
+			$('.widg_calltoaction').css({
+				'right': '5%',
+			});
+		}
 	};
 
 	/**
