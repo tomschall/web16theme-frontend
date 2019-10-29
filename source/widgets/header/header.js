@@ -84,6 +84,11 @@
 					this.addDynamicScrollMagic();
 				}
 			}
+
+			/* Shrinking engl. logo  webteam/fhnw.webauftritt#1402 */
+			if (document.documentElement.lang === 'en' && (this.$element.hasClass('is_shrinked'))) {
+				$('.widg_logo').css('width', '80px');
+			}
 		}.bind(this));
 
 		$(window).on('open.estatico.navigation.' + this.uuid, function() {
