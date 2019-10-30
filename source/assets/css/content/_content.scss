@@ -60,10 +60,13 @@ body {
 		}
 	}
 
-	img {
+  	img {
 	  	max-width: 100%;
 	  	height: auto;
-	  	@media screen and (min-width: 1224px) {
+	}
+
+	@media screen and (min-width: 1224px) {
+	  	img {
 		  	.fhnw-tiny-large {
 				max-width: 1100px;
 				width: 100%;
@@ -71,7 +74,7 @@ body {
 			.fhnw-tiny-onethird {
 				max-width: 1100px;
 				width: 33%;
-		  	}
+			}
 			.fhnw-tiny-square {
 				max-width: 1000px;
 				width: 50%;
@@ -81,13 +84,16 @@ body {
 				width: 30%;
 			}
 		}
-	  	@media (min-width: 320px) and (max-width: 1024px) {
+	}
+
+	@media (min-width: 320px) and (max-width: 1024px) {
+	  	img {
 		  	.fhnw-tiny-large {
 				width: 100%;
 			}
 			.fhnw-tiny-onethird {
 				width: 100%;
-		  	}
+			}
 			.fhnw-tiny-square {
 				width: 50%;
 			}
