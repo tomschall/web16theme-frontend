@@ -30,29 +30,34 @@
 	}
 
 	.quote {
-		display: table-cell;
-		vertical-align: middle;
-		height: 200px;
-		width: 200px;
-		text-align: center;
-
 		a {
 			text-decoration: none;
+			display: table-cell;
+			height: 200px;
+			width: 200px;
+			vertical-align: middle;
+
+			@include mq($to: small) {
+				height: 150px;
+				width: 150px;
+			}
 
 			h2 {
+				display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+				height: 200px;
+				width: 200px;
 				border-bottom: 0 !important;
 				font-weight: 100;
-			  padding: 0;
-				margin: 10px;
 
 				@include mq($to: small) {
 					font-size: 1.3rem;
+					height: 150px;
+					width: 150px;
+					padding-bottom: unset;
 				}
 			}
-		}
-
-		@include mq($to: small) {
-			height: 145px;
 		}
 	}
 
@@ -63,7 +68,7 @@
 
 	@include mq($from: medium) {
 		width: 15%;
-		top: 72%;
+		top: 62%;
 		right: 23%;
 	}
 
