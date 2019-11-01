@@ -66,10 +66,14 @@
 		right: 8%;
 	}
 
-	@include mq($from: 1278px) {
+	@include mq($to: 1278px) {
 		width: 15%;
 		top: 62%;
 		right: 8%;
+	}
+
+	@include mq($from: 1279px) {
+		right: 26%;
 	}
 
 	@include mq($from: large) {
