@@ -24,7 +24,7 @@
 		@include mq($to: small) {
 			width: 150px;
 			height: 150px;
-			top: 55%;
+			bottom: 10px;
 			right: 8%;
 		}
 	}
@@ -62,11 +62,11 @@
 	}
 
 	@include mq($from: small) {
-		top: 60%;
+		bottom: 0;
 		right: 8%;
 	}
 
-	@include mq($from: medium) {
+	@include mq($from: 1278px) {
 		width: 15%;
 		top: 62%;
 		right: 8%;
