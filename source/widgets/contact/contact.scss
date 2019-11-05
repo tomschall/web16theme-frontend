@@ -25,7 +25,7 @@
 	@include clearfix;
 
 	@include mq($from: medium) {
-		@include iconDataurl('pfeil-black');
+		//@include iconDataurl('pfeil-black');
 
 		&:before {
 			background-position: right;
