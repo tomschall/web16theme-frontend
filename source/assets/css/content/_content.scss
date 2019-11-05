@@ -16,7 +16,8 @@ body {
 }
 
 .content__element {
-	/*padding-bottom: $basicPush * 3;*/
+	font-size: 1.333rem;
+	line-height: 1.625;
 	padding-bottom: 0;
 
 	@include clearfix();
