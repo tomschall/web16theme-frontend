@@ -61,8 +61,6 @@
 	}
 
 	&.show-intro {
-		@include iconDataurl('fhnw_claim_only');
-
 		&:before {
 			position: absolute;
 			bottom: $basicPush * 3;
