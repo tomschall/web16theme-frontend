@@ -116,7 +116,7 @@
 	float: left;
 	width: 100%;
 
-	@include mq($to: medium) {
+	@include mq($to: tiny) {
 		@include iconDataurl('pfeil-black');
 	}
 
