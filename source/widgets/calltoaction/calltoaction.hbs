@@ -1,6 +1,6 @@
 <div class="widg_calltoaction circle" data-init="calltoaction">
 	<div class="quote">
-		<a href="{{../CallToAction.url}}">
+		<a href="{{../CallToAction.url}}" onclick="ga('send', 'event', 'C2A', '{{../CallToAction.url}}', '{{{../CallToAction.title}}}');" >
 			<h2>{{{../CallToAction.title}}}</h2>
 		</a>
 	</div>
