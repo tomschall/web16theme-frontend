@@ -50,7 +50,7 @@
 				width: 200px;
 				border-bottom: 0 !important;
 				font-weight: 500;
-				padding-bottom: unset;
+				padding-bottom: 0 !important;
 
 				@include mq($to: small) {
 					font-size: 1.3rem;
