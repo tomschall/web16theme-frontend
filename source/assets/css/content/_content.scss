@@ -96,7 +96,7 @@ body {
 	@media (min-width: 320px) and (max-width: 1024px) {
 	  	img {
 			&.fhnw-tiny-large {
-			  width: 100%;
+			  max-width: 100%;
 			}
 			&.fhnw-tiny-onethird {
 			  width: 100%;
