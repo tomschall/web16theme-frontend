@@ -179,38 +179,48 @@ The back arrow only visible on mobile navigation
 .widg_navigation__list[data-navigation-level="1"],
 .widg_navigation__list[data-navigation-level="2"],
 .widg_navigation__list[data-navigation-level="3"] {
-	ul li a {
+	ul {
+		li {
+			display: block;
 
-		font-size: 1.1666667rem;
-		padding-top: 15px;
-		padding-bottom: 14px;
-		font-weight: 600;
-		color: $colorTextGrey;
+			a {
+				font-size: 1.1666667rem;
+				padding-top: 15px;
+				padding-bottom: 14px;
+				font-weight: 600;
+				color: $colorTextGrey;
 
-		transition: all $transitionLength / 6 $transitionEase;
+				transition: all $transitionLength / 6 $transitionEase;
 
-		&:hover {
-			background-color: $colorSubNavHover;
-			color: $colorBlack;
+				&:hover {
+					background-color: $colorSubNavHover;
+					color: $colorBlack;
 
-			@include mq($to: small) {
-				background-color: $colorBg;
+					@include mq($to: small) {
+						background-color: $colorBg;
+					}
+				}
+
+				&.is_active,
+				&.is_active:hover {
+					background-color: $colorSubNavActive;
+					color: $colorBlack;
+				}
+			}
+
+			&:last-child {
+				margin-bottom: $basicPush * 5;
 			}
 		}
 
-		&.is_active,
-		&.is_active:hover {
-			background-color: $colorSubNavActive;
-			color: $colorBlack;
+		@include mq($to: medium) {
+			//Adding extra space for the list, iOS Bars prevent getting to the last link in the list
+			ul {
+				padding-bottom: $basicPush * 5;
+			}
 		}
 	}
 
-	@include mq($to: medium) {
-		//Adding extra space for the list, iOS Bars prevent getting to the last link in the list
-		ul {
-			padding-bottom: $basicPush * 5;
-		}
-	}
 }
 
 /**
