@@ -355,6 +355,7 @@ for better overview they are seperated here
 			left: calc(100vw - 40px);
 			// @TODO: if header top height changes, this has to be reflected here too
 			height: calc(100vh - 70px);
+			overflow-y: scroll;
 
 			transform: translate3D(0, 0, 0);
 
