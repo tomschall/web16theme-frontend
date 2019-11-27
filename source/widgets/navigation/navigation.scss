@@ -295,6 +295,7 @@ Subtitle for every additional layer (only desktop)
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	line-height: 1.7;
+	overflow: scroll;
 
 	position: absolute;
 	top: $basicPush * 1.4;
@@ -360,6 +361,7 @@ for better overview they are seperated here
 			// @TODO: if header top height changes, this has to be reflected here too
 			height: calc(100vh - 70px);
 			overflow-y: scroll;
+			-webkit-overflow-scrolling: touch;
 
 			transform: translate3D(0, 0, 0);
 
