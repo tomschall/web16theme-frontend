@@ -150,11 +150,6 @@ body.is-env-test .widg_header {
 		}
 
 		cursor: pointer;
-
-		&:hover,
-		&:focus {
-			background-color: $colorYellowBarHover;
-		}
 	}
 
 	.widg_header__nav,
