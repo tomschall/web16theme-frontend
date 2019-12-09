@@ -63,7 +63,7 @@
 		var optionsObj = {
 			default: 'center',
 			topLeft: 'top-left',
-			topCenter: 'center',
+			topCenter: 'top',
 			topRight: 'top-right',
 			centerLeft: 'left',
 			centerCenter: 'center',
