@@ -59,7 +59,11 @@
 	};
 
 	Widget.prototype.initImageScale = function() {
+
+		var profileHeroCuttingOption = $('.widg_hero__img.is-profile-hero').data('heroCuttingOption');
 		var cuttingOption = $('#widg_hero__image').data('heroCuttingOption');
+		var align = '';
+
 		var optionsObj = {
 			default: 'center',
 			topLeft: 'top-left',
@@ -72,14 +76,25 @@
 			bottomCenter: 'bottom',
 			bottomRight: 'bottom-right'
 		};
-		if(optionsObj[cuttingOption] === undefined) {
+
+		if (optionsObj[cuttingOption] === undefined) {
 			optionsObj[cuttingOption] = 'center';
 		}
-		console.log('optionsObj[cuttingOption]', optionsObj[cuttingOption]);
+
+		if (optionsObj[profileHeroCuttingOption] === undefined) {
+			optionsObj[profileHeroCuttingOption] = 'top-right';
+		}
+
+		if ($('.widg_hero__img.is-profile-hero').length) {
+			align = optionsObj[profileHeroCuttingOption];
+		} else {
+			align = optionsObj[cuttingOption];
+		}
+
 		$('.widg_hero__img').imageScale({
 			rescaleOnResize: true,
 			scale: 'best-fill',
-			align: optionsObj[cuttingOption]
+			align: align,
 		});
 	};
 
