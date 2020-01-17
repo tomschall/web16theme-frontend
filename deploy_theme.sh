@@ -33,5 +33,5 @@ then
       git push
       cd ../../src/fhnw.web16theme
       git commit -am "Frontend build $FRONTEND_REV"
-      git push
+      git push -f
 fi
