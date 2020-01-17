@@ -12,6 +12,20 @@
 	$form = $('#form');
 
 	/**
+	 * Get value from form and set it to analytics form
+	 *
+	 * @returns {void}
+	 */
+	(function setAnalyticsFormTag() {
+		var analyticsProduktField = $('#analyticsProduktField').val();
+
+		$form.find('#form-widgets-' + analyticsProduktField).on('input', function(event) {
+			$('#analyticsProdukt').val(event.currentTarget.value);
+		});
+	})();
+
+
+	/**
 	 * Returns page language or defaults to `de`
 	 *
 	 * @returns {string} Langugae code
