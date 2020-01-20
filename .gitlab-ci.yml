@@ -1,8 +1,5 @@
 selftest:
  stage: build
- before_script:
-  - eval `ssh-agent`
-  - ssh-add ~/gitlab_deploy
  cache:
    paths:
      - parts/
@@ -11,9 +8,6 @@ selftest:
   - bin/gulp build --dev --interactive=false
 deploy:
  stage: deploy
- before_script:
-  - eval `ssh-agent`
-  - ssh-add ~/gitlab_deploy
  cache:
    paths:
      - parts/
@@ -25,9 +19,6 @@ deploy:
   - master
 
 pages:
-  before_script:
-  - eval `ssh-agent`
-  - ssh-add ~/gitlab_deploy
   stage: deploy
   cache:
     paths:
