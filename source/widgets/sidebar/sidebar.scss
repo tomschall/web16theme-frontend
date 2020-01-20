@@ -78,6 +78,10 @@ $sidebarObjectPush: $basicPush * 5;
 		@include mq($from: 'subnav') {
 			overflow: hidden;
 		}
+
+		@media print {
+			margin: unset;
+		}
 	}
 
 	@media print {
