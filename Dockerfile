@@ -19,4 +19,7 @@ RUN su -c "chown -R docker:docker /home/docker" root
 RUN yum install libmemcached libmemcached-devel java-1.8.0-openjdk -y
 USER docker
 RUN ssh-keyscan -H -t rsa gitlab.fhnw.ch  >> ~/.ssh/known_hosts
+RUN git config --global user.email "webmaster@fhnw.ch"
+RUN git config --global user.name "Docker Gitlab Runner"
+RUN git config --global push.default matching
 CMD ["/bin/bash"]
