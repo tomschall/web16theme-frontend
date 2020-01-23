@@ -20,8 +20,8 @@
 		var analyticsProduktField = $('#analyticsProduktField').val();
 		var inputType = '';
 		var $fields = $('form').find('#form-widgets-' + analyticsProduktField);
-		if ($fields !== 'undefined') {
-			if (Array.isArray($fields) && $fields[0].localName === 'select') {
+		if ($fields.length) {
+			if ($fields[0].localName === 'select') {
 				inputType = 'change';
 			} else {
 				inputType = 'input';
