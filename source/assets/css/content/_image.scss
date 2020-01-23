@@ -13,20 +13,21 @@ img.image-left {
 	height: auto;
 
 	@include mq($to: small) {
-		@include span(12);
+		@include span(4);
 
 		margin-bottom: $basicPush;
 		margin-right: -1 * $gutterWidth;
 	}
 
 	@media print {
-		@include span(4);
+		// @include span(4);
+		display: none;
 	}
 }
 
 img.image-right {
 	@include span(3);
-  float: right;
+  	float: right;
 	height: auto;
 	margin-right: -1 * $gutterWidth;
 
@@ -35,6 +36,11 @@ img.image-right {
 
 		margin-bottom: $basicPush;
 		margin-right: -1 * $gutterWidth;
+	}
+
+	@media print {
+		// @include span(4);
+		display: none;
 	}
 }
 
