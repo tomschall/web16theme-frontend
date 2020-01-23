@@ -18,9 +18,28 @@
 	 */
 	(function setAnalyticsFormTag() {
 		var analyticsProduktField = $('#analyticsProduktField').val();
-
-		$form.find('#form-widgets-' + analyticsProduktField).on('input', function(event) {
-			$('#analyticsProdukt').val(event.currentTarget.value);
+		var inputType = '';
+		var $fields = $('form').find('#form-widgets-' + analyticsProduktField);
+		if ($fields !== 'undefined') {
+			if (Array.isArray($fields) && $fields[0].localName === 'select') {
+				inputType = 'change';
+			} else {
+				inputType = 'input';
+			}
+		} else {
+			return;
+		}
+		$fields.on(inputType, function(event) {
+			var $values = $(event.currentTarget).val();
+			var $newval = '';
+			if ($values !== null) {
+				if (Array.isArray($values)) {
+					$newval = $values.join();
+				} else if ($values !== '--NOVALUE--') {
+					$newval = $values;
+				}
+			}
+			$('#analyticsProdukt').val($newval);
 		});
 	})();
 
