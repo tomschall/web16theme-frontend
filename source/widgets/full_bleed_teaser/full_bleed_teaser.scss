@@ -13,7 +13,22 @@
 	.full_bleed_teaser__img.is-loaded {
 		img {
 			display: block;
+
+			@media print {
+				width: 100% !important;
+				height: auto !important;
+				// display: none;
+			}
 		}
+	}
+
+	@media print {
+    	position: relative;
+    	float: left;
+		margin: 0;
+		padding: 0;
+		height: 340pt;
+		// width: 100%;	
 	}
 }
 
