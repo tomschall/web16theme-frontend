@@ -1,3 +1,20 @@
+img.fhnw-tiny-onethird {
+	@media print {
+		@include span(2);
+	}
+}
+img.fhnw-tiny-square {
+	@media print {
+		@include span(2);
+	}
+}
+
+img.fhnw-tiny-square-float {
+	@media print {
+		@include span(2);
+	}
+}
+
 img.image-left,
 img.one-span,
 img.image-right,
@@ -20,8 +37,8 @@ img.image-left {
 	}
 
 	@media print {
-		// @include span(4);
-		display: none;
+		@include span(4);
+		margin-right: 10pt;
 	}
 }
 
@@ -39,8 +56,9 @@ img.image-right {
 	}
 
 	@media print {
-		// @include span(4);
-		display: none;
+		@include span(4);
+		float: right;
+		margin-left: 10pt;
 	}
 }
 
