@@ -16,12 +16,12 @@
 	 *
 	 * @returns {void}
 	 */
-	function setAnalyticsFormTag() {
-		var analyticsProduktField = $('#analyticsProduktField').val();
+	(function setAnalyticsFormTag($_) {
+		var analyticsProduktField = $_('#analyticsProduktField').val();
 		var inputType = '';
-		var $fields = $('form').find('#form-widgets-' + analyticsProduktField);
-		if ($fields.length) {
-			if ($fields[0].localName === 'select') {
+		var fields = $_('form').find('#form-widgets-' + analyticsProduktField);
+		if (fields.length) {
+			if (fields[0].localName === 'select') {
 				inputType = 'change';
 			} else {
 				inputType = 'input';
@@ -29,21 +29,19 @@
 		} else {
 			return;
 		}
-		$fields.on(inputType, function(event) {
-			var $values = $(event.currentTarget).val();
-			var $newval = '';
-			if ($values !== null) {
-				if (Array.isArray($values)) {
-					$newval = $values.join();
-				} else if ($values !== '--NOVALUE--') {
-					$newval = $values;
+		fields.on(inputType, function(event) {
+			var values = $_(event.currentTarget).val();
+			var newval = '';
+			if (values !== null) {
+				if (Array.isArray(values)) {
+					newval = values.join();
+				} else if (values !== '--NOVALUE--') {
+					newval = values;
 				}
 			}
-			$('#analyticsProdukt').val($newval);
+			$_('#analyticsProdukt').val(newval);
 		});
-	}
-
-	setAnalyticsFormTag();
+	})(jQuery);
 
 	/**
 	 * Returns page language or defaults to `de`
