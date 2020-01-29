@@ -22,8 +22,11 @@
 		var fields = $('form').find('#form-widgets-' + analyticsProduktField);
 		if (fields.length) {
 			if (fields[0].localName === 'select') {
+				console.log('true');
+				$('#analyticsProdukt').val(checkSelect2SelectedFields());
 				inputType = 'change';
 			} else {
+				$('#analyticsProdukt').val(fields[0].value);
 				inputType = 'input';
 			}
 		} else {
@@ -41,6 +44,26 @@
 			}
 			$('#analyticsProdukt').val(newval);
 		});
+	}
+
+	/**
+	 * Get values from select2 - multiselect
+	 *
+	 */
+	function checkSelect2SelectedFields() {
+		var multi_fields = $('form').find('.select2-selection__rendered');
+		console.log(multi_fields);
+		var multi_fields_selected = [];
+		for (var key in multi_fields[0].children) {
+			if(multi_fields[0].children.hasOwnProperty(key)){
+				if (key != 0) {
+					console.log(`${key} : ${multi_fields[0].children[key].innerText}`);
+					multi_fields_selected.push(multi_fields[0].children[key].innerText);
+				}
+			}
+		}
+		console.log(multi_fields_selected.join());
+		return multi_fields_selected.join();
 	}
 
 	/**
