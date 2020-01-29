@@ -43,8 +43,6 @@
 		});
 	})(jQuery);
 
-	setAnalyticsFormTag();
-
 	/**
 	 * Returns page language or defaults to `de`
 	 *
