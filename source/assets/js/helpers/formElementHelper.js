@@ -12,6 +12,23 @@
 	$form = $('#form');
 
 	/**
+	 * Get values from select2 - multiselect
+	 *
+	 */
+	function checkSelect2SelectedFields() {
+		var multi_fields = $('form').find('.select2-selection__rendered');
+		var multi_fields_selected = [];
+		for (var key in multi_fields[0].children) {
+			if (multi_fields[0].children.hasOwnProperty(key)) {
+				if (parseInt(key) !== 0) {
+					multi_fields_selected.push(multi_fields[0].children[key].innerText);
+				}
+			}
+		}
+		return multi_fields_selected.join();
+	}
+
+	/**
 	 * Get value from form and set it to hidden analytics form
 	 *
 	 * @returns {void}
@@ -22,7 +39,6 @@
 		var fields = $('form').find('#form-widgets-' + analyticsProduktField);
 		if (fields.length) {
 			if (fields[0].localName === 'select') {
-				console.log('true');
 				$('#analyticsProdukt').val(checkSelect2SelectedFields());
 				inputType = 'change';
 			} else {
@@ -44,23 +60,6 @@
 			}
 			$('#analyticsProdukt').val(newval);
 		});
-	}
-
-	/**
-	 * Get values from select2 - multiselect
-	 *
-	 */
-	function checkSelect2SelectedFields() {
-		var multi_fields = $('form').find('.select2-selection__rendered');
-		var multi_fields_selected = [];
-		for (var key in multi_fields[0].children) {
-			if(multi_fields[0].children.hasOwnProperty(key)){
-				if (key != 0) {
-					multi_fields_selected.push(multi_fields[0].children[key].innerText);
-				}
-			}
-		}
-		return multi_fields_selected.join();
 	}
 
 	/**
