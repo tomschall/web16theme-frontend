@@ -16,10 +16,10 @@
 	 *
 	 * @returns {void}
 	 */
-	(function setAnalyticsFormTag($_) {
-		var analyticsProduktField = $_('#analyticsProduktField').val();
+	function setAnalyticsFormTag() {
+		var analyticsProduktField = $('#analyticsProduktField').val();
 		var inputType = '';
-		var fields = $_('form').find('#form-widgets-' + analyticsProduktField);
+		var fields = $('form').find('#form-widgets-' + analyticsProduktField);
 		if (fields.length) {
 			if (fields[0].localName === 'select') {
 				inputType = 'change';
@@ -30,7 +30,7 @@
 			return;
 		}
 		fields.on(inputType, function(event) {
-			var values = $_(event.currentTarget).val();
+			var values = $(event.currentTarget).val();
 			var newval = '';
 			if (values !== null) {
 				if (Array.isArray(values)) {
@@ -39,9 +39,9 @@
 					newval = values;
 				}
 			}
-			$_('#analyticsProdukt').val(newval);
+			$('#analyticsProdukt').val(newval);
 		});
-	})($);
+	}
 
 	/**
 	 * Returns page language or defaults to `de`
@@ -124,6 +124,8 @@
 			easyFormValidation.uploadSize();
 
 			$form.on('submit', easyFormValidation.onSubmit.bind(easyFormValidation));
+
+			setAnalyticsFormTag();
 		},
 
 		uploadSize: function() {
