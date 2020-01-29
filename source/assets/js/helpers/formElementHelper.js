@@ -41,7 +41,7 @@
 			}
 			$_('#analyticsProdukt').val(newval);
 		});
-	})(jQuery);
+	})($);
 
 	/**
 	 * Returns page language or defaults to `de`
