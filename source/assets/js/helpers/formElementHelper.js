@@ -12,11 +12,11 @@
 	$form = $('#form');
 
 	/**
-	 * Get value from form and set it to analytics form
+	 * Get value from form and set it to hidden analytics form
 	 *
 	 * @returns {void}
 	 */
-	(function setAnalyticsFormTag() {
+	function setAnalyticsFormTag() {
 		var analyticsProduktField = $('#analyticsProduktField').val();
 		var inputType = '';
 		var $fields = $('form').find('#form-widgets-' + analyticsProduktField);
@@ -41,8 +41,9 @@
 			}
 			$('#analyticsProdukt').val($newval);
 		});
-	})();
+	}
 
+	setAnalyticsFormTag();
 
 	/**
 	 * Returns page language or defaults to `de`
