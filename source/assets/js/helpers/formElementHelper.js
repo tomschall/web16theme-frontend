@@ -12,62 +12,6 @@
 	$form = $('#form');
 
 	/**
-	 * Get values from select2 - multiselect
-	 *
-	 */
-	function checkSelect2SelectedFields(analyticsProduktField) {
-		var multi_fields = $('form').find('#form-widgets-' + analyticsProduktField)
-			.nextAll('span')
-			.find('.select2-selection__rendered');
-		if (multi_fields[0].title.length) {
-			return multi_fields[0].title;
-		}
-		var multi_fields_selected = [];
-		for (var key in multi_fields[0].children) {
-			if (multi_fields[0].children.hasOwnProperty(key)) {
-				if (parseInt(key) !== 0) {
-					multi_fields_selected.push(multi_fields[0].children[key].innerText);
-				}
-			}
-		}
-		return multi_fields_selected.join();
-	}
-
-	/**
-	 * Get value from form and set it to hidden analytics form
-	 *
-	 * @returns {void}
-	 */
-	function setAnalyticsFormTag() {
-		var analyticsProduktField = $('#analyticsProduktField').val();
-		var inputType = '';
-		var fields = $('form').find('#form-widgets-' + analyticsProduktField);
-		if (fields.length) {
-			if (fields[0].localName === 'select') {
-				$('#analyticsProdukt').val(checkSelect2SelectedFields(analyticsProduktField));
-				inputType = 'change';
-			} else {
-				$('#analyticsProdukt').val(fields[0].value);
-				inputType = 'input';
-			}
-		} else {
-			return;
-		}
-		fields.on(inputType, function(event) {
-			var values = $(event.currentTarget).val();
-			var newval = '';
-			if (values !== null) {
-				if (Array.isArray(values)) {
-					newval = values.join();
-				} else if (values !== '--NOVALUE--') {
-					newval = values;
-				}
-			}
-			$('#analyticsProdukt').val(newval);
-		});
-	}
-
-	/**
 	 * Returns page language or defaults to `de`
 	 *
 	 * @returns {string} Langugae code
@@ -148,8 +92,6 @@
 			easyFormValidation.uploadSize();
 
 			$form.on('submit', easyFormValidation.onSubmit.bind(easyFormValidation));
-
-			setAnalyticsFormTag();
 		},
 
 		uploadSize: function() {
