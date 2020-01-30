@@ -87,7 +87,7 @@
 				} else {
 
 					// otherwise, don't block the loading of the page; wait until it's done.
-					console.log('download fonts'); // eslint-disable-line no-console
+					// console.log('download fonts'); // eslint-disable-line no-console
 					estatico.helpers.on(window, 'load', injectFontsStylesheet);
 				}
 			}
