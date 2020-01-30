@@ -178,7 +178,6 @@
 
 		if (headerWidth > 300 && targetLevel >= 1) {
 			pullLeft = pullLeft + (40 * (targetLevel - 1));
-			console.log('greater 300 + target level 1');
 		}
 
 		this.options.currentLevel = targetLevel;
