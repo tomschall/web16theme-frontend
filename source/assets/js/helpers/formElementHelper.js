@@ -15,8 +15,13 @@
 	 * Get values from select2 - multiselect
 	 *
 	 */
-	function checkSelect2SelectedFields() {
-		var multi_fields = $('form').find('.select2-selection__rendered');
+	function checkSelect2SelectedFields(analyticsProduktField) {
+		var multi_fields = $('form').find('#form-widgets-' + analyticsProduktField)
+			.nextAll('span')
+			.find('.select2-selection__rendered');
+		if (multi_fields[0].title.length) {
+			return multi_fields[0].title;
+		}
 		var multi_fields_selected = [];
 		for (var key in multi_fields[0].children) {
 			if (multi_fields[0].children.hasOwnProperty(key)) {
@@ -39,7 +44,7 @@
 		var fields = $('form').find('#form-widgets-' + analyticsProduktField);
 		if (fields.length) {
 			if (fields[0].localName === 'select') {
-				$('#analyticsProdukt').val(checkSelect2SelectedFields());
+				$('#analyticsProdukt').val(checkSelect2SelectedFields(analyticsProduktField));
 				inputType = 'change';
 			} else {
 				$('#analyticsProdukt').val(fields[0].value);
