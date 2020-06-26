@@ -122,7 +122,7 @@
 		max-width: 100%;
 		height: 100%;
 		transform: scale(1);
-    transition: transform $transitionLength $transitionEase;
+    	transition: transform $transitionLength $transitionEase;
 
 		@media print {
 			position: unset !important;
@@ -150,7 +150,7 @@
 		margin-bottom: 0;
 	}
 
-	@include mq($to: 374px) {
+	@include mq($to: 416px) {
 		left: 0;
 		width: 100%;
 		height: auto !important;
