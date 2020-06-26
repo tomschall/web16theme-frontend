@@ -90,4 +90,23 @@
 			}
 		}
 	});
+
+	if ($('widg_teaser__wrapper')) {
+		var windowSize = $(window).width();
+
+		$(window).resize(function() {
+			if (windowSize > 1300) {
+				if ($('.widg_teaser').hasClass('wide___quarter')) {
+					$('.widg_teaser').addClass('wide___third').removeClass('wide___quarter');
+				}
+			}
+		});
+
+		if (screen.width > 1300) {
+			if ($('.widg_teaser').hasClass('wide___quarter')) {
+				$('.widg_teaser').addClass('wide___third').removeClass('wide___quarter');
+			}
+		}
+	}
+
 })(jQuery);
