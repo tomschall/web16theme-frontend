@@ -1,19 +1,22 @@
 <div class="widg_full_bleed_teaser" data-init="full_bleed_teaser">
+
 	<div class="full_bleed_teaser__img">
 		<img srcset="{{ img.src }}/@@images/image/f_home_small 340w, {{ img.src }}/@@images/image/f_home_middle 750w, {{ img.src }} 1200w" alt="{{img.alt}}"/>
 	</div>
 
 	<div class="widg_teaser">
+		{{#if img}}
+			<div class="widg_teaser__img"><img src="{{img.src}}" alt=""/></div>
+		{{/if}}
 
 		{{#if category}}
-			<span class="widg_teaser__category">{{category}}</span>
+		<span class="widg_teaser__category">{{category}}</span>
 		{{/if}}
 		<h3 class="widg_teaser__title childless">{{{title}}}</h3>
 		{{#if description}}
-			<p>{{dotdotdot_teaser description}}</p>
+		<p>{{dotdotdot_teaser description}}</p>
 		{{/if}}
 		<a class="widg_teaser__link" href="{{url}}">{{title}}</a>
 		<span class="widg_teaser__arrow"></span>
 	</div>
-
 </div>
