@@ -2,6 +2,7 @@
 	.widg_full_bleed_teaser {
 		margin-bottom: $basicPush * 2;
 		position: relative;
+		margin-top: $basicPush * 5;
 
 		@include mq($to: medium) {
 			position: relative;
@@ -33,7 +34,7 @@
 		}
 	}
 
-	@include mq($from: 770px) {
+	@include mq($from: 769px) {
 		.full_bleed_teaser__img {
 			height: 100%;
 			@include bleedFull(0);
@@ -98,7 +99,7 @@
 		}
 	}
 
-	.widg_full_bleed_teaser .widg_teaser {
+	.widg_full_bleed_teaser .full_bleed__widg_teaser {
 		position: absolute;
 		width: 50%;
 		top: 50%;
@@ -144,44 +145,28 @@
 @include mq($to: 769px) {
 	.widg_full_bleed_teaser {
 
-		.widg_teaser {
-			@include span(3);
+		.full_bleed__widg_teaser {
+			@include span(12);
 			position: relative;
-			padding-top: $basicPush * 1.7;
-			padding-bottom: $basicPush * 3;
+			padding: $basicPush * 2;
 			margin-bottom: $basicPush * 4;
-
-			@include mq($to: small) {
-				padding-bottom: $basicPush * 1.5;
-				padding-right: 0;
-			}
+			background-color: $colorLightGray;
 
 			&:hover {
-				background-color: $colorLightGray;
-
-				// @include mq($from: medium) {
-				// 	.widg_teaser__img {
-				// 		img {
-				// 			transform: scale(1.1);
-				// 		}
-
-				// 	}
-				// }
-
 				@media print {
 					background-color: none;
 				}
 			}
 
 			h3 {
-				@include mq($to: 374px) {
+				@include mq($to: 368px) {
 					@include iconDataurl('pfeil-black');
 				}
 
 				&:before {
-					background-position: right;
+					background-position: left;
 					margin-top: 8px;
-					float: right;
+					float: left;
 				}
 
 				&:after {
@@ -208,7 +193,7 @@
 				}
 			}
 
-			@include mq($to: medium) {
+			@include mq($to: 768px) {
 				margin-bottom: 0;
 				border-bottom: 1px solid $colorGreyHover;
 
@@ -218,6 +203,8 @@
 
 				&:last-of-type {
 					border-bottom: 0;
+					padding: $basicPush * 2;
+					margin-top: $basicPush * 5;
 				}
 			}
 
@@ -270,7 +257,7 @@
 				}
 			}
 
-			@include mq($from: 770px) {
+			@include mq($from: 769px) {
 				.widg_teaser__img,
 				.widg_teaser__img img {
 					display:none !important;
@@ -278,7 +265,7 @@
 			}
 		}
 
-		@include mq($from: 770px) {
+		@include mq($from: 769px) {
 			.widg_teaser__img {
 				display: none !important;
 			}
@@ -325,8 +312,9 @@
 
 			@include mq($to: medium) {
 
-				top: 50%;
-				right: 8px;
+				top: unset;
+				left: $basicPush * 2;
+				right: unset;
 
 				transform: translateY(-34%) translate3d(0, 0, 0);
 			}

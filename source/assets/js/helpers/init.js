@@ -89,24 +89,41 @@
 				});
 			}
 		}
+
+		if ($(window).width() < 768) {
+			$('.full_bleed_teaser__img').remove();
+		}
 	});
 
 	if ($('widg_teaser__wrapper')) {
 		var windowSize = $(window).width();
 
 		$(window).resize(function() {
-			if (windowSize > 1300) {
+			if (windowSize > 1920) {
 				if ($('.widg_teaser').hasClass('wide___quarter')) {
 					$('.widg_teaser').addClass('wide___third').removeClass('wide___quarter');
 				}
 			}
 		});
 
-		if (screen.width > 1300) {
+		if (screen.width > 1920) {
 			if ($('.widg_teaser').hasClass('wide___quarter')) {
 				$('.widg_teaser').addClass('wide___third').removeClass('wide___quarter');
 			}
 		}
 	}
+
+	if ($(window).width() <= 768) {
+		if ($('.widg_full_bleed_teaser').length) {
+			$('.full_bleed_teaser__img, .full_bleed_teaser__img img').remove();
+		}
+	}
+
+	if ($(window).width() >= 769) {
+		if ($('.widg_full_bleed_teaser').length) {
+			$('.widg_teaser__img').remove();
+		}
+	}
+
 
 })(jQuery);

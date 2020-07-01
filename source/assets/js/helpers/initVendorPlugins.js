@@ -47,14 +47,17 @@
 			});
 		}
 
-		$('.widg_full_bleed_teaser img').load(function() {
-			initScale(this);
-		}).each(function() {
-			if (this.complete) {
-				// already loaded before the load event got registered
+		if ($(window).width() > 770) {
+			$('.widg_full_bleed_teaser img').load(function() {
 				initScale(this);
-			}
-		});
+			}).each(function() {
+				if (this.complete) {
+					// already loaded before the load event got registered
+					initScale(this);
+				}
+			});
+		}
+
 
 		if ($(window).width() > 1023) {
 			$('.widg_teaser__img img').imageScale({
@@ -62,7 +65,6 @@
 				scale: 'best-fill',
 				align: 'center'
 			});
-			//$('.widg_teaser__img img').imageScale('destroy');
 		}
 
 
