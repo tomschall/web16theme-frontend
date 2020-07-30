@@ -55,7 +55,7 @@ a.button.disabled {
 
 #form-buttons-submit, #form-buttons-reset {
 	margin-right: $basicPush;
-	margin-bottom: $basicPush;
+	margin-bottom: $basicPush * 5;
 
 	@include mq($to: medium) {
 		height: auto;
@@ -72,9 +72,9 @@ a.button.disabled {
 		font-size: 12px;
 		line-height: 2rem;
 		white-space: normal;
-    width: 100%;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    	width: 100%;
+    	padding-top: 1rem;
+    	padding-bottom: 1rem;
 	}
 }
 

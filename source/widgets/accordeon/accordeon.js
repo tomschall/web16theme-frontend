@@ -23,7 +23,7 @@
 			stateClasses: {
 				isOpen: 'is_open'
 			},
-			allowsMultiple: false
+			allowsMultiple: true
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
