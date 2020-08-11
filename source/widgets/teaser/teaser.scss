@@ -28,7 +28,7 @@
 	}
 
 	h3 {
-		@include mq($to: 374px) {
+		@include mq($to: 415px) {
 			@include iconDataurl('pfeil-black');
 		}
 
@@ -96,7 +96,8 @@
 		&.wide___quarter {
 			@include span(12);
 			padding-left: 0;
-			padding-right: $basicPush * 3;
+			padding-right: 0;
+			// padding-right: $basicPush * 3;
 		}
 
 		&.no-image,
@@ -109,7 +110,7 @@
 		}
 	}
 
-	@include mq($to: 374px) {
+	@include mq($to: 415px) {
 		padding-left: 0;
 		padding-right: 0;
 
@@ -223,7 +224,7 @@
 
 .widg_teaser__arrow {
 
-	@include mq($from: 374px) {
+	@include mq($from: 415px) {
 		@include iconDataurl('triangle-arrow_right');
 
 		display: block;
@@ -246,7 +247,7 @@
 		transform: translateY(-34%) translate3d(0, 0, 0);
 	}
 
-	@include mq($to: 374px) {
+	@include mq($to: 415px) {
 		top: 70%;
 	}
 
