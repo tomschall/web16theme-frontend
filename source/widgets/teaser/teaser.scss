@@ -71,6 +71,19 @@
 		}
 	}
 
+	&.wide___quarter {
+		@include span(3);
+
+		@include mq($to: 1440px) {
+			@include span(4);
+		}
+
+		@media print {
+			@include span(12);
+			margin-bottom: 10pt;
+		}
+	}
+
 	@include mq($to: medium) {
 		margin-bottom: 0;
 		border-bottom: 1px solid $colorGreyHover;
@@ -79,7 +92,8 @@
 		padding-left: 0;
 		padding-right: 0;
 
-		&.wide___third {
+		&.wide___third,
+		&.wide___quarter {
 			@include span(12);
 			padding-left: 0;
 			padding-right: $basicPush * 3;
