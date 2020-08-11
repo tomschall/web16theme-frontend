@@ -97,14 +97,15 @@
 
 	if ($('widg_teaser__wrapper')) {
 		var windowSize = $(window).width();
+		var jumpSize = 1300;
 
 		$(window).resize(function() {
-			if (windowSize > 1920) {
+			if (windowSize > jumpSize) {
 				if ($('.widg_teaser').hasClass('wide___third')) {
 					$('.widg_teaser').addClass('wide___quarter').removeClass('wide___third');
 				}
 			} 
-			if (windowSize < 1920) {
+			if (windowSize < jumpSize) {
 				if ($('.widg_teaser').hasClass('wide___quarter')) {
 					$('.widg_teaser').addClass('wide___third').removeClass('wide___quarter');
 				}
@@ -112,13 +113,13 @@
 		});
 
 		$(window).resize(function() {
-			if (screen.width > 1920) {
+			if (screen.width > jumpSize) {
 				if ($('.widg_teaser').hasClass('wide___third')) {
 					$('.widg_teaser').addClass('wide___quarter').removeClass('wide___third');
 				}
 			}
 			
-			if (screen.width < 1920) {
+			if (screen.width < jumpSize) {
 				if ($('.widg_teaser').hasClass('wide___quarter')) {
 					$('.widg_teaser').addClass('wide___third').removeClass('wide___quarter');
 				}
