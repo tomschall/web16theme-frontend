@@ -40,8 +40,8 @@
 			@include bleedFull(0);
 
 			@include mq($from: small, $to: medium) {
-				margin-left: - ($gutter * 2);
-				margin-right: - ($gutter * 2);
+				margin-left: -($gutter * 2);
+				margin-right: -($gutter * 2);
 			}
 
 			@include mq($to: small) {
@@ -95,7 +95,6 @@
 		@include mq($to: medium) {
 			padding-left: $gutterWidth + 4;
 			padding-top: 15px;
-
 		}
 	}
 
@@ -144,7 +143,6 @@
 /* TABLET/MOBILE VIEW */
 @include mq($to: 769px) {
 	.widg_full_bleed_teaser {
-
 		.full_bleed__widg_teaser {
 			@include span(12);
 			position: relative;
@@ -160,7 +158,7 @@
 
 			h3 {
 				@include mq($to: 368px) {
-					@include iconDataurl('pfeil-black');
+					@include iconDataurl("pfeil-black");
 				}
 
 				&:before {
@@ -173,7 +171,6 @@
 					width: 17px;
 					height: 16.2px;
 				}
-
 			}
 
 			p {
@@ -205,6 +202,7 @@
 					border-bottom: 0;
 					padding: $basicPush * 2;
 					margin-top: $basicPush * 5;
+					margin-bottom: $basicPush * 5;
 				}
 			}
 
@@ -260,7 +258,7 @@
 			@include mq($from: 769px) {
 				.widg_teaser__img,
 				.widg_teaser__img img {
-					display:none !important;
+					display: none !important;
 				}
 			}
 		}
@@ -294,9 +292,8 @@
 		}
 
 		.widg_teaser__arrow {
-
 			@include mq($from: 374px) {
-				@include iconDataurl('triangle-arrow_right');
+				@include iconDataurl("triangle-arrow_right");
 
 				display: block;
 				position: absolute;
@@ -311,7 +308,6 @@
 			}
 
 			@include mq($to: medium) {
-
 				top: unset;
 				left: $basicPush * 2;
 				right: unset;
@@ -330,13 +326,11 @@
 				left: 80%;
 				width: 6px;
 				height: 10px;
-
 			}
 
 			@media print {
 				display: none;
 			}
-
 		}
 
 		.widg_teaser__category {
@@ -371,7 +365,6 @@
 		}
 
 		.widg_teaser__wrapper h2.teaser__title {
-
 			margin-left: $gutterWidth;
 			margin-right: $gutterWidth;
 			margin-bottom: 10px;
