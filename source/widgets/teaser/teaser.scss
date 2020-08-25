@@ -12,7 +12,7 @@
 
 	@include mq($to: 1440px) {
 		@include span(4);
-	}	
+	}
 
 	&:hover {
 		background-color: $colorLightGray;
@@ -140,7 +140,7 @@
 		max-width: 100%;
 		height: 100%;
 		transform: scale(1);
-    	transition: transform $transitionLength $transitionEase;
+		transition: transform $transitionLength $transitionEase;
 
 		@media print {
 			position: unset !important;
@@ -175,8 +175,6 @@
 		object-fit: contain;
 		margin-left: auto;
 		margin-right: auto;
-		margin-bottom: 20px;
-		//transform: scale(1);
 	}
 
 	@media print {
@@ -212,7 +210,7 @@
 
 	text-indent: -100000px;
 
-	&:hover + .widg_teaser__arrow {
+	&:hover+.widg_teaser__arrow {
 		min-width: 20px;
 	}
 
@@ -411,6 +409,7 @@
 
 		}
 	}
+
 	@include mq($to: small) {
 		& .widg_teaser__wrapper {
 			@include push(3);
@@ -467,9 +466,11 @@
 			transform: translateX(-50%);
 		}
 	}
+
 	@include mq($to: medium) {
 		margin-left: 0 !important;
 	}
+
 	@include mq($to: small) {
 		margin-left: 0 !important;
 	}
