@@ -143,6 +143,8 @@
 /* TABLET/MOBILE VIEW */
 @include mq($to: 769px) {
 	.widg_full_bleed_teaser {
+	    overflow: hidden;
+	    
 		.full_bleed__widg_teaser {
 			@include span(12);
 			position: relative;
@@ -186,7 +188,6 @@
 					padding: $basicPush * 2;
 					margin-top: $basicPush * 5;
 					margin-bottom: $basicPush * 5;
-					overflow: hidden;
 				}
 			}
 
