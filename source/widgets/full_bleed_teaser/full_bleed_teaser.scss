@@ -156,23 +156,6 @@
 				}
 			}
 
-			h3 {
-				@include mq($to: 368px) {
-					@include iconDataurl("pfeil-black");
-				}
-
-				&:before {
-					background-position: left;
-					margin-top: 8px;
-					float: left;
-				}
-
-				&:after {
-					width: 17px;
-					height: 16.2px;
-				}
-			}
-
 			p {
 				font-size: 1.25rem;
 				opacity: 0.7;
@@ -292,7 +275,7 @@
 		}
 
 		.widg_teaser__arrow {
-			@include mq($from: 374px) {
+			@include mq($from: 0px) {
 				@include iconDataurl("triangle-arrow_right");
 
 				display: block;
@@ -316,7 +299,7 @@
 			}
 
 			@include mq($to: 374px) {
-				top: 70%;
+				top: 90%;
 			}
 
 			&:before {
