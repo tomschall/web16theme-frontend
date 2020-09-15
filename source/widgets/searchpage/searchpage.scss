@@ -153,10 +153,49 @@
 
 	@include mq($to: small) {
 		padding-bottom: $basicPush * 1.5 !important;
-	}
+  }
+  
+  .search__holder__searchstring {
+		@include span(12);
+		margin-bottom: $gutterWidth * 2;
+
+		@include mq($from: small, $to: subnav) {
+			@include span(12);
+		}
+
+		@include mq($to: small) {
+			@include span(12);
+
+			margin-bottom: $gutterWidth;
+    }
+
+    &.search__holder___wide {
+			@include span(9);
+
+			@include mq($from: small, $to: subnav) {
+				@include span(6);
+			}
+
+			@include mq($to: small) {
+				@include span(12);
+			}
+		}
+
+		&.search__holder___double {
+			@include span(6);
+
+			@include mq($from: small, $to: subnav) {
+				@include span(6);
+			}
+
+			@include mq($to: small) {
+				@include span(12);
+			}
+		}
+  }
 
 	.search__holder {
-		@include span(3);
+		@include span(4);
 		margin-bottom: $gutterWidth * 2;
 
 		@include mq($from: small, $to: subnav) {
