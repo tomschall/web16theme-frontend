@@ -163,8 +163,11 @@ var fieldDictionaries = {
 				row.standortadresse = row.standortadresse.replace(/(?:\r\n|\r|\n)/g, '<br />');
 			}
 
-			$responseHTML.append(template(_.assign(row, langStrings)));
-		});
+      $responseHTML.append(template(_.assign(row, langStrings)));
+      
+    });
+    
+    $responseHTML.append('<div id="loadMoreRef"></div>');
 
 		return $responseHTML;
 	}
