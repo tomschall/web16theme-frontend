@@ -26,7 +26,7 @@
 				countNumber: '[data-' + name + '="countNumber"]',
 				moreResultsBtn: '[data-' + name + '="moreResultsBtn"]',
 				moreResultsBtnWrapper: '[data-' + name + '="moreResultsBtnWrapper"]',
-				catPageResult: '.search__result--item',
+        catPageResult: '.search__result--item',
 			},
 			domSelectorsSort: {
 				sortAllSearchResults: '#sortAllSearchResults',
@@ -78,7 +78,9 @@
 		sortObj = {
 			asc: 'ascending',
 			desc: 'descending'
-		};
+    },
+    observer = {};
+    
 
 	/**
 	 * Create an instance of the widget
@@ -95,7 +97,7 @@
 			defaults: defaults,
 			options: options,
 			events: events,
-			data: data
+      data: data,
 		});
 	}
 
@@ -107,6 +109,9 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
+
+    console.log('init2');
+
 		searchTemplate = $(this.options.domSelectors.formWrapper).data('searchpage-template');
 		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 		jsonURL = this.$element.data('json-url');
@@ -115,17 +120,13 @@
 		var sendSearchQueryDebounced = _.debounce(this._sendSearchQuery.bind(this), 250);
 
 		this.sendSearchQuery = function(firstLoad, sortOn, sortOrder) {
+      console.log('search query');
 			sortOn = sortOn || 'start';
 			sortOrder = sortOrder || 'ascending';
 			this.grabParameters(sortOn, sortOrder);
 			sendSearchQueryDebounced(firstLoad);
 		};
 		this.checkFormFieldUnset = function() {
-
-			// console.log('lastChangedFieldName: ', lastChangedFieldName);
-			// console.log('lastChangedFieldEventObj: ', lastChangedFieldEventObj);
-			// console.log('lastChangedFieldEvent: ', lastChangedFieldEvent);
-			// console.log('facets checkFormFieldUnset', facets);
 
 			if (lastChangedFieldName === 'search-string' || removeAll === true) {
 				return true;
@@ -136,22 +137,12 @@
 			}
 
 			var lengthObj = Object.keys(lastChangedFieldEventObj[lastChangedFieldName]).length;
-			// console.log('lengthObj', lengthObj);
-			// console.log('start check!!');
-            
-			// console.log('lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1]', lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1]);
-			// console.log('lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2]', lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2]);
-
+			
 			var c = Object.keys(lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1]).length;
 			var countTrue = 0;
 			var countTrueCompare = 0;
 
 			for (var i = 0; i < c; i++) {
-
-				// console.log('i', i);
-
-				// console.log('lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i]', lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i]);
-				// console.log('lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2][i]', lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2][i]);
 
 				if (lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 2][i] === true &&
 					lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1][i] === false &&
@@ -165,9 +156,6 @@
 
 			}
 
-			// console.log('countTrue', countTrue);
-			// console.log('countTrueCompare', countTrueCompare);
-
 			if (countTrue === 1 && countTrueCompare === 0) {
 				return true;
 			}
@@ -177,9 +165,7 @@
 		};
 		this.eventListeners();
 		this.initQueryClearBtn();
-		this.initSearchParam();
-
-		// #669 - when coming from the search bar page, hide the search all button
+    this.initSearchParam();
 		this.searchAllFromSearchBar = Boolean(searchParam.sb);
 
 		this.initFormFunctionality();
@@ -268,15 +254,11 @@
 				return obj;
 			};
 
-			// console.log('event', event);
-
 			if (remAll !== undefined) {
 				removeAll = remAll;
 			} else {
 				removeAll = false;
 			}
-
-			// console.log('removeAll', removeAll);
 
 			lastChangedFieldName = event.target && event.target.name ? event.target.name : '';
 
@@ -310,6 +292,30 @@
 		if (searchParam.si === 'true') {
 			this.sendSearchQuery();
 		}
+  };
+  
+	/**
+	 * Initializes the intersection observer for endless scrolling
+	 */
+	Widget.prototype.initIntersectionObserver = function() {
+    console.log('observer init', observer);
+    observer.current = new IntersectionObserver(this.intersectionObserverCallback.bind(this));
+    var ref = $('#loadMoreRef')[0];
+    console.log('ref', ref);
+    observer.current.observe(ref);
+  };
+  
+	/**
+	 * Callback for intersection observer
+	 */
+	Widget.prototype.intersectionObserverCallback = function(entries) {
+    if (entries[0].isIntersecting) {
+      console.log('callback fired');
+      loadMoreMode = true;
+      this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order, true);
+      this._headerFixed = true;
+      this._headerFixedReq = false;
+    }
 	};
 
 	Widget.prototype.updateQueryInputState = function() {
@@ -446,7 +452,6 @@
 		}
 
 		if (this.checkParameters()) {
-			// console.log('checkParameters');
 			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL, firstLoad);
 
 			if (!loadMoreMode) {
@@ -459,7 +464,6 @@
 				$(window).on(this.options.searchEvents.dataLoaded, this.handleData.bind(this));
 			}
 		} else {
-			// console.log('hier');
 			this.updateFilters('enableAll');
 			this.$element.find('.search__table').remove();
 			this.$element.find('.content__element').remove();
@@ -471,16 +475,16 @@
 	};
 
 	Widget.prototype.handleData = function(event, local__data, foundEntries, limitedToResults, category, facets) {
-		// console.log('local__data', local__data);
-		// console.log('facets', facets);
 		if (local__data) {
-			// console.log('local__data');
-			this.showResults(local__data, foundEntries, limitedToResults, category);
+      this.showResults(local__data, foundEntries, limitedToResults, category);
+      if (observer && observer.current) {
+        observer.current.disconnect();
+      }
+      this.initIntersectionObserver();
 			if (isCategorySearch) {
 				this.updateFilters(facets);
 			}
 		} else {
-			// console.log('no local__data');
 			this.changeStatus(this.options.stateClasses.showResults);
 		}
 
@@ -504,7 +508,7 @@
 				this.$element.find('.search__cat ul').append(html.find('li'));
 			} else {
 				html = this.generateAdditionalTableHTML(html);
-				this.$element.find('.search__results table:not(.cloned)').append(html);
+        this.$element.find('.search__results table:not(.cloned)').append(html);
 			}
 
 			// Reset the load more mode to false
@@ -691,7 +695,6 @@
 
 	Widget.prototype.updateFilters = function(facets) {
 
-		// console.log('update filters');
 		if (facets === 'enableAll') {
 			var $options = $('option');
 
@@ -700,7 +703,7 @@
 			});
 		} else if (facets) {
 			var check = this.checkFormFieldUnset(facets);
-			// console.log('check', check);
+			
 			var facetsToItemsFieldnames = {
 				'faculty': 'taxonomy_subjectarea',
 				'study_type': 'taxonomy_eduproducttype',
