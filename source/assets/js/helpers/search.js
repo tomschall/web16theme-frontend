@@ -18,7 +18,8 @@ var fieldDictionaries = {
 		'documents',
 		'irf',
 		'web',
-		'sonst'
+		'sonst',
+		'events'
 	],
 	events = {
 			dataLoaded: 'dataLoaded.estatico.search',
@@ -62,6 +63,7 @@ var fieldDictionaries = {
 						'<td data-searchpage="url"><a href="{{combinedURL}}"></a><span class="search__result-arrow"></span></td></tr>',
 				expertises: '<div class="cat_page_result search__result--item" data-clickable="true" class="search__result-word-list">' +
 						'<a href="{{combinedURL}}">{{Title}}<span class="search__result-arrow"></span></a></div>',
+
 				profiles: '<tr class="cat_page_result cat_page_profile_result search__result--item" data-clickable="false">' +
 						'<td>{{#if combinedURL}}<img src="{{combinedURL}}/@@images/portrait_foto/f_search" alt="{{Title}}"/>{{/if}}</td>' +
 						'<td><div><h4>{{Title}}</h4></div><div>{{fa_expertise}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td>' +
@@ -70,10 +72,13 @@ var fieldDictionaries = {
 						'</div>{{/if}}{{#if telefonnummer_central}}<div><span class="search__contact-label">{{phone-central}}</span>' +
 						'<a class="search__contact-link" href="tel:{{telefonnummer_central}}">{{telefonnummer_central}}</a></div>{{/if}}{{#if email}}<div>' +
 						'<span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="mailto:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
-				events: '<div class="cat_page_result search__result--item" class="widg_teaser">{{#if img}}<div class="widg_teaser__img">' +
-						'<img src="{{img.src}}" alt=""/></div>{{/if}}{{#if date}} <span class="widg_teaser__date">{{date}}</span>{{/if}}' +
-						' <span class="widg_teaser__title">{{{Title}}}</span>{{#if descriptionText}} <p>{{dotdotdot_teaser descriptionText}}</p>{{/if}}' +
-						' <a class="widg_teaser__link" href="{{url}}">{{title}}</a> <span class="widg_teaser__arrow"></span></div>',
+
+				events: '<li class="cat_page_result search__result--item widg_linklist___entry {{#if isExternal}}is_external{{/if}}">' +
+				'<a href="{{url}}">{{#if img}}<div class="widg_linklist__img-wrapper"><img src="{{img.src}}" alt="{{img.alt}}"/></div>' +
+				'{{/if}}<h3 class="childless">{{{title}}}</h3>{{#if news_detail}}<span>{{news_detail.news_date}} | {{news_detail.university}}</span>{{/if}}' +
+				'{{#if event_detail}}<span>{{event_detail.event_date}}, {{event_detail.location_short}}</span>{{/if}}<p>{{entryText}}</p></a></li>',
+
+
 				studies: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td class="search__cell search__cell-title">' +
 						'<a href="{{combinedURL}}" class="search__cell-anchor">{{Title}}</a></td>' +
 						'<td>{{#get_taxonomy_eduproducttype}}{{taxonomy_eduproducttype}}{{/get_taxonomy_eduproducttype}}</td>' +
@@ -209,7 +214,7 @@ var fieldDictionaries = {
 	 */
 	function generateTeasers(data) {
 		var results = data.items,
-				$responseHTML = $('<div class="widg_teaser__wrapper"></div>'),
+				$responseHTML = $('<div class="widg_linklist"><ul class="not-default"></ul></div>'),
 				template = null;
 
 		results.forEach(function(teaserItem) {

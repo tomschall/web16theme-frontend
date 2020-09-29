@@ -503,7 +503,7 @@
 		if (loadMoreMode) {
 			if (category === 'events') {
 				html = this.generateAdditionalTeasers(html);
-				this.$element.find('.search__results .widg_teaser__wrapper').append(html);
+				this.$element.find('.search__results .widg_linklist___entry').append(html);
 			} else if (estatico.search.RENDER_AS_LIST_ITEMS.indexOf(category) >= 0) {
 				this.$element.find('.search__cat ul').append(html.find('li'));
 			} else {
