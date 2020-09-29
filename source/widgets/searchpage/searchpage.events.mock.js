@@ -5,32 +5,48 @@ var data = {
 	'category': 'events',
 	'items': [
 		{
-			title: 'Titel mehrzeilig lorem ipsum dolor vanitas 1',
-			description: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum.',
-			date: '23. Januar 2017',
-			'@id': '#',
-			getIcon: true
+			title: 'BBT, Bundesamt für Berufsbildung und Technologie',
+			entryText: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis.',
+			img: {
+				src: '/assets/media/img/bund_logo.png',
+				alt: 'Bundesamt für Berufsbildung und Technologie'
+			},
+			url: '#',
+			isExternal: true
 		},
 		{
-			title: 'Titel mehrzeilig lorem ipsum dolor vanitas 2',
-			date: '23. Januar 2017',
-			description: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum.',
-			'@id': '#',
-			getIcon: true
+			title: 'Bundesministerium des Innern',
+			entryText: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis.',
+			img: {
+				src: '/assets/media/img/bmi_logo.png',
+				alt: 'Bundesministerium des Innern'
+			},
+			url: '#',
+			isExternal: false
 		},
 		{
-			title: 'Titel mehrzeilig lorem ipsum dolor vanitas 3',
-			date: '23. Januar 2017',
-			description: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum. 3',
-			'@id': '#',
-			getIcon: false
+			title: 'Kanton Aargau, Departement Gesundheit und Soziales',
+			entryText: 'ist für die Luftfahrtentwicklung und die Aufsicht über die zivile Luftfahrt in der Schweiz zuständig. Das BAZL gehört zum Eidgenössischen Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK) und ist dafür verantwortlich, dass die Zivilluftfahrt in der Schweiz ein hohes Sicherheitsniveau.',
+			url: '#',
+			isExternal: true,
+			news_detail: {
+				news_date: '27.07.2017',
+				university: 'Hochschule für Pädagogik'
+			}
 		},
 		{
-			title: 'Titel mehrzeilig lorem ipsum dolor vanitas 4',
-			date: '23. Januar 2017',
-			description: 'Copy lorem ipsum dolor vanitas carpe diem memento mori alea iacta est dolorum. 4',
-			'@id': '#',
-			getIcon: true
+			title: 'Stadtpolizei Zürich, Wissenschaftlicher Forschungsdienst (WFD)',
+			entryText: 'ist für die Luftfahrtentwicklung und die Aufsicht über die zivile Luftfahrt in der Schweiz zuständig. Das BAZL gehört zum Eidgenössischen Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK) und ist dafür verantwortlich, dass die Zivilluftfahrt in der Schweiz ein hohes Sicherheitsniveau.',
+			img: {
+				src: '/assets/media/img/stzh_logo.jpg',
+				alt: 'Stadtpolizei Zürich'
+			},
+			news_detail: {
+				news_date: '27.06.2017',
+				university: 'Hochschule für angewandte Psychologie'
+			},
+			url: '#',
+			isExternal: true
 		}
 	],
 	'facets': [

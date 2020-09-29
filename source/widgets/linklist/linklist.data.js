@@ -26,7 +26,7 @@ var templateData = {
 						alt: 'Bundesministerium des Innern'
 					},
 					url: '#',
-					isExternal: true
+					isExternal: false
 				},
 				{
 					title: 'Kanton Aargau, Departement Gesundheit und Soziales',
