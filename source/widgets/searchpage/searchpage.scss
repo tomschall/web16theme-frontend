@@ -39,7 +39,6 @@
 	}
 }
 
-
 .search__results .search__table {
 	table {
 		width: 100%;
@@ -86,7 +85,7 @@
 	td:last-child {
 		padding-right: $gutterWidth;
 
-		@include iconDataurl('pfeil-black', $after: true);
+		@include iconDataurl("pfeil-black", $after: true);
 
 		&:after {
 			height: 9px;
@@ -98,7 +97,6 @@
 
 	.cat_page_profile_result {
 		td:last-child {
-
 			&:after {
 				display: none; // hide arrow
 			}
@@ -121,7 +119,8 @@
 	}
 
 	@include mq($to: small) {
-		td, th {
+		td,
+		th {
 			display: none;
 
 			&:first-child,
@@ -154,9 +153,9 @@
 
 	@include mq($to: small) {
 		padding-bottom: $basicPush * 1.5 !important;
-  }
-  
-  .search__holder__searchstring {
+	}
+
+	.search__holder__searchstring {
 		@include span(12);
 		margin-bottom: $gutterWidth * 2;
 
@@ -168,9 +167,9 @@
 			@include span(12);
 
 			margin-bottom: $gutterWidth;
-    }
+		}
 
-    &.search__holder___wide {
+		&.search__holder___wide {
 			@include span(9);
 
 			@include mq($from: small, $to: subnav) {
@@ -193,7 +192,7 @@
 				@include span(12);
 			}
 		}
-  }
+	}
 
 	.search__holder {
 		@include span(4);
@@ -258,7 +257,7 @@
 	overflow: hidden;
 	margin-top: 0;
 
-	transition: transform .5s, max-height .5s .5s, margin-top .5s .5s;
+	transition: transform 0.5s, max-height 0.5s 0.5s, margin-top 0.5s 0.5s;
 
 	transform: translateX(-100vw);
 
@@ -266,7 +265,7 @@
 		max-height: 70px;
 		transform: translateX(0);
 
-		transition: max-height .5s, margin-top .5s, transform .5s .5s;
+		transition: max-height 0.5s, margin-top 0.5s, transform 0.5s 0.5s;
 
 		@include mq($to: small) {
 			max-height: 150px;
@@ -332,7 +331,7 @@
 		}
 
 		&.search__expander {
-			@include iconDataurl('breadcrumb-expand');
+			@include iconDataurl("breadcrumb-expand");
 
 			&:before {
 				width: 14px;
@@ -340,13 +339,11 @@
 
 				@include centerDataurlIcon();
 
-
 				left: 7px;
-
 			}
 
 			&.is_active {
-				@include iconDataurl('breadcrumb-hide');
+				@include iconDataurl("breadcrumb-hide");
 
 				&:before {
 					width: 14px;
@@ -355,7 +352,6 @@
 					@include centerDataurlIcon();
 
 					left: 7px;
-
 				}
 			}
 		}
@@ -363,7 +359,7 @@
 		&.search__reset {
 			margin-right: 0;
 
-			@include iconDataurl('reset');
+			@include iconDataurl("reset");
 
 			&:before {
 				width: 18px;
@@ -376,7 +372,6 @@
 		}
 	}
 }
-
 
 /**
   * Styles for the searchtable
@@ -434,7 +429,6 @@
 	}
 }
 
-
 /**
   * The more results button
   */
@@ -467,7 +461,6 @@
 		color: $colorBlack;
 		background-color: $colorLightGray;
 	}
-
 }
 
 .search__form-wrapper.scroll-to-fixed-fixed {
