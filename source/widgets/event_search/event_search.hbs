@@ -1,0 +1,48 @@
+<div class="event_search__wrapper" data-searchpage-template="events_full" data-searchpage-category="events" data-searchpage="formWrapper" role="search">
+	<div class="search__form-wrapper">
+		<div>
+			<div class="search__holder search__holder___double">
+				<div class="search__string">
+					<input type="text" value="" id="search-string" name="search-string" data-searchpage="query" data-searchparam="q"/>
+					<label class="formQuestion" for="search-string">{{langStrings.label_search}}</label>
+				</div>
+			</div>
+			<div class="search__holder select2__wrapper">
+				<select id="school" name="school" data-searchparam="school" class="custom-select" multiple="multiple">
+					{{#each facultyOptions}}
+						<option value="{{optionValue}}">{{optionLabel}}</option>
+					{{/each}}
+				</select>
+				<label class="formQuestion" for="school">{{langStrings.label_school}}</label>
+			</div>
+			<div class="search__holder select2__wrapper">
+				<select id="eventtype" name="eventtype" data-searchparam="eventtype" class="custom-select" multiple="multiple">
+					{{#each eventTypeOptions}}
+						<option value="{{optionValue}}">{{optionLabel}}</option>
+					{{/each}}
+				</select>
+				<label class="formQuestion" for="eventtype">{{langStrings.label_type}}</label>
+			</div>
+			<div class="search__holder select2__wrapper">
+				<select id="location" name="location" data-searchparam="location" class="custom-select" multiple="multiple">
+					{{#each locationOptions}}
+						<option value="{{optionValue}}">{{optionLabel}}</option>
+					{{/each}}
+				</select>
+				<label class="formQuestion" for="location">{{langStrings.label_location}}</label>
+			</div>
+		</div>
+
+		<div class="search__third-row">
+			<div class="search__extra-holder">
+				<button class="search__reset not-default" data-searchpage="reset">{{widgets.label_reset_fields}}</button>
+			</div>
+			<div class="search__extra-holder element-hidden">
+				<span data-searchpage="countNumber"></span>
+				<span class="search__countNumber___text"></span>
+			</div>
+		</div>
+
+	</div>
+	{{> "widgets/searchpage/searchpage" widgets.searchpage }}
+</div>
