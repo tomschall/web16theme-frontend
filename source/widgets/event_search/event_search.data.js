@@ -7,6 +7,7 @@ var _ = require('lodash'),
 
 var templateData = {
 			title: 'Event Search',
+			description: 'Lorem ipsum dolor sit amet ...',
 			searchpage: _.assign(requireNew('../../widgets/searchpage/searchpage.data.js'), {
 				jsonURL: '/mocks/widgets/searchpage/searchpage.category.json'
 			}),
