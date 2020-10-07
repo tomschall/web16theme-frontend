@@ -132,6 +132,7 @@ var fieldDictionaries = {
 
 		switch (category) {
 			case 'event':
+				console.log('event');
 				template = Handlebars.compile(listEntryTemplates.searchbar.event);
 				break;
 			case 'doc':
@@ -214,7 +215,7 @@ var fieldDictionaries = {
 	 */
 	function generateTeasers(data) {
 		var results = data.items,
-				$responseHTML = $('<div class="widg_linklist"><ul class="not-default"></ul></div>'),
+				$responseHTML = $('<div class="widg_linklist"></div>'),
 				template = null;
 
 		results.forEach(function(teaserItem) {
@@ -276,6 +277,8 @@ var fieldDictionaries = {
 					if (data.category === 'expertises') {
 						$responseHTML.append(generateWordList(data));
 					} else if (data.category === 'events') {
+						$('.widg_linklist').empty();
+						console.log('list cleared');
 						$responseHTML.append(generateTeasers(data));
 					} else if (RENDER_AS_LIST_ITEMS.indexOf(data.category) >= 0) {
 						$responseHTML = generateListItems(data);
