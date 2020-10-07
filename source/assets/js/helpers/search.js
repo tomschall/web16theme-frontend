@@ -132,7 +132,6 @@ var fieldDictionaries = {
 
 		switch (category) {
 			case 'event':
-				console.log('event');
 				template = Handlebars.compile(listEntryTemplates.searchbar.event);
 				break;
 			case 'doc':
@@ -278,7 +277,6 @@ var fieldDictionaries = {
 						$responseHTML.append(generateWordList(data));
 					} else if (data.category === 'events') {
 						$('.widg_linklist').empty();
-						console.log('list cleared');
 						$responseHTML.append(generateTeasers(data));
 					} else if (RENDER_AS_LIST_ITEMS.indexOf(data.category) >= 0) {
 						$responseHTML = generateListItems(data);
