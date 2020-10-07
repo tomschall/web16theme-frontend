@@ -3,7 +3,13 @@
 		{{> "widgets/hero/hero" widgets.hero}}
 	{{/content}}
 	{{#content "content"}}
-		<h1 id="search-title" data-searchpage="title">{{title}}</h1>
+		{{!-- <h1 id="search-title" data-searchpage="title">{{title}}</h1> --}}
+		{{#if title}}
+			<h1>{{title}}</h1>
+		{{/if}}
+		{{#if description}}
+			<p>{{description}}</p>
+		{{/if}}
 
 		<div class="search__wrapper" data-searchpage-template="events_full" data-searchpage-category="events" data-searchpage="formWrapper" role="search">
 			<div class="search__form-wrapper">
