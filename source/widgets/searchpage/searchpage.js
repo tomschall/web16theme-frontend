@@ -109,9 +109,6 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-
-    console.log('init2');
-
 		searchTemplate = $(this.options.domSelectors.formWrapper).data('searchpage-template');
 		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 		jsonURL = this.$element.data('json-url');
@@ -119,8 +116,7 @@
 		// debounce the search call invocation
 		var sendSearchQueryDebounced = _.debounce(this._sendSearchQuery.bind(this), 250);
 
-		this.sendSearchQuery = function(firstLoad, sortOn, sortOrder) {
-      console.log('search query');
+		this.sendSearchQuery = function(firstLoad, sortOn, sortOrder) {  
 			sortOn = sortOn || 'start';
 			sortOrder = sortOrder || 'ascending';
 			this.grabParameters(sortOn, sortOrder);
@@ -298,10 +294,8 @@
 	 * Initializes the intersection observer for endless scrolling
 	 */
 	Widget.prototype.initIntersectionObserver = function() {
-    console.log('observer init', observer);
     observer.current = new IntersectionObserver(this.intersectionObserverCallback.bind(this));
     var ref = $('#loadMoreRef')[0];
-    console.log('ref', ref);
     observer.current.observe(ref);
   };
   
@@ -310,7 +304,6 @@
 	 */
 	Widget.prototype.intersectionObserverCallback = function(entries) {
     if (entries[0].isIntersecting) {
-      console.log('callback fired');
       loadMoreMode = true;
       this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order, true);
       this._headerFixed = true;
