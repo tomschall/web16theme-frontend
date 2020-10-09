@@ -9,13 +9,13 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var name = 'in_content_search',
+	var name = 'event_search',
 		events = {
 			// eventname: 'eventname.estatico.' + name
 		},
 		defaults = {
 			domSelectors: {
-				// item: '[data-' + name + '="item"]'
+				event_search: '[data-init="' + name +'"]',
 			},
 			stateClasses: {
 				// isActive: 'is_active'
@@ -52,32 +52,12 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		var searchParameters = estatico.search.getSearchParameters(),
-			$form = this.$element.find('form');
-		this.$formElements = $form.find('select');
-		this.fillForm(searchParameters);
-
-		// override form submit action
-		$form.on('submit', function(event) {
-			event.preventDefault();
-			var searchParams = {};
-			this.$formElements.map(function(index, element) {
-				searchParams[$(element).data('searchparam')] = $(element).val();
-			});
-			window.location = $form.attr('action') + '#' + window.estatico.search.encodeSearchParameters(searchParams);
-		}.bind(this));
+		// Add class if select is selected
+		$('select').each(function() {
+			$('select').find(':selected').parent().next().addClass('has-selection');
+		});
 	};
 
-	Widget.prototype.fillForm = function(searchParameters) {
-		for (var key in searchParameters) {
-			if (searchParameters.hasOwnProperty(key)) {
-				$('[data-searchparam="' + key + '"]').val(searchParameters[key]);
-			}
-		}
-
-		// change event corrects the select2 fields label positioning and rendering
-		this.$formElements.trigger('change');
-	};
 
 	/**
 	 * Unbind events, remove data, custom teardown
