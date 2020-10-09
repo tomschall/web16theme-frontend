@@ -19,64 +19,64 @@ var templateData = {
 					label_school: 'Hochschule',
 					label_type: 'Typ',
 
-				school_options: [
-					{
-						'optionLabel': 'Architektur, Bau & Geomatik',
-						'optionValue': '1000'
-					},
-					{
-						'optionLabel': 'International Studies',
-						'optionValue': '1003',
-						'selected': 'selected'
-					},
-					{
-						'optionLabel': 'Life Sciences',
-						'optionValue': '1004'
-					},
-					{
-						'optionLabel': 'Musik',
-						'optionValue': '1005'
-					},
-				],
-				eventTypeOptions: [
-					{
-						'optionLabel': 'Info-Anlass',
-						'optionValue': '2008'
-					},
-					{
-						'optionLabel': 'Ringvorlesung',
-						'optionValue': '2000',
-						'selected': 'selected'
-					},
-					{
-						'optionLabel': 'Another Event',
-						'optionValue': '2001'
-					}
-				],
+					school_options: [
+						{
+							'optionLabel': 'Architektur, Bau & Geomatik',
+							'optionValue': '1000'
+						},
+						{
+							'optionLabel': 'International Studies',
+							'optionValue': '1003',
+							'selected': 'selected'
+						},
+						{
+							'optionLabel': 'Life Sciences',
+							'optionValue': '1004'
+						},
+						{
+							'optionLabel': 'Musik',
+							'optionValue': '1005'
+						},
+					],
+					eventtype_options: [
+						{
+							'optionLabel': 'Info-Anlass',
+							'optionValue': '2008'
+						},
+						{
+							'optionLabel': 'Ringvorlesung',
+							'optionValue': '2000',
+							'selected': 'selected'
+						},
+						{
+							'optionLabel': 'Another Event',
+							'optionValue': '2001'
+						}
+					],
 
-				locationOptions: [
-					{
-						'optionLabel': 'Basel',
-						'optionValue': 'basel'
-					},
-					{
-						'optionLabel': 'Muttenz',
-						'optionValue': 'muttenz'
-					},
-					{
-						'optionLabel': 'Brugg-Windisch',
-						'optionValue': 'brugg'
-					},
-					{
-						'optionLabel': 'Olten',
-						'optionValue': 'olten'
-					},
-					{
-						'optionLabel': 'Solothurn',
-						'optionValue': 'solothurn'
-					}
-				],
-			}
+					locationOptions: [
+						{
+							'optionLabel': 'Basel',
+							'optionValue': 'basel'
+						},
+						{
+							'optionLabel': 'Muttenz',
+							'optionValue': 'muttenz'
+						},
+						{
+							'optionLabel': 'Brugg-Windisch',
+							'optionValue': 'brugg'
+						},
+						{
+							'optionLabel': 'Olten',
+							'optionValue': 'olten'
+						},
+						{
+							'optionLabel': 'Solothurn',
+							'optionValue': 'solothurn'
+						}
+					],
+				}
 		},
 		data = _.merge(defaultData, {
 			meta: {

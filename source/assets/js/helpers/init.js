@@ -58,6 +58,7 @@
 	});
 
 	$(document).ready(function() {
+
 		$(".noborder").each(function() {
 			$(this).parent().parent().parent().addClass("error");
 		});
