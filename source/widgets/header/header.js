@@ -115,7 +115,7 @@
 		if (!$('.page_wrapper').hasClass('header__wide')) {
 			var headerScene = new ScrollMagic.Scene({
 				triggerElement: '#main',
-				offset: 1000000000000000,
+				offset: 5,
 				triggerHook: 0
 			});
 
@@ -134,12 +134,15 @@
 	 * Adds a dynamic scroll magic based on position of header
 	 */
 	Widget.prototype.addDynamicScrollMagic = function() {
-		console.log('scroll scene enabled false');
 		var dynamicHeaderScene = new ScrollMagic.Scene({
-					enabled: false,
+					triggerElement: '#main',
+					offset: $(window).scrollTop() + 200,
+					triggerHook: 0
 				}),
 				dynamicHeaderScene2 = new ScrollMagic.Scene({
-					enabled: false,
+					triggerElement: '#main',
+					offset: $(window).scrollTop() - 200,
+					triggerHook: 0
 				});
 
 		dynamicHeaderScene.on('enter leave', function() {
