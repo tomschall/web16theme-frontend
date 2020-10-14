@@ -460,6 +460,7 @@
 			this.updateFilters('enableAll');
 			this.$element.find('.search__table').remove();
 			this.$element.find('.content__element').remove();
+			this.$element.find('.widg_linklist').remove();
 			$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 			$(this.options.domSelectors.countNumber).closest('div').addClass(this.options.stateClasses.elementHidden);
 		}
