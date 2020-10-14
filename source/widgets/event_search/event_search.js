@@ -56,7 +56,15 @@
 		$('select').each(function() {
 			$('select').find(':selected').parent().next().addClass('has-selection');
 		});
+		this.addEventHandlers();
 	};
+	
+	Widget.prototype.addEventHandlers = function() {		
+		setTimeout(function() {
+			$('.custom-select').trigger('change');
+		},1000);
+
+	}.bind(this);
 
 
 	/**
