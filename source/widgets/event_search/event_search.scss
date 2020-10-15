@@ -1,42 +1,10 @@
-// .widg_in_content_search {
-// 	padding-bottom: 0;
-// 	margin-bottom: 0;
+.event_search__wrapper {
+  .search__form-wrapper {
+    .search__holder {
+      &.hidden {
+        display: none;
+      }
+    }
 
-// 	@include mq($to: 'subnav') {
-// 		margin-bottom: $basicPush * 2;
-// 	}
-
-// 	h3:not(.childless) {
-// 		margin-bottom: $basicPush * 3;
-// 	}
-// }
-
-// .widg_in_content_search__form {
-// 	@include gridWrapper($gutterWidth);
-// 	@include clearfix();
-// }
-
-// .in_content_search__holder {
-// 	@include span(3);
-
-// 	position: relative;
-
-// 	margin-bottom: $basicPush;
-
-// 	&.in_content_search__holder___wide {
-// 		@include span(6);
-// 	}
-
-// 	@include mq($to: small) {
-// 		@include full;
-
-// 		&.in_content_search__holder___wide {
-// 			@include full;
-// 		}
-// 	}
-// }
-
-// button.in_content_search__button {
-// 	min-width: 0;
-// 	width: 100%;
-// }
+  }
+}
