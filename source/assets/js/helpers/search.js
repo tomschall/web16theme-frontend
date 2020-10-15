@@ -131,8 +131,8 @@ var fieldDictionaries = {
 		listEntry.combinedURL = listEntry['@id'];
 
 		switch (category) {
-			case 'event':
-				template = Handlebars.compile(listEntryTemplates.searchbar.event);
+			case 'events':
+				template = Handlebars.compile(listEntryTemplates.searchbar.events);
 				break;
 			case 'doc':
 				template = Handlebars.compile(listEntryTemplates.searchbar.doc);
@@ -159,21 +159,15 @@ var fieldDictionaries = {
 		}
 
 		results.forEach(function(row) {
-
 			template = Handlebars.compile(listEntryTemplates.categorySearch[data.category]);
-
 			row.combinedURL = row['@id'];
-
 			if (typeof row.standortadresse !== typeof undefined) {
 				row.standortadresse = row.standortadresse.replace(/(?:\r\n|\r|\n)/g, '<br />');
 			}
-
       $responseHTML.append(template(_.assign(row, langStrings)));
-      
     });
     
     $responseHTML.append('<div id="loadMoreRef"></div>');
-
 		return $responseHTML;
 	}
 
@@ -276,8 +270,9 @@ var fieldDictionaries = {
 					if (data.category === 'expertises') {
 						$responseHTML.append(generateWordList(data));
 					} else if (data.category === 'events') {
-						$('.widg_linklist').empty();
+						// $('.widg_linklist').empty();
 						$responseHTML.append(generateTeasers(data));
+						$responseHTML.append('<div id="loadMoreRef"></div>');
 					} else if (RENDER_AS_LIST_ITEMS.indexOf(data.category) >= 0) {
 						$responseHTML = generateListItems(data);
 					} else {
