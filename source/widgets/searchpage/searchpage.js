@@ -442,7 +442,6 @@
 
 		if (!loadMoreMode && !firstLoad) {
       this.removeSearchResults();
-      console.log('remove');
 		}
 
 		if (this.checkParameters()) {
