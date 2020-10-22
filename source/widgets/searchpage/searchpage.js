@@ -441,21 +441,26 @@
 		}
 
 		if (!loadMoreMode && !firstLoad) {
-			this.removeSearchResults();
+      this.removeSearchResults();
+      console.log('remove');
 		}
 
 		if (this.checkParameters()) {
-			window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL, firstLoad);
+      
+      this.changeStatus(this.options.stateClasses.showLoading);
 
-			if (!loadMoreMode) {
-				this.changeStatus(this.options.stateClasses.showLoading);
-			}
+      var that = this;
+      
+      setTimeout(function() {
+        window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL, firstLoad);
 
-			if (isCategorySearch) {
-				$(window).one(this.options.searchEvents.dataLoaded, this.handleData.bind(this));
-			} else {
-				$(window).on(this.options.searchEvents.dataLoaded, this.handleData.bind(this));
-			}
+        if (isCategorySearch) {
+          $(window).one(that.options.searchEvents.dataLoaded, that.handleData.bind(that));
+        } else {
+          $(window).on(that.options.searchEvents.dataLoaded, that.handleData.bind(that));
+        }
+      }, 500);
+      
 		} else {
 			this.updateFilters('enableAll');
 			this.$element.find('.search__table').remove();
