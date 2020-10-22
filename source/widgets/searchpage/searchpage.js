@@ -48,8 +48,8 @@
 				dataLoaded: 'dataLoaded.estatico.search',
 				updateFilterLoaded: 'updateFilterLoaded.estatico.search'
 			},
-			FIRST_RESULT_SIZE: 10,
-			RESULT_SIZE: 30,
+			FIRST_RESULT_SIZE: 3,
+			RESULT_SIZE: 9,
 		},
 		data = {
 			$formElements: null
@@ -123,6 +123,9 @@
 			sendSearchQueryDebounced(firstLoad);
 		};
 		this.checkFormFieldUnset = function() {
+      if (lastChangedFieldEventObj && lastChangedFieldEventObj[lastChangedFieldName] === undefined) {
+        return false;
+      }
 
 			if (lastChangedFieldName === 'search-string' || removeAll === true) {
 				return true;
@@ -173,7 +176,13 @@
 			searchParam.template = searchTemplate;
 			searchParam.category = searchCategory;
 			this.fillForm();
-		}
+    }
+    
+    if (searchTemplate === 'events_full') {
+      console.log('q before', searchParam.q);
+      searchParam.q = '+';
+      console.log('q after', searchParam.q);
+    }
 
 		if (typeof searchParam.q !== typeof undefined) {
 			sendSearchQueryDebounced(true);
@@ -222,7 +231,7 @@
 		 */
 		$(this.options.domSelectors.moreResultsBtn).on('click.' + this.uuid, function() {
 			loadMoreMode = true;
-			this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order, true);
+			this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order);
 			this._headerFixed = true;
 			this._headerFixedReq = false;
 		}.bind(this));
@@ -305,7 +314,7 @@
 	Widget.prototype.intersectionObserverCallback = function(entries) {
     if (entries[0].isIntersecting) {
       loadMoreMode = true;
-      this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order, true);
+      this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order);
       this._headerFixed = true;
       this._headerFixedReq = false;
     }
@@ -394,7 +403,7 @@
 	 * Resetting all form fields
 	 */
 	Widget.prototype.resetFields = function() {
-		window.estatico.search.setSearchParameters({});
+    window.estatico.search.setSearchParameters({});
 		data.$formElements.map(function(index, element) {
 			$(element).val('').trigger('change');
 
@@ -415,6 +424,7 @@
 	 * Sends the complete xhr request to search
    */
 	Widget.prototype._sendSearchQuery = function(firstLoad) {
+    console.log('offset', $(this.options.domSelectors.catPageResult).length);
 		if (loadMoreMode) {
 			delete searchParam.limit; // remove limit
 			searchParam.offset = $(this.options.domSelectors.catPageResult).length; // offset counts from 0
@@ -474,6 +484,7 @@
 
 	Widget.prototype.handleData = function(event, local__data, foundEntries, limitedToResults, category, facets) {
 		if (local__data) {
+      console.log('local__data', local__data);
       this.showResults(local__data, foundEntries, limitedToResults, category);
       if (observer && observer.current) {
         observer.current.disconnect();
@@ -483,6 +494,7 @@
 				this.updateFilters(facets);
 			}
 		} else {
+      console.log('changeStatus');
 			this.changeStatus(this.options.stateClasses.showResults);
 		}
 
@@ -500,12 +512,14 @@
 	Widget.prototype.showResults = function(html, foundEntries, limitedToResults, category) {
 		if (loadMoreMode) {
 			if (category === 'events') {
-				html = this.generateAdditionalTeasers(html);
-				this.$element.find('.search__results .widg_linklist___entry').append(html);
+        html = this.generateAdditionalTeasers(html);
+        console.log('html teaser', html);
+				this.$element.find('.search__results .widg_linklist').append(html);
 			} else if (estatico.search.RENDER_AS_LIST_ITEMS.indexOf(category) >= 0) {
 				this.$element.find('.search__cat ul').append(html.find('li'));
 			} else {
-				html = this.generateAdditionalTableHTML(html);
+        html = this.generateAdditionalTableHTML(html);
+        console.log('html table', html);
         this.$element.find('.search__results table:not(.cloned)').append(html);
 			}
 
@@ -589,13 +603,13 @@
 	 * @returns {*}
    	*/
 	Widget.prototype.generateAdditionalTableHTML = function(html) {
+    console.log('generateAdditionalTableHTML html', html);
 		return html.find('tr').not(':eq(0)');
 	};
 
 	Widget.prototype.generateAdditionalTeasers = function(html) {
-		var $html = html.find('.widg_teaser__wrapper').html();
-
-		return $html;
+    console.log('generateAdditionalTeasers html', html);
+		return html.find('li');
 	};
 
 	/**
@@ -738,6 +752,10 @@
 	 * Remove search results
 	 */
 	Widget.prototype.removeSearchResults = function() {
+    if (searchTemplate === 'events_full') {
+      this.$element.find('.search__results .search__cat, .search__results div').remove();
+      return;
+    }
 		$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 		this.$element.find('.search__results .search__cat, .search__results table').remove();
 	};
