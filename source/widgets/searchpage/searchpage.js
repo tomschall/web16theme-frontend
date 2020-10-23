@@ -48,8 +48,8 @@
 				dataLoaded: 'dataLoaded.estatico.search',
 				updateFilterLoaded: 'updateFilterLoaded.estatico.search'
 			},
-			FIRST_RESULT_SIZE: 3,
-			RESULT_SIZE: 9,
+			FIRST_RESULT_SIZE: 10,
+			RESULT_SIZE: 30,
 		},
 		data = {
 			$formElements: null
@@ -80,7 +80,6 @@
 			desc: 'descending'
     },
     observer = {};
-    
 
 	/**
 	 * Create an instance of the widget
@@ -116,7 +115,7 @@
 		// debounce the search call invocation
 		var sendSearchQueryDebounced = _.debounce(this._sendSearchQuery.bind(this), 250);
 
-		this.sendSearchQuery = function(firstLoad, sortOn, sortOrder) {  
+		this.sendSearchQuery = function(firstLoad, sortOn, sortOrder) {
 			sortOn = sortOn || 'start';
 			sortOrder = sortOrder || 'ascending';
 			this.grabParameters(sortOn, sortOrder);
@@ -136,7 +135,7 @@
 			}
 
 			var lengthObj = Object.keys(lastChangedFieldEventObj[lastChangedFieldName]).length;
-			
+
 			var c = Object.keys(lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1]).length;
 			var countTrue = 0;
 			var countTrueCompare = 0;
@@ -177,11 +176,9 @@
 			searchParam.category = searchCategory;
 			this.fillForm();
     }
-    
+
     if (searchTemplate === 'events_full') {
-      console.log('q before', searchParam.q);
-      searchParam.q = '+';
-      console.log('q after', searchParam.q);
+      searchParam.q = '';
     }
 
 		if (typeof searchParam.q !== typeof undefined) {
@@ -298,7 +295,7 @@
 			this.sendSearchQuery();
 		}
   };
-  
+
 	/**
 	 * Initializes the intersection observer for endless scrolling
 	 */
@@ -307,7 +304,7 @@
     var ref = $('#loadMoreRef')[0];
     observer.current.observe(ref);
   };
-  
+
 	/**
 	 * Callback for intersection observer
 	 */
@@ -424,7 +421,6 @@
 	 * Sends the complete xhr request to search
    */
 	Widget.prototype._sendSearchQuery = function(firstLoad) {
-    console.log('offset', $(this.options.domSelectors.catPageResult).length);
 		if (loadMoreMode) {
 			delete searchParam.limit; // remove limit
 			searchParam.offset = $(this.options.domSelectors.catPageResult).length; // offset counts from 0
@@ -455,21 +451,21 @@
 		}
 
 		if (this.checkParameters()) {
-      
+
       this.changeStatus(this.options.stateClasses.showLoading);
 
-      var that = this;
-      
+      var self = this;
+
       setTimeout(function() {
         window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL, firstLoad);
 
         if (isCategorySearch) {
-          $(window).one(that.options.searchEvents.dataLoaded, that.handleData.bind(that));
+          $(window).one(self.options.searchEvents.dataLoaded, self.handleData.bind(self));
         } else {
-          $(window).on(that.options.searchEvents.dataLoaded, that.handleData.bind(that));
+          $(window).on(self.options.searchEvents.dataLoaded, self.handleData.bind(self));
         }
       }, 500);
-      
+
 		} else {
 			this.updateFilters('enableAll');
 			this.$element.find('.search__table').remove();
@@ -484,7 +480,6 @@
 
 	Widget.prototype.handleData = function(event, local__data, foundEntries, limitedToResults, category, facets) {
 		if (local__data) {
-      console.log('local__data', local__data);
       this.showResults(local__data, foundEntries, limitedToResults, category);
       if (observer && observer.current) {
         observer.current.disconnect();
@@ -494,7 +489,6 @@
 				this.updateFilters(facets);
 			}
 		} else {
-      console.log('changeStatus');
 			this.changeStatus(this.options.stateClasses.showResults);
 		}
 
@@ -513,13 +507,11 @@
 		if (loadMoreMode) {
 			if (category === 'events') {
         html = this.generateAdditionalTeasers(html);
-        console.log('html teaser', html);
 				this.$element.find('.search__results .widg_linklist').append(html);
 			} else if (estatico.search.RENDER_AS_LIST_ITEMS.indexOf(category) >= 0) {
 				this.$element.find('.search__cat ul').append(html.find('li'));
 			} else {
         html = this.generateAdditionalTableHTML(html);
-        console.log('html table', html);
         this.$element.find('.search__results table:not(.cloned)').append(html);
 			}
 
@@ -603,12 +595,10 @@
 	 * @returns {*}
    	*/
 	Widget.prototype.generateAdditionalTableHTML = function(html) {
-    console.log('generateAdditionalTableHTML html', html);
 		return html.find('tr').not(':eq(0)');
 	};
 
 	Widget.prototype.generateAdditionalTeasers = function(html) {
-    console.log('generateAdditionalTeasers html', html);
 		return html.find('li');
 	};
 
@@ -715,7 +705,7 @@
 			});
 		} else if (facets) {
 			var check = this.checkFormFieldUnset(facets);
-			
+
 			var facetsToItemsFieldnames = {
 				'faculty': 'taxonomy_subjectarea',
 				'study_type': 'taxonomy_eduproducttype',

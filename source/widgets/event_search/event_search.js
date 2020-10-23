@@ -11,7 +11,7 @@
 		},
 		defaults = {
 			domSelectors: {
-				event_search: '[data-init="' + name +'"]',
+				event_search: '[data-init="' + name + '"]',
 			},
 			stateClasses: {
 				// isActive: 'is_active'
@@ -52,8 +52,8 @@
 		$('select').each(function() {
 			$('select').find(':selected').parent().next().addClass('has-selection');
     });
-	};
-	
+  };
+
 	/**
 	 * Unbind events, remove data, custom teardown
 	 * @method
@@ -69,6 +69,6 @@
 	estatico.helpers.SuperClass.register(Widget, name, {
 		initEvents: ['ready', 'ajaxload'],
 		events: events
-	});
+  });
 
 })(jQuery);

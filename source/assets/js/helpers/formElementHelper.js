@@ -876,18 +876,8 @@
 	if (!window.__PREVENT_INITIALIZATION__) {
 		$(document).ready(function() {
 			easyFormValidation.init();
-
-			
-			// workaround https://gitlab.fhnw.ch/webteam/fhnw.webauftritt/issues/988 -> removing attribute "disabled" from upload button
 			if ($('.named-file-widget input').length) {
 				$('.named-file-widget input').removeAttr('disabled');
-				
-				// $('.named-file-widget input').each(function() {
-				// 		if ($('.named-file-widget input').is(':checked')) {
-				// 				$('.named-file-widget input').removeAttr('checked');
-				// 				console.log('remove checked');
-				// 	}
-				// });
 			}
 		});
 	}

@@ -166,7 +166,6 @@ var fieldDictionaries = {
 			}
       $responseHTML.append(template(_.assign(row, langStrings)));
     });
-    
     $responseHTML.append('<div id="loadMoreRef"></div>');
 		return $responseHTML;
 	}
@@ -255,7 +254,6 @@ var fieldDictionaries = {
 	 * @param data
    */
 	function handleReturnData(data) {
-    console.log('handleReturnData data', data);
 		if (typeof data.items !== typeof undefined) {
 			var responseData = data.items,
 				$searchCategory = null,
@@ -375,8 +373,6 @@ var fieldDictionaries = {
 	 * @param searchURL the search url
    */
 	function search(query, isSearchbar, isCategorySearch, searchTemplate, searchURL, preventHashUpdate) {
-    console.log('query', query);
-    console.log('searchURL', searchURL);
 
 		var isPageSearch = false;
 
@@ -396,7 +392,6 @@ var fieldDictionaries = {
 		cancelOutstandingRequests();
 
 		if (isSearchbar || isPageSearch) {
-      console.log('isSearchbar || isPageSearch');
 			searchCategories.forEach(function(category) {
 				var xhr = $.ajax({
 					data: _.assign(query, {
@@ -413,7 +408,6 @@ var fieldDictionaries = {
 				outstandingRequests.push(xhr);
 			});
 		} else if (isCategorySearch) {
-      console.log('category search');
 			var xhr = $.ajax({
 				data: query,
 				dataType: 'json',
