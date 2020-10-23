@@ -11,7 +11,7 @@ var templateData = {
 			img: {
 				src: '/assets/media/img/university_economy.png',
 				alt: 'Hochschule für Wirtschaft FHNW'
-			}, 
+			},
 			langStrings: {
 				readMore: 'mehr erfahren'
 			}

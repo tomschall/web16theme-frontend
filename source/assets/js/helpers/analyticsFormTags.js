@@ -20,7 +20,7 @@
 		var multi_fields_selected = [];
 		for (var key in multi_fields[0].children) {
 			if (multi_fields[0].children.hasOwnProperty(key)) {
-				if (parseInt(key) !== 0) {
+				if (parseInt(key, 10) !== 0) {
 					multi_fields_selected.push(multi_fields[0].children[key].innerText);
 				}
 			}

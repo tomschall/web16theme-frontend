@@ -80,7 +80,6 @@
 			desc: 'descending'
     },
     observer = {};
-    
 
 	/**
 	 * Create an instance of the widget
@@ -116,13 +115,16 @@
 		// debounce the search call invocation
 		var sendSearchQueryDebounced = _.debounce(this._sendSearchQuery.bind(this), 250);
 
-		this.sendSearchQuery = function(firstLoad, sortOn, sortOrder) {  
+		this.sendSearchQuery = function(firstLoad, sortOn, sortOrder) {
 			sortOn = sortOn || 'start';
 			sortOrder = sortOrder || 'ascending';
 			this.grabParameters(sortOn, sortOrder);
 			sendSearchQueryDebounced(firstLoad);
 		};
 		this.checkFormFieldUnset = function() {
+      if (lastChangedFieldEventObj && lastChangedFieldEventObj[lastChangedFieldName] === undefined) {
+        return false;
+      }
 
 			if (lastChangedFieldName === 'search-string' || removeAll === true) {
 				return true;
@@ -133,7 +135,7 @@
 			}
 
 			var lengthObj = Object.keys(lastChangedFieldEventObj[lastChangedFieldName]).length;
-			
+
 			var c = Object.keys(lastChangedFieldEventObj[lastChangedFieldName][lengthObj - 1]).length;
 			var countTrue = 0;
 			var countTrueCompare = 0;
@@ -173,7 +175,11 @@
 			searchParam.template = searchTemplate;
 			searchParam.category = searchCategory;
 			this.fillForm();
-		}
+    }
+
+    if (searchTemplate === 'events_full') {
+      searchParam.q = '';
+    }
 
 		if (typeof searchParam.q !== typeof undefined) {
 			sendSearchQueryDebounced(true);
@@ -222,7 +228,7 @@
 		 */
 		$(this.options.domSelectors.moreResultsBtn).on('click.' + this.uuid, function() {
 			loadMoreMode = true;
-			this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order, true);
+			this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order);
 			this._headerFixed = true;
 			this._headerFixedReq = false;
 		}.bind(this));
@@ -289,7 +295,7 @@
 			this.sendSearchQuery();
 		}
   };
-  
+
 	/**
 	 * Initializes the intersection observer for endless scrolling
 	 */
@@ -298,14 +304,14 @@
     var ref = $('#loadMoreRef')[0];
     observer.current.observe(ref);
   };
-  
+
 	/**
 	 * Callback for intersection observer
 	 */
 	Widget.prototype.intersectionObserverCallback = function(entries) {
     if (entries[0].isIntersecting) {
       loadMoreMode = true;
-      this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order, true);
+      this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order);
       this._headerFixed = true;
       this._headerFixedReq = false;
     }
@@ -394,7 +400,7 @@
 	 * Resetting all form fields
 	 */
 	Widget.prototype.resetFields = function() {
-		window.estatico.search.setSearchParameters({});
+    window.estatico.search.setSearchParameters({});
 		data.$formElements.map(function(index, element) {
 			$(element).val('').trigger('change');
 
@@ -442,25 +448,24 @@
 
 		if (!loadMoreMode && !firstLoad) {
       this.removeSearchResults();
-      console.log('remove');
 		}
 
 		if (this.checkParameters()) {
-      
+
       this.changeStatus(this.options.stateClasses.showLoading);
 
-      var that = this;
-      
+      var self = this;
+
       setTimeout(function() {
         window.estatico.search.search(searchParam, false, isCategorySearch, searchTemplate, jsonURL, firstLoad);
 
         if (isCategorySearch) {
-          $(window).one(that.options.searchEvents.dataLoaded, that.handleData.bind(that));
+          $(window).one(self.options.searchEvents.dataLoaded, self.handleData.bind(self));
         } else {
-          $(window).on(that.options.searchEvents.dataLoaded, that.handleData.bind(that));
+          $(window).on(self.options.searchEvents.dataLoaded, self.handleData.bind(self));
         }
       }, 500);
-      
+
 		} else {
 			this.updateFilters('enableAll');
 			this.$element.find('.search__table').remove();
@@ -501,12 +506,12 @@
 	Widget.prototype.showResults = function(html, foundEntries, limitedToResults, category) {
 		if (loadMoreMode) {
 			if (category === 'events') {
-				html = this.generateAdditionalTeasers(html);
-				this.$element.find('.search__results .widg_linklist___entry').append(html);
+        html = this.generateAdditionalTeasers(html);
+				this.$element.find('.search__results .widg_linklist').append(html);
 			} else if (estatico.search.RENDER_AS_LIST_ITEMS.indexOf(category) >= 0) {
 				this.$element.find('.search__cat ul').append(html.find('li'));
 			} else {
-				html = this.generateAdditionalTableHTML(html);
+        html = this.generateAdditionalTableHTML(html);
         this.$element.find('.search__results table:not(.cloned)').append(html);
 			}
 
@@ -594,9 +599,7 @@
 	};
 
 	Widget.prototype.generateAdditionalTeasers = function(html) {
-		var $html = html.find('.widg_teaser__wrapper').html();
-
-		return $html;
+		return html.find('li');
 	};
 
 	/**
@@ -702,7 +705,7 @@
 			});
 		} else if (facets) {
 			var check = this.checkFormFieldUnset(facets);
-			
+
 			var facetsToItemsFieldnames = {
 				'faculty': 'taxonomy_subjectarea',
 				'study_type': 'taxonomy_eduproducttype',
@@ -739,6 +742,10 @@
 	 * Remove search results
 	 */
 	Widget.prototype.removeSearchResults = function() {
+    if (searchTemplate === 'events_full') {
+      this.$element.find('.search__results .search__cat, .search__results div').remove();
+      return;
+    }
 		$(this.options.domSelectors.moreResultsBtnWrapper).addClass(this.options.stateClasses.elementHidden);
 		this.$element.find('.search__results .search__cat, .search__results table').remove();
 	};

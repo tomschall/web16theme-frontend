@@ -74,9 +74,9 @@ var fieldDictionaries = {
 						'<span class="search__contact-label">{{email-label}}</span><a class="search__contact-link" href="mailto:{{email}}">{{email}}</a></div>{{/if}}</td></tr>',
 
 				events: '<li class="cat_page_result search__result--item widg_linklist___entry {{#if isExternal}}is_external{{/if}}">' +
-				'<a href="{{url}}">{{#if img}}<div class="widg_linklist__img-wrapper"><img src="{{img.src}}" alt="{{img.alt}}"/></div>' +
-				'{{/if}}<h3 class="childless">{{{title}}}</h3>{{#if news_detail}}<span>{{news_detail.news_date}} | {{news_detail.university}}</span>{{/if}}' +
-				'{{#if event_detail}}<span>{{event_detail.event_date}}, {{event_detail.location_short}}</span>{{/if}}<p>{{entryText}}</p></a></li>',
+            '<a href="{{url}}">{{#if img}}<div class="widg_linklist__img-wrapper"><img src="{{img.src}}" alt="{{img.alt}}"/></div>' +
+            '{{/if}}<h3 class="childless">{{{title}}}</h3>{{#if news_detail}}<span>{{news_detail.news_date}} | {{news_detail.university}}</span>{{/if}}' +
+            '{{#if event_detail}}<span>{{event_detail.event_date}}, {{event_detail.location_short}}</span>{{/if}}<p>{{entryText}}</p></a></li>',
 
 
 				studies: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td class="search__cell search__cell-title">' +
@@ -166,7 +166,6 @@ var fieldDictionaries = {
 			}
       $responseHTML.append(template(_.assign(row, langStrings)));
     });
-    
     $responseHTML.append('<div id="loadMoreRef"></div>');
 		return $responseHTML;
 	}
@@ -374,6 +373,7 @@ var fieldDictionaries = {
 	 * @param searchURL the search url
    */
 	function search(query, isSearchbar, isCategorySearch, searchTemplate, searchURL, preventHashUpdate) {
+
 		var isPageSearch = false;
 
 		if (typeof isSearchbar === typeof undefined) {

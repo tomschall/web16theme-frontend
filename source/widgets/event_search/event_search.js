@@ -1,9 +1,5 @@
 /*!
- * In-Content Search
- *
- * @author Unic AG
- * @copyright Unic AG
- *
+ * Event Search
  */
 
 ;(function($, undefined) {
@@ -15,7 +11,7 @@
 		},
 		defaults = {
 			domSelectors: {
-				event_search: '[data-init="' + name +'"]',
+				event_search: '[data-init="' + name + '"]',
 			},
 			stateClasses: {
 				// isActive: 'is_active'
@@ -55,17 +51,8 @@
 		// Add class if select is selected
 		$('select').each(function() {
 			$('select').find(':selected').parent().next().addClass('has-selection');
-		});
-		this.addEventHandlers();
-	};
-	
-	Widget.prototype.addEventHandlers = function() {		
-		setTimeout(function() {
-			$('.custom-select').trigger('change');
-		},1000);
-
-	}.bind(this);
-
+    });
+  };
 
 	/**
 	 * Unbind events, remove data, custom teardown
@@ -73,18 +60,15 @@
 	 * @public
 	 */
 	Widget.prototype.destroy = function() {
-
 		// Unbind events, remove data
 		estatico.helpers.SuperClass.prototype.destroy.apply(this);
-
 		// Custom teardown (removing added DOM elements etc.)
 		// If there is no need for a custom teardown, this method can be removed
 	};
-
 	// Make the plugin available through jQuery (and the global project namespace)
 	estatico.helpers.SuperClass.register(Widget, name, {
 		initEvents: ['ready', 'ajaxload'],
 		events: events
-	});
+  });
 
 })(jQuery);
