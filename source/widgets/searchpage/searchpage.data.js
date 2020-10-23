@@ -18,7 +18,8 @@ var templateData = {
 				phoneDirect: 'T Direkt',
 				phoneCentral: 'T Zentrale',
 				furtherOccasions: 'Weitere Durchführungen',
-				onRequest: 'Auf Anfrage'
+        onRequest: 'Auf Anfrage',
+        moreResultsGetLoaded: 'Weitere Resultate werden geladen…'
 			},
 
 			jsonURL: '/mocks/widgets/searchpage/searchpage.category.json',
