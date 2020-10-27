@@ -5,13 +5,15 @@
     box-shadow: none;
 
     .search__holder {
-      // padding-left: 0;
-      // padding-right: 0;
-
       &.hidden {
         display: none;
       }
     }
+  }
 
+  .widg_searchpage {
+    .search__results {
+      padding: 0;
+    }
   }
 }
