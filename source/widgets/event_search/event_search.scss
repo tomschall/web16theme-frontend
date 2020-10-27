@@ -1,10 +1,19 @@
 .event_search__wrapper {
+  // @include bleed($hasPadding: true);
   .search__form-wrapper {
+    padding: 0;
+    box-shadow: none;
+
     .search__holder {
       &.hidden {
         display: none;
       }
     }
+  }
 
+  .widg_searchpage {
+    .search__results {
+      padding: 0;
+    }
   }
 }

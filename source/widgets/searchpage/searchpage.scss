@@ -134,8 +134,7 @@
 /**
   * Styles for the searchpages / formfields and wrapper
   */
-.search__wrapper,
-.event_search__wrapper {
+.search__wrapper {
 	@include bleedFull($gutterWidth);
 	margin-top: $basicPush * 2;
 }
