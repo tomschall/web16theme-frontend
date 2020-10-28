@@ -178,6 +178,7 @@
     }
 
     if (searchTemplate === 'events_full') {
+      this.grabParameters();
       searchParam.q = '';
     }
 
@@ -486,7 +487,7 @@
       }
       this.initIntersectionObserver();
 			if (isCategorySearch) {
-				this.updateFilters(facets);
+        this.updateFilters(facets);
 			}
 		} else {
 			this.changeStatus(this.options.stateClasses.showResults);
@@ -735,8 +736,24 @@
 			});
 		}
 		$('.custom-select').select2('destroy');
-		window.estatico.easyFormValidation.select2Init();
-	};
+    window.estatico.easyFormValidation.select2Init();
+    this.checkLabelHasSelection();
+  };
+  
+  /**
+	 * add class 'has-selection' if select is pre-selected
+	 */
+  Widget.prototype.checkLabelHasSelection = function() {
+    if (searchTemplate === 'events_full') {
+      var searchParamArr = ['category', 'eventtype', 'location', 'school'];
+
+      searchParamArr.forEach(function(elem) {
+        if (searchParam && searchParam[elem] !== null) {
+          $('select#' + elem).next('span.select2.select2-container.select2-container--default').addClass('has-selection');
+        }
+      });
+    }
+  };
 
 	/**
 	 * Remove search results
