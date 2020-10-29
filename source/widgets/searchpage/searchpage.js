@@ -79,7 +79,8 @@
 			asc: 'ascending',
 			desc: 'descending'
     },
-    observer = {};
+    observer = {},
+    lastReq = false;
 
 	/**
 	 * Create an instance of the widget
@@ -303,7 +304,9 @@
 	Widget.prototype.initIntersectionObserver = function() {
     observer.current = new IntersectionObserver(this.intersectionObserverCallback.bind(this));
     var ref = $('#loadMoreRef')[0];
-    observer.current.observe(ref);
+    if (ref) {
+      observer.current.observe(ref);
+    }
   };
 
 	/**
@@ -428,7 +431,13 @@
 		} else if (!firstLoad) {
 			delete searchParam.offset;
 			delete searchParam.limit;
-		}
+    }
+
+    if (lastReq === true) {
+      delete searchParam.offset;
+      delete searchParam.limit;
+      lastReq = false;
+    }
 
 		window.estatico.search.setSearchParameters(searchParam);
 
@@ -436,7 +445,7 @@
 			// translate offset - internally
 			searchParam.limit = parseInt(searchParam.offset, 10) + this.options.RESULT_SIZE;
 			searchParam.offset = 0;
-		}
+    }
 
 		searchParam.limit = searchParam.offset ?
 				this.options.RESULT_SIZE :
@@ -485,10 +494,15 @@
       if (observer && observer.current) {
         observer.current.disconnect();
       }
-      this.initIntersectionObserver();
+      if (local__data[0].innerHTML !== '') {
+        this.initIntersectionObserver();
+      }
 			if (isCategorySearch) {
         this.updateFilters(facets);
-			}
+      }
+      if (local__data[0].innerHTML === '') {
+        lastReq = true;
+      }
 		} else {
 			this.changeStatus(this.options.stateClasses.showResults);
 		}
@@ -739,7 +753,7 @@
     window.estatico.easyFormValidation.select2Init();
     this.checkLabelHasSelection();
   };
-  
+
   /**
 	 * add class 'has-selection' if select is pre-selected
 	 */
