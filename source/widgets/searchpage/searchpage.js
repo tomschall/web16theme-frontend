@@ -48,8 +48,8 @@
 				dataLoaded: 'dataLoaded.estatico.search',
 				updateFilterLoaded: 'updateFilterLoaded.estatico.search'
 			},
-			FIRST_RESULT_SIZE: 3,
-			RESULT_SIZE: 3,
+			FIRST_RESULT_SIZE: 10,
+			RESULT_SIZE: 30,
 		},
 		data = {
 			$formElements: null
