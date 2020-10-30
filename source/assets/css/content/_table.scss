@@ -1,0 +1,152 @@
+table {
+	td {
+		& > ul:first-child {
+			margin-top: 0px;
+		}
+
+		& > p:first-child {
+			margin-top: 0px;
+		}
+
+		& > ul > li {
+			line-height: 1.625 !important;
+		}
+	}
+}
+
+table.content__table {
+	@media screen {
+		display: table;
+		width: 100%;
+		table-layout: fixed;
+		overflow-wrap: break-word;
+		-ms-word-wrap: break-word;
+	}
+
+	@media (min-width: 320px) and (max-width: 1024px) {
+		display: block;
+		table-layout: auto;
+		overflow: auto;
+		width: unset;
+	}
+
+	th,
+	td {
+		padding: $gutterWidth - 5 $gutterWidth $gutterWidth - 5 18px;
+		vertical-align: top;
+		text-align: left;
+		line-height: 1.625;
+		font-size: $textSize;
+		color: #4c4c4c;
+		font-weight: 500;
+	}
+
+	tr {
+		th {
+			border-bottom: 1px solid $colorBlack;
+			background-color: $colorBg;
+		}
+	}
+
+	tr {
+		td {
+			border-bottom: 1px solid $colorGreyHover;
+		}
+
+		&:last-of-type {
+			td,
+			th {
+				border-bottom: none;
+			}
+		}
+	}
+
+	@media print {
+		width: 100%;
+	}
+}
+
+table.content__table__backcomp {
+	display: block;
+	width: auto;
+	table-layout: auto;
+	overflow-x: auto;
+	overflow-y: hidden;
+
+	th,
+	td {
+		padding: $gutterWidth - 5 $gutterWidth $gutterWidth - 5 18px;
+		vertical-align: top;
+		text-align: left;
+
+		line-height: 1.625;
+		font-size: $textSize;
+		color: #4c4c4c;
+		font-weight: 500;
+	}
+
+	tr {
+		th {
+			border-bottom: 1px solid $colorBlack;
+			background-color: $colorLightGray;
+		}
+	}
+
+	tr {
+		td {
+			border-bottom: 1px solid $colorGreyHover;
+		}
+
+		&:last-of-type {
+			td,
+			th {
+				border-bottom: none;
+			}
+		}
+	}
+
+	@media print {
+		width: 100%;
+	}
+}
+
+/* MOBILE SCROLL */
+table.mobile__scroll {
+	@media (max-width: 768px) {
+    overflow-x: scroll;
+
+		&:before {
+      content: url(/++theme++web16theme/assets/media/icons/swipe_hand_icon.gif);			
+      width: 100px;
+      height: 100px;
+      display: block;
+      position: absolute;
+      text-align: center;
+      height: auto;
+      width: 100%;
+      margin-top: 50px;
+      opacity: 1;
+    }
+    
+    &.touched:before {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+	}
+}
+
+/* STRIPED TABLES */
+table.table_striped {
+	& tr td {
+		border-bottom: none;
+	}
+
+	tr:nth-child(even) {
+		background-color: $colorLightGray;
+	}
+}
+
+/* TABLE IN ACCORDEONS */
+.widg_accordeon__content .content__table td:first-child {
+	padding-left: 0;
+}
