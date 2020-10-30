@@ -28,7 +28,6 @@
 	});
 
 	$('.mobile__scroll').on('touchstart', function() {
-		console.log('touched and tab');
 		$(this).addClass('touched');
 	});
 
