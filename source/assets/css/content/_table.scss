@@ -115,6 +115,10 @@ table.mobile__scroll {
 	@media (max-width: 768px) {
 		overflow-x: scroll;
 
+		tbody {
+			min-width: 768px;
+		}
+
 		&:before {
 			display: inline-block;
 			content: url(/++theme++web16theme/assets/media/icons/swipe_hand_icon.gif);
