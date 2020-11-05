@@ -27,7 +27,7 @@
 		});
 	});
 
-	$('.mobile__scroll').on('touchstart', function() {
+	$('.mobile__scroll, .mobile__scroll_striped').on('touchstart', function() {
 		$(this).addClass('touched');
 	});
 
