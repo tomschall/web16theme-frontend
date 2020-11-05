@@ -182,7 +182,8 @@ table.mobile__scroll_striped {
 }
 
 /* STRIPED TABLES */
-table.table_striped {
+table.table_striped,
+table.mobile__scroll_striped {
 	& tr td {
 		border-bottom: none;
 	}
