@@ -1,6 +1,6 @@
 #!/bin/sh
-BASE_PATH=src
-#BASE_PATH=..
+#BASE_PATH=src
+BASE_PATH=..
 
 rsync -rva build/assets/ $BASE_PATH/fhnw.web16theme/src/fhnw/web16theme/theme/assets/
 rsync -rva build/pages/ $BASE_PATH/fhnw.web16theme/src/fhnw/web16theme/theme/pages/

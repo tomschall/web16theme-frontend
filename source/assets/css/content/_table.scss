@@ -129,7 +129,13 @@ table.mobile__scroll {
 			margin-top: $basicPush * 5;
 			left: 0;
 			opacity: 0.7;
-		}
+    }
+    
+    tr {
+      td {
+        min-width: 150px;
+      }
+    }
 
 		&.touched:before {
 			opacity: 0;
