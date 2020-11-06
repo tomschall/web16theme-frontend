@@ -232,7 +232,7 @@
     }
     
     &.search__holder___widest {
-			@include span(12);
+			@include span(6);
 
 			@include mq($from: small, $to: subnav) {
 				@include span(12);
