@@ -181,11 +181,21 @@
     if (searchTemplate === 'events_full') {
       this.grabParameters();
       searchParam.q = '';
+      this.customizeFormSelectWidth();
     }
 
 		if (typeof searchParam.q !== typeof undefined) {
 			sendSearchQueryDebounced(true);
 		}
+  };
+  
+  Widget.prototype.customizeFormSelectWidth = function() {
+    var $formElements = $('.search__form-wrapper .select2__wrapper:not(".hidden")');
+    if ($formElements.length === 2) {
+      $formElements.addClass('search__holder___double');
+    } else if ($formElements.length === 1) {
+      $formElements.addClass('search__holder___widest');
+    }
 	};
 
 	Widget.prototype.initQueryClearBtn = function() {
@@ -553,23 +563,49 @@
 		/**
 		 * When there is a count number holder in the document
 		 */
-		if ($(this.options.domSelectors.countNumber).length === 1) {
-			$(this.options.domSelectors.countNumber).html(foundEntries);
-			var $currentDiv = $(this.options.domSelectors.countNumber).closest('div');
+    
+    if ($(this.options.domSelectors.countNumber).length === 1) {
+      $(this.options.domSelectors.countNumber).html(foundEntries);
+      var $currentDiv = $(this.options.domSelectors.countNumber).closest(
+        'div'
+      );
 
-			if (foundEntries === 0) {
-				$currentDiv.find('.search__countNumber___text').text($('.search__lang-results').data('lang-no-results'));
-				$(this.options.domSelectors.countNumber).addClass(this.options.stateClasses.elementHidden);
-			} else if (foundEntries === 1) {
-				$currentDiv.find('.search__countNumber___text').text($('.search__lang-results').data('lang-singular'));
-				$(this.options.domSelectors.countNumber).removeClass(this.options.stateClasses.elementHidden);
-			} else {
-				$currentDiv.find('.search__countNumber___text').text($('.search__lang-results').data('lang-plural'));
-				$(this.options.domSelectors.countNumber).removeClass(this.options.stateClasses.elementHidden);
-			}
+      if (foundEntries === 0) {
+        $currentDiv
+          .find('.search__countNumber___text')
+          .text($('.search__lang-results').data('lang-no-results'));
+        $(this.options.domSelectors.countNumber).addClass(
+          this.options.stateClasses.elementHidden
+        );
+      } else if (foundEntries === 1) {
+        $currentDiv
+          .find('.search__countNumber___text')
+          .text($('.search__lang-results').data('lang-singular'));
+        $(this.options.domSelectors.countNumber).removeClass(
+          this.options.stateClasses.elementHidden
+        );
+      } else {
+        $currentDiv
+          .find('.search__countNumber___text')
+          .text($('.search__lang-results').data('lang-plural'));
+        $(this.options.domSelectors.countNumber).removeClass(
+          this.options.stateClasses.elementHidden
+        );
+      }
 
-			$currentDiv.removeClass(this.options.stateClasses.elementHidden);
-		}
+      $currentDiv.removeClass(this.options.stateClasses.elementHidden);
+
+      /**
+       * Temporary hide results counter in event search
+       */
+
+      if (searchTemplate === 'events_full') {
+        $currentDiv.find('.search__countNumber___text').text('');
+        $(this.options.domSelectors.countNumber).addClass(
+          this.options.stateClasses.elementHidden
+        );
+      }
+    }
 
 		/**
 		 * When the results which where returned are limited
