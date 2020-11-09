@@ -229,6 +229,18 @@
 			@include mq($to: small) {
 				@include span(12);
 			}
+    }
+    
+    &.search__holder___widest {
+			@include span(6);
+
+			@include mq($from: small, $to: subnav) {
+				@include span(12);
+			}
+
+			@include mq($to: small) {
+				@include span(12);
+			}
 		}
 	}
 
