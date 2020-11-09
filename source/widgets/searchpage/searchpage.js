@@ -410,17 +410,18 @@
 		return properParamCounter > 0;
 	};
 
-	/**
+  /**
 	 * Resetting all form fields
 	 */
 	Widget.prototype.resetFields = function() {
     window.estatico.search.setSearchParameters({});
 		data.$formElements.map(function(index, element) {
-			$(element).val('').trigger('change');
-
-			if ($(element).is('select')) {
-				$(element).select2('destroy');
-				window.estatico.easyFormValidation.select2Init();
+      if ($(element).is('input')) {
+        $(element).val(null).trigger('change');
+      } else if ($(element).is('select')) {
+        if ((searchTemplate === 'events_full' && !$(element).context.parentElement.classList.contains('hidden')) || searchTemplate !== 'events_full') {
+          $(element).val(null).trigger('change');
+        }
 			}
 		});
 	};
