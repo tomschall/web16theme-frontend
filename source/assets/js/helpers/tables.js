@@ -33,7 +33,7 @@
 		});	
 	}
 
-	$('.mobile__scroll, .mobile__scroll_striped').on('scroll', function() {
+	$('.mobile__scroll, .mobile__scroll_striped').on('scroll click', function() {
 		$(this).addClass('scrolling');
 	});
 
