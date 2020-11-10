@@ -27,8 +27,10 @@
 		});
 	});
 
-	$('.mobile__scroll, .mobile__scroll_striped').on('touchstart', function() {
-		$(this).addClass('touched');
-	});
+	if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		$('.mobile__scroll, .mobile__scroll_striped').on('touchstart', function() {
+			$(this).addClass('touched');
+		});	
+	}
 
 })(jQuery, document);
