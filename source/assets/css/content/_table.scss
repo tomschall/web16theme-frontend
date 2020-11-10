@@ -131,6 +131,11 @@ table.mobile__scroll {
 			opacity: 0.7;
 		}
 
+		&.scrolling:before {
+			content: '';
+			opacity: 0;
+		}
+
 		tr {
 			td {
 				min-width: 150px;
@@ -162,6 +167,11 @@ table.mobile__scroll_striped {
 			margin-top: $basicPush * 5;
 			left: 0;
 			opacity: 0.7;
+		}
+
+		&.scrolling:before {
+			content: '';
+			opacity: 0;
 		}
 
 		tr {
