@@ -28,9 +28,13 @@
 	});
 
 	if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-		$('.mobile__scroll, .mobile__scroll_striped').on('touchstart', function() {
+		$('.mobile__scroll, .striped__mobile_scroll').on('touchstart, ontouchstart', function() {
 			$(this).addClass('touched');
 		});	
 	}
+
+	$('.mobile__scroll, .mobile__scroll_striped').on('scroll', function() {
+		$(this).addClass('scrolling');
+	});
 
 })(jQuery, document);
