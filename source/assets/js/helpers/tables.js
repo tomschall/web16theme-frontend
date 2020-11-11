@@ -37,4 +37,16 @@
 		$(this).addClass('scrolling');
 	});
 
+	// REMOVE SCROLL ICON IF TABLE IS NOT SCROLLABLE
+	$('table.mobile__scroll tbody').each(function() {
+		var tableWidth = $(this).outerWidth();
+		var contentElem = document.querySelector('.content__element');
+		var rectContentElement = contentElem.getBoundingClientRect();
+		var contentWidth = rectContentElement.width;
+		console.log(tableWidth, contentWidth);
+		if (tableWidth < contentWidth) {
+				$(this).parent().removeClass('mobile__scroll');
+		}
+ });
+
 })(jQuery, document);
