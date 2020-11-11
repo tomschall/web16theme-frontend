@@ -44,7 +44,7 @@
 		var contentElem = document.querySelector('.content__element');
 		var rectContentElement = contentElem.getBoundingClientRect();
 		var contentWidth = rectContentElement.width;
-		console.log(tableWidth, contentWidth);
+		//console.log(tableWidth, contentWidth);
 		if (tableWidth < contentWidth) {
 				$(this).parent().removeClass('mobile__scroll');
 		}
