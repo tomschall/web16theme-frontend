@@ -37,7 +37,8 @@
 		$(this).addClass('scrolling');
 	});
 
-	// REMOVE SCROLL ICON IF TABLE IS NOT SCROLLABLE
+	// REMOVE SCROLL ICON IF TABLE IS NOT SCROLLABLE AND SMALLER THAN CONTENT COLUMN
+	// webteam/fhnw.webauftritt#1580
 	$('table.mobile__scroll tbody').each(function() {
 		var tableWidth = $(this).outerWidth();
 		var contentElem = document.querySelector('.content__element');
