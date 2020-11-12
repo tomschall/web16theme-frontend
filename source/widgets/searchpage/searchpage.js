@@ -472,6 +472,7 @@
 		}
 
 		if (this.checkParameters()) {
+      console.log('checkparameters true');
 
       this.changeStatus(this.options.stateClasses.showLoading);
 
@@ -500,6 +501,7 @@
 	};
 
 	Widget.prototype.handleData = function(event, local__data, foundEntries, limitedToResults, category, facets) {
+    console.log('local__data', local__data);
 		if (local__data) {
       this.showResults(local__data, foundEntries, limitedToResults, category);
       if (observer && observer.current) {
@@ -530,11 +532,13 @@
 	 * @param limitedToResults the number of to which the entries are limited
 	 */
 	Widget.prototype.showResults = function(html, foundEntries, limitedToResults, category) {
+    console.log('showresults', html);
 		if (loadMoreMode) {
 			if (category === 'events') {
         html = this.generateAdditionalTeasers(html);
 				this.$element.find('.search__results .widg_linklist').append(html);
 			} else if (estatico.search.RENDER_AS_LIST_ITEMS.indexOf(category) >= 0) {
+        console.log('showResults estatico.search.RENDER_AS_LIST_ITEMS.indexOf', html);
 				this.$element.find('.search__cat ul').append(html.find('li'));
 			} else {
         html = this.generateAdditionalTableHTML(html);
