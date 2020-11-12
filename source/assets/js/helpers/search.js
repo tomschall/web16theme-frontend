@@ -132,7 +132,7 @@ var fieldDictionaries = {
 
 		switch (category) {
 			case 'events':
-				template = Handlebars.compile(listEntryTemplates.searchbar.events);
+				template = Handlebars.compile(listEntryTemplates.searchbar.event);
 				break;
 			case 'doc':
 				template = Handlebars.compile(listEntryTemplates.searchbar.doc);
