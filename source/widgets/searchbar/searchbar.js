@@ -234,6 +234,7 @@
 	 * @param html the generated html
    */
 	Widget.prototype.showResults = function(html, category) {
+    console.log('searchbar showResults', html);
 		$(this.options.domSelectors.content).find('.mCSB_container .search__results span[data-category="' + category + '"]').after(html);
 
 		this.changeSearchbarStatus(this.options.stateClasses.showResults);
