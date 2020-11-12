@@ -28,7 +28,7 @@
 	});
 
 	if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-		$('.mobile__scroll, .striped__mobile_scroll').on('touchstart, ontouchstart', function() {
+		$('.mobile__scroll, .mobile__scroll_striped').on('touchstart, ontouchstart', function() {
 			$(this).addClass('touched');
 		});	
 	}
@@ -39,7 +39,7 @@
 
 	// REMOVE SCROLL ICON IF TABLE IS NOT SCROLLABLE AND SMALLER THAN CONTENT COLUMN
 	// webteam/fhnw.webauftritt#1580
-	$('table.mobile__scroll tbody').each(function() {
+	$('table.mobile__scroll tbody, table.mobile__scroll_striped tbody').each(function() {
 		var tableWidth = $(this).outerWidth();
 		var contentElem = document.querySelector('.content__element');
 		var rectContentElement = contentElem.getBoundingClientRect();
@@ -49,6 +49,7 @@
 		if (tableWidth < contentWidth || tableWidth === contentWidth) {
 			console.log('table has smaller or equal content size', tableWidth, contentWidth);
 			$(this).parent().removeClass('mobile__scroll');
+			$(this).parent().removeClass('mobile__scroll_striped');
 		}
  });
 
