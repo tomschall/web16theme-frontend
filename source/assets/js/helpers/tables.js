@@ -44,10 +44,10 @@
 		var contentElem = document.querySelector('.content__element');
 		var rectContentElement = contentElem.getBoundingClientRect();
 		var contentWidth = rectContentElement.width;
-		console.log('Table', tableWidth, 'Content', contentWidth, this);
+		//console.log('Table', tableWidth, 'Content', contentWidth, this);
 
 		if (tableWidth < contentWidth || tableWidth === contentWidth) {
-			console.log('table has smaller or equal content size', tableWidth, contentWidth);
+			//console.log('table has smaller or equal content size', tableWidth, contentWidth);
 			$(this).parent().removeClass('mobile__scroll');
 			$(this).parent().removeClass('mobile__scroll_striped');
 		}
