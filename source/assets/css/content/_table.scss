@@ -66,7 +66,7 @@ table.content__table {
 	}
 }
 
-table.content__table__backcomp, table.default {
+table.content__table__backcomp {
 	display: block;
 	width: auto;
 	table-layout: auto;
@@ -111,8 +111,7 @@ table.content__table__backcomp, table.default {
 }
 
 /* STRIPED TABLES */
-table.table__striped,
-table.table_mobile__scroll_striped {
+table.table_striped {
 	& tr td {
 		border-bottom: none;
 	}
