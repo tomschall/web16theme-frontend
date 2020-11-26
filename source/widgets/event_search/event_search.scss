@@ -9,6 +9,10 @@
         display: none;
       }
     }
+    .search__third-row {
+      display: block !important;
+      padding-bottom: $basicPush * 4;
+    }
   }
 
   .widg_searchpage {
