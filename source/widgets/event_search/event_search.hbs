@@ -45,6 +45,13 @@
           </select>
           <label class="formQuestion" for="location">{{widgets.label_location}}</label>
         </div>
+        <div class="search__holder select2__wrapper hidden">
+          <select id="subject" name="subject" data-searchparam="subject" class="custom-select" multiple="multiple">
+            {{#each widgets.subject}}
+            <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
+            {{/each}}
+          </select>
+        </div>
       </div>
     </div>
     <div class="search__third-row">
