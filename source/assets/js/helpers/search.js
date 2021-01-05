@@ -131,8 +131,8 @@ var fieldDictionaries = {
 		listEntry.combinedURL = listEntry['@id'];
 
 		switch (category) {
-			case 'events':
-				template = Handlebars.compile(listEntryTemplates.searchbar.events);
+			case 'event':
+				template = Handlebars.compile(listEntryTemplates.searchbar.event);
 				break;
 			case 'doc':
 				template = Handlebars.compile(listEntryTemplates.searchbar.doc);
