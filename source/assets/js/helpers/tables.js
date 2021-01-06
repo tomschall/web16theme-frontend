@@ -46,6 +46,7 @@
 		var contentWidth = rectContentElement.width;
 		console.log(tableWidth, contentWidth);
 		if (tableWidth < contentWidth) {
+				console.log(tableWidth, contentWidth);
 				$(this).parent().removeClass('scrolling, mobile__scroll');
 		} else {
 			$(this).parent().addClass('scrolling, mobile__scroll');
