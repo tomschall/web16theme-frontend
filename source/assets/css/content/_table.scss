@@ -121,7 +121,34 @@ table.table_striped {
 	}
 }
 
+/* MOBILE SCROLL */
+table.mobile__scroll {
+	@media (max-width: 768px) {
+    overflow-x: scroll;
+
+		&:before {
+      content: url(/++theme++web16theme/assets/media/icons/swipe_hand_icon.gif);			
+      width: 100px;
+      height: 100px;
+      display: block;
+      position: absolute;
+      text-align: center;
+      height: auto;
+      width: 100%;
+      margin-top: 50px;
+      opacity: 1;
+    }
+    
+    &.touched:before {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+	}
+}
+
+
 /* TABLE IN ACCORDEONS */
 .widg_accordeon__content .content__table td:first-child {
 	padding-left: 0;
 }
+

@@ -29,12 +29,12 @@
 
 	if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		$('table').on('touchstart, ontouchstart', function() {
-			$(this).addClass('touched, mobile__scroll');
+			$(this).addClass('touched mobile__scroll');
 		});	
 	}
 	
 	$('table').on('scroll click', function() {
-		$(this).addClass('scrolling');
+		$(this).removeClass('mobile__scroll');
 	});
 
 	// REMOVE SCROLL ICON IF TABLE IS NOT SCROLLABLE AND SMALLER THAN CONTENT COLUMN
@@ -46,10 +46,9 @@
 		var contentWidth = rectContentElement.width;
 		console.log(tableWidth, contentWidth);
 		if (tableWidth < contentWidth) {
-				console.log(tableWidth, contentWidth);
-				$(this).parent().removeClass('scrolling, mobile__scroll');
+				$(this).parent().removeClass('scrolling mobile__scroll');
 		} else {
-			$(this).parent().addClass('scrolling, mobile__scroll');
+			$(this).parent().addClass('scrolling mobile__scroll');
 		}
  });
 
