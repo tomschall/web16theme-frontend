@@ -22,18 +22,22 @@
 
 			});
 			if (isStyle === 0) {
-				$(this).removeClass('content__table').addClass('content__table__backcomp');
+				$(this).removeClass('content__table').addClass('content__table__backcomp  scrolling mobile__scroll');
 			}
 		});
 	});
 
 	if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-		$('table').on('touchstart, ontouchstart', function() {
-			$(this).addClass('touched mobile__scroll');
-		});	
+		$('table tbody').each(function() {
+			$('table, table.table_striped').on('touchstart, ontouchstart', function() {
+				console.log('accoredeon table triggered');
+				$(this).addClass('touched mobile__scroll');
+			});
+		});
 	}
 	
 	$('table').on('scroll click', function() {
+		console.log('accoredeon table triggered');
 		$(this).removeClass('mobile__scroll');
 	});
 
@@ -41,15 +45,17 @@
 	// webteam/fhnw.webauftritt#1580
 	$('table tbody').each(function() {
 		var tableWidth = $(this).outerWidth();
-		var contentElem = document.querySelector('.content__element');
+		var contentElem = document.querySelector('.content__element, .content__table__backcomp');
 		var rectContentElement = contentElem.getBoundingClientRect();
 		var contentWidth = rectContentElement.width;
+
 		console.log(tableWidth, contentWidth);
+
 		if (tableWidth < contentWidth) {
-				$(this).parent().removeClass('scrolling mobile__scroll');
+			$(this).parent().removeClass('scrolling mobile__scroll');
 		} else {
 			$(this).parent().addClass('scrolling mobile__scroll');
 		}
- });
+ 	});
 
 })(jQuery, document);
