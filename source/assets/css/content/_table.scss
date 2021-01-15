@@ -122,7 +122,7 @@ table.table_striped {
 }
 
 /* MOBILE SCROLL */
-table.mobile__scroll {
+table {
 	@media (max-width: 768px) {
 		overflow-x: scroll;
 
@@ -135,7 +135,7 @@ table.mobile__scroll {
 			text-align: center;
 			height: auto;
 			width: 100%;
-			min-width: 150px;
+			min-width: 200px;
 			margin-top: 50px;
 			opacity: .7;
 		}
@@ -144,6 +144,12 @@ table.mobile__scroll {
 			opacity: 0;
 			transition: opacity 1s ease-out;
 		}
+	}
+}
+
+table.scroll {
+	&:before {
+		content: ''
 	}
 }
 
