@@ -1,7 +1,7 @@
 /*!
  * table hack
  *
- * @author Not Me, ask the Product Owners
+ * @author TeamWeb FHNW
  * @copyright FHNW Brugg/Windisch
  *
 */
@@ -28,7 +28,6 @@
 
 		if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 			$('table').on('touchstart, ontouchstart', function() {
-				
 				$(this).addClass('touched mobile__scroll');
 			});
 	}
@@ -58,16 +57,11 @@
 			var contentElem = document.querySelector('.widg_accordeon__content');
 			var rectContentElement = contentElem.getBoundingClientRect();
 			var contentWidth = rectContentElement.width;
-			console.log('accord width', contentWidth);
 
 			if (tableWidth < contentWidth) {
-				console.log(tableWidth, contentWidth);
-				console.log('smaller', this);
 				$(this).parent().addClass('scroll');
 			}
 			if (tableWidth > contentWidth) {
-				console.log(tableWidth, contentWidth);
-				console.log('greater', this);
 				$(this).parent().removeClass('scroll');
 			}
 		});
