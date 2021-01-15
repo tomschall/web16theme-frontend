@@ -128,16 +128,16 @@ table {
 
 		&:before {
 			content: url(/++theme++web16theme/assets/media/icons/swipe_hand_icon.gif);
-			width: 100px;
-			height: 100px;
 			display: block;
 			position: absolute;
+			left: 0;
 			text-align: center;
 			height: auto;
 			width: 100%;
 			min-width: 200px;
 			margin-top: 50px;
 			opacity: .7;
+			transform: scale(.8);
 		}
 
 		&.touched:before {
