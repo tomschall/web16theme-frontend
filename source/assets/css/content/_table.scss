@@ -78,7 +78,6 @@ table.content__table__backcomp {
 		padding: $gutterWidth - 5 $gutterWidth $gutterWidth - 5 18px;
 		vertical-align: top;
 		text-align: left;
-
 		line-height: 1.625;
 		font-size: $textSize;
 		color: #4c4c4c;
@@ -126,6 +125,10 @@ table {
 	@media (max-width: 768px) {
 		overflow-x: scroll;
 
+		td {
+			min-width: 200px;
+		}
+
 		&:before {
 			content: url(/++theme++web16theme/assets/media/icons/swipe_hand_icon.gif);
 			display: block;
@@ -134,8 +137,7 @@ table {
 			text-align: center;
 			height: auto;
 			width: 100%;
-			min-width: 200px;
-			margin-top: 50px;
+			margin-top: 30px;
 			opacity: .7;
 			transform: scale(.8);
 		}
