@@ -95,11 +95,26 @@
 			if ($(event.currentTarget).closest(this.options.domSelectors.entry).hasClass(this.options.stateClasses.isOpen)) {
 				if (!this.options.allowsMultiple) {
 					this.closeOpenEntries();
+
 				} else {
 					this.closeThisEntry($(event.currentTarget));
 				}
+
 			} else {
 				this.addActiveClass($(event.currentTarget));
+				var hasTable = this.$element.find('table');
+
+				$(hasTable).each(function() {
+					if ($(this).is(':visible')) {
+						var tableWidth = $(this).find('tbody').width();
+						var contentElem = $(this).parent().width();					
+						// console.log('table', tableWidth, 'contentElem', contentElem);
+			
+						if (tableWidth > contentElem) {
+							$(this).removeClass('scroll');
+						}
+					}
+				});						
 			}
 		}.bind(this));
 
