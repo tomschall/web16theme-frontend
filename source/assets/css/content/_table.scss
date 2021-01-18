@@ -155,8 +155,13 @@ table.scroll {
 	}
 }
 
+/* Exclude search tables */
 .search__table {
 	table {
+		td {
+			min-width: unset;
+		}
+
 		&:before {
 			content: ''
 		}
