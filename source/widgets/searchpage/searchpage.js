@@ -178,7 +178,7 @@
 			this.fillForm();
     }
 
-    if (searchTemplate === 'events_full') {
+    if (searchTemplate === 'events_full' || searchTemplate === 'news_full' ) {
       this.grabParameters();
       searchParam.q = '';
       this.customizeFormSelectWidth();
@@ -419,7 +419,7 @@
       if ($(element).is('input')) {
         $(element).val(null).trigger('change');
       } else if ($(element).is('select')) {
-        if ((searchTemplate === 'events_full' && !$(element).context.parentElement.classList.contains('hidden')) || searchTemplate !== 'events_full') {
+        if (((searchTemplate === 'events_full' || searchTemplate === 'news_full') && !$(element).context.parentElement.classList.contains('hidden')) || searchTemplate !== 'events_full' || searchTemplate !== 'news_full') {
           $(element).val(null).trigger('change');
         }
 			}
@@ -600,7 +600,7 @@
        * Temporary hide results counter in event search
        */
 
-      if (searchTemplate === 'events_full') {
+      if (searchTemplate === 'events_full' || searchTemplate === 'news_full') {
         $currentDiv.find('.search__countNumber___text').text('');
         $(this.options.domSelectors.countNumber).addClass(
           this.options.stateClasses.elementHidden
@@ -795,7 +795,7 @@
 	 * add class 'has-selection' if select is pre-selected
 	 */
   Widget.prototype.checkLabelHasSelection = function() {
-    if (searchTemplate === 'events_full') {
+    if (searchTemplate === 'events_full' || searchTemplate === 'news_full') {
       var searchParamArr = ['category', 'eventtype', 'location', 'school'];
 
       searchParamArr.forEach(function(elem) {
@@ -810,7 +810,7 @@
 	 * Remove search results
 	 */
 	Widget.prototype.removeSearchResults = function() {
-    if (searchTemplate === 'events_full') {
+    if (searchTemplate === 'events_full' || searchTemplate === 'news_full') {
       this.$element.find('.search__results .search__cat, .search__results div').remove();
       return;
     }
