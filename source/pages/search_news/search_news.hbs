@@ -1,0 +1,55 @@
+{{#extend "layouts/layout" pageTypeClass="search-page"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+		{{!-- <h1 id="search-title" data-searchpage="title">{{title}}</h1> --}}
+		{{#if title}}
+			<h1>{{title}}</h1>
+		{{/if}}
+		{{#if description}}
+			<p>{{description}}</p>
+		{{/if}}
+
+		<div class="search__wrapper" data-searchpage-template="events_full" data-searchpage-category="events" data-searchpage="formWrapper" role="search">
+			<div class="search__form-wrapper">
+				<div>
+					<div class="search__holder search__holder___double">
+						<div class="search__string">
+							<input type="text" value="" id="search-string" name="search-string" data-searchpage="query" data-searchparam="q"/>
+							<label class="formQuestion" for="search-string">{{langStrings.labels.term}}</label>
+						</div>
+					</div>
+					<div class="search__holder select2__wrapper">
+						<select id="faculty" name="faculty" data-searchparam="faculty" class="custom-select" multiple="multiple">
+							{{#each widgets.facultyOptions}}
+								<option value="{{optionValue}}">{{optionLabel}}</option>
+							{{/each}}
+						</select>
+						<label class="formQuestion" for="faculty">{{langStrings.labels.faculty}}</label>
+					</div>
+					<div class="search__holder select2__wrapper">
+						<select id="location" name="location" data-searchparam="location" class="custom-select" multiple="multiple">
+							{{#each widgets.locationOptions}}
+								<option value="{{optionValue}}">{{optionLabel}}</option>
+							{{/each}}
+						</select>
+						<label class="formQuestion" for="location">{{langStrings.labels.location}}</label>
+					</div>
+				</div>
+
+				<div class="search__third-row">
+					<div class="search__extra-holder">
+						<button class="search__reset not-default" data-searchpage="reset">{{langStrings.resetFields}}</button>
+					</div>
+					<div class="search__extra-holder element-hidden">
+						<span data-searchpage="countNumber"></span> {{langStrings.resultsFound}}
+					</div>
+				</div>
+
+			</div>
+			{{> "widgets/searchpage/searchpage" widgets.searchpage }}
+		</div>
+
+	{{/content}}
+{{/extend}}

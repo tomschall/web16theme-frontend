@@ -12,20 +12,20 @@ var fieldDictionaries = {
 
 
 ;(function($, undefined) {
-	'use strict';
+    'use strict';
 
-	var RENDER_AS_LIST_ITEMS = [
-		'documents',
-		'irf',
-		'web',
-		'sonst',
-		'events'
-	],
-	events = {
-			dataLoaded: 'dataLoaded.estatico.search',
-			updateFilterLoaded: 'updateFilterLoaded.estatico.search'
-		},
-
+    var RENDER_AS_LIST_ITEMS = [
+      'documents',
+      'irf',
+      'web',
+      'sonst',
+      'events',
+      'news',
+    ], 
+    events = {
+      dataLoaded: 'dataLoaded.estatico.search',
+      updateFilterLoaded: 'updateFilterLoaded.estatico.search'
+    },
 		listHeadTemplates = {
 			categorySearch: {
 				training: '<tr><th>{{title}}<span id="sortAllSearchResults" class="icon-sortable">' +
@@ -36,12 +36,13 @@ var fieldDictionaries = {
 				studies: '<tr><th>{{title}}</th><th>{{study_type}}</th><th>{{faculty}}</th><th>{{location}}</th></tr>',
 			}
 		},
-
 		listEntryTemplates = {
 			searchbar: {
 				normal: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span></a>' +
 						'<span class="search__result-arrow"></span></li>',
 				event: '<li class="search_result search__result-event search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span>' +
+          '<span class="event-info">{{start}}</span></a><span class="search__result-arrow"></span></li>',
+        singleNews: '<li class="search_result search__result-event search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span>' +
 						'<span class="event-info">{{start}}</span></a><span class="search__result-arrow"></span></li>',
 				doc: '<li class="search_result search__result-doc search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}' +
 						'<span class="visible-in-bar">({{mimeType}})</span></span><span class="file-type visible-in-page">{{mimeType}}</span></a></li>',
@@ -50,7 +51,6 @@ var fieldDictionaries = {
 				irf: '<li class="search__result-normal search__result--item"><a href="{{combinedURL}}"><span class="title">{{{Title}}}</span></a>' +
 						'<span class="search__result-arrow"></span></li>'
 			},
-
 			categorySearch: {
 				// REFACTOR: replace all this concatenation wall with some sort of templating
 				// REFACTOR: perhaps moving these templates to a sibling "search.hbs" and reading them from here works
@@ -76,8 +76,12 @@ var fieldDictionaries = {
 				events: '<li class="cat_page_result search__result--item widg_linklist___entry {{#if isExternal}}is_external{{/if}}">' +
             '<a href="{{url}}">{{#if img}}<div class="widg_linklist__img-wrapper"><img src="{{img.src}}" alt="{{img.alt}}"/></div>' +
             '{{/if}}<h3 class="childless">{{{title}}}</h3>{{#if news_detail}}<span>{{news_detail.news_date}} | {{news_detail.university}}</span>{{/if}}' +
+          '{{#if event_detail}}<span>{{event_detail.event_date}}, {{event_detail.location_short}}</span>{{/if}}<p>{{entryText}}</p></a></li>',
+        
+        news: '<li class="cat_page_result search__result--item widg_linklist___entry {{#if isExternal}}is_external{{/if}}">' +
+            '<a href="{{url}}">{{#if img}}<div class="widg_linklist__img-wrapper"><img src="{{img.src}}" alt="{{img.alt}}"/></div>' +
+            '{{/if}}<h3 class="childless">{{{title}}}</h3>{{#if news_detail}}<span>{{news_detail.news_date}} | {{news_detail.university}}</span>{{/if}}' +
             '{{#if event_detail}}<span>{{event_detail.event_date}}, {{event_detail.location_short}}</span>{{/if}}<p>{{entryText}}</p></a></li>',
-
 
 				studies: '<tr class="cat_page_result search__result--item" data-clickable="true" ><td class="search__cell search__cell-title">' +
 						'<a href="{{combinedURL}}" class="search__cell-anchor">{{Title}}</a></td>' +
@@ -91,7 +95,8 @@ var fieldDictionaries = {
 		searchCategories = [
 			'studies',
 			'training',
-			'events',
+      'events',
+      'news',
 			'profiles',
 			'organisation',
 			'documents',
@@ -133,6 +138,9 @@ var fieldDictionaries = {
 		switch (category) {
 			case 'event':
 				template = Handlebars.compile(listEntryTemplates.searchbar.event);
+        break;
+      case 'singleNews':
+				template = Handlebars.compile(listEntryTemplates.searchbar.singleNews);
 				break;
 			case 'doc':
 				template = Handlebars.compile(listEntryTemplates.searchbar.doc);
@@ -268,7 +276,7 @@ var fieldDictionaries = {
 				if (activeCategorySearch) {
 					if (data.category === 'expertises') {
 						$responseHTML.append(generateWordList(data));
-					} else if (data.category === 'events') {
+					} else if (data.category === 'events' || data.category === 'news') {
 						// $('.widg_linklist').empty();
 						$responseHTML.append(generateTeasers(data));
 						$responseHTML.append('<div id="loadMoreRef"></div>');
