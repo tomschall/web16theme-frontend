@@ -14,68 +14,37 @@ var templateData = {
 			widgets: {
 					label_search: 'Suchbegriff',
 					label_btn_search: 'Suchen',
-					label_reset_fields: 'Reset',
-					label_location: 'Ort',
+					label_reset_fields: 'Alle Felder zurücksetzen',
 					label_school: 'Hochschule',
-					label_type: 'Typ',
-
-					school_options: [
-						{
-							'optionLabel': 'Architektur, Bau & Geomatik',
-							'optionValue': '1000'
-						},
-						{
-							'optionLabel': 'International Studies',
-							'optionValue': '1003',
-							'selected': 'selected'
-						},
-						{
-							'optionLabel': 'Life Sciences',
-							'optionValue': '1004'
-						},
-						{
-							'optionLabel': 'Musik',
-							'optionValue': '1005'
-						},
-					],
-					eventtype_options: [
-						{
-							'optionLabel': 'Info-Anlass',
-							'optionValue': '2008'
-						},
-						{
-							'optionLabel': 'Ringvorlesung',
-							'optionValue': '2000',
-							'selected': 'selected'
-						},
-						{
-							'optionLabel': 'Another Event',
-							'optionValue': '2001'
-						}
-					],
-
-					locationOptions: [
-						{
-							'optionLabel': 'Basel',
-							'optionValue': 'basel'
-						},
-						{
-							'optionLabel': 'Muttenz',
-							'optionValue': 'muttenz'
-						},
-						{
-							'optionLabel': 'Brugg-Windisch',
-							'optionValue': 'brugg'
-						},
-						{
-							'optionLabel': 'Olten',
-							'optionValue': 'olten'
-						},
-						{
-							'optionLabel': 'Solothurn',
-							'optionValue': 'solothurn'
-						}
-					],
+					label_date: 'Datum',
+					schoolOptions: [
+            {
+              'optionLabel': 'Brugg/Windisch',
+              'optionValue': '1000'
+            },
+            {
+              'optionLabel': 'Basel',
+              'optionValue': '1003'
+            },
+            {
+              'optionLabel': 'Aarau',
+              'optionValue': '1004'
+            },
+          ],
+          dateOptions: [
+            {
+              'optionLabel': 'Date1',
+              'optionValue': 'date1'
+            },
+            {
+              'optionLabel': 'Date2',
+              'optionValue': 'date2'
+            },
+            {
+              'optionLabel': 'Date3',
+              'optionValue': 'date3'
+            },
+          ],
 				}
 		},
 		data = _.merge(defaultData, {

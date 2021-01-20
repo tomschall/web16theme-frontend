@@ -11,45 +11,57 @@
 			<p>{{description}}</p>
 		{{/if}}
 
-		<div class="search__wrapper" data-searchpage-template="events_full" data-searchpage-category="events" data-searchpage="formWrapper" role="search">
-			<div class="search__form-wrapper">
-				<div>
-					<div class="search__holder search__holder___double">
-						<div class="search__string">
-							<input type="text" value="" id="search-string" name="search-string" data-searchpage="query" data-searchparam="q"/>
-							<label class="formQuestion" for="search-string">{{langStrings.labels.term}}</label>
-						</div>
-					</div>
-					<div class="search__holder select2__wrapper">
-						<select id="faculty" name="faculty" data-searchparam="faculty" class="custom-select" multiple="multiple">
-							{{#each widgets.facultyOptions}}
-								<option value="{{optionValue}}">{{optionLabel}}</option>
-							{{/each}}
-						</select>
-						<label class="formQuestion" for="faculty">{{langStrings.labels.faculty}}</label>
-					</div>
-					<div class="search__holder select2__wrapper">
-						<select id="location" name="location" data-searchparam="location" class="custom-select" multiple="multiple">
-							{{#each widgets.locationOptions}}
-								<option value="{{optionValue}}">{{optionLabel}}</option>
-							{{/each}}
-						</select>
-						<label class="formQuestion" for="location">{{langStrings.labels.location}}</label>
-					</div>
-				</div>
+    <div class="search__wrapper" data-searchpage-template="news_full" data-searchpage-category="news" data-searchpage="formWrapper" role="search">
+      <div class="search__form-wrapper">
+        <div>
+          {{#if title}}
+          <h2>{{title}}</h2>
+          {{/if}}
+          <p>
+            {{#if description}}
+            {{description}}
+            {{/if}}
+          </p>
+          <div>
+            <div class="search__holder__searchstring">
+              <div class="search__string">
+                <input type="text" value="" id="search-string" name="search-string" data-searchpage="query"
+                  data-searchparam="q" />
+                <label class="formQuestion" for="search-string">{{langStrings.labels.term}}</label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="search__holder select2__wrapper {{#if filter_school}}hidden{{/if}}">
+              <select id="school" name="school" data-searchparam="school" class="custom-select" multiple="multiple">
+                {{#each widgets.schoolOptions}}
+                <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
+                {{/each}}
+              </select>
+              <label class="formQuestion" for="school">{{langStrings.labels.school}}</label>
+            </div>
+            <div class="search__holder select2__wrapper">
+              <select id="date" name="date" data-searchparam="date" class="custom-select" multiple="multiple">
+                {{#each widgets.dateOptions}}
+                <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
+                {{/each}}
+              </select>
+              <label class="formQuestion" for="date">{{langStrings.labels.date}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="search__third-row">
+          <div class="search__extra-holder">
+            <button class="search__reset not-default" data-searchpage="reset">{{widgets.label_reset_fields}}</button>
+          </div>
+          <div class="search__extra-holder element-hidden">
+            <span data-searchpage="countNumber"></span>
+            <span class="search__countNumber___text"></span>
+          </div>
+        </div>
+      </div>
+      {{> "widgets/searchpage/searchpage" widgets.searchpage }}
+    </div>
 
-				<div class="search__third-row">
-					<div class="search__extra-holder">
-						<button class="search__reset not-default" data-searchpage="reset">{{langStrings.resetFields}}</button>
-					</div>
-					<div class="search__extra-holder element-hidden">
-						<span data-searchpage="countNumber"></span> {{langStrings.resultsFound}}
-					</div>
-				</div>
-
-			</div>
-			{{> "widgets/searchpage/searchpage" widgets.searchpage }}
-		</div>
-
-	{{/content}}
+  {{/content}}
 {{/extend}}

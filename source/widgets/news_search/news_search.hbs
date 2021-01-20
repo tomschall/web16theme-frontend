@@ -1,5 +1,5 @@
-<div class="news_search__wrapper" data-init="news_search" data-searchpage-template="news_full"
-  data-searchpage-category="news" data-searchpage="formWrapper" role="search">
+<div class="news_search__wrapper" data-searchpage-template="news_full" data-searchpage-category="news"
+  data-searchpage="formWrapper" role="search">
   <div class="search__form-wrapper">
     <div>
       {{#if title}}
@@ -22,35 +22,19 @@
       <div>
         <div class="search__holder select2__wrapper {{#if filter_school}}hidden{{/if}}">
           <select id="school" name="school" data-searchparam="school" class="custom-select" multiple="multiple">
-            {{#each widgets.school_options}}
+            {{#each widgets.schoolOptions}}
             <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
             {{/each}}
           </select>
           <label class="formQuestion" for="school">{{widgets.label_school}}</label>
         </div>
-        <div class="search__holder select2__wrapper {{#if filter_newstype}}hidden{{/if}}">
-          <select id="newstype" name="newstype" data-searchparam="newstype" class="custom-select"
-            multiple="multiple">
-            {{#each widgets.newstype_options}}
+        <div class="search__holder select2__wrapper">
+          <select id="date" name="date" data-searchparam="date" class="custom-select" multiple="multiple">
+            {{#each widgets.dateOptions}}
             <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
             {{/each}}
           </select>
-          <label class="formQuestion" for="newstype">{{widgets.label_type}}</label>
-        </div>
-        <div class="search__holder select2__wrapper {{#if filter_location}}hidden{{/if}}">
-          <select id="location" name="location" data-searchparam="location" class="custom-select" multiple="multiple">
-            {{#each widgets.locationOptions}}
-            <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
-            {{/each}}
-          </select>
-          <label class="formQuestion" for="location">{{widgets.label_location}}</label>
-        </div>
-        <div class="search__holder select2__wrapper hidden">
-          <select id="subject" name="subject" data-searchparam="subject" class="custom-select" multiple="multiple">
-            {{#each widgets.subject}}
-            <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
-            {{/each}}
-          </select>
+          <label class="formQuestion" for="date">{{widgets.label_date}}</label>
         </div>
       </div>
     </div>

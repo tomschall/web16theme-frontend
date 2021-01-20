@@ -795,9 +795,12 @@
 	 * add class 'has-selection' if select is pre-selected
 	 */
   Widget.prototype.checkLabelHasSelection = function() {
-    if (searchTemplate === 'events_full' || searchTemplate === 'news_full') {
+    if (searchTemplate === 'events_full') {
       var searchParamArr = ['category', 'eventtype', 'location', 'school'];
-
+    } else if (searchTemplate === 'news_full') {
+      var searchParamArr = ['school', 'date'];
+    }
+    if (searchParamArr.length) {
       searchParamArr.forEach(function(elem) {
         if (searchParam && searchParam[elem] !== null) {
           $('select#' + elem).next('span.select2.select2-container.select2-container--default').addClass('has-selection');
