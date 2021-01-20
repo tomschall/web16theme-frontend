@@ -21,7 +21,7 @@ var fieldDictionaries = {
       'sonst',
       'events',
       'news',
-    ], 
+    ],
     events = {
       dataLoaded: 'dataLoaded.estatico.search',
       updateFilterLoaded: 'updateFilterLoaded.estatico.search'
@@ -77,7 +77,7 @@ var fieldDictionaries = {
             '<a href="{{url}}">{{#if img}}<div class="widg_linklist__img-wrapper"><img src="{{img.src}}" alt="{{img.alt}}"/></div>' +
             '{{/if}}<h3 class="childless">{{{title}}}</h3>{{#if news_detail}}<span>{{news_detail.news_date}} | {{news_detail.university}}</span>{{/if}}' +
           '{{#if event_detail}}<span>{{event_detail.event_date}}, {{event_detail.location_short}}</span>{{/if}}<p>{{entryText}}</p></a></li>',
-        
+
         news: '<li class="cat_page_result search__result--item widg_linklist___entry {{#if isExternal}}is_external{{/if}}">' +
             '<a href="{{url}}">{{#if img}}<div class="widg_linklist__img-wrapper"><img src="{{img.src}}" alt="{{img.alt}}"/></div>' +
             '{{/if}}<h3 class="childless">{{{title}}}</h3>{{#if news_detail}}<span>{{news_detail.news_date}} | {{news_detail.university}}</span>{{/if}}' +

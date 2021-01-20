@@ -107,14 +107,14 @@
 				$(hasTable).each(function() {
 					if ($(this).is(':visible')) {
 						var tableWidth = $(this).find('tbody').width();
-						var contentElem = $(this).parent().width();					
+						var contentElem = $(this).parent().width();
 						// console.log('table', tableWidth, 'contentElem', contentElem);
-			
+
 						if (tableWidth > contentElem) {
 							$(this).removeClass('scroll');
 						}
 					}
-				});						
+				});
 			}
 		}.bind(this));
 

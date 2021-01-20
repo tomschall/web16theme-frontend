@@ -30,8 +30,8 @@
 			$('table').on('touchstart, ontouchstart', function() {
 				$(this).addClass('touched mobile__scroll');
 			});
-	}
-	
+	  }
+
 		$('table').on('scroll click', function() {
 			$(this).addClass('scroll');
 		});
