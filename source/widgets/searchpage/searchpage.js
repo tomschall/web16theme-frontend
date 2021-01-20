@@ -597,7 +597,7 @@
       $currentDiv.removeClass(this.options.stateClasses.elementHidden);
 
       /**
-       * Temporary hide results counter in event search
+       * Temporary hide results counter in event and news search
        */
 
       if (searchTemplate === 'events_full' || searchTemplate === 'news_full') {
@@ -795,10 +795,11 @@
 	 * add class 'has-selection' if select is pre-selected
 	 */
   Widget.prototype.checkLabelHasSelection = function() {
+    var searchParamArr = [];
     if (searchTemplate === 'events_full') {
-      var searchParamArr = ['category', 'eventtype', 'location', 'school'];
+      searchParamArr = ['category', 'eventtype', 'location', 'school'];
     } else if (searchTemplate === 'news_full') {
-      var searchParamArr = ['school', 'date'];
+      searchParamArr = ['school', 'date'];
     }
     if (searchParamArr.length) {
       searchParamArr.forEach(function(elem) {
