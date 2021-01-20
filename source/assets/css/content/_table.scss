@@ -155,6 +155,19 @@ table.scroll {
 	}
 }
 
+/* Exclude search tables */
+.search__table {
+	table {
+		td {
+			min-width: unset;
+		}
+
+		&:before {
+			content: ''
+		}
+	}
+}
+
 /* TABLE IN ACCORDEONS */
 .widg_accordeon__content .content__table td:first-child {
 	padding-left: 0;
