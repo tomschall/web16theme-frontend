@@ -313,8 +313,8 @@ var fieldDictionaries = {
 
 					$searchCategory.append($categoryTitle).append($categoryList);
 					$responseHTML = $searchCategory;
-				}
-			}
+        }
+      }
 
 			$(window).trigger(events.dataLoaded, [$responseHTML, data.items_total, responseData.length, data.category, data.facets]);
 		} else {
