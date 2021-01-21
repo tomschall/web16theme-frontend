@@ -16,7 +16,8 @@ var templateData = {
 					label_btn_search: 'Suchen',
 					label_reset_fields: 'Alle Felder zurücksetzen',
 					label_school: 'Hochschule',
-					label_date: 'Datum',
+          label_date_from: 'Datum von',
+          label_date_to: 'Datum bis',
 					schoolOptions: [
             {
               'optionLabel': 'Brugg/Windisch',
@@ -29,20 +30,6 @@ var templateData = {
             {
               'optionLabel': 'Aarau',
               'optionValue': '1004'
-            },
-          ],
-          dateOptions: [
-            {
-              'optionLabel': 'Date1',
-              'optionValue': 'date1'
-            },
-            {
-              'optionLabel': 'Date2',
-              'optionValue': 'date2'
-            },
-            {
-              'optionLabel': 'Date3',
-              'optionValue': 'date3'
             },
           ],
 				}

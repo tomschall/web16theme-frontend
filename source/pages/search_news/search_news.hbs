@@ -40,10 +40,26 @@
               </select>
               <label class="formQuestion" for="school">{{langStrings.labels.school}}</label>
             </div>
-            <div id="form" class="search__holder select2__wrapper">
-              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}" class="field pat-inlinevalidation kssattr-fieldname-form.widgets.datum empty" data-fieldname="form.widgets.datum" id="formfield-form-widgets-datum">
-                <div class="fieldErrorBox"></div>
-                <input class="pat-pickadate" type="text" name="form.widgets.datum" value="2021-01-01" data-searchparam="date" data-pat-pickadate="{&quot;date&quot;: {&quot;format&quot;: &quot;d mmmm, yyyy&quot;, &quot;selectYears&quot;: 200, &quot;min&quot;: [1917, 1, 1], &quot;monthsFull&quot;: [&quot;Januar&quot;, &quot;Februar&quot;, &quot;M\u00e4rz&quot;, &quot;April&quot;, &quot;Mai&quot;, &quot;Juni&quot;, &quot;Juli&quot;, &quot;August&quot;, &quot;September&quot;, &quot;Oktober&quot;, &quot;November&quot;, &quot;Dezember&quot;], &quot;weekdaysShort&quot;: [&quot;So&quot;, &quot;Mo&quot;, &quot;Di&quot;, &quot;Mi&quot;, &quot;Do&quot;, &quot;Fr&quot;, &quot;Sa&quot;], &quot;weekdaysFull&quot;: [&quot;Sonntag&quot;, &quot;Montag&quot;, &quot;Dienstag&quot;, &quot;Mittwoch&quot;, &quot;Donnerstag&quot;, &quot;Freitag&quot;, &quot;Samstag&quot;], &quot;firstDay&quot;: 1, &quot;max&quot;: [2037, 1, 1], &quot;placeholder&quot;: &quot;Datum eingeben\u2026&quot;, &quot;monthsShort&quot;: [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mrz&quot;, &quot;Apr&quot;, &quot;Mai&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Okt&quot;, &quot;Nov&quot;, &quot;Dez&quot;]}, &quot;clear&quot;: false, &quot;today&quot;: &quot;Heute&quot;, &quot;time&quot;: false}">
+            <div id="form">
+              <div class="search__holder select2__wrapper">
+                <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+                  class="field pat-inlinevalidation kssattr-fieldname-form.widgets.datum empty"
+                  data-fieldname="form.widgets.date_from" id="formfield-form-widgets-date-from">
+                  <div class="fieldErrorBox"></div>
+                  <input class="pat-pickadate" type="text" name="form.widgets.date_from" value="2021-01-01"
+                    data-searchparam="date_from"
+                    data-pat-pickadate="{&quot;date&quot;: {&quot;format&quot;: &quot;d mmmm, yyyy&quot;, &quot;selectYears&quot;: 200, &quot;min&quot;: [1917, 1, 1], &quot;monthsFull&quot;: [&quot;Januar&quot;, &quot;Februar&quot;, &quot;M\u00e4rz&quot;, &quot;April&quot;, &quot;Mai&quot;, &quot;Juni&quot;, &quot;Juli&quot;, &quot;August&quot;, &quot;September&quot;, &quot;Oktober&quot;, &quot;November&quot;, &quot;Dezember&quot;], &quot;weekdaysShort&quot;: [&quot;So&quot;, &quot;Mo&quot;, &quot;Di&quot;, &quot;Mi&quot;, &quot;Do&quot;, &quot;Fr&quot;, &quot;Sa&quot;], &quot;weekdaysFull&quot;: [&quot;Sonntag&quot;, &quot;Montag&quot;, &quot;Dienstag&quot;, &quot;Mittwoch&quot;, &quot;Donnerstag&quot;, &quot;Freitag&quot;, &quot;Samstag&quot;], &quot;firstDay&quot;: 1, &quot;max&quot;: [2037, 1, 1], &quot;placeholder&quot;: &quot;Datum eingeben\u2026&quot;, &quot;monthsShort&quot;: [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mrz&quot;, &quot;Apr&quot;, &quot;Mai&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Okt&quot;, &quot;Nov&quot;, &quot;Dez&quot;]}, &quot;clear&quot;: false, &quot;today&quot;: &quot;Heute&quot;, &quot;time&quot;: false}">
+                </div>
+              </div>
+              <div class="search__holder select2__wrapper">
+                <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+                  class="field pat-inlinevalidation kssattr-fieldname-form.widgets.datum empty"
+                  data-fieldname="form.widgets.date_to" id="formfield-form-widgets-date-to">
+                  <div class="fieldErrorBox"></div>
+                  <input class="pat-pickadate" type="text" name="form.widgets.date_to" value="2021-01-01"
+                    data-searchparam="date_to"
+                    data-pat-pickadate="{&quot;date&quot;: {&quot;format&quot;: &quot;d mmmm, yyyy&quot;, &quot;selectYears&quot;: 200, &quot;min&quot;: [1917, 1, 1], &quot;monthsFull&quot;: [&quot;Januar&quot;, &quot;Februar&quot;, &quot;M\u00e4rz&quot;, &quot;April&quot;, &quot;Mai&quot;, &quot;Juni&quot;, &quot;Juli&quot;, &quot;August&quot;, &quot;September&quot;, &quot;Oktober&quot;, &quot;November&quot;, &quot;Dezember&quot;], &quot;weekdaysShort&quot;: [&quot;So&quot;, &quot;Mo&quot;, &quot;Di&quot;, &quot;Mi&quot;, &quot;Do&quot;, &quot;Fr&quot;, &quot;Sa&quot;], &quot;weekdaysFull&quot;: [&quot;Sonntag&quot;, &quot;Montag&quot;, &quot;Dienstag&quot;, &quot;Mittwoch&quot;, &quot;Donnerstag&quot;, &quot;Freitag&quot;, &quot;Samstag&quot;], &quot;firstDay&quot;: 1, &quot;max&quot;: [2037, 1, 1], &quot;placeholder&quot;: &quot;Datum eingeben\u2026&quot;, &quot;monthsShort&quot;: [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mrz&quot;, &quot;Apr&quot;, &quot;Mai&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Okt&quot;, &quot;Nov&quot;, &quot;Dez&quot;]}, &quot;clear&quot;: false, &quot;today&quot;: &quot;Heute&quot;, &quot;time&quot;: false}">
+                </div>
               </div>
             </div>
           </div>

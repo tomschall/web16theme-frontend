@@ -801,7 +801,7 @@
     if (searchTemplate === 'events_full') {
       searchParamArr = ['category', 'eventtype', 'location', 'school'];
     } else if (searchTemplate === 'news_full') {
-      searchParamArr = ['school', 'date'];
+      searchParamArr = ['school', 'date_from', 'date_to'];
     }
     if (searchParamArr.length) {
       searchParamArr.forEach(function(elem) {

@@ -14,7 +14,8 @@ var data = _.merge(defaultData, {
 		labels: {
 			term: 'Suchbegriff',
       school: 'Hochschule',
-      date: 'Datum',
+      dateFrom: 'Datum von',
+      dateTo: 'Datum bis',
 		},
 		resetFields: 'Alle Felder zurücksetzen',
 		resultsFound: 'Veranstaltungen gefunden'
@@ -48,20 +49,6 @@ var data = _.merge(defaultData, {
       {
         'optionLabel': 'Aarau',
         'optionValue': '1004'
-      },
-    ],
-    dateOptions: [
-      {
-        'optionLabel': 'Date1',
-        'optionValue': 'date1'
-      },
-      {
-        'optionLabel': 'Date2',
-        'optionValue': 'date2'
-      },
-      {
-        'optionLabel': 'Date3',
-        'optionValue': 'date3'
       },
     ],
 	}
