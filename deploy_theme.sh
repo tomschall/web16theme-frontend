@@ -13,7 +13,7 @@ find $BASE_PATH/fhnw.web16theme/src/fhnw/web16theme/theme/assets/css -name "*.cs
 
 # transfer search page templates
 
-declare -a search_pages=("search_all" "search_documents" "search_edu" "search_events" "search_expertises" "search_filter" "search_irf" "search_other" "search_profiles" "search_web")
+declare -a search_pages=("search_all" "search_documents" "search_edu" "search_events" "search_expertises" "search_filter" "search_irf" "search_other" "search_profiles" "search_web" "search_news")
 
 for i in "${search_pages[@]}"
 do
