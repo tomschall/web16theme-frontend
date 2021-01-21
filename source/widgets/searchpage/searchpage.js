@@ -178,7 +178,7 @@
 			this.fillForm();
     }
 
-    if (searchTemplate === 'events_full' || searchTemplate === 'news_full' ) {
+    if (searchTemplate === 'events_full' || searchTemplate === 'news_full') {
       this.grabParameters();
       searchParam.q = '';
       this.customizeFormSelectWidth();
@@ -188,7 +188,7 @@
 			sendSearchQueryDebounced(true);
 		}
   };
-  
+
   Widget.prototype.customizeFormSelectWidth = function() {
     var $formElements = $('.search__form-wrapper .select2__wrapper:not(".hidden")');
     if ($formElements.length === 2) {
@@ -419,8 +419,10 @@
       if ($(element).is('input')) {
         $(element).val(null).trigger('change');
       } else if ($(element).is('select')) {
-        if (((searchTemplate === 'events_full' || searchTemplate === 'news_full') && !$(element).context.parentElement.classList.contains('hidden')) || searchTemplate !== 'events_full' || searchTemplate !== 'news_full') {
-          $(element).val(null).trigger('change');
+        if (((searchTemplate === 'events_full' || searchTemplate === 'news_full') &&
+          !$(element).context.parentElement.classList.contains('hidden')) ||
+          searchTemplate !== 'events_full' || searchTemplate !== 'news_full') {
+            $(element).val(null).trigger('change');
         }
 			}
 		});
@@ -564,7 +566,7 @@
 		/**
 		 * When there is a count number holder in the document
 		 */
-    
+
     if ($(this.options.domSelectors.countNumber).length === 1) {
       $(this.options.domSelectors.countNumber).html(foundEntries);
       var $currentDiv = $(this.options.domSelectors.countNumber).closest(
@@ -597,7 +599,7 @@
       $currentDiv.removeClass(this.options.stateClasses.elementHidden);
 
       /**
-       * Temporary hide results counter in event search
+       * Temporary hide results counter in event and news search
        */
 
       if (searchTemplate === 'events_full' || searchTemplate === 'news_full') {
@@ -795,9 +797,13 @@
 	 * add class 'has-selection' if select is pre-selected
 	 */
   Widget.prototype.checkLabelHasSelection = function() {
-    if (searchTemplate === 'events_full' || searchTemplate === 'news_full') {
-      var searchParamArr = ['category', 'eventtype', 'location', 'school'];
-
+    var searchParamArr = [];
+    if (searchTemplate === 'events_full') {
+      searchParamArr = ['category', 'eventtype', 'location', 'school'];
+    } else if (searchTemplate === 'news_full') {
+      searchParamArr = ['school', 'date_from', 'date_to'];
+    }
+    if (searchParamArr.length) {
       searchParamArr.forEach(function(elem) {
         if (searchParam && searchParam[elem] !== null) {
           $('select#' + elem).next('span.select2.select2-container.select2-container--default').addClass('has-selection');

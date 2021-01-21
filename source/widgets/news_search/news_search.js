@@ -11,7 +11,7 @@
 		},
 		defaults = {
 			domSelectors: {
-				event_search: '[data-init="' + name + '"]',
+				news_search: '[data-init="' + name + '"]',
 			},
 			stateClasses: {
 				// isActive: 'is_active'
