@@ -533,7 +533,7 @@
 	 */
 	Widget.prototype.showResults = function(html, foundEntries, limitedToResults, category) {
 		if (loadMoreMode) {
-			if (category === 'events') {
+			if (category === 'events' || category === 'news') {
         html = this.generateAdditionalTeasers(html);
 				this.$element.find('.search__results .widg_linklist').append(html);
 			} else if (estatico.search.RENDER_AS_LIST_ITEMS.indexOf(category) >= 0) {
