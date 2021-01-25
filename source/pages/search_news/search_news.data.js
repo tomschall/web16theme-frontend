@@ -28,7 +28,7 @@ var data = _.merge(defaultData, {
 		navigation: requireNew('../../widgets/navigation/navigation.data.js'),
 		footer: requireNew('../../widgets/footer/footer.data.js'),
 		searchpage: _.assign(requireNew('../../widgets/searchpage/searchpage.data.js'), {
-			jsonURL: '/mocks/widgets/searchpage/searchpage.events.json',
+			jsonURL: '/mocks/widgets/searchpage/searchpage.news.json',
 			filterURL: '/mocks/widgets/searchpage/searchpage.updateFilter.json'
 		}),
 		hero: _.assign(requireNew('../../widgets/hero/hero.data.js'), {
