@@ -62,8 +62,7 @@
 		if (estatico.mq.query({from: 'medium'})) {
 			if (this.$element.data('header-collapsible')) {
 				this.addInitialScrollMagic();
-
-				this.options.isCollapsible = true;
+				this.options.isCollapsible = false;
 			}
 		}
 	};
@@ -73,15 +72,15 @@
 			if (this.$element.hasClass('is_shrinked') && window.estatico.mq.query({from: 'medium'})) {
 				this.$element.addClass('is_expanded');
 				this.$element.removeClass('is_shrinked');
-				this.addDynamicScrollMagic();
+				// this.addDynamicScrollMagic();
 			}
 		}.bind(this));
 
 		$(window).on('scroll.' + this.uuid, function() {
 			if ($(window).scrollTop() === 0 && window.estatico.mq.query({from: 'medium'})) {
 				if (this.$element.hasClass('is_shrinked')) {
-					this.toggleShrinked();
-					this.addDynamicScrollMagic();
+					// this.toggleShrinked();
+					// this.addDynamicScrollMagic();
 				}
 			}
 
@@ -119,9 +118,9 @@
 				triggerHook: 0
 			});
 
-			headerScene.on('enter leave', function() {
-				this.toggleShrinked();
-			}.bind(this));
+			// headerScene.on('enter leave', function() {
+			// 	this.toggleShrinked();
+			// }.bind(this));
 
 			this.options.scrollMagicScene = headerScene;
 
@@ -145,13 +144,13 @@
 					triggerHook: 0
 				});
 
-		dynamicHeaderScene.on('enter leave', function() {
-			this.toggleShrinked();
-		}.bind(this));
+		// dynamicHeaderScene.on('enter leave', function() {
+		// 	this.toggleShrinked();
+		// }.bind(this));
 
-		dynamicHeaderScene2.on('leave', function() {
-			this.toggleShrinked();
-		}.bind(this));
+		// dynamicHeaderScene2.on('leave', function() {
+		// 	this.toggleShrinked();
+		// }.bind(this));
 
 		this.options.scrollMagicScene = dynamicHeaderScene;
 		this.options.scrollMagicScene2 = dynamicHeaderScene2;
@@ -163,25 +162,25 @@
 	/**
 	 * shrink or not to shrink. toggles the shrink class for widg_header
 	 */
-	Widget.prototype.toggleShrinked = function() {
-		this.$element.toggleClass('is_shrinked');
+	// Widget.prototype.toggleShrinked = function() {
+	// 	// this.$element.toggleClass('is_shrinked');
 
-		if (this.$element.hasClass('is_shrinked')) {
-			this.$element.removeClass('is_expanded');
-		}
+	// 	if (this.$element.hasClass('is_shrinked')) {
+	// 		this.$element.removeClass('is_expanded');
+	// 	}
 
-		if (this.options.scrollMagicScene) {
-			this.options.scrollMagicScene.destroy(false);
-			this.options.scrollMagicScene = null;
-		}
+	// 	if (this.options.scrollMagicScene) {
+	// 		this.options.scrollMagicScene.destroy(false);
+	// 		this.options.scrollMagicScene = null;
+	// 	}
 
-		if (this.options.scrollMagicScene2) {
-			this.options.scrollMagicScene2.destroy(false);
-			this.options.scrollMagicScene2 = null;
-		}
+	// 	if (this.options.scrollMagicScene2) {
+	// 		this.options.scrollMagicScene2.destroy(false);
+	// 		this.options.scrollMagicScene2 = null;
+	// 	}
 
-		$(document).trigger(events.shrink);
-	};
+	// 	$(document).trigger(events.shrink);
+	// };
 
 	/**
 	 * Unbind events, remove data, custom teardown

@@ -10,7 +10,7 @@
 		{{#each entries}}
       <li>
 				{{#if list}}
-          <a class="is_expandable not-default" data-navigation-is-expandable="true" data-navigation="entry">{{title}}</a>
+          <a class="is_expandable not-default {{#if active}}is_active{{/if}}" data-navigation-is-expandable="true" data-navigation="entry">{{title}}</a>
 
 					{{> "widgets/navigation/_subitems" list title=title lang=../../lang }}
 				{{else}}
