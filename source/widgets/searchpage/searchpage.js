@@ -461,8 +461,17 @@
     }
 
 		searchParam.limit = searchParam.offset ?
-				this.options.RESULT_SIZE :
-				this.options.FIRST_RESULT_SIZE;
+      this.options.RESULT_SIZE :
+      this.options.FIRST_RESULT_SIZE;
+
+    if (searchTemplate === 'news_full') {
+      if ((searchParam.q === '' && (searchParam.date_from || searchParam.date_to || searchParam.school)) ||
+        (searchParam.q === '' && (searchParam.date_from === '' && searchParam.date_to === '' && (!searchParam.school || searchParam.school === '')))) {
+          searchParam.sort_on = 'effective';
+        } else {
+          delete searchParam.sort_on;
+        }
+    }
 
 		if (this.queryMatch()) {
 			// avoid submission of the same query twice

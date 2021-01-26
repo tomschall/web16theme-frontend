@@ -29,8 +29,8 @@
 		if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 			$('table').on('touchstart, ontouchstart', function() {
 				$(this).addClass('touched mobile__scroll');
-			});
-	  }
+      });
+    }
 
 		$('table').on('scroll click', function() {
 			$(this).addClass('scroll');
