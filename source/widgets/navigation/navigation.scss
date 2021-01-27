@@ -72,7 +72,8 @@ styling of all links and lists
 		background-color: $colorYellowNavHover;
 	}
 
-	&.is_active {
+	&.is_active,
+	&.nav_active {
 		background-color: darken($colorYellowNavHover, 5%);
 
 		&:before {
@@ -81,6 +82,7 @@ styling of all links and lists
 		}
 	}
 
+	
 	&.is_expandable {
 		@include iconDataurl($name: 'triangle-arrow_right', $after: true);
 
@@ -108,7 +110,8 @@ styling of all links and lists
 			position: absolute;
 		}
 
-		&.is_active {
+		&.is_active,
+		&.nav_active {
 			&:after {
 				opacity: 1;
 				right: $basicPush * 2;
@@ -119,7 +122,8 @@ styling of all links and lists
 		@include mq($to: medium) {
 			&:after,
 			&:hover:after,
-			&.is_active:after {
+			&.is_active:after
+			&.nav_active:after {
 				opacity: 1;
 				right: $basicPush * 2;
 			}
@@ -206,7 +210,9 @@ The back arrow only visible on mobile navigation
 				}
 
 				&.is_active,
-				&.is_active:hover {
+				&.is_active:hover,
+				&.nav_active,
+				&.nav_active:hover {
 					background-color: $colorSubNavActive;
 					color: $colorBlack;
 				}
@@ -238,7 +244,7 @@ The Subwrappers only desktop
 	z-index: -500;
 
 	position: fixed;
-	top: 0;
+	top: $basicPush - 7;
 
 	width: $widthYellowBar + 40;
 
