@@ -238,7 +238,7 @@ The Subwrappers only desktop
 	z-index: -500;
 
 	position: fixed;
-	top: 0;
+	top: $basicPush - 7;
 
 	width: $widthYellowBar + 40;
 
