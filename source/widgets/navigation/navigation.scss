@@ -82,6 +82,7 @@ styling of all links and lists
 		}
 	}
 
+	
 	&.is_expandable {
 		@include iconDataurl($name: 'triangle-arrow_right', $after: true);
 
