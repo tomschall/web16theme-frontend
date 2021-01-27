@@ -27,7 +27,8 @@
 					isActive: 'is_active',
 					isOpen: 'is_open',
 					hasShadow: 'has_shadow',
-					isVisible: 'is_visible'
+					isVisible: 'is_visible',
+					navActive: 'nav_active'
 				},
 				maxAdditionalNavLevel: 5,
 				openNavClass: 'open-nav',
@@ -139,9 +140,7 @@
    */
 	Widget.prototype.setNavActive = function($navItem, targetLevel) {
 		var $currentList = $(this.options.domSelectors.list + '[data-navigation-level="' + targetLevel + '"]');
-
-		$currentList.find('.' + this.options.stateClasses.isActive).removeClass(this.options.stateClasses.isActive);
-
+		$currentList.find('.' + this.options.stateClasses.isActive).removeClass(this.options.stateClasses.isActive, this.options.stateClasses.navActive);
 		$navItem.addClass(this.options.stateClasses.isActive);
 	};
 
