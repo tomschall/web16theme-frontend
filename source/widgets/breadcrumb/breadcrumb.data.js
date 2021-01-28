@@ -19,6 +19,16 @@ var templateData = {
 				'url': '.#',
 				'title': 'Fachbereiche',
 				'extraClasses': ''
+			},
+			{
+				'url': '.#',
+				'title': 'Lorem ipsum dolor sit amet',
+				'extraClasses': ''
+			},
+			{
+				'url': '.#',
+				'title': 'At vero eos et accusam et justo duo dolores et ea rebum',
+				'extraClasses': ''
 			}
 		],
 		langStrings: {
