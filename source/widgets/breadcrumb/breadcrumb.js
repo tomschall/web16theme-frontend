@@ -58,7 +58,7 @@
 		this.getListElements();
 		this.getLangString();
 
-		if (this.data.listElements.length >= 4) {
+		if (this.data.listElements.length >= 40) {
 			this.addExtendBtn();
 		} else if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
