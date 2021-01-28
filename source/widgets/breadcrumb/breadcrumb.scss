@@ -5,8 +5,12 @@
 	min-height: 50px;
 
 	ul {
-		display: block;
-
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		overflow-x: scroll;
+		margin-left: $basicPush - 5;
+		padding-bottom: .5rem;
 	}
 
 	.sg_demo & {
@@ -140,16 +144,16 @@
 		&:before {
 			@include centerDataurlIcon();
 
-			width: 15px;
-			height: 14px;
+			width: 16px;
+			height: 16px;
 		}
 
 		&:hover {
 			@include iconDataurl('home_black');
 
 			&:before {
-				width: 15px;
-				height: 14px;
+				width: 16px;
+				height: 16px;
 			}
 		}
 
@@ -157,8 +161,8 @@
 		width: 2px;
 
 		&:before {
-		  width: 14px;
-		  height: 12px;
+		  width: $basicPush + 6;
+		  height: $basicPush + 6;
 
 		  margin-top: -1px;
 		}
