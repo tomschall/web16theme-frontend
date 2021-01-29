@@ -499,7 +499,7 @@
         (searchParam.q === '' && (searchParam.date_from === '' && searchParam.date_to === '' && (!searchParam.school || searchParam.school === '')))) {
           searchParam.sort_on = 'effective';
           if (firstLoad) {
-            searchParam.sort_order = 'ascending';
+            searchParam.sort_order = 'descending';
           }
         } else {
           delete searchParam.sort_on;
