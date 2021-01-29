@@ -18,7 +18,9 @@ var data = _.merge(defaultData, {
       dateTo: 'Datum bis',
 		},
 		resetFields: 'Alle Felder zurücksetzen',
-		resultsFound: 'Veranstaltungen gefunden'
+    resultsFound: 'Veranstaltungen gefunden',
+    labelSortDateAsc: 'Sortierung aufsteigend',
+    labelSortDateDesc: 'Sortierung absteigend',
 	},
 	widgets: {
 		header: _.assign({

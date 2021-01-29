@@ -20,7 +20,8 @@
 				title: '[data-' + name + '="title"]',
 				formWrapper: '[data-' + name + '="formWrapper"]',
 				expanderBtn: '[data-' + name + '="extendBtn"]',
-				resetBtn: '[data-' + name + '="reset"]',
+        resetBtn: '[data-' + name + '="reset"]',
+        sortBtn: '[data-' + name + '="sortDate"]',
 				expandedFilters: '[data-' + name + '="expandedFilters"]',
 				tdURL: '[data-' + name + '="url"]',
 				countNumber: '[data-' + name + '="countNumber"]',
@@ -117,7 +118,10 @@
 		var sendSearchQueryDebounced = _.debounce(this._sendSearchQuery.bind(this), 250);
 
 		this.sendSearchQuery = function(firstLoad, sortOn, sortOrder) {
-			sortOn = sortOn || 'start';
+      if (searchTemplate === 'news_full') {
+        sortOn = sortOn || 'effective';
+      }
+      sortOn = sortOn || 'start';
 			sortOrder = sortOrder || 'ascending';
 			this.grabParameters(sortOn, sortOrder);
 			sendSearchQueryDebounced(firstLoad);
@@ -165,7 +169,11 @@
 		this.eventListeners();
 		this.initQueryClearBtn();
     this.initSearchParam();
-		this.searchAllFromSearchBar = Boolean(searchParam.sb);
+    this.searchAllFromSearchBar = Boolean(searchParam.sb);
+    $(this.options.domSelectors.sortBtn).text($('.news_search__wrapper').data('sortDateAsc') + ' \u2191');
+    if ($('.news_search__wrapper').data('sortDateAsc') === undefined) {
+      $(this.options.domSelectors.sortBtn).text($('.search__wrapper').data('sortDateAsc') + ' \u2191');
+    }
 
 		this.initFormFunctionality();
 
@@ -245,12 +253,33 @@
 			this._headerFixedReq = false;
 		}.bind(this));
 
-		/**
-		 * Functionality for the reset btn
-		 */
-		$(this.options.domSelectors.resetBtn).on('click.' + this.uuid, function() {
-			this.resetFields();
-		}.bind(this));
+    /**
+     * Functionality for the reset btn
+     */
+    $(this.options.domSelectors.resetBtn).on('click.' + this.uuid, function() {
+      this.resetFields();
+    }.bind(this));
+
+    /**
+     * Functionality for the sort btn in news search
+     */
+    $(this.options.domSelectors.sortBtn).on('click.' + this.uuid, function(event) {
+      if (searchParam.sort_order === 'ascending') {
+        searchParam.sort_order = 'descending';
+        event.target.innerHTML = $('.news_search__wrapper').data('sortDateDesc') + ' \u2193';
+        if ($('.news_search__wrapper').data('sortDateDesc') === undefined) {
+          event.target.innerHTML = $('.search__wrapper').data('sortDateDesc') + ' \u2193';
+        }
+      } else if (searchParam.sort_order === 'descending') {
+        searchParam.sort_order = 'ascending';
+        event.target.innerHTML = $('.news_search__wrapper').data('sortDateAsc') + ' \u2191';
+        if ($('.news_search__wrapper').data('sortDateAsc') === undefined) {
+          event.target.innerHTML = $('.search__wrapper').data('sortDateAsc') + ' \u2191';
+        }
+      }
+      searchParam.sort_on = 'effective';
+      this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order);
+    }.bind(this));
 	};
 
 	Widget.prototype.initFormFunctionality = function() {
@@ -383,11 +412,11 @@
 	Widget.prototype.grabParameters = function(sortOn, sortOrder) {
 		data.$formElements.map(function(index, element) {
 			searchParam[$(element).data('searchparam')] = $(element).val();
-		});
-		if (searchParam.category === 'training') {
+    });
+		if (searchParam.category === 'training' || searchParam.category === 'news') {
 			searchParam.sort_on = sortOn;
 			searchParam.sort_order = sortOrder;
-		}
+    }
 	};
 
 	/**
@@ -468,6 +497,9 @@
       if ((searchParam.q === '' && (searchParam.date_from || searchParam.date_to || searchParam.school)) ||
         (searchParam.q === '' && (searchParam.date_from === '' && searchParam.date_to === '' && (!searchParam.school || searchParam.school === '')))) {
           searchParam.sort_on = 'effective';
+          if (firstLoad) {
+            searchParam.sort_order = 'ascending';
+          }
         } else {
           delete searchParam.sort_on;
         }
