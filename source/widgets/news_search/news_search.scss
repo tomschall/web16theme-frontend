@@ -9,6 +9,13 @@
         display: none;
       }
     }
+
+    .search__extra-holder {
+      &.news-sort {
+        padding-right: 0px;
+      }
+    }
+
     .search__third-row {
       display: block !important;
       padding-bottom: $basicPush * 4;
@@ -29,6 +36,22 @@
       margin-top: $basicPush * 2;
       margin-bottom: $basicPush * 4;
       left: 0;
+    }
+  }
+}
+
+.search__wrapper {
+  .search__form-wrapper {
+    .search__holder {
+      &.hidden {
+        display: none;
+      }
+    }
+
+    .search__extra-holder {
+      &.news-sort {
+        padding-right: 0px;
+      }
     }
   }
 }
