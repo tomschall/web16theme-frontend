@@ -133,7 +133,6 @@
 		}.bind(this));
 	};
 
-	
 	/**
 	 * sets the clicked nav item active, and removes all active states on the same level
 	 * @param $navItem
