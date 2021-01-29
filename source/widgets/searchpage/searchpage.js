@@ -111,7 +111,7 @@
 	 */
 	Widget.prototype.init = function() {
 		searchTemplate = $(this.options.domSelectors.formWrapper).data('searchpage-template');
-		searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
+    searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 		jsonURL = this.$element.data('json-url');
 
 		// debounce the search call invocation
@@ -503,6 +503,7 @@
           }
         } else {
           delete searchParam.sort_on;
+          $(this.options.domSelectors.sortBtn).attr('disabled', true);
         }
     }
 
