@@ -120,6 +120,7 @@
 		this.sendSearchQuery = function(firstLoad, sortOn, sortOrder) {
       if (searchTemplate === 'news_full') {
         sortOn = sortOn || 'effective';
+        sortOrder = sortOrder || 'descending';
       }
       sortOn = sortOn || 'start';
 			sortOrder = sortOrder || 'ascending';
@@ -170,9 +171,9 @@
 		this.initQueryClearBtn();
     this.initSearchParam();
     this.searchAllFromSearchBar = Boolean(searchParam.sb);
-    $(this.options.domSelectors.sortBtn).text($('.news_search__wrapper').data('sortDateAsc') + ' \u2191');
-    if ($('.news_search__wrapper').data('sortDateAsc') === undefined) {
-      $(this.options.domSelectors.sortBtn).text($('.search__wrapper').data('sortDateAsc') + ' \u2191');
+    $(this.options.domSelectors.sortBtn).text($('.news_search__wrapper').data('sortDateDesc') + ' \u2193');
+    if ($('.news_search__wrapper').data('sortDateDesc') === undefined) {
+      $(this.options.domSelectors.sortBtn).text($('.search__wrapper').data('sortDateDesc') + ' \u2193');
     }
 
 		this.initFormFunctionality();
