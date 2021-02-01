@@ -1,118 +1,115 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800&subset=latin-ext);
 @import url(https://fonts.googleapis.com/css?family=Noto+Serif+SC:400);
 
-@import "../../../node_modules/bourbon/app/assets/stylesheets/bourbon";
-@import "../../../node_modules/susy/sass/susy";
-@import "../../../node_modules/slick-carousel/slick/slick.scss";
-@import "../../../node_modules/select2/src/scss/core";
-@import url(../../../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css);
+@import '../../../node_modules/bourbon/app/assets/stylesheets/bourbon';
+@import '../../../node_modules/susy/sass/susy';
+@import '../../../node_modules/slick-carousel/slick/slick.scss';
+@import '../../../node_modules/select2/src/scss/core';
+@import '../../../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css';
+@import '../../../node_modules/tippy.js/dist/tippy.css';
 
-@import "../.tmp/colors";
-@import "globals/variables";
-@import "globals/functions";
-@import "globals/mixins";
-@import "globals/mediaqueries";
-@import "globals/containers";
-@import "globals/cookiepolicy";
-@import "content/grids";
-@import "globals/buttons";
-@import "globals/animations";
-@import "globals/helpers";
-
+@import '../.tmp/colors';
+@import 'globals/variables';
+@import 'globals/functions';
+@import 'globals/mixins';
+@import 'globals/mediaqueries';
+@import 'globals/containers';
+@import 'globals/cookiepolicy';
+@import 'content/grids';
+@import 'globals/buttons';
+@import 'globals/animations';
+@import 'globals/helpers';
 
 // Reset / normalize styles
-@import url(../../../node_modules/normalize.css/normalize.css);
-
-
+@import '../../../node_modules/normalize.css/normalize.css';
 
 // Icons (as font or dataurl), PNG sprites
-@import "../.tmp/iconfont";
-@import "../.tmp/dataurls";
+@import '../.tmp/iconfont';
+@import '../.tmp/dataurls';
 
 // @import "../.tmp/pngsprite"; // no png sprites in use
 
 // General styles
-@import "mediaqueries_sync";
-@import "globals/classes";
+@import 'mediaqueries_sync';
+@import 'globals/classes';
 
 // General layout
-@import "layout";
+@import 'layout';
 
-@import "globals/links";
-
+@import 'globals/links';
 
 // Modules
-@import "../../widgets/teaser/teaser";
-@import "../../widgets/navigation/navigation";
-@import "../../widgets/logo/logo";
-@import "../../widgets/header/header";
-@import "../../widgets/navigation_meta/navigation_meta";
-@import "../../widgets/footer/footer";
-@import "../../widgets/breadcrumb/breadcrumb";
-@import "../../widgets/actionbuttons/actionbuttons";
-@import "../../widgets/searchbar/searchbar";
-@import "../../widgets/hero/hero";
-@import "../../widgets/menubuttons/menubuttons";
-@import "../../widgets/langswitcher/langswitcher";
-@import "../../widgets/headermetanavigation/headermetanavigation";
-@import "../../widgets/somelinks/somelinks";
-@import "../../widgets/carousel/carousel";
-@import "../../widgets/promoteaser/promoteaser";
-@import "../../widgets/subnav/subnav";
-@import "../../widgets/footernavigation/footernavigation";
-@import "../../widgets/extendedlinks/extendedlinks";
-@import "../../widgets/contact/contact";
-@import "../../widgets/accordeon/accordeon";
-@import "../../widgets/tabnavigation/tabnavigation";
-@import "../../widgets/toplink/toplink";
-@import "../../widgets/searchpage/searchpage";
-@import "../../widgets/sidebar/sidebar";
-@import "../../widgets/sidebar_application/sidebar_application";
-@import "../../widgets/sidebar_events/sidebar_events";
-@import "../../widgets/sidebar_key_data/sidebar_key_data";
-@import "../../widgets/sidebar_contact/sidebar_contact";
-@import "../../widgets/location_slider/location_slider";
-@import "../../widgets/application_accordeon/application_accordeon";
-@import "../../widgets/info_teaser/info_teaser";
-@import "../../widgets/so_me_share/so_me_share";
-@import "../../widgets/mobile_content_navigation/mobile_content_navigation";
-@import "../../widgets/in_content_search/in_content_search";
-@import "../../widgets/blockquote/blockquote";
-@import "../../widgets/infobox/infobox";
-@import "../../widgets/newsletter_subscription/newsletter_subscription";
-@import "../../widgets/full_bleed_teaser/full_bleed_teaser";
-@import "../../widgets/expertise_areas/expertise_areas";
-@import "../../widgets/i_want/i_want";
-@import "../../widgets/linklist/linklist";
-@import "../../widgets/image_gallery/image_gallery";
-@import "../../widgets/follow_us/follow_us";
-@import "../../widgets/event_detail/event_detail";
-@import "../../widgets/calltoaction/calltoaction";
-@import "../../widgets/event_search/event_search";
-@import "../../widgets/news_search/news_search";
+@import '../../widgets/teaser/teaser';
+@import '../../widgets/navigation/navigation';
+@import '../../widgets/logo/logo';
+@import '../../widgets/header/header';
+@import '../../widgets/navigation_meta/navigation_meta';
+@import '../../widgets/footer/footer';
+@import '../../widgets/breadcrumb/breadcrumb';
+@import '../../widgets/actionbuttons/actionbuttons';
+@import '../../widgets/searchbar/searchbar';
+@import '../../widgets/hero/hero';
+@import '../../widgets/menubuttons/menubuttons';
+@import '../../widgets/langswitcher/langswitcher';
+@import '../../widgets/headermetanavigation/headermetanavigation';
+@import '../../widgets/somelinks/somelinks';
+@import '../../widgets/carousel/carousel';
+@import '../../widgets/promoteaser/promoteaser';
+@import '../../widgets/subnav/subnav';
+@import '../../widgets/footernavigation/footernavigation';
+@import '../../widgets/extendedlinks/extendedlinks';
+@import '../../widgets/contact/contact';
+@import '../../widgets/accordeon/accordeon';
+@import '../../widgets/tabnavigation/tabnavigation';
+@import '../../widgets/toplink/toplink';
+@import '../../widgets/searchpage/searchpage';
+@import '../../widgets/sidebar/sidebar';
+@import '../../widgets/sidebar_application/sidebar_application';
+@import '../../widgets/sidebar_events/sidebar_events';
+@import '../../widgets/sidebar_key_data/sidebar_key_data';
+@import '../../widgets/sidebar_contact/sidebar_contact';
+@import '../../widgets/location_slider/location_slider';
+@import '../../widgets/application_accordeon/application_accordeon';
+@import '../../widgets/info_teaser/info_teaser';
+@import '../../widgets/so_me_share/so_me_share';
+@import '../../widgets/mobile_content_navigation/mobile_content_navigation';
+@import '../../widgets/in_content_search/in_content_search';
+@import '../../widgets/blockquote/blockquote';
+@import '../../widgets/infobox/infobox';
+@import '../../widgets/newsletter_subscription/newsletter_subscription';
+@import '../../widgets/full_bleed_teaser/full_bleed_teaser';
+@import '../../widgets/expertise_areas/expertise_areas';
+@import '../../widgets/i_want/i_want';
+@import '../../widgets/linklist/linklist';
+@import '../../widgets/image_gallery/image_gallery';
+@import '../../widgets/follow_us/follow_us';
+@import '../../widgets/event_detail/event_detail';
+@import '../../widgets/calltoaction/calltoaction';
+@import '../../widgets/event_search/event_search';
+@import '../../widgets/news_search/news_search';
 //*autoinsertmodule*
 
 /**
   * Import Content Styles which can't be assigned to a widget
   */
-@import "content/headers";
-@import "content/text";
-@import "content/content";
-@import "content/buttons";
-@import "content/forms";
-@import "content/productsidebar";
-@import "content/spinner";
-@import "content/search";
-@import "content/customScrollbar";
-@import "content/select";
-@import "content/image";
-@import "content/video";
-@import "content/radio_and_checkbox";
-@import "content/easyform";
-@import "content/datepicker";
-@import "content/timepicker";
-@import "content/table";
+@import 'content/headers';
+@import 'content/text';
+@import 'content/content';
+@import 'content/buttons';
+@import 'content/forms';
+@import 'content/productsidebar';
+@import 'content/spinner';
+@import 'content/search';
+@import 'content/customScrollbar';
+@import 'content/select';
+@import 'content/image';
+@import 'content/video';
+@import 'content/radio_and_checkbox';
+@import 'content/easyform';
+@import 'content/datepicker';
+@import 'content/timepicker';
+@import 'content/table';
 
 @media print {
-	@import "print";
+	@import 'print';
 }
