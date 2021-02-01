@@ -65,6 +65,11 @@
 		}
 	};
 
+	Widget.prototype.tippy = function() {
+		var test = $('.is_home');
+		console.log(test);
+	};
+
 	/**
 	 * Get the language string from the span
 	 */
@@ -76,7 +81,8 @@
 	 * Caches the list elements in the data variable
 	 */
 	Widget.prototype.getListElements = function() {
-		this.data.listElements = this.$element.find('ul li');
+		this.data.listElements = this.$element.find('ul li a');
+		// console.log('breadcrumb', this.data.listElements);
 	};
 
 	/**
