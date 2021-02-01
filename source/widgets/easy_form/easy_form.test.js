@@ -103,7 +103,7 @@ describe('Easy form', function() {
 			efv.onSubmit($.Event('submit')).always(function() {
 				// validation method was called
 				expect(efv.validateElement).toHaveBeenCalled();
-				expect($node.find('#formfield-form-widgets-choice')).not.toContain('.has-value');
+				expect($node.find('#formfield-form-widgets-choice')).toContain('.has-value');
 				done();
 			});
 		});
@@ -114,7 +114,7 @@ describe('Easy form', function() {
 		it('File upload should display field error if selection is empty', function(done) {
 			efv.onSubmit($.Event('submit')).always(function() {
 				// validation method was called
-				expect($node.find('#formfield-form-widgets-passport_photograph')).not.toContain('.error');
+				expect($node.find('#formfield-form-widgets-passport_photograph')).toContain('.error');
 				done();
 			});
 		});
