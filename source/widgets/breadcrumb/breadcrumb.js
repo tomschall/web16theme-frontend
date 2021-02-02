@@ -57,18 +57,33 @@
 	Widget.prototype.init = function() {
 		this.getListElements();
 		this.getLangString();
-		this.protip();
+		this.toolTip();
 
-		if (this.data.listElements.length >= 4) {
-			this.addExtendBtn();
-		} else if (this.data.listElements.length === 0) {
+		if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
+
+		// ADDING BUTTON TO LAST ELEMENT
+		// if (this.data.listElements.length >= 4) {
+		// 	this.addExtendBtn();
+		// } else if (this.data.listElements.length === 0) {
+		// 	$('.widg_subnav').addClass('has-no-breadcrumb');
+		// }
 	};
 
-	Widget.prototype.protip = function() {
+	Widget.prototype.toolTip = function() {
 		console.log('protip');
 		$.protip();
+
+		var el = $('.protip');
+		el.protipSet({
+			scheme: 'black',
+			position: 'bottom',
+			skin: 'default',
+			arrow: false,
+			size: 'small',
+			width: '300'	
+		});
 	};
 
 	/**
@@ -83,21 +98,34 @@
 	 */
 	Widget.prototype.getListElements = function() {
 		this.data.listElements = this.$element.find('ul li a');
-		// console.log('breadcrumb', this.data.listElements);
+		console.log('<-- listElements', this.data.listElements);
+
+		this.data.listElements.each(function() {
+			var maxTitleLength = 20;
+			console.log(this.innerText, this.innerText.length);
+
+			if (this.innerText.length >= maxTitleLength) {
+				var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + "...";
+				console.log('shortText', shortText);
+				this.classList.add('protip');
+				this.innerText = shortText;
+			}
+		});
 	};
 
 	/**
 	 * Add The Extend Button
 	 */
 	Widget.prototype.addExtendBtn = function() {
-		var allowedIndex = [0, 1, this.data.listElements.length - 1],
+		var allowedIndex = [0, 1, this.data.listElements.length],		
 				$lastElementToRemove = null;
 
 		this.data.listElements.each(function(index) {
 			if ($.inArray(index, allowedIndex) === -1) {
 				$lastElementToRemove = $(this.data.listElements[index]);
-
 				$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
+				// $lastElementToRemove.css('background', 'red');
+				console.log('<--- lastElementToRemove', $lastElementToRemove, index);
 			}
 		}.bind(this));
 
