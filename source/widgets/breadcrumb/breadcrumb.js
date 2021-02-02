@@ -57,12 +57,18 @@
 	Widget.prototype.init = function() {
 		this.getListElements();
 		this.getLangString();
+		this.protip();
 
-		if (this.data.listElements.length >= 40) {
+		if (this.data.listElements.length >= 4) {
 			this.addExtendBtn();
 		} else if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
+	};
+
+	Widget.prototype.protip = function() {
+		console.log('protip');
+		$.protip();
 	};
 
 	/**
@@ -76,7 +82,8 @@
 	 * Caches the list elements in the data variable
 	 */
 	Widget.prototype.getListElements = function() {
-		this.data.listElements = this.$element.find('ul li');
+		this.data.listElements = this.$element.find('ul li a');
+		// console.log('breadcrumb', this.data.listElements);
 	};
 
 	/**

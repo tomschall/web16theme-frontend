@@ -21,6 +21,7 @@
  * @requires ../../../node_modules/picturefill/dist/picturefill.js
  * @requires ../../../node_modules/js-base64/base64.js
  * @requires ../../../node_modules/mapbox-gl/dist/mapbox-gl.js
+ * @requires ../../../node_modules/protip/protip.min.js
 
 
  * @requires ../.tmp/templates.js
