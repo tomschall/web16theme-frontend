@@ -57,17 +57,18 @@
 	Widget.prototype.init = function() {
 		this.getListElements();
 		this.getLangString();
+		this.protip();
 
-		if (this.data.listElements.length >= 40) {
+		if (this.data.listElements.length >= 4) {
 			this.addExtendBtn();
 		} else if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
 	};
 
-	Widget.prototype.tippy = function() {
-		var test = $('.is_home');
-		console.log(test);
+	Widget.prototype.protip = function() {
+		console.log('protip');
+		$.protip();
 	};
 
 	/**

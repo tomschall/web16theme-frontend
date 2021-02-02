@@ -5,7 +5,18 @@
 				{{#if extraClasses}}
         	<a class="not-default" href="{{url}}" alt="{{title}}"></a>
 				{{else}}
-					<a class="not-default" href="{{url}}" data-tooltip="{{title}}">{{title}}</a>
+					<a class="not-default protip" 
+						href="{{url}}"
+						data-pt-title="{{title}}"
+						data-pt-position="bottom"
+						data-pt-scheme="black"
+						data-pt-skin="default"
+						data-pt-arrow="false"
+						data-pt-size="small"
+						data-pt-width="500"
+						>
+						{{title}}
+					</a>
 				{{/if}}
       </li>
 		{{/each}}
