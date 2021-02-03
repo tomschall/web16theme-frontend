@@ -17,10 +17,10 @@
 		defaults = {
 			domSelectors: {
 				extendString: '[data-' + name + '="extendstring"]',
-				extender: '[data-' + name + '="extender"]'
+				extender: '[data-' + name + '="extender"]',
 			},
 			stateClasses: {
-				isHidden: 'is_hidden'
+				isHidden: 'is_hidden',
 			}
 		},
 		data = {
@@ -63,16 +63,14 @@
 			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
 
-		// ADDING BUTTON TO LAST ELEMENT
-		// if (this.data.listElements.length >= 4) {
-		// 	this.addExtendBtn();
-		// } else if (this.data.listElements.length === 0) {
-		// 	$('.widg_subnav').addClass('has-no-breadcrumb');
-		// }
+		if (this.data.listElements.length >= 4) {
+			this.addExtendBtn();
+		} else if (this.data.listElements.length === 0) {
+			$('.widg_subnav').addClass('has-no-breadcrumb');
+		}
 	};
 
 	Widget.prototype.toolTip = function() {
-		console.log('protip');
 		$.protip();
 
 		var el = $('.protip');
@@ -80,7 +78,7 @@
 			scheme: 'black',
 			position: 'bottom',
 			skin: 'default',
-			arrow: false,
+			arrow: true,
 			size: 'small',
 			width: '300'	
 		});
@@ -97,16 +95,17 @@
 	 * Caches the list elements in the data variable
 	 */
 	Widget.prototype.getListElements = function() {
-		this.data.listElements = this.$element.find('ul li a');
-		console.log('<-- listElements', this.data.listElements);
+		this.data.listElements = this.$element.find('ul li');
+		this.data.linkText = this.$element.find('ul li a');
+		// console.log('listElements', this.data.linkText);
 
-		this.data.listElements.each(function() {
-			var maxTitleLength = 20;
-			console.log(this.innerText, this.innerText.length);
+		this.data.linkText.each(function() {
+			var maxTitleLength = 30;
+			// console.log('listElements', this.innerText, this.innerText.length);
 
 			if (this.innerText.length >= maxTitleLength) {
 				var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + "...";
-				console.log('shortText', shortText);
+				// console.log('shortText', shortText);
 				this.classList.add('protip');
 				this.innerText = shortText;
 			}
@@ -117,22 +116,19 @@
 	 * Add The Extend Button
 	 */
 	Widget.prototype.addExtendBtn = function() {
-		var allowedIndex = [0, 1, this.data.listElements.length],		
-				$lastElementToRemove = null;
+		var allowedIndex = [-1, 3, this.data.listElements.length - 1], $lastElementToRemove = null;
+		console.log('allowedIndex', allowedIndex, this.data.listElements.length);
 
 		this.data.listElements.each(function(index) {
 			if ($.inArray(index, allowedIndex) === -1) {
 				$lastElementToRemove = $(this.data.listElements[index]);
 				$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
-				// $lastElementToRemove.css('background', 'red');
-				console.log('<--- lastElementToRemove', $lastElementToRemove, index);
+				console.log('lastElementToRemove', $lastElementToRemove, index);
 			}
 		}.bind(this));
 
 		$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' + this.data.extendString + '</button></li>');
-
 		$(this.options.domSelectors.extender).focus();
-
 		this.addExtenderEvent();
 	};
 
