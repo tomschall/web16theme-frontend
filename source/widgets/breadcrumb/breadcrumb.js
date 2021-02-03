@@ -104,7 +104,7 @@
 			// console.log('listElements', this.innerText, this.innerText.length);
 
 			if (this.innerText.length >= maxTitleLength) {
-				var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + "...";
+				var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + '...';
 				// console.log('shortText', shortText);
 				this.classList.add('protip');
 				this.innerText = shortText;
@@ -116,14 +116,18 @@
 	 * Add The Extend Button
 	 */
 	Widget.prototype.addExtendBtn = function() {
-		var allowedIndex = [-1, 3, this.data.listElements.length - 1], $lastElementToRemove = null;
+		var allowedIndex = [0, 0, this.data.listElements.length - 1], $lastElementToRemove = null;
 		console.log('allowedIndex', allowedIndex, this.data.listElements.length);
 
 		this.data.listElements.each(function(index) {
-			if ($.inArray(index, allowedIndex) === -1) {
+			// if ($.inArray(index, allowedIndex) === -1) {
+			// 	$lastElementToRemove = $(this.data.listElements[index]);
+			// 	$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
+			// 	console.log('lastElementToRemove', $lastElementToRemove, index);
+			// }
+			if (index === 1) {
 				$lastElementToRemove = $(this.data.listElements[index]);
 				$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
-				console.log('lastElementToRemove', $lastElementToRemove, index);
 			}
 		}.bind(this));
 
