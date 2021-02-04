@@ -6,7 +6,6 @@
  *
  * //@requires ../../../node_modules/some/dependency.js
  */
-
 ;(function($, undefined) {
 	'use strict';
 
@@ -98,13 +97,14 @@
 		this.data.linkText = this.$element.find('ul li a');
 		var breadCrumbWidth = $('.widg_breadcrumb ul').width();
 		var pageContentWidth = $('.page_content').width();
-		console.log(breadCrumbWidth, pageContentWidth, 'calc', Math.floor((breadCrumbWidth - pageContentWidth) / 10));					
+		// console.log(breadCrumbWidth, pageContentWidth, 'calc', Math.floor((breadCrumbWidth - pageContentWidth) / 10) * 2);
+		console.log($('.widg_breadcrumb').css('width'));
 
 		// Shorten link text
-		if (window.estatico.mq.query({from: 'small'})) {
+		if (window.estatico.mq.query({from: 'large'})) {
 			if (breadCrumbWidth > pageContentWidth) {
 				this.data.linkText.each(function() {
-					var maxTitleLength = Math.floor((breadCrumbWidth - pageContentWidth) / 10) / 2;
+					var maxTitleLength = Math.floor((breadCrumbWidth - pageContentWidth) / 10) * 0.5;
 					if (this.innerText.length >= maxTitleLength) {
 						var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + '...';
 						// console.log('shortText', shortText);
