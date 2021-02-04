@@ -1,6 +1,6 @@
 .widg_calltoaction {
 	position: absolute;
-	top: 70%;
+	bottom: 6%;
 	right: 20%;
 
 	&.circle {
@@ -63,13 +63,13 @@
 	}
 
 	@include mq($from: small) {
-		bottom: 0;
+		bottom: 10%;
 		right: 8%;
 	}
 
 	@include mq($to: 1278px) {
 		width: 15%;
-		top: 62%;
+		bottom: 10%;
 		right: 8%;
 	}
 
@@ -79,7 +79,7 @@
 
 	@include mq($from: large) {
 		// width: 12%;
-		top: 72%;
+		bottom: 6%;
 		right: 26%;
 	}
 

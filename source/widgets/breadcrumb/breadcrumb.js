@@ -98,21 +98,23 @@
 		this.data.linkText = this.$element.find('ul li a');
 
 		// Shorten link text
-		this.data.linkText.each(function() {
-
-			this.breadCrumbWidth = $('.widg_breadcrumb ul').width();
-			this.pageContentWidth = $('.page_content').width();
-			console.log(this.breadCrumbWidth, this.pageContentWidth);
-
-			var maxTitleLength = 30;
-
-			if (this.innerText.length >= maxTitleLength) {
-				var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + '...';
-				// console.log('shortText', shortText);
-				this.classList.add('protip');
-				this.innerText = shortText;
-			}
-		});
+		if (window.estatico.mq.query({from: 'small'})) {
+			this.data.linkText.each(function() {
+	
+				this.breadCrumbWidth = $('.widg_breadcrumb ul').width();
+				this.pageContentWidth = $('.page_content').width();
+				console.log(this.breadCrumbWidth, this.pageContentWidth);
+	
+				var maxTitleLength = 30;
+	
+				if (this.innerText.length >= maxTitleLength) {
+					var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + '...';
+					// console.log('shortText', shortText);
+					this.classList.add('protip');
+					this.innerText = shortText;
+				}
+			});
+		}
 	};
 
 	/**
@@ -122,20 +124,21 @@
 		var $lastElementToRemove = null;
 		var breadCrumbWidth = $('.widg_breadcrumb ul').width();
 		var pageContentWidth = $('.page_content').width();
-		
-		if (breadCrumbWidth > pageContentWidth) {
-			this.data.listElements.each(function(index) {
-				if (index === 1) {
-					$lastElementToRemove = $(this.data.listElements[index]);
-					$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
-				}
-			}.bind(this));
 
-			$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' + this.data.extendString + '</button></li>');
-			$(this.options.domSelectors.extender).focus();
-			this.addExtenderEvent();
+		if (window.estatico.mq.query({from: 'small'})) {
+			if (breadCrumbWidth > pageContentWidth) {
+				this.data.listElements.each(function(index) {
+					if (index === 1) {
+						$lastElementToRemove = $(this.data.listElements[index]);
+						$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
+					}
+				}.bind(this));
+				
+				$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' + this.data.extendString + '</button></li>');
+				$(this.options.domSelectors.extender).focus();
+				this.addExtenderEvent();
+			}
 		}
-
 	};
 
 	/**
