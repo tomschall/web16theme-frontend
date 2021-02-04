@@ -11,13 +11,12 @@
 			align-items: center;
 			overflow-x: scroll;
 			margin-left: $basicPush - 5;
-			padding-bottom: .5rem;
 		}
 	}
 
 	@include mq($from: small) {
 		ul {
-			display: block;
+			display: inline-block;
 		}
 	}
 
@@ -36,7 +35,7 @@
 	@include contentWrapper($hasGrid: false, $gutterSize: $gutterWidth);
 	@include basicUnitHeight(right);
 
-  	padding-top: $basicPush * 2 !important;
+	padding-top: $basicPush * 4;
 
 	@include mq($to: medium) {
 		position: static;

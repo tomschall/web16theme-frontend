@@ -58,11 +58,10 @@
 		this.getListElements();
 		this.getLangString();
 		this.toolTip();
-
 		if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
-
+		
 		if (this.data.listElements.length >= 4) {
 			this.addExtendBtn();
 		} else if (this.data.listElements.length === 0) {
@@ -80,7 +79,7 @@
 			skin: 'default',
 			arrow: true,
 			size: 'small',
-			width: '300'	
+      width: '300'
 		});
 	};
 
@@ -97,11 +96,15 @@
 	Widget.prototype.getListElements = function() {
 		this.data.listElements = this.$element.find('ul li');
 		this.data.linkText = this.$element.find('ul li a');
-		// console.log('listElements', this.data.linkText);
 
+		// Shorten link text
 		this.data.linkText.each(function() {
+
+			this.breadCrumbWidth = $('.widg_breadcrumb ul').width();
+			this.pageContentWidth = $('.page_content').width();
+			console.log(this.breadCrumbWidth, this.pageContentWidth);
+
 			var maxTitleLength = 30;
-			// console.log('listElements', this.innerText, this.innerText.length);
 
 			if (this.innerText.length >= maxTitleLength) {
 				var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + '...';
@@ -116,24 +119,23 @@
 	 * Add The Extend Button
 	 */
 	Widget.prototype.addExtendBtn = function() {
-		var allowedIndex = [0, 0, this.data.listElements.length - 1], $lastElementToRemove = null;
-		console.log('allowedIndex', allowedIndex, this.data.listElements.length);
+		var $lastElementToRemove = null;
+		var breadCrumbWidth = $('.widg_breadcrumb ul').width();
+		var pageContentWidth = $('.page_content').width();
+		
+		if (breadCrumbWidth > pageContentWidth) {
+			this.data.listElements.each(function(index) {
+				if (index === 1) {
+					$lastElementToRemove = $(this.data.listElements[index]);
+					$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
+				}
+			}.bind(this));
 
-		this.data.listElements.each(function(index) {
-			// if ($.inArray(index, allowedIndex) === -1) {
-			// 	$lastElementToRemove = $(this.data.listElements[index]);
-			// 	$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
-			// 	console.log('lastElementToRemove', $lastElementToRemove, index);
-			// }
-			if (index === 1) {
-				$lastElementToRemove = $(this.data.listElements[index]);
-				$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
-			}
-		}.bind(this));
+			$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' + this.data.extendString + '</button></li>');
+			$(this.options.domSelectors.extender).focus();
+			this.addExtenderEvent();
+		}
 
-		$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' + this.data.extendString + '</button></li>');
-		$(this.options.domSelectors.extender).focus();
-		this.addExtenderEvent();
 	};
 
 	/**
