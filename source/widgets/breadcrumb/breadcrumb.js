@@ -17,10 +17,10 @@
 		defaults = {
 			domSelectors: {
 				extendString: '[data-' + name + '="extendstring"]',
-				extender: '[data-' + name + '="extender"]'
+				extender: '[data-' + name + '="extender"]',
 			},
 			stateClasses: {
-				isHidden: 'is_hidden'
+				isHidden: 'is_hidden',
 			}
 		},
 		data = {
@@ -57,8 +57,11 @@
 	Widget.prototype.init = function() {
 		this.getListElements();
 		this.getLangString();
-		this.protip();
-
+		this.toolTip();
+		if (this.data.listElements.length === 0) {
+			$('.widg_subnav').addClass('has-no-breadcrumb');
+		}
+		
 		if (this.data.listElements.length >= 4) {
 			this.addExtendBtn();
 		} else if (this.data.listElements.length === 0) {
@@ -66,9 +69,18 @@
 		}
 	};
 
-	Widget.prototype.protip = function() {
-		console.log('protip');
+	Widget.prototype.toolTip = function() {
 		$.protip();
+
+		var el = $('.protip');
+		el.protipSet({
+			scheme: 'black',
+			position: 'bottom',
+			skin: 'default',
+			arrow: true,
+			size: 'small',
+      width: '300'
+		});
 	};
 
 	/**
@@ -82,30 +94,48 @@
 	 * Caches the list elements in the data variable
 	 */
 	Widget.prototype.getListElements = function() {
-		this.data.listElements = this.$element.find('ul li a');
-		// console.log('breadcrumb', this.data.listElements);
+		this.data.listElements = this.$element.find('ul li');
+		this.data.linkText = this.$element.find('ul li a');
+
+		// Shorten link text
+		this.data.linkText.each(function() {
+
+			this.breadCrumbWidth = $('.widg_breadcrumb ul').width();
+			this.pageContentWidth = $('.page_content').width();
+			console.log(this.breadCrumbWidth, this.pageContentWidth);
+
+			var maxTitleLength = 30;
+
+			if (this.innerText.length >= maxTitleLength) {
+				var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + '...';
+				// console.log('shortText', shortText);
+				this.classList.add('protip');
+				this.innerText = shortText;
+			}
+		});
 	};
 
 	/**
 	 * Add The Extend Button
 	 */
 	Widget.prototype.addExtendBtn = function() {
-		var allowedIndex = [0, 1, this.data.listElements.length - 1],
-				$lastElementToRemove = null;
+		var $lastElementToRemove = null;
+		var breadCrumbWidth = $('.widg_breadcrumb ul').width();
+		var pageContentWidth = $('.page_content').width();
+		
+		if (breadCrumbWidth > pageContentWidth) {
+			this.data.listElements.each(function(index) {
+				if (index === 1) {
+					$lastElementToRemove = $(this.data.listElements[index]);
+					$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
+				}
+			}.bind(this));
 
-		this.data.listElements.each(function(index) {
-			if ($.inArray(index, allowedIndex) === -1) {
-				$lastElementToRemove = $(this.data.listElements[index]);
+			$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' + this.data.extendString + '</button></li>');
+			$(this.options.domSelectors.extender).focus();
+			this.addExtenderEvent();
+		}
 
-				$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
-			}
-		}.bind(this));
-
-		$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' + this.data.extendString + '</button></li>');
-
-		$(this.options.domSelectors.extender).focus();
-
-		this.addExtenderEvent();
 	};
 
 	/**
