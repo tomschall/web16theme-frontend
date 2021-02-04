@@ -2,6 +2,10 @@
 	background-color: $colorBg;
 	overflow: hidden;
 
+	@include mq($from: small) {
+		margin-top: $basicPush;
+	}
+
 	min-height: 50px;
 
 	@include mq($to: small) {
@@ -34,9 +38,6 @@
 
 	@include contentWrapper($hasGrid: false, $gutterSize: $gutterWidth);
 	@include basicUnitHeight(right);
-
-	padding-top: $basicPush * 4;
-
 	@include mq($to: medium) {
 		position: static;
 	}
