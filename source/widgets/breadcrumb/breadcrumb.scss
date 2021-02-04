@@ -6,6 +6,11 @@
 		margin-top: $basicPush;
 	}
 
+	@include mq($to: small) {
+		margin-top: $basicPush * 2;
+		padding-bottom: $basicPush * 2;
+	}
+
 	min-height: 50px;
 
 	@include mq($to: small) {

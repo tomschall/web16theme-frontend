@@ -124,18 +124,20 @@
 		var $lastElementToRemove = null;
 		var breadCrumbWidth = $('.widg_breadcrumb ul').width();
 		var pageContentWidth = $('.page_content').width();
-		
-		if (breadCrumbWidth > pageContentWidth) {
-			this.data.listElements.each(function(index) {
-				if (index === 1) {
-					$lastElementToRemove = $(this.data.listElements[index]);
-					$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
-				}
-		}.bind(this));
 
-			$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' + this.data.extendString + '</button></li>');
-			$(this.options.domSelectors.extender).focus();
-			this.addExtenderEvent();
+		if (window.estatico.mq.query({from: 'small'})) {
+			if (breadCrumbWidth > pageContentWidth) {
+				this.data.listElements.each(function(index) {
+					if (index === 1) {
+						$lastElementToRemove = $(this.data.listElements[index]);
+						$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
+					}
+				}.bind(this));
+				
+				$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' + this.data.extendString + '</button></li>');
+				$(this.options.domSelectors.extender).focus();
+				this.addExtenderEvent();
+			}
 		}
 	};
 
