@@ -96,25 +96,21 @@
 	Widget.prototype.getListElements = function() {
 		this.data.listElements = this.$element.find('ul li');
 		var totalListElements = this.data.listElements.length;
-		console.log(this.data.listElements.length);
-
+		// console.log(this.data.listElements.length);
 		this.data.linkText = this.$element.find('ul li a');
 		var breadCrumbWidth = parseInt($('.widg_breadcrumb ul').css('width'), 10);
-		var pageContentWidth = parseInt($('.page_content').css('width'), 10);
-		console.log(breadCrumbWidth, pageContentWidth, 'calc', Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements));
+		// var pageContentWidth = parseInt($('.page_content').css('width'), 10);
+		// console.log(breadCrumbWidth, pageContentWidth, 'calc', Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements));
 		var firstCalc = Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements);
-		var secondCalc = firstCalc + Math.floor(firstCalc / totalListElements);
-		console.log('secondCalc', secondCalc);
+		var secondCalc = firstCalc + Math.floor(firstCalc / (totalListElements + 1));
+		// console.log('secondCalc', secondCalc);
 
 		// Shorten link text
 		if (window.estatico.mq.query({from: 'small'})) {
 			this.data.linkText.each(function() {
 				var maxTitleLength = secondCalc;
-				console.log('maxTitleLength', maxTitleLength);
-
 				if (this.innerText.length >= maxTitleLength) {
 					var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + '...';
-					// console.log('shortText', shortText);
 					this.classList.add('protip');
 					this.innerText = shortText;
 				}
@@ -138,8 +134,9 @@
 						$lastElementToRemove.addClass(this.options.stateClasses.isHidden);
 					}
 				}.bind(this));
-				
-				$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' + this.data.extendString + '</button></li>');
+
+				$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' + 
+				this.data.extendString + '</button></li>');
 				$(this.options.domSelectors.extender).focus();
 				this.addExtenderEvent();
 			}
