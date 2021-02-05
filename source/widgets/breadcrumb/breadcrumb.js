@@ -61,7 +61,7 @@
 		if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
-		
+
 		if (this.data.listElements.length >= 4) {
 			this.addExtendBtn();
 		} else if (this.data.listElements.length === 0) {
@@ -101,12 +101,15 @@
 		this.data.linkText = this.$element.find('ul li a');
 		var breadCrumbWidth = parseInt($('.widg_breadcrumb ul').css('width'), 10);
 		var pageContentWidth = parseInt($('.page_content').css('width'), 10);
-		console.log(breadCrumbWidth, pageContentWidth, 'calc', Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / 10));
+		console.log(breadCrumbWidth, pageContentWidth, 'calc', Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements));
+		var firstCalc = Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements);
+		var secondCalc = firstCalc + Math.floor(firstCalc / totalListElements);
+		console.log('secondCalc', secondCalc);
 
 		// Shorten link text
 		if (window.estatico.mq.query({from: 'small'})) {
 			this.data.linkText.each(function() {
-				var maxTitleLength = Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / 10) + 10;
+				var maxTitleLength = secondCalc;
 				console.log('maxTitleLength', maxTitleLength);
 
 				if (this.innerText.length >= maxTitleLength) {
