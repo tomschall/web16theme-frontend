@@ -57,21 +57,22 @@
 	Widget.prototype.init = function() {
 		this.getListElements();
 		this.getLangString();
-		this.toolTip();
 		if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
-
+		
 		if (this.data.listElements.length >= 4) {
 			this.addExtendBtn();
 		} else if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
-	};
 
+		this.toolTip();
+	};
+	
 	Widget.prototype.toolTip = function() {
 		$.protip();
-
+		
 		var el = $('.protip');
 		el.protipSet({
 			scheme: 'black',
@@ -115,8 +116,10 @@
 					var maxTitleLength = secondCalc;
 					if (this.innerText.length >= maxTitleLength) {
 						var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + '...';
-						this.classList.add('protip');
+						// this.classList.add('protip');
 						this.innerText = shortText;
+					} else {
+						$(this).removeClass('protip');
 					}
 				});
 			}

@@ -108,4 +108,18 @@
       $('.full_bleed__widg_teaser .widg_teaser__img').remove();
     }
   }
+
+  // INITIALIZATION PROTIP
+  $.protip();
+
+  var el = $('.protip');
+  el.protipSet({
+    scheme: 'black',
+    position: 'bottom',
+    skin: 'default',
+    arrow: true,
+    size: 'small',
+    width: '300'
+  });
+
 })(jQuery);
