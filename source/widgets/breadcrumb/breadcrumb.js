@@ -102,7 +102,9 @@
 		var pageContentWidth = parseInt($('.page_content').css('width'), 10);
 		// console.log(breadCrumbWidth, pageContentWidth, 'calc', Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements));
 		var firstCalc = Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements);
-		var secondCalc = firstCalc + Math.floor(firstCalc / (totalListElements + 1));
+		// console.log('firstCalc', firstCalc);
+		var secondCalc = firstCalc + Math.floor(firstCalc / (totalListElements + 0.875));
+		// console.log('secondCalc', secondCalc);
 
 		// Shorten link text
 		if (window.estatico.mq.query({from: 'small'})) {

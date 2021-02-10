@@ -10,6 +10,7 @@ var templateData = {
 			{
 				'url': '../startpage_prototype/startpage_prototype.html',
 				'title': '',
+				'content_title': 'Content Title',
 				'extraClasses': 'is_home'
 			}, {
 				'url': '#',
@@ -18,16 +19,19 @@ var templateData = {
 			}, {
 				'url': '.#',
 				'title': 'Fachbereiche',
+				'content_title': 'Content Title Fachbereiche',
 				'extraClasses': ''
 			},
 			{
 				'url': '.#',
 				'title': 'Lorem ipsum dolor sit amet',
+				'content_title': 'Content Title Lorem ipsum dolor sit amet',
 				'extraClasses': ''
 			},
 			{
 				'url': '.#',
 				'title': 'At vero eos et accusam et justo duo dolores et ea rebum',
+				'content_title': 'Content Title',
 				'extraClasses': ''
 			}
 		],
