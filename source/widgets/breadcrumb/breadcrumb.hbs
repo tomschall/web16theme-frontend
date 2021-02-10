@@ -5,9 +5,13 @@
 				{{#if extraClasses}}
         	<a class="not-default" href="{{url}}" alt="{{title}}"></a>
 				{{else}}
-					<a class="not-default" href="{{url}}" alt="{{title}}" data-pt-title="{{content_title}}">
+					{{#if lastBreadcrumb}}
+						<p data-pt-title="{{title}}">{{title}}</p>
+					{{else}}
+					<a class="not-default {{#if lastBreadcrumb}}no-link{{/if}}" href="{{url}}" alt="{{title}}" data-pt-title="{{title}}">
 						{{title}}
 					</a>
+					{{/if}}
 				{{/if}}
       </li>
 		{{/each}}

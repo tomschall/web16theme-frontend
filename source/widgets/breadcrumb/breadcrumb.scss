@@ -2,6 +2,16 @@
 	background-color: $colorBg;
 	overflow: hidden;
 
+	ul {
+		p {
+			display: block;
+			margin: 3px $basicPush * 2;
+			color: $colorBlack;
+			font-size: 15px;
+			font-weight: 400;
+		}
+	}
+
 	@include mq($from: small) {
 		margin-top: $basicPush;
 	}
