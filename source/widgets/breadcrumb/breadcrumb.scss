@@ -262,7 +262,9 @@
 }
 
 /* PROTIP CUSTOM STYLES http://protip.rocks/#animations */
-.protip-skin-default--scheme-black {
+.protip-skin-default {
+	z-index: 10000;
+
 	.protip-content {
 		font-weight: 700;
 		line-height: 1.5rem;
