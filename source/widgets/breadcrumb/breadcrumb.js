@@ -97,13 +97,15 @@
 		this.data.listElements = this.$element.find('ul li');
 		var totalListElements = this.data.listElements.length;
 		
-		this.data.linkText = this.$element.find('ul li a');
-		var breadCrumbWidth = parseInt($('.widg_breadcrumb ul').css('width'), 10);
-		var pageContentWidth = parseInt($('.page_content').css('width'), 10);
+		this.data.linkText = this.$element.find('ul li a, ul li p');
+		var breadCrumbWidth = $('.widg_breadcrumb ul').width();
+		var subNavWidth = $('.widg_subnav').width();
+		// console.log('subNavWidth', subNavWidth);
+		var pageContentWidth = $('.page_content').width();
 		// console.log(breadCrumbWidth, pageContentWidth, 'calc', Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements));
 		var firstCalc = Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements);
 		// console.log('firstCalc', firstCalc);
-		var secondCalc = firstCalc + Math.floor(firstCalc / (totalListElements + 0.875));
+		var secondCalc = firstCalc + Math.floor((subNavWidth / totalListElements) / 10);
 		// console.log('secondCalc', secondCalc);
 
 		// Shorten link text
