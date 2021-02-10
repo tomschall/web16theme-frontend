@@ -497,25 +497,22 @@
       this.options.FIRST_RESULT_SIZE;
 
     if (searchTemplate === 'news_full') {
-      if ((searchParam.q === '' && (searchParam.date_from || searchParam.date_to || searchParam.school)) ||
-        (searchParam.q === '' && (searchParam.date_from === '' && searchParam.date_to === '' && (!searchParam.school || searchParam.school === '')))) {
-          searchParam.sort_on = 'effective';
-          if (firstLoad) {
-            searchParam.sort_order = 'descending';
-          }
-        } else {
-          delete searchParam.sort_on;
-          $(this.options.domSelectors.sortBtn).attr('disabled', true);
+      if (searchParam.q === '') {
+        searchParam.sort_on = 'effective';
+        if (firstLoad) {
+          searchParam.sort_order = 'descending';
         }
+        $(this.options.domSelectors.sortBtn).attr('disabled', false);
+      } else {
+        delete searchParam.sort_on;
+        $(this.options.domSelectors.sortBtn).attr('disabled', true);
+      }
     }
 
     if (searchTemplate === 'training_full') {
-			if (searchParam.q) {
-				console.log(searchParam);
-				console.log('Clear params!!!');
-				delete searchParam.sort_on;
-				delete searchParam.sort_order;
-			}
+			if (searchParam.q === '') {
+        searchParam.sort_on = 'effective';
+      }
 		}
 
 		if (this.queryMatch()) {
