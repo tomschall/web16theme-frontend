@@ -124,6 +124,8 @@
       }
       sortOn = sortOn || 'start';
 			sortOrder = sortOrder || 'ascending';
+			console.log(sortOn);
+			console.log(sortOrder);
 			this.grabParameters(sortOn, sortOrder);
 			sendSearchQueryDebounced(firstLoad);
 		};
@@ -507,6 +509,15 @@
         }
     }
 
+    if (searchTemplate === 'training_full') {
+			if (searchParam.q) {
+				console.log(searchParam);
+				console.log('Clear params!!!');
+				delete searchParam.sort_on;
+				delete searchParam.sort_order;
+			}
+		}
+
 		if (this.queryMatch()) {
 			// avoid submission of the same query twice
 			return false;
@@ -707,13 +718,16 @@
 		var cB = function(i) {
 			var innerCB = function() {
 				// Sorting - toggle ajax requests
+				console.log('innerCB');
 				if (clicksObj[i] === 0) {
 					clicksObj[i]++;
+					console.log(sortObjProp[i] + ' ' + sortObj.asc);
 					this.sendSearchQuery(false, sortObjProp[i], sortObj.asc);
 					this._headerFixed = false;
 					this._headerFixedReq = false;
 				} else {
 					clicksObj[i]--;
+					console.log(sortObjProp[i] + ' ' + sortObj.desc);
 					this.sendSearchQuery(false, sortObjProp[i], sortObj.desc);
 					this._headerFixed = false;
 					this._headerFixedReq = false;
@@ -723,6 +737,7 @@
 		}.bind(this);
 
 		for (var selector in this.options.domSelectorsSort) {
+			console.log('selector handlers');
 			if (!this.options.domSelectorsSort.hasOwnProperty(selector)) {
 				continue;
 			}
