@@ -60,7 +60,7 @@
 		if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
-		
+
 		if (this.data.listElements.length >= 4) {
 			this.addExtendBtn();
 		} else if (this.data.listElements.length === 0) {
@@ -69,10 +69,10 @@
 
 		this.toolTip();
 	};
-	
+
 	Widget.prototype.toolTip = function() {
 		$.protip();
-		
+
 		var el = $('.protip');
 		el.protipSet({
 			scheme: 'black',
@@ -97,7 +97,7 @@
 	Widget.prototype.getListElements = function() {
 		this.data.listElements = this.$element.find('ul li');
 		var totalListElements = this.data.listElements.length;
-		
+
 		this.data.linkText = this.$element.find('ul li a, ul li p');
 		var breadCrumbWidth = $('.widg_breadcrumb ul').width();
 		var subNavWidth = $('.widg_subnav').width();
@@ -116,10 +116,8 @@
 					var maxTitleLength = secondCalc;
 					if (this.innerText.length >= maxTitleLength) {
 						var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + '...';
-						// this.classList.add('protip');
+						this.classList.add('protip');
 						this.innerText = shortText;
-					} else {
-						$(this).removeClass('protip');
 					}
 				});
 			}
