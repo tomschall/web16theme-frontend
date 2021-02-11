@@ -157,19 +157,20 @@ table {
 		&.touched:before {
 			opacity: 0;
 			transition: opacity 1s ease-out;
+		
+		}
+		&.scroll {
+			&:before {
+				content: '';
+			}
 		}
 	}
 }
 
-table.scroll {
-	&:before {
-		content: ''
-	}
-}
-
 /* Exclude search tables */
-.search__table {
+.search__results .search__table {
 	table {
+		background: red;
 		td {
 			min-width: unset;
 		}

@@ -104,6 +104,19 @@
 				this.closeSpecific($(event.target));
 			} else {
 				this.setElementActive($(event.target));
+
+				var hasTable = this.$element.find('table');
+
+				$(hasTable).each(function() {
+					if ($(this).is(':visible')) {
+						var tableWidth = $(this).find('tbody').width();
+						var contentElem = $(this).parent().width();
+
+						if (tableWidth > contentElem) {
+							$(this).removeClass('scroll');
+						}
+					}
+				});
 			}
 			event.preventDefault(); // avoid submitting forms!
 		}.bind(this));
