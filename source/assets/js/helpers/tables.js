@@ -52,7 +52,7 @@
 			}
 		});
 
-		$('.widg_accordeon__content > table tbody').each(function() {
+		$('.widg_accordeon__content > table tbody, .content__entry-wrapper > table tbody').each(function() {
 			var tableWidth = $(this).outerWidth();
 			var contentElem = document.querySelector('.widg_accordeon__content');
 			var rectContentElement = contentElem.getBoundingClientRect();
