@@ -10,78 +10,79 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var name = 'searchpage',
-		events = {
-		},
-		defaults = {
-			domSelectors: {
-				queryInput: '[data-' + name + '="query"]',
-				btn: '[data-' + name + '="btn"]',
-				title: '[data-' + name + '="title"]',
-				formWrapper: '[data-' + name + '="formWrapper"]',
-				expanderBtn: '[data-' + name + '="extendBtn"]',
+  var name = 'searchpage',
+    events = {
+    },
+    defaults = {
+      domSelectors: {
+        queryInput: '[data-' + name + '="query"]',
+        btn: '[data-' + name + '="btn"]',
+        title: '[data-' + name + '="title"]',
+        formWrapper: '[data-' + name + '="formWrapper"]',
+        expanderBtn: '[data-' + name + '="extendBtn"]',
         resetBtn: '[data-' + name + '="reset"]',
         sortBtn: '[data-' + name + '="sortDate"]',
-				expandedFilters: '[data-' + name + '="expandedFilters"]',
-				tdURL: '[data-' + name + '="url"]',
-				countNumber: '[data-' + name + '="countNumber"]',
-				moreResultsBtn: '[data-' + name + '="moreResultsBtn"]',
-				moreResultsBtnWrapper: '[data-' + name + '="moreResultsBtnWrapper"]',
+        expandedFilters: '[data-' + name + '="expandedFilters"]',
+        tdURL: '[data-' + name + '="url"]',
+        countNumber: '[data-' + name + '="countNumber"]',
+        moreResultsBtn: '[data-' + name + '="moreResultsBtn"]',
+        moreResultsBtnWrapper: '[data-' + name + '="moreResultsBtnWrapper"]',
         catPageResult: '.search__result--item',
-			},
-			domSelectorsSort: {
-				sortAllSearchResults: '#sortAllSearchResults',
-				sortNextExecutions: '#sortNextExecutions'
-			},
-			stateClasses: {
-				isFilled: 'is_filled',
-				showLoading: 'show_loading',
-				showResults: 'show_results',
-				isVisible: 'is_visible',
-				isActive: 'is_active',
-				elementHidden: 'element-hidden',
-				isHidden: 'is_hidden'
-			},
-			listItemSpanClasses: {
-				title: 'title'
-			},
-			searchEvents: {
-				dataLoaded: 'dataLoaded.estatico.search',
-				updateFilterLoaded: 'updateFilterLoaded.estatico.search'
-			},
-			FIRST_RESULT_SIZE: 10,
-			RESULT_SIZE: 30,
-		},
-		data = {
-			$formElements: null
-		},
-		searchParam = {},
-		searchTemplate = '',
-		searchCategory = '',
-		expandedFilters = false,
-		isCategorySearch = false,
-		loadMoreMode = false,
-		templatesWithoutMoreButton = ['expertises_full'],
-		loadedEntries = 0,
-		jsonURL = '',
-		lastChangedFieldName = '',
-		lastChangedFieldEvent = '',
-		lastChangedFieldEventObj = {},
-		removeAll = false,
-		clicksObj = [
-			0,
-			1
-		],
-		sortObjProp = [
-			'sortable_title',
-			'start'
-		],
-		sortObj = {
-			asc: 'ascending',
-			desc: 'descending'
+      },
+      domSelectorsSort: {
+        sortAllSearchResults: '#sortAllSearchResults',
+        sortNextExecutions: '#sortNextExecutions'
+      },
+      stateClasses: {
+        isFilled: 'is_filled',
+        showLoading: 'show_loading',
+        showResults: 'show_results',
+        isVisible: 'is_visible',
+        isActive: 'is_active',
+        elementHidden: 'element-hidden',
+        isHidden: 'is_hidden'
+      },
+      listItemSpanClasses: {
+        title: 'title'
+      },
+      searchEvents: {
+        dataLoaded: 'dataLoaded.estatico.search',
+        updateFilterLoaded: 'updateFilterLoaded.estatico.search'
+      },
+      FIRST_RESULT_SIZE: 10,
+      RESULT_SIZE: 30,
+    },
+    data = {
+      $formElements: null
+    },
+    searchParam = {},
+    searchTemplate = '',
+    searchCategory = '',
+    expandedFilters = false,
+    isCategorySearch = false,
+    loadMoreMode = false,
+    templatesWithoutMoreButton = ['expertises_full'],
+    loadedEntries = 0,
+    jsonURL = '',
+    lastChangedFieldName = '',
+    lastChangedFieldEvent = '',
+    lastChangedFieldEventObj = {},
+    removeAll = false,
+    clicksObj = [
+      0,
+      1
+    ],
+    sortObjProp = [
+      'sortable_title',
+      'start'
+    ],
+    sortObj = {
+      asc: 'ascending',
+      desc: 'descending'
     },
     observer = {},
-    lastReq = false;
+    lastReq = false,
+    newsFilterInputIsSet = false;
 
 	/**
 	 * Create an instance of the widget
@@ -234,7 +235,8 @@
 			$(event.currentTarget).toggleClass(this.options.stateClasses.isActive);
 		}.bind(this));
 
-		$(this.options.domSelectors.queryInput).on('input', function() {
+    $(this.options.domSelectors.queryInput).on('input', function() {
+      newsFilterInputIsSet = true;
 			this.sendSearchQuery();
 			if (searchTemplate === 'search_full') {
 				this.updateTitle();
@@ -495,17 +497,24 @@
       this.options.FIRST_RESULT_SIZE;
 
     if (searchTemplate === 'news_full') {
-      if ((searchParam.q === '' && (searchParam.date_from || searchParam.date_to || searchParam.school)) ||
-        (searchParam.q === '' && (searchParam.date_from === '' && searchParam.date_to === '' && (!searchParam.school || searchParam.school === '')))) {
-          searchParam.sort_on = 'effective';
-          if (firstLoad) {
-            searchParam.sort_order = 'descending';
-          }
-        } else {
-          delete searchParam.sort_on;
-          $(this.options.domSelectors.sortBtn).attr('disabled', true);
+      if (searchParam.q === '') {
+        searchParam.sort_on = 'effective';
+        if (firstLoad) {
+          searchParam.sort_order = 'descending';
         }
+        $(this.options.domSelectors.sortBtn).attr('disabled', false);
+      } else {
+        delete searchParam.sort_on;
+        $(this.options.domSelectors.sortBtn).attr('disabled', true);
+      }
     }
+
+    if (searchTemplate === 'training_full') {
+			if (searchParam.q !== '' && newsFilterInputIsSet === true) {
+        delete searchParam.sort_on;
+        delete searchParam.sort_order;
+      }
+		}
 
 		if (this.queryMatch()) {
 			// avoid submission of the same query twice
@@ -707,6 +716,7 @@
 		var cB = function(i) {
 			var innerCB = function() {
 				// Sorting - toggle ajax requests
+        newsFilterInputIsSet = false;
 				if (clicksObj[i] === 0) {
 					clicksObj[i]++;
 					this.sendSearchQuery(false, sortObjProp[i], sortObj.asc);
