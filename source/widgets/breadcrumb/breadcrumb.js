@@ -106,8 +106,26 @@
 		// console.log(breadCrumbWidth, pageContentWidth, 'calc', Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements));
 		var firstCalc = Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements);
 		// console.log('firstCalc', firstCalc);
-		var secondCalc = firstCalc + Math.floor((subNavWidth / totalListElements) / 10);
-		// console.log('secondCalc', secondCalc);
+
+		var secondCalc;
+		var calcDifference;
+		if (window.estatico.mq.query({to: 'medium'})) {
+			secondCalc = firstCalc; //- Math.floor((subNavWidth / totalListElements) / 10);
+			// console.log('secondCalc, TO MEDIUM', Math.floor((subNavWidth / totalListElements) / 10), secondCalc);
+		}
+
+		if (window.estatico.mq.query({from: 'medium'})) {
+			calcDifference = firstCalc - Math.floor((subNavWidth / totalListElements) / 10);
+			
+			if (calcDifference > 10) {
+				secondCalc = firstCalc;
+			} else if (calcDifference < 10 ) {
+				secondCalc = Math.floor(firstCalc - calcDifference);
+			} else if (calcDifference > 14) {
+				secondCalc = Math.floor(firstCalc + calcDifference);
+			}
+			// console.log('secondCalc, FROM MEDIUM', calcDifference, secondCalc);
+		}
 
 		// Shorten link text
 		if (window.estatico.mq.query({from: 'small'})) {
