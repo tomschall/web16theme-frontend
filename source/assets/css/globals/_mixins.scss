@@ -253,7 +253,7 @@
 
 	@include mq($from: betweener, $to: wide) {
 		.header__wide & {
-			margin-left: -1 * $paddingBehindYellowBarWide + $gutterSize;
+			margin-left: -$gutterWidth * 5.25;
 		}
 
 		@include mq($from: betweener, $to: large) {
