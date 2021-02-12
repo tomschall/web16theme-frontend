@@ -191,14 +191,8 @@ nav.widg_location__nav {
 	}
 
 	@include mq($from: 'medium') {
-		transform: translateY(-55%) translateX(10%) scale(.9);
-		-webkit-transform: -webkit-translateY(-55%) -webkit-translateX(10%) rotate(0deg); // Safari fix
-
-	}
-
-	@include mq($from: 'large') {
-		transform: translateY(-40%) translateX(-20%) scale(1.1);
-		-webkit-transform: -webkit-translateY(-40%) rotate(0deg); // Safari fix
+		transform: translateY(-50%) translateX(10%) scale(.9);
+		-webkit-transform: -webkit-translateY(-50%) -webkit-translateX(10%) rotate(0deg); // Safari fix
 
 	}
 
