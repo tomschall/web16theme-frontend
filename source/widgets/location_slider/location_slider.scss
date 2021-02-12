@@ -5,7 +5,8 @@ $infoPadding: 34px;
 .widg_location_slider {
 	position: relative;
 
-	@include bleedFull($gutterWidth);
+	@include bleedFull(0);
+	margin-left: -($basicPush * 8) - 2;
   overflow: hidden;
 
 	@media print {
@@ -132,7 +133,6 @@ nav.widg_location__nav {
 .widg_location_slider {
 
 	.slider {
-
 		overflow: hidden;
 
 		.location__slide {
