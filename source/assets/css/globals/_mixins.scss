@@ -201,7 +201,7 @@
 	}
 
 	@include mq($from: medium, $to: large) {
-		#{$attr}: $paddingBehindYellowBarNarrow
+		#{$attr}: $paddingBehindYellowBar / 2.5;
 	}
 
 	@include mq($from: wide) {
@@ -248,7 +248,7 @@
 
 
 @mixin bleedFull($gutterSize: 0) {
-	margin-left: -1 * $paddingBehindYellowBar + $gutterSize;
+	margin-left: -$gutterWidth * 5.25;
 	width: 100vw;
 
 	@include mq($from: betweener, $to: wide) {
@@ -257,16 +257,16 @@
 		}
 
 		@include mq($from: betweener, $to: large) {
-			margin-left: -1 * $paddingBehindYellowBarWideNarrow + $gutterSize;
+			margin-left: -1 * $widthYellowBar;
 		}
 	}
 
 	@include mq($from: medium, $to: large) {
-		margin-left: -1 * $paddingBehindYellowBarNarrow + $gutterSize;
+		margin-left: -$gutter;
 	}
 
 	@include mq($from: wide) {
-		margin-left: -1 * $paddingBehindYellowBarSuperWide + $gutterSize;
+		margin-left: -1 * $widthYellowBar;
 	}
 
 	@include mq($from: small, $to: medium) {
@@ -276,8 +276,6 @@
 	@include mq($to: small) {
 		margin-left: -1 * $pagePaddingPhone + $gutterSize;
 	}
-
-
 }
 
 @mixin bleed($hasPadding: true) {
