@@ -4,10 +4,11 @@ $infoPadding: 34px;
 
 .widg_location_slider {
 	position: relative;
+	overflow: hidden;
 
-	@include bleedFull(0);
-	margin-left: -($basicPush * 8) - 2;
-  overflow: hidden;
+	@include mq($from: 'small') {
+		@include bleedFull($gutterWidth);
+	}
 
 	@media print {
 		top: 0 !important;
@@ -160,7 +161,8 @@ nav.widg_location__nav {
 	position: absolute;
 	width: $infoWidth;
 	top: 50%;
-	left: 330px;
+	@include pushLeftAccordingToHeader(left);
+
 	transform: translateY(-50%);
 	-webkit-transform: -webkit-translateY(-50%) rotate(0deg); // Safari fix
 
@@ -169,7 +171,6 @@ nav.widg_location__nav {
 	opacity: 0.9;
 	z-index: 1;
 
-	@include pushLeftAccordingToHeader(left);
 
 	@include mq($to: 'small') {
 		position: relative;
