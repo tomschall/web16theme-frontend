@@ -8,6 +8,12 @@ $infoPadding: 34px;
 
 	@include mq($from: 'small') {
 		@include bleedFull($gutterWidth);
+		padding-right: 0;
+	}
+	
+	@include mq($from: 'medium') {
+		@include bleedFull($gutterWidth);
+		padding-right: $widthYellowBar + ($basicPush * 2);
 	}
 
 	@media print {
