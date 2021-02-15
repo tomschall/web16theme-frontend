@@ -87,6 +87,10 @@ $widthYellowBar: 340px;
 $widthYellowBarWide: 340px;
 $widthYellowBarSuperWide: 400px;
 
+$widthYellowBarSearch: 0px;
+$widthYellowBarWideSearch: 0px;
+$widthYellowBarSuperWideSearch: 0px;
+
 
 /**
   * Grid Variables
@@ -101,11 +105,21 @@ $pagePaddingSmall: 50px;
 $pagePadding: 100px;
 $pagePaddingWide: 150px;
 
+$pagePaddingSmallSearch: 410px;
+$pagePaddingSearch: 460px;
+$pagePaddingWideSearch: 510px;
+
 $paddingBehindYellowBar: $widthYellowBar + $pagePadding;
 $paddingBehindYellowBarWideNarrow: $widthYellowBarWide + $pagePaddingSmall;
 $paddingBehindYellowBarWide: $widthYellowBarWide + $pagePadding;
 $paddingBehindYellowBarNarrow: $widthYellowBar + $pagePaddingSmall;
 $paddingBehindYellowBarSuperWide: $widthYellowBarSuperWide + $pagePaddingWide;
+
+$paddingBehindYellowBarSearch: $widthYellowBarSearch + $pagePadding;
+$paddingBehindYellowBarWideNarrowSearch: $widthYellowBarWideSearch + $pagePaddingSmall;
+$paddingBehindYellowBarWideSearch: $widthYellowBarWideSearch + $pagePadding;
+$paddingBehindYellowBarNarrowSearch: $widthYellowBarSearch + $pagePaddingSmall;
+$paddingBehindYellowBarSuperWideSearch: $widthYellowBarSuperWideSearch + $pagePaddingWide;
 
 $contentMarginTop: $basicPush * 4;
 $contentMarginBottom: $basicPush * 4;

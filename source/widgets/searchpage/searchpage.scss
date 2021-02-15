@@ -1,443 +1,443 @@
 .widg_searchpage {
-	min-height: 100px;
+  min-height: 100px;
 
-	.fhnw-spinner {
-		visibility: hidden;
-		z-index: -1;
+  .fhnw-spinner {
+    visibility: hidden;
+    z-index: -1;
 
-		position: absolute;
+    position: absolute;
 
-		transform: translateY(-100%);
+    transform: translateY(-100%);
     max-height: 0;
 
-    left: 172px;
+    right: 172px;
     top: 20px;
-    
+
     @include mq($to: medium) {
       left: 0px;
     }
-	}
+  }
 
-	&.show_loading {
-		.fhnw-spinner {
-			z-index: 10000;
-			visibility: visible;
-			max-height: none;
-			transform: none;
+  &.show_loading {
+    .fhnw-spinner {
+      z-index: 10000;
+      visibility: visible;
+      max-height: none;
+      transform: none;
       position: relative;
       margin-bottom: 50px;
-		}
-	}
+    }
+  }
 
-	.search__results {
-		margin: 0 16px;
-		@include contentWrapper($gutterWidth, false);
-	}
+  .search__results {
+    margin: 0 16px;
+    @include contentWrapperSearch($gutterWidth, false);
+  }
 
-	.is_hidden {
-		display: none;
-	}
+  .is_hidden {
+    display: none;
+  }
 }
 
 .search__results .search__table {
-	table {
-		width: 100%;
-	}
+  table {
+    width: 100%;
+  }
 
-	th.url {
-		font-size: 0;
-		color: transparent;
-	}
+  th.url {
+    font-size: 0;
+    color: transparent;
+  }
 
-	td {
-		transition: transform $transitionLength / 2 $transitionEase;
-	}
+  td {
+    transition: transform $transitionLength / 2 $transitionEase;
+  }
 
-	td[data-searchpage="url"] {
-		width: 1%;
-	}
+  td[data-searchpage='url'] {
+    width: 1%;
+  }
 
-	a:not(.button__secondary):not(.search__contact-link):not(.search__cell-anchor) {
-		font-size: 0.1rem;
-		color: transparent;
-		width: 0;
-		height: 0;
-		display: inline-block;
-	}
+  a:not(.button__secondary):not(.search__contact-link):not(.search__cell-anchor) {
+    font-size: 0.1rem;
+    color: transparent;
+    width: 0;
+    height: 0;
+    display: inline-block;
+  }
 
-	.search__contact-link {
-		font-size: 1.25rem;
+  .search__contact-link {
+    font-size: 1.25rem;
 
-		display: block;
+    display: block;
 
-		float: left;
-		width: 60%;
-	}
+    float: left;
+    width: 60%;
+  }
 
-	.search__contact-label {
-		float: left;
-		display: block;
+  .search__contact-label {
+    float: left;
+    display: block;
 
-		width: 40%;
-		font-weight: 600;
-	}
+    width: 40%;
+    font-weight: 600;
+  }
 
-	td:last-child {
-		padding-right: $gutterWidth;
+  td:last-child {
+    padding-right: $gutterWidth;
 
-		@include iconDataurl("pfeil-black", $after: true);
+    @include iconDataurl('pfeil-black', $after: true);
 
-		&:after {
-			height: 9px;
-			width: 27px;
+    &:after {
+      height: 9px;
+      width: 27px;
 
-			transform: translateY(-5px);
-		}
-	}
+      transform: translateY(-5px);
+    }
+  }
 
-	.cat_page_profile_result {
-		td:last-child {
-			&:after {
-				display: none; // hide arrow
-			}
+  .cat_page_profile_result {
+    td:last-child {
+      &:after {
+        display: none; // hide arrow
+      }
 
-			@include mq($to: subnav) {
-				display: none;
-			}
-		}
+      @include mq($to: subnav) {
+        display: none;
+      }
+    }
 
-		td:nth-child(2) {
-			max-width: 50%;
-		}
-	}
+    td:nth-child(2) {
+      max-width: 50%;
+    }
+  }
 
-	tr:hover {
-		td {
-			cursor: pointer;
-			//transform: translateX(5px);
-		}
-	}
+  tr:hover {
+    td {
+      cursor: pointer;
+      //transform: translateX(5px);
+    }
+  }
 
-	@include mq($to: small) {
-		td,
-		th {
-			display: none;
+  @include mq($to: small) {
+    td,
+    th {
+      display: none;
 
-			&:first-child,
-			&:nth-child(2) {
-				display: table-cell;
-			}
-		}
-	}
+      &:first-child,
+      &:nth-child(2) {
+        display: table-cell;
+      }
+    }
+  }
 }
 
 /**
   * Styles for the searchpages / formfields and wrapper
   */
 .search__wrapper {
-	@include bleedFull($gutterWidth);
-	margin-top: $basicPush * 2;
+  @include bleedFull($gutterWidth);
+  margin-top: $basicPush * 2;
 }
 
 .search__form-wrapper {
-	@include contentWrapper($gutterWidth, true);
+  @include contentWrapperSearch($gutterWidth, true);
 
-	padding-bottom: $basicPush * 4.5 !important;
-	padding-top: $basicPush * 2 !important;
+  padding-bottom: $basicPush * 4.5 !important;
+  padding-top: $basicPush * 2 !important;
 
-	background-color: $colorBg;
+  background-color: $colorBg;
 
-	position: relative;
-	z-index: 2;
+  position: relative;
+  z-index: 2;
 
-	@include mq($to: small) {
-		padding-bottom: $basicPush * 1.5 !important;
-	}
+  @include mq($to: small) {
+    padding-bottom: $basicPush * 1.5 !important;
+  }
 
-	.search__holder__searchstring {
-		@include span(12);
-		margin-bottom: $gutterWidth * 2;
+  .search__holder__searchstring {
+    @include span(12);
+    margin-bottom: $gutterWidth * 2;
 
-		@include mq($from: small, $to: subnav) {
-			@include span(12);
-		}
-
-		@include mq($to: small) {
-			@include span(12);
-
-			margin-bottom: $gutterWidth;
-		}
-
-		&.search__holder___wide {
-			@include span(9);
-
-			@include mq($from: small, $to: subnav) {
-				@include span(6);
-			}
-
-			@include mq($to: small) {
-				@include span(12);
-			}
-		}
-
-		&.search__holder___double {
-			@include span(6);
-
-			@include mq($from: small, $to: subnav) {
-				@include span(6);
-			}
-
-			@include mq($to: small) {
-				@include span(12);
-			}
-		}
-	}
-
-	.search__holder {
-		@include span(4);
-		margin-bottom: $gutterWidth * 2;
-
-		@include mq($from: small, $to: subnav) {
-			@include span(6);
-		}
-
-		@include mq($to: small) {
-			@include span(12);
-
-			margin-bottom: $gutterWidth;
-		}
-
-		&.search__holder___wide {
-			@include span(9);
-
-			@include mq($from: small, $to: subnav) {
-				@include span(6);
-			}
-
-			@include mq($to: small) {
-				@include span(12);
-			}
-		}
-
-		&.search__holder___double {
-			@include span(6);
-
-			@include mq($from: small, $to: subnav) {
-				@include span(6);
-			}
-
-			@include mq($to: small) {
-				@include span(12);
-			}
+    @include mq($from: small, $to: subnav) {
+      @include span(12);
     }
-    
+
+    @include mq($to: small) {
+      @include span(12);
+
+      margin-bottom: $gutterWidth;
+    }
+
+    &.search__holder___wide {
+      @include span(9);
+
+      @include mq($from: small, $to: subnav) {
+        @include span(6);
+      }
+
+      @include mq($to: small) {
+        @include span(12);
+      }
+    }
+
+    &.search__holder___double {
+      @include span(6);
+
+      @include mq($from: small, $to: subnav) {
+        @include span(6);
+      }
+
+      @include mq($to: small) {
+        @include span(12);
+      }
+    }
+  }
+
+  .search__holder {
+    @include span(4);
+    margin-bottom: $gutterWidth * 2;
+
+    @include mq($from: small, $to: subnav) {
+      @include span(6);
+    }
+
+    @include mq($to: small) {
+      @include span(12);
+
+      margin-bottom: $gutterWidth;
+    }
+
+    &.search__holder___wide {
+      @include span(9);
+
+      @include mq($from: small, $to: subnav) {
+        @include span(6);
+      }
+
+      @include mq($to: small) {
+        @include span(12);
+      }
+    }
+
+    &.search__holder___double {
+      @include span(6);
+
+      @include mq($from: small, $to: subnav) {
+        @include span(6);
+      }
+
+      @include mq($to: small) {
+        @include span(12);
+      }
+    }
+
     &.search__holder___widest {
-			@include span(6);
+      @include span(6);
 
-			@include mq($from: small, $to: subnav) {
-				@include span(12);
-			}
+      @include mq($from: small, $to: subnav) {
+        @include span(12);
+      }
 
-			@include mq($to: small) {
-				@include span(12);
-			}
-		}
-	}
+      @include mq($to: small) {
+        @include span(12);
+      }
+    }
+  }
 
-	/**
+  /**
 	  * Styles for the searchform of all results (no special subcategory)
 	  */
-	&.search__form-all {
-		.search__string-holder {
-			@include span(9);
-		}
+  &.search__form-all {
+    .search__string-holder {
+      @include span(9);
+    }
 
-		.search__button {
-			@include span(3);
+    .search__button {
+      @include span(3);
 
-			button,
-			.button {
-				width: 100%;
-			}
-		}
-	}
+      button,
+      .button {
+        width: 100%;
+      }
+    }
+  }
 }
 
 .search__second-row {
-	max-height: 0;
-	overflow: hidden;
-	margin-top: 0;
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
 
-	transition: transform 0.5s, max-height 0.5s 0.5s, margin-top 0.5s 0.5s;
+  transition: transform 0.5s, max-height 0.5s 0.5s, margin-top 0.5s 0.5s;
 
-	transform: translateX(-100vw);
+  transform: translateX(-100vw);
 
-	&.is_visible {
-		max-height: 70px;
-		transform: translateX(0);
+  &.is_visible {
+    max-height: 70px;
+    transform: translateX(0);
 
-		transition: max-height 0.5s, margin-top 0.5s, transform 0.5s 0.5s;
+    transition: max-height 0.5s, margin-top 0.5s, transform 0.5s 0.5s;
 
-		@include mq($to: small) {
-			max-height: 150px;
-		}
-	}
+    @include mq($to: small) {
+      max-height: 150px;
+    }
+  }
 }
 
 /**
   * The 3rd additional row
   */
 .search__extra-holder {
-	@include span(6);
+  @include span(6);
 
-	@include mq($to: small) {
-		@include span(12);
-	}
+  @include mq($to: small) {
+    @include span(12);
+  }
 
-	&:last-of-type {
-		text-align: right;
+  &:last-of-type {
+    text-align: right;
 
-		font-size: 1.25rem;
-		line-height: 2;
+    font-size: 1.25rem;
+    line-height: 2;
 
-		@include mq($to: small) {
-			text-align: left;
-			padding-top: $basicPush;
-		}
-	}
+    @include mq($to: small) {
+      text-align: left;
+      padding-top: $basicPush;
+    }
+  }
 
-	button {
-		@include noStyledButton;
-		letter-spacing: normal;
+  button {
+    @include noStyledButton;
+    letter-spacing: normal;
 
-		font-size: 1.25rem;
-		color: $colorTextGrey;
-		font-weight: 600;
+    font-size: 1.25rem;
+    color: $colorTextGrey;
+    font-weight: 600;
 
-		text-decoration: underline;
-		margin-right: $basicPush * 3.9;
-		position: relative;
-		outline: none;
+    text-decoration: underline;
+    margin-right: $basicPush * 3.9;
+    position: relative;
+    outline: none;
 
-		padding-left: $buttonIconSize * 1.3;
-		line-height: 2;
+    padding-left: $buttonIconSize * 1.3;
+    line-height: 2;
 
-		&:hover {
-			color: $colorBlack;
+    &:hover {
+      color: $colorBlack;
 
-			&:before {
-				opacity: 1;
-			}
-		}
+      &:before {
+        opacity: 1;
+      }
+    }
 
-		&:before {
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			left: 0;
-			opacity: 0.5;
+    &:before {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      opacity: 0.5;
 
-			width: $buttonIconSize;
-			height: $buttonIconSize;
-		}
+      width: $buttonIconSize;
+      height: $buttonIconSize;
+    }
 
-		&.search__expander {
-			@include iconDataurl("breadcrumb-expand");
+    &.search__expander {
+      @include iconDataurl('breadcrumb-expand');
 
-			&:before {
-				width: 14px;
-				height: 14px;
+      &:before {
+        width: 14px;
+        height: 14px;
 
-				@include centerDataurlIcon();
+        @include centerDataurlIcon();
 
-				left: 7px;
-			}
+        left: 7px;
+      }
 
-			&.is_active {
-				@include iconDataurl("breadcrumb-hide");
+      &.is_active {
+        @include iconDataurl('breadcrumb-hide');
 
-				&:before {
-					width: 14px;
-					height: 14px;
+        &:before {
+          width: 14px;
+          height: 14px;
 
-					@include centerDataurlIcon();
+          @include centerDataurlIcon();
 
-					left: 7px;
-				}
-			}
-		}
+          left: 7px;
+        }
+      }
+    }
 
-		&.search__reset {
-			margin-right: 0;
+    &.search__reset {
+      margin-right: 0;
 
-			@include iconDataurl("reset");
+      @include iconDataurl('reset');
 
-			&:before {
-				width: 18px;
-				height: 18px;
-				@include centerDataurlIcon();
+      &:before {
+        width: 18px;
+        height: 18px;
+        @include centerDataurlIcon();
 
-				left: 6px;
-				margin-top: 1px;
-			}
-		}
-	}
+        left: 6px;
+        margin-top: 1px;
+      }
+    }
+  }
 }
 
 /**
   * Styles for the searchtable
   */
 .search__table {
-	margin-bottom: $basicPush * 3;
-	margin-top: $basicPush * 1;
+  margin-bottom: $basicPush * 3;
+  margin-top: $basicPush * 1;
 
-	td,
-	th {
-		padding: 25px 10px 21px;
-		font-size: 1.25rem;
+  td,
+  th {
+    padding: 25px 10px 21px;
+    font-size: 1.25rem;
 
-		border-bottom: 1px solid $colorGreyHover;
+    border-bottom: 1px solid $colorGreyHover;
 
-		&:first-child {
-			font-weight: 400;
-		}
+    &:first-child {
+      font-weight: 400;
+    }
 
-		@include mq($to: small) {
-			padding: 21px 10px 21px;
-		}
-	}
+    @include mq($to: small) {
+      padding: 21px 10px 21px;
+    }
+  }
 
-	th {
-		padding-bottom: 10px;
+  th {
+    padding-bottom: 10px;
 
-		&:first-child {
-			font-weight: 700;
-		}
-	}
+    &:first-child {
+      font-weight: 700;
+    }
+  }
 
-	td {
-		vertical-align: top;
-	}
+  td {
+    vertical-align: top;
+  }
 
-	tr[data-clickable="true"]:hover {
-		td {
-			background-color: $colorLightGray;
-			cursor: pointer;
-		}
-	}
+  tr[data-clickable='true']:hover {
+    td {
+      background-color: $colorLightGray;
+      cursor: pointer;
+    }
+  }
 
-	th {
-		text-align: left;
-		border-bottom: 2px solid $colorGreyHover;
-	}
+  th {
+    text-align: left;
+    border-bottom: 2px solid $colorGreyHover;
+  }
 
-	a.button__secondary {
-		margin-top: $basicPush * 2;
-	}
+  a.button__secondary {
+    margin-top: $basicPush * 2;
+  }
 
-	.cloned th {
-		background: white;
-	}
+  .cloned th {
+    background: white;
+  }
 }
 
 /**
@@ -445,61 +445,61 @@
   */
 
 .widg_searchpage__more-btn {
-	@include noStyledButton;
+  @include noStyledButton;
 
-	font-size: 1.5rem;
-	font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 600;
 
-	width: 100%;
-	text-align: center;
+  width: 100%;
+  text-align: center;
 
-	transform: translateY(-30px);
-	color: $colorTextGrey;
-	cursor: pointer;
+  transform: translateY(-30px);
+  color: $colorTextGrey;
+  cursor: pointer;
 
-	height: 60px;
-	line-height: 60px;
+  height: 60px;
+  line-height: 60px;
 
-	@include mq($to: small) {
-		padding-bottom: 20px;
-	}
+  @include mq($to: small) {
+    padding-bottom: 20px;
+  }
 
-	.show_loading & {
-		display: none;
-	}
+  .show_loading & {
+    display: none;
+  }
 
-	&:hover {
-		color: $colorBlack;
-		background-color: $colorLightGray;
-	}
+  &:hover {
+    color: $colorBlack;
+    background-color: $colorLightGray;
+  }
 }
 
 .search__form-wrapper.scroll-to-fixed-fixed {
-	padding-bottom: 0 !important;
-	min-height: 100px;
+  padding-bottom: 0 !important;
+  min-height: 100px;
 
-	.search__second-row,
-	.search__third-row {
-		display: none;
-	}
+  .search__second-row,
+  .search__third-row {
+    display: none;
+  }
 
-	> div .search__holder {
-		margin-bottom: 20px;
-	}
+  > div .search__holder {
+    margin-bottom: 20px;
+  }
 }
 
 td.search__cell {
-	padding: 0;
+  padding: 0;
 
-	&.search__cell-title a {
-		font-weight: bold;
-	}
+  &.search__cell-title a {
+    font-weight: bold;
+  }
 
-	.search__cell-anchor {
-		font-weight: normal;
-		text-decoration: none;
-		display: block;
-		width: 100%;
-		padding: 25px 10px 21px;
-	}
+  .search__cell-anchor {
+    font-weight: normal;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    padding: 25px 10px 21px;
+  }
 }
