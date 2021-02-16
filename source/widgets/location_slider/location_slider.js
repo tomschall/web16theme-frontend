@@ -215,6 +215,7 @@
 			this.offset = this.options.mapOptionsDefaults.offset;
 			this.interactive = true;
 			this.scrollZoom = false;
+			
 		}
 		// Map settings -> mobile view false, one locations false
 		if (this.options.renderMobileView === false && this.totalLocations > 1) {
@@ -340,7 +341,7 @@
 					zoom: 17,
 					bearing: 0,
 					pitch: 0,
-					offset: [0, 0]
+					offset: [100, 0]
 				});
 			}
 		} else {
