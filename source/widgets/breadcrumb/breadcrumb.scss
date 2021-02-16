@@ -7,8 +7,9 @@
 			display: block;
 			margin: 3px $basicPush * 2;
 			color: $colorBlack;
-			font-size: 15px;
+			font-size: 13px;
 			font-weight: 400;
+			white-space: nowrap;
 		}
 	}
 
@@ -37,7 +38,11 @@
 				content: '';
 				width: $basicPush * 3;
 				height: $basicPush * 5;
-				background: linear-gradient(to right,  rgb(255, 255, 255) 0%,rgba(255,255,255,0) 100%);
+				background: linear-gradient(
+					to right,
+					rgb(255, 255, 255) 0%,
+					rgba(255, 255, 255, 0) 100%
+				);
 			}
 
 			&:after {
@@ -47,7 +52,11 @@
 				content: '';
 				width: $basicPush * 7;
 				height: $basicPush * 5;
-				background: linear-gradient(to left,  rgb(255, 255, 255) 25%,rgba(255,255,255,0) 100%);
+				background: linear-gradient(
+					to left,
+					rgb(255, 255, 255) 25%,
+					rgba(255, 255, 255, 0) 100%
+				);
 			}
 		}
 	}
@@ -80,20 +89,20 @@
 		padding-right: $gutterWidth * 2;
 	}
 
-  	@include mq($to: subnav) {
-	  right: 0;
+	@include mq($to: subnav) {
+		right: 0;
 	}
 
 	.no-image & {
-	  padding-top: $basicPush * 3.5 !important;
+		padding-top: $basicPush * 3.5 !important;
 	}
 
-  	@include mq($to: small) {
-	  padding-top: $basicPush * 0.5 !important;
+	@include mq($to: small) {
+		padding-top: $basicPush * 0.5 !important;
 
-	  .no-image & {
-		padding-top: $basicPush * 1 !important;
-	  }
+		.no-image & {
+			padding-top: $basicPush * 1 !important;
+		}
 	}
 
 	.is-profile-hero & {
@@ -113,7 +122,6 @@
 }
 
 .widg_breadcrumb ul li {
-
 	margin-right: $basicPush * 0.1;
 	padding: 0;
 
@@ -145,7 +153,7 @@
 		&:after {
 			position: absolute;
 
-			content: " ";
+			content: ' ';
 			display: block;
 
 			width: 6px;
@@ -157,9 +165,9 @@
 			right: -1 * $basicPush * 0.75;
 		}
 
-	  @include mq($to: small) {
-		font-size: 1.083333rem;
-	  }
+		@include mq($to: small) {
+			font-size: 1.083333rem;
+		}
 	}
 
 	&:first-child {
@@ -167,7 +175,6 @@
 	}
 
 	&:last-child {
-
 		margin-right: 0;
 
 		a:after {
@@ -199,16 +206,16 @@
 			}
 		}
 
-	  @include mq($to: small) {
-		width: 2px;
+		@include mq($to: small) {
+			width: 2px;
 
-		&:before {
-		  width: $basicPush + 6;
-		  height: $basicPush + 6;
+			&:before {
+				width: $basicPush + 6;
+				height: $basicPush + 6;
 
-		  margin-top: -1px;
+				margin-top: -1px;
+			}
 		}
-	  }
 	}
 
 	&.is_hidden {
@@ -226,7 +233,7 @@
 
 	margin: 0 4px;
 
-  padding-left: 10px;
+	padding-left: 10px;
 
 	position: relative;
 
