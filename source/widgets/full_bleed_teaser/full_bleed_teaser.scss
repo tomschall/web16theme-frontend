@@ -15,6 +15,7 @@
 		.full_bleed_teaser__img.is-loaded {
 			img {
 				display: block;
+				// padding-right: $widthYellowBar;
 
 				@media print {
 					width: 100% !important;
@@ -40,8 +41,9 @@
 			@include bleedFull(0);
 
 			@include mq($from: small, $to: medium) {
-				margin-left: -($gutter * 2);
-				margin-right: -($gutter * 2);
+				background: red;
+				// margin-left: -($gutter * 2);
+				// margin-right: -($gutter * 2);
 			}
 
 			@include mq($to: small) {
