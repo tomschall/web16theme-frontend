@@ -18,7 +18,7 @@
 		&:hover {
 			box-shadow: 2px 2px 5px 0px #4c4c4c;
 			transform: translateY(-20px);
-			background-color: #FDE70E;
+			background-color: #fde70e;
 		}
 
 		@include mq($to: small) {
@@ -26,7 +26,7 @@
 			height: 150px;
 			bottom: 140px;
 			right: 4%;
-			top: 55%;
+			top: -9%;
 		}
 	}
 
@@ -57,7 +57,7 @@
 					font-size: 1.3rem;
 					height: 150px;
 					width: 150px;
-					padding-bottom: 0!important;
+					padding-bottom: 0 !important;
 				}
 			}
 		}
