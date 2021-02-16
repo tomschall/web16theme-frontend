@@ -290,7 +290,7 @@
 	}
 
 	@include mq($from: medium, $to: large) {
-		margin-left: -$gutter;
+		margin-left: -$gutterWidth * 5.25;
 	}
 	
 	@include mq($from: wide) {
