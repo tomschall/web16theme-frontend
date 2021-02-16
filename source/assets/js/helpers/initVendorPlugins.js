@@ -36,7 +36,7 @@
 			if ($(el).data('imageScale')) {
 				return;
 			}
-			var maxHeight = Math.min((el.naturalHeight || el.height), 640);
+			var maxHeight = Math.min((el.naturalHeight || el.height), 526);
 			$(el).parent()
 				.css('height', maxHeight + 'px')
 				.addClass('is-loaded');
