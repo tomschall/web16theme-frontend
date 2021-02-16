@@ -186,6 +186,34 @@
 	@include contentWrapperForSmallDevices($gutterSize);
 }
 
+@mixin contentWrapperSearch($gutterSize: 0, $hasGrid: true) {
+	@if $hasGrid {
+		@include container();
+	}
+
+	padding: 0 ($pagePaddingSearch - $gutterSize ) 0 ($paddingBehindYellowBarSearch - $gutterSize);
+
+	@include mq($from: betweener, $to: wide) {
+		.header__wide & {
+			padding: 0 ($pagePaddingSearch - $gutterSize) 0 ($paddingBehindYellowBarWideSearch - $gutterSize);
+		}
+
+		@include mq($from: betweener, $to: large) {
+			padding: 0 ($pagePaddingSmallSearch - $gutterSize) 0 ($paddingBehindYellowBarWideNarrowSearch - $gutterSize);
+		}
+	}
+
+	@include mq($from: medium, $to: large) {
+		padding: 0 ($pagePaddingSmallSearch - $gutterSize) 0 ($paddingBehindYellowBarNarrowSearch - $gutterSize);
+	}
+
+	@include mq($from: wide) {
+		padding: 0 ($pagePaddingWideSearch - $gutterSize) 0 ($paddingBehindYellowBarSuperWideSearch - $gutterSize);
+	}
+
+	@include contentWrapperForSmallDevices($gutterSize);
+}
+
 
 @mixin pushLeftAccordingToHeader($attr) {
 	#{$attr}: $paddingBehindYellowBar;
