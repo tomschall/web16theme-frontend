@@ -448,20 +448,16 @@
     window.estatico.search.setSearchParameters({});
 		data.$formElements.map(function(index, element) {
       if ($(element).is('input') && !$(element).is('input.pat-pickadate')) {
-        console.log('$(element) is input', $(element));
         $(element).val(null).trigger('change');
       } else if ($(element).is('input.pat-pickadate')) {
-        console.log('$(element)', $(element));
-
-        delete searchParam.date_from;
-        delete searchParam.date_to;
+        if (searchParam.date_from) {
+          delete searchParam.date_from;
+        }
+        if (searchParam.date_to) {
+          delete searchParam.date_to;
+        }
+        $(element).datepicker("setDate", new Date());
         $(element).val(null).trigger('change');
-
-        //$(element).val("16.02.2021").trigger('change');
-        //window.estatico.easyFormValidation.setupDatepickers();
-        
-        //console.log('today', $.fn.datepicker("setDate" , "17.02.2021"));
-        
       } else if ($(element).is('select')) {
         if (((searchTemplate === 'events_full' || searchTemplate === 'news_full') &&
           !$(element).context.parentElement.classList.contains('hidden')) ||
