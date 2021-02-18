@@ -1,3 +1,5 @@
+$imageHeight: 526px;
+
 @include mq($from: 770px) {
 	.widg_full_bleed_teaser {
 		margin-bottom: $basicPush * 2;
@@ -8,19 +10,13 @@
 			position: relative;
 		}
 
-		img {
-			display: none; // hide until loaded
-		}
-
 		.full_bleed_teaser__img.is-loaded {
 			img {
-				display: block;
-				// padding-right: $widthYellowBar;
+		  	height: $imageHeight;
 
 				@media print {
 					width: 100% !important;
 					height: auto !important;
-					// display: none;
 				}
 			}
 		}
@@ -31,30 +27,46 @@
 			margin: 0;
 			padding: 0;
 			height: 340pt;
-			// width: 100%;
 		}
 	}
 
 	@include mq($from: 769px) {
 		.full_bleed_teaser__img {
-			height: 100%;
-			@include bleedFull(0);
+			background-size: cover;
+			width: calc(100vw - 340px);
+			background-position-x: center;
+			background-image: no-repeat;
 
 			@include mq($from: small, $to: medium) {
-				// margin-left: -($gutter * 2);
-				// margin-right: -($gutter * 2);
+				margin-left: -($gutter * 2);
+				margin-right: -($gutter * 2);
+				height: 400px;
+				background-size: cover !important;
+				background-position-x: center !important;
+				background-position-y: center !important;
+				width: 100vw !important;
+			}
+			
+			@include mq($from: medium, $to: 1678) {
+				height: 526px;
+				background-size: cover !important;
+				background-position-x: center !important;
+				background-position-y: center !important;
+				margin-left: -($gutter * 1.5625);
+			}
+
+			@include mq($from: 1679) {
+				margin-left: -100px;
+				background: purple;
+				height: 526px;
+				background-size: cover !important;
+				background-position-x: center !important;
+				background-position-y: center !important;
 			}
 
 			@include mq($to: small) {
 				margin-left: -$gutterWidth;
 			}
-		}
-	}
-
-	@include mq($to: 769px) {
-		.full_bleed_teaser__img,
-		.full_bleed_teaser__img img {
-			display: none !important;
 		}
 	}
 
@@ -101,6 +113,7 @@
 
 	.widg_full_bleed_teaser .full_bleed__widg_teaser {
 		position: absolute;
+		left: 0;
 		width: 50%;
 		top: 50%;
 		transform: translateY(-50%);
@@ -203,7 +216,12 @@
 		@include mq($to: 769px) {
 			.full_bleed_teaser__img,
 			.full_bleed_teaser__img img {
-				display: none !important;
+				background: greenyellow;
+				background-size: cover !important;
+    		height: 300px;
+    		padding-top: 158px;
+    		background-position-y: center !important;
+    		background-position-x: center !important;
 			}
 			.widg_teaser__img {
 				margin-bottom: $basicPush * 2;
@@ -239,19 +257,6 @@
 					float: left;
 					padding-right: 10pt;
 				}
-			}
-
-			@include mq($from: 769px) {
-				.widg_teaser__img,
-				.widg_teaser__img img {
-					display: none !important;
-				}
-			}
-		}
-
-		@include mq($from: 769px) {
-			.widg_teaser__img {
-				display: none !important;
 			}
 		}
 

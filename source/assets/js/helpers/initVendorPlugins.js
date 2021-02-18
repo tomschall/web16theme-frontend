@@ -6,15 +6,15 @@
 ;(function($, undefined) {
 	'use strict';
 
-	$(window).resize(function() {
-		if ($(window).width() > 1023) {
-			$('.widg_teaser__img img').imageScale({
-				rescaleOnResize: true,
-				scale: 'best-fill',
-				align: 'center'
-			});
-		}
-	});
+	// $(window).resize(function() {
+	// 	if ($(window).width() > 1023) {
+	// 		$('.widg_teaser__img img').imageScale({
+	// 			rescaleOnResize: true,
+	// 			scale: 'best-fill',
+	// 			align: 'center'
+	// 		});
+	// 	}
+	// });
 
 	$(document).ready(function() {
 		// The Jquery Spinner, has to be implemented when element is added later than document.ready
@@ -24,48 +24,52 @@
 			color: '#999999'
 		});
 
-		if ($(window).width() > 1023) {
-			$('.widg_teaser__img img').imageScale({
-				rescaleOnResize: true,
-				scale: 'best-fill',
-				align: 'center'
-			});
-		}
+		// if ($(window).width() > 1023) {
+		// 	$('.widg_teaser__img img').imageScale({
+		// 		rescaleOnResize: true,
+		// 		scale: 'best-fill',
+		// 		align: 'center'
+		// 	});
+		// }
 
-		function initScale(el) {
-			if ($(el).data('imageScale')) {
-				return;
-			}
-			var maxHeight = Math.min((el.naturalHeight || el.height), 526);
-			$(el).parent()
-				.css('height', maxHeight + 'px')
-				.addClass('is-loaded');
-			$(el).imageScale({
-				rescaleOnResize: true,
-				scale: 'best-fill',
-				align: 'center'
-			});
-		}
+		// function initScale(el) {
+		// 	if ($(el).data('imageScale')) {
+		// 		return;
+		// 	}
+		// 	var maxHeight = Math.min((el.naturalHeight || el.height), 526);
+		// 	$(el).parent()
+		// 		.css('height', maxHeight + 'px')
+		// 		.addClass('is-loaded');
+		// 	$(el).imageScale({
+		// 		rescaleOnResize: true,
+		// 		scale: 'best-fill',
+		// 		align: 'center'
+		// 	});
+		// }
 
-		if ($(window).width() > 770) {
-			$('.widg_full_bleed_teaser img').load(function() {
-				initScale(this);
-			}).each(function() {
-				if (this.complete) {
-					// already loaded before the load event got registered
-					initScale(this);
-				}
-			});
-		}
+		// if ($(window).width() < 1022) {
+		// 	console.log('Fullbleed Image Scale', $(window).width());
+
+		// 	$('.widg_full_bleed_teaser img').load(function() {
+		// 		initScale({
+		// 			align: 'left'
+		// 		});
+		// 	}).each(function() {
+		// 		if (this.complete) {
+		// 			// already loaded before the load event got registered
+		// 			initScale(this);
+		// 		}
+		// 	});
+		// }
 
 
-		if ($(window).width() > 1023) {
-			$('.widg_teaser__img img').imageScale({
-				rescaleOnResize: true,
-				scale: 'best-fill',
-				align: 'center'
-			});
-		}
+		// if ($(window).width() > 1023) {
+		// 	$('.widg_teaser__img img').imageScale({
+		// 		rescaleOnResize: true,
+		// 		scale: 'best-fill',
+		// 		align: 'center'
+		// 	});
+		// }
 
 
 		if (window.estatico.mq.query({from: 'subnav'})) {
