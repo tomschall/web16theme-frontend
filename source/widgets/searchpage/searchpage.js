@@ -115,6 +115,9 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
+    localStorage.removeItem('news_date_from');
+    localStorage.removeItem('news_date_to');
+
 		searchTemplate = $(this.options.domSelectors.formWrapper).data('searchpage-template');
     searchCategory = $(this.options.domSelectors.formWrapper).data('searchpage-category');
 		jsonURL = this.$element.data('json-url');
@@ -456,16 +459,20 @@
         if (searchParam.date_to) {
           delete searchParam.date_to;
         }
-        $(element).datepicker("setDate", new Date());
+        $(element).datepicker('setDate', new Date());
         $(element).val(null).trigger('change');
       } else if ($(element).is('select')) {
         if (((searchTemplate === 'events_full' || searchTemplate === 'news_full') &&
           !$(element).context.parentElement.classList.contains('hidden')) ||
           searchTemplate !== 'events_full' || searchTemplate !== 'news_full') {
-            console.log('$(element).val', $(element).val());
             $(element).val(null).trigger('change');
         }
 			}
+      if (searchTemplate === 'news_full') {
+        localStorage.removeItem('news_date_from');
+        localStorage.removeItem('news_date_to');
+        $('#news-search-formfield-date-from').removeClass('error');
+      }
 		});
 	};
 
