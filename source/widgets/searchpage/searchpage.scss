@@ -381,6 +381,19 @@
         margin-top: 1px;
       }
     }
+
+    &.search__sort {
+      text-decoration: none;
+
+      .news_label_sort_date {
+        text-decoration: underline;
+      }
+
+      .news_label_sort_date_icon {
+        text-decoration: none;
+        padding-left: 6px;
+      }
+    }
   }
 }
 

@@ -312,7 +312,7 @@
 				});
 
 				// append calendar icon after the input element
-				var $icon = $('<a href="#" class="datepicker-icon icon_ical"></a>').click(function(event) {
+				var $icon = $('<a href="#" class="datepicker-icon icon_ical"></a>').on('click', function(event) {
 					$clone.datepicker('show');
 					event.preventDefault();
 					event.stopPropagation();
@@ -502,6 +502,22 @@
 		onInputChange: function(event) {
 			var $el = $(event.target);
 			if ($el.hasClass('pat-pickadate-ref--date')) {
+        // news search date validation
+        if ($el[0].name === 'form.widgets.date_from--date' && $el[0].value) {
+          localStorage.setItem('news_date_from', $el[0].value);
+        }
+        if ($el[0].name === 'form.widgets.date_to--date' && $el[0].value) {
+          localStorage.setItem('news_date_to', $el[0].value);
+        }
+        var date_from = easyFormValidation.getTimestampFromDate(localStorage.getItem('news_date_from'));
+        var date_to = easyFormValidation.getTimestampFromDate(localStorage.getItem('news_date_to'));
+
+        if (date_from && date_to && date_from > date_to) {
+          $('#news-search-formfield-date-from').addClass('error');
+        } else {
+          $('#news-search-formfield-date-from').removeClass('error');
+        }
+
 				// synchronize fields
 				easyFormValidation.synchronizeDateFields($el);
 			}
@@ -868,7 +884,16 @@
 			if (indexNotVisible === -1) {
 				$selections.last().addClass('hideComma');
 			}
-		}
+		},
+
+    getTimestampFromDate: function getDate(date) {
+      if (!date) {
+        return null;
+      }
+      var myDate = date.split('.');
+      var newDate = new Date( myDate[2], myDate[1] - 1, myDate[0]);
+      return newDate.getTime();
+    }
 	};
 
 	window.estatico.easyFormValidation = easyFormValidation;
