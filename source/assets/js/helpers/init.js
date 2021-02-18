@@ -91,23 +91,7 @@
         });
       }
     }
-
-    if ($(window).width() < 768) {
-      $('.full_bleed_teaser__img').remove();
-    }
   });
-
-  if ($(window).width() <= 768) {
-    if ($('.widg_full_bleed_teaser').length) {
-      $('.full_bleed_teaser__img, .full_bleed_teaser__img img').remove();
-    }
-  }
-
-  if ($(window).width() >= 769) {
-    if ($('.widg_full_bleed_teaser').length) {
-      $('.full_bleed__widg_teaser .widg_teaser__img').remove();
-    }
-  }
 
   // INITIALIZATION PROTIP
   $.protip();
