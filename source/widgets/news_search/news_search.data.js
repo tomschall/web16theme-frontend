@@ -20,6 +20,8 @@ var templateData = {
           label_date_to: 'Datum bis',
           label_sort_date_asc: 'Sortierung aufsteigend',
           label_sort_date_desc: 'Sortierung absteigend',
+          label_sort_date_from: 'Von',
+          label_sort_date_to: 'Bis',
 					schoolOptions: [
             {
               'optionLabel': 'Brugg/Windisch',
