@@ -10,6 +10,11 @@
 			font-size: 1.25rem;
 			font-weight: 600;
 			white-space: nowrap;
+
+			@include mq($to: small) {
+				font-size: 1.083333rem;
+			}
+
 		}
 	}
 	
@@ -19,7 +24,7 @@
 	}
 
 	@include mq($to: small) {
-		margin-top: $basicPush * 2;
+		// margin-top: $basicPush * 2;
 		padding-bottom: $basicPush * 2;
 	}
 
