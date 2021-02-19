@@ -61,7 +61,7 @@
 			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
 
-		if (this.data.listElements.length >= 4) {
+		if (this.data.listElements.length >= 3) {
 			this.addExtendBtn();
 		} else if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
