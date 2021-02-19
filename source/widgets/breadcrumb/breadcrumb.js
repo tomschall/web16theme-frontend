@@ -68,6 +68,7 @@
 		}
 
 		this.toolTip();
+		this.addScrollListener();
 	};
 
 	Widget.prototype.toolTip = function() {
@@ -140,6 +141,13 @@
 				});
 			}
 		}
+
+		// Mobile devices - gradients
+		if (window.estatico.mq.query({to: 'small'})) {
+			console.log('manipulate gradients');
+			$('.widg_breadcrumb ul').addClass('gradient_next');
+		}
+
 	};
 
 	/**
@@ -177,6 +185,22 @@
 
 			$(this.options.domSelectors.extender).addClass(this.options.stateClasses.isHidden).attr('aria-hidden', 'true');
 		}.bind(this));
+	};
+
+	/**
+	 * Mobile - Add/remove gradient on scroll
+	 */
+	Widget.prototype.addScrollListener = function() {
+		$('.widg_breadcrumb ul').on('scroll', function() {
+			var isHomeXPos = $('.is_home').position();
+			var gradientPrev = 'gradient_prev';
+	
+			if (isHomeXPos.left >= 8.5) {
+				$('.widg_breadcrumb ul').removeClass(gradientPrev);
+			} else {
+				$('.widg_breadcrumb ul').addClass(gradientPrev);
+			}
+		});
 	};
 
 	/**
