@@ -180,8 +180,10 @@
     this.initSearchParam();
     this.searchAllFromSearchBar = Boolean(searchParam.sb);
     $(this.options.domSelectors.newsSortIcon).text('\u2193');
-    $(this.options.domSelectors.newsDatePickerDateFrom).attr('placeholder', 'Von');
-    $(this.options.domSelectors.newsDatePickerDateTo).attr('placeholder', 'Bis');
+    $(this.options.domSelectors.newsDatePickerDateFrom).attr('placeholder',
+			$('.news_search__wrapper').data('sortDateFrom'));
+    $(this.options.domSelectors.newsDatePickerDateTo).attr('placeholder',
+			$('.news_search__wrapper').data('sortDateTo'));
 
 		this.initFormFunctionality();
 

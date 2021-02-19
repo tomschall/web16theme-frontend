@@ -1,5 +1,6 @@
 <div class="news_search__wrapper" data-searchpage-template="news_full" data-searchpage-category="news" data-searchpage="formWrapper"
-  data-sort-date-asc="{{widgets.label_sort_date_asc}}" data-sort-date-desc="{{widgets.label_sort_date_desc}}" role="search">
+  data-sort-date-asc="{{widgets.label_sort_date_asc}}" data-sort-date-desc="{{widgets.label_sort_date_desc}}"
+  data-sort-date-from="{{widgets.label_sort_date_from}}" data-sort-date-to="{{widgets.label_sort_date_to}}" role="search">
   <div class="search__form-wrapper">
     <div>
       {{#if title}}
@@ -60,7 +61,7 @@
         <button class="search__reset not-default" data-searchpage="reset">{{widgets.label_reset_fields}}</button>
       </div>
       <div class="search__extra-holder news-sort">
-        <button class="search__sort not-default" data-searchpage="sortDate"><span class="news_label_sort_date">{{langStrings.labelSortDateAsc}}</span><span class="news_label_sort_date_icon"></span></button>
+        <button class="search__sort not-default" data-searchpage="sortDate"><span class="news_label_sort_date">{{widgets.label_sort_date_desc}}</span><span class="news_label_sort_date_icon"></span></button>
       </div>
       {{!-- <div class="search__extra-holder element-hidden">
         <span data-searchpage="countNumber"></span>
