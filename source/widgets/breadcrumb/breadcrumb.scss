@@ -1,20 +1,21 @@
 .widg_breadcrumb {
 	background-color: $colorBg;
 	overflow: hidden;
-
+	
 	ul {
 		p {
 			display: block;
-			margin: 5px $basicPush * 2;
+			margin: 3px $basicPush * 2;
 			color: $colorBlack;
-			font-size: 13px;
-			font-weight: 400;
+			font-size: 1.25rem;
+			font-weight: 600;
 			white-space: nowrap;
 		}
 	}
-
+	
 	@include mq($from: small) {
 		margin-top: $basicPush;
+		padding-top: $basicPush;
 	}
 
 	@include mq($to: small) {
