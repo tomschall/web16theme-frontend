@@ -42,12 +42,12 @@
 			overflow-x: scroll;
 			margin-left: $basicPush - 5;
 
-			&:before {
+			&.gradient_prev:before {
 				position: absolute;
 				z-index: 1;
 				content: '';
-				width: $basicPush * 3;
-				height: $basicPush * 5;
+				width: $basicPush * 7;
+				height: $basicPush * 3.8;
 				background: linear-gradient(
 					to right,
 					rgb(255, 255, 255) 0%,
@@ -55,13 +55,13 @@
 				);
 			}
 
-			&:after {
+			&.gradient_next:after {
 				position: absolute;
 				right: 0;
 				z-index: 1;
 				content: '';
 				width: $basicPush * 7;
-				height: $basicPush * 5;
+				height: $basicPush * 3.8;
 				background: linear-gradient(
 					to left,
 					rgb(255, 255, 255) 25%,

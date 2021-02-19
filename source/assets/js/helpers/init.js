@@ -66,9 +66,7 @@
       );
     }
 
-    var isMobile = navigator.userAgent.match(
-      /(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i
-    );
+    var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
     if (isMobile === null) {
       if ($('.widg_location_slider').length) {
         var resizeTimer;
