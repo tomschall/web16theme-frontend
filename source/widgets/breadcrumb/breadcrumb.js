@@ -97,11 +97,12 @@
 	 */
 	Widget.prototype.getListElements = function() {
 		this.data.listElements = this.$element.find('ul li');
-		var totalListElements = this.data.listElements.length;
-
 		this.data.linkText = this.$element.find('ul li a, ul li p');
+		
+		var totalListElements = this.data.listElements.length;
 		var breadCrumbWidth = $('.widg_breadcrumb ul').width();
 		var subNavWidth = $('.widg_subnav').width();
+		
 		// console.log('subNavWidth', subNavWidth);
 		var pageContentWidth = $('.page_content').width();
 		// console.log(breadCrumbWidth, pageContentWidth, 'calc', Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements));
@@ -144,7 +145,7 @@
 
 		// Mobile devices - gradients
 		if (window.estatico.mq.query({to: 'small'})) {
-			console.log('manipulate gradients');
+			// console.log('manipulate gradients');
 			$('.widg_breadcrumb ul').addClass('gradient_next');
 		}
 
@@ -159,7 +160,7 @@
 		var pageContentWidth = $('.page_content').width();
 
 		if (window.estatico.mq.query({from: 'small'})) {
-			if (breadCrumbWidth > pageContentWidth) {
+			if (breadCrumbWidth > pageContentWidth || breadCrumbWidth === pageContentWidth) {
 				this.getListElements();
 				this.data.listElements.each(function(index) {
 					if (index === 1) {
