@@ -17,15 +17,19 @@
 
 		}
 	}
+
+	@include mq($to: small) {
+		padding-bottom: $basicPush * 2;
+	}
 	
 	@include mq($from: small) {
 		margin-top: $basicPush;
 		padding-top: $basicPush;
 	}
 
-	@include mq($to: small) {
-		// margin-top: $basicPush * 2;
-		padding-bottom: $basicPush * 2;
+	@include mq($from: 768) {
+		margin-top: $basicPush;
+		padding-top: $basicPush + 10;
 	}
 
 	min-height: 50px;
