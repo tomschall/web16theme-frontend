@@ -501,6 +501,9 @@
 
 		onInputChange: function(event) {
 			var $el = $(event.target);
+      var date_from = null;
+      var date_to = null;
+
 			if ($el.hasClass('pat-pickadate-ref--date')) {
         // news search date validation
         if ($el[0].name === 'form.widgets.date_from--date' && $el[0].value) {
@@ -509,20 +512,20 @@
         if ($el[0].name === 'form.widgets.date_to--date' && $el[0].value) {
           localStorage.setItem('news_date_to', $el[0].value);
         }
-        var date_from = easyFormValidation.getTimestampFromDate(localStorage.getItem('news_date_from'));
-        var date_to = easyFormValidation.getTimestampFromDate(localStorage.getItem('news_date_to'));
-
-        if (date_from && date_to && date_from > date_to) {
-          $('#news-search-formfield-date-from').addClass('error');
-        } else {
-          $('#news-search-formfield-date-from').removeClass('error');
-        }
+        date_from = easyFormValidation.getTimestampFromDate(localStorage.getItem('news_date_from'));
+        date_to = easyFormValidation.getTimestampFromDate(localStorage.getItem('news_date_to'));
 
 				// synchronize fields
 				easyFormValidation.synchronizeDateFields($el);
 			}
 
 			easyFormValidation.validateElement($el);
+
+      if (date_from && date_to && date_from > date_to) {
+        $('#news-search-formfield-date-from').addClass('error');
+      } else {
+        $('#news-search-formfield-date-from').removeClass('error');
+      }
 		},
 
 		synchronizeDateFields: function($el) {
@@ -891,7 +894,7 @@
         return null;
       }
       var myDate = date.split('.');
-      var newDate = new Date( myDate[2], myDate[1] - 1, myDate[0]);
+      var newDate = new Date(myDate[2], myDate[1] - 1, myDate[0]);
       return newDate.getTime();
     }
 	};

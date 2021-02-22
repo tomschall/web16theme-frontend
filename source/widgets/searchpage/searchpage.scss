@@ -393,6 +393,16 @@
         text-decoration: none;
         padding-left: 6px;
       }
+
+      &:disabled {
+        .news_label_sort_date {
+          text-decoration: none;
+        }
+
+        &:hover {
+          color: #767573;
+        }
+      }
     }
   }
 }
