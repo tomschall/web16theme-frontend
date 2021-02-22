@@ -105,6 +105,7 @@
     "http-proxy-middleware": "^0.17.4",
     "inquirer": "^3.1.0",
     "jasmine-core": "^2.6.4",
+    "jquery-visible": "^1.2.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
     "karma-jasmine-jquery": "^0.1.1",
