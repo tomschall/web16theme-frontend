@@ -215,7 +215,7 @@ var fieldDictionaries = {
 	 */
 	function generateTeasers(data) {
 		var results = data.items,
-				$responseHTML = $('<div class="widg_linklist"></div>'),
+				$responseHTML = $('<div id="refTop" class="widg_linklist"></div>'),
 				template = null;
 
 		results.forEach(function(teaserItem) {

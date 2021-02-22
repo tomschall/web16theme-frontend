@@ -86,7 +86,8 @@
     },
     observer = {},
     lastReq = false,
-    newsFilterInputIsSet = false;
+    newsFilterInputIsSet = false,
+    scrollOffset = null;
 
 	/**
 	 * Create an instance of the widget
@@ -572,6 +573,12 @@
 	};
 
 	Widget.prototype.handleData = function(event, local__data, foundEntries, limitedToResults, category, facets) {
+    if (searchTemplate === 'news_full' && scrollOffset && !loadMoreMode) {
+      $([document.documentElement, document.body]).animate({
+        scrollTop: scrollOffset - 480
+      });
+    }
+
 		if (local__data) {
       this.showResults(local__data, foundEntries, limitedToResults, category);
       if (observer && observer.current) {
@@ -593,6 +600,8 @@
 		if (window.estatico.mq.query({from: 'subnav'})) {
 			this.fixResultsHeader(this.$element.find('table'));
 		}
+
+    scrollOffset = $("#refTop").offset().top;
 	};
 
 	/**
