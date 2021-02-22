@@ -27,8 +27,7 @@
 	}
 
 	@include mq($from: 768) {
-		margin-top: $basicPush;
-		padding-top: $basicPush + 10;
+		padding-top: $basicPush;
 	}
 
 	min-height: 50px;
@@ -96,9 +95,11 @@
 
 	@include mq($from: medium) {
 		padding-right: $gutterWidth * 2;
+	  padding-top: $basicPush;
 	}
 
 	@include mq($to: subnav) {
+		padding-top: $basicPush;
 		right: 0;
 	}
 
