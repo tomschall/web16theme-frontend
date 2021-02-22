@@ -14,6 +14,11 @@
 					{{/if}}
 				{{/if}}
       </li>
+				{{#if lastBreadcrumb}}
+				<li>
+					<p style="background: red; width: 10px; height: 10px;"></p>
+				</li>
+			{{/if}}
 		{{/each}}
   </ul>
   <span data-breadcrumb="extendstring" style="display: none" aria-hidden="true">{{langStrings.extend}}</span>

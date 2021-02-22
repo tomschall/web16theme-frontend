@@ -22,6 +22,7 @@
  * @requires ../../../node_modules/js-base64/base64.js
  * @requires ../../../node_modules/mapbox-gl/dist/mapbox-gl.js
  * @requires ../../../node_modules/protip/protip.min.js
+ * @requires ../../../node_modules/jquery-visible/jquery.visible.min.js
 
 
  * @requires ../.tmp/templates.js

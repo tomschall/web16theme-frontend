@@ -195,11 +195,18 @@
 		$('.widg_breadcrumb ul').on('scroll', function() {
 			var isHomeXPos = $('.is_home').position();
 			var gradientPrev = 'gradient_prev';
+			var gradientNext = 'gradient_next';
 	
 			if (isHomeXPos.left >= 8.5) {
 				$('.widg_breadcrumb ul').removeClass(gradientPrev);
 			} else {
 				$('.widg_breadcrumb ul').addClass(gradientPrev);
+				
+				if ($('.widg_breadcrumb ul li:last-child').visible()) {
+					$('.widg_breadcrumb ul').removeClass(gradientNext);
+				} else {
+					$('.widg_breadcrumb ul').addClass(gradientNext);
+				}
 			}
 		});
 	};
