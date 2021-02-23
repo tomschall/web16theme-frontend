@@ -1,6 +1,7 @@
 /**
  * @requires ../../../node_modules/jquery/dist/jquery.js
  * @requires ../.tmp/lodash.js
+ * @requires ../../../node_modules/jquery-visible/jquery.visible.min.js
  * @requires ../../../node_modules/handlebars/dist/handlebars.js
  * @requires ../../../node_modules/slick-carousel/slick/slick.js
  * @requires ../../../node_modules/image-scale/image-scale.js
@@ -22,7 +23,6 @@
  * @requires ../../../node_modules/js-base64/base64.js
  * @requires ../../../node_modules/mapbox-gl/dist/mapbox-gl.js
  * @requires ../../../node_modules/protip/protip.min.js
- * @requires ../../../node_modules/jquery-visible/jquery.visible.min.js
 
 
  * @requires ../.tmp/templates.js
