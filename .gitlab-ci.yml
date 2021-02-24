@@ -5,7 +5,7 @@ selftest:
      - parts/
  script:
   - sh ./prepare_build_theme.sh
-  - gulp build --dev --interactive=false
+  - bin/gulp build --dev --interactive=false
 deploy:
  stage: deploy
  cache:
@@ -13,7 +13,7 @@ deploy:
      - parts/
  script:
   - sh ./prepare_build_theme.sh
-  - gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
+  - bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
   - DO_COMMIT=yes sh ./deploy_theme.sh
  only:
   - master
@@ -25,9 +25,9 @@ pages:
       - build/
   script:
   - sh ./prepare_build_theme.sh
-  - gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
+  - bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
   - sh ./deploy_theme.sh
-  - gulp relative-paths
+  - bin/gulp relative-paths
   - 'curl -o milestones.json --header "PRIVATE-TOKEN: oatBqMZzaiuxaa5sf7az" https://gitlab.fhnw.ch/api/v4/projects/25/milestones'
   - cp milestones.json build/
   - 'curl -o commits.json --header "PRIVATE-TOKEN: oatBqMZzaiuxaa5sf7az" https://gitlab.fhnw.ch/api/v4/projects/257/repository/commits'
