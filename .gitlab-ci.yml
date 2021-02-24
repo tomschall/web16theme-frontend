@@ -4,15 +4,14 @@ selftest:
    paths:
      - parts/
  script:
-  - sh ./prepare_build_theme.sh
+  - sh ./gitlab-ci-selftest.sh
 deploy:
  stage: deploy
  cache:
    paths:
      - parts/
  script:
-  - sh ./prepare_build_theme.sh
-  - bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
+  - sh ./gitlab-ci-deploy.sh
   - DO_COMMIT=yes sh ./deploy_theme.sh
  only:
   - master
@@ -23,8 +22,7 @@ pages:
     paths:
       - build/
   script:
-  - sh ./prepare_build_theme.sh
-  - bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
+  - sh ./gitlab-ci-pages.sh
   - sh ./deploy_theme.sh
   - bin/gulp relative-paths
   - 'curl -o milestones.json --header "PRIVATE-TOKEN: oatBqMZzaiuxaa5sf7az" https://gitlab.fhnw.ch/api/v4/projects/25/milestones'
