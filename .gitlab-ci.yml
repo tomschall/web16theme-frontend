@@ -5,6 +5,7 @@ selftest:
      - parts/
  script:
   - sh ./prepare_build_theme.sh
+  - bin/gulp --version
   - bin/gulp build --dev --interactive=false
 deploy:
  stage: deploy
