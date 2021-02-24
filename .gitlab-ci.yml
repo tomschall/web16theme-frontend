@@ -7,6 +7,7 @@ selftest:
   - sh ./prepare_build_theme.sh
   - bin/node --version
   - bin/nodejs --version
+  - ls -al
   - bin/gulp --version
   - bin/gulp build --dev --interactive=false
 deploy:
