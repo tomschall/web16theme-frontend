@@ -56,6 +56,7 @@
 	 */
 	Widget.prototype.init = function() {
 		this.getListElements();
+		this.trimmed = true;
 		this.getLangString();
 		if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
@@ -63,6 +64,7 @@
 
 		if (this.data.listElements.length >= 3) {
 			this.addExtendBtn();
+			// // console.log('addExtendBtn');
 		} else if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
@@ -98,54 +100,47 @@
 	Widget.prototype.getListElements = function() {
 		this.data.listElements = this.$element.find('ul li');
 		this.data.linkText = this.$element.find('ul li a, ul li p');
-		
-		var totalListElements = this.data.listElements.length;
-		var breadCrumbWidth = $('.widg_breadcrumb ul').width();
-		var subNavWidth = $('.widg_subnav').width();
-		
-		// console.log('subNavWidth', subNavWidth);
-		var pageContentWidth = $('.page_content').width();
-		// console.log(breadCrumbWidth, pageContentWidth, 'calc', Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements));
-		var firstCalc = Math.floor(Math.floor(breadCrumbWidth / totalListElements, 10) / totalListElements);
-		// console.log('firstCalc', firstCalc);
 
-		var secondCalc;
-		var calcDifference;
-		if (window.estatico.mq.query({to: 'medium'})) {
-			secondCalc = firstCalc; //- Math.floor((subNavWidth / totalListElements) / 10);
-			// console.log('secondCalc, TO MEDIUM', Math.floor((subNavWidth / totalListElements) / 10), secondCalc);
-		}
+		this.totalListElements = this.data.listElements.length - 2;
+		var contentElementWidth = $('.content__element').width();		
+		var maxTitleLength = null;
+		var factor = 5;
+		var trimFactor = 5;
 
-		if (window.estatico.mq.query({from: 'medium'})) {
-			calcDifference = firstCalc - Math.floor((subNavWidth / totalListElements) / 10);
+		// console.log('contentElementWidth', contentElementWidth, 'totalListElements', this.data.listElements.length - 2);
+
+		if (contentElementWidth > 550 && this.totalListElements <= 5) {
+			// console.log('>800 , >5', contentElementWidth, this.totalListElements);
+			maxTitleLength = parseInt(contentElementWidth / this.totalListElements / factor) - trimFactor;
+			this.trimmed = true;
+			// console.log('maxTitleLength <=5', maxTitleLength);
 			
-			if (calcDifference > 10) {
-				secondCalc = firstCalc;
-			} else if (calcDifference < 10 ) {
-				secondCalc = Math.floor(firstCalc - calcDifference);
-			} else if (calcDifference > 14) {
-				secondCalc = Math.floor(firstCalc + calcDifference);
-			}
-			// console.log('secondCalc, FROM MEDIUM', calcDifference, secondCalc);
+		} else if (contentElementWidth > 550 && this.totalListElements >= 5) {
+			// console.log('>800 , >5', contentElementWidth, this.totalListElements);
+			maxTitleLength = parseInt(contentElementWidth / this.totalListElements / factor) - 10;
+			this.trimmed = true;
+
+			// console.log('maxTitleLength >5', maxTitleLength);
+		} else {
+			maxTitleLength = 50;
+			this.trimmed = false;
 		}
 
 		// Shorten link text
 		if (window.estatico.mq.query({from: 'small'})) {
-			if (breadCrumbWidth > pageContentWidth || breadCrumbWidth === pageContentWidth) {
 				this.data.linkText.each(function() {
-					var maxTitleLength = secondCalc;
+			
 					if (this.innerText.length >= maxTitleLength) {
 						var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + '...';
 						this.classList.add('protip');
 						this.innerText = shortText;
 					}
 				});
-			}
 		}
 
 		// Mobile devices - gradients
 		if (window.estatico.mq.query({to: 'small'})) {
-			// console.log('manipulate gradients');
+			// // console.log('manipulate gradients');
 			$('.widg_breadcrumb ul').addClass('gradient_next');
 		}
 
@@ -156,11 +151,13 @@
 	 */
 	Widget.prototype.addExtendBtn = function() {
 		var $lastElementToRemove = null;
-		var breadCrumbWidth = $('.widg_breadcrumb ul').width();
-		var pageContentWidth = $('.page_content').width();
+		// console.log('trimmed', this.trimmed);
 
-		if (window.estatico.mq.query({from: 'small'})) {
-			if (breadCrumbWidth > pageContentWidth || breadCrumbWidth === pageContentWidth) {
+		if (this.totalListElements <= 2) {
+			this.trimmed = false;
+		}
+
+		if (window.estatico.mq.query({from: 'small'}) && this.totalListElements >= 3 && this.trimmed === true) {
 				this.getListElements();
 				this.data.listElements.each(function(index) {
 					if (index === 1) {
@@ -173,7 +170,6 @@
 				this.data.extendString + '</button></li>');
 				$(this.options.domSelectors.extender).focus();
 				this.addExtenderEvent();
-			}
 		}
 	};
 
