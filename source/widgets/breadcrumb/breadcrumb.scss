@@ -30,7 +30,7 @@
 		padding-top: $basicPush;
 	}
 
-	min-height: 50px;
+	min-height: 45px;
 
 	@include mq($to: small) {
 		ul {

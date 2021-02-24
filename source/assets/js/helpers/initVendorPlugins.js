@@ -6,15 +6,17 @@
 ;(function($, undefined) {
 	'use strict';
 
-	$(window).resize(function() {
-		if ($(window).width() > 1023) {
-			$('.widg_teaser__img img').imageScale({
-				rescaleOnResize: true,
-				scale: 'best-fill',
-				align: 'center'
-			});
-		}
-	});
+	if ($('.widg_teaser__img img').length) {
+		$(window).resize(function() {
+			if ($(window).width() > 1023) {
+				$('.widg_teaser__img img').imageScale({
+					rescaleOnResize: true,
+					scale: 'best-fill',
+					align: 'center'
+				});
+			}
+		});
+	}
 
 	$(document).ready(function() {
 		// The Jquery Spinner, has to be implemented when element is added later than document.ready
@@ -24,12 +26,14 @@
 			color: '#999999'
 		});
 
-		if ($(window).width() > 1023) {
-			$('.widg_teaser__img img').imageScale({
-				rescaleOnResize: true,
-				scale: 'best-fill',
-				align: 'center'
-			});
+		if ($('.widg_teaser__img img').length) {
+			if ($(window).width() > 1023) {
+				$('.widg_teaser__img img').imageScale({
+					rescaleOnResize: true,
+					scale: 'best-fill',
+					align: 'center'
+				});
+			}
 		}
 
 		function initScale(el) {
@@ -47,12 +51,13 @@
 			});
 		}
 
-		if ($(window).width() > 1023) {
-			$('.widg_teaser__img img').imageScale(
-				initScale(this)
-			);
+		if ($('.widg_teaser__img img').length) {
+			if ($(window).width() > 1023) {
+				$('.widg_teaser__img img').imageScale(
+					initScale(this)
+				);
+			}
 		}
-
 
 		if (window.estatico.mq.query({from: 'subnav'})) {
 			$('.search__form-wrapper').scrollToFixed();
