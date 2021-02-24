@@ -9,6 +9,8 @@ ln -s /usr/bin/nodejs /usr/bin/node
 npm install -g yarn gulp@3.9.1
 echo "Current node version"
 node --version
+echo "Current gulp version"
+gulp --version
 echo "Show bin directory"
 ls bin/
 echo "Show directory"
