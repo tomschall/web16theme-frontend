@@ -5,6 +5,7 @@ selftest:
      - parts/
  script:
   - sh ./prepare_build_theme.sh
+  - npm install -g gulp@3.9.1
   - bin/node --version
   - bin/nodejs --version
   - ls -al
