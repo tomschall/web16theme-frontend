@@ -3,4 +3,5 @@
 source bin/activate
 bin/pip install -r requirements.txt
 bin/buildout
+node --version
 bin/yarn install
