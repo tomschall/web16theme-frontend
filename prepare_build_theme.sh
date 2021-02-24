@@ -5,7 +5,7 @@ bin/pip install -r requirements.txt
 bin/buildout
 pip install nodeenv
 nodeenv --python-virtualenv --node=11.15.0
-ln -s bin/node /usr/bin/env/node
+ln -s bin/nodejs /usr/bin/node
 npm install -g yarn gulp@3.9.1
 echo "Current node version"
 node --version
