@@ -5,12 +5,6 @@ selftest:
      - parts/
  script:
   - sh ./prepare_build_theme.sh
-  - npm install -g gulp@3.9.1
-  - bin/node --version
-  - bin/nodejs --version
-  - ls -al
-  - bin/gulp --version
-  - bin/gulp build --dev --interactive=false
 deploy:
  stage: deploy
  cache:

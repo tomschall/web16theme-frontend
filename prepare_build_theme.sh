@@ -17,3 +17,4 @@ echo "Show directory"
 ls -al
 echo "Install packages with yarn"
 yarn install
+bin/gulp build --dev --interactive=false
