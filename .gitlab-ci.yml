@@ -12,7 +12,6 @@ deploy:
      - parts/
  script:
   - sh ./gitlab-ci-deploy.sh
-  - DO_COMMIT=yes sh ./deploy_theme.sh
  only:
   - master
 
@@ -23,13 +22,6 @@ pages:
       - build/
   script:
   - sh ./gitlab-ci-pages.sh
-  - sh ./deploy_theme.sh
-  - bin/gulp relative-paths
-  - 'curl -o milestones.json --header "PRIVATE-TOKEN: oatBqMZzaiuxaa5sf7az" https://gitlab.fhnw.ch/api/v4/projects/25/milestones'
-  - cp milestones.json build/
-  - 'curl -o commits.json --header "PRIVATE-TOKEN: oatBqMZzaiuxaa5sf7az" https://gitlab.fhnw.ch/api/v4/projects/257/repository/commits'
-  - cp commits.json build/
-  - mv build public
 
   artifacts:
     paths:
