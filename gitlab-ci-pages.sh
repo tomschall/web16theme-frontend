@@ -12,3 +12,10 @@ node --version
 echo "Install packages with yarn"
 yarn install
 bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
+./deploy_theme.sh
+bin/gulp relative-paths
+curl -o milestones.json --header "PRIVATE-TOKEN: oatBqMZzaiuxaa5sf7az" https://gitlab.fhnw.ch/api/v4/projects/25/milestones
+cp milestones.json build/
+curl -o commits.json --header "PRIVATE-TOKEN: oatBqMZzaiuxaa5sf7az" https://gitlab.fhnw.ch/api/v4/projects/257/repository/commits
+cp commits.json build/
+mv build public
