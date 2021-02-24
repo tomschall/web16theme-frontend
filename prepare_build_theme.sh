@@ -3,9 +3,9 @@
 source bin/activate
 bin/pip install -r requirements.txt
 bin/buildout
-pip install nodeenv # then install nodeenv (nodeenv==0.7.1 was installed)
-nodeenv --python-virtualenv --node=11.15.0 # Use current python virtualenv
-npm install -g yarn # install lessc in the virtualenv
+pip install nodeenv
+nodeenv --python-virtualenv --node=11.15.0
+npm install -g yarn gulp@3.9.1
 echo "Current Node Version"
 node --version
 yarn install
