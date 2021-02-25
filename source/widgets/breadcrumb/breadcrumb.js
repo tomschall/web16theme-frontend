@@ -26,7 +26,8 @@
 		data = {
 			listElements: null,
 			extendString: null
-		};
+		},
+		trimmed = false;
 
 	/**
 	 * Create an instance of the widget
@@ -56,16 +57,11 @@
 	 */
 	Widget.prototype.init = function() {
 		this.getListElements();
-		this.trimmed = true;
-		this.getLangString();
-		if (this.data.listElements.length === 0) {
-			$('.widg_subnav').addClass('has-no-breadcrumb');
-		}
+		this.getLangString();	
+		
+	  this.addExtendBtn();
 
-		if (this.data.listElements.length >= 3) {
-			this.addExtendBtn();
-			// // console.log('addExtendBtn');
-		} else if (this.data.listElements.length === 0) {
+		if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
 		}
 
@@ -100,30 +96,20 @@
 	Widget.prototype.getListElements = function() {
 		this.data.listElements = this.$element.find('ul li');
 		this.data.linkText = this.$element.find('ul li a, ul li p');
-
 		this.totalListElements = this.data.listElements.length - 2;
+
 		var contentElementWidth = $('.content__element').width();		
 		var maxTitleLength = null;
 		var factor = 5;
 		var trimFactor = 5;
-
-		// console.log('contentElementWidth', contentElementWidth, 'totalListElements', this.data.listElements.length - 2);
-
+		
 		if (contentElementWidth > 550 && this.totalListElements <= 5) {
-			// console.log('>800 , >5', contentElementWidth, this.totalListElements);
 			maxTitleLength = parseInt(contentElementWidth / this.totalListElements / factor) - trimFactor;
-			this.trimmed = true;
-			// console.log('maxTitleLength <=5', maxTitleLength);
 			
 		} else if (contentElementWidth > 550 && this.totalListElements >= 5) {
-			// console.log('>800 , >5', contentElementWidth, this.totalListElements);
 			maxTitleLength = parseInt(contentElementWidth / this.totalListElements / factor) - 10;
-			this.trimmed = true;
-
-			// console.log('maxTitleLength >5', maxTitleLength);
 		} else {
 			maxTitleLength = 50;
-			this.trimmed = false;
 		}
 
 		// Shorten link text
@@ -134,13 +120,13 @@
 						var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + '...';
 						this.classList.add('protip');
 						this.innerText = shortText;
+						trimmed = true;
 					}
-				});
+				}).bind(this);
 		}
 
 		// Mobile devices - gradients
 		if (window.estatico.mq.query({to: 'small'})) {
-			// // console.log('manipulate gradients');
 			$('.widg_breadcrumb ul').addClass('gradient_next');
 		}
 
@@ -151,13 +137,8 @@
 	 */
 	Widget.prototype.addExtendBtn = function() {
 		var $lastElementToRemove = null;
-		// console.log('trimmed', this.trimmed);
 
-		if (this.totalListElements <= 2) {
-			this.trimmed = false;
-		}
-
-		if (window.estatico.mq.query({from: 'small'}) && this.totalListElements >= 3 && this.trimmed === true) {
+		if (window.estatico.mq.query({from: 'small'}) && trimmed === true) {
 				this.getListElements();
 				this.data.listElements.each(function(index) {
 					if (index === 1) {
