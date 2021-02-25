@@ -601,7 +601,7 @@
 			this.fixResultsHeader(this.$element.find('table'));
 		}
 
-    scrollOffset = $("#refTop").offset().top;
+    scrollOffset = $('#refTop').offset().top;
 	};
 
 	/**

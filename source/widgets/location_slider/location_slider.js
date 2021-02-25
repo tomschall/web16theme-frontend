@@ -215,7 +215,7 @@
 			this.offset = this.options.mapOptionsDefaults.offset;
 			this.interactive = true;
 			this.scrollZoom = false;
-			
+
 		}
 		// Map settings -> mobile view false, one locations false
 		if (this.options.renderMobileView === false && this.totalLocations > 1) {

@@ -1,10 +1,7 @@
 /*!
- * Carousel
  *
- * @author Unic AG
- * @copyright Unic AG
+ * Breadcrumb
  *
- * //@requires ../../../node_modules/some/dependency.js
  */
 
 ;(function($, undefined) {
@@ -57,9 +54,8 @@
 	 */
 	Widget.prototype.init = function() {
 		this.getListElements();
-		this.getLangString();	
-		
-	  this.addExtendBtn();
+		this.getLangString();
+    this.addExtendBtn();
 
 		if (this.data.listElements.length === 0) {
 			$('.widg_subnav').addClass('has-no-breadcrumb');
@@ -98,16 +94,16 @@
 		this.data.linkText = this.$element.find('ul li a, ul li p');
 		this.totalListElements = this.data.listElements.length - 2;
 
-		var contentElementWidth = $('.content__element').width();		
+		var contentElementWidth = $('.content__element').width();
 		var maxTitleLength = null;
 		var factor = 5;
 		var trimFactor = 5;
-		
+
 		if (contentElementWidth > 550 && this.totalListElements <= 5) {
-			maxTitleLength = parseInt(contentElementWidth / this.totalListElements / factor) - trimFactor;
-			
+			maxTitleLength = parseInt(contentElementWidth / this.totalListElements / factor, 10) - trimFactor;
+
 		} else if (contentElementWidth > 550 && this.totalListElements >= 5) {
-			maxTitleLength = parseInt(contentElementWidth / this.totalListElements / factor) - 10;
+			maxTitleLength = parseInt(contentElementWidth / this.totalListElements / factor, 10) - 10;
 		} else {
 			maxTitleLength = 50;
 		}
@@ -115,7 +111,7 @@
 		// Shorten link text
 		if (window.estatico.mq.query({from: 'small'})) {
 				this.data.linkText.each(function() {
-			
+
 					if (this.innerText.length >= maxTitleLength) {
 						var shortText = $.trim(this.innerText).substring(0, maxTitleLength) + '...';
 						this.classList.add('protip');
@@ -147,7 +143,7 @@
 					}
 				}.bind(this));
 
-				$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' + 
+				$lastElementToRemove.after('<li class="widg_breadcrumb__extender" data-breadcrumb="extender"><button class="not-default">' +
 				this.data.extendString + '</button></li>');
 				$(this.options.domSelectors.extender).focus();
 				this.addExtenderEvent();
@@ -173,12 +169,12 @@
 			var isHomeXPos = $('.is_home').position();
 			var gradientPrev = 'gradient_prev';
 			var gradientNext = 'gradient_next';
-	
+
 			if (isHomeXPos.left >= 8.5) {
 				$('.widg_breadcrumb ul').removeClass(gradientPrev);
 			} else {
 				$('.widg_breadcrumb ul').addClass(gradientPrev);
-				
+
 				if ($('.widg_breadcrumb ul li:last-child').visible()) {
 					$('.widg_breadcrumb ul').removeClass(gradientNext);
 				} else {
