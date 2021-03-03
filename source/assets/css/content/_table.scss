@@ -188,6 +188,12 @@ table {
 	}
 }
 
+.datepicker .table-condensed {
+	&:before {
+		content: '';
+	}
+}
+
 /* TABLE IN ACCORDEONS */
 .widg_accordeon__content .content__table td:first-child {
 	padding-left: 0;
