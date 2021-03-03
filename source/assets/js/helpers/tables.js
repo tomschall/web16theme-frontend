@@ -10,7 +10,7 @@
 ;(function($, document, undefined) {
 
 	document.addEventListener('DOMContentLoaded', function() {
-		
+
 		// FIRST, EXCLUDE DATAPICKER
 		if (!($('.datepicker').length)) {
 
@@ -41,7 +41,7 @@
 
 			// REMOVE SCROLL ICON IF TABLE IS NOT SCROLLABLE AND SMALLER THAN CONTENT COLUMN
 			// webteam/fhnw.webauftritt#1580
-			
+
 			$('.page_content table tbody').each(function() {
 				var tableWidth = $(this).outerWidth();
 				var contentElem = document.querySelector('.page_content');
