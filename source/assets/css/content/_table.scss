@@ -1,5 +1,7 @@
 table {
-	th, strong, p {
+	th,
+	strong,
+	p {
 		hyphens: auto;
 	}
 	td {
@@ -65,7 +67,10 @@ table.content__table {
 		}
 	}
 
-	th, td, strong, p {
+	th,
+	td,
+	strong,
+	p {
 		hyphens: auto;
 	}
 
@@ -112,7 +117,10 @@ table.content__table__backcomp {
 		}
 	}
 
-	th, td, strong, p {
+	th,
+	td,
+	strong,
+	p {
 		hyphens: auto;
 	}
 
@@ -150,14 +158,13 @@ table {
 			height: auto;
 			width: 100%;
 			margin-top: 30px;
-			opacity: .7;
-			transform: scale(.8);
+			opacity: 0.7;
+			transform: scale(0.8);
 		}
 
 		&.touched:before {
 			opacity: 0;
 			transition: opacity 1s ease-out;
-		
 		}
 		&.scroll {
 			&:before {
@@ -168,14 +175,15 @@ table {
 }
 
 /* Exclude search tables */
-.search__results .search__table {
+.search__results .search__table,
+.table-condensed {
 	table {
 		td {
 			min-width: unset;
 		}
 
 		&:before {
-			content: ''
+			content: '';
 		}
 	}
 }
