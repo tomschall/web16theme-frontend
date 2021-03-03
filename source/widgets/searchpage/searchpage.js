@@ -601,7 +601,10 @@
 			this.fixResultsHeader(this.$element.find('table'));
 		}
 
-    scrollOffset = $('#refTop').offset().top;
+    var refTopOffset = $('#refTop').offset();
+    if (refTopOffset && refTopOffset.top !== undefined) {
+      scrollOffset = refTopOffset.top;
+    }
 	};
 
 	/**
