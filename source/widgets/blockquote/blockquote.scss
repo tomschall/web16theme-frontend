@@ -1,114 +1,113 @@
 .widg_blockquote {
-	@include bleed;
-	background-image: url('++theme++web16theme//assets/media/img/blockquote_bg.png');
-	background-size: 100% 100%;
+  @include bleed;
+  background-image: url('/++theme++web16theme/assets/media/img/blockquote_bg.png');
+  background-size: 100% 100%;
 
-	padding-top: $basicPush * 8;
-	padding-bottom: $basicPush * 7;
+  padding-top: $basicPush * 8;
+  padding-bottom: $basicPush * 7;
 
-	@include clearfix;
+  @include clearfix;
 
-	&.has-img {
-		background: transparent;
-		padding: 0;
-		margin: 0 0 $basicPush * 5 0;
+  &.has-img {
+    background: transparent;
+    padding: 0;
+    margin: 0 0 $basicPush * 5 0;
 
+    h2:not(.childless) {
+      margin-bottom: $basicPush * 3.5;
+    }
+  }
 
-		h2:not(.childless) {
-			margin-bottom: $basicPush * 3.5;
-		}
-	}
-
-	@media print {
-		padding-top: 10pt;
-		padding-bottom: 10pt;
-	}
+  @media print {
+    padding-top: 10pt;
+    padding-bottom: 10pt;
+  }
 }
 
 .blockquote__img {
-	@include span(4);
+  @include span(4);
 
-	padding-top: 5px;
+  padding-top: 5px;
 
-	img {
-		width: 100%;
-	}
+  img {
+    width: 100%;
+  }
 
-	@include mq($to: medium) {
-		@include span(12);
-	}
+  @include mq($to: medium) {
+    @include span(12);
+  }
 
-	@media print {
-			@include span(3);
-	}
+  @media print {
+    @include span(3);
+  }
 }
 
 .blockquote__quote {
-	@include span(12);
-	padding-left: 32px;
+  @include span(12);
+  padding-left: 32px;
 
-	p {
-		margin-top: 0;
-		font-family: $fontNoTo;
-		font-style: italic;
-		font-size: 2rem;
-		line-height: 2;
+  p {
+    margin-top: 0;
+    font-family: $fontNoTo;
+    font-style: italic;
+    font-size: 2rem;
+    line-height: 2;
 
-		@include mq($to: small) {
-			pading-left: 25px;
-		}
+    @include mq($to: small) {
+      pading-left: 25px;
+    }
 
-		@include mq($to: small) {
-			font-size: 1.7rem;
-		}
+    @include mq($to: small) {
+      font-size: 1.7rem;
+    }
 
-		@media print {
-			float: left;
-			font-size: 10pt;
-		}
-	}
+    @media print {
+      float: left;
+      font-size: 10pt;
+    }
+  }
 
-	.has-img & {
-		@include span(8);
+  .has-img & {
+    @include span(8);
 
-		p {
-			font-size: 1.333rem;
-		}
+    p {
+      font-size: 1.333rem;
+    }
 
-		p:before {
-			width: 41px;
-			height: 32px;
+    p:before {
+      width: 41px;
+      height: 32px;
 
-			margin-top: 8px;
-			margin-bottom: 11px;
-			margin-right: 22px;
-		}
+      margin-top: 8px;
+      margin-bottom: 11px;
+      margin-right: 22px;
+    }
 
-		@include mq($to: medium) {
-			@include span(12);
-		}
+    @include mq($to: medium) {
+      @include span(12);
+    }
 
-		@media print {
-			@include span(8);
-		}
-	}
+    @media print {
+      @include span(8);
+    }
+  }
 
-	@media print {
-		// margin-left: 20pt;
-		// margin-right: 20pt;
-	}
+  @media print {
+    // margin-left: 20pt;
+    // margin-right: 20pt;
+  }
 }
 
 .blockquote__author {
-	display: block;
-	font-size: 1.0833333rem;
-	color: $colorTextGrey;
+  display: block;
+  font-size: 1.0833333rem;
+  color: $colorTextGrey;
 
-	@include mq($to: small) {
-		padding-left: 55px;
-	}
+  @include mq($to: small) {
+    padding-left: 55px;
+  }
 }
 
 .blockquote__button {
-	margin-top: $basicPush * 3.5;
+  margin-top: $basicPush * 3.5;
 }
