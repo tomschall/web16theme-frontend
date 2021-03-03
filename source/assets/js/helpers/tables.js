@@ -13,7 +13,7 @@
 		
 		// FIRST, EXCLUDE DATAPICKER
 		if (!($('.datepicker').length)) {
-			
+
 			$('table.content__table').each(function() {
 				var isStyle = 0;
 				$(this).children('tbody').children('tr').each(function() {
@@ -69,7 +69,6 @@
 					$(this).parent().removeClass('scroll');
 				}
 			});
-			console.log('Datepicker ist not present');
 		}
 	});
 
