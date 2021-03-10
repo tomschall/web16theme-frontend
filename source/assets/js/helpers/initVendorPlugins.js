@@ -7,23 +7,6 @@
   'use strict';
 
   jQuery(function() {
-    var scale = function(el) {
-      $(el).imageScale({
-        rescaleOnResize: true,
-        scale: 'best-fill',
-        align: 'center'
-      });
-    };
-
-    if ($('.widg_teaser__img img').length) {
-      $(window).on('resize', function() {
-        if ($(window).width() > 1023) {
-          scale($('.widg_teaser__img img'));
-        }
-      });
-      scale($('.widg_teaser__img img'));
-    }
-
 		// The Jquery Spinner, has to be implemented when element is added later than document.ready
 		$('.fhnw-spinner').spinner({
 			radius: 30,
