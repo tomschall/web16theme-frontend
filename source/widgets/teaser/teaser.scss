@@ -153,7 +153,6 @@
 
 	@include mq($from: 1023px) {
 		width: 100%;
-		padding-top: 62%;
 
 		.search__results & {
 			padding-top: 0;
