@@ -466,8 +466,8 @@
         $(element).val(null).trigger('change');
       } else if ($(element).is('select')) {
         if (((searchTemplate === 'events_full' || searchTemplate === 'news_full') &&
-          !$(element).context.parentElement.classList.contains('hidden')) ||
-          searchTemplate !== 'events_full' || searchTemplate !== 'news_full') {
+          !$(element)[0].parentElement.classList.contains('hidden')) ||
+          searchTemplate !== 'events_full' && searchTemplate !== 'news_full') {
             $(element).val(null).trigger('change');
         }
 			}
