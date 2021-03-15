@@ -503,6 +503,11 @@
       lastReq = false;
     }
 
+    var showImages = $('.news_search__wrapper').data('showImages');
+		if (showImages) {
+			searchParam.show_images = showImages;
+		}
+
 		window.estatico.search.setSearchParameters(searchParam);
 
 		if (firstLoad && searchParam.offset) {
