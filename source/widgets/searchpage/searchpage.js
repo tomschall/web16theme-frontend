@@ -504,7 +504,7 @@
     }
 
     var showImages = $('.news_search__wrapper').data('showImages');
-		if (showImages) {
+		if (showImages !== undefined) {
 			searchParam.show_images = showImages;
 		}
 
