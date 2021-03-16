@@ -36,7 +36,8 @@ var templateData = {
               'optionValue': '1004'
             },
           ],
-				}
+				},
+		  show_images: true
 		},
 		data = _.merge(defaultData, {
 			meta: {
