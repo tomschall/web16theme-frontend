@@ -217,9 +217,9 @@ $imageHeight: 526px;
 			.full_bleed_teaser__img,
 			.full_bleed_teaser__img img {
 				background: greenyellow;
-				background-size: cover !important;
+				background-size: contain !important;
 				height: 150px;
-				padding-top: 100px;
+				padding-top: 88px;
 				background-position-y: center !important;
 				background-position-x: center !important;
 			}
