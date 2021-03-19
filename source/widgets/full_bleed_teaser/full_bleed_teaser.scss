@@ -69,8 +69,10 @@ $imageHeight: 526px;
 			}
 		}
 
-		img {
-			display: none;
+		.full_bleed__widg_teaser {
+			img {
+				display: none;
+			}
 		}
 	}
 
@@ -163,6 +165,7 @@ $imageHeight: 526px;
 		}
 	}
 }
+
 /* TABLET/MOBILE VIEW */
 @include mq($to: 769px) {
 	.widg_full_bleed_teaser {
