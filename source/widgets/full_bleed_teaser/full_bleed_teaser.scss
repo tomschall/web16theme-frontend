@@ -222,6 +222,10 @@ $imageHeight: 526px;
 				padding-top: 88px;
 				background-position-y: center !important;
 				background-position-x: center !important;
+
+				@include mq($to: 360px) {
+					padding-top: 80px;
+				}
 			}
 			.widg_teaser__img {
 				margin-bottom: $basicPush * 2;
