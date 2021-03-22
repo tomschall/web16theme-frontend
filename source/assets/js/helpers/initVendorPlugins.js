@@ -47,7 +47,7 @@
 			});
 		}
 
-		if ($(window).width() > 770) {
+		if ($(window).width() > 100000) {
 			$('.widg_full_bleed_teaser img').load(function() {
 				initScale(this);
 			}).each(function() {

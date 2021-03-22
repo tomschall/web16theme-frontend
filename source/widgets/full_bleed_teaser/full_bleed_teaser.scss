@@ -78,7 +78,7 @@ $imageHeight: 526px;
 
 	@include mq($to: 768px) {
 		.full_bleed_teaser__img[style] {
-			background: none !important;
+			background: none;
 		}
 	}
 
