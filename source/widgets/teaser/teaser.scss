@@ -23,7 +23,7 @@
 	}
 
 	h3 {
-		@include mq($to: 374px) {
+		@include mq($to: 416px) {
 			@include iconDataurl('pfeil-black');
 		}
 
@@ -80,7 +80,7 @@
 		}
 	}
 
-	@include mq($to: 374px) {
+	@include mq($to: 416px) {
 		padding-left: 0;
 		padding-right: 0;
 
