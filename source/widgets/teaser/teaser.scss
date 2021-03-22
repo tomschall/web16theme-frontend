@@ -168,7 +168,7 @@
 
 .widg_teaser__arrow {
 
-	@include mq($from: 374px) {
+	@include mq($from: 416px) {
 		@include iconDataurl('triangle-arrow_right');
 
 		display: block;
@@ -191,7 +191,7 @@
 		transform: translateY(-34%) translate3d(0, 0, 0);
 	}
 
-	@include mq($to: 374px) {
+	@include mq($to: 416px) {
 		top: 70%;
 	}
 
