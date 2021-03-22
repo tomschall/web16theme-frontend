@@ -104,4 +104,21 @@
     width: '300'
   });
 
+  $(window).resize(function() {
+    if ($(window).width() <= 768) {
+      if ($('.widg_full_bleed_teaser').length) {
+        $('.full_bleed__widg_teaser img').css('display', 'block');
+      }
+    }
+    
+    if($(window).width() >= 769) {
+      if ($('.widg_full_bleed_teaser').length) {
+        $('.full_bleed__widg_teaser img').css('display', 'none');
+      }
+    }
+  });
+
+
 })(jQuery);
+
+
