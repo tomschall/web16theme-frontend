@@ -49,13 +49,13 @@ form {
 /**
   * Resetting default number input
   */
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
 }
 
-input[type=number] {
+input[type='number'] {
 	-moz-appearance: textfield;
 }
 
@@ -63,13 +63,10 @@ input[type=number] {
   * Checkboxes and radios
   */
 
-
-
 /**
   * Textfields
   */
-.search__string
-{
+.search__string {
 	position: relative;
 
 	min-height: map-get($elementHeight, desktop);
@@ -236,7 +233,7 @@ input[type=number] {
 	}
 
 	@include mq($to: medium) {
-		min-height:  map-get($elementHeight, mobile);;
+		min-height: map-get($elementHeight, mobile);
 	}
 }
 
@@ -287,9 +284,9 @@ span.option {
 
 span.select2-selection__clear {
 	padding-right: 20px;
-  font-size: 30px;
-  font-weight: 100 !important;
-  padding-top: 4px;
+	font-size: 30px;
+	font-weight: 100 !important;
+	padding-top: 4px;
 }
 
 ul span.select2-selection__clear {
@@ -305,10 +302,10 @@ ul span.select2-selection__clear {
 }
 
 .errorOnSubmit {
-    border: 2px solid #df305b;
-    padding: 0 15px 10px;
-    margin-bottom: 20px;
-    background: rgba(223,48,91,0.1);
+	border: 2px solid #df305b;
+	padding: 0 15px 10px;
+	margin-bottom: 20px;
+	background: rgba(223, 48, 91, 0.1);
 }
 
 /**
@@ -322,7 +319,6 @@ ul span.select2-selection__clear {
 	display: none;
 }
 
-
 /* COOKIE OPT-OUT */
 #optout-form .field input {
 	height: 0 !important;
@@ -330,5 +326,5 @@ ul span.select2-selection__clear {
 
 #optout-form .optoutDescription {
 	font-size: 1.3333rem;
-  padding: 20px 0;
+	padding: 20px 0;
 }
