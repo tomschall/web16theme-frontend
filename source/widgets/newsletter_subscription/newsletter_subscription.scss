@@ -1,7 +1,40 @@
 .widg_newsletter_subscription {
 
+	form.cr_form {
+
+		table.content__table {
+			display: inline-table;
+			width: 100%;
+		}
+		
+		table {
+			display: inline-table;
+
+			&::before {
+				content: ''
+			}
+			
+			tbody, tr, td {  
+				width: 100%;  
+				padding: 0;
+			}
+		}
+	
+		.field input {
+			font-size: 1.333rem;
+			color: inherit;
+			width: 100%;
+		}
+	
+		button {
+			margin-top: $basicPush * 2;
+		}
+	}
+
 	/* CLEVERREACH FORMS */
-	.cr-error {
+	span.cr-error {
+		display: block;
+		float: right;
 		color: #df305b;
 		font-size: 12px;
 		font-weight: 400;

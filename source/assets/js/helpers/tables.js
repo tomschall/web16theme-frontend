@@ -12,7 +12,9 @@
 	document.addEventListener('DOMContentLoaded', function() {
 
 		// FIRST, EXCLUDE DATAPICKER
-		if (!($('.datepicker').length)) {
+		if (!($('.datepicker, .cr_form > table').length)) {
+			
+			console.log('form table class not set', $('form.cr_form table').length);
 
 			$('table.content__table').each(function() {
 				var isStyle = 0;
