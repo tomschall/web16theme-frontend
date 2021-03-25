@@ -1,10 +1,20 @@
 .widg_newsletter_subscription {
 
+	h2 {
+		margin-top: $basicPush * 4;
+	}
+
 	form.cr_form {
 
 		table.content__table {
 			display: inline-table;
 			width: 100%;
+
+			tbody:first-child {
+				display: inline-table;
+				position: relative;
+				top: 0;
+			}
 		}
 		
 		table {
@@ -13,7 +23,7 @@
 			&::before {
 				content: ''
 			}
-			
+
 			tbody, tr, td {  
 				width: 100%;  
 				padding: 0;
@@ -33,11 +43,17 @@
 
 	/* CLEVERREACH FORMS */
 	span.cr-error {
+		position: absolute;
 		display: block;
 		float: right;
+    padding-right: 10px;
+    margin-top: 5px;
 		color: #df305b;
-		font-size: 12px;
-		font-weight: 400;
+    text-align: right;    
+    font-size: 12px;
+    font-weight: 400;
+    width: auto;
+    width: 100%;
 	}
 
 	/* Toggle red border if error */
@@ -59,6 +75,11 @@
 		margin-right: 10px;
 		margin-top: 5px;
 	}
+
+	div.cr_ipe_item {
+		margin-top: $basicPush * 2;
+	}
+
 }
 
 .ns__label {
