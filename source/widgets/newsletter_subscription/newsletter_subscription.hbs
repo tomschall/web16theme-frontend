@@ -2,67 +2,7 @@
   {{#if cr_title}}
     <h2>{{cr_title}}</h2>
   {{/if}}
-   {{#if cr_action}}
-   <form class="form" id="crform" method="POST" action={{cr_action}} data-newsletter_subscription="newsletter_subscription">
-    {{#each cr_fields}}
-    {{#if this.button }}
-        <div class="field">
-          <button type="submit">{{../buttonLabel}}</button>
-        </div>
-    {{/if}}
-
-    {{#if this.email }}
-    <div class="field">
-      <div id="{{this.id}}" rel="{{this.rel}}">
-        <label for="{{this.id}}" class="itemname">{{this.label}}</label>
-        {{#each this.inputs }}
-        <input id="{{../this.id}}" name="{{this.name}}" value="{{this.value}}" type="email" required />
-        {{/each}}
-      </div>
+    <div class="newsletter_form">
+        {{{cr_form}}}
     </div>
-    {{/if}}
-
-    {{#if this.checkbox }}
-    <div class="field has-radio">
-        <label for="{{this.id}}" class="itemname">{{this.label}}</label>
-        {{#each this.inputs }}
-         <span class="option">
-         <label class="itemname">
-              <input id="{{../this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" {{#if ../this.required}} required {{/if}}>
-              <span class="label" for={{../this.id}}>{{this.value}}</span>
-        </label>
-        </span>
-      {{/each}}
-    </div>
-    {{/if}}
-
-
-    {{#if this.radio }}
-    <div class="field has-radio">
-      <label for="this.id" class="itemname">{{this.label}}</label>
-        {{#each this.inputs }}
-         <span class="option">
-         <label class="itemname">
-              <input id="{{../this.id}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" {{#if ../this.required}} required {{/if}}>
-              <span class="label" for={{../this.id}}>{{this.value}}</span>
-        </label>
-        </span>
-        {{/each}}
-    </div>
-    {{/if}}
-
-
-    {{#if this.text }}
-    <div class="field">
-      <div id="{{this.id}}" rel="{{this.rel}}">
-      <label for="{{this.id}}" class="itemname">{{this.label}}</label>
-      {{#each this.inputs }}
-        <input id="{{../this.id}}" name="{{this.name}}" value="{{this.value}}" type="{{this.type}}" {{#if ../this.required}} required {{/if}}>
-      {{/each}}
-      </div>
-    </div>
-    {{/if}}
-    {{/each}}
-   </form>
-    {{/if}}
 </div>
