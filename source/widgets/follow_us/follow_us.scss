@@ -28,7 +28,7 @@
 				padding: 14px 0 14px 49px;
 
 				&:before {
-					content: " ";
+					content: ' ';
 					display: block;
 					position: absolute;
 					width: 36px;
@@ -88,4 +88,8 @@
 
 .follow__issuu {
 	@include iconDataurl('issuu_follow');
+}
+
+.follow__flickr {
+	@include iconDataurl('flickr_follow');
 }
