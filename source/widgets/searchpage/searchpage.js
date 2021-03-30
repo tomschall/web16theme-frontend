@@ -838,7 +838,6 @@
 	};
 
 	Widget.prototype.updateFilters = function(facets) {
-
 		if (facets === 'enableAll') {
 			var $options = $('option');
 
@@ -848,17 +847,42 @@
 		} else if (facets) {
 			var check = this.checkFormFieldUnset(facets);
 
-			var facetsToItemsFieldnames = {
-				'faculty': 'taxonomy_subjectarea',
-				'study_type': 'taxonomy_eduproducttype',
-				'location': 'city'
-			};
+      var facetsToItemsFieldnames = {};
+
+      if (searchTemplate === 'training_full') {
+        facetsToItemsFieldnames = {
+          'location': 'city',
+          'study_type': 'taxonomy_eduproducttype',
+          'faculty': 'taxonomy_subjectarea',
+        };
+      } else if (searchTemplate === 'news_full') {
+        facetsToItemsFieldnames = {
+          'school': 'school',
+        };
+      } else if (searchTemplate === 'events_full') {
+        facetsToItemsFieldnames = {
+          'location': 'location',
+          'study_type': 'study_type',
+          'topic': 'topic',
+        };
+      }
+
 			facets.forEach(function(field) {
 				// field names coming from the endpoint are postfixed with [] if they contain lists
 				// removes postfix from the name
-				var fieldName = facetsToItemsFieldnames[field.field.replace(/\[\]$/, '')],
-					$field = $('[data-searchparam="' + fieldName + '"]'),
-					$local__options = $field.find('option');
+        var fieldName = '';
+        if (searchTemplate === 'training_full') {
+          fieldName = facetsToItemsFieldnames[field.field.replace(/\[\]$/, '')];
+        } else if (searchTemplate === 'news_full') {
+          fieldName = facetsToItemsFieldnames[field.field];
+        } else if (searchTemplate === 'events_full') {
+          if (facetsToItemsFieldnames[field.field] === 'topic') {
+            return;
+          }
+          fieldName = facetsToItemsFieldnames[field.field];
+        }
+				var	$field = $('[data-searchparam="' + fieldName + '"]');
+				var $local__options = $field.find('option');
 
 				$local__options.map(function(index, option) {
 
