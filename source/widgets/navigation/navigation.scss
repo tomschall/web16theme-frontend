@@ -2,6 +2,7 @@
 	margin-top: $basicPush * 10;
 	margin-left: -1 * $gutter;
 	margin-right: -1 * $gutter;
+	max-height: $basicPush * 25.5;
 
 	/**
 	Hide on shrinked fixed header
@@ -30,7 +31,7 @@ styling of all links and lists
 .widg_navigation__list {
 	display: none;
 
-	&[data-navigation-level="0"] {
+	&[data-navigation-level='0'] {
 		display: block;
 	}
 
@@ -82,7 +83,6 @@ styling of all links and lists
 		}
 	}
 
-	
 	&.is_expandable {
 		@include iconDataurl($name: 'triangle-arrow_right', $after: true);
 
@@ -106,7 +106,7 @@ styling of all links and lists
 
 			transform: translateY(-50%);
 
-			content: " ";
+			content: ' ';
 			position: absolute;
 		}
 
@@ -122,8 +122,7 @@ styling of all links and lists
 		@include mq($to: medium) {
 			&:after,
 			&:hover:after,
-			&.is_active:after
-			&.nav_active:after {
+			&.is_active:after &.nav_active:after {
 				opacity: 1;
 				right: $basicPush * 2;
 			}
@@ -139,7 +138,6 @@ styling of all links and lists
 
 		font-size: 1.3rem;
 	}
-
 }
 
 /**
@@ -176,7 +174,7 @@ The back arrow only visible on mobile navigation
 /**
  The Stylings for the the navigation lists, depending on their level
 **/
-.widg_navigation__list[data-navigation-level="0"] {
+.widg_navigation__list[data-navigation-level='0'] {
 	ul li a {
 		&.is_active:before {
 			left: -10px;
@@ -184,9 +182,9 @@ The back arrow only visible on mobile navigation
 	}
 }
 
-.widg_navigation__list[data-navigation-level="1"],
-.widg_navigation__list[data-navigation-level="2"],
-.widg_navigation__list[data-navigation-level="3"] {
+.widg_navigation__list[data-navigation-level='1'],
+.widg_navigation__list[data-navigation-level='2'],
+.widg_navigation__list[data-navigation-level='3'] {
 	ul {
 		li {
 			display: block;
@@ -230,7 +228,6 @@ The back arrow only visible on mobile navigation
 			}
 		}
 	}
-
 }
 
 /**
@@ -266,7 +263,7 @@ The Subwrappers only desktop
 		width: $widthYellowBarSuperWide;
 	}
 
-	&[data-navigation-level="1"] {
+	&[data-navigation-level='1'] {
 		left: 180px;
 
 		@include mq($from: wide) {
@@ -274,7 +271,7 @@ The Subwrappers only desktop
 		}
 	}
 
-	&[data-navigation-level="2"] {
+	&[data-navigation-level='2'] {
 		left: 410px;
 
 		@include mq($from: wide) {
@@ -282,7 +279,7 @@ The Subwrappers only desktop
 		}
 	}
 
-	&[data-navigation-level="3"] {
+	&[data-navigation-level='3'] {
 		left: 640px;
 
 		@include mq($from: wide) {
@@ -320,9 +317,9 @@ Subtitle for every additional layer (only desktop)
 Background-Colors for the additional navigation layers
 **/
 
-[data-navigation-level="1"],
-[data-navigation-level="2"],
-[data-navigation-level="3"] {
+[data-navigation-level='1'],
+[data-navigation-level='2'],
+[data-navigation-level='3'] {
 	background-color: $colorBg;
 }
 
@@ -337,7 +334,6 @@ for better overview they are seperated here
 	}
 
 	.widg_navigation__list {
-
 		transition: all $transitionLength $transitionEase;
 		overflow-y: scroll;
 
@@ -355,13 +351,13 @@ for better overview they are seperated here
 			display: block;
 		}
 
-		&[data-navigation-level="0"] {
+		&[data-navigation-level='0'] {
 			height: calc(100vh - 70px);
 		}
 
-		&[data-navigation-level="1"],
-		&[data-navigation-level="2"],
-		&[data-navigation-level="3"] {
+		&[data-navigation-level='1'],
+		&[data-navigation-level='2'],
+		&[data-navigation-level='3'] {
 			left: calc(100vw - 40px);
 			// @TODO: if header top height changes, this has to be reflected here too
 			height: calc(100vh - 70px);
@@ -379,7 +375,7 @@ for better overview they are seperated here
 			}
 		}
 
-		&[data-navigation-level="2"] {
+		&[data-navigation-level='2'] {
 			left: calc(200vw - 40px);
 
 			@include mq($to: small) {
@@ -387,7 +383,7 @@ for better overview they are seperated here
 			}
 		}
 
-		&[data-navigation-level="3"] {
+		&[data-navigation-level='3'] {
 			left: calc(300vw - 40px);
 
 			@include mq($to: small) {
