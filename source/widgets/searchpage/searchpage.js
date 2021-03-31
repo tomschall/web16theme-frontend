@@ -854,15 +854,18 @@
           'location': 'city',
           'study_type': 'taxonomy_eduproducttype',
           'faculty': 'taxonomy_subjectarea',
+          'topic': 'topic',
         };
       } else if (searchTemplate === 'news_full') {
         facetsToItemsFieldnames = {
           'school': 'school',
+          'topic': 'topic',
         };
       } else if (searchTemplate === 'events_full') {
         facetsToItemsFieldnames = {
           'location': 'location',
-          'study_type': 'study_type',
+          'school': 'school',
+          'eventtype': 'eventtype',
           'topic': 'topic',
         };
       }
@@ -871,15 +874,11 @@
 				// field names coming from the endpoint are postfixed with [] if they contain lists
 				// removes postfix from the name
         var fieldName = '';
-        if (searchTemplate === 'training_full') {
-          fieldName = facetsToItemsFieldnames[field.field.replace(/\[\]$/, '')];
-        } else if (searchTemplate === 'news_full') {
-          fieldName = facetsToItemsFieldnames[field.field];
-        } else if (searchTemplate === 'events_full') {
+        if (searchTemplate === 'training_full' || searchTemplate === 'events_full' || searchTemplate === 'news_full') {
           if (facetsToItemsFieldnames[field.field] === 'topic') {
             return;
           }
-          fieldName = facetsToItemsFieldnames[field.field];
+          fieldName = facetsToItemsFieldnames[field.field.replace(/\[\]$/, '')];
         }
 				var	$field = $('[data-searchparam="' + fieldName + '"]');
 				var $local__options = $field.find('option');
