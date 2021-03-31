@@ -96,7 +96,8 @@
 				$subList = $eventTarget.next(this.options.domSelectors.list),
 				currentLevel = $eventTarget.closest(this.options.domSelectors.list).data('navigation-level');
 
-			if (!$eventTarget.hasClass(this.options.stateClasses.isActive)) {
+      if (!$eventTarget.hasClass(this.options.stateClasses.isActive)) {
+        this.closeNavigationLevel(currentLevel + 1);
 				this.setNavActive($eventTarget, currentLevel);
 
 				if (!window.estatico.mq.query({from: 'medium'})) {
