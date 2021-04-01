@@ -198,8 +198,11 @@ table {
 .widg_accordeon__content {
 	.content__table,
 	.content__table__backcomp {
-		display: table;
-		width: 100%;
+
+		@include mq($from: 'small') {
+			display: table;
+			width: 100%;
+		}
 
 		td:first-child {
 			padding-left: 0;
