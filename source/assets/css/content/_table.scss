@@ -195,6 +195,17 @@ table {
 }
 
 /* TABLE IN ACCORDEONS */
-.widg_accordeon__content .content__table td:first-child {
-	padding-left: 0;
+.widg_accordeon__content {
+	.content__table,
+	.content__table__backcomp {
+
+		@include mq($from: 'small') {
+			display: table;
+			width: 100%;
+		}
+
+		td:first-child {
+			padding-left: 0;
+		}
+	}
 }
