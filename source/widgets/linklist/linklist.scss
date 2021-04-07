@@ -35,7 +35,7 @@
 		float: left;
 		width: 100%;
 
-		@include mq($to: medium ) {
+		@include mq($to: medium) {
 			padding: 24px 0px 24px 0;
 			margin-right: 0;
 		}
@@ -64,17 +64,17 @@
 			transform: translateY(-50%) translateX(0);
 			transition: transform $transitionLength / 2 $transitionEase;
 
-			@include mq($to: 374px) {
+			@include mq($to: 416px) {
 				background-image: none;
 			}
 		}
 
 		h3 {
-			@include mq($to: 374px) {
+			@include mq($to: 416px) {
 				@include iconDataurl('pfeil-black');
 			}
 
-			@include mq($from: 374px) {
+			@include mq($from: 416px) {
 				background-image: none;
 			}
 
@@ -88,7 +88,7 @@
 				height: 16.2px;
 			}
 
-			@include mq($from: 374px) {
+			@include mq($from: 416px) {
 				padding-right: $basicPush * 5;
 			}
 		}
@@ -113,19 +113,17 @@
 				width: 20px;
 				height: 16.2px;
 
-				@include mq($to: 374px) {
+				@include mq($to: 416px) {
 					background-image: none;
 				}
-
 			}
 
 			h3 {
-
-				@include mq($to: 374px) {
+				@include mq($to: 416px) {
 					@include iconDataurl('external');
 				}
 
-				@include mq($from: 374px) {
+				@include mq($from: 416px) {
 					background-image: none;
 				}
 
@@ -139,7 +137,7 @@
 					height: 16.2px;
 				}
 
-				@include mq($from: 374px) {
+				@include mq($from: 416px) {
 					padding-right: $basicPush * 5;
 				}
 			}
@@ -147,7 +145,7 @@
 	}
 
 	&:hover {
-		@include mq($from: 347px) {
+		@include mq($from: 416px) {
 			background-color: $colorLightGray;
 		}
 	}
@@ -183,23 +181,23 @@
 		max-width: 100%;
 		height: auto;
 		transform: scale(1);
-    	transition: transform $transitionLength $transitionEase;
+		transition: transform $transitionLength $transitionEase;
 
-		@include mq($to: 374px) {
-			&[src*="technik"][alt="Infoabend"],
-			&[src*="technik"][alt="Kontakt und Anmeldung"],
-			&[src*="technik"][alt="Termine & Stundenpläne"],
-			&[src*="technik"][alt="Vorbereitung auf das Studium"],
-			&[src*="technik"][alt="Aufnahmebedingungen"],
-			&[src*="technik"][alt="Aufnahmeprüfung"],
-			&[src*="technik"][alt="Kosten und Gebühren"],
-			&[src*="technik"][alt="Studienordnung"],
-			&[src*="technik"][alt="Stipendien"],
-			&[src*="technik"][alt="Computer-Anforderungen"],
-			&[src*="technik"][alt="Kind & Studium"],
-			&[src*="technik"][alt="Militär, Zivildienst und Zivilschutz"],
-			&[src*="technik"][alt="Wohnen"],
-			&[src*="technik"][alt="Barrierefreies Studium"] {
+		@include mq($to: 416px) {
+			&[src*='technik'][alt='Infoabend'],
+			&[src*='technik'][alt='Kontakt und Anmeldung'],
+			&[src*='technik'][alt='Termine & Stundenpläne'],
+			&[src*='technik'][alt='Vorbereitung auf das Studium'],
+			&[src*='technik'][alt='Aufnahmebedingungen'],
+			&[src*='technik'][alt='Aufnahmeprüfung'],
+			&[src*='technik'][alt='Kosten und Gebühren'],
+			&[src*='technik'][alt='Studienordnung'],
+			&[src*='technik'][alt='Stipendien'],
+			&[src*='technik'][alt='Computer-Anforderungen'],
+			&[src*='technik'][alt='Kind & Studium'],
+			&[src*='technik'][alt='Militär, Zivildienst und Zivilschutz'],
+			&[src*='technik'][alt='Wohnen'],
+			&[src*='technik'][alt='Barrierefreies Studium'] {
 				max-width: 30%;
 			}
 		}
@@ -207,7 +205,7 @@
 
 	@include mq($from: medium) {
 		width: 133px;
-	    float: left;
+		float: left;
 	}
 
 	@include mq($to: medium) {
@@ -220,7 +218,7 @@
 		margin-bottom: 0;
 	}
 
-	@include mq($to: 374px) {
+	@include mq($to: 416px) {
 		left: 0;
 		width: 100%;
 		height: auto !important;
