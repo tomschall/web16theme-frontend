@@ -46,8 +46,13 @@
 			@include span(8);
 		}
 	}
-}
 
-.infobox__button {
-	margin-top: 24px;
+	a.button.infobox__button {
+		display: inline-block;
+		float: left;
+		height: auto;
+		line-height: inherit;
+		padding: 15px;
+		margin-top: 24px;
+	}
 }
