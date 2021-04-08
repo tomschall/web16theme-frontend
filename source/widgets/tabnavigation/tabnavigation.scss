@@ -71,10 +71,7 @@
 		@media print {
 			padding: 0;
 		}
-	}
 
-	img {
-		width: 100%;
 	}
 
 	& > .responsive-video {
@@ -105,7 +102,7 @@
 
 	font-size: 1.5rem;
 
-	padding: ($gutterWidth - 4) $basicPush * 4 ($gutterWidth - 4) $gutterWidth + 2;
+	padding: ($gutterWidth - 4) $basicPush * 4  ($gutterWidth - 4) $gutterWidth + 2;
 	position: relative;
 
 	opacity: 1;
@@ -131,7 +128,7 @@
 
 	&:after {
 		position: absolute;
-		content: ' ';
+		content: " ";
 		display: block;
 
 		transition: transform $transitionLength / 2 $transitionEase;
@@ -143,6 +140,7 @@
 		height: 12px;
 
 		right: $gutterWidth + 4;
+
 	}
 
 	@include mq($to: medium) {
