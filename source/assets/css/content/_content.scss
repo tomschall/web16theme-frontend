@@ -5,7 +5,7 @@ body {
 	hyphens: manual;
 }
 
-[href="#maincontent"] {
+[href='#maincontent'] {
 	position: absolute;
 	left: -100000px;
 
@@ -50,9 +50,9 @@ body {
 		margin-bottom: $basicPush * 2;
 		padding-bottom: 8px;
 
-	  	@include mq($to: small) {
-				padding-bottom: 8px;
-			}
+		@include mq($to: small) {
+			padding-bottom: 8px;
+		}
 
 		+ .widg_accordeon {
 			margin-top: 18px;
@@ -63,87 +63,89 @@ body {
 		}
 	}
 
-  img {
-    max-width: 100%;
-    height: auto;
+	img {
+		max-width: 100%;
+		height: auto;
 	}
 
 	@media screen and (min-width: 1024px) {
-    img {
-      &.fhnw-tiny-large {
-        max-width: 100%;
-      }
-      &.fhnw-tiny-large-float {
-        max-width: 100%;
-        float: left;
-        margin: 0px 14px 14px 0px;
-      }
-      &.fhnw-tiny-onethird {
-        max-width: 1100px;
-        width: 33%;
-      }
-      &.fhnw-tiny-onethird-float {
-        max-width: 1100px;
-        width: 33%;
-        float: left;
-        margin: 5px 14px 5px 0px;
-      }
-      &.fhnw-tiny-square {
-        max-width: 1000px;
-        width: 50%;
-          margin-right: 100%;
-      }
-      &.fhnw-tiny-square-float {
-        max-width: 1000px;
-        width: 50%;
-        float: left;
-        margin: 5px 14px 5px 0px;
-      }
-      &.fhnw-tiny-portrait {
-        max-width: 800px;
-        width: 30%;
-          float: left;
-          margin: 5px 14px 5px 0px;
-      }
-    }
+		img {
+			&.fhnw-tiny-large {
+				width: 100%;
+				max-width: 100%;
+			}
+			&.fhnw-tiny-large-float {
+				max-width: 100%;
+				float: left;
+				margin: 0px 14px 14px 0px;
+			}
+			&.fhnw-tiny-onethird {
+				max-width: 1100px;
+				width: 33%;
+			}
+			&.fhnw-tiny-onethird-float {
+				max-width: 1100px;
+				width: 33%;
+				float: left;
+				margin: 5px 14px 5px 0px;
+			}
+			&.fhnw-tiny-square {
+				max-width: 1000px;
+				width: 50%;
+				margin-right: 100%;
+			}
+			&.fhnw-tiny-square-float {
+				max-width: 1000px;
+				width: 50%;
+				float: left;
+				margin: 5px 14px 5px 0px;
+			}
+			&.fhnw-tiny-portrait {
+				max-width: 800px;
+				width: 30%;
+				float: left;
+				margin: 5px 14px 5px 0px;
+			}
+		}
 	}
 
 	@media (min-width: 320px) and (max-width: 1024px) {
-    img {
-      &.fhnw-tiny-large {
-        max-width: 100%;
-      }
-      &.fhnw-tiny-large-float {
-        max-width: 100%;
-        float: left;
-        margin: 5px 14px 5px 0px;
-      }
-      &.fhnw-tiny-onethird {
-        width: 100%;
-      }
-      &.fhnw-tiny-onethird-float {
-        width: 100%;
-        float: left;
-        margin: 5px 14px 5px 0px;
-      }
-      &.fhnw-tiny-square {
-        display: block;
-        width: 50%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      &.fhnw-tiny-square-float {
-        display: block;
-        width: 50%;
-        float: left;
-        margin: 5px 14px 5px 0px;
-      }
-      &.fhnw-tiny-portrait {
-        width: 40%;
-        float: left;
-        margin: 5px 14px 5px 0px;
-      }
-    }
+		img {
+			&.fhnw-tiny-large {
+				width: 100%;
+				max-width: 100%;
+			}
+			&.fhnw-tiny-large-float {
+				max-width: 100%;
+				float: left;
+				margin: 5px 14px 5px 0px;
+			}
+			&.fhnw-tiny-onethird {
+				width: 100%;
+			}
+			&.fhnw-tiny-onethird-float {
+				width: 100%;
+				float: left;
+				margin: 5px 14px 5px 0px;
+			}
+			&.fhnw-tiny-square {
+				display: block;
+				width: 50%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			&.fhnw-tiny-square-float {
+				display: block;
+				width: 50%;
+				float: left;
+				margin: 5px 14px 5px 0px;
+			}
+			&.fhnw-tiny-portrait {
+				width: 40%;
+				float: left;
+				margin: 5px 14px 5px 0px;
+			}
+		}
 	}
 
 	.widg_sidebar__object {
@@ -172,7 +174,8 @@ body {
 		}
 
 		.widg_teaser {
-			h2, h3 {
+			h2,
+			h3 {
 				margin-left: 0;
 				margin-right: 0;
 			}
@@ -193,7 +196,6 @@ body {
 		@include mq($to: medium) {
 			margin-bottom: $basicPush * 3;
 		}
-
 	}
 
 	@media print {
@@ -224,14 +226,14 @@ body {
 			display: block;
 			position: absolute;
 
-			content: "\2022";
+			content: '\2022';
 			color: $colorBlack;
 			left: 0;
 		}
 
-		@include mq($to:small) {
-		  font-size: 1.25rem;
-		  line-height: 23px;
+		@include mq($to: small) {
+			font-size: 1.25rem;
+			line-height: 23px;
 		}
 
 		@media print {
@@ -255,7 +257,7 @@ body {
 		padding-left: 1.333rem;
 		margin-left: 1.333rem;
 
-		@include mq($to:small) {
+		@include mq($to: small) {
 			font-size: 1.25rem;
 			line-height: 23px;
 		}
@@ -266,7 +268,6 @@ body {
 ul#page-not-found-list {
 	padding: 2rem 0 2rem 0;
 }
-
 
 .content__element___bleed {
 	@include bleed();
@@ -292,7 +293,7 @@ ul#page-not-found-list {
 }
 
 .content__element___bordered {
-	border: 1px solid $colorGreyHover ;
+	border: 1px solid $colorGreyHover;
 	padding: $basicPush * 4 $basicPush * 3.5 $basicPush * 4;
 
 	@include mq($to: medium) {
