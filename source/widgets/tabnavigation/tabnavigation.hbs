@@ -1,28 +1,30 @@
-<div class="widg_tabnavigation" data-init="tabnavigation">
-	{{#if title}}
-		<h2 id="{{get_id title}}">{{title}}</h2>
-	{{/if}}
-	{{#if description}}
-		<p>{{description}}</p>
-	{{/if}}
-  <nav class="widg_tabnavigation__nav only-desktop">
-		<ul class="not-default">
+<div class="content__element">
+	<div class="widg_tabnavigation" data-init="tabnavigation">
+		{{#if title}}
+			<h2 id="{{get_id title}}">{{title}}</h2>
+		{{/if}}
+		{{#if description}}
+			<p>{{description}}</p>
+		{{/if}}
+		<nav class="widg_tabnavigation__nav only-desktop">
+			<ul class="not-default">
+				{{#each tabs}}
+					<li>
+						<button class="not-default mce-item-anchor" aria-expanded="false" data-tabnavigation="button" id="{{get_id title}}">{{title}}</button>
+					</li>
+				{{/each}}
+			</ul>
+			<div class="nav__bar" data-tabnavigation="bar"></div>
+		</nav>
+		<div class="widg_tabnavigation__content">
 			{{#each tabs}}
-				<li>
-					<button class="not-default mce-item-anchor" aria-expanded="false" data-tabnavigation="button" id="{{get_id title}}">{{title}}</button>
-				</li>
-			{{/each}}
-		</ul>
-		<div class="nav__bar" data-tabnavigation="bar"></div>
-	</nav>
-	<div class="widg_tabnavigation__content">
-		{{#each tabs}}
-			<div class="content__entry-wrapper" >
-				<button class="only-phone not-default content__accordeon-button" data-tabnavigation="accordeonButton" aria-expanded="false">{{title}}</button>
-				<div class="content__entry" data-tabnavigation="content" aria-hidden="true">
-					{{{tabContent}}}
+				<div class="content__entry-wrapper" >
+					<button class="only-phone not-default content__accordeon-button" data-tabnavigation="accordeonButton" aria-expanded="false">{{title}}</button>
+					<div class="content__entry" data-tabnavigation="content" aria-hidden="true">
+						{{{tabContent}}}
+					</div>
 				</div>
-      </div>
-		{{/each}}
+			{{/each}}
+		</div>
 	</div>
 </div>
