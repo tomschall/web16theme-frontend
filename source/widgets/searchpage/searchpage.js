@@ -578,7 +578,7 @@
 	};
 
 	Widget.prototype.handleData = function(event, local__data, foundEntries, limitedToResults, category, facets) {
-    if (searchTemplate === 'news_full' && scrollOffset && !loadMoreMode) {
+    if ((searchTemplate === 'news_full' || searchTemplate === 'events_full') && scrollOffset && !loadMoreMode) {
       $([document.documentElement, document.body]).animate({
         scrollTop: scrollOffset - 480
       });
