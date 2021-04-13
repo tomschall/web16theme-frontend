@@ -8,14 +8,18 @@ var _ = require('lodash'),
 var templateData = {
 			items: [
 				{
-					title: 'Kontakt',
+					title: 'Standorte',
 					url: '#'
 				},
 				{
-					title: 'Offene Stellen',
+					title: 'Bibliotheken',
 					url: '#'
 				},
 				{
+					title: 'Karriere an der FHNW',
+					url: '#'
+				},
+        {
 					title: 'Medien',
 					url: '#'
 				}
