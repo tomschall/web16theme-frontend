@@ -1,4 +1,5 @@
 #!/bin/sh
+python --version
 /opt/python2/bin/virtualenv .
 source bin/activate
 bin/pip install -r requirements.txt
