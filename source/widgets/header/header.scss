@@ -199,6 +199,12 @@ body.is-env-test .widg_header {
 }
 
 .widg_header__inner-foot {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  overflow-y: auto;
+
 	@include mq($to: medium) {
 		display: none;
 		z-index: -1;
