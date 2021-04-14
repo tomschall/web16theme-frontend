@@ -25,6 +25,7 @@ body.is-env-test .widg_header {
 	background-color: $colorYellow;
 	padding: $gutter;
 	padding-top: 25px;
+  padding-bottom: 25px;
 
 	z-index: zindex('header');
 
@@ -200,11 +201,15 @@ body.is-env-test .widg_header {
 
 .widg_header__inner-foot {
   &::-webkit-scrollbar {
-    width: 10px;
+    display: none;
   }
 
   overflow-y: auto;
-
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-top: 10px;
+  height: 240px;
+  
 	@include mq($to: medium) {
 		display: none;
 		z-index: -1;
