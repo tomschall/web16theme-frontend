@@ -51,12 +51,14 @@ table.content__table {
 		th {
 			border-bottom: 1px solid $colorBlack;
 			background-color: $colorBg;
+			hyphens: auto;
 		}
 	}
 
 	tr {
 		td {
 			border-bottom: 1px solid $colorGreyHover;
+			hyphens: auto;
 		}
 
 		&:last-of-type {
@@ -198,7 +200,6 @@ table {
 .widg_accordeon__content {
 	.content__table,
 	.content__table__backcomp {
-
 		@include mq($from: 'small') {
 			display: table;
 			width: 100%;
