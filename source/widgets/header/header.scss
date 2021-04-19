@@ -21,6 +21,7 @@ body.is-env-test .widg_header {
 
 	display: flex;
 	flex-direction: column;
+  overflow-y: auto;
 
 	background-color: $colorYellow;
 	padding: $gutter;
@@ -200,13 +201,6 @@ body.is-env-test .widg_header {
 }
 
 .widg_header__inner-foot {
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   margin-top: 10px;
   height: 240px;
   
