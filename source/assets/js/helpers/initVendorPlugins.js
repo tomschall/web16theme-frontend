@@ -7,7 +7,7 @@
 	'use strict';
 
 	$(window).resize(function() {
-		if ($(window).width() > 1023) {
+		if ($(window).width() > 1022) {
 			$('.widg_teaser__img img').imageScale({
 				rescaleOnResize: true,
 				scale: 'best-fill',
@@ -24,7 +24,7 @@
 			color: '#999999'
 		});
 
-		if ($(window).width() > 1023) {
+		if ($(window).width() > 1022) {
 			$('.widg_teaser__img img').imageScale({
 				rescaleOnResize: true,
 				scale: 'best-fill',
@@ -59,7 +59,7 @@
 		}
 
 
-		if ($(window).width() > 1023) {
+		if ($(window).width() > 1022) {
 			$('.widg_teaser__img img').imageScale({
 				rescaleOnResize: true,
 				scale: 'best-fill',
@@ -74,8 +74,14 @@
 	});
 
 	$(window).load(function() {
-		$('.custom-scrollbar, .widg_navigation__sub-wrapper').mCustomScrollbar({
-			theme: 'fhnw'
-		});
+    if ($(window).width() > 1022) {
+			$('.custom-scrollbar, .widg_navigation__sub-wrapper, .widg_header').mCustomScrollbar({
+        theme: 'fhnw'
+      });
+		} else {
+      $('.custom-scrollbar, .widg_navigation__sub-wrapper').mCustomScrollbar({
+        theme: 'fhnw'
+      });
+    }
 	});
 })(jQuery);
