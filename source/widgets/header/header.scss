@@ -272,11 +272,16 @@ body.is-env-test .widg_header {
 		margin-top: 0;
 	}
 
-	> div {
+	> div > div {
 		opacity: 0;
 
 		transform: opacity $transitionLength / 3 $transitionEase;
 	}
+
+  .widg_header_inner_wrapper {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 
 	&.is_nav-open {
 		transform: translateY(0);
@@ -284,7 +289,7 @@ body.is-env-test .widg_header {
 		z-index: zindex(header);
 		overflow-x: hidden;
 
-		> div,
+		> div > div,
 		.widg_header__inner-foot {
 			opacity: 1;
 			display: block;

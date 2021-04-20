@@ -58,7 +58,6 @@
 			});
 		}
 
-
 		if ($(window).width() > 1022) {
 			$('.widg_teaser__img img').imageScale({
 				rescaleOnResize: true,
@@ -66,7 +65,6 @@
 				align: 'center'
 			});
 		}
-
 
 		if (window.estatico.mq.query({from: 'subnav'})) {
 			$('.search__form-wrapper').scrollToFixed();
