@@ -156,6 +156,7 @@
 	@include mq($from: subnav) {
 		max-height: 80vh;
 		overflow-y: visible;
+		hyphens: auto;
 	}
 
 	ul {
