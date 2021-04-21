@@ -278,12 +278,8 @@
     $(this.options.domSelectors.sortBtn).on('click.' + this.uuid, function() {
       if (searchParam.sort_order === 'ascending') {
         searchParam.sort_order = 'descending';
-        $(this.options.domSelectors.newsSortText).text($('.news_search__wrapper').data('sortDateDesc'));
-        $(this.options.domSelectors.newsSortIcon).text('\u2193');
       } else if (searchParam.sort_order === 'descending') {
         searchParam.sort_order = 'ascending';
-        $(this.options.domSelectors.newsSortText).text($('.news_search__wrapper').data('sortDateAsc'));
-        $(this.options.domSelectors.newsSortIcon).text('\u2191');
       }
       searchParam.sort_on = 'effective';
       this.sendSearchQuery(false, searchParam.sort_on, searchParam.sort_order);
@@ -527,9 +523,18 @@
           searchParam.sort_order = 'descending';
         }
         $(this.options.domSelectors.sortBtn).attr('disabled', false);
+        if (searchParam.sort_order === 'ascending') {
+          $(this.options.domSelectors.newsSortText).text($('.news_search__wrapper').data('sortDateAsc'));
+          $(this.options.domSelectors.newsSortIcon).text('\u2191');
+        } else if (searchParam.sort_order === 'descending') {
+          $(this.options.domSelectors.newsSortText).text($('.news_search__wrapper').data('sortDateDesc'));
+          $(this.options.domSelectors.newsSortIcon).text('\u2193');
+        }
       } else {
         delete searchParam.sort_on;
         $(this.options.domSelectors.sortBtn).attr('disabled', true);
+        $(this.options.domSelectors.newsSortText).text($('.news_search__wrapper').data('sortRelevance'));
+        $(this.options.domSelectors.newsSortIcon).text('');
       }
     }
 
