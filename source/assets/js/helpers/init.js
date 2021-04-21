@@ -70,7 +70,7 @@
     if (isMobile === null) {
       if ($('.widg_location_slider').length) {
         var resizeTimer;
-        $(window).resize(function() {
+        $(window).on('resize', function() {
           var windowSize = $(window).width();
           if (windowSize <= 1022) {
             clearTimeout(resizeTimer);
@@ -86,6 +86,10 @@
               this.location.reload(false); /* false to get page from cache */
             }, 1000);
           }
+        });
+      } else {
+        $(window).on('resize', function() {
+          this.location.reload(false);
         });
       }
     }

@@ -1,21 +1,23 @@
 <header class="widg_header" data-init="header" data-header-collapsible="{{ isCollapsible }}">
-  <a href="#maincontent" class="anchor-link">Skip to main content</a>
-  <div class="widg_header__inner-top">
-    <div class="widg_header__expander"></div>
-		{{> "widgets/menubuttons/menubuttons" }}
-		{{> "widgets/logo/logo" widgets.logo }}
-	</div>
-	<div class="widg_header__nav">
-		{{> "widgets/navigation/navigation" widgets.navigation}}
-		{{#if hasPromoTeaser}}
-			{{> "widgets/promoteaser/promoteaser" widgets.promoteaser}}
-		{{/if}}
-	</div>
-	<div class="widg_header__inner-foot">
-    <div class="widg_headerfoot widg_header__hide-on-shrinked">
-			{{> "widgets/langswitcher/langswitcher" widgets.languageSwitcher }}
-			{{> "widgets/headermetanavigation/headermetanavigation" widgets.headerMetaNavigation }}
-			{{> "widgets/somelinks/somelinks" widgets.soMeLinks }}
+  <div class="widg_header_inner_wrapper">
+    <a href="#maincontent" class="anchor-link">Skip to main content</a>
+    <div class="widg_header__inner-top">
+      <div class="widg_header__expander"></div>
+      {{> "widgets/menubuttons/menubuttons" }}
+      {{> "widgets/logo/logo" widgets.logo }}
     </div>
-	</div>
+    <div class="widg_header__nav">
+      {{> "widgets/navigation/navigation" widgets.navigation}}
+      {{#if hasPromoTeaser}}
+        {{> "widgets/promoteaser/promoteaser" widgets.promoteaser}}
+      {{/if}}
+    </div>
+    <div class="widg_header__inner-foot">
+      <div class="widg_headerfoot widg_header__hide-on-shrinked">
+        {{> "widgets/langswitcher/langswitcher" widgets.languageSwitcher }}
+        {{> "widgets/headermetanavigation/headermetanavigation" widgets.headerMetaNavigation }}
+        {{> "widgets/somelinks/somelinks" widgets.soMeLinks }}
+      </div>
+    </div>
+  </div>
 </header>

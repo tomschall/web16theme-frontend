@@ -21,10 +21,9 @@ body.is-env-test .widg_header {
 
 	display: flex;
 	flex-direction: column;
-  overflow-y: auto;
 
 	background-color: $colorYellow;
-	padding: $gutter;
+	
 	padding-top: 25px;
   padding-bottom: 25px;
 
@@ -33,6 +32,11 @@ body.is-env-test .widg_header {
 	&.is_nav-open {
 		z-index: zindex('headerOpen');
 	}
+
+  .widg_header_inner_wrapper {
+    padding-left: $gutter;
+    padding-right: $gutter;
+  }
 
 	.widg_header__inner-top {
 		@include mq($to: medium) {
@@ -201,7 +205,7 @@ body.is-env-test .widg_header {
 }
 
 .widg_header__inner-foot {
-  margin-top: 10px;
+  margin-top: 35px;
   height: 240px;
   
 	@include mq($to: medium) {
@@ -268,11 +272,16 @@ body.is-env-test .widg_header {
 		margin-top: 0;
 	}
 
-	> div {
+	> div > div {
 		opacity: 0;
 
 		transform: opacity $transitionLength / 3 $transitionEase;
 	}
+
+  .widg_header_inner_wrapper {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 
 	&.is_nav-open {
 		transform: translateY(0);
@@ -280,7 +289,7 @@ body.is-env-test .widg_header {
 		z-index: zindex(header);
 		overflow-x: hidden;
 
-		> div,
+		> div > div,
 		.widg_header__inner-foot {
 			opacity: 1;
 			display: block;
