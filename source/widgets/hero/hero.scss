@@ -72,6 +72,10 @@
 .widg_hero__img {
 	width: 100%;
 	height: auto;
+
+	@include mq($from: medium) {
+		padding-left: 340px;
+	}
 }
 
 .hero {
