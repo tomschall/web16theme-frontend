@@ -87,10 +87,6 @@
             }, 1000);
           }
         });
-      } else {
-        $(window).on('resize', function() {
-          this.location.reload(false);
-        });
       }
     }
   });
@@ -114,8 +110,8 @@
         $('.full_bleed__widg_teaser img').css('display', 'block');
       }
     }
-    
-    if($(window).width() >= 769) {
+
+    if ($(window).width() >= 769) {
       if ($('.widg_full_bleed_teaser').length) {
         $('.full_bleed__widg_teaser img').css('display', 'none');
       }
