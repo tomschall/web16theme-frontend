@@ -81,5 +81,23 @@
         theme: 'fhnw'
       });
     }
+
+    $.fn.hasScrollBar = function() {
+      return this.height() < $('#mCSB_1_container')[0].scrollHeight;
+    };
+
+    var checkIfScrollable = function() {
+      if ($('#mCSB_1_scrollbar_vertical').hasScrollBar()) {
+        $('#mCSB_1_container').css('height', 'unset');
+      } else {
+        $('#mCSB_1_container').css('height', '100%');
+      }
+    };
+
+    checkIfScrollable();
+
+    $(window).on('resize', function() {
+      checkIfScrollable();
+    });
 	});
 })(jQuery);
