@@ -39,6 +39,7 @@
 			align-items: center;
 			overflow-x: scroll;
 			margin-left: $basicPush - 5;
+			overflow-x: hidden;
 
 			&.gradient_prev:before {
 				position: absolute;

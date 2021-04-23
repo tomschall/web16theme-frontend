@@ -340,7 +340,7 @@ for better overview they are seperated here
 		margin-top: 0;
 
 		position: absolute;
-		top: 0;
+		top: -25px;
 		padding-top: $basicPush * 4;
 		left: -4 * $basicPush;
 		z-index: zindex('mobileNavigation');
