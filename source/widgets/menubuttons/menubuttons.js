@@ -98,10 +98,13 @@
 			if (this.options.fullHeader) {
 				$(this.options.domSelectors.menubutton).removeClass(this.options.stateClasses.isActive)
 						.attr('aria-expanded', 'false');
+				$('.widg_breadcrumb ul').css('overflow-x', 'scroll');
+
 				this.closeFullHeader();
 			} else {
 				$(this.options.domSelectors.menubutton).addClass(this.options.stateClasses.isActive)
 						.attr('aria-expanded', 'true');
+				$('.widg_breadcrumb ul').css('overflow-x', 'hidden');
 				this.showFullHeader();
 			}
 		}.bind(this));
