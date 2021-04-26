@@ -58,9 +58,4 @@
 			}
 		}
 	}
-
-	@include mq($to: small) {
-		margin-top: $basicPush;
-		display: none; // #862 - hide on mobile
-	}
 }
