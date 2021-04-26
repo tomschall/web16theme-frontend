@@ -200,7 +200,6 @@ body.is-env-test .widg_header {
 
 .widg_header__inner-foot {
   margin-top: 60px;
-  height: 240px;
   
 	@include mq($to: medium) {
 		display: none;
