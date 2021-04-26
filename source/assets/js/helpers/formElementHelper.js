@@ -503,13 +503,16 @@
 			var $el = $(event.target);
       var date_from = null;
       var date_to = null;
+      console.log('$el', $el);
 
 			if ($el.hasClass('pat-pickadate-ref--date')) {
         // news search date validation
         if ($el[0].name === 'form.widgets.date_from--date' && $el[0].value) {
+          console.log('news_date_from');
           localStorage.setItem('news_date_from', $el[0].value);
         }
         if ($el[0].name === 'form.widgets.date_to--date' && $el[0].value) {
+          console.log('news_date_to');
           localStorage.setItem('news_date_to', $el[0].value);
         }
         date_from = easyFormValidation.getTimestampFromDate(localStorage.getItem('news_date_from'));
