@@ -33,6 +33,22 @@ body.is-env-test .widg_header {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+
+    @include mq($to: medium) {
+			
+      .widg_header__inner-foot {
+        padding-bottom: 20px;
+      }
+
+      .widg_navigation__list ul:not(.list_language_selection) li a {
+        padding-left: 20px;
+      }
+
+      .widg_navigation__list nav.widg_headermetanavigation ul li a {
+        padding-left: 0px;
+      }
+
+		}
   }
 
 	.widg_header__inner-top {
