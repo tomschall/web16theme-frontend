@@ -9,6 +9,8 @@
 	'use strict';
 
 	var rules,
+  date_from = null,
+  date_to = null,
 	$form = $('#form');
 
 	/**
@@ -494,41 +496,40 @@
 				easyFormValidation.fieldCheckboxService($(this));
 			});
 
-			$form.find(':input[type="text"].pat-pickadate-ref--date').change(function() {
-				easyFormValidation.synchronizeDateFields($(this));
-			});
-		},
+			$form.find(':input[type="text"].pat-pickadate-ref--date').change(function(event) {
+        var $el = $(event.target);
 
-		onInputChange: function(event) {
-			var $el = $(event.target);
-      var date_from = null;
-      var date_to = null;
-      console.log('$el', $el);
-
-			if ($el.hasClass('pat-pickadate-ref--date')) {
         // news search date validation
         if ($el[0].name === 'form.widgets.date_from--date' && $el[0].value) {
-          console.log('news_date_from');
           localStorage.setItem('news_date_from', $el[0].value);
         }
         if ($el[0].name === 'form.widgets.date_to--date' && $el[0].value) {
-          console.log('news_date_to');
           localStorage.setItem('news_date_to', $el[0].value);
         }
         date_from = easyFormValidation.getTimestampFromDate(localStorage.getItem('news_date_from'));
         date_to = easyFormValidation.getTimestampFromDate(localStorage.getItem('news_date_to'));
 
+        if (date_from && date_to && date_from > date_to) {
+          setTimeout(function() {
+            $('#news-search-formfield-date-from').addClass('error');
+          }, 1000);
+        } else {
+          $('#news-search-formfield-date-from').removeClass('error');
+        }
+
+        easyFormValidation.synchronizeDateFields($(this));
+			});
+		},
+
+		onInputChange: function(event) {
+			var $el = $(event.target);
+
+			if ($el.hasClass('pat-pickadate-ref--date')) {
 				// synchronize fields
 				easyFormValidation.synchronizeDateFields($el);
 			}
 
 			easyFormValidation.validateElement($el);
-
-      if (date_from && date_to && date_from > date_to) {
-        $('#news-search-formfield-date-from').addClass('error');
-      } else {
-        $('#news-search-formfield-date-from').removeClass('error');
-      }
 		},
 
 		synchronizeDateFields: function($el) {
