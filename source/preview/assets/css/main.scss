@@ -169,6 +169,7 @@ $sg_defaultTransition: $sg_defaultTransitionProperty $sg_defaultTransitionDurati
 	.sg_icons &,
 	.sg_module & {
 		@include clearfix;
+		margin: $basicPush * 2;
 		margin-bottom: pxToEm(70px);
 	}
 
@@ -305,6 +306,7 @@ $sg_defaultTransition: $sg_defaultTransitionProperty $sg_defaultTransitionDurati
 	.sg_h3,
 	.sg_h4 {
 		margin-top: 2em;
+		margin-bottom: 2em;
 	}
 
 	.sg_inner_wrapper {
