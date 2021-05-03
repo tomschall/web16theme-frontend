@@ -37,8 +37,6 @@ styling of all links and lists
 
 	ul {
 		@include resetList();
-		display: block;
-		margin-bottom: $basicPush * 5;
 
 		li#ghost-elem {
 			height: 5px;
