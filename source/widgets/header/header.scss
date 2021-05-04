@@ -35,11 +35,7 @@ body.is-env-test .widg_header {
     height: 100%;
 
     @include mq($to: medium) {
-			
-      .widg_header__inner-foot {
-        padding-bottom: 20px;
-      }
-
+      
       .widg_navigation__list ul:not(.list_language_selection) li a {
         padding-left: 20px;
       }
@@ -220,7 +216,7 @@ body.is-env-test .widg_header {
 	@include mq($to: medium) {
 		display: none;
 		z-index: -1;
-		margin: 14px 20px 50px;
+		margin: 14px 20px 20px;
 
 		.is_nav-open & {
 			display: block;
