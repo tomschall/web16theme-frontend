@@ -39,11 +39,6 @@ styling of all links and lists
 
 	ul {
 		@include resetList();
-		display: block;
-
-		li#ghost-elem {
-			height: 100px;
-		}
 	}
 }
 
@@ -183,6 +178,12 @@ The back arrow only visible on mobile navigation
 			left: -10px;
 		}
 	}
+
+  ul {
+    li#ghost-elem {
+			height: 10px;
+		}
+  }
 }
 
 .widg_navigation__list[data-navigation-level='1'],
@@ -222,6 +223,10 @@ The back arrow only visible on mobile navigation
 			&:last-child {
 				margin-bottom: $basicPush * 5;
 			}
+
+      &#ghost-elem {
+        height: 100px;
+      }
 		}
 
 		@include mq($to: medium) {
