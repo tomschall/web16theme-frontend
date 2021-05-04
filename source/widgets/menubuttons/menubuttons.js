@@ -32,7 +32,8 @@
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
-		};
+		},
+    innerFoot = null;
 
 	/**
 	 * Create an instance of the Widget
@@ -142,7 +143,14 @@
 		}
 
 		if (!window.estatico.mq.query({from: 'medium'})) {
-			$clone.find('.widg_header__inner-foot').appendTo($clone.find('nav > .widg_navigation__list'));
+      $clone.find('nav > .widg_navigation__list > .widg_header__inner-foot').remove();
+
+      if (!innerFoot) {
+        innerFoot = $clone.find('.widg_header__inner-foot');
+        innerFoot.appendTo($clone.find('nav > .widg_navigation__list'));
+      } else {
+        innerFoot.appendTo($clone.find('nav > .widg_navigation__list'));
+      }
 		}
 
 		$headerOrigin.addClass(this.options.stateClasses.isNavOpen);
