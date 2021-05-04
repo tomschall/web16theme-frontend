@@ -39,6 +39,11 @@ styling of all links and lists
 
 	ul {
 		@include resetList();
+		display: block;
+
+		li#ghost-elem {
+			height: 100px;
+		}
 	}
 }
 
@@ -215,7 +220,7 @@ The back arrow only visible on mobile navigation
 			}
 
 			&:last-child {
-				margin-bottom: $basicPush * 10;
+				margin-bottom: $basicPush * 5;
 			}
 		}
 
