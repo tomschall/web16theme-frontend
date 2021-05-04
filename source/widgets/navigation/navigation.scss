@@ -39,11 +39,6 @@ styling of all links and lists
 
 	ul {
 		@include resetList();
-		display: block;
-
-		li#ghost-elem {
-			height: 100px;
-		}
 	}
 }
 

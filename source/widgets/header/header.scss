@@ -216,7 +216,7 @@ body.is-env-test .widg_header {
 	@include mq($to: medium) {
 		display: none;
 		z-index: -1;
-		margin: 14px 20px 20px;
+		margin: 25px 20px 20px;
 
 		.is_nav-open & {
 			display: block;
