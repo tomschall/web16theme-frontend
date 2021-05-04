@@ -32,15 +32,13 @@ styling of all links and lists
 	display: none;
 
 	&[data-navigation-level='0'] {
-		display: block;
+		display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 	}
 
 	ul {
 		@include resetList();
-
-		li#ghost-elem {
-			height: 100px;
-		}
 	}
 }
 
