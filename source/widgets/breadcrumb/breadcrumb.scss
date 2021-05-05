@@ -91,16 +91,23 @@
 	@include basicUnitHeight(right);
 	@include mq($to: medium) {
 		position: static;
+		padding-left: 50px;
 	}
 
 	@include mq($from: medium) {
 		padding-right: $gutterWidth * 2;
 	  padding-top: $basicPush;
+		padding-left: 34px;
 	}
 
-	@include mq($to: subnav) {
+	@include mq($from: large) {
+		padding-left: 84px;
+	}
+
+	@include mq($to: small) {
 		padding-top: $basicPush;
 		right: 0;
+		padding-left: 5px;
 	}
 
 	.no-image & {

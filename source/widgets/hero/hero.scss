@@ -1,6 +1,10 @@
 .widg_hero {
 	min-height: 90px;
 
+	@include mq($from: medium) {
+		padding-left: 340px;
+	}
+
 	position: relative;
 
 	@include mq($to: medium) {
@@ -72,10 +76,6 @@
 .widg_hero__img {
 	width: 100%;
 	height: auto;
-
-	@include mq($from: medium) {
-		padding-left: 340px;
-	}
 }
 
 .hero {
