@@ -157,10 +157,10 @@
 		line-height: 1.7;
 		font-weight: 300;
 		padding-top: 0;
-		padding-bottom: $basicPush * 2.5;
-
+		
 		@include mq($to: medium) {
 			padding-right: $basicPush * 5;
+			padding-bottom: $basicPush * 5;
 		}
 
 		@media print {
