@@ -157,6 +157,7 @@
 		line-height: 1.7;
 		font-weight: 300;
 		padding-top: 0;
+		padding-bottom: $basicPush * 3;
 
 		@include mq($to: medium) {
 			padding-right: $basicPush * 5;
