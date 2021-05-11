@@ -7,42 +7,45 @@ body.is-env-test .widg_header {
 	background-color: #86bfff;
 }
 
+
 .widg_header {
-	@include clearfix;
+  @include clearfix;
 	transition: all $transitionLength $transitionEase;
 	transform: translate3D(0, 0, 0);
 	width: $widthYellowBar;
 	position: fixed;
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 	background-color: $colorYellow;
 	z-index: zindex('header');
-	height: 100%;
+  height: 100%;
 
 	&.is_nav-open {
 		z-index: zindex('headerOpen');
 	}
 
-	.widg_header_inner_wrapper {
-		padding-left: $gutter;
-		padding-right: $gutter;
-		padding-top: 25px;
-		padding-bottom: 25px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		height: 100vh;
+  .widg_header_inner_wrapper {
+    padding-left: $gutter;
+    padding-right: $gutter;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 
-		@include mq($to: medium) {
-			.widg_navigation__list ul:not(.list_language_selection) li a {
-				padding-left: 20px;
-			}
+    @include mq($to: medium) {
+      
+      .widg_navigation__list ul:not(.list_language_selection) li a {
+        padding-left: 20px;
+      }
 
-			.widg_navigation__list nav.widg_headermetanavigation ul li a {
-				padding-left: 0px;
-			}
+      .widg_navigation__list nav.widg_headermetanavigation ul li a {
+        padding-left: 0px;
+      }
+
 		}
-	}
+  }
 
 	.widg_header__inner-top {
 		@include mq($to: medium) {
@@ -62,6 +65,7 @@ body.is-env-test .widg_header {
 	}
 
 	.widg_header__nav {
+
 		flex-grow: 1;
 
 		@include mq($to: medium) {
@@ -140,6 +144,7 @@ body.is-env-test .widg_header {
 		background: transparent;
 		height: 30pt;
 	}
+
 }
 
 .widg_header.is_shrinked {
@@ -152,9 +157,8 @@ body.is-env-test .widg_header {
 		max-height: basicUnitHeight(normal);
 
 		.widg_header__expander {
-			opacity: 1;
-			transition: opacity $transitionLength $transitionEase $transitionLength *
-				1.5;
+			opacity: 1.0;
+			transition: opacity $transitionLength $transitionEase $transitionLength * 1.5;
 		}
 
 		cursor: pointer;
@@ -207,8 +211,8 @@ body.is-env-test .widg_header {
 }
 
 .widg_header__inner-foot {
-	margin-top: 60px;
-
+  margin-top: 60px;
+  
 	@include mq($to: medium) {
 		display: none;
 		z-index: -1;
@@ -279,10 +283,10 @@ body.is-env-test .widg_header {
 		transform: opacity $transitionLength / 3 $transitionEase;
 	}
 
-	.widg_header_inner_wrapper {
-		padding-left: 0px;
-		padding-right: 0px;
-	}
+  .widg_header_inner_wrapper {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 
 	&.is_nav-open {
 		transform: translateY(0);
