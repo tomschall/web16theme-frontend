@@ -87,10 +87,10 @@
     };
 
     var checkIfScrollable = function() {
-      if ($('.widg_header > #mCSB_1_scrollbar_vertical').hasScrollBar()) {
-        $('.widg_header > #mCSB_1_container').css('height', 'unset');
+      if ($('.widg_header #mCSB_1_scrollbar_vertical').hasScrollBar()) {
+        $('.widg_header #mCSB_1_container').css('height', 'unset');
       } else {
-        $('.widg_header > #mCSB_1_container').css('height', '100%');
+        $('.widg_header #mCSB_1_container').css('height', '100%');
       }
     };
 
