@@ -1,0 +1,23 @@
+<div class="widg_content_key_data" data-init="content_key_data" data-sidebar="object">
+	<div class="edu__content" data-sidebar="content">
+		<div class="object__title" data-sidebar="title">
+			<h2 class="edu__title">{{title}}</h2>
+		</div>
+		<dl>
+		{{#each entries}}
+		<div>
+			<dt>{{{title}}}:</dt>
+			<dd>{{{text}}}</dd>
+		</div>
+		{{/each}}
+		</dl>
+		</div>
+		<div class="edu__details">
+			{{#if widgets.events}}
+				{{> "widgets/sidebar_events/sidebar_events" widgets.events }}
+			{{/if}}
+			{{#if widgets.application}}
+				{{> "widgets/sidebar_application/sidebar_application" widgets.application}}
+			{{/if}}
+		</div>
+</div>
