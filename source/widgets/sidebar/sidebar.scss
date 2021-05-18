@@ -45,7 +45,7 @@ $sidebarObjectPush: $basicPush * 5;
 			.header_wide & {
 				right: $pagePadding - $gutterWidth;
 			}
-				@include mq($from: betweener, $to: large) {
+			@include mq($from: betweener, $to: large) {
 				right: $pagePaddingSmall - $gutterWidth;
 			}
 		}
@@ -124,8 +124,8 @@ $sidebarObjectPush: $basicPush * 5;
 		.object__content {
 			overflow: hidden;
 			transition: max-height $transitionLength / 2 $transitionEase,
-			padding-top $transitionLength / 2 $transitionEase,
-			padding-bottom $transitionLength / 2 $transitionEase;
+				padding-top $transitionLength / 2 $transitionEase,
+				padding-bottom $transitionLength / 2 $transitionEase;
 
 			@media print {
 				display: unset;
@@ -193,17 +193,14 @@ $sidebarObjectPush: $basicPush * 5;
 		transition: padding-bottom $transitionLength / 2 $transitionEase;
 	}
 
-	@include mq($to: 'subnav') {
-		border: none;
-	}
-
 	@media print {
 		border: 0;
 	}
 }
 
 .object__title {
-	padding: $sidebarObjectGutter - 10 ($sidebarObjectGutter + 12 + 8) 0 $sidebarObjectGutter;
+	padding: $sidebarObjectGutter - 10 ($sidebarObjectGutter + 12 + 8) 0
+		$sidebarObjectGutter;
 	z-index: zindex(sidebarTitle);
 
 	margin-top: 0;
@@ -237,7 +234,7 @@ $sidebarObjectPush: $basicPush * 5;
 
 		&:after {
 			display: block;
-			content: " ";
+			content: ' ';
 
 			position: absolute;
 			bottom: 0;
@@ -249,7 +246,8 @@ $sidebarObjectPush: $basicPush * 5;
 
 			background-color: $colorGreyHover;
 
-			transition: left $transitionLength $transitionEase, right $transitionLength $transitionEase;
+			transition: left $transitionLength $transitionEase,
+				right $transitionLength $transitionEase;
 
 			@media print {
 				display: none;
@@ -269,7 +267,6 @@ $sidebarObjectPush: $basicPush * 5;
 	}
 
 	.look-unfoldable & {
-
 		cursor: pointer;
 
 		background-color: $colorBg;
@@ -291,9 +288,9 @@ $sidebarObjectPush: $basicPush * 5;
 		}
 
 		&:after {
-			transform: translateY(-300%) rotate(45deg) scale(1.0);
+			transform: translateY(-300%) rotate(45deg) scale(1);
 
-			opacity: 1.0;
+			opacity: 1;
 		}
 
 		> h2:after {
@@ -309,7 +306,7 @@ $sidebarObjectPush: $basicPush * 5;
 	.unfolded & {
 		&:after,
 		&:hover:after {
-			transform: translateY(-300%) rotate(90deg) scale(1.0);
+			transform: translateY(-300%) rotate(90deg) scale(1);
 		}
 	}
 
@@ -321,7 +318,8 @@ $sidebarObjectPush: $basicPush * 5;
 	}
 
 	.is_pushed & {
-		transition: top $transitionLength / 2 $transitionEase, margin-top $transitionLength / 2 $transitionEase;
+		transition: top $transitionLength / 2 $transitionEase,
+			margin-top $transitionLength / 2 $transitionEase;
 	}
 
 	@media print {
@@ -437,6 +435,6 @@ $sidebarObjectPush: $basicPush * 5;
 
 .widg_sidebar_application.widg_sidebar__object.displayed.look-unfoldable {
 	@media print {
-		display: none
+		display: none;
 	}
 }

@@ -1,0 +1,76 @@
+.widg_content_key_data {
+	@include bleed;
+	// background-image: url('/++theme++web16theme/assets/media/img/blockquote_bg.png');
+	background-image: url(https://www.fhnw.ch/++theme++web16theme/assets/css/++theme++web16theme/assets/media/img/blockquote_bg.png);
+	background-size: 100% 100%;
+	padding-top: $basicPush * 3;
+	padding-bottom: $basicPush * 2;
+
+	.object__title {
+		padding-left: $basicPush * 2;
+		background: $colorBg;
+
+		h2.edu__title {
+			font-size: 2rem;
+			padding-left: 0;
+			margin-bottom: 0;
+
+			&::after {
+				content: '';
+				background: none;
+			}
+		}
+	}
+
+	.edu__content {
+		display: block;
+		width: 100%;
+		border: 1px solid $colorGreyHover;
+		background: $colorBg;
+		margin-bottom: $basicPush;
+		padding-top: 0;
+
+		dl {
+			display: flex;
+			flex-wrap: wrap;
+			min-height: $basicPush * 10;
+			padding: $basicPush * 2;
+			margin-top: 0;
+
+			div {
+				width: 33%;
+
+				@include mq($to: medium) {
+					width: 50%;
+				}
+
+				@include mq($to: small) {
+					width: 100%;
+				}
+
+				padding: $basicPush;
+				padding-left: 0;
+				border-bottom: 1px solid $colorGreyHover;
+			}
+
+			dt {
+				font-weight: 700;
+				margin-inline-start: 0;
+			}
+			dd {
+				min-height: 3em;
+				margin-inline-start: 0;
+			}
+		}
+	}
+
+	.edu__details {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		@include mq($to: small) {
+			flex-direction: column;
+		}
+	}
+}

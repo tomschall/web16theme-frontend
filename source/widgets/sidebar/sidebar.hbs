@@ -1,22 +1,7 @@
 <div class="widg_sidebar" data-init="sidebar" role="complementary">
 	<div class="widg_sidebar__content">
-
-		{{#if widgets.application}}
-			{{> "widgets/sidebar_application/sidebar_application" widgets.application}}
-		{{/if}}
-
-		{{#if widgets.events}}
-			{{> "widgets/sidebar_events/sidebar_events" widgets.events }}
-		{{/if}}
-
-		{{#if widgets.keydata}}
-			{{> "widgets/sidebar_key_data/sidebar_key_data" widgets.keydata }}
-		{{/if}}
-
-        {{#each widgets.contact}}
-
-                {{> "widgets/sidebar_contact/sidebar_contact" this }}
-
-        {{/each}}
+		{{#each widgets.contact}}
+      {{> "widgets/sidebar_contact/sidebar_contact" this }}
+    {{/each}}
 	</div>
 </div>

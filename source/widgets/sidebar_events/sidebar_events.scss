@@ -1,4 +1,10 @@
 .widg_sidebar_events {
+	width: 49%;
+
+	@include mq($to: small) {
+		width: 100%;
+	}
+
 	ul {
 		@include resetList();
 
