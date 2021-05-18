@@ -1,4 +1,11 @@
 .widg_sidebar_application {
+	width: 49%;
+
+	@include mq($to: small) {
+		width: 100%;
+		margin-top: $basicPush;
+	}
+
 	p:not(.small) {
 		margin-bottom: $basicPush * 2;
 	}
@@ -9,5 +16,4 @@
 		color: $colorTextDarkGrey;
 		margin-bottom: $basicPush;
 	}
-
 }
