@@ -1,5 +1,5 @@
 /*!
- * Sidebar KeyData
+ * Sidebar Contact
  *
  * @author Unic AG
  * @copyright Unic AG
@@ -7,10 +7,10 @@
  * //@requires ../../../node_modules/some/dependency.js
  */
 
-;(function($, undefined) {
+(function($, undefined) {
 	'use strict';
 
-	var name = 'sidebar_key_data',
+	var name = 'edu_contact',
 		events = {
 			// eventname: 'eventname.estatico.' + name
 		},
@@ -20,7 +20,7 @@
 			},
 			stateClasses: {
 				// isActive: 'is_active'
-			}
+			},
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -41,11 +41,16 @@
 			defaults: defaults,
 			options: options,
 			events: events,
-			data: data
+			data: data,
 		});
 	}
 
-	Widget.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Widget.prototype);
+	Widget.prototype = $.extend(
+		true,
+		{},
+		estatico.helpers.SuperClass.prototype,
+		Widget.prototype
+	);
 
 	/**
 	 * Initialize Widget, bind events.
@@ -53,7 +58,7 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		// console.log('Widget "sidebar_key_data" initialized');
+		// console.log('Widget "edu_contact" initialized');
 	};
 
 	/**
@@ -72,7 +77,6 @@
 	// Make the plugin available through jQuery (and the global project namespace)
 	estatico.helpers.SuperClass.register(Widget, name, {
 		initEvents: ['ready', 'ajaxload'],
-		events: events
+		events: events,
 	});
-
 })(jQuery);

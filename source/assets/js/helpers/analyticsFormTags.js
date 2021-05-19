@@ -3,7 +3,7 @@
  * to a hidden form tag with id #analyticsProduktField
  */
 
-;(function($) {
+(function($) {
 	'use strict';
 
 	/**
@@ -11,7 +11,8 @@
 	 *
 	 */
 	function checkSelect2SelectedFields(analyticsProduktField) {
-		var multi_fields = $('#form').find('#form-widgets-' + analyticsProduktField)
+		var multi_fields = $('#form')
+			.find('#form-widgets-' + analyticsProduktField)
 			.nextAll('span')
 			.find('.select2-selection__rendered');
 		if (multi_fields[0].title.length) {
@@ -39,7 +40,9 @@
 		var fields = $('#form').find('#form-widgets-' + analyticsProduktField);
 		if (fields.length) {
 			if (fields[0].localName === 'select') {
-				$('#analyticsProdukt').val(checkSelect2SelectedFields(analyticsProduktField));
+				$('#analyticsProdukt').val(
+					checkSelect2SelectedFields(analyticsProduktField)
+				);
 				inputType = 'change';
 			} else {
 				$('#analyticsProdukt').val(fields[0].value);
@@ -75,5 +78,4 @@
 			analyticsFormTags.init();
 		});
 	}
-
 })(jQuery);

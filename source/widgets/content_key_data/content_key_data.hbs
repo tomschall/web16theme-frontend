@@ -6,7 +6,7 @@
 		<dl>
 		{{#each entries}}
 		<div>
-			<dt>{{{title}}}:</dt>
+			<dt>{{{title}}}</dt>
 			<dd>{{{text}}}</dd>
 		</div>
 		{{/each}}
@@ -14,10 +14,10 @@
 		</div>
 		<div class="edu__details">
 			{{#if widgets.events}}
-				{{> "widgets/sidebar_events/sidebar_events" widgets.events }}
+				{{> "widgets/edu_events/edu_events" widgets.events }}
 			{{/if}}
 			{{#if widgets.application}}
-				{{> "widgets/sidebar_application/sidebar_application" widgets.application}}
+				{{> "widgets/edu_application/edu_application" widgets.application}}
 			{{/if}}
 		</div>
 </div>

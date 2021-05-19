@@ -10,7 +10,7 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var name = 'sidebar_key_data',
+	var name = 'edu_key_data',
 		events = {
 			// eventname: 'eventname.estatico.' + name
 		},
@@ -53,7 +53,7 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		// console.log('Widget "sidebar_key_data" initialized');
+		// console.log('Widget "edu_key_data" initialized');
 	};
 
 	/**

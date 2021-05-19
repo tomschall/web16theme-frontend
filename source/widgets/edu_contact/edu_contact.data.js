@@ -47,10 +47,10 @@ var templateData = {
 		},
 		data = _.assign(defaultData, {
 			meta: {
-				title: 'Sidebar Kontakt | WI_053',
+				title: 'EDU Contact | WI_053',
 				description: '',
-				code: dataHelper.getTemplateCode('sidebar_contact.hbs'),
-				documentation: dataHelper.getDocumentation('sidebar_contact.md'),
+				code: dataHelper.getTemplateCode('edu_contact.hbs'),
+				documentation: dataHelper.getDocumentation('edu_contact.md'),
 				mocks: [
 					{
 						description: null,

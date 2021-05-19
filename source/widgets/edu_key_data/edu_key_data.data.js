@@ -28,10 +28,10 @@ var templateData = {
 		},
 		data = _.assign(defaultData, {
 			meta: {
-				title: 'Sidebar Info | WI_055',
+				title: 'EDU Key Datas | WI_055',
 				description: '',
-				code: dataHelper.getTemplateCode('sidebar_key_data.hbs'),
-				documentation: dataHelper.getDocumentation('sidebar_key_data.md'),
+				code: dataHelper.getTemplateCode('edu_key_data.hbs'),
+				documentation: dataHelper.getDocumentation('edu_key_data.md'),
 				mocks: [
 					{
 						description: null,

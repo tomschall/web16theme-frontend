@@ -28,10 +28,10 @@ var templateData = {
 		},
 		data = _.merge(defaultData, {
 			meta: {
-				title: 'Sidebar Events | WI_054',
+				title: 'EDU Events | WI_054',
 				description: '',
-				code: dataHelper.getTemplateCode('sidebar_events.hbs'),
-				documentation: dataHelper.getDocumentation('sidebar_events.md'),
+				code: dataHelper.getTemplateCode('edu_events.hbs'),
+				documentation: dataHelper.getDocumentation('edu_events.md'),
 				mocks: [
 					{
 						description: null,
