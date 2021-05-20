@@ -27,7 +27,7 @@ var data = _.merge(defaultData, {
 			soMeShare: requireNew('../../widgets/so_me_share/so_me_share.data.js'),
 			sidebar: _.assign(requireNew('../../widgets/sidebar/sidebar.data.js'), {
 				widgets: {
-					contact: _.assign(requireNew('../../widgets/sidebar_contact/sidebar_contact.data.js'), {
+					contact: _.assign(requireNew('../../widgets/edu_contact/edu_contact.data.js'), {
 						contacts: [
 							{
 								name: 'Prof. Dr. Verena Muster',

@@ -1,0 +1,25 @@
+.widg_edu_events {
+	width: 49%;
+
+	@include mq($to: small) {
+		width: 100%;
+	}
+
+	.event__title {
+		font-size: 1.25rem;
+		display: block;
+		color: $colorBlack;
+
+		margin-bottom: $basicPush;
+	}
+
+	.event__date-location {
+		color: $colorTextGrey;
+		font-size: 1.083333rem;
+		font-weight: 700;
+	}
+
+	.button {
+		margin-top: 20px;
+	}
+}

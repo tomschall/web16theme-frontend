@@ -10,16 +10,15 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var name = 'sidebar_key_data',
+	var name = 'edu_key_data',
 		events = {
 			// eventname: 'eventname.estatico.' + name
 		},
 		defaults = {
 			domSelectors: {
-				// item: '[data-' + name + '="item"]'
 			},
 			stateClasses: {
-				// isActive: 'is_active'
+				maxItems: 1
 			}
 		},
 		data = {
@@ -53,7 +52,19 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		// console.log('Widget "sidebar_key_data" initialized');
+		if (estatico.mq.query({ to: 'small' })) {
+			if ($('.widg_content_key_data .edu__key_data div.datas').length > 3) {
+				$('.edu__key_data div:gt(2)').hide();
+			}
+
+			$('.show-more').on('click', function() {
+				$('.edu__key_data div.datas:gt(2)').toggle();
+				// eslint-disable-next-line no-unused-expressions
+				$(this).text() === 'Mehr anzeigen' ? $(this).text('Weniger anzeigen') : $(this).text('Mehr anzeigen');
+				// eslint-disable-next-line no-unused-expressions
+				$(this).text() === 'Weniger anzeigen' ? $(this).addClass('open') : $(this).removeClass('open');
+			});
+		}
 	};
 
 	/**

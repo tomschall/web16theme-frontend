@@ -24,13 +24,33 @@ var templateData = {
 				title: 'Unterrichtssprache',
 				text: 'Deutsch',
 			},
+			{
+				title: 'Lorem ipsum',
+				text: 'Dolor sit amet',
+			},
+			{
+				title: 'Lorem ipsum',
+				text: 'Dolor sit amet',
+			},
+			{
+				title: 'Lorem ipsum',
+				text: 'Dolor sit amet',
+			},
+			{
+				title: 'Lorem ipsum',
+				text: 'Dolor sit amet',
+			},
+			{
+				title: 'Lorem ipsum',
+				text: 'Dolor sit amet',
+			},
 		],
 	},
 	data = _.assign(
 		defaultData,
 		{
 			meta: {
-				title: 'Content EDU-Product | WI_055',
+				title: 'EDU-Product - Content | WI_075',
 				description: '',
 				code: dataHelper.getTemplateCode('content_key_data.hbs'),
 				documentation: dataHelper.getDocumentation('content_key_data.md'),
@@ -43,12 +63,10 @@ var templateData = {
 			},
 			widgets: {
 				application: _.assign(
-					requireNew(
-						'../../widgets/sidebar_application/sidebar_application.data.js'
-					)
+					requireNew('../../widgets/edu_application/edu_application.data.js')
 				),
 				events: _.assign(
-					requireNew('../../widgets/sidebar_events/sidebar_events.data.js')
+					requireNew('../../widgets/edu_events/edu_events.data.js')
 				),
 			},
 		},
