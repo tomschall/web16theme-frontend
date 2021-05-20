@@ -20,7 +20,7 @@ var templateData = {
 		defaultData,
 		{
 			meta: {
-				title: 'Sidebar Anmeldung | WI_052',
+				title: 'EDU Application | WI_052',
 				description: '',
 				code: dataHelper.getTemplateCode('edu_application.hbs'),
 				documentation: dataHelper.getDocumentation('edu_application.md'),

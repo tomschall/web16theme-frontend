@@ -3,10 +3,10 @@
 		<h2 class="edu__title">{{title}}</h2>
 	</div>
 	<div class="object__content" data-sidebar="content">
-			{{#each entries}}
-					<span class="event__date-location">{{dateTime}}, {{location}}</span>
-					<span class="event__title"><a href="{{url}}">{{title}}</a></span>
-			{{/each}}
+		{{#each entries}}
+			<span class="event__date-location">{{dateTime}}, {{location}}</span>
+			<span class="event__title"><a href="{{url}}">{{title}}</a></span>
+		{{/each}}
 		<a href="{{button.url}}" class="button small_button">
 			<span>{{button.text}}</span>
 		</a>
