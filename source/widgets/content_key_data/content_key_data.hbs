@@ -1,16 +1,19 @@
-<div class="widg_content_key_data" data-init="content_key_data" data-sidebar="object">
+<div class="widg_content_key_data" data-init="edu_key_data">
 	<div class="edu__content" data-sidebar="content">
 		<div class="object__title" data-sidebar="title">
 			<h2 class="edu__title">{{title}}</h2>
 		</div>
-		<dl>
+		<dl class="edu__key_data">
 		{{#each entries}}
-		<div>
+		<div class="datas">
 			<dt>{{{title}}}</dt>
 			<dd>{{{text}}}</dd>
 		</div>
 		{{/each}}
 		</dl>
+		<div class="toggler">
+			<a class="show-more button small_button">Mehr anzeigen</a>
+		</div>
 		</div>
 		<div class="edu__details">
 			{{#if widgets.events}}

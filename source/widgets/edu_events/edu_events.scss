@@ -5,39 +5,18 @@
 		width: 100%;
 	}
 
-	ul {
-		@include resetList();
-
-		li {
-			margin: 0 -1 * $sidebarObjectGutter;
-			padding: 10px $sidebarObjectGutter 0;
-
-			a {
-				display: block;
-
-				font-size: 1.25rem;
-			}
-
-			&:last-of-type {
-				a {
-					border-bottom: none;
-				}
-			}
-		}
-	}
-
 	.event__title {
 		font-size: 1.25rem;
 		display: block;
-
 		color: $colorBlack;
-		font-weight: 600;
+
+		margin-bottom: $basicPush;
 	}
 
 	.event__date-location {
 		color: $colorTextGrey;
-
 		font-size: 1.083333rem;
+		font-weight: 700;
 	}
 
 	.button {

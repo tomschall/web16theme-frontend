@@ -6,27 +6,29 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
-			button: {
-				text: 'Alle ansehen',
-				url: '#targetInfoEvents'
-			},
-			title: 'Infoveranstaltungen',
-			entries: [
-				{
-					title: 'Info-Veranstaltung',
-					dateTime: '27.06.2016 um 18:15 Uhr',
-					location: 'Windisch',
-					url: '/'
-				},
-				{
-					title: 'Info-Veranstlatung',
-					dateTime: '27.06.2016 um 18:15 Uhr',
-					location: 'Windisch',
-					url: '/'
-				}
-			]
+		button: {
+			text: 'Alle ansehen',
+			url: '#targetInfoEvents',
 		},
-		data = _.merge(defaultData, {
+		title: 'Infoveranstaltungen',
+		entries: [
+			{
+				title: 'Info-Veranstaltung',
+				dateTime: '27.06.2016 um 18:15 Uhr',
+				location: 'Windisch',
+				url: '/',
+			},
+			{
+				title: 'Info-Veranstaltung',
+				dateTime: '27.06.2016 um 18:15 Uhr',
+				location: 'Windisch',
+				url: '/',
+			},
+		],
+	},
+	data = _.merge(
+		defaultData,
+		{
 			meta: {
 				title: 'EDU Events | WI_054',
 				description: '',
@@ -35,10 +37,12 @@ var templateData = {
 				mocks: [
 					{
 						description: null,
-						data: dataHelper.getFormattedJSON(templateData)
-					}
-				]
-			}
-		}, templateData);
+						data: dataHelper.getFormattedJSON(templateData),
+					},
+				],
+			},
+		},
+		templateData
+	);
 
 module.exports = data;

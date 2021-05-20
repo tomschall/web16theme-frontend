@@ -27,8 +27,8 @@
 		width: 100%;
 		border: 1px solid $colorGreyHover;
 		background: $colorBg;
-		margin-bottom: $basicPush + 5;
 		padding-top: 0;
+		margin-bottom: $basicPush + 5;
 
 		dl {
 			display: flex;
@@ -36,6 +36,14 @@
 			min-height: $basicPush * 10;
 			padding: $basicPush * 2;
 			margin-top: 0;
+
+			@include mq($to: small) {
+				padding-bottom: 0;
+			}
+
+			&:last-child {
+				padding-bottom: 0;
+			}
 
 			div {
 				width: 33%;
@@ -61,6 +69,32 @@
 				min-height: 3em;
 				margin-inline-start: 0;
 			}
+		}
+
+		.toggler {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: $basicPush;
+		}
+
+		.show-more {
+			width: 90%;
+			margin: 0 auto;
+			color: $colorText;
+			background: $colorBg !important;
+			border: 2px solid $colorGreyHover;
+			cursor: pointer;
+
+			@include mq($from: small) {
+				display: none;
+			}
+				
+			&.open {}
+		}
+
+		.edu__key_data {
+			transition: height 1s linear;
 		}
 	}
 
