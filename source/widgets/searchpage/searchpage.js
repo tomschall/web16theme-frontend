@@ -116,7 +116,6 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-    console.log('init resetFields');
     localStorage.removeItem('news_date_from');
     localStorage.removeItem('news_date_to');
 
@@ -469,7 +468,6 @@
         }
 			}
       if (searchTemplate === 'news_full') {
-        console.log('resetFields');
         localStorage.removeItem('news_date_from');
         localStorage.removeItem('news_date_to');
         $('#news-search-formfield-date-from').removeClass('error');

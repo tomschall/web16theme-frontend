@@ -50,10 +50,10 @@ var templateData = {
 		defaultData,
 		{
 			meta: {
-				title: 'EDU-Product - Content | WI_075',
+				title: 'EDU Contents | WI_075',
 				description: '',
-				code: dataHelper.getTemplateCode('content_key_data.hbs'),
-				documentation: dataHelper.getDocumentation('content_key_data.md'),
+				code: dataHelper.getTemplateCode('edu_contents.hbs'),
+				documentation: dataHelper.getDocumentation('edu_contents.md'),
 				mocks: [
 					{
 						description: null,

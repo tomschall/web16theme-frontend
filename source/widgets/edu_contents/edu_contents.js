@@ -7,7 +7,7 @@
  * //@requires ../../../node_modules/some/dependency.js
  */
 
-;(function($, undefined) {
+(function($, undefined) {
 	'use strict';
 
 	var name = 'edu_key_data',
@@ -15,11 +15,10 @@
 			// eventname: 'eventname.estatico.' + name
 		},
 		defaults = {
-			domSelectors: {
-			},
+			domSelectors: {},
 			stateClasses: {
-				maxItems: 1
-			}
+				maxItems: 1,
+			},
 		},
 		data = {
 			// items: ["Item 1", "Item 2"]
@@ -40,11 +39,16 @@
 			defaults: defaults,
 			options: options,
 			events: events,
-			data: data
+			data: data,
 		});
 	}
 
-	Widget.prototype = $.extend(true, {}, estatico.helpers.SuperClass.prototype, Widget.prototype);
+	Widget.prototype = $.extend(
+		true,
+		{},
+		estatico.helpers.SuperClass.prototype,
+		Widget.prototype
+	);
 
 	/**
 	 * Initialize Widget, bind events.
@@ -53,16 +57,20 @@
 	 */
 	Widget.prototype.init = function() {
 		if (estatico.mq.query({ to: 'small' })) {
-			if ($('.widg_content_key_data .edu__key_data div.datas').length > 3) {
+			if ($('.widg_edu_contents .edu__key_data div.datas').length > 3) {
 				$('.edu__key_data div:gt(2)').hide();
 			}
 
 			$('.show-more').on('click', function() {
 				$('.edu__key_data div.datas:gt(2)').toggle();
 				// eslint-disable-next-line no-unused-expressions
-				$(this).text() === 'Mehr anzeigen' ? $(this).text('Weniger anzeigen') : $(this).text('Mehr anzeigen');
+				$(this).text() === 'Mehr anzeigen'
+					? $(this).text('Weniger anzeigen')
+					: $(this).text('Mehr anzeigen');
 				// eslint-disable-next-line no-unused-expressions
-				$(this).text() === 'Weniger anzeigen' ? $(this).addClass('open') : $(this).removeClass('open');
+				$(this).text() === 'Weniger anzeigen'
+					? $(this).addClass('open')
+					: $(this).removeClass('open');
 			});
 		}
 	};
@@ -83,7 +91,6 @@
 	// Make the plugin available through jQuery (and the global project namespace)
 	estatico.helpers.SuperClass.register(Widget, name, {
 		initEvents: ['ready', 'ajaxload'],
-		events: events
+		events: events,
 	});
-
 })(jQuery);
