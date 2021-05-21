@@ -73,9 +73,9 @@
 
 	Widget.prototype.mobileNavigation = function() {
 		if (estatico.mq.query({ to: 'small' })) {
-			var e = $('<div><div class="icon icon__contact"></div><div class="icon icon__info"></div><div class="icon icon__application"></div></div>');
+			var e = $('<div><div class="icon icon__application">Anmeldung</div><div class="icon icon__info">Info-Anlässe</div><div class="icon icon__contact">Kontakt</div></div>');
 			$('body').append(e);
-			e.attr('id', 'edu__product_nav');
+			e.attr('id', 'edu__product_nav').hide().fadeIn(1000);
 		}
 		// ANCHOR CONTACT
 		if ($('#edu__contact').length) {
@@ -100,6 +100,12 @@
 						scrollTop: $('#edu__application').offset().top - 25
 				}, 1000);
 			});
+		}
+
+		// REPLACING BACK-TO-TOP-LINK
+		if($('.widg_toplink').length) {
+			console.log('tolink');
+			$('.widg_toplink').css('bottom', '90px');
 		}
 
 	};

@@ -115,7 +115,7 @@
 	bottom: 0;
 
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
 	flex-direction: row;
 	width: 100%;
@@ -124,10 +124,13 @@
 	background: $colorBg;
 	border-top: 1px solid $formIconColor; 
 	padding: $basicPush;
-	padding-left: $basicPush * 4;
-	padding-right: $basicPush * 4;
+	padding-left: $basicPush * 2;
+	padding-right: $basicPush * 2;
 	
 	.icon {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		padding: $basicPush;
 
 		&.icon__contact {
