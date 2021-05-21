@@ -110,12 +110,36 @@
 	}
 }
 
-.edu__product_nav {
+#edu__product_nav {
 	position: fixed;
 	bottom: 0;
 
-	.container {
-		width: 100%;
-		background: red;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+	width: 100%;
+	z-index: 1000;
+
+	background: $colorBg;
+	border-top: 1px solid $formIconColor; 
+	padding: $basicPush;
+	padding-left: $basicPush * 4;
+	padding-right: $basicPush * 4;
+	
+	.icon {
+		padding: $basicPush;
+
+		&.icon__contact {
+			@include iconDataurl('contact');
+		}
+
+		&.icon__info {
+			@include iconDataurl('info');
+		}
+
+		&.icon__application {
+			@include iconDataurl('application');
+		}
 	}
 }
