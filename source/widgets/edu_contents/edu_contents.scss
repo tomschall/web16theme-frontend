@@ -52,7 +52,6 @@
 
 				@include mq($to: medium) {
 					width: 50%;
-					border-bottom: 1px solid $colorGreyHover;
 				}
 
 				@include mq($to: small) {

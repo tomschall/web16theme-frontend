@@ -83,6 +83,17 @@
 				}
 			});
 		}
+
+		if (estatico.mq.query({ from: 'small', to: 'medium' })) {
+			console.log('to medium');
+			console.log('index', $('.edu__key_data div').length);
+			$('.edu__key_data div').each(function(index) {
+				if (index === 1 || index === 3 || index === 5 || index === 7 || index === 9 || index === 11 || index === 13 || index === 15) {
+					$(this).after('<div class="ruler"></div>');
+				}
+			});
+		}
+
 	};
 
 	Widget.prototype.mobileNavigation = function() {
