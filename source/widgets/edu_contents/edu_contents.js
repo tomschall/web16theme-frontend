@@ -69,6 +69,24 @@
 			});
 			this.mobileNavigation();
 		}
+		this.calculateLines();
+	};
+
+	Widget.prototype.calculateLines = function() {
+		if (estatico.mq.query({ from: 'medium' })) {
+			$('.edu__key_data div').each(function(index) {
+				if (index === 2 || index === 5 || index === 8 || index === 11 || index === 14) {
+					$(this).after('<div class="ruler"></div>');
+				}
+			});
+		}
+		if (estatico.mq.query({ from: 'small', to: 'medium' })) {
+			$('.edu__key_data div').each(function(index) {
+				if (index === 1 || index === 3 || index === 5 || index === 7 || index === 9 || index === 11 || index === 13 || index === 15) {
+					$(this).after('<div class="ruler"></div>');
+				}
+			});
+		}
 	};
 
 	Widget.prototype.mobileNavigation = function() {
@@ -103,8 +121,7 @@
 		}
 
 		// REPLACING BACK-TO-TOP-LINK
-		if($('.widg_toplink').length) {
-			console.log('tolink');
+		if ($('.widg_toplink').length) {
 			$('.widg_toplink').css('bottom', '90px');
 		}
 
