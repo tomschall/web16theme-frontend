@@ -69,6 +69,20 @@
 			});
 			this.mobileNavigation();
 		}
+
+		this.calculateLines();
+	};
+
+	Widget.prototype.calculateLines = function() {
+		if (estatico.mq.query({ from: 'medium' })) {
+			console.log('from medium');
+			console.log('index', $('.edu__key_data div').length);
+			$('.edu__key_data div').each(function(index) {
+				if (index === 2 || index === 5 || index === 8 || index === 11 || index === 14) {
+					$(this).after('<div class="ruler"></div>');
+				}
+			});
+		}
 	};
 
 	Widget.prototype.mobileNavigation = function() {
@@ -103,8 +117,7 @@
 		}
 
 		// REPLACING BACK-TO-TOP-LINK
-		if($('.widg_toplink').length) {
-			console.log('tolink');
+		if ($('.widg_toplink').length) {
 			$('.widg_toplink').css('bottom', '90px');
 		}
 

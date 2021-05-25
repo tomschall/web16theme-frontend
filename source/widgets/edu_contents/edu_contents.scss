@@ -35,6 +35,7 @@
 			flex-wrap: wrap;
 			min-height: $basicPush * 10;
 			padding: $basicPush * 2;
+			padding-bottom: 0;
 			margin-top: 0;
 
 			@include mq($to: small) {
@@ -45,20 +46,22 @@
 				padding-bottom: 0;
 			}
 
-			div {
+			.datas {
 				width: 33%;
+				box-sizing: border-box;
 
 				@include mq($to: medium) {
 					width: 50%;
+					border-bottom: 1px solid $colorGreyHover;
 				}
 
 				@include mq($to: small) {
 					width: 100%;
+					border-bottom: 1px solid $colorGreyHover;
 				}
 
 				padding: $basicPush;
 				padding-left: 0;
-				border-bottom: 1px solid $colorGreyHover;
 			}
 
 			dt {
@@ -68,6 +71,17 @@
 			dd {
 				min-height: 3em;
 				margin-inline-start: 0;
+			}
+
+			.ruler {
+				width: 100%;
+				padding: 0;
+				margin: 0;
+				border-bottom: 1px solid $colorGreyHover;
+
+				&:last-child {
+					display: none;
+				}
 			}
 		}
 
@@ -126,12 +140,17 @@
 	padding: $basicPush;
 	padding-left: $basicPush * 2;
 	padding-right: $basicPush * 2;
+
+	@include mq($from: 'small') {
+		display: none;
+	}
 	
 	.icon {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		padding: $basicPush;
+		cursor: pointer;
 
 		&.icon__contact {
 			@include iconDataurl('contact');
