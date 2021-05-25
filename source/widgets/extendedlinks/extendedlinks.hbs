@@ -9,6 +9,9 @@
 		<div class="widg_extendedlinks__entry {{#if date}}has_date{{/if}} {{#if description}}has_description{{/if}}" role="listitem">
 			<a href={{url}}>
 				{{#if date}}<span class="widg_extendedlinks__date">{{date}}</span>{{/if}}
+        {{#if dateline}}
+          <span class="widg_extendedlinks__dateline">{{ dateline }}</span>
+        {{/if}}
 				<h3 class="childless">{{{title}}}</h3>
 				{{#if news_detail}} <p class="news_detail"> {{news_detail.news_date}} | {{news_detail.university}} </p> {{/if}}
 				{{#if event_detail}} <p class="event_detail"> {{event_detail.event_date}} , {{event_detail.location_short}} </p> {{/if}}

@@ -98,13 +98,19 @@
 		span {
 			font-weight: 100 !important;
 			padding-top: 12px;
-			display: inline-block;
+			display: block;
 			font-size: 1.25rem;
 
 			@include mq($to: medium) {
 				padding-right: $basicPush * 5;
 			}
 		}
+
+    .widg_linklist__dateline {
+      font-weight: 600 !important;
+      font-size: 13px !important;
+      line-height: 23px;
+    }
 	}
 
 	&.is_external {
