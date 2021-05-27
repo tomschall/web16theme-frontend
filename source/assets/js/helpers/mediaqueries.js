@@ -47,6 +47,11 @@
 		currentBreakpoint = parseCssProperty(currentBreakpointString);
 
 	$document.on(estatico.events.resize + '.mq', function() {
+		if ($title === '' || $title === undefined) {
+			$title = 'FHNW - Fachhochschule Nordwestschweiz';
+			$('head').append('<title>' + $title + '</title>');
+		}
+
 		var breakpoint = parseCssProperty($title.css('font-family')),
 			prevBreakpoint = estatico.mq.currentBreakpoint;
 
