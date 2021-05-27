@@ -67,6 +67,7 @@
  * @requires ../../widgets/hero/hero.js
  * @requires ../../widgets/event_search/event_search.js
  * @requires ../../widgets/news_search/news_search.js
+ * @requires ../../widgets/edu_contents/edu_contents.js
 
  * //*autoinsertmodule*
  *
