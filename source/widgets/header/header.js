@@ -59,7 +59,7 @@
 
 		this.addEventListener();
 
-		if (estatico.mq.query({from: 'medium'})) {
+		if (window.estatico.mq.query({from: 'medium'})) {
 			if (this.$element.data('header-collapsible')) {
 				this.addInitialScrollMagic();
 				this.options.isCollapsible = false;
