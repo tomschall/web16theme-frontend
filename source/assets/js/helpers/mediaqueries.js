@@ -32,10 +32,7 @@
 	'use strict';
 
 	function parseCssProperty(str) {
-    if (str !== undefined) {
-      return $.parseJSON($.trim(str.replace(/^('|")|(\\)|('|")$/g, '')));
-    }
-    return '';
+    return $.parseJSON($.trim(str.replace(/^('|")|(\\)|('|")$/g, '')));
 	}
 
 	var $document = $(document),

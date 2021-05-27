@@ -56,7 +56,7 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-		if (estatico.mq.query({ to: 'small' })) {
+		if (window.estatico.mq.query({ to: 'small' })) {
 			if ($('.widg_edu_contents .edu__key_data div.datas').length > 3) {
 				$('.edu__key_data div:gt(2)').hide();
 			}
@@ -73,14 +73,14 @@
 	};
 
 	Widget.prototype.calculateLines = function() {
-		if (estatico.mq.query({ from: 'medium' })) {
+		if (window.estatico.mq.query({ from: 'medium' })) {
 			$('.edu__key_data div').each(function(index) {
 				if (index === 2 || index === 5 || index === 8 || index === 11 || index === 14) {
 					$(this).after('<div class="ruler"></div>');
 				}
 			});
 		}
-		if (estatico.mq.query({ from: 'small', to: 'medium' })) {
+		if (window.estatico.mq.query({ from: 'small', to: 'medium' })) {
 			$('.edu__key_data div').each(function(index) {
 				if (index === 1 || index === 3 || index === 5 || index === 7 || index === 9 || index === 11 || index === 13 || index === 15) {
 					$(this).after('<div class="ruler"></div>');
@@ -90,7 +90,7 @@
 	};
 
 	Widget.prototype.mobileNavigation = function() {
-		if (estatico.mq.query({ to: 'small' })) {
+		if (window.estatico.mq.query({ to: 'small' })) {
 			var e = $('<div><div class="icon icon__application">Anmeldung</div><div class="icon icon__info">Info-Anlässe</div><div class="icon icon__contact">Kontakt</div></div>');
 			$('body').append(e);
 			e.attr('id', 'edu__product_nav').hide().fadeIn(1000);
