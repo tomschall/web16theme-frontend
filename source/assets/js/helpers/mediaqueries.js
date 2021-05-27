@@ -32,6 +32,8 @@
 	'use strict';
 
 	function parseCssProperty(str) {
+    console.log('str', str);
+    console.log('parsed', $.parseJSON($.trim(str.replace(/^('|")|(\\)|('|")$/g, ''))));
     return $.parseJSON($.trim(str.replace(/^('|")|(\\)|('|")$/g, '')));
 	}
 
