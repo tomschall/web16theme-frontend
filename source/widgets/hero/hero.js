@@ -80,8 +80,9 @@
 			optionsObj[cuttingOption] = 'center';
 		}
 
-		if ($('.widg_hero__img.is-profile-hero').length) {
-			align = 'top-right';
+		if ($('.widg_hero__img').length) {
+			console.log('hero profile');
+			align = 'default';
 		} else {
 			align = optionsObj[cuttingOption];
 		}

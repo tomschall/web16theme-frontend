@@ -8,7 +8,7 @@ var _ = require('lodash'),
 var templateData = {
 			isHero2: false,
 			heroImg: '/assets/media/img/hero.png',
-			cuttingOption: 'topLeft',
+			cuttingOption: 'default',
 			heroAlt: 'Symbolbild',
 			breadcrumb: {
 				entries: [
