@@ -106,8 +106,12 @@
       }
     }
 
+    td:first-child {
+      width: 150px;
+    }
+
     td:nth-child(2) {
-      max-width: 50%;
+      width: 500px;
     }
   }
 
