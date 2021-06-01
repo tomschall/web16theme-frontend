@@ -3,6 +3,12 @@ $colorAvailabilityRed: #f05f1b;
 
 .widg_accordeon,
 .widg_application_accordeon {
+	.text__lead {
+		font-size: $textSize;
+		line-height: $contentLineHeight;
+		font-weight: 500;
+	}
+
 	fieldset {
 		border: none;
 		border-bottom: 1px solid $colorBlack;
