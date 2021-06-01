@@ -26,3 +26,4 @@ yarn-error.log
 /eggs
 .Python
 deploy_theme.sh
+/docker
