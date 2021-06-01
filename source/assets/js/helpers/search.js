@@ -65,7 +65,8 @@ var fieldDictionaries = {
 						'<a href="{{combinedURL}}">{{Title}}<span class="search__result-arrow"></span></a></div>',
 
 				profiles: '<tr class="cat_page_result cat_page_profile_result search__result--item" data-clickable="false">' +
-						'<td>{{#if combinedURL}}<img src="{{combinedURL}}/@@images/portrait_foto/f_search" alt="{{Title}}"/>{{/if}}</td>' +
+						'<td>{{#if combinedURL}}{{#if dev_mode}}<img src="{{combinedURL}}" alt="{{Title}}"/>{{else}}' +
+            '<img src="{{combinedURL}}/@@images/portrait_foto/f_search" alt="{{Title}}"/>{{/if}}{{/if}}</td>' +
 						'<td><div><h4>{{Title}}</h4></div><div>{{fa_expertise}}</div><a class="button__secondary" href="{{combinedURL}}">{{to-profile}}</a></td>' +
 						'<td><div class="search__contact-adress">{{{standortadresse}}}</div>{{#if telefonnummer}}<div>' +
 						'<span class="search__contact-label">{{phone-direct}}</span><a class="search__contact-link" href="tel:{{telefonnummer}}">{{telefonnummer}}</a>' +
