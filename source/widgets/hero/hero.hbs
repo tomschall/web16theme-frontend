@@ -3,15 +3,15 @@
 		<h1 class="widg_hero__profile-name only-desktop">{{profileInfo.name}}</h1>
 	{{/if}}
 
-	{{#if heroImage}}
+  {{#if heroImage}}
 		<div class="widg_hero__wrapper">
-			<img 
-				id="widg_hero__image"
-				src="{{heroImage}}"
-				class="widg_hero__img"
-				{{#if cuttingOption}}data-hero-cutting-option="{{cuttingOption}}" {{else}} default {{/if}}
-				{{#if profileInfo}} alt="{{profileInfo.name}}" {{/if}} />
-		</div>
+      <img
+        id="widg_hero__image"
+        src="{{heroImage}}"
+        class="widg_hero__img{{#if profileInfo}} is-profile-hero{{/if}}"
+        {{#if cuttingOption}}data-hero-cutting-option="{{cuttingOption}}" {{else}}default {{/if}}
+        {{#if profileInfo}}alt="{{profileInfo.name}}" {{/if}}/>
+    </div>
 	{{/if}}
 
 	{{#if breadcrumb}}
