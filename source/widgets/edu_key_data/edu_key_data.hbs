@@ -1,13 +1,14 @@
-<div class="widg_edu_key_data widg_sidebar__object" data-init="edu_key_data" data-sidebar="object">
-	<div class="object__title" data-sidebar="title">
-		<h2>{{title}}</h2>
-	</div>
-	<div class="object__content" data-sidebar="content">
-		<dl>
-			{{#each entries}}
-				<dt>{{{title}}}:</dt>
-				<dd>{{{text}}}</dd>
-			{{/each}}
-		</dl>
-	</div>
+<div class="object__title" data-sidebar="title" data-init="edu_key_datas">
+			<h2 id="edu_title" class="edu__title">{{title}}</h2>
+</div>
+<dl class="edu__key_data">
+	{{#each entries}}
+		<div class="datas">
+			<dt>{{{title}}}</dt>
+			<dd>{{{text}}}</dd>
+		</div>
+	{{/each}}
+</dl>
+<div class="toggler">
+	<a class="show-more button small_button">Mehr anzeigen</a>
 </div>
