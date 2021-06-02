@@ -81,7 +81,7 @@
 		}
 
 		if ($('.widg_hero__img.is-profile-hero').length) {
-			align = 'top-right';
+			align = 'bottom-right';
 		} else {
 			align = optionsObj[cuttingOption];
 		}

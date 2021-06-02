@@ -95,11 +95,9 @@
 }
 
 .widg_hero__profile-name {
-	// @include contentWrapper(0, false);
 	padding: 0 100px 0 84px;
 	position: absolute;
 	top: 128px;
-	max-width: 52vw;
-
+	max-width: 37vw;
 	z-index: zindex(titleProfile);
 }
