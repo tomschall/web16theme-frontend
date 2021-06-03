@@ -7,6 +7,10 @@ var _ = require('lodash'),
 
 var templateData = {
 		title: 'Eckdaten',
+		langStrings: {
+			showMore: 'Mehr anzeigen',
+			showLess: 'Weniger anzeigen'
+		},
 		entries: [
 			{
 				title: 'Abschluss',

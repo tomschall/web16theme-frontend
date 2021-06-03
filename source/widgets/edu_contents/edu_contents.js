@@ -48,7 +48,59 @@
 	 * @method
 	 * @public
 	 */
-	Widget.prototype.init = function() {};
+	Widget.prototype.init = function() {
+		var labelApplication = $('.widg_edu_contents').attr('data-nav-application');
+		var labelEvents = $('.widg_edu_contents').attr('data-nav-events');
+		var labelContact = $('.widg_edu_contents').attr('data-nav-contact');
+
+		if (window.estatico.mq.query({ to: 'small' })) {
+			var e = $('<div><div class="icon icon__application">' + labelApplication +
+			'</div><div class="icon icon__info">' + labelEvents +
+			'</div><div class="icon icon__contact">' + labelContact +
+			'</div></div>');
+			$('body').append(e);
+			e.attr('id', 'edu__product_nav').hide().fadeIn(1000);
+		}
+		// ANCHOR CONTACT
+		if ($('#edu__contact').length) {
+			$('.icon.icon__contact').on('click', function() {
+				$('html, body').animate(
+					{
+						scrollTop: $('.widg_sidebar__content').offset().top - 0,
+					},
+					1000
+				);
+			});
+		}
+		// ANCHOR EVENTS
+		if ($('#edu__events').length) {
+			$('.icon.icon__info').on('click', function() {
+				$('html, body').animate(
+					{
+						scrollTop:
+							$('.widg_edu_events.widg_sidebar__object').offset().top - 10,
+					},
+					1000
+				);
+			});
+		}
+		// ANCHOR APPLICATION
+		if ($('#edu__application').length) {
+			$('.icon.icon__application').on('click', function() {
+				$('html, body').animate(
+					{
+						scrollTop: $('#edu__application').offset().top - 25,
+					},
+					1000
+				);
+			});
+		}
+
+		// REPLACING BACK-TO-TOP-LINK
+		if ($('.widg_toplink').length) {
+			$('.widg_toplink').css('bottom', '90px');
+		}
+	};
 
 	/**
 	 * Unbind events, remove data, custom teardown
