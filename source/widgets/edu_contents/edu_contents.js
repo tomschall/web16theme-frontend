@@ -61,6 +61,7 @@
 		var labelApplication = $(this.options.domSelectors.parent).attr('data-nav-application');
 		var labelEvents = $(this.options.domSelectors.parent).attr('data-nav-events');
 		var labelContact = $(this.options.domSelectors.parent).attr('data-nav-contact');
+    var self = this;
 
 		if (window.estatico.mq.query({ to: 'small' })) {
 			var e = $('<div><div class="icon icon__application">' + labelApplication +
@@ -70,22 +71,19 @@
 			$('body').append(e);
 			e.attr('id', 'edu__product_nav').hide().fadeIn(1000);
 		}
-		// ANCHOR CONTACT
+
 		if ($(this.options.domSelectors.contactAnchor).length) {
-			$('.icon.icon__contact').on('click', function() {
-				Widget.prototype.scrollTop(defaults.domSelectors.contactAnchor, 0);
-			}).bind(this);
-		}
-		// ANCHOR EVENTS
-		if ($(this.options.domSelectors.events).length) {
-			$('.icon.icon__info').on('click', function() {
-				Widget.prototype.scrollTop(defaults.domSelectors.eventAnchor, 10);
-			});
-		}
-		// ANCHOR APPLICATION
-		if ($(this.options.domSelectors.application).length) {
-			$('.icon.icon__application').on('click', function() {
-				Widget.prototype.scrollTop(defaults.domSelectors.applicationAnchor, 25);
+			$('.icon.icon__contact, .icon.icon__info, .icon.icon__application').on('click', function() {
+        if (this.className.split(' ')[1] === 'icon__contact') {
+          // ANCHOR CONTACT
+          self.scrollTop(defaults.domSelectors.contactAnchor, 0);
+        } else if (this.className.split(' ')[1] === 'icon__info') {
+          // ANCHOR EVENTS
+          self.scrollTop(defaults.domSelectors.eventAnchor, 10);
+        } else if (this.className.split(' ')[1] === 'icon__application') {
+          // ANCHOR APPLICATION
+          self.scrollTop(defaults.domSelectors.applicationAnchor, 25);
+        }
 			});
 		}
 
@@ -96,7 +94,7 @@
 	};
 
 	Widget.prototype.scrollTop = function(selector, param) {
-		$('html, body').animate({ scrollTop: $(selector).offset().top - param }, 1000 );
+		$('html, body').animate({ scrollTop: $(selector).offset().top - param }, 1000);
 	};
 
 	/**
