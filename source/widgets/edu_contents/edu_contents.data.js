@@ -5,7 +5,13 @@ var _ = require('lodash'),
 	dataHelper = require('../../../helpers/data.js'),
 	defaultData = requireNew('../../data/default.data.js');
 
-var templateData = {},
+var templateData = {
+	langStrings: {
+		application: 'Anmeldung',
+		events: 'Info-Anlässe',
+		contact: 'Kontakt'
+	}
+},
 	data = _.assign(
 		defaultData,
 		{
@@ -22,7 +28,7 @@ var templateData = {},
 				],
 			},
 			widgets: {
-				edu_key_datas: _.assign(
+				keydata: _.assign(
 					requireNew('../../widgets/edu_key_data/edu_key_data.data.js')
 				),
 				application: _.assign(

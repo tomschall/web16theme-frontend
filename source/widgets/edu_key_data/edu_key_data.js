@@ -10,7 +10,7 @@
 ;(function($, undefined) {
 	'use strict';
 
-	var name = 'edu_key_data',
+	var name = 'keydata',
 	events = {
 		// eventname: 'eventname.estatico.' + name
 	},
@@ -52,17 +52,17 @@
 	 */
 	Widget.prototype.init = function() {
 		if (window.estatico.mq.query({ to: 'small' })) {
+			var showMore = $('.object__title').attr('data-lang-show-more');
+			var showLess = $('.object__title').attr('data-lang-show-less');
+			$('.toggler .show-more').text(showMore);
 			if ($('.widg_edu_contents .edu__key_data div.datas').length > 3) {
 				$('.edu__key_data div:gt(2)').hide();
 			}
 			$('.show-more').on('click', function() {
 				$('.edu__key_data div.datas:gt(2)').toggle();
 				// eslint-disable-next-line no-unused-expressions
-				$(this).text() === 'Mehr anzeigen' ? $(this).text('Weniger anzeigen') : $(this).text('Mehr anzeigen');
-				// eslint-disable-next-line no-unused-expressions
-				$(this).text() === 'Weniger anzeigen'	? $(this).addClass('open') : $(this).removeClass('open');
+				$(this).text() === showMore ? $(this).text(showLess) : $(this).text(showMore);	
 			});
-			this.mobileNavigation();
 		}
 		this.calculateLines();
 };
@@ -96,55 +96,6 @@
 					$(this).after('<div class="ruler"></div>');
 				}
 			});
-		}
-	};
-
-	Widget.prototype.mobileNavigation = function() {
-		if (window.estatico.mq.query({ to: 'small' })) {
-			var e = $(
-				'<div><div class="icon icon__application">Anmeldung</div><div class="icon icon__info">Info-Anlässe</div><div class="icon icon__contact">Kontakt</div></div>'
-			);
-			$('body').append(e);
-			e.attr('id', 'edu__product_nav').hide().fadeIn(1000);
-		}
-		// ANCHOR CONTACT
-		if ($('#edu__contact').length) {
-			$('.icon.icon__contact').on('click', function() {
-				$('html, body').animate(
-					{
-						scrollTop: $('.widg_sidebar__content').offset().top - 0,
-					},
-					1000
-				);
-			});
-		}
-		// ANCHOR EVENTS
-		if ($('#edu__events').length) {
-			$('.icon.icon__info').on('click', function() {
-				$('html, body').animate(
-					{
-						scrollTop:
-							$('.widg_edu_events.widg_sidebar__object').offset().top - 10,
-					},
-					1000
-				);
-			});
-		}
-		// ANCHOR APPLICATION
-		if ($('#edu__application').length) {
-			$('.icon.icon__application').on('click', function() {
-				$('html, body').animate(
-					{
-						scrollTop: $('#edu__application').offset().top - 25,
-					},
-					1000
-				);
-			});
-		}
-
-		// REPLACING BACK-TO-TOP-LINK
-		if ($('.widg_toplink').length) {
-			$('.widg_toplink').css('bottom', '90px');
 		}
 	};
 
