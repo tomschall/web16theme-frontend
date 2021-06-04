@@ -1,5 +1,9 @@
 <div class="widg_sidebar" data-init="sidebar" role="complementary">
 	<div class="widg_sidebar__content">
+		{{#if widgets.application}}
+			{{> "widgets/sidebar_application/sidebar_application" widgets.application}}
+		{{/if}}
+
 		{{#each widgets.contact}}
       {{> "widgets/edu_contact/edu_contact" this }}
     {{/each}}

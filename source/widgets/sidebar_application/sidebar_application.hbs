@@ -1,0 +1,13 @@
+<div class="widg_sidebar_application widg_sidebar__object" data-init="sidebar_application" data-sidebar="object">
+	<div class="object__title" data-sidebar="title">
+		<h2>{{title}}</h2>
+	</div>
+	<div class="object__content" data-sidebar="content">
+		<p>{{text}}</p>
+		<p class="small">{{note}}</p>
+		<a class="button small_button{{#if button.disabled}} disabled{{/if}}" href="{{#if button.disabled}}#{{else}}{{button.url}}{{/if}}">
+			<span>{{button.text}}</span>
+		</a>
+	</div>
+</div>
+
