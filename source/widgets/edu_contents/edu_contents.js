@@ -23,7 +23,8 @@
 				topLink: '.widg_toplink',
 				contactAnchor: '.widg_sidebar__content > .widg_edu_contact.widg_sidebar__object',
 				eventAnchor: '.widg_edu_events.widg_sidebar__object',
-				applicationAnchor: '#edu__application'
+				applicationAnchor: '#edu__application',
+				sidebarApplicationAnchor: '.widg_sidebar'
 			},
 			stateClasses: {},
 		},
@@ -82,9 +83,17 @@
           self.scrollTop(defaults.domSelectors.eventAnchor, 10);
         } else if (this.className.split(' ')[1] === 'icon__application') {
           // ANCHOR APPLICATION
-          self.scrollTop(defaults.domSelectors.applicationAnchor, 25);
+					if ($(defaults.domSelectors.applicationAnchor).length) {
+						self.scrollTop(defaults.domSelectors.applicationAnchor, 25);
+					} else {
+						self.scrollTop(defaults.domSelectors.sidebarApplicationAnchor, 15);
+					}
         }
 			});
+		}
+
+		if ($(this.options.domSelectors.contactAnchor).length === 0) {
+			$('.icon.icon__contact').css('display', 'none');
 		}
 
 		// REPLACING BACK-TO-TOP-LINK
