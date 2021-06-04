@@ -21,7 +21,7 @@
 				application: '#edu__application',
 				events: '#edu__events',
 				topLink: '.widg_toplink',
-				contactAnchor: '.widg_sidebar__content',
+				contactAnchor: '.widg_sidebar__content > .widg_edu_contact.widg_sidebar__object',
 				eventAnchor: '.widg_edu_events.widg_sidebar__object',
 				applicationAnchor: '#edu__application'
 			},
