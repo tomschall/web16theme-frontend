@@ -108,6 +108,7 @@ var data = _.merge(defaultData, {
 			{}
 		),
 		sidebar: _.assign(requireNew('../../widgets/sidebar/sidebar.data.js')),
+		sidebar_application: _.assign(requireNew('../../widgets/sidebar_application/sidebar_application.data.js')),
 		eduContent: _.assign(
 			requireNew('../../widgets/edu_contents/edu_contents.data.js')
 		),
