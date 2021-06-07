@@ -73,7 +73,7 @@
 			e.attr('id', 'edu__product_nav').hide().fadeIn(1000);
 		}
 
-		if ($(this.options.domSelectors.contactAnchor).length) {
+		if ($(this.options.domSelectors.contactAnchor).length || $(this.options.domSelectors.applicationAnchor).length || $(this.options.domSelectors.eventAnchor)) {
 			$('.icon.icon__contact, .icon.icon__info, .icon.icon__application').on('click', function() {
         if (this.className.split(' ')[1] === 'icon__contact') {
           // ANCHOR CONTACT
