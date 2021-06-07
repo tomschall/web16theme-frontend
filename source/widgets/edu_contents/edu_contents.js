@@ -80,7 +80,7 @@
           self.scrollTop(defaults.domSelectors.contactAnchor, 0);
         } else if (this.className.split(' ')[1] === 'icon__info') {
           // ANCHOR EVENTS
-          self.scrollTop(defaults.domSelectors.eventAnchor, 10);
+					self.scrollTop(defaults.domSelectors.eventAnchor, 10);
         } else if (this.className.split(' ')[1] === 'icon__application') {
           // ANCHOR APPLICATION
 					if ($(defaults.domSelectors.applicationAnchor).length) {
@@ -94,6 +94,10 @@
 
 		if ($(this.options.domSelectors.contactAnchor).length === 0) {
 			$('.icon.icon__contact').css('display', 'none');
+		}
+
+		if ($('#edu__events').length === 0 && $('#targetInfoEvents').length === 0) {
+			$('.icon.icon__info').css('display', 'none');
 		}
 
 		// REPLACING BACK-TO-TOP-LINK
