@@ -79,11 +79,11 @@
 
     & .widg_extendedlinks__dateline {
       padding-top: 9px;
-      padding-bottom: 0px;
-      font-weight: 600;
-      font-size: 13px;
+      padding-bottom: 0px !important;
+      font-weight: 600 !important;
+      font-size: 13px !important;
       line-height: 23px;
-      color: #828282;
+      color: #828282 !important;
     }
 
 		& span:first-child {
