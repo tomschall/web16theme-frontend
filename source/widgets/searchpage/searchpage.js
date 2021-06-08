@@ -586,7 +586,7 @@
 	};
 
 	Widget.prototype.handleData = function(event, local__data, foundEntries, limitedToResults, category, facets) {
-    if (sumFoundEntries === 0 && foundEntries >= 0) {
+    if (foundEntries > 0) {
       sumFoundEntries = foundEntries;
     }
     if ((searchTemplate === 'news_full' || searchTemplate === 'events_full') && scrollOffset && !loadMoreMode) {
@@ -666,7 +666,13 @@
 		 */
 
     if ($(this.options.domSelectors.countNumber).length === 1) {
-      $(this.options.domSelectors.countNumber).html(sumFoundEntries);
+
+      if (sumFoundEntries > 0 && foundEntries === 0) {
+        $(this.options.domSelectors.countNumber).html(sumFoundEntries);
+      } else {
+        $(this.options.domSelectors.countNumber).html(foundEntries);
+      }
+
       var $currentDiv = $(this.options.domSelectors.countNumber).closest(
         'div'
       );
