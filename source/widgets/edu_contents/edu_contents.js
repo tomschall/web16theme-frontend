@@ -103,7 +103,7 @@
 
 		// REPLACING BACK-TO-TOP-LINK
 		if ($(this.options.domSelectors.topLink).length) {
-			$(this.options.domSelectors.topLink).css('bottom', '90px');
+			$(this.options.domSelectors.topLink).css('bottom', '65px');
 		}
 
 		// EDU APPLICATION FULL WIDTH IF EVENTS ARE MISSING
