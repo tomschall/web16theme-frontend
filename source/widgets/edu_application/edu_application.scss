@@ -16,4 +16,19 @@
 		color: $colorTextDarkGrey;
 		margin-bottom: $basicPush;
 	}
+
+	.object__content {
+		min-height: $basicPush * 17;
+	}
+
+	.align__btn {
+		display: flex;
+		width: 100%;
+	}
+
+	.button {
+		margin: $basicPush * 2;
+		width: 100%;
+	}	
+
 }

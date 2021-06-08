@@ -19,7 +19,16 @@
 		font-weight: 700;
 	}
 
+	.object__content {
+		min-height: $basicPush * 17;
+	}
+
+	.align__btn {
+		display: flex;
+	}
+
 	.button {
-		margin-top: 20px;
+		margin: $basicPush * 2;
+		width: 100%;
 	}
 }
