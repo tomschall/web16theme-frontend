@@ -87,7 +87,8 @@
     observer = {},
     lastReq = false,
     newsFilterInputIsSet = false,
-    scrollOffset = null;
+    scrollOffset = null,
+    sumFoundEntries = 0;
 
 	/**
 	 * Create an instance of the widget
@@ -583,6 +584,9 @@
 	};
 
 	Widget.prototype.handleData = function(event, local__data, foundEntries, limitedToResults, category, facets) {
+    if (sumFoundEntries === 0 && foundEntries >= 0) {
+      sumFoundEntries = foundEntries;
+    }
     if ((searchTemplate === 'news_full' || searchTemplate === 'events_full') && scrollOffset && !loadMoreMode) {
       $([document.documentElement, document.body]).animate({
         scrollTop: scrollOffset - 480
@@ -660,7 +664,7 @@
 		 */
 
     if ($(this.options.domSelectors.countNumber).length === 1) {
-      $(this.options.domSelectors.countNumber).html(foundEntries);
+      $(this.options.domSelectors.countNumber).html(sumFoundEntries);
       var $currentDiv = $(this.options.domSelectors.countNumber).closest(
         'div'
       );
