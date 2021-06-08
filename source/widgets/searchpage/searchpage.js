@@ -665,7 +665,7 @@
         'div'
       );
 
-      if (foundEntries === 0) {
+      if (foundEntries === 0 && loadedEntries === 0) {
         $currentDiv
           .find('.search__countNumber___text')
           .text($('.search__lang-results').data('lang-no-results'));
