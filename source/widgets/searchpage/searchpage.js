@@ -271,6 +271,8 @@
      */
     $(this.options.domSelectors.resetBtn).on('click.' + this.uuid, function() {
       this.resetFields();
+      sumFoundEntries = 0;
+
     }.bind(this));
 
     /**
