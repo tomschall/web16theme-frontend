@@ -54,12 +54,18 @@
 		if (window.estatico.mq.query({ to: 'small' })) {
 			var showMore = $('.object__title').attr('data-lang-show-more');
 			var showLess = $('.object__title').attr('data-lang-show-less');
+			var visibleDatas = '.widg_edu_contents .edu__key_data div.datas';
 			$('.toggler .show-more').text(showMore);
-			if ($('.widg_edu_contents .edu__key_data div.datas').length > 3) {
+			if ($(visibleDatas).length > 3) {
 				$('.edu__key_data div:gt(2)').hide();
+				$('.edu__key_data div:nth-child(3)').addClass('remove__line');
+			} else if ($(visibleDatas).length <= 3) {
+				$('.toggler').css('display', 'none');
 			}
+
 			$('.show-more').on('click', function() {
 				$('.edu__key_data div.datas:gt(2)').toggle();
+				$('.edu__key_data div:nth-child(3)').toggleClass('bottom__line');
 				// eslint-disable-next-line no-unused-expressions
 				$(this).text() === showMore ? $(this).text(showLess) : $(this).text(showMore);	
 			});
