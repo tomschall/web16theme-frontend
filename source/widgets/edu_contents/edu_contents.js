@@ -92,6 +92,7 @@
 			});
 		}
 
+		// MOBILE NAVIGATION - HIDE ELEMENT ON CERTAIN CONDITIONS
 		if ($(this.options.domSelectors.contactAnchor).length === 0) {
 			$('.icon.icon__contact').css('display', 'none');
 		}
@@ -102,8 +103,13 @@
 
 		// REPLACING BACK-TO-TOP-LINK
 		if ($(this.options.domSelectors.topLink).length) {
-			$(this.options.domSelectors.topLink).css('bottom', '90px');
+			$(this.options.domSelectors.topLink).css('bottom', '65px');
 		}
+
+		// EDU APPLICATION FULL WIDTH IF EVENTS ARE MISSING
+		if ($('.widg_edu_contents .widg_edu_events.widg_sidebar__object').length === 0) {
+			$('.widg_edu_application.widg_sidebar__object').css('width', '100%');				
+		}		
 	};
 
 	Widget.prototype.scrollTop = function(selector, param) {
