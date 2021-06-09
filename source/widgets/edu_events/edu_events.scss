@@ -1,5 +1,7 @@
 .widg_edu_events {
 	width: 49%;
+	display: flex;
+	flex-direction: column;
 
 	@include mq($to: small) {
 		width: 100%;
@@ -21,6 +23,7 @@
 
 	.object__content {
 		min-height: $basicPush * 17;
+		flex-grow: 1;
 	}
 
 	.align__btn {
