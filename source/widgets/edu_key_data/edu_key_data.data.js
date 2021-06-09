@@ -46,7 +46,7 @@ var templateData = {
 			},
 			{
 				title: 'Lorem ipsum',
-				text: 'Dolor sit amet',
+				text: '<a href="https://www.fhnw.ch/de/die-fhnw/hochschulen/architektur-bau-geomatik/events/alle-events-habg/online-infoanlass-mas-fhnw-bauleitung-2021-06-23">https://www.fhnw.ch/de/die-fhnw/hochschulen/architektur-bau-geomatik/events/alle-events-habg/online-infoanlass-mas-fhnw-bauleitung-2021-06-23</a>',
 			},
 		],
 	},

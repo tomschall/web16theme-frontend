@@ -85,6 +85,12 @@
 				min-height: 3em;
 				margin-inline-start: 0;
 				hyphens: auto;
+
+				a {
+					display: block;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
 			}
 
 			.ruler {
