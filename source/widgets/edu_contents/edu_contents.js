@@ -73,7 +73,9 @@
 			e.attr('id', 'edu__product_nav').hide().fadeIn(1000);
 		}
 
-		if ($(this.options.domSelectors.contactAnchor).length || $(this.options.domSelectors.applicationAnchor).length || $(this.options.domSelectors.eventAnchor)) {
+		if ($(this.options.domSelectors.contactAnchor).length ||
+		$(this.options.domSelectors.applicationAnchor).length ||
+		$(this.options.domSelectors.eventAnchor)) {
 			$('.icon.icon__contact, .icon.icon__info, .icon.icon__application').on('click', function() {
         if (this.className.split(' ')[1] === 'icon__contact') {
           // ANCHOR CONTACT
@@ -108,8 +110,8 @@
 
 		// EDU APPLICATION FULL WIDTH IF EVENTS ARE MISSING
 		if ($('.widg_edu_contents .widg_edu_events.widg_sidebar__object').length === 0) {
-			$('.widg_edu_application.widg_sidebar__object').css('width', '100%');				
-		}		
+			$('.widg_edu_application.widg_sidebar__object').css('width', '100%');
+		}
 	};
 
 	Widget.prototype.scrollTop = function(selector, param) {

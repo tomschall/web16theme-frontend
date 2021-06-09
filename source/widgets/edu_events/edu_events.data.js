@@ -24,6 +24,30 @@ var templateData = {
 				location: 'Windisch',
 				url: '/',
 			},
+			{
+				title: 'Info-Veranstaltung',
+				dateTime: '27.06.2016 um 18:15 Uhr',
+				location: 'Windisch',
+				url: '/',
+			},
+			{
+				title: 'Info-Veranstaltung',
+				dateTime: '27.06.2016 um 18:15 Uhr',
+				location: 'Windisch',
+				url: '/',
+			},
+			{
+				title: 'Info-Veranstaltung',
+				dateTime: '27.06.2016 um 18:15 Uhr',
+				location: 'Windisch',
+				url: '/',
+			},
+			{
+				title: 'Info-Veranstaltung',
+				dateTime: '27.06.2016 um 18:15 Uhr',
+				location: 'Windisch',
+				url: '/',
+			},
 		],
 	},
 	data = _.merge(
