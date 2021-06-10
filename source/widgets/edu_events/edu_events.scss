@@ -16,13 +16,14 @@
 	}
 
 	.event__date-location {
-		color: $colorTextGrey;
+		color: $colorText;
 		font-size: 1.083333rem;
 		font-weight: 700;
 	}
 
 	.object__content {
 		flex-grow: 1;
+		padding: 10px 20px 0;
 	}
 
 	.align__btn {

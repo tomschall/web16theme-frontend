@@ -28,13 +28,14 @@
 		border: 1px solid $colorGreyHover;
 		background: $colorBg;
 		padding-top: 0;
+		padding-bottom: $basicPush;
 		margin-bottom: $basicPush + 5;
 
 		dl {
 			display: flex;
 			flex-wrap: wrap;
 			min-height: $basicPush * 10;
-			padding: $basicPush * 2;
+			padding: 0 $basicPush * 2;
 			padding-bottom: 0;
 			margin-top: 0;
 			margin-bottom: 0;
@@ -82,7 +83,6 @@
 				margin-inline-start: 0;
 			}
 			dd {
-				min-height: 3em;
 				margin-inline-start: 0;
 				hyphens: auto;
 
@@ -111,6 +111,10 @@
 			align-items: center;
 			margin-top: $basicPush * 2;
 			margin-bottom: $basicPush;
+
+			@include mq($from: small) {
+				display: none;
+			}
 		}
 
 		.show-more {
