@@ -71,20 +71,21 @@
 			'</div></div>');
 			$('body').append(e);
 			e.attr('id', 'edu__product_nav').hide().fadeIn(1000);
+			this.iOS();
 		}
 
 		if ($(this.options.domSelectors.contactAnchor).length ||
 		$(this.options.domSelectors.applicationAnchor).length ||
 		$(this.options.domSelectors.eventAnchor)) {
 			$('.icon.icon__contact, .icon.icon__info, .icon.icon__application').on('click', function() {
-        if (this.className.split(' ')[1] === 'icon__contact') {
-          // ANCHOR CONTACT
+				if (this.className.split(' ')[1] === 'icon__contact') {
+					// ANCHOR CONTACT
           self.scrollTop(defaults.domSelectors.contactAnchor, 0);
         } else if (this.className.split(' ')[1] === 'icon__info') {
-          // ANCHOR EVENTS
+					// ANCHOR EVENTS
 					self.scrollTop(defaults.domSelectors.eventAnchor, 10);
         } else if (this.className.split(' ')[1] === 'icon__application') {
-          // ANCHOR APPLICATION
+					// ANCHOR APPLICATION
 					if ($(defaults.domSelectors.applicationAnchor).length) {
 						self.scrollTop(defaults.domSelectors.applicationAnchor, 25);
 					} else {
@@ -111,6 +112,18 @@
 		// EDU APPLICATION FULL WIDTH IF EVENTS ARE MISSING
 		if ($('.widg_edu_contents .widg_edu_events.widg_sidebar__object').length === 0) {
 			$('.widg_edu_application.widg_sidebar__object').css('width', '100%');
+		}
+	};
+
+	Widget.prototype.iOS = function() {
+		var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+		if (iOS === true) {
+			$('meta[name=viewport]').remove();
+			$('head').append('<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">');
+			// $('.page_content').css({
+			// 	background: 'red',
+			// 	padding: 'env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left)'
+			// });
 		}
 	};
 

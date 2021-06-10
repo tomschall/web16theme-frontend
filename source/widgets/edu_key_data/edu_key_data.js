@@ -67,7 +67,7 @@
 				$('.edu__key_data div.datas:gt(2)').toggle();
 				$('.edu__key_data div:nth-child(3)').toggleClass('bottom__line');
 				// eslint-disable-next-line no-unused-expressions
-				$(this).text() === showMore ? $(this).text(showLess) : $(this).text(showMore);	
+				$(this).text() === showMore ? $(this).text(showLess) : $(this).text(showMore);
 			});
 		}
 		this.calculateLines();
