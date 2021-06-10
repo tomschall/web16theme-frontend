@@ -120,10 +120,7 @@
 		if (iOS === true) {
 			$('meta[name=viewport]').remove();
 			$('head').append('<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">');
-			// $('.page_content').css({
-			// 	background: 'red',
-			// 	padding: 'env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left)'
-			// });
+			$('#edu__product_nav').css('padding-bottom', '15px');
 		}
 	};
 
