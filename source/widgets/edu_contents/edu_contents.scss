@@ -79,14 +79,18 @@
 			}
 
 			dt {
+				font-size: 13px;
+				line-height: 20px;
 				font-weight: 700;
 				margin-inline-start: 0;
 			}
 			dd {
+				font-size: 15px;
 				margin-inline-start: 0;
 				hyphens: auto;
 
 				a {
+					font-size: 15px;
 					display: block;
 					overflow: hidden;
 					text-overflow: ellipsis;
@@ -127,9 +131,6 @@
 
 			@include mq($from: small) {
 				display: none;
-			}
-
-			&.open {
 			}
 		}
 
