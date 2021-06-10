@@ -85,6 +85,12 @@
 				min-height: 3em;
 				margin-inline-start: 0;
 				hyphens: auto;
+
+				a {
+					display: block;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
 			}
 
 			.ruler {
@@ -103,6 +109,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			margin-top: $basicPush * 2;
 			margin-bottom: $basicPush;
 		}
 
@@ -152,7 +159,7 @@
 
 	background: $colorBg;
 	border-top: 1px solid $formIconColor; 
-	padding: 0 $basicPush * 2;
+	padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
 
 	@include mq($from: 'small') {
 		display: none;
