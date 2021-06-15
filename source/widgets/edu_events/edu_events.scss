@@ -32,6 +32,10 @@
 
 	.button {
 		margin: $basicPush * 2;
-		width: 100%;
+		max-width: 250px;
+
+		@include mq($to: small) {
+			width: 100%;
+		}
 	}
 }
