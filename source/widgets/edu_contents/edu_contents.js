@@ -112,6 +112,7 @@
 		// EDU APPLICATION FULL WIDTH IF EVENTS ARE MISSING
 		if ($('.widg_edu_contents .widg_edu_events.widg_sidebar__object').length === 0) {
 			$('.widg_edu_application.widg_sidebar__object').css('width', '100%');
+			$('.widg_edu_application.widg_sidebar__object .button.anchor-link').css('width', 'auto');
 		}
 	};
 
