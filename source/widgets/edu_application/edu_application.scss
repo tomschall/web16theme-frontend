@@ -29,12 +29,21 @@
 		width: 100%;
 		
 		a.btn {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
 			margin: $basicPush * 2;
 			background: $colorText;
     	color: $colorBg;
-    	text-decoration: none;
-    	padding: 10px 30px;
-    	text-align: center;
+
+			text-decoration: none;
+			text-align: center;
+
+    	padding: $basicPush;
+
+			line-height: 17px;
+			min-height: $basicPush * 5;
 
 			&:hover {
 				background: $colorYellow;
@@ -46,7 +55,8 @@
 			}
 	
 			@include mq($from: small) {
-				max-width: 250px;
+				width: $basicPush * 25;
+				max-width: $basicPush * 25;
 			}
 		}	
 	}
