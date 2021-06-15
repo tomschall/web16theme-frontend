@@ -30,12 +30,25 @@
 		display: flex;
 	}
 
-	.button {
+	a.btn {
 		margin: $basicPush * 2;
-		max-width: 250px;
+		background: $colorText;
+		color: $colorBg;
+		text-decoration: none;
+		padding: 10px 30px;
+		text-align: center;
+
+		&:hover {
+			background: $colorYellow;
+			color: $colorText;
+		}		
 
 		@include mq($to: small) {
 			width: 100%;
+		}
+
+		@include mq($from: small) {
+			max-width: 250px;
 		}
 	}
 }
