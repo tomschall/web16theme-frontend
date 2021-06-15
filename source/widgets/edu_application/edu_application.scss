@@ -27,11 +27,27 @@
 	.align__btn {
 		display: flex;
 		width: 100%;
+		
+		a.btn {
+			margin: $basicPush * 2;
+			background: $colorText;
+    	color: $colorBg;
+    	text-decoration: none;
+    	padding: 10px 30px;
+    	text-align: center;
+
+			&:hover {
+				background: $colorYellow;
+				color: $colorText;
+			}
+	
+			@include mq($to: small) {
+				width: 100%;
+			}
+	
+			@include mq($from: small) {
+				max-width: 250px;
+			}
+		}	
 	}
-
-	.button {
-		margin: $basicPush * 2;
-		width: 100%;
-	}	
-
 }
