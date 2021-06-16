@@ -35,7 +35,7 @@
 			padding-bottom: $basicPush * 1.8;
 
 			@include mq($to: small) {
-				padding-top: 10px;
+				padding-top: 3px;
 				margin-top: 0;
 				font-size: 1.25rem;
 			}
