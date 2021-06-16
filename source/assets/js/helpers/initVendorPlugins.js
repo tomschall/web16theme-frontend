@@ -96,8 +96,23 @@
 
     checkIfScrollable();
 
+		// WINDOW RELOAD ON RESIZE WINDOW
     $(window).on('resize', function() {
       checkIfScrollable();
+			console.log('resized');
+			var resizeTimer;
+			clearTimeout(resizeTimer);
+			resizeTimer = setTimeout(function() {
+				$('body').append(
+					'<div id="overlay"><div id="fhnw-spinner"></div></div>'
+				);
+				$('#fhnw-spinner').spinner({
+					radius: 30,
+					strokeWidth: 6,
+					color: '#fff',
+				});
+				this.location.reload();
+			}, 1000);
     });
 	});
 })(jQuery);
