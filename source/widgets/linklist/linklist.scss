@@ -107,10 +107,11 @@
 		}
 
     .widg_linklist__dateline {
-      padding-bottom: 0px;
+      padding-bottom: $basicPush - 5;
+			padding-top: 0;
       font-weight: 600 !important;
       font-size: 13px !important;
-      line-height: 23px;
+      line-height: 17px;
       color: #828282;
     }
 	}
