@@ -97,7 +97,8 @@
 .widg_hero__profile-name {
 	padding: 0 100px 0 84px;
 	position: absolute;
-	top: 128px;
+	top: 20%;
 	max-width: 37vw;
 	z-index: zindex(titleProfile);
+	hyphens: none;
 }
