@@ -22,7 +22,7 @@
 				events: '#edu__events',
 				topLink: '.widg_toplink',
 				contactAnchor: '.widg_sidebar__content > .widg_edu_contact.widg_sidebar__object',
-				eventAnchor: '.widg_edu_events.widg_sidebar__object',
+				eventAnchor: '.widg_info_teaser',
 				applicationAnchor: '.widg_application_accordeon',
 				sidebarApplicationAnchor: '#edu__application'
 			},
@@ -83,7 +83,11 @@
           self.scrollTop(defaults.domSelectors.contactAnchor, 0);
         } else if (this.className.split(' ')[1] === 'icon__info') {
 					// ANCHOR EVENTS
-					self.scrollTop(defaults.domSelectors.eventAnchor, 10);
+					if ($(defaults.domSelectors.eventAnchor).length) {
+						self.scrollTop(defaults.domSelectors.eventAnchor, 10);
+					} else {
+						self.scrollTop('.widg_edu_events.widg_sidebar__object', 10);
+					}
         } else if (this.className.split(' ')[1] === 'icon__application') {
 					// ANCHOR APPLICATION
 					if ($(defaults.domSelectors.applicationAnchor).length) {
