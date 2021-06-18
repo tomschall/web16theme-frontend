@@ -53,9 +53,19 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
-
 		this.initImageScale();
+		this.detectBrowserZoomLevel();
+	};
 
+	Widget.prototype.detectBrowserZoomLevel = function() {
+		var browserZoomLevel = Math.round(window.devicePixelRatio * 100);
+		var intViewportHeight = window.innerHeight;
+		if (browserZoomLevel >= 150 && intViewportHeight < 600) {
+			$('.widg_hero__profile-name').css({
+				'top': '15%',
+				'font-size': '26px'
+			});
+		}
 	};
 
 	Widget.prototype.initImageScale = function() {
