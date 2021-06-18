@@ -22,9 +22,9 @@
 				events: '#edu__events',
 				topLink: '.widg_toplink',
 				contactAnchor: '.widg_sidebar__content > .widg_edu_contact.widg_sidebar__object',
-				eventAnchor: '.widg_edu_events.widg_sidebar__object',
-				applicationAnchor: '#edu__application',
-				sidebarApplicationAnchor: '.widg_sidebar'
+				eventAnchor: '.widg_info_teaser',
+				applicationAnchor: '.widg_application_accordeon',
+				sidebarApplicationAnchor: '#edu__application'
 			},
 			stateClasses: {},
 		},
@@ -83,13 +83,23 @@
           self.scrollTop(defaults.domSelectors.contactAnchor, 0);
         } else if (this.className.split(' ')[1] === 'icon__info') {
 					// ANCHOR EVENTS
-					self.scrollTop(defaults.domSelectors.eventAnchor, 10);
+					if ($(defaults.domSelectors.eventAnchor).length) {
+						self.scrollTop(defaults.domSelectors.eventAnchor, 10);
+					} else {
+						self.scrollTop('.widg_edu_events.widg_sidebar__object', 10);
+					}
         } else if (this.className.split(' ')[1] === 'icon__application') {
 					// ANCHOR APPLICATION
 					if ($(defaults.domSelectors.applicationAnchor).length) {
 						self.scrollTop(defaults.domSelectors.applicationAnchor, 25);
+						if ($('.widg_application_accordeon > .widg_accordeon__entry').length <= 1) {
+							if (!$('#targetOnlineApplication').hasClass('is_open')) {
+								$('#targetOnlineApplication div.widg_accordeon__button > button').trigger('click');
+								$('#targetOnlineApplication').toggleClass('is_open');
+							}
+						}
 					} else {
-						self.scrollTop(defaults.domSelectors.sidebarApplicationAnchor, 15);
+						self.scrollTop(defaults.domSelectors.sidebarApplicationAnchor, 25);
 					}
         }
 			});
