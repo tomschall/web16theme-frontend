@@ -358,6 +358,7 @@ div.widg_accordeon__button {
 
 	line-height: 0;
 	position: relative;
+	hyphens: manual;
 
 	> input[type="radio"] {
 		display: block;
