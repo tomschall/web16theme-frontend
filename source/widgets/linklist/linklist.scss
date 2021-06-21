@@ -186,7 +186,7 @@
 
 	@include mq($to: small) {
 		text-align: center;
-		margin-bottom: $basicPush + 5 !important;
+		margin-bottom: $basicPush - 5 !important;
 	}
 
 	img {
