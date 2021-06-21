@@ -107,6 +107,7 @@
 		}
 
     .widg_linklist__dateline {
+			display: block;
       padding-bottom: $basicPush - 5;
 			padding-top: 0;
       font-weight: 600 !important;
@@ -185,6 +186,7 @@
 
 	@include mq($to: small) {
 		text-align: center;
+		margin-bottom: $basicPush + 5 !important;
 	}
 
 	img {
