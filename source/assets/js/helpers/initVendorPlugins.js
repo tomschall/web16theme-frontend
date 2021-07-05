@@ -83,7 +83,10 @@
     }
 
     $.fn.hasScrollBar = function() {
-      return this.height() < $('#mCSB_1_container')[0].scrollHeight;
+      if ($('#mCSB_1_container')[0] !== undefined) {
+        return this.height() < $('#mCSB_1_container')[0].scrollHeight;
+      }
+      return false;
     };
 
     var checkIfScrollable = function() {

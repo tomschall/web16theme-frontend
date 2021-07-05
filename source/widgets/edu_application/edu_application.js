@@ -16,7 +16,7 @@
 		},
 		defaults = {
 			domSelectors: {
-				// item: '[data-' + name + '="item"]'
+				btn: '.btn.small_button.anchor-link'
 			},
 			stateClasses: {
 				// isActive: 'is_active'
@@ -59,6 +59,9 @@
 	 */
 	Widget.prototype.init = function() {
 		// console.log('Widget "edu_application" initialized');
+    $(this.options.domSelectors.btn).on('click', function() {
+			// console.log('edu_application button triggered');
+		});
 	};
 
 	/**

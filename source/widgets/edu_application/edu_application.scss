@@ -50,6 +50,14 @@
 				background: $colorYellow;
 				color: $colorText;
 			}
+
+      &.disabled {
+        background-color: $colorDarkGrey;
+
+        &:hover {
+          color: #fff;
+        }
+      }
 	
 			@include mq($to: small) {
 				width: 100%;
