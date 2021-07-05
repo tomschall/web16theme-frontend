@@ -12,7 +12,7 @@ var templateData = {
 		button: {
 			text: 'Durchführung wählen',
 			url: '#targetOnlineApplication',
-			disabled: false,
+			disabled: true,
 			displayed: true,
 		},
 	},
