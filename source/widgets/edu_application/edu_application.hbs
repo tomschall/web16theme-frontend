@@ -2,10 +2,11 @@
 	<div class="object__title" data-sidebar="title">
 		<h2 id="edu__application" class="edu__title">{{title}}</h2>
 	</div>
-	<div class="object__content" data-sidebar="content">
-		<p>{{text}}</p>
-		<p class="small">{{note}}</p>
+	<div id="edu__application_content_element" class="object__content" data-sidebar="content">
+		<p id="edu__application_content_text">{{text}}</p>
+		<p id="edu__application_content_note" class="small">{{note}}</p>
 	</div>
+  
 	{{#if button.displayed}}
 	<div class="align__btn">
 		<a class="btn small_button{{#if button.disabled}} disabled{{/if}}" href="{{#if button.disabled}}#{{else}}{{button.url}}{{/if}}">
