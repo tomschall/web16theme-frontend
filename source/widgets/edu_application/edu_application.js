@@ -16,9 +16,9 @@
 		},
 		defaults = {
 			domSelectors: {
-				elem: '#edu__application_content_element',
-				text: '#edu__application_content_text',
-				note: '#edu__application_content_note',
+				elem: '.widg_edu_application .object__content',
+				text: '.widg_edu_application .object__content p:nth-child(1)',
+        note: '.widg_edu_application .object__content p:nth-child(2)',
 			},
 			stateClasses: {
 				// isActive: 'is_active'
@@ -61,7 +61,7 @@
 	 */
 	Widget.prototype.init = function() {
 		// Remove element block if empty
-    if (!$(this.options.domSelectors.text).length || !$(this.options.domSelectors.text).length) {
+    if (!$(this.options.domSelectors.text).length && !$(this.options.domSelectors.note).length) {
       $(this.options.domSelectors.elem).remove();
     }
 	};
