@@ -70,6 +70,7 @@
  * @requires ../../widgets/edu_contents/edu_contents.js
  * @requires ../../widgets/edu_key_data/edu_key_data.js
  * @requires ../../widgets/edu_application/edu_application.js
+ * @requires ../../widgets/edu_events/edu_events.js
 
  * //*autoinsertmodule*
  *

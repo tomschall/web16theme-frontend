@@ -17,7 +17,9 @@
 		},
 		defaults = {
 			domSelectors: {
-				// item: '[data-' + name + '="item"]'
+        elem: '.widg_edu_events .object__content',
+				location: '.widg_edu_events .object__content .event__date-location:nth-child(1)',
+        title: '.widg_edu_events .object__content .event__title:nth-child(1)',
 			},
 			stateClasses: {
 				// isActive: 'is_active'
@@ -60,6 +62,9 @@
 	 */
 	Widget.prototype.init = function () {
 		// console.log('Widget "edu_events" initialized');
+    if (!$(this.options.domSelectors.location).length && !$(this.options.domSelectors.title).length) {
+      $(this.options.domSelectors.elem).remove();
+    }
 	};
 
 	/**
