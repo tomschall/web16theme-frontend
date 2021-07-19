@@ -12,7 +12,8 @@ var templateData = {
 			button: {
 				text: 'Durchführung wählen',
 				url: '#targetOnlineApplication',
-				disabled: false
+				disabled: false,
+				displayed: true
 			}
 		},
 		data = _.assign(defaultData, {
