@@ -1,5 +1,16 @@
 .widg_follow_us {
-	/*margin-bottom: $smallElementHeight;*/
+	.follow_us {
+		display: flex;
+		align-items: flex-start;
+
+		@include mq($to: medium) {
+			flex-direction: row;
+		}
+		
+		@include mq($to: small) {
+			flex-direction: column;
+		}
+	}
 
 	ul {
 		list-style-type: none;
@@ -38,6 +49,35 @@
 					background-position: center;
 				}
 			}
+		}
+	}
+
+	a.follow__aacsb {
+		margin-top: $basicPush * 2.5;
+		
+		@include mq($to: small) {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+		}
+
+		&::before {
+			@include mq($to: small) {
+				display: flex;
+				align-items: center;
+			}
+			height: 100px;
+			width: 100px;
+		}
+
+		&::before {
+			@include mq($to: medium) {
+				display: flex;
+				align-items: center;
+			}
+			height: 150px;
+			width: 150px;
 		}
 	}
 }
@@ -92,4 +132,8 @@
 
 .follow__flickr {
 	@include iconDataurl('flickr_follow');
+}
+
+.follow__aacsb {
+	@include iconDataurl('aacsb_follow');
 }
