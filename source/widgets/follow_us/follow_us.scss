@@ -1,7 +1,7 @@
 .widg_follow_us {
 	.follow_us {
 		display: flex;
-		align-items: flex-start;
+		align-items: center;
 
 		@include mq($to: medium) {
 			flex-direction: row;
