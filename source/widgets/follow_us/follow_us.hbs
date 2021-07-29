@@ -5,11 +5,20 @@
 	{{#if description}}
 		<p class="text__lead">{{description}}</p>
 	{{/if}}
-	<ul class="not-default">
+	<div class="follow_us">
+		<ul class="not-default">
+			{{#each links}}
+				{{#unless extra}}
+					<li>
+						<a href="{{url}}" class="follow__{{type}}">{{title}}</a>
+					</li>
+				{{/unless}}
+			{{/each}}
+		</ul>
 		{{#each links}}
-			<li>
-				<a href="{{url}}" class="follow__{{type}}">{{title}}</a>
-			</li>
+			{{#if extra}}
+				<a href="{{url}}" class="follow__{{type}}"></a>
+			{{/if}}
 		{{/each}}
-	</ul>
+	</div>
 </div>

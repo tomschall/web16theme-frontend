@@ -42,6 +42,12 @@ var templateData = {
 					type: 'twitter',
 					title: 'Twitter',
 					url: '#'
+				},
+				{
+					type: 'aacsb',
+					extra: 1,
+					title: 'AASCB',
+					url: '#'
 				}
 			]
 		},
