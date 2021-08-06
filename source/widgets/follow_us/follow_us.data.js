@@ -45,8 +45,7 @@ var templateData = {
 				},
 				{
 					type: 'aacsb',
-					extra: 1,
-					title: 'AASCB',
+					title: 'AACSB',
 					url: '#'
 				}
 			]
