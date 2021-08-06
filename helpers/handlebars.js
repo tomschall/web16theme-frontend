@@ -110,8 +110,7 @@ helpers.indent = function(value, indentation) {
 helpers.if_eq = function(a, b, opts) {
 	if (a === b) {
 		return opts.fn(this);
-	}
-	else {
+	} else {
 		return opts.inverse(this);
 	}
 };
@@ -130,7 +129,21 @@ helpers.get_id = function (str) {
 	return str.replace(/\W/g, '');
 };
 
+helpers.if_equal = function(conditional, options) {
+	if (conditional === options.hash.equals) {
+			return options.fn(this);
+	} else {
+			return options.inverse(this);
+	}
+};
 
+helpers.if_not = function(conditional, options) {
+	if (conditional !== options.hash.equals) {
+			return options.fn(this);
+	} else {
+			return options.inverse(this);
+	}
+};
 
 // Register helpers
 Handlebars.registerHelper(helpers);
