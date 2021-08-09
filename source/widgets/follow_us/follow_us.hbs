@@ -8,17 +8,17 @@
 	<div class="follow_us">
 		<ul class="not-default">
 			{{#each links}}
-			 {{#if_not type equals="aacsb"}}
+				{{#unless extra}}
 					<li>
 						<a href="{{url}}" class="follow__{{type}}">{{title}}</a>
 					</li>
-				{{/if_not}}
+				{{/unless}}
 			{{/each}}
 		</ul>
 		{{#each links}}
-			{{#if_equal type equals="aacsb"}}			
+			{{#if extra}}
 				<a href="{{url}}" class="follow__{{type}}"></a>
-			{{/if_equal}}
-		{{/each}}	
+			{{/if}}
+		{{/each}}
 	</div>
 </div>
