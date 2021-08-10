@@ -7,7 +7,7 @@
 		@include mq($to: medium) {
 			flex-direction: row;
 		}
-		
+
 		@include mq($to: small) {
 			flex-direction: column;
 		}
@@ -21,9 +21,10 @@
 		@include clearfix();
 
 		li {
-			width: 25%;
 			display: block;
 			float: left;
+			width: 25%;
+			margin-right: $basicPush;
 
 			@include mq($to: medium) {
 				width: 50%;
@@ -55,7 +56,7 @@
 
 	a.follow__aacsb {
 		margin-top: $basicPush * 2.5;
-		
+
 		@include mq($to: small) {
 			display: flex;
 			align-items: center;
