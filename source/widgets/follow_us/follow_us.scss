@@ -2,6 +2,7 @@
 	.follow_us {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 
 		@include mq($to: medium) {
 			flex-direction: row;
