@@ -6,6 +6,7 @@
 
 		@include mq($to: medium) {
 			flex-direction: row;
+			align-items: flex-start;
 		}
 
 		@include mq($to: small) {
@@ -23,7 +24,7 @@
 		li {
 			display: block;
 			float: left;
-			width: 25%;
+			width: 30%;
 			margin-right: $basicPush;
 
 			@include mq($to: medium) {
