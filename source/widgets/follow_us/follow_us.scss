@@ -22,7 +22,7 @@
 		margin: $basicPush * 2.5 0 0 0;
 
 		@include mq($from: large) {
-			width: 50%;
+			width: 100%;
 		}
 
 		@include clearfix();
