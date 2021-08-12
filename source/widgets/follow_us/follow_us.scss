@@ -1,7 +1,7 @@
 .widg_follow_us {
 	.follow_us {
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: space-between;
 
 		@include mq($to: medium) {
@@ -15,21 +15,23 @@
 	}
 
 	ul {
+		display: flex;
+		flex-wrap: wrap;
 		list-style-type: none;
 		padding: 0;
 		margin: $basicPush * 2.5 0 0 0;
 
+		@include mq($from: large) {
+			width: 50%;
+		}
+
 		@include clearfix();
 
 		li {
-			display: block;
-			float: left;
-			width: 30%;
-			margin-right: $basicPush;
-
-			@include mq($to: medium) {
-				width: 50%;
-			}
+			display: flex;
+			align-items: center;
+			padding-right: $basicPush;
+			min-width: 33%;
 
 			@include mq($to: small) {
 				width: 100%;
@@ -39,7 +41,7 @@
 				display: block;
 				position: relative;
 				font-size: 1.416667rem;
-				padding: 14px 0 14px 49px;
+				padding: 14px 0 14px 40px;
 
 				&:before {
 					content: ' ';
@@ -56,6 +58,9 @@
 	}
 
 	a.follow__aacsb {
+		display: flex;
+		justify-content: flex-end;
+		min-width: 20%;
 		margin-top: $basicPush * 2.5;
 
 		@include mq($to: small) {
