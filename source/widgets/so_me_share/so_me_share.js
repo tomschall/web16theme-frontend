@@ -19,6 +19,7 @@
 				tweet: '[data-' + name + '="tweet"]',
 				mailto: '[data-' + name + '="mailto"]',
 				fb: '[data-' + name + '="fb"]',
+				in: '[data-' + name + '="in"]',
 				print: '[data-' + name + '="print"]',
 			},
 			stateClasses: {
@@ -35,6 +36,9 @@
 			},
 			facebookOptions: {
 				base: 'http://www.facebook.com/sharer/sharer.php?'
+			},
+			linkedInOptions: {
+				base: 'https://www.linkedin.com/sharing/share-offsite/?'
 			},
 			translations: {
 				de: 'Drucken',
@@ -74,11 +78,9 @@
 	 */
 	Widget.prototype.init = function() {
 		this.initTwitterBtn();
-
+		this.initLinkedInBtn();
 		this.initMailToBtn();
-
 		this.initFacebookBtn();
-
 		this.initPrintBtn();
 	};
 
@@ -117,6 +119,17 @@
 			title = '&title=' + encodeURIComponent($fbButton.data('share-text'));
 
 		$fbButton.attr('href', hrefString + url + title);
+	};
+
+
+	// base: 'https://www.linkedin.com/sharing/share-offsite/?url={url}'
+
+	Widget.prototype.initLinkedInBtn = function() {
+		var $linkedInButton = $(this.options.domSelectors.in),
+			hrefString = this.options.linkedInOptions.base,
+			url = 'url=' + encodeURIComponent(window.location.href);
+
+		$linkedInButton.attr('href', hrefString + url);
 	};
 
 	Widget.prototype.initPrintBtn = function() {

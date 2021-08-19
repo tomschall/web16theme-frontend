@@ -9,6 +9,9 @@ $mailToDarkGrey: #4c4c4c;
 $facebookBlue: #3b5998;
 $facebookBlueDark: #2d4785;
 
+$linkedinLightBlue: #2977c9;
+$linkedinDarkBlue: #0a66c2;
+
 .widg_so_me_share {
 	padding-bottom: $basicPush * 4;
 	padding-left: $gutterWidth;
@@ -51,7 +54,6 @@ $facebookBlueDark: #2d4785;
 		}
 	}
 
-
 	.some-icon {
 		display: block;
 		float: left;
@@ -81,6 +83,22 @@ $facebookBlueDark: #2d4785;
 		}
 
 		background-color: $twitterLightBlue;
+	}
+
+	.linkedin {
+		.some-icon {
+			background-color: $linkedinDarkBlue;
+
+			@include iconDataurl('linkedin_so_me');
+
+			&:before {
+				width: 22px;
+				height: 22px;
+				margin: 19px 7px;
+			}
+		}
+
+		background-color: $linkedinLightBlue;
 	}
 
 	.mailto {
@@ -130,6 +148,7 @@ $facebookBlueDark: #2d4785;
 	}
 
 	.twitter,
+	.linkedin,
 	.mailto,
 	.facebook,
 	.print_me {
