@@ -14,6 +14,10 @@ var templateData = {
 				text: 'Dies ist eine Seite der FHNW',
 				action: 'Versenden'
 			},
+			linkedin: {
+				text: 'Dies ist eine Seite der FHNW',
+				action: 'Versenden'
+			},
 			facebook: {
 				text: 'Eine coole Seite der FHNW die ich hier share',
 				action: 'Empfehlen'
