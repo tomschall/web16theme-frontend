@@ -149,7 +149,7 @@ The back arrow only visible on mobile navigation
 	&:before {
 		position: absolute;
 		top: 50%;
-		left: $basicPush * 4;
+		left: $basicPush * 2;
 		visibility: visible;
 
 		background-color: transparent;
