@@ -1,5 +1,39 @@
 .widg_application_accordeon {
 
+	.widg_accordeon__button {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background: burlywood;
+	}
+
+	.widg_accordeon_item {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.availability {
+		width: 20px;
+		background: red;
+	}
+
+	.event_location {
+		flex: 10;
+		background: yellowgreen;
+	}
+
+	.widg_accordoen_location {
+		flex: 5;
+		background: green;
+	}
+
+	.widg_accordeon_btn {
+		flex: 5;
+		background: red;
+	}
+
 	.button__apply {
 		@include mq($to: medium) {
 			display: none;
