@@ -65,6 +65,8 @@
 		if (window.location.hash) {
 			this.checkAndOpenHash(window.location.hash);
 		}
+
+		this.checkAndReplaceUmlaute();
 	};
 
 	// Checks if hash can be found and opens it if necessary
@@ -175,6 +177,38 @@
 		$target.closest(this.options.domSelectors.entry).removeClass(this.options.stateClasses.isOpen);
 		$target.closest(this.options.domSelectors.entry).find(this.options.domSelectors.content).attr('aria-hidden', 'true');
 		$target.attr('aria-expanded', 'false');
+	};
+
+	Widget.prototype.checkAndReplaceUmlaute = function() {
+		var umlautMap = {
+			'\u00dc': 'UE',
+			'\u00c4': 'AE',
+			'\u00d6': 'OE',
+			'\u00fc': 'ue',
+			'\u00e4': 'ae',
+			'\u00f6': 'oe',
+			'\u00df': 'ss',
+		};
+
+		function replaceUmlaute(str) {
+			return str
+				.replace(/[\u00dc|\u00c4|\u00d6][a-z]/g, function(a) {
+					var big = umlautMap[a.slice(0, 1)];
+					return big.charAt(0) + big.charAt(1).toLowerCase() + a.slice(1);
+				})
+				.replace(new RegExp('[' + Object.keys(umlautMap).join('|') + ']', 'g'),
+					function(a) {
+						return umlautMap[a];
+					}
+				);
+		}
+
+		$('.widg_accordeon__entry').each(function() {
+				var str = $(this).attr('id');
+				
+				console.log(str + ' -> ' + replaceUmlaute(str));
+				$(this).attr('id', replaceUmlaute(str));
+		});
 	};
 
 	/**
