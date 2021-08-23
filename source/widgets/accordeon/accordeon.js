@@ -196,8 +196,8 @@
 					var big = umlautMap[a.slice(0, 1)];
 					return big.charAt(0) + big.charAt(1).toLowerCase() + a.slice(1);
 				})
-				.replace(new RegExp('['+Object.keys(umlautMap).join('|') + ']', 'g'),
-					function(a) { 
+				.replace(new RegExp('[' + Object.keys(umlautMap).join('|') + ']', 'g'),
+					function(a) {
 						return umlautMap[a];
 					}
 				);
