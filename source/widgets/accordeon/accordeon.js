@@ -205,8 +205,6 @@
 
 		$('.widg_accordeon__entry').each(function() {
 				var str = $(this).attr('id');
-				
-				console.log(str + ' -> ' + replaceUmlaute(str));
 				$(this).attr('id', replaceUmlaute(str));
 		});
 	};
