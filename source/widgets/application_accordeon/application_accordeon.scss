@@ -15,6 +15,7 @@
 	  	padding: 10px;
 	    gap: 1rem;
 	  	min-height: buttonHeight(desktop);
+	  	transition: all $transitionLength / 6 $transitionEase;
 
 	  	@include mq($to: medium) {
 			min-height: buttonHeight(mobile);
@@ -28,7 +29,21 @@
 	}
 
 	.availability {
-		width: 20px;
+	  	flex-shrink: 0;
+	  	flex-grow: 0;
+	  	width: 18px;
+	  	height: 18px;
+	  	border-radius: 50%;
+	  	background-color: $colorBlack;
+	  	content: " ";
+
+		&.state-red {
+			background-color: $colorAvailabilityRed;
+		}
+
+		&.state-green {
+			background-color: $colorAvailabilityGreen;
+		}
 	}
 
 	.event_location {
@@ -47,15 +62,51 @@
 	  	min-height: 45px;
 	  	display: flex;
 	  	align-items: center;
+
+		&:disabled,
+		&.disabled,
+		&[disabled="disabled"] {
+			opacity: 0.4;
+			color: $colorBg;
+
+		  	a {
+			  	pointer-events: none;
+			}
+		}
+
+		a {
+			color: $colorBg;
+			font-size: 1.25rem;
+			text-decoration: none;
+			opacity: 1;
+			font-weight: 600;
+		}
 	}
 
-  	.widg_accordeon_btn > a {
-		color: $colorBg;
-		font-size: 1.25rem;
-	  	text-decoration: none;
-		opacity: 1;
-		font-weight: 600;
+  	.widg_accordeon__more {
+	  	@include iconDataurl('accordeon_close_grey', $after: true);
 
+	  	&:after {
+		  	height: 12px;
+		  	width: 12px;
+		  	transition: transform $transitionLength / 2 $transitionEase;
+			vertical-align: middle;
+		  	transform: rotate(45deg);
+		}
+
+	}
+
+  	.widg_accordeon__entry.is_open > .widg_accordeon_item {
+		background-color: $colorYellowAccordeonActive;
+		color: $colorBlack;
+
+		&:hover {
+			background-color: $colorYellowAccordeonActive;
+		}
+
+	  	.widg_accordeon__more:after {
+		  	transform: rotate(90deg)
+		}
 	}
 
 	.button__apply {
