@@ -14,7 +14,6 @@
 		background: $colorLightGray;
 	  	padding: $basicPush;
 	    gap: 1rem;
-	  	min-height: buttonHeight(desktop);
 	  	transition: all $transitionLength / 6 $transitionEase;
 	}
 
@@ -106,7 +105,7 @@
 		}
 	}
 
-  	@include mq($from: small, $to: medium) {
+  	@include mq($to: medium) {
 
 	  	.widg_accordeon_btn {
 		  	display: none;
@@ -149,14 +148,25 @@
 		  	text-align: center;
 		}
 
-	  	.widg_accordeon_btn {
-		  	display: none;
+	}
+
+  	@media print {
+	  	.widg_accordeon_item {
+		  	display: block;
+		  	left: 0px;
+		  	margin: 0px;
+		  	padding: 0px;
+		  	border-bottom: 2pt solid $colorMouseoverGrau;
+		  	color: $colorBlack;
 		}
 
-	  	.button__apply___inside {
-		  	display: inline-block;
+	  	.event_location {
+		  	display: block;
 		}
 
+	  	.widg_accordoen_location {
+		  	font-size: 10pt;
+		}
 	}
 
 	.button__apply {
