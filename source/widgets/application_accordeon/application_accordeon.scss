@@ -78,6 +78,11 @@
 	}
 
   	.widg_accordeon__more {
+		/*
+			other accordeon close-buttons have right: 20px
+			since we can't align one item to the right we use padding: 20px - 12px (width) = 8px
+		 */
+	  	padding: 8px;
 	  	@include iconDataurl('accordeon_close_grey', $after: true);
 
 	  	&:after {
