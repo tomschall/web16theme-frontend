@@ -16,10 +16,6 @@
 	    gap: 1rem;
 	  	min-height: buttonHeight(desktop);
 	  	transition: all $transitionLength / 6 $transitionEase;
-
-	  	@include mq($to: medium) {
-			min-height: buttonHeight(mobile);
-		}
 	}
 
 
@@ -29,8 +25,6 @@
 	}
 
 	.availability {
-	  	// flex-shrink: 0;
-	  	// flex-grow: 0;
 	  	flex: 0 0 auto;
 	  	width: 18px;
 	  	height: 18px;
@@ -87,8 +81,6 @@
 	  	@include iconDataurl('accordeon_close_grey', $after: true);
 
 	  	&:after {
-		  	height: 12px;
-		  	width: 12px;
 		  	transition: transform $transitionLength / 2 $transitionEase;
 			vertical-align: middle;
 		  	transform: rotate(45deg);
@@ -107,6 +99,59 @@
 	  	.widg_accordeon__more:after {
 		  	transform: rotate(90deg)
 		}
+	}
+
+  	@include mq($from: small, $to: medium) {
+
+	  	.widg_accordeon_btn {
+		  	display: none;
+		}
+
+	  	.button__apply___inside {
+		  	display: inline-block;
+		}
+
+	}
+
+  	@include mq($to: small) {
+	  	.widg_accordeon_item {
+		  	display: grid;
+		  	grid-template-columns: 15px 8fr 1fr;
+		  	line-height: 1.4;
+		  	gap: 0.4em;
+		}
+
+	  	.availability {
+		  	grid-row-start: 2;
+		  	width: 12px;
+		  	height: 12px;
+		}
+
+	  	.event_location {
+			grid-column-end: span 2;
+		}
+
+	  	.widg_accordoen_location {
+			grid-row-start: 2;
+			grid-column-start: 2;
+		  	color: $colorTextGrey;
+		}
+
+	  	.widg_accordeon__more {
+		  	grid-row-start: 1;
+		  	grid-row-end: span 2;
+		  	grid-column-start: 3;
+		  	text-align: center;
+		}
+
+	  	.widg_accordeon_btn {
+		  	display: none;
+		}
+
+	  	.button__apply___inside {
+		  	display: inline-block;
+		}
+
 	}
 
 	.button__apply {

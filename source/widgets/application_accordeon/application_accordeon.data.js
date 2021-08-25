@@ -136,7 +136,50 @@ var templateData = {
 					iCalURL: '#',
 					applyLabel: 'Warteliste',
 					applicationIsActive: true
-				}
+				},
+				{
+					uid: '4',
+					eventStart: '17.09.2017',
+					eventLocation: 'Superextremlanger Titel mit vielen einzelnen Worten und langem Text',
+					availableSeats: 12,
+					availabilityState: 'state-green',
+					informationEntries: [
+						{
+							label: 'Start- und Endtermin',
+							text: '01.01.2016 - 15.05.2016',
+							iCalURL: '#'
+						},
+						{
+							label: 'Dauer',
+							text: '6 Monate'
+						},
+						{
+							label: 'ECTS-Punkte',
+							text: '15 Credits'
+						},
+						{
+							label: 'Durchführungsort(e)',
+							text: 'HS Soziale Arbeit FHNW, Von Roll Str 10, 4600 Olten'
+						},
+						{
+							label: 'Freie Plätze',
+							text: '12'
+						},
+						{
+							label: 'Anzahl Teilnehmer',
+							text: '6 - 18'
+						},
+						{
+							label: 'Nummer',
+							text: 'X0.12345'
+						}
+					],
+					additionalInformation: 'Wichtige Informationen zur Anmeldung Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
+					btnUrl: '#',
+					iCalURL: '#',
+					applyLabel: 'Warteliste',
+					applicationIsActive: true
+				},
 			],
 			langStrings: {
 				moreInformation: 'mehr Informationen',
