@@ -169,12 +169,6 @@
 		}
 	}
 
-	.button__apply {
-		@include mq($to: medium) {
-			display: none;
-		}
-	}
-
 	a.button.mini_button.button__apply {
 			cursor: pointer;
 	}
