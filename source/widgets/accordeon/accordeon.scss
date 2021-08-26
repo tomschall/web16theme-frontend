@@ -40,8 +40,7 @@ $colorAvailabilityRed: #f05f1b;
 	}
 
 	> button,
-	> div > button[data-accordeon="button"],
-	> div > button[data-application-accordeon="button"] {
+	> div > button[data-accordeon="button"] {
 		@include noStyledButton;
 
 		width: 100%;
@@ -89,8 +88,7 @@ $colorAvailabilityRed: #f05f1b;
 		}
 	}
 
-	> button,
-	> div > button[data-application-accordeon="button"]{
+	> button {
 		@include iconDataurl('accordeon_close', $after: true);
 
 		line-height: 2;
@@ -109,8 +107,7 @@ $colorAvailabilityRed: #f05f1b;
 		}
 	}
 
-	> div > button[data-accordeon="button"],
-	> div > button[data-application-accordeon="button"] {
+	> div > button[data-accordeon="button"] {
 
 		background-color: $colorLightGray;
 

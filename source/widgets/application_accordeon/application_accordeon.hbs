@@ -4,21 +4,20 @@
   <!-- Custom html structure if its the accordeon for an online application -->
 	{{#each entries}}
       <div id="{{title}}" class="widg_accordeon__entry mce-item-anchor" data-application-accordeon="entry" role="listitem">
-        <div class="widg_accordeon__button">
-			<button class="not-default" aria-expanded="false" data-application-accordeon="button">
-				<span class="button__location">
-				  {{eventLocation}}
-				</span>
-				{{#if availableSeats}}
-					<span class="button__availability {{availabilityState}}"></span>
-				{{/if}}
-				<span class="button__date">
-					<span class="accessibility-hidden" id="date-{{uid}}">{{../langStrings.eventStart}}: </span>
-					<span aria-describedby="date-{{uid}}">{{eventStart}}</span>
-				</span>
-			</button>
-			<a onclick="window.location.href='{{btnUrl}}'" class="button button__apply mini_button {{#if applicationIsActive}}{{else}}disabled{{/if}}">{{applyLabel}}</a>
-		</div>
+				<div class="widg_accordeon_item" aria-expanded="false" data-application-accordeon="button">
+					{{#if availableSeats}}
+						<span class="availability {{availabilityState}}"></span>
+					{{/if}}
+					<span class="event_location">{{eventLocation}}</span>
+					<span class="widg_accordoen_location">
+						<span class="accessibility-hidden" id="date-{{uid}}">{{../langStrings.eventStart}}: </span>
+						<span aria-describedby="date-{{uid}}">{{eventStart}}</span>
+					</span>
+					<span class="widg_accordeon_btn {{#if applicationIsActive}}{{else}}disabled{{/if}}">
+						<a onclick="window.location.href='{{btnUrl}}'">{{applyLabel}}</a>
+					</span>
+					<span class="widg_accordeon__more"></span>
+				</div>
         <div class="widg_accordeon__content" aria-hidden="true" data-application-accordeon="content">
           <dl>
 						{{#each informationEntries}}

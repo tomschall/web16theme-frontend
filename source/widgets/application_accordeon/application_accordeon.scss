@@ -1,8 +1,182 @@
 .widg_application_accordeon {
 
-	.button__apply {
-		@include mq($to: medium) {
-			display: none;
+	.widg_accordeon__button {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.widg_accordeon_item {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		background: $colorLightGray;
+	  	padding: $basicPush;
+	    //gap: 1rem;
+	  	transition: all $transitionLength / 6 $transitionEase;
+	}
+
+  	/*
+  		Workaround for gap since old safari versions don't support it correctly.
+  		From safari 14.1 on it's supported.
+
+  		https://www.falldowngoboone.com/blog/the-curious-case-of-flexbox-gap-and-safari/
+  		and
+  		https://stackoverflow.com/questions/65452057/flexbox-gap-workaround-for-safari
+  	 */
+  	@include mq($from: small) {
+	  .widg_accordeon_item > * + * { margin-left: 1rem;}
+	}
+
+	.event_location {
+	  	font-size: $textSize;
+	  	font-weight: 700;
+	}
+
+	.availability {
+	  	flex: 0 0 auto;
+	  	width: 18px;
+	  	height: 18px;
+	  	border-radius: 50%;
+	  	background-color: $colorBlack;
+	  	content: " ";
+
+		&.state-red {
+			background-color: $colorAvailabilityRed;
+		}
+
+		&.state-green {
+			background-color: $colorAvailabilityGreen;
+		}
+	}
+
+	.event_location {
+		flex: 10;
+	}
+
+	.widg_accordoen_location {
+		flex: 5;
+	  	font-weight: 100;
+	}
+
+	.widg_accordeon_btn {
+		flex: 2;
+		background-color: $colorBlack;
+	  	padding: $basicPush 30px;
+	  	text-align: center;
+	  	line-height: 1.3;
+
+		&:disabled,
+		&.disabled,
+		&[disabled="disabled"] {
+			opacity: 0.4;
+			color: $colorBg;
+
+		  	a {
+			  	pointer-events: none;
+			}
+		}
+
+		a {
+			color: $colorBg;
+			font-size: 1.25rem;
+			text-decoration: none;
+			opacity: 1;
+			font-weight: 600;
+		}
+	}
+
+  	.widg_accordeon__more {
+		/*
+			other accordeon close-buttons have right: 20px
+			since we can't align one item to the right we use padding: 20px - 12px (width) = 8px
+		 */
+	  	padding: 8px;
+	  	@include iconDataurl('accordeon_close_grey', $after: true);
+
+	  	&:after {
+		  	transition: transform $transitionLength / 2 $transitionEase;
+			vertical-align: middle;
+		  	transform: rotate(45deg);
+		}
+
+	}
+
+  	.widg_accordeon__entry.is_open > .widg_accordeon_item {
+		background-color: $colorYellowAccordeonActive;
+		color: $colorBlack;
+
+		&:hover {
+			background-color: $colorYellowAccordeonActive;
+		}
+
+	  	.widg_accordeon__more:after {
+		  	transform: rotate(90deg)
+		}
+	}
+
+  	@include mq($to: medium) {
+
+	  	.widg_accordeon_btn {
+		  	display: none;
+		}
+
+	  	.button__apply___inside {
+		  	display: inline-block;
+		}
+
+	}
+
+  	@include mq($to: small) {
+	  	.widg_accordeon_item {
+		  	display: grid;
+		  	grid-template-columns: 15px 8fr 35px;
+		  	line-height: 1.4;
+		  	gap: 0.4em;
+		}
+
+	  	.availability {
+		  	grid-row-start: 2;
+		  	width: 12px;
+		  	height: 12px;
+		}
+
+	  	.event_location {
+			grid-column-end: span 2;
+		}
+
+	  	.widg_accordoen_location {
+			grid-row-start: 2;
+			grid-column-start: 2;
+		  	color: $colorTextGrey;
+		}
+
+	  	.widg_accordeon__more {
+		  	grid-row-start: 1;
+		  	grid-row-end: span 2;
+		  	grid-column-start: 3;
+		  	text-align: right;
+		}
+
+	}
+
+  	@media print {
+	  	.widg_accordeon_item {
+		  	display: block;
+		  	left: 0px;
+		  	margin: 0px;
+		  	padding: 0px;
+		  	border-bottom: 2pt solid $colorMouseoverGrau;
+		  	color: $colorBlack;
+		}
+
+	  	.event_location {
+		  	display: block;
+		}
+
+	  	.widg_accordoen_location {
+		  	font-size: 10pt;
 		}
 	}
 
