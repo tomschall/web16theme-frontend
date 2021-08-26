@@ -13,10 +13,21 @@
 		align-items: center;
 		background: $colorLightGray;
 	  	padding: $basicPush;
-	    gap: 1rem;
+	    //gap: 1rem;
 	  	transition: all $transitionLength / 6 $transitionEase;
 	}
 
+  	/*
+  		Workaround for gap since old safari versions don't support it correctly.
+  		From safari 14.1 on it's supported.
+
+  		https://www.falldowngoboone.com/blog/the-curious-case-of-flexbox-gap-and-safari/
+  		and
+  		https://stackoverflow.com/questions/65452057/flexbox-gap-workaround-for-safari
+  	 */
+  	@include mq($from: small) {
+	  .widg_accordeon_item > * + * { margin-left: 1rem;}
+	}
 
 	.event_location {
 	  	font-size: $textSize;
@@ -120,7 +131,7 @@
   	@include mq($to: small) {
 	  	.widg_accordeon_item {
 		  	display: grid;
-		  	grid-template-columns: 15px 8fr 1fr;
+		  	grid-template-columns: 15px 8fr 35px;
 		  	line-height: 1.4;
 		  	gap: 0.4em;
 		}
@@ -145,7 +156,7 @@
 		  	grid-row-start: 1;
 		  	grid-row-end: span 2;
 		  	grid-column-start: 3;
-		  	text-align: center;
+		  	text-align: right;
 		}
 
 	}
