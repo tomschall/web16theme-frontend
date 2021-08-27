@@ -147,9 +147,15 @@
 		}
 
 	  	.widg_accordoen_location {
-			grid-row-start: 2;
-			grid-column-start: 2;
 		  	color: $colorTextGrey;
+		  	grid-row-start: 2;
+		  	grid-column-end: span 2;
+		}
+
+	  	/* Only start in column 2 if sibling with class availability exists. */
+	  	.availability ~ .widg_accordoen_location {
+		  	grid-column-start: 2;
+		  	grid-column-end: span 1;
 		}
 
 	  	.widg_accordeon__more {
