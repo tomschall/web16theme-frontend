@@ -5,6 +5,7 @@ html {
 	font-size: $sizeFontBase / 16px * 100%;
 	line-height: $sizeLineHeightBase;
 	font-weight: 400;
+	font-variant: lining-nums;
 }
 
 body {
@@ -14,7 +15,6 @@ body {
 
 nav,
 footer {
-
 	ul,
 	ol {
 		@include resetList;
@@ -28,7 +28,6 @@ h3:not(.childless) {
 
 .hero {
 	position: relative;
-
 }
 
 .page_wrapper {
@@ -79,8 +78,8 @@ h3:not(.childless) {
 		padding: 0;
 	}
 
-  	@include mq($to: small) {
-	  	margin-top: $basicPush * 2;
+	@include mq($to: small) {
+		margin-top: $basicPush * 2;
 	}
 
 	&:focus {
@@ -126,7 +125,6 @@ h3:not(.childless) {
 .page_content {
 	@include span(8.7);
 
-
 	.full-width-page & {
 		@include span(12);
 	}
@@ -134,7 +132,6 @@ h3:not(.childless) {
 	@include mq($from: subnav) {
 		padding-right: 2vw;
 	}
-
 
 	@include mq($from: large) {
 		padding-right: 7.5vw;
@@ -144,9 +141,9 @@ h3:not(.childless) {
 		@include span(12);
 	}
 
-  	@include mq($from: small, $to: medium) {
-	  padding-left: $basicPush * 4;
-	  padding-right: $basicPush * 4;
+	@include mq($from: small, $to: medium) {
+		padding-left: $basicPush * 4;
+		padding-right: $basicPush * 4;
 	}
 
 	@media print {
