@@ -82,28 +82,33 @@
 
 	.widg_accordeon_btn {
 		flex: 4;
-		background-color: $colorBlack;
-	  	padding: $basicPush 30px;
-	  	text-align: center;
-	  	line-height: 1.3;
-
-		&:disabled,
-		&.disabled,
-		&[disabled="disabled"] {
-			opacity: 0.4;
-			color: $colorBg;
-
-		  	a {
-			  	pointer-events: none;
-			}
-		}
 
 		a {
+		  	display: inline-block;
+		  	line-height: 1.3;
+		  	text-align: center;
 			color: $colorBg;
 			font-size: 1.25rem;
 			text-decoration: none;
 			opacity: 1;
 			font-weight: 600;
+		  	background-color: $colorBlack;
+	  		padding: $basicPush 30px;
+
+		  	&:hover,
+			&:active,
+			&:focus {
+				color: $colorBlack;
+				background-color: $colorYellow;
+			}
+
+		  	&:disabled,
+			&.disabled,
+			&[disabled="disabled"] {
+				opacity: 0.4;
+				color: $colorBg;
+			  	pointer-events: none;
+			}
 		}
 	}
 
