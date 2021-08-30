@@ -141,8 +141,8 @@ var templateData = {
 					uid: '4',
 					eventStart: '17.09.2017',
 					eventLocation: 'Superextremlanger Titel mit vielen einzelnen Worten und langem Text',
-					availableSeats: 12,
-					availabilityState: 'state-green',
+					availableSeats: 0,
+					availabilityState: '',
 					informationEntries: [
 						{
 							label: 'Start- und Endtermin',
@@ -178,7 +178,7 @@ var templateData = {
 					btnUrl: '#',
 					iCalURL: '#',
 					applyLabel: 'Warteliste',
-					applicationIsActive: true
+					applicationIsActive: false
 				},
 			],
 			langStrings: {

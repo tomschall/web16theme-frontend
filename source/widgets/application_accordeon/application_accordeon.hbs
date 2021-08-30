@@ -13,8 +13,8 @@
 						<span class="accessibility-hidden" id="date-{{uid}}">{{../langStrings.eventStart}}: </span>
 						<span aria-describedby="date-{{uid}}">{{eventStart}}</span>
 					</span>
-					<span class="widg_accordeon_btn {{#if applicationIsActive}}{{else}}disabled{{/if}}">
-						<a onclick="window.location.href='{{btnUrl}}'">{{applyLabel}}</a>
+					<span class="widg_accordeon_btn">
+						<a onclick="window.location.href='{{btnUrl}}'" class="{{#if applicationIsActive}}{{else}}disabled{{/if}}">{{applyLabel}}</a>
 					</span>
 					<span class="widg_accordeon__more"></span>
 				</div>
