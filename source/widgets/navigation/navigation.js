@@ -142,6 +142,7 @@
 	Widget.prototype.setNavActive = function($navItem, targetLevel) {
 		var $currentList = $(this.options.domSelectors.list + '[data-navigation-level="' + targetLevel + '"]');
 		$currentList.find('.' + this.options.stateClasses.isActive).removeClass(this.options.stateClasses.isActive, this.options.stateClasses.navActive);
+		$currentList.find('.' + this.options.stateClasses.navActive).removeClass(this.options.stateClasses.navActive);
 		$navItem.addClass(this.options.stateClasses.isActive);
 	};
 
