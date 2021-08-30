@@ -15,6 +15,12 @@
 	  	padding: $basicPush;
 	    //gap: 1rem;
 	  	transition: all $transitionLength / 6 $transitionEase;
+	  	cursor: pointer;
+
+	  	&:hover {
+			background-color: $colorGreyHover;
+			color: $colorBlack;
+		}
 	}
 
   	/*
@@ -26,7 +32,21 @@
   		https://stackoverflow.com/questions/65452057/flexbox-gap-workaround-for-safari
   	 */
   	@include mq($from: small) {
-	  .widg_accordeon_item > * + * { margin-left: 1rem;}
+	  	.widg_accordeon_item > * + * {
+			padding-left: 10px;
+			display: inline-block;
+			padding-right: 5px;
+	  	}
+
+	  	.event_location {
+			grid-column-end: span 2;
+		  	padding-left: 28px; // 18px width of .availability + 10px padding-left of .availability.
+		}
+
+	  	 .availability ~ .event_location{
+		  	padding-left: 10px;
+		   	padding-right: 5px;
+		}
 	}
 
 	.event_location {
@@ -61,7 +81,7 @@
 	}
 
 	.widg_accordeon_btn {
-		flex: 2;
+		flex: 4;
 		background-color: $colorBlack;
 	  	padding: $basicPush 30px;
 	  	text-align: center;
@@ -153,7 +173,8 @@
 		}
 
 	  	/* Only start in column 2 if sibling with class availability exists. */
-	  	.availability ~ .widg_accordoen_location {
+	  	.availability.state-red ~ .widg_accordoen_location,
+		.availability.state-green ~ .widg_accordoen_location {
 		  	grid-column-start: 2;
 		  	grid-column-end: span 1;
 		}
