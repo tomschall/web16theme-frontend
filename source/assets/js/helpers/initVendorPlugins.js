@@ -98,7 +98,7 @@
     };
 
     checkIfScrollable();
-		/*
+
 		// WINDOW RELOAD ON RESIZE WINDOW
 		var dwidth = jQuery(window).width();
 		$(window).bind('resize', function() {
@@ -120,6 +120,6 @@
 					this.location.reload(false);
 				}, 2000);
 			}
-		});*/
+		});
 	});
 })(jQuery);
