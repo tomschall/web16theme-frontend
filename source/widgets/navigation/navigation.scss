@@ -116,6 +116,22 @@ styling of all links and lists
 			}
 		}
 
+		&.temp_active {
+			background: transparent;
+
+			&::after {
+				opacity: 0;
+			}
+		}
+	
+		&.nav_active.temp_active.is_active {
+			background-color: darken($colorYellowNavHover, 5%);
+
+			&::after {
+				opacity: 1;
+			}
+		}
+
 		//Smaller the right margin on touch screens
 		@include mq($to: medium) {
 			&:after,
