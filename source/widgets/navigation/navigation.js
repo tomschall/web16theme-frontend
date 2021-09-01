@@ -169,7 +169,6 @@
 			$subList.clone(true).appendTo('.widg_navigation')
 				.addClass(this.options.stateClasses.isVisible);
 		}
-		console.log('fillNavWrapper');
 	};
 
 	/**
