@@ -23,29 +23,64 @@
 		}
 	}
 
-  	/*
-  		Workaround for gap since old safari versions don't support it correctly.
-  		From safari 14.1 on it's supported.
 
-  		https://www.falldowngoboone.com/blog/the-curious-case-of-flexbox-gap-and-safari/
-  		and
-  		https://stackoverflow.com/questions/65452057/flexbox-gap-workaround-for-safari
-  	 */
   	@include mq($from: small) {
+	  	/*
+			Workaround for gap since old safari versions don't support it correctly.
+			From safari 14.1 on it's supported.
+
+			https://www.falldowngoboone.com/blog/the-curious-case-of-flexbox-gap-and-safari/
+			and
+			https://stackoverflow.com/questions/65452057/flexbox-gap-workaround-for-safari
+		 */
 	  	.widg_accordeon_item > * + * {
 			padding-left: 10px;
 			display: inline-block;
-			padding-right: 5px;
 	  	}
 
 	  	.event_location {
 			grid-column-end: span 2;
 		  	padding-left: 28px; // 18px width of .availability + 10px padding-left of .availability.
+
+		  	/*
+		  		IE has Problems with padding/margin and children of flexbox-items.
+		  		See also https://github.com/philipwalton/flexbugs/issues/3. This results in flexbox-items overflowing
+		  		the flexbox-container.
+
+
+		  		So we have this workaround with setting a max-width.
+		  		For the positioning/alignment of the buttons we also need to set margin and padding.
+
+		  		This rules apply for IE 10 and 11 only! See also
+		  		https://www.mediacurrent.com/blog/pro-tip-how-write-conditional-css-ie10-and-11/
+		  	 */
+		  	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+			  	max-width: 35%;
+			  	margin-left: 18px;
+			  	padding-left: 10px;
+			}
 		}
 
 	  	 .availability ~ .event_location{
 		  	padding-left: 10px;
-		   	padding-right: 5px;
+
+		   	/*
+		   		Also workaround for the problems with IE (see above).
+		   	 */
+		   	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+			  	margin-left: 0px;
+			}
+		}
+
+	  	.widg_accordoen_location {
+		  	padding-left: 20px;
+
+		  	/*
+		   		Also workaround for the problems with IE (see above).
+		   	 */
+		  	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+			  	max-width: 30%;
+			}
 		}
 	}
 
