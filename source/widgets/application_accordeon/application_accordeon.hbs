@@ -5,9 +5,7 @@
 	{{#each entries}}
       <div id="{{title}}" class="widg_accordeon__entry mce-item-anchor" data-application-accordeon="entry" role="listitem">
 				<div class="widg_accordeon_item" aria-expanded="false" data-application-accordeon="button">
-					{{#if availableSeats}}
-						<span class="availability {{availabilityState}}"></span>
-					{{/if}}
+					<span class="availability {{availabilityState}}"></span>
 					<span class="event_location">{{eventLocation}}</span>
 					<span class="widg_accordoen_location">
 						<span class="accessibility-hidden" id="date-{{uid}}">{{../langStrings.eventStart}}: </span>
