@@ -56,7 +56,9 @@
 		  		https://www.mediacurrent.com/blog/pro-tip-how-write-conditional-css-ie10-and-11/
 		  	 */
 		  	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-			  	max-width: 35%;
+					@include mq($from: 'medium') {
+						max-width: 35%;
+					}
 			}
 		}
 
