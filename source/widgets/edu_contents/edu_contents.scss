@@ -6,22 +6,6 @@
 	padding-top: $basicPush * 3;
 	padding-bottom: $basicPush * 2;
 
-	// .object__title {
-	// 	padding-left: $basicPush * 2;
-
-	// 	h2.edu__title {
-	// 		font-size: 2rem;
-	// 		color: $colorText;
-	// 		padding-left: 0;
-	// 		margin-bottom: 0;
-
-	// 		&::after {
-	// 			content: '';
-	// 			background: none;
-	// 		}
-	// 	}
-	// }
-
 	.edu__content {
 		display: block;
 		width: 100%;
@@ -34,7 +18,7 @@
 		dl {
 			display: flex;
 			flex-wrap: wrap;
-			padding: 0 $basicPush * 2;
+			padding: 0 $basicPush * 2.5;
 			padding-bottom: 0;
 			margin-top: 0;
 			margin-bottom: 0;
@@ -78,7 +62,7 @@
 			}
 
 			dt {
-				font-size: 13px;
+				font-size: 15px;
 				color: $colorText;
 				line-height: 20px;
 				font-weight: 700;
