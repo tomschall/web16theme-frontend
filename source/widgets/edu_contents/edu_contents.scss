@@ -150,7 +150,7 @@
 
 		.edu__info_icon {
 			display: flex;
-			width: 25px;
+			width: $basicPush * 2;
 
 			@include iconDataurl('information');
 			
