@@ -51,11 +51,19 @@
 	 * @public
 	 */
 	Widget.prototype.init = function() {
+		var showMore = $('.object__title').attr('data-lang-show-more');
+		var showLess = $('.object__title').attr('data-lang-show-less');
+		var visibleDatas = '.widg_edu_contents .edu__key_data div.datas';
+
+		if (window.estatico.mq.query({ from: 'small' })) {
+			if ($(visibleDatas).length === 2 || $(visibleDatas).length === 4) {
+				$('.edu__key_data .datas').css('width', '50%');
+			}
+	}
+
 		if (window.estatico.mq.query({ to: 'small' })) {
-			var showMore = $('.object__title').attr('data-lang-show-more');
-			var showLess = $('.object__title').attr('data-lang-show-less');
-			var visibleDatas = '.widg_edu_contents .edu__key_data div.datas';
 			$('.toggler .show-more').text(showMore);
+
 			if ($(visibleDatas).length > 3) {
 				$('.edu__key_data div:gt(2)').hide();
 				$('.edu__key_data div:nth-child(3)').addClass('remove__line');
@@ -74,34 +82,48 @@
 };
 
 	Widget.prototype.calculateLines = function() {
-		if (window.estatico.mq.query({ from: 'medium' })) {
-			$('.edu__key_data div').each(function(index) {
-				if (
-					index === 2 ||
-					index === 5 ||
-					index === 8 ||
-					index === 11 ||
-					index === 14
-				) {
-					$(this).after('<div class="ruler"></div>');
-				}
-			});
+		var visibleDatas = '.widg_edu_contents .edu__key_data div.datas';
+
+		if (!$(visibleDatas).length === 2 || !$(visibleDatas).length === 4 || $(visibleDatas).length > 4) {
+			if (window.estatico.mq.query({ from: 'medium' })) {
+				$('.edu__key_data div').each(function(index) {
+					if (
+						index === 2 ||
+						index === 5 ||
+						index === 8 ||
+						index === 11 ||
+						index === 14
+					) {
+						$(this).after('<div class="ruler"></div>');
+					}
+				});
+			}
 		}
-		if (window.estatico.mq.query({ from: 'small', to: 'medium' })) {
-			$('.edu__key_data div').each(function(index) {
-				if (
-					index === 1 ||
-					index === 3 ||
-					index === 5 ||
-					index === 7 ||
-					index === 9 ||
-					index === 11 ||
-					index === 13 ||
-					index === 15
-				) {
-					$(this).after('<div class="ruler"></div>');
-				}
-			});
+		if (!$(visibleDatas).length === 2 || !$(visibleDatas).length === 4 || $(visibleDatas).length > 4) {
+			if (window.estatico.mq.query({ from: 'small', to: 'medium' })) {
+				$('.edu__key_data div').each(function(index) {
+					if (
+						index === 1 ||
+						index === 3 ||
+						index === 5 ||
+						index === 7 ||
+						index === 9 ||
+						index === 11 ||
+						index === 13 ||
+						index === 15
+					) {
+						$(this).after('<div class="ruler"></div>');
+					}
+				});
+			}
+		}
+
+		if ($(visibleDatas).length === 4) {
+				$('.edu__key_data div').each(function(index) {
+					if (index === 1) {
+						$(this).after('<div class="ruler"></div>');
+					}
+				});
 		}
 	};
 
