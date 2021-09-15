@@ -9,7 +9,8 @@ var templateData = {
 	langStrings: {
 		application: 'Anmeldung',
 		events: 'Info-Anlässe',
-		contact: 'Kontakt'
+		contact: 'Kontakt',
+		message: 'Der Anmeldeschluss ist am 15.4.2021 abgelaufen. Nächstes Anmeldefenster öffnet ab 1. Oktober 2021.'
 	}
 },
 	data = _.assign(

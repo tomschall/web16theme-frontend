@@ -65,9 +65,9 @@
     var self = this;
 
 		if (window.estatico.mq.query({ to: 'small' })) {
-			var e = $('<div><div class="icon icon__application">' + labelApplication +
+			var e = $('<div><div class="icon icon__contact">' + labelContact +
 			'</div><div class="icon icon__info">' + labelEvents +
-			'</div><div class="icon icon__contact">' + labelContact +
+			'</div><div class="icon icon__application">' + labelApplication +
 			'</div></div>');
 			$('body').append(e);
 			e.attr('id', 'edu__product_nav').hide().fadeIn(1000);

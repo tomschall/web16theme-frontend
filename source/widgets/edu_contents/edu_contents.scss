@@ -6,22 +6,21 @@
 	padding-top: $basicPush * 3;
 	padding-bottom: $basicPush * 2;
 
-	.object__title {
-		padding-left: $basicPush * 2;
-		background: $colorBg;
+	// .object__title {
+	// 	padding-left: $basicPush * 2;
 
-		h2.edu__title {
-			font-size: 2rem;
-			color: $colorText;
-			padding-left: 0;
-			margin-bottom: 0;
+	// 	h2.edu__title {
+	// 		font-size: 2rem;
+	// 		color: $colorText;
+	// 		padding-left: 0;
+	// 		margin-bottom: 0;
 
-			&::after {
-				content: '';
-				background: none;
-			}
-		}
-	}
+	// 		&::after {
+	// 			content: '';
+	// 			background: none;
+	// 		}
+	// 	}
+	// }
 
 	.edu__content {
 		display: block;
@@ -139,6 +138,34 @@
 		.edu__key_data {
 			transition: height 1s linear;
 
+		}
+	}
+
+	.edu__info {
+		display: flex;
+ 		flex-direction: row;
+  	justify-content: flex-start;
+  	align-items: flex-start;
+		margin-bottom: $basicPush;
+
+		.edu__info_icon {
+			display: flex;
+			width: 25px;
+
+			@include iconDataurl('information');
+			
+			padding-top: 5px;
+			margin: 0;
+			margin-right: 5px;
+		}
+			
+		.edu__info_message {
+			padding-bottom: $basicPush - 4;
+			padding-top: 2px;
+			padding-right: 5px;
+			margin-left: 5px;
+			margin-top: 0;
+			font-size: 15px;
 		}
 	}
 
