@@ -4,10 +4,14 @@
 				{{> "widgets/edu_key_data/edu_key_data" widgets.keydata }}
 			</div>
     {{/if}}
+
+		{{#each entries}}
 		<div class="edu__info">
 			<p class="edu__info_icon">&nbsp;</p>
-			<p class="edu__info_message">{{ langStrings.message }}</p>
+			<p class="edu__info_message">{{dateTime}}, {{location}}, <a href="{{url}}">{{title}}</a></p>
 		</div>
+		{{/each}}
+
 	<div class="edu__details">
 		{{#if widgets.events}}
 			{{> "widgets/edu_events/edu_events" widgets.events }}
