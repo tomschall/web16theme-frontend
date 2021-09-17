@@ -11,7 +11,20 @@ var templateData = {
 		events: 'Info-Anlässe',
 		contact: 'Kontakt',
 		message: 'Der Anmeldeschluss ist am 15.4.2021 abgelaufen. Nächstes Anmeldefenster öffnet ab 1. Oktober 2021.'
-	}
+	},
+	entries: [
+		{
+			title: 'Info-Veranstaltung',
+			dateTime: '27.06.2016 um 18:15 Uhr',
+			location: 'Windisch',
+			url: '/',
+		},
+		{
+			title: 'Info-Veranstaltung',
+			dateTime: '27.06.2016 um 18:15 Uhr',
+			location: 'Windisch',
+			url: '/',
+		}]
 },
 	data = _.assign(
 		defaultData,
