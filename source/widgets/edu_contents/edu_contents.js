@@ -24,7 +24,7 @@
 				contactAnchor: '.widg_sidebar__content > .widg_edu_contact.widg_sidebar__object',
 				eventAnchor: '.widg_info_teaser',
 				applicationAnchor: '.widg_application_accordeon',
-				sidebarApplicationAnchor: '.btn.small_button.anchor-link'
+				sidebarApplicationAnchor: '.align__btn .btn.small_button'
 			},
 			stateClasses: {},
 		},
