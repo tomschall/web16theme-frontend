@@ -24,7 +24,7 @@
 				contactAnchor: '.widg_sidebar__content > .widg_edu_contact.widg_sidebar__object',
 				eventAnchor: '.widg_info_teaser',
 				applicationAnchor: '.widg_application_accordeon',
-				sidebarApplicationAnchor: '#edu__application'
+				sidebarApplicationAnchor: '.btn.small_button.anchor-link'
 			},
 			stateClasses: {},
 		},
@@ -62,6 +62,9 @@
 		var labelApplication = $(this.options.domSelectors.parent).attr('data-nav-application');
 		var labelEvents = $(this.options.domSelectors.parent).attr('data-nav-events');
 		var labelContact = $(this.options.domSelectors.parent).attr('data-nav-contact');
+
+		console.log($(defaults.domSelectors.applicationAnchor).length);
+
     var self = this;
 
 		if (window.estatico.mq.query({ to: 'small' })) {
@@ -91,14 +94,16 @@
         } else if (this.className.split(' ')[1] === 'icon__application') {
 					// ANCHOR APPLICATION
 					if ($(defaults.domSelectors.applicationAnchor).length) {
+						console.log('application exists');
 						self.scrollTop(defaults.domSelectors.applicationAnchor, 25);
-						if ($('.widg_application_accordeon > .widg_accordeon__entry').length <= 1) {
-							if (!$('#targetOnlineApplication').hasClass('is_open')) {
-								$('#targetOnlineApplication div.widg_accordeon__button > button').trigger('click');
-								$('#targetOnlineApplication').toggleClass('is_open');
+						if ($('.widg_application_accordeon > .widg_accordeon__entry:first-of-type').length <= 1) {
+							if (!$('#targetOnlineApplication .widg_accordeon__entry:first-of-type').hasClass('is_open')) {
+								$('#targetOnlineApplication .widg_accordeon__entry:first-of-type .widg_accordeon_item').trigger('click');
+								$('#targetOnlineApplication .widg_accordeon__entry:first-of-type .widg_accordeon_item').toggleClass('is_open');
 							}
 						}
 					} else {
+						console.log('scroll to target');
 						self.scrollTop(defaults.domSelectors.sidebarApplicationAnchor, 25);
 					}
         }
