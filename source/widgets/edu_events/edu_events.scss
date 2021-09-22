@@ -1,8 +1,8 @@
 .widg_edu_events {
-	width: 50%;
+	width: 48%;
 	display: flex;
 	flex-direction: column;
-  justify-content: space-between;
+	justify-content: space-between;
 
 	@include mq($to: small) {
 		width: 100%;
@@ -55,7 +55,7 @@
 		&:hover {
 			background: $colorYellow;
 			color: $colorText;
-		}		
+		}
 
 		@include mq($to: small) {
 			width: 100%;
