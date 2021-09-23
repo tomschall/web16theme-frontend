@@ -8,7 +8,7 @@ var _ = require('lodash'),
 var templateData = {
 		button: {
 			text: 'Zu den Info-Anlässen',
-			url: '#targetInfoEvents',
+			url: 'http://localhost:9000/pages/university_for_applied_psychology/university_for_applied_psychology.html',
 		},
 		title: 'Infoveranstaltungen',
 		
