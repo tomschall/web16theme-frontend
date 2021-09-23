@@ -17,6 +17,7 @@
 
 		h2.edu__title {
 			margin-bottom: $basicPush;
+			font-size: $basicPush * 2.2;
 
 			&::after {
 				background-color: transparent;
@@ -78,6 +79,7 @@
 			}
 			dd {
 				font-size: 15px;
+				color: $colorText;
 				margin-inline-start: 0;
 				hyphens: auto;
 				margin-left: 0;
