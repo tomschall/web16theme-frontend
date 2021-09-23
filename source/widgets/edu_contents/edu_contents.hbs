@@ -5,10 +5,12 @@
 			</div>
     {{/if}}
 
+		{{#if langStrings.message }}
     <div class="edu__info">
         <p class="edu__info_icon">&nbsp;</p>
-        <p class="edu__info_message">{{ message }}</a></p>
+        <p class="edu__info_message">{{ langStrings.message }}</a></p>
     </div>
+		{{/if}}
 
 	<div class="edu__details">
 		{{#if widgets.events}}
