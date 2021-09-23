@@ -62,19 +62,22 @@
 		var labelApplication = $(this.options.domSelectors.parent).attr('data-nav-application');
 		var labelEvents = $(this.options.domSelectors.parent).attr('data-nav-events');
 		var labelContact = $(this.options.domSelectors.parent).attr('data-nav-contact');
-
-		console.log($(defaults.domSelectors.applicationAnchor).length);
-
     var self = this;
 
 		if (window.estatico.mq.query({ to: 'small' })) {
-			var e = $('<div><div class="icon icon__contact">' + labelContact +
-			'</div><div class="icon icon__info">' + labelEvents +
-			'</div><div class="icon icon__application">' + labelApplication +
-			'</div></div>');
+			var e = $('<div><a class="icon icon__contact">' + labelContact +
+			'</a><a class="icon icon__info">' + labelEvents +
+			'</a><a class="icon icon__application">' + labelApplication +
+			'</a></div>');
 			$('body').append(e);
 			e.attr('id', 'edu__product_nav').hide().fadeIn(1000);
 			this.iOS();
+		}
+
+		// COPY LINK IF EDU-EVENTS NOT EXISTS, BUT EVENT BUTTON HAS LINK REFERENCE
+		if ($('#targetInfoEvents').length === 0 && $('.widg_edu_events .btn.small_button').length === 1) {
+			var eduInfoLink = $('.widg_edu_events .btn.small_button').attr('href');
+			$('.icon.icon__info').attr('href', eduInfoLink);
 		}
 
 		if ($(this.options.domSelectors.contactAnchor).length ||
@@ -102,7 +105,6 @@
 							}
 						}
 					} else {
-						console.log('scroll to target');
 						self.scrollTop(defaults.domSelectors.sidebarApplicationAnchor, 25);
 					}
         }
@@ -114,7 +116,8 @@
 			$('.icon.icon__contact').css('display', 'none');
 		}
 
-		if ($('#edu__events').length === 0 && $('#targetInfoEvents').length === 0) {
+		// HIDE BUTTON INFO-ANLASS, WHEN BUTTON NOT EXISTS
+		if ($('.widg_edu_events').length === 0) {
 			$('.icon.icon__info').css('display', 'none');
 		}
 
