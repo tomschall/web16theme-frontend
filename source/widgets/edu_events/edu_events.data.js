@@ -11,7 +11,6 @@ var templateData = {
 			url: 'http://localhost:9000/pages/university_for_applied_psychology/university_for_applied_psychology.html',
 		},
 		title: 'Infoveranstaltungen',
-		
 	},
 	data = _.merge(
 		defaultData,

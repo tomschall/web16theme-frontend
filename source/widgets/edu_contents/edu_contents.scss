@@ -18,6 +18,7 @@
 		h2.edu__title {
 			margin-bottom: $basicPush;
 			font-size: $basicPush * 2.2;
+			color: $colorText;
 
 			&::after {
 				background-color: transparent;
@@ -197,7 +198,7 @@
 		flex-direction: column;
 		align-items: center;
 		padding: $basicPush - 5;
-		
+
 		font-size: 12px;
 		font-weight: 600;
 		text-decoration: none;
