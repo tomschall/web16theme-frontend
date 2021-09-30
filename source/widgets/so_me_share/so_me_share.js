@@ -42,7 +42,7 @@
 			},
 			translations: {
 				de: 'Drucken',
-				en: 'print',
+				en: 'Print',
 				fr: 'Imprimer'
 			}
 		},
