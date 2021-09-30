@@ -43,7 +43,7 @@
 			translations: {
 				de: 'Drucken',
 				en: 'print',
-				fr: 'imprimer'
+				fr: 'Imprimer'
 			}
 		},
 		data = {
