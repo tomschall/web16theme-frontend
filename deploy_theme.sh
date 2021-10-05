@@ -31,6 +31,8 @@ then
       git add src/fhnw/contentwidgets/templates/sidebar_news/
       git add  src/fhnw/contentwidgets/templates/event_search/
       git add  src/fhnw/contentwidgets/templates/news_search/
+	git add  src/fhnw/contentwidgets/templates/continuing_education_search/
+	git add  src/fhnw/contentwidgets/templates/degree_programmes_search/
       git commit -am "Frontend build $FRONTEND_REV"
       git push
       cd ../../src/fhnw.web16theme
