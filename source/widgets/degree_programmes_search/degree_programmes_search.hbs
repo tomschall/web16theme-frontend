@@ -1,0 +1,34 @@
+<div class="degree_programmes_search__wrapper" data-init="degree_programmes_search" data-searchpage-template="degree_programmes_full"
+  data-searchpage-category="degree_programmes" data-searchpage="formWrapper" role="search">
+  <div class="search__form-wrapper">
+    <div>
+      {{#if title}}
+      <h2>{{title}}</h2>
+      {{/if}}
+      <p>
+        {{#if description}}
+        {{description}}
+        {{/if}}
+      </p>
+      <div>
+        <div class="search__holder__searchstring">
+          <div class="search__string">
+            <input type="text" value="" id="search-string" name="search-string" data-searchpage="query"
+              data-searchparam="q" />
+            <label class="formQuestion" for="search-string">{{widgets.label_search}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="search__third-row">
+      <div class="search__extra-holder">
+        <button class="search__reset not-default" data-searchpage="reset">{{widgets.label_reset_fields}}</button>
+      </div>
+      <div class="search__extra-holder element-hidden">
+        <span data-searchpage="countNumber"></span>
+        <span class="search__countNumber___text"></span>
+      </div>
+    </div>
+  </div>
+  {{> "widgets/searchpage/searchpage" widgets.searchpage }}
+</div>
