@@ -143,11 +143,14 @@
 		margin-bottom: $basicPush;
 
 		.edu__info_icon {
-			margin-top: 1px;
-			
-			img {
-				margin: 2px;
-			}
+			display: flex;
+			width: $basicPush * 2;
+
+			@include iconDataurl('information');
+
+			padding-top: 5px;
+			margin: 0;
+			margin-right: 5px;
 		}
 
 		.edu__info_message {
