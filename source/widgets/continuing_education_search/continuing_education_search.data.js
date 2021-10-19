@@ -14,7 +14,7 @@ var templateData = {
 			widgets: {
 					label_search: 'Suchbegriff',
 					label_reset_fields: 'Reset',
-				  label_faculty: 'Fachbereich',
+					label_faculty: 'Fachbereich',
 					label_location: 'Standort',
 					label_type: 'Typ',
 					subjectarea_options : [
