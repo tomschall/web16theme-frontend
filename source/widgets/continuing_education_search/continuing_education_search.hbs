@@ -29,7 +29,7 @@
           <label class="formQuestion" for="taxonomy_subjectarea">{{widgets.label_faculty}}</label>
         </div>
         <div class="search__holder select2__wrapper {{#if filter_eduproducttype}}hidden{{/if}}">
-            {{#each widgets.studyTypeOptions}}
+            {{#each widgets.eduproducttype_options}}
                 {{#if hide}}
                     <span aria-hidden="true" class="is_hidden taxonomy_eduproducttype_hidden_option" data-value="{{optionValue}}" data-text="{{optionLabel}}"></span>
                 {{/if}}
