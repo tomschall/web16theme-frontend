@@ -7,13 +7,7 @@
 (function($, undefined) {
   'use strict';
 
-  var orientation = window.orientation;
-  var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
-
-  window.addEventListener('orientationchange', function() {
-    if (iOS === true) {
-    console.log('view mode', orientation, iOS);
-
+  function pageReload() {
     window.RT = setTimeout(function() {
       $('body').append(
         '<div id="overlay"><div id="fhnw-spinner"></div></div>'
@@ -25,8 +19,31 @@
         });
         this.location.reload(false);
       }, 2000);
+  }
+
+  // TABLET DEVICES -> CHANGE ORIENTATION (PORTRAIT/LANDSCAPE)
+  var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+  window.addEventListener('orientationchange', function() {
+    if (iOS === true) {
+      pageReload();
     }
   });
+  
+  // WINDOW RELOAD ON RESIZE - CONDITIONAL BASED ON COMPONENTS
+  var hasMap = $('#location-map').length;
+  var dwidth = jQuery(window).width();
+  $(window).bind('resize', function() {
+    var wwidth = jQuery(window).width();
+
+    if (dwidth !== wwidth && hasMap === 1 && window.estatico.mq.query({to: 'medium'})) {
+      dwidth = jQuery(window).width();
+      if (window.RT) {
+        clearTimeout(window.RT);
+      }
+      pageReload();
+    }
+  });
+
 
   var $document = $(document),
     initEvents = estatico.helpers.initEvents || {},
