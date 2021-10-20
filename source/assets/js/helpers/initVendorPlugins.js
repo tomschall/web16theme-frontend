@@ -98,28 +98,5 @@
     };
 
     checkIfScrollable();
-
-		// WINDOW RELOAD ON RESIZE WINDOW
-		var dwidth = jQuery(window).width();
-		$(window).bind('resize', function() {
-			var wwidth = jQuery(window).width();
-			if (dwidth !== wwidth) {
-				dwidth = jQuery(window).width();
-				if (window.RT) {
-					clearTimeout(window.RT);
-				}
-				window.RT = setTimeout(function() {
-					$('body').append(
-						'<div id="overlay"><div id="fhnw-spinner"></div></div>'
-					);
-					$('#fhnw-spinner').spinner({
-						radius: 30,
-						strokeWidth: 6,
-						color: '#fff',
-					});
-					this.location.reload(false);
-				}, 2000);
-			}
-		});
 	});
 })(jQuery);
