@@ -100,26 +100,55 @@
     checkIfScrollable();
 
 		// WINDOW RELOAD ON RESIZE WINDOW
-		var dwidth = jQuery(window).width();
-		$(window).bind('resize', function() {
-			var wwidth = jQuery(window).width();
-			if (dwidth !== wwidth) {
-				dwidth = jQuery(window).width();
-				if (window.RT) {
-					clearTimeout(window.RT);
-				}
-				window.RT = setTimeout(function() {
-					$('body').append(
-						'<div id="overlay"><div id="fhnw-spinner"></div></div>'
-					);
-					$('#fhnw-spinner').spinner({
-						radius: 30,
-						strokeWidth: 6,
-						color: '#fff',
-					});
-					this.location.reload(false);
-				}, 2000);
-			}
-		});
+		// var dwidth = jQuery(window).width();
+		// var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+		
+
+		// TABLET VIEW VERTICAL/HORIZONTAL
+		// window.addEventListener("orientationchange", function() {
+		// 	if (window.orientation === 90 || window.orientation === -90) {
+		// 		var menuIsOpen;
+		// 		if ($('.widg_header.widg_header___cloned').hasClass('is_nav-open') === true) {
+		// 			menuIsOpen = true;
+		// 			console.log('landscape mode', menuIsOpen);
+		// 			window.RT = setTimeout(function() {
+		// 				$('body').append(
+		// 					'<div id="overlay"><div id="fhnw-spinner"></div></div>'
+		// 				);
+		// 				$('#fhnw-spinner').spinner({
+		// 					radius: 30,
+		// 					strokeWidth: 6,
+		// 					color: '#fff',
+		// 				});
+		// 				this.location.reload(false);
+		// 			}, 2000);
+		// 		} else {
+		// 			menuIsOpen = false;
+		// 			console.log('portait mode', 'menu is open', menuIsOpen);
+		// 		}
+		// 	}
+		// });
+
+		// $(window).bind('resize', function() {
+		// 	console.log(dwidth, iOS);
+		// 	var wwidth = jQuery(window).width();
+		// 	if (dwidth !== wwidth) {
+		// 		dwidth = jQuery(window).width();
+		// 		if (window.RT) {
+		// 			clearTimeout(window.RT);
+		// 		}
+		// 		window.RT = setTimeout(function() {
+		// 			$('body').append(
+		// 				'<div id="overlay"><div id="fhnw-spinner"></div></div>'
+		// 			);
+		// 			$('#fhnw-spinner').spinner({
+		// 				radius: 30,
+		// 				strokeWidth: 6,
+		// 				color: '#fff',
+		// 			});
+		// 			this.location.reload(false);
+		// 		}, 2000);
+		// 	}
+		// });
 	});
 })(jQuery);

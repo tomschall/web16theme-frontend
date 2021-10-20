@@ -7,6 +7,27 @@
 (function($, undefined) {
   'use strict';
 
+  var orientation = window.orientation;
+  var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+
+  window.addEventListener('orientationchange', function() {
+    if (iOS === true) {
+    console.log('view mode', orientation, iOS);
+
+    window.RT = setTimeout(function() {
+      $('body').append(
+        '<div id="overlay"><div id="fhnw-spinner"></div></div>'
+        );
+        $('#fhnw-spinner').spinner({
+          radius: 30,
+          strokeWidth: 6,
+          color: '#fff',
+        });
+        this.location.reload(false);
+      }, 2000);
+    }
+  });
+
   var $document = $(document),
     initEvents = estatico.helpers.initEvents || {},
     keys = Object.keys(initEvents);
