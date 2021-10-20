@@ -28,20 +28,22 @@
       pageReload();
     }
   });
-  
+
   // WINDOW RELOAD ON RESIZE - CONDITIONAL BASED ON COMPONENTS
   var hasMap = $('#location-map').length;
   var dwidth = jQuery(window).width();
+  
   $(window).bind('resize', function() {
+    var isToMediumSize = window.estatico.mq.query({to: 'medium'});
     var wwidth = jQuery(window).width();
-
-    if (dwidth !== wwidth && hasMap === 1 && window.estatico.mq.query({to: 'medium'})) {
-      dwidth = jQuery(window).width();
-      if (window.RT) {
-        clearTimeout(window.RT);
+    
+    if (dwidth !== wwidth && hasMap === 1 && isToMediumSize === true) {
+        dwidth = jQuery(window).width();
+        if (window.RT) {
+          clearTimeout(window.RT);
+        }
+        pageReload();
       }
-      pageReload();
-    }
   });
 
 
@@ -104,29 +106,29 @@
       );
     }
 
-    var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
-    if (isMobile === null) {
-      if ($('.widg_location_slider').length) {
-        var resizeTimer;
-        $(window).on('resize', function() {
-          var windowSize = $(window).width();
-          if (windowSize <= 1022) {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function() {
-              $('.widg_location_slider').append(
-                '<div id="overlay"><div id="fhnw-spinner"></div></div>'
-              );
-              $('#fhnw-spinner').spinner({
-                radius: 30,
-                strokeWidth: 6,
-                color: '#fff',
-              });
-              this.location.reload(false); /* false to get page from cache */
-            }, 1000);
-          }
-        });
-      }
-    }
+    // var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
+    // if (isMobile === null) {
+    //   if ($('.widg_location_slider').length) {
+    //     var resizeTimer;
+    //     $(window).on('resize', function() {
+    //       var windowSize = $(window).width();
+    //       if (windowSize <= 1022) {
+    //         clearTimeout(resizeTimer);
+    //         resizeTimer = setTimeout(function() {
+    //           $('.widg_location_slider').append(
+    //             '<div id="overlay"><div id="fhnw-spinner"></div></div>'
+    //           );
+    //           $('#fhnw-spinner').spinner({
+    //             radius: 30,
+    //             strokeWidth: 6,
+    //             color: '#fff',
+    //           });
+    //           this.location.reload(false); /* false to get page from cache */
+    //         }, 1000);
+    //       }
+    //     });
+    //   }
+    // }
   });
 
   // INITIALIZATION PROTIP
