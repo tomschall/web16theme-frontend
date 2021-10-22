@@ -33,10 +33,12 @@
   var hasMap = $('#locations').length;
   var hasTeaser = $('.widg_teaser__wrapper').length;
   var dwidth = jQuery(window).width();
+  var hasEasyFormThankYouPage = $('.easyform-thankspage').length;
 
   $(window).bind('resize', function() {
     var isToMediumSize = window.estatico.mq.query({to: 'medium'});
-    console.log('isToMediumSize', isToMediumSize);
+    var isFromSmallSize = window.estatico.mq.query({from: 'small'});
+    console.log('isToMediumSize', isToMediumSize, isFromSmallSize);
     var wwidth = jQuery(window).width();
 
     if (dwidth !== wwidth && hasMap === 1 && isToMediumSize === true || hasTeaser >= 1 && isToMediumSize === true) {
@@ -44,7 +46,9 @@
         if (window.RT) {
           clearTimeout(window.RT);
         }
-        pageReload();
+        if (hasEasyFormThankYouPage === 0 && isFromSmallSize === true) {
+          pageReload();
+        }
       }
   });
 
