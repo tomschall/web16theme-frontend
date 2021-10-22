@@ -36,9 +36,10 @@
 
   $(window).bind('resize', function() {
     var isToMediumSize = window.estatico.mq.query({to: 'medium'});
+    console.log('isToMediumSize', isToMediumSize);
     var wwidth = jQuery(window).width();
 
-    if (dwidth !== wwidth && hasMap === 1 && isToMediumSize === true || hasTeaser >= 1) {
+    if (dwidth !== wwidth && hasMap === 1 && isToMediumSize === true || hasTeaser >= 1 && isToMediumSize === true) {
         dwidth = jQuery(window).width();
         if (window.RT) {
           clearTimeout(window.RT);
