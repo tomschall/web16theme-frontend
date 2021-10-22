@@ -19,6 +19,47 @@
           </div>
         </div>
       </div>
+      <div>
+        <div class="search__holder select2__wrapper {{#if filter_subjectarea}}hidden{{/if}}">
+          <select id="taxonomy_subjectarea" name="taxonomy_subjectarea" data-searchparam="taxonomy_subjectarea" class="custom-select" multiple="multiple">
+            {{#each widgets.subjectarea_options}}
+            <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
+            {{/each}}
+          </select>
+          <label class="formQuestion" for="taxonomy_subjectarea">{{widgets.label_faculty}}</label>
+        </div>
+        <div class="search__holder select2__wrapper {{#if filter_eduproducttype}}hidden{{/if}}">
+            {{#each widgets.eduproducttype_options}}
+                {{#if hide}}
+                    <span aria-hidden="true" class="is_hidden taxonomy_eduproducttype_hidden_option" data-value="{{optionValue}}" data-text="{{optionLabel}}"></span>
+                {{/if}}
+            {{/each}}
+          <select id="taxonomy_eduproducttype" name="taxonomy_eduproducttype" data-searchparam="taxonomy_eduproducttype" class="custom-select"
+            multiple="multiple">
+            {{#each widgets.eduproducttype_options}}
+                {{#unless hide}}
+                    <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
+                {{/unless}}
+            {{/each}}
+          </select>
+          <label class="formQuestion" for="eduproducttype">{{widgets.label_type}}</label>
+        </div>
+        <div class="search__holder select2__wrapper {{#if filter_location}}hidden{{/if}}">
+          <select id="city" name="city" data-searchparam="city" class="custom-select" multiple="multiple">
+            {{#each widgets.locationOptions}}
+            <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
+            {{/each}}
+          </select>
+          <label class="formQuestion" for="city">{{widgets.label_location}}</label>
+        </div>
+        <div class="search__holder select2__wrapper hidden">
+          <select id="subject" name="subject" data-searchparam="subject" class="custom-select" multiple="multiple">
+            {{#each widgets.subject}}
+            <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
     </div>
     <div class="search__third-row">
       <div class="search__extra-holder">
