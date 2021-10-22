@@ -33,13 +33,19 @@
   var hasMap = $('#locations').length;
   var hasTeaser = $('.widg_teaser__wrapper').length;
   var dwidth = jQuery(window).width();
+  var hasEasyForm = $('.easyform-thankspage').length;
+  console.log('hasEasyForm', hasEasyForm);
 
   $(window).bind('resize', function() {
     var isToMediumSize = window.estatico.mq.query({to: 'medium'});
     console.log('isToMediumSize', isToMediumSize);
     var wwidth = jQuery(window).width();
 
-    if (dwidth !== wwidth && hasMap === 1 && isToMediumSize === true || hasTeaser >= 1 && isToMediumSize === true) {
+    if (dwidth !== wwidth && hasMap === 1 &&
+      isToMediumSize === true ||
+      hasTeaser >= 1 && isToMediumSize === true ||
+      hasEasyForm === 0
+    ) {
         dwidth = jQuery(window).width();
         if (window.RT) {
           clearTimeout(window.RT);
