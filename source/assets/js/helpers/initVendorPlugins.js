@@ -6,16 +6,6 @@
  ;(function($, undefined) {
 	'use strict';
 
-	$(window).on('resize', function() {
-		if ($(window).width() > 1022) {
-			$('.widg_teaser__img img').imageScale({
-				rescaleOnResize: true,
-				scale: 'best-fill',
-				align: 'center'
-			});
-		}
-	});
-
 	$(document).ready(function() {
 		// The Jquery Spinner, has to be implemented when element is added later than document.ready
 		$('.fhnw-spinner').spinner({
