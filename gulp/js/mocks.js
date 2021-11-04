@@ -31,7 +31,7 @@ gulp.task(taskName, function() {
 		.pipe(tap(function(file) {
 			var data = require(file.path);
 
-			file.contents = new Buffer(JSON.stringify(data));
+			file.contents = new Buffer(data);
 		}))
 		.pipe(rename(function(path) {
 			path.basename = path.basename.replace('.mock', '');

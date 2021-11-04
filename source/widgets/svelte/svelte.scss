@@ -1,0 +1,69 @@
+.widg_edu_events {
+	width: 49%;
+	display: flex;
+	flex-direction: column;
+  justify-content: space-between;
+
+	@include mq($to: small) {
+		width: 100%;
+	}
+
+	.event__title {
+		display: block;
+		color: $colorBlack;
+
+		margin-bottom: $basicPush;
+
+		a {
+			font-size: 15px;
+			font-weight: 400;
+		}
+	}
+
+	.event__date-location {
+		color: $colorText;
+		font-size: 1.083333rem;
+		font-weight: 700;
+	}
+
+	.object__content {
+		flex-grow: 1;
+		padding: 10px 20px 0;
+	}
+
+	.align__btn {
+		display: flex;
+	}
+
+	a.btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		margin: $basicPush * 2;
+		background: $colorBlack;
+		opacity: 1;
+		color: $colorBg;
+
+		text-decoration: none;
+		text-align: center;
+
+		padding: $basicPush;
+		line-height: 17px;
+		min-height: $basicPush * 5;
+
+		&:hover {
+			background: $colorYellow;
+			color: $colorText;
+		}		
+
+		@include mq($to: small) {
+			width: 100%;
+		}
+
+		@include mq($from: small) {
+			width: $basicPush * 25;
+			max-width: $basicPush * 25;
+		}
+	}
+}
