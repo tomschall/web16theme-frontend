@@ -25,7 +25,7 @@ gulp.task(taskName, function(cb) {
                 'js:lodash',
                 'js:templates',
                 'js:mocks',
-                // 'js:svelte',
+                'js:svelte',
                 'media:dataurls',
                 'media:iconfont',
                 'media:pngsprite'

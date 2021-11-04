@@ -57,41 +57,31 @@
    * @public
    */
   Widget.prototype.init = function () {
-    console.log('triggered');
+    console.log('triggered', document);
     // console.log('Widget "edu_events" initialized');
-    (function () {
-      var headID = document.getElementsByTagName('head')[0];
-      var link = document.createElement('link');
-      link.type = 'text/css';
-      link.rel = 'stylesheet';
+    var renderCssBundle = function () {
+      var my_awesome_script = document.createElement('script');
+      my_awesome_script.setAttribute('src', '/assets/svelte/global.css');
+      document.head.appendChild(my_awesome_script);
+    };
 
-      //link.href = 'http://fonts.googleapis.com/css?family=Oswald&effect=neon';
-      headID.appendChild(link);
+    renderCssBundle();
 
-      link.href = '../../assets/svelte/public/build/bundle.css';
-    })();
+    var renderGlobalCss = function () {
+      var my_awesome_script = document.createElement('script');
+      my_awesome_script.setAttribute('src', '/assets/svelte/bundle.css');
+      document.head.appendChild(my_awesome_script);
+    };
 
-    (function () {
-      var headID = document.getElementsByTagName('head')[0];
-      var link = document.createElement('link');
-      link.type = 'text/css';
-      link.rel = 'stylesheet';
+    renderGlobalCss();
 
-      //link.href = 'http://fonts.googleapis.com/css?family=Oswald&effect=neon';
-      headID.appendChild(link);
+    var renderJsBundle = function () {
+      var my_awesome_script = document.createElement('script');
+      my_awesome_script.setAttribute('src', '/assets/svelte/bundle.js');
+      document.head.appendChild(my_awesome_script);
+    };
 
-      link.href = '../../assets/svelte/public/global.css';
-    })();
-
-    (function () {
-      var headID = document.getElementsByTagName('head')[0];
-      var link = document.createElement('link');
-
-      //link.href = 'http://fonts.googleapis.com/css?family=Oswald&effect=neon';
-      headID.appendChild(link);
-
-      link.href = '../../assets/svelte/public/build/bundle.js';
-    })();
+    renderJsBundle();
   };
 
   /**

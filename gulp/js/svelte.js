@@ -18,20 +18,9 @@ var taskName = 'js:svelte',
   };
 
 gulp.task(taskName, function() {
-  var tap = require('gulp-tap');
 
   return gulp
-    .src(taskConfig.src, {
-      base: './source/',
-      read: false,
-    })
-    .pipe(
-      tap(function(file) {
-        var data = require(file.path);
-
-        file.contents = new Buffer(JSON.stringify(data));
-      })
-    )
+    .src(taskConfig.src)
     .pipe(gulp.dest(taskConfig.dest));
 });
 
