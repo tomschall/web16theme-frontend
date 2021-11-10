@@ -56,33 +56,7 @@
    * @method
    * @public
    */
-  Widget.prototype.init = function () {
-    console.log('triggered', document);
-    // console.log('Widget "edu_events" initialized');
-    var renderCssBundle = function () {
-      var my_awesome_script = document.createElement('script');
-      my_awesome_script.setAttribute('src', '/assets/svelte/global.css');
-      document.head.appendChild(my_awesome_script);
-    };
-
-    renderCssBundle();
-
-    var renderGlobalCss = function () {
-      var my_awesome_script = document.createElement('script');
-      my_awesome_script.setAttribute('src', '/assets/svelte/bundle.css');
-      document.head.appendChild(my_awesome_script);
-    };
-
-    renderGlobalCss();
-
-    var renderJsBundle = function () {
-      var my_awesome_script = document.createElement('script');
-      my_awesome_script.setAttribute('src', '/assets/svelte/bundle.js');
-      document.head.appendChild(my_awesome_script);
-    };
-
-    renderJsBundle();
-  };
+  Widget.prototype.init = function() {};
 
   /**
    * Unbind events, remove data, custom teardown
