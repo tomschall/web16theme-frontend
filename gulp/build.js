@@ -15,7 +15,7 @@ gulp.task(taskName, function(cb) {
 		runSequence = require('run-sequence'),
 		util = require('gulp-util'),
 		_ = require('lodash'),
-    callback = function(cb) {
+    callback = function() {
         // Currently, the modernizr task cannot run in parallel with other tasks. This should get fixed as soon as Modernizr 3 is published and the plugin is officially released.
         var runTasks = [
             'clean',
