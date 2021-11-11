@@ -364,25 +364,3 @@
 		transform: translateY(50px);
 	}
 }
-
-.sg_demo {
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-
-	.widg_searchbar-bar {
-		display: block;
-		position: relative;
-		opacity: 1;
-		right: unset;
-		visibility: visible;
-		float: left;
-		transform: translateY(0);
-	  padding: 0px 20px;
-		z-index: 1;
-	}
-
-	.widg_search_svelte {
-		opacity: 1;
-	}
-}
