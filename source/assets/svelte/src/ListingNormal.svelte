@@ -1,25 +1,24 @@
 <script>
-  export let item;
-
+	export let item;
 </script>
 
 <li class="search__result-normal search__result--item">
-  <div class="result__top">
-    <div class="breadcrumbs">
-      <span>Studium</span>
-      <span>Architektur, Bau & Geomatik</span>
-      <span>Betoningenieur/in</span>
-      <span>Lorem ipsum dolor sit amet</span>
-      <span>Lorem ipsum dolor sit amet</span>
-    </div>
-    <div class="result__type">
-      <span class="button">{item['@type']}</span>
-    </div>
-  </div>
-  <a href={item['@id']}>
-    <span class="title">{item.Title}</span>
-    <span class="description">{item.Description}</span>
-  </a>
+	<div class="result__top">
+		<div class="breadcrumbs">
+			<span>Studium</span>
+			<span>Architektur, Bau & Geomatik</span>
+			<span>Betoningenieur/in</span>
+			<span>Lorem ipsum dolor sit amet</span>
+			<span>Lorem ipsum dolor sit amet</span>
+		</div>
+		<div class="result__type">
+			<span class="button">{item['@type']}</span>
+		</div>
+	</div>
+	<a href={item['@id']}>
+		<span class="title">{item.Title}</span>
+		<span class="description">{item.Description}</span>
+	</a>
 </li>
 
 <!-- Preliminary listing example

@@ -8,8 +8,9 @@
   'use strict';
 
   var renderSvelteBundleHeaderTags = function() {
-    var svelteBundleCSS = document.createElement('script');
-    svelteBundleCSS.setAttribute('src', '/assets/svelte/bundle.css');
+    var svelteBundleCSS = document.createElement('link');
+    svelteBundleCSS.setAttribute('href', '/assets/svelte/bundle.css');
+    svelteBundleCSS.setAttribute('rel', 'stylesheet');
     document.head.appendChild(svelteBundleCSS);
 
     var svelteBundleJS = document.createElement('script');
