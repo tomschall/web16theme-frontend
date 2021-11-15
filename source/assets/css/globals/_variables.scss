@@ -20,7 +20,7 @@ $sizeBreakpointSubnav: 1279px;
 
 $sizeHeightBreakpoint: 850px;
 
-$sizeSearchBar: 500px;
+$sizeSearchBar: 800px;
 
 /**
  * Custom colors
@@ -29,7 +29,7 @@ $sizeSearchBar: 500px;
 $colorText: #000000;
 $colorBg: #ffffff;
 $colorBlack: #000000;
-$colorLightGray: #F1F1EE;
+$colorLightGray: #f1f1ee;
 $colorDarkGrey: #999999;
 $colorTextGrey: #767573;
 $colorBorderGrey: #767573;
@@ -41,8 +41,7 @@ $formIconColor: #bebdb9;
 
 $colorInputTextHover: #f8f8f7;
 
-
-$colorYellow: #FDE70E;
+$colorYellow: #fde70e;
 $colorYellowNavHover: #f5dd19;
 $colorYellowBarHover: #fbd100;
 $colorSubNavActive: #fef387;
@@ -92,7 +91,6 @@ $widthYellowBarSearch: 0px;
 $widthYellowBarWideSearch: 0px;
 $widthYellowBarSuperWideSearch: 0px;
 
-
 /**
   * Grid Variables
   */
@@ -117,10 +115,12 @@ $paddingBehindYellowBarNarrow: $widthYellowBar + $pagePaddingSmall;
 $paddingBehindYellowBarSuperWide: $widthYellowBarSuperWide + $pagePaddingWide;
 
 $paddingBehindYellowBarSearch: $widthYellowBarSearch + $pagePadding;
-$paddingBehindYellowBarWideNarrowSearch: $widthYellowBarWideSearch + $pagePaddingSmall;
+$paddingBehindYellowBarWideNarrowSearch: $widthYellowBarWideSearch +
+	$pagePaddingSmall;
 $paddingBehindYellowBarWideSearch: $widthYellowBarWideSearch + $pagePadding;
 $paddingBehindYellowBarNarrowSearch: $widthYellowBarSearch + $pagePaddingSmall;
-$paddingBehindYellowBarSuperWideSearch: $widthYellowBarSuperWideSearch + $pagePaddingWide;
+$paddingBehindYellowBarSuperWideSearch: $widthYellowBarSuperWideSearch +
+	$pagePaddingWide;
 
 $contentMarginTop: $basicPush * 3.33;
 $contentMarginBottom: $basicPush * 4;
@@ -142,7 +142,8 @@ $transitionEase: ease-in-out;
 $carouselAutoplayLength: 7.5s;
 $carouselTransitionSpeed: 1s;
 $carouselInitTransitionSpeed: 1s;
-$carouselAutoplayLengthWithoutTransition: $carouselAutoplayLength - $carouselTransitionSpeed;
+$carouselAutoplayLengthWithoutTransition: $carouselAutoplayLength -
+	$carouselTransitionSpeed;
 $transitionTransformLinkMove: 5px;
 
 /**
@@ -169,7 +170,7 @@ $buttonIconSize: 16px;
 $elementHeight: (
 	desktop: 60px,
 	mobile: 50px,
-	mini: 45px
+	mini: 45px,
 );
 
 $smallElementHeight: 50px;
@@ -197,14 +198,12 @@ $zIndex: (
 	search: 2950,
 	topLink: 5000,
 	modal: 1501,
-
 	titleProfile: 80,
-
 	sidebar: 500,
 	sidebarTitle: 200,
 	sidebarContent: 190,
 	sidebarHider: 300,
-	sidebarAccordion: 400
+	sidebarAccordion: 400,
 );
 
 /**
@@ -213,11 +212,11 @@ $zIndex: (
 $basicUnitHeights: (
 	small: 50px,
 	normal: 100px,
-	xxl: 150px
+	xxl: 150px,
 );
 
 $clickAreaSizes: (
 	small: 70px,
 	normal: 100px,
-	xxl: 120px
+	xxl: 120px,
 );

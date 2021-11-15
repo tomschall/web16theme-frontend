@@ -3,35 +3,4 @@
 		Suchen
 	</button>
 </div>
-<div id="widg_searchbar-bar" class="widg_searchbar-bar show-intro" data-searchbar="bar" data-lang-all-results="{{langStrings.allResults}}" role="search">
-	<div class="widg_searchbar-bar__search">
-        <div class="widg_searchbar-bar__close" data-searchbar="close"></div>
-		<label for="search" class="visuallyhidden">Search: </label>
-		<input type="text" placeholder="{{searchPlaceholder}}" name="searchbar_search" data-searchbar="input"/>
-	</div>
-	<div class="widg_searchbar-bar__content custom-scrollbar" data-searchbar="content">
-		<div class="widg_searchbar-bar__intro">
-			<p>{{{introText}}}</p>
-
-			{{#each introLinks}}
-				<a href="{{url}}">{{linkText}}</a>
-			{{/each}}
-		</div>
-		<div class="widg_searchbar-bar__loader" data-searchbar="loader">
-		  <div class="fhnw-spinner"></div>
-		</div>
-		<div class="search__results">
-			<span data-category="studies"></span>
-			<span data-category="training"></span>
-			<span data-category="web"></span>
-			<span data-category="profiles"></span>
-			<span data-category="events"></span>
-			<span data-category="documents"></span>
-			<span data-category="irf"></span>
-			<span data-category="expertises"></span>
-			<span data-category="organization"></span>
-			<span data-category="sonst"></span>
-      <span data-category="news"></span>
-		</div>
-	</div>
-</div>
+<div class="widg_searchbar-bar show-intro" data-searchbar="bar" data-lang-all-results="{{langStrings.allResults}}" role="search"></div>

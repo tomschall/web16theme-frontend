@@ -19,6 +19,7 @@
 			domSelectors: {
 				btn: '[data-' + name + '="btn"]',
 				bar: '[data-' + name + '="bar"]',
+				cat: '[data-' + name + '="cat"]',
 				close: '[data-' + name + '="close"]',
 				input: '[data-' + name + '="input"]',
 				intro: '[data-' + name + '="intro"]',
@@ -76,12 +77,18 @@
 		jsonURL = this.$element.data('json-url');
 		searchPageUrl = this.$element.data('searchpage-url');
 		this.addEventHandlers();
+		this.addScrollListener();
 	};
 
 	/**
 	 * adding the vent handlers
 	 */
 	Widget.prototype.addEventHandlers = function() {
+
+		$(this.options.domSelectors.cat + ' button').on('click', function() {
+			console.log('categories button triggered', this);
+		}.bind(this));
+
 		$(this.options.domSelectors.btn).on('click.' + this.uuid, function() {
 			if (searchBarIsOpen) {
 				this.closeSearchBar();
@@ -121,6 +128,7 @@
 			this.sendXHRObject(value);
 		} else if (value.length === 0) {
 			this.changeSearchbarStatus(this.options.stateClasses.showIntro);
+			this.searchCategories(false);
 		}
 		window.estatico.search.updateSearchParameter('qs', value);
 		currentSearchValue = value;
@@ -140,11 +148,15 @@
 		this.changeSearchbarStatus(this.options.stateClasses.showLoader);
 
 		$(window).on(this.options.searchEvents.dataLoaded, function(event, loadedData, itemsTotal, unecessary2, category) {
+			// console.log('sendXHRObject', category, loadedData);
 			if (loadedData) {
 				this.showResults(loadedData, category);
+				this.searchCategories(true);
+
 				if (itemsTotal) {
 					// only add if there are some results
 					this.appendGoToPageBtn();
+					this.scrollNavigation();
 				}
 			} else {
 				// eslint-disable-next-line no-console
@@ -201,6 +213,7 @@
 			removePreventScroll = true;
 		}
 		$(this.options.domSelectors.bar).removeClass(this.options.stateClasses.isOpen);
+		this.searchCategories(false);
 		searchBarIsOpen = false;
 		$(window).trigger(events.close);
 		if (removePreventScroll) {
@@ -235,13 +248,12 @@
    */
 	Widget.prototype.showResults = function(html, category) {
 		$(this.options.domSelectors.content).find('.mCSB_container .search__results span[data-category="' + category + '"]').after(html);
-
 		this.changeSearchbarStatus(this.options.stateClasses.showResults);
 
+		var height = $(this.options.domSelectors.content).height();
 		$(this.options.domSelectors.content).css({
-			'height': $(this.options.domSelectors.content).height()
+			'height': height
 		});
-
 	};
 
 	/**
@@ -274,6 +286,67 @@
 
 		// remove show all button as well
 		$('.widg_searchbar__go-to-page').remove();
+	};
+
+	/**
+	 * Search categories
+	 */
+	Widget.prototype.searchCategories = function(status) {
+		var titleSelector = $('.widg_searchbar-bar__title');
+
+		if (status === true) {
+			$(this.options.domSelectors.cat).css('display', 'flex');
+			titleSelector.css('display', 'block');
+		}
+		if (status === false) {
+			$(this.options.domSelectors.cat).css('display', 'none');
+			titleSelector.css('display', 'none');
+		}
+	};
+
+	Widget.prototype.addScrollListener = function() {
+		if (window.estatico.mq.query({to: 'medium'})) {
+			var searchBarCategories = $('.widg_searchbar-bar__categories');
+			searchBarCategories.on('scroll', function() {
+			var isHomeXPos = $('.widg_searchbar-bar__categories button:first-child').position();
+			var gradientPrev = 'gradient_prev';
+			var gradientNext = 'gradient_next';
+
+				if (isHomeXPos.left > 19) {
+					searchBarCategories.removeClass(gradientPrev);
+				} else {
+					searchBarCategories.addClass(gradientPrev);
+
+					if ($('.widg_searchbar-bar__categories button.button__cat.ref').visible()) {
+						searchBarCategories.removeClass(gradientNext);
+					} else {
+						searchBarCategories.addClass(gradientNext);
+					}
+				}
+			});
+		}
+	};
+
+	Widget.prototype.scrollNavigation = function() {
+		$('.breadcrumbs').not('.slick-initialized').slick({
+			autoplay: false,
+			arrows: true,
+			centerMode: false,
+			infinite: false,
+			slidesPerRow: 4,
+			slidesToShow: 1,
+			swipe: true,
+			touchMove: true,
+			variableWidth: true,
+			nextArrow: '<button ontouchstart="" class="button next">→</button>',
+			prevArrow: '<button ontouchstart="" class="button prev">←</button>',
+			responsive: [{
+				breakpoint: 460,
+				settings: {
+					arrows: false,
+				}
+			}]
+		});
 	};
 
 	/**
