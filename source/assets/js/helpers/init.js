@@ -7,13 +7,17 @@
 (function($, undefined) {
   'use strict';
 
-  var renderJsBundle = function() {
-    var my_awesome_script = document.createElement('script');
-    my_awesome_script.setAttribute('src', '/assets/svelte/bundle.js');
-    document.head.appendChild(my_awesome_script);
+  var renderSvelteBundleHeaderTags = function() {
+    var svelteBundleJS = document.createElement('script');
+    svelteBundleJS.setAttribute('src', '/assets/svelte/bundle.js');
+    document.head.appendChild(svelteBundleJS);
+
+    var svelteBundleCSS = document.createElement('script');
+    svelteBundleCSS.setAttribute('src', '/assets/svelte/bundle.css');
+    document.head.appendChild(svelteBundleCSS);
   };
 
-  renderJsBundle();
+  renderSvelteBundleHeaderTags();
 
   function pageReload() {
     window.RT = setTimeout(function() {
