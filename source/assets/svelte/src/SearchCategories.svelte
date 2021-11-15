@@ -22,7 +22,7 @@
   <button
     class="button button__cat"
     on:click={() => {
-      selectedCategory = 'studiengänge';
+      selectedCategory = 'studies';
       triggerCategorySearch();
     }}
   >
@@ -31,7 +31,7 @@
   <button
     class="button button__cat"
     on:click={() => {
-      selectedCategory = 'weiterbildungsangebot';
+      selectedCategory = 'continuing_education';
       triggerCategorySearch();
     }}
   >
@@ -40,7 +40,7 @@
   <button
     class="button button__cat"
     on:click={() => {
-      selectedCategory = 'events';
+      selectedCategory = 'event';
       triggerCategorySearch();
     }}
   >
@@ -58,7 +58,7 @@
   <button
     class="button button__cat"
     on:click={() => {
-      selectedCategory = 'dokumente';
+      selectedCategory = 'document';
       triggerCategorySearch();
     }}
   >
@@ -67,7 +67,7 @@
   <button
     class="button button__cat"
     on:click={() => {
-      selectedCategory = 'personen';
+      selectedCategory = 'contact';
       triggerCategorySearch();
     }}
   >
@@ -76,7 +76,7 @@
   <button
     class="button button__cat"
     on:click={() => {
-      selectedCategory = 'allgemein';
+      selectedCategory = 'general';
       triggerCategorySearch();
     }}
   >
