@@ -8,13 +8,13 @@
   'use strict';
 
   var renderSvelteBundleHeaderTags = function() {
-    var svelteBundleJS = document.createElement('script');
-    svelteBundleJS.setAttribute('src', '/assets/svelte/bundle.js');
-    document.head.appendChild(svelteBundleJS);
-
     var svelteBundleCSS = document.createElement('script');
     svelteBundleCSS.setAttribute('src', '/assets/svelte/bundle.css');
     document.head.appendChild(svelteBundleCSS);
+
+    var svelteBundleJS = document.createElement('script');
+    svelteBundleJS.setAttribute('src', '/assets/svelte/bundle.js');
+    document.head.appendChild(svelteBundleJS);
   };
 
   renderSvelteBundleHeaderTags();
