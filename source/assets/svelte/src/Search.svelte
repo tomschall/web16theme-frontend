@@ -1,6 +1,6 @@
 <script>
   import { _ } from 'svelte-i18n';
-
+  
   export let query;
   export let handleSubmit;
 </script>

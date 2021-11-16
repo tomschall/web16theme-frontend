@@ -2,6 +2,7 @@
   import { _ } from 'svelte-i18n';
   import { onMount } from 'svelte';
   import Search from './Search.svelte';
+  import SearchBarIntro from './SearchBarIntro.svelte';
   import SearchResults from './SearchResults.svelte';
   import SearchCategories from './SearchCategories.svelte';
   import LoadingIndicator from './LoadingIndicator.svelte';
@@ -90,6 +91,7 @@
 
 <div class="widg_search_svelte">
   <Search bind:query={searchQuery} {handleSubmit} />
+  <SearchBarIntro />
   <div class="search__results">
     <div class="widg_searchbar-bar__title">{$_('searchresult_title')}</div>
     <div
