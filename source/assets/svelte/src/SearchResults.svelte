@@ -3,8 +3,10 @@
 	export let results;
 </script>
 
-<ul class="search-results">
-	{#each results as result (result)}
-		<ListItem item={result} />
-	{/each}
-</ul>
+<div class="search__results">
+	<ul class="search-results">
+		{#each results as result (result)}
+			<ListItem item={result} />
+		{/each}
+	</ul>
+</div>

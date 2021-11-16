@@ -1,6 +1,11 @@
 {
   "search_label": "Suche",
-  "search_introtext": "**Geben Sie einen Suchbegriff ein** und suchen Sie nach Weiterbildungen, Studienangeboten, Veranstaltungen, Dokumenten und anderen Inhalten.",
+  "introtext": "**Geben Sie einen Suchbegriff ein** und suchen Sie nach Weiterbildungen, Studienangeboten, Veranstaltungen, Dokumenten und anderen Inhalten.",
+  "introtext_studies": "Studium suchen",
+  "introtext_continuing_educations": "Weiterbildungen und Kurse suchen",
+  "introtext_person": "Personen suchen",
+  "introtext_events": "Veranstaltungen suchen",
+  "introtext_news": "News suchen",
   "search_placeholder": "Suche: Hier tippen",
   "searchresult_title": "Suchresultate",
   "category_all": "Alle",
