@@ -1,6 +1,11 @@
 {
   "search_label": "Search",
-  "search_introtext": "**Type a search term** and search continuing education, degree programmes, events, documents and other content.",
+  "introtext": "**Type a search term** and search continuing education, degree programmes, events, documents and other content.",
+  "introtext_studies": "Search degree programmes",
+  "introtext_continuing_educations": "Search continuing education",
+  "introtext_person": "Search people",
+  "introtext_events": "Search events",
+  "introtext_news": "Search news",
   "search_placeholder": "Search: type here",
   "searchresult_title": "Search results",
   "category_all": "All",

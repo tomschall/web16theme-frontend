@@ -1,12 +1,13 @@
 <script>
   import { _ } from 'svelte-i18n';
+  import { fade } from 'svelte/transition';
   import SvelteMarkdown from 'svelte-markdown'
 
-  const source = $_('search_introtext');
+  const source = $_('introtext');
 
 </script>
 
-<div class="widg_searchbar-bar__intro">
+<div class="widg_searchbar-bar__intro" transition:fade>
   <p><SvelteMarkdown {source} /></p>
   <a href="https://www.fhnw.ch/en/search_edu">Search degree programmes</a>
   <a href="https://www.fhnw.ch/en/search_filter">Search continuing education</a>

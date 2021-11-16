@@ -21,6 +21,7 @@
   let searchQuery: string = '';
   let searchTerm: string = null;
   let searchResults: string[] = [];
+  let showIntroText = true;
   let isLoading: boolean = false;
   let selectedCategory: string = '';
   let observer: any;
@@ -57,6 +58,7 @@
     if (!searchTerm) return;
 
     observer.observe(target);
+    showIntroText = false;
     triggerSearch();
   };
 
@@ -91,7 +93,9 @@
 
 <div class="widg_search_svelte">
   <Search bind:query={searchQuery} {handleSubmit} />
-  <SearchBarIntro />
+  {#if showIntroText}
+    <SearchBarIntro />
+  {/if}
   <div class="search__results">
     <div class="widg_searchbar-bar__title">{$_('searchresult_title')}</div>
     <div
