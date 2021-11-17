@@ -219,15 +219,15 @@
 	 */
 	Widget.prototype.addSingleEventListeners = function() {
 		// Additional single time events
-		// $(window).one('keydown.' + this.uuid, function(event) {
-		// 	if (event.keyCode === 27) {
-		// 		this.closeSearchBar();
-		// 	}
-		// }.bind(this));
+		$(window).one('keydown.' + this.uuid, function(event) {
+			if (event.keyCode === 27) {
+				this.closeSearchBar();
+			}
+		}.bind(this));
 
-		// $('.modal').one('click.' + this.uuid, function() {
-		// 	this.closeSearchBar();
-		// }.bind(this));
+		$('.modal').one('click.' + this.uuid, function() {
+			this.closeSearchBar();
+		}.bind(this));
 	};
 
 	/**
