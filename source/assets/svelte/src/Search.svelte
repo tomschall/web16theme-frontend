@@ -3,11 +3,21 @@
 
 	export let query;
 	export let handleSubmit;
+
+	const closeSearchBar = () => {
+		document.querySelector('.widg_searchbar-bar.show-intro.is_open').classList.remove('is_open');
+    window.estatico.modal.hideModal();
+    window.estatico.modal.removePreventScroll();
+	};
 </script>
 
 <div class="widg_searchbar-bar__search">
 	<form on:submit|preventDefault={handleSubmit}>
-		<div class="widg_searchbar-bar__close" data-searchbar="close" />
+		<div
+			class="widg_searchbar-bar__close"
+			data-searchbar="close"
+			on:click={closeSearchBar}
+		/>
 		<label for="search" class="visuallyhidden">{$_('search_label')}</label>
 		<input
 			bind:value={query}

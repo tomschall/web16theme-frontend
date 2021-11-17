@@ -43,7 +43,6 @@
 			// items: ["Item 1", "Item 2"]
 		},
 		currentSearchValue = null,
-		searchBarIsOpen = false,
 		searchPageUrl,
 		jsonURL = '';
 
@@ -84,17 +83,8 @@
 	 * adding the vent handlers
 	 */
 	Widget.prototype.addEventHandlers = function() {
-
-		$(this.options.domSelectors.cat + ' button').on('click', function() {
-			console.log('categories button triggered', this);
-		}.bind(this));
-
 		$(this.options.domSelectors.btn).on('click.' + this.uuid, function() {
-			if (searchBarIsOpen) {
-				this.closeSearchBar();
-			} else {
-				this.openSearchBar();
-			}
+			this.openSearchBar();
 		}.bind(this));
 
 		$(this.options.domSelectors.close).on('click.' + this.uuid, function() {
@@ -171,7 +161,6 @@
 	 */
 	Widget.prototype.openSearchBar = function() {
 		$(this.options.domSelectors.bar).addClass(this.options.stateClasses.isOpen);
-		searchBarIsOpen = true;
 
 		$(window).trigger(events.open);
 
@@ -214,9 +203,8 @@
 		}
 		$(this.options.domSelectors.bar).removeClass(this.options.stateClasses.isOpen);
 		this.searchCategories(false);
-		searchBarIsOpen = false;
 		$(window).trigger(events.close);
-		if (removePreventScroll) {
+    if (removePreventScroll) {
 			window.estatico.modal.hideModal();
 			window.estatico.modal.removePreventScroll();
 		}
@@ -231,15 +219,15 @@
 	 */
 	Widget.prototype.addSingleEventListeners = function() {
 		// Additional single time events
-		$(window).one('keydown.' + this.uuid, function(event) {
-			if (event.keyCode === 27) {
-				this.closeSearchBar();
-			}
-		}.bind(this));
+		// $(window).one('keydown.' + this.uuid, function(event) {
+		// 	if (event.keyCode === 27) {
+		// 		this.closeSearchBar();
+		// 	}
+		// }.bind(this));
 
-		$('.modal').one('click.' + this.uuid, function() {
-			this.closeSearchBar();
-		}.bind(this));
+		// $('.modal').one('click.' + this.uuid, function() {
+		// 	this.closeSearchBar();
+		// }.bind(this));
 	};
 
 	/**
