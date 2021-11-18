@@ -21,12 +21,13 @@
 	let searchQuery: string = '';
 	let searchTerm: string = null;
 	let searchResults: string[] = [];
-	let showIntroText = true;
+	let showIntroText: boolean = true;
 	let showSearchCategories = false;
 	let isLoading: boolean = false;
 	let selectedCategory: string = '';
 	let observer: any;
 	let target: any;
+	let activeSearch: boolean = false;
 
 	interface ObserverOptions {
 		rootMargin: string;
@@ -85,6 +86,7 @@
 			})
 			.then((data) => {
 				searchResults = [...searchResults, ...data.items];
+				searchResults.length === 0 ? activeSearch = true : activeSearch = false;				
 			})
 			.catch(() => console.log('An error occured!'))
 			.finally(() => {
@@ -108,10 +110,13 @@
 				<SearchCategories
 					bind:selectedCategory
 					triggerCategorySearch={() => triggerSearch()}
+					activeSearch={activeSearch}
 				/>
-				<div class="widg_searchbar-bar__title">{$_('searchresult_title')}</div>
+					{#if activeSearch === false}
+						<div class="widg_searchbar-bar__title">{$_('searchresult_title')}</div>
+					{/if}
 				{/if}
-				<SearchResults results={searchResults} />
+				<SearchResults results={searchResults} activeSearch={activeSearch} />
 				<div class="loading-indicator">
 					{#if isLoading}
 						<LoadingIndicator />

@@ -72,13 +72,21 @@
 			height: 60px;
 		}
 	}
-	//The fhnw logo on the bottom
 
 	.search__results {
 		// padding: 0 32px 0 28px;
 
 		@include mq($to: small) {
 			margin: 0 0 0 5px;
+		}
+
+		.no__results {
+			display: flex;
+			justify-content: center;
+			font-size: 1.5rem;
+			font-weight: 700;
+			font-style: italic;
+			padding: $basicPush * 2 0;
 		}
 	}
 }
@@ -288,8 +296,8 @@
 
 	p {
 		line-height: 1.5;
-		font-size: 1.25rem;
-		margin-bottom: $basicPush * 2.4;
+		font-size: 1.5rem;
+		margin: $basicPush * 4.8 0;
 	}
 
 	> a {
