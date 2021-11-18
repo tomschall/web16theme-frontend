@@ -75,7 +75,7 @@
 	//The fhnw logo on the bottom
 
 	.search__results {
-		padding: 0 32px 0 28px;
+		// padding: 0 32px 0 28px;
 
 		@include mq($to: small) {
 			padding: 0 10px 0 10px;
@@ -189,7 +189,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
-	padding: $basicPush * 3 40px 0 40px;
+	padding: 0;
 	z-index: 1000;
 	
 	@include mq($to: small) {
