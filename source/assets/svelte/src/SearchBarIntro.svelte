@@ -8,7 +8,7 @@
 </script>
 
 <div class="widg_searchbar-bar__intro" transition:fade>
-  <p><SvelteMarkdown {source} /></p>
+  <SvelteMarkdown {source} />
   <a href="https://www.fhnw.ch/en/search_edu">Search degree programmes</a>
   <a href="https://www.fhnw.ch/en/search_filter">Search continuing education</a>
   <a href="https://www.fhnw.ch/en/search_profiles">Search people</a>
