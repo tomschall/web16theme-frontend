@@ -47,7 +47,7 @@ a.search__cat-title {
 }
 
 .search__cat {
-	padding: $basicPush * 2;
+	padding: 20px 30px 20px 30px;
 
 	/**
     * On Searchpage first item shouldn't have a margin-top
@@ -118,14 +118,10 @@ a.search__cat-title {
 
 		display: block;
 		opacity: 1;
-
-		padding: $basicPush;
-
+		padding-bottom: $basicPush;
 		font-size: 1.1666667rem;
 		text-decoration: none;
-
 		border-bottom: 1px solid $colorGreyHover;
-
 		position: relative;
 
 		// &:before {
@@ -230,7 +226,7 @@ a.search__cat-title {
 			flex: 15;
 			margin-right: $basicPush * 2;
   		overflow-x: hidden;
-			margin: 0 $basicPush 0 $basicPush;
+			margin: 0;
 		
 			
 			// &::-webkit-scrollbar { 
@@ -298,7 +294,6 @@ a.search__cat-title {
 			justify-content: flex-end;
 			align-items: center;
 			height: map-get($elementHeight, tiny);
-			margin-right: $basicPush;
 			flex: 3;
 
 			@include mq($to: small) {
