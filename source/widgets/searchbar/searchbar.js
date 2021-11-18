@@ -87,10 +87,6 @@
 			this.openSearchBar();
 		}.bind(this));
 
-		$(this.options.domSelectors.close).on('click.' + this.uuid, function() {
-			this.closeSearchBar();
-		}.bind(this));
-
 		$(window).on('open.estatico.navigation.' + this.uuid, function() {
 			this.closeSearchBar(false);
 		}.bind(this));
