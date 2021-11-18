@@ -22,6 +22,7 @@
 	let searchTerm: string = null;
 	let searchResults: string[] = [];
 	let showIntroText = true;
+	let showSearchCategories = false;
 	let isLoading: boolean = false;
 	let selectedCategory: string = '';
 	let observer: any;
@@ -59,6 +60,7 @@
 
 		observer.observe(target);
 		showIntroText = false;
+		showSearchCategories = true;
 		triggerSearch();
 	};
 
@@ -103,10 +105,12 @@
 			data-searchbar="content"
 		>
 			<div class="search__cat">
+				{#if showSearchCategories}
 				<SearchCategories
 					bind:selectedCategory
 					triggerCategorySearch={() => triggerSearch()}
 				/>
+				{/if}
 				<SearchResults results={searchResults} />
 				<div class="loading-indicator">
 					{#if isLoading}

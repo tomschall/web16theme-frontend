@@ -1,5 +1,6 @@
 <script>
 	import { _ } from 'svelte-i18n';
+	import { fade } from 'svelte/transition';
 
 	export let triggerCategorySearch = () => {};
 	export let selectedCategory;
@@ -9,6 +10,7 @@
 	class="widg_searchbar-bar__categories"
 	data-searchbar="cat"
 	style="display: flex;"
+	transition:fade
 >
 	<button
 		class="button button__cat"
