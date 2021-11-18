@@ -78,7 +78,7 @@
 		// padding: 0 32px 0 28px;
 
 		@include mq($to: small) {
-			padding: 0 10px 0 10px;
+			margin: 0 0 0 5px;
 		}
 	}
 }
@@ -117,6 +117,7 @@
 	
 	@include mq($to: small) {
 		padding: 0 0px 10px 0px;
+		margin-right: $basicPush;
 	}
 }
 
