@@ -107,11 +107,9 @@
 }
 
 .widg_searchbar-bar__title {
-	display: none;
-	padding: 20px 0px 10px 0px;
-	margin: 10px 0 0 10px;
 	border-bottom: 1px solid $colorGreyHover;
-	
+	margin-top: $basicPush * 2;
+	padding-bottom: $basicPush * 2;	
 	font-weight: 500;
 	font-size: 16px;
 	color: $colorDarkGrey;
@@ -191,6 +189,7 @@
   align-items: flex-start;
 	padding: 0;
 	z-index: 1000;
+	margin-top: $basicPush * 2;
 	
 	@include mq($to: small) {
 		display: flex;

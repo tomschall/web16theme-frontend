@@ -99,7 +99,6 @@
 		<SearchBarIntro />
 	{/if}
 	<div class="search__results">
-		<div class="widg_searchbar-bar__title">{$_('searchresult_title')}</div>
 		<div
 			class="widg_searchbar-bar__content custom-scrollbar"
 			data-searchbar="content"
@@ -110,6 +109,7 @@
 					bind:selectedCategory
 					triggerCategorySearch={() => triggerSearch()}
 				/>
+				<div class="widg_searchbar-bar__title">{$_('searchresult_title')}</div>
 				{/if}
 				<SearchResults results={searchResults} />
 				<div class="loading-indicator">

@@ -47,7 +47,8 @@ a.search__cat-title {
 }
 
 .search__cat {
-	padding: 20px 30px 20px 30px;
+	padding: 0 20px 0 30px;
+	margin-right: $basicPush + 5;
 
 	/**
     * On Searchpage first item shouldn't have a margin-top
