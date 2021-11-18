@@ -18,25 +18,10 @@
 		defaults = {
 			domSelectors: {
 				btn: '[data-' + name + '="btn"]',
-				bar: '[data-' + name + '="bar"]',
-				cat: '[data-' + name + '="cat"]',
-				close: '[data-' + name + '="close"]',
-				input: '[data-' + name + '="input"]',
-				intro: '[data-' + name + '="intro"]',
-				loader: '[data-' + name + '="loader"]',
-				content: '[data-' + name + '="content"]'
+				bar: '[data-' + name + '="bar"]'
 			},
 			stateClasses: {
-				isOpen: 'is_open',
-				showLoader: 'show-loader',
-				showIntro: 'show-intro',
-				showResults: 'show-results'
-			},
-			listItemSpanClasses: {
-				title: 'title'
-			},
-			searchEvents: {
-				dataLoaded: 'dataLoaded.estatico.search'
+				isOpen: 'is_open'
 			}
 		},
 		data = {
