@@ -12,7 +12,7 @@
 		class="widg_searchbar-bar__categories"
 		data-searchbar="cat"
 		style="display: flex;"
-		transition:fade
+	  transition:fade="{{ duration: 0 }}"
 	>
 		<button
 			class="button button__cat"
