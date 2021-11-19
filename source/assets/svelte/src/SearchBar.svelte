@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
+	import { fly, fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import Search from './Search.svelte';
 	import SearchBarIntro from './SearchBarIntro.svelte';
@@ -28,8 +29,7 @@
 	let showIntroText: boolean = true;
 	let showSearchCategories = false;
 	let isLoading: boolean = false;
-	let selectedCategory: string = '';
-
+	let selectedCategory: string = 'all';
 	let observer: any;
 	let target: any;
 	let activeSearch: boolean = false;
@@ -94,6 +94,12 @@
 			selectedCategory || 'all'
 		}&limit=${limit}&offset=${offset}`;
 
+		console.log(
+			`https://www.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
+				selectedCategory || 'all'
+			}`
+		);
+
 		fetch(endpoint)
 			.then((response) => {
 				if (!response.ok) {
@@ -103,13 +109,8 @@
 			})
 			.then((data) => {
 				searchResults = [...searchResults, ...data.items];
+				console.log('searchResults', searchResults.length);
 
-				totalPages = data.items_total;
-
-				if (offset + limit < totalPages) {
-					offset += limit;
-					limit = 20;
-				}
 				searchResults.length === 0
 					? (activeSearch = true)
 					: (activeSearch = false);
@@ -142,13 +143,23 @@
 				{#if showSearchCategories}
 					<SearchCategories
 						bind:selectedCategory
-						triggerCategorySearch={() => triggerSearchDebounced()}
+						triggerCategorySearch={() => triggerSearch()}
+						{activeSearch}
 					/>
-					{#if !searchResults.length}
+					{#if activeSearch === false}
 						<div class="widg_searchbar-bar__title">
 							{$_('searchresult_title')}
 						</div>
 					{/if}
+				{/if}
+				{#if activeSearch === true}
+					<div
+						class="no__results"
+						in:fly={{ y: -200, duration: 2000 }}
+						out:fly={{ y: -200, duration: 500 }}
+					>
+						{$_('search_no_results')}
+					</div>
 				{/if}
 				<SearchResults results={searchResults} {activeSearch} />
 				<div class="loading-indicator">
