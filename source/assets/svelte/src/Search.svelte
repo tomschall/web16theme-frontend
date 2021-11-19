@@ -7,6 +7,7 @@
 	export let showIntroText;
 	export let searchResults;
 	export let unobserve;
+	export let showStatusInfo;
 
 	const closeSearchBar = () => {
 		unobserve();
@@ -14,6 +15,7 @@
 		searchResults = [];
 		showSearchCategories = false;
 		showIntroText = true;
+		showStatusInfo = true;
 
 		document
 			.querySelector('.widg_searchbar-bar.show-intro.is_open')

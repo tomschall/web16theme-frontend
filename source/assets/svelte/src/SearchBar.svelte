@@ -32,6 +32,7 @@
 	let selectedCategory: string = 'all';
 	let observer: any;
 	let target: any;
+	let showStatusInfo: boolean = true;
 
 	let triggerSearchDebounced = debounce(async function () {
 		await triggerSearch();
@@ -66,6 +67,7 @@
 	});
 
 	const handleSubmit = () => {
+		showSearchCategories = false;
 		searchTerm = searchQuery.trim();
 		searchResults = [];
 
@@ -77,7 +79,6 @@
 
 		observer.observe(target);
 		showIntroText = false;
-		showSearchCategories = true;
 		triggerSearchDebounced();
 	};
 
@@ -92,12 +93,6 @@
 		const endpoint = `https://www.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
 			selectedCategory || 'all'
 		}&limit=${limit}&offset=${offset}`;
-
-		console.log(
-			`https://www.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
-				selectedCategory || 'all'
-			}`
-		);
 
 		fetch(endpoint)
 			.then((response) => {
@@ -115,6 +110,14 @@
 					offset += limit;
 					limit = 20;
 				}
+
+				if (searchResults.length > 0) {
+					showSearchCategories = true;
+					showStatusInfo = true;
+				} else {
+					showSearchCategories = false;
+					showStatusInfo = false;
+				}
 			})
 			.catch(() => console.log('An error occured!'))
 			.finally(() => {
@@ -130,6 +133,7 @@
 		bind:showSearchCategories
 		bind:showIntroText
 		bind:searchResults
+		bind:showStatusInfo
 		{unobserve}
 	/>
 	{#if showIntroText}
@@ -141,18 +145,16 @@
 			data-searchbar="content"
 		>
 			<div class="search__cat">
-				{#if showSearchCategories}
+				{#if showSearchCategories && showStatusInfo}
 					<SearchCategories
 						bind:selectedCategory
 						triggerCategorySearch={() => triggerSearchDebounced()}
 					/>
-					{#if searchResults.length > 0}
-						<div class="widg_searchbar-bar__title">
-							{$_('searchresult_title')}
-						</div>
-					{/if}
+					<div class="widg_searchbar-bar__title">
+						{$_('searchresult_title')}
+					</div>
 				{/if}
-				{#if !searchResults.length}
+				{#if !showStatusInfo}
 					<div
 						class="no__results"
 						in:fly={{ y: -200, duration: 2000 }}
