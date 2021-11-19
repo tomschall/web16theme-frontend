@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
+	import { fly, fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import Search from './Search.svelte';
 	import SearchBarIntro from './SearchBarIntro.svelte';
@@ -24,7 +25,7 @@
 	let showIntroText: boolean = true;
 	let showSearchCategories = false;
 	let isLoading: boolean = false;
-	let selectedCategory: string = '';
+	let selectedCategory: string = 'all';
 	let observer: any;
 	let target: any;
 	let activeSearch: boolean = false;
@@ -77,6 +78,9 @@
 			selectedCategory || 'all'
 		}`;
 
+		console.log(`https://www.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
+			selectedCategory || 'all'}`);		
+
 		fetch(endpoint)
 			.then((response) => {
 				if (!response.ok) {
@@ -86,7 +90,11 @@
 			})
 			.then((data) => {
 				searchResults = [...searchResults, ...data.items];
-				searchResults.length === 0 ? activeSearch = true : activeSearch = false;				
+				console.log('searchResults', searchResults.length);
+
+				searchResults.length === 0
+					? (activeSearch = true)
+					: (activeSearch = false);
 			})
 			.catch(() => console.log('An error occured!'))
 			.finally(() => {
@@ -107,16 +115,27 @@
 		>
 			<div class="search__cat">
 				{#if showSearchCategories}
-				<SearchCategories
-					bind:selectedCategory
-					triggerCategorySearch={() => triggerSearch()}
-					activeSearch={activeSearch}
-				/>
+					<SearchCategories
+						bind:selectedCategory
+						triggerCategorySearch={() => triggerSearch()}
+						{activeSearch}
+					/>
 					{#if activeSearch === false}
-						<div class="widg_searchbar-bar__title">{$_('searchresult_title')}</div>
+						<div class="widg_searchbar-bar__title">
+							{$_('searchresult_title')}
+						</div>
 					{/if}
 				{/if}
-				<SearchResults results={searchResults} activeSearch={activeSearch} />
+				{#if activeSearch === true}
+					<div
+						class="no__results"
+						in:fly={{ y: -200, duration: 2000 }}
+						out:fly={{ y: -200, duration: 500 }}
+					>
+						{$_('search_no_results')}
+					</div>
+				{/if}
+				<SearchResults results={searchResults} {activeSearch} />
 				<div class="loading-indicator">
 					{#if isLoading}
 						<LoadingIndicator />
