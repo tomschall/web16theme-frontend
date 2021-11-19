@@ -1,31 +1,41 @@
 <script>
 	export let item;
 
-	let trimBreadCrumbItemAfter = 4;
+	let trimBreadCrumbItemAfter = 2;
+	let maxLettersInBreadcrumb = 110;
 
 	/**
 	 * BREADCRUMB EXAMPLE
 	 */
 	let breadCrumbsItems = {
 		title_parents: [
-			'Sandkasten',
-			'Tests Adrian lorem ipsum',
-			'Allgemein lorem ipsum dolor sit amet',
-			'Test FHNW-Event lorem ipsum dolor sit amet',
+			'Hochschulen',
+			'Über die Pädagogische Hochschule – PH',
+			'Medien und Öffentlichkeit',
+			'Events der PH FHNW',
+			'Archiv Tagungen IWB',
+			'DGfE-Jahrestagung der Kommission Sportpädagogik: Narrat...',
 		],
 	};
+
+	const shortenBreadCrumbItem = (string) =>
+		string.length <= 12 ? string : string.substring(0, 23) + '...';
 </script>
 
 <li class="search__result-normal search__result--item">
 	<div class="result__top">
 		<div class="breadcrumbs">
 			{#each breadCrumbsItems.title_parents as item, index (index)}
-				{#if index + 1 >= trimBreadCrumbItemAfter}
-				<div class="listing__tooltip" data-tooltip={item}>
-					<span>...</span>
-				</div>
-				{:else}
+				{#if index + 1 === 1}
 					<span>{item}</span>
+				{:else if index + 1 >= 2 && index + 1 <= 3}
+					<div class="listing__tooltip" data-tooltip={item}>
+						<span>{shortenBreadCrumbItem(item)}</span>
+					</div>
+				{:else}
+					<div class="listing__tooltip" data-tooltip={item}>
+						<span>...</span>
+					</div>
 				{/if}
 			{/each}
 		</div>

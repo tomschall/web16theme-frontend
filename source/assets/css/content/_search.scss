@@ -80,8 +80,9 @@ a.search__cat-title {
 }
 
 [class^="search__result-"] {
-	padding: 10px 0 0 0;
+	padding: 10px;
 	position: relative;
+	border-bottom: 1px solid $colorGreyHover;
 
 	@include mq($to: small) {
 		padding: $basicPush $basicPush 0 0;
@@ -131,7 +132,6 @@ a.search__cat-title {
 		padding-bottom: $basicPush;
 		font-size: 1.1666667rem;
 		text-decoration: none;
-		border-bottom: 1px solid $colorGreyHover;
 		position: relative;
 
 		// &:before {
@@ -291,6 +291,7 @@ a.search__cat-title {
 				// }
 			}
 
+			// Svelte Search - Tooltip
 			.listing__tooltip {
 				&:last-child {
 					span {
