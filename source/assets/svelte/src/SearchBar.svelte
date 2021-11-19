@@ -133,6 +133,7 @@
 						out:fly={{ y: -200, duration: 500 }}
 					>
 						{$_('search_no_results')}
+						<span>Bitte erstellen sie eine neue Suchanfrage</span>
 					</div>
 				{/if}
 				<SearchResults results={searchResults} {activeSearch} />
