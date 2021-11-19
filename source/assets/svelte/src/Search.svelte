@@ -2,20 +2,20 @@
 	import { _ } from 'svelte-i18n';
 
 	export let query;
-	export let handleSubmit;
+	export let searchResults;
 	export let showSearchCategories;
 	export let showIntroText;
-	export let searchResults;
-	export let unobserve;
 	export let showStatusInfo;
+	export let unobserve;
+	export let handleSubmit;
 
 	const closeSearchBar = () => {
-		unobserve();
 		query = '';
 		searchResults = [];
 		showSearchCategories = false;
 		showIntroText = true;
-		showStatusInfo = true;
+		showStatusInfo = false;
+		unobserve();
 
 		document
 			.querySelector('.widg_searchbar-bar.show-intro.is_open')

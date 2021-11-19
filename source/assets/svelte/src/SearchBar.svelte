@@ -32,7 +32,7 @@
 	let selectedCategory: string = 'all';
 	let observer: any;
 	let target: any;
-	let showStatusInfo: boolean = true;
+	let showStatusInfo: boolean = false;
 
 	let triggerSearchDebounced = debounce(async function () {
 		await triggerSearch();
@@ -113,10 +113,10 @@
 
 				if (searchResults.length > 0) {
 					showSearchCategories = true;
-					showStatusInfo = true;
+					showStatusInfo = false;
 				} else {
 					showSearchCategories = false;
-					showStatusInfo = false;
+					showStatusInfo = true;
 				}
 			})
 			.catch(() => console.log('An error occured!'))
@@ -145,7 +145,7 @@
 			data-searchbar="content"
 		>
 			<div class="search__cat">
-				{#if showSearchCategories && showStatusInfo}
+				{#if showSearchCategories}
 					<SearchCategories
 						bind:selectedCategory
 						triggerCategorySearch={() => triggerSearchDebounced()}
@@ -154,7 +154,7 @@
 						{$_('searchresult_title')}
 					</div>
 				{/if}
-				{#if !showStatusInfo}
+				{#if showStatusInfo}
 					<div
 						class="no__results"
 						in:fly={{ y: -200, duration: 2000 }}
