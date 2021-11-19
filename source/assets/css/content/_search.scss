@@ -50,6 +50,11 @@ a.search__cat-title {
 	padding: 0 20px 0 30px;
 	margin-right: $basicPush + 5;
 
+	@include mq($to: small) {
+		padding: 0;
+		margin-right: 0;
+	}
+
 	/**
     * On Searchpage first item shouldn't have a margin-top
     */
@@ -77,6 +82,10 @@ a.search__cat-title {
 [class^="search__result-"] {
 	padding: 10px 0 0 0;
 	position: relative;
+
+	@include mq($to: small) {
+		padding: $basicPush $basicPush 0 0;
+	}
 
 	.search__result-arrow {
 		position: absolute !important;

@@ -10,7 +10,6 @@
 	import en from './lang/en.json';
 	import de from './lang/de.json';
 	import { debounce } from 'lodash';
-	import { is_empty } from 'svelte/internal';
 
 	addMessages('en', en);
 	addMessages('de', de);
@@ -26,13 +25,14 @@
 	let offset: number = 0;
 	let limit: number = 10;
 	let searchResults: string[] = [];
-	let showIntroText = true;
+	let showIntroText: boolean = true;
 	let showSearchCategories = false;
 	let isLoading: boolean = false;
 	let selectedCategory: string = '';
 
 	let observer: any;
 	let target: any;
+	let activeSearch: boolean = false;
 
 	let triggerSearchDebounced = debounce(async function () {
 		await triggerSearch();
@@ -110,6 +110,9 @@
 					offset += limit;
 					limit = 20;
 				}
+				searchResults.length === 0
+					? (activeSearch = true)
+					: (activeSearch = false);
 			})
 			.catch(() => console.log('An error occured!'))
 			.finally(() => {
@@ -141,11 +144,13 @@
 						bind:selectedCategory
 						triggerCategorySearch={() => triggerSearchDebounced()}
 					/>
-					<div class="widg_searchbar-bar__title">
-						{$_('searchresult_title')}
-					</div>
+					{#if !searchResults.length}
+						<div class="widg_searchbar-bar__title">
+							{$_('searchresult_title')}
+						</div>
+					{/if}
 				{/if}
-				<SearchResults results={searchResults} />
+				<SearchResults results={searchResults} {activeSearch} />
 				<div class="loading-indicator">
 					{#if isLoading}
 						<LoadingIndicator />
