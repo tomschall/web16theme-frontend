@@ -235,7 +235,7 @@ a.search__cat-title {
 			align-items: center;
 			flex: 15;
 			margin-right: $basicPush * 2;
-  		overflow-x: hidden;
+  		// overflow-x: hidden;
 			margin: 0;
 		
 			
@@ -256,13 +256,12 @@ a.search__cat-title {
 			
 			span {
 
-				&:first-child {
+				&:nth-child(1) {
 					padding-left: 0;
 				}
 
 				position: relative;
 				padding: 0 ($gutterWidth / 2) 0 $gutterWidth + 3;
-
 				font-size: 1.25rem;
 				font-weight: 400;
 				color: $colorBorderGrey;
@@ -275,23 +274,17 @@ a.search__cat-title {
 				@include iconDataurl('triangle-arrow_right_grey', $after: true);
 
 				&:after {
-					position: absolute;
-		
+					position: absolute;		
 					content: ' ';
-					display: block;
-		
+					display: block;		
 					width: 6px;
-					height: 7px;
-		
+					height: 7px;		
 					top: 50%;
-					transform: translate(50%, -50%);
-		
+					transform: translate(50%, -50%);		
 					right: -1 * $basicPush * 0.75;
-
 				}
 
 				&:last-child {
-
 					&:after {
 						background: unset;
 					}
