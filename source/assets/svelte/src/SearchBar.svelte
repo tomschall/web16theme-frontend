@@ -10,6 +10,7 @@
 	import { init, getLocaleFromNavigator, addMessages } from 'svelte-i18n';
 	import en from './lang/en.json';
 	import de from './lang/de.json';
+	import { debounce } from 'lodash';
 
 	addMessages('en', en);
 	addMessages('de', de);
@@ -21,6 +22,9 @@
 
 	let searchQuery: string = '';
 	let searchTerm: string = null;
+	let totalPages: number = null;
+	let offset: number = 0;
+	let limit: number = 10;
 	let searchResults: string[] = [];
 	let showIntroText: boolean = true;
 	let showSearchCategories = false;
@@ -28,7 +32,10 @@
 	let selectedCategory: string = 'all';
 	let observer: any;
 	let target: any;
-	let activeSearch: boolean = false;
+
+	let triggerSearchDebounced = debounce(async function () {
+		await triggerSearch();
+	}, 300);
 
 	interface ObserverOptions {
 		rootMargin: string;
@@ -42,10 +49,15 @@
 
 	const loadMoreResults = (entries: any) => {
 		entries.forEach((entry: any) => {
+			console.log('searchResults.length', searchResults.length);
 			if (entry.isIntersecting) {
-				triggerSearch();
+				triggerSearchDebounced();
 			}
 		});
+	};
+
+	let unobserve = () => {
+		observer.unobserve(target);
 	};
 
 	onMount(() => {
@@ -55,18 +67,21 @@
 
 	const handleSubmit = () => {
 		searchTerm = searchQuery.trim();
-		console.log('searchTerm', searchTerm);
 		searchResults = [];
+
+		totalPages = null;
+		offset = 0;
+		limit = 10;
 
 		if (!searchTerm) return;
 
 		observer.observe(target);
 		showIntroText = false;
 		showSearchCategories = true;
-		triggerSearch();
+		triggerSearchDebounced();
 	};
 
-	const triggerSearch = () => {
+	const triggerSearch = async () => {
 		isLoading = true;
 
 		// if (!searchTerm) {
@@ -76,10 +91,13 @@
 
 		const endpoint = `https://www.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
 			selectedCategory || 'all'
-		}`;
+		}&limit=${limit}&offset=${offset}`;
 
-		console.log(`https://www.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
-			selectedCategory || 'all'}`);		
+		console.log(
+			`https://www.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
+				selectedCategory || 'all'
+			}`
+		);
 
 		fetch(endpoint)
 			.then((response) => {
@@ -90,11 +108,13 @@
 			})
 			.then((data) => {
 				searchResults = [...searchResults, ...data.items];
-				console.log('searchResults', searchResults.length);
 
-				searchResults.length === 0
-					? (activeSearch = true)
-					: (activeSearch = false);
+				totalPages = data.items_total;
+
+				if (offset + limit < totalPages) {
+					offset += limit;
+					limit = 20;
+				}
 			})
 			.catch(() => console.log('An error occured!'))
 			.finally(() => {
@@ -104,7 +124,14 @@
 </script>
 
 <div class="widg_search_svelte">
-	<Search bind:query={searchQuery} {handleSubmit} />
+	<Search
+		bind:query={searchQuery}
+		{handleSubmit}
+		bind:showSearchCategories
+		bind:showIntroText
+		bind:searchResults
+		{unobserve}
+	/>
 	{#if showIntroText}
 		<SearchBarIntro />
 	{/if}
@@ -117,16 +144,15 @@
 				{#if showSearchCategories}
 					<SearchCategories
 						bind:selectedCategory
-						triggerCategorySearch={() => triggerSearch()}
-						{activeSearch}
+						triggerCategorySearch={() => triggerSearchDebounced()}
 					/>
-					{#if activeSearch === false}
+					{#if searchResults.length > 0}
 						<div class="widg_searchbar-bar__title">
 							{$_('searchresult_title')}
 						</div>
 					{/if}
 				{/if}
-				{#if activeSearch === true}
+				{#if !searchResults.length}
 					<div
 						class="no__results"
 						in:fly={{ y: -200, duration: 2000 }}
@@ -136,7 +162,7 @@
 						<span>Bitte erstellen sie eine neue Suchanfrage</span>
 					</div>
 				{/if}
-				<SearchResults results={searchResults} {activeSearch} />
+				<SearchResults results={searchResults} />
 				<div class="loading-indicator">
 					{#if isLoading}
 						<LoadingIndicator />

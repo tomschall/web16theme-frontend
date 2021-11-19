@@ -3,11 +3,23 @@
 
 	export let query;
 	export let handleSubmit;
+	export let showSearchCategories;
+	export let showIntroText;
+	export let searchResults;
+	export let unobserve;
 
 	const closeSearchBar = () => {
-		document.querySelector('.widg_searchbar-bar.show-intro.is_open').classList.remove('is_open');
-    window.estatico.modal.hideModal();
-    window.estatico.modal.removePreventScroll();
+		unobserve();
+		query = '';
+		searchResults = [];
+		showSearchCategories = false;
+		showIntroText = true;
+
+		document
+			.querySelector('.widg_searchbar-bar.show-intro.is_open')
+			.classList.remove('is_open');
+		window.estatico.modal.hideModal();
+		window.estatico.modal.removePreventScroll();
 	};
 </script>
 
