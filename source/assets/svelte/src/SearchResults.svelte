@@ -4,8 +4,6 @@
 	import ListItem from './ListingNormal.svelte';
 
 	export let results;
-	export let activeSearch;
-	console.log('activeSearch', activeSearch);
 </script>
 
 <div class="search__results">

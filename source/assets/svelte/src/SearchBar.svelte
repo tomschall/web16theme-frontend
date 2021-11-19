@@ -32,7 +32,6 @@
 	let selectedCategory: string = 'all';
 	let observer: any;
 	let target: any;
-	let activeSearch: boolean = false;
 
 	let triggerSearchDebounced = debounce(async function () {
 		await triggerSearch();
@@ -109,11 +108,13 @@
 			})
 			.then((data) => {
 				searchResults = [...searchResults, ...data.items];
-				console.log('searchResults', searchResults.length);
 
-				searchResults.length === 0
-					? (activeSearch = true)
-					: (activeSearch = false);
+				totalPages = data.items_total;
+
+				if (offset + limit < totalPages) {
+					offset += limit;
+					limit = 20;
+				}
 			})
 			.catch(() => console.log('An error occured!'))
 			.finally(() => {
@@ -143,16 +144,15 @@
 				{#if showSearchCategories}
 					<SearchCategories
 						bind:selectedCategory
-						triggerCategorySearch={() => triggerSearch()}
-						{activeSearch}
+						triggerCategorySearch={() => triggerSearchDebounced()}
 					/>
-					{#if activeSearch === false}
+					{#if searchResults.length > 0}
 						<div class="widg_searchbar-bar__title">
 							{$_('searchresult_title')}
 						</div>
 					{/if}
 				{/if}
-				{#if activeSearch === true}
+				{#if !searchResults.length}
 					<div
 						class="no__results"
 						in:fly={{ y: -200, duration: 2000 }}
@@ -161,7 +161,7 @@
 						{$_('search_no_results')}
 					</div>
 				{/if}
-				<SearchResults results={searchResults} {activeSearch} />
+				<SearchResults results={searchResults} />
 				<div class="loading-indicator">
 					{#if isLoading}
 						<LoadingIndicator />
