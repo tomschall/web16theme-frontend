@@ -22,7 +22,7 @@
 
 	let searchQuery: string = '';
 	let searchTerm: string = null;
-	let totalPages: number = null;
+	let totalItems: number = null;
 	let offset: number = 0;
 	let limit: number = 10;
 	let searchResults: string[] = [];
@@ -71,7 +71,7 @@
 		searchTerm = searchQuery.trim();
 		searchResults = [];
 
-		totalPages = null;
+		totalItems = null;
 		offset = 0;
 		limit = 10;
 
@@ -83,6 +83,11 @@
 	};
 
 	const triggerSearch = async () => {
+		// if (!(searchResults.length <= totalItems)) {
+		// 	unobserve();
+		// 	return;
+		// }
+
 		isLoading = true;
 
 		// if (!searchTerm) {
@@ -104,9 +109,15 @@
 			.then((data) => {
 				searchResults = [...searchResults, ...data.items];
 
-				totalPages = data.items_total;
+				totalItems = data.items_total;
+				console.log('totalItems', totalItems);
+				console.log('data.items', data.items.length);
 
-				if (offset + limit < totalPages) {
+				if (offset !== 0 && data.items.length < limit) {
+					unobserve();
+				}
+
+				if (offset + limit < totalItems) {
 					offset += limit;
 					limit = 20;
 				}
