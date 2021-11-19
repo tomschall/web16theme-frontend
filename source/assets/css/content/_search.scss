@@ -284,9 +284,19 @@ a.search__cat-title {
 					right: -1 * $basicPush * 0.75;
 				}
 
+				// :last-child {
+				// 	&:after {
+				// 		background: unset;
+				// 	}
+				// }
+			}
+
+			.listing__tooltip {
 				&:last-child {
-					&:after {
-						background: unset;
+					span {
+						&:after {
+							background: unset;
+						}
 					}
 				}
 			}

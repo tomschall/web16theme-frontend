@@ -1,7 +1,7 @@
 <script>
 	export let item;
 
-	let tooltip = false;
+	let trimBreadCrumbItemAfter = 4;
 
 	/**
 	 * BREADCRUMB EXAMPLE
@@ -20,12 +20,12 @@
 	<div class="result__top">
 		<div class="breadcrumbs">
 			{#each breadCrumbsItems.title_parents as item, index (index)}
-				{#if index + 1 >= 3}
-				<div data-tooltip={item}>
+				{#if index + 1 >= trimBreadCrumbItemAfter}
+				<div class="listing__tooltip" data-tooltip={item}>
 					<span>...</span>
 				</div>
 				{:else}
-					<span>{item} {index + 1}</span>
+					<span>{item}</span>
 				{/if}
 			{/each}
 		</div>
@@ -46,6 +46,7 @@
 		z-index: 2000;
 		display: block;
 		padding-left: 20px;
+		cursor: pointer;
 	}
 
 	[data-tooltip]:before,
