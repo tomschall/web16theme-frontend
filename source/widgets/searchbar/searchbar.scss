@@ -234,6 +234,7 @@
 		&.button__cat {
 			height: map-get($elementHeight, mini);
 			line-height: unset;
+			padding: 0 $basicPush + 5;
 			margin-bottom: $basicPush - 5;
 			margin-right: $basicPush - 5;
 			color: $colorBlack;
