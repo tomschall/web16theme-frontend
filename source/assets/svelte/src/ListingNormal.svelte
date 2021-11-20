@@ -3,6 +3,7 @@
 
 	let trimBreadCrumbItemAfter = 2;
 	let maxLettersInBreadcrumb = 110;
+	let maxLettersInDescription = 175;
 
 	/**
 	 * BREADCRUMB EXAMPLE
@@ -20,6 +21,11 @@
 
 	const shortenBreadCrumbItem = (string) =>
 		string.length <= 12 ? string : string.substring(0, 23) + '...';
+
+	const trimDescription = (string) =>
+		string.length <= maxLettersInDescription
+			? string
+			: string.substring(0, maxLettersInDescription) + '...';
 </script>
 
 <li class="search__result-normal search__result--item">
@@ -45,7 +51,7 @@
 	</div>
 	<a href={item['@id']}>
 		<span class="title">{item.Title}</span>
-		<span class="description">{item.Description}</span>
+		<span class="description">{trimDescription(item.Description)}</span>
 	</a>
 </li>
 

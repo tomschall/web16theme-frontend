@@ -352,13 +352,17 @@ a.search__cat-title {
 
 	.title {
 		display: flex;
-		font-size: 22px;
+		font-size: 1.7rem;
 		font-weight: 400;
+		line-height: 1.2;
+		padding: $basicPush 0;
 	}
 
 	.description {
 		font-size: medium;
 		font-weight: 400;
+		color: $colorBorderGrey;
+		hyphens: auto;
 	}
 
 }
