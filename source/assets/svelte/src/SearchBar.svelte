@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import { fly, fade } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import Search from './Search.svelte';
 	import SearchBarIntro from './SearchBarIntro.svelte';
 	import SearchResults from './SearchResults.svelte';
 	import SearchCategories from './SearchCategories.svelte';
 	import SearchProposals from './SearchProposals.svelte';
-	import LoadingIndicator from './LoadingIndicator.svelte';
 	import { init, getLocaleFromNavigator, addMessages } from 'svelte-i18n';
 	import en from './lang/en.json';
 	import de from './lang/de.json';
