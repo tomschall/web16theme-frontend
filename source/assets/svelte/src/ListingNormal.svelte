@@ -20,14 +20,6 @@
 		],
 	};
 
-	console.log(
-		'letters in breadcrumb (total letters - max letter (110))',
-		breadCrumbsItems.title_parents.join('').length - maxLettersInBreadcrumb
-	);
-
-	let breadCrumbsLength = breadCrumbsItems.title_parents.length;
-	console.log('breadCrumbsLengths', breadCrumbsLength);
-
 	const shortenBreadCrumbItem = (string) =>
 		string.length <= 12
 			? string

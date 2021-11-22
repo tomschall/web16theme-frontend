@@ -50,7 +50,6 @@
 
 	const loadMoreResults = (entries: any) => {
 		entries.forEach((entry: any) => {
-			console.log('searchResults.length', searchResults.length);
 			if (entry.isIntersecting) {
 				triggerSearchDebounced();
 			}
@@ -83,17 +82,7 @@
 	};
 
 	const triggerSearch = async () => {
-		// if (!(searchResults.length <= totalItems)) {
-		// 	unobserve();
-		// 	return;
-		// }
-
 		isLoading = true;
-
-		// if (!searchTerm) {
-		//   console.log('trigger click', searchTerm, typeof searchTerm);
-		//   searchResults = [];
-		// }
 
 		const endpoint = `https://www.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
 			selectedCategory || 'all'
@@ -110,8 +99,6 @@
 				searchResults = [...searchResults, ...data.items];
 
 				totalItems = data.items_total;
-				console.log('totalItems', totalItems);
-				console.log('data.items', data.items.length);
 
 				if (offset !== 0 && data.items.length < limit) {
 					unobserve();
