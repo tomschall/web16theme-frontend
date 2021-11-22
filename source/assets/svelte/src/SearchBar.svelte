@@ -6,7 +6,6 @@
 	import SearchBarIntro from './SearchBarIntro.svelte';
 	import SearchResults from './SearchResults.svelte';
 	import SearchCategories from './SearchCategories.svelte';
-	import LoadingIndicator from './LoadingIndicator.svelte';
 	import { init, getLocaleFromNavigator, addMessages } from 'svelte-i18n';
 	import en from './lang/en.json';
 	import de from './lang/de.json';
@@ -33,10 +32,15 @@
 	let observer: any;
 	let target: any;
 	let showStatusInfo: boolean = false;
+	let isFirstSearch: boolean = true;
+	let itemsCount: number = null;
 
-	let triggerSearchDebounced = debounce(async function () {
-		await triggerSearch();
-	}, 300);
+	let triggerSearchDebounced = debounce(async function (
+		isFirstSearch: boolean
+	) {
+		await triggerSearch(isFirstSearch);
+	},
+	300);
 
 	interface ObserverOptions {
 		rootMargin: string;
@@ -51,7 +55,19 @@
 	const loadMoreResults = (entries: any) => {
 		entries.forEach((entry: any) => {
 			if (entry.isIntersecting) {
-				triggerSearchDebounced();
+				if (!searchTerm || searchTerm.length < 4 || isFirstSearch) return;
+
+				if (itemsCount < limit) {
+					unobserve();
+					return;
+				}
+
+				if (offset + limit < totalItems) {
+					offset += limit;
+					limit = 20;
+				}
+
+				triggerSearchDebounced(false);
 			}
 		});
 	};
@@ -65,23 +81,24 @@
 		target = document.querySelector('.loading-indicator');
 	});
 
-	const handleSubmit = () => {
+	const handleInput = () => {
+		unobserve();
 		showSearchCategories = false;
 		searchTerm = searchQuery.trim();
+
 		searchResults = [];
 
 		totalItems = null;
 		offset = 0;
 		limit = 10;
 
-		if (!searchTerm) return;
+		if (!searchTerm || searchTerm.length < 4) return;
 
-		observer.observe(target);
 		showIntroText = false;
-		triggerSearchDebounced();
+		triggerSearchDebounced(true);
 	};
 
-	const triggerSearch = async () => {
+	const triggerSearch = async (isFirst: boolean) => {
 		isLoading = true;
 
 		const endpoint = `https://www.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
@@ -96,17 +113,15 @@
 				return response.json();
 			})
 			.then((data) => {
-				searchResults = [...searchResults, ...data.items];
-
+				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
-				if (offset !== 0 && data.items.length < limit) {
-					unobserve();
-				}
+				searchResults = [...searchResults, ...data.items];
 
-				if (offset + limit < totalItems) {
-					offset += limit;
-					limit = 20;
+				if (isFirst) {
+					searchResults = [...data.items];
+					observer.observe(target);
+					isFirstSearch = false;
 				}
 
 				if (searchResults.length > 0) {
@@ -127,7 +142,7 @@
 <div class="widg_search_svelte">
 	<Search
 		bind:query={searchQuery}
-		{handleSubmit}
+		{handleInput}
 		bind:showSearchCategories
 		bind:showIntroText
 		bind:searchResults
@@ -147,7 +162,7 @@
 					<SearchCategories
 						bind:selectedCategory
 						bind:totalItems
-						triggerCategorySearch={() => triggerSearchDebounced()}
+						triggerCategorySearch={() => triggerSearchDebounced(true)}
 					/>
 					<div class="widg_searchbar-bar__title">
 						<p><span>{totalItems}</span> {$_('searchresult_title')}</p>
@@ -163,22 +178,8 @@
 						<span>Bitte erstellen sie eine neue Suchanfrage</span>
 					</div>
 				{/if}
-				<SearchResults results={searchResults} />
-				<div class="loading-indicator">
-					{#if isLoading}
-						<LoadingIndicator />
-					{/if}
-				</div>
+				<SearchResults results={searchResults} {isLoading} />
 			</div>
 		</div>
 	</div>
 </div>
-
-<style>
-	.loading-indicator {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding-bottom: 10px;
-	}
-</style>
