@@ -6,6 +6,8 @@
 	import SearchBarIntro from './SearchBarIntro.svelte';
 	import SearchResults from './SearchResults.svelte';
 	import SearchCategories from './SearchCategories.svelte';
+	import SearchProposals from './SearchProposals.svelte';
+	import LoadingIndicator from './LoadingIndicator.svelte';
 	import { init, getLocaleFromNavigator, addMessages } from 'svelte-i18n';
 	import en from './lang/en.json';
 	import de from './lang/de.json';
@@ -164,6 +166,7 @@
 						bind:totalItems
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
 					/>
+					<SearchProposals />
 					<div class="widg_searchbar-bar__title">
 						<p><span>{totalItems}</span> {$_('searchresult_title')}</p>
 					</div>
