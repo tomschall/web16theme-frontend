@@ -41,6 +41,11 @@
 
 			font-size: medium;
 
+			p {
+				line-height: 0;
+				margin: $basicPush 0 $basicPush 0;
+			}
+
 			&:before {
 				left: 1%;
 				transform: translate(-25%,-40%);
