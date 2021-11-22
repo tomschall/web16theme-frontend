@@ -237,7 +237,6 @@ a.search__cat-title {
 			margin-right: $basicPush * 2;
   		max-width: 630px;
 			margin: 0;
-		
 			
 			// &::-webkit-scrollbar { 
 				// display: none;
@@ -364,7 +363,6 @@ a.search__cat-title {
 		color: $colorBorderGrey;
 		hyphens: auto;
 	}
-
 }
 
 .search__result-event a {
@@ -379,9 +377,7 @@ a.search__cat-title {
 
 		width: 22px;
 		height: 22px;
-
 		transform: translateY(3px);
-
 		transition: transform $transitionLength / 3 $transitionEase;
 	}
 

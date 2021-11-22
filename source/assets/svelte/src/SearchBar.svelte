@@ -186,3 +186,12 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.loading-indicator {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 10px;
+	}
+</style>

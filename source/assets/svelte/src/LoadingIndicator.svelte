@@ -1,71 +1,44 @@
-<div class="spinner">
-	<div class="rect1" />
-	<div class="rect2" />
-	<div class="rect3" />
-	<div class="rect4" />
-	<div class="rect5" />
+<div class="lds-ring">
+	<div />
+	<div />
+	<div />
+	<div />
 </div>
 
 <style>
-	.spinner {
-		margin: 50px auto;
-		width: 50px;
-		height: 40px;
-		text-align: center;
-		font-size: 10px;
-	}
-
-	.spinner > div {
-		background-color: #333;
-		height: 100%;
-		width: 6px;
+	.lds-ring {
 		display: inline-block;
-
-		-webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
-		animation: sk-stretchdelay 1.2s infinite ease-in-out;
+		position: relative;
+		width: 30px;
+		height: 30px;
 	}
-
-	.spinner .rect2 {
-		-webkit-animation-delay: -1.1s;
-		animation-delay: -1.1s;
+	.lds-ring div {
+		box-sizing: border-box;
+		display: block;
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		margin: 4px;
+		border: 4px solid #999;
+		border-radius: 50%;
+		animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+		border-color: #999 transparent transparent transparent;
 	}
-
-	.spinner .rect3 {
-		-webkit-animation-delay: -1s;
-		animation-delay: -1s;
+	.lds-ring div:nth-child(1) {
+		animation-delay: -0.45s;
 	}
-
-	.spinner .rect4 {
-		-webkit-animation-delay: -0.9s;
-		animation-delay: -0.9s;
+	.lds-ring div:nth-child(2) {
+		animation-delay: -0.3s;
 	}
-
-	.spinner .rect5 {
-		-webkit-animation-delay: -0.8s;
-		animation-delay: -0.8s;
+	.lds-ring div:nth-child(3) {
+		animation-delay: -0.15s;
 	}
-
-	@-webkit-keyframes sk-stretchdelay {
-		0%,
-		40%,
+	@keyframes lds-ring {
+		0% {
+			transform: rotate(0deg);
+		}
 		100% {
-			-webkit-transform: scaleY(0.4);
-		}
-		20% {
-			-webkit-transform: scaleY(1);
-		}
-	}
-
-	@keyframes sk-stretchdelay {
-		0%,
-		40%,
-		100% {
-			transform: scaleY(0.4);
-			-webkit-transform: scaleY(0.4);
-		}
-		20% {
-			transform: scaleY(1);
-			-webkit-transform: scaleY(1);
+			transform: rotate(360deg);
 		}
 	}
 </style>

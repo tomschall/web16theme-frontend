@@ -21,7 +21,7 @@
 	};
 
 	console.log(
-		'letters in breadcrumb',
+		'letters in breadcrumb (total letters - max letter (110))',
 		breadCrumbsItems.title_parents.join('').length - maxLettersInBreadcrumb
 	);
 
