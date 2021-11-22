@@ -4,6 +4,7 @@
 
 	export let triggerCategorySearch = () => {};
 	export let selectedCategory;
+	export let totalItems;
 </script>
 
 <div
@@ -19,7 +20,7 @@
 			triggerCategorySearch();
 		}}
 	>
-		{$_('category_all')} (2562)
+		{$_('category_all')} ({totalItems})
 	</button>
 	<button
 		class="button button__cat {selectedCategory === 'studies' ? 'active' : ''}"

@@ -159,10 +159,11 @@
 				{#if showSearchCategories}
 					<SearchCategories
 						bind:selectedCategory
+						bind:totalItems
 						triggerCategorySearch={() => triggerSearchDebounced()}
 					/>
 					<div class="widg_searchbar-bar__title">
-						{$_('searchresult_title')}
+						<p><span>{totalItems}</span> {$_('searchresult_title')}</p>
 					</div>
 				{/if}
 				{#if showStatusInfo}

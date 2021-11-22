@@ -4,6 +4,7 @@
 	let trimBreadCrumbItemAfter = 2;
 	let maxLettersInBreadcrumb = 110;
 	let maxLettersInDescription = 175;
+	let maxLettersInBreadCrumbItem = 23;
 
 	/**
 	 * BREADCRUMB EXAMPLE
@@ -19,10 +20,20 @@
 		],
 	};
 
-	const shortenBreadCrumbItem = (string) =>
-		string.length <= 12 ? string : string.substring(0, 23) + '...';
+	console.log(
+		'letters in breadcrumb',
+		breadCrumbsItems.title_parents.join('').length - maxLettersInBreadcrumb
+	);
 
-	const trimDescription = (string) =>
+	let breadCrumbsLength = breadCrumbsItems.title_parents.length;
+	console.log('breadCrumbsLengths', breadCrumbsLength);
+
+	const shortenBreadCrumbItem = (string) =>
+		string.length <= 12
+			? string
+			: string.substring(0, maxLettersInBreadCrumbItem) + '...';
+
+	const shortenDescription = (string) =>
 		string.length <= maxLettersInDescription
 			? string
 			: string.substring(0, maxLettersInDescription) + '...';
@@ -49,9 +60,9 @@
 			<span class="button">{item['@type']}</span>
 		</div>
 	</div>
-	<a href={item['@id']}>
+	<a href={item['@id']} title={item.Title}>
 		<span class="title">{item.Title}</span>
-		<span class="description">{trimDescription(item.Description)}</span>
+		<span class="description">{shortenDescription(item.Description)}</span>
 	</a>
 </li>
 

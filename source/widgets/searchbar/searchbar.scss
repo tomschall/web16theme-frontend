@@ -123,17 +123,25 @@
 }
 
 .widg_searchbar-bar__title {
-	border-bottom: 1px solid $colorGreyHover;
-	margin-top: $basicPush * 2;
-	padding-bottom: $basicPush * 2;	
-	font-weight: 500;
-	font-size: 16px;
-	color: $colorDarkGrey;
-	text-transform: uppercase;
-	
-	@include mq($to: small) {
-		padding: 0 0px 10px 0px;
-		margin-right: $basicPush;
+	p {
+		border-bottom: 1px solid $colorGreyHover;
+		margin-top: $basicPush * 2;
+		padding-bottom: $basicPush;	
+		font-weight: 500;
+		font-size: 16px;
+		color: $colorDarkGrey;
+		text-transform: uppercase;
+		
+		@include mq($to: small) {
+			padding: 0 0px 10px 0px;
+			margin-right: $basicPush;
+		}
+
+		span {
+			color: $colorBorderGrey;
+			font-weight: 300;
+			font-style: italic;
+		}
 	}
 }
 
