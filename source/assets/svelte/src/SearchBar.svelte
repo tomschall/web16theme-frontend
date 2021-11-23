@@ -22,6 +22,8 @@
 
 	let searchQuery: string = '';
 	let searchTerm: string = null;
+	let searchTermSpellCheck: string = null;
+	let triedAlternativeSearchTerm: boolean = false;
 	let totalItems: number = null;
 	let offset: number = 0;
 	let limit: number = 10;
@@ -83,8 +85,10 @@
 	});
 
 	const handleInput = () => {
+		triedAlternativeSearchTerm = false;
 		unobserve();
 		isLoading = true;
+		searchTermSpellCheck = null;
 
 		triggerSearchDebounced(true);
 	};
@@ -99,7 +103,7 @@
 			limit = 10;
 		}
 
-		searchTerm = searchQuery.trim();
+		if (!searchTermSpellCheck) searchTerm = searchQuery.trim();
 
 		if (!searchTerm || searchTerm.length < 4) {
 			showSearchBarIntro = true;
@@ -122,6 +126,31 @@
 			.then((data) => {
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
+
+				if (totalItems == 0 && !triedAlternativeSearchTerm) {
+					searchTermSpellCheck = searchTerm;
+
+					const spellCheckEndpoint = `https://www.dev.fhnw.ch/de/spellcheck?term=${searchTermSpellCheck}`;
+
+					fetch(spellCheckEndpoint)
+						.then((response) => {
+							if (!response.ok) {
+								throw Error(response.statusText);
+							}
+							return response.json();
+						})
+						.then((data) => {
+							if (!data.suggestions.length) {
+								triedAlternativeSearchTerm = true;
+							} else {
+								searchTerm = data.suggestions[0].value;
+							}
+						})
+						.catch(() => console.log('An error occured!'))
+						.finally(() => {
+							triggerSearch(true);
+						});
+				}
 
 				searchResults = [...searchResults, ...data.items];
 
@@ -185,6 +214,10 @@
 						{$_('search_no_results')}
 						<span>Bitte erstellen sie eine neue Suchanfrage</span>
 					</div>
+				{/if}
+				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
+					<p>Ergebnisse für <b>{searchTerm}</b></p>
+					<p>Keine Ergebnisse gefunden für <b>{searchTermSpellCheck}</b></p>
 				{/if}
 				<SearchResults results={searchResults} {isLoading} />
 			</div>
