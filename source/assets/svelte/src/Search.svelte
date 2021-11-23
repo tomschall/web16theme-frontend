@@ -7,7 +7,7 @@
 	export let showIntroText;
 	export let showStatusInfo;
 	export let unobserve;
-	export let handleSubmit;
+	export let handleInput;
 
 	const closeSearchBar = () => {
 		query = '';
@@ -26,7 +26,7 @@
 </script>
 
 <div class="widg_searchbar-bar__search">
-	<form on:submit|preventDefault={handleSubmit}>
+	<form on:submit|preventDefault>
 		<div
 			class="widg_searchbar-bar__close"
 			data-searchbar="close"
@@ -35,6 +35,7 @@
 		<label for="search" class="visuallyhidden">{$_('search_label')}</label>
 		<input
 			bind:value={query}
+			on:input={handleInput}
 			type="text"
 			name="searchbar_search"
 			placeholder={$_('search_placeholder')}
