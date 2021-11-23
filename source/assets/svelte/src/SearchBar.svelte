@@ -92,12 +92,13 @@
 	};
 
 	const triggerSearch = async (isFirst: boolean) => {
-		totalItems = 0;
-		offset = 0;
-		limit = 10;
-
-		showSearchCategories = false;
-		searchResults = [];
+		if (isFirst) {
+			showSearchCategories = false;
+			searchResults = [];
+			totalItems = 0;
+			offset = 0;
+			limit = 10;
+		}
 
 		searchTerm = searchQuery.trim();
 
