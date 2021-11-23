@@ -26,7 +26,7 @@
 	let offset: number = 0;
 	let limit: number = 10;
 	let searchResults: string[] = [];
-	let showIntroText: boolean = true;
+	let showSearchBarIntro: boolean = true;
 	let showSearchCategories = false;
 	let isLoading: boolean = false;
 	let selectedCategory: string = 'all';
@@ -84,23 +84,29 @@
 
 	const handleInput = () => {
 		unobserve();
-		showSearchCategories = false;
-		searchTerm = searchQuery.trim();
 
-		searchResults = [];
+		showSearchBarIntro = false;
+		isLoading = true;
 
-		totalItems = null;
-		offset = 0;
-		limit = 10;
-
-		if (!searchTerm || searchTerm.length < 4) return;
-
-		showIntroText = false;
 		triggerSearchDebounced(true);
 	};
 
 	const triggerSearch = async (isFirst: boolean) => {
-		isLoading = true;
+		totalItems = 0;
+		offset = 0;
+		limit = 10;
+
+		showSearchCategories = false;
+		searchResults = [];
+
+		searchTerm = searchQuery.trim();
+
+		if (!searchTerm || searchTerm.length < 4) {
+			showSearchBarIntro = true;
+			showStatusInfo = false;
+			isLoading = false;
+			return;
+		}
 
 		const endpoint = `https://www.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
 			selectedCategory || 'all'
@@ -145,12 +151,12 @@
 		bind:query={searchQuery}
 		{handleInput}
 		bind:showSearchCategories
-		bind:showIntroText
+		bind:showSearchBarIntro
 		bind:searchResults
 		bind:showStatusInfo
 		{unobserve}
 	/>
-	{#if showIntroText}
+	{#if showSearchBarIntro}
 		<SearchBarIntro />
 	{/if}
 	<div class="search__results">

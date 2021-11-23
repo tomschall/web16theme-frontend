@@ -4,7 +4,7 @@
 	export let query;
 	export let searchResults;
 	export let showSearchCategories;
-	export let showIntroText;
+	export let showSearchBarIntro;
 	export let showStatusInfo;
 	export let unobserve;
 	export let handleInput;
@@ -13,7 +13,7 @@
 		query = '';
 		searchResults = [];
 		showSearchCategories = false;
-		showIntroText = true;
+		showSearchBarIntro = true;
 		showStatusInfo = false;
 		unobserve();
 
