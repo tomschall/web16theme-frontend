@@ -84,8 +84,6 @@
 
 	const handleInput = () => {
 		unobserve();
-
-		showSearchBarIntro = false;
 		isLoading = true;
 
 		triggerSearchDebounced(true);
@@ -93,6 +91,7 @@
 
 	const triggerSearch = async (isFirst: boolean) => {
 		if (isFirst) {
+			showSearchBarIntro = false;
 			showSearchCategories = false;
 			searchResults = [];
 			totalItems = 0;

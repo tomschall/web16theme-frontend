@@ -26,7 +26,7 @@
 </script>
 
 <div class="widg_searchbar-bar__search">
-	<form on:submit|preventDefault>
+	<form autocomplete="off" on:submit|preventDefault>
 		<div
 			class="widg_searchbar-bar__close"
 			data-searchbar="close"
