@@ -41,9 +41,14 @@
 
 			font-size: medium;
 
-			p {
-				line-height: 0;
-				margin: $basicPush 0 $basicPush 0;
+			a {
+				text-decoration: none;	
+				cursor: pointer;
+
+				p {
+					line-height: 0;
+					margin: $basicPush 0 $basicPush 0;
+				}
 			}
 
 			&:before {
