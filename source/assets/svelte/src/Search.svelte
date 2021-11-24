@@ -5,9 +5,11 @@
 	export let searchResults;
 	export let showSearchCategories;
 	export let showSearchBarIntro;
+	export let showSearchProposals;
 	export let showStatusInfo;
 	export let unobserve;
 	export let handleInput;
+	export let searchTermSpellCheck;
 
 	const closeSearchBar = () => {
 		query = '';
@@ -15,6 +17,8 @@
 		showSearchCategories = false;
 		showSearchBarIntro = true;
 		showStatusInfo = false;
+		showSearchProposals = false;
+		searchTermSpellCheck = false;
 		unobserve();
 
 		document

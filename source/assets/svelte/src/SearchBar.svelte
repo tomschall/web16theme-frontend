@@ -30,6 +30,7 @@
 	let searchResults: string[] = [];
 	let showSearchBarIntro: boolean = true;
 	let showSearchCategories = false;
+	let showSearchProposals = false;
 	let isLoading: boolean = false;
 	let selectedCategory: string = 'all';
 	let observer: any;
@@ -107,12 +108,20 @@
 
 		if (!searchTermSpellCheck) searchTerm = searchQuery.trim();
 
-		if (!searchTerm || searchTerm.length < 4) {
+		if (!searchTerm) {
 			showSearchBarIntro = true;
+			showStatusInfo = false;
+			showSearchProposals = false;
+			isLoading = false;
+			return;
+		} else if (searchTerm && searchTerm.length < 4) {
+			showSearchCategories = false;
+			showSearchBarIntro = false;
 			showStatusInfo = false;
 			isLoading = false;
 			return;
 		}
+		showSearchProposals = true;
 
 		const endpoint = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
 			selectedCategory || 'all'
@@ -188,6 +197,8 @@
 		bind:showSearchBarIntro
 		bind:searchResults
 		bind:showStatusInfo
+		bind:showSearchProposals
+		bind:searchTermSpellCheck
 		{unobserve}
 	/>
 	{#if showSearchBarIntro}
@@ -205,7 +216,11 @@
 						bind:totalItems
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
 					/>
-					<SearchProposals />
+				{/if}
+				{#if showSearchProposals}
+					<SearchProposals bind:query={searchQuery} {handleInput} />
+				{/if}
+				{#if showSearchCategories}
 					<div class="widg_searchbar-bar__title">
 						<p><span>{totalItems}</span> {$_('searchresult_title')}</p>
 					</div>
@@ -221,11 +236,24 @@
 					</div>
 				{/if}
 				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
-					<p>Ergebnisse für <b>{searchTerm}</b></p>
-					<p>Keine Ergebnisse gefunden für <b>"{searchTermSpellCheck}"</b></p>
+					<p class="results">Ergebnisse für <b>{searchTerm}</b></p>
+					<p class="results">
+						Keine Ergebnisse gefunden für <b>"{searchTermSpellCheck}"</b>
+					</p>
 				{/if}
 				<SearchResults results={searchResults} {isLoading} />
 			</div>
 		</div>
 	</div>
 </div>
+
+<style>
+	p.results {
+		margin-top: 10px;
+		margin-bottom: 30px;
+	}
+	p.results:first-of-type {
+		margin-top: 20px;
+		margin-bottom: 0px;
+	}
+</style>
