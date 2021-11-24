@@ -11,25 +11,27 @@
 	$: {
 		autocompleteTerm = query.trim();
 
-		const autocompleteEndpoint = `https://www.dev.fhnw.ch/de/autocomplete?term=${autocompleteTerm}`;
+		if (autocompleteTerm.length) {
+			const autocompleteEndpoint = `https://www.dev.fhnw.ch/de/autocomplete?term=${autocompleteTerm}`;
 
-		fetch(autocompleteEndpoint)
-			.then((response) => {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				}
-				return response.json();
-			})
-			.then((data) => {
-				console.log('data', data);
-				if (data.suggestions.length) {
-					searchProposals = data.suggestions;
-				}
-			})
-			.catch(() => {
-				console.log('An error occured!');
-			})
-			.finally(() => {});
+			fetch(autocompleteEndpoint)
+				.then((response) => {
+					if (!response.ok) {
+						throw Error(response.statusText);
+					}
+					return response.json();
+				})
+				.then((data) => {
+					console.log('data', data);
+					if (data.suggestions.length) {
+						searchProposals = data.suggestions;
+					}
+				})
+				.catch(() => {
+					console.log('An error occured!');
+				})
+				.finally(() => {});
+		}
 	}
 
 	const handleClick = (value) => {
@@ -50,3 +52,9 @@
 		{/each}
 	</ul>
 </div>
+
+<style>
+	li {
+		cursor: pointer;
+	}
+</style>

@@ -198,6 +198,7 @@
 		bind:searchResults
 		bind:showStatusInfo
 		bind:showSearchProposals
+		bind:searchTermSpellCheck
 		{unobserve}
 	/>
 	{#if showSearchBarIntro}
