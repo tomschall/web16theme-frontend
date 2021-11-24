@@ -127,7 +127,7 @@
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
-				if (totalItems == 0 && !triedAlternativeSearchTerm) {
+				if (totalItems === 0 && !triedAlternativeSearchTerm) {
 					searchTermSpellCheck = searchTerm;
 
 					const spellCheckEndpoint = `https://www.dev.fhnw.ch/de/spellcheck?term=${searchTermSpellCheck}`;
@@ -146,7 +146,10 @@
 								searchTerm = data.suggestions[0].value;
 							}
 						})
-						.catch(() => console.log('An error occured!'))
+						.catch(() => {
+							console.log('An error occured!');
+							triedAlternativeSearchTerm = true;
+						})
 						.finally(() => {
 							triggerSearch(true);
 						});
@@ -217,7 +220,7 @@
 				{/if}
 				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
 					<p>Ergebnisse für <b>{searchTerm}</b></p>
-					<p>Keine Ergebnisse gefunden für <b>{searchTermSpellCheck}</b></p>
+					<p>Keine Ergebnisse gefunden für <b>"{searchTermSpellCheck}"</b></p>
 				{/if}
 				<SearchResults results={searchResults} {isLoading} />
 			</div>
