@@ -49,7 +49,7 @@
 			{/each}
 		</div>
 		<div class="result__type">
-			<span class="button">{item['@type']}</span>
+			<span class="button">{item.search_type}</span>
 		</div>
 	</div>
 	<a href={item['@id']} title={item.Title}>

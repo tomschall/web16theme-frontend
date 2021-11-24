@@ -309,6 +309,7 @@ a.search__cat-title {
 			align-items: center;
 			height: map-get($elementHeight, tiny);
 			flex: 3;
+			text-transform: capitalize;
 
 			@include mq($to: small) {
 				justify-content: flex-end;
