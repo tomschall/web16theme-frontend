@@ -5,7 +5,6 @@
 	export let handleInput;
 
 	let searchProposals = [];
-
 	let autocompleteTerm = '';
 
 	$: {
@@ -22,15 +21,13 @@
 					return response.json();
 				})
 				.then((data) => {
-					console.log('data', data);
 					if (data.suggestions.length) {
 						searchProposals = data.suggestions;
 					}
 				})
 				.catch(() => {
 					console.log('An error occured!');
-				})
-				.finally(() => {});
+				});
 		}
 	}
 

@@ -118,10 +118,10 @@
 			showSearchCategories = false;
 			showSearchBarIntro = false;
 			showStatusInfo = false;
-			showSearchProposals = true;
 			isLoading = false;
 			return;
 		}
+		showSearchProposals = true;
 
 		const endpoint = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
 			selectedCategory || 'all'
@@ -236,11 +236,24 @@
 					</div>
 				{/if}
 				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
-					<p>Ergebnisse für <b>{searchTerm}</b></p>
-					<p>Keine Ergebnisse gefunden für <b>"{searchTermSpellCheck}"</b></p>
+					<p class="results">Ergebnisse für <b>{searchTerm}</b></p>
+					<p class="results">
+						Keine Ergebnisse gefunden für <b>"{searchTermSpellCheck}"</b>
+					</p>
 				{/if}
 				<SearchResults results={searchResults} {isLoading} />
 			</div>
 		</div>
 	</div>
 </div>
+
+<style>
+	p.results {
+		margin-top: 10px;
+		margin-bottom: 30px;
+	}
+	p.results:first-of-type {
+		margin-top: 20px;
+		margin-bottom: 0px;
+	}
+</style>
