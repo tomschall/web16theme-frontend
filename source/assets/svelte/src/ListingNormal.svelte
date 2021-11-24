@@ -5,25 +5,15 @@
 	let maxLettersInBreadcrumb = 110;
 	let maxLettersInDescription = 175;
 	let maxLettersInBreadCrumbItem = 23;
+	let totalBreadCrumbItems = item.title_parents.length;
 
-	/**
-	 * BREADCRUMB EXAMPLE
-	 */
-	let breadCrumbsItems = {
-		title_parents: [
-			'Hochschulen',
-			'Über die Pädagogische Hochschule – PH',
-			'Medien und Öffentlichkeit',
-			'Events der PH FHNW',
-			'Archiv Tagungen IWB',
-			'DGfE-Jahrestagung der Kommission Sportpädagogik: Narrat...',
-		],
-	};
+	console.log('totalBreadCrumbItems', totalBreadCrumbItems);
 
-	const shortenBreadCrumbItem = (string) =>
-		string.length <= 12
+	const shortenBreadCrumbItem = (string) => {
+			return string.length <= 23
 			? string
-			: string.substring(0, maxLettersInBreadCrumbItem) + '...';
+			: string.substring(0, 9) + '...';
+	}
 
 	const shortenDescription = (string) =>
 		string.length <= maxLettersInDescription
@@ -34,18 +24,31 @@
 <li class="search__result-normal search__result--item">
 	<div class="result__top">
 		<div class="breadcrumbs">
-			{#each breadCrumbsItems.title_parents as item, index (index)}
-				{#if index + 1 === 1}
+			{#each item.title_parents as item, index (index)}
+				{#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}
 					<span>{item}</span>
-				{:else if index + 1 >= 2 && index + 1 <= 3}
+				
+					{:else if index + 1 === 1}
 					<div class="listing__tooltip" data-tooltip={item}>
 						<span>{shortenBreadCrumbItem(item)}</span>
 					</div>
-				{:else}
+
+					{:else if index + 1 >= 2 && index + 1 <= 5}
+						<div class="listing__tooltip" data-tooltip={item}>
+							<span>{shortenBreadCrumbItem(item)}</span>
+						</div>
+				
+					<!-- {:else if index + 1 >= 4 && totalBreadCrumbItems >= 5}
+					<div class="listing__tooltip" data-tooltip={item}>
+						<span>{shortenBreadCrumbItem(item)}</span>
+					</div> -->
+					
+					{:else}
 					<div class="listing__tooltip" data-tooltip={item}>
 						<span>...</span>
 					</div>
-				{/if}
+				
+					{/if}
 			{/each}
 		</div>
 		<div class="result__type">

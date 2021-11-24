@@ -282,17 +282,18 @@ a.search__cat-title {
 					top: 50%;
 					transform: translate(50%, -50%);		
 					right: -1 * $basicPush * 0.75;
+
+					:last-child {
+						background: red;
+					}
 				}
-
-				// :last-child {
-				// 	&:after {
-				// 		background: unset;
-				// 	}
-				// }
 			}
-
 			// Svelte Search - Tooltip
 			.listing__tooltip {
+				&:first-child {
+					padding-left: 0;		
+				}
+
 				&:last-child {
 					span {
 						&:after {
