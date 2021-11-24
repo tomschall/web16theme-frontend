@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import Search from './Search.svelte';
 	import SearchBarIntro from './SearchBarIntro.svelte';
+	import SearchAutcomplete from './SearchBarAutocomplete.svelte';
 	import SearchResults from './SearchResults.svelte';
 	import SearchCategories from './SearchCategories.svelte';
 	import SearchProposals from './SearchProposals.svelte';
@@ -11,6 +12,7 @@
 	import en from './lang/en.json';
 	import de from './lang/de.json';
 	import { debounce } from 'lodash';
+import SearchBarAutocomplete from './SearchBarAutocomplete.svelte';
 
 	addMessages('en', en);
 	addMessages('de', de);
@@ -236,24 +238,10 @@
 					</div>
 				{/if}
 				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
-					<p class="results">Ergebnisse für <b>{searchTerm}</b></p>
-					<p class="results">
-						Keine Ergebnisse gefunden für <b>"{searchTermSpellCheck}"</b>
-					</p>
+					<SearchBarAutocomplete searchTerm={searchTerm} searchTermSpellCheck={searchTermSpellCheck} />
 				{/if}
 				<SearchResults results={searchResults} {isLoading} />
 			</div>
 		</div>
 	</div>
 </div>
-
-<style>
-	p.results {
-		margin-top: 10px;
-		margin-bottom: 30px;
-	}
-	p.results:first-of-type {
-		margin-top: 20px;
-		margin-bottom: 0px;
-	}
-</style>

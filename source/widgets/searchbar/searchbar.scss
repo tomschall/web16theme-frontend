@@ -22,6 +22,12 @@
 .widg_search_proposals ul li {
 	@include iconDataurl('search');
 
+	&:hover,
+	&:focus {
+		background-color: rgba($colorLightGray, 0.5);
+		color: $colorBlack;
+	}
+
 	&:before {
 		@include centerDataurlIcon();
 	}
@@ -36,7 +42,7 @@
 	ul {
 		li {
 			position: relative;
-			padding: $basicPush 0 $basicPush $basicPush * 3;
+			padding: $basicPush 0 $basicPush $basicPush * 4;
 			border-bottom: 1px solid $colorGreyHover;
 
 			font-size: medium;
@@ -52,11 +58,31 @@
 			}
 
 			&:before {
-				left: 1%;
+				left: 2%;
 				transform: translate(-25%,-40%);
 			}
 		}
 	}
+}
+
+.widg__searchbar_autocomplete {
+	display: flex;
+	flex-direction: column;
+
+	border-bottom: 1px solid $colorGreyHover;
+	margin-bottom: $basicPush * 2;
+
+	p {
+		font-size: medium;
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+
+	span {
+		display: inline-block;
+		font-size: small;
+		padding-bottom: $basicPush * 2;
+	};	
 }
 
 /**
@@ -166,7 +192,7 @@
 		font-size: 16px;
 		color: $colorDarkGrey;
 		text-transform: uppercase;
-		margin-bottom: $basicPush;
+		margin-bottom: 0;
 		
 		@include mq($to: small) {
 			padding: 0 0px 10px 0px;

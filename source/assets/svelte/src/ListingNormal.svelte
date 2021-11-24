@@ -1,4 +1,7 @@
 <script>
+	import App from './App.svelte';
+	import CloseButton from './modal/CloseButton.svelte';
+
 	export let item;
 
 	let trimBreadCrumbItemAfter = 2;
@@ -6,14 +9,41 @@
 	let maxLettersInDescription = 175;
 	let maxLettersInBreadCrumbItem = 23;
 	let totalBreadCrumbItems = item.title_parents.length;
+	let totalLettersInBreadCrumb = item.title_parents.join().length;
 
-	console.log('totalBreadCrumbItems', totalBreadCrumbItems);
+	console.log(
+		'totalLetters',
+		totalLettersInBreadCrumb,
+		'diff ',
+		totalLettersInBreadCrumb - maxLettersInBreadcrumb,
+		'rest ',
+		Math.round(
+			(totalLettersInBreadCrumb - maxLettersInBreadcrumb) / totalBreadCrumbItems
+		)
+	);
 
-	const shortenBreadCrumbItem = (string) => {
-			return string.length <= 23
-			? string
-			: string.substring(0, 9) + '...';
-	}
+	const shortenBreadCrumbItem = (string, trimStyle) => {
+		switch (trimStyle) {
+			case 'soft':
+				console.log(`%c soft: ${string}`, 'color: darkorange');
+				return string.length <= 20 ? string : string.substring(0, 18) + '...';
+			case 'medium':
+				if (totalBreadCrumbItems <= 2) {
+					console.log(`%c medium: ${string}`, 'color: darkseagreen');
+					return string.length < 50 ? string : string.substring(0, 45) + '...';
+				} else if (totalBreadCrumbItems >= 2) {
+					console.log(`%c medium: ${string}`, 'color: darkseagreen');
+					return string.length < 28 && totalBreadCrumbItems <= 4
+						? string
+						: string.substring(0, 26) + '...';
+				}
+			case 'hard':
+				console.log(`%c hard: ${string}`, 'color: deepskyblue');
+				return string.length <= 14 ? string : string.substring(0, 14) + '...';
+			default:
+				break;
+		}
+	};
 
 	const shortenDescription = (string) =>
 		string.length <= maxLettersInDescription
@@ -27,28 +57,23 @@
 			{#each item.title_parents as item, index (index)}
 				{#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}
 					<span>{item}</span>
-				
-					{:else if index + 1 === 1}
+				{:else if index + 1 === 1}
 					<div class="listing__tooltip" data-tooltip={item}>
-						<span>{shortenBreadCrumbItem(item)}</span>
+						<span>{shortenBreadCrumbItem(item, 'soft')}</span>
 					</div>
-
-					{:else if index + 1 >= 2 && index + 1 <= 5}
-						<div class="listing__tooltip" data-tooltip={item}>
-							<span>{shortenBreadCrumbItem(item)}</span>
-						</div>
-				
-					<!-- {:else if index + 1 >= 4 && totalBreadCrumbItems >= 5}
+				{:else if index + 1 < 4 && totalBreadCrumbItems <= 5}
 					<div class="listing__tooltip" data-tooltip={item}>
-						<span>{shortenBreadCrumbItem(item)}</span>
-					</div> -->
-					
-					{:else}
+						<span>{shortenBreadCrumbItem(item, 'medium')}</span>
+					</div>
+				{:else if index + 1 < 5 && totalBreadCrumbItems > 5}
+					<div class="listing__tooltip" data-tooltip={item}>
+						<span>{shortenBreadCrumbItem(item, 'hard')}</span>
+					</div>
+				{:else if index + 1 > 7}
 					<div class="listing__tooltip" data-tooltip={item}>
 						<span>...</span>
 					</div>
-				
-					{/if}
+				{/if}
 			{/each}
 		</div>
 		<div class="result__type">

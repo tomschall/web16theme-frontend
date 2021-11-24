@@ -1,6 +1,8 @@
 {
   "search_label": "Suche",
   "search_no_results": "Ihre Suche hat keine Ergebnisse ergeben",
+  "search_autocomplete_warning": "Ergebnisse für",
+  "search_autocomlete_warning_2": "Keine Ergebnisse gefunden für",
   "introtext": "**Geben Sie einen Suchbegriff ein** und suchen Sie nach Weiterbildungen, Studienangeboten, Veranstaltungen, Dokumenten und anderen Inhalten.",
   "introtext_studies": "Studium suchen",
   "introtext_continuing_educations": "Weiterbildungen und Kurse suchen",

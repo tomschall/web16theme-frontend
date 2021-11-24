@@ -1,6 +1,8 @@
 {
   "search_label": "Search",
   "search_no_results": "Your request has no results",
+  "search_autocomplete_warning": "Results for",
+  "search_autocomlete_warning_2": "No results found for",
   "introtext": "**Type a search term** and search continuing education, degree programmes, events, documents and other content.",
   "introtext_studies": "Search degree programmes",
   "introtext_continuing_educations": "Search continuing education",
