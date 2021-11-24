@@ -5,6 +5,7 @@
 	export let searchResults;
 	export let showSearchCategories;
 	export let showSearchBarIntro;
+	export let showSearchProposals;
 	export let showStatusInfo;
 	export let unobserve;
 	export let handleInput;
@@ -15,6 +16,7 @@
 		showSearchCategories = false;
 		showSearchBarIntro = true;
 		showStatusInfo = false;
+		showSearchProposals = false;
 		unobserve();
 
 		document

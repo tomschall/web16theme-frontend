@@ -30,6 +30,7 @@
 	let searchResults: string[] = [];
 	let showSearchBarIntro: boolean = true;
 	let showSearchCategories = false;
+	let showSearchProposals = false;
 	let isLoading: boolean = false;
 	let selectedCategory: string = 'all';
 	let observer: any;
@@ -107,9 +108,17 @@
 
 		if (!searchTermSpellCheck) searchTerm = searchQuery.trim();
 
-		if (!searchTerm || searchTerm.length < 4) {
+		if (!searchTerm) {
 			showSearchBarIntro = true;
 			showStatusInfo = false;
+			showSearchProposals = false;
+			isLoading = false;
+			return;
+		} else if (searchTerm && searchTerm.length < 4) {
+			showSearchCategories = false;
+			showSearchBarIntro = false;
+			showStatusInfo = false;
+			showSearchProposals = true;
 			isLoading = false;
 			return;
 		}
@@ -188,6 +197,7 @@
 		bind:showSearchBarIntro
 		bind:searchResults
 		bind:showStatusInfo
+		bind:showSearchProposals
 		{unobserve}
 	/>
 	{#if showSearchBarIntro}
@@ -205,7 +215,11 @@
 						bind:totalItems
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
 					/>
-					<SearchProposals />
+				{/if}
+				{#if showSearchProposals}
+					<SearchProposals bind:query={searchQuery} {handleInput} />
+				{/if}
+				{#if showSearchCategories}
 					<div class="widg_searchbar-bar__title">
 						<p><span>{totalItems}</span> {$_('searchresult_title')}</p>
 					</div>
