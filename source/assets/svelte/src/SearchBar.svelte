@@ -65,6 +65,8 @@
 					return;
 				}
 
+				isLoading = true;
+
 				if (offset + limit < totalItems) {
 					offset += limit;
 					limit = 20;
