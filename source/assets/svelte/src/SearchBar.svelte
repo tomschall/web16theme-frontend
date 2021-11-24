@@ -22,11 +22,13 @@
 
 	let searchQuery: string = '';
 	let searchTerm: string = null;
+	let searchTermSpellCheck: string = null;
+	let triedAlternativeSearchTerm: boolean = false;
 	let totalItems: number = null;
 	let offset: number = 0;
 	let limit: number = 10;
 	let searchResults: string[] = [];
-	let showIntroText: boolean = true;
+	let showSearchBarIntro: boolean = true;
 	let showSearchCategories = false;
 	let isLoading: boolean = false;
 	let selectedCategory: string = 'all';
@@ -83,24 +85,32 @@
 	});
 
 	const handleInput = () => {
+		triedAlternativeSearchTerm = false;
 		unobserve();
-		showSearchCategories = false;
-		searchTerm = searchQuery.trim();
+		isLoading = true;
+		searchTermSpellCheck = null;
 
-		searchResults = [];
-
-		totalItems = null;
-		offset = 0;
-		limit = 10;
-
-		if (!searchTerm || searchTerm.length < 4) return;
-
-		showIntroText = false;
 		triggerSearchDebounced(true);
 	};
 
 	const triggerSearch = async (isFirst: boolean) => {
-		isLoading = true;
+		if (isFirst) {
+			showSearchBarIntro = false;
+			showSearchCategories = false;
+			searchResults = [];
+			totalItems = 0;
+			offset = 0;
+			limit = 10;
+		}
+
+		if (!searchTermSpellCheck) searchTerm = searchQuery.trim();
+
+		if (!searchTerm || searchTerm.length < 4) {
+			showSearchBarIntro = true;
+			showStatusInfo = false;
+			isLoading = false;
+			return;
+		}
 
 		const endpoint = `https://www.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
 			selectedCategory || 'all'
@@ -116,6 +126,31 @@
 			.then((data) => {
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
+
+				if (totalItems == 0 && !triedAlternativeSearchTerm) {
+					searchTermSpellCheck = searchTerm;
+
+					const spellCheckEndpoint = `https://www.dev.fhnw.ch/de/spellcheck?term=${searchTermSpellCheck}`;
+
+					fetch(spellCheckEndpoint)
+						.then((response) => {
+							if (!response.ok) {
+								throw Error(response.statusText);
+							}
+							return response.json();
+						})
+						.then((data) => {
+							if (!data.suggestions.length) {
+								triedAlternativeSearchTerm = true;
+							} else {
+								searchTerm = data.suggestions[0].value;
+							}
+						})
+						.catch(() => console.log('An error occured!'))
+						.finally(() => {
+							triggerSearch(true);
+						});
+				}
 
 				searchResults = [...searchResults, ...data.items];
 
@@ -145,12 +180,12 @@
 		bind:query={searchQuery}
 		{handleInput}
 		bind:showSearchCategories
-		bind:showIntroText
+		bind:showSearchBarIntro
 		bind:searchResults
 		bind:showStatusInfo
 		{unobserve}
 	/>
-	{#if showIntroText}
+	{#if showSearchBarIntro}
 		<SearchBarIntro />
 	{/if}
 	<div class="search__results">
@@ -179,6 +214,10 @@
 						{$_('search_no_results')}
 						<span>Bitte erstellen sie eine neue Suchanfrage</span>
 					</div>
+				{/if}
+				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
+					<p>Ergebnisse für <b>{searchTerm}</b></p>
+					<p>Keine Ergebnisse gefunden für <b>{searchTermSpellCheck}</b></p>
 				{/if}
 				<SearchResults results={searchResults} {isLoading} />
 			</div>

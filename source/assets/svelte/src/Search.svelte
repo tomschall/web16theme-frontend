@@ -4,7 +4,7 @@
 	export let query;
 	export let searchResults;
 	export let showSearchCategories;
-	export let showIntroText;
+	export let showSearchBarIntro;
 	export let showStatusInfo;
 	export let unobserve;
 	export let handleInput;
@@ -13,7 +13,7 @@
 		query = '';
 		searchResults = [];
 		showSearchCategories = false;
-		showIntroText = true;
+		showSearchBarIntro = true;
 		showStatusInfo = false;
 		unobserve();
 
@@ -26,7 +26,7 @@
 </script>
 
 <div class="widg_searchbar-bar__search">
-	<form on:submit|preventDefault>
+	<form autocomplete="off" on:submit|preventDefault>
 		<div
 			class="widg_searchbar-bar__close"
 			data-searchbar="close"
