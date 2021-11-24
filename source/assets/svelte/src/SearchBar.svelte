@@ -112,7 +112,7 @@
 			return;
 		}
 
-		const endpoint = `https://www.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
+		const endpoint = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
 			selectedCategory || 'all'
 		}&limit=${limit}&offset=${offset}`;
 
