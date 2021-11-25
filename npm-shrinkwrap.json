@@ -8915,8 +8915,8 @@
       }
     },
     "gulp-svg-dimensions": {
-      "version": "git+ssh://git@github.com/unic/gulp-svg-dimensions.git#081a7272ae3895689a4d727e220610c17395100a",
-      "from": "gulp-svg-dimensions@git://github.com/unic/gulp-svg-dimensions.git#v0.1.0",
+      "version": "git+https://github.com/unic/gulp-svg-dimensions.git#081a7272ae3895689a4d727e220610c17395100a",
+      "from": "git+https://github.com/unic/gulp-svg-dimensions.git#v0.1.0",
       "dev": true,
       "requires": {
         "cheerio": "^0.19.0",
@@ -16975,8 +16975,8 @@
       }
     },
     "slick-carousel": {
-      "version": "git+ssh://git@github.com/zeixcom/slick.git#96c0859c950268336cc4e77832deb878844b511f",
-      "from": "slick-carousel@git://github.com/zeixcom/slick",
+      "version": "git+https://github.com/zeixcom/slick.git#96c0859c950268336cc4e77832deb878844b511f",
+      "from": "git+https://github.com/zeixcom/slick.git",
       "requires": {
         "jquery": ">=1.7.2"
       }
