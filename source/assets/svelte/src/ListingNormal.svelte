@@ -78,7 +78,9 @@
 	</div>
 	<a href={item['@id']} title={item.Title}>
 		<span class="title">{item.Title}</span>
-		<span class="description">{shortenDescription(item.Description)}</span>
+		{#if item.Description}
+			<span class="description">{shortenDescription(item.Description)}</span>
+		{/if}
 		{#if item.news_date && item.search_type === 'news'}
 			<span class="additional_desc"
 				>{$_('searchresult_university')}: {item.school}
