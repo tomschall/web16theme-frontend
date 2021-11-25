@@ -2,7 +2,7 @@
 	import { _ } from 'svelte-i18n';
 
 	export let query;
-	export let handleInput;
+	export let handleInput =() => {};
 
 	let searchProposals = [];
 	let autocompleteTerm = '';
