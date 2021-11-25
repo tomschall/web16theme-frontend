@@ -247,7 +247,7 @@
 						out:fly={{ y: -200, duration: 500 }}
 					>
 						{$_('search_no_results')}
-						<span>{$_('serach_no_results_subtitle')}</span>
+						<span>{$_('search_no_results_subtitle')}</span>
 					</div>
 				{/if}
 			</div>

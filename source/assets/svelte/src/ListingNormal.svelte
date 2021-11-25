@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Item } from './definitions/Item';
+	import { _ } from 'svelte-i18n';
 	export let item: Item;
 
 	let maxLettersInDescription = 175;
@@ -78,6 +79,12 @@
 	<a href={item['@id']} title={item.Title}>
 		<span class="title">{item.Title}</span>
 		<span class="description">{shortenDescription(item.Description)}</span>
+		{#if item.news_date && item.search_type === 'news'}
+			<span class="additional_desc"
+				>{$_('searchresult_university')}: {item.school}
+				{item.oes[0]} | {item.news_date}</span
+			>
+		{/if}
 	</a>
 </li>
 
