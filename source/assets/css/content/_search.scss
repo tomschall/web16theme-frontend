@@ -362,10 +362,18 @@ a.search__cat-title {
 	}
 
 	.description {
+		display: inline-block;
 		font-size: medium;
 		font-weight: 400;
 		color: $colorBorderGrey;
 		hyphens: auto;
+	}
+
+	.additional_desc {
+		display: inline-block;
+		font-size: medium;
+		font-weight: 400;
+		padding-top: $basicPush;
 	}
 }
 
