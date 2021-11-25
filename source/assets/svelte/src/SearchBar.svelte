@@ -12,7 +12,7 @@
 	import en from './lang/en.json';
 	import de from './lang/de.json';
 	import { debounce } from 'lodash';
-import SearchBarAutocomplete from './SearchBarAutocomplete.svelte';
+	import SearchBarAutocomplete from './SearchBarAutocomplete.svelte';
 
 	addMessages('en', en);
 	addMessages('de', de);
@@ -160,7 +160,7 @@ import SearchBarAutocomplete from './SearchBarAutocomplete.svelte';
 							}
 						})
 						.catch(() => {
-							console.log('An error occured!');
+							console.log('An spellcheck error occured!');
 							triedAlternativeSearchTerm = true;
 						})
 						.finally(() => {
@@ -184,7 +184,7 @@ import SearchBarAutocomplete from './SearchBarAutocomplete.svelte';
 					showStatusInfo = true;
 				}
 			})
-			.catch(() => console.log('An error occured!'))
+			.catch(() => console.log('Oh no. An error occured!'))
 			.finally(() => {
 				isLoading = false;
 			});
@@ -194,13 +194,13 @@ import SearchBarAutocomplete from './SearchBarAutocomplete.svelte';
 <div class="widg_search_svelte">
 	<Search
 		bind:query={searchQuery}
-		{handleInput}
 		bind:showSearchCategories
 		bind:showSearchBarIntro
 		bind:searchResults
 		bind:showStatusInfo
 		bind:showSearchProposals
 		bind:searchTermSpellCheck
+		{handleInput}
 		{unobserve}
 	/>
 	{#if showSearchBarIntro}
@@ -220,7 +220,11 @@ import SearchBarAutocomplete from './SearchBarAutocomplete.svelte';
 					/>
 				{/if}
 				{#if showSearchProposals}
-					<SearchProposals bind:query={searchQuery} {handleInput} />
+					<SearchProposals
+						bind:query={searchQuery}
+						bind:showSearchProposals
+						{handleInput}
+					/>
 				{/if}
 				{#if showSearchCategories}
 					<div class="widg_searchbar-bar__title">
@@ -238,7 +242,13 @@ import SearchBarAutocomplete from './SearchBarAutocomplete.svelte';
 					</div>
 				{/if}
 				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
-					<SearchBarAutocomplete searchTerm={searchTerm} searchTermSpellCheck={searchTermSpellCheck} />
+					<div class="widg__searchbar_autocomplete">
+						<p>{$_('search_autocomplete_warning')} <b>{searchTerm}</b></p>
+						<span
+							>{$_('search_autocomlete_warning_2')}
+							<b>"{searchTermSpellCheck}"</b></span
+						>
+					</div>
 				{/if}
 				<SearchResults results={searchResults} {isLoading} />
 			</div>
