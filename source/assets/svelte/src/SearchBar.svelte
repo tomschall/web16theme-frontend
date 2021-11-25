@@ -226,9 +226,12 @@
 						{handleInput}
 					/>
 				{/if}
+				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
+					<SearchAutcomplete {searchTerm} {searchTermSpellCheck} />
+				{/if}
 				{#if showSearchCategories}
 					<div class="widg_searchbar-bar__title">
-						<p><span>{totalItems}</span> {$_('searchresult_title')}</p>
+						<p>{$_('searchresult_title')}</p>
 					</div>
 				{/if}
 				{#if showStatusInfo}
@@ -238,7 +241,7 @@
 						out:fly={{ y: -200, duration: 500 }}
 					>
 						{$_('search_no_results')}
-						<span>Bitte erstellen sie eine neue Suchanfrage</span>
+						<span>{$_('serach_no_results_subtitle')}</span>
 					</div>
 				{/if}
 				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
