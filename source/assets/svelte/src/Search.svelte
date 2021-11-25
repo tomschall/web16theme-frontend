@@ -8,7 +8,7 @@
 	export let showSearchProposals;
 	export let showStatusInfo;
 	export let unobserve;
-	export let handleInput;
+	export let handleInput = () => {};
 	export let searchTermSpellCheck;
 
 	const closeSearchBar = () => {

@@ -222,9 +222,12 @@ import SearchBarAutocomplete from './SearchBarAutocomplete.svelte';
 				{#if showSearchProposals}
 					<SearchProposals bind:query={searchQuery} {handleInput} />
 				{/if}
+				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
+					<SearchAutcomplete searchTerm={searchTerm} searchTermSpellCheck={searchTermSpellCheck} />
+				{/if}
 				{#if showSearchCategories}
 					<div class="widg_searchbar-bar__title">
-						<p><span>{totalItems}</span> {$_('searchresult_title')}</p>
+						<p>{$_('searchresult_title')}</p>
 					</div>
 				{/if}
 				{#if showStatusInfo}
@@ -234,11 +237,8 @@ import SearchBarAutocomplete from './SearchBarAutocomplete.svelte';
 						out:fly={{ y: -200, duration: 500 }}
 					>
 						{$_('search_no_results')}
-						<span>Bitte erstellen sie eine neue Suchanfrage</span>
+						<span>{$_('serach_no_results_subtitle')}</span>
 					</div>
-				{/if}
-				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
-					<SearchBarAutocomplete searchTerm={searchTerm} searchTermSpellCheck={searchTermSpellCheck} />
 				{/if}
 				<SearchResults results={searchResults} {isLoading} />
 			</div>
