@@ -36,7 +36,7 @@
     "scrolltofixed": "1.0.6",
     "select2": "4.0.3",
     "skip-link-focus": "0.1.0",
-    "slick-carousel": "git://github.com/zeixcom/slick",
+    "slick-carousel": "https://github.com/zeixcom/slick",
     "sticky-kit": "1.1.3",
     "susy": "2.2.14",
     "svelte-markdown": "^0.1.14",
