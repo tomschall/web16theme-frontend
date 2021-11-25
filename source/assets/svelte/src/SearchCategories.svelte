@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
+	import type { CategoriesCount } from './definitions/Categories';
+	import type { Item } from './definitions/Item';
 
 	export let triggerCategorySearch = () => {};
 	export let selectedCategory: string;
 	export let totalItems: number;
+	export let searchResults: Item[];
+	export let categoriesCount: CategoriesCount;
 </script>
 
 <div
@@ -20,7 +24,8 @@
 			triggerCategorySearch();
 		}}
 	>
-		{$_('category_all')} ({totalItems})
+		{$_('category_all')}
+		{categoriesCount.all > 0 ? '(' + categoriesCount.all + ')' : ''}
 	</button>
 	<button
 		class="button button__cat {selectedCategory === 'studies' ? 'active' : ''}"
@@ -29,7 +34,8 @@
 			triggerCategorySearch();
 		}}
 	>
-		{$_('category_studys')} (1000)
+		{$_('category_studys')}
+		{categoriesCount.studies > 0 ? '(' + categoriesCount.studies + ')' : ''}
 	</button>
 	<button
 		class="button button__cat {selectedCategory === 'continuing_education'
@@ -40,7 +46,10 @@
 			triggerCategorySearch();
 		}}
 	>
-		{$_('category_education')} (15)
+		{$_('category_education')}
+		{categoriesCount.continuing_education > 0
+			? '(' + categoriesCount.continuing_education + ')'
+			: ''}
 	</button>
 	<button
 		class="button button__cat {selectedCategory === 'event' ? 'active' : ''}"
@@ -49,7 +58,8 @@
 			triggerCategorySearch();
 		}}
 	>
-		{$_('category_events')} (1)
+		{$_('category_events')}
+		{categoriesCount.event > 0 ? '(' + categoriesCount.event + ')' : ''}
 	</button>
 	<button
 		class="button button__cat {selectedCategory === 'news' ? 'active' : ''}"
@@ -58,7 +68,8 @@
 			triggerCategorySearch();
 		}}
 	>
-		{$_('category_news')} (53)
+		{$_('category_news')}
+		{categoriesCount.news > 0 ? '(' + categoriesCount.news + ')' : ''}
 	</button>
 	<button
 		class="button button__cat {selectedCategory === 'document' ? 'active' : ''}"
@@ -67,7 +78,8 @@
 			triggerCategorySearch();
 		}}
 	>
-		{$_('category_documents')} (1946)
+		{$_('category_documents')}
+		{categoriesCount.document > 0 ? '(' + categoriesCount.document + ')' : ''}
 	</button>
 	<button
 		class="button button__cat {selectedCategory === 'contact' ? 'active' : ''}"
@@ -76,7 +88,8 @@
 			triggerCategorySearch();
 		}}
 	>
-		{$_('category_persons')} (26)
+		{$_('category_persons')}
+		{categoriesCount.contact > 0 ? '(' + categoriesCount.contact + ')' : ''}
 	</button>
 	<button
 		class="button button__cat {selectedCategory === 'general' ? 'active' : ''}"
@@ -85,7 +98,8 @@
 			triggerCategorySearch();
 		}}
 	>
-		{$_('category_general')} (504)
+		{$_('category_general')}
+		{categoriesCount.general > 0 ? '(' + categoriesCount.general + ')' : ''}
 	</button>
 	<button class="button button__cat ref">&nbsp;&nbsp;</button>
 </div>

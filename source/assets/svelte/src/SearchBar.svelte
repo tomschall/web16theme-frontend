@@ -39,6 +39,7 @@
 	let showStatusInfo: boolean = false;
 	let isFirstSearch: boolean = true;
 	let itemsCount: number = null;
+	let categoriesCount: CategoriesCount;
 
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
@@ -141,6 +142,7 @@
 			.then((data) => {
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
+				categoriesCount = data.facets[0].enable;
 
 				if (totalItems === 0 && !triedAlternativeSearchTerm) {
 					searchTermSpellCheck = searchTerm;
@@ -217,6 +219,8 @@
 			<div class="search__cat">
 				{#if showSearchCategories}
 					<SearchCategories
+						bind:categoriesCount
+						bind:searchResults
 						bind:selectedCategory
 						bind:totalItems
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
@@ -227,7 +231,7 @@
 				{/if}
 				{#if showSearchCategories}
 					<div class="widg_searchbar-bar__title">
-						<p>{$_('searchresult_title')}</p>
+						<p>{totalItems} {$_('searchresult_title')}</p>
 					</div>
 				{/if}
 				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}

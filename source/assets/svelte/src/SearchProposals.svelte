@@ -37,20 +37,22 @@
 	};
 </script>
 
-<div class="widg_search_proposals">
-	<div class="widg_searchbar-bar__title">
-		<p>{$_('search_proposal_title')}</p>
+{#if searchProposals.length}
+	<div class="widg_search_proposals">
+		<div class="widg_searchbar-bar__title">
+			<p>{$_('search_proposal_title')}</p>
+		</div>
+		<ul>
+			{#each searchProposals as searchProposal, index (index)}
+				{#if index <= 3}
+					<li on:click={() => handleClick(searchProposal.value)}>
+						{searchProposal.value}
+					</li>
+				{/if}
+			{/each}
+		</ul>
 	</div>
-	<ul>
-		{#each searchProposals as searchProposal, index (index)}
-			{#if index <= 3}
-				<li on:click={() => handleClick(searchProposal.value)}>
-					{searchProposal.value}
-				</li>
-			{/if}
-		{/each}
-	</ul>
-</div>
+{/if}
 
 <style>
 	li {
