@@ -12,6 +12,7 @@
 	import de from './lang/de.json';
 	import { debounce } from 'lodash';
 	import type { Item } from './definitions/Item';
+	import type { CategoriesCount } from './definitions/Categories';
 
 	addMessages('en', en);
 	addMessages('de', de);
@@ -140,9 +141,13 @@
 				return response.json();
 			})
 			.then((data) => {
+				console.log('data', data);
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
-				categoriesCount = data.facets[0].enable;
+
+				if (data.facets && data.facets.length) {
+					categoriesCount = data.facets[0].enable;
+				}
 
 				if (totalItems === 0 && !triedAlternativeSearchTerm) {
 					searchTermSpellCheck = searchTerm;
@@ -164,8 +169,8 @@
 								searchTerm = data.suggestions[0].value;
 							}
 						})
-						.catch(() => {
-							console.log('An spellcheck error occured!');
+						.catch((e) => {
+							console.log('An spellcheck error occured!', e);
 							triedAlternativeSearchTerm = true;
 						})
 						.finally(() => {
@@ -189,7 +194,7 @@
 					showStatusInfo = true;
 				}
 			})
-			.catch(() => console.log('Oh no. An error occured!'))
+			.catch((e) => console.log('Oh no. An error occured!', e))
 			.finally(() => {
 				isLoading = false;
 			});
@@ -205,6 +210,7 @@
 		bind:showStatusInfo
 		bind:showSearchProposals
 		bind:searchTermSpellCheck
+		bind:selectedCategory
 		{handleInput}
 		{unobserve}
 	/>

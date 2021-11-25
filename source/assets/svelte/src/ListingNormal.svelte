@@ -9,40 +9,39 @@
 	let totalLettersInBreadCrumb = 0;
 
 	$: {
-		console.log('item', item);
 		if (item && item.title_parents) {
 			totalBreadCrumbItems = item.title_parents.length;
 			totalLettersInBreadCrumb = item.title_parents.join().length;
 		}
 	}
 
-	const shortenBreadCrumbItem = (string, trimStyle) => {
+	const shortenBreadCrumbItem = (str: string, trimStyle: string) => {
 		switch (trimStyle) {
 			case 'soft':
 				//console.log(`%c soft: ${string}`, 'color: darkorange');
-				return string.length <= 20 ? string : string.substring(0, 18) + '...';
+				return str.length <= 20 ? str : str.substring(0, 18) + '...';
 			case 'medium':
 				if (totalBreadCrumbItems <= 2) {
 					//console.log(`%c medium: ${string}`, 'color: darkseagreen');
-					return string.length < 50 ? string : string.substring(0, 45) + '...';
+					return str.length < 50 ? str : str.substring(0, 45) + '...';
 				} else if (totalBreadCrumbItems >= 2) {
 					//console.log(`%c medium: ${string}`, 'color: darkseagreen');
-					return string.length < 28 && totalBreadCrumbItems <= 4
-						? string
-						: string.substring(0, 26) + '...';
+					return str.length < 28 && totalBreadCrumbItems <= 4
+						? str
+						: str.substring(0, 26) + '...';
 				}
 			case 'hard':
 				//console.log(`%c hard: ${string}`, 'color: deepskyblue');
-				return string.length <= 14 ? string : string.substring(0, 14) + '...';
+				return str.length <= 14 ? str : str.substring(0, 14) + '...';
 			default:
 				break;
 		}
 	};
 
-	const shortenDescription = (string) =>
-		string.length <= maxLettersInDescription
-			? string
-			: string.substring(0, maxLettersInDescription) + '...';
+	const shortenDescription = (str: string) =>
+		str.length <= maxLettersInDescription
+			? str
+			: str.substring(0, maxLettersInDescription) + '...';
 </script>
 
 <li class="search__result-normal search__result--item">
@@ -84,7 +83,7 @@
 		{#if item.news_date && item.search_type === 'news'}
 			<span class="additional_desc"
 				>{$_('searchresult_university')}: {item.school}
-				{item.oes[0]} | {item.news_date}</span
+				{item.oes && item.oes[0]} | {item.news_date}</span
 			>
 		{/if}
 	</a>
