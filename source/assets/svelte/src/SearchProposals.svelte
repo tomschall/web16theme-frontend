@@ -3,7 +3,6 @@
 
 	export let query;
 	export let handleInput;
-	export let showSearchProposals;
 
 	let searchProposals = [];
 	let autocompleteTerm = '';
@@ -22,9 +21,7 @@
 					return response.json();
 				})
 				.then((data) => {
-					if (!data.suggestions.length) {
-						showSearchProposals = false;
-					} else {
+					if (data.suggestions.length) {
 						searchProposals = data.suggestions;
 					}
 				})

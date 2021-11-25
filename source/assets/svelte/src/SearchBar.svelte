@@ -4,7 +4,6 @@
 	import { onMount } from 'svelte';
 	import Search from './Search.svelte';
 	import SearchBarIntro from './SearchBarIntro.svelte';
-	import SearchAutcomplete from './SearchBarAutocomplete.svelte';
 	import SearchResults from './SearchResults.svelte';
 	import SearchCategories from './SearchCategories.svelte';
 	import SearchProposals from './SearchProposals.svelte';
@@ -12,7 +11,6 @@
 	import en from './lang/en.json';
 	import de from './lang/de.json';
 	import { debounce } from 'lodash';
-	import SearchBarAutocomplete from './SearchBarAutocomplete.svelte';
 
 	addMessages('en', en);
 	addMessages('de', de);
@@ -32,7 +30,7 @@
 	let searchResults: string[] = [];
 	let showSearchBarIntro: boolean = true;
 	let showSearchCategories = false;
-	let showSearchProposals = false;
+	let showSearchProposals = true;
 	let isLoading: boolean = false;
 	let selectedCategory: string = 'all';
 	let observer: any;
@@ -116,13 +114,17 @@
 			showSearchProposals = false;
 			isLoading = false;
 			return;
-		} else if (searchTerm && searchTerm.length < 4) {
-			showSearchCategories = false;
+		}
+
+		if (searchTerm && searchTerm.length < 4) {
 			showSearchBarIntro = false;
 			showStatusInfo = false;
+			showSearchProposals = true;
+			showSearchCategories = false;
 			isLoading = false;
 			return;
 		}
+
 		showSearchProposals = true;
 
 		const endpoint = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
@@ -154,6 +156,7 @@
 						})
 						.then((data) => {
 							if (!data.suggestions.length) {
+								searchTermSpellCheck = null;
 								triedAlternativeSearchTerm = true;
 							} else {
 								searchTerm = data.suggestions[0].value;
@@ -220,31 +223,12 @@
 					/>
 				{/if}
 				{#if showSearchProposals}
-					<SearchProposals
-						bind:query={searchQuery}
-						bind:showSearchProposals
-						{handleInput}
-					/>
+					<SearchProposals bind:query={searchQuery} {handleInput} />
 				{/if}
 				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
-					<SearchAutcomplete {searchTerm} {searchTermSpellCheck} />
-				{/if}
-				{#if showSearchCategories}
 					<div class="widg_searchbar-bar__title">
 						<p>{$_('searchresult_title')}</p>
 					</div>
-				{/if}
-				{#if showStatusInfo}
-					<div
-						class="no__results"
-						in:fly={{ y: -200, duration: 2000 }}
-						out:fly={{ y: -200, duration: 500 }}
-					>
-						{$_('search_no_results')}
-						<span>{$_('serach_no_results_subtitle')}</span>
-					</div>
-				{/if}
-				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
 					<div class="widg__searchbar_autocomplete">
 						<p>{$_('search_autocomplete_warning')} <b>{searchTerm}</b></p>
 						<span
@@ -254,6 +238,16 @@
 					</div>
 				{/if}
 				<SearchResults results={searchResults} {isLoading} />
+				{#if showStatusInfo && !searchTermSpellCheck}
+					<div
+						class="no__results"
+						in:fly={{ y: -200, duration: 2000 }}
+						out:fly={{ y: -200, duration: 500 }}
+					>
+						{$_('search_no_results')}
+						<span>{$_('serach_no_results_subtitle')}</span>
+					</div>
+				{/if}
 			</div>
 		</div>
 	</div>
