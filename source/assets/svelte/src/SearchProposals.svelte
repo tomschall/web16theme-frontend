@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
 	import { _ } from 'svelte-i18n';
 
-	export let query;
-	export let handleInput;
+	export let query: string;
+	export let handleInput: () => void;
 
-	let searchProposals = [];
-	let autocompleteTerm = '';
+	let searchProposals: any[] = [];
+	let autocompleteTerm: string = '';
 
 	$: {
 		autocompleteTerm = query.trim();

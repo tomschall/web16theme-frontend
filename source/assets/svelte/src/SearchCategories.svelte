@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
 
 	export let triggerCategorySearch = () => {};
-	export let selectedCategory;
-	export let totalItems;
+	export let selectedCategory: string;
+	export let totalItems: number;
 </script>
 
 <div

@@ -11,6 +11,7 @@
 	import en from './lang/en.json';
 	import de from './lang/de.json';
 	import { debounce } from 'lodash';
+	import type { Item } from './definitions/Item';
 
 	addMessages('en', en);
 	addMessages('de', de);
@@ -27,10 +28,10 @@
 	let totalItems: number = null;
 	let offset: number = 0;
 	let limit: number = 10;
-	let searchResults: string[] = [];
+	let searchResults: Item[] = [];
 	let showSearchBarIntro: boolean = true;
-	let showSearchCategories = false;
-	let showSearchProposals = true;
+	let showSearchCategories: boolean = false;
+	let showSearchProposals: boolean = false;
 	let isLoading: boolean = false;
 	let selectedCategory: string = 'all';
 	let observer: any;
@@ -87,7 +88,7 @@
 		target = document.querySelector('.loading-indicator');
 	});
 
-	const handleInput = () => {
+	const handleInput: () => void = function () {
 		triedAlternativeSearchTerm = false;
 		unobserve();
 		isLoading = true;
@@ -108,6 +109,8 @@
 
 		if (!searchTermSpellCheck) searchTerm = searchQuery.trim();
 
+		showSearchProposals = true;
+
 		if (!searchTerm) {
 			showSearchBarIntro = true;
 			showStatusInfo = false;
@@ -119,15 +122,12 @@
 		if (searchTerm && searchTerm.length < 4) {
 			showSearchBarIntro = false;
 			showStatusInfo = false;
-			showSearchProposals = true;
 			showSearchCategories = false;
 			isLoading = false;
 			return;
 		}
 
-		showSearchProposals = true;
-
-		const endpoint = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
+		const endpoint: string = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
 			selectedCategory || 'all'
 		}&limit=${limit}&offset=${offset}`;
 
@@ -145,7 +145,7 @@
 				if (totalItems === 0 && !triedAlternativeSearchTerm) {
 					searchTermSpellCheck = searchTerm;
 
-					const spellCheckEndpoint = `https://www.dev.fhnw.ch/de/spellcheck?term=${searchTermSpellCheck}`;
+					const spellCheckEndpoint: string = `https://www.dev.fhnw.ch/de/spellcheck?term=${searchTermSpellCheck}`;
 
 					fetch(spellCheckEndpoint)
 						.then((response) => {
@@ -225,10 +225,12 @@
 				{#if showSearchProposals}
 					<SearchProposals bind:query={searchQuery} {handleInput} />
 				{/if}
-				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
+				{#if showSearchCategories}
 					<div class="widg_searchbar-bar__title">
 						<p>{$_('searchresult_title')}</p>
 					</div>
+				{/if}
+				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
 					<div class="widg__searchbar_autocomplete">
 						<p>{$_('search_autocomplete_warning')} <b>{searchTerm}</b></p>
 						<span

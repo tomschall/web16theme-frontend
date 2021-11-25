@@ -1,5 +1,6 @@
-<script>
-	export let item = [];
+<script lang="ts">
+	import type { Item } from './definitions/Item';
+	export let item: Item;
 
 	let maxLettersInDescription = 175;
 	let maxLettersInBreadCrumbItem = 23;
@@ -7,6 +8,7 @@
 	let totalLettersInBreadCrumb = 0;
 
 	$: {
+		console.log('item', item);
 		if (item && item.title_parents) {
 			totalBreadCrumbItems = item.title_parents.length;
 			totalLettersInBreadCrumb = item.title_parents.join().length;

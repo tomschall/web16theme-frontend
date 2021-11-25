@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
 	import { _ } from 'svelte-i18n';
+	import type { Item } from './definitions/Item';
 	import ListItem from './ListingNormal.svelte';
 	import LoadingIndicator from './LoadingIndicator.svelte';
 
-	export let results;
-	export let isLoading;
+	export let results: Item[];
+	export let isLoading: boolean;
 </script>
 
 <div class="search__results">

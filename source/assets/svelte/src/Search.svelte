@@ -1,15 +1,16 @@
-<script>
+<script lang="ts">
 	import { _ } from 'svelte-i18n';
+	import type { Item } from './definitions/Item';
 
-	export let query;
-	export let searchResults;
-	export let showSearchCategories;
-	export let showSearchBarIntro;
-	export let showSearchProposals;
-	export let showStatusInfo;
-	export let unobserve;
-	export let handleInput = () => {};
-	export let searchTermSpellCheck;
+	export let query: string;
+	export let searchResults: Item[];
+	export let showSearchCategories: boolean;
+	export let showSearchBarIntro: boolean;
+	export let showSearchProposals: boolean;
+	export let showStatusInfo: boolean;
+	export let unobserve: any;
+	export let handleInput: () => void;
+	export let searchTermSpellCheck: string;
 
 	const closeSearchBar = () => {
 		query = '';
@@ -18,7 +19,7 @@
 		showSearchBarIntro = true;
 		showStatusInfo = false;
 		showSearchProposals = false;
-		searchTermSpellCheck = false;
+		searchTermSpellCheck = null;
 		unobserve();
 
 		document
