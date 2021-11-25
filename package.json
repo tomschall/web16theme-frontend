@@ -93,7 +93,7 @@
     "gulp-simplefont64": "^0.0.1",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^2.6.5",
-    "gulp-svg-dimensions": "git://github.com/unic/gulp-svg-dimensions.git#v0.1.0",
+    "gulp-svg-dimensions": "https://github.com/unic/gulp-svg-dimensions.git#v0.1.0",
     "gulp-tap": "^1.0.1",
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
