@@ -1,13 +1,89 @@
-.widg_searchbar {
+.widg_search_svelte {
+	.no__results {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		font-size: 1.5rem;
+		font-weight: 700;
+		padding: $basicPush * 2 0;
+		background: rgba($colorBlack, 1);
+		color: white;
+		margin-top: $basicPush * 2;
 
+		span {
+			font-size: 1.2rem;
+			font-weight: 400;
+		}
+	}
 }
 
-.widg_searchbar__btn {
+.widg_searchbar__btn,
+.widg_search_proposals ul li {
 	@include iconDataurl('search');
+
+	&:hover,
+	&:focus {
+		background-color: rgba($colorLightGray, 0.5);
+		color: $colorBlack;
+	}
 
 	&:before {
 		@include centerDataurlIcon();
 	}
+}
+
+.widg_search_proposals {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+
+	ul {
+		li {
+			position: relative;
+			padding: $basicPush 0 $basicPush $basicPush * 4;
+			border-bottom: 1px solid $colorGreyHover;
+
+			font-size: medium;
+
+			a {
+				text-decoration: none;	
+				cursor: pointer;
+
+				p {
+					line-height: 0;
+					margin: $basicPush 0 $basicPush 0;
+				}
+			}
+
+			&:before {
+				left: 2%;
+				transform: translate(-25%,-40%);
+			}
+		}
+	}
+}
+
+.widg__searchbar_autocomplete {
+	display: flex;
+	flex-direction: column;
+
+	border-bottom: 1px solid $colorGreyHover;
+	margin-bottom: $basicPush * 2;
+
+	p {
+		font-size: large;
+		font-weight: 400;
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+
+	span {
+		display: inline-block;
+		font-size: small;
+		padding-bottom: $basicPush * 2;
+	};	
 }
 
 /**
@@ -73,33 +149,31 @@
 			height: 60px;
 		}
 	}
-	//The fhnw logo on the bottom
 
 	.search__results {
-		padding: 0 32px 0 28px;
+		// padding: 0 32px 0 28px;
 
 		@include mq($to: small) {
-			padding: 0 24px 0 20px;
+			margin: 0 0 0 5px;
 		}
 	}
 }
 
 .widg_searchbar-bar__content {
 	min-height: calc(100vh - 100px);
-	max-height: calc(100vh - 100px);
+	max-height: calc(100vh - 1000px);
 
 	position: relative;
 	overflow-y: auto;
 
 	@include mq($from: wide) {
-		min-height: calc(100vh - 150px);
-		max-height: calc(100vh - 150px);
+		min-height: calc(100vh - 250px);
+		max-height: calc(100vh - 250px);
 	}
 
 	@include mq($to: large) {
-		min-height: calc(100vh - 60px);
-		max-height: calc(100vh - 60px);
-
+		min-height: calc(100vh - 160px);
+		max-height: calc(100vh - 160px);
 	}
 
 	@include mq($to: medium) {
@@ -108,12 +182,38 @@
 	}
 }
 
+.widg_searchbar-bar__title {
+	width: 100%;
+
+	p {
+		border-bottom: 1px solid $colorGreyHover;
+		margin-top: $basicPush * 2;
+		padding-bottom: $basicPush;	
+		font-weight: 500;
+		font-size: 16px;
+		color: $colorDarkGrey;
+		text-transform: uppercase;
+		margin-bottom: 0;
+		
+		@include mq($to: small) {
+			padding: 0 0px 10px 0px;
+			margin-right: $basicPush;
+		}
+
+		span {
+			color: $colorBorderGrey;
+			font-weight: 300;
+			font-style: italic;
+		}
+	}
+}
+
 .widg_searchbar-bar__search {
 	@include clickAreaSize(height);
 
 	position: relative;
 
-	input[type="text"] {
+	input[type='text'] {
 		@include clickAreaSize(height);
 		@include clickAreaSize(line-height);
 
@@ -170,8 +270,104 @@
 	}
 }
 
+.widg_searchbar-bar__categories {
+	display: none;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+	padding: 0;
+	z-index: 1000;
+	margin-top: $basicPush * 2;
+	
+	@include mq($to: small) {
+		display: flex;
+  	flex-wrap: nowrap;
+  	white-space: nowrap;
+		padding: $basicPush * 2  0 0 0;
+		margin-left: $basicPush * 2;
+		overflow-x: scroll;
+
+		&::-webkit-scrollbar { 
+			width: 0;
+			height: 10px;
+			background: transparent;
+		}
+
+		@include mq($from: medium) {
+			&::-webkit-scrollbar-thumb {
+				display: none;
+				background: transparent;
+			}
+		}
+	}
+	
+	button {	
+		&.button__cat {
+			height: map-get($elementHeight, mini);
+			line-height: unset;
+			padding: 0 $basicPush + 5;
+			margin-bottom: $basicPush - 5;
+			margin-right: $basicPush - 5;
+			color: $colorBlack;
+			background: $colorBg;
+			border: 2px solid $colorLightGray;
+
+			@include mq($to: small) {
+				height: map-get($elementHeight, tiny);
+				margin-bottom: 0;
+			}
+
+			&.active {
+				background: $colorYellow;
+				color: $colorBlack;
+				border: 2px solid $colorYellow;
+			}
+
+			&:hover {
+				color: $colorBg;
+				background: $colorBlack;
+				border-color: $colorBlack;
+			}
+		}
+
+		&.ref {
+			border: none;
+			width: $basicPush * 2;
+			padding: 0;
+			margin-right: 10px;
+		}
+	}
+
+	&.gradient_prev:before {
+		position: absolute;
+		z-index: 1;
+		content: '';
+		width: $basicPush * 7;
+		height: $basicPush * 3.8;
+		background: linear-gradient(
+			to right,
+			rgb(255, 255, 255) 0%,
+			rgba(255, 255, 255, 0) 100%
+		);
+	}
+
+	&.gradient_next:after {
+		position: absolute;
+		right: 0;
+		z-index: 1;
+		content: '';
+		width: $basicPush * 7;
+		height: $basicPush * 3.8;
+		background: linear-gradient(
+			to left,
+			rgb(255, 255, 255) 25%,
+			rgba(255, 255, 255, 0) 100%
+		);
+	}
+}
+
 .widg_searchbar-bar__intro {
-	padding: $basicPush * 2 $basicPush * 3 $basicPush * 2;
+	padding: 0 $basicPush * 3 $basicPush * 2;
 	display: none;
 
 	@include mq($to: small) {
@@ -180,8 +376,8 @@
 
 	p {
 		line-height: 1.5;
-		font-size: 1.25rem;
-		margin-bottom: $basicPush * 2.4;
+		font-size: 1.5rem;
+		margin: $basicPush * 4.8 0;
 	}
 
 	> a {
@@ -213,7 +409,6 @@
 		&:hover {
 			border-color: $colorBlack;
 		}
-
 	}
 
 	.show-intro & {
