@@ -111,7 +111,7 @@
 		}.bind(this));
 
 		$(this.options.domSelectors.searchbutton).on('click.' + this.uuid, function() {
-			if (this.options.searchIsOpen) {
+			if (document.querySelector('.widg_searchbar-bar.show-intro.is_open')) {
 				this.closeMobileSearch();
 			} else {
 				this.openMobileSearch();
