@@ -32639,9 +32639,9 @@ var app = (function () {
     			t0 = text(/*totalItems*/ ctx[4]);
     			t1 = space();
     			t2 = text(t2_value);
-    			add_location(p, file, 202, 6, 6082);
+    			add_location(p, file, 202, 6, 6088);
     			attr_dev(div, "class", "widg_searchbar-bar__title");
-    			add_location(div, file, 201, 5, 6036);
+    			add_location(div, file, 201, 5, 6042);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32705,12 +32705,12 @@ var app = (function () {
     			t6 = text("\"");
     			t7 = text(/*searchTermSpellCheck*/ ctx[2]);
     			t8 = text("\"");
-    			add_location(b0, file, 207, 45, 6325);
-    			add_location(p, file, 207, 6, 6286);
-    			add_location(b1, file, 210, 7, 6413);
-    			add_location(span, file, 208, 6, 6355);
+    			add_location(b0, file, 207, 45, 6331);
+    			add_location(p, file, 207, 6, 6292);
+    			add_location(b1, file, 210, 7, 6419);
+    			add_location(span, file, 208, 6, 6361);
     			attr_dev(div, "class", "widg__searchbar_autocomplete");
-    			add_location(div, file, 206, 5, 6237);
+    			add_location(div, file, 206, 5, 6243);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32770,9 +32770,9 @@ var app = (function () {
     			t1 = space();
     			span = element("span");
     			t2 = text(t2_value);
-    			add_location(span, file, 222, 6, 6756);
+    			add_location(span, file, 222, 6, 6762);
     			attr_dev(div, "class", "no__results");
-    			add_location(div, file, 216, 5, 6594);
+    			add_location(div, file, 216, 5, 6600);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32959,14 +32959,14 @@ var app = (function () {
     			t6 = space();
     			if (if_block5) if_block5.c();
     			attr_dev(div0, "class", "search__cat");
-    			add_location(div0, file, 187, 3, 5637);
+    			add_location(div0, file, 187, 3, 5643);
     			attr_dev(div1, "class", "widg_searchbar-bar__content custom-scrollbar");
     			attr_dev(div1, "data-searchbar", "content");
-    			add_location(div1, file, 183, 2, 5541);
+    			add_location(div1, file, 183, 2, 5547);
     			attr_dev(div2, "class", "search__results");
-    			add_location(div2, file, 182, 1, 5509);
+    			add_location(div2, file, 182, 1, 5515);
     			attr_dev(div3, "class", "widg_search_svelte");
-    			add_location(div3, file, 166, 0, 5181);
+    			add_location(div3, file, 166, 0, 5187);
     		},
     		l: function claim(nodes) {
     			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -33333,7 +33333,7 @@ var app = (function () {
 
     			return response.json();
     		}).then(data => {
-    			console.log('data', data);
+    			console.log('rolis data', data);
     			itemsCount = data.items.length;
     			$$invalidate(4, totalItems = data.items_total);
 

@@ -141,7 +141,7 @@
 				return response.json();
 			})
 			.then((data) => {
-				console.log('data', data);
+				console.log('rolis data', data);
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
