@@ -210,11 +210,7 @@
 		bind:showStatusInfo
 		bind:showSearchProposals
 		bind:searchTermSpellCheck
-<<<<<<< HEAD
 		bind:searchType
-=======
-		bind:selectedCategory
->>>>>>> 86bc7d9f79fee208361b7d1d5cf7854a538257af
 		{handleInput}
 		{unobserve}
 	/>
@@ -231,11 +227,7 @@
 					<SearchCategories
 						bind:categoriesCount
 						bind:searchResults
-<<<<<<< HEAD
 						bind:searchType
-=======
-						bind:selectedCategory
->>>>>>> 86bc7d9f79fee208361b7d1d5cf7854a538257af
 						bind:totalItems
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
 					/>
