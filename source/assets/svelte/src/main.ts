@@ -7,9 +7,7 @@ declare global {
   }
 }
 
-// const app = new App({
-//   target: document.body,
-// });
+
 
 const searchbar = new SearchBar({
   target: document.querySelector('.widg_searchbar-bar'),
