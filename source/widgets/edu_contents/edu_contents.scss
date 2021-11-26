@@ -6,23 +6,6 @@
 	padding-top: $basicPush * 3;
 	padding-bottom: $basicPush * 2;
 
-	.object__title {
-		padding-left: $basicPush * 2;
-		background: $colorBg;
-
-		h2.edu__title {
-			font-size: 2rem;
-			color: $colorText;
-			padding-left: 0;
-			margin-bottom: 0;
-
-			&::after {
-				content: '';
-				background: none;
-			}
-		}
-	}
-
 	.edu__content {
 		display: block;
 		width: 100%;
@@ -32,10 +15,20 @@
 		padding-bottom: $basicPush;
 		margin-bottom: $basicPush + 5;
 
+		h2.edu__title {
+			margin-bottom: $basicPush;
+			font-size: $basicPush * 2.2;
+			color: $colorText;
+
+			&::after {
+				background-color: transparent;
+			}
+		}
+
 		dl {
 			display: flex;
 			flex-wrap: wrap;
-			padding: 0 $basicPush * 2;
+			padding: 0 $basicPush * 2.5;
 			padding-bottom: 0;
 			margin-top: 0;
 			margin-bottom: 0;
@@ -63,7 +56,7 @@
 					&.remove__line {
 						border-bottom: 0;
 					}
-					
+
 					&.bottom__line {
 						border-bottom: 1px solid $colorGreyHover;
 					}
@@ -79,7 +72,7 @@
 			}
 
 			dt {
-				font-size: 13px;
+				font-size: 15px;
 				color: $colorText;
 				line-height: 20px;
 				font-weight: 700;
@@ -87,9 +80,10 @@
 			}
 			dd {
 				font-size: 15px;
+				color: $colorText;
 				margin-inline-start: 0;
 				hyphens: auto;
-        margin-left: 0;
+				margin-left: 0;
 
 				a {
 					font-size: 15px;
@@ -138,7 +132,34 @@
 
 		.edu__key_data {
 			transition: height 1s linear;
+		}
+	}
 
+	.edu__info {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: flex-start;
+		margin-bottom: $basicPush;
+
+		.edu__info_icon {
+			display: flex;
+			width: $basicPush * 2;
+
+			@include iconDataurl('information');
+
+			padding-top: 5px;
+			margin: 0;
+			margin-right: 5px;
+		}
+
+		.edu__info_message {
+			padding-bottom: $basicPush - 4;
+			padding-top: 2px;
+			padding-right: 5px;
+			margin-left: 5px;
+			margin-top: 0;
+			font-size: 15px;
 		}
 	}
 
@@ -165,18 +186,23 @@
 	z-index: 1000;
 
 	background: $colorBg;
-	border-top: 1px solid $formIconColor; 
+	border-top: 1px solid $formIconColor;
 	padding: 0 $basicPush * 2;
 
 	@include mq($from: 'small') {
 		display: none;
 	}
-	
+
 	.icon {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		padding: $basicPush - 5;
+
+		font-size: 12px;
+		font-weight: 600;
+		text-decoration: none;
+		font-weight: 500;
 		cursor: pointer;
 
 		&.icon__contact {

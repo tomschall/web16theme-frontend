@@ -142,6 +142,11 @@
 	Widget.prototype.setNavActive = function($navItem, targetLevel) {
 		var $currentList = $(this.options.domSelectors.list + '[data-navigation-level="' + targetLevel + '"]');
 		$currentList.find('.' + this.options.stateClasses.isActive).removeClass(this.options.stateClasses.isActive, this.options.stateClasses.navActive);
+
+		if ($('.is_expandable.not-default.nav_active').length) {
+			$currentList.find('.' + this.options.stateClasses.navActive).addClass('temp_active');
+		}
+
 		$navItem.addClass(this.options.stateClasses.isActive);
 	};
 
@@ -258,6 +263,8 @@
 		}
 
 		window.estatico.modal.removePreventScroll();
+
+		$('.widg_navigation__list').find('a.temp_active').removeClass('temp_active');
 	};
 
 	/**

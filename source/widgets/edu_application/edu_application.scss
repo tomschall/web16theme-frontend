@@ -1,8 +1,8 @@
 .widg_edu_application {
-	width: 49%;
+	width: 48%;
 	display: flex;
 	flex-direction: column;
-  justify-content: space-between;
+	justify-content: space-between;
 
 	@include mq($to: small) {
 		width: 100%;
@@ -20,29 +20,24 @@
 		margin-bottom: $basicPush;
 	}
 
-	.object__content {
-		flex-grow: 1;
-		padding: 10px 20px 0;
-	}
-
 	.align__btn {
 		display: flex;
 		width: 100%;
-		
+
 		a.btn {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 
-			margin: $basicPush * 2;
+			margin: 0;
 			background: $colorBlack;
 			opacity: 1;
-    	color: $colorBg;
+			color: $colorBg;
 
 			text-decoration: none;
 			text-align: center;
 
-    	padding: $basicPush;
+			padding: 0;
 
 			line-height: 17px;
 			min-height: $basicPush * 5;
@@ -52,26 +47,25 @@
 				color: $colorText;
 			}
 
-      &.disabled {
-        background-color: $colorDarkGrey;
+			&.disabled {
+				background-color: $colorDarkGrey;
 
-        &:hover {
-          color: #fff;
-        }
-      }
-	
+				&:hover {
+					color: #fff;
+				}
+			}
+
 			@include mq($to: small) {
 				width: 100%;
 			}
-	
+
 			@include mq($from: small) {
-				width: $basicPush * 25;
-				max-width: $basicPush * 25;
+				width: 100%;
 			}
-		}	
+		}
 	}
 
-  a.link-mailto {
-    padding-left: 19px;
-  }
+	a.link-mailto {
+		padding-left: 19px;
+	}
 }

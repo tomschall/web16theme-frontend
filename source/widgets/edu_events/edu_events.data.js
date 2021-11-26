@@ -7,48 +7,10 @@ var _ = require('lodash'),
 
 var templateData = {
 		button: {
-			text: 'Alle ansehen',
-			url: '#targetInfoEvents',
+			text: 'Zu den Info-Anlässen',
+			url: 'http://localhost:9000/pages/university_for_applied_psychology/university_for_applied_psychology.html',
 		},
 		title: 'Infoveranstaltungen',
-		entries: [
-			{
-				title: 'Info-Veranstaltung',
-				dateTime: '27.06.2016 um 18:15 Uhr',
-				location: 'Windisch',
-				url: '/',
-			},
-			{
-				title: 'Info-Veranstaltung',
-				dateTime: '27.06.2016 um 18:15 Uhr',
-				location: 'Windisch',
-				url: '/',
-			},
-			{
-				title: 'Info-Veranstaltung',
-				dateTime: '27.06.2016 um 18:15 Uhr',
-				location: 'Windisch',
-				url: '/',
-			},
-			{
-				title: 'Info-Veranstaltung',
-				dateTime: '27.06.2016 um 18:15 Uhr',
-				location: 'Windisch',
-				url: '/',
-			},
-			{
-				title: 'Info-Veranstaltung',
-				dateTime: '27.06.2016 um 18:15 Uhr',
-				location: 'Windisch',
-				url: '/',
-			},
-			{
-				title: 'Info-Veranstaltung',
-				dateTime: '27.06.2016 um 18:15 Uhr',
-				location: 'Windisch',
-				url: '/',
-			},
-		],
 	},
 	data = _.merge(
 		defaultData,

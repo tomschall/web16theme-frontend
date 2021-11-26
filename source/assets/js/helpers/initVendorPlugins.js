@@ -6,16 +6,6 @@
  ;(function($, undefined) {
 	'use strict';
 
-	$(window).on('resize', function() {
-		if ($(window).width() > 1022) {
-			$('.widg_teaser__img img').imageScale({
-				rescaleOnResize: true,
-				scale: 'best-fill',
-				align: 'center'
-			});
-		}
-	});
-
 	$(document).ready(function() {
 		// The Jquery Spinner, has to be implemented when element is added later than document.ready
 		$('.fhnw-spinner').spinner({
@@ -98,28 +88,5 @@
     };
 
     checkIfScrollable();
-
-		// WINDOW RELOAD ON RESIZE WINDOW
-		var dwidth = jQuery(window).width();
-		$(window).bind('resize', function() {
-			var wwidth = jQuery(window).width();
-			if (dwidth !== wwidth) {
-				dwidth = jQuery(window).width();
-				if (window.RT) {
-					clearTimeout(window.RT);
-				}
-				window.RT = setTimeout(function() {
-					$('body').append(
-						'<div id="overlay"><div id="fhnw-spinner"></div></div>'
-					);
-					$('#fhnw-spinner').spinner({
-						radius: 30,
-						strokeWidth: 6,
-						color: '#fff',
-					});
-					this.location.reload(false);
-				}, 2000);
-			}
-		});
 	});
 })(jQuery);

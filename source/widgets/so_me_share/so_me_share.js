@@ -42,8 +42,8 @@
 			},
 			translations: {
 				de: 'Drucken',
-				en: 'print',
-				fr: 'imprimer'
+				en: 'Print',
+				fr: 'Imprimer'
 			}
 		},
 		data = {

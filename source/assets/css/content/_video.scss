@@ -30,14 +30,12 @@
 	width: 100%;
 	height: 100%;
 	border: none;
-	overflow: hidden;
+	overflow: hidden !important;
 }
 
 .responsive-video__small iframe,
 .responsive-video__small object,
 .responsive-video__small embed {
-
-
 	@include mq($to: medium) {
 		width: 560px;
 		height: 360px;
@@ -50,5 +48,6 @@
 }
 
 .no-scale iframe {
-   border: none;
+	border: none;
+	overflow: hidden !important;
 }

@@ -1,12 +1,4 @@
-<div class="widg_edu_application widg_sidebar__object" data-init="edu_application">
-	<div class="object__title" data-sidebar="title">
-		<h2 id="edu__application" class="edu__title">{{title}}</h2>
-	</div>
-	<div class="object__content" data-sidebar="content">
-		<p>{{text}}</p>
-		<p class="small">{{note}}</p>
-	</div>
-  
+<div class="widg_edu_application" data-init="edu_application">  
 	{{#if button.displayed}}
 	<div class="align__btn">
 		<a class="btn small_button{{#if button.disabled}} disabled{{/if}}" href="{{#if button.disabled}}#{{else}}{{button.url}}{{/if}}">

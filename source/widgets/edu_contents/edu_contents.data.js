@@ -6,6 +6,7 @@ var _ = require('lodash'),
 	defaultData = requireNew('../../data/default.data.js');
 
 var templateData = {
+	message: 'Der Anmeldeschluss ist am 15.4.2021 abgelaufen. Nächstes Anmeldefenster öffnet ab 1. Oktober 2025.',
 	langStrings: {
 		application: 'Anmeldung',
 		events: 'Info-Anlässe',

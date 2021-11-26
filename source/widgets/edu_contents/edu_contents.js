@@ -24,7 +24,7 @@
 				contactAnchor: '.widg_sidebar__content > .widg_edu_contact.widg_sidebar__object',
 				eventAnchor: '.widg_info_teaser',
 				applicationAnchor: '.widg_application_accordeon',
-				sidebarApplicationAnchor: '#edu__application'
+				sidebarApplicationAnchor: '.align__btn .btn.small_button'
 			},
 			stateClasses: {},
 		},
@@ -65,13 +65,19 @@
     var self = this;
 
 		if (window.estatico.mq.query({ to: 'small' })) {
-			var e = $('<div><div class="icon icon__application">' + labelApplication +
-			'</div><div class="icon icon__info">' + labelEvents +
-			'</div><div class="icon icon__contact">' + labelContact +
-			'</div></div>');
+			var e = $('<div><a class="icon icon__contact">' + labelContact +
+			'</a><a class="icon icon__info">' + labelEvents +
+			'</a><a class="icon icon__application">' + labelApplication +
+			'</a></div>');
 			$('body').append(e);
 			e.attr('id', 'edu__product_nav').hide().fadeIn(1000);
 			this.iOS();
+		}
+
+		// COPY LINK IF EDU-EVENTS NOT EXISTS, BUT EVENT BUTTON HAS LINK REFERENCE
+		if ($('#targetInfoEvents').length === 0 && $('.widg_edu_events .btn.small_button').length === 1) {
+			var eduInfoLink = $('.widg_edu_events .btn.small_button').attr('href');
+			$('.icon.icon__info').attr('href', eduInfoLink);
 		}
 
 		if ($(this.options.domSelectors.contactAnchor).length ||
@@ -92,10 +98,10 @@
 					// ANCHOR APPLICATION
 					if ($(defaults.domSelectors.applicationAnchor).length) {
 						self.scrollTop(defaults.domSelectors.applicationAnchor, 25);
-						if ($('.widg_application_accordeon > .widg_accordeon__entry').length <= 1) {
-							if (!$('#targetOnlineApplication').hasClass('is_open')) {
-								$('#targetOnlineApplication div.widg_accordeon__button > button').trigger('click');
-								$('#targetOnlineApplication').toggleClass('is_open');
+						if ($('.widg_application_accordeon > .widg_accordeon__entry:first-of-type').length <= 1) {
+							if (!$('#targetOnlineApplication .widg_accordeon__entry:first-of-type').hasClass('is_open')) {
+								$('#targetOnlineApplication .widg_accordeon__entry:first-of-type .widg_accordeon_item').trigger('click');
+								$('#targetOnlineApplication .widg_accordeon__entry:first-of-type .widg_accordeon_item').toggleClass('is_open');
 							}
 						}
 					} else {
@@ -110,7 +116,8 @@
 			$('.icon.icon__contact').css('display', 'none');
 		}
 
-		if ($('#edu__events').length === 0 && $('#targetInfoEvents').length === 0) {
+		// HIDE BUTTON INFO-ANLASS, WHEN BUTTON NOT EXISTS
+		if ($('.widg_edu_events').length === 0) {
 			$('.icon.icon__info').css('display', 'none');
 		}
 

@@ -1,0 +1,75 @@
+<div class="continuing_education_search__wrapper" data-init="continuing_education_search" data-searchpage-template="continuing_education_full"
+  data-searchpage-category="continuing_education" data-searchpage="formWrapper" role="search">
+  <div class="search__form-wrapper">
+    <div>
+      {{#if title}}
+      <h2>{{title}}</h2>
+      {{/if}}
+      <p>
+        {{#if description}}
+        {{description}}
+        {{/if}}
+      </p>
+      <div>
+        <div class="search__holder__searchstring">
+          <div class="search__string">
+            <input type="text" value="" id="search-string" name="search-string" data-searchpage="query"
+              data-searchparam="q" />
+            <label class="formQuestion" for="search-string">{{widgets.label_search}}</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="search__holder select2__wrapper {{#if filter_subjectarea}}hidden{{/if}}">
+          <select id="taxonomy_subjectarea" name="taxonomy_subjectarea" data-searchparam="taxonomy_subjectarea" class="custom-select" multiple="multiple">
+            {{#each widgets.subjectarea_options}}
+            <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
+            {{/each}}
+          </select>
+          <label class="formQuestion" for="taxonomy_subjectarea">{{widgets.label_faculty}}</label>
+        </div>
+        <div class="search__holder select2__wrapper {{#if filter_eduproducttype}}hidden{{/if}}">
+            {{#each widgets.eduproducttype_options}}
+                {{#if hide}}
+                    <span aria-hidden="true" class="is_hidden taxonomy_eduproducttype_hidden_option" data-value="{{optionValue}}" data-text="{{optionLabel}}"></span>
+                {{/if}}
+            {{/each}}
+          <select id="taxonomy_eduproducttype" name="taxonomy_eduproducttype" data-searchparam="taxonomy_eduproducttype" class="custom-select"
+            multiple="multiple">
+            {{#each widgets.eduproducttype_options}}
+                {{#unless hide}}
+                    <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
+                {{/unless}}
+            {{/each}}
+          </select>
+          <label class="formQuestion" for="eduproducttype">{{widgets.label_type}}</label>
+        </div>
+        <div class="search__holder select2__wrapper {{#if filter_location}}hidden{{/if}}">
+          <select id="city" name="city" data-searchparam="city" class="custom-select" multiple="multiple">
+            {{#each widgets.locationOptions}}
+            <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
+            {{/each}}
+          </select>
+          <label class="formQuestion" for="city">{{widgets.label_location}}</label>
+        </div>
+        <div class="search__holder select2__wrapper hidden">
+          <select id="subject" name="subject" data-searchparam="subject" class="custom-select" multiple="multiple">
+            {{#each widgets.subject}}
+            <option value="{{optionValue}}" {{#if selected}}selected{{/if}}>{{optionLabel}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="search__third-row">
+      <div class="search__extra-holder">
+        <button class="search__reset not-default" data-searchpage="reset">{{widgets.label_reset_fields}}</button>
+      </div>
+      <div class="search__extra-holder element-hidden">
+        <span data-searchpage="countNumber"></span>
+        <span class="search__countNumber___text"></span>
+      </div>
+    </div>
+  </div>
+  {{> "widgets/searchpage/searchpage" widgets.searchpage }}
+</div>
