@@ -8,14 +8,14 @@ export interface Item {
   effective: Date;
   filesize?: number;
   filetype?: any;
-  institute?: string;
+  institute: string;
   location_short?: string;
   news_date?: Date;
   oes: string[];
   path_string: string;
   review_state?: string;
   role?: string;
-  school?: string;
+  school: string;
   search_type: string;
   start_date: string;
   start_event: Date;

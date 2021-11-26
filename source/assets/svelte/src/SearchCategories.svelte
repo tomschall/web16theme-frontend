@@ -5,7 +5,7 @@
 	import type { Item } from './definitions/Item';
 
 	export let triggerCategorySearch = () => {};
-	export let selectedCategory: string;
+	export let searchType: string;
 	export let totalItems: number;
 	export let searchResults: Item[];
 	export let categoriesCount: CategoriesCount;
@@ -18,9 +18,9 @@
 	transition:fade={{ duration: 0 }}
 >
 	<button
-		class="button button__cat {selectedCategory === 'all' ? 'active' : ''}"
+		class="button button__cat {searchType === 'all' ? 'active' : ''}"
 		on:click={() => {
-			selectedCategory = 'all';
+			searchType = 'all';
 			triggerCategorySearch();
 		}}
 	>
@@ -28,9 +28,9 @@
 		{categoriesCount.all > 0 ? '(' + categoriesCount.all + ')' : ''}
 	</button>
 	<button
-		class="button button__cat {selectedCategory === 'studies' ? 'active' : ''}"
+		class="button button__cat {searchType === 'studies' ? 'active' : ''}"
 		on:click={() => {
-			selectedCategory = 'studies';
+			searchType = 'studies';
 			triggerCategorySearch();
 		}}
 	>
@@ -38,11 +38,11 @@
 		{categoriesCount.studies > 0 ? '(' + categoriesCount.studies + ')' : ''}
 	</button>
 	<button
-		class="button button__cat {selectedCategory === 'continuing_education'
+		class="button button__cat {searchType === 'continuing_education'
 			? 'active'
 			: ''}"
 		on:click={() => {
-			selectedCategory = 'continuing_education';
+			searchType = 'continuing_education';
 			triggerCategorySearch();
 		}}
 	>
@@ -52,9 +52,9 @@
 			: ''}
 	</button>
 	<button
-		class="button button__cat {selectedCategory === 'event' ? 'active' : ''}"
+		class="button button__cat {searchType === 'event' ? 'active' : ''}"
 		on:click={() => {
-			selectedCategory = 'event';
+			searchType = 'event';
 			triggerCategorySearch();
 		}}
 	>
@@ -62,9 +62,9 @@
 		{categoriesCount.event > 0 ? '(' + categoriesCount.event + ')' : ''}
 	</button>
 	<button
-		class="button button__cat {selectedCategory === 'news' ? 'active' : ''}"
+		class="button button__cat {searchType === 'news' ? 'active' : ''}"
 		on:click={() => {
-			selectedCategory = 'news';
+			searchType = 'news';
 			triggerCategorySearch();
 		}}
 	>
@@ -72,9 +72,9 @@
 		{categoriesCount.news > 0 ? '(' + categoriesCount.news + ')' : ''}
 	</button>
 	<button
-		class="button button__cat {selectedCategory === 'document' ? 'active' : ''}"
+		class="button button__cat {searchType === 'document' ? 'active' : ''}"
 		on:click={() => {
-			selectedCategory = 'document';
+			searchType = 'document';
 			triggerCategorySearch();
 		}}
 	>
@@ -82,9 +82,9 @@
 		{categoriesCount.document > 0 ? '(' + categoriesCount.document + ')' : ''}
 	</button>
 	<button
-		class="button button__cat {selectedCategory === 'contact' ? 'active' : ''}"
+		class="button button__cat {searchType === 'contact' ? 'active' : ''}"
 		on:click={() => {
-			selectedCategory = 'contact';
+			searchType = 'contact';
 			triggerCategorySearch();
 		}}
 	>
@@ -92,9 +92,9 @@
 		{categoriesCount.contact > 0 ? '(' + categoriesCount.contact + ')' : ''}
 	</button>
 	<button
-		class="button button__cat {selectedCategory === 'general' ? 'active' : ''}"
+		class="button button__cat {searchType === 'general' ? 'active' : ''}"
 		on:click={() => {
-			selectedCategory = 'general';
+			searchType = 'general';
 			triggerCategorySearch();
 		}}
 	>
