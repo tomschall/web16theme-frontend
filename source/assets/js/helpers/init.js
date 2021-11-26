@@ -7,19 +7,6 @@
 (function($, undefined) {
   'use strict';
 
-  var renderSvelteBundleHeaderTags = function() {
-    var svelteBundleCSS = document.createElement('link');
-    svelteBundleCSS.setAttribute('href', '/assets/svelte/bundle.css');
-    svelteBundleCSS.setAttribute('rel', 'stylesheet');
-    document.head.appendChild(svelteBundleCSS);
-
-    var svelteBundleJS = document.createElement('script');
-    svelteBundleJS.setAttribute('src', '/assets/svelte/bundle.js');
-    document.head.appendChild(svelteBundleJS);
-  };
-
-  renderSvelteBundleHeaderTags();
-
   function pageReload() {
     window.RT = setTimeout(function() {
       $('body').append(
