@@ -34,7 +34,7 @@
 	let showSearchCategories: boolean = false;
 	let showSearchProposals: boolean = false;
 	let isLoading: boolean = false;
-	let selectedCategory: string = 'all';
+	let searchType: string = 'all';
 	let observer: any;
 	let target: any;
 	let showStatusInfo: boolean = false;
@@ -129,8 +129,8 @@
 			return;
 		}
 
-		const endpoint: string = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=${
-			selectedCategory || 'all'
+		const endpoint: string = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=all&search_type=${
+			searchType || 'all'
 		}&limit=${limit}&offset=${offset}`;
 
 		fetch(endpoint)
@@ -210,7 +210,7 @@
 		bind:showStatusInfo
 		bind:showSearchProposals
 		bind:searchTermSpellCheck
-		bind:selectedCategory
+		bind:searchType
 		{handleInput}
 		{unobserve}
 	/>
@@ -227,7 +227,7 @@
 					<SearchCategories
 						bind:categoriesCount
 						bind:searchResults
-						bind:selectedCategory
+						bind:searchType
 						bind:totalItems
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
 					/>

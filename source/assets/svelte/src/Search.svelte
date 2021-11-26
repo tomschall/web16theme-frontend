@@ -11,7 +11,7 @@
 	export let unobserve: any;
 	export let handleInput: () => void;
 	export let searchTermSpellCheck: string;
-	export let selectedCategory: string;
+	export let searchType: string;
 
 	const closeSearchBar = () => {
 		query = '';
@@ -21,7 +21,7 @@
 		showStatusInfo = false;
 		showSearchProposals = false;
 		searchTermSpellCheck = null;
-		selectedCategory = 'all';
+		searchType = 'all';
 		unobserve();
 
 		document

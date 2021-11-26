@@ -39,7 +39,6 @@
     "slick-carousel": "https://github.com/zeixcom/slick",
     "sticky-kit": "1.1.3",
     "susy": "2.2.14",
-    "svelte-markdown": "^0.1.14",
     "yarn": "^1.22.10"
   },
   "engines": {
