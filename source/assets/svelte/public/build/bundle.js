@@ -33324,7 +33324,7 @@ var app = (function () {
     			return;
     		}
 
-    		const endpoint = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=all&search_type=${searchType || 'all'}&limit=${limit}&offset=${offset}`;
+    		const endpoint = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=all&search_type[]=${searchType || 'all'}&limit=${limit}&offset=${offset}`;
 
     		fetch(endpoint).then(response => {
     			if (!response.ok) {
@@ -33333,7 +33333,7 @@ var app = (function () {
 
     			return response.json();
     		}).then(data => {
-    			console.log('rolis data', data);
+    			console.log('data yes', data);
     			itemsCount = data.items.length;
     			$$invalidate(4, totalItems = data.items_total);
 

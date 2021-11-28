@@ -129,7 +129,7 @@
 			return;
 		}
 
-		const endpoint: string = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=all&search_type=${
+		const endpoint: string = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
 			searchType || 'all'
 		}&limit=${limit}&offset=${offset}`;
 
@@ -141,7 +141,7 @@
 				return response.json();
 			})
 			.then((data) => {
-				console.log('rolis data', data);
+				console.log('data yes', data);
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
