@@ -14243,96 +14243,96 @@ var app = (function () {
     function create_fragment$2(ctx) {
     	let div;
     	let button0;
-    	let t0_value = /*$_*/ ctx[4]('category_all') + "";
+    	let t0_value = /*$_*/ ctx[2]('category_all') + "";
     	let t0;
     	let t1;
 
-    	let t2_value = (/*categoriesCount*/ ctx[3].all > 0
-    	? '(' + /*categoriesCount*/ ctx[3].all + ')'
+    	let t2_value = (/*categoriesCount*/ ctx[1].all > 0
+    	? '(' + /*categoriesCount*/ ctx[1].all + ')'
     	: '') + "";
 
     	let t2;
     	let button0_class_value;
     	let t3;
     	let button1;
-    	let t4_value = /*$_*/ ctx[4]('category_studys') + "";
+    	let t4_value = /*$_*/ ctx[2]('category_studys') + "";
     	let t4;
     	let t5;
 
-    	let t6_value = (/*categoriesCount*/ ctx[3].studies > 0
-    	? '(' + /*categoriesCount*/ ctx[3].studies + ')'
+    	let t6_value = (/*categoriesCount*/ ctx[1].studies > 0
+    	? '(' + /*categoriesCount*/ ctx[1].studies + ')'
     	: '') + "";
 
     	let t6;
     	let button1_class_value;
     	let t7;
     	let button2;
-    	let t8_value = /*$_*/ ctx[4]('category_education') + "";
+    	let t8_value = /*$_*/ ctx[2]('category_education') + "";
     	let t8;
     	let t9;
 
-    	let t10_value = (/*categoriesCount*/ ctx[3].continuing_education > 0
-    	? '(' + /*categoriesCount*/ ctx[3].continuing_education + ')'
+    	let t10_value = (/*categoriesCount*/ ctx[1].continuing_education > 0
+    	? '(' + /*categoriesCount*/ ctx[1].continuing_education + ')'
     	: '') + "";
 
     	let t10;
     	let button2_class_value;
     	let t11;
     	let button3;
-    	let t12_value = /*$_*/ ctx[4]('category_events') + "";
+    	let t12_value = /*$_*/ ctx[2]('category_events') + "";
     	let t12;
     	let t13;
 
-    	let t14_value = (/*categoriesCount*/ ctx[3].event > 0
-    	? '(' + /*categoriesCount*/ ctx[3].event + ')'
+    	let t14_value = (/*categoriesCount*/ ctx[1].event > 0
+    	? '(' + /*categoriesCount*/ ctx[1].event + ')'
     	: '') + "";
 
     	let t14;
     	let button3_class_value;
     	let t15;
     	let button4;
-    	let t16_value = /*$_*/ ctx[4]('category_news') + "";
+    	let t16_value = /*$_*/ ctx[2]('category_news') + "";
     	let t16;
     	let t17;
 
-    	let t18_value = (/*categoriesCount*/ ctx[3].news > 0
-    	? '(' + /*categoriesCount*/ ctx[3].news + ')'
+    	let t18_value = (/*categoriesCount*/ ctx[1].news > 0
+    	? '(' + /*categoriesCount*/ ctx[1].news + ')'
     	: '') + "";
 
     	let t18;
     	let button4_class_value;
     	let t19;
     	let button5;
-    	let t20_value = /*$_*/ ctx[4]('category_documents') + "";
+    	let t20_value = /*$_*/ ctx[2]('category_documents') + "";
     	let t20;
     	let t21;
 
-    	let t22_value = (/*categoriesCount*/ ctx[3].document > 0
-    	? '(' + /*categoriesCount*/ ctx[3].document + ')'
+    	let t22_value = (/*categoriesCount*/ ctx[1].document > 0
+    	? '(' + /*categoriesCount*/ ctx[1].document + ')'
     	: '') + "";
 
     	let t22;
     	let button5_class_value;
     	let t23;
     	let button6;
-    	let t24_value = /*$_*/ ctx[4]('category_persons') + "";
+    	let t24_value = /*$_*/ ctx[2]('category_persons') + "";
     	let t24;
     	let t25;
 
-    	let t26_value = (/*categoriesCount*/ ctx[3].contact > 0
-    	? '(' + /*categoriesCount*/ ctx[3].contact + ')'
+    	let t26_value = (/*categoriesCount*/ ctx[1].contact > 0
+    	? '(' + /*categoriesCount*/ ctx[1].contact + ')'
     	: '') + "";
 
     	let t26;
     	let button6_class_value;
     	let t27;
     	let button7;
-    	let t28_value = /*$_*/ ctx[4]('category_general') + "";
+    	let t28_value = /*$_*/ ctx[2]('category_general') + "";
     	let t28;
     	let t29;
 
-    	let t30_value = (/*categoriesCount*/ ctx[3].general > 0
-    	? '(' + /*categoriesCount*/ ctx[3].general + ')'
+    	let t30_value = (/*categoriesCount*/ ctx[1].general > 0
+    	? '(' + /*categoriesCount*/ ctx[1].general + ')'
     	: '') + "";
 
     	let t30;
@@ -14390,31 +14390,31 @@ var app = (function () {
     			button8 = element("button");
     			button8.textContent = "  ";
     			attr_dev(button0, "class", button0_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'all' ? 'active' : ''));
-    			add_location(button0, file$2, 16, 1, 401);
+    			add_location(button0, file$2, 19, 1, 465);
     			attr_dev(button1, "class", button1_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'studies' ? 'active' : ''));
-    			add_location(button1, file$2, 27, 1, 674);
+    			add_location(button1, file$2, 28, 1, 703);
 
     			attr_dev(button2, "class", button2_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'continuing_education'
     			? 'active'
     			: ''));
 
-    			add_location(button2, file$2, 37, 1, 950);
+    			add_location(button2, file$2, 37, 1, 960);
     			attr_dev(button3, "class", button3_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'event' ? 'active' : ''));
-    			add_location(button3, file$2, 51, 1, 1293);
+    			add_location(button3, file$2, 50, 1, 1284);
     			attr_dev(button4, "class", button4_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'news' ? 'active' : ''));
-    			add_location(button4, file$2, 61, 1, 1561);
+    			add_location(button4, file$2, 59, 1, 1533);
     			attr_dev(button5, "class", button5_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'document' ? 'active' : ''));
-    			add_location(button5, file$2, 71, 1, 1823);
+    			add_location(button5, file$2, 68, 1, 1776);
     			attr_dev(button6, "class", button6_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'contact' ? 'active' : ''));
-    			add_location(button6, file$2, 81, 1, 2106);
+    			add_location(button6, file$2, 77, 1, 2040);
     			attr_dev(button7, "class", button7_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'general' ? 'active' : ''));
-    			add_location(button7, file$2, 91, 1, 2383);
+    			add_location(button7, file$2, 86, 1, 2298);
     			attr_dev(button8, "class", "button button__cat ref");
-    			add_location(button8, file$2, 101, 1, 2660);
+    			add_location(button8, file$2, 95, 1, 2556);
     			attr_dev(div, "class", "widg_searchbar-bar__categories");
     			attr_dev(div, "data-searchbar", "cat");
     			set_style(div, "display", "flex");
-    			add_location(div, file$2, 10, 0, 272);
+    			add_location(div, file$2, 13, 0, 336);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -14466,44 +14466,44 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button0, "click", /*click_handler*/ ctx[7], false, false, false),
-    					listen_dev(button1, "click", /*click_handler_1*/ ctx[8], false, false, false),
-    					listen_dev(button2, "click", /*click_handler_2*/ ctx[9], false, false, false),
-    					listen_dev(button3, "click", /*click_handler_3*/ ctx[10], false, false, false),
-    					listen_dev(button4, "click", /*click_handler_4*/ ctx[11], false, false, false),
-    					listen_dev(button5, "click", /*click_handler_5*/ ctx[12], false, false, false),
-    					listen_dev(button6, "click", /*click_handler_6*/ ctx[13], false, false, false),
-    					listen_dev(button7, "click", /*click_handler_7*/ ctx[14], false, false, false)
+    					listen_dev(button0, "click", /*click_handler*/ ctx[6], false, false, false),
+    					listen_dev(button1, "click", /*click_handler_1*/ ctx[7], false, false, false),
+    					listen_dev(button2, "click", /*click_handler_2*/ ctx[8], false, false, false),
+    					listen_dev(button3, "click", /*click_handler_3*/ ctx[9], false, false, false),
+    					listen_dev(button4, "click", /*click_handler_4*/ ctx[10], false, false, false),
+    					listen_dev(button5, "click", /*click_handler_5*/ ctx[11], false, false, false),
+    					listen_dev(button6, "click", /*click_handler_6*/ ctx[12], false, false, false),
+    					listen_dev(button7, "click", /*click_handler_7*/ ctx[13], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if ((!current || dirty & /*$_*/ 16) && t0_value !== (t0_value = /*$_*/ ctx[4]('category_all') + "")) set_data_dev(t0, t0_value);
+    			if ((!current || dirty & /*$_*/ 4) && t0_value !== (t0_value = /*$_*/ ctx[2]('category_all') + "")) set_data_dev(t0, t0_value);
 
-    			if ((!current || dirty & /*categoriesCount*/ 8) && t2_value !== (t2_value = (/*categoriesCount*/ ctx[3].all > 0
-    			? '(' + /*categoriesCount*/ ctx[3].all + ')'
+    			if ((!current || dirty & /*categoriesCount*/ 2) && t2_value !== (t2_value = (/*categoriesCount*/ ctx[1].all > 0
+    			? '(' + /*categoriesCount*/ ctx[1].all + ')'
     			: '') + "")) set_data_dev(t2, t2_value);
 
     			if (!current || dirty & /*searchType*/ 1 && button0_class_value !== (button0_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'all' ? 'active' : ''))) {
     				attr_dev(button0, "class", button0_class_value);
     			}
 
-    			if ((!current || dirty & /*$_*/ 16) && t4_value !== (t4_value = /*$_*/ ctx[4]('category_studys') + "")) set_data_dev(t4, t4_value);
+    			if ((!current || dirty & /*$_*/ 4) && t4_value !== (t4_value = /*$_*/ ctx[2]('category_studys') + "")) set_data_dev(t4, t4_value);
 
-    			if ((!current || dirty & /*categoriesCount*/ 8) && t6_value !== (t6_value = (/*categoriesCount*/ ctx[3].studies > 0
-    			? '(' + /*categoriesCount*/ ctx[3].studies + ')'
+    			if ((!current || dirty & /*categoriesCount*/ 2) && t6_value !== (t6_value = (/*categoriesCount*/ ctx[1].studies > 0
+    			? '(' + /*categoriesCount*/ ctx[1].studies + ')'
     			: '') + "")) set_data_dev(t6, t6_value);
 
     			if (!current || dirty & /*searchType*/ 1 && button1_class_value !== (button1_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'studies' ? 'active' : ''))) {
     				attr_dev(button1, "class", button1_class_value);
     			}
 
-    			if ((!current || dirty & /*$_*/ 16) && t8_value !== (t8_value = /*$_*/ ctx[4]('category_education') + "")) set_data_dev(t8, t8_value);
+    			if ((!current || dirty & /*$_*/ 4) && t8_value !== (t8_value = /*$_*/ ctx[2]('category_education') + "")) set_data_dev(t8, t8_value);
 
-    			if ((!current || dirty & /*categoriesCount*/ 8) && t10_value !== (t10_value = (/*categoriesCount*/ ctx[3].continuing_education > 0
-    			? '(' + /*categoriesCount*/ ctx[3].continuing_education + ')'
+    			if ((!current || dirty & /*categoriesCount*/ 2) && t10_value !== (t10_value = (/*categoriesCount*/ ctx[1].continuing_education > 0
+    			? '(' + /*categoriesCount*/ ctx[1].continuing_education + ')'
     			: '') + "")) set_data_dev(t10, t10_value);
 
     			if (!current || dirty & /*searchType*/ 1 && button2_class_value !== (button2_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'continuing_education'
@@ -14512,50 +14512,50 @@ var app = (function () {
     				attr_dev(button2, "class", button2_class_value);
     			}
 
-    			if ((!current || dirty & /*$_*/ 16) && t12_value !== (t12_value = /*$_*/ ctx[4]('category_events') + "")) set_data_dev(t12, t12_value);
+    			if ((!current || dirty & /*$_*/ 4) && t12_value !== (t12_value = /*$_*/ ctx[2]('category_events') + "")) set_data_dev(t12, t12_value);
 
-    			if ((!current || dirty & /*categoriesCount*/ 8) && t14_value !== (t14_value = (/*categoriesCount*/ ctx[3].event > 0
-    			? '(' + /*categoriesCount*/ ctx[3].event + ')'
+    			if ((!current || dirty & /*categoriesCount*/ 2) && t14_value !== (t14_value = (/*categoriesCount*/ ctx[1].event > 0
+    			? '(' + /*categoriesCount*/ ctx[1].event + ')'
     			: '') + "")) set_data_dev(t14, t14_value);
 
     			if (!current || dirty & /*searchType*/ 1 && button3_class_value !== (button3_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'event' ? 'active' : ''))) {
     				attr_dev(button3, "class", button3_class_value);
     			}
 
-    			if ((!current || dirty & /*$_*/ 16) && t16_value !== (t16_value = /*$_*/ ctx[4]('category_news') + "")) set_data_dev(t16, t16_value);
+    			if ((!current || dirty & /*$_*/ 4) && t16_value !== (t16_value = /*$_*/ ctx[2]('category_news') + "")) set_data_dev(t16, t16_value);
 
-    			if ((!current || dirty & /*categoriesCount*/ 8) && t18_value !== (t18_value = (/*categoriesCount*/ ctx[3].news > 0
-    			? '(' + /*categoriesCount*/ ctx[3].news + ')'
+    			if ((!current || dirty & /*categoriesCount*/ 2) && t18_value !== (t18_value = (/*categoriesCount*/ ctx[1].news > 0
+    			? '(' + /*categoriesCount*/ ctx[1].news + ')'
     			: '') + "")) set_data_dev(t18, t18_value);
 
     			if (!current || dirty & /*searchType*/ 1 && button4_class_value !== (button4_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'news' ? 'active' : ''))) {
     				attr_dev(button4, "class", button4_class_value);
     			}
 
-    			if ((!current || dirty & /*$_*/ 16) && t20_value !== (t20_value = /*$_*/ ctx[4]('category_documents') + "")) set_data_dev(t20, t20_value);
+    			if ((!current || dirty & /*$_*/ 4) && t20_value !== (t20_value = /*$_*/ ctx[2]('category_documents') + "")) set_data_dev(t20, t20_value);
 
-    			if ((!current || dirty & /*categoriesCount*/ 8) && t22_value !== (t22_value = (/*categoriesCount*/ ctx[3].document > 0
-    			? '(' + /*categoriesCount*/ ctx[3].document + ')'
+    			if ((!current || dirty & /*categoriesCount*/ 2) && t22_value !== (t22_value = (/*categoriesCount*/ ctx[1].document > 0
+    			? '(' + /*categoriesCount*/ ctx[1].document + ')'
     			: '') + "")) set_data_dev(t22, t22_value);
 
     			if (!current || dirty & /*searchType*/ 1 && button5_class_value !== (button5_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'document' ? 'active' : ''))) {
     				attr_dev(button5, "class", button5_class_value);
     			}
 
-    			if ((!current || dirty & /*$_*/ 16) && t24_value !== (t24_value = /*$_*/ ctx[4]('category_persons') + "")) set_data_dev(t24, t24_value);
+    			if ((!current || dirty & /*$_*/ 4) && t24_value !== (t24_value = /*$_*/ ctx[2]('category_persons') + "")) set_data_dev(t24, t24_value);
 
-    			if ((!current || dirty & /*categoriesCount*/ 8) && t26_value !== (t26_value = (/*categoriesCount*/ ctx[3].contact > 0
-    			? '(' + /*categoriesCount*/ ctx[3].contact + ')'
+    			if ((!current || dirty & /*categoriesCount*/ 2) && t26_value !== (t26_value = (/*categoriesCount*/ ctx[1].contact > 0
+    			? '(' + /*categoriesCount*/ ctx[1].contact + ')'
     			: '') + "")) set_data_dev(t26, t26_value);
 
     			if (!current || dirty & /*searchType*/ 1 && button6_class_value !== (button6_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'contact' ? 'active' : ''))) {
     				attr_dev(button6, "class", button6_class_value);
     			}
 
-    			if ((!current || dirty & /*$_*/ 16) && t28_value !== (t28_value = /*$_*/ ctx[4]('category_general') + "")) set_data_dev(t28, t28_value);
+    			if ((!current || dirty & /*$_*/ 4) && t28_value !== (t28_value = /*$_*/ ctx[2]('category_general') + "")) set_data_dev(t28, t28_value);
 
-    			if ((!current || dirty & /*categoriesCount*/ 8) && t30_value !== (t30_value = (/*categoriesCount*/ ctx[3].general > 0
-    			? '(' + /*categoriesCount*/ ctx[3].general + ')'
+    			if ((!current || dirty & /*categoriesCount*/ 2) && t30_value !== (t30_value = (/*categoriesCount*/ ctx[1].general > 0
+    			? '(' + /*categoriesCount*/ ctx[1].general + ')'
     			: '') + "")) set_data_dev(t30, t30_value);
 
     			if (!current || dirty & /*searchType*/ 1 && button7_class_value !== (button7_class_value = "button button__cat " + (/*searchType*/ ctx[0] === 'general' ? 'active' : ''))) {
@@ -14599,7 +14599,7 @@ var app = (function () {
     function instance$2($$self, $$props, $$invalidate) {
     	let $_;
     	validate_store(X, '_');
-    	component_subscribe($$self, X, $$value => $$invalidate(4, $_ = $$value));
+    	component_subscribe($$self, X, $$value => $$invalidate(2, $_ = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('SearchCategories', slots, []);
 
@@ -14609,71 +14609,57 @@ var app = (function () {
 
     	let { unobserve } = $$props;
     	let { searchType } = $$props;
-    	let { totalItems } = $$props;
-    	let { searchResults } = $$props;
     	let { categoriesCount } = $$props;
 
-    	const writable_props = [
-    		'triggerCategorySearch',
-    		'unobserve',
-    		'searchType',
-    		'totalItems',
-    		'searchResults',
-    		'categoriesCount'
-    	];
+    	const handleCategorySearch = type => {
+    		$$invalidate(0, searchType = type);
+    		unobserve();
+    		triggerCategorySearch();
+    	};
+
+    	const writable_props = ['triggerCategorySearch', 'unobserve', 'searchType', 'categoriesCount'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<SearchCategories> was created with unknown prop '${key}'`);
     	});
 
     	const click_handler = () => {
-    		$$invalidate(0, searchType = 'all');
-    		unobserve();
-    		triggerCategorySearch();
+    		handleCategorySearch('all');
     	};
 
     	const click_handler_1 = () => {
-    		$$invalidate(0, searchType = 'studies');
-    		triggerCategorySearch();
+    		handleCategorySearch('studies');
     	};
 
     	const click_handler_2 = () => {
-    		$$invalidate(0, searchType = 'continuing_education');
-    		triggerCategorySearch();
+    		handleCategorySearch('continuing_education');
     	};
 
     	const click_handler_3 = () => {
-    		$$invalidate(0, searchType = 'event');
-    		triggerCategorySearch();
+    		handleCategorySearch('event');
     	};
 
     	const click_handler_4 = () => {
-    		$$invalidate(0, searchType = 'news');
-    		triggerCategorySearch();
+    		handleCategorySearch('news');
     	};
 
     	const click_handler_5 = () => {
-    		$$invalidate(0, searchType = 'document');
-    		triggerCategorySearch();
+    		handleCategorySearch('document');
     	};
 
     	const click_handler_6 = () => {
-    		$$invalidate(0, searchType = 'contact');
-    		triggerCategorySearch();
+    		handleCategorySearch('contact');
     	};
 
     	const click_handler_7 = () => {
-    		$$invalidate(0, searchType = 'general');
-    		triggerCategorySearch();
+    		handleCategorySearch('general');
     	};
 
     	$$self.$$set = $$props => {
-    		if ('triggerCategorySearch' in $$props) $$invalidate(1, triggerCategorySearch = $$props.triggerCategorySearch);
-    		if ('unobserve' in $$props) $$invalidate(2, unobserve = $$props.unobserve);
+    		if ('triggerCategorySearch' in $$props) $$invalidate(4, triggerCategorySearch = $$props.triggerCategorySearch);
+    		if ('unobserve' in $$props) $$invalidate(5, unobserve = $$props.unobserve);
     		if ('searchType' in $$props) $$invalidate(0, searchType = $$props.searchType);
-    		if ('totalItems' in $$props) $$invalidate(5, totalItems = $$props.totalItems);
-    		if ('searchResults' in $$props) $$invalidate(6, searchResults = $$props.searchResults);
-    		if ('categoriesCount' in $$props) $$invalidate(3, categoriesCount = $$props.categoriesCount);
+    		if ('categoriesCount' in $$props) $$invalidate(1, categoriesCount = $$props.categoriesCount);
     	};
 
     	$$self.$capture_state = () => ({
@@ -14682,19 +14668,16 @@ var app = (function () {
     		triggerCategorySearch,
     		unobserve,
     		searchType,
-    		totalItems,
-    		searchResults,
     		categoriesCount,
+    		handleCategorySearch,
     		$_
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('triggerCategorySearch' in $$props) $$invalidate(1, triggerCategorySearch = $$props.triggerCategorySearch);
-    		if ('unobserve' in $$props) $$invalidate(2, unobserve = $$props.unobserve);
+    		if ('triggerCategorySearch' in $$props) $$invalidate(4, triggerCategorySearch = $$props.triggerCategorySearch);
+    		if ('unobserve' in $$props) $$invalidate(5, unobserve = $$props.unobserve);
     		if ('searchType' in $$props) $$invalidate(0, searchType = $$props.searchType);
-    		if ('totalItems' in $$props) $$invalidate(5, totalItems = $$props.totalItems);
-    		if ('searchResults' in $$props) $$invalidate(6, searchResults = $$props.searchResults);
-    		if ('categoriesCount' in $$props) $$invalidate(3, categoriesCount = $$props.categoriesCount);
+    		if ('categoriesCount' in $$props) $$invalidate(1, categoriesCount = $$props.categoriesCount);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -14703,12 +14686,11 @@ var app = (function () {
 
     	return [
     		searchType,
-    		triggerCategorySearch,
-    		unobserve,
     		categoriesCount,
     		$_,
-    		totalItems,
-    		searchResults,
+    		handleCategorySearch,
+    		triggerCategorySearch,
+    		unobserve,
     		click_handler,
     		click_handler_1,
     		click_handler_2,
@@ -14725,12 +14707,10 @@ var app = (function () {
     		super(options);
 
     		init(this, options, instance$2, create_fragment$2, safe_not_equal, {
-    			triggerCategorySearch: 1,
-    			unobserve: 2,
+    			triggerCategorySearch: 4,
+    			unobserve: 5,
     			searchType: 0,
-    			totalItems: 5,
-    			searchResults: 6,
-    			categoriesCount: 3
+    			categoriesCount: 1
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -14743,7 +14723,7 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*unobserve*/ ctx[2] === undefined && !('unobserve' in props)) {
+    		if (/*unobserve*/ ctx[5] === undefined && !('unobserve' in props)) {
     			console.warn("<SearchCategories> was created without expected prop 'unobserve'");
     		}
 
@@ -14751,15 +14731,7 @@ var app = (function () {
     			console.warn("<SearchCategories> was created without expected prop 'searchType'");
     		}
 
-    		if (/*totalItems*/ ctx[5] === undefined && !('totalItems' in props)) {
-    			console.warn("<SearchCategories> was created without expected prop 'totalItems'");
-    		}
-
-    		if (/*searchResults*/ ctx[6] === undefined && !('searchResults' in props)) {
-    			console.warn("<SearchCategories> was created without expected prop 'searchResults'");
-    		}
-
-    		if (/*categoriesCount*/ ctx[3] === undefined && !('categoriesCount' in props)) {
+    		if (/*categoriesCount*/ ctx[1] === undefined && !('categoriesCount' in props)) {
     			console.warn("<SearchCategories> was created without expected prop 'categoriesCount'");
     		}
     	}
@@ -14785,22 +14757,6 @@ var app = (function () {
     	}
 
     	set searchType(value) {
-    		throw new Error("<SearchCategories>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get totalItems() {
-    		throw new Error("<SearchCategories>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set totalItems(value) {
-    		throw new Error("<SearchCategories>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get searchResults() {
-    		throw new Error("<SearchCategories>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set searchResults(value) {
     		throw new Error("<SearchCategories>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -32563,25 +32519,15 @@ var app = (function () {
     function create_if_block_4(ctx) {
     	let searchcategories;
     	let updating_categoriesCount;
-    	let updating_searchResults;
     	let updating_searchType;
-    	let updating_totalItems;
     	let current;
 
     	function searchcategories_categoriesCount_binding(value) {
     		/*searchcategories_categoriesCount_binding*/ ctx[26](value);
     	}
 
-    	function searchcategories_searchResults_binding(value) {
-    		/*searchcategories_searchResults_binding*/ ctx[27](value);
-    	}
-
     	function searchcategories_searchType_binding(value) {
-    		/*searchcategories_searchType_binding*/ ctx[28](value);
-    	}
-
-    	function searchcategories_totalItems_binding(value) {
-    		/*searchcategories_totalItems_binding*/ ctx[29](value);
+    		/*searchcategories_searchType_binding*/ ctx[27](value);
     	}
 
     	let searchcategories_props = {
@@ -32593,16 +32539,8 @@ var app = (function () {
     		searchcategories_props.categoriesCount = /*categoriesCount*/ ctx[12];
     	}
 
-    	if (/*searchResults*/ ctx[5] !== void 0) {
-    		searchcategories_props.searchResults = /*searchResults*/ ctx[5];
-    	}
-
     	if (/*searchType*/ ctx[10] !== void 0) {
     		searchcategories_props.searchType = /*searchType*/ ctx[10];
-    	}
-
-    	if (/*totalItems*/ ctx[4] !== void 0) {
-    		searchcategories_props.totalItems = /*totalItems*/ ctx[4];
     	}
 
     	searchcategories = new SearchCategories({
@@ -32611,9 +32549,7 @@ var app = (function () {
     		});
 
     	binding_callbacks.push(() => bind(searchcategories, 'categoriesCount', searchcategories_categoriesCount_binding));
-    	binding_callbacks.push(() => bind(searchcategories, 'searchResults', searchcategories_searchResults_binding));
     	binding_callbacks.push(() => bind(searchcategories, 'searchType', searchcategories_searchType_binding));
-    	binding_callbacks.push(() => bind(searchcategories, 'totalItems', searchcategories_totalItems_binding));
 
     	const block = {
     		c: function create() {
@@ -32632,22 +32568,10 @@ var app = (function () {
     				add_flush_callback(() => updating_categoriesCount = false);
     			}
 
-    			if (!updating_searchResults && dirty[0] & /*searchResults*/ 32) {
-    				updating_searchResults = true;
-    				searchcategories_changes.searchResults = /*searchResults*/ ctx[5];
-    				add_flush_callback(() => updating_searchResults = false);
-    			}
-
     			if (!updating_searchType && dirty[0] & /*searchType*/ 1024) {
     				updating_searchType = true;
     				searchcategories_changes.searchType = /*searchType*/ ctx[10];
     				add_flush_callback(() => updating_searchType = false);
-    			}
-
-    			if (!updating_totalItems && dirty[0] & /*totalItems*/ 16) {
-    				updating_totalItems = true;
-    				searchcategories_changes.totalItems = /*totalItems*/ ctx[4];
-    				add_flush_callback(() => updating_totalItems = false);
     			}
 
     			searchcategories.$set(searchcategories_changes);
@@ -32677,7 +32601,7 @@ var app = (function () {
     	return block;
     }
 
-    // (204:4) {#if showSearchProposals}
+    // (202:4) {#if showSearchProposals}
     function create_if_block_3(ctx) {
     	let searchproposals;
     	let updating_query;
@@ -32685,11 +32609,11 @@ var app = (function () {
     	let current;
 
     	function searchproposals_query_binding(value) {
-    		/*searchproposals_query_binding*/ ctx[30](value);
+    		/*searchproposals_query_binding*/ ctx[28](value);
     	}
 
     	function searchproposals_searchType_binding(value) {
-    		/*searchproposals_searchType_binding*/ ctx[31](value);
+    		/*searchproposals_searchType_binding*/ ctx[29](value);
     	}
 
     	let searchproposals_props = { handleInput: /*handleInput*/ ctx[16] };
@@ -32753,14 +32677,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(204:4) {#if showSearchProposals}",
+    		source: "(202:4) {#if showSearchProposals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (211:4) {#if showSearchCategories}
+    // (209:4) {#if showSearchCategories}
     function create_if_block_2(ctx) {
     	let div;
     	let p;
@@ -32776,9 +32700,9 @@ var app = (function () {
     			t0 = text(/*totalItems*/ ctx[4]);
     			t1 = space();
     			t2 = text(t2_value);
-    			add_location(p, file, 212, 6, 6353);
+    			add_location(p, file, 210, 6, 6326);
     			attr_dev(div, "class", "widg_searchbar-bar__title");
-    			add_location(div, file, 211, 5, 6307);
+    			add_location(div, file, 209, 5, 6280);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32800,14 +32724,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(211:4) {#if showSearchCategories}",
+    		source: "(209:4) {#if showSearchCategories}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (216:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
+    // (214:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
     function create_if_block_1(ctx) {
     	let div;
     	let p;
@@ -32842,12 +32766,12 @@ var app = (function () {
     			t6 = text("\"");
     			t7 = text(/*searchTermSpellCheck*/ ctx[2]);
     			t8 = text("\"");
-    			add_location(b0, file, 217, 45, 6598);
-    			add_location(p, file, 217, 6, 6559);
-    			add_location(b1, file, 220, 7, 6686);
-    			add_location(span, file, 218, 6, 6628);
+    			add_location(b0, file, 215, 45, 6571);
+    			add_location(p, file, 215, 6, 6532);
+    			add_location(b1, file, 218, 7, 6659);
+    			add_location(span, file, 216, 6, 6601);
     			attr_dev(div, "class", "widg__searchbar_autocomplete");
-    			add_location(div, file, 216, 5, 6510);
+    			add_location(div, file, 214, 5, 6483);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32880,14 +32804,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(216:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}",
+    		source: "(214:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (226:4) {#if showStatusInfo && !searchTermSpellCheck}
+    // (224:4) {#if showStatusInfo && !searchTermSpellCheck}
     function create_if_block(ctx) {
     	let div;
     	let t0_value = /*$_*/ ctx[13]('search_no_results') + "";
@@ -32907,9 +32831,9 @@ var app = (function () {
     			t1 = space();
     			span = element("span");
     			t2 = text(t2_value);
-    			add_location(span, file, 232, 6, 7029);
+    			add_location(span, file, 230, 6, 7002);
     			attr_dev(div, "class", "no__results");
-    			add_location(div, file, 226, 5, 6867);
+    			add_location(div, file, 224, 5, 6840);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32949,7 +32873,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(226:4) {#if showStatusInfo && !searchTermSpellCheck}",
+    		source: "(224:4) {#if showStatusInfo && !searchTermSpellCheck}",
     		ctx
     	});
 
@@ -33096,14 +33020,14 @@ var app = (function () {
     			t6 = space();
     			if (if_block5) if_block5.c();
     			attr_dev(div0, "class", "search__cat");
-    			add_location(div0, file, 192, 3, 5851);
+    			add_location(div0, file, 192, 3, 5871);
     			attr_dev(div1, "class", "widg_searchbar-bar__content custom-scrollbar");
     			attr_dev(div1, "data-searchbar", "content");
-    			add_location(div1, file, 188, 2, 5755);
+    			add_location(div1, file, 188, 2, 5775);
     			attr_dev(div2, "class", "search__results");
-    			add_location(div2, file, 187, 1, 5723);
+    			add_location(div2, file, 187, 1, 5743);
     			attr_dev(div3, "class", "widg_search_svelte");
-    			add_location(div3, file, 171, 0, 5395);
+    			add_location(div3, file, 171, 0, 5415);
     		},
     		l: function claim(nodes) {
     			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -33474,7 +33398,7 @@ var app = (function () {
     			itemsCount = data.items.length;
     			$$invalidate(4, totalItems = data.items_total);
 
-    			if (data.facets && data.facets.length && isFirst) {
+    			if (data.facets && data.facets.length && isFirst && searchType == '') {
     				$$invalidate(12, categoriesCount = data.facets[0].enable);
     			} else {
     				if (data.facets[0].enable[searchType]) $$invalidate(12, categoriesCount[searchType] = data.facets[0].enable[searchType], categoriesCount);
@@ -33578,19 +33502,9 @@ var app = (function () {
     		$$invalidate(12, categoriesCount);
     	}
 
-    	function searchcategories_searchResults_binding(value) {
-    		searchResults = value;
-    		$$invalidate(5, searchResults);
-    	}
-
     	function searchcategories_searchType_binding(value) {
     		searchType = value;
     		$$invalidate(10, searchType);
-    	}
-
-    	function searchcategories_totalItems_binding(value) {
-    		totalItems = value;
-    		$$invalidate(4, totalItems);
     	}
 
     	function searchproposals_query_binding(value) {
@@ -33701,9 +33615,7 @@ var app = (function () {
     		search_searchType_binding,
     		func,
     		searchcategories_categoriesCount_binding,
-    		searchcategories_searchResults_binding,
     		searchcategories_searchType_binding,
-    		searchcategories_totalItems_binding,
     		searchproposals_query_binding,
     		searchproposals_searchType_binding
     	];
