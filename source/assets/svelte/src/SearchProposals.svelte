@@ -2,6 +2,7 @@
 	import { _ } from 'svelte-i18n';
 
 	export let query: string;
+	export let searchType: string;
 	export let handleInput: () => void;
 
 	let searchProposals: any[] = [];
@@ -31,7 +32,8 @@
 		}
 	}
 
-	const handleClick = (value) => {
+	const handleClick = (value: string) => {
+		searchType = '';
 		query = value;
 		handleInput();
 	};

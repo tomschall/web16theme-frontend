@@ -14761,12 +14761,12 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[7] = list[i];
-    	child_ctx[9] = i;
+    	child_ctx[8] = list[i];
+    	child_ctx[10] = i;
     	return child_ctx;
     }
 
-    // (33:0) {#if searchProposals.length}
+    // (35:0) {#if searchProposals.length}
     function create_if_block$1(ctx) {
     	let div1;
     	let div0;
@@ -14779,7 +14779,7 @@ var app = (function () {
     	let each_1_lookup = new Map();
     	let each_value = /*searchProposals*/ ctx[0];
     	validate_each_argument(each_value);
-    	const get_key = ctx => /*index*/ ctx[9];
+    	const get_key = ctx => /*index*/ ctx[10];
     	validate_each_keys(ctx, each_value, get_each_context, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
@@ -14801,12 +14801,12 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(p, file$1, 35, 3, 980);
+    			add_location(p, file$1, 37, 3, 1024);
     			attr_dev(div0, "class", "widg_searchbar-bar__title");
-    			add_location(div0, file$1, 34, 2, 937);
-    			add_location(ul, file$1, 37, 2, 1028);
+    			add_location(div0, file$1, 36, 2, 981);
+    			add_location(ul, file$1, 39, 2, 1072);
     			attr_dev(div1, "class", "widg_search_proposals");
-    			add_location(div1, file$1, 33, 1, 899);
+    			add_location(div1, file$1, 35, 1, 943);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -14843,24 +14843,24 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(33:0) {#if searchProposals.length}",
+    		source: "(35:0) {#if searchProposals.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (40:4) {#if index <= 3}
+    // (42:4) {#if index <= 3}
     function create_if_block_1$1(ctx) {
     	let li;
-    	let t0_value = /*searchProposal*/ ctx[7].value + "";
+    	let t0_value = /*searchProposal*/ ctx[8].value + "";
     	let t0;
     	let t1;
     	let mounted;
     	let dispose;
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[6](/*searchProposal*/ ctx[7]);
+    		return /*click_handler*/ ctx[7](/*searchProposal*/ ctx[8]);
     	}
 
     	const block = {
@@ -14869,7 +14869,7 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = space();
     			attr_dev(li, "class", "svelte-xpxtoc");
-    			add_location(li, file$1, 40, 5, 1119);
+    			add_location(li, file$1, 42, 5, 1163);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -14883,7 +14883,7 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*searchProposals*/ 1 && t0_value !== (t0_value = /*searchProposal*/ ctx[7].value + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*searchProposals*/ 1 && t0_value !== (t0_value = /*searchProposal*/ ctx[8].value + "")) set_data_dev(t0, t0_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(li);
@@ -14896,18 +14896,18 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(40:4) {#if index <= 3}",
+    		source: "(42:4) {#if index <= 3}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (39:3) {#each searchProposals as searchProposal, index (index)}
+    // (41:3) {#each searchProposals as searchProposal, index (index)}
     function create_each_block(key_1, ctx) {
     	let first;
     	let if_block_anchor;
-    	let if_block = /*index*/ ctx[9] <= 3 && create_if_block_1$1(ctx);
+    	let if_block = /*index*/ ctx[10] <= 3 && create_if_block_1$1(ctx);
 
     	const block = {
     		key: key_1,
@@ -14926,7 +14926,7 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
 
-    			if (/*index*/ ctx[9] <= 3) {
+    			if (/*index*/ ctx[10] <= 3) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -14950,7 +14950,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(39:3) {#each searchProposals as searchProposal, index (index)}",
+    		source: "(41:3) {#each searchProposals as searchProposal, index (index)}",
     		ctx
     	});
 
@@ -15013,16 +15013,18 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('SearchProposals', slots, []);
     	let { query } = $$props;
+    	let { searchType } = $$props;
     	let { handleInput } = $$props;
     	let searchProposals = [];
     	let autocompleteTerm = '';
 
     	const handleClick = value => {
+    		$$invalidate(4, searchType = '');
     		$$invalidate(3, query = value);
     		handleInput();
     	};
 
-    	const writable_props = ['query', 'handleInput'];
+    	const writable_props = ['query', 'searchType', 'handleInput'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$1.warn(`<SearchProposals> was created with unknown prop '${key}'`);
@@ -15032,12 +15034,14 @@ var app = (function () {
 
     	$$self.$$set = $$props => {
     		if ('query' in $$props) $$invalidate(3, query = $$props.query);
-    		if ('handleInput' in $$props) $$invalidate(4, handleInput = $$props.handleInput);
+    		if ('searchType' in $$props) $$invalidate(4, searchType = $$props.searchType);
+    		if ('handleInput' in $$props) $$invalidate(5, handleInput = $$props.handleInput);
     	};
 
     	$$self.$capture_state = () => ({
     		_: X,
     		query,
+    		searchType,
     		handleInput,
     		searchProposals,
     		autocompleteTerm,
@@ -15047,9 +15051,10 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ('query' in $$props) $$invalidate(3, query = $$props.query);
-    		if ('handleInput' in $$props) $$invalidate(4, handleInput = $$props.handleInput);
+    		if ('searchType' in $$props) $$invalidate(4, searchType = $$props.searchType);
+    		if ('handleInput' in $$props) $$invalidate(5, handleInput = $$props.handleInput);
     		if ('searchProposals' in $$props) $$invalidate(0, searchProposals = $$props.searchProposals);
-    		if ('autocompleteTerm' in $$props) $$invalidate(5, autocompleteTerm = $$props.autocompleteTerm);
+    		if ('autocompleteTerm' in $$props) $$invalidate(6, autocompleteTerm = $$props.autocompleteTerm);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -15057,9 +15062,9 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*query, autocompleteTerm*/ 40) {
+    		if ($$self.$$.dirty & /*query, autocompleteTerm*/ 72) {
     			{
-    				$$invalidate(5, autocompleteTerm = query.trim());
+    				$$invalidate(6, autocompleteTerm = query.trim());
 
     				if (autocompleteTerm.length) {
     					const autocompleteEndpoint = `https://www.dev.fhnw.ch/de/autocomplete?term=${autocompleteTerm}`;
@@ -15087,6 +15092,7 @@ var app = (function () {
     		$_,
     		handleClick,
     		query,
+    		searchType,
     		handleInput,
     		autocompleteTerm,
     		click_handler
@@ -15096,7 +15102,7 @@ var app = (function () {
     class SearchProposals extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { query: 3, handleInput: 4 });
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { query: 3, searchType: 4, handleInput: 5 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -15112,7 +15118,11 @@ var app = (function () {
     			console_1$1.warn("<SearchProposals> was created without expected prop 'query'");
     		}
 
-    		if (/*handleInput*/ ctx[4] === undefined && !('handleInput' in props)) {
+    		if (/*searchType*/ ctx[4] === undefined && !('searchType' in props)) {
+    			console_1$1.warn("<SearchProposals> was created without expected prop 'searchType'");
+    		}
+
+    		if (/*handleInput*/ ctx[5] === undefined && !('handleInput' in props)) {
     			console_1$1.warn("<SearchProposals> was created without expected prop 'handleInput'");
     		}
     	}
@@ -15122,6 +15132,14 @@ var app = (function () {
     	}
 
     	set query(value) {
+    		throw new Error_1$1("<SearchProposals>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get searchType() {
+    		throw new Error_1$1("<SearchProposals>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set searchType(value) {
     		throw new Error_1$1("<SearchProposals>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -32443,7 +32461,7 @@ var app = (function () {
     const { Error: Error_1, console: console_1 } = globals;
     const file = "src/SearchBar.svelte";
 
-    // (180:1) {#if showSearchBarIntro}
+    // (181:1) {#if showSearchBarIntro}
     function create_if_block_5(ctx) {
     	let searchbarintro;
     	let current;
@@ -32475,14 +32493,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(180:1) {#if showSearchBarIntro}",
+    		source: "(181:1) {#if showSearchBarIntro}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (189:4) {#if showSearchCategories}
+    // (190:4) {#if showSearchCategories}
     function create_if_block_4(ctx) {
     	let searchcategories;
     	let updating_categoriesCount;
@@ -32593,21 +32611,26 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(189:4) {#if showSearchCategories}",
+    		source: "(190:4) {#if showSearchCategories}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (199:4) {#if showSearchProposals}
+    // (200:4) {#if showSearchProposals}
     function create_if_block_3(ctx) {
     	let searchproposals;
     	let updating_query;
+    	let updating_searchType;
     	let current;
 
     	function searchproposals_query_binding(value) {
     		/*searchproposals_query_binding*/ ctx[30](value);
+    	}
+
+    	function searchproposals_searchType_binding(value) {
+    		/*searchproposals_searchType_binding*/ ctx[31](value);
     	}
 
     	let searchproposals_props = { handleInput: /*handleInput*/ ctx[16] };
@@ -32616,12 +32639,17 @@ var app = (function () {
     		searchproposals_props.query = /*searchQuery*/ ctx[0];
     	}
 
+    	if (/*searchType*/ ctx[10] !== void 0) {
+    		searchproposals_props.searchType = /*searchType*/ ctx[10];
+    	}
+
     	searchproposals = new SearchProposals({
     			props: searchproposals_props,
     			$$inline: true
     		});
 
     	binding_callbacks.push(() => bind(searchproposals, 'query', searchproposals_query_binding));
+    	binding_callbacks.push(() => bind(searchproposals, 'searchType', searchproposals_searchType_binding));
 
     	const block = {
     		c: function create() {
@@ -32638,6 +32666,12 @@ var app = (function () {
     				updating_query = true;
     				searchproposals_changes.query = /*searchQuery*/ ctx[0];
     				add_flush_callback(() => updating_query = false);
+    			}
+
+    			if (!updating_searchType && dirty[0] & /*searchType*/ 1024) {
+    				updating_searchType = true;
+    				searchproposals_changes.searchType = /*searchType*/ ctx[10];
+    				add_flush_callback(() => updating_searchType = false);
     			}
 
     			searchproposals.$set(searchproposals_changes);
@@ -32660,14 +32694,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(199:4) {#if showSearchProposals}",
+    		source: "(200:4) {#if showSearchProposals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (202:4) {#if showSearchCategories}
+    // (207:4) {#if showSearchCategories}
     function create_if_block_2(ctx) {
     	let div;
     	let p;
@@ -32683,9 +32717,9 @@ var app = (function () {
     			t0 = text(/*totalItems*/ ctx[4]);
     			t1 = space();
     			t2 = text(t2_value);
-    			add_location(p, file, 203, 6, 6098);
+    			add_location(p, file, 208, 6, 6202);
     			attr_dev(div, "class", "widg_searchbar-bar__title");
-    			add_location(div, file, 202, 5, 6052);
+    			add_location(div, file, 207, 5, 6156);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32707,14 +32741,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(202:4) {#if showSearchCategories}",
+    		source: "(207:4) {#if showSearchCategories}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (207:4) {#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
+    // (212:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
     function create_if_block_1(ctx) {
     	let div;
     	let p;
@@ -32749,12 +32783,12 @@ var app = (function () {
     			t6 = text("\"");
     			t7 = text(/*searchTermSpellCheck*/ ctx[2]);
     			t8 = text("\"");
-    			add_location(b0, file, 208, 45, 6341);
-    			add_location(p, file, 208, 6, 6302);
-    			add_location(b1, file, 211, 7, 6429);
-    			add_location(span, file, 209, 6, 6371);
+    			add_location(b0, file, 213, 45, 6447);
+    			add_location(p, file, 213, 6, 6408);
+    			add_location(b1, file, 216, 7, 6535);
+    			add_location(span, file, 214, 6, 6477);
     			attr_dev(div, "class", "widg__searchbar_autocomplete");
-    			add_location(div, file, 207, 5, 6253);
+    			add_location(div, file, 212, 5, 6359);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32787,14 +32821,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(207:4) {#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}",
+    		source: "(212:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (217:4) {#if showStatusInfo && !searchTermSpellCheck}
+    // (222:4) {#if showStatusInfo && !searchTermSpellCheck}
     function create_if_block(ctx) {
     	let div;
     	let t0_value = /*$_*/ ctx[13]('search_no_results') + "";
@@ -32814,9 +32848,9 @@ var app = (function () {
     			t1 = space();
     			span = element("span");
     			t2 = text(t2_value);
-    			add_location(span, file, 223, 6, 6772);
+    			add_location(span, file, 228, 6, 6878);
     			attr_dev(div, "class", "no__results");
-    			add_location(div, file, 217, 5, 6610);
+    			add_location(div, file, 222, 5, 6716);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32856,7 +32890,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(217:4) {#if showStatusInfo && !searchTermSpellCheck}",
+    		source: "(222:4) {#if showStatusInfo && !searchTermSpellCheck}",
     		ctx
     	});
 
@@ -32969,7 +33003,7 @@ var app = (function () {
     	let if_block1 = /*showSearchCategories*/ ctx[7] && create_if_block_4(ctx);
     	let if_block2 = /*showSearchProposals*/ ctx[8] && create_if_block_3(ctx);
     	let if_block3 = /*showSearchCategories*/ ctx[7] && create_if_block_2(ctx);
-    	let if_block4 = /*searchTermSpellCheck*/ ctx[2] && !/*triedAlternativeSearchTerm*/ ctx[3] && !/*showStatusInfo*/ ctx[11] && create_if_block_1(ctx);
+    	let if_block4 = /*searchTermSpellCheck*/ ctx[2] && !/*noAlternativeSearchTermFound*/ ctx[3] && !/*showStatusInfo*/ ctx[11] && create_if_block_1(ctx);
 
     	searchresults = new SearchResults({
     			props: {
@@ -33003,14 +33037,14 @@ var app = (function () {
     			t6 = space();
     			if (if_block5) if_block5.c();
     			attr_dev(div0, "class", "search__cat");
-    			add_location(div0, file, 187, 3, 5635);
+    			add_location(div0, file, 188, 3, 5700);
     			attr_dev(div1, "class", "widg_searchbar-bar__content custom-scrollbar");
     			attr_dev(div1, "data-searchbar", "content");
-    			add_location(div1, file, 183, 2, 5539);
+    			add_location(div1, file, 184, 2, 5604);
     			attr_dev(div2, "class", "search__results");
-    			add_location(div2, file, 182, 1, 5507);
+    			add_location(div2, file, 183, 1, 5572);
     			attr_dev(div3, "class", "widg_search_svelte");
-    			add_location(div3, file, 166, 0, 5179);
+    			add_location(div3, file, 167, 0, 5244);
     		},
     		l: function claim(nodes) {
     			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -33170,7 +33204,7 @@ var app = (function () {
     				if_block3 = null;
     			}
 
-    			if (/*searchTermSpellCheck*/ ctx[2] && !/*triedAlternativeSearchTerm*/ ctx[3] && !/*showStatusInfo*/ ctx[11]) {
+    			if (/*searchTermSpellCheck*/ ctx[2] && !/*noAlternativeSearchTermFound*/ ctx[3] && !/*showStatusInfo*/ ctx[11]) {
     				if (if_block4) {
     					if_block4.p(ctx, dirty);
     				} else {
@@ -33271,7 +33305,7 @@ var app = (function () {
     	let searchQuery = '';
     	let searchTerm = null;
     	let searchTermSpellCheck = null;
-    	let triedAlternativeSearchTerm = false;
+    	let noAlternativeSearchTermFound = false;
     	let totalItems = null;
     	let offset = 0;
     	let limit = 10;
@@ -33332,7 +33366,7 @@ var app = (function () {
     	});
 
     	const handleInput = function () {
-    		$$invalidate(3, triedAlternativeSearchTerm = false);
+    		$$invalidate(3, noAlternativeSearchTermFound = false);
     		unobserve();
     		$$invalidate(9, isLoading = true);
     		$$invalidate(2, searchTermSpellCheck = null);
@@ -33385,7 +33419,7 @@ var app = (function () {
     				$$invalidate(12, categoriesCount = data.facets[0].enable);
     			}
 
-    			if (totalItems === 0 && !triedAlternativeSearchTerm) {
+    			if (totalItems === 0 && !noAlternativeSearchTermFound) {
     				$$invalidate(2, searchTermSpellCheck = searchTerm);
     				const spellCheckEndpoint = `https://www.dev.fhnw.ch/de/spellcheck?term=${searchTermSpellCheck}`;
 
@@ -33398,15 +33432,15 @@ var app = (function () {
     				}).then(data => {
     					if (!data.suggestions.length) {
     						$$invalidate(2, searchTermSpellCheck = null);
-    						$$invalidate(3, triedAlternativeSearchTerm = true);
+    						$$invalidate(3, noAlternativeSearchTermFound = true);
     					} else {
     						$$invalidate(1, searchTerm = data.suggestions[0].value);
     					}
     				}).catch(e => {
     					console.log('An spellcheck error occured!', e);
-    					$$invalidate(3, triedAlternativeSearchTerm = true);
+    					$$invalidate(3, noAlternativeSearchTermFound = true);
     				}).finally(() => {
-    					triggerSearch(true);
+    					if (!noAlternativeSearchTermFound) triggerSearch(true);
     				});
     			}
 
@@ -33503,6 +33537,11 @@ var app = (function () {
     		$$invalidate(0, searchQuery);
     	}
 
+    	function searchproposals_searchType_binding(value) {
+    		searchType = value;
+    		$$invalidate(10, searchType);
+    	}
+
     	$$self.$capture_state = () => ({
     		_: X,
     		fly,
@@ -33520,7 +33559,7 @@ var app = (function () {
     		searchQuery,
     		searchTerm,
     		searchTermSpellCheck,
-    		triedAlternativeSearchTerm,
+    		noAlternativeSearchTermFound,
     		totalItems,
     		offset,
     		limit,
@@ -33549,7 +33588,7 @@ var app = (function () {
     		if ('searchQuery' in $$props) $$invalidate(0, searchQuery = $$props.searchQuery);
     		if ('searchTerm' in $$props) $$invalidate(1, searchTerm = $$props.searchTerm);
     		if ('searchTermSpellCheck' in $$props) $$invalidate(2, searchTermSpellCheck = $$props.searchTermSpellCheck);
-    		if ('triedAlternativeSearchTerm' in $$props) $$invalidate(3, triedAlternativeSearchTerm = $$props.triedAlternativeSearchTerm);
+    		if ('noAlternativeSearchTermFound' in $$props) $$invalidate(3, noAlternativeSearchTermFound = $$props.noAlternativeSearchTermFound);
     		if ('totalItems' in $$props) $$invalidate(4, totalItems = $$props.totalItems);
     		if ('offset' in $$props) offset = $$props.offset;
     		if ('limit' in $$props) limit = $$props.limit;
@@ -33577,7 +33616,7 @@ var app = (function () {
     		searchQuery,
     		searchTerm,
     		searchTermSpellCheck,
-    		triedAlternativeSearchTerm,
+    		noAlternativeSearchTermFound,
     		totalItems,
     		searchResults,
     		showSearchBarIntro,
@@ -33604,7 +33643,8 @@ var app = (function () {
     		searchcategories_searchResults_binding,
     		searchcategories_searchType_binding,
     		searchcategories_totalItems_binding,
-    		searchproposals_query_binding
+    		searchproposals_query_binding,
+    		searchproposals_searchType_binding
     	];
     }
 

@@ -20,12 +20,12 @@
 	init({
 		fallbackLocale: 'de',
 		initialLocale: document.documentElement.lang,
-	});	
+	});
 
 	let searchQuery: string = '';
 	let searchTerm: string = null;
 	let searchTermSpellCheck: string = null;
-	let triedAlternativeSearchTerm: boolean = false;
+	let noAlternativeSearchTermFound: boolean = false;
 	let totalItems: number = null;
 	let offset: number = 0;
 	let limit: number = 10;
@@ -91,7 +91,7 @@
 	});
 
 	const handleInput: () => void = function () {
-		triedAlternativeSearchTerm = false;
+		noAlternativeSearchTermFound = false;
 		unobserve();
 		isLoading = true;
 		searchTermSpellCheck = null;
@@ -149,7 +149,7 @@
 					categoriesCount = data.facets[0].enable;
 				}
 
-				if (totalItems === 0 && !triedAlternativeSearchTerm) {
+				if (totalItems === 0 && !noAlternativeSearchTermFound) {
 					searchTermSpellCheck = searchTerm;
 
 					const spellCheckEndpoint: string = `https://www.dev.fhnw.ch/de/spellcheck?term=${searchTermSpellCheck}`;
@@ -164,17 +164,17 @@
 						.then((data) => {
 							if (!data.suggestions.length) {
 								searchTermSpellCheck = null;
-								triedAlternativeSearchTerm = true;
+								noAlternativeSearchTermFound = true;
 							} else {
 								searchTerm = data.suggestions[0].value;
 							}
 						})
 						.catch((e) => {
 							console.log('An spellcheck error occured!', e);
-							triedAlternativeSearchTerm = true;
+							noAlternativeSearchTermFound = true;
 						})
 						.finally(() => {
-							triggerSearch(true);
+							if (!noAlternativeSearchTermFound) triggerSearch(true);
 						});
 				}
 
@@ -234,14 +234,18 @@
 					/>
 				{/if}
 				{#if showSearchProposals}
-					<SearchProposals bind:query={searchQuery} {handleInput} />
+					<SearchProposals
+						bind:query={searchQuery}
+						bind:searchType
+						{handleInput}
+					/>
 				{/if}
 				{#if showSearchCategories}
 					<div class="widg_searchbar-bar__title">
 						<p>{totalItems} {$_('searchresult_title')}</p>
 					</div>
 				{/if}
-				{#if searchTermSpellCheck && !triedAlternativeSearchTerm && !showStatusInfo}
+				{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
 					<div class="widg__searchbar_autocomplete">
 						<p>{$_('search_autocomplete_warning')} <b>{searchTerm}</b></p>
 						<span
