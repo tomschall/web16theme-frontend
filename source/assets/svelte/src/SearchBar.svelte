@@ -145,8 +145,11 @@
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
-				if (data.facets && data.facets.length && isFirstSearch) {
+				if (data.facets && data.facets.length && isFirst) {
 					categoriesCount = data.facets[0].enable;
+				} else {
+					if (data.facets[0].enable[searchType])
+						categoriesCount[searchType] = data.facets[0].enable[searchType];
 				}
 
 				if (totalItems === 0 && !noAlternativeSearchTermFound) {

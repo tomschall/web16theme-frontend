@@ -13059,7 +13059,7 @@ var app = (function () {
     }
 
     // (44:3) {#if item.title_parents}
-    function create_if_block_2$1(ctx) {
+    function create_if_block_3$1(ctx) {
     	let each_blocks = [];
     	let each_1_lookup = new Map();
     	let each_1_anchor;
@@ -13108,7 +13108,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2$1.name,
+    		id: create_if_block_3$1.name,
     		type: "if",
     		source: "(44:3) {#if item.title_parents}",
     		ctx
@@ -13118,7 +13118,7 @@ var app = (function () {
     }
 
     // (60:29) 
-    function create_if_block_7(ctx) {
+    function create_if_block_8(ctx) {
     	let div;
     	let span;
     	let t1;
@@ -13152,7 +13152,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_7.name,
+    		id: create_if_block_8.name,
     		type: "if",
     		source: "(60:29) ",
     		ctx
@@ -13162,7 +13162,7 @@ var app = (function () {
     }
 
     // (56:57) 
-    function create_if_block_6(ctx) {
+    function create_if_block_7(ctx) {
     	let div;
     	let span;
     	let t0_value = /*shortenBreadCrumbItem*/ ctx[4](/*item*/ ctx[0], 'hard') + "";
@@ -13201,7 +13201,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_6.name,
+    		id: create_if_block_7.name,
     		type: "if",
     		source: "(56:57) ",
     		ctx
@@ -13211,7 +13211,7 @@ var app = (function () {
     }
 
     // (52:58) 
-    function create_if_block_5$1(ctx) {
+    function create_if_block_6(ctx) {
     	let div;
     	let span;
     	let t0_value = /*shortenBreadCrumbItem*/ ctx[4](/*item*/ ctx[0], 'medium') + "";
@@ -13250,7 +13250,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_5$1.name,
+    		id: create_if_block_6.name,
     		type: "if",
     		source: "(52:58) ",
     		ctx
@@ -13260,7 +13260,7 @@ var app = (function () {
     }
 
     // (48:31) 
-    function create_if_block_4$1(ctx) {
+    function create_if_block_5$1(ctx) {
     	let div;
     	let span;
     	let t0_value = /*shortenBreadCrumbItem*/ ctx[4](/*item*/ ctx[0], 'soft') + "";
@@ -13299,7 +13299,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_4$1.name,
+    		id: create_if_block_5$1.name,
     		type: "if",
     		source: "(48:31) ",
     		ctx
@@ -13309,7 +13309,7 @@ var app = (function () {
     }
 
     // (46:5) {#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}
-    function create_if_block_3$1(ctx) {
+    function create_if_block_4$1(ctx) {
     	let span;
     	let t_value = /*item*/ ctx[0] + "";
     	let t;
@@ -13334,7 +13334,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_3$1.name,
+    		id: create_if_block_4$1.name,
     		type: "if",
     		source: "(46:5) {#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}",
     		ctx
@@ -13349,11 +13349,11 @@ var app = (function () {
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*index*/ ctx[9] + 1 === 1 && /*item*/ ctx[0].length <= /*maxLettersInBreadCrumbItem*/ ctx[3]) return create_if_block_3$1;
-    		if (/*index*/ ctx[9] + 1 === 1) return create_if_block_4$1;
-    		if (/*index*/ ctx[9] + 1 < 4 && /*totalBreadCrumbItems*/ ctx[1] <= 5) return create_if_block_5$1;
-    		if (/*index*/ ctx[9] + 1 < 5 && /*totalBreadCrumbItems*/ ctx[1] > 5) return create_if_block_6;
-    		if (/*index*/ ctx[9] + 1 > 7) return create_if_block_7;
+    		if (/*index*/ ctx[9] + 1 === 1 && /*item*/ ctx[0].length <= /*maxLettersInBreadCrumbItem*/ ctx[3]) return create_if_block_4$1;
+    		if (/*index*/ ctx[9] + 1 === 1) return create_if_block_5$1;
+    		if (/*index*/ ctx[9] + 1 < 4 && /*totalBreadCrumbItems*/ ctx[1] <= 5) return create_if_block_6;
+    		if (/*index*/ ctx[9] + 1 < 5 && /*totalBreadCrumbItems*/ ctx[1] > 5) return create_if_block_7;
+    		if (/*index*/ ctx[9] + 1 > 7) return create_if_block_8;
     	}
 
     	let current_block_type = select_block_type(ctx);
@@ -13411,7 +13411,7 @@ var app = (function () {
     }
 
     // (74:2) {#if item.Description}
-    function create_if_block_1$2(ctx) {
+    function create_if_block_2$1(ctx) {
     	let span;
     	let t_value = /*shortenDescription*/ ctx[5](/*item*/ ctx[0].Description) + "";
     	let t;
@@ -13437,7 +13437,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$2.name,
+    		id: create_if_block_2$1.name,
     		type: "if",
     		source: "(74:2) {#if item.Description}",
     		ctx
@@ -13447,7 +13447,7 @@ var app = (function () {
     }
 
     // (77:2) {#if item.news_date && item.search_type === 'news'}
-    function create_if_block$3(ctx) {
+    function create_if_block_1$2(ctx) {
     	let span;
     	let t0_value = /*$_*/ ctx[2]('searchresult_university') + "";
     	let t0;
@@ -13497,9 +13497,48 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$3.name,
+    		id: create_if_block_1$2.name,
     		type: "if",
     		source: "(77:2) {#if item.news_date && item.search_type === 'news'}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (83:2) {#if item.start_date && item.search_type === 'event'}
+    function create_if_block$3(ctx) {
+    	let span;
+    	let t0_value = /*item*/ ctx[0].start_date + "";
+    	let t0;
+    	let t1;
+
+    	const block = {
+    		c: function create() {
+    			span = element("span");
+    			t0 = text(t0_value);
+    			t1 = text(" - end_date  | location_short");
+    			attr_dev(span, "class", "additional_desc");
+    			add_location(span, file$5, 83, 3, 3046);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, span, anchor);
+    			append_dev(span, t0);
+    			append_dev(span, t1);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*item*/ 1 && t0_value !== (t0_value = /*item*/ ctx[0].start_date + "")) set_data_dev(t0, t0_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(span);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$3.name,
+    		type: "if",
+    		source: "(83:2) {#if item.start_date && item.search_type === 'event'}",
     		ctx
     	});
 
@@ -13522,11 +13561,13 @@ var app = (function () {
     	let t3;
     	let t4;
     	let t5;
+    	let t6;
     	let a_href_value;
     	let a_title_value;
-    	let if_block0 = /*item*/ ctx[0].title_parents && create_if_block_2$1(ctx);
-    	let if_block1 = /*item*/ ctx[0].Description && create_if_block_1$2(ctx);
-    	let if_block2 = /*item*/ ctx[0].news_date && /*item*/ ctx[0].search_type === 'news' && create_if_block$3(ctx);
+    	let if_block0 = /*item*/ ctx[0].title_parents && create_if_block_3$1(ctx);
+    	let if_block1 = /*item*/ ctx[0].Description && create_if_block_2$1(ctx);
+    	let if_block2 = /*item*/ ctx[0].news_date && /*item*/ ctx[0].search_type === 'news' && create_if_block_1$2(ctx);
+    	let if_block3 = /*item*/ ctx[0].start_date && /*item*/ ctx[0].search_type === 'event' && create_if_block$3(ctx);
 
     	const block = {
     		c: function create() {
@@ -13546,6 +13587,8 @@ var app = (function () {
     			if (if_block1) if_block1.c();
     			t5 = space();
     			if (if_block2) if_block2.c();
+    			t6 = space();
+    			if (if_block3) if_block3.c();
     			attr_dev(div0, "class", "breadcrumbs");
     			add_location(div0, file$5, 42, 2, 1597);
     			attr_dev(span0, "class", "button");
@@ -13582,13 +13625,15 @@ var app = (function () {
     			if (if_block1) if_block1.m(a, null);
     			append_dev(a, t5);
     			if (if_block2) if_block2.m(a, null);
+    			append_dev(a, t6);
+    			if (if_block3) if_block3.m(a, null);
     		},
     		p: function update(ctx, [dirty]) {
     			if (/*item*/ ctx[0].title_parents) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
-    					if_block0 = create_if_block_2$1(ctx);
+    					if_block0 = create_if_block_3$1(ctx);
     					if_block0.c();
     					if_block0.m(div0, null);
     				}
@@ -13604,7 +13649,7 @@ var app = (function () {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
     				} else {
-    					if_block1 = create_if_block_1$2(ctx);
+    					if_block1 = create_if_block_2$1(ctx);
     					if_block1.c();
     					if_block1.m(a, t5);
     				}
@@ -13617,13 +13662,26 @@ var app = (function () {
     				if (if_block2) {
     					if_block2.p(ctx, dirty);
     				} else {
-    					if_block2 = create_if_block$3(ctx);
+    					if_block2 = create_if_block_1$2(ctx);
     					if_block2.c();
-    					if_block2.m(a, null);
+    					if_block2.m(a, t6);
     				}
     			} else if (if_block2) {
     				if_block2.d(1);
     				if_block2 = null;
+    			}
+
+    			if (/*item*/ ctx[0].start_date && /*item*/ ctx[0].search_type === 'event') {
+    				if (if_block3) {
+    					if_block3.p(ctx, dirty);
+    				} else {
+    					if_block3 = create_if_block$3(ctx);
+    					if_block3.c();
+    					if_block3.m(a, null);
+    				}
+    			} else if (if_block3) {
+    				if_block3.d(1);
+    				if_block3 = null;
     			}
 
     			if (dirty & /*item*/ 1 && a_href_value !== (a_href_value = /*item*/ ctx[0]['@id'])) {
@@ -13641,6 +13699,7 @@ var app = (function () {
     			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
     			if (if_block2) if_block2.d();
+    			if (if_block3) if_block3.d();
     		}
     	};
 
@@ -32461,7 +32520,7 @@ var app = (function () {
     const { Error: Error_1, console: console_1 } = globals;
     const file = "src/SearchBar.svelte";
 
-    // (181:1) {#if showSearchBarIntro}
+    // (185:1) {#if showSearchBarIntro}
     function create_if_block_5(ctx) {
     	let searchbarintro;
     	let current;
@@ -32493,14 +32552,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(181:1) {#if showSearchBarIntro}",
+    		source: "(185:1) {#if showSearchBarIntro}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (190:4) {#if showSearchCategories}
+    // (194:4) {#if showSearchCategories}
     function create_if_block_4(ctx) {
     	let searchcategories;
     	let updating_categoriesCount;
@@ -32611,14 +32670,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(190:4) {#if showSearchCategories}",
+    		source: "(194:4) {#if showSearchCategories}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (200:4) {#if showSearchProposals}
+    // (204:4) {#if showSearchProposals}
     function create_if_block_3(ctx) {
     	let searchproposals;
     	let updating_query;
@@ -32694,14 +32753,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(200:4) {#if showSearchProposals}",
+    		source: "(204:4) {#if showSearchProposals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (207:4) {#if showSearchCategories}
+    // (211:4) {#if showSearchCategories}
     function create_if_block_2(ctx) {
     	let div;
     	let p;
@@ -32717,9 +32776,9 @@ var app = (function () {
     			t0 = text(/*totalItems*/ ctx[4]);
     			t1 = space();
     			t2 = text(t2_value);
-    			add_location(p, file, 208, 6, 6202);
+    			add_location(p, file, 212, 6, 6353);
     			attr_dev(div, "class", "widg_searchbar-bar__title");
-    			add_location(div, file, 207, 5, 6156);
+    			add_location(div, file, 211, 5, 6307);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32741,14 +32800,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(207:4) {#if showSearchCategories}",
+    		source: "(211:4) {#if showSearchCategories}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (212:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
+    // (216:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
     function create_if_block_1(ctx) {
     	let div;
     	let p;
@@ -32783,12 +32842,12 @@ var app = (function () {
     			t6 = text("\"");
     			t7 = text(/*searchTermSpellCheck*/ ctx[2]);
     			t8 = text("\"");
-    			add_location(b0, file, 213, 45, 6447);
-    			add_location(p, file, 213, 6, 6408);
-    			add_location(b1, file, 216, 7, 6535);
-    			add_location(span, file, 214, 6, 6477);
+    			add_location(b0, file, 217, 45, 6598);
+    			add_location(p, file, 217, 6, 6559);
+    			add_location(b1, file, 220, 7, 6686);
+    			add_location(span, file, 218, 6, 6628);
     			attr_dev(div, "class", "widg__searchbar_autocomplete");
-    			add_location(div, file, 212, 5, 6359);
+    			add_location(div, file, 216, 5, 6510);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32821,14 +32880,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(212:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}",
+    		source: "(216:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (222:4) {#if showStatusInfo && !searchTermSpellCheck}
+    // (226:4) {#if showStatusInfo && !searchTermSpellCheck}
     function create_if_block(ctx) {
     	let div;
     	let t0_value = /*$_*/ ctx[13]('search_no_results') + "";
@@ -32848,9 +32907,9 @@ var app = (function () {
     			t1 = space();
     			span = element("span");
     			t2 = text(t2_value);
-    			add_location(span, file, 228, 6, 6878);
+    			add_location(span, file, 232, 6, 7029);
     			attr_dev(div, "class", "no__results");
-    			add_location(div, file, 222, 5, 6716);
+    			add_location(div, file, 226, 5, 6867);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32890,7 +32949,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(222:4) {#if showStatusInfo && !searchTermSpellCheck}",
+    		source: "(226:4) {#if showStatusInfo && !searchTermSpellCheck}",
     		ctx
     	});
 
@@ -33037,14 +33096,14 @@ var app = (function () {
     			t6 = space();
     			if (if_block5) if_block5.c();
     			attr_dev(div0, "class", "search__cat");
-    			add_location(div0, file, 188, 3, 5700);
+    			add_location(div0, file, 192, 3, 5851);
     			attr_dev(div1, "class", "widg_searchbar-bar__content custom-scrollbar");
     			attr_dev(div1, "data-searchbar", "content");
-    			add_location(div1, file, 184, 2, 5604);
+    			add_location(div1, file, 188, 2, 5755);
     			attr_dev(div2, "class", "search__results");
-    			add_location(div2, file, 183, 1, 5572);
+    			add_location(div2, file, 187, 1, 5723);
     			attr_dev(div3, "class", "widg_search_svelte");
-    			add_location(div3, file, 167, 0, 5244);
+    			add_location(div3, file, 171, 0, 5395);
     		},
     		l: function claim(nodes) {
     			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -33415,8 +33474,10 @@ var app = (function () {
     			itemsCount = data.items.length;
     			$$invalidate(4, totalItems = data.items_total);
 
-    			if (data.facets && data.facets.length && isFirstSearch) {
+    			if (data.facets && data.facets.length && isFirst) {
     				$$invalidate(12, categoriesCount = data.facets[0].enable);
+    			} else {
+    				if (data.facets[0].enable[searchType]) $$invalidate(12, categoriesCount[searchType] = data.facets[0].enable[searchType], categoriesCount);
     			}
 
     			if (totalItems === 0 && !noAlternativeSearchTermFound) {
