@@ -32461,7 +32461,7 @@ var app = (function () {
     const { Error: Error_1, console: console_1 } = globals;
     const file = "src/SearchBar.svelte";
 
-    // (181:1) {#if showSearchBarIntro}
+    // (185:1) {#if showSearchBarIntro}
     function create_if_block_5(ctx) {
     	let searchbarintro;
     	let current;
@@ -32493,14 +32493,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(181:1) {#if showSearchBarIntro}",
+    		source: "(185:1) {#if showSearchBarIntro}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (190:4) {#if showSearchCategories}
+    // (194:4) {#if showSearchCategories}
     function create_if_block_4(ctx) {
     	let searchcategories;
     	let updating_categoriesCount;
@@ -32611,14 +32611,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(190:4) {#if showSearchCategories}",
+    		source: "(194:4) {#if showSearchCategories}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (200:4) {#if showSearchProposals}
+    // (204:4) {#if showSearchProposals}
     function create_if_block_3(ctx) {
     	let searchproposals;
     	let updating_query;
@@ -32694,14 +32694,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(200:4) {#if showSearchProposals}",
+    		source: "(204:4) {#if showSearchProposals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (207:4) {#if showSearchCategories}
+    // (211:4) {#if showSearchCategories}
     function create_if_block_2(ctx) {
     	let div;
     	let p;
@@ -32717,9 +32717,9 @@ var app = (function () {
     			t0 = text(/*totalItems*/ ctx[4]);
     			t1 = space();
     			t2 = text(t2_value);
-    			add_location(p, file, 208, 6, 6202);
+    			add_location(p, file, 212, 6, 6353);
     			attr_dev(div, "class", "widg_searchbar-bar__title");
-    			add_location(div, file, 207, 5, 6156);
+    			add_location(div, file, 211, 5, 6307);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32741,14 +32741,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(207:4) {#if showSearchCategories}",
+    		source: "(211:4) {#if showSearchCategories}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (212:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
+    // (216:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
     function create_if_block_1(ctx) {
     	let div;
     	let p;
@@ -32783,12 +32783,12 @@ var app = (function () {
     			t6 = text("\"");
     			t7 = text(/*searchTermSpellCheck*/ ctx[2]);
     			t8 = text("\"");
-    			add_location(b0, file, 213, 45, 6447);
-    			add_location(p, file, 213, 6, 6408);
-    			add_location(b1, file, 216, 7, 6535);
-    			add_location(span, file, 214, 6, 6477);
+    			add_location(b0, file, 217, 45, 6598);
+    			add_location(p, file, 217, 6, 6559);
+    			add_location(b1, file, 220, 7, 6686);
+    			add_location(span, file, 218, 6, 6628);
     			attr_dev(div, "class", "widg__searchbar_autocomplete");
-    			add_location(div, file, 212, 5, 6359);
+    			add_location(div, file, 216, 5, 6510);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32821,14 +32821,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(212:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}",
+    		source: "(216:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (222:4) {#if showStatusInfo && !searchTermSpellCheck}
+    // (226:4) {#if showStatusInfo && !searchTermSpellCheck}
     function create_if_block(ctx) {
     	let div;
     	let t0_value = /*$_*/ ctx[13]('search_no_results') + "";
@@ -32848,9 +32848,9 @@ var app = (function () {
     			t1 = space();
     			span = element("span");
     			t2 = text(t2_value);
-    			add_location(span, file, 228, 6, 6878);
+    			add_location(span, file, 232, 6, 7029);
     			attr_dev(div, "class", "no__results");
-    			add_location(div, file, 222, 5, 6716);
+    			add_location(div, file, 226, 5, 6867);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32890,7 +32890,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(222:4) {#if showStatusInfo && !searchTermSpellCheck}",
+    		source: "(226:4) {#if showStatusInfo && !searchTermSpellCheck}",
     		ctx
     	});
 
@@ -33037,14 +33037,14 @@ var app = (function () {
     			t6 = space();
     			if (if_block5) if_block5.c();
     			attr_dev(div0, "class", "search__cat");
-    			add_location(div0, file, 188, 3, 5700);
+    			add_location(div0, file, 192, 3, 5851);
     			attr_dev(div1, "class", "widg_searchbar-bar__content custom-scrollbar");
     			attr_dev(div1, "data-searchbar", "content");
-    			add_location(div1, file, 184, 2, 5604);
+    			add_location(div1, file, 188, 2, 5755);
     			attr_dev(div2, "class", "search__results");
-    			add_location(div2, file, 183, 1, 5572);
+    			add_location(div2, file, 187, 1, 5723);
     			attr_dev(div3, "class", "widg_search_svelte");
-    			add_location(div3, file, 167, 0, 5244);
+    			add_location(div3, file, 171, 0, 5395);
     		},
     		l: function claim(nodes) {
     			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -33415,8 +33415,10 @@ var app = (function () {
     			itemsCount = data.items.length;
     			$$invalidate(4, totalItems = data.items_total);
 
-    			if (data.facets && data.facets.length && isFirstSearch) {
+    			if (data.facets && data.facets.length && isFirst) {
     				$$invalidate(12, categoriesCount = data.facets[0].enable);
+    			} else {
+    				if (data.facets[0].enable[searchType]) $$invalidate(12, categoriesCount[searchType] = data.facets[0].enable[searchType], categoriesCount);
     			}
 
     			if (totalItems === 0 && !noAlternativeSearchTermFound) {
