@@ -86,6 +86,11 @@
 				{item.school} | {item.news_date}</span
 			>
 		{/if}
+		{#if item.start_date && item.search_type === 'event'}
+			<span class="additional_desc"
+				>{item.start_date} - end_date  | location_short</span
+			>
+		{/if}
 	</a>
 </li>
 
