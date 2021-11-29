@@ -19,8 +19,8 @@
 
 	init({
 		fallbackLocale: 'de',
-		initialLocale: getLocaleFromNavigator(),
-	});
+		initialLocale: document.documentElement.lang,
+	});	
 
 	let searchQuery: string = '';
 	let searchTerm: string = null;
