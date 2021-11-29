@@ -34,7 +34,7 @@
 	let showSearchCategories: boolean = false;
 	let showSearchProposals: boolean = false;
 	let isLoading: boolean = false;
-	let searchType: string = 'all';
+	let searchType: string = '';
 	let observer: any;
 	let target: any;
 	let showStatusInfo: boolean = false;
@@ -130,7 +130,7 @@
 		}
 
 		const endpoint: string = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
-			searchType || 'all'
+			searchType || ''
 		}&limit=${limit}&offset=${offset}`;
 
 		fetch(endpoint)
@@ -145,7 +145,7 @@
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
-				if (data.facets && data.facets.length) {
+				if (data.facets && data.facets.length && isFirstSearch) {
 					categoriesCount = data.facets[0].enable;
 				}
 
@@ -182,8 +182,8 @@
 
 				if (isFirst) {
 					searchResults = [...data.items];
-					observer.observe(target);
 					isFirstSearch = false;
+					observer.observe(target);
 				}
 
 				if (searchResults.length > 0) {
@@ -230,6 +230,7 @@
 						bind:searchType
 						bind:totalItems
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
+						{unobserve}
 					/>
 				{/if}
 				{#if showSearchProposals}

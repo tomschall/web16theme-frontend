@@ -5,6 +5,7 @@
 	import type { Item } from './definitions/Item';
 
 	export let triggerCategorySearch = () => {};
+	export let unobserve: any;
 	export let searchType: string;
 	export let totalItems: number;
 	export let searchResults: Item[];
@@ -21,6 +22,7 @@
 		class="button button__cat {searchType === 'all' ? 'active' : ''}"
 		on:click={() => {
 			searchType = 'all';
+			unobserve();
 			triggerCategorySearch();
 		}}
 	>

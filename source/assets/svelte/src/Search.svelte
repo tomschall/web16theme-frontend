@@ -21,7 +21,7 @@
 		showStatusInfo = false;
 		showSearchProposals = false;
 		searchTermSpellCheck = null;
-		searchType = 'all';
+		searchType = '';
 		unobserve();
 
 		document
