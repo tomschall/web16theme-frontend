@@ -30,6 +30,7 @@
 	let offset: number = 0;
 	let limit: number = 10;
 	let searchResults: Item[] = [];
+	let searchResultsHighlighting: any;
 	let showSearchBarIntro: boolean = true;
 	let showSearchCategories: boolean = false;
 	let showSearchProposals: boolean = false;
@@ -187,9 +188,16 @@
 				}
 
 				searchResults = [...searchResults, ...data.items];
+				searchResultsHighlighting = {
+					...searchResultsHighlighting,
+					...data.highlighting,
+				};
 
 				if (isFirst) {
 					searchResults = [...data.items];
+					searchResultsHighlighting = {
+						...data.highlighting,
+					};
 					isFirstSearch = false;
 					observer.observe(target);
 				}
@@ -260,7 +268,11 @@
 						>
 					</div>
 				{/if}
-				<SearchResults results={searchResults} {isLoading} />
+				<SearchResults
+					results={searchResults}
+					{searchResultsHighlighting}
+					{isLoading}
+				/>
 				{#if showStatusInfo && !searchTermSpellCheck}
 					<div
 						class="no__results"
