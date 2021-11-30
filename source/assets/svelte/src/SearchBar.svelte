@@ -129,9 +129,12 @@
 			return;
 		}
 
-		const endpoint: string = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
-			searchType || ''
-		}&limit=${limit}&offset=${offset}`;
+		const endpoint: string =
+			// @ts-ignore
+			API +
+			`?q=${searchTerm}&category=all&search_type[]=${
+				searchType || ''
+			}&limit=${limit}&offset=${offset}`;
 
 		fetch(endpoint)
 			.then((response) => {
@@ -141,7 +144,7 @@
 				return response.json();
 			})
 			.then((data) => {
-				console.log('data yes', data);
+				console.log('data', data);
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
@@ -155,7 +158,9 @@
 				if (totalItems === 0 && !noAlternativeSearchTermFound) {
 					searchTermSpellCheck = searchTerm;
 
-					const spellCheckEndpoint: string = `https://www.dev.fhnw.ch/de/spellcheck?term=${searchTermSpellCheck}`;
+					const spellCheckEndpoint: string =
+						// @ts-ignore
+						API_SPELLCHECK + `?term=${searchTermSpellCheck}`;
 
 					fetch(spellCheckEndpoint)
 						.then((response) => {

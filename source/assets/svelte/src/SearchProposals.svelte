@@ -12,7 +12,8 @@
 		autocompleteTerm = query.trim();
 
 		if (autocompleteTerm.length) {
-			const autocompleteEndpoint = `https://www.dev.fhnw.ch/de/autocomplete?term=${autocompleteTerm}`;
+			// @ts-ignore
+			const autocompleteEndpoint = API_PROPOSALS + `?term=${autocompleteTerm}`;
 
 			fetch(autocompleteEndpoint)
 				.then((response) => {
