@@ -7,7 +7,7 @@
 	import SearchResults from './SearchResults.svelte';
 	import SearchCategories from './SearchCategories.svelte';
 	import SearchProposals from './SearchProposals.svelte';
-	import { init, getLocaleFromNavigator, addMessages } from 'svelte-i18n';
+	import { init, addMessages } from 'svelte-i18n';
 	import en from './lang/en.json';
 	import de from './lang/de.json';
 	import { debounce } from 'lodash';
@@ -145,7 +145,7 @@
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
-				if (data.facets && data.facets.length && isFirst) {
+				if (data.facets && data.facets.length && isFirst && searchType == '') {
 					categoriesCount = data.facets[0].enable;
 				} else {
 					if (data.facets[0].enable[searchType])
@@ -229,9 +229,7 @@
 				{#if showSearchCategories}
 					<SearchCategories
 						bind:categoriesCount
-						bind:searchResults
 						bind:searchType
-						bind:totalItems
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
 						{unobserve}
 					/>

@@ -7,9 +7,13 @@
 	export let triggerCategorySearch = () => {};
 	export let unobserve: any;
 	export let searchType: string;
-	export let totalItems: number;
-	export let searchResults: Item[];
 	export let categoriesCount: CategoriesCount;
+
+	const handleCategorySearch = (type: string) => {
+		searchType = type;
+		unobserve();
+		triggerCategorySearch();
+	};
 </script>
 
 <div
@@ -21,9 +25,7 @@
 	<button
 		class="button button__cat {searchType === 'all' ? 'active' : ''}"
 		on:click={() => {
-			searchType = 'all';
-			unobserve();
-			triggerCategorySearch();
+			handleCategorySearch('all');
 		}}
 	>
 		{$_('category_all')}
@@ -32,8 +34,7 @@
 	<button
 		class="button button__cat {searchType === 'studies' ? 'active' : ''}"
 		on:click={() => {
-			searchType = 'studies';
-			triggerCategorySearch();
+			handleCategorySearch('studies');
 		}}
 	>
 		{$_('category_studys')}
@@ -44,8 +45,7 @@
 			? 'active'
 			: ''}"
 		on:click={() => {
-			searchType = 'continuing_education';
-			triggerCategorySearch();
+			handleCategorySearch('continuing_education');
 		}}
 	>
 		{$_('category_education')}
@@ -56,8 +56,7 @@
 	<button
 		class="button button__cat {searchType === 'event' ? 'active' : ''}"
 		on:click={() => {
-			searchType = 'event';
-			triggerCategorySearch();
+			handleCategorySearch('event');
 		}}
 	>
 		{$_('category_events')}
@@ -66,8 +65,7 @@
 	<button
 		class="button button__cat {searchType === 'news' ? 'active' : ''}"
 		on:click={() => {
-			searchType = 'news';
-			triggerCategorySearch();
+			handleCategorySearch('news');
 		}}
 	>
 		{$_('category_news')}
@@ -76,8 +74,7 @@
 	<button
 		class="button button__cat {searchType === 'document' ? 'active' : ''}"
 		on:click={() => {
-			searchType = 'document';
-			triggerCategorySearch();
+			handleCategorySearch('document');
 		}}
 	>
 		{$_('category_documents')}
@@ -86,8 +83,7 @@
 	<button
 		class="button button__cat {searchType === 'contact' ? 'active' : ''}"
 		on:click={() => {
-			searchType = 'contact';
-			triggerCategorySearch();
+			handleCategorySearch('contact');
 		}}
 	>
 		{$_('category_persons')}
@@ -96,8 +92,7 @@
 	<button
 		class="button button__cat {searchType === 'general' ? 'active' : ''}"
 		on:click={() => {
-			searchType = 'general';
-			triggerCategorySearch();
+			handleCategorySearch('general');
 		}}
 	>
 		{$_('category_general')}
