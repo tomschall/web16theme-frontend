@@ -6,12 +6,13 @@
 
 	export let results: Item[];
 	export let isLoading: boolean;
+	export let searchResultsHighlighting: any[];
 </script>
 
 <div class="search__results">
 	<ul class="search-results">
 		{#each results as result (result)}
-			<ListItem item={result} />
+			<ListItem item={result} {searchResultsHighlighting} />
 		{/each}
 	</ul>
 </div>
