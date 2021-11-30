@@ -13150,7 +13150,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (54:3) {#if item.title_parents}
+    // (47:3) {#if item.title_parents}
     function create_if_block_2$1(ctx) {
     	let each_blocks = [];
     	let each_1_lookup = new Map();
@@ -13202,14 +13202,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(54:3) {#if item.title_parents}",
+    		source: "(47:3) {#if item.title_parents}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:29) 
+    // (63:29) 
     function create_if_block_7(ctx) {
     	let div;
     	let span;
@@ -13222,10 +13222,10 @@ var app = (function () {
     			span = element("span");
     			span.textContent = "...";
     			t1 = space();
-    			add_location(span, file$5, 71, 7, 2728);
+    			add_location(span, file$5, 64, 7, 2560);
     			attr_dev(div, "class", "listing__tooltip svelte-6zyi2n");
     			attr_dev(div, "data-tooltip", div_data_tooltip_value = /*item*/ ctx[1]);
-    			add_location(div, file$5, 70, 6, 2670);
+    			add_location(div, file$5, 63, 6, 2502);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13246,14 +13246,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(70:29) ",
+    		source: "(63:29) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (66:57) 
+    // (59:57) 
     function create_if_block_6(ctx) {
     	let div;
     	let span;
@@ -13268,10 +13268,10 @@ var app = (function () {
     			span = element("span");
     			t0 = text(t0_value);
     			t1 = space();
-    			add_location(span, file$5, 67, 7, 2570);
+    			add_location(span, file$5, 60, 7, 2402);
     			attr_dev(div, "class", "listing__tooltip svelte-6zyi2n");
     			attr_dev(div, "data-tooltip", div_data_tooltip_value = /*item*/ ctx[1]);
-    			add_location(div, file$5, 66, 6, 2512);
+    			add_location(div, file$5, 59, 6, 2344);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13295,14 +13295,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(66:57) ",
+    		source: "(59:57) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (62:58) 
+    // (55:58) 
     function create_if_block_5$1(ctx) {
     	let div;
     	let span;
@@ -13317,10 +13317,10 @@ var app = (function () {
     			span = element("span");
     			t0 = text(t0_value);
     			t1 = space();
-    			add_location(span, file$5, 63, 7, 2382);
+    			add_location(span, file$5, 56, 7, 2214);
     			attr_dev(div, "class", "listing__tooltip svelte-6zyi2n");
     			attr_dev(div, "data-tooltip", div_data_tooltip_value = /*item*/ ctx[1]);
-    			add_location(div, file$5, 62, 6, 2324);
+    			add_location(div, file$5, 55, 6, 2156);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13344,14 +13344,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5$1.name,
     		type: "if",
-    		source: "(62:58) ",
+    		source: "(55:58) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (58:31) 
+    // (51:31) 
     function create_if_block_4$1(ctx) {
     	let div;
     	let span;
@@ -13366,10 +13366,10 @@ var app = (function () {
     			span = element("span");
     			t0 = text(t0_value);
     			t1 = space();
-    			add_location(span, file$5, 59, 7, 2195);
+    			add_location(span, file$5, 52, 7, 2027);
     			attr_dev(div, "class", "listing__tooltip svelte-6zyi2n");
     			attr_dev(div, "data-tooltip", div_data_tooltip_value = /*item*/ ctx[1]);
-    			add_location(div, file$5, 58, 6, 2137);
+    			add_location(div, file$5, 51, 6, 1969);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13393,14 +13393,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4$1.name,
     		type: "if",
-    		source: "(58:31) ",
+    		source: "(51:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (56:5) {#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}
+    // (49:5) {#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}
     function create_if_block_3$1(ctx) {
     	let span;
     	let t_value = /*item*/ ctx[1] + "";
@@ -13410,7 +13410,7 @@ var app = (function () {
     		c: function create() {
     			span = element("span");
     			t = text(t_value);
-    			add_location(span, file$5, 56, 6, 2079);
+    			add_location(span, file$5, 49, 6, 1911);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -13428,14 +13428,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(56:5) {#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}",
+    		source: "(49:5) {#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:4) {#each item.title_parents as item, index (index)}
+    // (48:4) {#each item.title_parents as item, index (index)}
     function create_each_block$2(key_1, ctx) {
     	let first;
     	let if_block_anchor;
@@ -13495,14 +13495,14 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(55:4) {#each item.title_parents as item, index (index)}",
+    		source: "(48:4) {#each item.title_parents as item, index (index)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (105:2) {#if item.news_date && item.search_type === 'news'}
+    // (98:2) {#if item.news_date && item.search_type === 'news'}
     function create_if_block_1$2(ctx) {
     	let span;
     	let t0_value = /*$_*/ ctx[3]('searchresult_university') + "";
@@ -13528,7 +13528,7 @@ var app = (function () {
     			t5 = text(" | ");
     			t6 = text(t6_value);
     			attr_dev(span, "class", "additional_desc");
-    			add_location(span, file$5, 105, 3, 3521);
+    			add_location(span, file$5, 98, 3, 3353);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -13555,14 +13555,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(105:2) {#if item.news_date && item.search_type === 'news'}",
+    		source: "(98:2) {#if item.news_date && item.search_type === 'news'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (111:2) {#if item.start_date && item.search_type === 'event'}
+    // (104:2) {#if item.start_date && item.search_type === 'event'}
     function create_if_block$3(ctx) {
     	let span;
     	let t0_value = /*item*/ ctx[1].start_date + "";
@@ -13575,7 +13575,7 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = text(" - end_date | location_short");
     			attr_dev(span, "class", "additional_desc");
-    			add_location(span, file$5, 111, 3, 3718);
+    			add_location(span, file$5, 104, 3, 3550);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -13594,7 +13594,7 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(111:2) {#if item.start_date && item.search_type === 'event'}",
+    		source: "(104:2) {#if item.start_date && item.search_type === 'event'}",
     		ctx
     	});
 
@@ -13669,22 +13669,22 @@ var app = (function () {
     			t5 = space();
     			if (if_block2) if_block2.c();
     			attr_dev(div0, "class", "breadcrumbs");
-    			add_location(div0, file$5, 52, 2, 1893);
+    			add_location(div0, file$5, 45, 2, 1725);
     			attr_dev(span0, "class", "button");
-    			add_location(span0, file$5, 78, 3, 2831);
+    			add_location(span0, file$5, 71, 3, 2663);
     			attr_dev(div1, "class", "result__type");
-    			add_location(div1, file$5, 77, 2, 2801);
+    			add_location(div1, file$5, 70, 2, 2633);
     			attr_dev(div2, "class", "result__top");
-    			add_location(div2, file$5, 51, 1, 1865);
+    			add_location(div2, file$5, 44, 1, 1697);
     			attr_dev(span1, "class", "title");
-    			add_location(span1, file$5, 82, 2, 2940);
+    			add_location(span1, file$5, 75, 2, 2772);
     			attr_dev(span2, "class", "description");
-    			add_location(span2, file$5, 92, 2, 3175);
+    			add_location(span2, file$5, 85, 2, 3007);
     			attr_dev(a, "href", a_href_value = /*item*/ ctx[1]['@id']);
     			attr_dev(a, "title", a_title_value = /*item*/ ctx[1].Title);
-    			add_location(a, file$5, 81, 1, 2896);
+    			add_location(a, file$5, 74, 1, 2728);
     			attr_dev(li, "class", "search__result-normal search__result--item");
-    			add_location(li, file$5, 50, 0, 1808);
+    			add_location(li, file$5, 43, 0, 1640);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

@@ -1,12 +1,9 @@
 <script lang="ts">
 	import type { Item } from './definitions/Item';
 	import { _ } from 'svelte-i18n';
-	import SvelteMarkdown, {
-		InstantiableSvelteComponentTyped,
-		MarkedRendererProps,
-	} from 'svelte-markdown';
+	import SvelteMarkdown from 'svelte-markdown';
 	import Paragraph from './Paragraph.svelte';
-	import type { Tokens } from 'marked';
+
 	export let item: Item;
 	export let searchResultsHighlighting: any[];
 
@@ -49,14 +46,6 @@
 		str.length <= maxLettersInDescription
 			? str
 			: str.substring(0, maxLettersInDescription) + '...';
-
-	// const markdownOptions: {
-	// 	paragraph: InstantiableSvelteComponentTyped<
-	// 		MarkedRendererProps<Tokens.Paragraph>
-	// 	>;
-	// } = {
-	// 	paragraph: Paragraph,
-	// };
 </script>
 
 <li class="search__result-normal search__result--item">
