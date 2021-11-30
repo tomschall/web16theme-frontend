@@ -3297,7 +3297,7 @@ var app = (function () {
         ErrorCode["MISSING_VALUE"] = "MISSING_VALUE";
         // When value supplied is invalid
         ErrorCode["INVALID_VALUE"] = "INVALID_VALUE";
-        // When we need specific Intl API but it's not available
+        // When we need specific Intl "https://www.dev.fhnw.ch/de/searchbar.json" but it's not available
         ErrorCode["MISSING_INTL_API"] = "MISSING_INTL_API";
     })(ErrorCode || (ErrorCode = {}));
     var FormatError = /** @class */ (function (_super) {
@@ -14781,7 +14781,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (35:0) {#if searchProposals.length}
+    // (36:0) {#if searchProposals.length}
     function create_if_block$1(ctx) {
     	let div1;
     	let div0;
@@ -14816,12 +14816,12 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(p, file$1, 37, 3, 1024);
+    			add_location(p, file$1, 38, 3, 1051);
     			attr_dev(div0, "class", "widg_searchbar-bar__title");
-    			add_location(div0, file$1, 36, 2, 981);
-    			add_location(ul, file$1, 39, 2, 1072);
+    			add_location(div0, file$1, 37, 2, 1008);
+    			add_location(ul, file$1, 40, 2, 1099);
     			attr_dev(div1, "class", "widg_search_proposals");
-    			add_location(div1, file$1, 35, 1, 943);
+    			add_location(div1, file$1, 36, 1, 970);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -14858,14 +14858,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(35:0) {#if searchProposals.length}",
+    		source: "(36:0) {#if searchProposals.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (42:4) {#if index <= 3}
+    // (43:4) {#if index <= 3}
     function create_if_block_1$1(ctx) {
     	let li;
     	let t0_value = /*searchProposal*/ ctx[8].value + "";
@@ -14884,7 +14884,7 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = space();
     			attr_dev(li, "class", "svelte-xpxtoc");
-    			add_location(li, file$1, 42, 5, 1163);
+    			add_location(li, file$1, 43, 5, 1190);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -14911,14 +14911,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(42:4) {#if index <= 3}",
+    		source: "(43:4) {#if index <= 3}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (41:3) {#each searchProposals as searchProposal, index (index)}
+    // (42:3) {#each searchProposals as searchProposal, index (index)}
     function create_each_block(key_1, ctx) {
     	let first;
     	let if_block_anchor;
@@ -14965,7 +14965,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(41:3) {#each searchProposals as searchProposal, index (index)}",
+    		source: "(42:3) {#each searchProposals as searchProposal, index (index)}",
     		ctx
     	});
 
@@ -15082,7 +15082,8 @@ var app = (function () {
     				$$invalidate(6, autocompleteTerm = query.trim());
 
     				if (autocompleteTerm.length) {
-    					const autocompleteEndpoint = `https://www.dev.fhnw.ch/de/autocomplete?term=${autocompleteTerm}`;
+    					// @ts-ignore
+    					const autocompleteEndpoint = "https://www.dev.fhnw.ch/de/autocomplete" + `?term=${autocompleteTerm}`;
 
     					fetch(autocompleteEndpoint).then(response => {
     						if (!response.ok) {
@@ -32476,7 +32477,7 @@ var app = (function () {
     const { Error: Error_1, console: console_1 } = globals;
     const file = "src/SearchBar.svelte";
 
-    // (185:1) {#if showSearchBarIntro}
+    // (190:1) {#if showSearchBarIntro}
     function create_if_block_5(ctx) {
     	let searchbarintro;
     	let current;
@@ -32508,14 +32509,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(185:1) {#if showSearchBarIntro}",
+    		source: "(190:1) {#if showSearchBarIntro}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (194:4) {#if showSearchCategories}
+    // (199:4) {#if showSearchCategories}
     function create_if_block_4(ctx) {
     	let searchcategories;
     	let updating_categoriesCount;
@@ -32594,14 +32595,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(194:4) {#if showSearchCategories}",
+    		source: "(199:4) {#if showSearchCategories}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (202:4) {#if showSearchProposals}
+    // (207:4) {#if showSearchProposals}
     function create_if_block_3(ctx) {
     	let searchproposals;
     	let updating_query;
@@ -32677,14 +32678,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(202:4) {#if showSearchProposals}",
+    		source: "(207:4) {#if showSearchProposals}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (209:4) {#if showSearchCategories}
+    // (214:4) {#if showSearchCategories}
     function create_if_block_2(ctx) {
     	let div;
     	let p;
@@ -32700,9 +32701,9 @@ var app = (function () {
     			t0 = text(/*totalItems*/ ctx[4]);
     			t1 = space();
     			t2 = text(t2_value);
-    			add_location(p, file, 210, 6, 6326);
+    			add_location(p, file, 215, 6, 6402);
     			attr_dev(div, "class", "widg_searchbar-bar__title");
-    			add_location(div, file, 209, 5, 6280);
+    			add_location(div, file, 214, 5, 6356);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32724,14 +32725,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(209:4) {#if showSearchCategories}",
+    		source: "(214:4) {#if showSearchCategories}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (214:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
+    // (219:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
     function create_if_block_1(ctx) {
     	let div;
     	let p;
@@ -32766,12 +32767,12 @@ var app = (function () {
     			t6 = text("\"");
     			t7 = text(/*searchTermSpellCheck*/ ctx[2]);
     			t8 = text("\"");
-    			add_location(b0, file, 215, 45, 6571);
-    			add_location(p, file, 215, 6, 6532);
-    			add_location(b1, file, 218, 7, 6659);
-    			add_location(span, file, 216, 6, 6601);
+    			add_location(b0, file, 220, 45, 6647);
+    			add_location(p, file, 220, 6, 6608);
+    			add_location(b1, file, 223, 7, 6735);
+    			add_location(span, file, 221, 6, 6677);
     			attr_dev(div, "class", "widg__searchbar_autocomplete");
-    			add_location(div, file, 214, 5, 6483);
+    			add_location(div, file, 219, 5, 6559);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32804,14 +32805,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(214:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}",
+    		source: "(219:4) {#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (224:4) {#if showStatusInfo && !searchTermSpellCheck}
+    // (229:4) {#if showStatusInfo && !searchTermSpellCheck}
     function create_if_block(ctx) {
     	let div;
     	let t0_value = /*$_*/ ctx[13]('search_no_results') + "";
@@ -32831,9 +32832,9 @@ var app = (function () {
     			t1 = space();
     			span = element("span");
     			t2 = text(t2_value);
-    			add_location(span, file, 230, 6, 7002);
+    			add_location(span, file, 235, 6, 7078);
     			attr_dev(div, "class", "no__results");
-    			add_location(div, file, 224, 5, 6840);
+    			add_location(div, file, 229, 5, 6916);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -32873,7 +32874,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(224:4) {#if showStatusInfo && !searchTermSpellCheck}",
+    		source: "(229:4) {#if showStatusInfo && !searchTermSpellCheck}",
     		ctx
     	});
 
@@ -33020,14 +33021,14 @@ var app = (function () {
     			t6 = space();
     			if (if_block5) if_block5.c();
     			attr_dev(div0, "class", "search__cat");
-    			add_location(div0, file, 192, 3, 5871);
+    			add_location(div0, file, 197, 3, 5947);
     			attr_dev(div1, "class", "widg_searchbar-bar__content custom-scrollbar");
     			attr_dev(div1, "data-searchbar", "content");
-    			add_location(div1, file, 188, 2, 5775);
+    			add_location(div1, file, 193, 2, 5851);
     			attr_dev(div2, "class", "search__results");
-    			add_location(div2, file, 187, 1, 5743);
+    			add_location(div2, file, 192, 1, 5819);
     			attr_dev(div3, "class", "widg_search_svelte");
-    			add_location(div3, file, 171, 0, 5415);
+    			add_location(div3, file, 176, 0, 5491);
     		},
     		l: function claim(nodes) {
     			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -33385,7 +33386,8 @@ var app = (function () {
     			return;
     		}
 
-    		const endpoint = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=all&search_type[]=${searchType || ''}&limit=${limit}&offset=${offset}`;
+    		const endpoint = // @ts-ignore
+    		"https://www.dev.fhnw.ch/de/searchbar.json" + `?q=${searchTerm}&category=all&search_type[]=${searchType || ''}&limit=${limit}&offset=${offset}`;
 
     		fetch(endpoint).then(response => {
     			if (!response.ok) {
@@ -33394,7 +33396,7 @@ var app = (function () {
 
     			return response.json();
     		}).then(data => {
-    			console.log('data yes', data);
+    			console.log('data', data);
     			itemsCount = data.items.length;
     			$$invalidate(4, totalItems = data.items_total);
 
@@ -33406,7 +33408,9 @@ var app = (function () {
 
     			if (totalItems === 0 && !noAlternativeSearchTermFound) {
     				$$invalidate(2, searchTermSpellCheck = searchTerm);
-    				const spellCheckEndpoint = `https://www.dev.fhnw.ch/de/spellcheck?term=${searchTermSpellCheck}`;
+
+    				const spellCheckEndpoint = // @ts-ignore
+    				"https://www.dev.fhnw.ch/de/spellcheck" + `?term=${searchTermSpellCheck}`;
 
     				fetch(spellCheckEndpoint).then(response => {
     					if (!response.ok) {
