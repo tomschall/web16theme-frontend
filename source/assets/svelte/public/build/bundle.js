@@ -13574,11 +13574,8 @@ var app = (function () {
     	let t2_value = /*item*/ ctx[1].school + "";
     	let t2;
     	let t3;
-    	let t4_value = /*item*/ ctx[1].school + "";
+    	let t4_value = /*item*/ ctx[1].news_date + "";
     	let t4;
-    	let t5;
-    	let t6_value = /*item*/ ctx[1].news_date + "";
-    	let t6;
 
     	const block = {
     		c: function create() {
@@ -13586,10 +13583,8 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = text(": ");
     			t2 = text(t2_value);
-    			t3 = space();
+    			t3 = text(" | ");
     			t4 = text(t4_value);
-    			t5 = text(" | ");
-    			t6 = text(t6_value);
     			attr_dev(span, "class", "additional_desc");
     			add_location(span, file$5, 100, 3, 3386);
     		},
@@ -13600,14 +13595,11 @@ var app = (function () {
     			append_dev(span, t2);
     			append_dev(span, t3);
     			append_dev(span, t4);
-    			append_dev(span, t5);
-    			append_dev(span, t6);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*$_*/ 8 && t0_value !== (t0_value = /*$_*/ ctx[3]('searchresult_university') + "")) set_data_dev(t0, t0_value);
     			if (dirty & /*item*/ 2 && t2_value !== (t2_value = /*item*/ ctx[1].school + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*item*/ 2 && t4_value !== (t4_value = /*item*/ ctx[1].school + "")) set_data_dev(t4, t4_value);
-    			if (dirty & /*item*/ 2 && t6_value !== (t6_value = /*item*/ ctx[1].news_date + "")) set_data_dev(t6, t6_value);
+    			if (dirty & /*item*/ 2 && t4_value !== (t4_value = /*item*/ ctx[1].news_date + "")) set_data_dev(t4, t4_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(span);
@@ -13625,7 +13617,7 @@ var app = (function () {
     	return block;
     }
 
-    // (106:2) {#if item.start_date && item.search_type === 'event'}
+    // (105:2) {#if item.start_date && item.search_type === 'event'}
     function create_if_block$3(ctx) {
     	let span;
     	let t0_value = /*item*/ ctx[1].start_date + "";
@@ -13646,7 +13638,7 @@ var app = (function () {
     			t3 = text(" | ");
     			t4 = text(t4_value);
     			attr_dev(span, "class", "additional_desc");
-    			add_location(span, file$5, 106, 3, 3583);
+    			add_location(span, file$5, 105, 3, 3565);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -13670,7 +13662,7 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(106:2) {#if item.start_date && item.search_type === 'event'}",
+    		source: "(105:2) {#if item.start_date && item.search_type === 'event'}",
     		ctx
     	});
 
