@@ -2,7 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import SearchBarInput from './SearchBarInput.svelte';
+	import SearchPageInput from './SearchPageInput.svelte';
 	import SearchBarIntro from './SearchBarIntro.svelte';
 	import SearchResults from './SearchResults.svelte';
 	import SearchCategories from './SearchCategories.svelte';
@@ -217,7 +217,7 @@
 </script>
 
 <div class="widg_search_svelte">
-	<SearchBarInput
+	<SearchPageInput
 		bind:query={searchQuery}
 		bind:showSearchCategories
 		bind:showSearchBarIntro
