@@ -1,7 +1,11 @@
 <script lang="ts">
 	import type { Item } from './definitions/Item';
 	import { _ } from 'svelte-i18n';
+	import SvelteMarkdown from 'svelte-markdown';
+	import Paragraph from './Paragraph.svelte';
+
 	export let item: Item;
+	export let searchResultsHighlighting: any[];
 
 	let maxLettersInDescription = 175;
 	let maxLettersInBreadCrumbItem = 23;
@@ -76,10 +80,28 @@
 		</div>
 	</div>
 	<a href={item['@id']} title={item.Title}>
-		<span class="title">{item.Title}</span>
-		{#if item.Description}
-			<span class="description">{shortenDescription(item.Description)}</span>
-		{/if}
+		<span class="title">
+			<SvelteMarkdown
+				source={searchResultsHighlighting[item.UID].Title
+					? searchResultsHighlighting[item.UID]?.Title[0]
+					: item.Title}
+				renderers={{
+					paragraph: Paragraph,
+				}}
+			/>
+		</span>
+		<span class="description"
+			><SvelteMarkdown
+				source={shortenDescription(
+					searchResultsHighlighting[item.UID].Description
+						? searchResultsHighlighting[item.UID].Description[0]
+						: item.Description
+				)}
+				renderers={{
+					paragraph: Paragraph,
+				}}
+			/></span
+		>
 		{#if item.news_date && item.search_type === 'news'}
 			<span class="additional_desc"
 				>{$_('searchresult_university')}: {item.school}
@@ -88,7 +110,7 @@
 		{/if}
 		{#if item.start_date && item.search_type === 'event'}
 			<span class="additional_desc"
-				>{item.start_date} - end_date  | location_short</span
+				>{item.start_date} - end_date | location_short</span
 			>
 		{/if}
 	</a>

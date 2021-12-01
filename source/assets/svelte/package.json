@@ -11,8 +11,10 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-replace": "^3.0.0",
     "@rollup/plugin-typescript": "^8.0.0",
     "@tsconfig/svelte": "^2.0.0",
+    "dotenv": "^10.0.0",
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.5.0",
     "rollup": "^2.3.4",
@@ -28,6 +30,7 @@
   },
   "dependencies": {
     "@rollup/plugin-json": "^4.1.0",
+    "@typescript-eslint/parser": "^5.5.0",
     "lodash": "^4.17.21",
     "sirv-cli": "^1.0.0",
     "svelte-i18n": "^3.3.13",

@@ -30,6 +30,7 @@
 	let offset: number = 0;
 	let limit: number = 10;
 	let searchResults: Item[] = [];
+	let searchResultsHighlighting: any;
 	let showSearchBarIntro: boolean = true;
 	let showSearchCategories: boolean = false;
 	let showSearchProposals: boolean = false;
@@ -129,9 +130,12 @@
 			return;
 		}
 
-		const endpoint: string = `https://www.dev.fhnw.ch/de/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
-			searchType || ''
-		}&limit=${limit}&offset=${offset}`;
+		const endpoint: string =
+			// @ts-ignore
+			API +
+			`?q=${searchTerm}&category=all&search_type[]=${
+				searchType || ''
+			}&limit=${limit}&offset=${offset}`;
 
 		fetch(endpoint)
 			.then((response) => {
@@ -141,7 +145,7 @@
 				return response.json();
 			})
 			.then((data) => {
-				console.log('data yes', data);
+				console.log('data', data);
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
@@ -155,7 +159,9 @@
 				if (totalItems === 0 && !noAlternativeSearchTermFound) {
 					searchTermSpellCheck = searchTerm;
 
-					const spellCheckEndpoint: string = `https://www.dev.fhnw.ch/de/spellcheck?term=${searchTermSpellCheck}`;
+					const spellCheckEndpoint: string =
+						// @ts-ignore
+						API_SPELLCHECK + `?term=${searchTermSpellCheck}`;
 
 					fetch(spellCheckEndpoint)
 						.then((response) => {
@@ -182,9 +188,16 @@
 				}
 
 				searchResults = [...searchResults, ...data.items];
+				searchResultsHighlighting = {
+					...searchResultsHighlighting,
+					...data.highlighting,
+				};
 
 				if (isFirst) {
 					searchResults = [...data.items];
+					searchResultsHighlighting = {
+						...data.highlighting,
+					};
 					isFirstSearch = false;
 					observer.observe(target);
 				}
@@ -255,7 +268,11 @@
 						>
 					</div>
 				{/if}
-				<SearchResults results={searchResults} {isLoading} />
+				<SearchResults
+					results={searchResults}
+					{searchResultsHighlighting}
+					{isLoading}
+				/>
 				{#if showStatusInfo && !searchTermSpellCheck}
 					<div
 						class="no__results"
