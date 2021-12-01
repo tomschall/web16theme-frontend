@@ -126,11 +126,11 @@ a.search__cat-title {
 	}	
 
 	a {
-		@include clearfix();
+		// @include clearfix();
 
 		display: block;
 		opacity: 1;
-		padding-bottom: $basicPush;
+		// padding-bottom: $basicPush;
 		font-size: 1.1666667rem;
 		text-decoration: none;
 		position: relative;
@@ -353,16 +353,19 @@ a.search__cat-title {
 	}
 
 	.title {
-		display: flex;
+		display: inline-block;
 		font-size: 1.7rem;
 		font-weight: 500;
 		line-height: 1.2;
 		overflow: hidden;
 		padding: $basicPush 0;
+		white-space: nowrap;
+		width: 100%;
 	}
 
 	.description {
 		display: inline-block;
+		width: 100%;
 		font-size: medium;
 		font-weight: 400;
 		color: $colorBorderGrey;

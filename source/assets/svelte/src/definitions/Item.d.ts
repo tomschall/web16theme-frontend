@@ -18,6 +18,7 @@ export interface Item {
   school: string;
   search_type: string;
   start_date: string;
+  end_date: string;
   start_event: Date;
   title: string;
   title_parents: string[];

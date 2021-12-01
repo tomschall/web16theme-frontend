@@ -1,5 +1,5 @@
 
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 var app = (function () {
     'use strict';
 
@@ -13151,7 +13151,7 @@ var app = (function () {
     }
 
     // (47:3) {#if item.title_parents}
-    function create_if_block_2$1(ctx) {
+    function create_if_block_3$1(ctx) {
     	let each_blocks = [];
     	let each_1_lookup = new Map();
     	let each_1_anchor;
@@ -13200,7 +13200,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2$1.name,
+    		id: create_if_block_3$1.name,
     		type: "if",
     		source: "(47:3) {#if item.title_parents}",
     		ctx
@@ -13210,7 +13210,7 @@ var app = (function () {
     }
 
     // (63:29) 
-    function create_if_block_7(ctx) {
+    function create_if_block_8(ctx) {
     	let div;
     	let span;
     	let t1;
@@ -13244,7 +13244,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_7.name,
+    		id: create_if_block_8.name,
     		type: "if",
     		source: "(63:29) ",
     		ctx
@@ -13254,7 +13254,7 @@ var app = (function () {
     }
 
     // (59:57) 
-    function create_if_block_6(ctx) {
+    function create_if_block_7(ctx) {
     	let div;
     	let span;
     	let t0_value = /*shortenBreadCrumbItem*/ ctx[5](/*item*/ ctx[1], 'hard') + "";
@@ -13293,7 +13293,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_6.name,
+    		id: create_if_block_7.name,
     		type: "if",
     		source: "(59:57) ",
     		ctx
@@ -13303,7 +13303,7 @@ var app = (function () {
     }
 
     // (55:58) 
-    function create_if_block_5$1(ctx) {
+    function create_if_block_6(ctx) {
     	let div;
     	let span;
     	let t0_value = /*shortenBreadCrumbItem*/ ctx[5](/*item*/ ctx[1], 'medium') + "";
@@ -13342,7 +13342,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_5$1.name,
+    		id: create_if_block_6.name,
     		type: "if",
     		source: "(55:58) ",
     		ctx
@@ -13352,7 +13352,7 @@ var app = (function () {
     }
 
     // (51:31) 
-    function create_if_block_4$1(ctx) {
+    function create_if_block_5$1(ctx) {
     	let div;
     	let span;
     	let t0_value = /*shortenBreadCrumbItem*/ ctx[5](/*item*/ ctx[1], 'soft') + "";
@@ -13391,7 +13391,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_4$1.name,
+    		id: create_if_block_5$1.name,
     		type: "if",
     		source: "(51:31) ",
     		ctx
@@ -13401,7 +13401,7 @@ var app = (function () {
     }
 
     // (49:5) {#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}
-    function create_if_block_3$1(ctx) {
+    function create_if_block_4$1(ctx) {
     	let span;
     	let t_value = /*item*/ ctx[1] + "";
     	let t;
@@ -13426,7 +13426,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_3$1.name,
+    		id: create_if_block_4$1.name,
     		type: "if",
     		source: "(49:5) {#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}",
     		ctx
@@ -13441,11 +13441,11 @@ var app = (function () {
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*index*/ ctx[10] + 1 === 1 && /*item*/ ctx[1].length <= /*maxLettersInBreadCrumbItem*/ ctx[4]) return create_if_block_3$1;
-    		if (/*index*/ ctx[10] + 1 === 1) return create_if_block_4$1;
-    		if (/*index*/ ctx[10] + 1 < 4 && /*totalBreadCrumbItems*/ ctx[2] <= 5) return create_if_block_5$1;
-    		if (/*index*/ ctx[10] + 1 < 5 && /*totalBreadCrumbItems*/ ctx[2] > 5) return create_if_block_6;
-    		if (/*index*/ ctx[10] + 1 > 7) return create_if_block_7;
+    		if (/*index*/ ctx[10] + 1 === 1 && /*item*/ ctx[1].length <= /*maxLettersInBreadCrumbItem*/ ctx[4]) return create_if_block_4$1;
+    		if (/*index*/ ctx[10] + 1 === 1) return create_if_block_5$1;
+    		if (/*index*/ ctx[10] + 1 < 4 && /*totalBreadCrumbItems*/ ctx[2] <= 5) return create_if_block_6;
+    		if (/*index*/ ctx[10] + 1 < 5 && /*totalBreadCrumbItems*/ ctx[2] > 5) return create_if_block_7;
+    		if (/*index*/ ctx[10] + 1 > 7) return create_if_block_8;
     	}
 
     	let current_block_type = select_block_type(ctx);
@@ -13502,7 +13502,70 @@ var app = (function () {
     	return block;
     }
 
-    // (98:2) {#if item.news_date && item.search_type === 'news'}
+    // (86:2) {#if item.description}
+    function create_if_block_2$1(ctx) {
+    	let span;
+    	let sveltemarkdown;
+    	let current;
+
+    	sveltemarkdown = new SvelteMarkdown({
+    			props: {
+    				source: /*shortenDescription*/ ctx[6](/*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID].Description
+    				? /*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID].Description[0]
+    				: /*item*/ ctx[1].Description),
+    				renderers: { paragraph: Paragraph }
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			span = element("span");
+    			create_component(sveltemarkdown.$$.fragment);
+    			attr_dev(span, "class", "description");
+    			add_location(span, file$5, 86, 2, 3032);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, span, anchor);
+    			mount_component(sveltemarkdown, span, null);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const sveltemarkdown_changes = {};
+
+    			if (dirty & /*searchResultsHighlighting, item*/ 3) sveltemarkdown_changes.source = /*shortenDescription*/ ctx[6](/*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID].Description
+    			? /*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID].Description[0]
+    			: /*item*/ ctx[1].Description);
+
+    			sveltemarkdown.$set(sveltemarkdown_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(sveltemarkdown.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(sveltemarkdown.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(span);
+    			destroy_component(sveltemarkdown);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2$1.name,
+    		type: "if",
+    		source: "(86:2) {#if item.description}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (100:2) {#if item.news_date && item.search_type === 'news'}
     function create_if_block_1$2(ctx) {
     	let span;
     	let t0_value = /*$_*/ ctx[3]('searchresult_university') + "";
@@ -13528,7 +13591,7 @@ var app = (function () {
     			t5 = text(" | ");
     			t6 = text(t6_value);
     			attr_dev(span, "class", "additional_desc");
-    			add_location(span, file$5, 98, 3, 3353);
+    			add_location(span, file$5, 100, 3, 3386);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -13555,35 +13618,48 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(98:2) {#if item.news_date && item.search_type === 'news'}",
+    		source: "(100:2) {#if item.news_date && item.search_type === 'news'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (104:2) {#if item.start_date && item.search_type === 'event'}
+    // (106:2) {#if item.start_date && item.search_type === 'event'}
     function create_if_block$3(ctx) {
     	let span;
     	let t0_value = /*item*/ ctx[1].start_date + "";
     	let t0;
     	let t1;
+    	let t2_value = /*item*/ ctx[1].end_date + "";
+    	let t2;
+    	let t3;
+    	let t4_value = /*item*/ ctx[1].location_short + "";
+    	let t4;
 
     	const block = {
     		c: function create() {
     			span = element("span");
     			t0 = text(t0_value);
-    			t1 = text(" - end_date | location_short");
+    			t1 = text(" - ");
+    			t2 = text(t2_value);
+    			t3 = text(" | ");
+    			t4 = text(t4_value);
     			attr_dev(span, "class", "additional_desc");
-    			add_location(span, file$5, 104, 3, 3550);
+    			add_location(span, file$5, 106, 3, 3583);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
     			append_dev(span, t0);
     			append_dev(span, t1);
+    			append_dev(span, t2);
+    			append_dev(span, t3);
+    			append_dev(span, t4);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*item*/ 2 && t0_value !== (t0_value = /*item*/ ctx[1].start_date + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*item*/ 2 && t2_value !== (t2_value = /*item*/ ctx[1].end_date + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*item*/ 2 && t4_value !== (t4_value = /*item*/ ctx[1].location_short + "")) set_data_dev(t4, t4_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(span);
@@ -13594,7 +13670,7 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(104:2) {#if item.start_date && item.search_type === 'event'}",
+    		source: "(106:2) {#if item.start_date && item.search_type === 'event'}",
     		ctx
     	});
 
@@ -13613,18 +13689,16 @@ var app = (function () {
     	let t2;
     	let a;
     	let span1;
-    	let sveltemarkdown0;
+    	let sveltemarkdown;
     	let t3;
-    	let span2;
-    	let sveltemarkdown1;
     	let t4;
     	let t5;
     	let a_href_value;
     	let a_title_value;
     	let current;
-    	let if_block0 = /*item*/ ctx[1].title_parents && create_if_block_2$1(ctx);
+    	let if_block0 = /*item*/ ctx[1].title_parents && create_if_block_3$1(ctx);
 
-    	sveltemarkdown0 = new SvelteMarkdown({
+    	sveltemarkdown = new SvelteMarkdown({
     			props: {
     				source: /*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID].Title
     				? /*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID]?.Title[0]
@@ -13634,18 +13708,9 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	sveltemarkdown1 = new SvelteMarkdown({
-    			props: {
-    				source: /*shortenDescription*/ ctx[6](/*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID].Description
-    				? /*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID].Description[0]
-    				: /*item*/ ctx[1].Description),
-    				renderers: { paragraph: Paragraph }
-    			},
-    			$$inline: true
-    		});
-
-    	let if_block1 = /*item*/ ctx[1].news_date && /*item*/ ctx[1].search_type === 'news' && create_if_block_1$2(ctx);
-    	let if_block2 = /*item*/ ctx[1].start_date && /*item*/ ctx[1].search_type === 'event' && create_if_block$3(ctx);
+    	let if_block1 = /*item*/ ctx[1].description && create_if_block_2$1(ctx);
+    	let if_block2 = /*item*/ ctx[1].news_date && /*item*/ ctx[1].search_type === 'news' && create_if_block_1$2(ctx);
+    	let if_block3 = /*item*/ ctx[1].start_date && /*item*/ ctx[1].search_type === 'event' && create_if_block$3(ctx);
 
     	const block = {
     		c: function create() {
@@ -13660,14 +13725,13 @@ var app = (function () {
     			t2 = space();
     			a = element("a");
     			span1 = element("span");
-    			create_component(sveltemarkdown0.$$.fragment);
+    			create_component(sveltemarkdown.$$.fragment);
     			t3 = space();
-    			span2 = element("span");
-    			create_component(sveltemarkdown1.$$.fragment);
-    			t4 = space();
     			if (if_block1) if_block1.c();
-    			t5 = space();
+    			t4 = space();
     			if (if_block2) if_block2.c();
+    			t5 = space();
+    			if (if_block3) if_block3.c();
     			attr_dev(div0, "class", "breadcrumbs");
     			add_location(div0, file$5, 45, 2, 1725);
     			attr_dev(span0, "class", "button");
@@ -13678,8 +13742,6 @@ var app = (function () {
     			add_location(div2, file$5, 44, 1, 1697);
     			attr_dev(span1, "class", "title");
     			add_location(span1, file$5, 75, 2, 2772);
-    			attr_dev(span2, "class", "description");
-    			add_location(span2, file$5, 85, 2, 3007);
     			attr_dev(a, "href", a_href_value = /*item*/ ctx[1]['@id']);
     			attr_dev(a, "title", a_title_value = /*item*/ ctx[1].Title);
     			add_location(a, file$5, 74, 1, 2728);
@@ -13701,14 +13763,13 @@ var app = (function () {
     			append_dev(li, t2);
     			append_dev(li, a);
     			append_dev(a, span1);
-    			mount_component(sveltemarkdown0, span1, null);
+    			mount_component(sveltemarkdown, span1, null);
     			append_dev(a, t3);
-    			append_dev(a, span2);
-    			mount_component(sveltemarkdown1, span2, null);
-    			append_dev(a, t4);
     			if (if_block1) if_block1.m(a, null);
-    			append_dev(a, t5);
+    			append_dev(a, t4);
     			if (if_block2) if_block2.m(a, null);
+    			append_dev(a, t5);
+    			if (if_block3) if_block3.m(a, null);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
@@ -13716,7 +13777,7 @@ var app = (function () {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
-    					if_block0 = create_if_block_2$1(ctx);
+    					if_block0 = create_if_block_3$1(ctx);
     					if_block0.c();
     					if_block0.m(div0, null);
     				}
@@ -13726,45 +13787,61 @@ var app = (function () {
     			}
 
     			if ((!current || dirty & /*item*/ 2) && t1_value !== (t1_value = /*item*/ ctx[1].search_type + "")) set_data_dev(t1, t1_value);
-    			const sveltemarkdown0_changes = {};
+    			const sveltemarkdown_changes = {};
 
-    			if (dirty & /*searchResultsHighlighting, item*/ 3) sveltemarkdown0_changes.source = /*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID].Title
+    			if (dirty & /*searchResultsHighlighting, item*/ 3) sveltemarkdown_changes.source = /*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID].Title
     			? /*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID]?.Title[0]
     			: /*item*/ ctx[1].Title;
 
-    			sveltemarkdown0.$set(sveltemarkdown0_changes);
-    			const sveltemarkdown1_changes = {};
+    			sveltemarkdown.$set(sveltemarkdown_changes);
 
-    			if (dirty & /*searchResultsHighlighting, item*/ 3) sveltemarkdown1_changes.source = /*shortenDescription*/ ctx[6](/*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID].Description
-    			? /*searchResultsHighlighting*/ ctx[0][/*item*/ ctx[1].UID].Description[0]
-    			: /*item*/ ctx[1].Description);
-
-    			sveltemarkdown1.$set(sveltemarkdown1_changes);
-
-    			if (/*item*/ ctx[1].news_date && /*item*/ ctx[1].search_type === 'news') {
+    			if (/*item*/ ctx[1].description) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
+
+    					if (dirty & /*item*/ 2) {
+    						transition_in(if_block1, 1);
+    					}
     				} else {
-    					if_block1 = create_if_block_1$2(ctx);
+    					if_block1 = create_if_block_2$1(ctx);
     					if_block1.c();
-    					if_block1.m(a, t5);
+    					transition_in(if_block1, 1);
+    					if_block1.m(a, t4);
     				}
     			} else if (if_block1) {
-    				if_block1.d(1);
-    				if_block1 = null;
+    				group_outros();
+
+    				transition_out(if_block1, 1, 1, () => {
+    					if_block1 = null;
+    				});
+
+    				check_outros();
     			}
 
-    			if (/*item*/ ctx[1].start_date && /*item*/ ctx[1].search_type === 'event') {
+    			if (/*item*/ ctx[1].news_date && /*item*/ ctx[1].search_type === 'news') {
     				if (if_block2) {
     					if_block2.p(ctx, dirty);
     				} else {
-    					if_block2 = create_if_block$3(ctx);
+    					if_block2 = create_if_block_1$2(ctx);
     					if_block2.c();
-    					if_block2.m(a, null);
+    					if_block2.m(a, t5);
     				}
     			} else if (if_block2) {
     				if_block2.d(1);
     				if_block2 = null;
+    			}
+
+    			if (/*item*/ ctx[1].start_date && /*item*/ ctx[1].search_type === 'event') {
+    				if (if_block3) {
+    					if_block3.p(ctx, dirty);
+    				} else {
+    					if_block3 = create_if_block$3(ctx);
+    					if_block3.c();
+    					if_block3.m(a, null);
+    				}
+    			} else if (if_block3) {
+    				if_block3.d(1);
+    				if_block3 = null;
     			}
 
     			if (!current || dirty & /*item*/ 2 && a_href_value !== (a_href_value = /*item*/ ctx[1]['@id'])) {
@@ -13777,22 +13854,22 @@ var app = (function () {
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(sveltemarkdown0.$$.fragment, local);
-    			transition_in(sveltemarkdown1.$$.fragment, local);
+    			transition_in(sveltemarkdown.$$.fragment, local);
+    			transition_in(if_block1);
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(sveltemarkdown0.$$.fragment, local);
-    			transition_out(sveltemarkdown1.$$.fragment, local);
+    			transition_out(sveltemarkdown.$$.fragment, local);
+    			transition_out(if_block1);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(li);
     			if (if_block0) if_block0.d();
-    			destroy_component(sveltemarkdown0);
-    			destroy_component(sveltemarkdown1);
+    			destroy_component(sveltemarkdown);
     			if (if_block1) if_block1.d();
     			if (if_block2) if_block2.d();
+    			if (if_block3) if_block3.d();
     		}
     	};
 

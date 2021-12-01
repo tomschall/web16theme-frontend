@@ -90,6 +90,7 @@
 				}}
 			/>
 		</span>
+		{#if item.description}
 		<span class="description"
 			><SvelteMarkdown
 				source={shortenDescription(
@@ -102,6 +103,7 @@
 				}}
 			/></span
 		>
+		{/if}
 		{#if item.news_date && item.search_type === 'news'}
 			<span class="additional_desc"
 				>{$_('searchresult_university')}: {item.school}
