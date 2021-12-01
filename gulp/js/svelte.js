@@ -8,18 +8,19 @@
 var gulp = require('gulp');
 
 var taskName = 'js:svelte',
-	taskConfig = {
-		src: [
-			'./source/assets/svelte/public/build/bundle.js',
+  taskConfig = {
+    src: [
+      './source/assets/svelte/public/build/bundle.js',
       './source/assets/svelte/public/build/bundle.js.map',
-			'./source/assets/svelte/public/build/bundle.css',
-			'./source/assets/svelte/public/global.css',
-		],
-		watch: [
-			'./source/assets/svelte/**/*.js',
-		],
-		dest: './build/assets/js/',
-	};
+      './source/assets/svelte/public/build/bundle.css',
+      './source/assets/svelte/public/build/bundle_searchpage.js',
+      './source/assets/svelte/public/build/bundle_searchpage.js.map',
+      './source/assets/svelte/public/build/bundle_searchpage.css',
+      './source/assets/svelte/public/global.css',
+    ],
+    watch: ['./source/assets/svelte/**/*.js'],
+    dest: './build/assets/js/',
+  };
 
 gulp.task(taskName, function() {
 	return gulp.src(taskConfig.src).pipe(gulp.dest(taskConfig.dest));

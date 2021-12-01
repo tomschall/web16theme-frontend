@@ -151,9 +151,8 @@
 
 				if (data.facets && data.facets.length && isFirst && searchType == '') {
 					categoriesCount = data.facets[0].enable;
-				} else {
-					if (data.facets[0].enable[searchType])
-						categoriesCount[searchType] = data.facets[0].enable[searchType];
+				} else if (data.facets[0].enable[searchType]) {
+					categoriesCount[searchType] = data.facets[0].enable[searchType];
 				}
 
 				if (totalItems === 0 && !noAlternativeSearchTermFound) {

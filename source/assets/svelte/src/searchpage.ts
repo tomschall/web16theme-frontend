@@ -8,7 +8,7 @@ declare global {
 }
 
 const searchbar = new SearchBar({
-  target: document.querySelector('.widg_searchbar-bar'),
+  target: document.querySelector('.widg_searchpage'),
 });
 
 export default searchbar;
