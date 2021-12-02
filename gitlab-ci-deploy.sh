@@ -10,30 +10,8 @@ npm install -g yarn gulp@3.9.1
 echo "Current node version"
 node --version
 echo "Add svelte bundle"
-case $HOSTNAME in
-  (wsnmu16)
-    echo "Woohoo, we're on DEV!"
-    export API_DEV = https://www.dev.fhnw.ch/de/searchbar.json
-    export API_DEV_SPELLCHECK = https://www.dev.fhnw.ch/de/spellcheck
-    export API_DEV_PROPOSALS = https://www.dev.fhnw.ch/de/autocomplete
-    npm --prefix ./source/assets/svelte/ install
-    npm --prefix source/assets/svelte/ run build_dev
-    ;;
-  (wsnra129) echo "Oops, TEST? Are you kidding?"
-    export API_DEV = https://www.test.fhnw.ch/de/searchbar.json
-    export API_DEV_SPELLCHECK = https://www.test.fhnw.ch/de/spellcheck
-    export API_DEV_PROPOSALS = https://www.test.fhnw.ch/de/autocomplete
-    npm --prefix ./source/assets/svelte/ install
-    npm --prefix source/assets/svelte/ run build_dev
-    ;;
-  (v000504) echo "How did I get in the middle of nowhere? That's LIVE"
-    export API = https://www.fhnw.ch/de/searchbar.json
-    export API_SPELLCHECK = https://www.fhnw.ch/de/spellcheck
-    export API_PROPOSALS = https://www.fhnw.ch/de/autocomplete
-    npm --prefix ./source/assets/svelte/ install
-    npm --prefix source/assets/svelte/ run build
-    ;;
-esac
+npm --prefix ./source/assets/svelte/ install
+npm --prefix ./source/assets/svelte/ run build
 echo "Install packages with yarn"
 yarn install
 bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"

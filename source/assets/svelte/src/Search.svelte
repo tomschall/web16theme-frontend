@@ -135,8 +135,8 @@
 
 		const endpoint: string =
 			// @ts-ignore
-			API +
-			`?q=${searchTerm}&category=all&search_type[]=${
+			
+			`https://${window.location.hostname}/?q=${searchTerm}&category=all&search_type[]=${
 				searchType || ''
 			}&limit=${limit}&offset=${offset}`;
 
@@ -163,7 +163,7 @@
 
 					const spellCheckEndpoint: string =
 						// @ts-ignore
-						API_SPELLCHECK + `?term=${searchTermSpellCheck}`;
+						`https://${window.location.hostname}/spellcheck/?term=${searchTermSpellCheck}`;
 
 					fetch(spellCheckEndpoint)
 						.then((response) => {

@@ -13,7 +13,7 @@
 
 		if (autocompleteTerm.length) {
 			// @ts-ignore
-			const autocompleteEndpoint = API_PROPOSALS + `?term=${autocompleteTerm}`;
+			const autocompleteEndpoint = `https://${window.location.hostname}/autocomplete/?term=${autocompleteTerm}`;
 
 			fetch(autocompleteEndpoint)
 				.then((response) => {
