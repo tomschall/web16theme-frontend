@@ -33,6 +33,7 @@
 </script>
 
 <div class="widg_searchbar-bar__search">
+  searchpageinput
 	<form autocomplete="off" on:submit|preventDefault>
 		<div
 			class="widg_searchbar-bar__close"
