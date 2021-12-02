@@ -6,19 +6,23 @@ declare global {
     estatico: any;
   }
 }
+const searchBarSelector = document.querySelector('.widg_searchbar-bar');
+const searchPageSelector = document.querySelector('.widg_searchpage');
 
 const searchBar = new Search({
-  target: document.querySelector('.widg_searchbar-bar'),
+  target: searchBarSelector,
   props: {
     template: 'searchbar',
   },
 });
 
-const searchPage = new Search({
-  target: document.querySelector('.widg_searchpage'),
-  props: {
-    template: 'searchpage',
-  },
-});
+if (searchPageSelector) {
+  const searchPage = new Search({
+    target: searchPageSelector,
+    props: {
+      template: 'searchpage',
+    },
+  });
+}
 
-export default [searchBar, searchPage];
+export default searchBar;

@@ -15,7 +15,7 @@
 			const autocompleteEndpoint =
 				window.location.hostname === 'localhost'
 					? // @ts-ignore
-					  API_PROPOSALS + `autocomplete/?term=${autocompleteTerm}`
+					  API_PROPOSALS + `?term=${autocompleteTerm}`
 					: `https://${window.location.hostname}/autocomplete/?term=${autocompleteTerm}`;
 
 			fetch(autocompleteEndpoint)

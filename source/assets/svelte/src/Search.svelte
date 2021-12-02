@@ -170,7 +170,7 @@
 					const spellCheckEndpoint: string =
 						window.location.hostname === 'localhost'
 							? // @ts-ignore
-							  API_SPELLCHECK + `spellcheck/?term=${searchTermSpellCheck}`
+							  API_SPELLCHECK + `?term=${searchTermSpellCheck}`
 							: `https://${window.location.hostname}/spellcheck/?term=${searchTermSpellCheck}`;
 
 					fetch(spellCheckEndpoint)
