@@ -12,6 +12,8 @@ node --version
 echo "Install packages with yarn"
 yarn install
 bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
+src/assets/svelte npm i
+src/assets/svelte npm run build
 ./deploy_theme.sh
 bin/gulp relative-paths
 curl -o milestones.json --header "PRIVATE-TOKEN: oatBqMZzaiuxaa5sf7az" https://gitlab.fhnw.ch/api/v4/projects/25/milestones
