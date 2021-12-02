@@ -133,12 +133,18 @@
 			return;
 		}
 
-		const endpoint: string =
-			// @ts-ignore
-			
-			`https://${window.location.hostname}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
-				searchType || ''
-			}&limit=${limit}&offset=${offset}`;
+		const endpoint =
+			window.location.hostname === 'localhost'
+				? // @ts-ignore
+				  API +
+				  `?q=${searchTerm}&category=all&search_type[]=${
+						searchType || ''
+				  }&limit=${limit}&offset=${offset}` // @ts-ignore
+				: `https://${
+						window.location.hostname
+				  }/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
+						searchType || ''
+				  }&limit=${limit}&offset=${offset}`;
 
 		fetch(endpoint)
 			.then((response) => {
@@ -162,8 +168,10 @@
 					searchTermSpellCheck = searchTerm;
 
 					const spellCheckEndpoint: string =
-						// @ts-ignore
-						`https://${window.location.hostname}/spellcheck/?term=${searchTermSpellCheck}`;
+						window.location.hostname === 'localhost'
+							? // @ts-ignore
+							  API_SPELLCHECK + `spellcheck/?term=${searchTermSpellCheck}`
+							: `https://${window.location.hostname}/spellcheck/?term=${searchTermSpellCheck}`;
 
 					fetch(spellCheckEndpoint)
 						.then((response) => {

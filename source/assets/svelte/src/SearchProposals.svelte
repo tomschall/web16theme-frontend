@@ -12,8 +12,11 @@
 		autocompleteTerm = query.trim();
 
 		if (autocompleteTerm.length) {
-			// @ts-ignore
-			const autocompleteEndpoint = `https://${window.location.hostname}/autocomplete/?term=${autocompleteTerm}`;
+			const autocompleteEndpoint =
+				window.location.hostname === 'localhost'
+					? // @ts-ignore
+					  API_PROPOSALS + `autocomplete/?term=${autocompleteTerm}`
+					: `https://${window.location.hostname}/autocomplete/?term=${autocompleteTerm}`;
 
 			fetch(autocompleteEndpoint)
 				.then((response) => {
