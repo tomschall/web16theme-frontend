@@ -1,3 +1,4 @@
+// @ts-ignore
 import Search from './Search.svelte';
 import App from './App.svelte';
 
@@ -8,16 +9,26 @@ declare global {
 }
 const searchBarSelector = document.querySelector('.widg_searchbar-bar');
 const searchPageSelector = document.querySelector('.widg_searchpage');
+let searchBar = console.log(
+  'no searchBarSelector on this site',
+  searchBarSelector
+);
+let searchPage = console.log(
+  'no searchPageSelector on this site',
+  searchPageSelector
+);
 
-const searchBar = new Search({
-  target: searchBarSelector,
-  props: {
-    template: 'searchbar',
-  },
-});
+if (searchBarSelector) {
+  searchBar = new Search({
+    target: searchBarSelector,
+    props: {
+      template: 'searchbar',
+    },
+  });
+}
 
 if (searchPageSelector) {
-  const searchPage = new Search({
+  searchPage = new Search({
     target: searchPageSelector,
     props: {
       template: 'searchpage',
@@ -25,4 +36,4 @@ if (searchPageSelector) {
   });
 }
 
-export default searchBar;
+export default [searchBar, searchPage];
