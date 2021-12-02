@@ -1,4 +1,4 @@
-import SearchBar from './SearchBar.svelte';
+import Search from './Search.svelte';
 import App from './App.svelte';
 
 declare global {
@@ -7,8 +7,18 @@ declare global {
   }
 }
 
-const searchbar = new SearchBar({
+const searchBar = new Search({
   target: document.querySelector('.widg_searchbar-bar'),
+  props: {
+    template: 'searchbar',
+  },
 });
 
-export default searchbar;
+const searchPage = new Search({
+  target: document.querySelector('.widg_searchpage'),
+  props: {
+    template: 'searchpage',
+  },
+});
+
+export default [searchBar, searchPage];
