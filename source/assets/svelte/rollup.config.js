@@ -12,7 +12,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const production = !process.env.ROLLUP_WATCH;
+const production = !process.env.ROLLUP_WATCH && !process.env.BUILD_DEV;
 
 function serve() {
   let server;
@@ -97,11 +97,11 @@ export default [
 
       // In dev mode, call `npm run start` once
       // the bundle has been generated
-      !production && serve(),
+      !production && !process.env.BUILD_DEV && serve(),
 
       // Watch the `public` directory and refresh the
       // browser on changes when not in production
-      !production && livereload('public'),
+      !production && !process.env.BUILD_DEV && livereload('public'),
 
       // If we're building for production (npm run build
       // instead of npm run dev), minify
