@@ -10,7 +10,7 @@ npm install -g yarn gulp@3.9.1
 echo "Current node version"
 node --version
 npm --prefix source/assets/svelte/ install
-npm --prefix source/assets/svelte/ run build
+npm --prefix source/assets/svelte/ run build_dev
 echo "Install packages with yarn"
 yarn install
 bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"

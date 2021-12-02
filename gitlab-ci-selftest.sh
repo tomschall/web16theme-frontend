@@ -12,10 +12,9 @@ echo "Current node version"
 node --version
 echo "Current gulp version"
 gulp --version
-echo "Show bin directory"
-ls bin/
-echo "Show directory"
-ls -al
+echo "Add svelte bundle"
+npm --prefix source/assets/svelte/ install
+npm --prefix source/assets/svelte/ run build_dev
 echo "Install packages with yarn"
 yarn install
 bin/gulp build --dev --interactive=false
