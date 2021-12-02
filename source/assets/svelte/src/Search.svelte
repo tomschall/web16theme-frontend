@@ -136,7 +136,7 @@
 		const endpoint: string =
 			// @ts-ignore
 			
-			`https://${window.location.hostname}/?q=${searchTerm}&category=all&search_type[]=${
+			`https://${window.location.hostname}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
 				searchType || ''
 			}&limit=${limit}&offset=${offset}`;
 
