@@ -12,4 +12,7 @@ node --version
 echo "Install packages with yarn"
 yarn install
 bin/gulp build --interactive=false --ver="`git rev-parse --short HEAD`"
+src/assets/svelte npm i
+src/assets/svelte npm run build
+
 DO_COMMIT=yes ./deploy_theme.sh
