@@ -37,7 +37,7 @@
 	let showSearchCategories: boolean = false;
 	let showSearchProposals: boolean = false;
 	let isLoading: boolean = false;
-	let searchType: string = '';
+	let searchType: string = 'all';
 	let observer: any;
 	let target: any;
 	let showStatusInfo: boolean = false;
@@ -103,6 +103,28 @@
 		triggerSearchDebounced(true);
 	};
 
+	const updateFacets: () => void = function () {
+		const endpoint =
+			window.location.hostname === 'localhost'
+				? // @ts-ignore
+				  API +
+				  `?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`
+				: `https://${window.location.hostname}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all
+				  &limit=${limit}&offset=${offset}`;
+
+		fetch(endpoint)
+			.then((response) => {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				}
+				return response.json();
+			})
+			.then((data) => {
+				console.log('data xxx', data);
+				if (data) categoriesCount = data.facets[0].enable;
+			});
+	};
+
 	const triggerSearch = async (isFirst: boolean) => {
 		if (isFirst) {
 			showSearchBarIntro = false;
@@ -138,12 +160,12 @@
 				? // @ts-ignore
 				  API +
 				  `?q=${searchTerm}&category=all&search_type[]=${
-						searchType || ''
-				  }&limit=${limit}&offset=${offset}` // @ts-ignore
+						searchType || 'all'
+				  }&limit=${limit}&offset=${offset}`
 				: `https://${
 						window.location.hostname
 				  }/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
-						searchType || ''
+						searchType || 'all'
 				  }&limit=${limit}&offset=${offset}`;
 
 		fetch(endpoint)
@@ -158,10 +180,15 @@
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
-				if (data.facets && data.facets.length && isFirst && searchType == '') {
+				if (
+					data.facets &&
+					data.facets.length &&
+					isFirst &&
+					searchType == 'all'
+				) {
 					categoriesCount = data.facets[0].enable;
 				} else if (data.facets[0].enable[searchType]) {
-					categoriesCount[searchType] = data.facets[0].enable[searchType];
+					updateFacets();
 				}
 
 				if (totalItems === 0 && !noAlternativeSearchTermFound) {
