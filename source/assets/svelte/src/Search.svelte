@@ -109,8 +109,7 @@
 				? // @ts-ignore
 				  API +
 				  `?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`
-				: `https://${window.location.hostname}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all
-				  &limit=${limit}&offset=${offset}`;
+				: `https://${window.location.hostname}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`;
 
 		fetch(endpoint)
 			.then((response) => {
