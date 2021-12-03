@@ -32,15 +32,9 @@
 	};
 </script>
 
-<div class="widg_searchbar-bar__search">
-  searchpageinput
+
+<div class="search__string svelte_search">
 	<form autocomplete="off" on:submit|preventDefault>
-		<div
-			class="widg_searchbar-bar__close"
-			data-searchbar="close"
-			on:click={resetSearch}
-		/>
-		<label for="search" class="visuallyhidden">{$_('search_label')}</label>
 		<input
 			bind:value={query}
 			on:input={handleInput}
@@ -49,5 +43,10 @@
 			placeholder={$_('search_placeholder')}
 			data-searchbar="input"
 		/>
+		<label for="search" class="visuallyhidden">{$_('search_label')}</label>
 	</form>
+</div>
+
+<div class="search__button">
+	<button class="button search__button" data-searchpage="btn">{$_('search_label')}</button>
 </div>

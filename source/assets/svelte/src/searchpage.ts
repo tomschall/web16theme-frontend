@@ -8,7 +8,7 @@ declare global {
 }
 
 const searchbar = new SearchPage({
-  target: document.querySelector('.widg_searchpage'),
+  target: document.querySelector('.widg_svelte_searchpage'),
 });
 
 export default searchbar;
