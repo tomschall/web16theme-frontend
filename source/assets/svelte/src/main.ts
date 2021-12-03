@@ -9,14 +9,9 @@ declare global {
 }
 const searchBarSelector = document.querySelector('.widg_searchbar-bar');
 const searchPageSelector = document.querySelector('.widg_searchpage');
-let searchBar = console.log(
-  'no searchBarSelector on this site',
-  searchBarSelector
-);
-let searchPage = console.log(
-  'no searchPageSelector on this site',
-  searchPageSelector
-);
+
+let searchBar: Svelte2TsxComponent;
+let searchPage: Svelte2TsxComponent;
 
 if (searchBarSelector) {
   searchBar = new Search({
@@ -25,6 +20,8 @@ if (searchBarSelector) {
       template: 'searchbar',
     },
   });
+} else {
+  console.log('no searchBarSelector on this site');
 }
 
 if (searchPageSelector) {
@@ -34,6 +31,8 @@ if (searchPageSelector) {
       template: 'searchpage',
     },
   });
+} else {
+  console.log('no searchPageSelector on this site', searchPageSelector);
 }
 
 export default [searchBar, searchPage];
