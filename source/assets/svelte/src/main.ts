@@ -1,6 +1,6 @@
 // @ts-ignore
 import Search from './Search.svelte';
-import App from './App.svelte';
+import type { SvelteComponent } from 'svelte';
 
 declare global {
   interface Window {
@@ -10,8 +10,8 @@ declare global {
 const searchBarSelector = document.querySelector('.widg_searchbar-bar');
 const searchPageSelector = document.querySelector('.widg_searchpage');
 
-let searchBar: Svelte2TsxComponent;
-let searchPage: Svelte2TsxComponent;
+let searchBar: SvelteComponent = null;
+let searchPage: SvelteComponent = null;
 
 if (searchBarSelector) {
   searchBar = new Search({
@@ -20,8 +20,6 @@ if (searchBarSelector) {
       template: 'searchbar',
     },
   });
-} else {
-  console.log('no searchBarSelector on this site');
 }
 
 if (searchPageSelector) {
@@ -31,8 +29,6 @@ if (searchPageSelector) {
       template: 'searchpage',
     },
   });
-} else {
-  console.log('no searchPageSelector on this site', searchPageSelector);
 }
 
 export default [searchBar, searchPage];
