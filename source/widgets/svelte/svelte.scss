@@ -12,10 +12,14 @@
     }    
   }
 
+  .search__cat {
+    padding: 0;
+  }
+
   ul {
     li {
       &::before {
-        display: unset;
+        content: '' !important;
       }
     }
   }
