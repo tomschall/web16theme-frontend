@@ -135,6 +135,10 @@ h3:not(.childless) {
 
 	@include mq($from: large) {
 		padding-right: 7.5vw;
+
+		&.searchpage {
+			padding-right: 2vw;
+		}
 	}
 
 	@include mq($to: subnav) {
