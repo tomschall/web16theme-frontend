@@ -144,6 +144,10 @@ h3:not(.childless) {
 	@include mq($from: small, $to: medium) {
 		padding-left: $basicPush * 4;
 		padding-right: $basicPush * 4;
+		
+		&.searchpage {
+			padding-right: 0;
+		}
 	}
 
 	@media print {
