@@ -8,7 +8,7 @@ declare global {
   }
 }
 const searchBarSelector = document.querySelector('.widg_searchbar-bar');
-const searchPageSelector = document.querySelector('.widg_searchpage');
+const searchPageSelector = document.querySelector('.widg_svelte_searchpage');
 
 let searchBar: SvelteComponent = null;
 let searchPage: SvelteComponent = null;

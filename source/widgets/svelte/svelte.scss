@@ -1,3 +1,43 @@
+.widg_svelte_searchpage {
+  form {
+    display: flex;
+    flex-direction: row;
+
+    input {
+      flex: 5;
+    }
+
+    button {
+      flex: 1;
+    }    
+  }
+
+  .search__cat {
+    padding: 0;
+  }
+
+  ul {
+    li {
+      &::before {
+        content: '' !important;
+      }
+    }
+  }
+
+  .widg_search_proposals {
+    ul {
+      li {
+        padding-left: $basicPush * 3;
+      }
+    }
+  }
+
+  .search__string {
+    float: unset;
+  }
+}
+
+
 .sg_demo .widg_searchbar-bar {
   position: relative;
   margin: auto;

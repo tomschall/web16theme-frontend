@@ -19,7 +19,7 @@
 		}
 	}
 
-	const shortenBreadCrumbItem = (str: string, trimStyle: string) => {
+	const shortenBreadCrumbItem = (str: string, trimStyle: string): string => {
 		switch (trimStyle) {
 			case 'soft':
 				//console.log(`%c soft: ${string}`, 'color: darkorange');
@@ -91,18 +91,18 @@
 			/>
 		</span>
 		{#if item.description}
-		<span class="description"
-			><SvelteMarkdown
-				source={shortenDescription(
-					searchResultsHighlighting[item.UID].Description
-						? searchResultsHighlighting[item.UID].Description[0]
-						: item.Description
-				)}
-				renderers={{
-					paragraph: Paragraph,
-				}}
-			/></span
-		>
+			<span class="description"
+				><SvelteMarkdown
+					source={shortenDescription(
+						searchResultsHighlighting[item.UID].Description
+							? searchResultsHighlighting[item.UID].Description[0]
+							: item.Description
+					)}
+					renderers={{
+						paragraph: Paragraph,
+					}}
+				/></span
+			>
 		{/if}
 		{#if item.news_date && item.search_type === 'news'}
 			<span class="additional_desc"
