@@ -288,8 +288,7 @@
 	{/if}
 	<div class="search__results">
 		<div
-			class="widg_searchbar-bar__content custom-scrollbar"
-			data-searchbar="content"
+			class="{template === 'searchbar' ? 'widg_searchbar-bar__content custom-scrollbar' : 'widg_searchpage__content'}"
 		>
 			<div class="search__cat">
 				{#if showSearchCategories}

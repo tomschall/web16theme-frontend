@@ -46,7 +46,3 @@
 		<label for="search" class="visuallyhidden">{$_('search_label')}</label>
 	</form>
 </div>
-
-<div class="search__button">
-	<button class="button search__button" data-searchpage="btn">{$_('search_label')}</button>
-</div>
