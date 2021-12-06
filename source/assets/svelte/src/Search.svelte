@@ -146,7 +146,7 @@
 			return;
 		}
 
-		if (searchTerm && searchTerm.length < 4) {
+		if (searchTerm && searchTerm.length < 3) {
 			showSearchBarIntro = false;
 			showStatusInfo = false;
 			showSearchCategories = false;
@@ -287,7 +287,9 @@
 	{/if}
 	<div class="search__results">
 		<div
-			class="{template === 'searchbar' ? 'widg_searchbar-bar__content custom-scrollbar' : 'widg_searchpage__content'}"
+			class={template === 'searchbar'
+				? 'widg_searchbar-bar__content custom-scrollbar'
+				: 'widg_searchpage__content'}
 		>
 			<div class="search__cat">
 				{#if showSearchCategories}
