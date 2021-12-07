@@ -1,10 +1,5 @@
-{{#extend "layouts/layout" pageTypeClass="search-page"}}
-	{{#content "content"}}
-		<h1 id="search-title" data-searchpage="title">{{title}}</h1>
-
-		<div class="search__wrapper" data-searchpage="formWrapper" data-searchpage-template="search_full" role="search">
-			<div class="widg_searchpage"></div>
-		</div>
-
-	{{/content}}
+{{#extend 'layouts/layout' pageTypeClass='search-page'}}
+  {{#content 'content'}}
+    <div class='widg_svelte_searchpage'></div>
+  {{/content}}
 {{/extend}}
