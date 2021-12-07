@@ -1,3 +1,5 @@
-{{#content 'content'}}
-  <div class='widg_svelte_searchpage'></div>
-{{/content}}
+{{#extend 'layouts/layout' pageTypeClass='search-page'}}
+  {{#content 'content'}}
+    <div class='widg_svelte_searchpage'></div>
+  {{/content}}
+{{/extend}}
