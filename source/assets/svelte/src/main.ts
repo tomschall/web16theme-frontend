@@ -20,6 +20,8 @@ if (searchBarSelector) {
       template: 'searchbar',
     },
   });
+} else {
+  console.log('no searchbar selector');
 }
 
 if (searchPageSelector) {
@@ -29,6 +31,8 @@ if (searchPageSelector) {
       template: 'searchpage',
     },
   });
+} else {
+  console.log('no searchpage selector');
 }
 
 export default [searchBar, searchPage];
