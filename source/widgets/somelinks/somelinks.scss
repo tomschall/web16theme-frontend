@@ -57,5 +57,12 @@
 				@include iconDataurl('linkedin_hov');
 			}
 		}
+		&[data-somelink-target="instagram"] {
+			@include iconDataurl('instagram');
+
+			&:hover {
+				@include iconDataurl('instagram_hov');
+			}
+		}
 	}
 }

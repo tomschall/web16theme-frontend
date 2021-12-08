@@ -13,7 +13,9 @@ var templateData = {
 			fbURL: 'http://www.facebook.com',
 			fbTitle: 'FHNW on Facebook',
 			linkedinURL: 'https://www.linkedin.com/organization/50566',
-			linkedinTitle: 'FHNW on LinkedIn'
+			linkedinTitle: 'FHNW on LinkedIn',
+			instagramURL: 'https://www.instagram.com/fhnw.ch/',
+			instagramTitle: 'FHNW on Instagram'
 		},
 		data = _.merge(defaultData, {
 			meta: {
