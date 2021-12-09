@@ -271,7 +271,6 @@
 			bind:showSearchProposals
 			bind:searchTermSpellCheck
 			bind:searchType
-			{template}
 			{handleInput}
 			{unobserve}
 		/>
