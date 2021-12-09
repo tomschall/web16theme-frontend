@@ -119,7 +119,6 @@
 				return response.json();
 			})
 			.then((data) => {
-				console.log('data xxx', data);
 				if (data) categoriesCount = data.facets[0].enable;
 			});
 	};

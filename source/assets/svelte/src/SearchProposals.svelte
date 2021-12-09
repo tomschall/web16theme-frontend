@@ -26,9 +26,7 @@
 					return response.json();
 				})
 				.then((data) => {
-					if (data.suggestions.length) {
-						searchProposals = data.suggestions;
-					}
+					searchProposals = data.suggestions;
 				})
 				.catch(() => {
 					console.log('An error occured!');
