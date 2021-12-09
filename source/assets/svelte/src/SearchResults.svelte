@@ -20,8 +20,10 @@
 				<ListItem item={result} {searchResultsHighlighting} />
 			{/if}
 		{/each}
-		{#if template === 'searchbar'}
-			<a class="widg_searchbar__go-to-page not-default" href="/search_all"
+		{#if results.length > 0 && template === 'searchbar'}
+			<a
+				class="widg_searchbar__go-to-page not-default"
+				href="/pages/svelte_searchpage/svelte_searchpage.html"
 				>{$_('search_all_results')}</a
 			>
 		{/if}
