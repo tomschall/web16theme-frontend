@@ -7,6 +7,7 @@ declare global {
     estatico: any;
   }
 }
+
 const searchBarSelector = document.querySelector('.widg_searchbar-bar');
 const searchPageSelector = document.querySelector('.widg_svelte_searchpage');
 
