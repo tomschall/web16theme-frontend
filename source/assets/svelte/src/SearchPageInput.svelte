@@ -32,9 +32,8 @@
 	};
 </script>
 
-
 <div class="search__string svelte_search">
-	<form autocomplete="off" on:submit|preventDefault>
+	<form autocomplete="off" on:submit|preventDefault action="POST">
 		<input
 			bind:value={query}
 			on:input={handleInput}

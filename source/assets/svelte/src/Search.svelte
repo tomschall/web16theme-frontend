@@ -295,6 +295,7 @@
 					<SearchCategories
 						bind:categoriesCount
 						bind:searchType
+						bind:totalItems
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
 						{unobserve}
 					/>

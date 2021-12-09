@@ -8,6 +8,7 @@
 	export let unobserve: any;
 	export let searchType: string;
 	export let categoriesCount: CategoriesCount;
+	export let totalItems: number;
 
 	const handleCategorySearch = (type: string) => {
 		searchType = type;
@@ -28,8 +29,7 @@
 			handleCategorySearch('all');
 		}}
 	>
-		{$_('category_all')}
-		{categoriesCount.all > 0 ? '(' + categoriesCount.all + ')' : ''}
+		{$_('category_all')} ({totalItems})
 	</button>
 	<button
 		class="button button__cat {searchType === 'studies' ? 'active' : ''}"
@@ -38,7 +38,7 @@
 		}}
 	>
 		{$_('category_studys')}
-		{categoriesCount.studies > 0 ? '(' + categoriesCount.studies + ')' : ''}
+		{categoriesCount.studies > 0 ? `(${categoriesCount.studies})` : ''}
 	</button>
 	<button
 		class="button button__cat {searchType === 'continuing_education'
@@ -50,7 +50,7 @@
 	>
 		{$_('category_education')}
 		{categoriesCount.continuing_education > 0
-			? '(' + categoriesCount.continuing_education + ')'
+			? `(${categoriesCount.continuing_education})`
 			: ''}
 	</button>
 	<button
@@ -60,7 +60,7 @@
 		}}
 	>
 		{$_('category_events')}
-		{categoriesCount.event > 0 ? '(' + categoriesCount.event + ')' : ''}
+		{categoriesCount.event > 0 ? `(${categoriesCount.event})` : ''}
 	</button>
 	<button
 		class="button button__cat {searchType === 'news' ? 'active' : ''}"
@@ -69,7 +69,7 @@
 		}}
 	>
 		{$_('category_news')}
-		{categoriesCount.news > 0 ? '(' + categoriesCount.news + ')' : ''}
+		{categoriesCount.news > 0 ? `(${categoriesCount.news})` : ''}
 	</button>
 	<button
 		class="button button__cat {searchType === 'document' ? 'active' : ''}"
@@ -78,7 +78,7 @@
 		}}
 	>
 		{$_('category_documents')}
-		{categoriesCount.document > 0 ? '(' + categoriesCount.document + ')' : ''}
+		{categoriesCount.document > 0 ? `(${categoriesCount.document})` : ''}
 	</button>
 	<button
 		class="button button__cat {searchType === 'contact' ? 'active' : ''}"
@@ -87,7 +87,7 @@
 		}}
 	>
 		{$_('category_persons')}
-		{categoriesCount.contact > 0 ? '(' + categoriesCount.contact + ')' : ''}
+		{categoriesCount.contact > 0 ? `(${categoriesCount.contact})` : ''}
 	</button>
 	<button
 		class="button button__cat {searchType === 'general' ? 'active' : ''}"
@@ -96,7 +96,7 @@
 		}}
 	>
 		{$_('category_general')}
-		{categoriesCount.general > 0 ? '(' + categoriesCount.general + ')' : ''}
+		{categoriesCount.general > 0 ? `(${categoriesCount.general})` : ''}
 	</button>
 	<button class="button button__cat ref">&nbsp;&nbsp;</button>
 </div>

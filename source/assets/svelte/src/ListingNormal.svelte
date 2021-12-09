@@ -106,7 +106,7 @@
 		{/if}
 		{#if item.news_date && item.search_type === 'news'}
 			<span class="additional_desc"
-				>{$_('searchresult_university')}: {item.school} | {item.news_date}</span
+				>{item.school !== 'null' ? item.school : false} | {item.news_date}</span
 			>
 		{/if}
 		{#if item.start_date && item.search_type === 'event'}
