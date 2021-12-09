@@ -80,6 +80,7 @@ h3:not(.childless) {
 
 	@include mq($to: small) {
 		margin-top: $basicPush * 2;
+		padding: $basicPush;
 	}
 
 	&:focus {
@@ -145,10 +146,16 @@ h3:not(.childless) {
 		@include span(12);
 	}
 
+	@include mq($from: 0, $to: small) {
+		&.searchpage {
+			padding: 0 15px;
+		}
+	}
+
 	@include mq($from: small, $to: medium) {
 		padding-left: $basicPush * 4;
 		padding-right: $basicPush * 4;
-		
+
 		&.searchpage {
 			padding-right: 0;
 		}

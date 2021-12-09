@@ -210,7 +210,7 @@ body {
 
 .page_content ul:not(.not-default):not(.select2-selection__rendered),
 .page_content:not(.widg_svelte_searchpage ul),
-.page_content:not(.widg_svelte_searchpage ul li) {
+.page_content:not(&.searchpage) {
 	display: table;
 	margin-top: 0;
 	padding-left: 0;
