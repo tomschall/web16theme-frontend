@@ -272,22 +272,10 @@
 			bind:searchTermSpellCheck
 			bind:searchType
 			{handleInput}
-			{unobserve}
 		/>
 	{/if}
 	{#if template === 'searchpage'}
-		<SearchPageInput
-			bind:query={searchQuery}
-			bind:showSearchCategories
-			bind:showSearchBarIntro
-			bind:searchResults
-			bind:showStatusInfo
-			bind:showSearchProposals
-			bind:searchTermSpellCheck
-			bind:searchType
-			{handleInput}
-			{unobserve}
-		/>
+		<SearchPageInput bind:query={searchQuery} {handleInput} />
 	{/if}
 	{#if showSearchBarIntro}
 		<SearchBarIntro />
