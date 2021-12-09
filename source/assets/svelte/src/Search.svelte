@@ -234,7 +234,7 @@
 						...data.highlighting,
 					};
 					isFirstSearch = false;
-					observer.observe(target);
+					if (template === 'searchpage') observer.observe(target);
 				}
 
 				if (searchResults.length > 0) {
@@ -324,6 +324,7 @@
 					results={searchResults}
 					{searchResultsHighlighting}
 					{isLoading}
+					{template}
 				/>
 				{#if showStatusInfo && !searchTermSpellCheck}
 					<div

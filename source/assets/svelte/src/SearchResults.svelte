@@ -7,13 +7,22 @@
 	export let results: Item[];
 	export let isLoading: boolean;
 	export let searchResultsHighlighting: any[];
+	export let template: string;
 </script>
 
 <div class="search__results">
 	<ul class="search-results">
-		{#each results as result (result)}
-			<ListItem item={result} {searchResultsHighlighting} />
+		{#each results as result, index (index)}
+			{#if index < 9 && template === 'searchbar'}
+				<ListItem item={result} {searchResultsHighlighting} />
+			{/if}
+			{#if template === 'searchpage'}
+				<ListItem item={result} {searchResultsHighlighting} />
+			{/if}
 		{/each}
+		{#if template === 'searchbar'}
+			<a href="/search_all">Search All</a>
+		{/if}
 	</ul>
 </div>
 <div class="loading-indicator">
