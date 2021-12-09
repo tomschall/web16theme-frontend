@@ -21,7 +21,9 @@
 			{/if}
 		{/each}
 		{#if template === 'searchbar'}
-			<a href="/search_all">Search All</a>
+			<a class="widg_searchbar__go-to-page not-default" href="/search_all"
+				>{$_('search_all_results')}</a
+			>
 		{/if}
 	</ul>
 </div>

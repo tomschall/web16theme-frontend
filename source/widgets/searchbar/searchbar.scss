@@ -48,7 +48,7 @@
 			font-size: medium;
 
 			a {
-				text-decoration: none;	
+				text-decoration: none;
 				cursor: pointer;
 
 				p {
@@ -59,7 +59,7 @@
 
 			&:before {
 				left: $basicPush !important;
-				transform: translate(-25%,-40%);
+				transform: translate(-25%, -40%);
 			}
 		}
 	}
@@ -83,7 +83,7 @@
 		display: inline-block;
 		font-size: small;
 		padding-bottom: $basicPush * 2;
-	};	
+	}
 }
 
 /**
@@ -188,13 +188,13 @@
 	p {
 		border-bottom: 1px solid $colorGreyHover;
 		margin-top: $basicPush * 2;
-		padding-bottom: $basicPush;	
+		padding-bottom: $basicPush;
 		font-weight: 500;
 		font-size: 16px;
 		color: $colorDarkGrey;
 		text-transform: uppercase;
 		margin-bottom: 0;
-		
+
 		@include mq($to: small) {
 			padding: 0 0px 10px 0px;
 			margin-right: $basicPush;
@@ -272,22 +272,22 @@
 
 .widg_searchbar-bar__categories {
 	display: none;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
 	padding: 0;
 	z-index: 1000;
 	margin-top: $basicPush * 2;
-	
+
 	@include mq($to: small) {
 		display: flex;
-  	flex-wrap: nowrap;
-  	white-space: nowrap;
-		padding: $basicPush * 2  0 0 0;
+		flex-wrap: nowrap;
+		white-space: nowrap;
+		padding: $basicPush * 2 0 0 0;
 		margin-left: $basicPush * 2;
 		overflow-x: scroll;
 
-		&::-webkit-scrollbar { 
+		&::-webkit-scrollbar {
 			width: 0;
 			height: 10px;
 			background: transparent;
@@ -300,8 +300,8 @@
 			}
 		}
 	}
-	
-	button {	
+
+	button {
 		&.button__cat {
 			height: map-get($elementHeight, mini);
 			line-height: unset;
@@ -432,7 +432,7 @@
 	text-align: center;
 	font-size: 1.25rem;
 	margin-bottom: $basicPush * 2;
-	margin-top: $basicPush * -1;
+	margin-top: 0;
 
 	font-weight: 600;
 
