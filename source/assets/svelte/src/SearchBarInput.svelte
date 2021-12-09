@@ -8,7 +8,6 @@
 	export let showSearchBarIntro: boolean;
 	export let showSearchProposals: boolean;
 	export let showStatusInfo: boolean;
-	export let unobserve: any;
 	export let handleInput: () => void;
 	export let searchTermSpellCheck: string;
 	export let searchType: string;
@@ -22,7 +21,6 @@
 		showSearchProposals = false;
 		searchTermSpellCheck = null;
 		searchType = '';
-		unobserve();
 
 		document
 			.querySelector('.widg_searchbar-bar.show-intro.is_open')
