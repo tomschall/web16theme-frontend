@@ -49,37 +49,37 @@
 </script>
 
 <li class="search__result-normal search__result--item">
-	<div class="result__top">
-		<div class="breadcrumbs">
-			{#if item.title_parents}
-				{#each item.title_parents as item, index (index)}
-					{#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}
-						<span>{item}</span>
-					{:else if index + 1 === 1}
-						<div class="listing__tooltip" data-tooltip={item}>
-							<span>{shortenBreadCrumbItem(item, 'soft')}</span>
-						</div>
-					{:else if index + 1 < 4 && totalBreadCrumbItems <= 5}
-						<div class="listing__tooltip" data-tooltip={item}>
-							<span>{shortenBreadCrumbItem(item, 'medium')}</span>
-						</div>
-					{:else if index + 1 < 5 && totalBreadCrumbItems > 5}
-						<div class="listing__tooltip" data-tooltip={item}>
-							<span>{shortenBreadCrumbItem(item, 'hard')}</span>
-						</div>
-					{:else if index + 1 > 7}
-						<div class="listing__tooltip" data-tooltip={item}>
-							<span>...</span>
-						</div>
-					{/if}
-				{/each}
-			{/if}
-		</div>
-		<div class="result__type">
-			<span class="button">{item.search_type}</span>
-		</div>
-	</div>
 	<a href={item['@id']} title={item.Title}>
+		<div class="result__top">
+			<div class="breadcrumbs">
+				{#if item.title_parents}
+					{#each item.title_parents as item, index (index)}
+						{#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}
+							<span>{item}</span>
+						{:else if index + 1 === 1}
+							<div class="listing__tooltip" data-tooltip={item}>
+								<span>{shortenBreadCrumbItem(item, 'soft')}</span>
+							</div>
+						{:else if index + 1 < 4 && totalBreadCrumbItems <= 5}
+							<div class="listing__tooltip" data-tooltip={item}>
+								<span>{shortenBreadCrumbItem(item, 'medium')}</span>
+							</div>
+						{:else if index + 1 < 5 && totalBreadCrumbItems > 5}
+							<div class="listing__tooltip" data-tooltip={item}>
+								<span>{shortenBreadCrumbItem(item, 'hard')}</span>
+							</div>
+						{:else if index + 1 > 7}
+							<div class="listing__tooltip" data-tooltip={item}>
+								<span>...</span>
+							</div>
+						{/if}
+					{/each}
+				{/if}
+			</div>
+			<div class="result__type">
+				<span class="button">{item.search_type}</span>
+			</div>
+		</div>
 		<span class="title">
 			<SvelteMarkdown
 				source={searchResultsHighlighting[item.UID].Title
