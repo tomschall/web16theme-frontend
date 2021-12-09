@@ -185,12 +185,7 @@
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
-				if (
-					data.facets &&
-					data.facets.length &&
-					isFirst &&
-					searchType == 'all'
-				) {
+				if (data.facets && data.facets.length && isFirst) {
 					updateFacets();
 				} else if (data.facets[0].enable[searchType]) {
 					updateFacets();
