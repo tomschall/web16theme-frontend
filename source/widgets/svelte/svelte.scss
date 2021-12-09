@@ -14,10 +14,7 @@
 	}
 
 	.search__cat {
-		@include mq($to: small) {
-			// padding: 0 $basicPush;
-			// background: red;
-		}
+		padding: 0;
 	}
 
 	ul {

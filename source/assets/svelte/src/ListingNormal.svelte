@@ -11,6 +11,9 @@
 	let maxLettersInBreadCrumbItem = 23;
 	let totalBreadCrumbItems = 0;
 	let totalLettersInBreadCrumb = 0;
+	let mqFromSmall = window.estatico.mq.query({ from: 'small' }); // Estatico
+
+	console.log('mqFromSmall', mqFromSmall);
 
 	$: {
 		if (item && item.title_parents) {
@@ -42,10 +45,11 @@
 		}
 	};
 
-	const shortenDescription = (str: string) =>
-		str.length <= maxLettersInDescription
+	const shortenDescription = (str: string) => {
+		return str.length <= maxLettersInDescription
 			? str
 			: str.substring(0, maxLettersInDescription) + '...';
+	};
 </script>
 
 <li class="search__result-normal search__result--item">
@@ -91,18 +95,29 @@
 			/>
 		</span>
 		{#if item.description}
-			<span class="description"
-				><SvelteMarkdown
-					source={shortenDescription(
-						searchResultsHighlighting[item.UID].Description
+			<span class="description">
+				{#if mqFromSmall === false}
+					<SvelteMarkdown
+						source={shortenDescription(
+							searchResultsHighlighting[item.UID].Description
+								? searchResultsHighlighting[item.UID].Description[0]
+								: item.Description
+						)}
+						renderers={{
+							paragraph: Paragraph,
+						}}
+					/>
+				{:else}
+					<SvelteMarkdown
+						source={searchResultsHighlighting[item.UID].Description
 							? searchResultsHighlighting[item.UID].Description[0]
-							: item.Description
-					)}
-					renderers={{
-						paragraph: Paragraph,
-					}}
-				/></span
-			>
+							: item.Description}
+						renderers={{
+							paragraph: Paragraph,
+						}}
+					/>
+				{/if}
+			</span>
 		{/if}
 		{#if item.news_date && item.search_type === 'news'}
 			<span class="additional_desc"
