@@ -182,7 +182,6 @@
 				return response.json();
 			})
 			.then((data) => {
-				console.log('data', data);
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
@@ -192,9 +191,10 @@
 					isFirst &&
 					searchType == 'all'
 				) {
-					categoriesCount = data.facets[0].enable;
+					updateFacets();
 				} else if (data.facets[0].enable[searchType]) {
 					updateFacets();
+					categoriesCount = data.facets[0].enable[searchType];
 				}
 
 				if (totalItems === 0 && !noAlternativeSearchTermFound) {
