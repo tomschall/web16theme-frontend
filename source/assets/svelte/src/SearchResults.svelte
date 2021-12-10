@@ -25,7 +25,7 @@
 		{#if results.length > 0 && template === 'searchbar'}
 			<a
 				class="widg_searchbar__go-to-page not-default"
-				href={`${window.location.host}/search_all?query=${searchTerm}&searchtype=${searchType}`}
+				href={`${/search_all?query=${searchTerm}&searchtype=${searchType}`}
 				>{$_('search_all_results')}</a
 			>
 		{/if}
