@@ -37,6 +37,7 @@
 @import 'layout';
 
 @import 'globals/links';
+@import 'content/content';
 
 // Modules
 @import '../../widgets/teaser/teaser';
@@ -96,7 +97,7 @@
   */
 @import 'content/headers';
 @import 'content/text';
-@import 'content/content';
+
 @import 'content/buttons';
 @import 'content/forms';
 @import 'content/productsidebar';

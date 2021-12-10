@@ -208,8 +208,7 @@ body {
 	@include clearfix();
 }
 
-// .page_content ul:not(.not-default):not(.select2-selection__rendered) {
-.content__element ul {
+.page_content ul:not(.not-default):not(.select2-selection__rendered) {
 	display: table;
 	margin-top: 0;
 	padding-left: 0;

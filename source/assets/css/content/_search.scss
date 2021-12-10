@@ -51,7 +51,7 @@ a.search__cat-title {
 	margin-right: $basicPush + 5;
 
 	@include mq($to: small) {
-		padding: 0;
+		padding: 0 $basicPush;
 		margin-right: 0;
 	}
 
