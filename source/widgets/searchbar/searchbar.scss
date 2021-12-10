@@ -303,11 +303,9 @@
 
 	button {
 		&.button__cat {
-
 			@include mq($from: small) {
 				height: map-get($elementHeight, mobile);
 			}
-			
 			@include mq($to: small) {
 				height: map-get($elementHeight, mini);
 			}
