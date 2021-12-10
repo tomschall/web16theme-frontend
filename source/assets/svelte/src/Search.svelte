@@ -313,6 +313,12 @@
 						>
 					</div>
 				{/if}
+				{#if showStatusInfo && !searchTermSpellCheck}
+					<div class="widg__searchbar_autocomplete">
+						<p>{$_('search_no_results')}</p>
+						<span>{$_('search_no_results_subtitle')}</span>
+					</div>
+				{/if}
 				<SearchResults
 					results={searchResults}
 					{searchResultsHighlighting}
@@ -321,16 +327,6 @@
 					{searchTerm}
 					{searchType}
 				/>
-				{#if showStatusInfo && !searchTermSpellCheck}
-					<div
-						class="no__results"
-						in:fly={{ y: -200, duration: 2000 }}
-						out:fly={{ y: -200, duration: 500 }}
-					>
-						{$_('search_no_results')}
-						<span>{$_('search_no_results_subtitle')}</span>
-					</div>
-				{/if}
 			</div>
 		</div>
 	</div>
