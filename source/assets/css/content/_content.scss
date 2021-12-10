@@ -208,7 +208,7 @@ body {
 	@include clearfix();
 }
 
-.page_content ul:not(.not-default):not(.select2-selection__rendered) {
+.page_content ul:not(.not-default):not(.select2-selection__rendered):not(.widg_search_proposals ul):not(.search-results) {
 	display: table;
 	margin-top: 0;
 	padding-left: 0;

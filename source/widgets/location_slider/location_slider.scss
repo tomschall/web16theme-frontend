@@ -68,7 +68,11 @@ nav.widg_location__nav {
 
 	li {
 		display: inline-block;
-        margin-right: $basicPush * 4;
+		margin-right: $basicPush * 4;
+
+		&::before {
+			content: '' !important;
+		}
 
  		@include mq($to: 'small') {
 			width: 100%;

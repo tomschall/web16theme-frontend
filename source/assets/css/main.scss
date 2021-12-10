@@ -37,7 +37,6 @@
 @import 'layout';
 
 @import 'globals/links';
-@import 'content/content';
 
 // Modules
 @import '../../widgets/teaser/teaser';
@@ -47,7 +46,6 @@
 @import '../../widgets/navigation_meta/navigation_meta';
 @import '../../widgets/footer/footer';
 @import '../../widgets/breadcrumb/breadcrumb';
-@import '../../widgets/actionbuttons/actionbuttons';
 @import '../../widgets/searchbar/searchbar';
 @import '../../widgets/hero/hero';
 @import '../../widgets/menubuttons/menubuttons';
@@ -90,6 +88,7 @@
 @import '../../widgets/news_search/news_search';
 @import '../../widgets/edu_contents/edu_contents';
 @import '../../widgets/svelte/svelte';
+@import '../../widgets/actionbuttons/actionbuttons';
 //*autoinsertmodule*
 
 /**
@@ -97,7 +96,7 @@
   */
 @import 'content/headers';
 @import 'content/text';
-
+@import 'content/content';
 @import 'content/buttons';
 @import 'content/forms';
 @import 'content/productsidebar';
