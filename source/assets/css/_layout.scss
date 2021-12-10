@@ -157,7 +157,13 @@ h3:not(.childless) {
 		padding-right: $basicPush * 4;
 
 		&.searchpage {
-			padding-right: 0;
+			@include mq($to: small) {
+				padding-right: 0;
+			}
+			@include mq($from: small) {
+				padding-right: $basicPush * 2;
+				padding-left: $basicPush * 2;
+			}
 		}
 	}
 

@@ -301,7 +301,7 @@
 				{/if}
 				{#if showSearchCategories}
 					<div class="widg_searchbar-bar__title">
-						<p>{totalItems} {$_('searchresult_title')}</p>
+						<p>{$_('searchresult_title')}</p>
 					</div>
 				{/if}
 				{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
@@ -322,12 +322,8 @@
 					{searchType}
 				/>
 				{#if showStatusInfo && !searchTermSpellCheck}
-					<div
-						class="no__results"
-						in:fly={{ y: -200, duration: 2000 }}
-						out:fly={{ y: -200, duration: 500 }}
-					>
-						{$_('search_no_results')}
+					<div class="widg__searchbar_autocomplete">
+						<p>{$_('search_no_results')}</p>
 						<span>{$_('search_no_results_subtitle')}</span>
 					</div>
 				{/if}
