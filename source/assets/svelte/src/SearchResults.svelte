@@ -8,6 +8,8 @@
 	export let isLoading: boolean;
 	export let searchResultsHighlighting: any[];
 	export let template: string;
+	export let searchTerm: string;
+	export let searchType: string;
 </script>
 
 <div class="search__results">
@@ -23,7 +25,7 @@
 		{#if results.length > 0 && template === 'searchbar'}
 			<a
 				class="widg_searchbar__go-to-page not-default"
-				href="/pages/svelte_searchpage/svelte_searchpage.html"
+				href={`${window.location.pathname}?query=${searchTerm}&searchtype=${searchType}`}
 				>{$_('search_all_results')}</a
 			>
 		{/if}

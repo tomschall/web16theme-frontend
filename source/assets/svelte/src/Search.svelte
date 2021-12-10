@@ -44,6 +44,7 @@
 	let isFirstSearch: boolean = true;
 	let itemsCount: number = null;
 	let categoriesCount: CategoriesCount;
+	let urlParams = new URLSearchParams(window.location.search);
 
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
@@ -89,14 +90,21 @@
 	};
 
 	onMount(() => {
-		observer = new IntersectionObserver(loadMoreResults, options);
-		target = document.querySelector('.loading-indicator');
+		if (template === 'searchpage') {
+			observer = new IntersectionObserver(loadMoreResults, options);
+			target = document.querySelector('.loading-indicator');
+			if (urlParams.has('query')) {
+				searchQuery = urlParams.get('query');
+				searchType = urlParams.get('searchtype') || 'all';
+				if (searchQuery && searchType) handleInput();
+			}
+		}
 	});
 
 	const handleInput: () => void = function () {
 		console.log('template', template);
 		noAlternativeSearchTermFound = false;
-		unobserve();
+		if (observer) unobserve();
 		isLoading = true;
 		searchTermSpellCheck = null;
 
@@ -174,19 +182,14 @@
 				return response.json();
 			})
 			.then((data) => {
-				console.log('data', data);
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
-				if (
-					data.facets &&
-					data.facets.length &&
-					isFirst &&
-					searchType == 'all'
-				) {
-					categoriesCount = data.facets[0].enable;
+				if (data.facets && data.facets.length && isFirst) {
+					updateFacets();
 				} else if (data.facets[0].enable[searchType]) {
 					updateFacets();
+					categoriesCount = data.facets[0].enable[searchType];
 				}
 
 				if (totalItems === 0 && !noAlternativeSearchTermFound) {
@@ -264,22 +267,10 @@
 			bind:searchTermSpellCheck
 			bind:searchType
 			{handleInput}
-			{unobserve}
 		/>
 	{/if}
 	{#if template === 'searchpage'}
-		<SearchPageInput
-			bind:query={searchQuery}
-			bind:showSearchCategories
-			bind:showSearchBarIntro
-			bind:searchResults
-			bind:showStatusInfo
-			bind:showSearchProposals
-			bind:searchTermSpellCheck
-			bind:searchType
-			{handleInput}
-			{unobserve}
-		/>
+		<SearchPageInput bind:query={searchQuery} {handleInput} />
 	{/if}
 	{#if showSearchBarIntro}
 		<SearchBarIntro />
@@ -296,6 +287,7 @@
 						bind:categoriesCount
 						bind:searchType
 						bind:totalItems
+						{template}
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
 						{unobserve}
 					/>
@@ -326,6 +318,8 @@
 					{searchResultsHighlighting}
 					{isLoading}
 					{template}
+					{searchTerm}
+					{searchType}
 				/>
 				{#if showStatusInfo && !searchTermSpellCheck}
 					<div
