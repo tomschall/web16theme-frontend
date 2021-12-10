@@ -334,6 +334,9 @@
 				background: $colorBlack;
 				border-color: $colorBlack;
 			}
+			&:disabled {
+				color: $colorBorderGrey;
+			}
 		}
 
 		&.ref {
