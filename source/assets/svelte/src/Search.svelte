@@ -301,7 +301,7 @@
 				{/if}
 				{#if showSearchCategories}
 					<div class="widg_searchbar-bar__title">
-						<p>{totalItems} {$_('searchresult_title')}</p>
+						<p>{$_('searchresult_title')}</p>
 					</div>
 				{/if}
 				{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
