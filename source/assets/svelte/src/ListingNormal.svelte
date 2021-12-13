@@ -11,9 +11,9 @@
 	let maxLettersInBreadCrumbItem = 23;
 	let totalBreadCrumbItems = 0;
 	let totalLettersInBreadCrumb = 0;
-	let mqFromSmall = window.estatico.mq.query({ from: 'small' }); // Estatico
+	let mq = window.estatico.mq.query({ from: 'large' }); // Estatico
 
-	console.log('mqFromSmall', mqFromSmall);
+	console.log('mq', mq);
 
 	$: {
 		if (item && item.title_parents) {
@@ -46,9 +46,26 @@
 	};
 
 	const shortenDescription = (str: string) => {
-		return str.length <= maxLettersInDescription
-			? str
-			: str.substring(0, maxLettersInDescription) + '...';
+		const checkStartDescription = /^([a-z]|[\,]\s?[a-z A-Z]|\s[a-z A-Z])\w+/g;
+
+		if (
+			checkStartDescription.test(str) === true &&
+			str.length <= maxLettersInDescription
+		) {
+			return `... ${str}`;
+		} else if (
+			checkStartDescription.test(str) === true &&
+			str.length >= maxLettersInDescription
+		) {
+			return `... ${str.substring(0, maxLettersInDescription)} ...`;
+		} else if (
+			checkStartDescription.test(str) === false &&
+			str.length >= maxLettersInDescription
+		) {
+			return `${str.substring(0, maxLettersInDescription)} ...`;
+		} else {
+			return str;
+		}
 	};
 </script>
 
@@ -96,27 +113,16 @@
 		</span>
 		{#if item.description}
 			<span class="description">
-				{#if mqFromSmall === false}
-					<SvelteMarkdown
-						source={shortenDescription(
-							searchResultsHighlighting[item.UID].Description
-								? searchResultsHighlighting[item.UID].Description[0]
-								: item.Description
-						)}
-						renderers={{
-							paragraph: Paragraph,
-						}}
-					/>
-				{:else}
-					<SvelteMarkdown
-						source={searchResultsHighlighting[item.UID].Description
+				<SvelteMarkdown
+					source={shortenDescription(
+						searchResultsHighlighting[item.UID].Description
 							? searchResultsHighlighting[item.UID].Description[0]
-							: item.Description}
-						renderers={{
-							paragraph: Paragraph,
-						}}
-					/>
-				{/if}
+							: item.Description
+					)}
+					renderers={{
+						paragraph: Paragraph,
+					}}
+				/>
 			</span>
 		{/if}
 		{#if item.news_date && item.search_type === 'news'}
