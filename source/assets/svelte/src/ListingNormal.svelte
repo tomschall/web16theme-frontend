@@ -53,7 +53,7 @@
 </script>
 
 <li class="search__result-normal search__result--item">
-	<a href={item['@id']} title={item.Title}>
+	<a href={item['@id']} title={item.Title} target="_blank">
 		<div class="result__top">
 			<div class="breadcrumbs">
 				{#if item.title_parents}

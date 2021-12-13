@@ -102,7 +102,6 @@
 	});
 
 	const handleInput: () => void = function () {
-		console.log('template', template);
 		noAlternativeSearchTermFound = false;
 		if (observer) unobserve();
 		isLoading = true;
