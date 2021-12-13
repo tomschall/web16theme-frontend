@@ -91,6 +91,10 @@
 		window.estatico.modal.showModal();
 
 		this.addSingleEventListeners();
+
+    setTimeout(function() {
+      $('input[name="searchbar_search"]').trigger('focus');
+    }, 1000);
 	};
 
 	/**

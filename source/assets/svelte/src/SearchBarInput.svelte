@@ -20,7 +20,7 @@
 		showStatusInfo = false;
 		showSearchProposals = false;
 		searchTermSpellCheck = null;
-		searchType = '';
+		searchType = 'all';
 
 		document
 			.querySelector('.widg_searchbar-bar.show-intro.is_open')

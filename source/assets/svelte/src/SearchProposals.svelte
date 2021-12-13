@@ -35,7 +35,7 @@
 	}
 
 	const handleClick = (value: string) => {
-		searchType = '';
+		searchType = 'all';
 		query = value;
 		handleInput();
 	};

@@ -186,7 +186,7 @@
 				totalItems = data.items_total;
 
 				if (data.facets && data.facets.length && isFirst) {
-					updateFacets();
+					categoriesCount = data.facets[0].enable;
 				} else if (data.facets[0].enable[searchType]) {
 					updateFacets();
 					categoriesCount = data.facets[0].enable[searchType];
