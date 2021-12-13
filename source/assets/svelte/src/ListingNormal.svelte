@@ -46,7 +46,7 @@
 	};
 
 	const shortenDescription = (str: string) => {
-		const checkStartDescription = /^([a-z]|[\,] [a-z A-Z]|\s[a-z A-Z])\w+/g;
+		const checkStartDescription = /^([a-z]|[\,]\s?[a-z A-Z]|\s[a-z A-Z])\w+/g;
 
 		if (
 			checkStartDescription.test(str) === true &&
