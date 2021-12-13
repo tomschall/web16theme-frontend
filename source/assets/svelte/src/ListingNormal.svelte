@@ -11,9 +11,7 @@
 	let maxLettersInBreadCrumbItem = 23;
 	let totalBreadCrumbItems = 0;
 	let totalLettersInBreadCrumb = 0;
-	let mq = window.estatico.mq.query({ from: 'large' }); // Estatico
-
-	console.log('mq', mq);
+	let mqFromSmall = window.estatico.mq.query({ from: 'small' }); // Estatico
 
 	$: {
 		if (item && item.title_parents) {
@@ -25,20 +23,16 @@
 	const shortenBreadCrumbItem = (str: string, trimStyle: string): string => {
 		switch (trimStyle) {
 			case 'soft':
-				//console.log(`%c soft: ${string}`, 'color: darkorange');
 				return str.length <= 20 ? str : str.substring(0, 18) + '...';
 			case 'medium':
 				if (totalBreadCrumbItems <= 2) {
-					//console.log(`%c medium: ${string}`, 'color: darkseagreen');
 					return str.length < 50 ? str : str.substring(0, 45) + '...';
 				} else if (totalBreadCrumbItems >= 2) {
-					//console.log(`%c medium: ${string}`, 'color: darkseagreen');
 					return str.length < 28 && totalBreadCrumbItems <= 4
 						? str
 						: str.substring(0, 26) + '...';
 				}
 			case 'hard':
-				//console.log(`%c hard: ${string}`, 'color: deepskyblue');
 				return str.length <= 14 ? str : str.substring(0, 14) + '...';
 			default:
 				break;
@@ -46,26 +40,9 @@
 	};
 
 	const shortenDescription = (str: string) => {
-		const checkStartDescription = /^([a-z]|[\,]\s?[a-z A-Z]|\s[a-z A-Z])\w+/g;
-
-		if (
-			checkStartDescription.test(str) === true &&
-			str.length <= maxLettersInDescription
-		) {
-			return `... ${str}`;
-		} else if (
-			checkStartDescription.test(str) === true &&
-			str.length >= maxLettersInDescription
-		) {
-			return `... ${str.substring(0, maxLettersInDescription)} ...`;
-		} else if (
-			checkStartDescription.test(str) === false &&
-			str.length >= maxLettersInDescription
-		) {
-			return `${str.substring(0, maxLettersInDescription)} ...`;
-		} else {
-			return str;
-		}
+		return str.length <= maxLettersInDescription
+			? str
+			: str.substring(0, maxLettersInDescription) + '...';
 	};
 </script>
 
@@ -113,16 +90,27 @@
 		</span>
 		{#if item.description}
 			<span class="description">
-				<SvelteMarkdown
-					source={shortenDescription(
-						searchResultsHighlighting[item.UID].Description
+				{#if mqFromSmall === false}
+					<SvelteMarkdown
+						source={shortenDescription(
+							searchResultsHighlighting[item.UID].Description
+								? searchResultsHighlighting[item.UID].Description[0]
+								: item.Description
+						)}
+						renderers={{
+							paragraph: Paragraph,
+						}}
+					/>
+				{:else}
+					<SvelteMarkdown
+						source={searchResultsHighlighting[item.UID].Description
 							? searchResultsHighlighting[item.UID].Description[0]
-							: item.Description
-					)}
-					renderers={{
-						paragraph: Paragraph,
-					}}
-				/>
+							: item.Description}
+						renderers={{
+							paragraph: Paragraph,
+						}}
+					/>
+				{/if}
 			</span>
 		{/if}
 		{#if item.news_date && item.search_type === 'news'}
