@@ -126,7 +126,10 @@
 				return response.json();
 			})
 			.then((data) => {
-				if (data) categoriesCount = data.facets[0].enable;
+				if (data) {
+					categoriesCount = data.facets[0].enable;
+					categoriesCount['all'] = data.items_total;
+				}
 			});
 	};
 
@@ -184,11 +187,16 @@
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 
-				if (data.facets && data.facets.length && isFirst) {
+				if (
+					data.facets &&
+					data.facets.length &&
+					isFirst &&
+					searchType === 'all'
+				) {
 					categoriesCount = data.facets[0].enable;
-				} else if (data.facets[0].enable[searchType]) {
+					categoriesCount['all'] = data.items_total;
+				} else {
 					updateFacets();
-					categoriesCount = data.facets[0].enable[searchType];
 				}
 
 				if (totalItems === 0 && !noAlternativeSearchTermFound) {
@@ -285,7 +293,6 @@
 					<SearchCategories
 						bind:categoriesCount
 						bind:searchType
-						bind:totalItems
 						{template}
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
 						{unobserve}

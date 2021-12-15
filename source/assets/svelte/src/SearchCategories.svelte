@@ -7,12 +7,10 @@
 	export let unobserve: any;
 	export let searchType: string;
 	export let categoriesCount: CategoriesCount;
-	export let totalItems: number;
 	export let template: string;
 
 	let zeroResult: string = '(0)';
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico
-	console.log('mq', mq);
 
 	const handleCategorySearch = (type: string) => {
 		searchType = type;
@@ -35,9 +33,9 @@
 			on:click={() => {
 				handleCategorySearch('all');
 			}}
-			disabled={totalItems > 0 ? false : true}
+			disabled={categoriesCount.all > 0 ? false : true}
 		>
-			{$_('category_all')} ({totalItems})
+			{$_('category_all')} ({categoriesCount.all})
 		</button>
 		<button
 			class="button button__cat {searchType && searchType === 'studies'
