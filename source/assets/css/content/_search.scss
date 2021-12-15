@@ -193,12 +193,15 @@ a.search__cat-title {
 			max-width: 630px;
 			margin: 0;
 
-			// &::-webkit-scrollbar {
-			// 	display: none;
-			// 	width: 0;
-			// 	height: 10px;
-			// 	background: transparent;
-			// }
+			@include mq($to: small) {
+				overflow-x: scroll;
+				&::-webkit-scrollbar {
+					display: none;
+					width: 0;
+					height: 10px;
+					background: transparent;
+				}
+			}
 
 			span {
 				&:nth-child(1) {
