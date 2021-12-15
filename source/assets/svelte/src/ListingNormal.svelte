@@ -76,6 +76,30 @@
 			return str;
 		}
 	};
+
+	const translateType = (param) => {
+		console.log(param);
+
+		switch (param) {
+			case 'general':
+				return $_('category_all');
+			case 'studies':
+				return $_('category_studys');
+			case 'continuing_education':
+				return $_('category_education');
+			case 'event':
+				return $_('category_events');
+			case 'news':
+				return $_('category_news');
+			case 'document':
+				return $_('category_documents');
+			case 'contact':
+				return $_('category_persons');
+
+			default:
+				return 'to be translated';
+		}
+	};
 </script>
 
 <li class="search__result-normal search__result--item">
@@ -111,7 +135,7 @@
 				{/if}
 			</div>
 			<div class="result__type">
-				<span class="button">{item.search_type}</span>
+				<span class="button">{translateType(item.search_type)}</span>
 			</div>
 		</div>
 		<span class="title">
