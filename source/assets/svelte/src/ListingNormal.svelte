@@ -7,13 +7,12 @@
 	export let item: Item;
 	export let searchResultsHighlighting: any[];
 
-	let maxLettersInDescription = 175;
+	let maxLettersInDescription = 180;
 	let maxLettersInBreadCrumbItem = 23;
-	let totalBreadCrumbItems = 0;
-	let totalLettersInBreadCrumb = 0;
-	let mq = window.estatico.mq.query({ from: 'large' }); // Estatico
-
-	console.log('mq', mq);
+	let totalBreadCrumbItems: number = 0;
+	let totalLettersInBreadCrumb: number = 0;
+	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico media query
+	console.log(mq);
 
 	$: {
 		if (item && item.title_parents) {
@@ -52,58 +51,38 @@
 			checkStartDescription === '*' &&
 			str.length <= maxLettersInDescription
 		) {
-			console.log('rule 1', checkStartDescription, str);
-
 			return `${str}`;
 		} else if (
 			checkStartDescription === checkStartDescription.toLocaleLowerCase() &&
 			str.length <= maxLettersInDescription
 		) {
-			console.log('rule 1.1', checkStartDescription, str);
-			return `... ${str.substring(0, maxLettersInDescription)} ...`;
+			return `... ${str.substring(0, maxLettersInDescription)}`;
 		} else if (
 			checkStartDescription === checkStartDescription.toLowerCase() &&
 			str.length >= maxLettersInDescription
 		) {
-			console.log('rule 2', str);
 			return `... ${str.substring(0, maxLettersInDescription)} ...`;
 		} else if (
 			checkStartDescription === '*' &&
 			str.length >= maxLettersInDescription
 		) {
-			console.log('rule 2.2', str);
 			return `${str.substring(0, maxLettersInDescription)} ...`;
 		} else if (
 			checkStartDescription === checkStartDescription.toUpperCase() &&
 			str.length >= maxLettersInDescription
 		) {
-			console.log('rule 3', str);
 			return `${str.substring(0, maxLettersInDescription)} ...`;
 		} else {
 			return str;
 		}
 	};
-	// 	} else if (
-	// 		checkStartDescription.test(str) === true &&
-	// 		str.length >= maxLettersInDescription
-	// 	) {
-	// 		return `... ${str.substring(0, maxLettersInDescription)} ...`;
-	// 	} else if (
-	// 		checkStartDescription.test(str) === false &&
-	// 		str.length >= maxLettersInDescription
-	// 	) {
-	// 		return `${str.substring(0, maxLettersInDescription)} ...`;
-	// 	} else {
-	// 		return str;
-	// 	}
-	// };
 </script>
 
 <li class="search__result-normal search__result--item">
 	<a href={item['@id']} title={item.Title}>
 		<div class="result__top">
 			<div class="breadcrumbs">
-				{#if item.title_parents}
+				{#if item.title_parents && mq === true}
 					{#each item.title_parents as item, index (index)}
 						{#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}
 							<span>{item}</span>
@@ -125,42 +104,38 @@
 							</div>
 						{/if}
 					{/each}
+				{:else}
+					{#each item.title_parents as item, index (index)}
+						<span>{item}</span>
+					{/each}
 				{/if}
 			</div>
 			<div class="result__type">
 				<span class="button">{item.search_type}</span>
 			</div>
 		</div>
-		{#if item.Title}
-			<span class="title">
-				{#if searchResultsHighlighting[item.UID].Title}
-					<SvelteMarkdown
-						source={searchResultsHighlighting[item.UID].Title[0]}
-						renderers={{
-							paragraph: Paragraph,
-						}}
-					/>
-				{:else}
-					{item.Title}
-				{/if}
-			</span>
-		{/if}
-		{#if item.Description}
+		<span class="title">
+			<SvelteMarkdown
+				source={searchResultsHighlighting[item.UID].Title
+					? searchResultsHighlighting[item.UID]?.Title[0]
+					: item.Title}
+				renderers={{
+					paragraph: Paragraph,
+				}}
+			/>
+		</span>
+		{#if item.description.length}
 			<span class="description">
-				{#if searchResultsHighlighting[item.UID].Description}
-					<SvelteMarkdown
-						source={mqFromSmall === false
-							? shortenDescription(
-									searchResultsHighlighting[item.UID].Description[0]
-							  )
-							: searchResultsHighlighting[item.UID].Description[0]}
-						renderers={{
-							paragraph: Paragraph,
-						}}
-					/>
-				{:else}
-					{item.Description}
-				{/if}
+				<SvelteMarkdown
+					source={shortenDescription(
+						searchResultsHighlighting[item.UID].Description
+							? searchResultsHighlighting[item.UID].Description[0]
+							: item.Description
+					)}
+					renderers={{
+						paragraph: Paragraph,
+					}}
+				/>
 			</span>
 		{/if}
 		{#if item.news_date && item.search_type === 'news'}
