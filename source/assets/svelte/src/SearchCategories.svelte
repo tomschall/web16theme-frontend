@@ -11,6 +11,8 @@
 	export let template: string;
 
 	let zeroResult: string = '(0)';
+	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico
+	console.log('mq', mq);
 
 	const handleCategorySearch = (type: string) => {
 		searchType = type;
@@ -47,7 +49,9 @@
 			disabled={categoriesCount.studies > 0 ? false : true}
 		>
 			{$_('category_studys')}
-			{categoriesCount.studies > 0 ? `(${categoriesCount.studies})` : zeroResult}
+			{categoriesCount.studies > 0
+				? `(${categoriesCount.studies})`
+				: zeroResult}
 		</button>
 		<button
 			class="button button__cat {searchType &&
@@ -92,7 +96,9 @@
 			disabled={categoriesCount.document > 0 ? false : true}
 		>
 			{$_('category_documents')}
-			{categoriesCount.document > 0 ? `(${categoriesCount.document})` : zeroResult}
+			{categoriesCount.document > 0
+				? `(${categoriesCount.document})`
+				: zeroResult}
 		</button>
 		<button
 			class="button button__cat {searchType === 'contact' ? 'active' : ''}"
@@ -102,7 +108,9 @@
 			disabled={categoriesCount.contact > 0 ? false : true}
 		>
 			{$_('category_persons')}
-			{categoriesCount.contact > 0 ? `(${categoriesCount.contact})` : zeroResult}
+			{categoriesCount.contact > 0
+				? `(${categoriesCount.contact})`
+				: zeroResult}
 		</button>
 		<button
 			class="button button__cat {searchType === 'general' ? 'active' : ''}"
@@ -112,8 +120,12 @@
 			disabled={categoriesCount.general > 0 ? false : true}
 		>
 			{$_('category_general')}
-			{categoriesCount.general > 0 ? `(${categoriesCount.general})` : zeroResult}
+			{categoriesCount.general > 0
+				? `(${categoriesCount.general})`
+				: zeroResult}
 		</button>
-		<button class="button button__cat ref">&nbsp;&nbsp;</button>
+		{#if mq === false}
+			<button class="button button__cat ref">&nbsp;&nbsp;</button>
+		{/if}
 	</div>
 {/if}
