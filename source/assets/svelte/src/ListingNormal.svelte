@@ -7,11 +7,12 @@
 	export let item: Item;
 	export let searchResultsHighlighting: any[];
 
-	let maxLettersInDescription = 175;
+	let maxLettersInDescription = 180;
 	let maxLettersInBreadCrumbItem = 23;
-	let totalBreadCrumbItems = 0;
-	let totalLettersInBreadCrumb = 0;
-	let mqFromSmall = window.estatico.mq.query({ from: 'small' }); // Estatico
+	let totalBreadCrumbItems: number = 0;
+	let totalLettersInBreadCrumb: number = 0;
+	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico media query
+	console.log(mq);
 
 	$: {
 		if (item && item.title_parents) {
@@ -23,16 +24,20 @@
 	const shortenBreadCrumbItem = (str: string, trimStyle: string): string => {
 		switch (trimStyle) {
 			case 'soft':
+				//console.log(`%c soft: ${string}`, 'color: darkorange');
 				return str.length <= 20 ? str : str.substring(0, 18) + '...';
 			case 'medium':
 				if (totalBreadCrumbItems <= 2) {
+					//console.log(`%c medium: ${string}`, 'color: darkseagreen');
 					return str.length < 50 ? str : str.substring(0, 45) + '...';
 				} else if (totalBreadCrumbItems >= 2) {
+					//console.log(`%c medium: ${string}`, 'color: darkseagreen');
 					return str.length < 28 && totalBreadCrumbItems <= 4
 						? str
 						: str.substring(0, 26) + '...';
 				}
 			case 'hard':
+				//console.log(`%c hard: ${string}`, 'color: deepskyblue');
 				return str.length <= 14 ? str : str.substring(0, 14) + '...';
 			default:
 				break;
@@ -40,17 +45,68 @@
 	};
 
 	const shortenDescription = (str: string) => {
-		return str.length <= maxLettersInDescription
-			? str
-			: str.substring(0, maxLettersInDescription) + '...';
+		// const checkStartDescription = /^([a-z]|[\,]\s?[a-z A-Z]|\s[a-z A-Z])\w+/g;
+		const checkStartDescription = str.charAt(0);
+		if (
+			checkStartDescription === '*' &&
+			str.length <= maxLettersInDescription
+		) {
+			return `${str}`;
+		} else if (
+			checkStartDescription === checkStartDescription.toLocaleLowerCase() &&
+			str.length <= maxLettersInDescription
+		) {
+			return `... ${str.substring(0, maxLettersInDescription)}`;
+		} else if (
+			checkStartDescription === checkStartDescription.toLowerCase() &&
+			str.length >= maxLettersInDescription
+		) {
+			return `... ${str.substring(0, maxLettersInDescription)} ...`;
+		} else if (
+			checkStartDescription === '*' &&
+			str.length >= maxLettersInDescription
+		) {
+			return `${str.substring(0, maxLettersInDescription)} ...`;
+		} else if (
+			checkStartDescription === checkStartDescription.toUpperCase() &&
+			str.length >= maxLettersInDescription
+		) {
+			return `${str.substring(0, maxLettersInDescription)} ...`;
+		} else {
+			return str;
+		}
+	};
+
+	const translateType = (param) => {
+		console.log(param);
+
+		switch (param) {
+			case 'general':
+				return $_('category_all');
+			case 'studies':
+				return $_('category_studys');
+			case 'continuing_education':
+				return $_('category_education');
+			case 'event':
+				return $_('category_events');
+			case 'news':
+				return $_('category_news');
+			case 'document':
+				return $_('category_documents');
+			case 'contact':
+				return $_('category_persons');
+
+			default:
+				return 'to be translated';
+		}
 	};
 </script>
 
 <li class="search__result-normal search__result--item">
-	<a href={item['@id']} title={item.Title} target="_blank">
+	<a href={item['@id']} title={item.Title}>
 		<div class="result__top">
 			<div class="breadcrumbs">
-				{#if item.title_parents}
+				{#if item.title_parents && mq === true}
 					{#each item.title_parents as item, index (index)}
 						{#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}
 							<span>{item}</span>
@@ -72,42 +128,38 @@
 							</div>
 						{/if}
 					{/each}
+				{:else}
+					{#each item.title_parents as item, index (index)}
+						<span>{item}</span>
+					{/each}
 				{/if}
 			</div>
 			<div class="result__type">
-				<span class="button">{item.search_type}</span>
+				<span class="button">{translateType(item.search_type)}</span>
 			</div>
 		</div>
-		{#if item.Title}
-			<span class="title">
-				{#if searchResultsHighlighting[item.UID].Title}
-					<SvelteMarkdown
-						source={searchResultsHighlighting[item.UID].Title[0]}
-						renderers={{
-							paragraph: Paragraph,
-						}}
-					/>
-				{:else}
-					{item.Title}
-				{/if}
-			</span>
-		{/if}
-		{#if item.Description}
+		<span class="title">
+			<SvelteMarkdown
+				source={searchResultsHighlighting[item.UID].Title
+					? searchResultsHighlighting[item.UID]?.Title[0]
+					: item.Title}
+				renderers={{
+					paragraph: Paragraph,
+				}}
+			/>
+		</span>
+		{#if item.description.length}
 			<span class="description">
-				{#if searchResultsHighlighting[item.UID].Description}
-					<SvelteMarkdown
-						source={mqFromSmall === false
-							? shortenDescription(
-									searchResultsHighlighting[item.UID].Description[0]
-							  )
-							: searchResultsHighlighting[item.UID].Description[0]}
-						renderers={{
-							paragraph: Paragraph,
-						}}
-					/>
-				{:else}
-					{item.Description}
-				{/if}
+				<SvelteMarkdown
+					source={shortenDescription(
+						searchResultsHighlighting[item.UID].Description
+							? searchResultsHighlighting[item.UID].Description[0]
+							: item.Description
+					)}
+					renderers={{
+						paragraph: Paragraph,
+					}}
+				/>
 			</span>
 		{/if}
 		{#if item.news_date && item.search_type === 'news'}

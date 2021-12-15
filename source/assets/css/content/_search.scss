@@ -134,6 +134,7 @@ a.search__cat-title {
 		font-size: 1.1666667rem;
 		text-decoration: none;
 		position: relative;
+		padding-bottom: $basicPush;
 
 		// &:before {
 		// 	transition: transform $transitionLength / 3 $transitionEase;
@@ -247,14 +248,6 @@ a.search__cat-title {
 				background: transparent;
 			}
 
-			@include mq($from: medium) {
-				&::-webkit-scrollbar-thumb {
-					&:hover {
-						background: red;
-					}
-				}
-			}
-
 			span {
 				&:nth-child(1) {
 					padding-left: 0;
@@ -282,9 +275,11 @@ a.search__cat-title {
 					top: 50%;
 					transform: translate(50%, -50%);
 					right: -1 * $basicPush * 0.75;
+				}
 
-					:last-child {
-						background: red;
+				&:last-child {
+					&::after {
+						background-image: unset;
 					}
 				}
 			}
