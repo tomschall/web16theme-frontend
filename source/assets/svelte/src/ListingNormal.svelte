@@ -78,38 +78,35 @@
 				<span class="button">{item.search_type}</span>
 			</div>
 		</div>
-		<span class="title">
-			<SvelteMarkdown
-				source={searchResultsHighlighting[item.UID].Title
-					? searchResultsHighlighting[item.UID]?.Title[0]
-					: item.Title}
-				renderers={{
-					paragraph: Paragraph,
-				}}
-			/>
-		</span>
-		{#if item.description}
-			<span class="description">
-				{#if mqFromSmall === false}
+		{#if item.Title}
+			<span class="title">
+				{#if searchResultsHighlighting[item.UID].Title}
 					<SvelteMarkdown
-						source={shortenDescription(
-							searchResultsHighlighting[item.UID].Description
-								? searchResultsHighlighting[item.UID].Description[0]
-								: item.Description
-						)}
+						source={searchResultsHighlighting[item.UID].Title[0]}
 						renderers={{
 							paragraph: Paragraph,
 						}}
 					/>
 				{:else}
+					{item.Title}
+				{/if}
+			</span>
+		{/if}
+		{#if item.Description}
+			<span class="description">
+				{#if searchResultsHighlighting[item.UID].Description}
 					<SvelteMarkdown
-						source={searchResultsHighlighting[item.UID].Description
-							? searchResultsHighlighting[item.UID].Description[0]
-							: item.Description}
+						source={mqFromSmall === false
+							? shortenDescription(
+									searchResultsHighlighting[item.UID].Description[0]
+							  )
+							: searchResultsHighlighting[item.UID].Description[0]}
 						renderers={{
 							paragraph: Paragraph,
 						}}
 					/>
+				{:else}
+					{item.Description}
 				{/if}
 			</span>
 		{/if}
