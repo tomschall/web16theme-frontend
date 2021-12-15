@@ -48,7 +48,7 @@ export default [
   {
     input: 'src/main.ts',
     output: {
-      sourcemap: true,
+      sourcemap: !production ? true : false,
       format: 'iife',
       name: 'search',
       file: 'public/build/bundle.js',

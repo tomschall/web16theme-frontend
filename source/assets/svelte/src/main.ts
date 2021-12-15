@@ -1,4 +1,3 @@
-// @ts-ignore
 import Search from './Search.svelte';
 import type { SvelteComponent } from 'svelte';
 
