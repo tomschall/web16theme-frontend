@@ -298,11 +298,6 @@
 						{handleInput}
 					/>
 				{/if}
-				{#if showSearchCategories}
-					<div class="widg_searchbar-bar__title">
-						<p>{$_('searchresult_title')}</p>
-					</div>
-				{/if}
 				{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
 					<div class="widg__searchbar_autocomplete">
 						<p>{$_('search_autocomplete_warning')} <b>{searchTerm}</b></p>
@@ -310,6 +305,11 @@
 							>{$_('search_autocomlete_warning_2')}
 							<b>"{searchTermSpellCheck}"</b></span
 						>
+					</div>
+				{/if}
+				{#if showSearchCategories}
+					<div class="widg_searchbar-bar__title">
+						<p>{$_('searchresult_title')}</p>
 					</div>
 				{/if}
 				<SearchResults
