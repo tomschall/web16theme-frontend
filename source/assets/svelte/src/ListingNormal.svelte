@@ -11,7 +11,9 @@
 	let maxLettersInBreadCrumbItem = 23;
 	let totalBreadCrumbItems = 0;
 	let totalLettersInBreadCrumb = 0;
-	let mqFromSmall = window.estatico.mq.query({ from: 'small' }); // Estatico
+	let mq = window.estatico.mq.query({ from: 'large' }); // Estatico
+
+	console.log('mq', mq);
 
 	$: {
 		if (item && item.title_parents) {
@@ -23,16 +25,20 @@
 	const shortenBreadCrumbItem = (str: string, trimStyle: string): string => {
 		switch (trimStyle) {
 			case 'soft':
+				//console.log(`%c soft: ${string}`, 'color: darkorange');
 				return str.length <= 20 ? str : str.substring(0, 18) + '...';
 			case 'medium':
 				if (totalBreadCrumbItems <= 2) {
+					//console.log(`%c medium: ${string}`, 'color: darkseagreen');
 					return str.length < 50 ? str : str.substring(0, 45) + '...';
 				} else if (totalBreadCrumbItems >= 2) {
+					//console.log(`%c medium: ${string}`, 'color: darkseagreen');
 					return str.length < 28 && totalBreadCrumbItems <= 4
 						? str
 						: str.substring(0, 26) + '...';
 				}
 			case 'hard':
+				//console.log(`%c hard: ${string}`, 'color: deepskyblue');
 				return str.length <= 14 ? str : str.substring(0, 14) + '...';
 			default:
 				break;
@@ -40,14 +46,61 @@
 	};
 
 	const shortenDescription = (str: string) => {
-		return str.length <= maxLettersInDescription
-			? str
-			: str.substring(0, maxLettersInDescription) + '...';
+		// const checkStartDescription = /^([a-z]|[\,]\s?[a-z A-Z]|\s[a-z A-Z])\w+/g;
+		const checkStartDescription = str.charAt(0);
+		if (
+			checkStartDescription === '*' &&
+			str.length <= maxLettersInDescription
+		) {
+			console.log('rule 1', checkStartDescription, str);
+
+			return `${str}`;
+		} else if (
+			checkStartDescription === checkStartDescription.toLocaleLowerCase() &&
+			str.length <= maxLettersInDescription
+		) {
+			console.log('rule 1.1', checkStartDescription, str);
+			return `... ${str.substring(0, maxLettersInDescription)} ...`;
+		} else if (
+			checkStartDescription === checkStartDescription.toLowerCase() &&
+			str.length >= maxLettersInDescription
+		) {
+			console.log('rule 2', str);
+			return `... ${str.substring(0, maxLettersInDescription)} ...`;
+		} else if (
+			checkStartDescription === '*' &&
+			str.length >= maxLettersInDescription
+		) {
+			console.log('rule 2.2', str);
+			return `${str.substring(0, maxLettersInDescription)} ...`;
+		} else if (
+			checkStartDescription === checkStartDescription.toUpperCase() &&
+			str.length >= maxLettersInDescription
+		) {
+			console.log('rule 3', str);
+			return `${str.substring(0, maxLettersInDescription)} ...`;
+		} else {
+			return str;
+		}
 	};
+	// 	} else if (
+	// 		checkStartDescription.test(str) === true &&
+	// 		str.length >= maxLettersInDescription
+	// 	) {
+	// 		return `... ${str.substring(0, maxLettersInDescription)} ...`;
+	// 	} else if (
+	// 		checkStartDescription.test(str) === false &&
+	// 		str.length >= maxLettersInDescription
+	// 	) {
+	// 		return `${str.substring(0, maxLettersInDescription)} ...`;
+	// 	} else {
+	// 		return str;
+	// 	}
+	// };
 </script>
 
 <li class="search__result-normal search__result--item">
-	<a href={item['@id']} title={item.Title} target="_blank">
+	<a href={item['@id']} title={item.Title}>
 		<div class="result__top">
 			<div class="breadcrumbs">
 				{#if item.title_parents}
