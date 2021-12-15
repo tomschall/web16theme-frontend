@@ -288,14 +288,6 @@ a.search__cat-title {
 				&:first-child {
 					padding-left: 0;
 				}
-
-				&:last-child {
-					span {
-						&:after {
-							background: unset;
-						}
-					}
-				}
 			}
 		}
 
