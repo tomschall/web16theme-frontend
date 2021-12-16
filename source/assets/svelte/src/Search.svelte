@@ -294,7 +294,7 @@
 	<div class="search__results">
 		<div
 			class={template === 'searchbar'
-				? 'widg_searchbar-bar__content custom-scrollbar'
+				? 'widg_searchbar-bar__content'
 				: 'widg_searchpage__content'}
 		>
 			<div class="search__cat">
@@ -346,3 +346,16 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	::-webkit-scrollbar {
+		width: 9px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border: 2px solid rgba(0, 0, 0, 0);
+		background-clip: padding-box;
+		background-color: #bebdb9;
+		border-radius: 9999px;
+	}
+</style>
