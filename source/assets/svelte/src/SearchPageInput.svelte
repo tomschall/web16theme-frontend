@@ -1,12 +1,31 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { onMount } from 'svelte';
+	import type { Item } from './definitions/Item';
 
 	export let query: string;
+	export let showSearchCategories: boolean;
+	export let showSearchBarIntro: boolean;
+	export let searchResults: Item[];
+	export let showStatusInfo: boolean;
+	export let showSearchProposals: boolean;
+	export let searchTermSpellCheck: string;
+	export let searchType: string;
 	export let handleInput: () => void;
-	export let ref = null;
+	let ref = null;
 
 	onMount(() => ref.focus());
+
+	const handleClick = () => {
+		query = '';
+		searchResults = [];
+		showSearchCategories = false;
+		showSearchBarIntro = true;
+		showSearchProposals = false;
+		showStatusInfo = false;
+		searchTermSpellCheck = null;
+		searchType = 'all';
+	};
 </script>
 
 <div class="search__string svelte_search">
@@ -21,5 +40,8 @@
 			data-searchbar="input"
 		/>
 		<label for="search" class="visuallyhidden">{$_('search_label')}</label>
+		<a on:click={handleClick} href={void 0} class="search__string__clear"
+			>&nbsp;</a
+		>
 	</form>
 </div>

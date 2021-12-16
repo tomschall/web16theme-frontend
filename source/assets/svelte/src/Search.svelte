@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import SearchPageInput from './SearchPageInput.svelte';
 	import SearchBarInput from './SearchBarInput.svelte';
@@ -277,7 +276,17 @@
 		/>
 	{/if}
 	{#if template === 'searchpage'}
-		<SearchPageInput bind:query={searchQuery} {handleInput} />
+		<SearchPageInput
+			bind:query={searchQuery}
+			bind:showSearchCategories
+			bind:showSearchBarIntro
+			bind:searchResults
+			bind:showStatusInfo
+			bind:showSearchProposals
+			bind:searchTermSpellCheck
+			bind:searchType
+			{handleInput}
+		/>
 	{/if}
 	{#if showSearchBarIntro}
 		<SearchBarIntro />
@@ -314,7 +323,7 @@
 						>
 					</div>
 				{/if}
-				{#if showSearchCategories}
+				{#if searchResults.length}
 					<div class="widg_searchbar-bar__title">
 						<p>{$_('searchresult_title')}</p>
 					</div>
