@@ -81,9 +81,9 @@ a.search__cat-title {
 }
 
 [class^='search__result-'] {
-	padding: 10px;
+	padding: 20px 0px 20px 0px;
 	position: relative;
-	border-bottom: 1px solid $colorGreyHover;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 	@include mq($to: small) {
 		padding: $basicPush $basicPush 0 0;
@@ -94,29 +94,21 @@ a.search__cat-title {
 		left: calc(100% - 38px);
 		min-width: 10px;
 		height: 2px;
-
 		background-color: $colorBlack;
-
 		top: 50%;
 		transform: translateY(-1px);
-
 		transition: all $transitionLength / 3 $transitionEase;
-
 		@include iconDataurl('triangle-arrow_right');
-
 		opacity: 0;
 
 		&:before {
 			position: absolute;
 			content: ' ';
 			display: block;
-
 			left: 100%;
 			width: 7px;
 			height: 11px;
-
 			top: 50%;
-
 			transform: translateY(-50%);
 		}
 	}
@@ -127,14 +119,13 @@ a.search__cat-title {
 
 	a {
 		// @include clearfix();
-
 		display: block;
 		opacity: 1;
 		// padding-bottom: $basicPush;
 		font-size: 1.1666667rem;
 		text-decoration: none;
 		position: relative;
-		padding-bottom: $basicPush;
+		padding-bottom: 0;
 
 		.event-info {
 			font-size: 1rem;
@@ -210,9 +201,9 @@ a.search__cat-title {
 
 				position: relative;
 				padding: 0 ($gutterWidth / 2) 0 $gutterWidth + 3;
-				font-size: 1.25rem;
+				font-size: $basicPush + 3;
 				font-weight: 400;
-				color: $colorBorderGrey;
+				color: $colorTextGrey;
 				white-space: nowrap;
 
 				line-height: 30px;
@@ -231,6 +222,12 @@ a.search__cat-title {
 					transform: translate(50%, -50%);
 					right: -1 * $basicPush * 0.75;
 				}
+
+				&.last--item {
+					&::after {
+						background-image: unset;
+					}
+				}
 			}
 			// Svelte Search - Tooltip
 			.listing__tooltip {
@@ -247,13 +244,14 @@ a.search__cat-title {
 			height: map-get($elementHeight, tiny);
 			flex: 3;
 			text-transform: capitalize;
+			z-index: 2000;
 
 			@include mq($to: small) {
 				justify-content: flex-end;
 			}
 
 			span {
-				line-height: unset;
+				line-height: 1.5;
 				padding: 0 $basicPush + 2;
 				margin-right: 0;
 				color: $colorBlack;
@@ -291,28 +289,28 @@ a.search__cat-title {
 
 	.title {
 		display: inline-block;
-		font-size: 1.7rem;
+		font-size: $basicPush + 8;
 		font-weight: 400;
 		line-height: 1.2;
 		overflow: hidden;
-		padding: $basicPush 0;
+		padding: 6px 0 8px 0;
 		width: 100%;
 	}
 
 	.description {
 		display: inline-block;
 		width: 100%;
-		font-size: medium;
+		font-size: $basicPush + 4;
 		font-weight: 400;
-		color: $colorBorderGrey;
+		color: $colorTextDarkGrey;
 		hyphens: auto;
 	}
 
 	.additional_desc {
 		display: inline-block;
 		font-weight: 400;
-		font-size: $basicPush + 5;
-		color: $colorTextGrey;
+		font-size: $basicPush + 4;
+		color: $colorTextDarkGrey;
 		padding-top: $basicPush;
 	}
 }
