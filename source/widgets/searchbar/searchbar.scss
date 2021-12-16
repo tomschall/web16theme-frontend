@@ -207,7 +207,6 @@
 
 		@include mq($to: small) {
 			padding: 0 0px 10px 0px;
-			margin-right: $basicPush;
 		}
 
 		span {
