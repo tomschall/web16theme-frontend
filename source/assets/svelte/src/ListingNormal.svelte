@@ -133,36 +133,13 @@
 									...</span
 								>
 							</div>
-							<!-- {:else if index + 1 < 4 && totalBreadCrumbItems <= 5}
-							<div class="listing__tooltip" data-tooltip={item}>
-								<span
-									class={index + 1 == totalBreadCrumbItems ? 'last--item' : ''}
-								>
-									{index + 1}
-									{totalBreadCrumbItems}
-									{shortenBreadCrumbItem(item, 'medium')}</span
-								>
-							</div>
-						{:else if index + 1 < 5 && totalBreadCrumbItems > 5}
-							<div class="listing__tooltip" data-tooltip={item}>
-								<span
-									class={index + 1 == totalBreadCrumbItems ? 'last--item' : ''}
-								>
-									{shortenBreadCrumbItem(item, 'hard')}</span
-								>
-							</div>
-						{:else if index + 1 > 7}
-							<div class="listing__tooltip" data-tooltip={item}>
-								<span
-									class={index + 1 == totalBreadCrumbItems ? 'last--item' : ''}
-									>...</span
-								>
-							</div> -->
 						{/if}
 					{/each}
 				{:else}
 					{#each item.title_parents as item, index (index)}
-						<span>{item}</span>
+						<span class={index + 1 === totalBreadCrumbItems ? 'last--item' : ''}
+							>{item}</span
+						>
 					{/each}
 				{/if}
 			</div>
