@@ -7,8 +7,10 @@
 	export let item: Item;
 	export let searchResultsHighlighting: any[];
 
+	console.log('items', item);
+
 	let maxLettersInDescription = 180;
-	let maxLettersInBreadCrumbItem = 23;
+	let maxLettersInBreadCrumbItem = 40;
 	let totalBreadCrumbItems: number = 0;
 	let totalLettersInBreadCrumb: number = 0;
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico media query
@@ -18,26 +20,16 @@
 		if (item && item.title_parents) {
 			totalBreadCrumbItems = item.title_parents.length;
 			totalLettersInBreadCrumb = item.title_parents.join().length;
+
+			console.log('total items', totalBreadCrumbItems);
 		}
 	}
 
 	const shortenBreadCrumbItem = (str: string, trimStyle: string): string => {
 		switch (trimStyle) {
 			case 'soft':
-				//console.log(`%c soft: ${string}`, 'color: darkorange');
 				return str.length <= 20 ? str : str.substring(0, 18) + '...';
-			case 'medium':
-				if (totalBreadCrumbItems <= 2) {
-					//console.log(`%c medium: ${string}`, 'color: darkseagreen');
-					return str.length < 50 ? str : str.substring(0, 45) + '...';
-				} else if (totalBreadCrumbItems >= 2) {
-					//console.log(`%c medium: ${string}`, 'color: darkseagreen');
-					return str.length < 28 && totalBreadCrumbItems <= 4
-						? str
-						: str.substring(0, 26) + '...';
-				}
 			case 'hard':
-				//console.log(`%c hard: ${string}`, 'color: deepskyblue');
 				return str.length <= 14 ? str : str.substring(0, 14) + '...';
 			default:
 				break;
@@ -45,7 +37,6 @@
 	};
 
 	const shortenDescription = (str: string) => {
-		// const checkStartDescription = /^([a-z]|[\,]\s?[a-z A-Z]|\s[a-z A-Z])\w+/g;
 		const checkStartDescription = str.charAt(0);
 		if (
 			checkStartDescription === '*' &&
@@ -109,23 +100,64 @@
 				{#if item.title_parents && mq === true}
 					{#each item.title_parents as item, index (index)}
 						{#if index + 1 === 1 && item.length <= maxLettersInBreadCrumbItem}
-							<span>{item}</span>
-						{:else if index + 1 === 1}
+							<span
+								class={index + 1 === totalBreadCrumbItems ? 'last--item' : ''}
+							>
+								{item}</span
+							>
+						{:else if index + 1 <= 3}
+							{#if item.length <= maxLettersInBreadCrumbItem}
+								<span
+									class={index + 1 === totalBreadCrumbItems ? 'last--item' : ''}
+								>
+									{item}</span
+								>
+							{:else}
+								<div class="listing__tooltip" data-tooltip={item}>
+									<span
+										class={index + 1 === totalBreadCrumbItems
+											? 'last--item'
+											: ''}
+									>
+										{item.length > maxLettersInBreadCrumbItem
+											? shortenBreadCrumbItem(item, 'hard')
+											: shortenBreadCrumbItem(item, 'soft')}</span
+									>
+								</div>
+							{/if}
+						{:else}
 							<div class="listing__tooltip" data-tooltip={item}>
-								<span>{shortenBreadCrumbItem(item, 'soft')}</span>
+								<span
+									class={index + 1 === totalBreadCrumbItems ? 'last--item' : ''}
+								>
+									...</span
+								>
 							</div>
-						{:else if index + 1 < 4 && totalBreadCrumbItems <= 5}
+							<!-- {:else if index + 1 < 4 && totalBreadCrumbItems <= 5}
 							<div class="listing__tooltip" data-tooltip={item}>
-								<span>{shortenBreadCrumbItem(item, 'medium')}</span>
+								<span
+									class={index + 1 == totalBreadCrumbItems ? 'last--item' : ''}
+								>
+									{index + 1}
+									{totalBreadCrumbItems}
+									{shortenBreadCrumbItem(item, 'medium')}</span
+								>
 							</div>
 						{:else if index + 1 < 5 && totalBreadCrumbItems > 5}
 							<div class="listing__tooltip" data-tooltip={item}>
-								<span>{shortenBreadCrumbItem(item, 'hard')}</span>
+								<span
+									class={index + 1 == totalBreadCrumbItems ? 'last--item' : ''}
+								>
+									{shortenBreadCrumbItem(item, 'hard')}</span
+								>
 							</div>
 						{:else if index + 1 > 7}
 							<div class="listing__tooltip" data-tooltip={item}>
-								<span>...</span>
-							</div>
+								<span
+									class={index + 1 == totalBreadCrumbItems ? 'last--item' : ''}
+									>...</span
+								>
+							</div> -->
 						{/if}
 					{/each}
 				{:else}

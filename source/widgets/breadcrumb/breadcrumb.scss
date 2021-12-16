@@ -3,6 +3,17 @@
 	overflow: hidden;
 
 	ul {
+		// Experimental to be discussed rva
+		scrollbar-width: none; /* Firefox 64 */
+		overflow-x: scroll;
+		-ms-overflow-style: none; /* IE 11 */
+		&::-webkit-scrollbar {
+			display: none;
+			width: 0;
+			height: 10px;
+			background: transparent;
+		}
+
 		p {
 			display: block;
 			margin: 3px $basicPush * 2;
@@ -96,7 +107,7 @@
 
 	@include mq($from: medium) {
 		padding-right: $gutterWidth * 2;
-	  padding-top: $basicPush;
+		padding-top: $basicPush;
 		padding-left: 34px;
 	}
 
