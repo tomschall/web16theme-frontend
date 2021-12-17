@@ -49,6 +49,7 @@ a.search__cat-title {
 .search__cat {
 	padding: 0 10px 50px 30px;
 	margin-right: $basicPush + 5;
+	overflow-x: hidden;
 
 	@include mq($to: small) {
 		padding: 0 $basicPush;
