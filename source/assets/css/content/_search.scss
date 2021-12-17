@@ -81,7 +81,7 @@ a.search__cat-title {
 }
 
 [class^='search__result-'] {
-	padding: 20px 0px 20px 0px;
+	padding: $basicPush 0 0 0;
 	position: relative;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
@@ -244,7 +244,7 @@ a.search__cat-title {
 			height: map-get($elementHeight, tiny);
 			flex: 3;
 			text-transform: capitalize;
-			z-index: 2000;
+			z-index: 1000;
 
 			@include mq($to: small) {
 				justify-content: flex-end;
@@ -259,6 +259,7 @@ a.search__cat-title {
 				border: 2px solid $colorLightGray;
 				font-weight: 400;
 				font-size: 12px;
+				white-space: nowrap;
 			}
 		}
 	}
