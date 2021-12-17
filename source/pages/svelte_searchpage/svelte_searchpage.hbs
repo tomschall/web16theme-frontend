@@ -10,7 +10,42 @@
 			</div>
 		</div>
       
-		{{> "widgets/subnav/subnav" widgets.subnav heroImage=widgets.hero.heroImage}}
+		<div class="widg_subnav search_all" data-init="subnav">
+		    <div class="widg_subnav__title has-subtitle">
+		      <div class="widg_subnav__main-link">
+		        <a href="#" class="anchor-link">		
+		        	<h2>Die FHNWW</h2>
+						</a>
+		      </div>
+		        <div class="widg_subnav__subtitle">
+		          <a href="http://www.fhnw.ch/subtitleurl">
+		            <span>Suchen</span>
+		          </a>
+		        </div>
+		    </div>
+		  <div class="widg_subnav__list">
+		    <ul>
+		        <li>
+		          <a href="/de/search_edu" class="anchor-link">Studium suchen</a>
+		        </li>
+		        <li>
+		          <a href="/de/search_filter" class="anchor-link">Weiterbildungen und Kurse suchen</a>
+		        </li>
+		        <li>
+		          <a href="/de/search_profiles" class="anchor-link">Personen suchen</a>
+		        </li>
+		        <li>
+		          <a href="/de/die-fhnw/veranstaltungen" class="anchor-link">Veranstaltungen suchen</a>
+		        </li>
+		        <li>
+		          <a href="/de/medien/newsroom/news" class="anchor-link">News suchen</a>
+		        </li>
+		        <li>
+		          <a href="#" class="is_back anchor-link">Startseite</a>
+		        </li>
+		    </ul>
+		  </div>
+		</div>
 
 		{{> "widgets/sidebar/sidebar" widgets.sidebar}}
     
