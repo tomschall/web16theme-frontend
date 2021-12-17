@@ -7,21 +7,16 @@
 	export let item: Item;
 	export let searchResultsHighlighting: any[];
 
-	console.log('items', item);
-
 	let maxLettersInDescription = 180;
 	let maxLettersInBreadCrumbItem = 40;
 	let totalBreadCrumbItems: number = 0;
 	let totalLettersInBreadCrumb: number = 0;
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico media query
-	console.log(mq);
 
 	$: {
 		if (item && item.title_parents) {
 			totalBreadCrumbItems = item.title_parents.length;
 			totalLettersInBreadCrumb = item.title_parents.join().length;
-
-			console.log('total items', totalBreadCrumbItems);
 		}
 	}
 
@@ -69,8 +64,6 @@
 	};
 
 	const translateType = (param) => {
-		console.log(param);
-
 		switch (param) {
 			case 'general':
 				return $_('category_all');
@@ -86,7 +79,6 @@
 				return $_('category_documents');
 			case 'contact':
 				return $_('category_persons');
-
 			default:
 				return 'to be translated';
 		}
@@ -180,6 +172,9 @@
 			<span class="additional_desc"
 				>{item.start_date} - {item.end_date} | {item.location_short}</span
 			>
+		{/if}
+		{#if item.filesize}
+			<span class="additional_desc">{item.filetype} | {item.filesize}</span>
 		{/if}
 	</a>
 </li>
