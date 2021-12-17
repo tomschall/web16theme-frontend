@@ -41,7 +41,7 @@
 		/>
 		<label for="search" class="visuallyhidden">{$_('search_label')}</label>
 		<a on:click={handleClick} href={void 0} class="search__string__clear"
-			>&nbsp;</a
+			><i /></a
 		>
 	</form>
 </div>
