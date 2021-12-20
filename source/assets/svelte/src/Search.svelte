@@ -315,10 +315,10 @@
 					/>
 				{/if}
 				{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
-					<div class="widg__searchbar_autocomplete">
-						<p>{$_('search_autocomplete_warning')} <b>{searchTerm}</b></p>
+					<div class="widg__searchbar_spellcheck">
+						<p>{$_('search_spellcheck_warning')} <b>{searchTerm}</b></p>
 						<span
-							>{$_('search_autocomlete_warning_2')}
+							>{$_('search_spellcheck_warning_2')}
 							<b>"{searchTermSpellCheck}"</b></span
 						>
 					</div>
@@ -337,7 +337,7 @@
 					{searchType}
 				/>
 				{#if showStatusInfo && !searchTermSpellCheck}
-					<div class="widg__searchbar_autocomplete">
+					<div class="widg__searchbar_spellcheck">
 						<p>{$_('search_no_results')}</p>
 						<span>{$_('search_no_results_subtitle')}</span>
 					</div>

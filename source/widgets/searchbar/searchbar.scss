@@ -65,11 +65,10 @@
 	}
 }
 
-.widg__searchbar_autocomplete {
+.widg__searchbar_spellcheck {
 	display: flex;
 	flex-direction: column;
 
-	border-bottom: 1px solid $colorGreyHover;
 	margin-bottom: $basicPush * 2;
 
 	p {
