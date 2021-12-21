@@ -44,6 +44,7 @@
 	let itemsCount: number = null;
 	let categoriesCount: CategoriesCount;
 	let urlParams = new URLSearchParams(window.location.search);
+	let lang: string = null;
 
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
@@ -88,7 +89,27 @@
 		observer.unobserve(target);
 	};
 
+	let setLanguage = (langStr: string) => {
+		switch (langStr) {
+			case 'en': {
+				lang = langStr;
+			}
+			case 'de': {
+				lang = langStr;
+			}
+			default: {
+				let language = document.documentElement.lang;
+				if (language === 'en' || language === 'de') {
+					lang = document.documentElement.lang;
+				} else {
+					lang = 'de';
+				}
+			}
+		}
+	};
+
 	onMount(() => {
+		setLanguage(window.location.href.split('/')[3]);
 		if (template === 'searchpage') {
 			observer = new IntersectionObserver(loadMoreResults, options);
 			target = document.querySelector('.loading-indicator');
@@ -165,13 +186,12 @@
 		const endpoint =
 			window.location.hostname === 'localhost'
 				? // @ts-ignore
-				  API +
-				  `?q=${searchTerm}&category=all&search_type[]=${
+				  `${API}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
 						searchType || 'all'
 				  }&limit=${limit}&offset=${offset}`
 				: `https://${
 						window.location.hostname
-				  }/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
+				  }/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
 						searchType || 'all'
 				  }&limit=${limit}&offset=${offset}`;
 

@@ -63,7 +63,7 @@
 		}
 	};
 
-	const translateType = (param) => {
+	const translateType = (param: string) => {
 		switch (param) {
 			case 'general':
 				return $_('category_all');
@@ -117,13 +117,9 @@
 									>
 								</div>
 							{/if}
-						{:else}
+						{:else if index + 1 === 4}
 							<div class="listing__tooltip" data-tooltip={item}>
-								<span
-									class={index + 1 === totalBreadCrumbItems ? 'last--item' : ''}
-								>
-									...</span
-								>
+								<span class={'last--item'}> ...</span>
 							</div>
 						{/if}
 					{/each}
