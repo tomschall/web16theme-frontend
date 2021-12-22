@@ -1,4 +1,5 @@
 import Search from './Search.svelte';
+import Subnav from './Subnav.svelte';
 import type { SvelteComponent } from 'svelte';
 
 declare global {
@@ -9,9 +10,11 @@ declare global {
 
 const searchBarSelector = document.querySelector('.widg_searchbar-bar');
 const searchPageSelector = document.querySelector('.widg_svelte_searchpage');
+const subNavSelector = document.querySelector('.widg_subnav');
 
 let searchBar: SvelteComponent = null;
 let searchPage: SvelteComponent = null;
+let subNav: SvelteComponent = null;
 
 if (searchBarSelector) {
   searchBar = new Search({
@@ -31,4 +34,13 @@ if (searchPageSelector) {
   });
 }
 
-export default [searchBar, searchPage];
+if (subNavSelector) {
+  subNav = new Subnav({
+    target: subNavSelector,
+    props: {
+      template: 'searchpage',
+    },
+  });
+}
+
+export default [searchBar, searchPage, subNav];
