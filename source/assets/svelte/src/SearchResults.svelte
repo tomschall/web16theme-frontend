@@ -10,6 +10,7 @@
 	export let template: string;
 	export let searchTerm: string;
 	export let searchType: string;
+	export let lang: string;
 </script>
 
 <div class="search__results">
@@ -25,7 +26,7 @@
 		{#if results.length > 0 && template === 'searchbar'}
 			<a
 				class="widg_searchbar__go-to-page not-default"
-				href={`/search_all?query=${searchTerm}&searchtype=${searchType}`}
+				href={`/${lang}/search_all?query=${searchTerm}&searchtype=${searchType}`}
 				>{$_('search_all_results')}</a
 			>
 		{/if}

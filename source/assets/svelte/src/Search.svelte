@@ -355,6 +355,7 @@
 					{template}
 					{searchTerm}
 					{searchType}
+					{lang}
 				/>
 				{#if showStatusInfo && !searchTermSpellCheck}
 					<div class="widg__searchbar_spellcheck">
