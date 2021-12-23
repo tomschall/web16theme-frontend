@@ -18,12 +18,12 @@
 
 <div class="widg_subnav__title has-subtitle">
 	<div class="widg_subnav__main-link">
-		<a href={void 0} class="anchor-link">
+		<a href={$_('subnav_title_link')} class="anchor-link">
 			<h2>{$_('subnav_title')}</h2>
 		</a>
 	</div>
 	<div class="widg_subnav__subtitle">
-		<a href="http://www.fhnw.ch/subtitleurl">
+		<a href={$_('subnav_subtitle_link')}>
 			<span>{$_('subnav_subtitle')}</span>
 		</a>
 	</div>

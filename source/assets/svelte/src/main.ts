@@ -10,7 +10,7 @@ declare global {
 
 const searchBarSelector = document.querySelector('.widg_searchbar-bar');
 const searchPageSelector = document.querySelector('.widg_svelte_searchpage');
-const subNavSelector = document.querySelector('.widg_subnav');
+const subNavSelector = document.querySelector('.widg_subnav.svelte');
 
 let searchBar: SvelteComponent = null;
 let searchPage: SvelteComponent = null;

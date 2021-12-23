@@ -46,7 +46,7 @@
 			}}
 			disabled={categoriesCount.studies > 0 ? false : true}
 		>
-			{$_('category_studys')}
+			{$_('category_studys_plural')}
 			{categoriesCount.studies > 0
 				? `(${categoriesCount.studies})`
 				: zeroResult}
@@ -61,7 +61,7 @@
 			}}
 			disabled={categoriesCount.continuing_education > 0 ? false : true}
 		>
-			{$_('category_education')}
+			{$_('category_education_plural')}
 			{categoriesCount.continuing_education > 0
 				? `(${categoriesCount.continuing_education})`
 				: zeroResult}
@@ -73,7 +73,7 @@
 			}}
 			disabled={categoriesCount.event > 0 ? false : true}
 		>
-			{$_('category_events')}
+			{$_('category_events_plural')}
 			{categoriesCount.event > 0 ? `(${categoriesCount.event})` : zeroResult}
 		</button>
 		<button
@@ -93,7 +93,7 @@
 			}}
 			disabled={categoriesCount.document > 0 ? false : true}
 		>
-			{$_('category_documents')}
+			{$_('category_documents_plural')}
 			{categoriesCount.document > 0
 				? `(${categoriesCount.document})`
 				: zeroResult}
@@ -105,7 +105,7 @@
 			}}
 			disabled={categoriesCount.contact > 0 ? false : true}
 		>
-			{$_('category_persons')}
+			{$_('category_persons_plural')}
 			{categoriesCount.contact > 0
 				? `(${categoriesCount.contact})`
 				: zeroResult}

@@ -111,6 +111,7 @@
 	onMount(() => {
 		setLanguage(window.location.href.split('/')[3]);
 		if (template === 'searchpage') {
+			document.title = $_('searchpage_title');
 			observer = new IntersectionObserver(loadMoreResults, options);
 			target = document.querySelector('.loading-indicator');
 			if (urlParams.has('query')) {
