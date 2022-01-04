@@ -89,6 +89,7 @@
 @import '../../widgets/edu_contents/edu_contents';
 @import '../../widgets/svelte/svelte';
 @import '../../widgets/actionbuttons/actionbuttons';
+@import '../../widgets/continuing_education_search/continuing_education_search';
 //*autoinsertmodule*
 
 /**
@@ -113,5 +114,5 @@
 @import 'content/table';
 
 @media print {
-  @import 'print';
+	@import 'print';
 }

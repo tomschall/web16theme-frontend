@@ -13,6 +13,7 @@
 	import { debounce } from 'lodash';
 	import type { Item } from './definitions/Item';
 	import type { CategoriesCount } from './definitions/Categories';
+import ContinuingEducationSearch from './ContinuingEducationSearch.svelte';
 
 	addMessages('en', en);
 	addMessages('de', de);
@@ -311,6 +312,9 @@
 	{/if}
 	{#if showSearchBarIntro}
 		<SearchBarIntro />
+	{/if}
+	{#if template === 'continuing_education'}
+		<ContinuingEducationSearch />
 	{/if}
 	<div class="search__results">
 		<div

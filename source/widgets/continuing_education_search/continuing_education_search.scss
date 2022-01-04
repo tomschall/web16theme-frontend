@@ -1,1 +1,11 @@
-.continuing_education_search__wrapper {}
+.widg_continuing_education_search {
+	.search__wrapper {
+		width: auto;
+		margin-left: 0;
+
+		.search__form-wrapper {
+			padding: 0;
+			box-shadow: none;
+		}
+	}
+}
