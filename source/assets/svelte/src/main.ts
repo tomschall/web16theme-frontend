@@ -1,5 +1,6 @@
 import Search from './Search.svelte';
 import Subnav from './Subnav.svelte';
+import ContinuingEducationSearch from './ContinuingEducationSearch.svelte';
 import type { SvelteComponent } from 'svelte';
 
 declare global {
@@ -11,10 +12,12 @@ declare global {
 const searchBarSelector = document.querySelector('.widg_searchbar-bar');
 const searchPageSelector = document.querySelector('.widg_svelte_searchpage');
 const subNavSelector = document.querySelector('.widg_subnav.svelte');
+const continuingEducationSelector = document.querySelector('.widg_continuing_education_search');
 
 let searchBar: SvelteComponent = null;
 let searchPage: SvelteComponent = null;
 let subNav: SvelteComponent = null;
+let continuingSearch: SvelteComponent = null;
 
 if (searchBarSelector) {
   searchBar = new Search({
@@ -43,4 +46,13 @@ if (subNavSelector) {
   });
 }
 
-export default [searchBar, searchPage, subNav];
+if (continuingEducationSelector) {
+  continuingSearch = new ContinuingEducationSearch({
+    target: continuingEducationSelector,
+    props: {
+      template: 'continuing_education'
+    }
+  })
+}
+
+export default [searchBar, searchPage, subNav, continuingSearch];

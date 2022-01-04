@@ -1,0 +1,18 @@
+{{#extend "layouts/layout"}}
+	{{#content "hero"}}
+		{{> "widgets/hero/hero" widgets.hero}}
+	{{/content}}
+	{{#content "content"}}
+		<div class="page_content">
+			<h1>{{title}}</h1>
+			<div class="content__element">
+				{{> "widgets/continuing_education_search/continuing_education_search"}}
+			</div>
+		</div>
+      
+		<div class="widg_subnav svelte" data-init="subnav"></div>
+
+		{{> "widgets/sidebar/sidebar" widgets.sidebar}}
+    
+	{{/content}}
+{{/extend}}

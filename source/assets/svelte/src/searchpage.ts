@@ -1,6 +1,4 @@
 import SearchPage from './SearchPage.svelte';
-import App from './App.svelte';
-
 declare global {
   interface Window {
     estatico: any;
