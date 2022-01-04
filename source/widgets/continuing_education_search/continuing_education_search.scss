@@ -8,4 +8,23 @@
 			box-shadow: none;
 		}
 	}
+
+	.search__third-row {
+		display: flex;
+		flex-direction: column;
+
+		.search__extra-holder {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			width: 100%;
+			padding: 0 16px 0 16px;
+
+			.listing__type {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+		}
+	}
 }
