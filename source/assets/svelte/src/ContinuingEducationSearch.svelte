@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
+
+	let listingType = 'grid';
 </script>
 
 <div class="search__wrapper">
@@ -88,15 +90,17 @@
 				>
 				<div class="listing__type">
 					<span
-						class="icon__grid"
+						class="icon__grid {listingType === 'grid' ? 'active' : ''}"
 						on:click={() => {
 							console.log('GRID CLICKED');
+							listingType = 'grid';
 						}}
 					/>
 					<span
-						class="icon__list"
+						class="icon__list {listingType === 'list' ? 'active' : ''}"
 						on:click={() => {
 							console.log('LIST CLICKED');
+							listingType = 'list';
 						}}
 					/>
 				</div>
