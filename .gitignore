@@ -27,3 +27,4 @@ yarn-error.log
 .Python
 deploy_theme.sh
 /docker
+.env
