@@ -10,6 +10,48 @@ var data = _.merge(defaultData, {
 	},
 	title: 'InContent Search',
 	widgets: {
+		projectTeasers: _.assign(
+			requireNew('../../widgets/teaser/teaser.data.js'),
+			{
+				title: false,
+				teasers: [
+					{
+						title: 'Mensch-Maschine-Interaktion im Betrieb SBB:',
+						projectTime: '31.12.2018',
+						variant: 'wide___third',
+						text: 'Automatisierung in den Betriebszentralen der Zukunft',
+						url: '#',
+						img: {
+							src: '/assets/media/img/miks_project_1.png',
+							alt: 'MiKS Projekt 1',
+						},
+					},
+					{
+						title: 'Indirekte Steuerung und Selbstgefährdung',
+						projectTime: '31.12.2018',
+						variant: 'wide___third',
+						text: 'Neue Herausforderungen für das betriebliche Gesundheitsmanagement: Umgang mit indirekter Steuerung und Selbstgefährdung in Betrieben',
+						url: '#',
+						img: {
+							src: '/assets/media/img/miks_project_2.png',
+							alt: 'MiKS Projekt 2',
+						},
+					},
+					{
+						title: 'Entrepreneur-Check',
+						projectTime: '31.12.2018',
+						variant: 'wide___third',
+						text: 'Persönlichkeit & Gesundheit von Unternehmerinnen und Unternehmern',
+						url: '#',
+						img: {
+							src: '/assets/media/img/miks_project_3.png',
+							alt: 'MiKS Projekt 3',
+						},
+					},
+				],
+				moreButton: false,
+			}
+		),
 		header: _.assign(
 			{
 				hasPromoTeaser: false,
