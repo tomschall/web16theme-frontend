@@ -13,7 +13,7 @@
 	import { debounce } from 'lodash';
 	import type { Item } from './definitions/Item';
 	import type { CategoriesCount } from './definitions/Categories';
-import ContinuingEducationSearch from './ContinuingEducationSearch.svelte';
+	import ContinuingEducationSearch from './ContinuingEducationSearch.svelte';
 
 	addMessages('en', en);
 	addMessages('de', de);

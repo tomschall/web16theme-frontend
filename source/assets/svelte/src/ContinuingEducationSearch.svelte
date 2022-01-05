@@ -80,12 +80,25 @@
 
 		<div class="search__third-row">
 			<div class="search__extra-holder">
-				<button class="search__reset not-default" data-searchpage="reset"
-					>{$_('edu_form_reset')}</button
+				<button
+					class="search__reset not-default"
+					on:click={() => {
+						console.log('RESET CLICKED');
+					}}>{$_('edu_form_reset')}</button
 				>
 				<div class="listing__type">
-					<span>List</span>
-					<span>Grid</span>
+					<span
+						class="icon__grid"
+						on:click={() => {
+							console.log('GRID CLICKED');
+						}}
+					/>
+					<span
+						class="icon__list"
+						on:click={() => {
+							console.log('LIST CLICKED');
+						}}
+					/>
 				</div>
 			</div>
 		</div>
