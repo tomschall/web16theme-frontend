@@ -24,6 +24,39 @@
 				display: flex;
 				flex-direction: row;
 				align-items: center;
+
+				.icon__grid {
+					background: transparent;
+					display: flex;
+					width: 20px;
+					height: 20px;
+					cursor: pointer;
+
+					&::before {
+						background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 20 20' style='enable-background:new 0 0 20 20;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%238D8D8D;%7D%0A%3C/style%3E%3Crect class='st0' width='6' height='6'/%3E%3Crect x='7' class='st0' width='6' height='6'/%3E%3Crect x='14' class='st0' width='6' height='6'/%3E%3Crect y='7' class='st0' width='6' height='6'/%3E%3Crect x='7' y='7' class='st0' width='6' height='6'/%3E%3Crect x='14' y='7' class='st0' width='6' height='6'/%3E%3Crect y='14' class='st0' width='6' height='6'/%3E%3Crect x='7' y='14' class='st0' width='6' height='6'/%3E%3Crect x='14' y='14' class='st0' width='6' height='6'/%3E%3Cg id='kQoQQN.tif'%3E%3Cimage style='overflow:visible;' width='976' height='212' id='Layer_0_00000072958576736630453640000008360664499347216275_' xlink:href='21EE457016EAEB3A.png' transform='matrix(1 0 0 1 -992 -332)'%3E%3C/image%3E%3C/g%3E%3C/svg%3E%0A");
+						background-repeat: no-repeat;
+						content: '';
+						width: $basicPush * 2;
+						height: $basicPush * 2;
+					}
+				}
+
+				.icon__list {
+					background: transparent;
+					display: flex;
+					width: 20px;
+					height: 20px;
+					cursor: pointer;
+					margin-left: $basicPush;
+
+					&::before {
+						background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 20 20' style='enable-background:new 0 0 20 20;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%238D8D8D;%7D%0A%3C/style%3E%3Crect class='st0' width='20' height='6'/%3E%3Crect y='7' class='st0' width='20' height='6'/%3E%3Crect y='14' class='st0' width='20' height='6'/%3E%3Cg id='kQoQQN.tif'%3E%3Cimage style='overflow:visible;' width='976' height='212' id='Layer_0_00000072958576736630453640000008360664499347216275_' xlink:href='A0A989AF9797AAB2.png' transform='matrix(1 0 0 1 -992 -332)'%3E%3C/image%3E%3C/g%3E%3C/svg%3E%0A");
+						background-repeat: no-repeat;
+						content: '';
+						width: $basicPush * 2;
+						height: $basicPush * 2;
+					}
+				}
 			}
 		}
 	}
