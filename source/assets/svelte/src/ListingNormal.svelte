@@ -66,7 +66,7 @@
 	const translateType = (param: string) => {
 		switch (param) {
 			case 'general':
-				return $_('category_all');
+				return $_('category_general');
 			case 'studies':
 				return $_('category_studys');
 			case 'continuing_education':
