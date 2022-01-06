@@ -110,6 +110,12 @@
         1000
       );
     }
+
+    // Issue webteam/fhnw.webauftritt#1841
+    var mailToLink = $('.widg_edu_application .align__btn .link-mailto');
+    if (mailToLink.length) {
+      $(mailToLink).addClass('btn btn-primary');
+    }
   });
 
   // INITIALIZATION PROTIP
@@ -138,13 +144,6 @@
       }
     }
   });
-
-  // Issue webteam/fhnw.webauftritt#1841
-  var mailToLink = $('.widg_edu_application .align__btn .link-mailto');
-  if (mailToLink.length) {
-      $(mailToLink).addClass('btn btn-primary');
-  }
-
 })(jQuery);
 
 
