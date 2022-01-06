@@ -169,6 +169,11 @@
 				>{item.start_date} - {item.end_date} | {item.location_short}</span
 			>
 		{/if}
+		{#if item.institute && item.search_type === 'contact'}
+		<span class="additional_desc"
+			>{item.institute}</span
+		>
+	{/if}
 		{#if item.filesize}
 			<span class="additional_desc">{item.filetype} | {item.filesize}</span>
 		{/if}
