@@ -31,37 +31,28 @@
 		}
 	};
 
-	const shortenDescription = (str: string) => {
-		const checkStartDescription = str.charAt(0);
-		if (
-			checkStartDescription === '*' &&
-			str.length <= maxLettersInDescription
-		) {
-			return `${str}`;
-		} else if (
-			checkStartDescription === checkStartDescription.toLocaleLowerCase() &&
-			str.length <= maxLettersInDescription
-		) {
-			return `... ${str.substring(0, maxLettersInDescription)}`;
-		} else if (
-			checkStartDescription === checkStartDescription.toLowerCase() &&
-			str.length >= maxLettersInDescription
-		) {
-			return `... ${str.substring(0, maxLettersInDescription)} ...`;
-		} else if (
-			checkStartDescription === '*' &&
-			str.length >= maxLettersInDescription
-		) {
-			return `${str.substring(0, maxLettersInDescription)} ...`;
-		} else if (
-			checkStartDescription === checkStartDescription.toUpperCase() &&
-			str.length >= maxLettersInDescription
-		) {
-			return `${str.substring(0, maxLettersInDescription)} ...`;
-		} else {
-			return str;
+	const shortenDescription = (highlighted_description: string, long_description: string) => {
+		// for the calculations the highlight-syntax (**) is problematic so we remove it.
+		let cleaned_description = highlighted_description.replaceAll('**', '');
+		let shortened_description = highlighted_description;
+
+		// check if we have to add ... to the start because there is more text before the highlighting.
+		if (!long_description.startsWith(cleaned_description)) {
+			shortened_description = `...${highlighted_description}`;
 		}
-	};
+		
+		// check if we have to add ... to the end because theres more text after the highlighting.
+		if (!long_description.endsWith(cleaned_description)) {
+			shortened_description = `${shortened_description.substring(0, maxLettersInDescription - 3)}...`;
+		}
+
+		// check if we have to add ... to the end because description is to long.
+		if (shortened_description.length > maxLettersInDescription) {
+			shortened_description = `${shortened_description.substring(0, maxLettersInDescription - 3)}...`;
+		}
+
+		return shortened_description;
+	}
 
 	const translateType = (param: string) => {
 		switch (param) {
@@ -151,7 +142,8 @@
 					source={shortenDescription(
 						searchResultsHighlighting[item.UID].Description
 							? searchResultsHighlighting[item.UID].Description[0]
-							: item.Description
+							: item.Description, 
+						item.Description
 					)}
 					renderers={{
 						paragraph: Paragraph,
@@ -169,6 +161,11 @@
 				>{item.start_date} - {item.end_date} | {item.location_short}</span
 			>
 		{/if}
+		{#if item.institute && item.search_type === 'contact'}
+		<span class="additional_desc"
+			>{item.institute}</span
+		>
+	{/if}
 		{#if item.filesize}
 			<span class="additional_desc">{item.filetype} | {item.filesize}</span>
 		{/if}
