@@ -15,36 +15,6 @@
 
 	.search__cat {
 		padding: 0;
-
-		&.gradient_prev:before {
-			position: absolute;
-			z-index: 3000;
-			content: '';
-			width: $basicPush * 7;
-			height: $basicPush * 3.8;
-			margin-top: $basicPush * 2;
-			background: linear-gradient(
-				to right,
-				rgb(255, 255, 255) 0%,
-				rgba(255, 255, 255, 0) 100%
-			);
-		}
-
-		&.gradient_next:after {
-			position: absolute;
-			right: 0;
-			top: 145px;
-			z-index: 3000;
-			content: '';
-			width: $basicPush * 7;
-			height: $basicPush * 3.8;
-			margin-top: 0;
-			background: linear-gradient(
-				to left,
-				rgb(255, 255, 255) 25%,
-				rgba(255, 255, 255, 0) 100%
-			);
-		}
 	}
 
 	ul {
