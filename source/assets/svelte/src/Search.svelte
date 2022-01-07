@@ -48,8 +48,6 @@
 	let xScroll: number = 0;
 	let catLastElementVisisble: boolean = true;
 
-	console.log('isVisible', catLastElementVisisble);
-
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
 	) {
