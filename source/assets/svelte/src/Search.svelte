@@ -45,6 +45,10 @@
 	let categoriesCount: CategoriesCount;
 	let urlParams = new URLSearchParams(window.location.search);
 	let lang: string = null;
+	let xScroll: number = 0;
+	let catLastElementVisisble: boolean = true;
+
+	console.log('isVisible', catLastElementVisisble);
 
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
@@ -318,11 +322,17 @@
 				? 'widg_searchbar-bar__content'
 				: 'widg_searchpage__content'}
 		>
-			<div class="search__cat">
+			<div
+				class="search__cat {xScroll >= 1
+					? 'gradient_prev'
+					: ''} {catLastElementVisisble === true ? 'gradient_next' : ''}"
+			>
 				{#if showSearchCategories}
 					<SearchCategories
 						bind:categoriesCount
 						bind:searchType
+						bind:xScroll
+						bind:catLastElementVisisble
 						{template}
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
 						{unobserve}
