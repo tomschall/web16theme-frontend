@@ -9,6 +9,11 @@ var data = _.merge(defaultData, {
 		title: 'Svelte: Continuing Education Search',
 	},
 	title: 'InContent Search',
+	leadText: 'Im Mittelpunkt steht sowohl die berufliche Integration, als auch die soziale und gesundheitliche Integration von erwerbstätigen Personen, die auf Grund von Krankheit oder Unfall in ihrer Leistungserbringung verändert oder beeinträchtigt sind; und erwerbsfähigen Personen mit erschwerten Zugängen bei der Erst- und Reintegration in den Arbeitsmarkt; hierzu gehören unter anderem Personen, die erwerbaselos sind, Personen mit Migrationshintergrund, junge Personen mit gesundheitlichen Belastungen, Personen mit Beeinträchtigungen und Behinderungen.',
+	langStrings: {
+		title: 'Studiengänge',
+		description: 'Hier können sie nach Studiengängen stöbern.',
+	},
 	widgets: {
 		projectTeasers: _.assign(
 			requireNew('../../widgets/teaser/teaser.data.js'),

@@ -5,7 +5,12 @@ var _ = require('lodash'),
 	dataHelper = require('../../../helpers/data.js'),
 	defaultData = requireNew('../../data/default.data.js');
 
-var templateData = {},
+var templateData = {
+	langStrings: {
+		title: 'Title add by PLONE',
+		description: 'Description added by PLONE'
+	}
+},
 		data = _.merge(defaultData, {
 			meta: {
 				title: 'Continuing Education Search | WI_076',
