@@ -13,6 +13,11 @@
 	let totalLettersInBreadCrumb: number = 0;
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico media query
 
+	// remove own title from title_parents because it should not be in the breadcrumbs.
+	if (item && item.title_parents) {
+		item.title_parents.pop();
+	}
+	
 	$: {
 		if (item && item.title_parents) {
 			totalBreadCrumbItems = item.title_parents.length;
