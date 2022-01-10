@@ -9,13 +9,13 @@
 	export let categoriesCount: CategoriesCount;
 	export let template: string;
 	export let xScroll: number;
-	export let categoryLastElementVisisble: boolean = true;
+	export let categoryLastElementNotVisible: boolean = true;
 
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico
 	let zeroResult: string = '(0)';
 	let categoryBox;
 
-	$: categoryLastElementVisisble;
+	$: categoryLastElementNotVisible;
 
 	const parseScroll = () => {
 		xScroll = categoryBox.scrollLeft;
@@ -23,8 +23,8 @@
 		let rect = scrollBox.getBoundingClientRect();
 		rect.right <=
 		(window.innerWidth - 15 || document.documentElement.clientWidth - 15)
-			? (categoryLastElementVisisble = false)
-			: (categoryLastElementVisisble = true);
+			? (categoryLastElementNotVisible = false)
+			: (categoryLastElementNotVisible = true);
 	};
 
 	const handleCategorySearch = (type: string) => {
@@ -38,7 +38,7 @@
 	<div
 		class="widg_searchbar-bar__categories {xScroll >= 1
 			? 'gradient_prev'
-			: ''} {categoryLastElementVisisble === true ? 'gradient_next' : ''}"
+			: ''} {categoryLastElementNotVisible === true ? 'gradient_next' : ''}"
 		data-searchbar="cat"
 		style="display: flex;"
 		transition:fade={{ duration: 0 }}
