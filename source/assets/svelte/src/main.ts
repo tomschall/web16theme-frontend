@@ -12,7 +12,9 @@ declare global {
 const searchBarSelector = document.querySelector('.widg_searchbar-bar');
 const searchPageSelector = document.querySelector('.widg_svelte_searchpage');
 const subNavSelector = document.querySelector('.widg_subnav.svelte');
-const continuingEducationSelector = document.querySelector('.widg_continuing_education_search');
+const continuingEducationSelector = document.querySelector(
+  '.widg_continuing_education_search'
+);
 
 let searchBar: SvelteComponent = null;
 let searchPage: SvelteComponent = null;
@@ -50,9 +52,9 @@ if (continuingEducationSelector) {
   continuingSearch = new ContinuingEducationSearch({
     target: continuingEducationSelector,
     props: {
-      template: 'continuing_education'
-    }
-  })
+      template: 'continuing_education',
+    },
+  });
 }
 
 export default [searchBar, searchPage, subNav, continuingSearch];
