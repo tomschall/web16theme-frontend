@@ -1,171 +1,171 @@
 .widg_search_svelte {
-	.no__results {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		font-size: 1.5rem;
-		font-weight: 700;
-		padding: $basicPush * 2 0;
-		background: rgba($colorBlack, 1);
-		color: white;
-		margin-top: $basicPush * 2;
+  .no__results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: $basicPush * 2 0;
+    background: rgba($colorBlack, 1);
+    color: white;
+    margin-top: $basicPush * 2;
 
-		span {
-			font-size: 1.2rem;
-			font-weight: 400;
-		}
-	}
+    span {
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+  }
 }
 
 .widg_searchbar__btn,
 .widg_search_proposals ul li {
-	@include iconDataurl('search');
+  @include iconDataurl('search');
 
-	&:hover,
-	&:focus {
-		background-color: rgba($colorLightGray, 0.5);
-		color: $colorBlack;
-	}
+  &:hover,
+  &:focus {
+    background-color: rgba($colorLightGray, 0.5);
+    color: $colorBlack;
+  }
 
-	&:before {
-		@include centerDataurlIcon();
-	}
+  &:before {
+    @include centerDataurlIcon();
+  }
 }
 
 .widg_search_proposals {
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
 
-	ul {
-		li {
-			position: relative;
-			padding: $basicPush 0 $basicPush $basicPush * 4;
-			border-bottom: 1px solid $colorGreyHover;
+  ul {
+    li {
+      position: relative;
+      padding: $basicPush 0 $basicPush $basicPush * 4;
+      border-bottom: 1px solid $colorGreyHover;
 
-			font-size: medium;
+      font-size: medium;
 
-			a {
-				text-decoration: none;
-				cursor: pointer;
+      a {
+        text-decoration: none;
+        cursor: pointer;
 
-				p {
-					line-height: 0;
-					margin: $basicPush 0 $basicPush 0;
-				}
-			}
+        p {
+          line-height: 0;
+          margin: $basicPush 0 $basicPush 0;
+        }
+      }
 
-			&:before {
-				left: $basicPush !important;
-				transform: translate(-25%, -40%);
-			}
-		}
-	}
+      &:before {
+        left: $basicPush !important;
+        transform: translate(-25%, -40%);
+      }
+    }
+  }
 }
 
 .widg__searchbar_spellcheck {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-	margin-bottom: $basicPush * 2;
+  margin-bottom: $basicPush * 2;
 
-	p {
-		font-size: large;
-		font-weight: 400;
-		padding-bottom: 0;
-		margin-bottom: 0;
-	}
+  p {
+    font-size: large;
+    font-weight: 400;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
 
-	span {
-		display: inline-block;
-		font-size: small;
-		padding-bottom: $basicPush * 2;
-	}
+  span {
+    display: inline-block;
+    font-size: small;
+    padding-bottom: $basicPush * 2;
+  }
 }
 
 /**
   * The Styles for the bar
   */
 .widg_searchbar-bar {
-	position: fixed;
-	height: 100vh;
-	top: 0;
-	right: -0.5 * $sizeSearchBar;
-	bottom: 0;
-	opacity: 0;
-	visibility: hidden;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  right: -0.5 * $sizeSearchBar;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
 
-	width: $sizeSearchBar;
-	background-color: $colorBg;
+  width: $sizeSearchBar;
+  background-color: $colorBg;
 
-	box-shadow: 3px 0 29px 0 rgba($colorBlack, 0.15);
+  box-shadow: 3px 0 29px 0 rgba($colorBlack, 0.15);
 
-	transition: all $transitionLength / 2 $transitionEase;
+  transition: all $transitionLength / 2 $transitionEase;
 
-	@include mq($to: medium) {
-		transition: all $transitionLength / 2 $transitionEase;
-	}
+  @include mq($to: medium) {
+    transition: all $transitionLength / 2 $transitionEase;
+  }
 
-	z-index: -1;
+  z-index: -1;
 
-	&.is_open {
-		right: 0;
-		visibility: visible;
-		opacity: 1;
-		z-index: zindex(search);
+  &.is_open {
+    right: 0;
+    visibility: visible;
+    opacity: 1;
+    z-index: zindex(search);
 
-		@include mq($to: small) {
-			scrollbar-width: none; /* Firefox 64 */
-			overflow-y: scroll;
-			-ms-overflow-style: none; /* IE 11 */
-			&::-webkit-scrollbar {
-				display: none;
-				width: 0;
-				height: 10px;
-				background: transparent;
-			}
-		}
-	}
+    @include mq($to: small) {
+      scrollbar-width: none; /* Firefox 64 */
+      overflow-y: scroll;
+      -ms-overflow-style: none; /* IE 11 */
+      &::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 10px;
+        background: transparent;
+      }
+    }
+  }
 
-	@include mq($to: medium) {
-		width: 100vw;
+  @include mq($to: medium) {
+    width: 100vw;
 
-		top: $headerHeightTop;
-		height: calc(100vh - 70px);
+    top: $headerHeightTop;
+    height: calc(100vh - 70px);
 
-		right: 0;
-		transform: translateY(-20px);
+    right: 0;
+    transform: translateY(-20px);
 
-		box-shadow: none;
+    box-shadow: none;
 
-		&.is_open {
-			transform: translateY(0);
-		}
-	}
+    &.is_open {
+      transform: translateY(0);
+    }
+  }
 
-	&.show-intro {
-		&:before {
-			position: absolute;
-			bottom: $basicPush * 3;
-			left: 50%;
+  &.show-intro {
+    &:before {
+      position: absolute;
+      bottom: $basicPush * 3;
+      left: 50%;
 
-			transform: translateX(-50%);
-			opacity: 0.2;
+      transform: translateX(-50%);
+      opacity: 0.2;
 
-			width: 100px;
-			height: 60px;
-		}
-	}
+      width: 100px;
+      height: 60px;
+    }
+  }
 
-	.search__results {
-		// padding: 0 32px 0 28px;
+  .search__results {
+    // padding: 0 32px 0 28px;
 
-		@include mq($to: small) {
-			margin: 0 0 0 5px;
-		}
-	}
+    @include mq($to: small) {
+      margin: 0 0 0 5px;
+    }
+  }
 }
 
 .widg_searchbar-bar__content {
@@ -192,282 +192,282 @@
 }
 
 .widg_searchbar-bar__title {
-	width: 100%;
+  width: 100%;
 
-	p {
-		border-bottom: 1px solid $colorGreyHover;
-		margin-top: $basicPush * 2;
-		padding-bottom: $basicPush;
-		font-weight: 600;
-		font-size: 14px;
-		color: $colorDarkGrey;
-		text-transform: uppercase;
-		margin-bottom: 0;
+  p {
+    border-bottom: 1px solid $colorGreyHover;
+    margin-top: $basicPush * 2;
+    padding-bottom: $basicPush;
+    font-weight: 600;
+    font-size: 14px;
+    color: $colorDarkGrey;
+    text-transform: uppercase;
+    margin-bottom: 0;
 
-		@include mq($to: small) {
-			padding: 0 0px 10px 0px;
-		}
+    @include mq($to: small) {
+      padding: 0 0px 10px 0px;
+    }
 
-		span {
-			color: $colorBorderGrey;
-			font-weight: 300;
-			font-style: italic;
-		}
-	}
+    span {
+      color: $colorBorderGrey;
+      font-weight: 300;
+      font-style: italic;
+    }
+  }
 }
 
 .widg_searchbar-bar__search {
-	@include clickAreaSize(height);
-	position: relative;
+  @include clickAreaSize(height);
+  position: relative;
 
-	form {
-		display: block;
-		z-index: 300;
+  form {
+    display: block;
+    z-index: 300;
 
-		input[type='text'] {
-			@include clickAreaSize(height);
-			@include clickAreaSize(line-height);
+    input[type='text'] {
+      @include clickAreaSize(height);
+      @include clickAreaSize(line-height);
 
-			box-shadow: inset 0 -3px 3px 0 rgba($colorBlack, 0.04);
+      box-shadow: inset 0 -3px 3px 0 rgba($colorBlack, 0.04);
 
-			width: 100%;
-			font-size: 1.5rem;
-			padding-left: $basicPush * 3;
-			border: none !important;
+      width: 100%;
+      font-size: 1.5rem;
+      padding-left: $basicPush * 3;
+      border: none !important;
 
-			background-color: $colorSearchBarInputFocus;
+      background-color: $colorSearchBarInputFocus;
 
-			&:focus {
-				outline: none;
-				background-color: $colorSearchBarInputFocus;
-			}
+      &:focus {
+        outline: none;
+        background-color: $colorSearchBarInputFocus;
+      }
 
-			&:hover,
-			&:focus {
-				border: none !important;
-			}
+      &:hover,
+      &:focus {
+        border: none !important;
+      }
 
-			@include mq($to: small) {
-				padding-left: $basicPush * 2;
-			}
-		}
-	}
+      @include mq($to: small) {
+        padding-left: $basicPush * 2;
+      }
+    }
+  }
 }
 
 .widg_searchbar-bar__close {
-	@include iconDataurl('close');
-	@include clickAreaSize(height);
-	@include clickAreaSize(line-height);
-	@include clickAreaSize(width);
+  @include iconDataurl('close');
+  @include clickAreaSize(height);
+  @include clickAreaSize(line-height);
+  @include clickAreaSize(width);
 
-	position: absolute;
-	line-height: 0;
-	cursor: pointer;
+  position: absolute;
+  line-height: 0;
+  cursor: pointer;
 
-	right: 0;
+  right: 0;
 
-	&:hover {
-		background-color: $colorLightGray;
-	}
+  &:hover {
+    background-color: $colorLightGray;
+  }
 
-	&:before {
-		width: 16px;
-		height: 16px;
+  &:before {
+    width: 16px;
+    height: 16px;
 
-		position: absolute;
-		top: 50%;
-		right: 50%;
+    position: absolute;
+    top: 50%;
+    right: 50%;
 
-		transform: translate(50%, -50%);
-	}
+    transform: translate(50%, -50%);
+  }
 }
 
 .widg_searchbar-bar__categories {
-	display: none;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-items: flex-start;
-	padding: 0;
-	z-index: 1000;
-	margin-top: $basicPush * 2;
+  display: none;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  z-index: 1000;
+  margin-top: $basicPush * 2;
 
-	@include mq($to: small) {
-		display: flex;
-		flex-wrap: nowrap;
-		white-space: nowrap;
-		padding: $basicPush * 2 0 0 0;
-		// margin-left: $basicPush * 2;
-		overflow-x: scroll;
+  @include mq($to: small) {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    padding: $basicPush * 2 0 0 0;
+    // margin-left: $basicPush * 2;
+    overflow-x: scroll;
 
-		&::-webkit-scrollbar {
-			width: 0;
-			height: 10px;
-			background: transparent;
-		}
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 10px;
+      background: transparent;
+    }
 
-		@include mq($from: medium) {
-			&::-webkit-scrollbar-thumb {
-				display: none;
-				background: transparent;
-			}
-		}
-	}
+    @include mq($from: medium) {
+      &::-webkit-scrollbar-thumb {
+        display: none;
+        background: transparent;
+      }
+    }
+  }
 
-	button {
-		&.button__cat {
-			line-height: unset;
-			padding: 0 $basicPush + 5;
-			margin-bottom: $basicPush - 5;
-			margin-right: $basicPush - 5;
-			color: $colorBlack;
-			font-weight: bold;
-			background: $colorBg;
-			border: 2px solid $colorLightGray;
+  button {
+    &.button__cat {
+      line-height: unset;
+      padding: 0 $basicPush + 5;
+      margin-bottom: $basicPush - 5;
+      margin-right: $basicPush - 5;
+      color: $colorBlack;
+      font-weight: bold;
+      background: $colorBg;
+      border: 2px solid $colorLightGray;
 
-			@include mq($to: small) {
-				height: map-get($elementHeight, mini);
-				margin-bottom: 0;
-			}
+      @include mq($to: small) {
+        height: map-get($elementHeight, mini);
+        margin-bottom: 0;
+      }
 
-			@include mq($from: small) {
-				height: $basicPush * 4.5;
-			}
+      @include mq($from: small) {
+        height: $basicPush * 4.5;
+      }
 
-			&.active {
-				background: $colorYellow;
-				color: $colorBlack;
-				border: 2px solid $colorYellow;
-			}
+      &.active {
+        background: $colorYellow;
+        color: $colorBlack;
+        border: 2px solid $colorYellow;
+      }
 
-			&:hover {
-				color: $colorBg;
-				background: $colorBlack;
-				border-color: $colorBlack;
-			}
-			&:disabled {
-				color: $colorBorderGrey;
-			}
-		}
+      &:hover {
+        color: $colorBg;
+        background: $colorBlack;
+        border-color: $colorBlack;
+      }
+      &:disabled {
+        color: $colorBorderGrey;
+      }
+    }
 
-		&.ref {
-			border: none;
-			width: $basicPush * 2;
-			padding: 0;
-			margin-right: 10px;
-		}
-	}
+    &.ref {
+      border: none;
+      width: $basicPush * 2;
+      padding: 0;
+      margin-right: 10px;
+    }
+  }
 
-	&.gradient_prev:before {
-		position: absolute;
-		z-index: 1;
-		content: '';
-		width: $basicPush * 7;
-		height: $basicPush * 3.8;
-		background: linear-gradient(
-			to right,
-			rgb(255, 255, 255) 0%,
-			rgba(255, 255, 255, 0) 100%
-		);
-	}
+  &.gradient_prev:before {
+    position: absolute;
+    z-index: 1;
+    content: '';
+    width: $basicPush * 7;
+    height: $basicPush * 3.8;
+    background: linear-gradient(
+      to right,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
 
-	&.gradient_next:after {
-		position: absolute;
-		right: 0;
-		z-index: 1;
-		content: '';
-		width: $basicPush * 7;
-		height: $basicPush * 3.8;
-		background: linear-gradient(
-			to left,
-			rgb(255, 255, 255) 25%,
-			rgba(255, 255, 255, 0) 100%
-		);
-	}
+  &.gradient_next:after {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    content: '';
+    width: $basicPush * 7;
+    height: $basicPush * 3.8;
+    background: linear-gradient(
+      to left,
+      rgb(255, 255, 255) 25%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
 }
 
 .widg_searchbar-bar__intro {
-	padding: 0 $basicPush * 3 $basicPush * 2;
-	display: none;
+  padding: 0 $basicPush * 3 $basicPush * 2;
+  display: none;
 
-	@include mq($to: small) {
-		padding: $basicPush * 2;
-	}
+  @include mq($to: small) {
+    padding: $basicPush * 2;
+  }
 
-	p {
-		line-height: 1.5;
-		font-size: 1.5rem;
-		margin: $basicPush * 4.8 0;
-	}
+  p {
+    line-height: 1.5;
+    font-size: 1.5rem;
+    margin: $basicPush * 4.8 0;
+  }
 
-	> a {
-		display: block;
-		font-size: 1.25rem;
-		cursor: pointer;
-		opacity: 1;
-		text-decoration: none;
-		padding: 10.5px 17px;
-		border: 1px solid $colorGreyHover;
+  > a {
+    display: block;
+    font-size: 1.25rem;
+    cursor: pointer;
+    opacity: 1;
+    text-decoration: none;
+    padding: 10.5px 17px;
+    border: 1px solid $colorGreyHover;
 
-		position: relative;
+    position: relative;
 
-		margin-bottom: $basicPush * 1.5;
+    margin-bottom: $basicPush * 1.5;
 
-		@include iconDataurl($name: 'pfeil-black_short', $after: true);
+    @include iconDataurl($name: 'pfeil-black_short', $after: true);
 
-		&:after {
-			position: absolute;
-			right: 14px;
-			top: 50%;
+    &:after {
+      position: absolute;
+      right: 14px;
+      top: 50%;
 
-			transform: translateY(-50%);
+      transform: translateY(-50%);
 
-			width: 17px;
-			height: 10px;
-		}
+      width: 17px;
+      height: 10px;
+    }
 
-		&:hover {
-			border-color: $colorBlack;
-		}
-	}
+    &:hover {
+      border-color: $colorBlack;
+    }
+  }
 
-	.show-intro & {
-		display: block;
-	}
+  .show-intro & {
+    display: block;
+  }
 }
 
 .widg_searchbar-bar__loader {
-	display: none;
+  display: none;
 
-	.show-loader & {
-		display: block;
-	}
+  .show-loader & {
+    display: block;
+  }
 }
 
 .widg_searchbar__go-to-page {
-	display: block;
-	height: 100px;
-	line-height: 100px;
+  display: block;
+  height: 100px;
+  line-height: 100px;
 
-	text-align: center;
-	font-size: 1.25rem;
-	margin-bottom: $basicPush * 2;
-	margin-top: 0;
+  text-align: center;
+  font-size: 1.25rem;
+  margin-bottom: $basicPush * 2;
+  margin-top: 0;
 
-	font-weight: 600;
+  font-weight: 600;
 
-	opacity: 0.7;
-	text-decoration: none;
+  opacity: 0.7;
+  text-decoration: none;
 
-	&:hover {
-		background-color: $colorLightGray;
-	}
+  &:hover {
+    background-color: $colorLightGray;
+  }
 }
 
 .widg_searchbar-bar__loader {
-	height: 100px;
-	position: relative;
+  height: 100px;
+  position: relative;
 
-	.fhnw-spinner {
-		transform: translateY(50px);
-	}
+  .fhnw-spinner {
+    transform: translateY(50px);
+  }
 }

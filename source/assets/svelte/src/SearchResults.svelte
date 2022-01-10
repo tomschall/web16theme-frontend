@@ -19,7 +19,7 @@
 			{#if index < 9 && template === 'searchbar'}
 				<ListItem item={result} {searchResultsHighlighting} />
 			{/if}
-			{#if template === 'searchpage'}
+			{#if template === 'searchpage' || template === 'continuing_education'}
 				<ListItem item={result} {searchResultsHighlighting} />
 			{/if}
 		{/each}
