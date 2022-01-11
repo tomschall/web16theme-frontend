@@ -11,12 +11,12 @@
 </script>
 
 <li class="widg_linklist___entry">
-	<a href="http://localhost:9000">
-		<div class="widg_linklist__img-wrapper">IMAGE GOES HERE</div>
+	<a class="anchor-link" href="http://localhost:9000">
+		<div class="widg_linklist__img-wrapper">
+			<img src="https://dummyimage.com/113x125/ccc/000.png" alt="Dummy Image" />
+		</div>
 		<span class="widg_linklist__dateline">CAS</span>
-
 		<h3 class="childless">Title</h3>
-
 		<span>01.01.2022 | Hochschule Wirtschaft</span>
 		<p>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet fugit,

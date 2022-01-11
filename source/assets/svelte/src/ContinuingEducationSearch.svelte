@@ -31,7 +31,7 @@
 	let limit: number = 10;
 	let searchResults: Item[] = [];
 	let searchResultsHighlighting: any;
-	let showSearchProposals: boolean = true;
+	let showSearchProposals: boolean = false;
 	let isLoading: boolean = false;
 	let searchType: string = 'continuing_education';
 	let observer: any;
@@ -266,13 +266,6 @@
 		<div class="search__results">
 			<div class="widg_searchbar-bar__content">
 				<div class="search__cat">
-					{#if showSearchProposals}
-						<SearchProposals
-							bind:query={searchQuery}
-							bind:searchType
-							{handleInput}
-						/>
-					{/if}
 					{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
 						<div class="widg__searchbar_spellcheck">
 							<p>{$_('search_spellcheck_warning')} <b>{searchTerm}</b></p>
@@ -280,11 +273,6 @@
 								>{$_('search_spellcheck_warning_2')}
 								<b>"{searchTermSpellCheck}"</b></span
 							>
-						</div>
-					{/if}
-					{#if searchResults.length}
-						<div class="widg_searchbar-bar__title">
-							<p>{$_('searchresult_title')}</p>
 						</div>
 					{/if}
 					<SearchResults
