@@ -208,38 +208,40 @@ body {
 	@include clearfix();
 }
 
-.page_content ul:not(.not-default):not(.select2-selection__rendered):not(.widg_search_proposals ul):not(.search-results) {
+.page_content
+	ul:not(.not-default):not(.select2-selection__rendered):not(.widg_search_proposals
+		ul):not(.search-results) {
 	display: table;
 	margin-top: 0;
 	padding-left: 0;
 	list-style-type: none;
-	
+
 	li {
-			font-size: $textSize;
-			font-weight: 500;
-			color: $colorTextDarkGrey;
-			line-height: 1.7;
-			padding-left: 1.3rem;
-			margin-left: 3px;
-			position: relative;
+		font-size: $textSize;
+		font-weight: 500;
+		color: $colorTextDarkGrey;
+		line-height: 1.7;
+		padding-left: 1.3rem;
+		margin-left: 3px;
+		position: relative;
 
-			&:before {
-				display: block;
-				position: absolute;
+		&:before {
+			display: block;
+			position: absolute;
 
-				content: '\2022';
-				color: $colorBlack;
-				left: 0;
-			}
+			content: '\2022';
+			color: $colorBlack;
+			left: 0;
+		}
 
-			@include mq($to: small) {
-				font-size: 1.25rem;
-				line-height: 23px;
-			}
+		@include mq($to: small) {
+			font-size: 1.25rem;
+			line-height: 23px;
+		}
 
-			@media print {
-				font-size: 10pt;
-			}
+		@media print {
+			font-size: 10pt;
+		}
 	}
 
 	@media print {
@@ -380,6 +382,49 @@ ul#page-not-found-list {
 				&:before {
 					width: 23px;
 					height: 17px;
+				}
+			}
+		}
+	}
+}
+
+.page_content {
+	&.searchpage {
+		h1#search-title {
+			font-family: $fontSerifRoman;
+			font-size: 3.33333333rem;
+			padding-left: 0;
+			margin-bottom: $basicPush * 3;
+			line-height: 1.3;
+			font-weight: 600;
+
+			&:after {
+				background-color: $colorYellow;
+				content: ' ';
+				height: 4px;
+				width: 80px;
+				display: block;
+				margin-top: $basicPush * 1.3;
+
+				@include mq($to: medium) {
+					margin-top: $basicPush;
+				}
+			}
+
+			@include mq($to: betweener) {
+				font-size: 3rem;
+			}
+		
+			@include mq($to: medium) {
+				font-size: 2.83333rem;
+				margin-bottom: $basicPush * 2;
+			}
+		
+			@include mq($to: small) {
+				font-size: 2rem;
+		
+				&:after {
+					width: 60px;
 				}
 			}
 		}

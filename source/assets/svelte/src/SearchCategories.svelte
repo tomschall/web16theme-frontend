@@ -8,9 +8,24 @@
 	export let searchType: string;
 	export let categoriesCount: CategoriesCount;
 	export let template: string;
+	export let xScroll: number;
+	export let categoryLastElementNotVisible: boolean = true;
 
-	let zeroResult: string = '(0)';
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico
+	let zeroResult: string = '(0)';
+	let categoryBox;
+
+	$: categoryLastElementNotVisible;
+
+	const parseScroll = () => {
+		xScroll = categoryBox.scrollLeft;
+		let scrollBox = document.querySelector('.button.button__cat.ref');
+		let rect = scrollBox.getBoundingClientRect();
+		rect.right <=
+		(window.innerWidth - 15 || document.documentElement.clientWidth - 15)
+			? (categoryLastElementNotVisible = false)
+			: (categoryLastElementNotVisible = true);
+	};
 
 	const handleCategorySearch = (type: string) => {
 		searchType = type;
@@ -21,10 +36,14 @@
 
 {#if categoriesCount}
 	<div
-		class="widg_searchbar-bar__categories"
+		class="widg_searchbar-bar__categories {xScroll >= 1
+			? 'gradient_prev'
+			: ''} {categoryLastElementNotVisible === true ? 'gradient_next' : ''}"
 		data-searchbar="cat"
 		style="display: flex;"
 		transition:fade={{ duration: 0 }}
+		bind:this={categoryBox}
+		on:scroll={parseScroll}
 	>
 		<button
 			class="button button__cat {searchType && searchType === 'all'

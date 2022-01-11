@@ -44,6 +44,7 @@
 	let selected_taxonomy_subjectarea = [];
 	let selected_taxonomy_eduproducttype = [];
 	let selected_city = [];
+
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
 	) {
