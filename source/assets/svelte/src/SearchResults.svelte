@@ -2,7 +2,10 @@
 	import { _ } from 'svelte-i18n';
 	import type { Item } from './definitions/Item';
 	import ListItem from './ListingNormal.svelte';
+	import ListTeaser from './ListingTeaser.svelte';
+	import ListLinkList from './ListingLinkList.svelte';
 	import LoadingIndicator from './LoadingIndicator.svelte';
+	import ListingLinkList from './ListingLinkList.svelte';
 
 	export let results: Item[];
 	export let isLoading: boolean;
@@ -11,16 +14,28 @@
 	export let searchTerm: string;
 	export let searchType: string;
 	export let lang: string;
+	export let listingType: string;
+
+	console.log('listing type', listingType);
 </script>
 
-<div class="search__results">
-	<ul class="search-results">
+<div
+	class={listingType === 'list' || 'grid' ? 'widg_linklist' : 'search__results'}
+>
+	<ul
+		class={listingType === 'list' || 'grid' ? 'not-default' : 'search-results'}
+	>
 		{#each results as result, index (index)}
 			{#if index < 9 && template === 'searchbar'}
 				<ListItem item={result} {searchResultsHighlighting} />
 			{/if}
 			{#if template === 'searchpage' || template === 'continuing_education'}
-				<ListItem item={result} {searchResultsHighlighting} />
+				{#if listingType === 'grid'}
+					<ListTeaser />
+				{/if}
+				{#if listingType === 'list'}
+					<ListingLinkList />
+				{/if}
 			{/if}
 		{/each}
 		{#if results.length > 0 && template === 'searchbar'}
