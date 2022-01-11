@@ -23,6 +23,7 @@
 	});
 
 	export let template: string = '';
+	export let listingType: string = 'grid';
 	let searchQuery: string = '';
 	let searchTerm: string = null;
 	let searchTermSpellCheck: string = null;
@@ -357,6 +358,7 @@
 					{searchTerm}
 					{searchType}
 					{lang}
+					{listingType}
 				/>
 				{#if showStatusInfo && !searchTermSpellCheck}
 					<div class="widg__searchbar_spellcheck">

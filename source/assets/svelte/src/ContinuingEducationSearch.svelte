@@ -9,7 +9,6 @@
 	import de from './lang/de.json';
 	import { debounce } from 'lodash';
 	import type { Item } from './definitions/Item';
-	let listingType = 'grid';
 
 	let taxonomy_subjectarea = [
 		{ value: 1002, name: 'Informatik' },
@@ -50,6 +49,8 @@
 	});
 
 	export let template: string = '';
+	export let listingType = 'list';
+
 	let searchQuery: string = '';
 	let searchTerm: string = null;
 	let searchTermSpellCheck: string = null;
@@ -59,7 +60,7 @@
 	let limit: number = 10;
 	let searchResults: Item[] = [];
 	let searchResultsHighlighting: any;
-	let showSearchProposals: boolean = false;
+	let showSearchProposals: boolean = true;
 	let isLoading: boolean = false;
 	let searchType: string = 'all';
 	let observer: any;
@@ -69,7 +70,6 @@
 	let itemsCount: number = null;
 	let urlParams = new URLSearchParams(window.location.search);
 	let lang: string = null;
-
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
 	) {
@@ -165,7 +165,7 @@
 
 		if (!searchTermSpellCheck) searchTerm = searchQuery.trim();
 
-		showSearchProposals = true;
+		showSearchProposals = false;
 
 		if (!searchTerm) {
 			showStatusInfo = false;
@@ -359,6 +359,7 @@
 						{searchTerm}
 						{searchType}
 						{lang}
+						{listingType}
 					/>
 					{#if showStatusInfo && !searchTermSpellCheck}
 						<div class="widg__searchbar_spellcheck">
