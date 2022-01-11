@@ -11,8 +11,6 @@
 	import type { Item } from './definitions/Item';
 	import MultiSelect from './MultiSelect.svelte';
 
-	let listingType = 'grid';
-
 	addMessages('en', en);
 	addMessages('de', de);
 
