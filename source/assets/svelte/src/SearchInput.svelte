@@ -20,7 +20,7 @@
 		showSearchProposals = false;
 		showStatusInfo = false;
 		searchTermSpellCheck = null;
-		searchType = 'all';
+		searchType = 'continuing_education';
 	};
 </script>
 

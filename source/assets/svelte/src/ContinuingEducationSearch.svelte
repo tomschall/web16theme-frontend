@@ -9,39 +9,9 @@
 	import de from './lang/de.json';
 	import { debounce } from 'lodash';
 	import type { Item } from './definitions/Item';
-	import Select from 'svelte-select';
+	import MultiSelect from './MultiSelect.svelte';
 
 	let listingType = 'grid';
-
-	let taxonomy_subjectarea = [
-		{ value: 1002, label: 'Informatik' },
-		{ value: 1003, label: 'International Studies' },
-		{ value: 1004, label: 'Life Sciences' },
-	];
-
-	let selected_taxonomy_subjectarea = [
-		taxonomy_subjectarea[0],
-		taxonomy_subjectarea[1],
-	];
-
-	let taxonomy_eduproducttype = [
-		{ value: 2000, label: 'CAS' },
-		{ value: 2001, label: 'DAS' },
-		{ value: 2008, label: 'MAS' },
-	];
-
-	let selected_taxonomy_eduproducttype = [
-		taxonomy_eduproducttype[0],
-		taxonomy_eduproducttype[1],
-	];
-
-	let city = [
-		{ value: 'muttenz', label: 'Muttenz' },
-		{ value: 'basel', label: 'Basel' },
-		{ value: 'brugg-windisch', label: 'Brugg-Windisch' },
-	];
-
-	let selected_city = [city[0], city[2]];
 
 	addMessages('en', en);
 	addMessages('de', de);
@@ -65,7 +35,7 @@
 	let searchResultsHighlighting: any;
 	let showSearchProposals: boolean = true;
 	let isLoading: boolean = false;
-	let searchType: string = 'all';
+	let searchType: string = 'continuing_education';
 	let observer: any;
 	let target: any;
 	let showStatusInfo: boolean = false;
@@ -73,6 +43,10 @@
 	let itemsCount: number = null;
 	let urlParams = new URLSearchParams(window.location.search);
 	let lang: string = null;
+	let selected_taxonomy_subjectarea = [];
+	let selected_taxonomy_eduproducttype = [];
+	let selected_city = [];
+
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
 	) {
@@ -143,7 +117,7 @@
 			target = document.querySelector('.loading-indicator');
 			if (urlParams.has('query')) {
 				searchQuery = urlParams.get('query');
-				searchType = urlParams.get('searchtype') || 'all';
+				searchType = urlParams.get('searchtype') || 'continuing_education';
 				if (searchQuery && searchType) handleInput();
 			}
 		}
@@ -187,12 +161,12 @@
 			window.location.hostname === 'localhost'
 				? // @ts-ignore
 				  `${API}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
-						searchType || 'all'
+						searchType || 'continuing_education'
 				  }&limit=${limit}&offset=${offset}`
 				: `https://${
 						window.location.hostname
 				  }/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
-						searchType || 'all'
+						searchType || 'continuing_education'
 				  }&limit=${limit}&offset=${offset}`;
 
 		fetch(endpoint)
@@ -285,34 +259,11 @@
 			/>
 		</div>
 		<div>
-			<div class="search__holder select2__wrapper">
-				<Select
-					isMulti={true}
-					bind:value={selected_taxonomy_subjectarea}
-					on:change={() =>
-						console.log('event fired selected_taxonomy_subjectarea')}
-					items={taxonomy_subjectarea}
-				/>
-			</div>
-
-			<div class="search__holder select2__wrapper">
-				<Select
-					isMulti={true}
-					bind:value={selected_taxonomy_eduproducttype}
-					on:change={() =>
-						console.log('event fired selected_taxonomy_eduproducttype')}
-					items={taxonomy_eduproducttype}
-				/>
-			</div>
-
-			<div class="search__holder select2__wrapper">
-				<Select
-					isMulti={true}
-					bind:value={selected_city}
-					on:change={() => console.log('event fired selected_city')}
-					items={city}
-				/>
-			</div>
+			<MultiSelect
+				bind:selected_taxonomy_subjectarea
+				bind:selected_taxonomy_eduproducttype
+				bind:selected_city
+			/>
 		</div>
 
 		<div class="search__results">
