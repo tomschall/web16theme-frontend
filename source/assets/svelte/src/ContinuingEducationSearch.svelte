@@ -11,6 +11,36 @@
 	import type { Item } from './definitions/Item';
 	let listingType = 'grid';
 
+	let taxonomy_subjectarea = [
+		{ value: 1002, name: 'Informatik' },
+		{ value: 1003, name: 'International Studies' },
+		{ value: 1004, name: 'Life Sciences' },
+	];
+
+	let selected_taxonomy_subjectarea = [
+		taxonomy_subjectarea[0],
+		taxonomy_subjectarea[1],
+	];
+
+	let taxonomy_eduproducttype = [
+		{ value: 2000, name: 'CAS' },
+		{ value: 2001, name: 'DAS' },
+		{ value: 2008, name: 'MAS' },
+	];
+
+	let selected_taxonomy_eduproducttype = [
+		taxonomy_eduproducttype[0],
+		taxonomy_eduproducttype[1],
+	];
+
+	let city = [
+		{ value: 'muttenz', name: 'Muttenz' },
+		{ value: 'basel', name: 'Basel' },
+		{ value: 'brugg-windisch', name: 'Brugg-Windisch' },
+	];
+
+	let selected_city = [city[0], city[2]];
+
 	addMessages('en', en);
 	addMessages('de', de);
 
@@ -227,6 +257,15 @@
 				isLoading = false;
 			});
 	};
+
+	$: {
+		console.log('selected_taxonomy_subjectarea', selected_taxonomy_subjectarea);
+		console.log(
+			'selected_taxonomy_eduproducttype',
+			selected_taxonomy_eduproducttype
+		);
+		console.log('selected_city', selected_city);
+	}
 </script>
 
 <div class="search__wrapper">
@@ -242,88 +281,49 @@
 				{handleInput}
 			/>
 		</div>
-
 		<div>
 			<div class="search__holder select2__wrapper">
 				<select
-					id="taxonomy_subjectarea"
-					name="taxonomy_subjectarea"
-					data-searchparam="taxonomy_subjectarea"
-					class="custom-select"
-					multiple={true}
+					multiple
+					bind:value={selected_taxonomy_subjectarea}
+					on:change={() =>
+						console.log('event fired selected_taxonomy_subjectarea')}
 				>
-					<option value="1000">Option I</option>
-					<option value="1001">Option II</option>
-					<option value="1002">Option III</option>
+					{#each taxonomy_subjectarea as area}
+						<option value={area}>
+							{area.name}
+						</option>
+					{/each}
 				</select>
-				<label class="formQuestion" for="faculty"
-					>{$_('edu_faculty_label')}</label
-				>
-				<span class="custom-select___remover" aria-hidden="true" />
 			</div>
 
 			<div class="search__holder select2__wrapper">
-				<span
-					aria-hidden="true"
-					class="is_hidden taxonomy_eduproducttype_hidden_option"
-				/>
 				<select
-					class="custom-select"
-					id="taxonomy_eduproducttype"
-					name="taxonomy_eduproducttype"
-					data-searchparam="taxonomy_eduproducttype"
-					multiple={true}
+					multiple
+					bind:value={selected_taxonomy_eduproducttype}
+					on:change={() =>
+						console.log('event fired selected_taxonomy_eduproducttype')}
 				>
-					<option value="education_type_1">Education Type I</option>
-					<option value="education_type_2">Education Type II</option>
+					{#each taxonomy_eduproducttype as type}
+						<option value={type}>
+							{type.name}
+						</option>
+					{/each}
 				</select>
-				<label class="formQuestion" for="study_type"
-					>{$_('edu_study_type_label')}</label
-				>
-				<span class="custom-select___remover" aria-hidden="true" />
 			</div>
+
 			<div class="search__holder select2__wrapper">
 				<select
-					class="custom-select"
-					name="city"
-					id="city"
-					data-searchparam="city"
-					multiple={true}
+					multiple
+					bind:value={selected_city}
+					on:change={() => console.log('event fired selected_city')}
 				>
-					<option value="option_study_1">Study I</option>
-					<option value="option_study_2">Study II</option>
+					{#each city as c}
+						<option value={c}>
+							{c.name}
+						</option>
+					{/each}
 				</select>
-				<label class="formQuestion" for="location"
-					>{$_('edu_location_label')}</label
-				>
-				<span class="custom-select___remover" aria-hidden="true" />
-			</div>
-		</div>
-
-		<div class="search__third-row">
-			<div class="search__extra-holder">
-				<button
-					class="search__reset not-default"
-					on:click={() => {
-						console.log('RESET CLICKED');
-					}}>{$_('edu_form_reset')}</button
-				>
-				<div class="listing__type">
-					<span
-						class="icon__grid {listingType === 'grid' ? 'active' : ''}"
-						on:click={() => {
-							console.log('GRID CLICKED');
-							listingType = 'grid';
-						}}
-					/>
-					<span
-						class="icon__list {listingType === 'list' ? 'active' : ''}"
-						on:click={() => {
-							console.log('LIST CLICKED');
-							listingType = 'list';
-						}}
-					/>
-				</div>
 			</div>
 		</div>
 
@@ -382,5 +382,10 @@
 		background-clip: padding-box;
 		background-color: #bebdb9;
 		border-radius: 9999px;
+	}
+
+	select {
+		width: 100%;
+		opacity: unset;
 	}
 </style>
