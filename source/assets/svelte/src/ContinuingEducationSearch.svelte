@@ -9,12 +9,14 @@
 	import de from './lang/de.json';
 	import { debounce } from 'lodash';
 	import type { Item } from './definitions/Item';
+	import Select from 'svelte-select';
+
 	let listingType = 'grid';
 
 	let taxonomy_subjectarea = [
-		{ value: 1002, name: 'Informatik' },
-		{ value: 1003, name: 'International Studies' },
-		{ value: 1004, name: 'Life Sciences' },
+		{ value: 1002, label: 'Informatik' },
+		{ value: 1003, label: 'International Studies' },
+		{ value: 1004, label: 'Life Sciences' },
 	];
 
 	let selected_taxonomy_subjectarea = [
@@ -23,9 +25,9 @@
 	];
 
 	let taxonomy_eduproducttype = [
-		{ value: 2000, name: 'CAS' },
-		{ value: 2001, name: 'DAS' },
-		{ value: 2008, name: 'MAS' },
+		{ value: 2000, label: 'CAS' },
+		{ value: 2001, label: 'DAS' },
+		{ value: 2008, label: 'MAS' },
 	];
 
 	let selected_taxonomy_eduproducttype = [
@@ -34,9 +36,9 @@
 	];
 
 	let city = [
-		{ value: 'muttenz', name: 'Muttenz' },
-		{ value: 'basel', name: 'Basel' },
-		{ value: 'brugg-windisch', name: 'Brugg-Windisch' },
+		{ value: 'muttenz', label: 'Muttenz' },
+		{ value: 'basel', label: 'Basel' },
+		{ value: 'brugg-windisch', label: 'Brugg-Windisch' },
 	];
 
 	let selected_city = [city[0], city[2]];
@@ -283,47 +285,32 @@
 		</div>
 		<div>
 			<div class="search__holder select2__wrapper">
-				<select
-					multiple
+				<Select
+					isMulti={true}
 					bind:value={selected_taxonomy_subjectarea}
 					on:change={() =>
 						console.log('event fired selected_taxonomy_subjectarea')}
-				>
-					{#each taxonomy_subjectarea as area}
-						<option value={area}>
-							{area.name}
-						</option>
-					{/each}
-				</select>
+					items={taxonomy_subjectarea}
+				/>
 			</div>
 
 			<div class="search__holder select2__wrapper">
-				<select
-					multiple
+				<Select
+					isMulti={true}
 					bind:value={selected_taxonomy_eduproducttype}
 					on:change={() =>
 						console.log('event fired selected_taxonomy_eduproducttype')}
-				>
-					{#each taxonomy_eduproducttype as type}
-						<option value={type}>
-							{type.name}
-						</option>
-					{/each}
-				</select>
+					items={taxonomy_eduproducttype}
+				/>
 			</div>
 
 			<div class="search__holder select2__wrapper">
-				<select
-					multiple
+				<Select
+					isMulti={true}
 					bind:value={selected_city}
 					on:change={() => console.log('event fired selected_city')}
-				>
-					{#each city as c}
-						<option value={c}>
-							{c.name}
-						</option>
-					{/each}
-				</select>
+					items={city}
+				/>
 			</div>
 		</div>
 
