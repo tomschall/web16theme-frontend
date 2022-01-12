@@ -169,26 +169,9 @@
 }
 
 .widg_searchbar-bar__content {
-	min-height: calc(100vh - 0px);
-	max-height: calc(100vh - 0px);
-
-	position: relative;
-	overflow-y: auto;
-
-	@include mq($from: wide) {
-		min-height: calc(100vh - 250px);
-		max-height: calc(100vh - 250px);
-	}
-
-	@include mq($to: large) {
-		min-height: calc(100vh - 0px);
-		max-height: calc(100vh - 0px);
-	}
-
-	@include mq($to: medium) {
-		min-height: calc(100vh - 250px);
-		max-height: calc(100vh - 250px);
-	}
+  position: relative;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .widg_searchbar-bar__title {
