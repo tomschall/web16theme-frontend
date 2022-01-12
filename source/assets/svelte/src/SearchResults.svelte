@@ -19,9 +19,7 @@
 	console.log('listing type', listingType);
 </script>
 
-<div
-	class={listingType === 'list' || 'grid' ? 'widg_linklist' : 'search__results'}
->
+<div class="search__results">
 	<ul
 		class={listingType === 'list' || 'grid' ? 'not-default' : 'search-results'}
 	>
@@ -29,7 +27,10 @@
 			{#if index < 9 && template === 'searchbar'}
 				<ListItem item={result} {searchResultsHighlighting} />
 			{/if}
-			{#if template === 'searchpage' || template === 'continuing_education'}
+			{#if template === 'searchpage'}
+				<ListItem item={result} {searchResultsHighlighting} />
+			{/if}
+			{#if template === 'continuing_education'}
 				{#if listingType === 'grid'}
 					<ListTeaser />
 				{/if}
