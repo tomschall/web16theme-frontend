@@ -22,7 +22,7 @@ var taskName = 'js:svelte',
 		dest: './build/assets/js/',
 	};
 
-gulp.task(taskName, function () {
+gulp.task(taskName, function() {
 	return gulp.src(taskConfig.src).pipe(gulp.dest(taskConfig.dest));
 });
 

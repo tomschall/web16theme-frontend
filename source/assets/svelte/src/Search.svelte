@@ -46,7 +46,7 @@
 	let urlParams = new URLSearchParams(window.location.search);
 	let lang: string = null;
 	let xScroll: number = 0;
-	let categoryLastElementNotVisible: boolean = true;	
+	let categoryLastElementNotVisible: boolean = true;
 
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
@@ -63,6 +63,19 @@
 	const options: ObserverOptions = {
 		rootMargin: '0px 0px 300px',
 		threshold: 0,
+	};
+
+	const switchMetaTag = () => {
+		var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+		if (iOS === true) {
+			console.log('iOS', iOS);
+			document.querySelector("[name='viewport']").remove();
+			const meta = document.createElement('meta');
+			meta.name = 'viewport';
+			meta.content =
+				'width=device-width, initial-scale=1.0, viewport-fit=cover';
+			document.getElementsByTagName('head')[0].appendChild(meta);
+		}
 	};
 
 	const loadMoreResults = (entries: any) => {
@@ -112,6 +125,7 @@
 
 	onMount(() => {
 		setLanguage(window.location.href.split('/')[3]);
+		switchMetaTag();
 		if (template === 'searchpage') {
 			document.title = $_('searchpage_title');
 			observer = new IntersectionObserver(loadMoreResults, options);
@@ -137,9 +151,8 @@
 		const endpoint =
 			window.location.hostname === 'localhost'
 				? // @ts-ignore
-				  API +
-				  `?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`
-				: `https://${window.location.hostname}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`;
+				  `${API}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`
+				: `https://${window.location.hostname}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`;
 
 		fetch(endpoint)
 			.then((response) => {
@@ -312,7 +325,7 @@
 		/>
 	{/if}
 	{#if showSearchBarIntro}
-		<SearchBarIntro />
+		<SearchBarIntro {lang} />
 	{/if}
 	<div class="search__results">
 		<div
