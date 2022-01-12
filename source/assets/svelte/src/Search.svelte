@@ -65,10 +65,14 @@
 		threshold: 0,
 	};
 
-	const switchMetaTag = () => {
+  const isIOS = () => {
 		var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+    return iOS
+	};
+
+	const switchMetaTag = () => {
+		var iOS = isIOS();
 		if (iOS === true) {
-			console.log('iOS', iOS);
 			document.querySelector("[name='viewport']").remove();
 			const meta = document.createElement('meta');
 			meta.name = 'viewport';
@@ -374,6 +378,7 @@
 					{searchTerm}
 					{searchType}
 					{lang}
+          {isIOS}
 				/>
 				{#if showStatusInfo && !searchTermSpellCheck}
 					<div class="widg__searchbar_spellcheck">
