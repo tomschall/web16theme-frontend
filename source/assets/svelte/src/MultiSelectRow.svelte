@@ -26,7 +26,7 @@
 	export let selected_city = [];
 </script>
 
-<div class="search__holder select2__wrapper">
+<div class="search__holder select2__wrapper themed">
 	<Select
 		isMulti={true}
 		bind:value={selected_taxonomy_subjectarea}
@@ -35,7 +35,7 @@
 	/>
 </div>
 
-<div class="search__holder select2__wrapper">
+<div class="search__holder select2__wrapper themed">
 	<Select
 		isMulti={true}
 		bind:value={selected_taxonomy_eduproducttype}
@@ -45,7 +45,7 @@
 	/>
 </div>
 
-<div class="search__holder select2__wrapper">
+<div class="search__holder select2__wrapper themed">
 	<Select
 		isMulti={true}
 		bind:value={selected_city}
@@ -53,3 +53,12 @@
 		items={city}
 	/>
 </div>
+
+<style>
+	.themed {
+		--border: 2px solid #deded9;
+		--borderRadius: 0;
+		--placeholderColor: #000;
+		--height: 60px !important;
+	}
+</style>

@@ -9,7 +9,7 @@
 	import de from './lang/de.json';
 	import { debounce } from 'lodash';
 	import type { Item } from './definitions/Item';
-	import MultiSelect from './MultiSelect.svelte';
+	import MultiSelectRow from './MultiSelectRow.svelte';
 
 	addMessages('en', en);
 	addMessages('de', de);
@@ -257,7 +257,7 @@
 			/>
 		</div>
 		<div>
-			<MultiSelect
+			<MultiSelectRow
 				bind:selected_taxonomy_subjectarea
 				bind:selected_taxonomy_eduproducttype
 				bind:selected_city
