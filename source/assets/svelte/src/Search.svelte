@@ -385,15 +385,14 @@
 						{searchType}
 						{lang}
 					/>
-
-					{#if showStatusInfo && !searchTermSpellCheck}
-						<div class="widg__searchbar_spellcheck">
-							<p>{$_('search_no_results')}</p>
-							<span>{$_('search_no_results_subtitle')}</span>
-						</div>
-					{/if}
 				</div>
 			</div>
+		</div>
+	{/if}
+	{#if showStatusInfo && !searchTermSpellCheck}
+		<div class="widg__searchbar_spellcheck">
+			<p>{$_('search_no_results')}</p>
+			<span>{$_('search_no_results_subtitle')}</span>
 		</div>
 	{/if}
 </div>
