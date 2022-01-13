@@ -33,9 +33,6 @@
 				>
 			</li>
 		{/if}
-		{#if isIOS()}
-			<li class="ios-space" />
-		{/if}
 	</ul>
 </div>
 <div class="loading-indicator">
@@ -51,10 +48,5 @@
 		align-items: center;
 		padding-top: 20px;
 		padding-bottom: 10px;
-	}
-
-	.ios-space {
-		height: 300px;
-		margin-bottom: 50px;
 	}
 </style>
