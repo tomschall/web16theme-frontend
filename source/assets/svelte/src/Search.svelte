@@ -65,9 +65,9 @@
 		threshold: 0,
 	};
 
-  const isIOS = () => {
+	const isIOS = () => {
 		var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
-    return iOS
+		return iOS;
 	};
 
 	const switchMetaTag = () => {
@@ -128,6 +128,12 @@
 	};
 
 	onMount(() => {
+		const appHeight = () => {
+			const doc = document.documentElement;
+			doc.style.setProperty('--app-height', `${window.innerHeight}px`);
+		};
+		window.addEventListener('resize', appHeight);
+		appHeight();
 		setLanguage(window.location.href.split('/')[3]);
 		switchMetaTag();
 		if (template === 'searchpage') {
@@ -378,7 +384,7 @@
 					{searchTerm}
 					{searchType}
 					{lang}
-          {isIOS}
+					{isIOS}
 				/>
 				{#if showStatusInfo && !searchTermSpellCheck}
 					<div class="widg__searchbar_spellcheck">
