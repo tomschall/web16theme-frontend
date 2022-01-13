@@ -384,7 +384,6 @@
 					{searchTerm}
 					{searchType}
 					{lang}
-					{isIOS}
 				/>
 				{#if showStatusInfo && !searchTermSpellCheck}
 					<div class="widg__searchbar_spellcheck">

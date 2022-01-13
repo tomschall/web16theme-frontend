@@ -11,7 +11,11 @@
 	export let searchTerm: string;
 	export let searchType: string;
 	export let lang: string;
-	export let isIOS: () => {};
+
+	function IsSafari() {
+		var is_safari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1;
+		return is_safari;
+	}
 </script>
 
 <div class="search__results">
@@ -33,6 +37,9 @@
 				>
 			</li>
 		{/if}
+		{#if IsSafari()}
+			<li class="ios-space" />
+		{/if}
 	</ul>
 </div>
 <div class="loading-indicator">
@@ -48,5 +55,10 @@
 		align-items: center;
 		padding-top: 20px;
 		padding-bottom: 10px;
+	}
+
+	.ios-space {
+		height: 100px;
+		margin-bottom: 50px;
 	}
 </style>
