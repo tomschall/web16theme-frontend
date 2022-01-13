@@ -11,7 +11,7 @@
 	export let searchTerm: string;
 	export let searchType: string;
 	export let lang: string;
-  export let isIOS: () => {};
+	export let isIOS: () => {};
 </script>
 
 <div class="search__results">
@@ -25,11 +25,16 @@
 			{/if}
 		{/each}
 		{#if results.length > 0 && template === 'searchbar'}
-			<a
-				class="widg_searchbar__go-to-page not-default {isIOS() ? 'ios-space' : ''}"
-				href={`/${lang}/search_all?query=${searchTerm}&searchtype=${searchType}`}
-				>{$_('search_all_results')}</a
-			>
+			<li>
+				<a
+					class="widg_searchbar__go-to-page not-default"
+					href={`/${lang}/search_all?query=${searchTerm}&searchtype=${searchType}`}
+					>{$_('search_all_results')}</a
+				>
+			</li>
+		{/if}
+		{#if isIOS()}
+			<li class="ios-space" />
 		{/if}
 	</ul>
 </div>
@@ -48,7 +53,8 @@
 		padding-bottom: 10px;
 	}
 
-  .ios-space {
-    margin-bottom: 360px;
-  }
+	.ios-space {
+		height: 200px;
+		margin-bottom: 20px;
+	}
 </style>
