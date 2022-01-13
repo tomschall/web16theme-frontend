@@ -58,7 +58,6 @@
 	}
 
 	.ios-space {
-		height: 100px;
-		margin-bottom: 50px;
+		height: 50px;
 	}
 </style>
