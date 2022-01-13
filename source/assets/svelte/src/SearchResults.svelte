@@ -36,9 +36,9 @@
 					>{$_('search_all_results')}</a
 				>
 			</li>
-		{/if}
-		{#if IsSafari()}
-			<li class="ios-space" />
+			{#if IsSafari()}
+				<li class="ios-space" />
+			{/if}
 		{/if}
 	</ul>
 </div>
