@@ -26,7 +26,7 @@
 		{/each}
 		{#if results.length > 0 && template === 'searchbar'}
 			<a
-				class="widg_searchbar__go-to-page not-default"
+				class="widg_searchbar__go-to-page not-default {isIOS() ? 'ios-space' : ''}"
 				href={`/${lang}/search_all?query=${searchTerm}&searchtype=${searchType}`}
 				>{$_('search_all_results')}</a
 			>
@@ -49,6 +49,6 @@
 	}
 
   .ios-space {
-    margin-bottom: 180px;
+    margin-bottom: 200px;
   }
 </style>
