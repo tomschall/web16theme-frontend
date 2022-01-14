@@ -9,17 +9,21 @@
 
 <div class="widg_searchbar-bar__intro" transition:fade={{ duration: 500 }}>
 	<SvelteMarkdown {source} />
-	<a href="https://www.fhnw.ch/{lang}/search_edu">{$_('introtext_studies')}</a>
-	<a href="https://www.fhnw.ch/{lang}/search_filter"
-		>{$_('introtext_continuing_educations')}</a
+	<a href="https://www.fhnw.ch/{lang}{$_('introtext_studies_link')}"
+		>{$_('introtext_studies')}</a
 	>
-	<a href="https://www.fhnw.ch/{lang}/search_profiles"
+	<a
+		href="https://www.fhnw.ch/{lang}{$_(
+			'introtext_continuing_educations_link'
+		)}">{$_('introtext_continuing_educations')}</a
+	>
+	<a href="https://www.fhnw.ch/{lang}{$_('introtext_person_link')}"
 		>{$_('introtext_person')}</a
 	>
-	<a href="https://www.fhnw.ch/{lang}/about-fhnw/events"
+	<a href="https://www.fhnw.ch/{lang}{$_('introtext_events_link')}"
 		>{$_('introtext_events')}</a
 	>
-	<a href="https://www.fhnw.ch/{lang}/media-corner/newsroom/news"
+	<a href="https://www.fhnw.ch/{lang}{$_('introtext_news_link')}"
 		>{$_('introtext_news')}</a
 	>
 </div>
