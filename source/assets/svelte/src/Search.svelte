@@ -337,58 +337,59 @@
 	{#if showSearchBarIntro}
 		<SearchBarIntro {lang} />
 	{/if}
-	{#if searchResults.length}
-		<div class="search__results">
-			<div
-				class={template === 'searchbar'
-					? 'widg_searchbar-bar__content'
-					: 'widg_searchpage__content'}
-			>
-				<div class="search__cat">
-					{#if showSearchCategories}
-						<SearchCategories
-							bind:categoriesCount
-							bind:searchType
-							bind:xScroll
-							bind:categoryLastElementNotVisible
-							{template}
-							triggerCategorySearch={() => triggerSearchDebounced(true)}
-							{unobserve}
-						/>
-					{/if}
-					{#if showSearchProposals}
-						<SearchProposals
-							bind:query={searchQuery}
-							bind:searchType
-							{handleInput}
-						/>
-					{/if}
-					{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
-						<div class="widg__searchbar_spellcheck">
-							<p>{$_('search_spellcheck_warning')} <b>{searchTerm}</b></p>
-							<span
-								>{$_('search_spellcheck_warning_2')}
-								<b>"{searchTermSpellCheck}"</b></span
-							>
-						</div>
-					{/if}
 
+	<div class="search__results">
+		<div
+			class={template === 'searchbar'
+				? 'widg_searchbar-bar__content'
+				: 'widg_searchpage__content'}
+		>
+			<div class="search__cat">
+				{#if showSearchCategories}
+					<SearchCategories
+						bind:categoriesCount
+						bind:searchType
+						bind:xScroll
+						bind:categoryLastElementNotVisible
+						{template}
+						triggerCategorySearch={() => triggerSearchDebounced(true)}
+						{unobserve}
+					/>
+				{/if}
+				{#if showSearchProposals}
+					<SearchProposals
+						bind:query={searchQuery}
+						bind:searchType
+						{handleInput}
+					/>
+				{/if}
+				{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
+					<div class="widg__searchbar_spellcheck">
+						<p>{$_('search_spellcheck_warning')} <b>{searchTerm}</b></p>
+						<span
+							>{$_('search_spellcheck_warning_2')}
+							<b>"{searchTermSpellCheck}"</b></span
+						>
+					</div>
+				{/if}
+				{#if searchResults.length}
 					<div class="widg_searchbar-bar__title">
 						<p>{$_('searchresult_title')}</p>
 					</div>
-					<SearchResults
-						results={searchResults}
-						{searchResultsHighlighting}
-						{isLoading}
-						{template}
-						{searchTerm}
-						{searchType}
-						{lang}
-					/>
-				</div>
+				{/if}
+				<SearchResults
+					results={searchResults}
+					{searchResultsHighlighting}
+					{isLoading}
+					{template}
+					{searchTerm}
+					{searchType}
+					{lang}
+				/>
 			</div>
 		</div>
-	{/if}
+	</div>
+
 	{#if showStatusInfo && !searchTermSpellCheck}
 		<div class="widg__searchbar_spellcheck">
 			<p>{$_('search_no_results')}</p>
