@@ -63,22 +63,6 @@
 	},
 	300);
 
-	const webFrameworks = [
-		`Svelte`,
-		`React`,
-		`Vue`,
-		`Angular`,
-		`Polymer`,
-		`Ruby on Rails`,
-		`ASP.net`,
-		`Laravel`,
-		`Django`,
-		`Express`,
-		`Spring`,
-	];
-
-	let selected;
-
 	interface ObserverOptions {
 		rootMargin: string;
 		threshold: number;

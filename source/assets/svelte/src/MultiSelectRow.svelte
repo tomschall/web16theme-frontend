@@ -1,5 +1,11 @@
 <script lang="ts">
 	import Select from 'svelte-select';
+	import MultiSelect from './multiselect';
+
+	export let searchType: string;
+	export let unobserve: any;
+	export let template: string;
+	export let triggerCategorySearch = () => {};
 
 	let taxonomy_subjectarea = [
 		{ value: 1002, label: 'Informatik' },
@@ -24,34 +30,30 @@
 	];
 
 	export let selected_city = [];
+
+	const handleCategorySearch = (type: string) => {
+		searchType = type;
+		if (template == 'searchpage') unobserve();
+		triggerCategorySearch();
+	};
 </script>
 
 <div class="search__holder select2__wrapper themed">
-	<Select
-		isMulti={true}
-		bind:value={selected_taxonomy_subjectarea}
-		on:change={() => console.log('event fired selected_taxonomy_subjectarea')}
-		items={taxonomy_subjectarea}
+	<MultiSelect
+		bind:selected={selected_taxonomy_subjectarea}
+		options={taxonomy_subjectarea}
 	/>
 </div>
 
 <div class="search__holder select2__wrapper themed">
-	<Select
-		isMulti={true}
-		bind:value={selected_taxonomy_eduproducttype}
-		on:change={() =>
-			console.log('event fired selected_taxonomy_eduproducttype')}
-		items={taxonomy_eduproducttype}
+	<MultiSelect
+		bind:selected={selected_taxonomy_eduproducttype}
+		options={taxonomy_eduproducttype}
 	/>
 </div>
 
 <div class="search__holder select2__wrapper themed">
-	<Select
-		isMulti={true}
-		bind:value={selected_city}
-		on:change={() => console.log('event fired selected_city')}
-		items={city}
-	/>
+	<MultiSelect bind:selected={selected_city} options={city} />
 </div>
 
 <style>

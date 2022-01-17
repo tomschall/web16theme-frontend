@@ -258,9 +258,10 @@
 		</div>
 		<div>
 			<MultiSelectRow
-				bind:selected_taxonomy_subjectarea
-				bind:selected_taxonomy_eduproducttype
-				bind:selected_city
+				triggerCategorySearch={() => triggerSearchDebounced(true)}
+				bind:searchType
+				{template}
+				{unobserve}
 			/>
 		</div>
 
