@@ -17,6 +17,11 @@
 	export let listingType: string;
 
 	console.log('listing type', listingType);
+
+	function IsSafari() {
+		var is_safari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1;
+		return is_safari;
+	}
 </script>
 
 <div class="search__results">
@@ -40,11 +45,16 @@
 			{/if}
 		{/each}
 		{#if results.length > 0 && template === 'searchbar'}
-			<a
-				class="widg_searchbar__go-to-page not-default"
-				href={`/${lang}/search_all?query=${searchTerm}&searchtype=${searchType}`}
-				>{$_('search_all_results')}</a
-			>
+			<li>
+				<a
+					class="widg_searchbar__go-to-page not-default"
+					href={`/${lang}/search_all?query=${searchTerm}&searchtype=${searchType}`}
+					>{$_('search_all_results')}</a
+				>
+			</li>
+			{#if IsSafari()}
+				<li class="ios-space" />
+			{/if}
 		{/if}
 	</ul>
 </div>
@@ -61,5 +71,9 @@
 		align-items: center;
 		padding-top: 20px;
 		padding-bottom: 10px;
+	}
+
+	.ios-space {
+		height: 100px;
 	}
 </style>

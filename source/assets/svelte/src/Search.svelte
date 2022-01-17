@@ -399,7 +399,7 @@
 		/>
 	{/if}
 	{#if showSearchBarIntro}
-		<SearchBarIntro />
+		<SearchBarIntro {lang} />
 	{/if}
 
 	<div class="search__results">
