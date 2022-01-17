@@ -17,6 +17,10 @@
 	addMessages('en', en);
 	addMessages('de', de);
 
+	/**
+   * Initializing the i18n library with the fallback locale of 'de' and the initial locale of the
+  browser's language.
+   */
 	init({
 		fallbackLocale: 'de',
 		initialLocale: document.documentElement.lang,
@@ -24,7 +28,6 @@
 
 	export let template: string = '';
 	export let listingType: string = 'grid';
-
 	let searchQuery: string = '';
 	let searchTerm: string = null;
 	let searchTermSpellCheck: string = null;
@@ -48,8 +51,11 @@
 	let urlParams = new URLSearchParams(window.location.search);
 	let lang: string = null;
 	let xScroll: number = 0;
-	let categoryLastElementNotVisible: boolean = true;	
+	let categoryLastElementNotVisible: boolean = true;
 
+	/**
+	 * The function `triggerSearchDebounced` is a debounced version of `triggerSearch`.
+	 */
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
 	) {
@@ -57,16 +63,67 @@
 	},
 	300);
 
+	const webFrameworks = [
+		`Svelte`,
+		`React`,
+		`Vue`,
+		`Angular`,
+		`Polymer`,
+		`Ruby on Rails`,
+		`ASP.net`,
+		`Laravel`,
+		`Django`,
+		`Express`,
+		`Spring`,
+	];
+
+	let selected;
+
 	interface ObserverOptions {
 		rootMargin: string;
 		threshold: number;
 	}
 
+	/**
+	 * Creating an ObserverOptions object that is used to configure the IntersectionObserver.
+	 */
 	const options: ObserverOptions = {
 		rootMargin: '0px 0px 300px',
 		threshold: 0,
 	};
 
+	/**
+	 * Returns true if the device is an iOS device (iPad, iPhone, or iPod).
+	 * @returns The function isIOS() is returning true or false.
+	 */
+	const isIOS = () => {
+		var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+		return iOS;
+	};
+
+	/**
+   * If the user is on an iOS device, remove the viewport meta tag and add a new one with the content
+  viewport-fit=cover.
+   * @returns None
+   */
+	const switchMetaTag = () => {
+		var iOS = isIOS();
+		if (iOS === true) {
+			document.querySelector("[name='viewport']").remove();
+			const meta = document.createElement('meta');
+			meta.name = 'viewport';
+			meta.content =
+				'width=device-width, initial-scale=1.0, viewport-fit=cover';
+			document.getElementsByTagName('head')[0].appendChild(meta);
+		}
+	};
+
+	/**
+   * When the user scrolls to the bottom of the page, if there are more results to be loaded, then
+  load them.
+   * @param {any} entries - The entries that are currently visible in the viewport.
+   * @returns None
+   */
 	const loadMoreResults = (entries: any) => {
 		entries.forEach((entry: any) => {
 			if (entry.isIntersecting) {
@@ -89,10 +146,19 @@
 		});
 	};
 
+	/**
+	 * Unobserve the target element from the observer.
+	 * @returns None
+	 */
 	let unobserve = () => {
 		observer.unobserve(target);
 	};
 
+	/**
+	 * Set the language to the language of the browser.
+	 * @param {string} langStr - The language string to set the language to.
+	 * @returns None
+	 */
 	let setLanguage = (langStr: string) => {
 		switch (langStr) {
 			case 'en': {
@@ -113,7 +179,14 @@
 	};
 
 	onMount(() => {
+		const appHeight = () => {
+			const doc = document.documentElement;
+			doc.style.setProperty('--app-height', `${window.innerHeight}px`);
+		};
+		window.addEventListener('resize', appHeight);
+		appHeight();
 		setLanguage(window.location.href.split('/')[3]);
+		switchMetaTag();
 		if (template === 'searchpage') {
 			document.title = $_('searchpage_title');
 			observer = new IntersectionObserver(loadMoreResults, options);
@@ -126,6 +199,10 @@
 		}
 	});
 
+	/**
+   * When the user types in the search box, the search box will be cleared and the search will be
+  triggered.
+   */
 	const handleInput: () => void = function () {
 		noAlternativeSearchTermFound = false;
 		if (observer) unobserve();
@@ -135,13 +212,15 @@
 		triggerSearchDebounced(true);
 	};
 
+	/**
+	 * We fetch the data from the API, and then we update the facets.
+	 */
 	const updateFacets: () => void = function () {
 		const endpoint =
 			window.location.hostname === 'localhost'
 				? // @ts-ignore
-				  API +
-				  `?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`
-				: `https://${window.location.hostname}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`;
+				  `${API}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`
+				: `https://${window.location.hostname}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`;
 
 		fetch(endpoint)
 			.then((response) => {
@@ -158,6 +237,12 @@
 			});
 	};
 
+	/**
+   * It fetches the search results from the API and updates the search results and search results
+  highlighting.
+   * @param {boolean} isFirst - boolean
+   * @returns The search results.
+   */
 	const triggerSearch = async (isFirst: boolean) => {
 		if (isFirst) {
 			showSearchBarIntro = false;
@@ -314,8 +399,9 @@
 		/>
 	{/if}
 	{#if showSearchBarIntro}
-		<SearchBarIntro />
+		<SearchBarIntro {lang} />
 	{/if}
+
 	<div class="search__results">
 		<div
 			class={template === 'searchbar'
@@ -365,15 +451,16 @@
 					{lang}
 					{listingType}
 				/>
-				{#if showStatusInfo && !searchTermSpellCheck}
-					<div class="widg__searchbar_spellcheck">
-						<p>{$_('search_no_results')}</p>
-						<span>{$_('search_no_results_subtitle')}</span>
-					</div>
-				{/if}
 			</div>
 		</div>
 	</div>
+
+	{#if showStatusInfo && !searchTermSpellCheck}
+		<div class="widg__searchbar_spellcheck">
+			<p>{$_('search_no_results')}</p>
+			<span>{$_('search_no_results_subtitle')}</span>
+		</div>
+	{/if}
 </div>
 
 <style>
