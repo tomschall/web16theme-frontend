@@ -224,7 +224,7 @@ display above those of another following shortly after it -->
 							type="button"
 							title="{removeBtnTitle} {label}"
 						>
-							<CrossIcon height="12pt" />
+							,
 						</button>
 					{/if}
 				</li>

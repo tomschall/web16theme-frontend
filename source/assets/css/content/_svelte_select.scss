@@ -8,6 +8,12 @@
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
+		margin-top: $basicPush * 3;
+
+		@include mq($to: small) {
+			flex-direction: column;
+			flex: 1;
+		}
 
 		.multiselect {
 			position: relative;
@@ -15,23 +21,25 @@
 			flex: 3;
 			align-items: center;
 			margin: 0;
+
+			@include mq($to: small) {
+				margin-bottom: $basicPush;
+			}
+
 			cursor: pointer;
 			padding: 0;
-
-			&:focus-within {
-				border-color: $colorBlack;
-			}
 
 			&.readonly {
 				background: yellow;
 			}
 			ul.selected > li {
+				font-size: $basicPush + 5;
+				font-weight: 400;
 				align-items: center;
 				border-radius: 0;
 				display: flex;
 				margin: 2pt;
-				padding: 0 0 0 1ex;
-				transition: 0.3s;
+				padding: 0;
 				white-space: nowrap;
 				height: 16pt;
 			}
@@ -41,7 +49,6 @@
 				border-radius: 0;
 				display: flex;
 				cursor: pointer;
-				transition: 0.2s;
 			}
 			button {
 				color: inherit;
@@ -66,11 +73,8 @@
 				outline: none;
 				background: none;
 				color: var(--sms-text-color, inherit);
-				flex: 1; /* this + next line fix issue #12 https://git.io/JiDe3 */
+				flex: 1;
 				min-width: 2em;
-				/* minimum font-size > 16px ensures iOS doesn't zoom in when focusing input */
-				/* https://stackoverflow.com/a/6394497 */
-				font-size: calc(16px + 0.1vw);
 			}
 
 			ul.selected {
@@ -80,11 +84,32 @@
 				flex: 1;
 				flex-wrap: wrap;
 				margin: 0;
-				padding: 0;
+				padding: 0 $basicPush;
 				border: 2px solid $colorGreyHover;
 				border-radius: 0;
 				overscroll-behavior: none;
 				height: $basicPush * 6;
+
+				&:focus-within {
+					border-color: $colorBlack;
+					border-bottom: 0;
+				}
+
+				&::after {
+					background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSI2IiB2aWV3Qm94PSIwIDAgOSA2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZT42RjZBQUY5Mi1ERjdGLTRENEEtQURBQy00ODQ0MTg4NUE4QzA8L3RpdGxlPjxwYXRoIGQ9Ik0wIDBoOUw0LjUgNnoiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==);
+					background-repeat: no-repeat;
+					background-size: auto;
+					content: '';
+					display: inline-block;
+					position: absolute;
+					right: 12px;
+					top: 50%;
+					-webkit-transform: translateY(-50%);
+					transform: translateY(-50%);
+					width: 12px;
+					height: 7px;
+					cursor: pointer;
+				}
 			}
 
 			ul.options {
@@ -102,24 +127,48 @@
 				overflow: auto;
 				background: $colorBg;
 				border: 2px solid $colorBlack;
-				border-top-color: transparent;
+				border-top: 0;
 			}
 			ul.options.hidden {
 				visibility: hidden;
 			}
 
 			ul.options li {
+				display: flex;
+				flex-direction: row;
+				justify-content: start;
+				align-items: center;
+				margin-bottom: 2px;
 				list-style-type: none;
-				padding: 3pt 2ex;
+				padding: $basicPush;
 				cursor: pointer;
+
+				&:before {
+					display: flex;
+					width: $radioCheckboxDimension;
+					height: $radioCheckboxDimension;
+					content: '';
+					background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 20 20' style='enable-background:new 0 0 20 20;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;stroke:%23DEDED9;stroke-width:2;stroke-miterlimit:10;%7D .st1%7Bdisplay:none;%7D .st2%7Bdisplay:inline;%7D .st3%7Bfill:none;stroke:%23000000;stroke-width:3;%7D%0A%3C/style%3E%3Crect x='1' y='1' class='st0' width='18' height='18'/%3E%3C/svg%3E%0A");
+					background-repeat: no-repeat;
+					margin-right: $basicPush;
+				}
+
+				&:last-child {
+					margin-bottom: 0;
+				}
 			}
 			ul.options li.selected {
-				border-left: var(
-					--sms-li-selected-border-left,
-					3pt solid var(--sms-selected-color, green)
-				);
-				background: var(--sms-li-selected-bg, inherit);
-				color: var(--sms-li-selected-color, inherit);
+				background-color: $colorYellowAccordeonActive;
+
+				&:before {
+					display: flex;
+					width: $radioCheckboxDimension;
+					height: $radioCheckboxDimension;
+					content: '';
+					background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 20 20' style='enable-background:new 0 0 20 20;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;stroke:%23000000;stroke-width:2;stroke-miterlimit:10;%7D .st1%7Bfill:none;stroke:%23000000;stroke-width:3;%7D%0A%3C/style%3E%3Crect x='1' y='1' class='st0' width='18' height='18'/%3E%3Cg id='Styles'%3E%3Cg id='FHNW_x5F_Styles_x40_2x' transform='translate(-795.000000, -960.000000)'%3E%3Cpolyline id='checkmark' class='st1' points='799.5,970.1 803.7,973.9 810.5,966.9 '/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+					background-repeat: no-repeat;
+					margin-right: $basicPush;
+				}
 			}
 
 			ul.options li:not(.selected):hover {
@@ -172,6 +221,14 @@
 				font-weight: unset;
 				-webkit-transition: unset;
 				transition: unset;
+			}
+
+			&:nth-of-type(2n) {
+				margin: 0 $basicPush;
+
+				@include mq($to: small) {
+					margin: $basicPush * 1.5 0;
+				}
 			}
 		}
 	}
