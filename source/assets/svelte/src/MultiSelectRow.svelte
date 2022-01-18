@@ -27,6 +27,7 @@
 		{ value: 'muttenz', label: 'Muttenz' },
 		{ value: 'basel', label: 'Basel' },
 		{ value: 'brugg-windisch', label: 'Brugg-Windisch' },
+		{ value: 'solothurn', label: 'Solothurn' },
 	];
 
 	export let selected_city = [];

@@ -25,8 +25,10 @@
 	export let liOptionClass = ``;
 	export let removeBtnTitle = `Remove`;
 	export let removeAllTitle = `Remove all`;
-	// https://github.com/sveltejs/svelte/issues/6964
 	export let defaultDisabledTitle = `This option is disabled`;
+
+	$: console.log('selected', selected);
+
 	if (maxSelect !== null && maxSelect < 0) {
 		console.error(
 			`maxSelect must be null or positive integer, got ${maxSelect}`
@@ -205,7 +207,7 @@ display above those of another following shortly after it -->
 	use:onClickOutside={() => setOptionsVisible(false)}
 	use:onClickOutside={() => dispatch(`blur`)}
 >
-	<ul class="selected {ulSelectedClass}">
+	<ul class="selected {ulSelectedClass} {showOptions ? 'active' : ''}">
 		{#if maxSelect == 1 && selected[0]?.label}
 			<span on:mouseup|self|stopPropagation={() => setOptionsVisible(true)}>
 				{selected[0].label}
@@ -230,7 +232,7 @@ display above those of another following shortly after it -->
 				</li>
 			{/each}
 		{/if}
-		<input
+		<!-- <input
 			bind:this={input}
 			autocomplete="off"
 			bind:value={searchText}
@@ -239,7 +241,7 @@ display above those of another following shortly after it -->
 			on:focus={() => setOptionsVisible(true)}
 			{name}
 			placeholder={selectedLabels.length ? `` : placeholder}
-		/>
+		/> -->
 	</ul>
 	<!-- {#if readonly}
 		<ReadOnlyIcon height="14pt" /> -->
@@ -261,7 +263,7 @@ display above those of another following shortly after it -->
 	{/if} -->
 	{#key showOptions}
 		<ul class="options {ulOptionsClass}" class:hidden={!showOptions}>
-			{#each matchingOptions as { label, disabled, title = null, selectedTitle, disabledTitle = defaultDisabledTitle }}
+			{#each matchingOptions as { label, disabled, title = null, selectedTitle, disabledTitle = defaultDisabledTitle }, i}
 				<li
 					on:mouseup|preventDefault|stopPropagation
 					on:mousedown|preventDefault|stopPropagation={() => {
@@ -274,7 +276,9 @@ display above those of another following shortly after it -->
 					title={disabled
 						? disabledTitle
 						: (isSelected(label) && selectedTitle) || title}
-					class={liOptionClass}
+					class="{liOptionClass} {i === 0 && selected.length === 0
+						? 'default__first_option'
+						: ''}"
 				>
 					{label}
 				</li>
