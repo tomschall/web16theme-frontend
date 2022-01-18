@@ -20,7 +20,7 @@
 	});
 
 	export let template: string = '';
-	export let listingType = 'list';
+	export let listingType = 'grid';
 
 	let searchQuery: string = '';
 	let searchTerm: string = null;
@@ -243,65 +243,61 @@
 	}
 </script>
 
-<div class="search__wrapper">
-	<div class="">
-		<div>
-			<SearchInput
-				bind:query={searchQuery}
-				bind:searchResults
-				bind:showStatusInfo
-				bind:showSearchProposals
-				bind:searchTermSpellCheck
-				bind:searchType
-				{handleInput}
-			/>
-		</div>
-		<div>
-			<MultiSelectRow
-				triggerCategorySearch={() => triggerSearchDebounced(true)}
-				bind:searchType
-				{template}
-				{unobserve}
-			/>
-		</div>
+<div>
+	<SearchInput
+		bind:query={searchQuery}
+		bind:searchResults
+		bind:showStatusInfo
+		bind:showSearchProposals
+		bind:searchTermSpellCheck
+		bind:searchType
+		{handleInput}
+	/>
+</div>
+<div class="svelte__search_wrapper">
+	<MultiSelectRow
+		triggerCategorySearch={() => triggerSearchDebounced(true)}
+		bind:searchType
+		{template}
+		{unobserve}
+	/>
+</div>
 
-		<div class="search__results">
-			<div class="">
-				<div class="search__cat">
-					{#if showSearchProposals}
-						<SearchProposals
-							bind:query={searchQuery}
-							bind:searchType
-							{handleInput}
-						/>
-					{/if}
-					{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
-						<div class="widg__searchbar_spellcheck">
-							<p>{$_('search_spellcheck_warning')} <b>{searchTerm}</b></p>
-							<span
-								>{$_('search_spellcheck_warning_2')}
-								<b>"{searchTermSpellCheck}"</b></span
-							>
-						</div>
-					{/if}
-					<SearchResults
-						results={searchResults}
-						{searchResultsHighlighting}
-						{isLoading}
-						{template}
-						{searchTerm}
-						{searchType}
-						{lang}
-						{listingType}
-					/>
-					{#if showStatusInfo && !searchTermSpellCheck}
-						<div class="widg__searchbar_spellcheck">
-							<p>{$_('search_no_results')}</p>
-							<span>{$_('search_no_results_subtitle')}</span>
-						</div>
-					{/if}
+<div class="search__results">
+	<div class="">
+		<div class="search__cat">
+			{#if showSearchProposals}
+				<SearchProposals
+					bind:query={searchQuery}
+					bind:searchType
+					{handleInput}
+				/>
+			{/if}
+			{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
+				<div class="widg__searchbar_spellcheck">
+					<p>{$_('search_spellcheck_warning')} <b>{searchTerm}</b></p>
+					<span
+						>{$_('search_spellcheck_warning_2')}
+						<b>"{searchTermSpellCheck}"</b></span
+					>
 				</div>
-			</div>
+			{/if}
+			<SearchResults
+				results={searchResults}
+				{searchResultsHighlighting}
+				{isLoading}
+				{template}
+				{searchTerm}
+				{searchType}
+				{lang}
+				{listingType}
+			/>
+			{#if showStatusInfo && !searchTermSpellCheck}
+				<div class="widg__searchbar_spellcheck">
+					<p>{$_('search_no_results')}</p>
+					<span>{$_('search_no_results_subtitle')}</span>
+				</div>
+			{/if}
 		</div>
 	</div>
 </div>

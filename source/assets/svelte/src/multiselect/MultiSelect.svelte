@@ -205,7 +205,6 @@ display above those of another following shortly after it -->
 	use:onClickOutside={() => setOptionsVisible(false)}
 	use:onClickOutside={() => dispatch(`blur`)}
 >
-	<ExpandIcon height="14pt" style="padding: 0 3pt 0 1pt;" />
 	<ul class="selected {ulSelectedClass}">
 		{#if maxSelect == 1 && selected[0]?.label}
 			<span on:mouseup|self|stopPropagation={() => setOptionsVisible(true)}>
@@ -242,9 +241,9 @@ display above those of another following shortly after it -->
 			placeholder={selectedLabels.length ? `` : placeholder}
 		/>
 	</ul>
-	{#if readonly}
-		<ReadOnlyIcon height="14pt" />
-	{:else if selected.length > 0}
+	<!-- {#if readonly}
+		<ReadOnlyIcon height="14pt" /> -->
+	<!-- {:else if selected.length > 0}
 		{#if maxSelect !== null && maxSelect > 1}
 			<span style="padding: 0 3pt;"
 				>{maxSelectMsg(selected.length, maxSelect)}</span
@@ -259,13 +258,9 @@ display above those of another following shortly after it -->
 		>
 			<CrossIcon height="14pt" />
 		</button>
-	{/if}
+	{/if} -->
 	{#key showOptions}
-		<ul
-			class="options {ulOptionsClass}"
-			class:hidden={!showOptions}
-			transition:fly|local={{ duration: 300, y: 40 }}
-		>
+		<ul class="options {ulOptionsClass}" class:hidden={!showOptions}>
 			{#each matchingOptions as { label, disabled, title = null, selectedTitle, disabledTitle = defaultDisabledTitle }}
 				<li
 					on:mouseup|preventDefault|stopPropagation
@@ -289,156 +284,3 @@ display above those of another following shortly after it -->
 		</ul>
 	{/key}
 </div>
-
-<style>
-	:where(.multiselect) {
-		position: relative;
-		margin: 1em 0;
-		border: var(--sms-border, 1pt solid lightgray);
-		border-radius: var(--sms-border-radius, 5pt);
-		align-items: center;
-		min-height: 18pt;
-		display: flex;
-		cursor: text;
-		padding: 0 3pt;
-	}
-	:where(.multiselect:focus-within) {
-		border: var(
-			--sms-focus-border,
-			1pt solid var(--sms-active-color, cornflowerblue)
-		);
-	}
-	:where(.multiselect.readonly) {
-		background: var(--sms-readonly-bg, lightgray);
-	}
-	:where(ul.selected > li) {
-		background: var(--sms-selected-bg, var(--sms-active-color, cornflowerblue));
-		align-items: center;
-		border-radius: 4pt;
-		display: flex;
-		margin: 2pt;
-		padding: 0 0 0 1ex;
-		transition: 0.3s;
-		white-space: nowrap;
-		height: 16pt;
-	}
-	:where(ul.selected > li button, button.remove-all) {
-		align-items: center;
-		border-radius: 50%;
-		display: flex;
-		cursor: pointer;
-		transition: 0.2s;
-	}
-	:where(button) {
-		color: inherit;
-		background: transparent;
-		border: none;
-		cursor: pointer;
-		outline: none;
-		padding: 0 2pt;
-	}
-	:where(ul.selected > li button:hover, button.remove-all:hover) {
-		color: var(--sms-remove-x-hover-focus-color, lightskyblue);
-	}
-	:where(button:focus) {
-		color: var(--sms-remove-x-hover-focus-color, lightskyblue);
-		transform: scale(1.04);
-	}
-	:where(.multiselect input) {
-		border: none;
-		outline: none;
-		background: none;
-		color: var(--sms-text-color, inherit);
-		flex: 1; /* this + next line fix issue #12 https://git.io/JiDe3 */
-		min-width: 2em;
-		/* minimum font-size > 16px ensures iOS doesn't zoom in when focusing input */
-		/* https://stackoverflow.com/a/6394497 */
-		font-size: calc(16px + 0.1vw);
-	}
-	:where(ul.selected) {
-		display: flex;
-		padding: 0;
-		margin: 0;
-		flex-wrap: wrap;
-		flex: 1;
-		overscroll-behavior: none;
-	}
-	:where(ul.options) {
-		list-style: none;
-		max-height: 50vh;
-		padding: 0;
-		top: 100%;
-		width: 100%;
-		position: absolute;
-		border-radius: 1ex;
-		overflow: auto;
-		background: var(--sms-options-bg, white);
-	}
-	:where(ul.options.hidden) {
-		visibility: hidden;
-	}
-	:where(ul.options li) {
-		padding: 3pt 2ex;
-		cursor: pointer;
-	}
-	:where(ul.options li.selected) {
-		border-left: var(
-			--sms-li-selected-border-left,
-			3pt solid var(--sms-selected-color, green)
-		);
-		background: var(--sms-li-selected-bg, inherit);
-		color: var(--sms-li-selected-color, inherit);
-	}
-	:where(ul.options li:not(.selected):hover) {
-		border-left: var(
-			--sms-li-not-selected-hover-border-left,
-			3pt solid var(--sms-active-color, cornflowerblue)
-		);
-		border-left: 3pt solid var(--blue);
-	}
-	:where(ul.options li.active) {
-		background: var(
-			--sms-li-active-bg,
-			var(--sms-active-color, cornflowerblue)
-		);
-	}
-	:where(ul.options li.disabled) {
-		background: var(--sms-li-disabled-bg, #f5f5f6);
-		color: var(--sms-li-disabled-text, #b8b8b8);
-		cursor: not-allowed;
-	}
-	:where(ul.options li.disabled:hover) {
-		border-left: unset;
-	}
-
-	ul.selected {
-		display: -webkit-inline-box !important;
-	}
-
-	#form-buttons-reset,
-	a#form-buttons-reset:not(.not-default),
-	a.button:not(.not-default),
-	a.button__secondary:not(.not-default),
-	button:not(.not-default),
-	input[type='button'],
-	input[type='reset'],
-	input[type='submit'] {
-		display: unset;
-		text-align: unset;
-		outline: unset;
-		border-radius: unset;
-		height: unset;
-		line-height: unset;
-		font-family: unset;
-		background-color: unset;
-		border: unset;
-		color: unset;
-		font-size: unset;
-		padding: unset;
-		text-decoration: unset;
-		opacity: unset;
-		font-weight: unset;
-		-webkit-transition: unset;
-		transition: unset;
-	}
-</style>

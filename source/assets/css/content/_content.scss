@@ -209,8 +209,7 @@ body {
 }
 
 .page_content
-	ul:not(.not-default):not(.select2-selection__rendered):not(.widg_search_proposals
-		ul):not(.search-results) {
+	ul:not(.not-default):not(.select2-selection__rendered):not(.widg_search_proposalsul):not(.search-results):not(.selected):not(.options) {
 	display: table;
 	margin-top: 0;
 	padding-left: 0;
@@ -414,15 +413,15 @@ ul#page-not-found-list {
 			@include mq($to: betweener) {
 				font-size: 3rem;
 			}
-		
+
 			@include mq($to: medium) {
 				font-size: 2.83333rem;
 				margin-bottom: $basicPush * 2;
 			}
-		
+
 			@include mq($to: small) {
 				font-size: 2rem;
-		
+
 				&:after {
 					width: 60px;
 				}

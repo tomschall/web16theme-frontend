@@ -38,29 +38,14 @@
 	};
 </script>
 
-<div class="search__holder select2__wrapper themed">
-	<MultiSelect
-		bind:selected={selected_taxonomy_subjectarea}
-		options={taxonomy_subjectarea}
-	/>
-</div>
+<MultiSelect
+	bind:selected={selected_taxonomy_subjectarea}
+	options={taxonomy_subjectarea}
+/>
 
-<div class="search__holder select2__wrapper themed">
-	<MultiSelect
-		bind:selected={selected_taxonomy_eduproducttype}
-		options={taxonomy_eduproducttype}
-	/>
-</div>
+<MultiSelect
+	bind:selected={selected_taxonomy_eduproducttype}
+	options={taxonomy_eduproducttype}
+/>
 
-<div class="search__holder select2__wrapper themed">
-	<MultiSelect bind:selected={selected_city} options={city} />
-</div>
-
-<style>
-	.themed {
-		--border: 2px solid #deded9;
-		--borderRadius: 0;
-		--placeholderColor: #000;
-		--height: 60px !important;
-	}
-</style>
+<MultiSelect bind:selected={selected_city} options={city} />
