@@ -32,17 +32,53 @@
 			&.readonly {
 				background: yellow;
 			}
-			ul.selected > li {
-				font-size: $basicPush + 5;
-				font-weight: 400;
+
+			.label {
 				align-items: center;
-				border-radius: 0;
+				font-size: 15px;
+
+				position: absolute;
 				display: flex;
-				margin: 2pt;
-				padding: 0;
-				white-space: nowrap;
-				height: 16pt;
+				justify-content: flex-start;
+				width: 100%;
+				height: $basicPush * 6;
+				padding-left: $basicPush * 2;
+				z-index: -1;
 			}
+
+			.label__top {
+				align-items: flex-start;
+				font-size: 12px;
+				color: $colorTextGrey;
+
+				position: absolute;
+				display: flex;
+				justify-content: flex-start;
+				width: 100%;
+				height: $basicPush * 6;
+				padding: 8px 0 0 $basicPush * 2;
+				z-index: -1;
+				transition: height 1s ease-in-out;
+			}
+
+			ul.selected {
+				li {
+					font-size: $basicPush + 5;
+					font-weight: 400;
+					align-items: center;
+					border-radius: 0;
+					display: flex;
+					margin: 2pt;
+					padding: 0;
+					white-space: nowrap;
+					height: 16pt;
+				}
+
+				li:first-of-type {
+					margin-left: 5px;
+				}
+			}
+
 			ul.selected > li button,
 			button.remove-all {
 				align-items: center;

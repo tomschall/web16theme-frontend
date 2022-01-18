@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher, onMount } from 'svelte';
+	import { _ } from 'svelte-i18n';
 	import { fly } from 'svelte/transition';
 	import type { Option, Primitive, ProtoOption } from './';
 	import { onClickOutside } from './actions';
@@ -27,7 +28,7 @@
 	export let removeAllTitle = `Remove all`;
 	export let defaultDisabledTitle = `This option is disabled`;
 
-	$: console.log('selected', selected);
+	$: console.log('selected', selected.length);
 
 	if (maxSelect !== null && maxSelect < 0) {
 		console.error(
@@ -207,31 +208,28 @@ display above those of another following shortly after it -->
 	use:onClickOutside={() => setOptionsVisible(false)}
 	use:onClickOutside={() => dispatch(`blur`)}
 >
+	<span class={selected.length === 0 ? 'label' : 'label__top'}>
+		{$_('multiple_label_type')}
+	</span>
 	<ul class="selected {ulSelectedClass} {showOptions ? 'active' : ''}">
-		{#if maxSelect == 1 && selected[0]?.label}
-			<span on:mouseup|self|stopPropagation={() => setOptionsVisible(true)}>
-				{selected[0].label}
-			</span>
-		{:else}
-			{#each selected as { label }}
-				<li
-					class={liSelectedClass}
-					on:mouseup|self|stopPropagation={() => setOptionsVisible(true)}
-				>
-					{label}
-					{#if !readonly}
-						<button
-							on:mouseup|stopPropagation={() => remove(label)}
-							on:keydown={handleEnterAndSpaceKeys(() => remove(label))}
-							type="button"
-							title="{removeBtnTitle} {label}"
-						>
-							,
-						</button>
-					{/if}
-				</li>
-			{/each}
-		{/if}
+		{#each selected as { label }}
+			<li
+				class={liSelectedClass}
+				on:mouseup|self|stopPropagation={() => setOptionsVisible(true)}
+			>
+				{label}
+				{#if !readonly}
+					<button
+						on:mouseup|stopPropagation={() => remove(label)}
+						on:keydown={handleEnterAndSpaceKeys(() => remove(label))}
+						type="button"
+						title="{removeBtnTitle} {label}"
+					>
+						,
+					</button>
+				{/if}
+			</li>
+		{/each}
 		<!-- <input
 			bind:this={input}
 			autocomplete="off"
