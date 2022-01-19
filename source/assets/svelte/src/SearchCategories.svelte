@@ -9,13 +9,11 @@
 	export let categoriesCount: CategoriesCount;
 	export let template: string;
 	export let xScroll: number;
-	export let categoryLastElementNotVisible: boolean = true;
 
+	let categoryLastElementNotVisible: boolean = true;
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico
 	let zeroResult: string = '(0)';
 	let categoryBox;
-
-	$: categoryLastElementNotVisible;
 
 	const parseScroll = () => {
 		xScroll = categoryBox.scrollLeft;

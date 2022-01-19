@@ -51,7 +51,6 @@
 	let urlParams = new URLSearchParams(window.location.search);
 	let lang: string = null;
 	let xScroll: number = 0;
-	let categoryLastElementNotVisible: boolean = true;
 
 	/**
 	 * The function `triggerSearchDebounced` is a debounced version of `triggerSearch`.
@@ -398,7 +397,6 @@
 						bind:categoriesCount
 						bind:searchType
 						bind:xScroll
-						bind:categoryLastElementNotVisible
 						{template}
 						triggerCategorySearch={() => triggerSearchDebounced(true)}
 						{unobserve}

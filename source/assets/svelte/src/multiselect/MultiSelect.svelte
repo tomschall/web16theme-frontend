@@ -28,7 +28,7 @@
 	export let removeAllTitle = `Remove all`;
 	export let defaultDisabledTitle = `This option is disabled`;
 
-	$: console.log('selected', selected.length);
+	let divWidth;
 
 	if (maxSelect !== null && maxSelect < 0) {
 		console.error(
@@ -211,7 +211,11 @@ display above those of another following shortly after it -->
 	<span class={selected.length === 0 ? 'label' : 'label__top'}>
 		{$_('multiple_label_type')}
 	</span>
-	<ul class="selected {ulSelectedClass} {showOptions ? 'active' : ''}">
+	<ul
+		class="selected {ulSelectedClass} {showOptions ? 'active' : ''}"
+		style="width: {divWidth.offsetWidth}px"
+		bind:this={divWidth}
+	>
 		{#each selected as { label }}
 			<li
 				class={liSelectedClass}

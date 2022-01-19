@@ -62,6 +62,7 @@
 			}
 
 			ul.selected {
+				overflow: hidden;
 				li {
 					font-size: $basicPush + 5;
 					font-weight: 400;
