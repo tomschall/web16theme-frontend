@@ -263,6 +263,31 @@
 	/>
 </div>
 
+<div class="search__third-row">
+	<div class="search__extra-holder">
+		<button
+			class="search__reset not-default"
+			on:click={() => {
+				console.log('RESET CLICKED');
+			}}>{$_('filter_reset')}</button
+		>
+		<div class="listing__type">
+			<span
+				class="icon__grid"
+				on:click={() => {
+					console.log('GRID CLICKED');
+				}}
+			/>
+			<span
+				class="icon__list"
+				on:click={() => {
+					console.log('LIST CLICKED');
+				}}
+			/>
+		</div>
+	</div>
+</div>
+
 <div class="search__results">
 	<div class="">
 		<div class="search__cat">
@@ -301,21 +326,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	::-webkit-scrollbar {
-		width: 9px;
-	}
-
-	::-webkit-scrollbar-thumb {
-		border: 2px solid rgba(0, 0, 0, 0);
-		background-clip: padding-box;
-		background-color: #bebdb9;
-		border-radius: 9999px;
-	}
-
-	select {
-		width: 100%;
-		opacity: unset;
-	}
-</style>

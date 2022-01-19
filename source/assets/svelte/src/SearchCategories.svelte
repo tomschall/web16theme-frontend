@@ -15,15 +15,10 @@
 	let zeroResult: string = '(0)';
 	let categoryBox: Element;
 
-<<<<<<< HEAD
-=======
-	$: categoryLastElementNotVisible;
-
 	/**
 	 * It takes the scroll position of the category box and checks if the last element is visible.
 	 * @returns None
 	 */
->>>>>>> 1f475861cb33af0269f86d7b535da5db5cc27a4d
 	const parseScroll = () => {
 		xScroll = categoryBox.scrollLeft;
 		let scrollBox: Element = document.querySelector('.button.button__cat.ref');

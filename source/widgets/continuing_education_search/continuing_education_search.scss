@@ -11,15 +11,12 @@
 	}
 
 	.search__third-row {
-		display: flex;
-		flex-direction: column;
-
 		.search__extra-holder {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
 			width: 100%;
-			padding: 0 16px 0 16px;
+			padding: $basicPush * 2 0;
 
 			.listing__type {
 				display: flex;

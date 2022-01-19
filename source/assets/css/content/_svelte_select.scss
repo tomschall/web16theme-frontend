@@ -184,6 +184,7 @@
 				list-style-type: none;
 				padding: $basicPush;
 				cursor: pointer;
+				font-size: $basicPush + 5;
 
 				&.default__first_option {
 					background: $colorLightGray;
