@@ -18,15 +18,21 @@
 	if (item && item.title_parents) {
 		item.title_parents.pop();
 	}
-	
+
 	$: {
 		if (item && item.title_parents) {
 			totalBreadCrumbItems = item.title_parents.length;
 			totalLettersInBreadCrumb = item.title_parents.join().length;
-			tooltip = item.title_parents.slice(3, ).join(' › ');
+			tooltip = item.title_parents.slice(3).join(' › ');
 		}
 	}
 
+	/**
+	 * Cannot generate summary
+	 * @param {string} str - The string to shorten
+	 * @param {string} trimStyle - 'soft' | 'hard'
+	 * @returns The shortened breadcrumb item.
+	 */
 	const shortenBreadCrumbItem = (str: string, trimStyle: string): string => {
 		switch (trimStyle) {
 			case 'soft':
@@ -38,7 +44,10 @@
 		}
 	};
 
-	const shortenDescription = (highlighted_description: string, long_description: string) => {
+	const shortenDescription = (
+		highlighted_description: string,
+		long_description: string
+	) => {
 		// for the calculations the highlight-syntax (**) is problematic so we remove it.
 		let cleaned_description = highlighted_description.replaceAll('**', '');
 		let shortened_description = highlighted_description;
@@ -47,19 +56,25 @@
 		if (!long_description.startsWith(cleaned_description)) {
 			shortened_description = `...${highlighted_description}`;
 		}
-		
+
 		// check if we have to add ... to the end because theres more text after the highlighting.
 		if (!long_description.endsWith(cleaned_description)) {
-			shortened_description = `${shortened_description.substring(0, maxLettersInDescription - 3)}...`;
+			shortened_description = `${shortened_description.substring(
+				0,
+				maxLettersInDescription - 3
+			)}...`;
 		}
 
 		// check if we have to add ... to the end because description is to long.
 		if (shortened_description.length > maxLettersInDescription) {
-			shortened_description = `${shortened_description.substring(0, maxLettersInDescription - 3)}...`;
+			shortened_description = `${shortened_description.substring(
+				0,
+				maxLettersInDescription - 3
+			)}...`;
 		}
 
 		return shortened_description;
-	}
+	};
 
 	const translateType = (param: string) => {
 		switch (param) {
@@ -149,7 +164,7 @@
 					source={shortenDescription(
 						searchResultsHighlighting[item.UID].Description
 							? searchResultsHighlighting[item.UID].Description[0]
-							: item.Description, 
+							: item.Description,
 						item.Description
 					)}
 					renderers={{
@@ -169,10 +184,8 @@
 			>
 		{/if}
 		{#if item.institute && item.search_type === 'contact'}
-		<span class="additional_desc"
-			>{item.institute}</span
-		>
-	{/if}
+			<span class="additional_desc">{item.institute}</span>
+		{/if}
 		{#if item.filesize}
 			<span class="additional_desc">{item.filetype} | {item.filesize}</span>
 		{/if}

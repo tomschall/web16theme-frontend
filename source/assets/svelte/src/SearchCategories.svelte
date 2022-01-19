@@ -13,12 +13,21 @@
 	let categoryLastElementNotVisible: boolean = true;
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico
 	let zeroResult: string = '(0)';
-	let categoryBox;
+	let categoryBox: Element;
 
+<<<<<<< HEAD
+=======
+	$: categoryLastElementNotVisible;
+
+	/**
+	 * It takes the scroll position of the category box and checks if the last element is visible.
+	 * @returns None
+	 */
+>>>>>>> 1f475861cb33af0269f86d7b535da5db5cc27a4d
 	const parseScroll = () => {
 		xScroll = categoryBox.scrollLeft;
-		let scrollBox = document.querySelector('.button.button__cat.ref');
-		let rect = scrollBox.getBoundingClientRect();
+		let scrollBox: Element = document.querySelector('.button.button__cat.ref');
+		let rect: DOMRect = scrollBox.getBoundingClientRect();
 		rect.right <=
 		(window.innerWidth - 15 || document.documentElement.clientWidth - 15)
 			? (categoryLastElementNotVisible = false)
@@ -54,6 +63,7 @@
 		>
 			{$_('category_all')} ({categoriesCount.all})
 		</button>
+
 		<button
 			class="button button__cat {searchType && searchType === 'studies'
 				? 'active'
@@ -68,6 +78,7 @@
 				? `(${categoriesCount.studies})`
 				: zeroResult}
 		</button>
+
 		<button
 			class="button button__cat {searchType &&
 			searchType === 'continuing_education'
@@ -83,6 +94,7 @@
 				? `(${categoriesCount.continuing_education})`
 				: zeroResult}
 		</button>
+
 		<button
 			class="button button__cat {searchType === 'event' ? 'active' : ''}"
 			on:click={() => {
@@ -93,6 +105,7 @@
 			{$_('category_events_plural')}
 			{categoriesCount.event > 0 ? `(${categoriesCount.event})` : zeroResult}
 		</button>
+
 		<button
 			class="button button__cat {searchType === 'news' ? 'active' : ''}"
 			on:click={() => {
@@ -103,6 +116,7 @@
 			{$_('category_news')}
 			{categoriesCount.news > 0 ? `(${categoriesCount.news})` : zeroResult}
 		</button>
+
 		<button
 			class="button button__cat {searchType === 'document' ? 'active' : ''}"
 			on:click={() => {
@@ -115,6 +129,7 @@
 				? `(${categoriesCount.document})`
 				: zeroResult}
 		</button>
+
 		<button
 			class="button button__cat {searchType === 'contact' ? 'active' : ''}"
 			on:click={() => {
@@ -127,6 +142,7 @@
 				? `(${categoriesCount.contact})`
 				: zeroResult}
 		</button>
+
 		<button
 			class="button button__cat {searchType === 'general' ? 'active' : ''}"
 			on:click={() => {
@@ -139,6 +155,7 @@
 				? `(${categoriesCount.general})`
 				: zeroResult}
 		</button>
+
 		{#if mq === false}
 			<button class="button button__cat ref">&nbsp;&nbsp;</button>
 		{/if}
