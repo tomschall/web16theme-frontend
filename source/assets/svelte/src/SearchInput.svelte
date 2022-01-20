@@ -33,10 +33,11 @@
 				on:input={handleInput}
 				type="text"
 				name="searchbar_search"
-				placeholder={$_('search_placeholder')}
 				data-searchbar="input"
 			/>
-			<!-- <label for="search" class="formQuestion">{$_('search_label')}</label> -->
+			<label for="search" class="searchbar_search"
+				>{$_('search_placeholder')}</label
+			>
 			<a on:click={handleClick} href={void 0} class="search__string__clear"
 				><i /></a
 			>

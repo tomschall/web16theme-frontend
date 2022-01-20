@@ -12,6 +12,7 @@
 
 	let multiselectElement;
 	let showOptions = false;
+	const dispatch = createEventDispatcher();
 
 	onMount(() => {
 		selected = _options.filter((op) => op?.preselected);
@@ -25,10 +26,6 @@
 
 	$: selectedLabels = selected.map((op) => op.label);
 	$: selectedValues = selected.map((op) => op.value);
-
-	const dispatch = createEventDispatcher();
-
-	// options matching the current search text
 	$: matchingOptions = _options.filter((op) => {
 		return `${op.label}`.toLowerCase();
 	});
@@ -41,6 +38,7 @@
 		!activeOption
 	)
 		activeOption = matchingEnabledOptions[0];
+	$: isSelected = (label: Primitive) => selectedLabels.includes(label);
 
 	const add = (label: Primitive) => {
 		console.log('add called');
@@ -72,8 +70,6 @@
 		if (show === showOptions) return;
 		showOptions = show;
 	};
-
-	$: isSelected = (label: Primitive) => selectedLabels.includes(label);
 </script>
 
 <div
@@ -108,7 +104,6 @@
 					showOptions = false;
 				}}
 				class:selected={isSelected(label)}
-				class:active={activeOption?.label === label}
 				class={i === 0 && selected.length === 0 ? 'default__first_option' : ''}
 			>
 				{label}

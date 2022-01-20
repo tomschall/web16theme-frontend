@@ -1,4 +1,15 @@
 .widg_continuing_education_search {
+	.search__holder__searchstring {
+		.search__string {
+			form {
+				label {
+					cursor: text;
+					background: red;
+				}
+			}
+		}
+	}
+
 	.search__wrapper {
 		width: auto;
 		margin-left: 0;
