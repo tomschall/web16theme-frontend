@@ -275,13 +275,13 @@
 			<span
 				class="icon__grid"
 				on:click={() => {
-					console.log('GRID CLICKED');
+					listingType = 'grid';
 				}}
 			/>
 			<span
 				class="icon__list"
 				on:click={() => {
-					console.log('LIST CLICKED');
+					listingType = 'list';
 				}}
 			/>
 		</div>
