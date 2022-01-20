@@ -27,7 +27,7 @@
 	};
 
 	const toggleLabel = () => {
-		if (toggleState === false) {
+		if (toggleState === false && query.length === 0) {
 			toggleState = true;
 			ref.focus();
 		} else if (query.length === 0) {

@@ -48,5 +48,7 @@
 	"subnav_news_link": "/media-corner/newsroom/news",
 	"subnav_startpage": "Startpage",
 	"searchpage_title": "All search results",
+	"multiple_label_type": "Type",
+	"multiple_label_search": "Search Term",
 	"filter_reset": "Reset"
 }
