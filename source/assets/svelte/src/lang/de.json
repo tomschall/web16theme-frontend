@@ -49,5 +49,6 @@
 	"subnav_startpage": "Startseite",
 	"searchpage_title": "Alle Suchresultate",
 	"multiple_label_type": "Typ",
+	"multiple_label_search": "Suchbegriff",
 	"filter_reset": "Löschen"
 }

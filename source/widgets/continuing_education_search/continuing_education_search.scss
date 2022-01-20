@@ -2,9 +2,18 @@
 	.search__holder__searchstring {
 		.search__string {
 			form {
-				label {
+				label.searchbar_search {
 					cursor: text;
-					background: red;
+
+					&.toggle__top {
+						top: $basicPush;
+						font-size: 12px;
+						font-weight: 400;
+						color: $colorTextGrey;
+					}
+				}
+				.search__string {
+					padding-top: $basicPush * 3;
 				}
 			}
 		}
