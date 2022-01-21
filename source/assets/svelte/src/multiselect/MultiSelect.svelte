@@ -3,6 +3,7 @@
 	import { _ } from 'svelte-i18n';
 	import type { Option, Primitive, ProtoOption } from './';
 	import { onClickOutside } from './actions';
+
 	export let selected: Option[] = [];
 	export let selectedLabels: Primitive[] = [];
 	export let selectedValues: Primitive[] = [];

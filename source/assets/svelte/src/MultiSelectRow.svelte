@@ -1,10 +1,6 @@
 <script lang="ts">
-	import MultiSelect, { Primitive } from './multiselect';
+	import MultiSelect from './multiselect';
 
-	export let searchType: string;
-	export let unobserve: any;
-	export let template: string;
-	export let triggerCategorySearch = () => {};
 	export let handleInput: () => void;
 
 	let multiSelectTypeLabel = {
@@ -37,12 +33,6 @@
 	];
 
 	export let selected_city = [];
-
-	const handleCategorySearch = (type: string) => {
-		searchType = type;
-		if (template == 'searchpage') unobserve();
-		triggerCategorySearch();
-	};
 </script>
 
 <MultiSelect

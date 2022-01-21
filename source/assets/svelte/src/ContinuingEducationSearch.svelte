@@ -266,10 +266,6 @@
 		bind:selected_taxonomy_subjectarea
 		bind:selected_taxonomy_eduproducttype
 		bind:selected_city
-		triggerCategorySearch={() => triggerSearchDebounced(true)}
-		bind:searchType
-		{template}
-		{unobserve}
 		{handleInput}
 	/>
 </div>
@@ -277,9 +273,12 @@
 <div class="search__third-row">
 	<div class="search__extra-holder">
 		<button
-			class="search__reset not-default"
+			class="search__reset not-default btn__rotate"
 			on:click={() => {
-				console.log('RESET CLICKED');
+				selected_taxonomy_subjectarea = [];
+				selected_taxonomy_eduproducttype = [];
+				selected_city = [];
+				searchQuery = '';
 			}}>{$_('filter_reset')}</button
 		>
 		<div class="listing__type">

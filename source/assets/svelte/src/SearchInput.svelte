@@ -13,6 +13,10 @@
 
 	let ref: HTMLInputElement = null;
 
+	$: if (query.length === 0) {
+		toggleState = false;
+	}
+
 	const handleClick = () => {
 		query = '';
 		searchResults = [];
