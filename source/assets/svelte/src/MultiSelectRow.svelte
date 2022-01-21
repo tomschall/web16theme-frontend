@@ -1,19 +1,17 @@
 <script lang="ts">
-	import Select from 'svelte-select';
-	import MultiSelect from './multiselect';
+	import MultiSelect, { Primitive } from './multiselect';
 
 	export let searchType: string;
 	export let unobserve: any;
 	export let template: string;
 	export let triggerCategorySearch = () => {};
+	export let handleInput: () => void;
 
 	let multiSelectTypeLabel = {
-		university: 'multiple_label_university',
+		subjectarea: 'multiple_label_subjectarea',
 		type: 'multiple_label_type',
 		location: 'multiple_label_location',
 	};
-
-	console.log(multiSelectTypeLabel.university);
 
 	let taxonomy_subjectarea = [
 		{ value: 1002, label: 'Informatik' },
@@ -50,17 +48,20 @@
 <MultiSelect
 	bind:selected={selected_taxonomy_subjectarea}
 	options={taxonomy_subjectarea}
-	dropDownLabel={multiSelectTypeLabel.university}
+	dropDownLabel={multiSelectTypeLabel.subjectarea}
+	on:change={handleInput}
 />
 
 <MultiSelect
 	bind:selected={selected_taxonomy_eduproducttype}
 	options={taxonomy_eduproducttype}
 	dropDownLabel={multiSelectTypeLabel.type}
+	on:change={handleInput}
 />
 
 <MultiSelect
 	bind:selected={selected_city}
 	options={city}
 	dropDownLabel={multiSelectTypeLabel.location}
+	on:change={handleInput}
 />

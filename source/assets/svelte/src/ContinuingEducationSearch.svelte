@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte';
 	import SearchInput from './SearchInput.svelte';
 	import SearchResults from './SearchResults.svelte';
-	import SearchProposals from './SearchProposals.svelte';
 	import { init, addMessages } from 'svelte-i18n';
 	import en from './lang/en.json';
 	import de from './lang/de.json';
@@ -44,6 +43,13 @@
 	let selected_taxonomy_subjectarea = [];
 	let selected_taxonomy_eduproducttype = [];
 	let selected_city = [];
+
+	console.log(
+		'selection',
+		selected_taxonomy_subjectarea,
+		selected_taxonomy_eduproducttype,
+		selected_city
+	);
 
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
@@ -158,14 +164,15 @@
 		const endpoint =
 			window.location.hostname === 'localhost'
 				? // @ts-ignore
-				  `${API}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
-						searchType || 'continuing_education'
-				  }&limit=${limit}&offset=${offset}`
+				  `${API}/${lang}/searchbar.json?template=training_full&category=continuing_education&q=${searchTerm}&taxonomy_subjectarea[]=1000&taxonomy_eduproducttype[]=2000&city[]=muttenz`
 				: `https://${
 						window.location.hostname
 				  }/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
 						searchType || 'continuing_education'
 				  }&limit=${limit}&offset=${offset}`;
+
+		// EXAMPLE QUERY
+		// https://www.dev.fhnw.ch/de/searchbar.json?template=training_full&category=continuing_education&q=&taxonomy_subjectarea[]=1000&taxonomy_eduproducttype[]=2000&city[]=muttenz
 
 		fetch(endpoint)
 			.then((response) => {
@@ -256,10 +263,14 @@
 </div>
 <div class="svelte__search_wrapper">
 	<MultiSelectRow
+		bind:selected_taxonomy_subjectarea
+		bind:selected_taxonomy_eduproducttype
+		bind:selected_city
 		triggerCategorySearch={() => triggerSearchDebounced(true)}
 		bind:searchType
 		{template}
 		{unobserve}
+		{handleInput}
 	/>
 </div>
 
@@ -288,7 +299,7 @@
 	</div>
 </div>
 
-<div class="search__listing">
+<div>
 	<SearchResults
 		results={searchResults}
 		{searchResultsHighlighting}

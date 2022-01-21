@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import { onMount } from 'svelte';
 	import type { Item } from './definitions/Item';
 
 	export let query: string;
@@ -13,8 +12,6 @@
 	export let toggleState: boolean = false;
 
 	let ref: HTMLInputElement = null;
-
-	// onMount(() => ref.focus());
 
 	const handleClick = () => {
 		query = '';
