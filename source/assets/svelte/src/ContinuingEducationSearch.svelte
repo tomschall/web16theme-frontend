@@ -273,13 +273,13 @@
 		>
 		<div class="listing__type">
 			<span
-				class="icon__grid"
+				class="icon__grid {listingType === 'grid' ? 'active' : ''}"
 				on:click={() => {
 					listingType = 'grid';
 				}}
 			/>
 			<span
-				class="icon__list"
+				class="icon__list {listingType === 'list' ? 'active' : ''}"
 				on:click={() => {
 					listingType = 'list';
 				}}
@@ -288,41 +288,21 @@
 	</div>
 </div>
 
-<div class="search__results">
-	<div class="">
-		<div class="search__cat">
-			{#if showSearchProposals}
-				<SearchProposals
-					bind:query={searchQuery}
-					bind:searchType
-					{handleInput}
-				/>
-			{/if}
-			{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
-				<div class="widg__searchbar_spellcheck">
-					<p>{$_('search_spellcheck_warning')} <b>{searchTerm}</b></p>
-					<span
-						>{$_('search_spellcheck_warning_2')}
-						<b>"{searchTermSpellCheck}"</b></span
-					>
-				</div>
-			{/if}
-			<SearchResults
-				results={searchResults}
-				{searchResultsHighlighting}
-				{isLoading}
-				{template}
-				{searchTerm}
-				{searchType}
-				{lang}
-				{listingType}
-			/>
-			{#if showStatusInfo && !searchTermSpellCheck}
-				<div class="widg__searchbar_spellcheck">
-					<p>{$_('search_no_results')}</p>
-					<span>{$_('search_no_results_subtitle')}</span>
-				</div>
-			{/if}
+<div class="search__listing">
+	<SearchResults
+		results={searchResults}
+		{searchResultsHighlighting}
+		{isLoading}
+		{template}
+		{searchTerm}
+		{searchType}
+		{lang}
+		{listingType}
+	/>
+	{#if showStatusInfo && !searchTermSpellCheck}
+		<div class="widg__searchbar_spellcheck">
+			<p>{$_('search_no_results')}</p>
+			<span>{$_('search_no_results_subtitle')}</span>
 		</div>
-	</div>
+	{/if}
 </div>

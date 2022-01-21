@@ -48,7 +48,9 @@
 	"subnav_news_link": "/media-corner/newsroom/news",
 	"subnav_startpage": "Startpage",
 	"searchpage_title": "All search results",
+	"multiple_label_university": "University",
 	"multiple_label_type": "Type",
-	"multiple_label_search": "Search Term",
+	"multiple_label_location": "Location",
+	"multiple_label_search": "Suchbegriff",
 	"filter_reset": "Reset"
 }

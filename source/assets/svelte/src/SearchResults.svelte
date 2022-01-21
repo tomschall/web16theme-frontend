@@ -71,6 +71,7 @@
 		align-items: center;
 		padding-top: 20px;
 		padding-bottom: 10px;
+		width: 100%;
 	}
 
 	.ios-space {

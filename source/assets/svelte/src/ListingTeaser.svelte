@@ -11,7 +11,9 @@
 </script>
 
 <div class="widg_teaser wide___third">
-	<div class="widg_teaser__img">IMAGE GOES HERE!</div>
+	<div class="widg_teaser__img">
+		<img src="https://dummyimage.com/300x180/ccc/000.png" alt="Dummy Image" />
+	</div>
 	<span class="widg_teaser__dateline">MAS</span>
 	<h3 class="widg_teaser__title childless">Campus Brugg-Windisch</h3>
 	<a class="widg_teaser__link anchor-link" href="http://localhost:9000"

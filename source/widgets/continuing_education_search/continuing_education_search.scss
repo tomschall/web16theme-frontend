@@ -92,4 +92,22 @@
 			}
 		}
 	}
+
+	.search__listing {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		float: left;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+
+	.search__results {
+		ul {
+			&.not-default {
+				padding-left: 0;
+			}
+		}
+	}
 }

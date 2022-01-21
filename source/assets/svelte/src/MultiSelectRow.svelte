@@ -7,6 +7,14 @@
 	export let template: string;
 	export let triggerCategorySearch = () => {};
 
+	let multiSelectTypeLabel = {
+		university: 'multiple_label_university',
+		type: 'multiple_label_type',
+		location: 'multiple_label_location',
+	};
+
+	console.log(multiSelectTypeLabel.university);
+
 	let taxonomy_subjectarea = [
 		{ value: 1002, label: 'Informatik' },
 		{ value: 1003, label: 'International Studies' },
@@ -42,11 +50,17 @@
 <MultiSelect
 	bind:selected={selected_taxonomy_subjectarea}
 	options={taxonomy_subjectarea}
+	dropDownLabel={multiSelectTypeLabel.university}
 />
 
 <MultiSelect
 	bind:selected={selected_taxonomy_eduproducttype}
 	options={taxonomy_eduproducttype}
+	dropDownLabel={multiSelectTypeLabel.type}
 />
 
-<MultiSelect bind:selected={selected_city} options={city} />
+<MultiSelect
+	bind:selected={selected_city}
+	options={city}
+	dropDownLabel={multiSelectTypeLabel.location}
+/>

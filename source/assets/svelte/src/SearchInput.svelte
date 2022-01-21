@@ -12,7 +12,7 @@
 	export let handleInput: () => void;
 	export let toggleState: boolean = false;
 
-	let ref = null;
+	let ref: HTMLInputElement = null;
 
 	// onMount(() => ref.focus());
 

@@ -9,6 +9,7 @@
 	export let options: ProtoOption[];
 	export let id: string | undefined = undefined;
 	export let activeOption: Option | null = null;
+	export let dropDownLabel: String = '';
 
 	let multiselectElement;
 	let showOptions = false;
@@ -41,24 +42,19 @@
 	$: isSelected = (label: Primitive) => selectedLabels.includes(label);
 
 	const add = (label: Primitive) => {
-		console.log('add called');
-		{
-			const option = _options.find((op) => op.label === label);
-			if (!option) {
-				console.error(`MultiSelect: option with label ${label} not found`);
-				return;
-			}
-
-			selected = [option, ...selected];
-
-			dispatch(`add`, { option });
-			dispatch(`change`, { option, type: `add` });
+		const option = _options.find((op) => op.label === label);
+		if (!option) {
+			console.error(`MultiSelect: option with label ${label} not found`);
+			return;
 		}
+
+		selected = [option, ...selected];
+
+		dispatch(`add`, { option });
+		dispatch(`change`, { option, type: `add` });
 	};
 
 	const remove = (label: Primitive) => {
-		console.log('remove called');
-
 		if (selected.length === 0) return;
 		selected = selected.filter((option) => label !== option.label);
 		const option = _options.find((option) => option.label === label);
@@ -81,7 +77,7 @@
 	use:onClickOutside={() => dispatch(`blur`)}
 >
 	<span class={selected.length === 0 ? 'label' : 'label__top'}>
-		{$_('multiple_label_type')}
+		{$_(`${dropDownLabel}`)}
 	</span>
 	<ul
 		class="selected {showOptions ? 'active' : ''}"
