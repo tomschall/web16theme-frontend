@@ -27,8 +27,6 @@
 	}) as Option[];
 
 	$: selectedLabels = selected.map((op) => op.label);
-	console.log('selected', selected);
-
 	$: selectedValues = selected.map((op) => op.value);
 	$: matchingOptions = _options.filter((op) => {
 		return `${op.label}`.toLowerCase();
@@ -43,8 +41,6 @@
 	)
 		activeOption = matchingEnabledOptions[0];
 	$: isSelected = (label: Primitive) => selectedLabels.includes(label);
-
-	console.log(options);
 
 	const add = (label: Primitive) => {
 		const option = _options.find((op) => op.label === label);

@@ -10,8 +10,8 @@
 	let maxLettersInDescription = 180;
 	let maxLettersInBreadCrumbItem = 40;
 	let totalBreadCrumbItems: number = 0;
-	let totalLettersInBreadCrumb: number = 0;
 	let tooltip = '';
+	let totalLettersInBreadCrumb: number = 0;
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico media query
 
 	// remove own title from title_parents because it should not be in the breadcrumbs.

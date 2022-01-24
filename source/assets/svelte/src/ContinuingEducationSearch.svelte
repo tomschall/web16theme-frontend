@@ -43,20 +43,18 @@
 	let selected_taxonomy_subjectarea = [];
 	let selected_taxonomy_eduproducttype = [];
 	let selected_city = [];
-
-	console.log(
-		'selection',
-		selected_taxonomy_subjectarea,
-		selected_taxonomy_eduproducttype,
-		selected_city
-	);
-
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
 	) {
 		await triggerSearch(isFirstSearch);
 	},
 	300);
+
+	$: {
+		selected_taxonomy_subjectarea;
+		selected_taxonomy_eduproducttype;
+		selected_city;
+	}
 
 	interface ObserverOptions {
 		rootMargin: string;
@@ -161,18 +159,41 @@
 			return;
 		}
 
+		// MULTIPLE SELECT QUERYS
+		const subjectArea = selected_taxonomy_subjectarea.map((area) => {
+			console.log('AREA', area.value);
+			return `&taxonomy_subjectarea[]=${area.value}`;
+		});
+
+		const subjectEduproducttype = selected_taxonomy_eduproducttype.map(
+			(type) => {
+				console.log('TYPE', type.value);
+				return `&taxonomy_eduproducttype[]=${type.value}`;
+			}
+		);
+
+		const selectedCity = selected_city.map((location) => {
+			console.log('CITY', location.value);
+			return `&city[]=${location.value}`;
+		});
+
+		const queryPrefix =
+			'/searchbar.json?template=training_full&category=continuing_education&q=';
+
 		const endpoint =
 			window.location.hostname === 'localhost'
 				? // @ts-ignore
-				  `${API}/${lang}/searchbar.json?template=training_full&category=continuing_education&q=${searchTerm}&taxonomy_subjectarea[]=1000&taxonomy_eduproducttype[]=2000&city[]=muttenz`
+				  `${API}/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
+						''
+				  )}${subjectEduproducttype.join('')}${selectedCity.join('')}`
 				: `https://${
 						window.location.hostname
-				  }/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
-						searchType || 'continuing_education'
-				  }&limit=${limit}&offset=${offset}`;
+				  }/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
+						''
+				  )}${subjectEduproducttype.join('')}${selectedCity.join('')}`;
 
 		// EXAMPLE QUERY
-		// https://www.dev.fhnw.ch/de/searchbar.json?template=training_full&category=continuing_education&q=&taxonomy_subjectarea[]=1000&taxonomy_eduproducttype[]=2000&city[]=muttenz
+		// https://www.dev.fhnw.ch/de/searchbar.json?template=training_full&category=continuing_education&q=&taxonomy_subjectarea[]=1000&taxonomy_eduproducttype[]=2000&city[]
 
 		fetch(endpoint)
 			.then((response) => {
@@ -239,15 +260,6 @@
 				isLoading = false;
 			});
 	};
-
-	$: {
-		console.log('selected_taxonomy_subjectarea', selected_taxonomy_subjectarea);
-		console.log(
-			'selected_taxonomy_eduproducttype',
-			selected_taxonomy_eduproducttype
-		);
-		console.log('selected_city', selected_city);
-	}
 </script>
 
 <div>
@@ -279,6 +291,7 @@
 				selected_taxonomy_eduproducttype = [];
 				selected_city = [];
 				searchQuery = '';
+				searchResults = [];
 			}}>{$_('filter_reset')}</button
 		>
 		<div class="listing__type">

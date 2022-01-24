@@ -3,7 +3,6 @@
 	import type { Item } from './definitions/Item';
 	import ListItem from './ListingNormal.svelte';
 	import ListTeaser from './ListingTeaser.svelte';
-	import ListLinkList from './ListingLinkList.svelte';
 	import LoadingIndicator from './LoadingIndicator.svelte';
 	import ListingLinkList from './ListingLinkList.svelte';
 
@@ -15,8 +14,6 @@
 	export let searchType: string;
 	export let lang: string;
 	export let listingType: string;
-
-	console.log('listing type', listingType);
 
 	function IsSafari() {
 		var is_safari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1;
@@ -37,7 +34,7 @@
 			{/if}
 			{#if template === 'continuing_education'}
 				{#if listingType === 'grid'}
-					<ListTeaser />
+					<ListTeaser item={result} />
 				{/if}
 				{#if listingType === 'list'}
 					<ListingLinkList />
