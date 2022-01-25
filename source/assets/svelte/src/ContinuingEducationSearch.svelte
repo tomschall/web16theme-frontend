@@ -161,7 +161,6 @@
 
 		// MULTIPLE SELECT QUERYS
 		const subjectArea = selected_taxonomy_subjectarea.map((area) => {
-			console.log('AREA', area.value);
 			return `&taxonomy_subjectarea[]=${area.value}`;
 		});
 
@@ -203,7 +202,6 @@
 				return response.json();
 			})
 			.then((data) => {
-				console.log('data', data);
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 

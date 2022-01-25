@@ -62,7 +62,7 @@
 		<div class="widg_linklist">
 			<ul class="not-default">
 				{#each results as result, index (index)}
-					<ListingLinkList />
+					<ListingLinkList item={result} />
 				{/each}
 			</ul>
 		</div>

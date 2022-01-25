@@ -13,6 +13,7 @@
 		@include mq($to: small) {
 			flex-direction: column;
 			flex: 1;
+			margin-top: $basicPush * 2;
 		}
 
 		.multiselect {
@@ -57,9 +58,13 @@
 				justify-content: flex-start;
 				width: 100%;
 				height: $basicPush * 6;
-				padding: 8px 0 0 $basicPush * 2;
+				padding: 8px 0 0 $basicPush + 5;
 				z-index: -1;
 				transition: height 1s ease-in-out;
+
+				@include mq($to: small) {
+					padding: $basicPush 0 0 $basicPush + 5;
+				}
 			}
 
 			ul.selected {
@@ -69,12 +74,16 @@
 				flex: 1;
 				flex-wrap: nowrap;
 				margin: 0;
-				padding: 0 $basicPush;
+				padding: 0 $basicPush - 2;
 				border: 2px solid $colorGreyHover;
 				border-radius: 0;
 				overscroll-behavior: none;
 				height: $basicPush * 6;
 				overflow: hidden;
+
+				@include mq($to: small) {
+					height: $basicPush * 4.6;
+				}
 
 				&.active {
 					border-color: $colorBlack;
@@ -87,10 +96,14 @@
 					align-items: center;
 					border-radius: 0;
 					display: flex;
-					margin: 2pt;
-					padding: 0;
+					margin: 0;
+					padding: 0 $basicPush - 5 $basicPush 0;
 					white-space: nowrap;
 					height: 16pt;
+
+					@include mq($to: small) {
+						padding: 0 5px 0 0;
+					}
 				}
 
 				li:first-of-type {
@@ -197,7 +210,7 @@
 				margin: 0 $basicPush;
 
 				@include mq($to: small) {
-					margin: $basicPush * 1.5 0;
+					margin: $basicPush 0 $basicPush + 5 0;
 				}
 			}
 		}

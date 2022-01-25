@@ -15,9 +15,16 @@
 			<img src={item['img'].src} alt={item['img'].alt} />
 		</div>
 	{/if}
-	<span class="widg_teaser__dateline">MAS</span>
-	<h3 class="widg_teaser__title childless">{item.title}</h3>
-	<p>{shortenDescription(item.description)}</p>
+	<span class="widg_teaser__dateline">(NOT DEFINED)</span>
+
+	{#if item.title}
+		<h3 class="widg_teaser__title childless">{item.title}</h3>
+	{/if}
+
+	{#if item.description}
+		<p>{shortenDescription(item.description)}</p>
+	{/if}
+
 	{#if item['fhnw_location']}
 		<small>{item['fhnw_location']}</small>
 	{/if}
