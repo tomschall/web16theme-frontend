@@ -1,20 +1,15 @@
 <script lang="ts">
 	import type { Item } from './definitions/Item';
 	import { _ } from 'svelte-i18n';
-	import SvelteMarkdown from 'svelte-markdown';
-	import Paragraph from './Paragraph.svelte';
 
 	export let item: Item;
 
-	console.log(item, item['img'].src);
-
-	// export let item: Item;
-	// export let searchResultsHighlighting: any[];
-
-	// let mq = window.estatico.mq.query({ from: 'small' }); // Estatico media query
+	const shortenDescription = (str: string): string => {
+		return str.length >= 220 ? `${str.substring(0, 220)}...` : str;
+	};
 </script>
 
-<div class="widg_teaser">
+<div class="widg_teaser wide___third">
 	{#if item['img'].src}
 		<div class="widg_teaser__img">
 			<img src={item['img'].src} alt={item['img'].alt} />
@@ -22,8 +17,10 @@
 	{/if}
 	<span class="widg_teaser__dateline">MAS</span>
 	<h3 class="widg_teaser__title childless">{item.title}</h3>
-	<p>{item.description}</p>
-	<small>{item['fhnw_location']}</small>
+	<p>{shortenDescription(item.description)}</p>
+	{#if item['fhnw_location']}
+		<small>{item['fhnw_location']}</small>
+	{/if}
 	<a class="widg_teaser__link anchor-link" href={item['@id']}
 		>zu Campus Brugg-Windisch</a
 	>

@@ -311,7 +311,7 @@
 	</div>
 </div>
 
-<div>
+<div class="search__results">
 	<SearchResults
 		results={searchResults}
 		{searchResultsHighlighting}

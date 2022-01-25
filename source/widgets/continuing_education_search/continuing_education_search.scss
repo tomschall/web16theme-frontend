@@ -110,4 +110,16 @@
 			}
 		}
 	}
+
+	.widg_teaser__wrapper {
+		width: 100%;
+		.widg_teaser__img {
+			padding-top: unset;
+		}
+	}
+
+	.widg_linklist {
+		position: relative;
+		float: left;
+	}
 }

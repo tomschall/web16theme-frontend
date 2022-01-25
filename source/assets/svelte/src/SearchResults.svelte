@@ -21,26 +21,19 @@
 	}
 </script>
 
-<div class="search__results">
-	<ul
-		class={listingType === 'list' || 'grid' ? 'not-default' : 'search-results'}
-	>
+<!-- LISTING SEARCHPAGE, SEARCHBAR -->
+{#if template === ('searchpage' || 'searchbar')}
+	<ul class="not-default lorem">
 		{#each results as result, index (index)}
 			{#if index < 9 && template === 'searchbar'}
 				<ListItem item={result} {searchResultsHighlighting} />
 			{/if}
+
 			{#if template === 'searchpage'}
 				<ListItem item={result} {searchResultsHighlighting} />
 			{/if}
-			{#if template === 'continuing_education'}
-				{#if listingType === 'grid'}
-					<ListTeaser item={result} />
-				{/if}
-				{#if listingType === 'list'}
-					<ListingLinkList />
-				{/if}
-			{/if}
 		{/each}
+
 		{#if results.length > 0 && template === 'searchbar'}
 			<li>
 				<a
@@ -54,7 +47,28 @@
 			{/if}
 		{/if}
 	</ul>
-</div>
+{/if}
+
+<!-- LISTING InContentSearch -->
+{#if template === 'continuing_education'}
+	{#if listingType === 'grid'}
+		<div class="widg_teaser__wrapper">
+			{#each results as result, index (index)}
+				<ListTeaser item={result} />
+			{/each}
+		</div>
+	{/if}
+	{#if listingType === 'list'}
+		<div class="widg_linklist">
+			<ul class="not-default">
+				{#each results as result, index (index)}
+					<ListingLinkList />
+				{/each}
+			</ul>
+		</div>
+	{/if}
+{/if}
+
 <div class="loading-indicator">
 	{#if isLoading}
 		<LoadingIndicator />
