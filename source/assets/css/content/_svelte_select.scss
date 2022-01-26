@@ -210,7 +210,7 @@
 				margin: 0 $basicPush;
 
 				@include mq($to: small) {
-					margin: $basicPush 0 $basicPush + 5 0;
+					margin: $basicPush 0 $basicPush + 7 0;
 				}
 			}
 		}
