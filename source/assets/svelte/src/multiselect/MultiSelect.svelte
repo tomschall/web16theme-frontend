@@ -12,8 +12,8 @@
 	export let activeOption: Option | null = null;
 	export let dropDownLabel: String = '';
 
-	let multiselectElement;
 	let showOptions = false;
+	let multiselectElement;
 	const dispatch = createEventDispatcher();
 
 	onMount(() => {
@@ -73,7 +73,8 @@
 	{id}
 	class="multiselect"
 	style={showOptions ? `z-index: 2;` : undefined}
-	on:mouseup|stopPropagation={() => setOptionsVisible(true)}
+	on:mouseup|stopPropagation={() =>
+		showOptions === false ? setOptionsVisible(true) : setOptionsVisible(false)}
 	use:onClickOutside={() => setOptionsVisible(false)}
 	use:onClickOutside={() => dispatch(`blur`)}
 >

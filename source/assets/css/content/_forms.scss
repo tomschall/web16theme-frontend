@@ -141,7 +141,8 @@ input[type='number'] {
 
 		resize: none;
 
-		&:focus {
+		&:focus,
+		&:active {
 			border-color: $colorBlack;
 		}
 

@@ -6,22 +6,29 @@
 		position: relative;
 		float: left;
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
 		width: 100%;
 		margin-top: $basicPush * 3;
 
 		@include mq($to: small) {
 			flex-direction: column;
-			flex: 1;
 			margin-top: $basicPush * 2;
 		}
 
 		.multiselect {
 			position: relative;
 			display: flex;
-			flex: 3;
 			align-items: center;
 			margin: 0;
+
+			@include mq($from: large) {
+				min-width: 32%;
+			}
+
+			@include mq($to: large) {
+				min-width: 48%;
+			}
 
 			@include mq($to: small) {
 				margin-bottom: $basicPush;
@@ -148,6 +155,9 @@
 				background: $colorBg;
 				border: 2px solid $colorBlack;
 				border-top: 0;
+				max-height: 373px;
+				overflow-y: scroll;
+				overflow-x: hidden;
 
 				&.hidden {
 					visibility: hidden;
@@ -206,11 +216,24 @@
 				}
 			}
 
-			&:nth-of-type(2n) {
-				margin: 0 $basicPush;
+			@include mq($from: large) {
+				&:nth-of-type(2n) {
+					margin: unset;
+				}
+			}
 
-				@include mq($to: small) {
-					margin: $basicPush 0 $basicPush + 7 0;
+			@include mq($to: large) {
+				&:nth-of-type(3n) {
+					margin: $basicPush * 2 0 $basicPush 0;
+				}
+			}
+
+			@include mq($to: small) {
+				&:nth-of-type(2n) {
+					margin-top: $basicPush;
+				}
+				&:nth-of-type(3n) {
+					margin-top: $basicPush;
 				}
 			}
 		}

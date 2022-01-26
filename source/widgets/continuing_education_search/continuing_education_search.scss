@@ -12,8 +12,11 @@
 						color: $colorTextGrey;
 					}
 				}
-				.search__string {
-					padding-top: $basicPush * 3;
+
+				input {
+					&:focus {
+						border-color: $colorText;
+					}
 				}
 			}
 		}
