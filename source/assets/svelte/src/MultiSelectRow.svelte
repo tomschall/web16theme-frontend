@@ -1,8 +1,6 @@
 <script lang="ts">
 	import MultiSelect from './multiselect';
 
-	export let handleInput: () => void;
-
 	let multiSelectTypeLabel = {
 		subjectarea: 'multiple_label_subjectarea',
 		type: 'multiple_label_type',
@@ -52,19 +50,16 @@
 	bind:selected={selected_taxonomy_subjectarea}
 	options={taxonomy_subjectarea}
 	dropDownLabel={multiSelectTypeLabel.subjectarea}
-	on:change={handleInput}
 />
 
 <MultiSelect
 	bind:selected={selected_taxonomy_eduproducttype}
 	options={taxonomy_eduproducttype}
 	dropDownLabel={multiSelectTypeLabel.type}
-	on:change={handleInput}
 />
 
 <MultiSelect
 	bind:selected={selected_city}
 	options={city}
 	dropDownLabel={multiSelectTypeLabel.location}
-	on:change={handleInput}
 />

@@ -50,12 +50,6 @@
 	},
 	300);
 
-	$: {
-		selected_taxonomy_subjectarea;
-		selected_taxonomy_eduproducttype;
-		selected_city;
-	}
-
 	interface ObserverOptions {
 		rootMargin: string;
 		threshold: number;
@@ -134,6 +128,16 @@
 		triggerSearchDebounced(true);
 	};
 
+	$: {
+		if (
+			selected_taxonomy_subjectarea ||
+			selected_taxonomy_eduproducttype ||
+			selected_city
+		) {
+			handleInput();
+		}
+	}
+
 	const triggerSearch = async (isFirst: boolean) => {
 		if (isFirst) {
 			searchResults = [];
@@ -146,7 +150,13 @@
 
 		showSearchProposals = false;
 
-		if (!searchTerm) {
+		if (
+			!searchTerm &&
+			selected_taxonomy_subjectarea.length === 0 &&
+			selected_taxonomy_eduproducttype.length === 0 &&
+			selected_city.length === 0
+		) {
+			console.log('1');
 			showStatusInfo = false;
 			showSearchProposals = false;
 			isLoading = false;
@@ -154,10 +164,12 @@
 		}
 
 		if (searchTerm && searchTerm.length < 3) {
+			console.log('2');
 			showStatusInfo = false;
 			isLoading = false;
 			return;
 		}
+		console.log('3');
 
 		// MULTIPLE SELECT QUERYS
 		const subjectArea = selected_taxonomy_subjectarea.map((area) => {
@@ -280,7 +292,6 @@
 		bind:selected_taxonomy_subjectarea
 		bind:selected_taxonomy_eduproducttype
 		bind:selected_city
-		{handleInput}
 	/>
 </div>
 
