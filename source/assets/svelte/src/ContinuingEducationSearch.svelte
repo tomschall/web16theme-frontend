@@ -184,12 +184,16 @@
 				? // @ts-ignore
 				  `${API}/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
 						''
-				  )}${subjectEduproducttype.join('')}${selectedCity.join('')}`
+				  )}${subjectEduproducttype.join('')}${selectedCity.join(
+						''
+				  )}&limit=${limit}&offset=${offset}`
 				: `https://${
 						window.location.hostname
 				  }/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
 						''
-				  )}${subjectEduproducttype.join('')}${selectedCity.join('')}`;
+				  )}${subjectEduproducttype.join('')}${selectedCity.join(
+						''
+				  )}&limit=${limit}&offset=${offset}`;
 
 		// EXAMPLE QUERY
 		// https://www.dev.fhnw.ch/de/searchbar.json?template=training_full&category=continuing_education&q=&taxonomy_subjectarea[]=1000&taxonomy_eduproducttype[]=2000&city[]
