@@ -52,7 +52,6 @@
 				on:blur={toggleLabel}
 				type="text"
 				name="searchbar_search"
-				data-searchbar="input"
 			/>
 			<label
 				for="search"

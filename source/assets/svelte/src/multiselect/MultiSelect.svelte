@@ -71,7 +71,7 @@
 
 <div
 	{id}
-	class="multiselect"
+	class="multiselect {selected.length > 0 ? 'has_selection' : ''}"
 	style={showOptions ? `z-index: 2;` : undefined}
 	on:mouseup|stopPropagation={() =>
 		showOptions === false ? setOptionsVisible(true) : setOptionsVisible(false)}
@@ -81,6 +81,12 @@
 	<span class={selected.length === 0 ? 'label' : 'label__top'}>
 		{$_(`${dropDownLabel}`)}
 	</span>
+	<button
+		on:click={() => {
+			selected = [];
+			showOptions = false;
+		}}
+	/>
 	<ul
 		class="selected {showOptions ? 'active' : ''}"
 		style="width: {multiselectElement?.offsetWidth}px"

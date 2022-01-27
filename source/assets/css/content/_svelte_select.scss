@@ -37,8 +37,55 @@
 			cursor: pointer;
 			padding: 0;
 
-			&.readonly {
-				background: yellow;
+			button {
+				display: none;
+			}
+
+			&.has_selection {
+				button {
+					display: block;
+					width: 20px;
+					height: 20px;
+					position: absolute;
+					float: right;
+					right: 36px;
+					background: transparent;
+					color: black;
+					line-height: 0;
+					padding: 0;
+					margin: 0;
+					z-index: 1;
+
+					&::before {
+						display: inline-block;
+						background-image: url("data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%23999;fill-rule:evenodd;%7D%3C/style%3E%3C/defs%3E%3Cpath class='cls-1' d='M13.66,2.34a8,8,0,1,0,0,11.32A8,8,0,0,0,13.66,2.34Zm-2.12,7.78-1.42,1.42L8,9.41,5.88,11.54,4.46,10.12,6.59,8,4.46,5.88,5.88,4.46,8,6.59l2.12-2.13,1.42,1.42L9.41,8Z' transform='translate(0 0)'/%3E%3C/svg%3E");
+						background-repeat: no-repeat;
+						background-size: auto;
+						background-position-x: right;
+						height: 16px;
+						float: right;
+						right: 0px;
+						top: 0;
+						width: 20px;
+						content: '';
+						position: relative;
+					}
+
+					&:hover::before {
+						display: inline-block;
+						background-image: url("data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill-rule:evenodd;%7D%3C/style%3E%3C/defs%3E%3Cpath class='cls-1' d='M13.66,2.34a8,8,0,1,0,0,11.32A8,8,0,0,0,13.66,2.34Zm-2.12,7.78-1.42,1.42L8,9.41,5.88,11.54,4.46,10.12,6.59,8,4.46,5.88,5.88,4.46,8,6.59l2.12-2.13,1.42,1.42L9.41,8Z' transform='translate(0 0)'/%3E%3C/svg%3E");
+						background-repeat: no-repeat;
+						background-size: auto;
+						background-position-x: right;
+						height: 16px;
+						float: right;
+						right: 0px;
+						top: 0;
+						width: 20px;
+						content: '';
+						position: relative;
+					}
+				}
 			}
 
 			.label {
@@ -88,8 +135,8 @@
 				height: $basicPush * 6;
 				overflow: hidden;
 
-				@include mq($to: small) {
-					height: $basicPush * 4.6;
+				@include mq($to: medium) {
+					height: $basicPush * 5;
 				}
 
 				&.active {
@@ -108,34 +155,18 @@
 					white-space: nowrap;
 					height: 16pt;
 
-					@include mq($to: small) {
+					@include mq($to: medium) {
 						padding: 0 5px 0 0;
 					}
-				}
 
-				li:first-of-type {
-					margin-left: 5px;
+					&:first-of-type {
+						margin-left: 5px;
+					}
 				}
 
 				&:focus-within {
 					border-color: $colorBlack;
 					border-bottom: 0;
-				}
-
-				&::after {
-					background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSI2IiB2aWV3Qm94PSIwIDAgOSA2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZT42RjZBQUY5Mi1ERjdGLTRENEEtQURBQy00ODQ0MTg4NUE4QzA8L3RpdGxlPjxwYXRoIGQ9Ik0wIDBoOUw0LjUgNnoiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==);
-					background-repeat: no-repeat;
-					background-size: auto;
-					content: '';
-					display: inline-block;
-					position: absolute;
-					right: 12px;
-					top: 50%;
-					-webkit-transform: translateY(-50%);
-					transform: translateY(-50%);
-					width: 12px;
-					height: 7px;
-					cursor: pointer;
 				}
 			}
 
@@ -235,6 +266,21 @@
 				&:nth-of-type(3n) {
 					margin-top: $basicPush;
 				}
+			}
+
+			&::after {
+				background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSI2IiB2aWV3Qm94PSIwIDAgOSA2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZT42RjZBQUY5Mi1ERjdGLTRENEEtQURBQy00ODQ0MTg4NUE4QzA8L3RpdGxlPjxwYXRoIGQ9Ik0wIDBoOUw0LjUgNnoiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==);
+				background-repeat: no-repeat;
+				background-size: auto;
+				content: '';
+				display: inline-block;
+				position: absolute;
+				right: 12px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 12px;
+				height: 7px;
+				cursor: pointer;
 			}
 		}
 	}

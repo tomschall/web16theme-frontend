@@ -6,7 +6,7 @@
 </script>
 
 <li class="widg_linklist___entry">
-	<a class="anchor-link" href="http://localhost:9000">
+	<a class="anchor-link" href={item['@id']}>
 		<div class="widg_linklist__img-wrapper">
 			<img src={item['img'].src} alt={item['img'].alt} />
 		</div>
