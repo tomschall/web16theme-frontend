@@ -45,6 +45,7 @@
 				display: flex;
 				flex-direction: row;
 				align-items: center;
+				margin-right: $basicPush - 5;
 
 				.icon__grid {
 					background: transparent;

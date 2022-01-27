@@ -14,6 +14,8 @@
 
 	let showOptions = false;
 	let multiselectElement;
+	let dropDownFirstHover = false;
+
 	const dispatch = createEventDispatcher();
 
 	onMount(() => {
@@ -66,6 +68,7 @@
 	const setOptionsVisible = (show: boolean) => {
 		if (show === showOptions) return;
 		showOptions = show;
+		dropDownFirstHover = false;
 	};
 </script>
 
@@ -102,13 +105,18 @@
 	<ul class="options" class:hidden={!showOptions}>
 		{#each matchingOptions as { label }, i}
 			<li
-				on:mouseup|preventDefault|stopPropagation
+				on:mouseenter={() => {
+					dropDownFirstHover = true;
+					console.log('mouse enter');
+				}}
 				on:mousedown|preventDefault|stopPropagation={() => {
 					isSelected(label) ? remove(label) : add(label);
-					showOptions = false;
+					dropDownFirstHover = false;
 				}}
 				class:selected={isSelected(label)}
-				class={i === 0 && selected.length === 0 ? 'default__first_option' : ''}
+				class={i === 0 && selected.length === 0 && dropDownFirstHover === false
+					? 'default__first_option'
+					: ''}
 			>
 				{label}
 			</li>

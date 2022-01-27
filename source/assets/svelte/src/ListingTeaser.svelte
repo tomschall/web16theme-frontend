@@ -15,7 +15,7 @@
 			<img src={item['img'].src} alt={item['img'].alt} />
 		</div>
 	{/if}
-	<span class="widg_teaser__dateline">(NOT DEFINED)</span>
+	<span class="widg_teaser__dateline">(TO BE DEFINED)</span>
 
 	{#if item.title}
 		<h3 class="widg_teaser__title childless">{item.title}</h3>

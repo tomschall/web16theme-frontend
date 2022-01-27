@@ -10,7 +10,7 @@
 		<div class="widg_linklist__img-wrapper">
 			<img src={item['img'].src} alt={item['img'].alt} />
 		</div>
-		<span class="widg_linklist__dateline">CAS</span>
+		<span class="widg_linklist__dateline">(TO BE DEFINED)</span>
 
 		{#if item.title}
 			<h3 class="childless">{item.title}</h3>
