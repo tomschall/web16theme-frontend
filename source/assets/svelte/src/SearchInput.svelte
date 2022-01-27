@@ -37,6 +37,8 @@
 			toggleState = true;
 		}
 	};
+
+	console.log('query', query.length);
 </script>
 
 <div class="search__holder__searchstring">
@@ -58,9 +60,13 @@
 				class="searchbar_search {toggleState === true ? 'toggle__top' : ''}"
 				on:click={toggleLabel}>{$_('multiple_label_search')}</label
 			>
-			<a on:click={handleClick} href={void 0} class="search__string__clear"
-				><i /></a
-			>
+			<a
+				class="search__string__clear"
+				style={query.length === 0 ? 'display: none' : ''}
+				on:click={handleClick}
+				href={void 0}
+				><i />
+			</a>
 		</form>
 	</div>
 </div>

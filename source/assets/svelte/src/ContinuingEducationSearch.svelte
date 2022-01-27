@@ -156,7 +156,6 @@
 			selected_taxonomy_eduproducttype.length === 0 &&
 			selected_city.length === 0
 		) {
-			console.log('1');
 			showStatusInfo = false;
 			showSearchProposals = false;
 			isLoading = false;
