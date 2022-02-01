@@ -134,6 +134,7 @@
 				overscroll-behavior: none;
 				height: $basicPush * 6;
 				overflow: hidden;
+				z-index: -10;
 
 				@include mq($to: medium) {
 					height: $basicPush * 5;
@@ -151,7 +152,7 @@
 					border-radius: 0;
 					display: flex;
 					margin: 0;
-					padding: 0 $basicPush - 5 $basicPush 0;
+					padding: 0 $basicPush - 5 $basicPush - 5 0;
 					white-space: nowrap;
 					height: 16pt;
 
@@ -161,6 +162,15 @@
 
 					&:first-of-type {
 						margin-left: 5px;
+					}
+
+					&.dottedList {
+						text-indent: -30000px;
+
+						&::before {
+							content: '...';
+							text-indent: 0;
+						}
 					}
 				}
 
