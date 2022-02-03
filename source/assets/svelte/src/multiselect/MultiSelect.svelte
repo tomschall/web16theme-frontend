@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { _ } from 'svelte-i18n';
+	import ContinuingEducationSearch from '../ContinuingEducationSearch.svelte';
 	import type { Option, Primitive, ProtoOption } from './';
 	import { onClickOutside } from './actions';
+	import ChevronExpand from './icons/ChevronExpand.svelte';
 
 	export let selected: Option[] = [];
 	export let selectedLabels: Primitive[] = [];
@@ -14,6 +16,13 @@
 
 	let showOptions = false;
 	let multiselectElement;
+	let dropDownFirstHover = false;
+	let optionList;
+	let isGreater: boolean = false;
+	let maxSelection;
+	let firstOccurence: Boolean = false;
+	let chooseSmallestNumber: number[] = [0, 0];
+
 	const dispatch = createEventDispatcher();
 
 	onMount(() => {
@@ -48,7 +57,6 @@
 			console.error(`MultiSelect: option with label ${label} not found`);
 			return;
 		}
-
 		selected = [option, ...selected];
 
 		dispatch(`add`, { option });
@@ -63,19 +71,55 @@
 		dispatch(`change`, { option, type: `remove` });
 	};
 
-	const setOptionsVisible = (show: boolean) => {
+	const setOptionsVisible = (show: boolean, elem) => {
+		let currentDropdown = elem.id;
+		let ulWidth =
+			document.querySelector(`#${currentDropdown} ul.selected`).scrollWidth -
+			20;
 		if (show === showOptions) return;
 		showOptions = show;
+		dropDownFirstHover = false;
+		optionList = ulWidth;
 	};
+
+	$: {
+		console.log('selected.length', selected.length);
+
+		if (optionList >= multiselectElement?.scrollWidth - 20) {
+			chooseSmallestNumber[0] = selected.length - 1;
+			isGreater = true;
+			maxSelection = selected.length - 1;
+			firstOccurence = maxSelection;
+			console.log(
+				'option list is greater',
+				'chooseSmallestNumber',
+				chooseSmallestNumber
+			);
+		} else if (optionList <= multiselectElement?.scrollWidth - 20) {
+			chooseSmallestNumber[1] = selected.length;
+			isGreater = false;
+			maxSelection = selected.length;
+			console.log(
+				'option list is smaller',
+				'chooseSmallestNumber',
+				chooseSmallestNumber
+			);
+		}
+	}
 </script>
 
 <div
 	{id}
 	class="multiselect {selected.length > 0 ? 'has_selection' : ''}"
-	style={showOptions ? `z-index: 2;` : undefined}
+	style="{showOptions
+		? `z-index: 2;`
+		: undefined} width: {multiselectElement?.offsetWidth}px"
+	bind:this={multiselectElement}
 	on:mouseup|stopPropagation={() =>
-		showOptions === false ? setOptionsVisible(true) : setOptionsVisible(false)}
-	use:onClickOutside={() => setOptionsVisible(false)}
+		showOptions === false
+			? setOptionsVisible(true, multiselectElement)
+			: setOptionsVisible(false, multiselectElement)}
+	use:onClickOutside={() => setOptionsVisible(false, multiselectElement)}
 	use:onClickOutside={() => dispatch(`blur`)}
 >
 	<span class={selected.length === 0 ? 'label' : 'label__top'}>
@@ -85,16 +129,22 @@
 		on:click={() => {
 			selected = [];
 			showOptions = false;
+			isGreater = false;
+			firstOccurence = false;
 		}}
 	/>
 	<ul
 		class="selected {showOptions ? 'active' : ''}"
-		style="width: {multiselectElement?.offsetWidth}px"
+		style="width: {multiselectElement?.scrollWidth}px"
 		bind:this={multiselectElement}
 	>
-		{#each selected as { label }}
-			<li on:mouseup|self|stopPropagation={() => setOptionsVisible(true)}>
-				{label},
+		{#each selected.reverse() as { label }, i}
+			<li
+				class={isGreater === true && i >= chooseSmallestNumber[0]
+					? 'dottedList'
+					: ''}
+			>
+				{label}{#if i < selected.length},{:else if i === selected.length - 1}...{/if}
 			</li>
 		{/each}
 	</ul>
@@ -102,13 +152,17 @@
 	<ul class="options" class:hidden={!showOptions}>
 		{#each matchingOptions as { label }, i}
 			<li
-				on:mouseup|preventDefault|stopPropagation
+				on:mouseenter={() => {
+					dropDownFirstHover = true;
+				}}
 				on:mousedown|preventDefault|stopPropagation={() => {
 					isSelected(label) ? remove(label) : add(label);
-					showOptions = false;
+					dropDownFirstHover = false;
 				}}
 				class:selected={isSelected(label)}
-				class={i === 0 && selected.length === 0 ? 'default__first_option' : ''}
+				class={i === 0 && selected.length === 0 && dropDownFirstHover === false
+					? 'default__first_option'
+					: ''}
 			>
 				{label}
 			</li>

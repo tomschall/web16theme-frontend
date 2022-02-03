@@ -53,16 +53,19 @@
 	bind:selected={selected_taxonomy_subjectarea}
 	options={taxonomy_subjectarea}
 	dropDownLabel={multiSelectTypeLabel.subjectarea}
+	id="subjectArea"
 />
 
 <MultiSelect
 	bind:selected={selected_taxonomy_eduproducttype}
 	options={taxonomy_eduproducttype}
 	dropDownLabel={multiSelectTypeLabel.type}
+	id="subjectType"
 />
 
 <MultiSelect
 	bind:selected={selected_city}
 	options={city}
 	dropDownLabel={multiSelectTypeLabel.location}
+	id="subjectLocation"
 />

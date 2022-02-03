@@ -181,7 +181,6 @@
 			selected_taxonomy_eduproducttype.length === 0 &&
 			selected_city.length === 0
 		) {
-			console.log('1');
 			showStatusInfo = false;
 			showSearchProposals = false;
 			isLoading = false;
@@ -194,7 +193,6 @@
 			isLoading = false;
 			return;
 		}
-		console.log('3');
 
 		// MULTIPLE SELECT QUERYS
 		const subjectArea = selected_taxonomy_subjectarea.map((area) => {
@@ -203,13 +201,11 @@
 
 		const subjectEduproducttype = selected_taxonomy_eduproducttype.map(
 			(type) => {
-				console.log('TYPE', type.value);
 				return `&taxonomy_eduproducttype[]=${type.value}`;
 			}
 		);
 
 		const selectedCity = selected_city.map((location) => {
-			console.log('CITY', location.value);
 			return `&city[]=${location.value}`;
 		});
 
