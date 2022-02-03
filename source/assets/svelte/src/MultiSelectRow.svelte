@@ -1,5 +1,6 @@
 <script lang="ts">
 	import MultiSelect from './multiselect';
+  export let selectFormData: any;
 
 	let multiSelectTypeLabel = {
 		subjectarea: 'multiple_label_subjectarea',
@@ -44,6 +45,8 @@
 		{ value: 'solothurn', label: 'Solothurn' },
 	];
 	export let selected_city = [];
+
+  $: console.log('selectFormData a', selectFormData);
 </script>
 
 <MultiSelect

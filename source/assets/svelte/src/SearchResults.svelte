@@ -15,7 +15,11 @@
 	export let lang: string;
 	export let listingType: string;
 
-	function IsSafari() {
+	/**
+   * Returns true if the user is using Safari.
+   * @returns The function is returning true or false.
+   */
+  function IsSafari() {
 		var is_safari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1;
 		return is_safari;
 	}

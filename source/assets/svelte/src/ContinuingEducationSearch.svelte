@@ -43,6 +43,8 @@
 	let selected_taxonomy_subjectarea = [];
 	let selected_taxonomy_eduproducttype = [];
 	let selected_city = [];
+	let selectFormData: any;
+  let selectFormDataElement = null;
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
 	) {
@@ -60,6 +62,14 @@
 		threshold: 0,
 	};
 
+	/**
+   * If the user scrolls to the bottom of the page, and the search term is not empty, and the search
+  term is longer than 4 characters, and the number of items is less than the limit, and the offset
+  is less than the total number of items, then increase the offset by the limit and set the limit to
+  20.
+   * @param {any} entries - The IntersectionObserverEntry[] array of all the elements that are
+  currently being observed.
+   */
 	const loadMoreResults = (entries: any) => {
 		entries.forEach((entry: any) => {
 			if (entry.isIntersecting) {
@@ -86,6 +96,10 @@
 		observer.unobserve(target);
 	};
 
+	/**
+	 * The function takes a string as an argument and sets the global variable lang to the string.
+	 * @param {string} langStr - The language string to set the language to.
+	 */
 	let setLanguage = (langStr: string) => {
 		switch (langStr) {
 			case 'en': {
@@ -106,6 +120,11 @@
 	};
 
 	onMount(() => {
+		selectFormDataElement = document.querySelectorAll(
+			'.widg_continuing_education_search'
+		);
+		selectFormData = JSON.parse(selectFormDataElement[0].dataset.widgetData);
+
 		setLanguage(window.location.href.split('/')[3]);
 		if (template === 'continuing_education') {
 			document.title = $_('searchpage_title');
@@ -138,6 +157,12 @@
 		}
 	}
 
+	/**
+   * It fetches the search results from the API and updates the searchResults and
+  searchResultsHighlighting variables.
+   * @param {boolean} isFirst - boolean
+   * @returns The search results.
+   */
 	const triggerSearch = async (isFirst: boolean) => {
 		if (isFirst) {
 			searchResults = [];
@@ -292,6 +317,7 @@
 		bind:selected_taxonomy_subjectarea
 		bind:selected_taxonomy_eduproducttype
 		bind:selected_city
+    bind:selectFormData
 	/>
 </div>
 
