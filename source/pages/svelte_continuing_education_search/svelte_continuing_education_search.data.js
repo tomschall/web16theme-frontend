@@ -19,10 +19,50 @@ var data = _.merge(defaultData, {
     filterSubjectarea: false,
     filterEduproducttype: false,
     filterLocation: false,
-    subjectareaOptions: [
+    subjectAreaOptions: [
+      {
+        optionValue: '1000',
+        optionLabel: 'Architektur, Bau & Geomatik',
+        selected: true,
+      },
+      {
+        optionValue: '1001',
+        optionLabel: 'Gestaltung & Kunst',
+        selected: false,
+      },
+      {
+        optionValue: '1002',
+        optionLabel: 'Informatik',
+        selected: false,
+      },
       {
         optionValue: '1003',
         optionLabel: 'International Studies',
+        selected: false,
+      },
+      {
+        optionValue: '1004',
+        optionLabel: 'Life Sciences',
+        selected: false,
+      },
+      {
+        optionValue: '1005',
+        optionLabel: 'Musik',
+        selected: false,
+      },
+      {
+        optionValue: '1006',
+        optionLabel: 'Pädagogik',
+        selected: false,
+      },
+      {
+        optionValue: '1007',
+        optionLabel: 'Psychologie',
+        selected: false,
+      },
+      {
+        optionValue: '1008',
+        optionLabel: 'Soziale Arbeit',
         selected: false,
       },
       {
@@ -30,17 +70,17 @@ var data = _.merge(defaultData, {
         optionLabel: 'Technik',
         selected: false,
       },
-    ],
-    eduproducttypeOptions: [
       {
-        optionValue: '8wjt11bpvt',
-        optionLabel: 'Ausbildungen',
+        optionValue: '1010',
+        optionLabel: 'Wirtschaft',
         selected: false,
       },
+    ],
+    eduProductTypeOptions: [
       {
         optionValue: '2000',
         optionLabel: 'CAS',
-        selected: false,
+        selected: true,
       },
       {
         optionValue: '2001',
@@ -48,8 +88,38 @@ var data = _.merge(defaultData, {
         selected: false,
       },
       {
-        optionValue: '2015',
-        optionLabel: 'Studierendenseminar',
+        optionValue: '5d0fqcxtfd',
+        optionLabel: 'Fachseminar',
+        selected: false,
+      },
+      {
+        optionValue: '2006',
+        optionLabel: 'Fachtagung',
+        selected: false,
+      },
+      {
+        optionValue: '2007',
+        optionLabel: 'Kurs',
+        selected: false,
+      },
+      {
+        optionValue: '2008',
+        optionLabel: 'MAS',
+        selected: false,
+      },
+      {
+        optionValue: 'pqowmis6ev',
+        optionLabel: 'MBA',
+        selected: false,
+      },
+      {
+        optionValue: '2013',
+        optionLabel: 'Seminar',
+        selected: false,
+      },
+      {
+        optionValue: '2016',
+        optionLabel: 'Summer School',
         selected: false,
       },
       {
@@ -58,16 +128,15 @@ var data = _.merge(defaultData, {
         selected: false,
       },
       {
-        optionValue: 'kr5y78pjyt',
-        optionLabel: 'Weiterbildungen',
+        optionValue: '2025',
+        optionLabel: 'Winter School',
         selected: false,
-        hide: true,
       },
     ],
     locationOptions: [
       {
-        optionValue: 'crrsav5xc4',
-        optionLabel: 'Andere',
+        optionValue: 'muttenz',
+        optionLabel: 'Muttenz',
         selected: false,
       },
       {
@@ -76,8 +145,18 @@ var data = _.merge(defaultData, {
         selected: false,
       },
       {
-        optionValue: 'muttenz',
-        optionLabel: 'Muttenz',
+        optionValue: 'brugg-windisch',
+        optionLabel: 'Brugg-Windisch',
+        selected: false,
+      },
+      {
+        optionValue: 'solothurn',
+        optionLabel: 'Solothurn',
+        selected: false,
+      },
+      {
+        optionValue: 'crrsav5xc4',
+        optionLabel: 'Andere',
         selected: false,
       },
     ],

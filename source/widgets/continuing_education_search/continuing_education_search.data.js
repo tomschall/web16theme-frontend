@@ -14,7 +14,7 @@ var templateData = {
     filterSubjectarea: false,
     filterEduproducttype: false,
     filterLocation: false,
-    subjectareaOptions: [
+    subjectAreaOptions: [
       {
         optionValue: '1003',
         optionLabel: 'International Studies',
@@ -26,7 +26,7 @@ var templateData = {
         selected: false,
       },
     ],
-    eduproducttypeOptions: [
+    eduProductTypeOptions: [
       {
         optionValue: '8wjt11bpvt',
         optionLabel: 'Ausbildungen',

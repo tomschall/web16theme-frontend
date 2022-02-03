@@ -4,6 +4,7 @@
   "include": ["src/**/*"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
   "compilerOptions": {
+    "lib": ["es6", "dom", "dom.iterable"],
     "resolveJsonModule": true,
     "typeRoots": ["./node_modules/@types", "./src/definitions"]
   }
