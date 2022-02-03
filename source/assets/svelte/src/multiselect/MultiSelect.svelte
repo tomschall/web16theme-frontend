@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { _ } from 'svelte-i18n';
-	import ContinuingEducationSearch from '../ContinuingEducationSearch.svelte';
 	import type { Option, Primitive, ProtoOption } from './';
 	import { onClickOutside } from './actions';
-	import ChevronExpand from './icons/ChevronExpand.svelte';
 
 	export let selected: Option[] = [];
 	export let selectedLabels: Primitive[] = [];

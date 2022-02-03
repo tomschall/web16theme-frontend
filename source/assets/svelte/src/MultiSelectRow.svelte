@@ -1,12 +1,15 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import type { ProtoOption, Option } from './multiselect';
 	import MultiSelect from './multiselect';
 	export let selectFormData: any;
-	export let selected_taxonomy_subjectarea = [];
-	export let selected_taxonomy_eduproducttype = [];
-	export let selected_city = [];
-	let taxonomy_subjectarea = [];
-	let taxonomy_eduproducttype = [];
-	let city = [];
+	export let selected_taxonomy_subjectarea: Option[] = [] as Option[];
+	export let selected_taxonomy_eduproducttype: Option[] = [] as Option[];
+	export let selected_city: Option[] = [] as Option[];
+
+	let taxonomy_subjectarea: Option[] = [] as Option[];
+	let taxonomy_eduproducttype: Option[] = [] as Option[];
+	let city: Option[] = [] as Option[];
 
 	let multiSelectTypeLabel = {
 		subjectarea: 'multiple_label_subjectarea',
@@ -14,60 +17,64 @@
 		location: 'multiple_label_location',
 	};
 
-	$: taxonomy_subjectarea = selectFormData?.subjectAreaOptions.map(
-		(option: {
-			optionValue: string;
-			optionLabel: string;
-			selected: boolean;
-		}) => {
-			return {
-				value: option.optionValue,
-				label: option.optionLabel,
-				selected: option.selected,
-			};
-		}
-	);
+	onMount(() => {
+		city = selectFormData?.locationOptions.map(
+			(option: {
+				optionValue: string;
+				optionLabel: string;
+				selected: boolean;
+			}) => {
+				return {
+					value: option.optionValue,
+					label: option.optionLabel,
+					preselected: option.selected,
+				};
+			}
+		);
 
-	$: selected_taxonomy_subjectarea = taxonomy_subjectarea?.filter(
-		(option) => option.selected === true
-	);
+		selected_city = city?.filter((option) => option.preselected === true);
 
-	$: taxonomy_eduproducttype = selectFormData?.eduProductTypeOptions.map(
-		(option: {
-			optionValue: string;
-			optionLabel: string;
-			selected: boolean;
-		}) => {
-			return {
-				value: option.optionValue,
-				label: option.optionLabel,
-				selected: option.selected,
-			};
-		}
-	);
+		taxonomy_subjectarea = selectFormData?.subjectAreaOptions.map(
+			(option: {
+				optionValue: string;
+				optionLabel: string;
+				selected: boolean;
+			}) => {
+				return {
+					value: option.optionValue,
+					label: option.optionLabel,
+					preselected: option.selected,
+				};
+			}
+		);
 
-	$: selected_taxonomy_eduproducttype = taxonomy_eduproducttype?.filter(
-		(option) => option.selected === true
-	);
+		selected_taxonomy_subjectarea = taxonomy_subjectarea?.filter(
+			(option) => option.preselected === true
+		);
 
-	$: city = selectFormData?.locationOptions.map(
-		(option: {
-			optionValue: string;
-			optionLabel: string;
-			selected: boolean;
-		}) => {
-			return {
-				value: option.optionValue,
-				label: option.optionLabel,
-				selected: option.selected,
-			};
-		}
-	);
+		taxonomy_eduproducttype = selectFormData?.eduProductTypeOptions.map(
+			(option: {
+				optionValue: string;
+				optionLabel: string;
+				selected: boolean;
+			}) => {
+				return {
+					value: option.optionValue,
+					label: option.optionLabel,
+					preselected: option.selected,
+				};
+			}
+		);
 
-	$: selected_city = city?.filter((option) => option.selected === true);
+		selected_taxonomy_eduproducttype = taxonomy_eduproducttype?.filter(
+			(option) => option.preselected === true
+		);
+	});
 
 	$: {
 		console.log('selectFormData', selectFormData);
+		console.log('city', city);
+		console.log('selected_city', selected_city);
 	}
 </script>
 

@@ -9,6 +9,7 @@
 	import { debounce } from 'lodash';
 	import type { Item } from './definitions/Item';
 	import MultiSelectRow from './MultiSelectRow.svelte';
+	import type { Option } from './multiselect';
 
 	addMessages('en', en);
 	addMessages('de', de);
@@ -40,11 +41,11 @@
 	let itemsCount: number = null;
 	let urlParams = new URLSearchParams(window.location.search);
 	let lang: string = null;
-	let selected_taxonomy_subjectarea = [];
-	let selected_taxonomy_eduproducttype = [];
-	let selected_city = [];
+	let selected_taxonomy_subjectarea: Option[] = [] as Option[];
+	let selected_taxonomy_eduproducttype: Option[] = [] as Option[];
+	let selected_city: Option[] = [] as Option[];
 	let selectFormData: any;
-  let selectFormDataElement = null;
+	let selectFormDataElement: any = null;
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
 	) {
@@ -309,12 +310,14 @@
 	/>
 </div>
 <div class="svelte__search_wrapper">
-	<MultiSelectRow
-		bind:selected_taxonomy_subjectarea
-		bind:selected_taxonomy_eduproducttype
-		bind:selected_city
-    bind:selectFormData
-	/>
+	{#if selectFormData}
+		<MultiSelectRow
+			bind:selected_taxonomy_subjectarea
+			bind:selected_taxonomy_eduproducttype
+			bind:selected_city
+			bind:selectFormData
+		/>
+	{/if}
 </div>
 
 <div class="search__third-row">

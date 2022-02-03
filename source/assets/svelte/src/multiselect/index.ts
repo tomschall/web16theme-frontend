@@ -21,11 +21,3 @@ export type ProtoOption =
   | (Omit<Option, `value`> & {
       value?: Primitive;
     });
-
-declare global {
-  interface Window {
-    getProgress: any;
-  }
-}
-
-let getProgress = window.getProgress;
