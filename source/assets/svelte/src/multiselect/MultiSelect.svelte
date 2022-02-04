@@ -6,7 +6,6 @@
 
 	export let selected: Option[] = [];
 	export let selectedLabels: Primitive[] = [];
-	export let selectedValues: Primitive[] = [];
 	export let options: ProtoOption[];
 	export let id: string | undefined = undefined;
 	export let activeOption: Option | null = null;
@@ -31,7 +30,6 @@
 	}) as Option[];
 
 	$: selectedLabels = selected.map((op) => op.label);
-	$: selectedValues = selected.map((op) => op.value);
 	$: matchingOptions = _options.filter((op) => {
 		return `${op.label}`.toLowerCase();
 	});
