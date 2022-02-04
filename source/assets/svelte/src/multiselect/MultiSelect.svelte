@@ -15,7 +15,6 @@
 	let showOptions: boolean = false;
 	let multiselectElement: any;
 	let dropDownFirstHover: boolean = false;
-	let ulWidth: number;
 	let selectLabel: string;
 	let maxChar: number;
 
@@ -100,11 +99,7 @@
 		dispatch(`change`, { option, type: `remove` });
 	};
 
-	const setOptionsVisible = (show: boolean, elem: any) => {
-		let currentDropdown = elem.id;
-		ulWidth =
-			document.querySelector(`#${currentDropdown} ul.selected`).scrollWidth -
-			20;
+	const setOptionsVisible = (show: boolean) => {
 		if (show === showOptions) return;
 		showOptions = show;
 		dropDownFirstHover = false;
@@ -119,10 +114,8 @@
 		: ''}width: {multiselectElement?.offsetWidth}px"
 	bind:this={multiselectElement}
 	on:mouseup|stopPropagation={() =>
-		showOptions === false
-			? setOptionsVisible(true, multiselectElement)
-			: setOptionsVisible(false, multiselectElement)}
-	use:onClickOutside={() => setOptionsVisible(false, multiselectElement)}
+		showOptions === false ? setOptionsVisible(true) : setOptionsVisible(false)}
+	use:onClickOutside={() => setOptionsVisible(false)}
 	use:onClickOutside={() => dispatch(`blur`)}
 >
 	<span class={selected.length === 0 ? 'label' : 'label__top'}>
