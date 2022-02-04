@@ -65,12 +65,14 @@
 
 	const checkIfTheDotsAreNeeded = () => {
 		if (selectLabel.charAt(selectLabel.length - 1) == ',') {
-			selectLabel = selectLabel.substring(0, selectLabel.length - 1) + '...';
+			selectLabel = selectLabel.substring(0, selectLabel.length - 1);
 		} else if (
 			selectLabel.charAt(selectLabel.length - 1) == ' ' ||
 			selectLabel.charAt(selectLabel.length - 1) == '&'
 		) {
 			selectLabel = selectLabel.substring(0, selectLabel.length - 2) + '...';
+		} else if (selectLabel.charAt(selectLabel.length - 2) == ' ') {
+			selectLabel = selectLabel.substring(0, selectLabel.length - 3) + '...';
 		} else if (
 			selectLabel !== '' &&
 			(selectLabel.length === maxChar - 1 || selectLabel.length === maxChar)
