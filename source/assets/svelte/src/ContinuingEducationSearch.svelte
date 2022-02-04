@@ -189,7 +189,6 @@
 		}
 
 		if (searchTerm && searchTerm.length < 3) {
-			console.log('2');
 			showStatusInfo = false;
 			isLoading = false;
 			return;
@@ -200,7 +199,7 @@
 			return `&taxonomy_subjectarea[]=${area.value}`;
 		});
 
-		const subjectEduproducttype = selected_taxonomy_eduproducttype.map(
+		const subjectEduProductType = selected_taxonomy_eduproducttype.map(
 			(type) => {
 				return `&taxonomy_eduproducttype[]=${type.value}`;
 			}
@@ -218,19 +217,16 @@
 				? // @ts-ignore
 				  `${API}/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
 						''
-				  )}${subjectEduproducttype.join('')}${selectedCity.join(
+				  )}${subjectEduProductType.join('')}${selectedCity.join(
 						''
 				  )}&limit=${limit}&offset=${offset}`
 				: `https://${
 						window.location.hostname
 				  }/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
 						''
-				  )}${subjectEduproducttype.join('')}${selectedCity.join(
+				  )}${subjectEduProductType.join('')}${selectedCity.join(
 						''
 				  )}&limit=${limit}&offset=${offset}`;
-
-		// EXAMPLE QUERY
-		// https://www.dev.fhnw.ch/de/searchbar.json?template=training_full&category=continuing_education&q=&taxonomy_subjectarea[]=1000&taxonomy_eduproducttype[]=2000&city[]
 
 		fetch(endpoint)
 			.then((response) => {
@@ -296,6 +292,15 @@
 				isLoading = false;
 			});
 	};
+
+	const handleReset = () => {
+		if (selectFormData.filterSubjectArea) selected_taxonomy_subjectarea = [];
+		if (selectFormData.filterEduProductType)
+			selected_taxonomy_eduproducttype = [];
+		if (selectFormData.filterLocation) selected_city = [];
+		searchQuery = '';
+		searchResults = [];
+	};
 </script>
 
 <div>
@@ -322,15 +327,8 @@
 
 <div class="search__third-row">
 	<div class="search__extra-holder">
-		<button
-			class="search__reset not-default btn__rotate"
-			on:click={() => {
-				selected_taxonomy_subjectarea = [];
-				selected_taxonomy_eduproducttype = [];
-				selected_city = [];
-				searchQuery = '';
-				searchResults = [];
-			}}>{$_('filter_reset')}</button
+		<button class="search__reset not-default btn__rotate" on:click={handleReset}
+			>{$_('filter_reset')}</button
 		>
 		<div class="listing__type">
 			<span

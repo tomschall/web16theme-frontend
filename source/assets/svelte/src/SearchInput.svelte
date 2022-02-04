@@ -37,8 +37,6 @@
 			toggleState = true;
 		}
 	};
-
-	console.log('query', query.length);
 </script>
 
 <div class="search__holder__searchstring">

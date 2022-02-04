@@ -11,8 +11,8 @@ var templateData = {
     description: 'Description added by PLONE',
   },
   widgetData: JSON.stringify({
-    filterSubjectarea: false,
-    filterEduproducttype: false,
+    filterSubjectArea: false,
+    filterEduProductType: false,
     filterLocation: false,
     subjectAreaOptions: [
       {

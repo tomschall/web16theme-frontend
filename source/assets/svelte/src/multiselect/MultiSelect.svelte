@@ -12,14 +12,12 @@
 	export let activeOption: Option | null = null;
 	export let dropDownLabel: String = '';
 
-	let showOptions = false;
-	let multiselectElement;
-	let dropDownFirstHover = false;
-	let optionList;
-	let isGreater: boolean = false;
-	let maxSelection;
-	let firstOccurence: Boolean = false;
-	let chooseSmallestNumber: number[] = [0, 0];
+	let showOptions: boolean = false;
+	let multiselectElement: any;
+	let dropDownFirstHover: boolean = false;
+	let ulWidth: number;
+	let concatStr: string;
+	let maxChar: number;
 
 	const dispatch = createEventDispatcher();
 
@@ -48,6 +46,35 @@
 	)
 		activeOption = matchingEnabledOptions[0];
 	$: isSelected = (label: Primitive) => selectedLabels.includes(label);
+	$: {
+		let str = [];
+		let sel = [...selected];
+		sel.reverse().forEach((sel, i) => {
+			if (i < selected.length - 1) {
+				str.push(`${sel.label},`);
+			} else if (i === selected.length - 1) {
+				str.push(`${sel.label}`);
+			}
+		});
+
+		maxChar = Math.round((multiselectElement?.scrollWidth - 20) / 9);
+		concatStr = str.join(' ').slice(0, maxChar);
+
+		checkIfTheDotsAreNeeded();
+	}
+
+	const checkIfTheDotsAreNeeded = () => {
+		if (concatStr.charAt(concatStr.length - 1) == ',') {
+			concatStr = concatStr.substring(0, concatStr.length - 1) + '...';
+		} else if (concatStr.charAt(concatStr.length - 1) == ' ') {
+			concatStr = concatStr.substring(0, concatStr.length - 2) + '...';
+		} else if (
+			concatStr !== '' &&
+			(concatStr.length === maxChar - 1 || concatStr.length === maxChar)
+		) {
+			concatStr = concatStr + '...';
+		}
+	};
 
 	const add = (label: Primitive) => {
 		const option = _options.find((op) => op.label === label);
@@ -56,7 +83,6 @@
 			return;
 		}
 		selected = [option, ...selected];
-
 		dispatch(`add`, { option });
 		dispatch(`change`, { option, type: `add` });
 	};
@@ -69,41 +95,15 @@
 		dispatch(`change`, { option, type: `remove` });
 	};
 
-	const setOptionsVisible = (show: boolean, elem) => {
+	const setOptionsVisible = (show: boolean, elem: any) => {
 		let currentDropdown = elem.id;
-		let ulWidth =
+		ulWidth =
 			document.querySelector(`#${currentDropdown} ul.selected`).scrollWidth -
 			20;
 		if (show === showOptions) return;
 		showOptions = show;
 		dropDownFirstHover = false;
-		optionList = ulWidth;
 	};
-
-	$: {
-		console.log('selected.length', selected.length);
-
-		if (optionList >= multiselectElement?.scrollWidth - 20) {
-			chooseSmallestNumber[0] = selected.length - 1;
-			isGreater = true;
-			maxSelection = selected.length - 1;
-			firstOccurence = maxSelection;
-			console.log(
-				'option list is greater',
-				'chooseSmallestNumber',
-				chooseSmallestNumber
-			);
-		} else if (optionList <= multiselectElement?.scrollWidth - 20) {
-			chooseSmallestNumber[1] = selected.length;
-			isGreater = false;
-			maxSelection = selected.length;
-			console.log(
-				'option list is smaller',
-				'chooseSmallestNumber',
-				chooseSmallestNumber
-			);
-		}
-	}
 </script>
 
 <div
@@ -127,8 +127,6 @@
 		on:click={() => {
 			selected = [];
 			showOptions = false;
-			isGreater = false;
-			firstOccurence = false;
 		}}
 	/>
 	<ul
@@ -136,15 +134,9 @@
 		style="width: {multiselectElement?.scrollWidth}px"
 		bind:this={multiselectElement}
 	>
-		{#each selected.reverse() as { label }, i}
-			<li
-				class={isGreater === true && i >= chooseSmallestNumber[0]
-					? 'dottedList'
-					: ''}
-			>
-				{label}{#if i < selected.length},{:else if i === selected.length - 1}...{/if}
-			</li>
-		{/each}
+		<li>
+			{concatStr}
+		</li>
 	</ul>
 
 	<ul class="options" class:hidden={!showOptions}>

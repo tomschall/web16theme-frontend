@@ -20,8 +20,8 @@ var data = _.merge(defaultData, {
     description: 'Hier können sie nach Studiengängen stöbern.',
   },
   widgetData: JSON.stringify({
-    filterSubjectarea: false,
-    filterEduproducttype: false,
+    filterSubjectArea: true,
+    filterEduProductType: true,
     filterLocation: false,
     subjectAreaOptions: [
       {

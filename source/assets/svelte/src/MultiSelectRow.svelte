@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { ProtoOption, Option } from './multiselect';
 	import MultiSelect from './multiselect';
+	import type { Option } from './multiselect';
+
 	export let selectFormData: any;
 	export let selected_taxonomy_subjectarea: Option[] = [] as Option[];
 	export let selected_taxonomy_eduproducttype: Option[] = [] as Option[];
@@ -73,12 +74,10 @@
 
 	$: {
 		console.log('selectFormData', selectFormData);
-		console.log('city', city);
-		console.log('selected_city', selected_city);
 	}
 </script>
 
-{#if taxonomy_subjectarea}
+{#if taxonomy_subjectarea && selectFormData.filterSubjectArea}
 	<MultiSelect
 		bind:selected={selected_taxonomy_subjectarea}
 		options={taxonomy_subjectarea}
@@ -87,7 +86,7 @@
 	/>
 {/if}
 
-{#if taxonomy_eduproducttype}
+{#if taxonomy_eduproducttype && selectFormData.filterEduProductType}
 	<MultiSelect
 		bind:selected={selected_taxonomy_eduproducttype}
 		options={taxonomy_eduproducttype}
@@ -96,7 +95,7 @@
 	/>
 {/if}
 
-{#if city}
+{#if city && selectFormData.filterLocation}
 	<MultiSelect
 		bind:selected={selected_city}
 		options={city}
