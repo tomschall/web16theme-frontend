@@ -16,7 +16,7 @@
 	let multiselectElement: any;
 	let dropDownFirstHover: boolean = false;
 	let ulWidth: number;
-	let concatStr: string;
+	let selectLabel: string;
 	let maxChar: number;
 
 	const dispatch = createEventDispatcher();
@@ -47,32 +47,35 @@
 		activeOption = matchingEnabledOptions[0];
 	$: isSelected = (label: Primitive) => selectedLabels.includes(label);
 	$: {
-		let str = [];
-		let sel = [...selected];
-		sel.reverse().forEach((sel, i) => {
+		let strArr = [];
+		let selectedClone = [...selected];
+		selectedClone.reverse().forEach((element, i) => {
 			if (i < selected.length - 1) {
-				str.push(`${sel.label},`);
+				strArr.push(`${element.label},`);
 			} else if (i === selected.length - 1) {
-				str.push(`${sel.label}`);
+				strArr.push(`${element.label}`);
 			}
 		});
 
 		maxChar = Math.round((multiselectElement?.scrollWidth - 20) / 9);
-		concatStr = str.join(' ').slice(0, maxChar);
+		selectLabel = strArr.join(' ').slice(0, maxChar);
 
 		checkIfTheDotsAreNeeded();
 	}
 
 	const checkIfTheDotsAreNeeded = () => {
-		if (concatStr.charAt(concatStr.length - 1) == ',') {
-			concatStr = concatStr.substring(0, concatStr.length - 1) + '...';
-		} else if (concatStr.charAt(concatStr.length - 1) == ' ') {
-			concatStr = concatStr.substring(0, concatStr.length - 2) + '...';
+		if (selectLabel.charAt(selectLabel.length - 1) == ',') {
+			selectLabel = selectLabel.substring(0, selectLabel.length - 1) + '...';
 		} else if (
-			concatStr !== '' &&
-			(concatStr.length === maxChar - 1 || concatStr.length === maxChar)
+			selectLabel.charAt(selectLabel.length - 1) == ' ' ||
+			selectLabel.charAt(selectLabel.length - 1) == '&'
 		) {
-			concatStr = concatStr + '...';
+			selectLabel = selectLabel.substring(0, selectLabel.length - 2) + '...';
+		} else if (
+			selectLabel !== '' &&
+			(selectLabel.length === maxChar - 1 || selectLabel.length === maxChar)
+		) {
+			selectLabel = selectLabel + '...';
 		}
 	};
 
@@ -110,8 +113,8 @@
 	{id}
 	class="multiselect {selected.length > 0 ? 'has_selection' : ''}"
 	style="{showOptions
-		? `z-index: 2;`
-		: undefined} width: {multiselectElement?.offsetWidth}px"
+		? `z-index: 2; `
+		: ''}width: {multiselectElement?.offsetWidth}px"
 	bind:this={multiselectElement}
 	on:mouseup|stopPropagation={() =>
 		showOptions === false
@@ -135,7 +138,7 @@
 		bind:this={multiselectElement}
 	>
 		<li>
-			{concatStr}
+			{selectLabel}
 		</li>
 	</ul>
 
