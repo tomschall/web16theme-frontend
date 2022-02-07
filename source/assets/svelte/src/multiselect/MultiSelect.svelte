@@ -46,6 +46,7 @@
 	$: {
 		let strArr = [];
 		let selectedClone = [...selected];
+		console.log('selectedClone', selectedClone);
 		selectedClone.reverse().forEach((element, i) => {
 			if (i < selected.length - 1) {
 				strArr.push(`${element.label},`);
@@ -54,28 +55,52 @@
 			}
 		});
 
-		maxChar = Math.round((multiselectElement?.scrollWidth - 20) / 9);
-		selectLabel = strArr.join(' ').slice(0, maxChar);
+		console.log('selectLabel before slice', strArr.join(' '));
 
-		checkIfTheDotsAreNeeded();
+		maxChar = Math.round((multiselectElement?.scrollWidth - 20) / 9);
+		console.log('maxChar', maxChar);
+
+		selectLabel = strArr.join(' ').slice(0, maxChar);
+		console.log('selectLabel before check', selectLabel);
+
+		checkIfTheDotsAreNeeded(selectedClone);
 	}
 
-	const checkIfTheDotsAreNeeded = () => {
-		if (selectLabel.charAt(selectLabel.length - 1) == ',') {
-			selectLabel = selectLabel.substring(0, selectLabel.length - 1);
+	const checkIfTheDotsAreNeeded = (selectedClone: any) => {
+		if (selectLabel.charAt(selectLabel.length - 1) === ',') {
+			if (selectedClone.length > 1) {
+				selectLabel = selectLabel.substring(0, selectLabel.length - 1) + '...';
+			} else {
+				selectLabel = selectLabel.substring(0, selectLabel.length - 1);
+			}
 		} else if (
-			selectLabel.charAt(selectLabel.length - 1) == ' ' ||
-			selectLabel.charAt(selectLabel.length - 1) == '&'
+			selectLabel.charAt(selectLabel.length - 1) === ' ' ||
+			selectLabel.charAt(selectLabel.length - 1) === '&'
 		) {
-			selectLabel = selectLabel.substring(0, selectLabel.length - 2) + '...';
-		} else if (selectLabel.charAt(selectLabel.length - 2) == ' ') {
-			selectLabel = selectLabel.substring(0, selectLabel.length - 3) + '...';
+			if (selectedClone.length > 1) {
+				selectLabel = selectLabel.substring(0, selectLabel.length - 2) + '...';
+			} else {
+				selectLabel = selectLabel.substring(0, selectLabel.length - 2);
+			}
+		} else if (selectLabel.charAt(selectLabel.length - 2) === ' ') {
+			if (selectedClone.length > 1) {
+				selectLabel = selectLabel.substring(0, selectLabel.length - 3) + '...';
+			} else {
+				selectLabel = selectLabel.substring(0, selectLabel.length - 3);
+			}
 		} else if (
 			selectLabel !== '' &&
 			(selectLabel.length === maxChar - 1 || selectLabel.length === maxChar)
 		) {
-			selectLabel = selectLabel + '...';
+			if (
+				selectedClone.length > 1 &&
+				!selectLabel.includes(selectedClone[selectedClone.length - 1].label)
+			) {
+				selectLabel = selectLabel + '...';
+			}
 		}
+
+		console.log('selectLabel after', selectLabel);
 	};
 
 	const add = (label: Primitive) => {
