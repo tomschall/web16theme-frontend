@@ -22,18 +22,6 @@
 			align-items: center;
 			margin: 0;
 
-			@include mq($from: large) {
-				min-width: 32%;
-			}
-
-			@include mq($to: large) {
-				min-width: 48%;
-			}
-
-			@include mq($to: small) {
-				margin-bottom: $basicPush;
-			}
-
 			cursor: pointer;
 			padding: 0;
 
@@ -257,25 +245,14 @@
 				}
 			}
 
-			@include mq($from: large) {
-				&:nth-of-type(2n) {
-					margin: unset;
-				}
-			}
-
 			@include mq($to: large) {
-				&:nth-of-type(3n) {
-					margin: $basicPush * 2 0 $basicPush 0;
-				}
+				width: 48%;
+				margin-bottom: $basicPush * 2;
 			}
 
 			@include mq($to: small) {
-				&:nth-of-type(2n) {
-					margin-top: $basicPush;
-				}
-				&:nth-of-type(3n) {
-					margin-top: $basicPush;
-				}
+				width: 100%;
+				margin-bottom: $basicPush * 2;
 			}
 
 			&::after {

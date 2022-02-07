@@ -10,6 +10,7 @@
 	export let id: string | undefined = undefined;
 	export let activeOption: Option | null = null;
 	export let dropDownLabel: String = '';
+	export let setMultiSelectWidth: String = '';
 
 	let showOptions: boolean = false;
 	let multiselectElement: any;
@@ -122,7 +123,7 @@
 <div
 	{id}
 	class="multiselect {selected.length > 0 ? 'has_selection' : ''}"
-	style="{showOptions
+	style="min-width: {setMultiSelectWidth}; {showOptions
 		? `z-index: 2; `
 		: ''}width: {multiselectElement?.offsetWidth}px"
 	bind:this={multiselectElement}

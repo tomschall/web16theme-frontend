@@ -11,6 +11,7 @@
 	let taxonomy_subjectarea: Option[] = [] as Option[];
 	let taxonomy_eduproducttype: Option[] = [] as Option[];
 	let city: Option[] = [] as Option[];
+	let setMultiSelectWidth: String = '';
 
 	let multiSelectTypeLabel = {
 		subjectarea: 'multiple_label_subjectarea',
@@ -72,8 +73,14 @@
 		);
 	});
 
-	$: {
-		console.log('selectFormData', selectFormData);
+	if (
+		selectFormData.filterEduProductType === true &&
+		selectFormData.filterSubjectArea === true &&
+		selectFormData.filterLocation === true
+	) {
+		setMultiSelectWidth = '32%';
+	} else {
+		setMultiSelectWidth = '48%';
 	}
 </script>
 
@@ -83,6 +90,7 @@
 		options={taxonomy_subjectarea}
 		dropDownLabel={multiSelectTypeLabel.subjectarea}
 		id="subjectArea"
+		{setMultiSelectWidth}
 	/>
 {/if}
 
@@ -92,6 +100,7 @@
 		options={taxonomy_eduproducttype}
 		dropDownLabel={multiSelectTypeLabel.type}
 		id="subjectType"
+		{setMultiSelectWidth}
 	/>
 {/if}
 
@@ -101,5 +110,6 @@
 		options={city}
 		dropDownLabel={multiSelectTypeLabel.location}
 		id="subjectLocation"
+		{setMultiSelectWidth}
 	/>
 {/if}
