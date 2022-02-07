@@ -120,10 +120,16 @@
 		.widg_teaser__img {
 			padding-top: unset;
 		}
+
+		@include mq($to: small) {
+			padding: 0;
+			background-color: red;
+		}
 	}
 
 	.widg_linklist {
 		position: relative;
 		float: left;
+		margin-top: unset;
 	}
 }
