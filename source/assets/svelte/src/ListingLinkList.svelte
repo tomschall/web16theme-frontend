@@ -10,13 +10,19 @@
 		<div class="widg_linklist__img-wrapper">
 			<img src={item['img'].src} alt={item['img'].alt} />
 		</div>
-		<span class="widg_linklist__dateline">(TO BE DEFINED)</span>
+		{#if item['taxonomy_eduproducttype'][0]}
+			<span class="widg_linklist__dateline"
+				>{item['taxonomy_eduproducttype'][1]}</span
+			>
+		{/if}
 
 		{#if item.title}
 			<h3 class="childless">{item.title}</h3>
 		{/if}
 
-		<span>TO BE DISCUSSED</span>
+		{#if item['start_string']}
+			<small>{item['start_string']}</small>
+		{/if}
 
 		{#if item.description}
 			<p>
