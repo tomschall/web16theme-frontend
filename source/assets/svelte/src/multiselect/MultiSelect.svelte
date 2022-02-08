@@ -13,11 +13,11 @@
 	export let setMultiSelectWidth: String = '';
 
 	let showOptions: boolean = false;
-	let multiselectElement: Number;
+	let multiselectElement: HTMLElement;
 	let dropDownFirstHover: boolean = false;
 	let selectLabel: string;
 	let maxChar: number;
-	let scrollY: any;
+	let scrollY: number;
 	let isOnTopHalf: boolean;
 	let optionsHeight: number;
 
@@ -50,7 +50,6 @@
 	$: {
 		let strArr = [];
 		let selectedClone = [...selected];
-		console.log('selectedClone', selectedClone);
 		selectedClone.reverse().forEach((element, i) => {
 			if (i < selected.length - 1) {
 				strArr.push(`${element.label},`);
@@ -81,7 +80,7 @@
 		if (selectLabel.charAt(selectLabel.length - 1) === ',') {
 			selectLabel =
 				selectedClone.length > 1
-					? selectLabel.substring(0, selectLabel.length - 1) + ' ...'
+					? selectLabel.substring(0, selectLabel.length - 1) + '...'
 					: selectLabel.substring(0, selectLabel.length - 1);
 		} else if (
 			selectLabel.charAt(selectLabel.length - 1) === ' ' ||
@@ -89,12 +88,12 @@
 		) {
 			selectLabel =
 				selectedClone.length > 1
-					? selectLabel.substring(0, selectLabel.length - 2) + ' ...'
+					? selectLabel.substring(0, selectLabel.length - 2) + '...'
 					: selectLabel.substring(0, selectLabel.length - 2);
 		} else if (selectLabel.charAt(selectLabel.length - 2) === ' ') {
 			selectLabel =
 				selectedClone.length > 1
-					? selectLabel.substring(0, selectLabel.length - 3) + ' ...'
+					? selectLabel.substring(0, selectLabel.length - 3) + '...'
 					: selectLabel.substring(0, selectLabel.length - 3);
 		} else if (
 			selectLabel !== '' &&
@@ -104,7 +103,7 @@
 				selectedClone.length > 1 &&
 				!selectLabel.includes(selectedClone[selectedClone.length - 1].label)
 			) {
-				selectLabel = selectLabel + ' ...';
+				selectLabel = selectLabel + '...';
 			}
 		}
 	};
@@ -140,9 +139,7 @@
 <div
 	{id}
 	class="multiselect {selected.length > 0 ? 'has_selection' : ''}"
-	style="min-width: {setMultiSelectWidth}; {showOptions
-		? `z-index: 2; `
-		: ''}width: {multiselectElement?.offsetWidth}px;}"
+	style="min-width: {setMultiSelectWidth}; {showOptions ? `z-index: 2; ` : ''}"
 	bind:this={multiselectElement}
 	on:mouseup|stopPropagation={() =>
 		showOptions === false ? setOptionsVisible(true) : setOptionsVisible(false)}
@@ -160,10 +157,9 @@
 	/>
 	<ul
 		class="selected {showOptions ? 'active' : ''}"
-		style="width: {multiselectElement?.scrollWidth}px; {showOptions &&
-		!isOnTopHalf
+		style={showOptions && !isOnTopHalf
 			? `border-bottom: 2px solid #000; border-top: 0px`
-			: ''}"
+			: ''}
 		bind:this={multiselectElement}
 	>
 		<li>
