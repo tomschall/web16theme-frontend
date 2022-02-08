@@ -15,7 +15,11 @@
 			<img src={item['img'].src} alt={item['img'].alt} />
 		</div>
 	{/if}
-	<span class="widg_teaser__dateline">(TO BE DEFINED)</span>
+	{#if item['taxonomy_eduproducttype'][0]}
+		<span class="widg_teaser__dateline"
+			>{item['taxonomy_eduproducttype'][1]}</span
+		>
+	{/if}
 
 	{#if item.title}
 		<h3 class="widg_teaser__title childless">{item.title}</h3>
