@@ -21,7 +21,7 @@
 		{/if}
 
 		{#if item['start_string']}
-			<span>{item['start_string']}</span>
+			<small>{item['start_string']}</small>
 		{/if}
 
 		{#if item.description}
