@@ -25,11 +25,11 @@
 		<p>{shortenDescription(item.description)}</p>
 	{/if}
 
-	{#if item['fhnw_location']}
-		<small>{item['fhnw_location']}</small>
-	{/if}
 	<a class="widg_teaser__link anchor-link" href={item['@id']}
 		>zu Campus Brugg-Windisch</a
 	>
+	{#if item['start_string']}
+		<small>{item['start_string']}</small>
+	{/if}
 	<span class="widg_teaser__arrow" />
 </div>
