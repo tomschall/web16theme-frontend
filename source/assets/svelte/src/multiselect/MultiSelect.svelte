@@ -17,6 +17,9 @@
 	let dropDownFirstHover: boolean = false;
 	let selectLabel: string;
 	let maxChar: number;
+	let scrollY: any;
+	let isOnTopHalf: boolean;
+	let optionsHeight: number;
 
 	const dispatch = createEventDispatcher();
 
@@ -60,6 +63,18 @@
 		selectLabel = strArr.join(' ').slice(0, maxChar);
 
 		checkIfTheDotsAreNeeded(selectedClone);
+	}
+	$: if (scrollY) {
+		let viewportOffset = multiselectElement?.getBoundingClientRect();
+		let top = viewportOffset?.top;
+		let height = viewportOffset?.height;
+		isOnTopHalf = top + height / 2 <= innerHeight / 2 ? true : false;
+
+		if (!optionsHeight) {
+			optionsHeight = document.querySelector(
+				`#${id} > ul.options`
+			).clientHeight;
+		}
 	}
 
 	const checkIfTheDotsAreNeeded = (selectedClone: any[]) => {
@@ -120,12 +135,14 @@
 	};
 </script>
 
+<svelte:window bind:scrollY />
+
 <div
 	{id}
 	class="multiselect {selected.length > 0 ? 'has_selection' : ''}"
 	style="min-width: {setMultiSelectWidth}; {showOptions
 		? `z-index: 2; `
-		: ''}width: {multiselectElement?.offsetWidth}px"
+		: ''}width: {multiselectElement?.offsetWidth}px;}"
 	bind:this={multiselectElement}
 	on:mouseup|stopPropagation={() =>
 		showOptions === false ? setOptionsVisible(true) : setOptionsVisible(false)}
@@ -143,7 +160,10 @@
 	/>
 	<ul
 		class="selected {showOptions ? 'active' : ''}"
-		style="width: {multiselectElement?.scrollWidth}px"
+		style="width: {multiselectElement?.scrollWidth}px; {showOptions &&
+		!isOnTopHalf
+			? `border-bottom: 2px solid #000; border-top: 0px`
+			: ''}"
 		bind:this={multiselectElement}
 	>
 		<li>
@@ -151,7 +171,13 @@
 		</li>
 	</ul>
 
-	<ul class="options" class:hidden={!showOptions}>
+	<ul
+		class="options"
+		class:hidden={!showOptions}
+		style={!isOnTopHalf
+			? `top: -${optionsHeight}px; border-top: 2px solid #000; border-bottom: 0px`
+			: ''}
+	>
 		{#each matchingOptions as { label }, i}
 			<li
 				on:mouseenter={() => {
