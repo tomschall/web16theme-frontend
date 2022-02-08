@@ -121,10 +121,26 @@
     .widg_teaser__img {
       padding-top: unset;
     }
+
+    .widg_teaser p {
+      display: block;
+      padding-bottom: $basicPush * 3;
+    }
+
+    small {
+      position: absolute;
+      bottom: $basicPush * 4;
+    }
+
+    @include mq($to: small) {
+      padding: 0;
+      background-color: red;
+    }
   }
 
   .widg_linklist {
     position: relative;
     float: left;
+    margin-top: unset;
   }
 }

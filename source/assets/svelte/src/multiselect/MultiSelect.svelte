@@ -13,7 +13,7 @@
 	export let setMultiSelectWidth: String = '';
 
 	let showOptions: boolean = false;
-	let multiselectElement: any;
+	let multiselectElement: Number;
 	let dropDownFirstHover: boolean = false;
 	let selectLabel: string;
 	let maxChar: number;
@@ -81,7 +81,7 @@
 		if (selectLabel.charAt(selectLabel.length - 1) === ',') {
 			selectLabel =
 				selectedClone.length > 1
-					? selectLabel.substring(0, selectLabel.length - 1) + '...'
+					? selectLabel.substring(0, selectLabel.length - 1) + ' ...'
 					: selectLabel.substring(0, selectLabel.length - 1);
 		} else if (
 			selectLabel.charAt(selectLabel.length - 1) === ' ' ||
@@ -89,12 +89,12 @@
 		) {
 			selectLabel =
 				selectedClone.length > 1
-					? selectLabel.substring(0, selectLabel.length - 2) + '...'
+					? selectLabel.substring(0, selectLabel.length - 2) + ' ...'
 					: selectLabel.substring(0, selectLabel.length - 2);
 		} else if (selectLabel.charAt(selectLabel.length - 2) === ' ') {
 			selectLabel =
 				selectedClone.length > 1
-					? selectLabel.substring(0, selectLabel.length - 3) + '...'
+					? selectLabel.substring(0, selectLabel.length - 3) + ' ...'
 					: selectLabel.substring(0, selectLabel.length - 3);
 		} else if (
 			selectLabel !== '' &&
@@ -104,7 +104,7 @@
 				selectedClone.length > 1 &&
 				!selectLabel.includes(selectedClone[selectedClone.length - 1].label)
 			) {
-				selectLabel = selectLabel + '...';
+				selectLabel = selectLabel + ' ...';
 			}
 		}
 	};
