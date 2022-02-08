@@ -22,12 +22,12 @@ var data = _.merge(defaultData, {
   widgetData: JSON.stringify({
     filterSubjectArea: true,
     filterEduProductType: true,
-    filterLocation: false,
+    filterLocation: true,
     subjectAreaOptions: [
       {
         optionValue: '1000',
         optionLabel: 'Architektur, Bau & Geomatik',
-        selected: true,
+        selected: false,
       },
       {
         optionValue: '1001',
@@ -84,7 +84,7 @@ var data = _.merge(defaultData, {
       {
         optionValue: '2000',
         optionLabel: 'CAS',
-        selected: true,
+        selected: false,
       },
       {
         optionValue: '2001',
@@ -156,12 +156,12 @@ var data = _.merge(defaultData, {
       {
         optionValue: 'solothurn',
         optionLabel: 'Solothurn',
-        selected: true,
+        selected: false,
       },
       {
         optionValue: 'crrsav5xc4',
         optionLabel: 'Andere',
-        selected: true,
+        selected: false,
       },
     ],
     subject: [],

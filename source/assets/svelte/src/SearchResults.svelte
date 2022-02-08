@@ -8,7 +8,7 @@
 
 	export let results: Item[];
 	export let isLoading: boolean;
-	export let searchResultsHighlighting: any[];
+	export let searchResultsHighlighting: any[] = [];
 	export let template: string;
 	export let searchTerm: string;
 	export let searchType: string;

@@ -19,7 +19,7 @@ const continuingEducationSelector = document.querySelector(
 let searchBar: SvelteComponent = null;
 let searchPage: SvelteComponent = null;
 let subNav: SvelteComponent = null;
-let continuingSearch: SvelteComponent = null;
+let continuingEducationSearch: SvelteComponent = null;
 
 if (searchBarSelector) {
   searchBar = new Search({
@@ -49,7 +49,7 @@ if (subNavSelector) {
 }
 
 if (continuingEducationSelector) {
-  continuingSearch = new ContinuingEducationSearch({
+  continuingEducationSearch = new ContinuingEducationSearch({
     target: continuingEducationSelector,
     props: {
       template: 'continuing_education',
@@ -57,4 +57,4 @@ if (continuingEducationSelector) {
   });
 }
 
-export default [searchBar, searchPage, subNav, continuingSearch];
+export default [searchBar, searchPage, subNav, continuingEducationSearch];

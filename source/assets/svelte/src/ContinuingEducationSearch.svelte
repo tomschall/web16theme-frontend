@@ -24,14 +24,10 @@
 
 	let searchQuery: string = '';
 	let searchTerm: string = null;
-	let searchTermSpellCheck: string = null;
-	let noAlternativeSearchTermFound: boolean = false;
 	let totalItems: number = null;
 	let offset: number = 0;
-	let limit: number = 10;
+	let limit: number = 9;
 	let searchResults: Item[] = [];
-	let searchResultsHighlighting: any;
-	let showSearchProposals: boolean = true;
 	let isLoading: boolean = false;
 	let searchType: string = 'continuing_education';
 	let observer: any;
@@ -74,7 +70,7 @@
 	const loadMoreResults = (entries: any) => {
 		entries.forEach((entry: any) => {
 			if (entry.isIntersecting) {
-				if (!searchTerm || searchTerm.length < 4 || isFirstSearch) return;
+				if (isFirstSearch) return;
 
 				if (itemsCount < limit) {
 					unobserve();
@@ -85,7 +81,7 @@
 
 				if (offset + limit < totalItems) {
 					offset += limit;
-					limit = 20;
+					limit = 9;
 				}
 
 				triggerSearchDebounced(false);
@@ -127,23 +123,22 @@
 		selectFormData = JSON.parse(selectFormDataElement[0].dataset.widgetData);
 
 		setLanguage(window.location.href.split('/')[3]);
-		if (template === 'continuing_education') {
-			document.title = $_('searchpage_title');
-			observer = new IntersectionObserver(loadMoreResults, options);
-			target = document.querySelector('.loading-indicator');
-			if (urlParams.has('query')) {
-				searchQuery = urlParams.get('query');
-				searchType = urlParams.get('searchtype') || 'continuing_education';
-				if (searchQuery && searchType) handleInput();
-			}
+
+		document.title = $_('searchpage_title');
+		observer = new IntersectionObserver(loadMoreResults, options);
+		target = document.querySelector('.loading-indicator');
+		if (urlParams.has('query')) {
+			searchQuery = urlParams.get('query');
+			searchType = urlParams.get('searchtype') || 'continuing_education';
+			if (searchQuery && searchType) handleInput();
+		} else {
+			handleInput();
 		}
 	});
 
 	const handleInput: () => void = function () {
-		noAlternativeSearchTermFound = false;
 		if (observer) unobserve();
 		isLoading = true;
-		searchTermSpellCheck = null;
 
 		triggerSearchDebounced(true);
 	};
@@ -169,30 +164,10 @@
 			searchResults = [];
 			totalItems = 0;
 			offset = 0;
-			limit = 10;
+			limit = 9;
 		}
 
-		if (!searchTermSpellCheck) searchTerm = searchQuery.trim();
-
-		showSearchProposals = false;
-
-		if (
-			!searchTerm &&
-			selected_taxonomy_subjectarea.length === 0 &&
-			selected_taxonomy_eduproducttype.length === 0 &&
-			selected_city.length === 0
-		) {
-			showStatusInfo = false;
-			showSearchProposals = false;
-			isLoading = false;
-			return;
-		}
-
-		if (searchTerm && searchTerm.length < 3) {
-			showStatusInfo = false;
-			isLoading = false;
-			return;
-		}
+		searchTerm = searchQuery.trim();
 
 		// MULTIPLE SELECT QUERYS
 		const subjectArea = selected_taxonomy_subjectarea.map((area) => {
@@ -238,51 +213,10 @@
 			.then((data) => {
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
-
-				if (totalItems === 0 && !noAlternativeSearchTermFound) {
-					searchTermSpellCheck = searchTerm;
-
-					const spellCheckEndpoint: string =
-						window.location.hostname === 'localhost'
-							? // @ts-ignore
-							  API_SPELLCHECK + `?term=${searchTermSpellCheck}`
-							: `https://${window.location.hostname}/spellcheck/?term=${searchTermSpellCheck}`;
-
-					fetch(spellCheckEndpoint)
-						.then((response) => {
-							if (!response.ok) {
-								throw Error(response.statusText);
-							}
-							return response.json();
-						})
-						.then((data) => {
-							if (!data.suggestions.length) {
-								searchTermSpellCheck = null;
-								noAlternativeSearchTermFound = true;
-							} else {
-								searchTerm = data.suggestions[0].value;
-							}
-						})
-						.catch((e) => {
-							console.log('An spellcheck error occured!', e);
-							noAlternativeSearchTermFound = true;
-						})
-						.finally(() => {
-							if (!noAlternativeSearchTermFound) triggerSearch(true);
-						});
-				}
-
 				searchResults = [...searchResults, ...data.items];
-				searchResultsHighlighting = {
-					...searchResultsHighlighting,
-					...data.highlighting,
-				};
 
 				if (isFirst) {
 					searchResults = [...data.items];
-					searchResultsHighlighting = {
-						...data.highlighting,
-					};
 					isFirstSearch = false;
 					observer.observe(target);
 				}
@@ -308,8 +242,6 @@
 		bind:query={searchQuery}
 		bind:searchResults
 		bind:showStatusInfo
-		bind:showSearchProposals
-		bind:searchTermSpellCheck
 		bind:searchType
 		{handleInput}
 	/>
@@ -350,7 +282,6 @@
 <div class="search__results">
 	<SearchResults
 		results={searchResults}
-		{searchResultsHighlighting}
 		{isLoading}
 		{template}
 		{searchTerm}
@@ -358,7 +289,7 @@
 		{lang}
 		{listingType}
 	/>
-	{#if showStatusInfo && !searchTermSpellCheck}
+	{#if showStatusInfo}
 		<div class="widg__searchbar_spellcheck">
 			<p>{$_('search_no_results')}</p>
 			<span>{$_('search_no_results_subtitle')}</span>

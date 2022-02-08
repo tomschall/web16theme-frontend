@@ -5,8 +5,6 @@
 	export let query: string;
 	export let searchResults: Item[];
 	export let showStatusInfo: boolean;
-	export let showSearchProposals: boolean;
-	export let searchTermSpellCheck: string;
 	export let searchType: string;
 	export let handleInput: () => void;
 	export let toggleState: boolean = false;
@@ -20,11 +18,10 @@
 	const handleClick = () => {
 		query = '';
 		searchResults = [];
-		showSearchProposals = false;
 		showStatusInfo = false;
-		searchTermSpellCheck = null;
 		searchType = 'continuing_education';
 		toggleState = false;
+		handleInput();
 	};
 
 	const toggleLabel = () => {
