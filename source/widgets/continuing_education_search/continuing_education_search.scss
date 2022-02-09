@@ -124,19 +124,6 @@
 
 	.widg_teaser__wrapper {
 		width: 100%;
-		.widg_teaser__img {
-			padding-top: unset;
-		}
-
-		.widg_teaser p {
-			display: block;
-			padding-bottom: $basicPush * 3;
-		}
-
-		small {
-			position: absolute;
-			bottom: $basicPush * 4;
-		}
 
 		@include mq($to: small) {
 			padding: 0;
@@ -148,5 +135,31 @@
 		position: relative;
 		float: left;
 		margin-top: unset;
+
+		.widg_linklist___entry {
+			a.anchor-link {
+				display: flex;
+
+				.widg_teaser__img {
+					flex: 2;
+					padding-top: unset;
+				}
+
+				.widg_linklist__content {
+					flex: 10;
+
+					.widg_teaser p {
+						display: block;
+						padding-bottom: $basicPush * 3;
+					}
+
+					small {
+						position: absolute;
+						bottom: $basicPush * 2;
+						font-weight: 400;
+					}
+				}
+			}
+		}
 	}
 }
