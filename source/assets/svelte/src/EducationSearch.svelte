@@ -29,7 +29,7 @@
 	let limit: number = 9;
 	let searchResults: Item[] = [];
 	let isLoading: boolean = false;
-	let searchType: string = 'continuing_education';
+	let searchType: string = 'education';
 	let observer: any;
 	let target: any;
 	let showStatusInfo: boolean = false;
@@ -117,9 +117,7 @@
 	};
 
 	onMount(() => {
-		selectFormDataElement = document.querySelectorAll(
-			'.widg_continuing_education_search'
-		);
+		selectFormDataElement = document.querySelectorAll('.widg_education_search');
 		selectFormData = JSON.parse(selectFormDataElement[0].dataset.widgetData);
 
 		setLanguage(window.location.href.split('/')[3]);

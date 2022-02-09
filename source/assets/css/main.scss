@@ -90,6 +90,7 @@
 @import '../../widgets/svelte/svelte';
 @import '../../widgets/actionbuttons/actionbuttons';
 @import '../../widgets/continuing_education_search/continuing_education_search';
+@import '../../widgets/education_search/education_search';
 //*autoinsertmodule*
 
 /**
@@ -115,5 +116,5 @@
 @import 'content/svelte_select';
 
 @media print {
-	@import 'print';
+  @import 'print';
 }

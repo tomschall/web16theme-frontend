@@ -54,7 +54,7 @@
 {/if}
 
 <!-- LISTING InContentSearch -->
-{#if template === 'continuing_education'}
+{#if template === 'continuing_education' || template === 'education'}
 	{#if listingType === 'grid'}
 		<div class="widg_teaser__wrapper">
 			{#each results as result, index (index)}
