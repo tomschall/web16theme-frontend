@@ -5,7 +5,6 @@
 	export let query: string;
 	export let searchResults: Item[];
 	export let showStatusInfo: boolean;
-	export let searchType: string;
 	export let handleInput: () => void;
 	export let toggleState: boolean = false;
 
@@ -19,7 +18,6 @@
 		query = '';
 		searchResults = [];
 		showStatusInfo = false;
-		searchType = 'continuing_education';
 		toggleState = false;
 		handleInput();
 	};
