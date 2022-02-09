@@ -153,6 +153,44 @@
 		}
 	}
 
+  const assembleQuery = () => {
+    // MULTIPLE SELECT QUERYS
+		const subjectArea = selected_taxonomy_subjectarea.map((area) => {
+			return `&taxonomy_subjectarea[]=${area.value}`;
+		});
+
+		const subjectEduProductType = selected_taxonomy_eduproducttype.map(
+			(type) => {
+				return `&taxonomy_eduproducttype[]=${type.value}`;
+			}
+		);
+
+		const city = selected_city.map((location) => {
+			return `&city[]=${location.value}`;
+		});
+
+		const queryPrefix =
+			'/searchbar.json?template=training_full&category=continuing_education&q=';
+
+		const query =
+			window.location.hostname === 'localhost'
+				? // @ts-ignore
+				  `${API}/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
+						''
+				  )}${subjectEduProductType.join('')}${city.join(
+						''
+				  )}&limit=${limit}&offset=${offset}`
+				: `https://${
+						window.location.hostname
+				  }/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
+						''
+				  )}${subjectEduProductType.join('')}${city.join(
+						''
+				  )}&limit=${limit}&offset=${offset}`;
+
+    return query;
+  }
+
 	/**
    * It fetches the search results from the API and updates the searchResults and
   searchResultsHighlighting variables.
@@ -169,39 +207,7 @@
 
 		searchTerm = searchQuery.trim();
 
-		// MULTIPLE SELECT QUERYS
-		const subjectArea = selected_taxonomy_subjectarea.map((area) => {
-			return `&taxonomy_subjectarea[]=${area.value}`;
-		});
-
-		const subjectEduProductType = selected_taxonomy_eduproducttype.map(
-			(type) => {
-				return `&taxonomy_eduproducttype[]=${type.value}`;
-			}
-		);
-
-		const selectedCity = selected_city.map((location) => {
-			return `&city[]=${location.value}`;
-		});
-
-		const queryPrefix =
-			'/searchbar.json?template=training_full&category=continuing_education&q=';
-
-		const endpoint =
-			window.location.hostname === 'localhost'
-				? // @ts-ignore
-				  `${API}/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
-						''
-				  )}${subjectEduProductType.join('')}${selectedCity.join(
-						''
-				  )}&limit=${limit}&offset=${offset}`
-				: `https://${
-						window.location.hostname
-				  }/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
-						''
-				  )}${subjectEduProductType.join('')}${selectedCity.join(
-						''
-				  )}&limit=${limit}&offset=${offset}`;
+    const endpoint = assembleQuery();
 
 		fetch(endpoint)
 			.then((response) => {

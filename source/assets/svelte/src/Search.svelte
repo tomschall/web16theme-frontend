@@ -28,6 +28,7 @@
 
 	export let template: string = '';
 	export let listingType: string = 'grid';
+  
 	let searchQuery: string = '';
 	let searchTerm: string = null;
 	let searchTermSpellCheck: string = null;
