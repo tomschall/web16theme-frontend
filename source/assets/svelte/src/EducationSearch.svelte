@@ -29,7 +29,6 @@
 	let limit: number = 9;
 	let searchResults: Item[] = [];
 	let isLoading: boolean = false;
-	let searchType: string = 'education';
 	let observer: any;
 	let target: any;
 	let showStatusInfo: boolean = false;
@@ -127,8 +126,7 @@
 		target = document.querySelector('.loading-indicator');
 		if (urlParams.has('query')) {
 			searchQuery = urlParams.get('query');
-			searchType = urlParams.get('searchtype') || 'continuing_education';
-			if (searchQuery && searchType) handleInput();
+			if (searchQuery) handleInput();
 		} else {
 			handleInput();
 		}
@@ -168,7 +166,7 @@
 		});
 
 		const queryPrefix =
-			'/searchbar.json?template=training_full&category=continuing_education&q=';
+			'/searchbar.json?template=training_full&category=degree_programmes&q=';
 
 		const query =
 			window.location.hostname === 'localhost'
@@ -288,7 +286,6 @@
 		{isLoading}
 		{template}
 		{searchTerm}
-		{searchType}
 		{lang}
 		{listingType}
 	/>

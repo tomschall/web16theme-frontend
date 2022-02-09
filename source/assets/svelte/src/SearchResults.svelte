@@ -11,7 +11,7 @@
 	export let searchResultsHighlighting: any[] = [];
 	export let template: string;
 	export let searchTerm: string;
-	export let searchType: string;
+	export let searchType: string = 'all';
 	export let lang: string;
 	export let listingType: string;
 
