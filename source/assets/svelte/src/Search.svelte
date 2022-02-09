@@ -28,7 +28,7 @@
 
 	export let template: string = '';
 	export let listingType: string = 'grid';
-  
+
 	let searchQuery: string = '';
 	let searchTerm: string = null;
 	let searchTermSpellCheck: string = null;
@@ -385,59 +385,59 @@
 	{#if showSearchBarIntro}
 		<SearchBarIntro {lang} />
 	{/if}
-
-	<div class="search__results">
-		<div
-			class={template === 'searchbar'
-				? 'widg_searchbar-bar__content'
-				: 'widg_searchpage__content'}
-		>
-			<div class="search__cat">
-				{#if showSearchCategories}
-					<SearchCategories
-						bind:categoriesCount
-						bind:searchType
-						bind:xScroll
+	{#if !showStatusInfo}
+		<div class="search__results">
+			<div
+				class={template === 'searchbar'
+					? 'widg_searchbar-bar__content'
+					: 'widg_searchpage__content'}
+			>
+				<div class="search__cat">
+					{#if showSearchCategories}
+						<SearchCategories
+							bind:categoriesCount
+							bind:searchType
+							bind:xScroll
+							{template}
+							triggerCategorySearch={() => triggerSearchDebounced(true)}
+							{unobserve}
+						/>
+					{/if}
+					{#if showSearchProposals}
+						<SearchProposals
+							bind:query={searchQuery}
+							bind:searchType
+							{handleInput}
+						/>
+					{/if}
+					{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
+						<div class="widg__searchbar_spellcheck">
+							<p>{$_('search_spellcheck_warning')} <b>{searchTerm}</b></p>
+							<span
+								>{$_('search_spellcheck_warning_2')}
+								<b>"{searchTermSpellCheck}"</b></span
+							>
+						</div>
+					{/if}
+					{#if searchResults.length}
+						<div class="widg_searchbar-bar__title">
+							<p>{$_('searchresult_title')}</p>
+						</div>
+					{/if}
+					<SearchResults
+						results={searchResults}
+						{searchResultsHighlighting}
+						{isLoading}
 						{template}
-						triggerCategorySearch={() => triggerSearchDebounced(true)}
-						{unobserve}
+						{searchTerm}
+						{searchType}
+						{lang}
+						{listingType}
 					/>
-				{/if}
-				{#if showSearchProposals}
-					<SearchProposals
-						bind:query={searchQuery}
-						bind:searchType
-						{handleInput}
-					/>
-				{/if}
-				{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
-					<div class="widg__searchbar_spellcheck">
-						<p>{$_('search_spellcheck_warning')} <b>{searchTerm}</b></p>
-						<span
-							>{$_('search_spellcheck_warning_2')}
-							<b>"{searchTermSpellCheck}"</b></span
-						>
-					</div>
-				{/if}
-				{#if searchResults.length}
-					<div class="widg_searchbar-bar__title">
-						<p>{$_('searchresult_title')}</p>
-					</div>
-				{/if}
-				<SearchResults
-					results={searchResults}
-					{searchResultsHighlighting}
-					{isLoading}
-					{template}
-					{searchTerm}
-					{searchType}
-					{lang}
-					{listingType}
-				/>
+				</div>
 			</div>
 		</div>
-	</div>
-
+	{/if}
 	{#if showStatusInfo && !searchTermSpellCheck}
 		<div class="widg__searchbar_spellcheck">
 			<p>{$_('search_no_results')}</p>
