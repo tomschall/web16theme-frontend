@@ -439,7 +439,11 @@
 		</div>
 	{/if}
 	{#if showStatusInfo && !searchTermSpellCheck}
-		<div class="widg__searchbar_spellcheck">
+		<div
+			class="widg__searchbar_no_results {template === 'searchbar'
+				? 'searchbar'
+				: ''}"
+		>
 			<p>{$_('search_no_results')}</p>
 			<span>{$_('search_no_results_subtitle')}</span>
 		</div>
