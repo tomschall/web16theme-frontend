@@ -22,7 +22,8 @@ $mqBreakpoints: (
 	subnav: $sizeBreakpointSubnav,
 	betweener: $sizeBreakpointBetweener,
 	large: $sizeBreakpointLarge,
-	wide: $sizeBreakpointWide
+	larger: $sizeBreakpointLarger,
+	wide: $sizeBreakpointWide,
 );
 
 /**
@@ -39,9 +40,8 @@ $mqStaticBreakpoint: small;
  */
 $mqShowBreakpoints: (small, medium, large);
 
-
 @function mqGetBreakpointWidth($name) {
-	@if(map-has-key($mqBreakpoints, $name)) {
+	@if (map-has-key($mqBreakpoints, $name)) {
 		@return map-get($mqBreakpoints, $name);
 	} @else {
 		@warn "Breakpoint #{$name} does not exist";
@@ -71,7 +71,6 @@ $mqShowBreakpoints: (small, medium, large);
  */
 
 @mixin mq($from: false, $to: false, $and: false, $height: false) {
-
 	// Initialize variables
 	$minSize: 0;
 	$maxSize: 0;
@@ -90,9 +89,9 @@ $mqShowBreakpoints: (small, medium, large);
 	// To: that breakpoint (exclusive)
 	@if $to {
 		@if type-of($to) == number {
-			$maxSize: pxToEm($to, 16) - .01em;
+			$maxSize: pxToEm($to, 16) - 0.01em;
 		} @else {
-			$maxSize: pxToEm(mqGetBreakpointWidth($to), 16) - .01em;
+			$maxSize: pxToEm(mqGetBreakpointWidth($to), 16) - 0.01em;
 		}
 	}
 
@@ -103,7 +102,12 @@ $mqShowBreakpoints: (small, medium, large);
 		@if type-of($staticBreakpointWidth) == number {
 			$targetWidth: pxToEm($staticBreakpointWidth, 16);
 			// Output only rules that start at or span our target width
-			@if ($and == false and ($minSize <= $targetWidth) and (($to == false) or ($maxSize >= $targetWidth))) {
+			@if (
+				$and ==
+					false and
+					($minSize <= $targetWidth) and
+					(($to == false) or ($maxSize >= $targetWidth))
+			) {
 				@content;
 			}
 		} @else {
@@ -112,11 +116,17 @@ $mqShowBreakpoints: (small, medium, large);
 		}
 	}
 
-		// Responsive support is enabled, output rules inside @media queries
+	// Responsive support is enabled, output rules inside @media queries
 	@else {
-		@if $minSize != 0 { $mediaQuery: '#{$mediaQuery} and (min-#{$axis}: #{$minSize})'; }
-		@if $maxSize != 0 { $mediaQuery: '#{$mediaQuery} and (max-#{$axis}: #{$maxSize})'; }
-		@if $and { $mediaQuery: '#{$mediaQuery} and #{$and}'; }
+		@if $minSize != 0 {
+			$mediaQuery: '#{$mediaQuery} and (min-#{$axis}: #{$minSize})';
+		}
+		@if $maxSize != 0 {
+			$mediaQuery: '#{$mediaQuery} and (max-#{$axis}: #{$maxSize})';
+		}
+		@if $and {
+			$mediaQuery: '#{$mediaQuery} and #{$and}';
+		}
 
 		$mediaQuery: unquote(#{$mediaQuery});
 
@@ -131,7 +141,9 @@ $mqShowBreakpoints: (small, medium, large);
  * Usage: $mqBreakpoints: mqAddBreakpoint(tvscreen, 1920px);
  */
 @function mqAddBreakpoint($name, $breakpoint) {
-	$newBreakpoint: ($name: $breakpoint);
+	$newBreakpoint: (
+		$name: $breakpoint,
+	);
 	@return map-merge($mqBreakpoints, $newBreakpoint);
 }
 
@@ -156,10 +168,9 @@ $mqShowBreakpoints: (small, medium, large);
 	@return $JSON;
 }
 
-
 /**
  * Create JSON string of single breakpoint
  */
 @function mqGetBreakpointJSON($name, $value) {
-	@return "{\"name\":\"#{$name}\",\"value\":\"#{$value}\"}";
+	@return '{"name":"#{$name}","value":"#{$value}"}';
 }
