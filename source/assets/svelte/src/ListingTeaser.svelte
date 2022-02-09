@@ -4,12 +4,16 @@
 
 	export let item: Item;
 
+	let mq = window.estatico.mq.query({ from: 'large' }); // Estatico media query
+
 	const shortenDescription = (str: string): string => {
 		return str.length >= 220 ? `${str.substring(0, 220)}...` : str;
 	};
+
+	$: mq;
 </script>
 
-<div class="widg_teaser wide___third">
+<div class="widg_teaser {mq === false ? 'wide___third' : 'wide___quarter'}">
 	{#if item['img'].src}
 		<div class="widg_teaser__img">
 			<img src={item['img'].src} alt={item['img'].alt} />
