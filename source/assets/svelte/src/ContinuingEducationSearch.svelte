@@ -37,7 +37,7 @@
 	let urlParams = new URLSearchParams(window.location.search);
 	let lang: string = null;
 	let selected_taxonomy_subjectarea: Option[] = [] as Option[];
-	let selected_taxonomy_eduproducttype: Option[] = [] as Option[];
+	let selected_taxonomy_dateline: Option[] = [] as Option[];
 	let selected_city: Option[] = [] as Option[];
 	let selectFormData: any;
 	let selectFormDataElement: any = null;
@@ -144,7 +144,7 @@
 	$: {
 		if (
 			selected_taxonomy_subjectarea ||
-			selected_taxonomy_eduproducttype ||
+			selected_taxonomy_dateline ||
 			selected_city
 		) {
 			handleInput();
@@ -157,11 +157,9 @@
 			return `&taxonomy_subjectarea[]=${area.value}`;
 		});
 
-		const subjectEduProductType = selected_taxonomy_eduproducttype.map(
-			(type) => {
-				return `&taxonomy_eduproducttype[]=${type.value}`;
-			}
-		);
+		const dateLine = selected_taxonomy_dateline.map((type) => {
+			return `&taxonomy_datelines[]=${type.value}`;
+		});
 
 		const city = selected_city.map((location) => {
 			return `&city[]=${location.value}`;
@@ -175,14 +173,14 @@
 				? // @ts-ignore
 				  `${API}/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
 						''
-				  )}${subjectEduProductType.join('')}${city.join(
+				  )}${dateLine.join('')}${city.join(
 						''
 				  )}&limit=${limit}&offset=${offset}`
 				: `https://${
 						window.location.hostname
 				  }/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
 						''
-				  )}${subjectEduProductType.join('')}${city.join(
+				  )}${dateLine.join('')}${city.join(
 						''
 				  )}&limit=${limit}&offset=${offset}`;
 
@@ -233,8 +231,7 @@
 
 	const handleReset = () => {
 		if (selectFormData.filterSubjectArea) selected_taxonomy_subjectarea = [];
-		if (selectFormData.filterEduProductType)
-			selected_taxonomy_eduproducttype = [];
+		if (selectFormData.filterDateLine) selected_taxonomy_dateline = [];
 		if (selectFormData.filterLocation) selected_city = [];
 		searchQuery = '';
 		searchResults = [];
@@ -253,7 +250,7 @@
 	{#if selectFormData}
 		<MultiSelectRow
 			bind:selected_taxonomy_subjectarea
-			bind:selected_taxonomy_eduproducttype
+			bind:selected_taxonomy_dateline
 			bind:selected_city
 			bind:selectFormData
 		/>
@@ -290,6 +287,7 @@
 		{searchTerm}
 		{lang}
 		{listingType}
+		bind:selectFormData
 	/>
 	{#if showStatusInfo}
 		<div class="widg__searchbar_spellcheck">

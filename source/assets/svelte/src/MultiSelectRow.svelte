@@ -5,11 +5,11 @@
 
 	export let selectFormData: any;
 	export let selected_taxonomy_subjectarea: Option[] = [] as Option[];
-	export let selected_taxonomy_eduproducttype: Option[] = [] as Option[];
+	export let selected_taxonomy_dateline: Option[] = [] as Option[];
 	export let selected_city: Option[] = [] as Option[];
 
 	let taxonomy_subjectarea: Option[] = [] as Option[];
-	let taxonomy_eduproducttype: Option[] = [] as Option[];
+	let taxonomy_dateline: Option[] = [] as Option[];
 	let city: Option[] = [] as Option[];
 	let setMultiSelectWidth: String = '';
 
@@ -54,7 +54,7 @@
 			(option) => option.preselected === true
 		);
 
-		taxonomy_eduproducttype = selectFormData?.eduProductTypeOptions.map(
+		taxonomy_dateline = selectFormData?.dateLineOptions.map(
 			(option: {
 				optionValue: string;
 				optionLabel: string;
@@ -68,13 +68,13 @@
 			}
 		);
 
-		selected_taxonomy_eduproducttype = taxonomy_eduproducttype?.filter(
+		selected_taxonomy_dateline = taxonomy_dateline?.filter(
 			(option) => option.preselected === true
 		);
 	});
 
 	if (
-		selectFormData.filterEduProductType === true &&
+		selectFormData.filterDateLine === true &&
 		selectFormData.filterSubjectArea === true &&
 		selectFormData.filterLocation === true
 	) {
@@ -94,10 +94,10 @@
 	/>
 {/if}
 
-{#if taxonomy_eduproducttype && selectFormData.filterEduProductType}
+{#if taxonomy_dateline && selectFormData.filterDateLine}
 	<MultiSelect
-		bind:selected={selected_taxonomy_eduproducttype}
-		options={taxonomy_eduproducttype}
+		bind:selected={selected_taxonomy_dateline}
+		options={taxonomy_dateline}
 		dropDownLabel={multiSelectTypeLabel.type}
 		id="subjectType"
 		{setMultiSelectWidth}

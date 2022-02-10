@@ -12,7 +12,7 @@ var templateData = {
   },
   widgetData: JSON.stringify({
     filterSubjectArea: false,
-    filterEduProductType: false,
+    filterDateLine: false,
     filterLocation: false,
     subjectAreaOptions: [
       {
@@ -26,7 +26,7 @@ var templateData = {
         selected: false,
       },
     ],
-    eduProductTypeOptions: [
+    dateLineOptions: [
       {
         optionValue: '8wjt11bpvt',
         optionLabel: 'Ausbildungen',
