@@ -1,7 +1,7 @@
 export const testData = {
   '@id':
     'http://localhost:8000/Plone/de/@@searchbar.json?category=continuing_education&q=1848&taxonomy_datelines%5B%5D=infoanlass',
-  items_total: 1,
+  items_total: 360,
   items: [
     {
       taxonomy_subjectarea: null,
@@ -143,6 +143,73 @@ export const testData = {
         '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
       Title:
         'CAS Talent Acquisition: Innovative Rekrutierungsstrategien und gezielte Personalauswahl',
+    },
+    {
+      taxonomy_subjectarea: null,
+      review_state: null,
+      city: ['brugg-windisch'],
+      portal_type: 'EduProduct',
+      UID: '77e1b8aa439645acb63a680adacef5db',
+      taxonomy_datelines: ['2000'],
+      description: '',
+      img: {
+        src: 'https://www.dev.fhnw.ch/de/weiterbildung/psychologie/mas-business-psychology/@@images/image/f_teaser',
+        alt: 'MAS Business Psychology',
+      },
+      '@id':
+        'http://localhost:8000/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
+      title: 'MAS Business Psychology',
+      Description:
+        'Thematisch umfassender und kompakter Master of Advanced Studies der Psychologie des Wirtschaftslebens',
+      start_continuing_education: '23.01.2022',
+      '@type': 'EduProduct',
+      path_string:
+        '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
+      Title: 'MAS Business Psychology',
+    },
+    {
+      taxonomy_subjectarea: null,
+      review_state: null,
+      city: ['muttenz'],
+      portal_type: 'EduProduct',
+      UID: '77e1b8aa439645acb63a680adacef5db',
+      taxonomy_datelines: ['2001'],
+      description: '',
+      img: {
+        src: 'https://www.dev.fhnw.ch/de/weiterbildung/psychologie/das-sicherheitsmanagement-und-human-factors/@@images/image/f_teaser',
+        alt: 'DAS Sicherheitsmanagement und Human Factors',
+      },
+      '@id':
+        'http://localhost:8000/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
+      title: 'DAS Sicherheitsmanagement und Human Factors',
+      Description: '',
+      start_continuing_education: '12.02.2022',
+      '@type': 'EduProduct',
+      path_string:
+        '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
+      Title: 'DAS Sicherheitsmanagement und Human Factors',
+    },
+    {
+      taxonomy_subjectarea: null,
+      review_state: null,
+      city: ['basel'],
+      portal_type: 'EduProduct',
+      UID: '77e1b8aa439645acb63a680adacef5db',
+      taxonomy_datelines: ['2006'],
+      description: '',
+      img: {
+        src: 'https://www.dev.fhnw.ch/de/weiterbildung/psychologie/das-angewandte-psychologie-fuer-die-arbeitswelt/@@images/image/f_teaser',
+        alt: 'DAS Angewandte Psychologie für die Arbeitswelt',
+      },
+      '@id':
+        'http://localhost:8000/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
+      title: 'DAS Angewandte Psychologie für die Arbeitswelt',
+      Description: '',
+      start_continuing_education: '01.03.2022',
+      '@type': 'EduProduct',
+      path_string:
+        '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
+      Title: 'DAS Angewandte Psychologie für die Arbeitswelt',
     },
   ],
   category: 'continuing_education',
