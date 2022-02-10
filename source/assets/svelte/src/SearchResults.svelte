@@ -2,9 +2,8 @@
 	import { _ } from 'svelte-i18n';
 	import type { Item } from './definitions/Item';
 	import ListItem from './ListingNormal.svelte';
-	import ListingTeaser from './ListingTeaser.svelte';
 	import LoadingIndicator from './LoadingIndicator.svelte';
-	import ListingLinkList from './ListingLinkList.svelte';
+	import DateLine from './DateLine.svelte';
 
 	export let results: Item[];
 	export let isLoading: boolean;
@@ -59,7 +58,7 @@
 	{#if listingType === 'grid'}
 		<div class="widg_teaser__wrapper">
 			{#each results as result, index (index)}
-				<ListingTeaser item={result} bind:selectFormData />
+				<DateLine item={result} bind:selectFormData template="teaser" />
 			{/each}
 		</div>
 	{/if}
@@ -67,7 +66,7 @@
 		<div class="widg_linklist">
 			<ul class="not-default">
 				{#each results as result, index (index)}
-					<ListingLinkList item={result} bind:selectFormData />
+					<DateLine item={result} bind:selectFormData template="list" />
 				{/each}
 			</ul>
 		</div>

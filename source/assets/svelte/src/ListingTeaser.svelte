@@ -3,53 +3,14 @@
 	import { _ } from 'svelte-i18n';
 
 	export let item: Item;
-	export let selectFormData: any = [];
-
-	interface DateLineOption {
-		optionValue: string;
-		optionLabel: string;
-		selected: boolean;
-	}
+	export let city: string;
+	export let dateLine: string;
 
 	let mq = window.estatico.mq.query({ from: 'larger' }); // Breakpoint >1920px
 
 	const shortenDescription = (str: string): string => {
 		return str.length >= 220 ? `${str.substring(0, 220)}...` : str;
 	};
-
-	let dateLine: string = '';
-	let city: string = '';
-
-	$: {
-		if (selectFormData?.dateLineOptions?.length) {
-			dateLine = selectFormData?.dateLineOptions
-				.filter(
-					(val: DateLineOption) =>
-						item['taxonomy_datelines'] &&
-						val.optionValue === item['taxonomy_datelines'][0]
-				)
-				.reduce(
-					(acc: DateLineOption, curr: DateLineOption): string =>
-						curr.optionLabel,
-					''
-				);
-		}
-	}
-
-	$: {
-		if (selectFormData?.locationOptions?.length) {
-			city = selectFormData?.locationOptions
-				.filter(
-					(val: DateLineOption) =>
-						item['city'] && val.optionValue === item['city'][0]
-				)
-				.reduce(
-					(acc: DateLineOption, curr: DateLineOption): string =>
-						curr.optionLabel,
-					''
-				);
-		}
-	}
 </script>
 
 <div class="widg_teaser {mq === false ? 'wide___third' : 'wide___quarter'}">
@@ -73,8 +34,12 @@
 	<a class="widg_teaser__link anchor-link" href={item['@id']}
 		>zu Campus Brugg-Windisch</a
 	>
-	{#if item['start_string']}
-		<small>{item['start_string']}</small>
+	{#if city}
+		<small
+			>{city}
+			{#if item.start_continuing_education}
+				| {item.start_continuing_education}{/if}</small
+		>
 	{/if}
 
 	<span class="widg_teaser__arrow" />
