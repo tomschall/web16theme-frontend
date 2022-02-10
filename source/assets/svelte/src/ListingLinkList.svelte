@@ -3,6 +3,41 @@
 	import { _ } from 'svelte-i18n';
 
 	export let item: Item;
+	export let selectFormData: any;
+
+	interface DateLineOption {
+		optionValue: string;
+		optionLabel: string;
+		selected: boolean;
+	}
+
+	let dateLine: string;
+	let city: string;
+
+	$: {
+		dateLine = selectFormData?.dateLineOptions
+			.filter(
+				(val: DateLineOption) =>
+					item['taxonomy_datelines'] &&
+					val.optionValue === item['taxonomy_datelines'][0]
+			)
+			.reduce(
+				(acc: DateLineOption, curr: DateLineOption): string => curr.optionLabel,
+				''
+			);
+	}
+
+	$: {
+		city = selectFormData?.locationOptions
+			.filter(
+				(val: DateLineOption) =>
+					item['city'] && val.optionValue === item['city'][0]
+			)
+			.reduce(
+				(acc: DateLineOption, curr: DateLineOption): string => curr.optionLabel,
+				''
+			);
+	}
 </script>
 
 <li class="widg_linklist___entry">
@@ -16,10 +51,8 @@
 				<h3 class="childless">{item.title}</h3>
 			{/if}
 
-			{#if item['taxonomy_eduproducttype'][0]}
-				<span class="widg_linklist__dateline"
-					>{item['taxonomy_eduproducttype'][1]}</span
-				>
+			{#if dateLine}
+				<span class="widg_linklist__dateline">{dateLine}</span>
 			{/if}
 
 			{#if item.description}
@@ -28,8 +61,8 @@
 				</p>
 			{/if}
 
-			{#if item['start_string']}
-				<small>{item['start_string']}</small>
+			{#if city}
+				<small>{city} | {item.start_continuing_education}</small>
 			{/if}
 		</div>
 	</a>

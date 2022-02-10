@@ -21,7 +21,7 @@ var data = _.merge(defaultData, {
   },
   widgetData: JSON.stringify({
     filterSubjectArea: true,
-    filterEduProductType: false,
+    filterDateLine: true,
     filterLocation: true,
     subjectAreaOptions: [
       {
@@ -80,7 +80,7 @@ var data = _.merge(defaultData, {
         selected: false,
       },
     ],
-    eduProductTypeOptions: [
+    dateLineOptions: [
       {
         optionValue: '2000',
         optionLabel: 'CAS',

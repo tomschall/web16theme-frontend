@@ -2,7 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import type { Item } from './definitions/Item';
 	import ListItem from './ListingNormal.svelte';
-	import ListTeaser from './ListingTeaser.svelte';
+	import ListingTeaser from './ListingTeaser.svelte';
 	import LoadingIndicator from './LoadingIndicator.svelte';
 	import ListingLinkList from './ListingLinkList.svelte';
 
@@ -11,15 +11,16 @@
 	export let searchResultsHighlighting: any[] = [];
 	export let template: string;
 	export let searchTerm: string;
-	export let searchType: string;
+	export let searchType: string = 'all';
 	export let lang: string;
 	export let listingType: string;
+	export let selectFormData: any = null;
 
 	/**
-   * Returns true if the user is using Safari.
-   * @returns The function is returning true or false.
-   */
-  function IsSafari() {
+	 * Returns true if the user is using Safari.
+	 * @returns The function is returning true or false.
+	 */
+	function IsSafari() {
 		var is_safari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1;
 		return is_safari;
 	}
@@ -58,7 +59,7 @@
 	{#if listingType === 'grid'}
 		<div class="widg_teaser__wrapper">
 			{#each results as result, index (index)}
-				<ListTeaser item={result} />
+				<ListingTeaser item={result} bind:selectFormData />
 			{/each}
 		</div>
 	{/if}
@@ -66,7 +67,7 @@
 		<div class="widg_linklist">
 			<ul class="not-default">
 				{#each results as result, index (index)}
-					<ListingLinkList item={result} />
+					<ListingLinkList item={result} bind:selectFormData />
 				{/each}
 			</ul>
 		</div>

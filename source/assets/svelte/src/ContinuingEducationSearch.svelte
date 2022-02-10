@@ -29,7 +29,6 @@
 	let limit: number = 9;
 	let searchResults: Item[] = [];
 	let isLoading: boolean = false;
-	let searchType: string = 'continuing_education';
 	let observer: any;
 	let target: any;
 	let showStatusInfo: boolean = false;
@@ -38,7 +37,7 @@
 	let urlParams = new URLSearchParams(window.location.search);
 	let lang: string = null;
 	let selected_taxonomy_subjectarea: Option[] = [] as Option[];
-	let selected_taxonomy_eduproducttype: Option[] = [] as Option[];
+	let selected_taxonomy_dateline: Option[] = [] as Option[];
 	let selected_city: Option[] = [] as Option[];
 	let selectFormData: any;
 	let selectFormDataElement: any = null;
@@ -129,8 +128,7 @@
 		target = document.querySelector('.loading-indicator');
 		if (urlParams.has('query')) {
 			searchQuery = urlParams.get('query');
-			searchType = urlParams.get('searchtype') || 'continuing_education';
-			if (searchQuery && searchType) handleInput();
+			if (searchQuery) handleInput();
 		} else {
 			handleInput();
 		}
@@ -146,7 +144,7 @@
 	$: {
 		if (
 			selected_taxonomy_subjectarea ||
-			selected_taxonomy_eduproducttype ||
+			selected_taxonomy_dateline ||
 			selected_city
 		) {
 			handleInput();
@@ -159,11 +157,9 @@
 			return `&taxonomy_subjectarea[]=${area.value}`;
 		});
 
-		const subjectEduProductType = selected_taxonomy_eduproducttype.map(
-			(type) => {
-				return `&taxonomy_eduproducttype[]=${type.value}`;
-			}
-		);
+		const dateLine = selected_taxonomy_dateline.map((type) => {
+			return `&taxonomy_datelines[]=${type.value}`;
+		});
 
 		const city = selected_city.map((location) => {
 			return `&city[]=${location.value}`;
@@ -177,14 +173,14 @@
 				? // @ts-ignore
 				  `${API}/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
 						''
-				  )}${subjectEduProductType.join('')}${city.join(
+				  )}${dateLine.join('')}${city.join(
 						''
 				  )}&limit=${limit}&offset=${offset}`
 				: `https://${
 						window.location.hostname
 				  }/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
 						''
-				  )}${subjectEduProductType.join('')}${city.join(
+				  )}${dateLine.join('')}${city.join(
 						''
 				  )}&limit=${limit}&offset=${offset}`;
 
@@ -235,8 +231,7 @@
 
 	const handleReset = () => {
 		if (selectFormData.filterSubjectArea) selected_taxonomy_subjectarea = [];
-		if (selectFormData.filterEduProductType)
-			selected_taxonomy_eduproducttype = [];
+		if (selectFormData.filterDateLine) selected_taxonomy_dateline = [];
 		if (selectFormData.filterLocation) selected_city = [];
 		searchQuery = '';
 		searchResults = [];
@@ -255,7 +250,7 @@
 	{#if selectFormData}
 		<MultiSelectRow
 			bind:selected_taxonomy_subjectarea
-			bind:selected_taxonomy_eduproducttype
+			bind:selected_taxonomy_dateline
 			bind:selected_city
 			bind:selectFormData
 		/>
@@ -290,9 +285,9 @@
 		{isLoading}
 		{template}
 		{searchTerm}
-		{searchType}
 		{lang}
 		{listingType}
+		bind:selectFormData
 	/>
 	{#if showStatusInfo}
 		<div class="widg__searchbar_spellcheck">
