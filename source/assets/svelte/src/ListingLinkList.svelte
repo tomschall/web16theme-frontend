@@ -3,41 +3,8 @@
 	import { _ } from 'svelte-i18n';
 
 	export let item: Item;
-	export let selectFormData: any;
-
-	interface DateLineOption {
-		optionValue: string;
-		optionLabel: string;
-		selected: boolean;
-	}
-
-	let dateLine: string;
-	let city: string;
-
-	$: {
-		dateLine = selectFormData?.dateLineOptions
-			.filter(
-				(val: DateLineOption) =>
-					item['taxonomy_datelines'] &&
-					val.optionValue === item['taxonomy_datelines'][0]
-			)
-			.reduce(
-				(acc: DateLineOption, curr: DateLineOption): string => curr.optionLabel,
-				''
-			);
-	}
-
-	$: {
-		city = selectFormData?.locationOptions
-			.filter(
-				(val: DateLineOption) =>
-					item['city'] && val.optionValue === item['city'][0]
-			)
-			.reduce(
-				(acc: DateLineOption, curr: DateLineOption): string => curr.optionLabel,
-				''
-			);
-	}
+	export let city: string;
+	export let dateLine: string;
 </script>
 
 <li class="widg_linklist___entry">
@@ -62,7 +29,11 @@
 			{/if}
 
 			{#if city}
-				<small>{city} | {item.start_continuing_education}</small>
+				<small
+					>{city}
+					{#if item.start_continuing_education}
+						| {item.start_continuing_education}{/if}</small
+				>
 			{/if}
 		</div>
 	</a>
