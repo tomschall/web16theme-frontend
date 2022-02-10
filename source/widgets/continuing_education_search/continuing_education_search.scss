@@ -1,3 +1,4 @@
+.widg_education_search,
 .widg_continuing_education_search {
 	.search__holder__searchstring {
 		.search__string {
@@ -40,7 +41,7 @@
 			flex-direction: row;
 			justify-content: space-between;
 			width: 100%;
-			padding: $basicPush * 2 0;
+			// padding: $basicPush * 2 0;
 
 			@include mq($to: medium) {
 				padding: 0 0 $basicPush * 2 0;
