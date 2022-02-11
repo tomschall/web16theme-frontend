@@ -10,6 +10,7 @@
 	import type { Item } from './definitions/Item';
 	import MultiSelectRow from './MultiSelectRow.svelte';
 	import type { Option } from './multiselect';
+	import { testData } from './mock/TestData';
 
 	addMessages('en', en);
 	addMessages('de', de);
@@ -121,6 +122,8 @@
 		);
 		selectFormData = JSON.parse(selectFormDataElement[0].dataset.widgetData);
 
+		console.log('selectFormData', selectFormData);
+
 		setLanguage(window.location.href.split('/')[3]);
 
 		document.title = $_('searchpage_title');
@@ -213,9 +216,12 @@
 				return response.json();
 			})
 			.then((data) => {
+				data = testData;
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 				searchResults = [...searchResults, ...data.items];
+
+				console.log(itemsCount, totalItems);
 
 				if (isFirst) {
 					searchResults = [...data.items];
