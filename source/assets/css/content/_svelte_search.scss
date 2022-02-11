@@ -1,4 +1,5 @@
-.widg_education_search {
+.widg_education_search,
+.widg_continuing_education_search {
 	.search__holder__searchstring {
 		.search__string {
 			form {
@@ -30,7 +31,7 @@
 		.search__form-wrapper {
 			padding: 0;
 			box-shadow: none;
-			padding-bottom: $basicPush 0;
+			padding-bottom: $basicPush;
 		}
 	}
 
@@ -115,6 +116,10 @@
 	}
 
 	.search__results {
+		position: relative;
+		float: left;
+		width: 100%;
+
 		ul {
 			&.not-default {
 				padding-left: 0;
@@ -127,13 +132,13 @@
 
 		@include mq($to: small) {
 			padding: 0;
-			background-color: red;
 		}
 	}
 
 	.widg_linklist {
 		position: relative;
 		float: left;
+		width: 100%;
 		margin-top: unset;
 
 		.widg_linklist___entry {

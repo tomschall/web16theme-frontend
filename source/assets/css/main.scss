@@ -89,8 +89,6 @@
 @import '../../widgets/edu_contents/edu_contents';
 @import '../../widgets/svelte/svelte';
 @import '../../widgets/actionbuttons/actionbuttons';
-@import '../../widgets/continuing_education_search/continuing_education_search';
-@import '../../widgets/education_search/education_search';
 //*autoinsertmodule*
 
 /**
@@ -113,8 +111,9 @@
 @import 'content/datepicker';
 @import 'content/timepicker';
 @import 'content/table';
+@import 'content/svelte_search';
 @import 'content/svelte_select';
 
 @media print {
-  @import 'print';
+	@import 'print';
 }
