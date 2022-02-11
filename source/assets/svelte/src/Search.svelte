@@ -7,24 +7,9 @@
 	import SearchResults from './SearchResults.svelte';
 	import SearchCategories from './SearchCategories.svelte';
 	import SearchProposals from './SearchProposals.svelte';
-	import { init, addMessages } from 'svelte-i18n';
-	import en from './lang/en.json';
-	import de from './lang/de.json';
 	import { debounce } from 'lodash';
 	import type { Item } from './definitions/Item';
 	import type { CategoriesCount } from './definitions/Categories';
-
-	addMessages('en', en);
-	addMessages('de', de);
-
-	/**
-   * Initializing the i18n library with the fallback locale of 'de' and the initial locale of the
-  browser's language.
-   */
-	init({
-		fallbackLocale: 'de',
-		initialLocale: document.documentElement.lang,
-	});
 
 	export let template: string = '';
 	export let listingType: string = 'grid';

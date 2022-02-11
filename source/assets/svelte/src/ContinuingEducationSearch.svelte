@@ -3,22 +3,11 @@
 	import { onMount } from 'svelte';
 	import SearchInput from './SearchInput.svelte';
 	import SearchResults from './SearchResults.svelte';
-	import { init, addMessages } from 'svelte-i18n';
-	import en from './lang/en.json';
-	import de from './lang/de.json';
 	import { debounce } from 'lodash';
 	import type { Item } from './definitions/Item';
 	import MultiSelectRow from './MultiSelectRow.svelte';
 	import type { Option } from './multiselect';
 	import { testData } from './mock/TestData';
-
-	addMessages('en', en);
-	addMessages('de', de);
-
-	init({
-		fallbackLocale: 'de',
-		initialLocale: document.documentElement.lang,
-	});
 
 	export let template: string = '';
 	export let listingType = 'grid';
@@ -216,7 +205,6 @@
 				return response.json();
 			})
 			.then((data) => {
-				data = testData;
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 				searchResults = [...searchResults, ...data.items];
@@ -227,6 +215,12 @@
 					searchResults = [...data.items];
 					isFirstSearch = false;
 					observer.observe(target);
+				}
+
+				if (searchResults.length > 0) {
+					showStatusInfo = false;
+				} else {
+					showStatusInfo = true;
 				}
 			})
 			.catch((e) => console.log('Oh no. An error occured!', e))

@@ -3,21 +3,10 @@
 	import { onMount } from 'svelte';
 	import SearchInput from './SearchInput.svelte';
 	import SearchResults from './SearchResults.svelte';
-	import { init, addMessages } from 'svelte-i18n';
-	import en from './lang/en.json';
-	import de from './lang/de.json';
 	import { debounce } from 'lodash';
 	import type { Item } from './definitions/Item';
 	import MultiSelectRow from './MultiSelectRow.svelte';
 	import type { Option } from './multiselect';
-
-	addMessages('en', en);
-	addMessages('de', de);
-
-	init({
-		fallbackLocale: 'de',
-		initialLocale: document.documentElement.lang,
-	});
 
 	export let template: string = '';
 	export let listingType = 'grid';
@@ -219,6 +208,12 @@
 					searchResults = [...data.items];
 					isFirstSearch = false;
 					observer.observe(target);
+				}
+
+				if (searchResults.length > 0) {
+					showStatusInfo = false;
+				} else {
+					showStatusInfo = true;
 				}
 
 				console.log('searchResults', searchResults);

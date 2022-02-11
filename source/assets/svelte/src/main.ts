@@ -3,6 +3,19 @@ import Subnav from './Subnav.svelte';
 import ContinuingEducationSearch from './ContinuingEducationSearch.svelte';
 import EducationSearch from './EducationSearch.svelte';
 import type { SvelteComponent } from 'svelte';
+import en from './lang/en.json';
+import de from './lang/de.json';
+import { init, addMessages, _ } from 'svelte-i18n';
+
+let lang: string = document.documentElement.lang;
+
+addMessages('en', en);
+addMessages('de', de);
+
+init({
+  fallbackLocale: 'de',
+  initialLocale: lang,
+});
 
 declare global {
   interface Window {

@@ -1,24 +1,31 @@
 import { render, screen } from '@testing-library/svelte';
 import TestComponent from '../TestComponent.svelte';
 import Subnav from '../Subnav.svelte';
-
-import { of } from 'rxjs';
-import { writable } from 'svelte/store';
-
-import { _ } from 'svelte-i18n';
 import en from '../lang/en.json';
 import de from '../lang/de.json';
-import { init, addMessages } from 'svelte-i18n';
+import { init, addMessages, _ } from 'svelte-i18n';
 
-jest.mock('svelte-i18n', () => {
-  const originalModule = jest.requireActual('svelte-i18n');
+let lang: string = document.documentElement.lang;
 
-  return {
-    __esModule: true,
-    ...originalModule,
-    default: jest.fn(() => 'mocked baz'),
-    addMessages: jest.fn(() => void 0),
-  };
+// jest.mock('svelte-i18n', () => {
+//   const originalModule = jest.requireActual('svelte-i18n');
+
+//   return {
+//     __esModule: true,
+//     ...originalModule,
+//     default: jest.fn(() => 'mocked baz'),
+//     addMessages,
+//     init,
+//     _,
+//   };
+// });
+
+addMessages('en', en);
+addMessages('de', de);
+
+init({
+  fallbackLocale: 'de',
+  initialLocale: lang,
 });
 
 test("find text 'Studium suchen'", () => {
@@ -29,10 +36,15 @@ test("find text 'Studium suchen'", () => {
 
 test("find alt text attribute 'sindbad'", () => {
   render(TestComponent);
+
   const node = screen.findAllByAltText('sindbad');
   expect(node).not.toBeNull();
+
+  const node2: HTMLElement = screen.queryByText('de');
+  expect(node2).not.toBeNull();
 });
 
 test('render subnav', () => {
-  render(Subnav);
+  const { getByText } = render(Subnav);
+  expect(getByText('Die FHNW'));
 });
