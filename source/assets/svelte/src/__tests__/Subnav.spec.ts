@@ -50,7 +50,7 @@ test('render subnav', () => {
     '/de/search_profiles',
     '/de/die-fhnw/veranstaltungen',
     '/de/medien/newsroom/news',
-    '/de',
+    '/de/',
   ];
 
   document
