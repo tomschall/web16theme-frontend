@@ -12,7 +12,5 @@
   },
   "moduleFileExtensions": ["svelte", "js", "ts"],
   "testEnvironment": "jsdom",
-  "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"],
-  "testPathIgnorePatterns": ["node_modules"],
-  "transformIgnorePatterns": ["node_modules/(?!(svelte-i18n)/)"]
+  "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"]
 }

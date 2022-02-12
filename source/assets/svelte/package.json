@@ -33,6 +33,7 @@
     "jest-transform-stub": "^2.0.0",
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.5.0",
+    "pretty-format": "^27.5.1",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
