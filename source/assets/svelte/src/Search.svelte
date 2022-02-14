@@ -353,6 +353,9 @@
 			bind:searchType
 			{handleInput}
 		/>
+		{#if showSearchBarIntro}
+			<SearchBarIntro {lang} />
+		{/if}
 	{/if}
 	{#if template === 'searchpage'}
 		<SearchPageInput
@@ -366,9 +369,6 @@
 			bind:searchType
 			{handleInput}
 		/>
-	{/if}
-	{#if showSearchBarIntro}
-		<SearchBarIntro {lang} />
 	{/if}
 	{#if !showStatusInfo}
 		<div class="search__results">

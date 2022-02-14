@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/svelte';
+import { getByLabelText, render, screen } from '@testing-library/svelte';
 import Search from '../Search.svelte';
 import en from '../lang/en.json';
 import de from '../lang/de.json';
@@ -36,7 +36,9 @@ init({
 });
 
 test('render search', () => {
-  const { getByText } = render(Search, { props: { template: 'searchpage' } });
+  const { getByText, getByLabelText } = render(Search, {
+    props: { template: 'searchpage' },
+  });
 
-  expect(getByText('Studium suchen'));
+  expect(getByLabelText('Suche'));
 });

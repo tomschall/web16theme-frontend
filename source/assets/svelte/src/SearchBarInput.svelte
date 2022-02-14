@@ -37,8 +37,11 @@
 			data-searchbar="close"
 			on:click={closeSearchBar}
 		/>
-		<label for="search" class="visuallyhidden">{$_('search_label')}</label>
+		<label for="searchbar_input" class="visuallyhidden"
+			>{$_('search_label')}</label
+		>
 		<input
+			id="searchbar_input"
 			bind:value={query}
 			on:input={handleInput}
 			type="text"
