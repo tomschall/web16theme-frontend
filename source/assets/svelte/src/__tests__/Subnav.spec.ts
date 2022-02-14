@@ -55,7 +55,4 @@ test('render subnav', () => {
   document
     .querySelectorAll('a')
     .forEach((el, i) => expect(el.getAttribute('href')).toBe(links[i]));
-
-  const myObject = document.querySelectorAll('a')[5].getAttribute('href');
-  console.log(prettyFormat(myObject));
 });

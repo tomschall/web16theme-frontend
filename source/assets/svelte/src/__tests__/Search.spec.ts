@@ -35,10 +35,26 @@ init({
   initialLocale: lang,
 });
 
-test('render search', () => {
-  const { getByText, getByLabelText } = render(Search, {
+test('render searchpage', () => {
+  const { getByLabelText } = render(Search, {
     props: { template: 'searchpage' },
   });
 
   expect(getByLabelText('Suche'));
+
+  expect(
+    document.querySelector('#searchpage_input').getAttribute('placeholder')
+  ).toBe('Suche: Hier tippen');
+});
+
+test('render searchbar', () => {
+  const { getByLabelText } = render(Search, {
+    props: { template: 'searchbar' },
+  });
+
+  expect(getByLabelText('Suche'));
+
+  expect(
+    document.querySelector('#searchbar_input').getAttribute('placeholder')
+  ).toBe('Suche: Hier tippen');
 });
