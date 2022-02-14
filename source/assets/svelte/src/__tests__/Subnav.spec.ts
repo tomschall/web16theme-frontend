@@ -4,7 +4,6 @@ import Subnav from '../Subnav.svelte';
 import en from '../lang/en.json';
 import de from '../lang/de.json';
 import { init, addMessages, _ } from 'svelte-i18n';
-import util from 'util';
 import prettyFormat from 'pretty-format';
 
 let lang: string = document.documentElement.lang;

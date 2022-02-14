@@ -107,3 +107,9 @@ Then, from within your project folder:
 npm run build
 surge public my-project.surge.sh
 ```
+
+## Testing
+
+Use following node version for running the
+
+node version: v14.15.4
