@@ -1,6 +1,6 @@
-*Psst — looking for a more complete solution? Check out [SvelteKit](https://kit.svelte.dev), the official framework for building web applications of all sizes, with a beautiful development experience and flexible filesystem-based routing.*
+_Psst — looking for a more complete solution? Check out [SvelteKit](https://kit.svelte.dev), the official framework for building web applications of all sizes, with a beautiful development experience and flexible filesystem-based routing._
 
-*Looking for a shareable component template instead? You can [use SvelteKit for that as well](https://kit.svelte.dev/docs#packaging) or the older [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+_Looking for a shareable component template instead? You can [use SvelteKit for that as well](https://kit.svelte.dev/docs#packaging) or the older [sveltejs/component-template](https://github.com/sveltejs/component-template)_
 
 ---
 
@@ -15,8 +15,7 @@ npx degit sveltejs/template svelte-app
 cd svelte-app
 ```
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
+_Note that you will need to have [Node.js](https://nodejs.org) installed._
 
 ## Get started
 
@@ -49,12 +48,11 @@ npm run build
 
 You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
 
-
 ## Single-page app mode
 
 By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
 
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
+If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for _any_ path. You can make it so by editing the `"start"` command in package.json:
 
 ```js
 "start": "sirv public --single"
@@ -108,8 +106,13 @@ npm run build
 surge public my-project.surge.sh
 ```
 
-## Testing
+## Testing with jest
 
-Use following node version for running the
+Use following node version for running the tests.
 
 node version: v14.15.4
+
+pitfalls:
+
+- svelte-i18n has always to be initialized in root component, otherwise it will break, because it needs an observable from an store, which has to be subscribed to before it can be accessed
+- svelte-markdown needs to be transformed with special transform config, see jest.config.json, without this config it will be transformed from typescript an because this package is not typescript, it will break.

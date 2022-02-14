@@ -5,17 +5,27 @@ import de from '../lang/de.json';
 import { init, addMessages, _ } from 'svelte-i18n';
 import prettyFormat from 'pretty-format';
 
-let lang: string = document.documentElement.lang;
+let lang: string = document.documentElement.lang || 'de';
 
-// jest.mock('svelte-markdown', () => {
-//   const originalModule = jest.requireActual('svelte-markdown');
+const observe: any = jest.fn();
+const unobserve: any = jest.fn();
+const root: any = jest.fn();
+const rootMargin: any = jest.fn();
+const thresholds: any = jest.fn();
+const disconnect: any = jest.fn();
+const takeRecords: any = jest.fn();
 
-//   return {
-//     __esModule: true,
-//     ...originalModule,
-//     default: jest.fn(() => 'mocked svelte-markdown'),
-//   };
-// });
+// you can also pass the mock implementation
+// to jest.fn as an argument
+window.IntersectionObserver = jest.fn(() => ({
+  observe,
+  unobserve,
+  root,
+  rootMargin,
+  thresholds,
+  disconnect,
+  takeRecords,
+}));
 
 addMessages('en', en);
 addMessages('de', de);
@@ -28,5 +38,5 @@ init({
 test('render search', () => {
   const { getByText } = render(Search, { props: { template: 'searchpage' } });
 
-  expect(getByText('Suchresultate'));
+  expect(getByText('Studium suchen'));
 });
