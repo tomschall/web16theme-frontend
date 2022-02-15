@@ -1,4 +1,4 @@
-import { getByLabelText, render, screen } from '@testing-library/svelte';
+import { render, screen } from '@testing-library/svelte';
 import ListingNormal from '../ListingNormal.svelte';
 import en from '../lang/en.json';
 import de from '../lang/de.json';
@@ -59,19 +59,12 @@ const item: any = itemsData.items[0];
 const searchResultsHighlighting: any = searchResultsHighlightingData;
 
 test('render searchpage', () => {
-  const { getByLabelText } = render(ListingNormal, {
+  const { getByText } = render(ListingNormal, {
     props: {
       item,
       searchResultsHighlighting,
     },
   });
 
-  expect(getByLabelText('Suche'));
-
-  expect(
-    document.querySelector('#searchpage_input').getAttribute('placeholder')
-  ).toBe('Suche: Hier tippen');
-
-  console.log('findByTitle', screen.findByTitle('Alle Suchresultate'));
-  expect(screen.findByTitle('Alle Suchresultate')).not.toBeNull();
+  expect(getByText('to be translated'));
 });
