@@ -19,13 +19,13 @@ beforeAll(() => {
   });
 });
 
-// jest.mock('svelte-markdown', () => {
-//   const originalModule = jest.requireActual('svelte-markdown');
+// jest.mock('./svelte-markdown/SvelteMarkdown.svelte', () => {
+//   const originalModule = jest.requireActual('./svelte-markdown/SvelteMarkdown.svelte');
 
 //   return {
 //     __esModule: true,
 //     ...originalModule,
-//     default: jest.fn(() => 'mocked svelte-markdown'),
+//     default: jest.fn(() => 'mocked ./svelte-markdown/SvelteMarkdown.svelte'),
 //   };
 // });
 

@@ -45,10 +45,13 @@ test('render searchpage', () => {
   expect(
     document.querySelector('#searchpage_input').getAttribute('placeholder')
   ).toBe('Suche: Hier tippen');
+
+  console.log('findByTitle', screen.findByTitle('Alle Suchresultate'));
+  expect(screen.findByTitle('Alle Suchresultate')).not.toBeNull();
 });
 
 test('render searchbar', () => {
-  const { getByLabelText } = render(Search, {
+  const { getByLabelText, getByText } = render(Search, {
     props: { template: 'searchbar' },
   });
 
@@ -57,4 +60,10 @@ test('render searchbar', () => {
   expect(
     document.querySelector('#searchbar_input').getAttribute('placeholder')
   ).toBe('Suche: Hier tippen');
+
+  expect(getByText('Studium suchen'));
+  expect(getByText('Weiterbildungen und Kurse suchen'));
+  expect(getByText('Personen suchen'));
+  expect(getByText('Veranstaltungen suchen'));
+  expect(getByText('News suchen'));
 });
