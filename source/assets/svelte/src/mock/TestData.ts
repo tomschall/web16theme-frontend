@@ -1,4 +1,4 @@
-export const testData = {
+export const itemsData: any = {
   '@id':
     'http://localhost:8000/Plone/de/@@searchbar.json?category=continuing_education&q=1848&taxonomy_datelines%5B%5D=infoanlass',
   items_total: 360,
@@ -25,6 +25,7 @@ export const testData = {
       path_string:
         '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
       Title: 'MAS Business Psychology',
+      title_parents: ['Sandkasten'],
     },
     {
       taxonomy_subjectarea: null,
@@ -47,6 +48,7 @@ export const testData = {
       path_string:
         '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
       Title: 'DAS Sicherheitsmanagement und Human Factors',
+      title_parents: ['Sandkasten'],
     },
     {
       taxonomy_subjectarea: null,
@@ -69,6 +71,7 @@ export const testData = {
       path_string:
         '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
       Title: 'DAS Angewandte Psychologie für die Arbeitswelt',
+      title_parents: ['Sandkasten'],
     },
     {
       taxonomy_subjectarea: null,
@@ -94,6 +97,7 @@ export const testData = {
         '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
       Title:
         'CAS Learning Design – Wissen und Lernen in Zeiten der Digitalisierung',
+      title_parents: ['Sandkasten'],
     },
     {
       taxonomy_subjectarea: null,
@@ -117,6 +121,7 @@ export const testData = {
       path_string:
         '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
       Title: 'CAS Usability und User Experience erfolgreich umsetzen',
+      title_parents: ['Sandkasten'],
     },
     /* The `UID` is the unique identifier of the item. */
     {
@@ -143,6 +148,7 @@ export const testData = {
         '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
       Title:
         'CAS Talent Acquisition: Innovative Rekrutierungsstrategien und gezielte Personalauswahl',
+      title_parents: ['Sandkasten'],
     },
     {
       taxonomy_subjectarea: null,
@@ -166,6 +172,7 @@ export const testData = {
       path_string:
         '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
       Title: 'MAS Business Psychology',
+      title_parents: ['Sandkasten'],
     },
     {
       taxonomy_subjectarea: null,
@@ -188,6 +195,7 @@ export const testData = {
       path_string:
         '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
       Title: 'DAS Sicherheitsmanagement und Human Factors',
+      title_parents: ['Sandkasten'],
     },
     {
       taxonomy_subjectarea: null,
@@ -210,6 +218,7 @@ export const testData = {
       path_string:
         '/Plone/de/sandkasten/tests-adrian/1848-incontent-live-search-wb/1848-testprodukt-1',
       Title: 'DAS Angewandte Psychologie für die Arbeitswelt',
+      title_parents: ['Sandkasten'],
     },
   ],
   category: 'continuing_education',
@@ -247,5 +256,43 @@ export const testData = {
     '77e1b8aa439645acb63a680adacef5db': {
       Title: ['**1848** - Testprodukt 1'],
     },
+  },
+};
+
+export const searchResultsHighlightingData: any = {
+  '77e1b8aa439645acb63a680adacef5db': {
+    Title: ['Form **Test**'],
+    Description: ['Das ist ein **Test** ob das Form funzt.'],
+  },
+  f192763d9dd24a6491d40ae5d1581f76: {
+    Title: ['**TEST** **TEST** **TEST**'],
+  },
+  a08e3b9e9c274c87979416f2644a9c5d: {
+    Title: ['social **test**'],
+    Description: ['**Testseite** für social media'],
+  },
+  '6bb915e76572465c95525986cbf05868': {
+    Title: ['**Test** Simon'],
+  },
+  '1545b986be8d44d7b88ed0c7c940d86a': {
+    Title: ['news search **testsite**'],
+    Description: ['**test**'],
+  },
+  '031ba6d2ce80436899caa898a0eca629': {
+    Title: ['Robot **Test** Folder'],
+  },
+  '12f1c442593f45f89254624a049ee60d': {
+    Title: ['**Test** CV HSA'],
+  },
+  '0cb8fdc7ef514626ba3abc6a47a66ff1': {
+    Title: ['**Test** PDF 1.pdf'],
+  },
+  '2517eece84224ff9820f09065bbef47b': {
+    Title: ['Titel des **TEST**-Dokuments'],
+  },
+  '57dd00ea56a84015a18acc71c82d1555': {
+    Description: [
+      'DNA **test** on-site - your personnel - no lab - 30 minutes',
+    ],
   },
 };
