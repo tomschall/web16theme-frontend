@@ -7,16 +7,14 @@ var _ = require('lodash'),
 
 var templateData = {
 		widget_data:
-			'{"filterSubjectarea": false, "filterEduproducttype": false, "filterLocation": false, ' +
-			'"subjectareaOptions": [{"optionValue": "1003", "optionLabel": "International Studies", "selected": false}, ' +
-			'{"optionValue": "1009", "optionLabel": "Technik", "selected": false}], "eduproducttypeOptions": [{"optionValue": "8wjt11bpvt", ' +
-			'"optionLabel": "Ausbildungen", "selected": false}, {"optionValue": "2000", "optionLabel": "CAS", "selected": false}, ' +
-			'{"optionValue": "2001", "optionLabel": "DAS", "selected": false}, {"optionValue": "2015", "optionLabel": "Studierendenseminar",' +
-			' "selected": false}, {"optionValue": "2018", "optionLabel": "Tagung", "selected": false}, {"optionValue": "kr5y78pjyt",' +
-			' "optionLabel": "Weiterbildungen", "selected": false, "hide": true}], "locationOptions": [{"optionValue": "crrsav5xc4",' +
-			' "optionLabel": "Andere", "selected": false}, {"optionValue": "basel", "optionLabel": "Basel", "selected": false}, ' +
-			'{"optionValue": "muttenz", "optionLabel": "Muttenz", "selected": false}], "subject": [],' +
-			' "jsonURL": "http://localhost:8000/Plone/de/searchbar.json", "filterURL": "http://localhost:8000/Plone/de/searchbar.json"}',
+			'{"filterSubjectArea": false, "filterDateLine": true, "filterLocation": true, "showImages": true, ' +
+			'"initialResultLayout": "teaser_layout", "subjectAreaOptions": [{"optionValue": "1003", "optionLabel": "International Studies", ' +
+			'"selected": false}, {"optionValue": "1009", "optionLabel": "Technik", "selected": false}], "dateLineOptions": [{"optionValue": "cas",' +
+			'"optionLabel": "CAS", "selected": false}, {"optionValue": "infoanlass", "optionLabel": "Info-Anlass", "selected": true}, ' +
+			'{"optionValue": "masterofarts", "optionLabel": "Master of Arts", "selected": false}], "locationOptions": [{"optionValue": "crrsav5xc4", ' +
+			'"optionLabel": "Andere", "selected": false}, {"optionValue": "basel", "optionLabel": "Basel", "selected": false}, ' +
+			'{"optionValue": "muttenz", "optionLabel": "Muttenz", "selected": false}], "subject": [], ' +
+			'"jsonURL": "http://localhost:8000/Plone/de/searchbar.json", "filterURL": "http://localhost:8000/Plone/de/searchbar.json"}',
 	},
 	data = _.merge(
 		defaultData,
