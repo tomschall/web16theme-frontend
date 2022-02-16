@@ -5,8 +5,7 @@
     "^.+\\.svelte$": [
       "svelte-jester",
       {
-        "preprocess": true,
-        "debug": true
+        "preprocess": true
       }
     ],
     "^.+\\.ts$": "ts-jest"
