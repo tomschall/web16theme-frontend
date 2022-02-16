@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Item } from './definitions/Item';
 	import { _ } from 'svelte-i18n';
-	import SvelteMarkdown from 'svelte-markdown';
+	import SvelteMarkdown from './svelte-markdown/SvelteMarkdown.svelte';
 	import Paragraph from './Paragraph.svelte';
 
 	export let item: Item;

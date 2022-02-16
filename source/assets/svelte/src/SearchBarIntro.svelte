@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
-	import SvelteMarkdown from 'svelte-markdown';
+	import SvelteMarkdown from './svelte-markdown/SvelteMarkdown.svelte';
 
 	export let lang: string;
 	const source: string = $_('introtext');

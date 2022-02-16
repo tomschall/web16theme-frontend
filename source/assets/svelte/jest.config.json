@@ -1,17 +1,17 @@
 {
   "transform": {
-    "node_modules/svelte-markdown/.+\\.(svelte|js)$": "svelte-jester",
     "^.+\\.js$": "babel-jest",
     ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
     "^.+\\.svelte$": [
       "svelte-jester",
       {
-        "preprocess": true
+        "preprocess": true,
+        "debug": true
       }
     ],
     "^.+\\.ts$": "ts-jest"
   },
-  "transformIgnorePatterns": ["node_modules/(?!svelte-markdown/.*)"],
+
   "moduleFileExtensions": ["svelte", "js", "ts"],
   "testEnvironment": "jsdom",
   "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"],

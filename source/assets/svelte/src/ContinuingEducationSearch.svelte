@@ -7,7 +7,6 @@
 	import type { Item } from './definitions/Item';
 	import MultiSelectRow from './MultiSelectRow.svelte';
 	import type { Option } from './multiselect';
-	import { testData } from './mock/TestData';
 
 	export let template: string = '';
 	export let listingType = 'grid';

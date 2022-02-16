@@ -55,10 +55,9 @@ init({
 });
 
 const item: any = itemsData.items[0];
-
 const searchResultsHighlighting: any = searchResultsHighlightingData;
 
-test('render searchpage', () => {
+test('render searchpage and test if svelte-markdown parses string', () => {
   const { getByText } = render(ListingNormal, {
     props: {
       item,
@@ -66,5 +65,6 @@ test('render searchpage', () => {
     },
   });
 
-  expect(getByText('to be translated'));
+  expect(getByText('Form'));
+  expect(getByText('Test'));
 });
