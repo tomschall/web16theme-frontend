@@ -1,8 +1,9 @@
 <script lang="ts">
 	import type { Item } from './definitions/Item';
 	import { _ } from 'svelte-i18n';
-	import SvelteMarkdown from './svelte-markdown/SvelteMarkdown.svelte';
+	import SvelteMarkdown from 'svelte-markdown/src/SvelteMarkdown.svelte';
 	import Paragraph from './Paragraph.svelte';
+	import Select from 'svelte-select/src/Select.svelte';
 
 	export let item: Item;
 	export let searchResultsHighlighting: any[];
@@ -13,6 +14,16 @@
 	let tooltip = '';
 	let totalLettersInBreadCrumb: number = 0;
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico media query
+
+	let items = [
+		{ value: 'chocolate', label: 'Chocolate' },
+		{ value: 'pizza', label: 'Pizza' },
+		{ value: 'cake', label: 'Cake' },
+		{ value: 'chips', label: 'Chips' },
+		{ value: 'ice-cream', label: 'Ice Cream' },
+	];
+
+	let selectedValue = undefined;
 
 	// remove own title from title_parents because it should not be in the breadcrumbs.
 	if (item && item.title_parents) {
@@ -190,6 +201,7 @@
 			<span class="additional_desc">{item.filetype} | {item.filesize}</span>
 		{/if}
 	</a>
+	<Select {items} bind:selectedValue />
 </li>
 
 <style>

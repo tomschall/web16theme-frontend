@@ -34,5 +34,11 @@ test('render search', () => {
     props: { lang },
   });
 
+  expect(getByText('Geben Sie einen Suchbegriff ein'));
+  expect(
+    getByText(
+      'und suchen Sie nach Weiterbildungen, Studienangeboten, Veranstaltungen, Dokumenten und anderen Inhalten.'
+    )
+  );
   expect(getByText('Studium suchen'));
 });
