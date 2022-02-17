@@ -8,24 +8,6 @@ import { itemsData, searchResultsHighlightingData } from '../mock/TestData';
 
 let lang: string = document.documentElement.lang || 'de';
 
-declare var global: any;
-declare var window: any;
-
-const originalWindow = { ...window };
-originalWindow.estatico = jest.fn(() => ({ mq: jest.fn() }));
-originalWindow.estatico.mq = jest.fn(() => false);
-const windowSpy = jest.spyOn(global, 'window', 'get');
-windowSpy.mockImplementation(() => ({
-  ...originalWindow,
-  estatico: {
-    ...originalWindow.estatico,
-    mq: {
-      ...originalWindow.estatico.mq,
-      query: jest.fn(() => true),
-    },
-  },
-}));
-
 const observe: any = jest.fn();
 const unobserve: any = jest.fn();
 const root: any = jest.fn();
@@ -34,16 +16,39 @@ const thresholds: any = jest.fn();
 const disconnect: any = jest.fn();
 const takeRecords: any = jest.fn();
 
-// you can also pass the mock implementation
-// to jest.fn as an argument
-window.IntersectionObserver = jest.fn(() => ({
-  observe,
-  unobserve,
-  root,
-  rootMargin,
-  thresholds,
-  disconnect,
-  takeRecords,
+const originalWindow = {
+  ...window,
+};
+
+let windowSpy: any;
+
+// beforeEach(() => {});
+
+// afterEach(() => {
+//   windowSpy.mockRestore();
+// });
+
+windowSpy = jest.spyOn(window, 'window', 'get');
+
+// why is it not possible to destructure window object directly in windowSpy.mockImplementation
+windowSpy.mockImplementation(() => ({
+  ...originalWindow,
+  estatico: {
+    mq: {
+      query: jest.fn(() => true),
+    },
+  },
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
+  IntersectionObserver: jest.fn(() => ({
+    observe,
+    unobserve,
+    root,
+    rootMargin,
+    thresholds,
+    disconnect,
+    takeRecords,
+  })),
 }));
 
 addMessages('en', en);
@@ -57,7 +62,7 @@ init({
 const item: any = itemsData.items[0];
 const searchResultsHighlighting: any = searchResultsHighlightingData;
 
-test('render searchpage and test if svelte-markdown parses string', () => {
+test('render searchpage - svelte-markdown parses string', () => {
   const { getByText } = render(ListingNormal, {
     props: {
       item,
