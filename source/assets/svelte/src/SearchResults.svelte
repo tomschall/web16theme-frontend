@@ -19,7 +19,7 @@
 </script>
 
 <div class="search__results">
-	<ul class="search-results">
+	<ul class="not-default search-results">
 		{#each results as result, index (index)}
 			{#if index < 9 && template === 'searchbar'}
 				<ListItem item={result} {searchResultsHighlighting} />
