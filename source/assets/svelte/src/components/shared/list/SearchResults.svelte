@@ -25,9 +25,8 @@
 	}
 </script>
 
-<!-- LISTING SEARCHPAGE, SEARCHBAR -->
-{#if template === 'searchpage' || template === 'searchbar'}
-	<ul class="not-default">
+<div class="search__results">
+	<ul class="not-default search-results">
 		{#each results as result, index (index)}
 			{#if index < 9 && template === 'searchbar'}
 				<ListItem item={result} {searchResultsHighlighting} />
