@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { _ } from 'svelte-i18n';
 	import type { Option, Primitive, ProtoOption } from './';
 	import { onClickOutside } from './actions';
@@ -20,8 +20,6 @@
 	let scrollY: number;
 	let isOnTopHalf: boolean;
 	let optionsHeight: number;
-
-	const dispatch = createEventDispatcher();
 
 	onMount(() => {
 		selected = _options.filter((op) => op?.preselected);
@@ -115,16 +113,12 @@
 			return;
 		}
 		selected = [option, ...selected];
-		dispatch(`add`, { option });
-		dispatch(`change`, { option, type: `add` });
 	};
 
 	const remove = (label: Primitive) => {
 		if (selected.length === 0) return;
 		selected = selected.filter((option) => label !== option.label);
 		const option = _options.find((option) => option.label === label);
-		dispatch(`remove`, { option });
-		dispatch(`change`, { option, type: `remove` });
 	};
 
 	const setOptionsVisible = (show: boolean) => {
@@ -144,7 +138,6 @@
 	on:mouseup|stopPropagation={() =>
 		showOptions === false ? setOptionsVisible(true) : setOptionsVisible(false)}
 	use:onClickOutside={() => setOptionsVisible(false)}
-	use:onClickOutside={() => dispatch(`blur`)}
 >
 	<span class={selected.length === 0 ? 'label' : 'label__top'}>
 		{$_(`${dropDownLabel}`)}
