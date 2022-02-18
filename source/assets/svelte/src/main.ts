@@ -65,7 +65,7 @@ if (subNavSelector) {
 }
 
 if (continuingEducationSelector) {
-  continuingEducationSearch = new ContinuingEducationSearch({
+  continuingEducationSearch = new EducationSearch({
     target: continuingEducationSelector,
     props: {
       template: 'continuing_education',

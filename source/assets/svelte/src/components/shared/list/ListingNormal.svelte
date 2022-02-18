@@ -11,9 +11,7 @@
 	let maxLettersInBreadCrumbItem = 40;
 	let totalBreadCrumbItems: number = 0;
 	let tooltip = '';
-	let totalLettersInBreadCrumb: number = 0;
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico media query
-	let selectedValue = null;
 
 	// remove own title from title_parents because it should not be in the breadcrumbs.
 	if (item && item.title_parents) {
@@ -23,7 +21,6 @@
 	$: {
 		if (item && item.title_parents) {
 			totalBreadCrumbItems = item.title_parents.length;
-			totalLettersInBreadCrumb = item.title_parents.join().length;
 			tooltip = item.title_parents.slice(3).join(' › ');
 		}
 	}
