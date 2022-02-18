@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { onMount } from 'svelte';
-	import SearchInput from './SearchInput.svelte';
-	import SearchResults from './SearchResults.svelte';
+	import SearchInput from './shared/input/SearchInput.svelte';
+	import SearchResults from './shared/list/SearchResults.svelte';
 	import { debounce } from 'lodash';
-	import type { Item } from './definitions/Item';
-	import MultiSelectRow from './MultiSelectRow.svelte';
-	import type { Option } from './multiselect';
+	import type { Item } from '../definitions/Item';
+	import MultiSelectRow from './shared/MultiSelectRow.svelte';
+	import type { Option } from '../multiselect';
 
 	export let template: string = '';
 	export let listingType = 'grid';

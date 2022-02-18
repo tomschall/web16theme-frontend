@@ -1,7 +1,7 @@
-import Search from './Search.svelte';
-import Subnav from './Subnav.svelte';
-import ContinuingEducationSearch from './ContinuingEducationSearch.svelte';
-import EducationSearch from './EducationSearch.svelte';
+import Search from './components/Search.svelte';
+import Subnav from './components/shared/nav/Subnav.svelte';
+import ContinuingEducationSearch from './components/ContinuingEducationSearch.svelte';
+import EducationSearch from './components/EducationSearch.svelte';
 import type { SvelteComponent } from 'svelte';
 import en from './lang/en.json';
 import de from './lang/de.json';

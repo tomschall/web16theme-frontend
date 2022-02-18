@@ -1,53 +1,50 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import type { Item } from './definitions/Item';
+	import { onMount } from 'svelte';
+	import type { Item } from '../../../definitions/Item';
 
 	export let query: string;
-	export let searchResults: Item[];
 	export let showSearchCategories: boolean;
 	export let showSearchBarIntro: boolean;
-	export let showSearchProposals: boolean;
+	export let searchResults: Item[];
 	export let showStatusInfo: boolean;
-	export let handleInput: () => void;
+	export let showSearchProposals: boolean;
 	export let searchTermSpellCheck: string;
 	export let searchType: string;
+	export let handleInput: () => void;
+	let ref = null;
 
-	const closeSearchBar = () => {
+	onMount(() => ref.focus());
+
+	const handleClick = () => {
 		query = '';
 		searchResults = [];
 		showSearchCategories = false;
 		showSearchBarIntro = true;
-		showStatusInfo = false;
 		showSearchProposals = false;
+		showStatusInfo = false;
 		searchTermSpellCheck = null;
 		searchType = 'all';
-
-		document
-			.querySelector('.widg_searchbar-bar.show-intro.is_open')
-			.classList.remove('is_open');
-		window.estatico.modal.hideModal();
-		window.estatico.modal.removePreventScroll();
 	};
 </script>
 
-<div class="widg_searchbar-bar__search">
+<div class="search__string svelte_search">
 	<form autocomplete="off" on:submit|preventDefault>
-		<div
-			class="widg_searchbar-bar__close"
-			data-searchbar="close"
-			on:click={closeSearchBar}
-		/>
-		<label for="searchbar_input" class="visuallyhidden"
+		<label for="searchpage_input" class="visuallyhidden"
 			>{$_('search_label')}</label
 		>
 		<input
-			id="searchbar_input"
+			id="searchpage_input"
 			bind:value={query}
+			bind:this={ref}
 			on:input={handleInput}
 			type="text"
-			name="searchbar_search"
+			name="searchpage_search"
 			placeholder={$_('search_placeholder')}
 			data-searchbar="input"
 		/>
+		<a on:click={handleClick} href={void 0} class="search__string__clear"
+			><i /></a
+		>
 	</form>
 </div>

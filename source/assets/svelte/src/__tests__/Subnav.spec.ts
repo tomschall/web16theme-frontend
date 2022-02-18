@@ -1,30 +1,10 @@
-import { render, screen } from '@testing-library/svelte';
-import TestComponent from '../TestComponent.svelte';
-import Subnav from '../Subnav.svelte';
+import { render } from '@testing-library/svelte';
+import Subnav from '../components/shared/nav/Subnav.svelte';
 import en from '../lang/en.json';
 import de from '../lang/de.json';
 import { init, addMessages, _ } from 'svelte-i18n';
-import prettyFormat from 'pretty-format';
 
 let lang: string = document.documentElement.lang;
-
-export const format = (value: unknown): string =>
-  typeof value === 'function'
-    ? value.toString()
-    : prettyFormat(value, { min: true });
-
-// jest.mock('svelte-i18n', () => {
-//   const originalModule = jest.requireActual('svelte-i18n');
-
-//   return {
-//     __esModule: true,
-//     ...originalModule,
-//     default: jest.fn(() => 'mocked baz'),
-//     addMessages,
-//     init,
-//     _,
-//   };
-// });
 
 addMessages('en', en);
 addMessages('de', de);

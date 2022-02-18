@@ -1,5 +1,5 @@
 import { getByLabelText, render, screen } from '@testing-library/svelte';
-import Search from '../Search.svelte';
+import Search from '../components/Search.svelte';
 import en from '../lang/en.json';
 import de from '../lang/de.json';
 import { init, addMessages, _ } from 'svelte-i18n';

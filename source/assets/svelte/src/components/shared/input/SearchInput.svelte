@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import type { Item } from './definitions/Item';
+	import type { Item } from '../../../definitions/Item';
 
 	export let query: string;
 	export let searchResults: Item[];

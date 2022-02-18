@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Item } from './definitions/Item';
-	import ListingLinkList from './ListingLinkList.svelte';
-	import ListingTeaser from './ListingTeaser.svelte';
+	import type { Item } from '../../definitions/Item';
+	import ListingLinkList from './list/ListingLinkList.svelte';
+	import ListingTeaser from './list/ListingTeaser.svelte';
 
 	export let item: Item;
 	export let selectFormData: any = [];

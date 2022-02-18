@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import MultiSelect from './multiselect';
-	import type { Option } from './multiselect';
+	import MultiSelect from '../../multiselect';
+	import type { Option } from '../../multiselect';
 
 	export let selectFormData: any;
 	export let selected_taxonomy_subjectarea: Option[] = [] as Option[];

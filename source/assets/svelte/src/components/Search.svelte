@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { onMount } from 'svelte';
-	import SearchPageInput from './SearchPageInput.svelte';
-	import SearchBarInput from './SearchBarInput.svelte';
-	import SearchBarIntro from './SearchBarIntro.svelte';
-	import SearchResults from './SearchResults.svelte';
-	import SearchCategories from './SearchCategories.svelte';
-	import SearchProposals from './SearchProposals.svelte';
+	import SearchPageInput from './shared/input/SearchPageInput.svelte';
+	import SearchBarInput from './shared/input/SearchBarInput.svelte';
+	import SearchBarIntro from './shared/SearchBarIntro.svelte';
+	import SearchResults from './shared/list/SearchResults.svelte';
+	import SearchCategories from './shared/nav/SearchCategories.svelte';
+	import SearchProposals from './shared/SearchProposals.svelte';
 	import { debounce } from 'lodash';
-	import type { Item } from './definitions/Item';
-	import type { CategoriesCount } from './definitions/Categories';
+	import type { Item } from '../definitions/Item';
+	import type { CategoriesCount } from '../definitions/Categories';
+	import { switchMetaTag } from '../helpers/switchMetaTag';
 
 	export let template: string = '';
 	export let listingType: string = 'grid';
@@ -59,32 +60,6 @@
 	const options: ObserverOptions = {
 		rootMargin: '0px 0px 300px',
 		threshold: 0,
-	};
-
-	/**
-	 * Returns true if the device is an iOS device (iPad, iPhone, or iPod).
-	 * @returns The function isIOS() is returning true or false.
-	 */
-	const isIOS = () => {
-		var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
-		return iOS;
-	};
-
-	/**
-   * If the user is on an iOS device, remove the viewport meta tag and add a new one with the content
-  viewport-fit=cover.
-   * @returns None
-   */
-	const switchMetaTag = () => {
-		var iOS = isIOS();
-		if (iOS === true) {
-			document.querySelector("[name='viewport']").remove();
-			const meta = document.createElement('meta');
-			meta.name = 'viewport';
-			meta.content =
-				'width=device-width, initial-scale=1.0, viewport-fit=cover';
-			document.getElementsByTagName('head')[0].appendChild(meta);
-		}
 	};
 
 	/**
