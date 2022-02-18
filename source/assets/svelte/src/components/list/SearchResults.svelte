@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import type { Item } from '../../../definitions/Item';
+	import type { Item } from '../../definitions/Item';
 	import ListItem from './ListingNormal.svelte';
 	import LoadingIndicator from '../LoadingIndicator.svelte';
-	import DateLine from '../DateLine.svelte';
+	import DateLine from './DateLine.svelte';
 
 	export let results: Item[];
 	export let isLoading: boolean;

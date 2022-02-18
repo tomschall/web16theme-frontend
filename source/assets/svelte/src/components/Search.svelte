@@ -3,10 +3,10 @@
 	import { onMount } from 'svelte';
 	import SearchPageInput from './shared/input/SearchPageInput.svelte';
 	import SearchBarInput from './shared/input/SearchBarInput.svelte';
-	import SearchBarIntro from './shared/SearchBarIntro.svelte';
+	import SearchBarIntro from './shared/nav/SearchBarIntro.svelte';
 	import SearchResults from './shared/list/SearchResults.svelte';
 	import SearchCategories from './shared/nav/SearchCategories.svelte';
-	import SearchProposals from './shared/SearchProposals.svelte';
+	import SearchProposals from './shared/list/SearchProposals.svelte';
 	import { debounce } from 'lodash';
 	import type { Item } from '../definitions/Item';
 	import type { CategoriesCount } from '../definitions/Categories';
