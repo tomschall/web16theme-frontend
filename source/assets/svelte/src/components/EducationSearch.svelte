@@ -33,6 +33,7 @@
 	let selected_city: Option[] = [] as Option[];
 	let selectFormData: any;
 	let selectFormDataElement: any = null;
+	let category: string;
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
 	) {
@@ -85,7 +86,16 @@
 	};
 
 	onMount(() => {
-		selectFormDataElement = document.querySelectorAll('.widg_education_search');
+		const selector =
+			template === 'education'
+				? '.widg_education_search'
+				: '.widg_continuing_education_search';
+
+		category =
+			template === 'education' ? 'degree_programmes' : 'continuing_education';
+
+		selectFormDataElement = document.querySelectorAll(selector);
+
 		selectFormData = JSON.parse(selectFormDataElement[0].dataset.widgetData);
 
 		const setLanguageCallback = (langStr: string) => {
@@ -138,8 +148,7 @@
 			return `&city[]=${location.value}`;
 		});
 
-		const queryPrefix =
-			'/searchbar.json?template=training_full&category=degree_programmes&q=';
+		const queryPrefix = `/searchbar.json?template=training_full&category=${category}&q=`;
 
 		const query =
 			window.location.hostname === 'localhost'
