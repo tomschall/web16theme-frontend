@@ -1,5 +1,5 @@
 import { render } from '@testing-library/svelte';
-import Subnav from '../components/shared/nav/Subnav.svelte';
+import Subnav from '../components/nav/Subnav.svelte';
 import en from '../lang/en.json';
 import de from '../lang/de.json';
 import { init, addMessages, _ } from 'svelte-i18n';

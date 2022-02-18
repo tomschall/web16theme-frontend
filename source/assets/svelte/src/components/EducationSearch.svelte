@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { onMount } from 'svelte';
-	import SearchInput from './shared/input/SearchInput.svelte';
-	import SearchResults from './shared/list/SearchResults.svelte';
+	import SearchInput from './input/SearchInput.svelte';
+	import SearchResults from './list/SearchResults.svelte';
 	import { debounce } from 'lodash';
 	import type { Item } from '../definitions/Item';
-	import MultiSelectRow from './shared/MultiSelectRow.svelte';
+	import MultiSelectRow from './multiselect/MultiSelectRow.svelte';
 	import type { Option } from '../multiselect';
 	import { switchMetaTag } from '../helpers/switchMetaTag';
 	import { setAppHeight } from '../helpers/setAppHeight';

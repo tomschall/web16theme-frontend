@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { onMount } from 'svelte';
-	import SearchPageInput from './shared/input/SearchPageInput.svelte';
-	import SearchBarInput from './shared/input/SearchBarInput.svelte';
-	import SearchBarIntro from './shared/nav/SearchBarIntro.svelte';
-	import SearchResults from './shared/list/SearchResults.svelte';
-	import SearchCategories from './shared/nav/SearchCategories.svelte';
-	import SearchProposals from './shared/list/SearchProposals.svelte';
+	import SearchPageInput from './input/SearchPageInput.svelte';
+	import SearchBarInput from './input/SearchBarInput.svelte';
+	import SearchBarIntro from './nav/SearchBarIntro.svelte';
+	import SearchResults from './list/SearchResults.svelte';
+	import SearchCategories from './nav/SearchCategories.svelte';
+	import SearchProposals from './list/SearchProposals.svelte';
 	import { debounce } from 'lodash';
 	import type { Item } from '../definitions/Item';
 	import type { CategoriesCount } from '../definitions/Categories';

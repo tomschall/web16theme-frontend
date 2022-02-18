@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/svelte';
-import ListingNormal from '../components/shared/list/ListingNormal.svelte';
+import ListingNormal from '../components/list/ListingNormal.svelte';
 import en from '../lang/en.json';
 import de from '../lang/de.json';
 import { init, addMessages, _ } from 'svelte-i18n';

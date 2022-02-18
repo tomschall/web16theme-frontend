@@ -2,7 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import type { Item } from '../../definitions/Item';
 	import ListItem from './ListingNormal.svelte';
-	import LoadingIndicator from '../LoadingIndicator.svelte';
+	import LoadingIndicator from '../shared/LoadingIndicator.svelte';
 	import DateLine from './DateLine.svelte';
 
 	export let results: Item[];
