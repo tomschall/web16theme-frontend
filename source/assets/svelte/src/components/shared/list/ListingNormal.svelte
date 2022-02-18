@@ -45,11 +45,16 @@
 	 * @returns The shortened breadcrumb item.
 	 */
 	const shortenBreadCrumbItem = (str: string, trimStyle: string): string => {
+		console.log('shortenBreadCrumbItem', str, trimStyle);
 		switch (trimStyle) {
 			case 'soft':
-				return str.length <= 20 ? str : str.substring(0, 18) + '...';
+				return str.length === maxLettersInBreadCrumbItem + 1
+					? str
+					: str.substring(0, maxLettersInBreadCrumbItem) + '...';
 			case 'hard':
-				return str.length <= 14 ? str : str.substring(0, 14) + '...';
+				return str.length === maxLettersInBreadCrumbItem + 1
+					? str
+					: str.substring(0, maxLettersInBreadCrumbItem - 6) + '...';
 			default:
 				break;
 		}
@@ -135,7 +140,7 @@
 											? 'last--item'
 											: ''}
 									>
-										{item.length > maxLettersInBreadCrumbItem
+										{totalBreadCrumbItems > 5
 											? shortenBreadCrumbItem(item, 'hard')
 											: shortenBreadCrumbItem(item, 'soft')}</span
 									>
