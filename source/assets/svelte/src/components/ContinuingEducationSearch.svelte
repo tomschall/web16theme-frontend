@@ -7,6 +7,9 @@
 	import type { Item } from '../definitions/Item';
 	import MultiSelectRow from './shared/MultiSelectRow.svelte';
 	import type { Option } from '../multiselect';
+	import { switchMetaTag } from '../helpers/switchMetaTag';
+	import { setAppHeight } from '../helpers/setAppHeight';
+	import { setLanguage } from '../helpers/setLanguage';
 
 	export let template: string = '';
 	export let listingType = 'grid';
@@ -81,38 +84,19 @@
 		observer.unobserve(target);
 	};
 
-	/**
-	 * The function takes a string as an argument and sets the global variable lang to the string.
-	 * @param {string} langStr - The language string to set the language to.
-	 */
-	let setLanguage = (langStr: string) => {
-		switch (langStr) {
-			case 'en': {
-				lang = langStr;
-			}
-			case 'de': {
-				lang = langStr;
-			}
-			default: {
-				let language = document.documentElement.lang;
-				if (language === 'en' || language === 'de') {
-					lang = document.documentElement.lang;
-				} else {
-					lang = 'de';
-				}
-			}
-		}
-	};
-
 	onMount(() => {
 		selectFormDataElement = document.querySelectorAll(
 			'.widg_continuing_education_search'
 		);
 		selectFormData = JSON.parse(selectFormDataElement[0].dataset.widgetData);
 
-		console.log('selectFormData', selectFormData);
+		const setLanguageCallback = (langStr: string) => {
+			lang = langStr;
+		};
 
-		setLanguage(window.location.href.split('/')[3]);
+		setLanguage(window.location.href.split('/')[3], setLanguageCallback);
+		setAppHeight();
+		switchMetaTag();
 
 		document.title = $_('searchpage_title');
 		observer = new IntersectionObserver(loadMoreResults, options);
@@ -207,8 +191,6 @@
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
 				searchResults = [...searchResults, ...data.items];
-
-				console.log(itemsCount, totalItems);
 
 				if (isFirst) {
 					searchResults = [...data.items];

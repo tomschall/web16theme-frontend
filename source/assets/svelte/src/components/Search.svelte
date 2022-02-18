@@ -11,6 +11,8 @@
 	import type { Item } from '../definitions/Item';
 	import type { CategoriesCount } from '../definitions/Categories';
 	import { switchMetaTag } from '../helpers/switchMetaTag';
+	import { setAppHeight } from '../helpers/setAppHeight';
+	import { setLanguage } from '../helpers/setLanguage';
 
 	export let template: string = '';
 	export let listingType: string = 'grid';
@@ -98,39 +100,15 @@
 		observer.unobserve(target);
 	};
 
-	/**
-	 * Set the language to the language of the browser.
-	 * @param {string} langStr - The language string to set the language to.
-	 * @returns None
-	 */
-	let setLanguage = (langStr: string) => {
-		switch (langStr) {
-			case 'en': {
-				lang = langStr;
-			}
-			case 'de': {
-				lang = langStr;
-			}
-			default: {
-				let language = document.documentElement.lang;
-				if (language === 'en' || language === 'de') {
-					lang = document.documentElement.lang;
-				} else {
-					lang = 'de';
-				}
-			}
-		}
-	};
-
 	onMount(() => {
-		const appHeight = () => {
-			const doc = document.documentElement;
-			doc.style.setProperty('--app-height', `${window.innerHeight}px`);
+		const setLanguageCallback = (langStr: string) => {
+			lang = langStr;
 		};
-		window.addEventListener('resize', appHeight);
-		appHeight();
-		setLanguage(window.location.href.split('/')[3]);
+
+		setLanguage(window.location.href.split('/')[3], setLanguageCallback);
+		setAppHeight();
 		switchMetaTag();
+
 		if (template === 'searchpage') {
 			document.title = $_('searchpage_title');
 			observer = new IntersectionObserver(loadMoreResults, options);
