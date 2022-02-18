@@ -3,7 +3,6 @@
 	import { _ } from 'svelte-i18n';
 	import SvelteMarkdown from 'svelte-markdown/src/SvelteMarkdown.svelte';
 	import Paragraph from '../Paragraph.svelte';
-	import Select from 'svelte-select/src/Select.svelte';
 
 	export let item: Item;
 	export let searchResultsHighlighting: any[];
