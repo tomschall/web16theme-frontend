@@ -184,7 +184,7 @@ a.search__cat-title {
 			margin-right: $basicPush * 2;
 			max-width: 630px;
 			margin: 0;
-			overflow-x: clip;
+			overflow-x: hidden;
 
 			@include mq($to: small) {
 				overflow-x: scroll;
