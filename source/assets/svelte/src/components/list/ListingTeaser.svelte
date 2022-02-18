@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Item } from '../../../definitions/Item';
+	import type { Item } from '../../definitions/Item';
 	import { _ } from 'svelte-i18n';
 
 	export let item: Item;

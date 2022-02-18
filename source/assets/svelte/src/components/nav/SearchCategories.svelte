@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
-	import type { CategoriesCount } from '../../../definitions/Categories';
+	import type { CategoriesCount } from '../../definitions/Categories';
 
 	export let triggerCategorySearch = () => {};
 	export let unobserve: any;

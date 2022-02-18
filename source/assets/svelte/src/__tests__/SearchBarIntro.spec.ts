@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/svelte';
-import SearchBarIntro from '../components/shared/SearchBarIntro.svelte';
+import SearchBarIntro from '../components/shared/nav/SearchBarIntro.svelte';
 import en from '../lang/en.json';
 import de from '../lang/de.json';
 import { init, addMessages, _ } from 'svelte-i18n';
