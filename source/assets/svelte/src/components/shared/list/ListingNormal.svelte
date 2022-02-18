@@ -14,15 +14,6 @@
 	let tooltip = '';
 	let totalLettersInBreadCrumb: number = 0;
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico media query
-
-	let testvalues = [
-		{ value: 'chocolate', label: 'Chocolate' },
-		{ value: 'pizza', label: 'Pizza' },
-		{ value: 'cake', label: 'Cake' },
-		{ value: 'chips', label: 'Chips' },
-		{ value: 'ice-cream', label: 'Ice Cream' },
-	];
-
 	let selectedValue = null;
 
 	// remove own title from title_parents because it should not be in the breadcrumbs.
@@ -202,8 +193,6 @@
 		{/if}
 	</a>
 </li>
-
-<Select items={testvalues} bind:selectedValue />
 
 <style>
 	/*This would all go into the global.css file*/

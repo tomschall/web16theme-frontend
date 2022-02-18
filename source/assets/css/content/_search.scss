@@ -82,7 +82,7 @@ a.search__cat-title {
 }
 
 [class^='search__result-'] {
-	padding: $basicPush 0 0 0;
+	padding: $basicPush;
 	position: relative;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
@@ -184,6 +184,7 @@ a.search__cat-title {
 			margin-right: $basicPush * 2;
 			max-width: 630px;
 			margin: 0;
+			overflow-x: clip;
 
 			@include mq($to: small) {
 				overflow-x: scroll;

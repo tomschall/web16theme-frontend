@@ -156,7 +156,7 @@
 		}}
 	/>
 	<ul
-		class="selected {showOptions ? 'active' : ''}"
+		class="not-default selected {showOptions ? 'active' : ''}"
 		style={showOptions && !isOnTopHalf
 			? `border-bottom: 2px solid #000; border-top: 0px`
 			: ''}
@@ -168,7 +168,7 @@
 	</ul>
 
 	<ul
-		class="options"
+		class="not-default options"
 		class:hidden={!showOptions}
 		style={!isOnTopHalf
 			? `top: -${optionsHeight}px; border-top: 2px solid #000; border-bottom: 0px`

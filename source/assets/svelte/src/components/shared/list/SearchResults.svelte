@@ -50,8 +50,7 @@
 			{/if}
 		{/if}
 	</ul>
-{/if}
-
+</div>
 <!-- LISTING InContentSearch -->
 {#if template === 'continuing_education' || template === 'education'}
 	{#if listingType === 'grid'}
