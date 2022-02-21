@@ -186,6 +186,7 @@
 		showSearchProposals = true;
 
 		if (!searchTerm) {
+			searchResults = [];
 			showSearchBarIntro = true;
 			showStatusInfo = false;
 			showSearchProposals = false;
@@ -194,6 +195,7 @@
 		}
 
 		if (searchTerm && searchTerm.length < 3) {
+			searchResults = [];
 			showSearchBarIntro = false;
 			showStatusInfo = false;
 			showSearchCategories = false;
