@@ -1,19 +1,7 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { _ } from 'svelte-i18n';
-	import en from './lang/en.json';
-	import de from './lang/de.json';
-	import { init, addMessages } from 'svelte-i18n';
 
 	let lang: string = document.documentElement.lang;
-
-	addMessages('en', en);
-	addMessages('de', de);
-
-	init({
-		fallbackLocale: 'de',
-		initialLocale: lang,
-	});
 </script>
 
 <div class="widg_subnav__title has-subtitle">

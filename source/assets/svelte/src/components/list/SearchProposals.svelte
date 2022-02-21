@@ -46,7 +46,7 @@
 		<div class="widg_searchbar-bar__title">
 			<p>{$_('search_proposal_title')}</p>
 		</div>
-		<ul>
+		<ul class="not-default">
 			{#each searchProposals as searchProposal, index (index)}
 				{#if index <= 3}
 					<li on:click={() => handleClick(searchProposal.value)}>

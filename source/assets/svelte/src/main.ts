@@ -1,6 +1,20 @@
-import Search from './Search.svelte';
-import Subnav from './Subnav.svelte';
+import Search from './components/Search.svelte';
+import Subnav from './components/nav/Subnav.svelte';
+import EducationSearch from './components/EducationSearch.svelte';
 import type { SvelteComponent } from 'svelte';
+import en from './lang/en.json';
+import de from './lang/de.json';
+import { init, addMessages, _ } from 'svelte-i18n';
+
+let lang: string = document.documentElement.lang;
+
+addMessages('en', en);
+addMessages('de', de);
+
+init({
+  fallbackLocale: 'de',
+  initialLocale: lang,
+});
 
 declare global {
   interface Window {
@@ -11,10 +25,16 @@ declare global {
 const searchBarSelector = document.querySelector('.widg_searchbar-bar');
 const searchPageSelector = document.querySelector('.widg_svelte_searchpage');
 const subNavSelector = document.querySelector('.widg_subnav.svelte');
+const continuingEducationSelector = document.querySelector(
+  '.widg_continuing_education_search'
+);
+const educationSelector = document.querySelector('.widg_education_search');
 
 let searchBar: SvelteComponent = null;
 let searchPage: SvelteComponent = null;
 let subNav: SvelteComponent = null;
+let continuingEducationSearch: SvelteComponent = null;
+let educationSearch: SvelteComponent = null;
 
 if (searchBarSelector) {
   searchBar = new Search({
@@ -43,4 +63,28 @@ if (subNavSelector) {
   });
 }
 
-export default [searchBar, searchPage, subNav];
+if (continuingEducationSelector) {
+  continuingEducationSearch = new EducationSearch({
+    target: continuingEducationSelector,
+    props: {
+      template: 'continuing_education',
+    },
+  });
+}
+
+if (educationSelector) {
+  educationSearch = new EducationSearch({
+    target: educationSelector,
+    props: {
+      template: 'education',
+    },
+  });
+}
+
+export default [
+  searchBar,
+  searchPage,
+  subNav,
+  continuingEducationSearch,
+  educationSearch,
+];

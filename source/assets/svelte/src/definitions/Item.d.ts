@@ -22,4 +22,5 @@ export interface Item {
   start_event: Date;
   title: string;
   title_parents: string[];
+  start_continuing_education?: string;
 }

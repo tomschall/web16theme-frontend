@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Item } from './definitions/Item';
+	import type { Item } from '../../definitions/Item';
 	import { _ } from 'svelte-i18n';
-	import SvelteMarkdown from 'svelte-markdown';
-	import Paragraph from './Paragraph.svelte';
+	import SvelteMarkdown from 'svelte-markdown/src/SvelteMarkdown.svelte';
+	import Paragraph from '../markdown/Paragraph.svelte';
 
 	export let item: Item;
 	export let searchResultsHighlighting: any[];
@@ -10,7 +10,6 @@
 	let maxLettersInDescription = 180;
 	let maxLettersInBreadCrumbItem = 40;
 	let totalBreadCrumbItems: number = 0;
-	let totalLettersInBreadCrumb: number = 0;
 	let tooltip = '';
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico media query
 
@@ -18,27 +17,40 @@
 	if (item && item.title_parents) {
 		item.title_parents.pop();
 	}
-	
+
 	$: {
 		if (item && item.title_parents) {
 			totalBreadCrumbItems = item.title_parents.length;
-			totalLettersInBreadCrumb = item.title_parents.join().length;
-			tooltip = item.title_parents.slice(3, ).join(' › ');
+			tooltip = item.title_parents.slice(3).join(' › ');
 		}
 	}
 
+	/**
+	 * Cannot generate summary
+	 * @param {string} str - The string to shorten
+	 * @param {string} trimStyle - 'soft' | 'hard'
+	 * @returns The shortened breadcrumb item.
+	 */
 	const shortenBreadCrumbItem = (str: string, trimStyle: string): string => {
+		console.log('shortenBreadCrumbItem', str, trimStyle);
 		switch (trimStyle) {
 			case 'soft':
-				return str.length <= 20 ? str : str.substring(0, 18) + '...';
+				return str.length === maxLettersInBreadCrumbItem + 1
+					? str
+					: str.substring(0, maxLettersInBreadCrumbItem) + '...';
 			case 'hard':
-				return str.length <= 14 ? str : str.substring(0, 14) + '...';
+				return str.length === maxLettersInBreadCrumbItem + 1
+					? str
+					: str.substring(0, maxLettersInBreadCrumbItem - 6) + '...';
 			default:
 				break;
 		}
 	};
 
-	const shortenDescription = (highlighted_description: string, long_description: string) => {
+	const shortenDescription = (
+		highlighted_description: string,
+		long_description: string
+	) => {
 		// for the calculations the highlight-syntax (**) is problematic so we remove it.
 		let cleaned_description = highlighted_description.replaceAll('**', '');
 		let shortened_description = highlighted_description;
@@ -47,19 +59,25 @@
 		if (!long_description.startsWith(cleaned_description)) {
 			shortened_description = `...${highlighted_description}`;
 		}
-		
+
 		// check if we have to add ... to the end because theres more text after the highlighting.
 		if (!long_description.endsWith(cleaned_description)) {
-			shortened_description = `${shortened_description.substring(0, maxLettersInDescription - 3)}...`;
+			shortened_description = `${shortened_description.substring(
+				0,
+				maxLettersInDescription - 3
+			)}...`;
 		}
 
 		// check if we have to add ... to the end because description is to long.
 		if (shortened_description.length > maxLettersInDescription) {
-			shortened_description = `${shortened_description.substring(0, maxLettersInDescription - 3)}...`;
+			shortened_description = `${shortened_description.substring(
+				0,
+				maxLettersInDescription - 3
+			)}...`;
 		}
 
 		return shortened_description;
-	}
+	};
 
 	const translateType = (param: string) => {
 		switch (param) {
@@ -109,7 +127,7 @@
 											? 'last--item'
 											: ''}
 									>
-										{item.length > maxLettersInBreadCrumbItem
+										{totalBreadCrumbItems > 5
 											? shortenBreadCrumbItem(item, 'hard')
 											: shortenBreadCrumbItem(item, 'soft')}</span
 									>
@@ -149,7 +167,7 @@
 					source={shortenDescription(
 						searchResultsHighlighting[item.UID].Description
 							? searchResultsHighlighting[item.UID].Description[0]
-							: item.Description, 
+							: item.Description,
 						item.Description
 					)}
 					renderers={{
@@ -169,10 +187,8 @@
 			>
 		{/if}
 		{#if item.institute && item.search_type === 'contact'}
-		<span class="additional_desc"
-			>{item.institute}</span
-		>
-	{/if}
+			<span class="additional_desc">{item.institute}</span>
+		{/if}
 		{#if item.filesize}
 			<span class="additional_desc">{item.filetype} | {item.filesize}</span>
 		{/if}

@@ -1,0 +1,170 @@
+.widg_education_search,
+.widg_continuing_education_search {
+	.search__holder__searchstring {
+		.search__string {
+			form {
+				label.searchbar_search {
+					cursor: text;
+
+					&.toggle__top {
+						top: $basicPush;
+						font-size: 12px;
+						font-weight: 500;
+						color: $colorTextGrey;
+					}
+				}
+
+				input {
+					&:focus {
+						border-color: $colorText;
+					}
+				}
+			}
+			z-index: 2;
+		}
+	}
+
+	.search__wrapper {
+		width: auto;
+		margin-left: 0;
+
+		.search__form-wrapper {
+			padding: 0;
+			box-shadow: none;
+			padding-bottom: $basicPush;
+		}
+	}
+
+	.search__third-row {
+		.search__extra-holder {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			width: 100%;
+			padding: $basicPush 0;
+
+			@include mq($to: medium) {
+				padding: 0 0 $basicPush * 2 0;
+			}
+
+			@include mq($from: medium) {
+				.listing__type {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					margin-right: $basicPush - 5;
+
+					.icon__grid {
+						background: transparent;
+						display: flex;
+						width: 20px;
+						height: 20px;
+						cursor: pointer;
+
+						&::before {
+							background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 20 20' style='enable-background:new 0 0 20 20;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%238D8D8D;%7D%0A%3C/style%3E%3Crect class='st0' width='6' height='6'/%3E%3Crect x='7' class='st0' width='6' height='6'/%3E%3Crect x='14' class='st0' width='6' height='6'/%3E%3Crect y='7' class='st0' width='6' height='6'/%3E%3Crect x='7' y='7' class='st0' width='6' height='6'/%3E%3Crect x='14' y='7' class='st0' width='6' height='6'/%3E%3Crect y='14' class='st0' width='6' height='6'/%3E%3Crect x='7' y='14' class='st0' width='6' height='6'/%3E%3Crect x='14' y='14' class='st0' width='6' height='6'/%3E%3Cg id='kQoQQN.tif'%3E%3Cimage style='overflow:visible;' width='976' height='212' id='Layer_0_00000072958576736630453640000008360664499347216275_' xlink:href='21EE457016EAEB3A.png' transform='matrix(1 0 0 1 -992 -332)'%3E%3C/image%3E%3C/g%3E%3C/svg%3E%0A");
+							background-repeat: no-repeat;
+							content: '';
+							width: $basicPush * 2;
+							height: $basicPush * 2;
+						}
+
+						&:hover,
+						&.active {
+							&::before {
+								background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 20 20' style='enable-background:new 0 0 20 20;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bdisplay:none;%7D .st1%7Bdisplay:inline;%7D%0A%3C/style%3E%3Cg id='Grid'%3E%3Crect width='6' height='6'/%3E%3Crect x='7' width='6' height='6'/%3E%3Crect x='14' width='6' height='6'/%3E%3Crect y='7' width='6' height='6'/%3E%3Crect x='7' y='7' width='6' height='6'/%3E%3Crect x='14' y='7' width='6' height='6'/%3E%3Crect y='14' width='6' height='6'/%3E%3Crect x='7' y='14' width='6' height='6'/%3E%3Crect x='14' y='14' width='6' height='6'/%3E%3C/g%3E%3C/svg%3E");
+							}
+						}
+					}
+
+					.icon__list {
+						background: transparent;
+						display: flex;
+						width: 20px;
+						height: 20px;
+						cursor: pointer;
+						margin-left: $basicPush;
+
+						&::before {
+							background-repeat: no-repeat;
+							content: '';
+							width: $basicPush * 2;
+							height: $basicPush * 2;
+							background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 20 20' style='enable-background:new 0 0 20 20;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bdisplay:none;%7D .st1%7Bdisplay:inline;fill:%238D8D8D;%7D .st2%7Bfill:%238D8D8D;%7D%0A%3C/style%3E%3Cg id='Grid' class='st0'%3E%3Crect class='st1' width='6' height='6'/%3E%3Crect x='7' class='st1' width='6' height='6'/%3E%3Crect x='14' class='st1' width='6' height='6'/%3E%3Crect y='7' class='st1' width='6' height='6'/%3E%3Crect x='7' y='7' class='st1' width='6' height='6'/%3E%3Crect x='14' y='7' class='st1' width='6' height='6'/%3E%3Crect y='14' class='st1' width='6' height='6'/%3E%3Crect x='7' y='14' class='st1' width='6' height='6'/%3E%3Crect x='14' y='14' class='st1' width='6' height='6'/%3E%3C/g%3E%3Cg id='List'%3E%3Crect class='st2' width='20' height='6'/%3E%3Crect y='7' class='st2' width='20' height='6'/%3E%3Crect y='14' class='st2' width='20' height='6'/%3E%3C/g%3E%3C/svg%3E%0A");
+						}
+
+						&:hover,
+						&.active {
+							&::before {
+								background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 20 20' style='enable-background:new 0 0 20 20;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bdisplay:none;%7D .st1%7Bdisplay:inline;fill:%238D8D8D;%7D%0A%3C/style%3E%3Cg id='List'%3E%3Crect width='20' height='6'/%3E%3Crect y='7' width='20' height='6'/%3E%3Crect y='14' width='20' height='6'/%3E%3C/g%3E%3C/svg%3E%0A");
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.search__listing {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		float: left;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+
+	.search__results {
+		position: relative;
+		float: left;
+		width: 100%;
+
+		ul {
+			&.not-default {
+				padding-left: 0;
+			}
+		}
+	}
+
+	.widg_teaser__wrapper {
+		width: 100%;
+
+		@include mq($to: small) {
+			padding: 0;
+		}
+	}
+
+	.widg_linklist {
+		position: relative;
+		float: left;
+		width: 100%;
+		margin-top: unset;
+
+		.widg_linklist___entry {
+			a.anchor-link {
+				display: flex;
+
+				.widg_teaser__img {
+					flex: 2;
+					padding-top: unset;
+				}
+
+				.widg_linklist__content {
+					flex: 10;
+
+					.widg_teaser p {
+						display: block;
+						padding-bottom: $basicPush * 3;
+					}
+
+					small {
+						position: absolute;
+						bottom: $basicPush * 2;
+						font-weight: 400;
+					}
+				}
+			}
+		}
+	}
+}

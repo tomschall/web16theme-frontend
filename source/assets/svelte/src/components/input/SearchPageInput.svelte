@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { onMount } from 'svelte';
-	import type { Item } from './definitions/Item';
+	import type { Item } from '../../definitions/Item';
 
 	export let query: string;
 	export let showSearchCategories: boolean;
@@ -30,16 +30,19 @@
 
 <div class="search__string svelte_search">
 	<form autocomplete="off" on:submit|preventDefault>
+		<label for="searchpage_input" class="visuallyhidden"
+			>{$_('search_label')}</label
+		>
 		<input
+			id="searchpage_input"
 			bind:value={query}
 			bind:this={ref}
 			on:input={handleInput}
 			type="text"
-			name="searchbar_search"
+			name="searchpage_search"
 			placeholder={$_('search_placeholder')}
 			data-searchbar="input"
 		/>
-		<label for="search" class="visuallyhidden">{$_('search_label')}</label>
 		<a on:click={handleClick} href={void 0} class="search__string__clear"
 			><i /></a
 		>

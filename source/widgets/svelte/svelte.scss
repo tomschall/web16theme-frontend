@@ -1,4 +1,7 @@
 .widg_svelte_searchpage {
+	display: flex;
+	flex-direction: column;
+
 	form {
 		display: flex;
 		flex-direction: row;

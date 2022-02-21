@@ -1,28 +1,22 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { onMount } from 'svelte';
-	import SearchPageInput from './SearchPageInput.svelte';
-	import SearchBarInput from './SearchBarInput.svelte';
-	import SearchBarIntro from './SearchBarIntro.svelte';
-	import SearchResults from './SearchResults.svelte';
-	import SearchCategories from './SearchCategories.svelte';
-	import SearchProposals from './SearchProposals.svelte';
-	import { init, addMessages } from 'svelte-i18n';
-	import en from './lang/en.json';
-	import de from './lang/de.json';
+	import SearchPageInput from './input/SearchPageInput.svelte';
+	import SearchBarInput from './input/SearchBarInput.svelte';
+	import SearchBarIntro from './nav/SearchBarIntro.svelte';
+	import SearchResults from './list/SearchResults.svelte';
+	import SearchCategories from './nav/SearchCategories.svelte';
+	import SearchProposals from './list/SearchProposals.svelte';
 	import { debounce } from 'lodash';
-	import type { Item } from './definitions/Item';
-	import type { CategoriesCount } from './definitions/Categories';
-
-	addMessages('en', en);
-	addMessages('de', de);
-
-	init({
-		fallbackLocale: 'de',
-		initialLocale: document.documentElement.lang,
-	});
+	import type { Item } from '../definitions/Item';
+	import type { CategoriesCount } from '../definitions/Categories';
+	import { switchMetaTag } from '../helpers/switchMetaTag';
+	import { setAppHeight } from '../helpers/setAppHeight';
+	import { setLanguage } from '../helpers/setLanguage';
 
 	export let template: string = '';
+	export let listingType: string = 'grid';
+
 	let searchQuery: string = '';
 	let searchTerm: string = null;
 	let searchTermSpellCheck: string = null;
@@ -46,8 +40,10 @@
 	let urlParams = new URLSearchParams(window.location.search);
 	let lang: string = null;
 	let xScroll: number = 0;
-	let categoryLastElementNotVisible: boolean = true;
 
+	/**
+	 * The function `triggerSearchDebounced` is a debounced version of `triggerSearch`.
+	 */
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
 	) {
@@ -60,28 +56,20 @@
 		threshold: number;
 	}
 
+	/**
+	 * Creating an ObserverOptions object that is used to configure the IntersectionObserver.
+	 */
 	const options: ObserverOptions = {
 		rootMargin: '0px 0px 300px',
 		threshold: 0,
 	};
 
-	const isIOS = () => {
-		var iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
-		return iOS;
-	};
-
-	const switchMetaTag = () => {
-		var iOS = isIOS();
-		if (iOS === true) {
-			document.querySelector("[name='viewport']").remove();
-			const meta = document.createElement('meta');
-			meta.name = 'viewport';
-			meta.content =
-				'width=device-width, initial-scale=1.0, viewport-fit=cover';
-			document.getElementsByTagName('head')[0].appendChild(meta);
-		}
-	};
-
+	/**
+   * When the user scrolls to the bottom of the page, if there are more results to be loaded, then
+  load them.
+   * @param {any} entries - The entries that are currently visible in the viewport.
+   * @returns None
+   */
 	const loadMoreResults = (entries: any) => {
 		entries.forEach((entry: any) => {
 			if (entry.isIntersecting) {
@@ -104,38 +92,23 @@
 		});
 	};
 
+	/**
+	 * Unobserve the target element from the observer.
+	 * @returns None
+	 */
 	let unobserve = () => {
 		observer.unobserve(target);
 	};
 
-	let setLanguage = (langStr: string) => {
-		switch (langStr) {
-			case 'en': {
-				lang = langStr;
-			}
-			case 'de': {
-				lang = langStr;
-			}
-			default: {
-				let language = document.documentElement.lang;
-				if (language === 'en' || language === 'de') {
-					lang = document.documentElement.lang;
-				} else {
-					lang = 'de';
-				}
-			}
-		}
-	};
-
 	onMount(() => {
-		const appHeight = () => {
-			const doc = document.documentElement;
-			doc.style.setProperty('--app-height', `${window.innerHeight}px`);
+		const setLanguageCallback = (langStr: string) => {
+			lang = langStr;
 		};
-		window.addEventListener('resize', appHeight);
-		appHeight();
-		setLanguage(window.location.href.split('/')[3]);
+
+		setLanguage(window.location.href.split('/')[3], setLanguageCallback);
+		setAppHeight();
 		switchMetaTag();
+
 		if (template === 'searchpage') {
 			document.title = $_('searchpage_title');
 			observer = new IntersectionObserver(loadMoreResults, options);
@@ -148,6 +121,10 @@
 		}
 	});
 
+	/**
+   * When the user types in the search box, the search box will be cleared and the search will be
+  triggered.
+   */
 	const handleInput: () => void = function () {
 		noAlternativeSearchTermFound = false;
 		if (observer) unobserve();
@@ -157,6 +134,9 @@
 		triggerSearchDebounced(true);
 	};
 
+	/**
+	 * We fetch the data from the API, and then we update the facets.
+	 */
 	const updateFacets: () => void = function () {
 		const endpoint =
 			window.location.hostname === 'localhost'
@@ -179,6 +159,12 @@
 			});
 	};
 
+	/**
+   * It fetches the search results from the API and updates the search results and search results
+  highlighting.
+   * @param {boolean} isFirst - boolean
+   * @returns The search results.
+   */
 	const triggerSearch = async (isFirst: boolean) => {
 		if (isFirst) {
 			showSearchBarIntro = false;
@@ -320,6 +306,9 @@
 			bind:searchType
 			{handleInput}
 		/>
+		{#if showSearchBarIntro}
+			<SearchBarIntro {lang} />
+		{/if}
 	{/if}
 	{#if template === 'searchpage'}
 		<SearchPageInput
@@ -334,9 +323,6 @@
 			{handleInput}
 		/>
 	{/if}
-	{#if showSearchBarIntro}
-		<SearchBarIntro {lang} />
-	{/if}
 	{#if !showStatusInfo}
 		<div class="search__results">
 			<div
@@ -350,7 +336,6 @@
 							bind:categoriesCount
 							bind:searchType
 							bind:xScroll
-							bind:categoryLastElementNotVisible
 							{template}
 							triggerCategorySearch={() => triggerSearchDebounced(true)}
 							{unobserve}
@@ -385,13 +370,18 @@
 						{searchTerm}
 						{searchType}
 						{lang}
+						{listingType}
 					/>
 				</div>
 			</div>
 		</div>
 	{/if}
 	{#if showStatusInfo && !searchTermSpellCheck}
-		<div class="widg__searchbar_no_results {template === 'searchbar' ? 'searchbar' : ''}">
+		<div
+			class="widg__searchbar_no_results {template === 'searchbar'
+				? 'searchbar'
+				: ''}"
+		>
 			<p>{$_('search_no_results')}</p>
 			<span>{$_('search_no_results_subtitle')}</span>
 		</div>

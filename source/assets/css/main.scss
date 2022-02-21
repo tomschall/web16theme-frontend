@@ -111,7 +111,9 @@
 @import 'content/datepicker';
 @import 'content/timepicker';
 @import 'content/table';
+@import 'content/svelte_search';
+@import 'content/svelte_select';
 
 @media print {
-  @import 'print';
+	@import 'print';
 }

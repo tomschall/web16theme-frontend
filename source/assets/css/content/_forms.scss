@@ -81,6 +81,7 @@ input[type='number'] {
 		transform: translateY(-50%) rotate(45deg);
 		z-index: 1;
 		@include iconDataurl('breadcrumb-expand');
+		cursor: pointer;
 	}
 
 	float: left;
@@ -117,6 +118,7 @@ input[type='number'] {
 	textarea {
 		display: block;
 		width: 100%;
+		outline: none;
 
 		padding-top: 13px;
 
@@ -139,7 +141,8 @@ input[type='number'] {
 
 		resize: none;
 
-		&:focus {
+		&:focus,
+		&:active {
 			border-color: $colorBlack;
 		}
 
