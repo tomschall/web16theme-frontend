@@ -13,6 +13,7 @@
 	import { switchMetaTag } from '../helpers/switchMetaTag';
 	import { setAppHeight } from '../helpers/setAppHeight';
 	import { setLanguage } from '../helpers/setLanguage';
+	import { setHostname } from '../helpers/setHostname';
 
 	export let template: string = '';
 	export let listingType: string = 'grid';
@@ -40,6 +41,7 @@
 	let urlParams = new URLSearchParams(window.location.search);
 	let lang: string = null;
 	let xScroll: number = 0;
+	let hostname: string;
 
 	/**
 	 * The function `triggerSearchDebounced` is a debounced version of `triggerSearch`.
@@ -105,9 +107,14 @@
 			lang = langStr;
 		};
 
+		const setHostnameCallback = (hn: string) => {
+			hostname = hn;
+		};
+
 		setLanguage(window.location.href.split('/')[3], setLanguageCallback);
 		setAppHeight();
 		switchMetaTag();
+		setHostname(setHostnameCallback);
 
 		if (template === 'searchpage') {
 			document.title = $_('searchpage_title');
@@ -142,7 +149,7 @@
 			window.location.hostname === 'localhost'
 				? // @ts-ignore
 				  `${API}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`
-				: `https://${window.location.hostname}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`;
+				: `https://${hostname}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`;
 
 		fetch(endpoint)
 			.then((response) => {
@@ -201,9 +208,7 @@
 				  `${API}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
 						searchType || 'all'
 				  }&limit=${limit}&offset=${offset}`
-				: `https://${
-						window.location.hostname
-				  }/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
+				: `https://${hostname}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
 						searchType || 'all'
 				  }&limit=${limit}&offset=${offset}`;
 
@@ -237,7 +242,7 @@
 						window.location.hostname === 'localhost'
 							? // @ts-ignore
 							  API_SPELLCHECK + `?term=${searchTermSpellCheck}`
-							: `https://${window.location.hostname}/spellcheck/?term=${searchTermSpellCheck}`;
+							: `https://${hostname}/spellcheck/?term=${searchTermSpellCheck}`;
 
 					fetch(spellCheckEndpoint)
 						.then((response) => {
@@ -345,6 +350,7 @@
 						<SearchProposals
 							bind:query={searchQuery}
 							bind:searchType
+							{hostname}
 							{handleInput}
 						/>
 					{/if}
