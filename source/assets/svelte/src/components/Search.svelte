@@ -175,7 +175,6 @@
 	const triggerSearch = async (isFirst: boolean) => {
 		if (isFirst) {
 			showSearchBarIntro = false;
-			showSearchCategories = false;
 			totalItems = 0;
 			offset = 0;
 			limit = 10;
@@ -184,6 +183,7 @@
 		if (!searchTermSpellCheck) searchTerm = searchQuery.trim();
 
 		showSearchProposals = true;
+		showSearchCategories = true;
 
 		if (!searchTerm) {
 			searchResults = [];
@@ -191,6 +191,7 @@
 			showStatusInfo = false;
 			showSearchProposals = false;
 			isLoading = false;
+			showSearchCategories = false;
 			return;
 		}
 
@@ -266,10 +267,12 @@
 						})
 						.finally(() => {
 							if (!noAlternativeSearchTermFound) triggerSearch(true);
+							else {
+								showSearchCategories = false;
+								showStatusInfo = true;
+							}
 						});
 				}
-
-				if (isFirst) searchResults = [];
 
 				searchResults = [...searchResults, ...data.items];
 				searchResultsHighlighting = {
@@ -289,9 +292,6 @@
 				if (searchResults.length > 0) {
 					showSearchCategories = true;
 					showStatusInfo = false;
-				} else {
-					showSearchCategories = false;
-					showStatusInfo = true;
 				}
 			})
 			.catch((e) => console.log('Oh no. An error occured!', e))
