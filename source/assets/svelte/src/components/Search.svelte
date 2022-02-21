@@ -176,7 +176,6 @@
 		if (isFirst) {
 			showSearchBarIntro = false;
 			showSearchCategories = false;
-			searchResults = [];
 			totalItems = 0;
 			offset = 0;
 			limit = 10;
@@ -267,6 +266,8 @@
 							if (!noAlternativeSearchTermFound) triggerSearch(true);
 						});
 				}
+
+				if (isFirst) searchResults = [];
 
 				searchResults = [...searchResults, ...data.items];
 				searchResultsHighlighting = {

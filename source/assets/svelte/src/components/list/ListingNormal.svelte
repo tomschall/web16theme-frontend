@@ -32,7 +32,6 @@
 	 * @returns The shortened breadcrumb item.
 	 */
 	const shortenBreadCrumbItem = (str: string, trimStyle: string): string => {
-		console.log('shortenBreadCrumbItem', str, trimStyle);
 		switch (trimStyle) {
 			case 'soft':
 				return str.length === maxLettersInBreadCrumbItem + 1

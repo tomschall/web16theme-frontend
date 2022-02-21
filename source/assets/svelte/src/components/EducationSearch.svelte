@@ -182,7 +182,6 @@
    */
 	const triggerSearch = async (isFirst: boolean) => {
 		if (isFirst) {
-			searchResults = [];
 			totalItems = 0;
 			offset = 0;
 			limit = 9;
@@ -202,6 +201,9 @@
 			.then((data) => {
 				itemsCount = data.items.length;
 				totalItems = data.items_total;
+
+				if (isFirst) searchResults = [];
+
 				searchResults = [...searchResults, ...data.items];
 
 				if (isFirst) {
