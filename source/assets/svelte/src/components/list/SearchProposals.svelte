@@ -4,6 +4,7 @@
 	export let query: string;
 	export let searchType: string;
 	export let handleInput: () => void;
+	export let hostname: string;
 
 	let searchProposals: any[] = [];
 	let autocompleteTerm: string = '';
@@ -16,7 +17,7 @@
 				window.location.hostname === 'localhost'
 					? // @ts-ignore
 					  API_PROPOSALS + `?term=${autocompleteTerm}`
-					: `https://${window.location.hostname}/autocomplete/?term=${autocompleteTerm}`;
+					: `https://${hostname}/autocomplete/?term=${autocompleteTerm}`;
 
 			fetch(autocompleteEndpoint)
 				.then((response) => {

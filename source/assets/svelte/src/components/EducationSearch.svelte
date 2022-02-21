@@ -6,10 +6,11 @@
 	import { debounce } from 'lodash';
 	import type { Item } from '../definitions/Item';
 	import MultiSelectRow from './multiselect/MultiSelectRow.svelte';
-	import type { Option } from '../multiselect';
+	import type { Option } from './multiselect';
 	import { switchMetaTag } from '../helpers/switchMetaTag';
 	import { setAppHeight } from '../helpers/setAppHeight';
 	import { setLanguage } from '../helpers/setLanguage';
+	import { setHostname } from '../helpers/setHostname';
 
 	export let template: string = '';
 	export let listingType = 'grid';
@@ -34,6 +35,7 @@
 	let selectFormData: any;
 	let selectFormDataElement: any = null;
 	let category: string;
+	let hostname: string;
 	let triggerSearchDebounced = debounce(async function (
 		isFirstSearch: boolean
 	) {
@@ -102,9 +104,14 @@
 			lang = langStr;
 		};
 
+		const setHostnameCallback = (hn: string) => {
+			hostname = hn;
+		};
+
 		setLanguage(window.location.href.split('/')[3], setLanguageCallback);
 		setAppHeight();
 		switchMetaTag();
+		setHostname(setHostnameCallback);
 
 		document.title = $_('searchpage_title');
 		observer = new IntersectionObserver(loadMoreResults, options);
@@ -158,9 +165,7 @@
 				  )}${dateLine.join('')}${city.join(
 						''
 				  )}&limit=${limit}&offset=${offset}`
-				: `https://${
-						window.location.hostname
-				  }/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
+				: `https://${hostname}/${lang}${queryPrefix}${searchQuery}${subjectArea.join(
 						''
 				  )}${dateLine.join('')}${city.join(
 						''
