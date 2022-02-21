@@ -55,8 +55,6 @@
     "lodash": "^4.17.21",
     "sirv-cli": "^1.0.0",
     "svelte-i18n": "^3.3.13",
-    "svelte-markdown": "^0.2.2",
-    "svelte-navigator": "^3.1.5",
-    "svelte-select": "^4.4.7"
+    "svelte-markdown": "^0.2.2"
   }
 }
