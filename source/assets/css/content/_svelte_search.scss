@@ -130,6 +130,13 @@
 	.widg_teaser__wrapper {
 		width: 100%;
 
+		.widg_teaser {
+			small {
+				position: absolute;
+				bottom: $basicPush * 3;
+			}
+		}
+
 		@include mq($to: small) {
 			padding: 0;
 		}

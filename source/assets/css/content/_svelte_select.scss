@@ -122,7 +122,6 @@
 				border-radius: 0;
 				overscroll-behavior: none;
 				height: $basicPush * 6;
-				overflow: hidden;
 				z-index: -10;
 
 				@include mq($to: medium) {
