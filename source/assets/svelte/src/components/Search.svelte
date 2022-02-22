@@ -26,6 +26,7 @@
 	let offset: number = 0;
 	let limit: number = 10;
 	let searchResults: Item[] = [];
+	let searchResultsClone: Item[] = [];
 	let searchResultsHighlighting: any;
 	let showSearchBarIntro: boolean = true;
 	let showSearchCategories: boolean = false;
@@ -38,6 +39,7 @@
 	let isFirstSearch: boolean = true;
 	let itemsCount: number = null;
 	let categoriesCount: CategoriesCount;
+	let categoriesCountClone: CategoriesCount;
 	let urlParams = new URLSearchParams(window.location.search);
 	let lang: string = null;
 	let xScroll: number = 0;
@@ -99,7 +101,7 @@
 	 * @returns None
 	 */
 	let unobserve = () => {
-		observer.unobserve(target);
+		if (target) observer.unobserve(target);
 	};
 
 	onMount(() => {
@@ -162,6 +164,10 @@
 				if (data) {
 					categoriesCount = data.facets[0].enable;
 					categoriesCount['all'] = data.items_total;
+					if (categoriesCount.all > 0) {
+						categoriesCountClone = data.facets[0].enable;
+						categoriesCountClone['all'] = data.items_total;
+					}
 				}
 			});
 	};
@@ -187,6 +193,7 @@
 
 		if (!searchTerm) {
 			searchResults = [];
+			searchResultsClone = [];
 			showSearchBarIntro = true;
 			showStatusInfo = false;
 			showSearchProposals = false;
@@ -197,6 +204,7 @@
 
 		if (searchTerm && searchTerm.length < 3) {
 			searchResults = [];
+			searchResultsClone = [];
 			showSearchBarIntro = false;
 			showStatusInfo = false;
 			showSearchCategories = false;
@@ -233,6 +241,10 @@
 				) {
 					categoriesCount = data.facets[0].enable;
 					categoriesCount['all'] = data.items_total;
+					if (categoriesCount.all > 0) {
+						categoriesCountClone = data.facets[0].enable;
+						categoriesCountClone['all'] = data.items_total;
+					}
 				} else {
 					updateFacets();
 				}
@@ -275,6 +287,10 @@
 				}
 
 				searchResults = [...searchResults, ...data.items];
+				if (totalItems > 0) {
+					searchResultsClone = [...searchResults, ...data.items];
+				}
+
 				searchResultsHighlighting = {
 					...searchResultsHighlighting,
 					...data.highlighting,
@@ -282,11 +298,14 @@
 
 				if (isFirst) {
 					searchResults = [...data.items];
+					if (totalItems > 0) {
+						searchResultsClone = [...data.items];
+					}
 					searchResultsHighlighting = {
 						...data.highlighting,
 					};
 					isFirstSearch = false;
-					if (template === 'searchpage') observer.observe(target);
+					if (template === 'searchpage' && target) observer.observe(target);
 				}
 
 				if (searchResults.length > 0) {
@@ -342,6 +361,7 @@
 					{#if showSearchCategories}
 						<SearchCategories
 							bind:categoriesCount
+							bind:categoriesCountClone
 							bind:searchType
 							bind:xScroll
 							{template}
@@ -357,7 +377,7 @@
 							{handleInput}
 						/>
 					{/if}
-					{#if searchTermSpellCheck && !noAlternativeSearchTermFound && !showStatusInfo}
+					{#if searchTermSpellCheck !== null && searchTermSpellCheck !== searchTerm && !noAlternativeSearchTermFound && !showStatusInfo}
 						<div class="widg__searchbar_spellcheck">
 							<p>{$_('search_spellcheck_warning')} <b>{searchTerm}</b></p>
 							<span
@@ -372,7 +392,7 @@
 						</div>
 					{/if}
 					<SearchResults
-						results={searchResults}
+						results={searchResults.length ? searchResults : searchResultsClone}
 						{searchResultsHighlighting}
 						{isLoading}
 						{template}

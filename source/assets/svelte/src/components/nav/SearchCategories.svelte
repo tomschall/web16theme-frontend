@@ -7,6 +7,7 @@
 	export let unobserve: any;
 	export let searchType: string;
 	export let categoriesCount: CategoriesCount;
+	export let categoriesCountClone: CategoriesCount;
 	export let template: string;
 	export let xScroll: number;
 
@@ -56,7 +57,9 @@
 			}}
 			disabled={categoriesCount.all > 0 ? false : true}
 		>
-			{$_('category_all')} ({categoriesCount.all})
+			{$_('category_all')} ({categoriesCount.all === 0
+				? categoriesCountClone.all
+				: categoriesCount.all})
 		</button>
 
 		<button
@@ -66,12 +69,15 @@
 			on:click={() => {
 				handleCategorySearch('studies');
 			}}
-			disabled={categoriesCount.studies > 0 ? false : true}
+			disabled={categoriesCountClone.studies === 0 &&
+			categoriesCount.studies === 0
+				? true
+				: false}
 		>
 			{$_('category_studys_plural')}
 			{categoriesCount.studies > 0
 				? `(${categoriesCount.studies})`
-				: zeroResult}
+				: `(${categoriesCountClone.studies})`}
 		</button>
 
 		<button
@@ -82,12 +88,15 @@
 			on:click={() => {
 				handleCategorySearch('continuing_education');
 			}}
-			disabled={categoriesCount.continuing_education > 0 ? false : true}
+			disabled={categoriesCountClone.continuing_education === 0 &&
+			categoriesCount.continuing_education === 0
+				? true
+				: false}
 		>
 			{$_('category_education_plural')}
 			{categoriesCount.continuing_education > 0
 				? `(${categoriesCount.continuing_education})`
-				: zeroResult}
+				: `(${categoriesCountClone.continuing_education})`}
 		</button>
 
 		<button
@@ -95,10 +104,14 @@
 			on:click={() => {
 				handleCategorySearch('event');
 			}}
-			disabled={categoriesCount.event > 0 ? false : true}
+			disabled={categoriesCountClone.event === 0 && categoriesCount.event === 0
+				? true
+				: false}
 		>
 			{$_('category_events_plural')}
-			{categoriesCount.event > 0 ? `(${categoriesCount.event})` : zeroResult}
+			{categoriesCount.event > 0
+				? `(${categoriesCount.event})`
+				: `(${categoriesCountClone.event})`}
 		</button>
 
 		<button
@@ -106,10 +119,14 @@
 			on:click={() => {
 				handleCategorySearch('news');
 			}}
-			disabled={categoriesCount.news > 0 ? false : true}
+			disabled={categoriesCountClone.news === 0 && categoriesCount.news === 0
+				? true
+				: false}
 		>
 			{$_('category_news')}
-			{categoriesCount.news > 0 ? `(${categoriesCount.news})` : zeroResult}
+			{categoriesCount.news > 0
+				? `(${categoriesCount.news})`
+				: `(${categoriesCountClone.news})`}
 		</button>
 
 		<button
@@ -117,12 +134,15 @@
 			on:click={() => {
 				handleCategorySearch('document');
 			}}
-			disabled={categoriesCount.document > 0 ? false : true}
+			disabled={categoriesCountClone.document === 0 &&
+			categoriesCount.document === 0
+				? true
+				: false}
 		>
 			{$_('category_documents_plural')}
 			{categoriesCount.document > 0
 				? `(${categoriesCount.document})`
-				: zeroResult}
+				: `(${categoriesCountClone.document})`}
 		</button>
 
 		<button
@@ -130,12 +150,15 @@
 			on:click={() => {
 				handleCategorySearch('contact');
 			}}
-			disabled={categoriesCount.contact > 0 ? false : true}
+			disabled={categoriesCountClone.contact === 0 &&
+			categoriesCount.contact === 0
+				? true
+				: false}
 		>
 			{$_('category_persons_plural')}
 			{categoriesCount.contact > 0
 				? `(${categoriesCount.contact})`
-				: zeroResult}
+				: `(${categoriesCountClone.contact})`}
 		</button>
 
 		<button
@@ -143,12 +166,15 @@
 			on:click={() => {
 				handleCategorySearch('general');
 			}}
-			disabled={categoriesCount.general > 0 ? false : true}
+			disabled={categoriesCountClone.general === 0 &&
+			categoriesCount.general === 0
+				? true
+				: false}
 		>
 			{$_('category_general')}
 			{categoriesCount.general > 0
 				? `(${categoriesCount.general})`
-				: zeroResult}
+				: `(${categoriesCountClone.general})`}
 		</button>
 
 		{#if mq === false}
