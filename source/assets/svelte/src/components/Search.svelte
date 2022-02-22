@@ -287,9 +287,8 @@
 				}
 
 				searchResults = [...searchResults, ...data.items];
-				if (totalItems > 0) {
+				if (totalItems > 0)
 					searchResultsClone = [...searchResults, ...data.items];
-				}
 
 				searchResultsHighlighting = {
 					...searchResultsHighlighting,
@@ -298,9 +297,8 @@
 
 				if (isFirst) {
 					searchResults = [...data.items];
-					if (totalItems > 0) {
-						searchResultsClone = [...data.items];
-					}
+					if (totalItems > 0) searchResultsClone = [...data.items];
+
 					searchResultsHighlighting = {
 						...data.highlighting,
 					};
