@@ -152,7 +152,7 @@
 		</div>
 		<span class="title">
 			<SvelteMarkdown
-				source={searchResultsHighlighting[item.UID].Title
+				source={searchResultsHighlighting[item.UID]?.Title
 					? searchResultsHighlighting[item.UID]?.Title[0]
 					: item.Title}
 				renderers={{
@@ -164,8 +164,8 @@
 			<span class="description">
 				<SvelteMarkdown
 					source={shortenDescription(
-						searchResultsHighlighting[item.UID].Description
-							? searchResultsHighlighting[item.UID].Description[0]
+						searchResultsHighlighting[item.UID]?.Description
+							? searchResultsHighlighting[item.UID]?.Description[0]
 							: item.Description,
 						item.Description
 					)}
