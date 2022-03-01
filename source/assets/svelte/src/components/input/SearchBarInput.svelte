@@ -4,6 +4,7 @@
 
 	export let query: string;
 	export let searchResults: Item[];
+	export let searchResultsClone: Item[];
 	export let showSearchCategories: boolean;
 	export let showSearchBarIntro: boolean;
 	export let showSearchProposals: boolean;
@@ -15,6 +16,7 @@
 	const closeSearchBar = () => {
 		query = '';
 		searchResults = [];
+		searchResultsClone = [];
 		showSearchCategories = false;
 		showSearchBarIntro = true;
 		showStatusInfo = false;

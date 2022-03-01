@@ -24,7 +24,7 @@
 	let noAlternativeSearchTermFound: boolean = false;
 	let totalItems: number = null;
 	let offset: number = 0;
-	let limit: number = 10;
+	let limit: number = 12;
 	let searchResults: Item[] = [];
 	let searchResultsClone: Item[] = [];
 	let searchResultsHighlighting: any;
@@ -77,21 +77,15 @@
 	const loadMoreResults = (entries: any) => {
 		entries.forEach((entry: any) => {
 			if (entry.isIntersecting) {
-				if (!searchTerm || searchTerm.length < 4 || isFirstSearch) return;
-
-				if (itemsCount < limit) {
-					unobserve();
-					return;
-				}
-
-				isLoading = true;
+				if (!searchTerm || searchTerm.length < 3 || isFirstSearch) return;
 
 				if (offset + limit < totalItems) {
+					isLoading = true;
 					offset += limit;
-					limit = 20;
+					triggerSearchDebounced(false);
+				} else {
+					unobserve();
 				}
-
-				triggerSearchDebounced(false);
 			}
 		});
 	};
@@ -146,7 +140,8 @@
 	/**
 	 * We fetch the data from the API, and then we update the facets.
 	 */
-	const updateFacets: () => void = function () {
+	const updateFacets: (isFirst: boolean) => void = function (isFirst: boolean) {
+		if (!isFirst) return;
 		const endpoint =
 			window.location.hostname === 'localhost'
 				? // @ts-ignore
@@ -183,7 +178,6 @@
 			showSearchBarIntro = false;
 			totalItems = 0;
 			offset = 0;
-			limit = 10;
 		}
 
 		if (!searchTermSpellCheck) searchTerm = searchQuery.trim();
@@ -246,7 +240,7 @@
 						categoriesCountClone['all'] = data.items_total;
 					}
 				} else {
-					updateFacets();
+					updateFacets(isFirst);
 				}
 
 				if (totalItems === 0 && !noAlternativeSearchTermFound) {
@@ -325,6 +319,7 @@
 			bind:showSearchCategories
 			bind:showSearchBarIntro
 			bind:searchResults
+			bind:searchResultsClone
 			bind:showStatusInfo
 			bind:showSearchProposals
 			bind:searchTermSpellCheck
@@ -341,6 +336,7 @@
 			bind:showSearchCategories
 			bind:showSearchBarIntro
 			bind:searchResults
+			bind:searchResultsClone
 			bind:showStatusInfo
 			bind:showSearchProposals
 			bind:searchTermSpellCheck

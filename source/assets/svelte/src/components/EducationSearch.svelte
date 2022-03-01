@@ -19,7 +19,7 @@
 	let searchTerm: string = null;
 	let totalItems: number = null;
 	let offset: number = 0;
-	let limit: number = 9;
+	let limit: number = 12;
 	let searchResults: Item[] = [];
 	let isLoading: boolean = false;
 	let observer: any;
@@ -66,19 +66,13 @@
 			if (entry.isIntersecting) {
 				if (isFirstSearch) return;
 
-				if (itemsCount < limit) {
-					unobserve();
-					return;
-				}
-
-				isLoading = true;
-
 				if (offset + limit < totalItems) {
+					isLoading = true;
 					offset += limit;
-					limit = 9;
+					triggerSearchDebounced(false);
+				} else {
+					unobserve();
 				}
-
-				triggerSearchDebounced(false);
 			}
 		});
 	};
@@ -184,7 +178,6 @@
 		if (isFirst) {
 			totalItems = 0;
 			offset = 0;
-			limit = 9;
 		}
 
 		searchTerm = searchQuery.trim();
