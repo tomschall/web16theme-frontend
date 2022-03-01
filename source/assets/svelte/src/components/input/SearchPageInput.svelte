@@ -7,6 +7,7 @@
 	export let showSearchCategories: boolean;
 	export let showSearchBarIntro: boolean;
 	export let searchResults: Item[];
+	export let searchResultsClone: Item[];
 	export let showStatusInfo: boolean;
 	export let showSearchProposals: boolean;
 	export let searchTermSpellCheck: string;
@@ -19,6 +20,7 @@
 	const handleClick = () => {
 		query = '';
 		searchResults = [];
+		searchResultsClone = [];
 		showSearchCategories = false;
 		showSearchBarIntro = true;
 		showSearchProposals = false;
