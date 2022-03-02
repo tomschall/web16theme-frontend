@@ -131,10 +131,16 @@
 		width: 100%;
 
 		.widg_teaser {
+			@include mq($to: small) {
+				p {
+					display: block;
+					padding-bottom: $basicPush * 2;
+				}
+			}
+
 			small {
 				position: absolute;
 				bottom: $basicPush * 3;
-				font-size: 100%;
 			}
 		}
 
@@ -170,6 +176,11 @@
 						position: absolute;
 						bottom: $basicPush * 2;
 						font-weight: 400;
+
+						@include mq($to: small) {
+							position: unset;
+							bottom: unset;
+						}
 					}
 				}
 			}
