@@ -209,7 +209,7 @@
 		const endpoint =
 			window.location.hostname === 'localhost'
 				? // @ts-ignore
-				  `${API}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
+				  `https://www.dev.fhnw.ch/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
 						searchType || 'all'
 				  }&limit=${limit}&offset=${offset}`
 				: `https://${hostname}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=${
@@ -363,14 +363,14 @@
 							{unobserve}
 						/>
 					{/if}
-					{#if showSearchProposals}
+					<!-- {#if showSearchProposals}
 						<SearchProposals
 							bind:query={searchQuery}
 							bind:searchType
 							{hostname}
 							{handleInput}
 						/>
-					{/if}
+					{/if} -->
 					{#if searchTermSpellCheck !== null && searchTermSpellCheck !== searchTerm && !noAlternativeSearchTermFound && !showStatusInfo}
 						<div class="widg__searchbar_spellcheck">
 							<p>{$_('search_spellcheck_warning')} <b>{searchTerm}</b></p>

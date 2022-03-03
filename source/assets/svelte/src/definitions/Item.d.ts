@@ -23,5 +23,4 @@ export interface Item {
   title: string;
   title_parents: string[];
   start_continuing_education?: string;
-  clone?: string;
 }

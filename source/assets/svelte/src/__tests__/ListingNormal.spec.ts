@@ -22,15 +22,9 @@ const originalWindow = {
 
 let windowSpy: any;
 
-// beforeEach(() => {});
-
-// afterEach(() => {
-//   windowSpy.mockRestore();
-// });
-
 windowSpy = jest.spyOn(window, 'window', 'get');
 
-// why is it not possible to destructure window object directly in windowSpy.mockImplementation
+// why is it not possible to destructure window object directly in windowSpy.mockImplementation???
 windowSpy.mockImplementation(() => ({
   ...originalWindow,
   estatico: {
@@ -60,9 +54,9 @@ init({
 });
 
 const item: any = itemsData.items[0];
-const searchResultsHighlighting: any = searchResultsHighlightingData;
 
 test('render searchpage - svelte-markdown parses string', () => {
+  const searchResultsHighlighting: any = searchResultsHighlightingData;
   const { getByText } = render(ListingNormal, {
     props: {
       item,
@@ -72,4 +66,16 @@ test('render searchpage - svelte-markdown parses string', () => {
 
   expect(getByText('Form'));
   expect(getByText('Test'));
+});
+
+test('render searchpage - svelte-markdown gives back normal string', () => {
+  const searchResultsHighlighting: any = [];
+  const { getByText } = render(ListingNormal, {
+    props: {
+      item,
+      searchResultsHighlighting,
+    },
+  });
+
+  expect(getByText('MAS Business Psychology'));
 });

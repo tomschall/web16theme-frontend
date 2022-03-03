@@ -32,7 +32,7 @@ export const itemsData: any = {
       review_state: null,
       city: ['muttenz'],
       portal_type: 'EduProduct',
-      UID: '77e1b8aa439645acb63a680adacef5db',
+      UID: '77e1b8aa439645acb63a680adacef5da',
       taxonomy_datelines: ['2001'],
       description: '',
       img: {
@@ -55,7 +55,7 @@ export const itemsData: any = {
       review_state: null,
       city: ['basel'],
       portal_type: 'EduProduct',
-      UID: '77e1b8aa439645acb63a680adacef5db',
+      UID: '77e1b8aa439645acb63a680adacef5da',
       taxonomy_datelines: ['2006'],
       description: '',
       img: {
