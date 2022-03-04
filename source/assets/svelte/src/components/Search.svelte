@@ -8,12 +8,16 @@
 	import SearchCategories from './nav/SearchCategories.svelte';
 	import SearchProposals from './list/SearchProposals.svelte';
 	import { debounce } from 'lodash';
-	import type { Item } from '../definitions/Item';
-	import type { CategoriesCount } from '../definitions/Categories';
-	import { switchMetaTag } from '../helpers/switchMetaTag';
-	import { setAppHeight } from '../helpers/setAppHeight';
-	import { setLanguage } from '../helpers/setLanguage';
-	import { setHostname } from '../helpers/setHostname';
+	import { switchMetaTag, setAppHeight, setHostname } from '../lib/utils';
+	import { setLanguage } from '../lib/language';
+	import { get } from '../lib/api';
+
+	import type { CategoriesCount } from '../common/category';
+	import type { Item } from '../common/Item';
+	import type {
+		IUpdateFacetsParameter,
+		ObserverOptions,
+	} from '../common/types';
 
 	export let template: string = '';
 	export let listingType: string = 'grid';
@@ -55,11 +59,6 @@
 	},
 	300);
 
-	interface ObserverOptions {
-		rootMargin: string;
-		threshold: number;
-	}
-
 	/**
 	 * Creating an ObserverOptions object that is used to configure the IntersectionObserver.
 	 */
@@ -99,18 +98,10 @@
 	};
 
 	onMount(() => {
-		const setLanguageCallback = (langStr: string) => {
-			lang = langStr;
-		};
-
-		const setHostnameCallback = (hn: string) => {
-			hostname = hn;
-		};
-
-		setLanguage(window.location.href.split('/')[3], setLanguageCallback);
+		lang = setLanguage(window.location.href.split('/')[3]);
+		hostname = setHostname();
 		setAppHeight();
 		switchMetaTag();
-		setHostname(setHostnameCallback);
 
 		if (template === 'searchpage') {
 			document.title = $_('searchpage_title');
@@ -140,31 +131,22 @@
 	/**
 	 * We fetch the data from the API, and then we update the facets.
 	 */
-	const updateFacets: (isFirst: boolean) => void = function (isFirst: boolean) {
+	const updateFacets: ({}: IUpdateFacetsParameter) => void = async function ({
+		isFirst,
+		endpoint,
+	}) {
 		if (!isFirst) return;
-		const endpoint =
-			window.location.hostname === 'localhost'
-				? // @ts-ignore
-				  `${API}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`
-				: `https://${hostname}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`;
 
-		fetch(endpoint)
-			.then((response) => {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				}
-				return response.json();
-			})
-			.then((data) => {
-				if (data) {
-					categoriesCount = data.facets[0].enable;
-					categoriesCount['all'] = data.items_total;
-					if (categoriesCount.all > 0) {
-						categoriesCountClone = data.facets[0].enable;
-						categoriesCountClone['all'] = data.items_total;
-					}
-				}
-			});
+		let data = await get(endpoint);
+
+		if (data) {
+			categoriesCount = data.facets[0].enable;
+			categoriesCount['all'] = data.items_total;
+			if (categoriesCount.all > 0) {
+				categoriesCountClone = data.facets[0].enable;
+				categoriesCountClone['all'] = data.items_total;
+			}
+		}
 	};
 
 	/**
@@ -185,24 +167,18 @@
 		showSearchProposals = true;
 		showSearchCategories = true;
 
-		if (!searchTerm) {
+		if (!searchTerm || (searchTerm && searchTerm.length < 3)) {
 			searchResults = [];
 			searchResultsClone = [];
-			showSearchBarIntro = true;
-			showStatusInfo = false;
-			showSearchProposals = false;
-			isLoading = false;
-			showSearchCategories = false;
-			return;
-		}
-
-		if (searchTerm && searchTerm.length < 3) {
-			searchResults = [];
-			searchResultsClone = [];
-			showSearchBarIntro = false;
 			showStatusInfo = false;
 			showSearchCategories = false;
 			isLoading = false;
+			if (!searchTerm) {
+				showSearchBarIntro = true;
+				showSearchProposals = false;
+			} else {
+				showSearchBarIntro = false;
+			}
 			return;
 		}
 
@@ -240,7 +216,16 @@
 						categoriesCountClone['all'] = data.items_total;
 					}
 				} else {
-					updateFacets(isFirst);
+					const endpoint =
+						window.location.hostname === 'localhost'
+							? // @ts-ignore
+							  `${API}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`
+							: `https://${hostname}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`;
+
+					updateFacets({
+						isFirst,
+						endpoint,
+					});
 				}
 
 				if (totalItems === 0 && !noAlternativeSearchTermFound) {

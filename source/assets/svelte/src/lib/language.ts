@@ -3,20 +3,20 @@
  * @param {string} langStr - The language string to set the language to.
  */
 
-export const setLanguage = (langStr: string, setLanguageCallback: any) => {
+export const setLanguage = (langStr: string) => {
   switch (langStr) {
     case 'en': {
-      setLanguageCallback(langStr);
+      return langStr;
     }
     case 'de': {
-      setLanguageCallback(langStr);
+      return langStr;
     }
     default: {
       let language = document.documentElement.lang;
       if (language === 'en' || language === 'de') {
-        setLanguageCallback(language);
+        return language;
       } else {
-        setLanguageCallback('de');
+        return 'de';
       }
     }
   }

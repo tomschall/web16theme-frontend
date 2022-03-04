@@ -10,7 +10,6 @@ import Search from '../components/Search.svelte';
 import en from '../lang/en.json';
 import de from '../lang/de.json';
 import { init, addMessages, _ } from 'svelte-i18n';
-import prettyFormat from 'pretty-format';
 import { itemsData } from '../mock/TestData';
 import fetch, { enableFetchMocks } from 'jest-fetch-mock';
 import { _ as lodash } from 'lodash';

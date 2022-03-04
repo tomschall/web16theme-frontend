@@ -4,13 +4,11 @@
 	import SearchInput from './input/SearchInput.svelte';
 	import SearchResults from './list/SearchResults.svelte';
 	import { debounce } from 'lodash';
-	import type { Item } from '../definitions/Item';
+	import type { Item } from '../common/Item';
 	import MultiSelectRow from './multiselect/MultiSelectRow.svelte';
 	import type { Option } from './multiselect';
-	import { switchMetaTag } from '../helpers/switchMetaTag';
-	import { setAppHeight } from '../helpers/setAppHeight';
-	import { setLanguage } from '../helpers/setLanguage';
-	import { setHostname } from '../helpers/setHostname';
+	import { switchMetaTag, setAppHeight, setHostname } from '../lib/utils';
+	import { setLanguage } from '../lib/language';
 
 	export let template: string = '';
 	export let listingType = 'grid';
@@ -91,21 +89,12 @@
 			template === 'education' ? 'degree_programmes' : 'continuing_education';
 
 		selectFormDataElement = document.querySelectorAll(selector);
-
 		selectFormData = JSON.parse(selectFormDataElement[0].dataset.widgetData);
 
-		const setLanguageCallback = (langStr: string) => {
-			lang = langStr;
-		};
-
-		const setHostnameCallback = (hn: string) => {
-			hostname = hn;
-		};
-
-		setLanguage(window.location.href.split('/')[3], setLanguageCallback);
+		lang = setLanguage(window.location.href.split('/')[3]);
+		hostname = setHostname();
 		setAppHeight();
 		switchMetaTag();
-		setHostname(setHostnameCallback);
 
 		document.title = $_('searchpage_title');
 		observer = new IntersectionObserver(loadMoreResults, options);

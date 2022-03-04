@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
-	import type { CategoriesCount } from '../../definitions/Categories';
+	import type { CategoriesCount } from '../../common/category';
 
 	export let triggerCategorySearch = () => {};
 	export let unobserve: any;
@@ -14,7 +14,7 @@
 	let categoryLastElementNotVisible: boolean = true;
 	let mq = window.estatico.mq.query({ from: 'small' }); // Estatico
 	let zeroResult: string = '(0)';
-	let categoryBox: Element;
+	let categoryBox: any;
 
 	/**
 	 * It takes the scroll position of the category box and checks if the last element is visible.

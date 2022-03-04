@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import type { Item } from '../definitions/Item';
+	import type { Item } from '../common/Item';
 	import ListItem from '../components/list/ListingNormal.svelte';
 	import LoadingIndicator from '../components/shared/LoadingIndicator.svelte';
 	import DateLine from '../components/list/DateLine.svelte';

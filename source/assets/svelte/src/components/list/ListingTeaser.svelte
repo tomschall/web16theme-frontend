@@ -1,6 +1,5 @@
 <script lang="ts">
-	import type { Item } from '../../definitions/Item';
-	import { _ } from 'svelte-i18n';
+	import type { Item } from '../../common/Item';
 
 	export let item: Item;
 	export let city: string;

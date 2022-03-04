@@ -4,7 +4,7 @@
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
   "compilerOptions": {
     "resolveJsonModule": true,
-    "typeRoots": ["./node_modules/@types", "./src/definitions"],
+    "typeRoots": ["./node_modules/@types", "src/common"],
     "types": ["jest"]
   }
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Item } from '../../definitions/Item';
+	import type { Item } from '../../common/Item';
 	import { _ } from 'svelte-i18n';
 	import SvelteMarkdown from 'svelte-markdown/src/SvelteMarkdown.svelte';
 	import Paragraph from '../markdown/Paragraph.svelte';

@@ -3,7 +3,6 @@ import ListingNormal from '../components/list/ListingNormal.svelte';
 import en from '../lang/en.json';
 import de from '../lang/de.json';
 import { init, addMessages, _ } from 'svelte-i18n';
-import prettyFormat from 'pretty-format';
 import { itemsData, searchResultsHighlightingData } from '../mock/TestData';
 
 let lang: string = document.documentElement.lang || 'de';

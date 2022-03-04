@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { onMount } from 'svelte';
-	import type { Item } from '../../definitions/Item';
+	import type { Item } from '../../common/Item';
 
 	export let query: string;
 	export let showSearchCategories: boolean;

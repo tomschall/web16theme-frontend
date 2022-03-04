@@ -13,7 +13,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.4",
-    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
     "@rollup/plugin-commonjs": "^17.0.0",
@@ -38,7 +37,6 @@
     "jest-transform-svelte": "^2.1.1",
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.5.0",
-    "pretty-format": "^27.5.1",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
