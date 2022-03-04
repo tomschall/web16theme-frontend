@@ -14,10 +14,7 @@
 
 	import type { CategoriesCount } from '../common/category';
 	import type { Item } from '../common/Item';
-	import type {
-		IUpdateFacetsParameter,
-		ObserverOptions,
-	} from '../common/types';
+	import type { ObserverOptions } from '../common/types';
 
 	export let template: string = '';
 	export let listingType: string = 'grid';
@@ -131,11 +128,14 @@
 	/**
 	 * We fetch the data from the API, and then we update the facets.
 	 */
-	const updateFacets: ({}: IUpdateFacetsParameter) => void = async function ({
-		isFirst,
-		endpoint,
-	}) {
+	const updateFacets: (isFirst: boolean) => void = async function (isFirst) {
 		if (!isFirst) return;
+
+		const endpoint =
+			window.location.hostname === 'localhost'
+				? // @ts-ignore
+				  `${API}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`
+				: `https://${hostname}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`;
 
 		let data = await get(endpoint);
 
@@ -146,6 +146,31 @@
 				categoriesCountClone = data.facets[0].enable;
 				categoriesCountClone['all'] = data.items_total;
 			}
+		}
+	};
+
+	const doSpellChecking: () => void = async function () {
+		searchTermSpellCheck = searchTerm;
+
+		const endpoint: string =
+			window.location.hostname === 'localhost'
+				? // @ts-ignore
+				  API_SPELLCHECK + `?term=${searchTermSpellCheck}`
+				: `https://${hostname}/spellcheck/?term=${searchTermSpellCheck}`;
+
+		let data = await get(endpoint);
+
+		if (!data.suggestions.length) {
+			searchTermSpellCheck = null;
+			noAlternativeSearchTermFound = true;
+		} else {
+			searchTerm = data.suggestions[0].value;
+		}
+
+		if (!noAlternativeSearchTermFound) triggerSearch(true);
+		else {
+			showSearchCategories = false;
+			showStatusInfo = true;
 		}
 	};
 
@@ -192,108 +217,52 @@
 						searchType || 'all'
 				  }&limit=${limit}&offset=${offset}`;
 
-		fetch(endpoint)
-			.then((response) => {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				}
-				return response.json();
-			})
-			.then((data) => {
-				itemsCount = data.items.length;
-				totalItems = data.items_total;
+		let data = await get(endpoint);
 
-				if (
-					data.facets &&
-					data.facets.length &&
-					isFirst &&
-					searchType === 'all'
-				) {
-					categoriesCount = data.facets[0].enable;
-					categoriesCount['all'] = data.items_total;
-					if (categoriesCount.all > 0) {
-						categoriesCountClone = data.facets[0].enable;
-						categoriesCountClone['all'] = data.items_total;
-					}
-				} else {
-					const endpoint =
-						window.location.hostname === 'localhost'
-							? // @ts-ignore
-							  `${API}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`
-							: `https://${hostname}/${lang}/searchbar.json?q=${searchTerm}&category=all&search_type[]=all&limit=${limit}&offset=${offset}`;
+		itemsCount = data.items.length;
+		totalItems = data.items_total;
 
-					updateFacets({
-						isFirst,
-						endpoint,
-					});
-				}
+		if (data.facets && data.facets.length && isFirst && searchType === 'all') {
+			categoriesCount = data.facets[0].enable;
+			categoriesCount['all'] = data.items_total;
+			if (categoriesCount.all > 0) {
+				categoriesCountClone = data.facets[0].enable;
+				categoriesCountClone['all'] = data.items_total;
+			}
+		} else {
+			updateFacets(isFirst);
+		}
 
-				if (totalItems === 0 && !noAlternativeSearchTermFound) {
-					searchTermSpellCheck = searchTerm;
+		if (totalItems === 0 && !noAlternativeSearchTermFound) {
+			doSpellChecking();
+		}
 
-					const spellCheckEndpoint: string =
-						window.location.hostname === 'localhost'
-							? // @ts-ignore
-							  API_SPELLCHECK + `?term=${searchTermSpellCheck}`
-							: `https://${hostname}/spellcheck/?term=${searchTermSpellCheck}`;
+		if (isFirst) {
+			searchResults = [...data.items];
+			if (totalItems > 0) searchResultsClone = [...data.items];
 
-					fetch(spellCheckEndpoint)
-						.then((response) => {
-							if (!response.ok) {
-								throw Error(response.statusText);
-							}
-							return response.json();
-						})
-						.then((data) => {
-							if (!data.suggestions.length) {
-								searchTermSpellCheck = null;
-								noAlternativeSearchTermFound = true;
-							} else {
-								searchTerm = data.suggestions[0].value;
-							}
-						})
-						.catch((e) => {
-							console.log('An spellcheck error occured!', e);
-							noAlternativeSearchTermFound = true;
-						})
-						.finally(() => {
-							if (!noAlternativeSearchTermFound) triggerSearch(true);
-							else {
-								showSearchCategories = false;
-								showStatusInfo = true;
-							}
-						});
-				}
+			searchResultsHighlighting = {
+				...data.highlighting,
+			};
+			isFirstSearch = false;
+			if (template === 'searchpage' && target) observer.observe(target);
+		} else {
+			searchResults = [...searchResults, ...data.items];
+			if (totalItems > 0)
+				searchResultsClone = [...searchResults, ...data.items];
 
-				searchResults = [...searchResults, ...data.items];
-				if (totalItems > 0)
-					searchResultsClone = [...searchResults, ...data.items];
+			searchResultsHighlighting = {
+				...searchResultsHighlighting,
+				...data.highlighting,
+			};
+		}
 
-				searchResultsHighlighting = {
-					...searchResultsHighlighting,
-					...data.highlighting,
-				};
+		if (searchResults.length > 0) {
+			showSearchCategories = true;
+			showStatusInfo = false;
+		}
 
-				if (isFirst) {
-					searchResults = [...data.items];
-					if (totalItems > 0) searchResultsClone = [...data.items];
-
-					searchResultsHighlighting = {
-						...data.highlighting,
-					};
-					isFirstSearch = false;
-					if (template === 'searchpage' && target) observer.observe(target);
-				}
-
-				if (searchResults.length > 0) {
-					showSearchCategories = true;
-					showStatusInfo = false;
-				}
-			})
-			.catch((e) => console.log('Oh no. An error occured!', e))
-			.finally(() => {
-				isLoading = false;
-			});
+		isLoading = false;
 	};
 </script>
 
@@ -348,14 +317,14 @@
 							{unobserve}
 						/>
 					{/if}
-					<!-- {#if showSearchProposals}
+					{#if showSearchProposals}
 						<SearchProposals
 							bind:query={searchQuery}
 							bind:searchType
 							{hostname}
 							{handleInput}
 						/>
-					{/if} -->
+					{/if}
 					{#if searchTermSpellCheck !== null && searchTermSpellCheck !== searchTerm && !noAlternativeSearchTermFound && !showStatusInfo}
 						<div class="widg__searchbar_spellcheck">
 							<p>{$_('search_spellcheck_warning')} <b>{searchTerm}</b></p>

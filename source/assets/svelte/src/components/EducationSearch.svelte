@@ -9,6 +9,8 @@
 	import type { Option } from './multiselect';
 	import { switchMetaTag, setAppHeight, setHostname } from '../lib/utils';
 	import { setLanguage } from '../lib/language';
+	import { get } from '../lib/api';
+	import type { ObserverOptions } from '../common/types';
 
 	export let template: string = '';
 	export let listingType = 'grid';
@@ -40,11 +42,6 @@
 		await triggerSearch(isFirstSearch);
 	},
 	300);
-
-	interface ObserverOptions {
-		rootMargin: string;
-		threshold: number;
-	}
 
 	const options: ObserverOptions = {
 		rootMargin: '0px 0px 300px',
@@ -171,39 +168,27 @@
 
 		searchTerm = searchQuery.trim();
 
-		const endpoint = assembleQuery();
+		const endpoint: string = assembleQuery();
+		let data = await get(endpoint);
 
-		fetch(endpoint)
-			.then((response) => {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				}
-				return response.json();
-			})
-			.then((data) => {
-				itemsCount = data.items.length;
-				totalItems = data.items_total;
+		itemsCount = data.items.length;
+		totalItems = data.items_total;
 
-				if (isFirst) searchResults = [];
+		if (isFirst) {
+			searchResults = [...data.items];
+			isFirstSearch = false;
+			observer.observe(target);
+		} else {
+			searchResults = [...searchResults, ...data.items];
+		}
 
-				searchResults = [...searchResults, ...data.items];
+		if (searchResults.length > 0) {
+			showStatusInfo = false;
+		} else {
+			showStatusInfo = true;
+		}
 
-				if (isFirst) {
-					searchResults = [...data.items];
-					isFirstSearch = false;
-					observer.observe(target);
-				}
-
-				if (searchResults.length > 0) {
-					showStatusInfo = false;
-				} else {
-					showStatusInfo = true;
-				}
-			})
-			.catch((e) => console.log('Oh no. An error occured!', e))
-			.finally(() => {
-				isLoading = false;
-			});
+		isLoading = false;
 	};
 
 	const handleReset = () => {

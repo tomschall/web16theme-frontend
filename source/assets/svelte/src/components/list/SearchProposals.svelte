@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
+	import { get } from '../../lib/api';
 
 	export let query: string;
 	export let searchType: string;
@@ -13,25 +14,15 @@
 		autocompleteTerm = query.trim();
 
 		if (autocompleteTerm.length) {
-			const autocompleteEndpoint =
+			const endpoint =
 				window.location.hostname === 'localhost'
 					? // @ts-ignore
 					  API_PROPOSALS + `?term=${autocompleteTerm}`
 					: `https://${hostname}/autocomplete/?term=${autocompleteTerm}`;
 
-			fetch(autocompleteEndpoint)
-				.then((response) => {
-					if (!response.ok) {
-						throw Error(response.statusText);
-					}
-					return response.json();
-				})
-				.then((data) => {
-					searchProposals = data.suggestions;
-				})
-				.catch(() => {
-					console.log('An error occured!');
-				});
+			get(endpoint).then((data) => {
+				searchProposals = data.suggestions;
+			});
 		}
 	}
 
